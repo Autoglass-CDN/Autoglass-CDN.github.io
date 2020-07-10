@@ -85,7 +85,7 @@ $(function () {//
 		margin-bottom: 10px;
 		font-size: 21px;
     font-weight: 600;
-	">Outras opções de <strong>${
+	">Confira opções de <strong>${
 		vtxctx.categoryName.toLowerCase()
 	}</strong> ${$('.value-field.Compatibilidade-Modelo').length ? `para este mesmo veículo (<strong>${
 		$('.value-field.Compatibilidade-Modelo').html()
