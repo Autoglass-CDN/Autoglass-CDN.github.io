@@ -89,7 +89,7 @@ $(function () {//
 		vtxctx.categoryName.toLowerCase()
 	}</strong> ${$('.value-field.Compatibilidade-Modelo').length ? `para este mesmo veículo (<strong>${
 		$('.value-field.Compatibilidade-Modelo').html()
-	}</strong>`:''})</p>`);
+	}</strong>)`:''}</p>`);
 });
 
 function consulteFrete() {
