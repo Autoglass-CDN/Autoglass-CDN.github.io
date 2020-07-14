@@ -87,6 +87,7 @@ $(function () {
     },
     onSelect: () => {
       $(".secao-agendamento > .store-list .store").remove();
+      $(".secao-agendamento > .store-list #sem-lojas").remove();
       recuperarHorarios();
     },
   });
@@ -177,7 +178,7 @@ $(function () {
   }
 
   function noTimeAvailable() {
-    return `<div style="
+    return `<div id="sem-lojas" style="
       min-height: 100px;
       display: flex;
       flex-direction: column;
