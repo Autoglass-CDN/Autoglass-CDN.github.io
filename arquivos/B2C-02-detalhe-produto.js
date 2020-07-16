@@ -83,12 +83,13 @@ $(function () {
 		text-align: center;
 		margin-top: -25px;
 		margin-bottom: 10px;
-		font-size: 18px;
+		font-size: 21px;
+    font-weight: 600;
 	">Outras opções de <strong>${
 		vtxctx.categoryName.toLowerCase()
-	}</strong> para este mesmo veículo (<strong>${
+	}</strong> ${$('.value-field.Compatibilidade-Modelo').length ? '':`para este mesmo veículo (<strong>${
 		$('.value-field.Compatibilidade-Modelo').html()
-	}</strong>)</p>`);
+	}</strong>`})</p>`);
 });
 
 function consulteFrete() {
