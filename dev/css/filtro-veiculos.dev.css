@@ -1,0 +1,157 @@
+/* FILTRO DE VEÃCULOS */
+fieldset > div > div.filtro {
+  position: sticky;
+  top: 0;
+}
+
+fieldset > div > div.filtro::after {
+  content: "\f002";
+  font-family: "FontAwesome";
+  color: #223b76;
+  font-size: 12px;
+  width: 51px;
+  padding: 6px 0;
+  text-align: center;
+  margin-left: -26px;
+}
+
+fieldset > div > div.filtro > input.filtro-busca {
+  border: 0;
+  border-bottom: 1px solid gray;
+  padding: 8px 26px 8px 5px;
+  width: 97%;
+  margin-bottom: 15px;
+}
+
+@media (min-width: 767px) {
+  .search-qd-v1-navigator-research fieldset label {
+    width: 80%;
+    margin: 2px 8px 2px 0;
+  }
+  .search-qd-v1-navigator-research fieldset label span:last-of-type {
+    margin: unset;
+  }
+  .search-qd-v1-navigator-research fieldset label span {
+    margin: 2px 8px 2px 0;
+  }
+  /* scroll */
+  /* .search-qd-v1-navigator-research fieldset > div {
+	  overflow-y: scroll;
+	  display: block;
+	  max-height: 280px;
+	} */
+}
+
+fieldset > div > div.filtro > input.filtro-busca:focus {
+  outline: none;
+}
+
+/* REORDENA OS FILTROS */
+
+.search-qd-v1-navigator-research .search-multiple-navigator {
+  display: flex !important;
+  flex-direction: column;
+}
+
+fieldset[data-qd-class="veiculo"],
+fieldset[data-qd-class="ano"] {
+  order: -1;
+}
+
+/* #region CORRIGE BOTÃƒO DE FILTROS */
+@media (max-width: 1199px) {
+  body[data-qd-scroll-0="1"]
+    .search-qd-v1-navigator
+    .search-qd-v1-navigator-trigger {
+    position: fixed;
+    bottom: 60px;
+    left: -100px;
+    z-index: 999999999;
+    font-size: 0;
+    animation: search-navigator 0.5s forwards ease-in-out;
+  }
+  body[data-qd-scroll-0="1"]
+    .search-qd-v1-navigator
+    .search-qd-v1-navigator-trigger:before {
+    content: "\f0b0";
+    display: inline-block;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+    height: 1em;
+    text-align: center;
+    text-decoration: inherit;
+    text-rendering: optimizelegibility;
+    width: 1em;
+    font-family: "FontAwesome";
+    margin-right: 0;
+    font-size: 16px;
+  }
+  body[data-qd-scroll-0="1"]
+    .search-qd-v1-navigator
+    .search-qd-v1-navigator-trigger:after {
+    content: "FILTRAR";
+    padding: 0px 0px 0px 7px;
+    font-size: 16px;
+    font-weight: 300;
+  }
+
+  @keyframes search-navigator {
+    from {
+      left: -100px;
+    }
+    to {
+      left: 15px;
+    }
+  }
+
+  body[data-qd-scroll-0="1"] .search-qd-v1-navigator {
+    height: 90px;
+    background-color: transparent;
+  }
+}
+/* #endregion FIM - CORRIGE BOTÃƒO DE FILTROS */
+
+/* #region Card de produto indisponÃ­vel */
+.shelf-qd-v1 .shelf-qd-v1-no-stock {
+  padding-top: 0;
+}
+.shelf-qd-v1 .shelf-qd-v1-no-stock .shelf-qd-v1-no-stock-message,
+.shelf-qd-v1 .shelf-qd-v1-no-stock .shelf-qd-v1-no-stock-info {
+  color: #8a8a8a;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+.shelf-qd-v1 .shelf-qd-v1-no-stock .shelf-qd-v1-no-stock-info {
+  text-transform: unset;
+  padding: 0px 50px;
+}
+.product-qd-v1-no-stock-button button {
+  border: 2px solid #43c452;
+  border-radius: 3px;
+  background-color: transparent;
+  font-weight: 600;
+  color: #43c452;
+  font-size: 14px;
+  padding: 15px 25px;
+  transition: border-color 0.2s ease-in-out;
+}
+.product-qd-v1-no-stock-button button:hover {
+  border-color: gainsboro;
+}
+@media (max-width: 1200px) {
+  .shelf-qd-v1 .shelf-qd-v1-no-stock .shelf-qd-v1-no-stock-message,
+  .shelf-qd-v1 .shelf-qd-v1-no-stock .shelf-qd-v1-no-stock-info {
+    font-size: 12px;
+  }
+  .shelf-qd-v1 .shelf-qd-v1-no-stock .shelf-qd-v1-no-stock-info {
+    font-size: 11px;
+    padding: 0px;
+    margin: 2px 5px 10px;
+  }
+  .product-qd-v1-no-stock-button button {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+}
+/* #endregion Fim - Card de produto indisponÃ­vel */
