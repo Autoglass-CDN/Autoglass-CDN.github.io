@@ -1,0 +1,48 @@
+name: CI
+
+on:
+  push:
+    branches: [ development ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout development branch
+        uses: actions/checkout@v2
+        with:
+          ref: development
+        
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with: 
+          node-version: 12.x
+          
+      - name: Install dependencies
+        run: yarn
+        
+      - name: Build files for live testing
+        run: yarn dev:build
+      
+      - name: Commit build
+        run: |
+          git add dev
+          git commit -am "Automated dev build"
+          git push
+          
+      - name: Checkout master branch
+        uses: actions/checkout@v2
+        with:
+          ref: master
+          
+      - name: Push build to master
+        run: |
+          git checkout development -- dev
+          git add dev
+          git commit -am "Automated dev build"
+          git push
+      
+
