@@ -29,6 +29,8 @@ jobs:
       
       - name: Commit build
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git add dev
           git commit -am "Automated dev build"
           git push
@@ -40,6 +42,8 @@ jobs:
           
       - name: Push build to master
         run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
           git checkout development -- dev
           git add dev
           git commit -am "Automated dev build"
