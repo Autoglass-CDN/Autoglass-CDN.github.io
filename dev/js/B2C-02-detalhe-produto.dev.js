@@ -87,9 +87,9 @@ $(function () {//
     font-weight: 600;
 	">Confira opções de <strong>${
 		vtxctx.categoryName.toLowerCase()
-	}</strong> ${$('.value-field.Compatibilidade-Modelo').length ? `para este mesmo veículo (<strong>${
-		$('.value-field.Compatibilidade-Modelo').html()
-	}</strong>)`:''}</p>`);
+		}</strong> ${$('.value-field.Compatibilidade-Modelo').length ? `para este mesmo veículo (<strong>${
+			$('.value-field.Compatibilidade-Modelo').html()
+			}</strong>)` : ''}</p>`);
 });
 
 function consulteFrete() {
