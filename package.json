@@ -3,14 +3,10 @@
   "version": "1.0.0",
   "repository": "https://github.com/Autoglass-CDN/Autoglass-CDN.github.io.git",
   "license": "MIT",
-  "husky": {
-    "hooks": {
-      "pre-commit": "if git-branch-is development; then webpack --config webpack.dev.js && git add dev/. ; else echo 0; fi"
-    }
+  "scripts": {
+    "dev:build": "webpack --config webpack.dev.js"
   },
   "devDependencies": {
-    "git-branch-is": "^3.1.0",
-    "husky": "^4.2.5",
     "webpack": "^4.43.0",
     "webpack-cli": "^3.3.12",
     "webpack-merge": "^5.0.9"

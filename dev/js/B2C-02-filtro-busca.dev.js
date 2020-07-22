@@ -1,100 +1,59 @@
-/******/ (function(modules) { // webpackBootstrap
-/******/ 	// The module cache
-/******/ 	var installedModules = {};
-/******/
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/
-/******/ 		// Check if module is in cache
-/******/ 		if(installedModules[moduleId]) {
-/******/ 			return installedModules[moduleId].exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = installedModules[moduleId] = {
-/******/ 			i: moduleId,
-/******/ 			l: false,
-/******/ 			exports: {}
-/******/ 		};
-/******/
-/******/ 		// Execute the module function
-/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
-/******/ 		// Flag the module as loaded
-/******/ 		module.l = true;
-/******/
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/
-/******/
-/******/ 	// expose the modules object (__webpack_modules__)
-/******/ 	__webpack_require__.m = modules;
-/******/
-/******/ 	// expose the module cache
-/******/ 	__webpack_require__.c = installedModules;
-/******/
-/******/ 	// define getter function for harmony exports
-/******/ 	__webpack_require__.d = function(exports, name, getter) {
-/******/ 		if(!__webpack_require__.o(exports, name)) {
-/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
-/******/ 		}
-/******/ 	};
-/******/
-/******/ 	// define __esModule on exports
-/******/ 	__webpack_require__.r = function(exports) {
-/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 		}
-/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 	};
-/******/
-/******/ 	// create a fake namespace object
-/******/ 	// mode & 1: value is a module id, require it
-/******/ 	// mode & 2: merge all properties of value into the ns
-/******/ 	// mode & 4: return value when already ns object
-/******/ 	// mode & 8|1: behave like require
-/******/ 	__webpack_require__.t = function(value, mode) {
-/******/ 		if(mode & 1) value = __webpack_require__(value);
-/******/ 		if(mode & 8) return value;
-/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
-/******/ 		var ns = Object.create(null);
-/******/ 		__webpack_require__.r(ns);
-/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
-/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
-/******/ 		return ns;
-/******/ 	};
-/******/
-/******/ 	// getDefaultExport function for compatibility with non-harmony modules
-/******/ 	__webpack_require__.n = function(module) {
-/******/ 		var getter = module && module.__esModule ?
-/******/ 			function getDefault() { return module['default']; } :
-/******/ 			function getModuleExports() { return module; };
-/******/ 		__webpack_require__.d(getter, 'a', getter);
-/******/ 		return getter;
-/******/ 	};
-/******/
-/******/ 	// Object.prototype.hasOwnProperty.call
-/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-/******/
-/******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
-/******/
-/******/
-/******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./src/js/B2C-02-filtro-busca.dev.js");
-/******/ })
-/************************************************************************/
-/******/ ({
+$(function () {
+	/**
+	 * TODO: Remover esses parametro daqui, quando a garantia da Maeztra acabar.
+	 * Essa função corrige a aparição do filtro na tela pesquisa.
+	 */
+	$.QD_scrollToggle('570, 770');
 
-/***/ "./src/js/B2C-02-filtro-busca.dev.js":
-/*!*******************************************!*\
-  !*** ./src/js/B2C-02-filtro-busca.dev.js ***!
-  \*******************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
+	/**
+	 * Atributo 'data-qd-class' é o identificador do filtro.
+	 * Para adicionar o componente em outro filtro, é só adicionar o seu atributo neste vetor.
+	 */
+	const dataQdClasses = [
+		"veiculo",
+		"ano",
+		"marca",
+		"compatibilidade-modelo",
+		"compatibilidade-montadora",
+		"posicao-da-peca",
+		"cor",
+		"faixa",
+	];
 
-eval("$(function () {\r\n\t/**\r\n\t * TODO: Remover esses parametro daqui, quando a garantia da Maeztra acabar.\r\n\t * Essa função corrige a aparição do filtro na tela pesquisa.\r\n\t */\r\n\t$.QD_scrollToggle('570, 770');\r\n\r\n\t/**\r\n\t * Atributo 'data-qd-class' é o identificador do filtro.\r\n\t * Para adicionar o componente em outro filtro, é só adicionar o seu atributo neste vetor.\r\n\t */\r\n\tconst dataQdClasses = [\r\n\t\t\"veiculo\",\r\n\t\t\"ano\",\r\n\t\t\"marca\",\r\n\t\t\"compatibilidade-modelo\",\r\n\t\t\"compatibilidade-montadora\",\r\n\t\t\"posicao-da-peca\",\r\n\t\t\"cor\",\r\n\t\t\"faixa\",\r\n\t];\r\n\r\n\tdataQdClasses.forEach(function (dataQdClass) {\r\n\t\t$(`fieldset[data-qd-class=\"${dataQdClass}\"] > div`).prepend(\r\n\t\t\t`<div class=\"filtro\">\r\n\t\t  <input\r\n\t\t\tclass=\"filtro-busca\"\r\n\t\t\ttype=\"search\"\r\n\t\t\tautocomplete=\"off\"\r\n\t\t\tautocorrect=\"off\"\r\n\t\t\tautocapitalize=\"none\"\r\n\t\t\tspellcheck=\"false\"\r\n\t\t\trole=\"textbox\"\r\n\t\t\tplaceholder=\"Digite para filtrar...\" />\r\n\t\t</div>`\r\n\t\t);\r\n\r\n\t\t$(\r\n\t\t\t//aplica filtro ao digitar na caixa de texto\r\n\t\t\t`fieldset[data-qd-class=\"${dataQdClass}\"] > div > div.filtro > input.filtro-busca`\r\n\t\t).on(\"input\", function () {\r\n\t\t\tvar inputValue = this.value.toLowerCase();\r\n\r\n\t\t\t$(`fieldset[data-qd-class=\"${dataQdClass}\"] > div > label`).each(\r\n\t\t\t\tfunction (index) {\r\n\t\t\t\t\tif (!$(this).text().toLowerCase().includes(inputValue)) {\r\n\t\t\t\t\t\t$(this).hide();\r\n\t\t\t\t\t} else {\r\n\t\t\t\t\t\t$(this).show();\r\n\t\t\t\t\t}\r\n\t\t\t\t}\r\n\t\t\t);\r\n\t\t});\r\n\t});\r\n\t// Expõe as opções com filtro logo no carregamento do componente\r\n\t$(\r\n\t\t`fieldset[data-qd-class=\"veiculo\"] > h5, fieldset[data-qd-class=\"ano\"] > h5`\r\n\t).click();\r\n});\r\n\n\n//# sourceURL=webpack:///./src/js/B2C-02-filtro-busca.dev.js?");
+	dataQdClasses.forEach(function (dataQdClass) {
+		$(`fieldset[data-qd-class="${dataQdClass}"] > div`).prepend(
+			`<div class="filtro">
+		  <input
+			class="filtro-busca"
+			type="search"
+			autocomplete="off"
+			autocorrect="off"
+			autocapitalize="none"
+			spellcheck="false"
+			role="textbox"
+			placeholder="Digite para filtrar..." />
+		</div>`
+		);
 
-/***/ })
+		$(
+			//aplica filtro ao digitar na caixa de texto
+			`fieldset[data-qd-class="${dataQdClass}"] > div > div.filtro > input.filtro-busca`
+		).on("input", function () {
+			var inputValue = this.value.toLowerCase();
 
-/******/ });
+			$(`fieldset[data-qd-class="${dataQdClass}"] > div > label`).each(
+				function (index) {
+					if (!$(this).text().toLowerCase().includes(inputValue)) {
+						$(this).hide();
+					} else {
+						$(this).show();
+					}
+				}
+			);
+		});
+	});
+	// Expõe as opções com filtro logo no carregamento do componente
+	$(
+		`fieldset[data-qd-class="veiculo"] > h5, fieldset[data-qd-class="ano"] > h5`
+	).click();
+});
