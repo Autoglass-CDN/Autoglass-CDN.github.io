@@ -18,7 +18,7 @@ $(function () {
 		"posicao-da-peca",
 		"cor",
 		"faixa",
-	]; ''
+	];
 
 	dataQdClasses.forEach(function (dataQdClass) {
 		$(`fieldset[data-qd-class="${dataQdClass}"] > div`).prepend(
