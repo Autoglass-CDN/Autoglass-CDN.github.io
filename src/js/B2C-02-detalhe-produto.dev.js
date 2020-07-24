@@ -91,7 +91,7 @@ $(function () {//
 			$('.value-field.Compatibilidade-Modelo').html()
 			}</strong>)` : ''}</p>`);
 
-	$(document).ready(() => {
+	$(window).load(() => {
 		const shippingsDiv = document.querySelector('.freight-values');
 		const observerShippingsDiv = new MutationObserver(() => {
 			const textCepInput = document.querySelector('#txtCep');
