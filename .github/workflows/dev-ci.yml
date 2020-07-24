@@ -19,7 +19,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: Adds automated dev build
-        #  branch: development
+          branch: development
           title: '[Example] Adds automated dev build'
           body: |
             Update dev build
