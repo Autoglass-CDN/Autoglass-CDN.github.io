@@ -4,7 +4,8 @@
   "repository": "https://github.com/Autoglass-CDN/Autoglass-CDN.github.io.git",
   "license": "MIT",
   "scripts": {
-    "dev:build": "webpack --config webpack.dev.js"
+    "dev:build": "webpack --config webpack.dev.js",
+    "prd:build": "webpack --config webpack.prod.js"
   },
   "devDependencies": {
     "webpack": "^4.43.0",
