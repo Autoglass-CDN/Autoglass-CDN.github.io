@@ -1,4 +1,4 @@
-$(function () {
+$(function () {//
 	let acessorio = document.querySelector(".mz-accesories__button--buy");
 
 	if (acessorio) {
@@ -78,6 +78,18 @@ $(function () {
 			$("#txtCep").focus();
 		});
 	}, 500);
+
+	$('#similars h2').after(`<p style="
+		text-align: center;
+		margin-top: -25px;
+		margin-bottom: 10px;
+		font-size: 21px;
+    font-weight: 600;
+	">Confira opções de <strong>${
+		vtxctx.categoryName.toLowerCase()
+		}</strong> ${$('.value-field.Compatibilidade-Modelo').length ? `para este mesmo veículo (<strong>${
+			$('.value-field.Compatibilidade-Modelo').html()
+			}</strong>)` : ''}</p>`);
 });
 
 function consulteFrete() {
