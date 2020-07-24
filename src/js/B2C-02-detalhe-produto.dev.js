@@ -90,6 +90,46 @@ $(function () {//
 		}</strong> ${$('.value-field.Compatibilidade-Modelo').length ? `para este mesmo veículo (<strong>${
 			$('.value-field.Compatibilidade-Modelo').html()
 			}</strong>)` : ''}</p>`);
+
+	const shippingsDiv = document.querySelector('.freight-values');
+	const observerShippingsDiv = new MutationObserver(() => {
+		const textCepInput = document.querySelector('#txtCep');
+
+		const gaFreight = [];
+
+		const freights = [...shippingsDiv.querySelectorAll('td')]
+			.filter(x => !(x.innerText.includes('Frete Grátis') || x.innerText == "" || x.innerText.startsWith('R$')))
+			.map(x => x.innerText);
+
+		freights.forEach(x => {
+			const freight = x.split(',')[0];
+
+			if (freight.startsWith('Frete Retirada') && !gaFreight.includes('Retirada em Loja'))
+				gaFreight.push('Retirada em Loja');
+
+			if (freight.startsWith('Frete Autoglass Express'))
+				gaFreight.push('Autoglass Express');
+
+			if (freight.startsWith('Frete PAC'))
+				gaFreight.push('PAC');
+
+			if (freight.startsWith('Frete Sedex'))
+				gaFreight.push('Sedex');
+
+			if (freight.startsWith('Frete Transportadora'))
+				gaFreight.push('Transportadora');
+
+			if (freight.startsWith('Frete Normal'))
+				gaFreight.push('Normal');
+		});
+
+		gaFreight.length > 0
+			? ga('send', 'event', 'busca-ceps', 'encontrado', textCepInput.value + ',' + gaFreight.join(','))
+			: ga('send', 'event', 'busca-ceps', 'nao-encontrado', textCepInput.value);
+
+	});
+
+	observerShippingsDiv.observe(shippingsDiv, { attributes: true, childList: true, subtree: true });
 });
 
 function consulteFrete() {
