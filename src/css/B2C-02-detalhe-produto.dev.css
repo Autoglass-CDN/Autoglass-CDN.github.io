@@ -1,3 +1,9 @@
+/* Reset CSS MZ */
+.product-qd-v1-sku-selection-box .product-qd-v1-sku-selection-row p {
+  font-size: 14px;
+  text-transform: initial;
+}
+
 .product-qd-v1-installation:first-child {
   margin-top: unset;
 }
