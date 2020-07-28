@@ -55,9 +55,22 @@ $(function () {//
 		$('.talk-to-seller').show();
 
 		if (!$("#similars").is(":empty")) {
-			$(".other-brands").show();
-			$(".product-unavailable").addClass("buy-button other-brands secondary");
-		}
+            $(".other-brands").show();
+            $(".other-brands button").click(e => {
+                e.preventDefault();
+                if ($(window).width() > 900) {
+                    $("html, body").stop().animate({
+                        scrollTop: $("#similars").offset().top - 300
+                    }, 900, "swing")
+                } else {
+                    $("html, body").stop().animate({
+                        scrollTop: $("#similars").offset().top - 170
+                    }, 900, "swing")
+                }
+            });
+
+            $(".product-unavailable").addClass("buy-button other-brands secondary");
+        }
 
 		ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
 	} else {

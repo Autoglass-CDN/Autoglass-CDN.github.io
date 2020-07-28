@@ -433,11 +433,12 @@ body.mz-pu-on .mz-modal-pickup {
 /* #endregion Fim - Bloco de "Consulta de Disponibilidade */
 
 /* #region Produto Indisponível - Outras Marcas */
-.other-brands .product-qd-v1-buy-button a {
-  text-decoration: none;
+.other-brands .product-qd-v1-buy-button button.secondary {
+  background: #43C452 !important;
+  color: #FFF !important;
 }
 
-.other-brands .product-qd-v1-buy-button a::before {
+.other-brands .product-qd-v1-buy-button button::before {
   content: "\f103";
   display: inline-block;
   font-family: 'FontAwesome';
@@ -450,7 +451,7 @@ body.mz-pu-on .mz-modal-pickup {
   background: none;
 }
 
-.other-brands .product-qd-v1-buy-button a::after {
+.other-brands .product-qd-v1-buy-button button::after {
   content: "Visualizar outras marcas";
   font-size: 16px;
 }
