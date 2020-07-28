@@ -51,7 +51,13 @@ $(function () {//
 
 				zE('webWidget', 'open');
 			});
-		$('.product-qd-v1-unavailable').show();
+
+		$('.talk-to-seller').show();
+
+		if (!$("#similars").is(":empty")) {
+			$("other-brands").show();
+			$(".product-unavailable").addClass("buy-button other-brands secondary");
+		}
 
 		ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
 	} else {
