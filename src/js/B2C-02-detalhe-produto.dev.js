@@ -93,9 +93,11 @@ $(function () {//
     font-weight: 600;
 	">Confira opções de <strong>${
 		vtxctx.categoryName.toLowerCase()
-		}</strong> ${$('.value-field.Compatibilidade-Modelo').length ? `para este mesmo veículo (<strong>${
+		}</strong> para este mesmo veículo ${$('.value-field.Compatibilidade-Modelo').length ? `(<strong>${
 			$('.value-field.Compatibilidade-Modelo').html()
-			}</strong>)` : ''}</p>`);
+			}</strong>)` : $('.value-field.Veiculo').length ? `(<strong>${
+				$('.value-field.Veiculo').html()
+				}</strong>)` : ``}</p>`);
 
 	$(window).load(() => {
 		const shippingsDiv = document.querySelector('.freight-values');
