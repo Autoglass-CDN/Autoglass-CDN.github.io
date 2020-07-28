@@ -55,7 +55,7 @@ $(function () {//
 		$('.talk-to-seller').show();
 
 		if (!$("#similars").is(":empty")) {
-			$("other-brands").show();
+			$(".other-brands").show();
 			$(".product-unavailable").addClass("buy-button other-brands secondary");
 		}
 
