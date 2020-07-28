@@ -1,0 +1,32 @@
+
+name: Build DEV
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v1
+      with: 
+          node-version: 12.x
+          
+    - name: Install dependencies
+      run: yarn
+        
+    - name: Build files for live testing
+      run: yarn dev:build
+      
+    - name: Commit build
+      run: |
+        git config user.name github-actions
+        git config user.email github-actions@github.com
+        git add dev
+        git commit -am "Automated dev build"
+        git push

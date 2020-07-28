@@ -1,0 +1,433 @@
+.product-qd-v1-installation:first-child {
+  margin-top: unset;
+}
+
+.product-qd-v1-sku-selection-box .product-qd-v1-ref-code,
+.product-qd-v1-brand-name {
+  margin-bottom: unset !important;
+}
+
+.product-qd-v1-buy-button .buy-button.secondary {
+  background: #fff !important;
+  color: #43c452 !important;
+}
+.product-qd-v1-buy-button .buy-button.secondary:hover,
+.product-qd-v1-buy-button .buy-button.secondary:focus {
+  color: #39b547;
+  background: gainsboro;
+  border-color: gainsboro;
+}
+
+.product-qd-v1-buy-button .buy-button.secondary:active {
+  background: gainsboro;
+  color: #39b547;
+}
+
+.product-qd-v1-standard {
+  display: block !important;
+  background-color: #fff;
+  margin-top: 18px;
+  padding: 12px;
+}
+
+.product-qd-v1-standard .header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.product-qd-v1-standard .header img {
+  height: 60px;
+  width: 60px;
+}
+
+.product-qd-v1-standard .header .col {
+  flex-grow: 1;
+  padding: 5px;
+}
+
+.product-qd-v1-standard .header .col .or {
+  font-size: 12px;
+  font-weight: bold;
+  border: 1px solid gray;
+  color: #777777;
+  border-radius: 50%;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 25px;
+  width: 30px;
+  height: 30px;
+}
+
+.product-qd-v1-standard .header .col .option * {
+  display: block;
+}
+
+.product-qd-v1-standard .header .col .option .title {
+  font-weight: 600;
+  color: #000000;
+  font-size: 14px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+}
+
+.product-qd-v1-standard .header .col .option .link {
+  text-decoration: underline;
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding-left: 0;
+}
+
+/* TOOLTIP DO CEP */
+#txtCep + .ttp {
+  position: relative;
+}
+
+#txtCep + .ttp::after,
+#txtCep + .ttp::before {
+  position: absolute;
+  left: 50%;
+  opacity: 0;
+  transition: all ease 0.5s;
+}
+
+#txtCep + .ttp::before {
+  content: "";
+  border-width: 0 8px 10px 8px;
+  border-style: solid;
+  border-color: transparent transparent #223b76 transparent;
+  margin-left: 40px;
+  bottom: -10px;
+}
+
+#txtCep + .ttp::after {
+  content: "Informe seu CEP";
+  background-color: #223b76;
+  margin-left: 0;
+  bottom: -9px;
+  font-size: 10px;
+  text-align: center;
+  padding: 5px;
+  color: #fff;
+  width: 100px;
+  transform: translateY(100%);
+}
+
+#txtCep:hover + .ttp::after,
+#txtCep:hover + .ttp::before,
+#txtCep:focus + .ttp::after,
+#txtCep:focus + .ttp::before {
+  opacity: 1;
+}
+/* FIM DO TOOLTIP */
+
+/* MODAL - LISTA DE LOJAS - RETIRADA */
+
+.mz-modal-pickup {
+  width: 80%;
+  position: fixed;
+  padding: 20px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 9997;
+  background-color: #fff;
+  border-radius: 4px;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .mz-modal-pickup {
+    width: 600px;
+  }
+}
+
+body.mz-pu-on .mz-modal-pickup {
+  display: block;
+}
+
+.mz-modal-pickup .mz-pickup__close {
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.mz-modal-pickup .mz-pickup__close span {
+  position: absolute;
+  top: -5px;
+  right: -5px;
+  cursor: pointer;
+  font-size: 0;
+}
+
+.mz-modal-pickup .mz-pickup__close span:before {
+  content: "\f00d";
+  display: inline-block;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  height: 1em;
+  text-align: center;
+  text-decoration: inherit;
+  text-rendering: optimizelegibility;
+  width: 1em;
+  font-family: "FontAwesome";
+  font-size: 18px;
+}
+
+.mz-modal-pickup .mz-pickup__title h2 {
+  color: #757575;
+  font-size: 26px;
+  font-weight: 400;
+}
+
+.mz-modal-pickup .mz-pickup__title span {
+  display: block;
+  color: #333333;
+  font-size: 12px;
+  margin: 10px auto;
+}
+
+.mz-modal-pickup .mz-pickup__title .mz-title__bottomBorder {
+  display: block;
+  border-bottom: 1px solid #bdbdbd;
+  margin-bottom: 10px;
+}
+
+.mz-modal-pickup .mz-pickup__info {
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #bababa;
+  border-radius: 6px;
+}
+
+.mz-modal-pickup .mz-pickup__info .mz-info__list ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.mz-modal-pickup .mz-pickup__info .mz-info__list ul li {
+  margin-bottom: 10px;
+  color: #333333;
+  font-size: 10px;
+}
+
+.mz-modal-pickup .mz-pickup__info .mz-info__list ul li:before {
+  display: block;
+  content: "\f05a";
+  display: inline-block;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  height: 1em;
+  text-align: center;
+  text-decoration: inherit;
+  text-rendering: optimizelegibility;
+  width: 1em;
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  font-size: 14px;
+  color: #2d4f9e;
+}
+
+.mz-modal-pickup .mz-pickup__stores .mz-stores__title .without-store {
+  display: none;
+  color: #e74c3c;
+}
+
+.mz-modal-pickup .mz-pickup__stores .mz-stores__list ul {
+  padding-left: 20px;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.mz-modal-pickup .mz-pickup__stores .mz-stores__list ul::-webkit-scrollbar {
+  width: 6px;
+}
+
+.mz-modal-pickup
+  .mz-pickup__stores
+  .mz-stores__list
+  ul::-webkit-scrollbar-track {
+  opacity: 0.3;
+  background-color: #e0e0e0;
+  border: 4px solid transparent;
+  background-clip: content-box;
+}
+
+.mz-modal-pickup
+  .mz-pickup__stores
+  .mz-stores__list
+  ul::-webkit-scrollbar-thumb {
+  background-color: #8a8a8a;
+  border-radius: 4px;
+}
+
+.mz-modal-pickup .mz-pickup__stores .mz-stores__list ul li {
+  cursor: default;
+  margin-bottom: 10px;
+}
+
+.mz-modal-pickup
+  .mz-pickup__stores
+  .mz-stores__list
+  ul
+  li
+  .mz-stores__list--adress {
+  color: #2d4f9e;
+}
+
+.mz-modal-pickup .mz-pickup__button {
+  margin-top: 15px;
+}
+
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy {
+  border: #43c452 solid;
+  border-width: 2px;
+  transition: all 0.2s ease-out;
+  border-radius: 6px;
+  background: #43c452;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  font-size: 16px;
+}
+
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover,
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus {
+  color: #fff;
+  background: #43c452;
+  border-color: #43c452;
+}
+
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active {
+  background: #43c452;
+  color: #fff;
+}
+
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover,
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus,
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active {
+  text-decoration: none;
+}
+
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:before {
+  content: "\f07a";
+  display: inline-block;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  height: 1em;
+  text-align: center;
+  text-decoration: inherit;
+  text-rendering: optimizelegibility;
+  width: 1em;
+  font-family: "FontAwesome";
+  font-size: 16px;
+  margin-right: 20px;
+}
+
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy.lock-button {
+  cursor: default;
+  pointer-events: none;
+  opacity: 0.8;
+}
+/* FIM DE MODAL - LISTA DE LOJAS - RETIRADA */
+
+/* #region Bloco de "Consulta de Disponibilidade */
+.product-qd-v1-buy-button .notifyme .notifyme-title::before {
+  display: none;
+}
+
+.product-qd-v1-buy-button .product-unavailable {
+  border: #43c452 solid;
+  border-width: 2px;
+  transition: all 0.2s ease-out;
+  display: block;
+  border-radius: 6px;
+  background: #43c452;
+  color: #fff;
+  padding: 15px 30px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  font-size: 0;
+  width: 100%;
+  float: right;
+  border-radius: 3px;
+}
+
+.product-qd-v1-buy-button .product-unavailable:hover,
+.product-qd-v1-buy-button .product-unavailable:focus {
+  color: #fff;
+  background: #39b547;
+  border-color: #39b547;
+}
+
+.product-qd-v1-unavailable {
+  margin: 10px 0px 20px;
+  height: 100%;
+}
+
+.product-qd-v1-unavailable .product-qd-v1-standard {
+  margin-top: 0px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.product-qd-v1-buy-button .product-unavailable {
+  margin-top: 15px;
+}
+
+.product-qd-v1-buy-button .product-unavailable:before {
+  content: "";
+  display: inline-block;
+  position: relative;
+  top: 3px;
+  background: url("https://autoglass.vteximg.com.br/arquivos/icon-chat.png")
+    no-repeat;
+  background-size: 100% 100%;
+  background-position: 0px 0px;
+  width: 28px;
+  height: 20px;
+  margin-right: 14px;
+}
+
+.product-qd-v1-buy-button .product-unavailable:after {
+  content: "Fale agora com o vendedor pelo chat";
+  font-size: 16px;
+}
+
+@media (max-width: 1200px) {
+  .product-qd-v1-buy-button .product-unavailable {
+    padding: 5px 10px;
+  }
+
+  body.mz-product-unavailable .product-qd-v1-fixed-bar {
+    display: none;
+  }
+
+  body.mz-product-unavailable .zEWidget-launcher {
+    bottom: 50px !important;
+  }
+}
+
+@media (max-width: 452px) {
+  .product-qd-v1-buy-button .product-unavailable:before {
+    top: 15px;
+  }
+}
+
+@media (max-width: 360px) {
+  .product-qd-v1-buy-button .product-unavailable:before {
+    top: 5px;
+  }
+}
+/* #endregion Fim - Bloco de "Consulta de Disponibilidade */
