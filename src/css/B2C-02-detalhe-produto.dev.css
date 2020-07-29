@@ -468,3 +468,8 @@ body.mz-pu-on .mz-modal-pickup {
   background-size: 100% 100%;
 }
 /* #endregion Produto Indisponível - Outras Marcas */
+
+.product-qd-v1-float-bar {
+  z-index:9993;
+  top:150px;
+}
