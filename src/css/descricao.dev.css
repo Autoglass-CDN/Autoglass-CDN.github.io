@@ -30,14 +30,14 @@
     font-size: 14px;
 }
 
-@media (min-width: 992px){
+@media (max-width: 992px){
 		#short-description-desktop{
         display: none;
     }
 }
 
-@media screen and (max-width: 767px) {
-    #short-description-desktop{
+@media (min-width: 992px){
+		#short-description-mobile{
         display: none;
     }
 }
