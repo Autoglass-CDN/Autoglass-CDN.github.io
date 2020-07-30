@@ -30,6 +30,12 @@
     font-size: 14px;
 }
 
+#short-description-desktop .product-qd-v1-description-short {
+    display: block;
+    padding-top: 37px;
+    margin-bottom: 22px;
+}
+
 @media (max-width: 992px){
 		#short-description-desktop{
         display: none;
