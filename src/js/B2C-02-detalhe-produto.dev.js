@@ -99,6 +99,19 @@ $(function () {//
 				$('.value-field.Veiculo').html()
 				}</strong>)` : ``}</p>`);
 
+	$('#sugestoes h2').after(
+		`<p style="text-align: center; margin-top: -25px; margin-bottom: 10px; font-size: 21px; font-weight: 600;">
+			Aproveite e confira outros produtos
+			${
+				$('.value-field.Compatibilidade-Modelo').length
+					? ` para <strong>${$('.value-field.Compatibilidade-Modelo').html()}</strong>`
+					: $('.value-field.Veiculo').length
+						? ` para <strong>${$('.value-field.Veiculo').html()}</strong>`
+						: ``
+			}
+		</p>`
+	);
+
 	$(window).load(() => {
 		const shippingsDiv = document.querySelector('.freight-values');
 		const observerShippingsDiv = new MutationObserver(() => {
@@ -137,7 +150,8 @@ $(function () {//
 				: ga('send', 'event', 'busca-ceps', 'nao-encontrado', textCepInput.value);
 
 		});
-		observerShippingsDiv.observe(shippingsDiv, { attributes: true, childList: true, subtree: true });
+
+		shippingsDiv && observerShippingsDiv.observe(shippingsDiv, { attributes: true, childList: true, subtree: true });
 	});
 });
 
