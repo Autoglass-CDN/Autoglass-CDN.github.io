@@ -494,12 +494,6 @@ table.cart-items tbody {
   padding: 0 10px
 }
 
-@media (max-width:490px) {
-  .product-name {
-    margin-left: 100px !important
-  }
-}
-
 .product-name a {
   color: #000000;
   font-size: 16px;
