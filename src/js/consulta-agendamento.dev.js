@@ -1,6 +1,6 @@
 var codCidades = {
   SE: { code: "8529", nome: "Sergipe" },
-  // TO: { cod: "77066356", nome: "Tocantins" },
+  TO: { code: "9654", nome: "Tocantins" },
   // RO: { code: "76803888", nome: "Rond\u00f4nia" },
   // RR: { code: "69300000", nome: "Roraima" },
   // AC: { code: "69922000", nome: "Acre" },
@@ -111,7 +111,7 @@ $(function () {
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]
-      }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
+        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
     })
       .done(function (data) {
         $(".secao-agendamento .qtd").text(`Lojas encontradas: ${data.Total}`);
@@ -150,10 +150,10 @@ $(function () {
 			</p>
 		  </div>
 		  <button class="btn-ver-horarios ${
-        store.Horarios.filter((h) => h.Disponibilidade.Value !== "Nao").length >
+      store.Horarios.filter((h) => h.Disponibilidade.Value !== "Nao").length >
         0
-          ? ""
-          : "danger"
+        ? ""
+        : "danger"
       }">${store.Horarios.filter((h) => h.Disponibilidade.Value !== "Nao").length > 0 ? "Ver horários" : "Horários indisponíveis"}</button>
 		</div>
 		<div class="time hidden">
@@ -170,9 +170,9 @@ $(function () {
       let timestamp = new Date(horario.HoraInicial);
       return horario.Disponibilidade.Value !== "Nao"
         ? `<button class="timestamp">${timestamp.toLocaleTimeString([], {
-            hour: "2-digit",
-            minute: "2-digit",
-          })}</button>`
+          hour: "2-digit",
+          minute: "2-digit",
+        })}</button>`
         : "";
     });
   }
