@@ -1,3 +1,9 @@
+/* Reset CSS MZ */
+.product-qd-v1-sku-selection-box .product-qd-v1-sku-selection-row p {
+  font-size: 14px;
+  text-transform: initial;
+}
+
 .product-qd-v1-installation:first-child {
   margin-top: unset;
 }
@@ -431,3 +437,39 @@ body.mz-pu-on .mz-modal-pickup {
   }
 }
 /* #endregion Fim - Bloco de "Consulta de Disponibilidade */
+
+/* #region Produto Indisponível - Outras Marcas */
+.other-brands .product-qd-v1-buy-button button.secondary {
+  background: #43C452 !important;
+  color: #FFF !important;
+}
+
+.other-brands .product-qd-v1-buy-button button::before {
+  content: "\f103";
+  display: inline-block;
+  font-family: 'FontAwesome';
+  height: 20px;
+  margin-right: 14px;
+  top: 3px;
+  font-size: 24px;
+  position: relative;
+  line-height: 16px;
+  background: none;
+}
+
+.other-brands .product-qd-v1-buy-button button::after {
+  content: "Visualizar outras marcas";
+  font-size: 16px;
+}
+
+.other-brands.secondary:before {
+  background: url("https://autoglass.vteximg.com.br/arquivos/icon-chat-secondary.png")
+    no-repeat;
+  background-size: 100% 100%;
+}
+/* #endregion Produto Indisponível - Outras Marcas */
+
+.product-qd-v1-float-bar {
+  z-index:9993;
+  top:150px;
+}
