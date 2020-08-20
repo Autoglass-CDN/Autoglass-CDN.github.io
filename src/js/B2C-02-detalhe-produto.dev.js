@@ -55,22 +55,22 @@ $(function () {//
 		$('.talk-to-seller').show();
 
 		if (!$("#similars").is(":empty")) {
-            $(".other-brands").show();
-            $(".other-brands button").click(e => {
-                e.preventDefault();
-                if ($(window).width() > 900) {
-                    $("html, body").stop().animate({
-                        scrollTop: $("#similars").offset().top - 300
-                    }, 900, "swing")
-                } else {
-                    $("html, body").stop().animate({
-                        scrollTop: $("#similars").offset().top - 170
-                    }, 900, "swing")
-                }
-            });
+			$(".other-brands").show();
+			$(".other-brands button").click(e => {
+				e.preventDefault();
+				if ($(window).width() > 900) {
+					$("html, body").stop().animate({
+						scrollTop: $("#similars").offset().top - 300
+					}, 900, "swing")
+				} else {
+					$("html, body").stop().animate({
+						scrollTop: $("#similars").offset().top - 170
+					}, 900, "swing")
+				}
+			});
 
-            $(".product-unavailable").addClass("buy-button other-brands secondary");
-        }
+			$(".product-unavailable").addClass("buy-button other-brands secondary");
+		}
 
 		ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
 	} else {
@@ -98,13 +98,7 @@ $(function () {//
 		});
 	}, 500);
 
-	$('#similars h2').after(`<p style="
-		text-align: center;
-		margin-top: -25px;
-		margin-bottom: 10px;
-		font-size: 21px;
-    font-weight: 600;
-	">Confira opções de <strong>${
+	$('#similars h2').after(`<p class="descricao-rollout">Confira opções de <strong>${
 		vtxctx.categoryName.toLowerCase()
 		}</strong> para este mesmo veículo ${$('.value-field.Compatibilidade-Modelo').length ? `(<strong>${
 			$('.value-field.Compatibilidade-Modelo').html()
@@ -113,15 +107,15 @@ $(function () {//
 				}</strong>)` : ``}</p>`);
 
 	$('#sugestoes h2').after(
-		`<p style="text-align: center; margin-top: -25px; margin-bottom: 10px; font-size: 21px; font-weight: 600;">
+		`<p class="descricao-rollout">
 			Aproveite e confira outros produtos
 			${
-				$('.value-field.Compatibilidade-Modelo').length
-					? ` para <strong>${$('.value-field.Compatibilidade-Modelo').html()}</strong>`
-					: $('.value-field.Veiculo').length
-						? ` para <strong>${$('.value-field.Veiculo').html()}</strong>`
-						: ``
-			}
+		$('.value-field.Compatibilidade-Modelo').length
+			? ` para <strong>${$('.value-field.Compatibilidade-Modelo').html()}</strong>`
+			: $('.value-field.Veiculo').length
+				? ` para <strong>${$('.value-field.Veiculo').html()}</strong>`
+				: ``
+		}
 		</p>`
 	);
 
