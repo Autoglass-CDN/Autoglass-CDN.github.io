@@ -181,7 +181,7 @@
   cursor: pointer;
 }
 
-.mz-accesories__advantages {
+.mz-accesories__name {
   margin-left: 15px;
 }
 
@@ -237,12 +237,11 @@
 
 .mz-advantages__content .cep button {
   height: 24px;
-  transition: all .2s ease-out;
+  transition: background-color .2s ease-out;
   outline: none;
   text-align: center;
   text-transform: uppercase;
   background-color: #dfdfdf;
-  border: 1px solid #dfdfdf;
   color: #505570;
   border: none;
   border-top-right-radius: 3px;
@@ -253,6 +252,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
+  transition: height .5s ease-in-out;
+}
+
+.loading-dates {
+  text-align: center;
+  padding: 2px;
 }
 
 /* #endregion Modal - Instale em Casa */
