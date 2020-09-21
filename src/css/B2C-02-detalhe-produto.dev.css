@@ -519,6 +519,10 @@ input.tipo-instalacao:checked + label::before {
   background-color: #223B76;
 }
 
+.mz-acessories .mz-accesories__advantages .mz-accesories__advantages--button:hover {
+  text-decoration: underline;
+}
+
 @media (max-width: 510px) {
   .installment-type-list {
     flex-wrap:wrap;
