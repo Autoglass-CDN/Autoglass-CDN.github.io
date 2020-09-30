@@ -28,6 +28,7 @@ var codCidades = {
   SP: { code: "9423", nome: "S\u00e3o Paulo" },
 };
 
+// Instale na Loja
 $(function () {
   const hmlCodServico = "17";
   const baseUrlApi = window.location.href.includes("dev")
@@ -106,11 +107,10 @@ $(function () {
   function recuperarHorarios() {
     $.ajax({
       method: "GET",
-      url: `${baseUrlApi}/horarios-lojas?Data=${
-        $(".secao-agendamento .data input")
-          .datepicker("getDate")
-          .toISOString()
-          .split("T")[0]
+      url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
+        .datepicker("getDate")
+        .toISOString()
+        .split("T")[0]
         }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
     })
       .done(function (data) {
@@ -149,8 +149,7 @@ $(function () {
 			  ${store.NumeroResidencial}, ${store.UF}, ${store.Cep}
 			</p>
 		  </div>
-		  <button class="btn-ver-horarios ${
-      store.Horarios.filter((h) => h.Disponibilidade.Value !== "Nao").length >
+		  <button class="btn-ver-horarios ${store.Horarios.filter((h) => h.Disponibilidade.Value !== "Nao").length >
         0
         ? ""
         : "danger"
@@ -190,5 +189,184 @@ $(function () {
         Por favor, tente outras datas ou fale com nossos consultores no chat.
       </small>
     </div>`;
+  }
+});
+
+// Instale em Casa
+$(function () {
+  const baseUrlApi = window.location.href.includes("dev")
+    ? "https://d060240.autoglass.com.br/integracao-b2c/api/web-app/"
+    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/";
+
+  let event = new Event('datepicker_carregado');
+
+  let AvailableDays;
+  let isLoading = false;
+
+  let minDate = new Date();
+  minDate.setDate(minDate.getDate() + 1);
+  let maxDate = new Date();
+  maxDate = new Date(maxDate.getFullYear(), minDate.getMonth() + 2, 0);
+
+  console.log(maxDate)
+
+  $('.mz-advantages__content .cep  input').mask('99999-999');
+
+  $('#mostrar-datas-datepicker').datepicker({
+    dateFormat: "dd/mm/yy",
+    showAnim: 'slideDown',
+    numberOfMonths: $(document).width() < 650 ? 1 : 2,
+    dayNamesMin: ["D", "S", "T", "Q", "Q", "S", "S"],
+    monthNames: [
+      "Janeiro",
+      "Fevereiro",
+      "Março",
+      "Abril",
+      "Maio",
+      "Junho",
+      "Julho",
+      "Agosto",
+      "Setembro",
+      "Outubro",
+      "Novembro",
+      "Dezembro",
+    ],
+    minDate,
+    maxDate,
+    beforeShowDay: validadeAvailableDays
+  });
+
+  $('#input-cep-btn').click(async (e) => {
+    $('#aviso-servico-movel').hide();
+    e.preventDefault();
+    const cep = $('#cep-input').val();
+
+    if (!cep) {
+      alert('O CEP deve ser informado.');
+      return;
+    } else if (cep && !isLoading) {
+      isLoading = true;
+      $('#input-cep-btn').attr('disabled', true);
+      $('.datas-disponiveis').show();
+      $('.loading-dates').show();
+      $('#mostrar-datas-datepicker').css('height', '0px');
+
+      const request = {
+        Cep: cep,
+        DataInicio: minDate.toISOString().split("T")[0],
+        DataFim: maxDate.toISOString().split("T")[0],
+        Carrinho: [],
+        TipoDocumento: 'Venda',
+        TipoServico: 'Instalacao',
+        Qt: 100
+      }
+
+      // skuJson only exists on Produtc Detail Page
+      if (window.skuJson) {
+        request.Carrinho.push(
+          {
+            CodigoProduto: +window.skuJson.name.match(/\d+$/)[0],
+            Quantidade: 1
+          }
+        );
+      } else {
+        // Only will work on Checkout
+        const order = await getOrderForm();
+
+        request.Carrinho = order.items
+          .filter(item => item.additionalInfo.brandId !== "2000108")
+          .map(item => (
+            {
+              CodigoProduto: +item.productRefId,
+              Quantidade: 1
+            }
+          ));
+      }
+
+      try {
+        const response = await getAvailableDays(request);
+
+        AvailableDays = response.Registros.map(x => ({
+          ...x,
+          DataRoteiro: new Date(x.DataRoteiro)
+        }));
+
+        $('#mostrar-datas-datepicker').datepicker('setDate', minDate);
+        $('#mostrar-datas-datepicker').datepicker('refresh');
+
+        $('#mostrar-datas-datepicker').css('height', '228px');
+      } catch (err) {
+        $('#aviso-servico-movel')
+          .show()
+          .html('Não conseguimos consultar a sua região, tente novamente.');
+
+        console.log(err);
+      } finally {
+        isLoading = false;
+        $('.loading-dates').hide();
+        $('#input-cep-btn').attr('disabled', false);
+      }
+    }
+  });
+
+  window.dispatchEvent(event);
+
+  function getAvailableDays(request) {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        contentType: "application/json",
+        crossDomain: true,
+        jsonp: false,
+        type: "POST",
+        url: `${baseUrlApi}agendamento/servico-movel/disponibilidades`,
+        data: JSON.stringify(request),
+        success: function (data) {
+          resolve(data)
+        },
+        error: function (error) {
+          reject(error)
+        },
+      });
+    });
+  }
+
+  function getOrderForm() {
+    return new Promise((resolve, reject) => {
+      $.ajax({
+        jsonp: false,
+        url: `/api/checkout/pub/orders/${$("#order-id").text().trim()}`,
+        contentType: "application/json",
+        type: "GET",
+        success: function (data) {
+          resolve(data)
+        },
+        error: function (error) {
+          reject(error)
+        },
+      })
+    });
+  }
+
+  function validadeAvailableDays(date) {
+    const isSunday = date.toDateString().includes("Sun");
+    const isSaturday = date.toDateString().includes("Sat");
+
+    if (isSunday || isSaturday) {
+      return [false];
+    }
+
+    if (AvailableDays) {
+      const day = AvailableDays.find(x => x.DataRoteiro.toLocaleDateString() === date.toLocaleDateString());
+
+      if (day) {
+        if (day.Feriado || !day.TemRota || day.SituacaoRota.Value === 'Fechada')
+          return [false];
+
+        if (day.SituacaoRota.Value === 'Aberta')
+          return [true];
+      }
+    }
+
+    return [false];
   }
 });
