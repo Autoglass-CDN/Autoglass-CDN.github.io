@@ -71,6 +71,10 @@ $(function () {//
 
 			$(".product-unavailable").addClass("buy-button other-brands secondary");
 
+			let modal = document.querySelector('#myModal');
+
+			modal.style.display = 'block';
+
 			vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
 				window
 					.location
@@ -80,6 +84,8 @@ $(function () {//
 						+ '?utm_source=produtodisponivel&utm_medium=redirecionamento&utm_campaign='
 						+ product.productId);
 			});
+
+
 		}
 
 
