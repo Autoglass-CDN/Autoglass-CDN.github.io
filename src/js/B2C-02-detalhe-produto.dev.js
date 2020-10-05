@@ -70,8 +70,7 @@ $(function () {//
 			});
 
 			$(".product-unavailable").addClass("buy-button other-brands secondary");
-		}
-		else {
+
 			vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
 				window
 					.location
@@ -81,8 +80,8 @@ $(function () {//
 						+ '?utm_source=produtodisponivel&utm_medium=redirecionamento&utm_campaign='
 						+ product.productId);
 			});
-
 		}
+
 
 		ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
 	} else {
