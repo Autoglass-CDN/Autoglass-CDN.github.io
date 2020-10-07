@@ -32,7 +32,7 @@ var codCidades = {
 $(function () {
   const hmlCodServico = "17";
   const baseUrlApi = window.location.href.includes("dev")
-    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamento"
+    ? "http://localhost:55408/integracao-b2c/api/web-app/agendamento"
     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamento";
   const estado = codCidades[$.cookie("mzLocationUF")];
   const codCidade = estado.code || null;
