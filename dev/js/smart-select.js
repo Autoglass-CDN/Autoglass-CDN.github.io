@@ -1,9 +1,7 @@
 (function () {
   let categoryTree;
   let produtos, pecas, montadoras, veiculos, anos;
-
   const LID_FILTER = 'lid=bf120500-baab-4185-8b70-cc630f7d1c70';
-  const URL_REMOVE = 'https://autoglass.vtexcommercestable.com.br';
 
   const BUTTONS = ['produtos', 'peca', 'montadora', 'veiculo', 'ano'];
 
@@ -27,7 +25,7 @@
 
       const peca = pecas.find(x => x.id == target.id);
 
-      const url = `${location.origin}${peca.url.replace(URL_REMOVE, '')}?${LID_FILTER}&${buildMapFilters(0)}`;
+      const url = `${peca.url}?${LID_FILTER}&${buildMapFilters(0)}`;
 
       const response = await $.get(url);
 
