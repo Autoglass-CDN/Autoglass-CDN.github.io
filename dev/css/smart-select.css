@@ -230,6 +230,7 @@
 
   .smart-select__main .smart-select__main-results {
     width: 100%;
+    max-width: unset;
   }
 
   .smart-select__main .smart-select__main-results input {
