@@ -65,7 +65,6 @@
 
       anos = virtualizedDOM(response, '.Ano');
 
-      console.log(anos)
       buildList(anos, 'ano');
 
       $('.smart-select__main > .veiculo > div > span').html(target.innerText);
@@ -76,9 +75,9 @@
       $('.smart-select__main > .ano > div > span').click();
     },
     'button': function () {
-      const ano = anos?.find(x => x.name === $('.smart-select__main > .ano > div > span').html());
-      const montadora = montadoras?.find(x => x.name === $('.smart-select__main > .montadora > div > span').html());
-      const veiculo = veiculos?.find(x => x.name === $('.smart-select__main > .veiculo > div > span').html());
+      const ano = anos.find(x => x.name === $('.smart-select__main > .ano > div > span').html());
+      const montadora = montadoras.find(x => x.name === $('.smart-select__main > .montadora > div > span').html());
+      const veiculo = veiculos.find(x => x.name === $('.smart-select__main > .veiculo > div > span').html());
 
       if (ano && montadora && veiculo) {
         let route = location.origin
