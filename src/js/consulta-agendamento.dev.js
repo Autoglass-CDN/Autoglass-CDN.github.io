@@ -296,11 +296,23 @@ $(function () {
 
         $('#mostrar-datas-datepicker').css('height', '228px');
       } catch (err) {
+        let message;
+
+        switch (err.status) {
+          case 400:
+            message = (JSON.parse(err.responseText)).Message;
+            break;
+          case 404:
+            message = 'Não conseguimos consultar a sua região, tente novamente.';
+            break;
+          case 500:
+            message = 'Ocorreu um erro, entre em contato conosco pelo chat.'
+            break;
+        }
+
         $('#aviso-servico-movel')
           .show()
-          .html('Não conseguimos consultar a sua região, tente novamente.');
-
-        console.log(err);
+          .html(message);
       } finally {
         isLoading = false;
         $('.loading-dates').hide();
