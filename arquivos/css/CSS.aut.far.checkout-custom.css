@@ -491,7 +491,7 @@ table.cart-items tbody {
 }
 
 .product-name {
-  padding: 0 10px
+  padding: 0 10px 0 0;
 }
 
 .product-name a {
@@ -2271,4 +2271,9 @@ body.body-order-form #go-to-shipping:hover, body.body-order-form #btn-go-to-paym
 
 .mini-cart .monetary {
   white-space: nowrap
+}
+
+.mini-cart .item .fn {
+  white-space: normal;
+  width: 75%;
 }
