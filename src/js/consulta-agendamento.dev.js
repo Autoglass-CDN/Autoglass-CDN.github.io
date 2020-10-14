@@ -330,7 +330,7 @@ $(function () {
         crossDomain: true,
         jsonp: false,
         type: "POST",
-        url: `${baseUrlApi}agendamento/servico-movel/disponibilidades`,
+        url: `${baseUrlApi}agendamentos/servicos-moveis/disponibilidades`,
         data: JSON.stringify(request),
         success: function (data) {
           resolve(data)
