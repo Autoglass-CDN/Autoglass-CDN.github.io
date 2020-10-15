@@ -302,11 +302,8 @@ $(function () {
           case 400:
             message = (JSON.parse(err.responseText)).Message;
             break;
-          case 404:
-            message = 'Não conseguimos consultar a sua região, tente novamente.';
-            break;
-          case 500:
-            message = 'Ocorreu um erro, entre em contato conosco pelo chat.'
+          default:
+            message = 'Não encontramos atendimento para este CEP. Mas procure a gente no chat para te ajudar!'
             break;
         }
 
@@ -371,11 +368,7 @@ $(function () {
       const day = AvailableDays.find(x => x.DataRoteiro.toLocaleDateString() === date.toLocaleDateString());
 
       if (day) {
-        if (day.Feriado || !day.TemRota || day.SituacaoRota.Value === 'Fechada')
-          return [false];
-
-        if (day.SituacaoRota.Value === 'Aberta')
-          return [true];
+        return day.Disponivel ? [true] : [false];
       }
     }
 
