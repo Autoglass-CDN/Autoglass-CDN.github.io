@@ -130,7 +130,8 @@
   text-overflow: ellipsis;
 }
 
-.smart-select__main > div > div:hover {
+.smart-select__main > div > div:hover,
+.smart-select__main > div > div:focus  {
   color: #1c3162;
 }
 
@@ -186,12 +187,16 @@
   cursor: pointer;
   width: inherit;
 }
-.smart-select__main .smart-select__main-results ul li:hover {
+
+.smart-select__main .smart-select__main-results ul li.selected {
+  background-color: #DBDBDB;
+}
+
+.smart-select__main .smart-select__main-results ul li.highlight {
   background-color: #1c3162;
   color:white;
 }
 /* #endregion Main - Results */
-
 
 @media (max-width: 1100px) {
   .smart-select__header {
