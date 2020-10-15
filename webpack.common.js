@@ -6,5 +6,6 @@ module.exports = {
     'js/B2C-02-filtro-busca': path.resolve(__dirname, 'src', 'js', 'B2C-02-filtro-busca.dev.js'),
     'js/consulta-agendamento': path.resolve(__dirname, 'src', 'js', 'consulta-agendamento.dev.js'),
     'js/jquery-ui.datepicker': path.resolve(__dirname, 'src', 'js', 'jquery-ui.datepicker.js'),
+    'js/smart-select': path.resolve(__dirname, 'src', 'js', 'smart-select.dev.js'),
   }
 }
