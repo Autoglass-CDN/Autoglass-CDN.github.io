@@ -163,12 +163,28 @@
                 }
               });
 
-            if (index <= $(`.smart-select__main > .${select.class} ul li`).length)
+            if (index <= $(`.smart-select__main > .${select.class} ul li`).length) {
               $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)
                 .addClass(CONFIG.CSS.HIGHLIGHT);
-            else
+
+              $(`.smart-select__main > .${select.class} .smart-select__main-results ul`)
+                .animate({
+                  scrollTop: $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].offsetTop
+                    - $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].scrollHeight
+                    - $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].scrollHeight / 2
+                }, 100);
+            }
+            else {
               $(`.smart-select__main > .${select.class} ul li:nth-child(1)`)
                 .addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(`.smart-select__main > .${select.class} .smart-select__main-results ul`)
+                .animate({
+                  scrollTop: $(`.smart-select__main > .${select.class} ul li:nth-child(1)`)[0].offsetTop
+                    - ($(`.smart-select__main > .${select.class} ul li:nth-child(1)`)[0].scrollHeight
+                      + $(`.smart-select__main > .${select.class} ul li:nth-child(1)`)[0].scrollHeight / 2)
+                }, 100);
+            }
           }
 
           if (e.key === 'ArrowUp') {
@@ -182,12 +198,28 @@
                 }
               });
 
-            if (index !== 0)
+            if (index !== 0) {
               $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)
                 .addClass(CONFIG.CSS.HIGHLIGHT);
-            else
+
+              $(`.smart-select__main > .${select.class} .smart-select__main-results ul`)
+                .animate({
+                  scrollTop: $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].offsetTop
+                    - ($(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].scrollHeight
+                      + $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].scrollHeight / 2)
+                }, 100);
+            }
+            else {
               $(`.smart-select__main > .${select.class} ul li:nth-child(${$(`.smart-select__main > .${select.class} ul li`).length})`)
                 .addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(`.smart-select__main > .${select.class} .smart-select__main-results ul`)
+                .animate({
+                  scrollTop: $(`.smart-select__main > .${select.class} ul li:nth-child(${$(`.smart-select__main > .${select.class} ul li`).length})`)[0].offsetTop
+                    - ($(`.smart-select__main > .${select.class} ul li:nth-child(${$(`.smart-select__main > .${select.class} ul li`).length})`)[0].scrollHeight
+                      + $(`.smart-select__main > .${select.class} ul li:nth-child(${$(`.smart-select__main > .${select.class} ul li`).length})`)[0].scrollHeight / 2)
+                }, 100);
+            }
           }
         })
         .on('keyup', e => {
