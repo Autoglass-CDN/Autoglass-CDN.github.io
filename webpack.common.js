@@ -7,5 +7,6 @@ module.exports = {
     'js/consulta-agendamento': path.resolve(__dirname, 'src', 'js', 'consulta-agendamento.dev.js'),
     'js/jquery-ui.datepicker': path.resolve(__dirname, 'src', 'js', 'jquery-ui.datepicker.js'),
     'js/smart-select': path.resolve(__dirname, 'src', 'js', 'smart-select.dev.js'),
+    'js/home': path.resolve(__dirname, 'src', 'js', 'home.dev.js'),
   }
 }
