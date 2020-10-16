@@ -3,12 +3,21 @@
 	let position = 0;
 	const btnPrev = $('.banners-section .banners button[data-type="prev"]');
 	const btnNext = $('.banners-section .banners button[data-type="next"]');
-	const bannerContainer = $('.banners-section .banners-content');
-	const bannerImages = bannerContainer.children();
+	const containers = $('.banners-section .banners-content');
+	let bannerContainer = window.innerWidth > 1100 ? $(containers[0]) : $(containers[1]);
+	let bannerImages = bannerContainer.children();
 
 	buildBars();
 	calculateMarginOfBtns();
-	window.addEventListener('resize', calculateMarginOfBtns)
+
+	window.addEventListener('resize', e => {
+		bannerContainer = window.innerWidth > 1100 ? $(containers[0]) : $(containers[1]);
+		bannerImages = bannerContainer.children();
+
+		$('.banners-bars').html('');
+		buildBars();
+		calculateMarginOfBtns();
+	});
 
 	$('.banners-section .banners-content a').attr('tabindex', '-1');
 
