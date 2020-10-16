@@ -78,6 +78,7 @@
 .smart-select__main > div > div:first-child {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: white;
   font-size: 18px;
   color: #868686;
@@ -210,7 +211,7 @@
   }
 
   .smart-select__main > div {
-    margin: 10px;
+    margin: 10px 0px;;
     width: 100%;
     position: relative;
   }
@@ -221,7 +222,7 @@
   }
 
   .smart-select__main > div + div {
-    margin-left: 10px;
+    margin-left: 0px;
   }
 
   .smart-select__main > div.ano {
