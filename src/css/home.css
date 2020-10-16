@@ -1,5 +1,5 @@
 /* import */
-@import url("theme.css");
+@import url("https://autoglass-cdn.github.io/dev/css/theme.css");
 
 .container {
   max-width: 1110px;
@@ -352,7 +352,7 @@
 /* #region Why */
 .whys-section {
   padding: 80px 20px;
-  background: url('./svgs/porque_autoglass-bg.svg');
+  background: url('/arquivos/porque_autoglass-bg.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
