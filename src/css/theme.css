@@ -1,0 +1,70 @@
+/* FONTES */
+@font-face {
+  font-family: 'Open Sans';
+  src: local("Open Sans"),
+    url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
+}
+
+:root {
+  --primary: #183884;
+  /* --blue-700 */
+  --success: #33a140;
+  /* --green-300 */
+  --danger: #dd4b39;
+  /* --red-300 */
+
+  /* CORES PRIMÁRIAS */
+  --blue-900: #1c3162;
+  --blue-700: #183884;
+  --blue-500: #234eb9;
+  --blue-300: #368df7;
+  --blue-100: #60C3FF;
+
+  /* CORES SEMÂNTICAS */
+  --green-300: #33a140;
+  --green-100: #43c452;
+  --orange-300: #f07a19;
+  --red-300: #dd4b39;
+
+  /* ESCALA DE CINZA */
+  --white: #ffffff;
+  --gray-100: #f8f8f8;
+  --gray-300: #dbdbdb;
+  --gray-500: #a8a8a8;
+  --gray-700: #424242;
+  --black: #000000;
+
+  /* FONTE */
+  font-size: 100%;
+  --light: 300;
+  --regular: 400;
+  --semi-bold: 600;
+  --bold: 700;
+  --extra-bold: 800;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  -webkit-font-smoothing: antialised;
+  color: --gray-500;
+}
+
+body,
+input,
+button {
+  font-family: 'Open Sans', sans-serif;
+}
+
+
+button {
+  cursor: pointer;
+}
+
+hr {
+  border: 1px solid var(--gray-300);
+}
