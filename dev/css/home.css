@@ -1,0 +1,522 @@
+/* import */
+@import url("https://autoglass-cdn.github.io/dev/css/theme.css");
+
+.container {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
+.smart-select-section {
+  margin-top: -75px;
+}
+
+/* #region Common */
+.section-title {
+  font-size: 32px;
+  font-weight: var(--extra-bold);
+  font-family: 'Open Sans', sans-serif;
+  color:var(--primary);
+  text-align: center;
+  text-transform: uppercase;
+}
+/* #endregion Common */
+
+/* #region Banners */
+
+.banners-section .banners {
+  position: relative;
+}
+
+.banners-section .banners button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(calc(-50% - 70px));
+  background-color: transparent;
+  border: none;
+  padding: 20px;
+  outline: none;
+  cursor: pointer;
+}
+
+.banners-section .banners button[id="banner-next"] {
+  right: 0;
+}
+
+.banners-section .banners-content {
+  display: flex;
+  align-items: center;
+
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.banners-section .banners-content::-webkit-scrollbar {
+  display: none;
+}
+
+.banners-section .banners-content .box-banner {
+  flex: none;
+  width: 100vw;
+  scroll-snap-align: start;
+}
+
+.banners-section .banners-content .box-banner a {
+  display: block;
+}
+
+.banners-section .banners-content img {
+  width: 100%;
+}
+
+.banners-section .banners-bars {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 125px;
+
+
+  list-style: none;
+  display: flex;
+}
+
+.banners-section .banners-bars li {
+  width: 30px;
+  height: 4px;
+
+  background-color: var(--gray-500);
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.banners-section .banners-bars li.active {
+  background-color:var(--primary);
+}
+
+/* #endregion Banners */
+
+/* #region Benefits */
+.benefits-section {
+  color: #95989A;
+}
+
+.benefits-section .container {
+  display: flex;
+  padding: 24px;
+  justify-content: space-around;
+
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.benefits-section .container::-webkit-scrollbar {
+  display: none;
+}
+
+.benefits-section .benefit {
+  flex: none;
+  min-width: 240px;
+  max-width: 240px;
+  transition: width 1s ease;
+}
+
+.benefit-wrapper {
+  display: flex;
+}
+
+.benefits-section svg {
+  margin-right: 16px;
+  min-width: 40px;
+}
+
+.benefits-section .benefit p {
+  font-size: 14px;
+}
+
+.benefits-section .benefit p * {
+  display: block;
+}
+
+@media (max-width: 1000px) {
+  .benefits-section .container {
+    justify-content: initial;
+
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .benefits-section .benefit {
+    max-width: initial;
+    padding: 0 16px;
+    scroll-snap-align: center;
+    pointer-events: none;
+  }
+
+  .benefits-section .benefit-wrapper {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .benefits-section .benefit {
+    padding: 0 25px;
+    opacity: .4;
+  }
+  .benefits-section .benefit.focus {
+    opacity: 1;
+  }
+  .benefits-section .benefit:first-child {
+    padding-left: 20%;
+  }
+  .benefits-section .benefit:last-child {
+    padding-right: 20%;
+  }
+}
+
+/* #endregion Benefits */
+
+/* #region Rating */
+
+.ratings-section {
+  padding: 80px 0px;
+}
+
+.ratings-section .ratings {
+  margin-top: 25px;
+}
+
+.ratings-section .ratings__slider {
+  display: flex;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  height: 430px;
+}
+
+.ratings-section .ratings__slider button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  padding: 20px;
+  outline: none;
+  cursor: pointer;
+  z-index: 9;
+}
+.ratings-section .ratings__slider button[id="rating-next"] {
+  right: 0;
+}
+
+.ratings-section .ratings__slider-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.ratings-section .ratings__rating {
+  width: 300px;
+  height: 285px;
+  background-color: var(--gray-100);
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  margin: 5px;
+
+  transition: transform .7s ease;
+}
+
+.ratings-section .ratings__rating .ratings__rating-image img {
+  width: 68px;
+  height: 68px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 8px solid var(--gray-100);
+  box-sizing: content-box;
+}
+
+.ratings-section .ratings__rating .ratings__rating-stars i {
+  color: #DFC12C;
+  font-size: 16px;
+}
+
+.ratings-section .ratings__rating .ratings__rating-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.ratings-section .ratings__rating .ratings__rating-content h3 {
+  font-family: 'Open Sans', sans-serif;
+  color:var(--primary);
+  font-size: 16px;
+  font-weight: var(--bold);
+  margin: 16px 0;
+}
+
+.ratings-section .ratings__rating .ratings__rating-content p {
+  font-family: 'Open Sans', sans-serif;
+  max-width: 235px;
+  font-size: 12px;
+  font-weight: var(--semi-bold);
+  text-align: center;
+  color: #545454;
+}
+
+.ratings-section .ratings__rating.highlight {
+  transform: scale(1.34);
+  background-color:#183884;
+  z-index: 1;
+  cursor: initial;
+}
+
+.ratings-section .ratings__rating.highlight .ratings__rating-content h3 {
+  color: var(--white);
+}
+.ratings-section .ratings__rating.highlight .ratings__rating-content p {
+  color: var(--white);
+}
+
+.ratings-section .rating-bars {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  list-style: none;
+  display: flex;
+}
+
+.ratings-section .rating-bars li {
+  width: 30px;
+  height: 4px;
+
+  background-color: var(--gray-500);
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.ratings-section .rating-bars li.active {
+  background-color:var(--primary);
+}
+
+@media (max-width: 1050px) {
+  .ratings-section .ratings__rating {
+    display: none !important;
+  }
+
+  .ratings-section .ratings__rating.highlight {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 420px) {
+  .ratings-section {
+    padding-top: 15px
+  }
+
+  .section-title {
+    font-size: 22px;
+  }
+
+  .ratings-section .ratings__slider {
+    height: 350px;
+  }
+
+  .ratings-section .ratings__rating.highlight {
+    transform: scale(1.1);
+  }
+}
+
+@media (max-width: 420px) {
+  .ratings-section .ratings__rating.highlight {
+    transform: scale(1);
+  }
+}
+/* #endregion Rating */
+
+/* #region Why */
+.whys-section {
+  padding: 80px 20px;
+  background: url('./svgs/porque_autoglass-bg.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.whys-section .section-title {
+  max-width: 512px;
+  margin: 0 auto;
+}
+
+.whys-section .why {
+  margin: 40px 0;
+  display: flex;
+  align-items: center;
+}
+
+.whys-section .why:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.whys-section .why > div {
+  margin: 15px;
+}
+
+.whys-section .why__image {
+  min-width: 350px;
+}
+
+.whys-section .why__image img {
+  width: 100%;
+}
+
+.whys-section .why__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  opacity: .8;
+}
+
+.whys-section .why__content > * {
+  padding: 8px;
+}
+
+.whys-section .why__content-title {
+  color:var(--primary);
+  font-size: 24px;
+  font-weight: var(--bold);
+}
+
+.whys-section .why__content-text {
+  color: #545454;
+  font-size: 16px;
+  font-weight: var(--semi-bold);
+  max-width: 540px;
+}
+
+.whys-section .why__content-link {
+  color:var(--primary);
+  font-size: 16px;
+  font-weight: var(--semi-bold);
+  text-decoration: underline;
+}
+
+.whys-section .whys__link {
+  background-color:var(--primary);
+  color: var(--white);
+  border-radius: 4px;
+  padding: 12px;
+  width: 285px;
+  text-decoration: none;
+  text-align: center;
+}
+
+@media (max-width: 1100px) {
+  .whys-section .why:nth-child(n) {
+    flex-direction: column;
+  }
+
+  .whys-section .why__content {
+    align-items: center;
+    margin: 0;
+  }
+
+  .whys-section .why__content-text {
+    text-align: center;
+  }
+
+  .whys-section .why__image {
+    min-width: 250px;
+  }
+
+  .whys-section .why__content-link {
+    display: none;
+  }
+}
+
+/* #endregion Why */
+
+/* #region Chat */
+
+.chat-section {
+  background-color: #333697;
+}
+
+.chat-section .chat__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--white);
+  padding: 50px 100px;
+}
+
+.chat-section .chat__content-title {
+  font-size: 22px;
+  font-weight: var(--semi-bold);
+}
+
+.chat-section .chat__content-text {
+  font-size: 18px;
+  margin: 0px 20px;
+}
+
+.chat-section .chat__content-link {
+  background-color: var(--white);
+  color:var(--primary);
+  font-size: 16px;
+  font-weight: var(--bold);
+  border-radius: 40px;
+  padding: 10px 25px;
+  text-align: center;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  transition: background-color .3 ease-in-out;
+}
+
+.chat-section .chat__content-link:hover {
+  background-color: var(--gray-100);
+}
+
+@media (max-width: 1000px) {
+  .chat-section .chat__content {
+    flex-direction: column;
+    padding: 40px;
+  }
+
+  .chat-section .chat__content-menssage {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .chat-section .chat__content-title {
+    text-align: center;
+  }
+
+  .chat-section .chat__content-text {
+    max-width: 230px;
+    text-align: center;
+    margin: 10px 0px 20px 0px;
+  }
+}
+
+/* #endregion Chat */
