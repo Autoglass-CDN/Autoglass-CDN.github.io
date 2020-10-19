@@ -468,7 +468,7 @@
     };
 
     async function getCategoryTree() {
-      return await $.get(`api/catalog_system/pub/category/tree/${CONFIG.ASYNC.TREE_LEVEL}`);
+      return await $.get(`${location.origin}/api/catalog_system/pub/category/tree/${CONFIG.ASYNC.TREE_LEVEL}`);
     }
 
     async function getFilters(index, select, optionSelected) {
