@@ -434,7 +434,7 @@
           ...arrayPaths.slice(3, arrayPaths.length)
         ];
 
-        for (let i in params) {
+        for (let i = 0; i < params.length; i++) {
           const select = SELECTS[i];
           const value = select.values.find(x =>
             x.url
