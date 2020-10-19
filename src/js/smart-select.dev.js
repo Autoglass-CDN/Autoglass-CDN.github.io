@@ -421,7 +421,7 @@
 
       if (search) {
         CONFIG.CANT_OPEN = true;
-        const arrayPaths = pathname.split('/').filter(x => x);
+        const arrayPaths = decodeURI(pathname).split('/').filter(x => x);
 
         const { input, ...rest } = arrayPaths
           .slice(0, 3)
