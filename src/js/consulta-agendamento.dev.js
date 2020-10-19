@@ -32,8 +32,8 @@ var codCidades = {
 $(function () {
   const hmlCodServico = "17";
   const baseUrlApi = window.location.href.includes("dev")
-    ? "http://localhost:55408/integracao-b2c/api/web-app/agendamento"
-    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamento";
+    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
+    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
   const estado = codCidades[$.cookie("mzLocationUF")];
   const codCidade = estado.code || null;
 
@@ -195,7 +195,7 @@ $(function () {
 // Instale em Casa
 $(function () {
   const baseUrlApi = window.location.href.includes("dev")
-    ? "http://localhost:55408/integracao-b2c/api/web-app/"
+    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/"
     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/";
 
   let event = new Event('datepicker_carregado');
