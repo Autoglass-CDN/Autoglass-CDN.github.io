@@ -85,7 +85,7 @@
         SELECTS[0].values.push(...x.children);
       });
 
-    Controller.checkRouterParams();
+    await Controller.checkRouterParams();
 
     View.buildList(SELECTS[0].values, SELECTS[0].class);
 
@@ -494,10 +494,9 @@
       if (paths) {
         url += paths;
         url += `?${buildMapFilters(index - 1)}`;
-
-        console.log(SELECTS.filter(x => x.routeSelected).map(x => x.routeSelected))
-        console.log(url);
       }
+
+      location.href = url;
     }
 
     function buildMapFilters(step) {
