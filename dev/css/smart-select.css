@@ -78,6 +78,7 @@
 .smart-select__main > div > div:first-child {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   background-color: white;
   font-size: 18px;
   color: #868686;
