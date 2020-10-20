@@ -481,6 +481,7 @@ p.descricao-rollout {
 .installment-type-list > div {
   display: flex;
   align-items: center;
+  flex-grow: 1;
 }
 
 .installment-type-list div > div {

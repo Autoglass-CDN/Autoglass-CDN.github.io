@@ -1,9 +1,10 @@
 /* Reset font-size */
 .mz-modal-installation .mz-install__title span,
 .mz-install__info .mz-info__list ul li,
-.mz-modal-installation .mz-install__title .header-qd-v1-valid-prices.cep-modal {
+.header-qd-v1-valid-prices.cep-modal {
   font-size: 14px !important;
 }
+
 
 .secao-agendamento > .store-list > .filter {
   display: flex;
@@ -32,7 +33,8 @@
   cursor: pointer;
 }
 
-.secao-agendamento > .store-list > .filter > .data input {
+.secao-agendamento > .store-list > .filter > .data input,
+.mz-advantages__content .cep input {
   border: 1px solid #dfdfdf;
   border-radius: 4px;
   width: 120px;
@@ -42,7 +44,8 @@
   padding: 1px 5px;
 }
 
-.secao-agendamento > .store-list > .filter > .data input:disabled {
+.secao-agendamento > .store-list > .filter > .data input:disabled,
+.mz-advantages__content .cep input:disabled {
   background-color: white;
   border: 0;
 }
@@ -129,16 +132,13 @@
 }
 
 @media (min-width: 992px) {
-  .mz-modal-installation {
-    width: 700px;
-  }
+  .mz-modal-installation,
+  .mz-modal-advantages { width: 700px; }
 }
 
 /* MOBILE */
 @media screen and (max-width: 530px) {
-  .mz-modal-installation
-    .mz-install__title
-    .header-qd-v1-valid-prices.cep-modal {
+  .header-qd-v1-valid-prices.cep-modal {
     float: unset;
     margin: unset;
     padding: unset;
@@ -166,3 +166,108 @@
     left: 126px;
   }
 }
+
+/* #region Modal - Instale em Casa */
+.mz-accesories__name--conditions,
+.mz-accesories__advantages--button {
+  text-decoration: underline;
+  text-align: left;
+  background: transparent;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
+
+.mz-accesories__name {
+  margin-left: 15px;
+}
+
+.mz-acessories .mz-accesories__advantages .mz-accesories__advantages--button:before {
+  display: none;
+}
+
+.mz-advantages__content .hasDatepicker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mz-advantages__content > span {
+  display: block;
+  color: #333333;
+  margin: 10px auto;
+}
+
+.mz-advantages__content .cep {
+  margin: 10px 0px;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.mz-advantages__content .cep label {
+  margin-right: 10px;
+  margin-bottom: 0px;
+  min-width: 112px;
+}
+
+.mz-advantages__content .cep input {
+  margin: 0;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  outline: none;
+}
+
+.mz-advantages__content .cep input:focus {
+  border: 1px solid #505570;
+  border-right: 0px;
+}
+
+.mz-advantages__content .cep input:focus + button{
+  border: 1px solid #505570;
+  border-left: 0px;
+}
+
+.mz-advantages__content .cep button:hover {
+  background-color: #cccccc;
+}
+
+.mz-advantages__content .cep button {
+  height: 24px;
+  transition: background-color .2s ease-out;
+  outline: none;
+  text-align: center;
+  text-transform: uppercase;
+  background-color: #dfdfdf;
+  color: #505570;
+  border: none;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+}
+
+#mostrar-datas-datepicker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: height .5s ease-in-out;
+}
+
+.mz-modal-advantages #mostrar-datas-datepicker .ui-state-active,
+.mz-modal-advantages #mostrar-datas-datepicker .ui-state-default {
+  border: 1px solid #d3d3d3 !important;
+  background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x !important;
+  font-weight: normal !important;
+  color: #555555 !important;
+  cursor: default !important;
+}
+
+.loading-dates {
+  text-align: center;
+  padding: 2px;
+}
+
+/* #endregion Modal - Instale em Casa */
