@@ -1,22 +1,31 @@
 /* import */
 @import url("https://autoglass-cdn.github.io/dev/css/theme.css");
 
-.container {
-  max-width: 1110px;
-  margin: 0 auto;
-}
-
 .smart-select-section {
   margin-top: -75px;
+}
+
+.home main {
+  margin-top: 25px;
+  background: #FFF;
 }
 
 @media (max-width: 1100px) {
   .smart-select-section {
     margin-top: 0px;
   }
+
+  .home main {
+    margin-top: 0px;
+  }
 }
 
 /* #region Common */
+.container {
+  max-width: 1110px;
+  margin: 0 auto;
+}
+
 .section-title {
   font-size: 32px;
   font-weight: var(--extra-bold);
@@ -48,7 +57,7 @@
   right: 0;
 }
 
-.banners-section .banners-content {
+.banners-secti on .banners-content {
   display: flex;
   align-items: center;
 
@@ -81,6 +90,7 @@
 
 .banners-section .banners-content img {
   width: 100%;
+  object-fit: cover;
 }
 
 .banners-section .banners-bars {
@@ -107,12 +117,22 @@
   background-color:var(--primary);
 }
 
+@media (min-width: 1920px) {
+  .banners-section .banners-content img {
+    height: auto;
+  }
+}
+
 @media (max-width: 1100px) {
   .banners-section .banners-content.desktop {
     display: none;
   }
   .banners-section .banners-content.mobile {
     display: flex;
+  }
+
+  .banners-section .banners-content img {
+    height: auto;
   }
 
   .banners-section .banners button {
