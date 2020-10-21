@@ -202,6 +202,7 @@
 
 .painel-categorias {
   width: 100%;
+  top: 30px;
   left: 0;
   padding: 15px 42px 42px 42px;
   opacity: 0;
