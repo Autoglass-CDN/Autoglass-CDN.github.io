@@ -61,7 +61,8 @@
   padding: 10px 0;
 }
 
-.container {
+.topo .container,
+.nav .container {
   display: flex;
 
   align-items: center;
