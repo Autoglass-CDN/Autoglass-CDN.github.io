@@ -4,9 +4,12 @@
 
 /* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 .topo .container:before,
-.nav .container:before {
+.nav .container:before,
+.topo .container:after,
+.nav .container:after {
   display: unset;
   content: none;
+  clear: none;
 }
 
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
