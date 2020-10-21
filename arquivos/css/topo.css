@@ -143,6 +143,7 @@ body.home {
 
 .nav .container .logo {
   transition: all .1s ease-in;
+  width: 95px;
 }
 
 .nav .container .logo:hover {
