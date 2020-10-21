@@ -142,10 +142,11 @@
   height: 100%;
   display: flex;
   align-items: center;
+  z-index: 1;
 }
 
 .container .menu-categorias:hover {
-  opacity: .9;
+  /*opacity: .9;*/
 }
 
 .container .search-box {
