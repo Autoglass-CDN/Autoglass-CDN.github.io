@@ -2,6 +2,14 @@
 @import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
 
 
+/* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
+.topo .container:before,
+.nav .container:before {
+  display: unset;
+  content: none;
+}
+
+/* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
 /* ÍCONES */
 .map-marker-icon::before {
