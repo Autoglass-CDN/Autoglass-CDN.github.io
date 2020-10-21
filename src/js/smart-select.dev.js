@@ -419,7 +419,7 @@
     async function checkRouterParams() {
       let { pathname, search } = location;
 
-      if (search) {
+      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0])) {
         CONFIG.CANT_OPEN = true;
         const arrayPaths = decodeURI(pathname).split('/').filter(x => x);
 
