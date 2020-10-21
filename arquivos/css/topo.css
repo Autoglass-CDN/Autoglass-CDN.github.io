@@ -12,6 +12,10 @@
   clear: none;
 }
 
+body.home {
+  padding-top: 0;
+}
+
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
 /* ÍCONES */
@@ -155,6 +159,10 @@
   display: flex;
   align-items: center;
   z-index: 1;
+}
+
+.container .menu-categorias i.arrow-down {
+  margin-left: 5px;
 }
 
 .container .menu-categorias:hover {
