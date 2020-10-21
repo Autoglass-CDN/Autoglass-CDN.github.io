@@ -1,0 +1,356 @@
+/* import */
+@import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
+
+
+
+/* ÍCONES */
+.map-marker-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/map-marker.svg');
+  height: 20px;
+}
+
+.arrow-down-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/arrow-down-blue.svg');
+  height: 20px;
+}
+
+.arrow-down-icon-white::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/arrow-down.svg');
+  height: 20px;
+}
+
+.user-avatar-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/user-avatar.svg');
+  height: 20px;
+}
+
+.search-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/search.svg');
+  height: 20px;
+}
+
+.search-icon-blue::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/search-blue.svg');
+  height: 20px;
+}
+
+.cart-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/cart-arrow-down.svg');
+  height: 20px;
+}
+
+/* GLOBAL MODIFIERS */
+
+
+/* BLOCKS */
+.topo {
+  height: 40px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+  background-color: var(--primary);
+}
+
+.topo * {
+  color: var(--white);
+}
+
+.topo a {
+  margin-left: 5px;
+  padding: 10px 0;
+}
+
+.container {
+  display: flex;
+
+  align-items: center;
+  margin: 0 15px;
+  width: 100%;
+  max-width: 1280px;
+
+  position: relative;
+}
+
+.geo-picker {
+  display: flex;
+  min-width: 315px;
+}
+
+.geo-picker>i {
+
+  margin-right: 5px;
+}
+
+.topo .links {
+  margin-left: auto;
+}
+
+.topo .links a {
+  text-decoration: none;
+}
+
+.topo .links a+a {
+  margin-left: 25px;
+}
+
+.topo .usuario {
+  display: flex;
+  align-items: center;
+  margin-left: 50px;
+}
+
+.topo .usuario a {
+  text-decoration: none;
+}
+
+.topo .usuario .arrow-down-icon-white {
+  margin-left: 5px;
+}
+
+
+/* NAV */
+
+.nav {
+  height: 80px;
+  width: 100%;
+
+  display: flex;
+  justify-content: center;
+
+  box-shadow: 0 0 0.2rem 0 var(--gray-500);
+}
+
+.nav .container {
+  justify-content: space-between;
+}
+
+.nav .container .logo {
+  transition: all .1s ease-in;
+}
+
+.nav .container .logo:hover {
+  opacity: .8;
+}
+
+.container .menu-categorias {
+  margin: 0 5px;
+  min-width: 185px;
+  color: var(--primary);
+  transition: all .1s ease-in;
+}
+
+.container .menu-categorias:hover {
+  opacity: .9;
+}
+
+.container .search-box {
+  width: 100%;
+  max-width: 525px;
+  display: flex;
+  align-items: center;
+}
+
+.container .search-box input {
+  outline: none;
+  padding: 10px 15px;
+  border: 1px solid;
+  border-color: var(--gray-500);
+  border-radius: 4px;
+  width: 100%;
+
+  transition: border 500ms;
+}
+
+.container .search-box input:focus,
+.container .search-box input:hover {
+  border-color: var(--primary);
+  transition: border 500ms;
+}
+
+.container .search-box input+.search-icon::before {
+  margin-left: -30px;
+}
+
+.container .search-box input:focus+.search-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/search-blue.svg');
+}
+
+.container .menu-carrinho {
+  display: flex;
+  align-items: center;
+  min-width: 140px;
+}
+
+.container .menu-carrinho>* {
+  margin: 0 5px -5px;
+}
+
+
+
+
+
+
+.menu-categorias:hover .painel-categorias {
+  display: unset;
+  opacity: 1;
+}
+
+.painel-categorias {
+  width: 100%;
+  left: 0;
+  padding: 15px 42px 42px 42px;
+  opacity: 0;
+
+  display: none;
+  position: absolute;
+  background: var(--white);
+  margin-top: 55px;
+
+
+  background-color: #fff;
+  font-size: 1.25rem;
+
+  border-radius: 4px;
+  border: 1px solid var(--gray-300);
+  box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
+
+  transition: all .1s ease-in;
+}
+
+.painel-categorias:before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 23.25rem;
+  border: .75rem solid transparent;
+  border-top: none;
+
+
+  border-bottom-color: #fff;
+  filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
+}
+
+.painel-categorias li {
+  list-style: none;
+}
+
+.painel-categorias .painel-categorias__categoria {
+  display: inline-block;
+  margin-right: 25px;
+}
+
+.painel-categorias .painel-categorias__categoria:not(:first-of-type) {
+  margin: 0 25px;
+
+}
+
+.painel-categorias .painel-categorias__menu {
+  height: 145px;
+  white-space: nowrap;
+  mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
+  mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%);
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
+
+
+}
+
+.painel-categorias .painel-categorias__menu .painel-categorias__categoria-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  max-width: 140px;
+  height: 155px;
+  margin-top: 10px;
+
+  color: var(--gray-500);
+  font-weight: var(--light);
+  text-align: center;
+  white-space: normal;
+
+  transition: all .2s ease-in;
+}
+
+.painel-categorias .painel-categorias__menu .painel-categorias__categoria-header:hover {
+  transform: scale(1.05);
+}
+
+.painel-categorias .painel-categorias__categoria-header img {
+  margin-bottom: 10px;
+}
+
+.painel-categorias .painel-categorias__categoria-header.ativo {
+  color: var(--blue-500);
+  font-weight: var(--bold);
+}
+
+.painel-categorias .painel-categorias__categoria-header h3 {
+  font-size: 0.8750rem;
+  font-weight: unset;
+}
+
+.painel-categorias .painel-categorias__categoria-header a {
+  text-decoration: none;
+  color: unset;
+}
+
+.painel-categorias .painel-categorias__categoria-conteudo {
+  position: relative;
+}
+
+.painel-categorias .arrow {
+  position: absolute;
+  background-color: var(--white);
+  border: solid var(--gray-300);
+  border-width: 0 2px 2px 0;
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  top: 153px;
+  left: 75px;
+  z-index: 1;
+}
+
+
+
+.painel-categorias .painel-categorias__categoria-itens {
+  font-size: 0.8750rem;
+  padding: 32px 25px;
+  display: none;
+}
+
+.painel-categorias .painel-categorias__categoria-itens a {
+  text-decoration: none;
+  transition: all .1s ease-in;
+}
+
+.painel-categorias .painel-categorias__categoria-itens a:hover {
+  margin-left: 5px;
+}
+
+.painel-categorias .painel-categorias__categoria-itens.ativo {
+  display: flex;
+}
+
+.painel-categorias .painel-categorias__categoria-itens.ativo>ul {
+  margin-right: 70px;
+}
+
+.painel-categorias .painel-categorias__categoria-itens-titulo>a {
+  color: var(--blue-500);
+  font-weight: var(--bold);
+  display: block;
+  margin-bottom: 25px;
+}
+
+.painel-categorias .painel-categorias__categoria-itens-titulo>ul>li {
+  margin-bottom: 15px;
+  color: var(--gray-700);
+}
+
+.painel-categorias .painel-categorias__categoria-itens-titulo>ul>li>a {
+  color: var(--gray-700);
+}
