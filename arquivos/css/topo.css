@@ -367,7 +367,7 @@ body.home {
 }
 
 .painel-categorias__categoria-itens.ativo a:hover:after {
-    content: url(https://picsum.photos/200);
+    content: attr(data-img-url url, "https://creazilla-store.fra1.digitaloceanspaces.com/silhouettes/2444/ford-focus-car-silhouette-outline-md.png");
     position: absolute;
     right: -40px;
     bottom: -45px;
