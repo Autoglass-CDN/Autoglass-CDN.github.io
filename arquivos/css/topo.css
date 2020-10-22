@@ -228,7 +228,8 @@ body.home {
 
 
 
-.menu-categorias:hover .painel-categorias {
+.menu-categorias:hover .painel-categorias,
+.menu-categorias:focus .painel-categorias {
   display: unset;
   opacity: 1;
 }
