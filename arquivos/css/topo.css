@@ -366,6 +366,13 @@ body.home {
   transition: all .1s ease-in;
 }
 
+.painel-categorias__categoria-itens.ativo a:hover:after {
+    content: url(https://picsum.photos/200);
+    position: absolute;
+    right: -40px;
+    bottom: -45px;
+}
+
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   margin-left: 5px;
 }
