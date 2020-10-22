@@ -16,6 +16,10 @@ body.home {
   padding-top: 0;
 }
 
+.home main{
+  margin-top: unset;
+}
+
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
 /* ÍCONES */
