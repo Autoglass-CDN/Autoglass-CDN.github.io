@@ -472,9 +472,32 @@ body.home {
     bottom: -45px;
 }
 
+/* #region PREVIEW - VIDROS */
 #vidros.painel-categorias__categoria-itens.ativo a#parabrisa:hover:after {
   content: var(--parabrisa);
 }
+
+#vidros.painel-categorias__categoria-itens.ativo a#cantoneira:hover:after {
+  content: var(--cantoneira);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#janela:hover:after {
+  content: var(--janela);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#quebra-vento:hover:after {
+  content: var(--quebra-vento);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#vidro-de-porta:hover:after {
+  content: var(--vidro-de-porta);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#vigia:hover:after {
+  content: var(--vidro-traseiro);
+}
+
+/* #endregion PREVIEW - VIDROS */
 
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   margin-left: 5px;
