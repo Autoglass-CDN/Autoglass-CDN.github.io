@@ -499,6 +499,58 @@ body.home {
 
 /* #endregion PREVIEW - VIDROS */
 
+/* #region PREVIEW - FARÓIS */
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#aro-farol-auxiliar:hover:after {
+  content: var(--aro-farol-auxiliar);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#farol-auxiliar:hover:after {
+  content: var(--farol-auxiliar);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#farol-diurno:hover:after {
+  content: var(--farol-diurno);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#farol-principal:hover:after {
+  content: var(--farol-principal);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#moldura-farol-auxiliar:hover:after {
+  content: var(--moldura-farol-auxiliar);
+}
+
+/* #endregion PREVIEW - FARÓIS */
+
+/* #region PREVIEW - LÂMPADAS */
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-farol-auxiliar:hover:after {
+  content: var(--lampada-farol-auxiliar);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-lanterna:hover:after {
+  content: var(--lampada-lanterna);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-lanterna-traseira:hover:after {
+  content: var(--lampada-lanterna-traseira);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-painel:hover:after {
+  content: var(--lampada-painel);
+}
+
+/* #endregion PREVIEW - LÂMPADAS */
+
+/* #region PREVIEW - LANTERNAS */
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lanterna:hover:after {
+  content: var(--lanterna);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lanterna-para-choque:hover:after {
+  content: var(--lanterna-parachoque);
+}
+/* #endregion PREVIEW - LANTERNAS */
+
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   margin-left: 5px;
 }
