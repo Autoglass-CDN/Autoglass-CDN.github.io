@@ -26,97 +26,97 @@ body.home {
 
 .nav .container .menu-categorias {
   /* #region VIDROS */
-  --parabrisa: url("/arquivos/img/preview/Vidro Parabrisa.jpg");
-  --cantoneira: url("/arquivos/img/preview/");
-  --janela: url("/arquivos/img/preview/");
-  --quebra-vento: url("/arquivos/img/preview/");
-  --vidro-de-porta: url("/arquivos/img/preview/Vidro-de-Porta.jpg");
-  --vidro-traseiro: url("/arquivos/img/preview/Vidro-Traseiro.jpg");
+  --parabrisa: url("/arquivos/Vidro Parabrisa.jpg");
+  --cantoneira: url("/arquivos/");
+  --janela: url("/arquivos/");
+  --quebra-vento: url("/arquivos/");
+  --vidro-de-porta: url("/arquivos/Vidro-de-Porta.jpg");
+  --vidro-traseiro: url("/arquivos/Vidro-Traseiro.jpg");
   /* #endregion VIDROS */
 
   /* #region FARÓIS */
-  --aro-farol-auxiliar: url("/arquivos/img/preview/Arol-Farol-de-Milha.jpg");
-  --farol-auxiliar: url("/arquivos/img/preview/Farol Auxiliar (Milha).jpg");
-  --farol-diurno: url("/arquivos/img/preview/Farol-Diurno.jpg");
-  --farol-principal: url("/arquivos/img/preview/Farol Principal.jpg");
-  --moldura-farol-auxiliar: url("/arquivos/img/preview/Moldura-Farol-Auxiliar-(Milha).jpg");
+  --aro-farol-auxiliar: url("/arquivos/Arol-Farol-de-Milha.jpg");
+  --farol-auxiliar: url("/arquivos/Farol Auxiliar (Milha).jpg");
+  --farol-diurno: url("/arquivos/Farol-Diurno.jpg");
+  --farol-principal: url("/arquivos/Farol Principal.jpg");
+  --moldura-farol-auxiliar: url("/arquivos/Moldura-Farol-Auxiliar-(Milha).jpg");
   /* #endregion FARÓIS */
 
   /* #region LÂMPADAS */
-  --lampada-farol-auxiliar: url("/arquivos/img/preview/Lampada-Farol.jpg");
-  --lampada-lanterna: url("/arquivos/img/preview/Lampada-Farol.jpg");
-  --lampada-lanterna-traseira: url("/arquivos/img/preview/Lampada-Lanterna.jpg");
-  --lampada-painel: url("/arquivos/img/preview/Lampada-Painel.jpg");
+  --lampada-farol-auxiliar: url("/arquivos/Lampada-Farol.jpg");
+  --lampada-lanterna: url("/arquivos/Lampada-Farol.jpg");
+  --lampada-lanterna-traseira: url("/arquivos/Lampada-Lanterna.jpg");
+  --lampada-painel: url("/arquivos/Lampada-Painel.jpg");
   /* #endregion LÂMPADAS */
 
   /* #region LANTERNAS */
-  --lanterna: url("/arquivos/img/preview/Lanterna-Traseira.jpg");
-  --lanterna-parachoque: url("/arquivos/img/preview/Lanterna-Parachoque.jpg");
+  --lanterna: url("/arquivos/Lanterna-Traseira.jpg");
+  --lanterna-parachoque: url("/arquivos/Lanterna-Parachoque.jpg");
   /* #endregion LANTERNAS */
 
   /* #region PARACHOQUES */
-  --grade-parachoques: url("/arquivos/img/preview/Grade-do-Parachoque.jpg");
-  --moldura-paralama: url("/arquivos/img/preview/Moldura-Paralama.jpg");
-  --parachoque-dianteiro: url("/arquivos/img/preview/Parchoque Dianteiro.jpg");
-  --parachoque-traseiro: url("/arquivos/img/preview/Parachoque-Traseiro.jpg");
+  --grade-parachoques: url("/arquivos/Grade-do-Parachoque.jpg");
+  --moldura-paralama: url("/arquivos/Moldura-Paralama.jpg");
+  --parachoque-dianteiro: url("/arquivos/Parchoque Dianteiro.jpg");
+  --parachoque-traseiro: url("/arquivos/Parachoque-Traseiro.jpg");
   /* #endregion PARACHOQUES */
 
   /* #region RETROVISORES */
-  --retrovisores: url("/arquivos/img/preview/");
-  --capa-de-retrovisores: url("/arquivos/img/preview/Capa-de-Retrovisor.jpg");
-  --espelho-retrovisor-externo: url("/arquivos/img/preview/");
-  --espelho-retrovisor-interno: url("/arquivos/img/preview/");
-  --lente-do-retrovisor: url("/arquivos/img/preview/Lente do Retrovisor.jpg");
-  --pisca-retrovisor: url("/arquivos/img/preview/Pisca-Retrovisor.jpg");
-  --retrovisor-externo: url("/arquivos/img/preview/Retrovisor-Externo.jpg");
-  --retrovisor-interno: url("/arquivos/img/preview/Retrovisor-Interno.jpg");
+  --retrovisores: url("/arquivos/");
+  --capa-de-retrovisores: url("/arquivos/Capa-de-Retrovisor.jpg");
+  --espelho-retrovisor-externo: url("/arquivos/");
+  --espelho-retrovisor-interno: url("/arquivos/");
+  --lente-do-retrovisor: url("/arquivos/Lente do Retrovisor.jpg");
+  --pisca-retrovisor: url("/arquivos/Pisca-Retrovisor.jpg");
+  --retrovisor-externo: url("/arquivos/Retrovisor-Externo.jpg");
+  --retrovisor-interno: url("/arquivos/Retrovisor-Interno.jpg");
   /* #endregion RETROVISORES */
 
   /* #region SUSPENSÕES */
-  --suspensoes: url("/arquivos/img/preview/");
-  --amortecedores: url("/arquivos/img/preview/Amortecedor.jpg");
-  --amortecedor-suspensao: url("/arquivos/img/preview/");
+  --suspensoes: url("/arquivos/");
+  --amortecedores: url("/arquivos/Amortecedor.jpg");
+  --amortecedor-suspensao: url("/arquivos/");
   /* #endregion SUSPENSÕES */
 
   /* #region RADIADORES */
-  --radiadores: url("/arquivos/img/preview/Radiador.jpg");
-  --aditivo-radiador: url("/arquivos/img/preview/Aditivo-de-Radiador.jpg");
-  --defletor-radiador: url("/arquivos/img/preview/Defletor Radiador.jpg");
-  --eletroventilador-radiador: url("/arquivos/img/preview/");
-  --gmv-ventilador: url("/arquivos/img/preview/");
-  --grade-do-radiador: url("/arquivos/img/preview/Grade do Radiador.jpg");
-  --moldura-grade-radiador: url("/arquivos/img/preview/Moldura-Grande-do-Radiador.jpg");
-  --radiador: url("/arquivos/img/preview/Radiador.jpg");
+  --radiadores: url("/arquivos/Radiador.jpg");
+  --aditivo-radiador: url("/arquivos/Aditivo-de-Radiador.jpg");
+  --defletor-radiador: url("/arquivos/Defletor Radiador.jpg");
+  --eletroventilador-radiador: url("/arquivos/");
+  --gmv-radiador: url("/arquivos/");
+  --grade-do-radiador: url("/arquivos/Grade do Radiador.jpg");
+  --moldura-grade-radiador: url("/arquivos/Moldura-Grande-do-Radiador.jpg");
+  --radiador: url("/arquivos/Radiador.jpg");
   /* #endregion RADIADORES */
 
   /* #region CONDENSADORES */
-  --condensadores: url("/arquivos/img/preview/");
-  --condensador-ar-condicionado: url("/arquivos/img/preview/Condensador Ar Condicionado.jpg");
-  --gmv-condensador: url("/arquivos/img/preview/");
+  --condensadores: url("/arquivos/");
+  --condensador-ar-condicionado: url("/arquivos/Condensador Ar Condicionado.jpg");
+  --gmv-condensador: url("/arquivos/");
   /* #endregion CONDENSADORES */
 
   /* #region HIGIENIZADORES */
-  --higienizadores: url("/arquivos/img/preview/");
-  --higienizador-de-ar-condicionado: url("/arquivos/img/preview/");
+  --higienizadores: url("/arquivos/");
+  --higienizador-de-ar-condicionado: url("/arquivos/");
   /* #endregion HIGIENIZADORES */
 
   /* #region FILTROS */
-  --filtros: url("/arquivos/img/preview/");
-  --filtro-ar-condicionado: url("/arquivos/img/preview/Filtro-de-Ar-Condicionado.jpg");
+  --filtros: url("/arquivos/");
+  --filtro-ar-condicionado: url("/arquivos/Filtro-de-Ar-Condicionado.jpg");
   /* #endregion FILTROS */
 
   /* #region BORRACHAS */
-  --borrachas: url("/arquivos/img/preview/Borracha-Janela.jpg");
-  --borracha-universal-parabrisa: url("/arquivos/img/preview/Borracha-de-Parabrisa.jpg");
-  --borracha-universal-vigia: url("/arquivos/img/preview/Borracha-do-Vidro-Traseiro.jpg");
-  --borracha-vigia: url("/arquivos/img/preview/Borracha-do-Vidro-Traseiro.jpg");
-  --borracha-parabrisa: url("/arquivos/img/preview/Borracha-de-Parabrisa.jpg");
+  --borracha-janela: url("/arquivos/Borracha-Janela.jpg");
+  --borracha-universal-parabrisa: url("/arquivos/Borracha-de-Parabrisa.jpg");
+  --borracha-universal-vigia: url("/arquivos/Borracha-do-Vidro-Traseiro.jpg");
+  --borracha-vigia: url("/arquivos/Borracha-do-Vidro-Traseiro.jpg");
+  --borracha-parabrisa: url("/arquivos/Borracha-de-Parabrisa.jpg");
   /* #endregion BORRACHAS */
 
   /* #region PALHETAS */
-  --palhetas: url("/arquivos/img/preview/");
-  --palheta-para-brisa: url("/arquivos/img/preview/Palheta-Parabrisa.jpg");
-  --palheta-vigia: url("/arquivos/img/preview/Palheta-Vidro-Traseiro.jpg");
+  --palhetas: url("/arquivos/");
+  --palheta-para-brisa: url("/arquivos/Palheta-Parabrisa.jpg");
+  --palheta-vigia: url("/arquivos/Palheta-Vidro-Traseiro.jpg");
   /* #endregion PALHETAS */
 }
 
@@ -550,6 +550,174 @@ body.home {
   content: var(--lanterna-parachoque);
 }
 /* #endregion PREVIEW - LANTERNAS */
+
+/* #region PREVIEW - PARA-CHOQUES */
+#para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#grade-para-choque:hover:after {
+  content: var(--grade-parachoques);
+}
+
+#para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#moldura-paralama:hover:after {
+  content: var(--moldura-paralama);
+}
+
+#para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#para-choque-dianteiro:hover:after {
+  content: var(--parachoque-dianteiro);
+}
+
+#para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#para-choque-traseiro:hover:after {
+  content: var(--parachoque-traseiro);
+}
+
+/* #endregion PREVIEW - PARA-CHOQUES */
+
+/* #region PREVIEW - RETROVISORES */
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#retrovisor:hover:after {
+  content: var(--retrovisores);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#capa-retrovisor:hover:after {
+  content: var(--capa-de-retrovisores);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#espelho-retrovisor-externo:hover:after {
+  content: var(--espelho-retrovisor-externo);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#espelho-retrovisor-interno:hover:after {
+  content: var(--espelho-retrovisor-interno);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#lente-do-retrovisor:hover:after {
+  content: var(--lente-do-retrovisor);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#pisca-retrovisor:hover:after {
+  content: var(--pisca-retrovisor);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#retrovisor-externo:hover:after {
+  content: var(--retrovisor-externo);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#retrovisor-interno:hover:after {
+  content: var(--retrovisor-interno);
+}
+
+/* #endregion PREVIEW - RETROVISORES */
+
+/* #region PREVIEW - SUSPENSÕES */
+
+#suspensoes.painel-categorias__categoria-itens.ativo a#amortecedor:hover:after {
+  content: var(--amortecedores);
+}
+
+#suspensoes.painel-categorias__categoria-itens.ativo a#amortecedor-suspensao:hover:after {
+  content: var(--amortecedor-suspensao);
+}
+
+/* #endregion PREVIEW - SUSPENSÕES */
+
+/* #region PREVIEW - RADIADORES */
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#aditivo-radiador:hover:after {
+  content: var(--aditivo-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#defletor-radiador:hover:after {
+  content: var(--defletor-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#eletroventilador-radiador:hover:after {
+  content: var(--eletroventilador-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#gmv-radiador:hover:after {
+  content: var(--gmv-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#grade-do-radiador:hover:after {
+  content: var(--grade-do-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#grade-do-radiador:hover:after {
+  content: var(--grade-do-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#moldura-grade-radiador:hover:after {
+  content: var(--moldura-grade-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#radiador:hover:after {
+  content: var(--radiador);
+}
+
+/* #endregion PREVIEW - RADIADORES */
+
+/* #region PREVIEW - CONDENSADORES */
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#condensador-ar-condicionado:hover:after {
+  content: var(--condensador-ar-condicionado);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#gmv-condensador:hover:after {
+  content: var(--gmv-condensador);
+}
+
+/* #endregion PREVIEW - CONDENSADORES */
+
+/* #region PREVIEW - HIGIENIZADORES */
+
+#higienizadores-filtros.painel-categorias__categoria-itens.ativo a#higienizador-ar-condicionado:hover:after {
+  content: var(--higienizador-de-ar-condicionado);
+}
+
+/* #endregion PREVIEW - HIGIENIZADORES */
+
+/* #region PREVIEW - FILTROS */
+
+#higienizadores-filtros.painel-categorias__categoria-itens.ativo a#filtro-ar-condicionado:hover:after {
+  content: var(--filtro-ar-condicionado);
+}
+
+/* #endregion PREVIEW - FILTROS */
+
+/* #region PREVIEW - BORRACHAS */
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-janela:hover:after {
+  content: var(--borracha-janela);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-universal-parabrisa:hover:after {
+  content: var(--borracha-universal-parabrisa);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-universal-vigia:hover:after {
+  content: var(--borracha-universal-vigia);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-vigia:hover:after {
+  content: var(--borracha-vigia);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-parabrisa:hover:after {
+  content: var(--borracha-parabrisa);
+}
+
+/* #endregion PREVIEW - BORRACHAS */
+
+/* #region PREVIEW - PALHETAS */
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#palheta-para-brisa:hover:after {
+  content: var(--palheta-para-brisa);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#palheta-vigia:hover:after {
+  content: var(--palheta-vigia);
+}
+
+/* #endregion PREVIEW - PALHETAS */
+
 
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   margin-left: 5px;
