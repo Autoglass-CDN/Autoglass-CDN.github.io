@@ -459,6 +459,7 @@ body.home {
   font-size: 0.8750rem;
   padding: 32px 25px;
   display: none;
+  min-height: 250px;
 }
 
 .painel-categorias .painel-categorias__categoria-itens a {
