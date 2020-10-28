@@ -256,15 +256,6 @@
   transition: height .5s ease-in-out;
 }
 
-.mz-modal-advantages #mostrar-datas-datepicker .ui-state-active,
-.mz-modal-advantages #mostrar-datas-datepicker .ui-state-default {
-  border: 1px solid #d3d3d3 !important;
-  background: #e6e6e6 url(images/ui-bg_glass_75_e6e6e6_1x400.png) 50% 50% repeat-x !important;
-  font-weight: normal !important;
-  color: #555555 !important;
-  cursor: default !important;
-}
-
 .loading-dates {
   text-align: center;
   padding: 2px;
