@@ -4,8 +4,7 @@ function centerArrow() {
   let arrow = document.querySelector('.arrow');
   let arrowPositions = arrow.getBoundingClientRect();
   let positions = categoriaAtiva.getBoundingClientRect();
-  arrow.style.left = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(arrow.style.left, 10))) + 'px';
-  console.log(arrow.style.left);
+  arrow.style.left = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10))) + 'px';
 }
 
 function activateCategory(element) {
