@@ -208,8 +208,6 @@ $(function () {
   let maxDate = new Date();
   maxDate = new Date(maxDate.getFullYear(), minDate.getMonth() + 2, 0);
 
-  console.log(maxDate)
-
   $('.mz-advantages__content .cep  input').mask('99999-999');
 
   $('#mostrar-datas-datepicker').datepicker({
@@ -233,6 +231,9 @@ $(function () {
     ],
     minDate,
     maxDate,
+    onSelect: (data) => {
+      localStorage.setItem('AG_SelectedDaySM', data);
+    },
     beforeShowDay: validadeAvailableDays
   });
 
