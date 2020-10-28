@@ -424,8 +424,10 @@ body.home {
   mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
   mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%);
   -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
+}
 
-
+.painel-categorias .painel-categorias__menu{
+  transition: 1s;
 }
 
 .painel-categorias .painel-categorias__menu .painel-categorias__categoria-header {
