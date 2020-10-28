@@ -188,7 +188,7 @@ function consulteFrete() {
 	const CONFIG = {
 		SERVICE: {
 			COUNTRY: 'BRA',
-			SKU_ID: skuJson.skus[0].sku
+			SKU_ID: $('#___rc-p-sku-ids').val()
 		},
 		CSS: {
 			BASE: '.mz-modal-pickup',
@@ -313,7 +313,7 @@ function consulteFrete() {
 		async function simulateShipping(address) {
 			const request = {
 				items: [{
-					id: $('#___rc-p-sku-ids').val(),
+					id: CONFIG.SERVICE.SKU_ID,
 					quantity: 1,
 					seller: 1
 				}],
