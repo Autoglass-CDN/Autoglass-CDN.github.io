@@ -158,6 +158,17 @@ body.home {
   height: 20px;
 }
 
+#prev-btn i:before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
+  height: 32px;
+  transform: rotateY(180deg);
+}
+
+#next-btn i:before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
+  height: 32px;
+}
+
 /* GLOBAL MODIFIERS */
 
 
