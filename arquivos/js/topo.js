@@ -66,8 +66,8 @@ function slidePrev() {
   let prevBtn = document.getElementById('prev-btn');
   let nextBtn = document.getElementById('next-btn');
 
-  prevBtn.onclick = slidePrev();
-  nextBtn.onclick = slideNext();
+  prevBtn.addEventListener('click',slidePrev);
+  nextBtn.addEventListener('click',slideNext);
   
   if (getTranslateX(slider) < 0) document.getElementById('next-btn').style.visibility = 'hidden';
   else document.getElementById('prev-btn').style.visibility = 'hidden';
