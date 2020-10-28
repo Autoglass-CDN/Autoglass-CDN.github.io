@@ -28,7 +28,7 @@ function slideNext() {
     + parseInt(getComputedStyle(slider).marginRight, 10)
     + parseInt(getComputedStyle(slider).marginLeft, 10);
 
-  slider.style.transform = `translateX(-${width - fullWidth}px)`;
+  slider.style.transform = `translateX(${width - fullWidth}px)`;
   toggleVisibility('next-btn');
   toggleVisibility('prev-btn');
 }
