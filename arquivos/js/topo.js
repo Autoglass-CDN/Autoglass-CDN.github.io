@@ -10,8 +10,14 @@ function centerArrow() {
 function activateCategory(element) {
   let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
   if (categoriaAnterior) {
+    categoriaAnterior
+      .querySelector('.painel-categorias__categoria-header.ativo')
+      .classList.remove('ativo');
     categoriaAnterior.classList.remove('ativo');
   }
+  element
+    .querySelector('.painel-categorias__categoria-header')
+    .classList.add('ativo');
   element.classList.add('ativo');
 }
 
@@ -29,6 +35,7 @@ function slideNext() {
     + parseInt(getComputedStyle(slider).marginLeft, 10);
 
   slider.style.transform = `translateX(${width - fullWidth}px)`;
+  centerArrow();
   toggleVisibility('next-btn');
   toggleVisibility('prev-btn');
 }
@@ -47,6 +54,7 @@ function getTranslateX(element) {
 function slidePrev() { 
   let slider = document.querySelector('.painel-categorias__menu > ul');
   slider.style.transform = `translateX(0px)`;
+  centerArrow();
   toggleVisibility('next-btn');
   toggleVisibility('prev-btn');
 }
