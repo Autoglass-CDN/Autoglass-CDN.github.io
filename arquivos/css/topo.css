@@ -160,6 +160,7 @@ body.home {
 
 #prev-btn i:before {
   content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
+  display: inline-block;
   height: 32px;
   transform: rotateY(180deg);
 }
@@ -395,6 +396,15 @@ body.home {
   align-items: center;
   z-index: 1;
   padding: 0 35px;
+}
+
+.painel-categorias .slider-handlers button {
+  background: transparent;
+  border: 0;
+}
+
+.painel-categorias .slider-handlers button i {
+  display: flex;
 }
 
 .painel-categorias .painel-categorias__categoria {
