@@ -17,8 +17,6 @@ function activateCategory(element) {
 
 function slideNext() {
   let categories = document.querySelectorAll('.painel-categorias__categoria');
-  let first = categories[0];
-  let last = categories[categories.length - 1];
   let slider = document.querySelector('.painel-categorias__menu > ul');
 
   if (getTranslateX(slider) < 0) return;
@@ -30,21 +28,34 @@ function slideNext() {
     + parseInt(getComputedStyle(slider).marginRight, 10)
     + parseInt(getComputedStyle(slider).marginLeft, 10);
 
-  slider.style.transform = `translateX(${width - fullWidth}px)`;
+  slider.style.transform = `translateX(-${width - fullWidth}px)`;
+  toggleVisibility('next-btn');
+  toggleVisibility('prev-btn');
+}
+
+function toggleVisibility(id){
+  let element = document.getElementById(id);
+  element.style.visibility = element.style.visibility === 'hidden' ? 'visible' : 'hidden';
 }
 
 function getTranslateX(element) {
   let transform = getComputedStyle(element).getPropertyValue('transform');
   let matrix = new WebKitCSSMatrix(transform);
-  return matrix.m41;
+  console.log('translateX: ', matrix.m41);
 }
 
 function slidePrev() { 
   let slider = document.querySelector('.painel-categorias__menu > ul');
   slider.style.transform = `translateX(0px)`;
+  toggleVisibility('next-btn');
+  toggleVisibility('prev-btn');
 }
 
 (() => {
+  let slider = document.querySelector('.painel-categorias__menu > ul');
+  if (getTranslateX(slider) < 0) document.getElementById('next-btn').style.visibility = 'hidden';
+  else document.getElementById('prev-btn').style.visibility = 'hidden';
+  
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach(category => {
