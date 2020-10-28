@@ -554,3 +554,121 @@ input.tipo-instalacao:checked + label::before {
   }
 }
 /* #endregion Opções de Entrega */
+
+/* #region Modal - Retire na Loja */
+.mz-pickup-stores__list ul {
+  list-style: none;
+  padding: 0;
+  height: 300px;
+  overflow-x: auto;
+}
+
+.mz-pickup__stores .mz-stores__title .store {
+  margin: 10px 0px;
+}
+
+.pickup {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f4f4f4;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pickup:hover {
+  border: 1px solid #c4c4c4;
+}
+
+.pickup.selected {
+  border: 1px solid #223B76;
+}
+
+.pickup.selected .pickup__estimate {
+  border-top: 1px solid #223B76;
+}
+
+.pickup + .pickup {
+  margin-top: 10px;
+}
+
+.pickup__info {
+  display: flex;
+  padding: 12px;
+}
+
+.pickup__info-address p,
+.pickup__info-distance p {
+  margin: 0;
+}
+
+.pickup__info-distance svg {
+   transform: translateY(-5px);
+   transition: transform;
+}
+
+.pickup:hover .pickup__info-distance svg {
+   animation: hoverDistanceAnimation 1s infinite;
+}
+
+.pickup.selected .pickup__info-distance svg {
+  transform: translateY(4px);
+}
+
+.pickup__info-address .address-title {
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+
+.pickup__info-address .address-location {
+  margin-bottom: 5px;
+}
+
+.pickup__info-distance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+}
+
+.pickup__estimate {
+  border-top: 1px solid #f4f4f4;
+  padding: 8px 8px 8px 100px;
+}
+
+.pickup__estimate span + span {
+  margin-left: 20px;
+}
+
+.mz-pickup__button--buy {
+  width: 100%;
+  max-width: 300px;
+}
+
+@keyframes hoverDistanceAnimation {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 500px) {
+  .pickup__info {
+    flex-direction: column;
+  }
+  .pickup__estimate {
+    padding: 12px;
+  }
+  .pickup__estimate span {
+    display: block;
+  }
+  .pickup__estimate span + span {
+    margin: 0px;
+  }
+}
+/* #endregion Modal - Retire na Loja */
