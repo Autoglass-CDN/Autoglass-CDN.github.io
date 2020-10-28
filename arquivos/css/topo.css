@@ -385,6 +385,18 @@ body.home {
   list-style: none;
 }
 
+.painel-categorias .slider-handlers {
+  position: absolute;
+  top: 72.5px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  padding: 0 35px;
+}
+
 .painel-categorias .painel-categorias__categoria {
   display: inline-block;
   margin-right: 25px;
