@@ -401,6 +401,7 @@ body.home {
 .painel-categorias .slider-handlers button {
   background: transparent;
   border: 0;
+  outline: 0;
 }
 
 .painel-categorias .slider-handlers button i {
@@ -412,10 +413,10 @@ body.home {
   margin-right: 25px;
 }
 
-.painel-categorias .painel-categorias__categoria:not(:first-of-type) {
+/*.painel-categorias .painel-categorias__categoria:not(:first-of-type) {
   margin: 0 25px;
 
-}
+}*/
 
 .painel-categorias .painel-categorias__menu {
   height: 145px;
