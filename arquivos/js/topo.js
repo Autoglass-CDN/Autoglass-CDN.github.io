@@ -41,7 +41,7 @@ function toggleVisibility(id){
 function getTranslateX(element) {
   let transform = getComputedStyle(element).getPropertyValue('transform');
   let matrix = new WebKitCSSMatrix(transform);
-  console.log('translateX: ', matrix.m41);
+  return matrix.m41;
 }
 
 function slidePrev() { 
