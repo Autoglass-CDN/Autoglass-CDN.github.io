@@ -55,7 +55,8 @@ function getTranslateX(element) {
 function slidePrev() { 
   let slider = document.querySelector('.painel-categorias__menu > ul');
   slider.style.transform = `translateX(0px)`;
-  centerArrow();
+  
+  slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
   toggleVisibility('next-btn');
   toggleVisibility('prev-btn');
 }
