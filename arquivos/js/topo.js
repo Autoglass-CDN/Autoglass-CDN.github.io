@@ -30,13 +30,13 @@ function slideNext() {
     + parseInt(getComputedStyle(slider).marginRight, 10)
     + parseInt(getComputedStyle(slider).marginLeft, 10);
 
-  slider.style.transform = `translateX(-${width - fullWidth}px)`;
+  slider.style.transform = `translateX(${width - fullWidth}px)`;
 }
 
 function getTranslateX(element) {
   let transform = getComputedStyle(element).getPropertyValue('transform');
   let matrix = new WebKitCSSMatrix(transform);
-  console.log('translateX: ', matrix.m41);
+  return matrix.m41;
 }
 
 function slidePrev() { 
