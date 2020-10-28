@@ -35,7 +35,8 @@ function slideNext() {
     + parseInt(getComputedStyle(slider).marginLeft, 10);
 
   slider.style.transform = `translateX(${width - fullWidth}px)`;
-  centerArrow();
+  
+  slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
   toggleVisibility('next-btn');
   toggleVisibility('prev-btn');
 }
