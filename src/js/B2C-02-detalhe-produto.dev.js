@@ -313,7 +313,7 @@ function consulteFrete() {
 		async function simulateShipping(address) {
 			const request = {
 				items: [{
-					id: skuJson.skus[0].sku,
+					id: $('#___rc-p-sku-ids').val(),
 					quantity: 1,
 					seller: 1
 				}],
