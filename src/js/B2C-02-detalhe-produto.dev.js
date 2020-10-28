@@ -188,7 +188,7 @@ function consulteFrete() {
 	const CONFIG = {
 		SERVICE: {
 			COUNTRY: 'BRA',
-			SKU_ID: $('#___rc-p-sku-ids').val()
+			SKU_ID: Product.captureSkuSelectors()[0]
 		},
 		CSS: {
 			BASE: '.mz-modal-pickup',
