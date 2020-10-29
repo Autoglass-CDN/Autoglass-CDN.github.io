@@ -88,6 +88,7 @@ function slidePrev() {
   menu
     .addEventListener('mouseenter', (event) => {
       menu.classList.add('ativo');
+      centerArrow();
     });
 
   let painelCategorias = document.querySelector('.painel-categorias');
