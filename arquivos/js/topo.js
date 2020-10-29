@@ -80,5 +80,6 @@ function slidePrev() {
         centerArrow();
       })
     });
+  centerArrow();
 }
 )();
