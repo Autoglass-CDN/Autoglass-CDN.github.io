@@ -534,4 +534,4 @@ $(function CalculeOFrete() {
 			});
 		}
 	}
-})();
+});
