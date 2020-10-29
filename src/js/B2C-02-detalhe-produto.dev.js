@@ -418,7 +418,8 @@ function consulteFrete() {
 			});
 
 			$(CONFIG.CSS.MODAL.BUTTON).click(() => {
-				// Redirecionar para o carinho
+				var urlCart = "/checkout/cart/add?sku=" + vtxctx.skus + "&qty=1&seller=1&redirect=true&sc=1";
+				$(CONFIG.CSS.MODAL.BUTTON).attr("href", urlCart);
 			});
 		}
 
