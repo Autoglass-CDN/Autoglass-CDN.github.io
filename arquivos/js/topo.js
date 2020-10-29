@@ -7,18 +7,28 @@ function centerArrow() {
   arrow.style.left = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10))) + 'px';
 }
 
-function activateCategory(element) {
+function activateCategory(categoriaAtual, indexConteudoAtual) {
   let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
+  let conteudoAtual = document
+    .querySelectorAll('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens')[indexConteudoAtual];
+
   if (categoriaAnterior) {
     categoriaAnterior
       .querySelector('.painel-categorias__categoria-header.ativo')
       .classList.remove('ativo');
     categoriaAnterior.classList.remove('ativo');
+    document
+      .querySelector('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo')
+      .classList.remove('ativo');
+
+    // event.target.style.transition = '0.8s';
+    // event.target.style.opacity = 0;
   }
-  element
+  categoriaAtual
     .querySelector('.painel-categorias__categoria-header')
     .classList.add('ativo');
-  element.classList.add('ativo');
+  categoriaAtual.classList.add('ativo');
+  conteudoAtual.classList.add('ativo');
 }
 
 function slideNext() {
@@ -66,20 +76,33 @@ function slidePrev() {
   let prevBtn = document.getElementById('prev-btn');
   let nextBtn = document.getElementById('next-btn');
 
-  prevBtn.addEventListener('click',slidePrev);
-  nextBtn.addEventListener('click',slideNext);
-  
-  if (getTranslateX(slider) < 0) document.getElementById('next-btn').style.visibility = 'hidden';
-  else document.getElementById('prev-btn').style.visibility = 'hidden';
-  
+  prevBtn.addEventListener('click', slidePrev);
+  nextBtn.addEventListener('click', slideNext);
+
+  if (getTranslateX(slider) < 0) nextBtn.style.visibility = 'hidden';
+  else prevBtn.style.visibility = 'hidden';
+
+  let menu = document
+    .querySelector('.menu-categorias');
+
+  menu
+    .addEventListener('mouseenter', (event) => {
+      menu.classList.add('ativo');
+    });
+
+  let painelCategorias = document.querySelector('.painel-categorias');
+
+  painelCategorias.addEventListener('mouseout', (event) => {
+    menu.classList.remove('ativo');
+  });
+
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
-    .forEach(category => {
-      category.addEventListener('mouseenter', (event) => {
-        activateCategory(category);
+    .forEach((categoria, index) => {
+      categoria.addEventListener('mouseenter', (event) => {
+        activateCategory(categoria, index);
         centerArrow();
       })
     });
-  centerArrow();
 }
 )();
