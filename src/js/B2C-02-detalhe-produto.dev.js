@@ -165,7 +165,7 @@ function consulteFrete() {
 	console.log(txtCep);
 }
 
-(function LojasMaisProximas() {
+$(function LojasMaisProximas() {
 	let SLA = [];
 
 	const CONFIG = {
@@ -320,9 +320,9 @@ function consulteFrete() {
 			localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(SLA.find(x => x.id === id)));
 		}
 	}
-})();
+});
 
-(function CalculeOFrete() {
+$(function CalculeOFrete() {
 	let SLA = [];
 
 	const CONFIG = {
