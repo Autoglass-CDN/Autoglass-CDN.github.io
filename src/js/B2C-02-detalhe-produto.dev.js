@@ -96,23 +96,6 @@ $(function () {//
 
 	setTimeout(function () {
 		$("#txtCep").after('<span class="ttp"></span>');
-
-		$(".link.cep").click(function (e) {
-			e.preventDefault();
-			let pixelsToScroll = $(window).width() > 900 ? 300 : 170;
-
-			$("html, body")
-				.stop()
-				.animate(
-					{
-						scrollTop: $("#txtCep").offset().top - pixelsToScroll,
-					},
-					900,
-					"swing"
-				);
-
-			$("#txtCep").focus();
-		});
 	}, 500);
 
 	$('#similars h2').after(`<p class="descricao-rollout">Confira opções de <strong>${vtxctx.categoryName.toLowerCase()
