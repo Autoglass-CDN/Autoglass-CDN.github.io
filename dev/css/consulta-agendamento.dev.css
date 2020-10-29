@@ -34,8 +34,7 @@
 }
 
 .secao-agendamento > .store-list > .filter > .data input,
-.mz-advantages__content .cep input,
-.mz-modal-pickup .cep input {
+.cep input {
   border: 1px solid #dfdfdf;
   border-radius: 4px;
   width: 120px;
@@ -46,7 +45,7 @@
 }
 
 .secao-agendamento > .store-list > .filter > .data input:disabled,
-.mz-advantages__content .cep input:disabled {
+.cep input:disabled {
   background-color: white;
   border: 0;
 }
@@ -202,48 +201,41 @@
   margin: 10px auto;
 }
 
-.mz-advantages__content .cep,
-.mz-modal-pickup .cep {
+.cep {
   margin: 10px 0px;
   display: flex;
   align-items: center;
   flex-wrap: wrap;
 }
 
-.mz-advantages__content .cep label,
-.mz-modal-pickup .cep label {
+.cep label {
   margin-right: 10px;
   margin-bottom: 0px;
   min-width: 112px;
 }
 
-.mz-advantages__content .cep input,
-.mz-modal-pickup .cep input {
+.cep input {
   margin: 0;
   border-top-right-radius: 0px;
   border-bottom-right-radius: 0px;
   outline: none;
 }
 
-.mz-advantages__content .cep input:focus,
-.mz-modal-pickup .cep input:focus {
+.cep input:focus {
   border: 1px solid #505570;
   border-right: 0px;
 }
 
-.mz-advantages__content .cep input:focus + button,
-.mz-modal-pickup .cep input:focus + button {
+.cep input:focus + button {
   border: 1px solid #505570;
   border-left: 0px;
 }
 
-.mz-advantages__content .cep button:hover,
-.mz-modal-pickup .cep button:hover {
+.cep button:hover {
   background-color: #cccccc;
 }
 
-.mz-advantages__content .cep button,
-.mz-modal-pickup .cep button {
+.cep button {
   height: 24px;
   transition: background-color .2s ease-out;
   outline: none;
