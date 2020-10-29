@@ -341,7 +341,9 @@ body.home {
 
 
 .menu-categorias:hover .painel-categorias,
-.menu-categorias:focus .painel-categorias {
+.menu-categorias:focus .painel-categorias,
+.menu-categorias.ativo .painel-categorias
+{
   display: unset;
   opacity: 1;
 }
