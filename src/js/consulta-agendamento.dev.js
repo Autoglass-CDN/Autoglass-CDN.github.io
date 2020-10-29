@@ -127,6 +127,21 @@ $(function () {
             });
           }
         });
+
+        $('.timestamp').click(function () {
+          const loja = $(this).attr('data-store');
+          const horario = $(this).html();
+          const data = $(".secao-agendamento .data input")
+            .datepicker("getDate")
+            .toISOString()
+            .split("T")[0];
+
+          localStorage.setItem('AG_SelectedHour', JSON.stringify({
+            loja,
+            horario,
+            data
+          }))
+        });
       })
       .fail(() =>
         $(".secao-agendamento > .store-list").append(noTimeAvailable())
@@ -158,17 +173,17 @@ $(function () {
 		<div class="time hidden">
 		  <p>Horários:</p>
 		  <div class="time-list">
-			${createTimestampList(store.Horarios).join("\n")}
+			${createTimestampList(store.Horarios, store.Codigo).join("\n")}
 		  </div>
 		</div>
 	  </div>`;
   }
 
-  function createTimestampList(horarios) {
+  function createTimestampList(horarios, codigoStore) {
     return horarios.map(function (horario) {
       let timestamp = new Date(horario.HoraInicial);
       return horario.Disponibilidade.Value !== "Nao"
-        ? `<button class="timestamp">${timestamp.toLocaleTimeString([], {
+        ? `<button data-store="${codigoStore}" class="timestamp">${timestamp.toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
         })}</button>`
