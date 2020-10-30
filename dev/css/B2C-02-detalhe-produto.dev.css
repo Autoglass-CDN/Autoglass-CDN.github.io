@@ -714,6 +714,16 @@ body.mz-sf-on .mz-modal-shipping {
   margin: 10px 0px;
 }
 
+.mz-modal-shipping .mz-content__title .mz-content__title--empty a {
+  color: #223B76;
+  font-weight: bold;
+}
+
+.mz-modal-shipping .mz-content__title .mz-content__title--empty span {
+  font-size: 14px;
+  font-weight: normal;
+}
+
 .shipping {
   display: flex;
   align-items: center;
