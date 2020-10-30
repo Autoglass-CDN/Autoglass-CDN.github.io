@@ -485,6 +485,8 @@ $(function CalculeOFrete() {
 		function formatPrice(price) {
 			let value = 'R$ ';
 
+			if (price === 0) return 'Grátis';
+
 			price = price + "";
 			const [decimal] = price.match(/\w{2}$/);
 
