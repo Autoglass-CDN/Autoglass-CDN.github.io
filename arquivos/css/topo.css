@@ -239,6 +239,39 @@ body.home {
   text-decoration: none;
 }
 
+.topo .usuario .usuario__opcoes {
+  display: none;
+  list-style: none;
+  position: absolute;
+  background: var(--white);
+  color: var(--gray-700);
+  border: 1px solid var(--gray-300);
+  z-index: 1;
+  min-width: 100%;
+  top: 41px;
+  font-size: 0.8rem;
+}
+
+.topo .usuario:hover .usuario__opcoes {
+  display: unset;
+}
+
+.topo .usuario .usuario__opcoes li {
+  padding: 10px;
+}
+
+.topo .usuario .usuario__opcoes li:hover {
+  background-color: var(--gray-300);
+}
+
+.topo .usuario .usuario__opcoes li#logout {
+  border-top: 1px solid var(--gray-300);
+}
+
+.topo .usuario .usuario__opcoes a {
+  color: var(--gray-700);
+}
+
 .topo .usuario .arrow-down-icon-white {
   margin-left: 5px;
 }
