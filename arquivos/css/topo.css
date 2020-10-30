@@ -790,6 +790,7 @@ body.home {
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li {
   margin-bottom: 15px;
   color: var(--gray-700);
+  min-width: 190px;
 }
 
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li>a {
