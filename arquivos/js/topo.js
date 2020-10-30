@@ -71,6 +71,44 @@ function slidePrev() {
   toggleVisibility('prev-btn');
 }
 
+async function checkLogin() {
+  var accountComponent = document.querySelector(".topo .usuario");
+
+  let response = await fetch("/no-cache/profileSystem/getProfile");
+  let data = await response.json();
+
+  try {
+    if (data.IsUserDefined) {
+      var emailReceived = data.Email;
+      var nameUser = data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
+      accountComponent.innerHTML = `<div class="user-avatar-icon"></div>
+        <span>
+          Olá, <b>${nameUser}</b>
+          <i class="arrow-down-icon-white"></i>
+        </span>
+        <ul class="usuario__opcoes">
+          <li><a href="/_secure/account">Dados Pessoais</a></li>
+          <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
+          <li><a href="/_secure/account#/cards">Cartões</a></li>
+          <li><a href="/_secure/account#/addresses">Endereços</a></li>
+          <li id="logout"><a href="/no-cache/user/logout">Sair</a></li>
+        </ul>`;
+      //<a id="logout" href="/no-cache/user/logout">Sair</a>
+    } else {
+      accountComponent.innerHTML = `<div class="user-avatar-icon"></div>
+      <a id="login">
+        <b>Entrar ou Cadastrar</b>
+        <i class="arrow-down-icon-white"></i>
+      </a>`;
+      document.body.classList.add("not-logged-user");
+
+    }
+  } catch (e) {
+    if (typeof console !== "undefined" && typeof console.info === "function")
+      console.info("Ops, algo saiu errado com o login.", e.message)
+  }
+}
+
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   let prevBtn = document.getElementById('prev-btn');
@@ -105,5 +143,6 @@ function slidePrev() {
         centerArrow();
       })
     });
+  checkLogin();
 }
 )();
