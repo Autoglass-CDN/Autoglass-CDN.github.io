@@ -348,6 +348,15 @@ body.home {
   opacity: 1;
 }
 
+.menu-categorias .menu-categorias__titulo {
+  transition: .5s;
+}
+
+.menu-categorias .menu-categorias__titulo:hover {
+  transform: scale(1.1);
+  font-weight: var(--bold);
+}
+
 .painel-categorias {
   width: 100%;
   top: 30px;
