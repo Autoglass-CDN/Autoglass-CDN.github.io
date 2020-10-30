@@ -417,6 +417,12 @@ $(function CalculeOFrete() {
 				Controller.searchDeliverys($(CONFIG.CSS.MODAL.CEP.INPUT).val());
 			});
 
+			$(CONFIG.CSS.MODAL.CEP.INPUT).keydown(e => {
+				if (e.key === 'Enter') {
+					Controller.searchDeliverys($(CONFIG.CSS.MODAL.CEP.INPUT).val());
+				}
+			});
+
 			$(CONFIG.CSS.MODAL.BUTTON).click(() => {
 				var urlCart = "/checkout/cart/add?sku=" + vtxctx.skus + "&qty=1&seller=1&redirect=true&sc=1";
 				$(CONFIG.CSS.MODAL.BUTTON).attr("href", urlCart);
