@@ -80,7 +80,8 @@ async function checkLogin() {
   try {
     if (data.IsUserDefined) {
       var emailReceived = data.Email;
-      var nameUser = data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
+      var nameUser = data.FirstName && data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
+      //var nameUser = data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
       accountComponent.innerHTML = `<div class="user-avatar-icon"></div>
         <span>
           Olá, <b>${nameUser}</b>
