@@ -269,6 +269,7 @@ body.home {
   color: var(--gray-700);
   display: inline-block;
   width: 100%;
+  height: 100%;
   margin: unset;
   padding: 10px;
 }
