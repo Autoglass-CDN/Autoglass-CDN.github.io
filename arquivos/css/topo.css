@@ -190,7 +190,8 @@ body.home {
   color: var(--white);
 }
 
-.topo a {
+.topo a,
+.topo span{
   margin-left: 5px;
   padding: 10px 0;
 }
@@ -270,6 +271,10 @@ body.home {
 
 .topo .usuario .usuario__opcoes a {
   color: var(--gray-700);
+  display: inline-block;
+  width: 100%;
+  margin: unset;
+  padding: unset;
 }
 
 .topo .usuario .arrow-down-icon-white {
