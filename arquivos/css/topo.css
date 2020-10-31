@@ -191,7 +191,7 @@ body.home {
 }
 
 .topo a,
-.topo span{
+.topo .usuario span{
   margin-left: 5px;
   padding: 10px 0;
 }
