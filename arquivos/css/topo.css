@@ -248,8 +248,8 @@ body.home {
   color: var(--gray-700);
   border: 1px solid var(--gray-300);
   z-index: 1;
-  min-width: 100%;
-  top: 41px;
+  min-width: 135px;
+  top: 40px;
   font-size: 0.8rem;
 }
 
