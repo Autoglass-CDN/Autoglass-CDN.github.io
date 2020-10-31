@@ -257,10 +257,6 @@ body.home {
   display: unset;
 }
 
-.topo .usuario .usuario__opcoes li {
-  padding: 10px;
-}
-
 .topo .usuario .usuario__opcoes li:hover {
   background-color: var(--gray-300);
 }
@@ -274,7 +270,7 @@ body.home {
   display: inline-block;
   width: 100%;
   margin: unset;
-  padding: unset;
+  padding: 10px;
 }
 
 .topo .usuario .arrow-down-icon-white {
