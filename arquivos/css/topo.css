@@ -336,9 +336,10 @@ body.home {
   align-items: center;
 }
 
-.container .search-box select,
-.container .search-box label,
-.container .search-box legend {
+.container .search-box .busca select,
+.container .search-box .busca label,
+.container .search-box .busca legend,
+.container .search-box .busca input[type="button"]{
   display: none;
 }
 
