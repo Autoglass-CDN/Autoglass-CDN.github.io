@@ -94,6 +94,12 @@ $(function () {//
 		ga("send", "event", "estoque", "detalhe-produto", "disponivel");
 	}
 
+	$('#instalar-na-loja-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'pickup-in-point'));
+	$('#retire-na-loja-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'pickup-in-point'));
+
+	$('#instalar-em-casa-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'delivery'));
+	$('#receba-em-casa-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'delivery'));
+
 	setTimeout(function () {
 		$("#txtCep").after('<span class="ttp"></span>');
 	}, 500);
@@ -366,14 +372,6 @@ $(function LojasMaisProximas() {
 					logisticsInfo
 				})
 			}).then(res => res.json()).then(x => {
-				localStorage.setItem('aditionalShippingData', JSON.stringify({
-					activeTab: 'pickup-in-point',
-					isScheduledDeliveryActive: false,
-					originComponent: "omnishipping",
-					selectedLeanShippingOption: "CHEAPEST",
-				}));
-				localStorage.setItem('activeDeliveryChannel', 'pickup-in-point');
-
 				vtexjs.checkout.sendAttachment('shippingData', {
 					selectedAddresses: newSelectedAddresses,
 					logisticsInfo
@@ -611,6 +609,8 @@ $(function CalculeOFrete() {
 				country: 'BRA',
 				addressType: 'search'
 			});
+
+			// FORCE CEP SEARCH
 
 			vtexjs.checkout.calculateShipping({
 				postalCode: cep,
