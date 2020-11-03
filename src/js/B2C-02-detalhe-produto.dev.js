@@ -199,9 +199,9 @@ $(function LojasMaisProximas() {
 		async function simulateShipping() {
 			let { shippingData } = await Service.getOrderForm();
 			const cepValue = View.getCepValue();
-			shippingData = await Service.simulateShipping(
-				cepValue ? { postalCode: cepValue } : shippingData.address
-			);
+			const sendCep = cepValue ? { postalCode: cepValue } : shippingData.address;
+
+			shippingData = await Service.simulateShipping(sendCep);
 
 			SLA = shippingData
 				.logisticsInfo[0]
@@ -263,10 +263,24 @@ $(function LojasMaisProximas() {
 				$('.pickup').removeClass('selected');
 				$(this).addClass('selected');
 
+				const sla = SLA.find(x => x.id === $(this).attr('id'));
+
 				Service.saveSelectedPickupPoint($(this).attr('id'));
 			});
 
-			$('#pickup-input-btn').click(Controller.simulateShipping)
+			$(`${CONFIG.CSS.BASE} .cep input`).keydown(e => {
+				if (e.key === 'Enter') {
+					Controller.simulateShipping();
+					Service.sendCalculateShipping(getCepValue(), 'search');
+					Service.sendCalculateShipping(getCepValue(), 'residential');
+				}
+			});
+
+			$('#pickup-input-btn').click(() => {
+				Controller.simulateShipping();
+				Service.sendCalculateShipping(getCepValue(), 'search');
+				Service.sendCalculateShipping(getCepValue(), 'residential');
+			})
 		}
 
 		function maskCep() {
@@ -317,7 +331,18 @@ $(function LojasMaisProximas() {
 		}
 
 		function saveSelectedPickupPoint(id) {
-			localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(SLA.find(x => x.id === id)));
+			const sla = SLA.find(x => x.id === id);
+
+			localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
+			sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
+		}
+
+		function sendCalculateShipping(cep, type) {
+			vtexjs.checkout.calculateShipping({
+				postalCode: cep,
+				country: 'BRA',
+				addressType: type
+			});
 		}
 	}
 });
@@ -376,10 +401,11 @@ $(function CalculeOFrete() {
 			const { logisticsInfo } = await Service.simulateShipping({ postalCode: address });
 
 			SLA = logisticsInfo[0].slas
-				.filter(x => x.deliveryChannel === 'delivery' && x.id !== CONFIG.CONTROLS.IGNORE_DELIVERY);
+				.filter(x => x.deliveryChannel === 'delivery');
 
 			View.buildListDelivery(SLA);
-			View.selectShipping();
+			// View.selectShipping();
+			Service.sendCalculateShipping(address);
 		}
 	}
 
@@ -415,6 +441,12 @@ $(function CalculeOFrete() {
 
 			$(CONFIG.CSS.MODAL.CEP.BUTTON).click(() => {
 				Controller.searchDeliverys($(CONFIG.CSS.MODAL.CEP.INPUT).val());
+			});
+
+			$(CONFIG.CSS.MODAL.CEP.INPUT).keydown(e => {
+				if (e.key === 'Enter') {
+					Controller.searchDeliverys($(CONFIG.CSS.MODAL.CEP.INPUT).val());
+				}
 			});
 
 			$(CONFIG.CSS.MODAL.BUTTON).click(() => {
@@ -479,7 +511,8 @@ $(function CalculeOFrete() {
 			simulateShipping,
 			formatPrice,
 			formatEstimate,
-			saveSelectedDelivery
+			saveSelectedDelivery,
+			sendCalculateShipping
 		}
 
 		function formatPrice(price) {
@@ -533,6 +566,20 @@ $(function CalculeOFrete() {
 				dataType: "JSON",
 				contentType: "application/json",
 				data: JSON.stringify(request)
+			});
+		}
+
+		function sendCalculateShipping(cep) {
+			vtexjs.checkout.calculateShipping({
+				postalCode: cep,
+				country: 'BRA',
+				addressType: 'search'
+			});
+
+			vtexjs.checkout.calculateShipping({
+				postalCode: cep,
+				country: 'BRA',
+				addressType: 'residential'
 			});
 		}
 	}
