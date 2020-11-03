@@ -199,17 +199,19 @@ $(function LojasMaisProximas() {
 		async function simulateShipping() {
 			let { shippingData } = await Service.getOrderForm();
 			const cepValue = View.getCepValue();
-			const sendCep = cepValue ? { postalCode: cepValue } : shippingData.address;
 
-			shippingData = await Service.simulateShipping(sendCep);
+			if (cepValue || shippingData.address) {
+				const sendCep = cepValue ? { postalCode: cepValue } : shippingData.address;
+				shippingData = await Service.simulateShipping(sendCep);
 
-			SLA = shippingData
-				.logisticsInfo[0]
-				.slas
-				.filter(x => x.deliveryChannel === 'pickup-in-point');
+				SLA = shippingData
+					.logisticsInfo[0]
+					.slas
+					.filter(x => x.deliveryChannel === 'pickup-in-point');
 
-			View.buildListStore(SLA);
-			View.addClicks();
+				View.buildListStore(SLA);
+				View.addClicks();
+			}
 		}
 	}
 
@@ -263,23 +265,21 @@ $(function LojasMaisProximas() {
 				$('.pickup').removeClass('selected');
 				$(this).addClass('selected');
 
-				const sla = SLA.find(x => x.id === $(this).attr('id'));
-
 				Service.saveSelectedPickupPoint($(this).attr('id'));
 			});
 
 			$(`${CONFIG.CSS.BASE} .cep input`).keydown(e => {
 				if (e.key === 'Enter') {
 					Controller.simulateShipping();
-					Service.sendCalculateShipping(getCepValue(), 'search');
 					Service.sendCalculateShipping(getCepValue(), 'residential');
+					Service.sendCalculateShipping(getCepValue(), 'search');
 				}
 			});
 
 			$('#pickup-input-btn').click(() => {
 				Controller.simulateShipping();
-				Service.sendCalculateShipping(getCepValue(), 'search');
 				Service.sendCalculateShipping(getCepValue(), 'residential');
+				Service.sendCalculateShipping(getCepValue(), 'search');
 			})
 		}
 
@@ -335,7 +335,6 @@ $(function LojasMaisProximas() {
 
 			localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
 			sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
-			sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'residential');
 		}
 
 		function sendCalculateShipping(cep, type) {
