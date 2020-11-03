@@ -360,7 +360,7 @@ body.home {
   transition: border 500ms;
 }
 
-.container .search-box input+.search-icon::before {
+.container .search-box fieldset.busca + .search-icon::before {
   margin-left: -30px;
 }
 
