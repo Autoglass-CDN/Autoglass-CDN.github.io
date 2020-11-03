@@ -147,7 +147,7 @@ $(function () {
             postalCode: cep,
             country: 'BRA',
             addressType: 'search'
-          });
+          }).then(() => { });
         });
       })
       .fail(() =>
@@ -274,13 +274,13 @@ $(function () {
       $('.loading-dates').show();
       $('#mostrar-datas-datepicker').css('height', '0px');
 
-      vtexjs.checkout.calculateShipping({
+      await vtexjs.checkout.calculateShipping({
         postalCode: cep,
         country: 'BRA',
         addressType: 'search'
       });
 
-      vtexjs.checkout.calculateShipping({
+      await vtexjs.checkout.calculateShipping({
         postalCode: cep,
         country: 'BRA',
         addressType: 'residential'
