@@ -336,6 +336,12 @@ body.home {
   align-items: center;
 }
 
+.container .search-box select,
+.container .search-box label,
+.container .search-box legend {
+  display: none;
+}
+
 .container .search-box input {
   outline: none;
   padding: 10px 15px;
