@@ -130,8 +130,9 @@ $(function () {
 
         $('.timestamp').click(function () {
           const loja = $(this).attr('data-store');
+          const cep = $(this).attr('data-cep');
           const horario = $(this).html();
-          const data = $(".secao-agendamento .data input")
+          const date = $(".secao-agendamento .data input")
             .datepicker("getDate")
             .toISOString()
             .split("T")[0];
@@ -139,8 +140,14 @@ $(function () {
           localStorage.setItem('AG_SelectedHour', JSON.stringify({
             loja,
             horario,
-            data
-          }))
+            date
+          }));
+
+          vtexjs.checkout.calculateShipping({
+            postalCode: cep,
+            country: 'BRA',
+            addressType: 'search'
+          });
         });
       })
       .fail(() =>
@@ -173,17 +180,17 @@ $(function () {
 		<div class="time hidden">
 		  <p>Horários:</p>
 		  <div class="time-list">
-			${createTimestampList(store.Horarios, store.Codigo).join("\n")}
+			${createTimestampList(store.Horarios, store.Codigo, store.Cep).join("\n")}
 		  </div>
 		</div>
 	  </div>`;
   }
 
-  function createTimestampList(horarios, codigoStore) {
+  function createTimestampList(horarios, codigoStore, cep) {
     return horarios.map(function (horario) {
       let timestamp = new Date(horario.HoraInicial);
       return horario.Disponibilidade.Value !== "Nao"
-        ? `<button data-store="${codigoStore}" class="timestamp">${timestamp.toLocaleTimeString([], {
+        ? `<button data-store="${codigoStore}" data-cep="${cep}" class="timestamp">${timestamp.toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
         })}</button>`
@@ -266,6 +273,18 @@ $(function () {
       $('.datas-disponiveis').show();
       $('.loading-dates').show();
       $('#mostrar-datas-datepicker').css('height', '0px');
+
+      vtexjs.checkout.calculateShipping({
+        postalCode: cep,
+        country: 'BRA',
+        addressType: 'residential'
+      });
+
+      vtexjs.checkout.calculateShipping({
+        postalCode: cep,
+        country: 'BRA',
+        addressType: 'search'
+      });
 
       const request = {
         Cep: cep,
