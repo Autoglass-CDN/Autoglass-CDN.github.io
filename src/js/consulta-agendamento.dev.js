@@ -347,7 +347,7 @@ $(function () {
           // Only will work on Confirmation
           order = await getOrderForm();
         } else {
-          order = await vtex.checkout.getOrderForm();
+          order = await vtexjs.checkout.getOrderForm();
         }
 
         request.Carrinho = order.items
