@@ -110,6 +110,59 @@ async function checkLogin() {
   }
 }
 
+async function fixPlaceholderSearch() {
+  var idSearchFilterP = $('.search-box input[type="text"].fulltext-search-box');
+  if (!idSearchFilterP.length)
+    return;
+  var idSearchFilter = idSearchFilterP.attr("id").replace("ftBox", "");
+  enableFullTextSearchBox("ftBox" + idSearchFilter, "ftDept" + idSearchFilter, "ftIdx" + idSearchFilter, "ftBtn" + idSearchFilter, "/SEARCHTERM?&utmi_p=_&utmi_pc=BuscaFullText&utmi_cp=SEARCHTERM", "Pesquise por peça, produto, montadora...");
+
+  setTimeout(() => {
+    $('.search-box .btn-buscar').unbind().click(e => {
+      e.preventDefault();
+      const input = $('.search-box input[type="text"].fulltext-search-box');
+
+      const DEFAULT = {
+        Initial: 'Pesquise por peça, produto, montadora...',
+        Invalid: 'Informe o produto que deseja procurar'
+      };
+
+      const isIllegalTerm = input.val() === DEFAULT.Initial || input.val() === DEFAULT.Invalid || input.val() === '';
+
+      if (isIllegalTerm) {
+        input.val('Informe o produto que deseja procurar');
+
+        input.unbind('focus');
+        input.unbind('blur');
+
+        input.focus(function () {
+          $(this).filter(function () {
+            return isIllegalTerm
+          }).val('');
+        });
+
+        input.blur(function () {
+          $(this).filter(function () {
+            return $(this).val() === '';
+          }).val(isIllegalTerm ? DEFAULT.Invalid : DEFAULT.Initial);
+        });
+
+        $(".search-box").css('border-color', '#E74C3C');
+      } else {
+        const id = input.attr('id').replace("ftBox", "");
+
+        doSearch(
+          "ftBox" + id,
+          "ftDept" + id,
+          "ftIdx" + id,
+          "/SEARCHTERM?&utmi_p=_&utmi_pc=BuscaFullText&utmi_cp=SEARCHTERM",
+          "Buscar"
+        );
+      }
+    });
+  }, 1000);
+}
+
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   let prevBtn = document.getElementById('prev-btn');
@@ -145,5 +198,6 @@ async function checkLogin() {
       })
     });
   checkLogin();
+  fixPlaceholderSearch();
 }
 )();
