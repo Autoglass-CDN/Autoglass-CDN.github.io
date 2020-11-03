@@ -148,6 +148,12 @@ $(function () {
             country: 'BRA',
             addressType: 'search'
           });
+
+          vtexjs.checkout.calculateShipping({
+            postalCode: cep,
+            country: 'BRA',
+            addressType: 'residential'
+          });
         });
       })
       .fail(() =>
