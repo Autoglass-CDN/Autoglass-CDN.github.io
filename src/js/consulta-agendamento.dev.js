@@ -341,8 +341,14 @@ $(function () {
           }
         );
       } else {
-        // Only will work on Checkout
-        const order = await getOrderForm();
+        let order;
+
+        if (window.location.href.includes('orderPlaced')) {
+          // Only will work on Confirmation
+          order = await getOrderForm();
+        } else {
+          order = await vtex.checkout.getOrderForm();
+        }
 
         request.Carrinho = order.items
           .filter(item => item.additionalInfo.brandId !== "2000108")
