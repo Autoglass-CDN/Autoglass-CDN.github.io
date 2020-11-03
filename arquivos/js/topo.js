@@ -257,5 +257,6 @@ async function applySmartCart() {
     });
   checkLogin();
   fixPlaceholderSearch();
+  applySmartCart() 
 }
 )();
