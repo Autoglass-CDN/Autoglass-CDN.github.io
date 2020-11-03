@@ -163,6 +163,64 @@ async function fixPlaceholderSearch() {
   }, 1000);
 }
 
+async function applySmartCart() {
+  $(".menu-carrinho").append('<div class="smart-cart-qd-v1-wrapper"><div class="qd-sc-wrapper"></div></div>');
+  $(document.body).append('<div class="smart-cart-qd-v2-wrapper"><div class="qd-sc-wrapper"></div></div>');
+  var wrapper = $(".qd-sc-wrapper");
+  $.QD_smartCart({
+    selector: wrapper,
+    dropDown: {
+      texts: {
+        linkCart: "Finalizar compra",
+        cartTotal: '<span class="qd-infoTotalItems"><span class="qd-ddc-infoTotalShipping"><b>#shipping</b></span>Itens: #items</span><span class="qd-infoTotalValue">Total: #value</span>'
+      },
+      updateOnlyHover: false,
+      smartCheckout: true,
+      callback: function () {
+        $(".qd-ddc-wrapper3").prepend('<div class="qd-cartTitle"><h3>Meu carrinho</h3></div>');
+        wrapper.find(".qd_ddc_continueShopping").after(wrapper.find(".qd-ddc-viewCart"))
+      },
+      skuName: function (data) {
+        return data.name + " - " + data.skuName.replace(data.name, "")
+      },
+      callbackProductsList: function () {
+        wrapper.find(".qd-ddc-prodQtt").each(function () {
+          var $t = $(this);
+          $t.add($t.next(".qd-ddc-prodRemove")).wrapAll('<div class="qd-ddc-prodAction"></div>')
+        })
+      }
+    },
+    buyButton: {
+      buyButton: "body .prateleira:not(.qd-am) .buy-button"
+    }
+  });
+  var notNum = /[^\d]/g;
+  window._QuatroDigital_CartData.callback.add(function () {
+    $(".qd-ddc-info").removeClass("qd-ddc-totalZero").removeClass("qd-ddc-shippingZero");
+    var total = window._QuatroDigital_CartData.allTotal.replace(notNum, "");
+    var shipping = window._QuatroDigital_CartData.shipping.replace(notNum, "");
+    if (isNaN(total) || total == 0)
+      $(".qd-ddc-info").addClass("qd-ddc-totalZero");
+    if (isNaN(shipping) || shipping == 0)
+      $(".qd-ddc-info").addClass("qd-ddc-shippingZero")
+  });
+  window._QuatroDigital_prodBuyCallback = function (jqXHR, textStatus, prodLink, skus) {
+    $.fn.simpleCart(true);
+    $(".shelf-qd-v1-buy-button-modal").modal("hide");
+    $(window).trigger("QuatroDigital.qd_bb_prod_add", [new $, skus[0] || 0])
+  }
+    ;
+  $(".header-qd-v1-cart-link").click(function (evt) {
+    evt.preventDefault();
+    $(document.body).toggleClass("qd-cart-show");
+    wrapper.height($(window).height());
+    wrapper.find(".qd-ddc-prodWrapper").css("max-height", $(window).height() - 213)
+  });
+  $(".qd_ddc_lightBoxClose").click(function (evt) {
+    $(document.body).removeClass(Common.qdOverlayClass)
+  })
+}
+
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   let prevBtn = document.getElementById('prev-btn');
