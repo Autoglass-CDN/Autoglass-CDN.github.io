@@ -147,7 +147,7 @@ $(function () {
             postalCode: cep,
             country: 'BRA',
             addressType: 'search'
-          }).then(() => { });
+          }).then((order) => { forceChangeShipping(order) });
         });
       })
       .fail(() =>
@@ -211,6 +211,42 @@ $(function () {
         Por favor, tente outras datas ou fale com nossos consultores no chat.
       </small>
     </div>`;
+  }
+
+  function forceChangeShipping(order) {
+    const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
+    const slas = orderForm.shippingData.logisticsInfo[0].slas.filter(x => x.deliveryChannel === 'pickup-in-point');
+    const logisticsInfo = orderForm.shippingData.logisticsInfo.map(x => {
+      return {
+        addressId: newSelectedAddresses[0].addressId,
+        itemIndex: x.itemIndex,
+        selectedDeleveryChannel: 'pickup-in-point',
+        selectedSla: slas[0].id
+      }
+    });
+
+    fetch(`/api/checkout/pub/orderForm/${orderForm.orderFormId}/attachments/shippingData`, {
+      method: 'post',
+      body: JSON.stringify({
+        clearAddressIfPostalCodeNotFound: false,
+        expectedOrderFormSections: ['shippingData'],
+        selectedAddresses: newSelectedAddresses,
+        logisticsInfo
+      })
+    }).then(res => res.json()).then(x => {
+      localStorage.setItem('aditionalShippingData', JSON.stringify({
+        activeTab: 'pickup-in-point',
+        isScheduledDeliveryActive: false,
+        originComponent: "omnishipping",
+        selectedLeanShippingOption: "CHEAPEST",
+      }));
+      localStorage.setItem('activeDeliveryChannel', 'pickup-in-point');
+
+      vtexjs.checkout.sendAttachment('shippingData', {
+        selectedAddresses: newSelectedAddresses,
+        logisticsInfo
+      });
+    });
   }
 });
 
