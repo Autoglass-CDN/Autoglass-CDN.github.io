@@ -345,7 +345,7 @@ $(function LojasMaisProximas() {
 			}).then(order => forceChangeShipping(order));
 		}
 
-		function forceChangeShipping(order) {
+		function forceChangeShipping(orderForm) {
 			const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
 			const slas = orderForm.shippingData.logisticsInfo[0].slas.filter(x => x.deliveryChannel === 'pickup-in-point');
 			const logisticsInfo = orderForm.shippingData.logisticsInfo.map(x => {
