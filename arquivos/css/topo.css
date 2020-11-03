@@ -350,12 +350,13 @@ body.home {
   border-color: var(--gray-500);
   border-radius: 4px;
   width: 100%;
+  color: var(--gray-500);
 
   transition: border 500ms;
 }
 
-.container .search-box input:focus,
-.container .search-box input:hover {
+.container .search-box fieldset.busca input:focus,
+.container .search-box fieldset.busca input:hover {
   border-color: var(--primary);
   transition: border 500ms;
 }
