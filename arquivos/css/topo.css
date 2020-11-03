@@ -336,6 +336,10 @@ body.home {
   align-items: center;
 }
 
+.container .search-box fieldset.busca {
+  width: 100%;
+}
+
 .container .search-box .busca select,
 .container .search-box .busca label,
 .container .search-box .busca legend,
