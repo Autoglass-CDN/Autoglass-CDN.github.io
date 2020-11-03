@@ -148,12 +148,6 @@ $(function () {
             country: 'BRA',
             addressType: 'search'
           });
-
-          vtexjs.checkout.calculateShipping({
-            postalCode: cep,
-            country: 'BRA',
-            addressType: 'residential'
-          });
         });
       })
       .fail(() =>
@@ -283,13 +277,13 @@ $(function () {
       vtexjs.checkout.calculateShipping({
         postalCode: cep,
         country: 'BRA',
-        addressType: 'residential'
+        addressType: 'search'
       });
 
       vtexjs.checkout.calculateShipping({
         postalCode: cep,
         country: 'BRA',
-        addressType: 'search'
+        addressType: 'residential'
       });
 
       const request = {
