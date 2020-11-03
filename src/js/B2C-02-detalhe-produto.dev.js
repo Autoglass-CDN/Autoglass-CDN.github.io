@@ -335,6 +335,7 @@ $(function LojasMaisProximas() {
 
 			localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
 			sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
+			sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'residential');
 		}
 
 		function sendCalculateShipping(cep, type) {
