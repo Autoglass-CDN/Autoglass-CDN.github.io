@@ -203,6 +203,14 @@
     border-radius: 6px;
 }
 
+.mz-modal-advantages .mz-install__info {
+  margin-top: 20px;
+}
+
+.mz-modal-advantages .mz-advantages__content ul {
+  margin-top: 0px;
+}
+
 .mz-install__info .mz-info__list ul li:before {
     display: block;
     content: '\f05a';
