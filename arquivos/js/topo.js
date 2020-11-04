@@ -219,9 +219,6 @@ async function loadCartItemsCount() {
   fixPlaceholderSearch();
   loadCartItemsCount();
     
-  $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
-    evt.preventDefault();
-    loadCartItemsCount();
-  });
+  
 }
 )();
