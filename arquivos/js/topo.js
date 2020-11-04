@@ -219,7 +219,7 @@ async function loadCartItemsCount() {
   fixPlaceholderSearch();
   loadCartItemsCount();
     
-   window.addEventListener('orderFormUpdated.vtex',(event)=>{
+  $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
     loadCartItemsCount();
   });
 }
