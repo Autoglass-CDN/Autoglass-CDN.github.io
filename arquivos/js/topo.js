@@ -219,7 +219,7 @@ async function loadCartItemsCount() {
   fixPlaceholderSearch();
   loadCartItemsCount();
     
-  document.body.addEventListener('orderFormUpdated.vtex',(event)=>{
+   window.addEventListener('orderFormUpdated.vtex',(event)=>{
     loadCartItemsCount();
   });
 }
