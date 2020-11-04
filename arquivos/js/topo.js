@@ -172,12 +172,14 @@ async function loadCartItemsCount() {
   let orderForm = await vtexjs.checkout.getOrderForm();
   
   if(orderForm && orderForm.items.length){
-    let badge = document.createElement('span');
+    let badge = document.querySelector('.badge') || document.createElement('span');
     badge.classList.add('badge');
-    badge.append(orderForm.items.length);
-    
+    badge.innerHTML = orderForm.items.length;
+
     carrinho.classList.add('loaded');
-    carrinho.append(badge);
+
+    if (!document.querySelector('.badge'))
+      carrinho.append(badge);
   }
 }
 
