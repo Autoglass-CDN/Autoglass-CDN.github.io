@@ -196,6 +196,31 @@
   cursor: pointer;
 }
 
+.mz-install__info {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #BABABA;
+    border-radius: 6px;
+}
+
+.mz-install__info .mz-info__list ul li:before {
+    display: block;
+    content: '\f05a';
+    display: inline-block;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+    height: 1em;
+    text-align: center;
+    text-decoration: inherit;
+    text-rendering: optimizelegibility;
+    width: 1em;
+    font-family: 'FontAwesome';
+    margin-right: 10px;
+    font-size: 14px;
+    color: #2D4F9E;
+}
+
 .mz-accesories__name {
   margin-left: 15px;
 }
