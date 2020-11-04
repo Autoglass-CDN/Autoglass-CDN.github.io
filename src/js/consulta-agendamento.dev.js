@@ -34,8 +34,15 @@ $(function () {
   const baseUrlApi = window.location.href.includes("dev")
     ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
-  const estado = codCidades[$.cookie("mzLocationUF")];
-  const codCidade = estado.code || null;
+  let estado = codCidades[$.cookie("mzLocationUF")];
+  let codCidade = estado.code || null;
+
+  $(window).on('orderFormUpdated.vtex', order => {
+    estado = codCidades[order.shippingData.address.state];
+    codCidade = estado.code || null;
+
+    recuperarHorarios();
+  });
 
   let tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
