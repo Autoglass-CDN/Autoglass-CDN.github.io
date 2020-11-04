@@ -164,10 +164,9 @@ async function fixPlaceholderSearch() {
 }
 
 async function loadCartItemsCount() {
-  //TODO: Create cart
   let orderForm = await vtexjs.checkout.getOrderForm();
   
-  if(orderForm){
+  if(orderForm && orderForm.items.length){
     let badge = document.createElement('span');
     badge.classList.add('badge');
     badge.append(orderForm.items.length);
