@@ -37,7 +37,7 @@ $(function () {
   let estado = codCidades[$.cookie("mzLocationUF")];
   let codCidade = estado.code || null;
 
-  $(window).on('orderFormUpdated.vtex', order => {
+  $(window).on('orderFormUpdated.vtex', (_, order) => {
     estado = codCidades[order.shippingData.address.state];
     codCidade = estado.code || null;
 
