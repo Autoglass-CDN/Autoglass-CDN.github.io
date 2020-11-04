@@ -148,6 +148,10 @@ $(function () {
             country: 'BRA',
             addressType: 'search'
           }).then((order) => { forceChangeShipping(order) });
+
+          let event = new Event('AppointmentSelected.AG');
+
+          window.dispatchEvent(event);
         });
       })
       .fail(() =>
@@ -234,14 +238,6 @@ $(function () {
         logisticsInfo
       })
     }).then(res => res.json()).then(x => {
-      localStorage.setItem('aditionalShippingData', JSON.stringify({
-        activeTab: 'pickup-in-point',
-        isScheduledDeliveryActive: false,
-        originComponent: "omnishipping",
-        selectedLeanShippingOption: "CHEAPEST",
-      }));
-      localStorage.setItem('activeDeliveryChannel', 'pickup-in-point');
-
       vtexjs.checkout.sendAttachment('shippingData', {
         selectedAddresses: newSelectedAddresses,
         logisticsInfo
