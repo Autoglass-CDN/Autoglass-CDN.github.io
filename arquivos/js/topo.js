@@ -170,7 +170,10 @@ async function loadCartItemsCount() {
     let badge = document.createElement('span');
     badge.classList.add('badge');
     badge.append(orderForm.items.length);
-    document.querySelector('.menu-carrinho').append(badge);
+    
+    let carrinho = document.querySelector('.menu-carrinho');
+    carrinho.classList.add('.loaded');
+    carrinho.append(badge);
   }
 }
 
