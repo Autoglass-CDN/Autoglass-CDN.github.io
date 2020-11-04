@@ -151,7 +151,8 @@ $(function () {
           localStorage.setItem('AG_SelectedHour', JSON.stringify({
             loja,
             horario,
-            date
+            date,
+            _createAt: Date.now()
           }));
 
           vtexjs.checkout.calculateShipping({
@@ -296,8 +297,12 @@ $(function () {
     ],
     minDate,
     maxDate,
-    onSelect: (data) => {
-      localStorage.setItem('AG_SelectedDaySM', data);
+    onSelect: (selectedDay, infos) => {
+      localStorage.setItem('AG_SelectedDaySM', JSON.stringify({
+        selectedDay,
+        infos,
+        _createAt: Date.now()
+      }));
     },
     beforeShowDay: validadeAvailableDays
   });
