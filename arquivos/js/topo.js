@@ -221,6 +221,10 @@ async function loadCartItemsCount() {
   fixPlaceholderSearch();
   loadCartItemsCount();
     
+  $('a.btn.btn-add-buy-button-asynchronous.btn-not-clicked.asynchronousBuyButton.actionActivated.vtexsm_activated.qd-sbb-on').on('click',(e)=>{
+    let carrinho = document.querySelector('.menu-carrinho');
   
+    updateCartItemsCount(carrinho);
+  });
 }
 )();
