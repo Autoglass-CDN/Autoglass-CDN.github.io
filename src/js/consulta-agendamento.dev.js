@@ -196,17 +196,17 @@ $(function () {
 		<div class="time hidden">
 		  <p>Horários:</p>
 		  <div class="time-list">
-			${createTimestampList(store.Horarios, store.Codigo, store.Cep).join("\n")}
+			${createTimestampList(store.Horarios, `${store.Nome} | ${store.Bairro}`, store.Cep).join("\n")}
 		  </div>
 		</div>
 	  </div>`;
   }
 
-  function createTimestampList(horarios, codigoStore, cep) {
+  function createTimestampList(horarios, store, cep) {
     return horarios.map(function (horario) {
       let timestamp = new Date(horario.HoraInicial);
       return horario.Disponibilidade.Value !== "Nao"
-        ? `<button data-store="${codigoStore}" data-cep="${cep}" class="timestamp">${timestamp.toLocaleTimeString([], {
+        ? `<button data-store="${store}" data-cep="${cep}" class="timestamp">${timestamp.toLocaleTimeString([], {
           hour: "2-digit",
           minute: "2-digit",
         })}</button>`
