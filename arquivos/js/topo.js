@@ -172,7 +172,7 @@ async function loadCartItemsCount() {
     badge.append(orderForm.items.length);
     
     let carrinho = document.querySelector('.menu-carrinho');
-    carrinho.classList.add('.loaded');
+    carrinho.classList.add('loaded');
     carrinho.append(badge);
   }
 }
