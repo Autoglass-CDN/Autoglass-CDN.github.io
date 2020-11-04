@@ -164,6 +164,11 @@ async function fixPlaceholderSearch() {
 }
 
 async function loadCartItemsCount() {
+  let carrinho = document.querySelector('.menu-carrinho');
+  carrinho.addEventListener('click',(event)=>{
+    window.location.href = '/checkout/#/cart';
+  });
+
   let orderForm = await vtexjs.checkout.getOrderForm();
   
   if(orderForm && orderForm.items.length){
@@ -171,7 +176,6 @@ async function loadCartItemsCount() {
     badge.classList.add('badge');
     badge.append(orderForm.items.length);
     
-    let carrinho = document.querySelector('.menu-carrinho');
     carrinho.classList.add('loaded');
     carrinho.append(badge);
   }
