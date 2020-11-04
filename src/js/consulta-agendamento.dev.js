@@ -42,6 +42,8 @@ $(function () {
       estado = codCidades[order.shippingData.address.state];
       codCidade = estado.code || null;
 
+      $('.store').remove();
+
       recuperarHorarios();
     }
   });
