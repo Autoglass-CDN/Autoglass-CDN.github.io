@@ -386,7 +386,7 @@ body.home {
 .container .menu-carrinho > .badge {
     position: absolute;
     right: -5px;
-    top: 30%;
+    top: 35%;
     background: var(--danger);
     color: var(--white);
     border-radius: 50%;
@@ -396,9 +396,16 @@ body.home {
     font-size: .75rem;
     align-items: center;
     justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
 }
 
-
+.container .menu-carrinho.loaded > .badge {
+    visibility: visible;
+    opacity: 1;
+    top: 30%;
+}
 
 
 
