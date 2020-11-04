@@ -377,6 +377,7 @@ body.home {
   display: flex;
   align-items: center;
   min-width: 140px;
+  cursor: pointer;
 }
 
 .container .menu-carrinho>* {
