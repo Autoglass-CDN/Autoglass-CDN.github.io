@@ -400,7 +400,7 @@ body.home {
   transition: .5s;
 }
 
-.menu-categorias .menu-categorias__titulo:hover {
+.menu-categorias:hover .menu-categorias__titulo {
   transform: scale(1.1);
   font-weight: var(--bold);
 }
