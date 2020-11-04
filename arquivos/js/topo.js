@@ -218,5 +218,9 @@ async function loadCartItemsCount() {
   checkLogin();
   fixPlaceholderSearch();
   loadCartItemsCount();
+    
+  document.body.addEventListener('orderFormUpdated.vtex',(event)=>{
+    loadCartItemsCount();
+  });
 }
 )();
