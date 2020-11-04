@@ -220,6 +220,7 @@ async function loadCartItemsCount() {
   loadCartItemsCount();
     
   $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
+    evt.preventDefault();
     loadCartItemsCount();
   });
 }
