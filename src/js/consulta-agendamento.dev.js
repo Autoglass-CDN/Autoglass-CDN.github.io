@@ -38,10 +38,12 @@ $(function () {
   let codCidade = estado.code || null;
 
   $(window).on('orderFormUpdated.vtex', (_, order) => {
-    estado = codCidades[order.shippingData.address.state];
-    codCidade = estado.code || null;
+    if (order.shippingData.address.state) {
+      estado = codCidades[order.shippingData.address.state];
+      codCidade = estado.code || null;
 
-    recuperarHorarios();
+      recuperarHorarios();
+    }
   });
 
   let tomorrow = new Date();
