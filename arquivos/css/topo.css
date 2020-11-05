@@ -1,7 +1,130 @@
 /* import */
-@import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
+@import url("/arquivos/css/theme.css");
 
 
+/* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
+.topo .container:before,
+.nav .container:before,
+.topo .container:after,
+.nav .container:after {
+  display: unset;
+  content: none;
+  clear: none;
+}
+
+body.home {
+  padding-top: 0;
+}
+
+.home main{
+  margin-top: unset;
+}
+
+.shelf-qd-v1:hover {
+    z-index: unset;
+}
+
+/* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
+
+/* #region IMAGENS DE CATEGORIA */
+
+.nav .container .menu-categorias {
+  /* #region VIDROS */
+  --parabrisa: url("/arquivos/img/preview/Vidro Parabrisa.jpg");
+  --cantoneira: url("/arquivos/img/preview/");
+  --janela: url("/arquivos/img/preview/");
+  --quebra-vento: url("/arquivos/img/preview/");
+  --vidro-de-porta: url("/arquivos/img/preview/Vidro-de-Porta.jpg");
+  --vidro-traseiro: url("/arquivos/img/preview/Vidro-Traseiro.jpg");
+  /* #endregion VIDROS */
+
+  /* #region FARÓIS */
+  --aro-farol-auxiliar: url("/arquivos/img/preview/Arol-Farol-de-Milha.jpg");
+  --farol-auxiliar: url("/arquivos/img/preview/Farol Auxiliar (Milha).jpg");
+  --farol-diurno: url("/arquivos/img/preview/Farol-Diurno.jpg");
+  --farol-principal: url("/arquivos/img/preview/Farol Principal.jpg");
+  --moldura-farol-auxiliar: url("/arquivos/img/preview/Moldura-Farol-Auxiliar-(Milha).jpg");
+  /* #endregion FARÓIS */
+
+  /* #region LÂMPADAS */
+  --lampada-farol-auxiliar: url("/arquivos/img/preview/Lampada-Farol.jpg");
+  --lampada-lanterna: url("/arquivos/img/preview/Lampada-Farol.jpg");
+  --lampada-lanterna-traseira: url("/arquivos/img/preview/Lampada-Lanterna.jpg");
+  --lampada-painel: url("/arquivos/img/preview/Lampada-Painel.jpg");
+  /* #endregion LÂMPADAS */
+
+  /* #region LANTERNAS */
+  --lanterna: url("/arquivos/img/preview/Lanterna-Traseira.jpg");
+  --lanterna-parachoque: url("/arquivos/img/preview/Lanterna-Parachoque.jpg");
+  /* #endregion LANTERNAS */
+
+  /* #region PARACHOQUES */
+  --grade-parachoques: url("/arquivos/img/preview/Grade-do-Parachoque.jpg");
+  --moldura-paralama: url("/arquivos/img/preview/Moldura-Paralama.jpg");
+  --parachoque-dianteiro: url("/arquivos/img/preview/Parchoque Dianteiro.jpg");
+  --parachoque-traseiro: url("/arquivos/img/preview/Parachoque-Traseiro.jpg");
+  /* #endregion PARACHOQUES */
+
+  /* #region RETROVISORES */
+  --retrovisores: url("/arquivos/img/preview/");
+  --capa-de-retrovisores: url("/arquivos/img/preview/Capa-de-Retrovisor.jpg");
+  --espelho-retrovisor-externo: url("/arquivos/img/preview/");
+  --espelho-retrovisor-interno: url("/arquivos/img/preview/");
+  --lente-do-retrovisor: url("/arquivos/img/preview/Lente do Retrovisor.jpg");
+  --pisca-retrovisor: url("/arquivos/img/preview/Pisca-Retrovisor.jpg");
+  --retrovisor-externo: url("/arquivos/img/preview/Retrovisor-Externo.jpg");
+  --retrovisor-interno: url("/arquivos/img/preview/Retrovisor-Interno.jpg");
+  /* #endregion RETROVISORES */
+
+  /* #region SUSPENSÕES */
+  --suspensoes: url("/arquivos/img/preview/");
+  --amortecedores: url("/arquivos/img/preview/Amortecedor.jpg");
+  --amortecedor-suspensao: url("/arquivos/img/preview/");
+  /* #endregion SUSPENSÕES */
+
+  /* #region RADIADORES */
+  --radiadores: url("/arquivos/img/preview/Radiador.jpg");
+  --aditivo-radiador: url("/arquivos/img/preview/Aditivo-de-Radiador.jpg");
+  --defletor-radiador: url("/arquivos/img/preview/Defletor Radiador.jpg");
+  --eletroventilador-radiador: url("/arquivos/img/preview/");
+  --gmv-radiador: url("/arquivos/img/preview/");
+  --grade-do-radiador: url("/arquivos/img/preview/Grade do Radiador.jpg");
+  --moldura-grade-radiador: url("/arquivos/img/preview/Moldura-Grande-do-Radiador.jpg");
+  --radiador: url("/arquivos/img/preview/Radiador.jpg");
+  /* #endregion RADIADORES */
+
+  /* #region CONDENSADORES */
+  --condensadores: url("/arquivos/img/preview/");
+  --condensador-ar-condicionado: url("/arquivos/img/preview/Condensador Ar Condicionado.jpg");
+  --gmv-condensador: url("/arquivos/img/preview/");
+  /* #endregion CONDENSADORES */
+
+  /* #region HIGIENIZADORES */
+  --higienizadores: url("/arquivos/img/preview/");
+  --higienizador-de-ar-condicionado: url("/arquivos/img/preview/");
+  /* #endregion HIGIENIZADORES */
+
+  /* #region FILTROS */
+  --filtros: url("/arquivos/img/preview/");
+  --filtro-ar-condicionado: url("/arquivos/img/preview/Filtro-de-Ar-Condicionado.jpg");
+  /* #endregion FILTROS */
+
+  /* #region BORRACHAS */
+  --borracha-janela: url("/arquivos/img/preview/Borracha-Janela.jpg");
+  --borracha-universal-parabrisa: url("/arquivos/img/preview/Borracha-de-Parabrisa.jpg");
+  --borracha-universal-vigia: url("/arquivos/img/preview/Borracha-do-Vidro-Traseiro.jpg");
+  --borracha-vigia: url("/arquivos/img/preview/Borracha-do-Vidro-Traseiro.jpg");
+  --borracha-parabrisa: url("/arquivos/img/preview/Borracha-de-Parabrisa.jpg");
+  /* #endregion BORRACHAS */
+
+  /* #region PALHETAS */
+  --palhetas: url("/arquivos/img/preview/");
+  --palheta-para-brisa: url("/arquivos/img/preview/Palheta-Parabrisa.jpg");
+  --palheta-vigia: url("/arquivos/img/preview/Palheta-Vidro-Traseiro.jpg");
+  /* #endregion PALHETAS */
+}
+
+/* #endregion IMAGENS DE CATEGORIA */
 
 /* ÍCONES */
 .map-marker-icon::before {
@@ -39,6 +162,18 @@
   height: 20px;
 }
 
+#prev-btn i:before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
+  display: inline-block;
+  height: 32px;
+  transform: rotateY(180deg);
+}
+
+#next-btn i:before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
+  height: 32px;
+}
+
 /* GLOBAL MODIFIERS */
 
 
@@ -47,6 +182,9 @@
   height: 40px;
   width: 100%;
 
+  position: sticky;
+  z-index: 10;
+  top: 0;
   display: flex;
   justify-content: center;
   background-color: var(--primary);
@@ -56,12 +194,14 @@
   color: var(--white);
 }
 
-.topo a {
+.topo a,
+.topo .usuario span{
   margin-left: 5px;
   padding: 10px 0;
 }
 
-.container {
+.topo .container,
+.nav .container {
   display: flex;
 
   align-items: center;
@@ -104,6 +244,41 @@
   text-decoration: none;
 }
 
+.topo .usuario .usuario__opcoes {
+  display: none;
+  list-style: none;
+  position: absolute;
+  background: var(--white);
+  color: var(--gray-700);
+  /*border: 1px solid var(--gray-300);*/
+  box-shadow: 0 0 5px;
+  z-index: 1;
+  min-width: 135px;
+  top: 40px;
+  font-size: 0.8rem;
+}
+
+.topo .usuario:hover .usuario__opcoes {
+  display: unset;
+}
+
+.topo .usuario .usuario__opcoes li:hover {
+  background-color: var(--gray-300);
+}
+
+.topo .usuario .usuario__opcoes li#logout {
+  border-top: 1px solid var(--gray-300);
+}
+
+.topo .usuario .usuario__opcoes a {
+  color: var(--gray-700);
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  margin: unset;
+  padding: 10px;
+}
+
 .topo .usuario .arrow-down-icon-white {
   margin-left: 5px;
 }
@@ -115,9 +290,13 @@
   height: 80px;
   width: 100%;
 
+  position: sticky;
+  z-index: 9;
+  top: 40px;
   display: flex;
   justify-content: center;
 
+  background: var(--white);
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
 }
 
@@ -127,6 +306,7 @@
 
 .nav .container .logo {
   transition: all .1s ease-in;
+  width: 95px;
 }
 
 .nav .container .logo:hover {
@@ -138,10 +318,19 @@
   min-width: 185px;
   color: var(--primary);
   transition: all .1s ease-in;
+  
+  height: 100%;
+  display: flex;
+  align-items: center;
+  z-index: 1;
+}
+
+.container .menu-categorias i.arrow-down-icon {
+  margin-left: 15px;
 }
 
 .container .menu-categorias:hover {
-  opacity: .9;
+  /*opacity: .9;*/
 }
 
 .container .search-box {
@@ -151,24 +340,36 @@
   align-items: center;
 }
 
-.container .search-box input {
+.container .search-box fieldset.busca {
+  width: 100%;
+}
+
+.container .search-box .busca select,
+.container .search-box .busca label,
+.container .search-box .busca legend,
+.container .search-box .busca input[type="button"]{
+  display: none;
+}
+
+.container .search-box .busca input {
   outline: none;
   padding: 10px 15px;
   border: 1px solid;
   border-color: var(--gray-500);
   border-radius: 4px;
   width: 100%;
+  color: var(--gray-500);
 
   transition: border 500ms;
 }
 
-.container .search-box input:focus,
-.container .search-box input:hover {
+.container .search-box fieldset.busca input:focus,
+.container .search-box fieldset.busca input:hover {
   border-color: var(--primary);
   transition: border 500ms;
 }
 
-.container .search-box input+.search-icon::before {
+.container .search-box fieldset.busca + .search-icon::before {
   margin-left: -30px;
 }
 
@@ -180,24 +381,60 @@
   display: flex;
   align-items: center;
   min-width: 140px;
+  cursor: pointer;
 }
 
 .container .menu-carrinho>* {
   margin: 0 5px -5px;
 }
 
+.container .menu-carrinho > .badge {
+    position: absolute;
+    right: -5px;
+    top: 35%;
+    background: var(--danger);
+    color: var(--white);
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    font-size: .75rem;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+}
+
+.container .menu-carrinho.loaded > .badge {
+    visibility: visible;
+    opacity: 1;
+    top: 30%;
+}
 
 
 
 
-
-.menu-categorias:hover .painel-categorias {
+.menu-categorias:hover .painel-categorias,
+.menu-categorias:focus .painel-categorias,
+.menu-categorias.ativo .painel-categorias
+{
   display: unset;
   opacity: 1;
 }
 
+.menu-categorias .menu-categorias__titulo {
+  transition: .5s;
+}
+
+.menu-categorias:hover .menu-categorias__titulo {
+  transform: scale(1.1);
+  font-weight: var(--bold);
+}
+
 .painel-categorias {
   width: 100%;
+  top: 30px;
   left: 0;
   padding: 15px 42px 42px 42px;
   opacity: 0;
@@ -222,7 +459,7 @@
   content: '';
   position: absolute;
   bottom: 100%;
-  left: 23.25rem;
+  left: 22.65rem;
   border: .75rem solid transparent;
   border-top: none;
 
@@ -235,15 +472,37 @@
   list-style: none;
 }
 
+.painel-categorias .slider-handlers {
+  position: absolute;
+  top: 72.5px;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  padding: 0 35px;
+}
+
+.painel-categorias .slider-handlers button {
+  background: transparent;
+  border: 0;
+  outline: 0;
+}
+
+.painel-categorias .slider-handlers button i {
+  display: flex;
+}
+
 .painel-categorias .painel-categorias__categoria {
   display: inline-block;
-  margin-right: 25px;
+  margin: 0 25px;
 }
 
-.painel-categorias .painel-categorias__categoria:not(:first-of-type) {
+/*.painel-categorias .painel-categorias__categoria:not(:first-of-type) {
   margin: 0 25px;
 
-}
+}*/
 
 .painel-categorias .painel-categorias__menu {
   height: 145px;
@@ -251,8 +510,10 @@
   mask-image: linear-gradient(rgba(0, 0, 0, 1.0), transparent);
   mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 10%);
   -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
+}
 
-
+.painel-categorias .painel-categorias__menu > ul {
+  transition: 1s;
 }
 
 .painel-categorias .painel-categorias__menu .painel-categorias__categoria-header {
@@ -309,9 +570,10 @@
   height: 15px;
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-  top: 153px;
+  top: 173px;
   left: 75px;
   z-index: 1;
+  transition: 1s;
 }
 
 
@@ -320,12 +582,266 @@
   font-size: 0.8750rem;
   padding: 32px 25px;
   display: none;
+  min-height: 250px;
 }
 
 .painel-categorias .painel-categorias__categoria-itens a {
   text-decoration: none;
   transition: all .1s ease-in;
 }
+
+.painel-categorias__categoria-itens.ativo a:hover:after {
+    position: absolute;
+    right: -40px;
+    bottom: -45px;
+}
+
+/* #region PREVIEW - VIDROS */
+#vidros.painel-categorias__categoria-itens.ativo a#parabrisa:hover:after {
+  content: var(--parabrisa);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#cantoneira:hover:after {
+  content: var(--cantoneira);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#janela:hover:after {
+  content: var(--janela);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#quebra-vento:hover:after {
+  content: var(--quebra-vento);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#vidro-de-porta:hover:after {
+  content: var(--vidro-de-porta);
+}
+
+#vidros.painel-categorias__categoria-itens.ativo a#vigia:hover:after {
+  content: var(--vidro-traseiro);
+}
+
+/* #endregion PREVIEW - VIDROS */
+
+/* #region PREVIEW - FARÓIS */
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#aro-farol-auxiliar:hover:after {
+  content: var(--aro-farol-auxiliar);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#farol-auxiliar:hover:after {
+  content: var(--farol-auxiliar);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#farol-diurno:hover:after {
+  content: var(--farol-diurno);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#farol-principal:hover:after {
+  content: var(--farol-principal);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#moldura-farol-auxiliar:hover:after {
+  content: var(--moldura-farol-auxiliar);
+}
+
+/* #endregion PREVIEW - FARÓIS */
+
+/* #region PREVIEW - LÂMPADAS */
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-farol-auxiliar:hover:after {
+  content: var(--lampada-farol-auxiliar);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-lanterna:hover:after {
+  content: var(--lampada-lanterna);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-lanterna-traseira:hover:after {
+  content: var(--lampada-lanterna-traseira);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-painel:hover:after {
+  content: var(--lampada-painel);
+}
+
+/* #endregion PREVIEW - LÂMPADAS */
+
+/* #region PREVIEW - LANTERNAS */
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lanterna:hover:after {
+  content: var(--lanterna);
+}
+
+#farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lanterna-para-choque:hover:after {
+  content: var(--lanterna-parachoque);
+}
+/* #endregion PREVIEW - LANTERNAS */
+
+/* #region PREVIEW - PARA-CHOQUES */
+#para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#grade-para-choque:hover:after {
+  content: var(--grade-parachoques);
+}
+
+#para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#moldura-paralama:hover:after {
+  content: var(--moldura-paralama);
+}
+
+#para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#para-choque-dianteiro:hover:after {
+  content: var(--parachoque-dianteiro);
+}
+
+#para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#para-choque-traseiro:hover:after {
+  content: var(--parachoque-traseiro);
+}
+
+/* #endregion PREVIEW - PARA-CHOQUES */
+
+/* #region PREVIEW - RETROVISORES */
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#retrovisor:hover:after {
+  content: var(--retrovisores);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#capa-retrovisor:hover:after {
+  content: var(--capa-de-retrovisores);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#espelho-retrovisor-externo:hover:after {
+  content: var(--espelho-retrovisor-externo);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#espelho-retrovisor-interno:hover:after {
+  content: var(--espelho-retrovisor-interno);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#lente-do-retrovisor:hover:after {
+  content: var(--lente-do-retrovisor);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#pisca-retrovisor:hover:after {
+  content: var(--pisca-retrovisor);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#retrovisor-externo:hover:after {
+  content: var(--retrovisor-externo);
+}
+
+#retrovisores.painel-categorias__categoria-itens.ativo a#retrovisor-interno:hover:after {
+  content: var(--retrovisor-interno);
+}
+
+/* #endregion PREVIEW - RETROVISORES */
+
+/* #region PREVIEW - SUSPENSÕES */
+
+#suspensoes.painel-categorias__categoria-itens.ativo a#amortecedor:hover:after {
+  content: var(--amortecedores);
+}
+
+#suspensoes.painel-categorias__categoria-itens.ativo a#amortecedor-suspensao:hover:after {
+  content: var(--amortecedor-suspensao);
+}
+
+/* #endregion PREVIEW - SUSPENSÕES */
+
+/* #region PREVIEW - RADIADORES */
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#aditivo-radiador:hover:after {
+  content: var(--aditivo-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#defletor-radiador:hover:after {
+  content: var(--defletor-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#eletroventilador-radiador:hover:after {
+  content: var(--eletroventilador-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#gmv-radiador:hover:after {
+  content: var(--gmv-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#grade-do-radiador:hover:after {
+  content: var(--grade-do-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#grade-do-radiador:hover:after {
+  content: var(--grade-do-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#moldura-grade-radiador:hover:after {
+  content: var(--moldura-grade-radiador);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#radiador:hover:after {
+  content: var(--radiador);
+}
+
+/* #endregion PREVIEW - RADIADORES */
+
+/* #region PREVIEW - CONDENSADORES */
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#condensador-ar-condicionado:hover:after {
+  content: var(--condensador-ar-condicionado);
+}
+
+#radiadores-condensadores.painel-categorias__categoria-itens.ativo a#gmv-condensador:hover:after {
+  content: var(--gmv-condensador);
+}
+
+/* #endregion PREVIEW - CONDENSADORES */
+
+/* #region PREVIEW - HIGIENIZADORES */
+
+#higienizadores-filtros.painel-categorias__categoria-itens.ativo a#higienizador-ar-condicionado:hover:after {
+  content: var(--higienizador-de-ar-condicionado);
+}
+
+/* #endregion PREVIEW - HIGIENIZADORES */
+
+/* #region PREVIEW - FILTROS */
+
+#higienizadores-filtros.painel-categorias__categoria-itens.ativo a#filtro-ar-condicionado:hover:after {
+  content: var(--filtro-ar-condicionado);
+}
+
+/* #endregion PREVIEW - FILTROS */
+
+/* #region PREVIEW - BORRACHAS */
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-janela:hover:after {
+  content: var(--borracha-janela);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-universal-parabrisa:hover:after {
+  content: var(--borracha-universal-parabrisa);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-universal-vigia:hover:after {
+  content: var(--borracha-universal-vigia);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-vigia:hover:after {
+  content: var(--borracha-vigia);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#borracha-parabrisa:hover:after {
+  content: var(--borracha-parabrisa);
+}
+
+/* #endregion PREVIEW - BORRACHAS */
+
+/* #region PREVIEW - PALHETAS */
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#palheta-para-brisa:hover:after {
+  content: var(--palheta-para-brisa);
+}
+
+#borrachas-palhetas.painel-categorias__categoria-itens.ativo a#palheta-vigia:hover:after {
+  content: var(--palheta-vigia);
+}
+
+/* #endregion PREVIEW - PALHETAS */
+
 
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   margin-left: 5px;
@@ -349,6 +865,7 @@
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li {
   margin-bottom: 15px;
   color: var(--gray-700);
+  min-width: 190px;
 }
 
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li>a {
