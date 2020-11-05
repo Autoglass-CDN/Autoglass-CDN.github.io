@@ -142,6 +142,10 @@ $(function () {
         });
 
         $('.timestamp').click(function () {
+          let event = new CustomEvent('AppointmentSelected.AG');
+
+          document.dispatchEvent(event);
+
           const loja = $(this).attr('data-store');
           const cep = $(this).attr('data-cep');
           const horario = $(this).html();
@@ -156,10 +160,6 @@ $(function () {
             date,
             _createAt: Date.now()
           }));
-
-          let event = new CustomEvent('AppointmentSelected.AG');
-
-          document.dispatchEvent(event);
 
           vtexjs.checkout.calculateShipping({
             postalCode: cep,
@@ -276,7 +276,7 @@ $(function () {
   let maxDate = new Date();
   maxDate = new Date(maxDate.getFullYear(), minDate.getMonth() + 2, 0);
 
-  $('.mz-advantages__content .cep  input').mask('99999-999');
+  $('.mz-advantages__content .cep  input').mask('99999-999').val('');
 
   $('#mostrar-datas-datepicker').datepicker({
     dateFormat: "dd/mm/yy",
