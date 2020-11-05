@@ -178,19 +178,19 @@ async function updateCartItemsCount(carrinho, orderForm) {
   carrinho.classList.remove('loaded');
   let badge = document.querySelector('.badge');
 
-  if(badge)
+  if (badge)
     badge.remove();
+
   
   if (orderForm && orderForm.items.length) {
     badge = document.createElement('span');
     badge.classList.add('badge');
     badge.innerHTML = orderForm.items.length;
     
-    carrinho.classList.add('loaded');
-    
     carrinho.append(badge);
+   
+    setTimeout(()=>carrinho.classList.add('loaded'),500);
   }
-  console.warn('carrinho atualizado');
 }
 
 (() => {
