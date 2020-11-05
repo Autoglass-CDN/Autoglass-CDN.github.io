@@ -142,9 +142,9 @@ $(function () {
         });
 
         $('.timestamp').click(function () {
-          let event = new CustomEvent('AppointmentSelected.AG');
-
-          document.dispatchEvent(event);
+          if (window.location.href.includes('checkout')) {
+            $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
+          }
 
           const loja = $(this).attr('data-store');
           const cep = $(this).attr('data-cep');
