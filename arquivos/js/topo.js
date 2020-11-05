@@ -175,7 +175,10 @@ async function loadCart() {
 }
 
 async function updateCartItemsCount(carrinho, orderForm) {
-  document.querySelector('.badge').remove();
+  let badge = document.querySelector('.badge');
+
+  if(badge)
+    badge.remove();
   
   if (orderForm && orderForm.items.length) {
     badge = document.createElement('span');
