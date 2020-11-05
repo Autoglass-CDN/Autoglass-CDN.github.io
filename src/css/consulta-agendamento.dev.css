@@ -309,6 +309,18 @@
   padding: 2px;
 }
 
+.ui-state-active, .ui-widget-content .ui-state-active {
+  background: #223B76 !important;
+  color: white;
+  border: none;
+}
+
+.secao-agendamento .time-list > .timestamp:focus {
+  background-color: #223B76;
+  color: white;
+  outline: none;
+}
+
 /* #endregion Modal - Instale em Casa */
 
 /* #region Modal - Retire na Loja */
