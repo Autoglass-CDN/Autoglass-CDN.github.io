@@ -290,7 +290,7 @@ $(function LojasMaisProximas() {
 		}
 
 		function maskCep() {
-			$(`${CONFIG.CSS.BASE} .cep input`).mask('99999-999');
+			$(`${CONFIG.CSS.BASE} .cep input`).mask('99999-999').val('');
 		}
 
 		function getCepValue() {
@@ -457,7 +457,7 @@ $(function CalculeOFrete() {
 		}
 
 		function maskCep() {
-			$(CONFIG.CSS.MODAL.CEP.INPUT).mask('99999-999');
+			$(CONFIG.CSS.MODAL.CEP.INPUT).mask('99999-999').val('');
 		}
 
 		function addClicks() {
@@ -609,8 +609,6 @@ $(function CalculeOFrete() {
 				country: 'BRA',
 				addressType: 'search'
 			});
-
-			// FORCE CEP SEARCH
 
 			vtexjs.checkout.calculateShipping({
 				postalCode: cep,
