@@ -276,7 +276,7 @@ $(function () {
   let maxDate = new Date();
   maxDate = new Date(maxDate.getFullYear(), minDate.getMonth() + 2, 0);
 
-  //$('.mz-advantages__content .cep  input').mask('99999-999').val('');
+  $('.mz-advantages__content .cep  input').mask('99999-999').val('');
 
   $('#mostrar-datas-datepicker').datepicker({
     dateFormat: "dd/mm/yy",
