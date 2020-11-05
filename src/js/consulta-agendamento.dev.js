@@ -305,6 +305,11 @@ $(function () {
         infos,
         _createAt: Date.now()
       }));
+
+      $('.preview-data').show();
+      $('.preview-data b').html(selectedDay);
+
+      $.get('/').then();
     },
     beforeShowDay: validadeAvailableDays
   });
