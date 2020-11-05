@@ -134,7 +134,6 @@ $(function () {
         data.Registros.forEach(function (store, index) {
           $(".secao-agendamento > .store-list").append(populateStore(store));
           if (data.Registros.length - 1 === index) {
-            console.log("ultima iteração");
             $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
               $(this).parent().next().toggleClass("hidden");
             });
@@ -145,6 +144,8 @@ $(function () {
           if (window.location.href.includes('checkout')) {
             $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
           }
+
+          $('.mz-install__button--buy').click(e => e.preventDefault());
 
           const loja = $(this).attr('data-store');
           const cep = $(this).attr('data-cep');
@@ -165,7 +166,7 @@ $(function () {
             postalCode: cep,
             country: 'BRA',
             addressType: 'search'
-          }).then((order) => { forceChangeShipping(order) });
+          }).then((order) => { forceChangeShipping(order); $('.mz-install__button--buy').unbind('click'); });
         });
       })
       .fail(() =>
