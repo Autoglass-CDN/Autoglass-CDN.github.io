@@ -175,6 +175,7 @@ async function loadCart() {
 }
 
 async function updateCartItemsCount(carrinho, orderForm) {
+  carrinho.classList.remove('loaded');
   let badge = document.querySelector('.badge');
 
   if(badge)
