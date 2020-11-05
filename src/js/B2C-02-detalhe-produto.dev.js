@@ -198,7 +198,7 @@ $(function LojasMaisProximas() {
 		}
 
 		function _init() {
-			//View.maskCep();
+			View.maskCep();
 			simulateShipping();
 		}
 
@@ -207,7 +207,7 @@ $(function LojasMaisProximas() {
 			let cepValue = View.getCepValue();
 
 			if (cepValue || shippingData.address) {
-				if (cepValue != 1) {
+				if (cepValue == 1) {
 					cepValue = ''
 					$(`.cep input`).val('');
 				}
@@ -456,7 +456,7 @@ $(function CalculeOFrete() {
 		}
 
 		function _init() {
-			//maskCep();
+			maskCep();
 			hideContent();
 			addClicks();
 
