@@ -37,16 +37,18 @@ $(function () {
   let estado = codCidades[$.cookie("mzLocationUF")];
   let codCidade = estado.code || null;
 
-  $(window).on('orderFormUpdated.vtex', (_, order) => {
-    if (order.shippingData.address.state) {
-      estado = codCidades[order.shippingData.address.state];
-      codCidade = estado.code || null;
+  if (window.location.href.includes('checkout')) {
+    $(window).on('orderFormUpdated.vtex', (_, order) => {
+      if (order.shippingData.address.state) {
+        estado = codCidades[order.shippingData.address.state];
+        codCidade = estado.code || null;
 
-      $('.store').remove();
+        $('.store').remove();
 
-      recuperarHorarios();
-    }
-  });
+        recuperarHorarios();
+      }
+    });
+  }
 
   let tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 1);
@@ -155,15 +157,15 @@ $(function () {
             _createAt: Date.now()
           }));
 
+          let event = new CustomEvent('AppointmentSelected.AG');
+
+          document.dispatchEvent(event);
+
           vtexjs.checkout.calculateShipping({
             postalCode: cep,
             country: 'BRA',
             addressType: 'search'
           }).then((order) => { forceChangeShipping(order) });
-
-          let event = new CustomEvent('AppointmentSelected.AG');
-
-          document.dispatchEvent(event);
         });
       })
       .fail(() =>
