@@ -318,6 +318,7 @@ $(function () {
 
   $('#input-cep-btn').click(async (e) => {
     $('#aviso-servico-movel').hide();
+    $('.preview-data').hide();
     e.preventDefault();
     const cep = $('#cep-input').val();
 
