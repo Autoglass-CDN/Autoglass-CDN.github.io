@@ -204,13 +204,14 @@ $(function LojasMaisProximas() {
 
 		async function simulateShipping() {
 			let { shippingData } = await Service.getOrderForm();
-			const cepValue = View.getCepValue();
+			let cepValue = View.getCepValue();
 
 			if (cepValue || shippingData.address) {
 				if (cepValue != 1) {
 					cepValue = ''
 					$(`.cep input`).val('');
 				}
+
 				const sendCep = cepValue && cepValue != 1 ? { postalCode: cepValue } : shippingData.address;
 				shippingData = await Service.simulateShipping(sendCep);
 
