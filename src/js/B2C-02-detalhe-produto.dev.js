@@ -207,7 +207,7 @@ $(function LojasMaisProximas() {
 			const cepValue = View.getCepValue();
 
 			if (cepValue || shippingData.address) {
-				const sendCep = cepValue ? { postalCode: cepValue } : shippingData.address;
+				const sendCep = cepValue && cepValue != 1 ? { postalCode: cepValue } : shippingData.address;
 				shippingData = await Service.simulateShipping(sendCep);
 
 				SLA = shippingData
@@ -454,6 +454,8 @@ $(function CalculeOFrete() {
 			maskCep();
 			hideContent();
 			addClicks();
+
+			setTimeout(() => $(CONFIG.CSS.MODAL.CEP.INPUT).val(''), 200);
 		}
 
 		function maskCep() {
