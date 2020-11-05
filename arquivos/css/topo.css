@@ -20,6 +20,10 @@ body.home {
   margin-top: unset;
 }
 
+.shelf-qd-v1:hover {
+    z-index: unset;
+}
+
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
 /* #region IMAGENS DE CATEGORIA */
