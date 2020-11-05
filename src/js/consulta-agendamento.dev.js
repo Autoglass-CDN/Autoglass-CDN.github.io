@@ -390,8 +390,9 @@ $(function () {
           DataRoteiro: new Date(x.DataRoteiro)
         }));
 
-        //$('#mostrar-datas-datepicker').datepicker('setDate', minDate);
+        $('#mostrar-datas-datepicker').datepicker('setDate', minDate);
         $('#mostrar-datas-datepicker').datepicker('refresh');
+        $('a.ui-state-active').removeClass('ui-state-active');
 
         $('#mostrar-datas-datepicker').css('height', '228px');
       } catch (err) {
