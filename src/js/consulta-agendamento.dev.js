@@ -276,7 +276,7 @@ $(function () {
   let maxDate = new Date();
   maxDate = new Date(maxDate.getFullYear(), minDate.getMonth() + 2, 0);
 
-  //$('.mz-advantages__content .cep  input').mask('99999-999').val('');
+  $('.mz-advantages__content .cep  input').mask('99999-999').val('');
 
   $('#mostrar-datas-datepicker').datepicker({
     dateFormat: "dd/mm/yy",
@@ -305,6 +305,11 @@ $(function () {
         infos,
         _createAt: Date.now()
       }));
+
+      $('.preview-data').show();
+      $('.preview-data b').html(selectedDay);
+
+      $.get('/').then();
     },
     beforeShowDay: validadeAvailableDays
   });
