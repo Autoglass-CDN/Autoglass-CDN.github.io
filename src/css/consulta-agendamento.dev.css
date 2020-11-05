@@ -106,8 +106,9 @@
   border-radius: 4px;
   font-size: 14px;
   font-weight: 500;
-  color: #a1a1a1;
-  background-color: #e2e2e2;
+  color: #565656;
+  background-color: #ffffff;
+  border: 1px solid #929292;
 }
 .secao-agendamento .hidden {
   display: none;
@@ -319,6 +320,7 @@
   background-color: #223B76;
   color: white;
   outline: none;
+  border: 1px solid #223B76;
 }
 
 /* #endregion Modal - Instale em Casa */
