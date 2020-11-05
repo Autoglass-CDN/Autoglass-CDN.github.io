@@ -306,8 +306,9 @@ $(function () {
         _createAt: Date.now()
       }));
 
-      $('.preview-data').show();
+      $('.preview-data').fadeOut(500);
       $('.preview-data b').html(selectedDay);
+      $('.preview-data').fadeIn(500);
 
       $.get('/').then();
     },
