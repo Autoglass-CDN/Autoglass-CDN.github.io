@@ -349,11 +349,13 @@ $(function LojasMaisProximas() {
 		}
 
 		function sendCalculateShipping(cep, type) {
+			$('.mz-pickup__button--buy').click(e => e.preventDefault());
+
 			vtexjs.checkout.calculateShipping({
 				postalCode: cep,
 				country: 'BRA',
 				addressType: type
-			}).then(order => forceChangeShipping(order));
+			}).then(order => { forceChangeShipping(order); $('.mz-pickup__button--buy').unbind('click'); });
 		}
 
 		function forceChangeShipping(orderForm) {
@@ -517,7 +519,6 @@ $(function CalculeOFrete() {
 		function buildListDelivery(deliverys) {
 			let html = '';
 
-			console.log(deliverys, !deliverys.length);
 			if (deliverys.length) {
 				deliverys.forEach(({ id, name, price, shippingEstimate }) => {
 					html += `
