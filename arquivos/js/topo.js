@@ -163,15 +163,20 @@ async function fixPlaceholderSearch() {
   }, 1000);
 }
 
-async function loadCartItemsCount() {
+async function loadCart() {
   let carrinho = document.querySelector('.menu-carrinho');
-  carrinho.addEventListener('click',(event)=>{
+  carrinho.addEventListener('click', (event) => {
     window.location.href = '/checkout/#/cart';
   });
 
   let orderForm = await vtexjs.checkout.getOrderForm();
-  
-  if(orderForm && orderForm.items.length){
+
+  await updateCartItemsCount(carrinho, orderForm);
+}
+
+async function updateCartItemsCount(carrinho, orderForm) {
+  console.warn('carrinho atualizado');
+  if (orderForm && orderForm.items.length) {
     let badge = document.querySelector('.badge') || document.createElement('span');
     badge.classList.add('badge');
     badge.innerHTML = orderForm.items.length;
@@ -219,12 +224,12 @@ async function loadCartItemsCount() {
     });
   checkLogin();
   fixPlaceholderSearch();
-  loadCartItemsCount();
+  loadCart();
     
-  $('a.btn.btn-add-buy-button-asynchronous.btn-not-clicked.asynchronousBuyButton.actionActivated.vtexsm_activated.qd-sbb-on').on('click',(e)=>{
+  $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
     let carrinho = document.querySelector('.menu-carrinho');
-  
-    updateCartItemsCount(carrinho);
+
+    updateCartItemsCount(carrinho, orderForm);
   });
 }
 )();
