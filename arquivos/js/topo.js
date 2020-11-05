@@ -175,17 +175,18 @@ async function loadCart() {
 }
 
 async function updateCartItemsCount(carrinho, orderForm) {
-  console.warn('carrinho atualizado');
+  document.querySelector('.badge').remove();
+  
   if (orderForm && orderForm.items.length) {
-    let badge = document.querySelector('.badge') || document.createElement('span');
+    badge = document.createElement('span');
     badge.classList.add('badge');
     badge.innerHTML = orderForm.items.length;
-
+    
     carrinho.classList.add('loaded');
-
-    if (!document.querySelector('.badge'))
-      carrinho.append(badge);
+    
+    carrinho.append(badge);
   }
+  console.warn('carrinho atualizado');
 }
 
 (() => {
