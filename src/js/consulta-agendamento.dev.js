@@ -161,9 +161,9 @@ $(function () {
             addressType: 'search'
           }).then((order) => { forceChangeShipping(order) });
 
-          let event = new Event('AppointmentSelected.AG');
+          let event = new CustomEvent('AppointmentSelected.AG');
 
-          window.dispatchEvent(event);
+          document.dispatchEvent(event);
         });
       })
       .fail(() =>
