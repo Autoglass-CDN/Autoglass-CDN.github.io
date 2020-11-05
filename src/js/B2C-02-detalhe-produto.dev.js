@@ -198,7 +198,7 @@ $(function LojasMaisProximas() {
 		}
 
 		function _init() {
-			View.maskCep();
+			//View.maskCep();
 			simulateShipping();
 		}
 
@@ -456,7 +456,7 @@ $(function CalculeOFrete() {
 		}
 
 		function _init() {
-			maskCep();
+			//maskCep();
 			hideContent();
 			addClicks();
 
