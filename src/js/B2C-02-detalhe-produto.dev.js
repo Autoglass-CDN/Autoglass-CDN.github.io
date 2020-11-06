@@ -445,11 +445,25 @@ $(function CalculeOFrete() {
 		async function searchDeliverys(address) {
 			const { logisticsInfo } = await Service.simulateShipping({ postalCode: address });
 
-			SLA = logisticsInfo[0].slas
+			[cheapestOption, fastestOption] = logisticsInfo[0].slas
 				.filter(x => x.deliveryChannel === 'delivery');
 
-			View.buildListDelivery(SLA);
-			// View.selectShipping();
+			let cEstimate, fEstimate;
+
+			if (fastestOption) {
+				cEstimate = Service.getEstimateDays(cheapestOption.shippingEstimate);
+				fEstimate = Service.getEstimateDays(fastestOption.shippingEstimate);
+			}
+
+			if (fastestOption && (fEstimate < cEstimate)) {
+				View.buildListDelivery([cheapestOption, fastestOption]);
+				View.selectShipping();
+			} else if (cheapestOption) {
+				View.buildListDelivery([cheapestOption]);
+			} else {
+				View.buildListDelivery([]);
+			}
+
 			Service.sendCalculateShipping(address);
 		}
 	}
@@ -558,7 +572,8 @@ $(function CalculeOFrete() {
 			formatPrice,
 			formatEstimate,
 			saveSelectedDelivery,
-			sendCalculateShipping
+			sendCalculateShipping,
+			getEstimateDays
 		}
 
 		function formatPrice(price) {
@@ -574,6 +589,14 @@ $(function CalculeOFrete() {
 			value += decimal;
 
 			return value;
+		}
+
+		function getEstimateDays(estimate) {
+			if (estimate) {
+				const match = estimate.match(/\d+/);
+
+				return +match[0];
+			}
 		}
 
 		function formatEstimate(estimate) {
