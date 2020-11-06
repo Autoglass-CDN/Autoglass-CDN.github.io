@@ -453,7 +453,11 @@ $(function CalculeOFrete() {
 			if (fastestOption) {
 				cEstimate = Service.getEstimateDays(cheapestOption.shippingEstimate);
 				fEstimate = Service.getEstimateDays(fastestOption.shippingEstimate);
+
+				fastestOption.name = 'Mais rápida';
 			}
+
+			cheapestOption.name = 'Mais econômica';
 
 			if (fastestOption && (fEstimate < cEstimate)) {
 				View.buildListDelivery([cheapestOption, fastestOption]);
