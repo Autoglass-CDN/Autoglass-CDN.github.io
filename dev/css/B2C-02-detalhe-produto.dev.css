@@ -738,8 +738,9 @@ body.mz-sf-on .mz-modal-shipping {
   margin: 10px 0px;
 }
 
-.shipping:before {
+.shipping .shipping__name b:before {
   content: '';
+  padding: 10px;
   padding-left: 0px;
   transition: padding-left 1s ease, background-position 1s ease,  margin-right 1s ease, height 1s ease;
   height: 0px;
@@ -748,10 +749,10 @@ body.mz-sf-on .mz-modal-shipping {
   filter: grayscale(1) opacity(.2);
 }
 
-.shipping:hover:before,
-.shipping.selected:before {
+.shipping:hover .shipping__name b:before,
+.shipping.selected .shipping__name b:before {
+  padding: 10px;
   padding-left: 50px;
-  margin-right: 10px;
   background-position: 0px;
   height: 48px;
 }
@@ -764,7 +765,7 @@ body.mz-sf-on .mz-modal-shipping {
   border: 1px solid #223B76;
 }
 
-.shipping.selected:before {
+.shipping.selected .shipping__name b:before {
   filter: grayscale(0);
 }
 
@@ -786,6 +787,11 @@ body.mz-sf-on .mz-modal-shipping {
   .shipping div.shipping__price {
      margin: 0;
   }
+
+  .shipping .shipping__name {
+    margin-top: 10px;
+  }
+
 }
 
 /* #endregion Modal - Calcule o Frete */

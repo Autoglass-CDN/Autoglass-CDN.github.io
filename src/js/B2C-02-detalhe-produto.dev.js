@@ -613,9 +613,10 @@ $(function CalculeOFrete() {
 		}
 
 		function saveSelectedDelivery(id) {
-			id
-				? localStorage.setItem('AG_SeletedDelivery', JSON.stringify(SLA.find(x => x.id === id)))
-				: localStorage.removeItem('AG_SeletedDelivery');
+			const selectedSLA = SLA.find(x => x.id === id);
+
+			localStorage.setItem('AG_SeletedDelivery', JSON.stringify(selectedSLA));
+			forceChangeShipping(selectedSLA);
 		}
 
 		async function simulateShipping(address) {
@@ -650,6 +651,39 @@ $(function CalculeOFrete() {
 				country: 'BRA',
 				addressType: 'residential'
 			});
+		}
+
+		async function forceChangeShipping(selectedSLA) {
+			const orderForm = await vtexjs.checkoout.getOrderForm();
+
+			const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
+			const logistic = orderForm.shippingData.logisticsInfo[0];
+
+			if (logistic) {
+				const logisticsInfo = orderForm.shippingData.logisticsInfo.map(x => {
+					return {
+						addressId: newSelectedAddresses[0].addressId,
+						itemIndex: x.itemIndex,
+						selectedDeleveryChannel: 'pickup-in-point',
+						selectedSla: selectedSLA.id
+					}
+				});
+
+				fetch(`/api/checkout/pub/orderForm/${orderForm.orderFormId}/attachments/shippingData`, {
+					method: 'post',
+					body: JSON.stringify({
+						clearAddressIfPostalCodeNotFound: false,
+						expectedOrderFormSections: ['shippingData'],
+						selectedAddresses: newSelectedAddresses,
+						logisticsInfo
+					})
+				}).then(res => res.json()).then(x => {
+					vtexjs.checkout.sendAttachment('shippingData', {
+						selectedAddresses: newSelectedAddresses,
+						logisticsInfo
+					});
+				});
+			}
 		}
 	}
 });
