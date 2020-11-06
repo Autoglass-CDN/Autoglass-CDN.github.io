@@ -445,19 +445,22 @@ $(function CalculeOFrete() {
 		async function searchDeliverys(address) {
 			const { logisticsInfo } = await Service.simulateShipping({ postalCode: address });
 
-			[cheapestOption, fastestOption] = logisticsInfo[0].slas
+			SLA = logisticsInfo[0].slas
 				.filter(x => x.deliveryChannel === 'delivery');
 
+			const [cheapestOption, fastestOption] = SLA;
+
 			let cEstimate, fEstimate;
+
+			cheapestOption.name = 'Melhor opção';
 
 			if (fastestOption) {
 				cEstimate = Service.getEstimateDays(cheapestOption.shippingEstimate);
 				fEstimate = Service.getEstimateDays(fastestOption.shippingEstimate);
 
 				fastestOption.name = 'Mais rápida';
+				cheapestOption.name = 'Mais econômica';
 			}
-
-			cheapestOption.name = 'Mais econômica';
 
 			if (fastestOption && (fEstimate < cEstimate)) {
 				View.buildListDelivery([cheapestOption, fastestOption]);
