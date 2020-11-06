@@ -360,30 +360,34 @@ $(function LojasMaisProximas() {
 
 		function forceChangeShipping(orderForm) {
 			const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
-			const slas = orderForm.shippingData.logisticsInfo[0].slas.filter(x => x.deliveryChannel === 'pickup-in-point');
-			const logisticsInfo = orderForm.shippingData.logisticsInfo.map(x => {
-				return {
-					addressId: newSelectedAddresses[0].addressId,
-					itemIndex: x.itemIndex,
-					selectedDeleveryChannel: 'pickup-in-point',
-					selectedSla: slas[0].id
-				}
-			});
+			const logistic = orderForm.shippingData.logisticsInfo[0];
 
-			fetch(`/api/checkout/pub/orderForm/${orderForm.orderFormId}/attachments/shippingData`, {
-				method: 'post',
-				body: JSON.stringify({
-					clearAddressIfPostalCodeNotFound: false,
-					expectedOrderFormSections: ['shippingData'],
-					selectedAddresses: newSelectedAddresses,
-					logisticsInfo
-				})
-			}).then(res => res.json()).then(x => {
-				vtexjs.checkout.sendAttachment('shippingData', {
-					selectedAddresses: newSelectedAddresses,
-					logisticsInfo
+			if (logistic) {
+				const slas = logistic.slas.filter(x => x.deliveryChannel === 'pickup-in-point');
+				const logisticsInfo = orderForm.shippingData.logisticsInfo.map(x => {
+					return {
+						addressId: newSelectedAddresses[0].addressId,
+						itemIndex: x.itemIndex,
+						selectedDeleveryChannel: 'pickup-in-point',
+						selectedSla: slas[0].id
+					}
 				});
-			});
+
+				fetch(`/api/checkout/pub/orderForm/${orderForm.orderFormId}/attachments/shippingData`, {
+					method: 'post',
+					body: JSON.stringify({
+						clearAddressIfPostalCodeNotFound: false,
+						expectedOrderFormSections: ['shippingData'],
+						selectedAddresses: newSelectedAddresses,
+						logisticsInfo
+					})
+				}).then(res => res.json()).then(x => {
+					vtexjs.checkout.sendAttachment('shippingData', {
+						selectedAddresses: newSelectedAddresses,
+						logisticsInfo
+					});
+				});
+			}
 		}
 	}
 });
