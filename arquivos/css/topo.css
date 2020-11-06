@@ -400,7 +400,13 @@ body.home {
   display: flex;
   align-items: center;
   min-width: 140px;
+  height: 100%;
   cursor: pointer;
+  transition: .5s
+}
+
+.container .menu-carrinho:hover {
+  transform: scale(1.05);
 }
 
 .container .menu-carrinho>* {
