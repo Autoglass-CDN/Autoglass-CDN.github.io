@@ -452,20 +452,19 @@ $(function CalculeOFrete() {
 
 			let cEstimate, fEstimate;
 
-			cheapestOption.name = 'Melhor opção';
-
 			if (fastestOption) {
 				cEstimate = Service.getEstimateDays(cheapestOption.shippingEstimate);
 				fEstimate = Service.getEstimateDays(fastestOption.shippingEstimate);
-
-				fastestOption.name = 'Mais rápida';
-				cheapestOption.name = 'Mais econômica';
 			}
 
 			if (fastestOption && (fEstimate < cEstimate)) {
+				fastestOption.name = 'Mais rápida';
+				cheapestOption.name = 'Mais econômica';
+
 				View.buildListDelivery([cheapestOption, fastestOption]);
-				View.selectShipping();
+				//View.selectShipping();
 			} else if (cheapestOption) {
+				cheapestOption.name = 'Melhor opção';
 				View.buildListDelivery([cheapestOption]);
 			} else {
 				View.buildListDelivery([]);
@@ -658,39 +657,6 @@ $(function CalculeOFrete() {
 				country: 'BRA',
 				addressType: 'residential'
 			});
-		}
-
-		async function forceChangeShipping(selectedSLA) {
-			const orderForm = await vtexjs.checkout.getOrderForm();
-
-			const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
-			const logistic = orderForm.shippingData.logisticsInfo[0];
-
-			if (logistic) {
-				const logisticsInfo = orderForm.shippingData.logisticsInfo.map(x => {
-					return {
-						addressId: newSelectedAddresses[0].addressId,
-						itemIndex: x.itemIndex,
-						selectedDeleveryChannel: 'pickup-in-point',
-						selectedSla: selectedSLA.id
-					}
-				});
-
-				fetch(`/api/checkout/pub/orderForm/${orderForm.orderFormId}/attachments/shippingData`, {
-					method: 'post',
-					body: JSON.stringify({
-						clearAddressIfPostalCodeNotFound: false,
-						expectedOrderFormSections: ['shippingData'],
-						selectedAddresses: newSelectedAddresses,
-						logisticsInfo
-					})
-				}).then(res => res.json()).then(x => {
-					vtexjs.checkout.sendAttachment('shippingData', {
-						selectedAddresses: newSelectedAddresses,
-						logisticsInfo
-					});
-				});
-			}
 		}
 	}
 });
