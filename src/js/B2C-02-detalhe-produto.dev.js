@@ -453,7 +453,11 @@ $(function CalculeOFrete() {
 			if (fastestOption) {
 				cEstimate = Service.getEstimateDays(cheapestOption.shippingEstimate);
 				fEstimate = Service.getEstimateDays(fastestOption.shippingEstimate);
+
+				fastestOption.name = 'Mais rápida';
 			}
+
+			cheapestOption.name = 'Mais econômica';
 
 			if (fastestOption && (fEstimate < cEstimate)) {
 				View.buildListDelivery([cheapestOption, fastestOption]);
@@ -654,7 +658,7 @@ $(function CalculeOFrete() {
 		}
 
 		async function forceChangeShipping(selectedSLA) {
-			const orderForm = await vtexjs.checkoout.getOrderForm();
+			const orderForm = await vtexjs.checkout.getOrderForm();
 
 			const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
 			const logistic = orderForm.shippingData.logisticsInfo[0];
