@@ -238,6 +238,7 @@ $(function LojasMaisProximas() {
 			let html = '';
 
 			if (pickups.length) {
+				$('.without-store').hide();
 				pickups.forEach(({ id, shippingEstimate, pickupDistance, pickupStoreInfo }) => {
 					html += `
 						<li id="${id}" class="pickup">
@@ -265,7 +266,8 @@ $(function LojasMaisProximas() {
 						`;
 				})
 			} else {
-				html += 'Não encontramos pontos de retirada próximos a você.';
+				$('.without-store').show();
+				html += '<span><a onclick="$zopim.livechat.window.show()">Clique aqui</a> e fale com a gente pelo chat!</span>';
 			}
 
 			$(CONFIG.CSS.MODAL_LIST).html(html)
@@ -308,7 +310,8 @@ $(function LojasMaisProximas() {
 			getOrderForm,
 			simulateShipping,
 			calculateTimeEstimate,
-			saveSelectedPickupPoint
+			saveSelectedPickupPoint,
+			sendCalculateShipping
 		}
 
 		function calculateTimeEstimate(estimate) {
