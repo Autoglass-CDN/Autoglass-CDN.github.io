@@ -567,6 +567,14 @@ $(function CalculeOFrete() {
 				$(CONFIG.CSS.MODAL.TITLE.EMPTY).show();
 			}
 
+			if (deliverys.length > 2) {
+				html += `
+					<div style="text-align: center;margin-top: 20px;">
+						<b>Selecione a opção desejada no carrinho.</b>
+					</div>
+				`;
+			}
+
 			$(CONFIG.CSS.MODAL.LIST).html(html);
 			$(CONFIG.CSS.MODAL.CONTENT).show();
 		}
