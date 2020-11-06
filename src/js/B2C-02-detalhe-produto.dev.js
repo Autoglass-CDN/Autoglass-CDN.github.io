@@ -567,7 +567,7 @@ $(function CalculeOFrete() {
 				$(CONFIG.CSS.MODAL.TITLE.EMPTY).show();
 			}
 
-			if (deliverys.length > 2) {
+			if (deliverys.length > 1) {
 				html += `
 					<div style="text-align: center;margin-top: 20px;">
 						<b>Selecione a opção desejada no carrinho.</b>
