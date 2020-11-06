@@ -24,6 +24,15 @@ body.home {
     z-index: unset;
 }
 
+.modal-backdrop {
+  z-index: 10;
+}
+
+.header-qd-v1 {
+  padding-top: 0;
+  z-index: 10;
+}
+
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
 /* #region IMAGENS DE CATEGORIA */
