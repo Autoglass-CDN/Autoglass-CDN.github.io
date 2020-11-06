@@ -654,7 +654,7 @@ $(function CalculeOFrete() {
 		}
 
 		async function forceChangeShipping(selectedSLA) {
-			const orderForm = await vtexjs.checkoout.getOrderForm();
+			const orderForm = await vtexjs.checkout.getOrderForm();
 
 			const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
 			const logistic = orderForm.shippingData.logisticsInfo[0];
