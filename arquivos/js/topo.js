@@ -92,7 +92,7 @@ async function checkLogin() {
           <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
           <li><a href="/_secure/account#/cards">Cartões</a></li>
           <li><a href="/_secure/account#/addresses">Endereços</a></li>
-          <li id="logout"><a href="/no-cache/user/logout">Sair</a></li>
+          <li id="logout"><button onclick="document.querySelector(#saindo).style.display = 'block'">Sair</button></li>
         </ul>`;
       //<a id="logout" href="/no-cache/user/logout">Sair</a>
     } else {
