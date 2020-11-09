@@ -301,7 +301,7 @@ body.home {
 
 .topo .usuario .usuario__opcoes #logout button {
   text-align: left;
-  background: var(--white);
+  background: transparent;
   border: 0;
 }
 
