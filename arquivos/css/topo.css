@@ -289,13 +289,20 @@ body.home {
   border-top: 1px solid var(--gray-300);
 }
 
-.topo .usuario .usuario__opcoes a {
+.topo .usuario .usuario__opcoes a,
+.topo .usuario .usuario__opcoes #logout button {
   color: var(--gray-700);
   display: inline-block;
   width: 100%;
   height: 100%;
   margin: unset;
   padding: 10px;
+}
+
+.topo .usuario .usuario__opcoes #logout button {
+  text-align: left;
+  background: var(--white);
+  border: 0;
 }
 
 .topo .usuario .arrow-down-icon-white {
