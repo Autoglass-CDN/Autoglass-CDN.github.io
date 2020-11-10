@@ -1,4 +1,4 @@
-/* Reset CSS MZ */
+/* #region Reset CSS MZ */
 
 .product-qd-v1-sku-selection-box .product-qd-v1-sku-selection-row p {
   font-size: 14px;
@@ -86,7 +86,9 @@
   padding-left: 0;
 }
 
-/* TOOLTIP DO CEP */
+/* #endregion Reset CSS MZ */
+
+/* #region TOOLTIP DO CEP */
 
 #txtCep+.ttp {
   position: relative;
@@ -125,11 +127,12 @@
   opacity: 1;
 }
 
-/* FIM DO TOOLTIP */
+/* #endregion FIM DO TOOLTIP */
 
 /* MODAL - LISTA DE LOJAS - RETIRADA */
 
-.mz-modal-pickup {
+.mz-modal-pickup,
+.mz-modal-shipping {
   width: 80%;
   position: fixed;
   padding: 20px;
@@ -143,7 +146,8 @@
 }
 
 @media (min-width: 992px) {
-  .mz-modal-pickup {
+  .mz-modal-pickup,
+  .mz-modal-shipping {
     width: 600px;
   }
 }
@@ -152,12 +156,14 @@ body.mz-pu-on .mz-modal-pickup {
   display: block;
 }
 
-.mz-modal-pickup .mz-pickup__close {
+.mz-modal-pickup .mz-pickup__close,
+.mz-modal-shipping .mz-shipping__close {
   position: relative;
   padding-bottom: 10px;
 }
 
-.mz-modal-pickup .mz-pickup__close span {
+.mz-modal-pickup .mz-pickup__close span,
+.mz-modal-shipping .mz-shipping__close span {
   position: absolute;
   top: -5px;
   right: -5px;
@@ -165,7 +171,8 @@ body.mz-pu-on .mz-modal-pickup {
   font-size: 0;
 }
 
-.mz-modal-pickup .mz-pickup__close span:before {
+.mz-modal-pickup .mz-pickup__close span:before,
+.mz-modal-shipping .mz-shipping__close span:before {
   content: "\f00d";
   display: inline-block;
   font-size: 1em;
@@ -180,20 +187,23 @@ body.mz-pu-on .mz-modal-pickup {
   font-size: 18px;
 }
 
-.mz-modal-pickup .mz-pickup__title h2 {
+.mz-modal-pickup .mz-pickup__title h2,
+.mz-modal-shipping .mz-shipping__title h2 {
   color: #757575;
   font-size: 26px;
   font-weight: 400;
 }
 
-.mz-modal-pickup .mz-pickup__title span {
+.mz-modal-pickup .mz-pickup__title span,
+.mz-modal-shipping .mz-shipping__title span {
   display: block;
   color: #333333;
   font-size: 12px;
   margin: 10px auto;
 }
 
-.mz-modal-pickup .mz-pickup__title .mz-title__bottomBorder {
+.mz-modal-pickup .mz-pickup__title .mz-title__bottomBorder,
+.mz-modal-shipping .mz-shipping__title .mz-title__bottomBorder {
   display: block;
   border-bottom: 1px solid #bdbdbd;
   margin-bottom: 10px;
@@ -272,11 +282,13 @@ body.mz-pu-on .mz-modal-pickup {
   color: #2d4f9e;
 }
 
-.mz-modal-pickup .mz-pickup__button {
+.mz-modal-pickup .mz-pickup__button,
+.mz-modal-shipping .mz-shipping__button {
   margin-top: 15px;
 }
 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy {
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy,
+.mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy {
   border: #43c452 solid;
   border-width: 2px;
   transition: all 0.2s ease-out;
@@ -293,22 +305,32 @@ body.mz-pu-on .mz-modal-pickup {
   font-size: 16px;
 }
 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover, .mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus {
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover,
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus,
+.mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:hover,
+.mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:focus {
   color: #fff;
   background: #43c452;
   border-color: #43c452;
 }
 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active {
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active,
+.mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:active {
   background: #43c452;
   color: #fff;
 }
 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover, .mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus, .mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active {
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover, 
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus, 
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active,
+.mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:hover,
+.mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:focus,
+.mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:active {
   text-decoration: none;
 }
 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:before {
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:before,
+.mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:before {
   content: "\f07a";
   display: inline-block;
   font-size: 1em;
@@ -467,6 +489,7 @@ p.descricao-rollout {
   padding: 0 10px;
 }
 
+
 /* #region Opções de Entrega */
 .installment-type-list {
   display: flex;
@@ -553,3 +576,249 @@ input.tipo-instalacao:checked + label::before {
   }
 }
 /* #endregion Opções de Entrega */
+
+/* #region Modal - Retire na Loja */
+.mz-pickup-stores__list ul {
+  list-style: none;
+  padding: 0;
+  height: 300px;
+  overflow-x: auto;
+}
+
+.mz-pickup__stores .mz-stores__title .store {
+  margin: 10px 0px;
+}
+
+.pickup {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #f4f4f4;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pickup:hover {
+  border: 1px solid #c4c4c4;
+}
+
+.pickup.selected {
+  border: 1px solid #223B76;
+}
+
+.pickup.selected .pickup__estimate {
+  border-top: 1px solid #223B76;
+}
+
+.pickup + .pickup {
+  margin-top: 10px;
+}
+
+.pickup__info {
+  display: flex;
+  padding: 12px;
+}
+
+.pickup__info-address p,
+.pickup__info-distance p {
+  margin: 0;
+}
+
+.pickup__info-distance svg {
+   transform: translateY(-5px);
+   transition: transform;
+}
+
+.pickup:hover .pickup__info-distance svg {
+   animation: hoverDistanceAnimation 1s infinite;
+}
+
+.pickup.selected .pickup__info-distance svg {
+  transform: translateY(4px);
+}
+
+.pickup__info-address .address-title {
+  font-size: 18px;
+  margin-bottom: 7px;
+}
+
+.pickup__info-address .address-location {
+  margin-bottom: 5px;
+}
+
+.pickup__info-distance {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 88px;
+}
+
+.pickup__estimate {
+  border-top: 1px solid #f4f4f4;
+  padding: 8px 8px 8px 100px;
+}
+
+.pickup__estimate span + span {
+  margin-left: 20px;
+}
+
+.mz-pickup__button--buy {
+  width: 100%;
+  max-width: 300px;
+}
+
+@keyframes hoverDistanceAnimation {
+  0% {
+    transform: translateY(-5px);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+  100% {
+    transform: translateY(-5px);
+  }
+}
+
+@media (max-width: 500px) {
+  .pickup__info {
+    flex-direction: column;
+  }
+  .pickup__estimate {
+    padding: 12px;
+  }
+  .pickup__estimate span {
+    display: block;
+  }
+  .pickup__estimate span + span {
+    margin: 0px;
+  }
+}
+/* #endregion Modal - Retire na Loja */
+
+
+/* #region Modal - Calcule o Frete */
+
+.mz-modal-shipping {
+  display: none;
+}
+
+body.mz-sf-on .mz-modal-shipping {
+  display: block;
+}
+
+.mz-modal-shipping .mz-shipping__list ul {
+  padding: 0;
+}
+
+.mz-modal-shipping .mz-shipping__content {
+  margin: 20px 0px;
+}
+
+.mz-modal-shipping .mz-content__title {
+  margin: 10px 0px;
+}
+
+.mz-modal-shipping .mz-content__title .mz-content__title--empty a {
+  color: #223B76;
+  font-weight: bold;
+}
+
+.mz-modal-shipping .mz-content__title .mz-content__title--empty span {
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.shipping {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  border: 1px solid #f4f4f4;
+  border-radius: 4px;
+  padding: 0px 10px;
+  margin: 10px 0px;
+}
+
+.shipping .shipping__name b:before {
+  content: '';
+  padding: 0px;
+  transition: padding 1s ease, background-position 1s ease,  margin-right 1s ease, height 1s ease;
+  height: 0px;
+  background: url('//devautoglass.vteximg.com.br/arquivos/icon-truck.png') no-repeat;
+  background-position: -50px;
+  filter: grayscale(1) opacity(.2);
+}
+
+.shipping:hover .shipping__name b:before,
+.shipping.selected .shipping__name b:before {
+  padding: 10px;
+  padding-left: 50px;
+  background-position: 0px;
+  height: 48px;
+}
+
+.shipping:hover {
+  border: 1px solid #c4c4c4;
+}
+
+.shipping.selected {
+  border: 1px solid #223B76;
+}
+
+.shipping.selected .shipping__name b:before {
+  filter: grayscale(0);
+}
+
+.shipping .shipping__name {
+  width: 200px;
+}
+
+.shipping div.shipping__price {
+  margin-left: auto;
+}
+
+
+@media (max-width: 660px) {
+  .shipping {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .shipping div.shipping__price {
+     margin: 0;
+  }
+
+  .shipping .shipping__name {
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .mz-modal-shipping,
+  .mz-modal-pickup,
+  .mz-modal-advantages  {
+    height: 500px;
+    overflow: auto
+  }
+
+  .mz-pickup-stores__list ul {
+    height: auto !important;
+  }
+
+  .pickup__info-address p, .pickup__info-distance p {
+    font-size: 12px;
+  }
+  .pickup__estimate {
+    font-size: 12px;
+  }
+
+  .shipping div.shipping__price p {
+    margin-top: 0px;
+  }
+
+  .mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy,
+  .mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy {
+    width: 100%;
+  }
+}
+
+/* #endregion Modal - Calcule o Frete */
