@@ -470,6 +470,10 @@ body.home {
    margin: 10px;
 }
 
+.container .menu-carrinho .confirmacao>.item> img {
+  width: 80px;
+}
+
 .container .menu-carrinho .confirmacao>.mensagem {
    color: var(--white);
    background-color: var(--blue-500);
