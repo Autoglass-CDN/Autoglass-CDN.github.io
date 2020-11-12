@@ -457,7 +457,7 @@ body.home {
    width: 420px;
    height: 160px;
    border-radius: 4px;
-   box-shadow: 0 0 10px var(--gray-500);
+   box-shadow: 0 0 10px rgb(0,0,0,.3);
 }
 
 .container .menu-carrinho .confirmacao>.item {
