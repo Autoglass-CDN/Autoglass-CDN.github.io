@@ -158,15 +158,6 @@ $(function CepComponent() {
               <button id="change-cep-button" class="cep-info__location-button">Alterar</button>
             </div>
           `);
-
-				$(`#${cepContainer.id} .cep-info__location-button`).click(() => {
-					modalContent
-						? _renderNewCep(modalContent)
-						: console.error(CONFIG.LOCAL_TO_RENDER_CEP
-							+ ' não encontrado. Id: '
-							+ cepContainer.id
-						);
-				});
 			} else {
 				$(cepContainer)
 					.removeClass('ghost-loading')
@@ -183,16 +174,16 @@ $(function CepComponent() {
               <button id="change-cep-button" class="cep-info__location-button">Informe seu cep aqui</button>
             </div>
           `);
-
-				$(`#${cepContainer.id} .cep-info__location-button`).click(() => {
-					modalContent
-						? _renderNewCep(modalContent)
-						: console.error(CONFIG.LOCAL_TO_RENDER_CEP
-							+ ' não encontrado. Id: '
-							+ cepContainer.id
-						);
-				});
 			}
+
+			$(`#${cepContainer.id} .cep-info__location-button`).click(() => {
+				modalContent
+					? _renderNewCep(modalContent)
+					: console.error(CONFIG.LOCAL_TO_RENDER_CEP
+						+ ' não encontrado. Id: '
+						+ cepContainer.id
+					);
+			});
 		}
 
 		function _renderNewCep(modalContent) {
@@ -244,7 +235,7 @@ $(function CepComponent() {
 			});
 
 			$('#cep-input').focus();
-			$('#cep-input').keyup(e => e.target.value.length === 9 && Controller.submitEvent(e));
+			$('#cep-input').keyup(e => e.target.value.replace('_', '').length === 9 && Controller.submitEvent(e));
 
 			$('.cep-new__content-form').on('submit', Controller.submitEvent);
 		}
