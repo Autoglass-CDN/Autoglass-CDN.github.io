@@ -218,6 +218,9 @@ $(function CepComponent() {
 				setTimeout(() => $('.cep-new').remove(), 1000);
 			});
 
+			$('#cep-input').focus();
+			$('#cep-input').keyup(e => e.target.value && Controller.submitEvent(e));
+
 			$('.cep-new__content-form').on('submit', Controller.submitEvent);
 		}
 	}
