@@ -67,7 +67,7 @@ $(function CepComponent() {
 
 			window.dispatchEvent(new CustomEvent(
 				CONFIG.EVENTS.FINISH_LOAD,
-				{ detail: address }
+				{ detail: orderForm }
 			));
 		}
 
