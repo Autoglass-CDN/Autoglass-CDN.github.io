@@ -321,33 +321,36 @@ $(function () {
     beforeShowDay: validadeAvailableDays
   });
 
-  $('#input-cep-btn').click(async (e) => {
+  $('#input-cep-btn').click(Carregar);
+
+  const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
+
+  if (address) {
+    Carregar(address.postalCode);
+  } else {
+    // Evento lançado pelo componente de cep
+    $(window).on('cep-finish-load', e => {
+      const orderForm = e.originalEvent.detail;
+      Carregar(orderForm.shippingData.address.postalCode);
+    });
+  }
+
+  // Evento lançado pelo componente de cep
+  $(window).on('cep-updated', e => {
+    const orderForm = e.originalEvent.detail;
+    Carregar(orderForm.shippingData.address.postalCode);
+  });
+
+
+  async function Carregar(cep) {
     $('#aviso-servico-movel').hide();
     $('.preview-data').hide();
-    e.preventDefault();
-    const cep = $('#cep-input').val();
 
-    if (!cep) {
-      alert('O CEP deve ser informado.');
-      return;
-    } else if (cep && !isLoading) {
+    if (cep && !isLoading) {
       isLoading = true;
-      $('#input-cep-btn').attr('disabled', true);
       $('.datas-disponiveis').show();
       $('.loading-dates').show();
       $('#mostrar-datas-datepicker').css('height', '0px');
-
-      await vtexjs.checkout.calculateShipping({
-        postalCode: cep,
-        country: 'BRA',
-        addressType: 'search'
-      });
-
-      await vtexjs.checkout.calculateShipping({
-        postalCode: cep,
-        country: 'BRA',
-        addressType: 'residential'
-      });
 
       const request = {
         Cep: cep,
@@ -419,10 +422,9 @@ $(function () {
       } finally {
         isLoading = false;
         $('.loading-dates').hide();
-        $('#input-cep-btn').attr('disabled', false);
       }
     }
-  });
+  }
 
   window.dispatchEvent(event);
 
