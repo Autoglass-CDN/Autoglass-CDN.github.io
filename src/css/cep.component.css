@@ -78,6 +78,7 @@
   display: flex;
   align-items: center;
   position: relative;
+  margin-bottom: 75px;
 }
 
 .cep-new__content--loading {
