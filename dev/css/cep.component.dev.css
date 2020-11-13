@@ -1,0 +1,215 @@
+.ghost-loading {
+  height: 32px;
+  animation: GhostAnimation 10s forwards infinite linear;
+  background: #F6F7F8;
+  background-image: linear-gradient(to right, #F6F7F8 0%, #EDEEF1 20%, #F6F7F8 40%, #F6F7F8 100%);
+}
+
+@keyframes GhostAnimation {
+  0% {
+    background-position: -468px 0;
+  }
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+/* CEP Information */
+.cep-info {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+}
+
+.cep-info__location {
+  display: flex;
+  align-items: center;
+  color: #424242;
+}
+
+.cep-info__location svg {
+  font-size: 24px;
+}
+
+.cep-info__location-street {
+  max-width: 300px;
+  margin: 0px 15px 0px 5px;
+  text-decoration: underline;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cep-info__location-button {
+  background: transparent;
+  border: 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #424242;
+  cursor: pointer;
+  outline: none;
+}
+
+.cep-info__location-button:hover,
+.cep-info__location-button:focus {
+  text-decoration: underline;
+}
+
+/* CEP Novo */
+.cep-new {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  background-color: #FFFFFF;
+
+  transform: translateX(-105%);
+  transition: transform 1s ease-in-out;
+
+  position: absolute;
+  top: 0;
+}
+
+.cep-new__content {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cep-new__content--loading {
+  display: none;
+  position: absolute;
+  left: 0;
+  top: -5px;
+  bottom: -5px;
+  background-color: #FFFFFF;
+  font-size: 50px;
+  z-index: 1;
+}
+
+.cep-new__content--loading svg {
+  height: 0;
+  margin: 0 auto;
+}
+
+.cep-new__content--loading > div {
+  position: relative;
+  width: 50px;
+  min-width: 50px;
+  height: 50px;
+  margin: 0 auto;
+  overflow-y: hidden;
+  color: #A8A8A8;
+}
+
+.cep-new__content--loading svg {
+  position: absolute;
+  height: auto;
+}
+
+.cep-new__content--loading .bi-geo-alt-fill {
+  animation: LoadingAnimation 2s ease-in-out infinite;
+}
+
+.cep-new__content-title {
+  margin-right: 20px;
+  color: #A8A8A8;
+  font-weight: 600;
+}
+
+.cep-new__content-form {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  border: 1px solid #DBDBDB;
+  border-radius: 4px;
+
+  padding: 10px 10px 10px 20px;
+
+  transition: border .3s ease-in-out;
+}
+
+.cep-new__content-form:focus-within {
+  border-color: #424242;
+}
+
+.cep-new__content-input {
+  border: 0;
+  outline: 0;
+  font-size: 14px;
+  color: #A8A8A8;
+  max-width:120px;
+}
+
+.cep-new__content-input::placeholder {
+  color: #A8A8A8;
+}
+
+.cep-new__content-button {
+  display: flex;
+  background: transparent;
+  border: none;
+  font-size: 20px;
+  color: #A8A8A8;
+  cursor: pointer;
+  outline: none;
+}
+
+.cep-new__content-button:hover,
+.cep-new__content-button:focus {
+  color:#424242;
+}
+
+
+.cep-new__content-form--error,
+.cep-new__content-form--error:focus-within {
+  color: #dd4b39;
+  border-color: #dd4b39;
+}
+
+.cep-new__footer {
+  display: flex;
+  justify-content: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20px;
+}
+
+.cep-new__footer-back-button {
+  border: 1px solid #DBDBDB;
+  padding: 10px 60px;
+  background: transparent;
+  font-size: 14px;
+  font-weight: 600;
+  color: #A8A8A8;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.cep-new__footer-back-button:hover,
+.cep-new__footer-back-button:focus {
+  color:#424242;
+  border-color: #424242;
+}
+
+@keyframes LoadingAnimation {
+  0% {
+    top: -50px;
+  }
+  33% {
+    top: 0px;
+  }
+  66% {
+    top: 0px;
+  }
+  100% {
+    top: 50px;
+  }
+}
