@@ -211,7 +211,7 @@ $(function CepComponent() {
 
 			$('#cep-input').mask('99999-999');
 
-			$('#cep-back-button').click(e => {
+			$(`${modalContent} #cep-back-button`).click(e => {
 				$('.cep-new')
 					.css('transform', 'translateX(-105%)');
 
