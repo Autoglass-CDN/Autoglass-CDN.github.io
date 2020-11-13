@@ -198,22 +198,29 @@ $(function LojasMaisProximas() {
 		}
 
 		function _init() {
-			View.maskCep();
-			simulateShipping();
+			const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
+
+			if (address) {
+				simulateShipping(address);
+			} else {
+				// Evento lançado pelo componente de cep
+				$(window).on('cep-finish-load', e => {
+					const orderForm = e.originalEvent.detail;
+					simulateShipping(orderForm.shippingData.address);
+				});
+			}
+
+			// Evento lançado pelo componente de cep
+			$(window).on('cep-updated', e => {
+				const orderForm = e.originalEvent.detail;
+				console.log(orderForm.shippingData.address)
+				simulateShipping(orderForm.shippingData.address);
+			})
 		}
 
-		async function simulateShipping() {
-			let { shippingData } = await Service.getOrderForm();
-			let cepValue = View.getCepValue();
-
-			if (cepValue || shippingData.address) {
-				if (cepValue == 1) {
-					cepValue = ''
-					$(`.cep input`).val('');
-				}
-
-				const sendCep = cepValue && cepValue != 1 ? { postalCode: cepValue } : shippingData.address;
-				shippingData = await Service.simulateShipping(sendCep);
+		async function simulateShipping(address) {
+			if (address) {
+				let shippingData = await Service.simulateShipping(address);
 
 				SLA = shippingData
 					.logisticsInfo[0]
@@ -229,9 +236,7 @@ $(function LojasMaisProximas() {
 	function ViewAPI() {
 		return {
 			buildListStore,
-			addClicks,
-			maskCep,
-			getCepValue
+			addClicks
 		}
 
 		function buildListStore(pickups) {
@@ -280,34 +285,11 @@ $(function LojasMaisProximas() {
 
 				Service.saveSelectedPickupPoint($(this).attr('id'));
 			});
-
-			$(`${CONFIG.CSS.BASE} .cep input`).keydown(e => {
-				if (e.key === 'Enter') {
-					Controller.simulateShipping();
-					Service.sendCalculateShipping(getCepValue(), 'residential');
-					Service.sendCalculateShipping(getCepValue(), 'search');
-				}
-			});
-
-			$('#pickup-input-btn').click(() => {
-				Controller.simulateShipping();
-				Service.sendCalculateShipping(getCepValue(), 'residential');
-				Service.sendCalculateShipping(getCepValue(), 'search');
-			})
-		}
-
-		function maskCep() {
-			$(`${CONFIG.CSS.BASE} .cep input`).mask('99999-999').val('');
-		}
-
-		function getCepValue() {
-			return $(`${CONFIG.CSS.BASE} .cep input`).val();
 		}
 	}
 
 	function ServiceAPI() {
 		return {
-			getOrderForm,
 			simulateShipping,
 			calculateTimeEstimate,
 			saveSelectedPickupPoint,
@@ -318,10 +300,6 @@ $(function LojasMaisProximas() {
 			const days = +estimate[0];
 
 			return days + (days > 0 ? ' dias úteis' : ' dia útil');
-		}
-
-		async function getOrderForm() {
-			return await vtexjs.checkout.getOrderForm();
 		}
 
 		async function simulateShipping(address) {
@@ -421,10 +399,6 @@ $(function CalculeOFrete() {
 				},
 				CONTENT: '.mz-shipping__content',
 				LIST: '.mz-shipping__list ul',
-				CEP: {
-					INPUT: '#shipping-cep-input',
-					BUTTON: '#shipping-input-btn'
-				}
 			}
 		}
 	}
@@ -443,6 +417,24 @@ $(function CalculeOFrete() {
 
 		function _init() {
 			View._init();
+
+			const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
+
+			if (address) {
+				searchDeliverys(address.postalCode);
+			} else {
+				// Evento lançado pelo componente de cep
+				$(window).on('cep-finish-load', e => {
+					const orderForm = e.originalEvent.detail;
+					searchDeliverys(orderForm.shippingData.address.postalCode);
+				});
+			}
+
+			// Evento lançado pelo componente de cep
+			$(window).on('cep-updated', e => {
+				const orderForm = e.originalEvent.detail;
+				searchDeliverys(orderForm.shippingData.address.postalCode);
+			})
 		}
 
 		async function searchDeliverys(address) {
@@ -465,35 +457,24 @@ $(function CalculeOFrete() {
 				cheapestOption.name = 'Mais econômica';
 
 				View.buildListDelivery([cheapestOption, fastestOption]);
-				//View.selectShipping();
 			} else if (cheapestOption) {
 				cheapestOption.name = 'Melhor opção';
 				View.buildListDelivery([cheapestOption]);
 			} else {
 				View.buildListDelivery([]);
 			}
-
-			Service.sendCalculateShipping(address);
 		}
 	}
 
 	function ViewAPI() {
 		return {
 			_init,
-			buildListDelivery,
-			selectShipping
+			buildListDelivery
 		}
 
 		function _init() {
-			maskCep();
-			hideContent();
+			$(CONFIG.CSS.MODAL.CONTENT).hide();
 			addClicks();
-
-			setTimeout(() => $(CONFIG.CSS.MODAL.CEP.INPUT).val(''), 200);
-		}
-
-		function maskCep() {
-			$(CONFIG.CSS.MODAL.CEP.INPUT).mask('99999-999').val('');
 		}
 
 		function addClicks() {
@@ -509,38 +490,10 @@ $(function CalculeOFrete() {
 				$(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
 			});
 
-			$(CONFIG.CSS.MODAL.CEP.BUTTON).click(() => {
-				Controller.searchDeliverys($(CONFIG.CSS.MODAL.CEP.INPUT).val());
-			});
-
-			$(CONFIG.CSS.MODAL.CEP.INPUT).keydown(e => {
-				if (e.key === 'Enter') {
-					Controller.searchDeliverys($(CONFIG.CSS.MODAL.CEP.INPUT).val());
-				}
-			});
-
 			$(CONFIG.CSS.MODAL.BUTTON).click(() => {
 				var urlCart = "/checkout/cart/add?sku=" + vtxctx.skus + "&qty=1&seller=1&redirect=true&sc=1";
 				$(CONFIG.CSS.MODAL.BUTTON).attr("href", urlCart);
 			});
-		}
-
-		function selectShipping() {
-			$('.shipping').click(function () {
-				if (!$(this).hasClass('selected')) {
-					$('.shipping').removeClass(CONFIG.CONTROLS.SELECTED);
-
-					$(this).addClass(CONFIG.CONTROLS.SELECTED);
-					Service.saveSelectedDelivery($(this).attr('id'));
-				} else {
-					$('.shipping').removeClass(CONFIG.CONTROLS.SELECTED);
-					Service.saveSelectedDelivery(null);
-				}
-			});
-		}
-
-		function hideContent() {
-			$(CONFIG.CSS.MODAL.CONTENT).hide();
 		}
 
 		function buildListDelivery(deliverys) {
@@ -589,7 +542,6 @@ $(function CalculeOFrete() {
 			formatPrice,
 			formatEstimate,
 			saveSelectedDelivery,
-			sendCalculateShipping,
 			getEstimateDays
 		}
 
@@ -633,7 +585,6 @@ $(function CalculeOFrete() {
 			const selectedSLA = SLA.find(x => x.id === id);
 
 			localStorage.setItem('AG_SeletedDelivery', JSON.stringify(selectedSLA));
-			forceChangeShipping(selectedSLA);
 		}
 
 		async function simulateShipping(address) {
@@ -653,20 +604,6 @@ $(function CalculeOFrete() {
 				dataType: "JSON",
 				contentType: "application/json",
 				data: JSON.stringify(request)
-			});
-		}
-
-		function sendCalculateShipping(cep) {
-			vtexjs.checkout.calculateShipping({
-				postalCode: cep,
-				country: 'BRA',
-				addressType: 'search'
-			});
-
-			vtexjs.checkout.calculateShipping({
-				postalCode: cep,
-				country: 'BRA',
-				addressType: 'residential'
 			});
 		}
 	}
