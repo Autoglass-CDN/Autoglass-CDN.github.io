@@ -42,6 +42,7 @@ $(function CepComponent() {
 
 				$(modalContent).css('position', 'relative');
 				$(modalContent).css('overflow-x', 'hidden');
+				$(modalContent).css('min-height', '150px');
 
 				View.renderCepInfo(
 					cepContainer,
