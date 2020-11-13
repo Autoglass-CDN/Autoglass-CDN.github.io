@@ -219,7 +219,7 @@ $(function CepComponent() {
 			});
 
 			$('#cep-input').focus();
-			$('#cep-input').keyup(e => e.target.value && Controller.submitEvent(e));
+			$('#cep-input').keyup(e => e.target.value.length === 9 && Controller.submitEvent(e));
 
 			$('.cep-new__content-form').on('submit', Controller.submitEvent);
 		}
