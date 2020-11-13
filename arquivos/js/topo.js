@@ -92,7 +92,7 @@ async function checkLogin() {
           <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
           <li><a href="/_secure/account#/cards">Cartões</a></li>
           <li><a href="/_secure/account#/addresses">Endereços</a></li>
-          <li id="logout"><a href="/no-cache/user/logout">Sair</a></li>
+          <li id="logout"><button onclick="document.querySelector('#saindo').style.display = 'block'">Sair</button></li>
         </ul>`;
       //<a id="logout" href="/no-cache/user/logout">Sair</a>
     } else {
@@ -193,6 +193,35 @@ async function updateCartItemsCount(carrinho, orderForm) {
   }
 }
 
+async function cartItemAddedConfirmation(eventData) {
+  let { skuData } = eventData;
+  let confirmationBox = document.querySelector('.menu-carrinho .confirmacao');
+
+  let img = confirmationBox.querySelector('.item img');
+  let title = confirmationBox.querySelector('.item .titulo');
+
+  confirmationBox.style.visibility = 'visible';
+
+  if (skuData) {
+    let data = skuData
+      .images
+      .filter(image =>
+        image
+          .filter(i => i.IsMain === true).length > 0)
+      .reduce((flatten, current) => flatten.concat(current))[0];
+
+    img.src = `https://autoglass.vteximg.com.br/arquivos/ids/${data.IdArchive}-90-90/${skuData.reference}.jpg`;
+    title.textContent = skuData.name;
+
+    confirmationBox.style.opacity = '1';
+    
+    setTimeout(() => {
+      confirmationBox.style.opacity = '0';
+      setTimeout(() => confirmationBox.style.visibility = 'hidden', 1000);
+    }, 3000);
+  }
+}
+
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   let prevBtn = document.getElementById('prev-btn');
@@ -230,11 +259,16 @@ async function updateCartItemsCount(carrinho, orderForm) {
   checkLogin();
   fixPlaceholderSearch();
   loadCart();
-    
+
   $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
     let carrinho = document.querySelector('.menu-carrinho');
 
     updateCartItemsCount(carrinho, orderForm);
+  });
+
+  $(document).ready(function () {
+    var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener', cartItemAddedConfirmation);
+    skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
 }
 )();
