@@ -264,8 +264,9 @@ async function autocompleteInit(searchInput){
     let searchTerm = e.target.value.trim();
     if(searchTerm.length < 4)
       return;
+    let list = document.querySelector('#autocomplete');
+    list.innerHTML = "<li>Aguarde...</li>";
     let searchResult = await autocompleteSearch(e.target.value);
-    let list = document.querySelector('#autocomplete-search');
     list.innerHTML = searchResult.map(item=>`<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`).join('');
   });
 }
@@ -319,6 +320,17 @@ async function autocompleteInit(searchInput){
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
 
-  autocompleteInit(document.querySelector('.container .search-box .busca input.fulltext-search-box'));
+  let searchField = document.querySelector('.container .search-box .busca input.fulltext-search-box');
+  searchField.addEventListener('focus', () => {
+    let suggestions = document.querySelector('.container .search-box #autocomplete-search');
+    suggestions.style.visibility = 'visible';
+    suggestions.style.opacity = '1';
+  });
+  searchField.addEventListener('blur', () => {
+    let suggestions = document.querySelector('.container .search-box #autocomplete-search');
+    suggestions.style.opacity = '0';
+    setTimeout(() => suggestions.style.visibility = 'hidden', 1000);
+  });
+  autocompleteInit(searchField);
 }
 )();
