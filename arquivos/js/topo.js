@@ -266,7 +266,7 @@ async function autocompleteInit(searchInput){
       return;
     let searchResult = await autocompleteSearch(e.target.value);
     let list = document.querySelector('#autocomplete-search');
-    list.innerHTML = searchResult.map(item=>`<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`);
+    list.innerHTML = searchResult.map(item=>`<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`).join();
   });
 }
 
