@@ -265,7 +265,7 @@ async function autocompleteInit(searchInput){
     if(searchTerm.length < 4)
       return;
     let searchResult = await autocompleteSearch(e.target.value);
-    let list = document.querySelector('#autocomplete');
+    let list = document.querySelector('#autocomplete-search');
     list.append(searchResult.map(item=>`<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`));
   });
 }
