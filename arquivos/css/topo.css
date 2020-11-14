@@ -364,6 +364,7 @@ body.home {
   max-width: 525px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .container .search-box fieldset.busca {
@@ -401,6 +402,16 @@ body.home {
 
 .container .search-box input:focus+.search-icon::before {
   content: url('https://autoglass-cdn.github.io/arquivos/img/search-blue.svg');
+}
+
+.container .search-box #autocomplete-search {
+  background: var(--white);
+  position: absolute;
+  list-style: none;
+  top: 50px;
+  border: 1px solid var(--gray-300);
+  box-shadow: 0 0 5px rgb(0,0,0,0.4);
+  border-radius: 4px;
 }
 
 .container .menu-carrinho {
