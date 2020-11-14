@@ -316,6 +316,8 @@ async function autocompleteInit(searchInput){
   });
 
   $(document).ready(function () {
+    if (!document.querySelector('.shelf-qd-v1-buy-button'))
+      return;
     var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener', cartItemAddedConfirmation);
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
