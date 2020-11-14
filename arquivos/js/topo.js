@@ -222,6 +222,54 @@ async function cartItemAddedConfirmation(eventData) {
   }
 }
 
+async function autocomplete(searchTerm) {
+  let response = await fetch('/buscaautocomplete?' + new URLSearchParams({
+    maxRows: 12,
+    productNameContains: searchTerm,
+  }));
+  let { itemsReturned } = await response.json();
+  return itemsReturned && itemsReturned.map(item => {
+    /*
+    item = {
+      "items": [
+        {
+          "productId": "7870",
+          "itemId": "6112",
+          "name": "Parabrisa BMW X3 2010 a 2012 Verde Faixa Cinza Xyglass/Xyg - 1144979",
+          "nameComplete": "Parabrisa BMW X3 2010 a 2012 Verde Faixa Cinza Xyglass/Xyg - 1144979",
+          "imageUrl": "https://autoglass.vteximg.com.br/arquivos/ids/204769-25-25/1144979.jpg?v=637251685040770000"
+        }
+      ],
+      "thumb": "<img src=\"https://autoglass.vteximg.com.br/arquivos/ids/173795-25-25/1144979.jpg?v=636991596932400000\" width=\"25\" height=\"25\" alt=\"1144979\" id=\"\" />",
+      "thumbUrl": "https://autoglass.vteximg.com.br/arquivos/ids/204769-25-25/1144979.jpg?v=637251685040770000",
+      "name": "parabrisa bmw x3 2010 a 2012 verde faixa cinza xyglass/xyg - 1144979",
+      "href": "https://devautoglass.myvtex.com/parabrisa-bmw-x3-2010-a-2012-verde-faixa-cinza-xyglass-xyg---1144979/p",
+      "criteria": null
+    }
+    */
+    return {
+      href: item.href,
+      name: item.name,
+      thumb: item.thumb
+    }
+  })
+}
+
+/**
+ * 
+ * @param {HTMLInputElement} searchInput Input HTML
+ */
+async function autocompleteInit(searchInput){
+  searchInput.addEventListener("input", async (e) => {
+    let searchTerm = e.target.value.trim();
+    if(searchTerm.length < 4)
+      return;
+    let searchResult = autocomplete(e.target.value);
+    let list = document.querySelector('#autocomplete');
+    list.append(searchResult.map(item=>`<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`));
+  });
+}
+
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   let prevBtn = document.getElementById('prev-btn');
@@ -270,5 +318,7 @@ async function cartItemAddedConfirmation(eventData) {
     var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener', cartItemAddedConfirmation);
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
+
+  autocompleteInit(document.querySelector('.container .search-box .busca input.fulltext-search-box'));
 }
 )();
