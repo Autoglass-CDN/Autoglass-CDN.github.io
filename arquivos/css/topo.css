@@ -414,6 +414,10 @@ body.home {
   border-radius: 4px;
   max-height: 300px;
   overflow-y: auto;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: 1s;
 }
 
 .container .search-box #autocomplete-search li:hover {
