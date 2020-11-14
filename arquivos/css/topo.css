@@ -429,6 +429,11 @@ body.home {
     text-decoration: none;
     height: 100%;
     padding: 10px 10px;
+  text-transform: capitalize;
+}
+
+.container .search-box #autocomplete-search li a img {
+  margin-right: 5px;
 }
 
 .container .menu-carrinho {
