@@ -412,6 +412,23 @@ body.home {
   border: 1px solid var(--gray-300);
   box-shadow: 0 0 5px rgb(0,0,0,0.4);
   border-radius: 4px;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.container .search-box #autocomplete-search li:hover {
+    background: var(--gray-300);
+}
+
+.container .search-box #autocomplete-search li {
+    border-bottom: 1px solid var(--gray-300);
+}
+
+.container .search-box #autocomplete-search li a {
+    display: block;
+    text-decoration: none;
+    height: 100%;
+    padding: 10px 10px;
 }
 
 .container .menu-carrinho {
