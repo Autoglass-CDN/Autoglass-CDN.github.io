@@ -222,7 +222,7 @@ async function cartItemAddedConfirmation(eventData) {
   }
 }
 
-async function autocomplete(searchTerm) {
+async function autocompleteSearch(searchTerm) {
   let response = await fetch('/buscaautocomplete?' + new URLSearchParams({
     maxRows: 12,
     productNameContains: searchTerm,
@@ -264,7 +264,7 @@ async function autocompleteInit(searchInput){
     let searchTerm = e.target.value.trim();
     if(searchTerm.length < 4)
       return;
-    let searchResult = await autocomplete(e.target.value);
+    let searchResult = await autocompleteSearch(e.target.value);
     let list = document.querySelector('#autocomplete');
     list.append(searchResult.map(item=>`<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`));
   });
