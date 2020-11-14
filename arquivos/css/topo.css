@@ -413,6 +413,7 @@ body.home {
   box-shadow: 0 0 5px rgb(0,0,0,0.4);
   border-radius: 4px;
   max-height: 300px;
+  width: 100%;
   overflow-y: auto;
   
   opacity: 0;
