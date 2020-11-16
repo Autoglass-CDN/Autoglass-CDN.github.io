@@ -222,6 +222,55 @@ async function cartItemAddedConfirmation(eventData) {
   }
 }
 
+async function autocompleteSearch(searchTerm) {
+  let response = await fetch('/buscaautocomplete?' + new URLSearchParams({
+    maxRows: 12,
+    productNameContains: searchTerm,
+  }));
+  let { itemsReturned } = await response.json();
+  return itemsReturned && itemsReturned.map(item => {
+    /*
+    item = {
+      "items": [
+        {
+          "productId": "7870",
+          "itemId": "6112",
+          "name": "Parabrisa BMW X3 2010 a 2012 Verde Faixa Cinza Xyglass/Xyg - 1144979",
+          "nameComplete": "Parabrisa BMW X3 2010 a 2012 Verde Faixa Cinza Xyglass/Xyg - 1144979",
+          "imageUrl": "https://autoglass.vteximg.com.br/arquivos/ids/204769-25-25/1144979.jpg?v=637251685040770000"
+        }
+      ],
+      "thumb": "<img src=\"https://autoglass.vteximg.com.br/arquivos/ids/173795-25-25/1144979.jpg?v=636991596932400000\" width=\"25\" height=\"25\" alt=\"1144979\" id=\"\" />",
+      "thumbUrl": "https://autoglass.vteximg.com.br/arquivos/ids/204769-25-25/1144979.jpg?v=637251685040770000",
+      "name": "parabrisa bmw x3 2010 a 2012 verde faixa cinza xyglass/xyg - 1144979",
+      "href": "https://devautoglass.myvtex.com/parabrisa-bmw-x3-2010-a-2012-verde-faixa-cinza-xyglass-xyg---1144979/p",
+      "criteria": null
+    }
+    */
+    return {
+      href: item.href,
+      name: item.name,
+      thumb: item.thumb
+    }
+  })
+}
+
+/**
+ * 
+ * @param {HTMLInputElement} searchInput Input HTML
+ */
+async function autocompleteInit(searchInput){
+  searchInput.addEventListener("input", async (e) => {
+    let searchTerm = e.target.value.trim();
+    if(searchTerm.length < 4)
+      return;
+    let list = document.querySelector('#autocomplete-search');
+    list.innerHTML = "<li><a>Aguarde...</a></li>";
+    let searchResult = await autocompleteSearch(e.target.value);
+    list.innerHTML = searchResult.map(item=>`<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`).join('');
+  });
+}
+
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   let prevBtn = document.getElementById('prev-btn');
@@ -267,8 +316,23 @@ async function cartItemAddedConfirmation(eventData) {
   });
 
   $(document).ready(function () {
+    if (!document.querySelector('.shelf-qd-v1-buy-button'))
+      return;
     var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener', cartItemAddedConfirmation);
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
+
+  let searchField = document.querySelector('.container .search-box .busca input.fulltext-search-box');
+  searchField.addEventListener('focus', () => {
+    let suggestions = document.querySelector('.container .search-box #autocomplete-search');
+    suggestions.style.visibility = 'visible';
+    suggestions.style.opacity = '1';
+  });
+  searchField.addEventListener('blur', () => {
+    let suggestions = document.querySelector('.container .search-box #autocomplete-search');
+    suggestions.style.opacity = '0';
+    setTimeout(() => suggestions.style.visibility = 'hidden', 1000);
+  });
+  autocompleteInit(searchField);
 }
 )();
