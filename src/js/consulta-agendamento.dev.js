@@ -39,7 +39,7 @@ $(function () {
 
   if (window.location.href.includes('checkout')) {
     $(window).on('orderFormUpdated.vtex', (_, order) => {
-      if (order.shippingData.address.state) {
+      if (order.shippingData.address && order.shippingData.address.state) {
         estado = codCidades[order.shippingData.address.state];
         codCidade = estado.code || null;
 
