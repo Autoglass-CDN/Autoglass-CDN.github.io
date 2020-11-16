@@ -41,7 +41,7 @@ $(function CepComponent() {
 				cepContainer.id = 'cep' + _;
 
 				$(modalContent).css('position', 'relative');
-				$(modalContent).css('overflow-x', 'hidden');
+				$(modalContent).css('overflow', 'hidden');
 				$(modalContent).css('min-height', '150px');
 
 				View.renderCepInfo(
@@ -235,7 +235,9 @@ $(function CepComponent() {
 			});
 
 			$('#cep-input').focus();
-			$('#cep-input').keyup(e => e.target.value.replace('_', '').length === 9 && Controller.submitEvent(e));
+			$('#cep-input').keyup(e => e.target.value.replace('_', '').length === 9
+				&& Controller.submitEvent(e)
+			);
 
 			$('.cep-new__content-form').on('submit', Controller.submitEvent);
 		}
