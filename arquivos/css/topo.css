@@ -619,21 +619,29 @@ body.home {
 }
 
 .painel-categorias .slider-handlers {
-  position: absolute;
-  top: 72.5px;
-  left: 0;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 1;
   padding: 0 35px;
 }
 
 .painel-categorias .slider-handlers button {
   background: transparent;
+  position: absolute;
+  top: 72.5px;
   border: 0;
   outline: 0;
+  
+  z-index: 1;
+}
+
+.painel-categorias .slider-handlers button#prev-btn {
+  left: 20px;
+}
+
+.painel-categorias .slider-handlers button#next-btn {
+  right: 20px;
 }
 
 .painel-categorias .slider-handlers button i {
@@ -1020,6 +1028,7 @@ body.home {
   display: block;
   height: 100%;
   padding: 7px 0;
+  border-radius: 4px;
 }
 
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li>a:hover {
