@@ -322,17 +322,25 @@ async function autocompleteInit(searchInput){
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
 
+  let suggestions = document.querySelector('.container .search-box #autocomplete-search');
+
   let searchField = document.querySelector('.container .search-box .busca input.fulltext-search-box');
+
   searchField.addEventListener('focus', () => {
-    let suggestions = document.querySelector('.container .search-box #autocomplete-search');
     suggestions.style.visibility = 'visible';
     suggestions.style.opacity = '1';
   });
+
   searchField.addEventListener('blur', () => {
-    let suggestions = document.querySelector('.container .search-box #autocomplete-search');
     suggestions.style.opacity = '0';
     setTimeout(() => suggestions.style.visibility = 'hidden', 1000);
   });
+
+  searchField.addEventListener('keydown',(event)=>{
+    event = event || window.event;
+    console.log(event.keyCode)
+  });
+  
   autocompleteInit(searchField);
 }
 )();
