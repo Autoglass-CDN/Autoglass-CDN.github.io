@@ -1,0 +1,110 @@
+:root {
+  --black-friday: #232323;
+  --black-friday-hover: #000000;
+}
+
+.header-qd-v1 .header-qd-v1-search-wrap {
+  border-color: var(--black-friday) !important;
+}
+
+.header-qd-v1 .header-qd-v1-search-wrap fieldset:before {
+  background-color: var(--black-friday) !important;
+}
+
+.header-qd-v1 .header-qd-v1-cart-link {
+  background-color: var(--black-friday) !important;
+}
+
+.header-qd-v1 .header-qd-v1-cart-link:hover {
+  background-color: var(--black-friday-hover) !important;
+}
+
+.header-qd-v1-amazing-menu-wrapper {
+  background: var(--black-friday) !important;
+}
+
+.header-qd-v1-amazing-menu>ul>li:first-child {
+  background-color: var(--black-friday) !important;
+  border-bottom: var(--black-friday) !important;
+}
+
+.header-qd-v1-amazing-menu>ul>li:first-child:hover {
+  border-bottom: var(--black-friday) !important;
+}
+
+.ratings-section .ratings__rating.highlight {
+  background-color: var(--black-friday) !important;
+}
+
+.ratings-section .rating-bars li.active {
+  background-color: var(--black-friday) !important;
+}
+
+.chat-section {
+  background-color: var(--black-friday) !important;
+}
+
+.chat-section .chat__content-link {
+  color: var(--black-friday) !important;
+}
+
+.smart-select__header, .smart-select__main {
+  background-color: var(--black-friday) !important;
+}
+
+.smart-select__main .smart-select__main-results ul li.highlight {
+  background-color: var(--black-friday) !important;
+}
+
+.smart-select__main > div > div:hover, .smart-select__main > div > div:focus {
+  color: var(--black-friday) !important;
+}
+
+.header-qd-v1 .header-qd-v1-actions i.fas.fa-user-circle {
+  color: var(--black-friday) !important;
+}
+
+.banners-section .banners-bars li.active {
+  background-color: var(--black-friday) !important;
+}
+
+.search-qd-v1-result .searchResultsTime .resultado-busca-numero .value, .search-qd-v1-result .searchResultsTime .resultado-busca-termo .value {
+  background-color: var(--black-friday) !important;
+}
+
+.search-qd-v1-result .pager.bottom .pgCurrent {
+  background-color: var(--black-friday) !important;
+}
+
+.search-qd-v1-result .resultado-busca-filtro .orderBy select {
+  border-color: var(--black-friday) !important;
+}
+
+.smart-cart-qd-v2-wrapper .qd-cartTitle h3 {
+  background-color: var(--black-friday) !important;
+}
+
+.fixed-buttons-qd-v1 a {
+  color: var(--black-friday) !important;
+}
+
+.search-qd-v1-navigator .search-qd-v1-navigator-trigger {
+  background-color: var(--black-friday) !important;
+}
+
+.product-qd-v1-shipping .product-qd-v1-shipping-freight-result .freight-btn {
+  background-color: var(--black-friday) !important;
+}
+
+.product-qd-v1-shipping .product-qd-v1-shipping-freight-result .freight-zip-box {
+  border-color: var(--black-friday) !important;
+}
+
+.product-qd-v1-shipping .product-qd-v1-shipping-title {
+  color: var(--black-friday) !important;
+  filter: grayscale(1) !important;
+}
+
+.flag .black-friday- {
+  background-color: var(--black-friday) !important;
+}
