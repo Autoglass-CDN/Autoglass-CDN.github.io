@@ -430,7 +430,8 @@ body.home {
   border: 1px solid var(--gray-300);
 }
 
-.container .search-box #autocomplete-search li:hover {
+.container .search-box #autocomplete-search li:hover,
+.container .search-box #autocomplete-search li:focus{
   background: var(--gray-300);
 }
 
