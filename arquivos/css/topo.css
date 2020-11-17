@@ -1051,4 +1051,14 @@ body[data-qd-scroll-0="1"] {
     padding-top: 0;
 }
 
+.product-qd-v1-float-bar {
+   top: 110px;
+   box-shadow: 0 0 5px rgb(0,0,0,.3);
+}
+
+@media (min-width: 1200px)
+body[data-qd-scroll-1="1"] .product-qd-v1-float-bar {
+    top: 110px;
+}
+
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
