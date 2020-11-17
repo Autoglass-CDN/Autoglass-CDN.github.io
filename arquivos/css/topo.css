@@ -2,37 +2,7 @@
 @import url("/arquivos/css/theme.css");
 
 
-/* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
-.topo .container:before,
-.nav .container:before,
-.topo .container:after,
-.nav .container:after {
-  display: unset;
-  content: none;
-  clear: none;
-}
 
-body.home {
-  padding-top: 0;
-}
-
-.home main {
-  margin-top: unset;
-}
-
-.shelf-qd-v1:hover {
-  z-index: unset;
-}
-
-.modal-backdrop {
-  z-index: 10;
-}
-
-.header-qd-v1 {
-  padding-top: 0;
-}
-
-/* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
 /* #region IMAGENS DE CATEGORIA */
 
@@ -1041,3 +1011,40 @@ body.home {
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li>a:hover {
   background: var(--gray-300);
 }
+
+
+/* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
+.topo .container:before,
+.nav .container:before,
+.topo .container:after,
+.nav .container:after {
+  display: unset;
+  content: none;
+  clear: none;
+}
+
+body.home {
+  padding-top: 0;
+}
+
+.home main {
+  margin-top: unset;
+}
+
+.shelf-qd-v1:hover {
+  z-index: unset;
+}
+
+.modal-backdrop {
+  z-index: 10;
+}
+
+.header-qd-v1 {
+  padding-top: 0;
+}
+
+.topo, .nav {
+  z-index:900000;
+}
+
+/* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
