@@ -407,6 +407,7 @@ body.home {
 .container .search-box #autocomplete-search {
   background: var(--white);
   position: absolute;
+  z-index: 1;
   list-style: none;
   top: 50px;
   border: 1px solid var(--gray-300);
