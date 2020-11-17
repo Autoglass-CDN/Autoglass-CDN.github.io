@@ -675,7 +675,7 @@ body.home {
   flex-direction: column;
   align-items: center;
 
-  max-width: 140px;
+  max-width: 145px;
   height: 155px;
   margin-top: 10px;
 
@@ -697,7 +697,7 @@ body.home {
 
 .painel-categorias .painel-categorias__categoria-header.ativo {
   color: var(--blue-500);
-  font-weight: var(--bold);
+  font-weight: var(--semi-bold);
 }
 
 .painel-categorias .painel-categorias__categoria-header h3 {
