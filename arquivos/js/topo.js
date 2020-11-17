@@ -287,7 +287,7 @@ async function autocompleteInit(searchInput){
 
   menu
     .addEventListener('mouseenter', (event) => {
-      menu.classList.add('ativo');
+      //menu.classList.add('ativo');
       centerArrow();
     });
 
