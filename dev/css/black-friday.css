@@ -108,3 +108,15 @@
 .flag.black-friday- {
   background-color: var(--black-friday) !important;
 }
+
+.footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li>a:hover {
+  background-color: var(--black-friday) !important;
+}
+
+.header-qd-v1-location-modal .header-qd-v1-location-modal-button-ok {
+  background-color: var(--black-friday) !important;
+}
+
+.header-qd-v1-location-modal .header-qd-v1-location-modal-button-ok:hover {
+  background-color: var(--black-friday-hover) !important;
+}
