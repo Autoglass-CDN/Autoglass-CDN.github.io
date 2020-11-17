@@ -748,6 +748,7 @@ body.home {
   position: absolute;
   right: -40px;
   bottom: -45px;
+  transform: scale(0.7);
 }
 
 /* #region PREVIEW - VIDROS */
