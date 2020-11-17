@@ -1043,7 +1043,11 @@ body.home {
   padding-top: 0;
 }
 
-.topo, .nav {
+.topo {
+  z-index:900001;
+} 
+
+.nav {
   z-index:900000;
 }
 
