@@ -1047,4 +1047,8 @@ body.home {
   z-index:900000;
 }
 
+body[data-qd-scroll-0="1"] {
+    padding-top: 0;
+}
+
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
