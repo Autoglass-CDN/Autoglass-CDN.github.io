@@ -105,6 +105,6 @@
   filter: grayscale(1) !important;
 }
 
-.flag .black-friday- {
+.flag.black-friday- {
   background-color: var(--black-friday) !important;
 }
