@@ -991,7 +991,7 @@ body.home {
 
 
 .painel-categorias .painel-categorias__categoria-itens a:hover {
-  margin-left: 5px;
+  padding-left: 5px;
 }
 
 .painel-categorias .painel-categorias__categoria-itens.ativo {
@@ -1010,11 +1010,18 @@ body.home {
 }
 
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li {
-  margin-bottom: 15px;
   color: var(--gray-700);
   min-width: 220px;
+  min-height: 34px;
 }
 
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li>a {
   color: var(--gray-700);
+  display: block;
+  height: 100%;
+  padding: 7px 0;
+}
+
+.painel-categorias .painel-categorias__categoria-itens-titulo>ul>li>a:hover {
+  background: var(--gray-300);
 }
