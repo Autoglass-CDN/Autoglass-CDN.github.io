@@ -308,7 +308,7 @@ function delayedAction(action, abortController) {
   let abortPainelAction = null;
 
   menu
-    .addEventListener('mouseenter', (event) => {
+    .addEventListener('mouseover', (event) => {
       delayedAction(() => {
         menu.classList.add('ativo');
         centerArrow();
