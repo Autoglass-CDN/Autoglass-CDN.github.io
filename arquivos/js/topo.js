@@ -271,6 +271,26 @@ async function autocompleteInit(searchInput){
   });
 }
 
+function delayedAction(action, abortController) {
+  if (abortController) {
+    abortController.abort();
+
+    abortController = null;
+
+    return;
+  }
+
+  abortController = new AbortController();
+
+  const delay = setTimeout(action, 500);
+
+  abortController.signal.addEventListener('abort', () => {
+    console.log('Action aborted by the user');
+
+    clearTimeout(delay);
+  });
+}
+
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   let prevBtn = document.getElementById('prev-btn');
@@ -285,30 +305,39 @@ async function autocompleteInit(searchInput){
   let menu = document
     .querySelector('.menu-categorias');
 
+  let abortPainelAction = null;
+
   menu
     .addEventListener('mouseenter', (event) => {
-      setTimeout(() => {
+      delayedAction(() => {
         menu.classList.add('ativo');
         centerArrow();
-      }, 500);
+      }, abortPainelAction);
+    });
+
+  menu
+    .addEventListener('mouseout', (event) => {
+      delayedAction(() => {
+        menu.classList.remove('ativo');
+      }, abortPainelAction);
     });
 
   let painelCategorias = document.querySelector('.painel-categorias');
 
   painelCategorias.addEventListener('mouseout', (event) => {
-    setTimeout(() => {
+    delayedAction(() => {
       menu.classList.remove('ativo');
-    }, 500);
+    }, abortPainelAction);
   });
 
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
       categoria.addEventListener('mouseenter', (event) => {
-        setTimeout(() => {
+        delayedAction(() => {
           activateCategory(categoria, index);
           centerArrow();
-        }, 500);
+        }, abortPainelAction);
       })
     });
   checkLogin();
