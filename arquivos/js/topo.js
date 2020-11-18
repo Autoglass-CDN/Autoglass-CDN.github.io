@@ -315,12 +315,12 @@ function delayedAction(action, abortController) {
       }, abortPainelAction);
     });
 
-  menu
+  /*menu
     .addEventListener('mouseout', (event) => {
       delayedAction(() => {
         menu.classList.remove('ativo');
       }, abortPainelAction);
-    });
+    });*/
 
   let painelCategorias = document.querySelector('.painel-categorias');
 
