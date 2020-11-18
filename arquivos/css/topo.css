@@ -546,8 +546,8 @@
 
 
 
-.menu-categorias:hover .painel-categorias,
-.menu-categorias:focus .painel-categorias,
+/*.menu-categorias:hover .painel-categorias,
+.menu-categorias:focus .painel-categorias,*/
 .menu-categorias.ativo .painel-categorias {
   display: unset;
   opacity: 1;
@@ -557,7 +557,8 @@
   transition: .5s;
 }
 
-.menu-categorias:hover .menu-categorias__titulo {
+/*.menu-categorias:hover .menu-categorias__titulo,*/
+.menu-categorias.ativo .menu-categorias__titulo{
   transform: scale(1.1);
   font-weight: var(--bold);
 }
