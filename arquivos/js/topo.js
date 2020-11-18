@@ -315,12 +315,12 @@ function delayedAction(action, abortController) {
       }, abortPainelAction);
     });
 
-  /*menu
-    .addEventListener('mouseout', (event) => {
-      delayedAction(() => {
-        menu.classList.remove('ativo');
-      }, abortPainelAction);
-    });*/
+  // menu
+  //   .addEventListener('mouseout', (event) => {
+  //     delayedAction(() => {
+  //       menu.classList.remove('ativo');
+  //     }, abortPainelAction);
+  //   });
 
   let painelCategorias = document.querySelector('.painel-categorias');
 
@@ -333,7 +333,7 @@ function delayedAction(action, abortController) {
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
-      categoria.addEventListener('mouseenter', (event) => {
+      categoria.addEventListener('mouseover', (event) => {
         delayedAction(() => {
           activateCategory(categoria, index);
           centerArrow();
