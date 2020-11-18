@@ -1017,7 +1017,7 @@
 }
 
 .painel-categorias .painel-categorias__categoria-itens-titulo>ul>li>a:hover {
-  background: var(--gray-300);
+  background: var(--gray-100);
 }
 
 
