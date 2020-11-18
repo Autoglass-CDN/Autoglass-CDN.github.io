@@ -287,22 +287,28 @@ async function autocompleteInit(searchInput){
 
   menu
     .addEventListener('mouseenter', (event) => {
-      //menu.classList.add('ativo');
-      centerArrow();
+      setTimeout(() => {
+        menu.classList.add('ativo');
+        centerArrow();
+      }, 500);
     });
 
   let painelCategorias = document.querySelector('.painel-categorias');
 
   painelCategorias.addEventListener('mouseout', (event) => {
-    menu.classList.remove('ativo');
+    setTimeout(() => {
+      menu.classList.remove('ativo');
+    }, 500);
   });
 
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
       categoria.addEventListener('mouseenter', (event) => {
-        activateCategory(categoria, index);
-        centerArrow();
+        setTimeout(() => {
+          activateCategory(categoria, index);
+          centerArrow();
+        }, 500);
       })
     });
   checkLogin();
@@ -336,11 +342,11 @@ async function autocompleteInit(searchInput){
     setTimeout(() => suggestions.style.visibility = 'hidden', 1000);
   });
 
-  searchField.addEventListener('keydown',(event)=>{
+  searchField.addEventListener('keydown', (event) => {
     event = event || window.event;
     console.log(event.keyCode)
   });
-  
+
   autocompleteInit(searchField);
 }
 )();
