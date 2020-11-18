@@ -417,6 +417,10 @@
   text-transform: capitalize;
 }
 
+.container .search-box #autocomplete-search li a.no-capitalize {
+  text-transform: unset;
+}
+
 .container .search-box #autocomplete-search li a img {
   margin-right: 5px;
 }
