@@ -233,6 +233,10 @@
   text-decoration: none;
 }
 
+.topo .usuario span b {
+    text-transform: capitalize;
+}
+
 .topo .usuario .usuario__opcoes {
   display: none;
   list-style: none;
