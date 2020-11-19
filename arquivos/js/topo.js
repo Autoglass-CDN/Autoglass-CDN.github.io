@@ -289,6 +289,8 @@ function delayedAction(action, abortController) {
 
     clearTimeout(delay);
   };
+
+  return abortController;
 }
 
 
@@ -310,7 +312,7 @@ function delayedAction(action, abortController) {
 
   menu
     .addEventListener('mouseenter', (event) => {
-      delayedAction(() => {
+      abortPainelAction = delayedAction(() => {
         menu.classList.add('ativo');
         centerArrow();
       }, abortPainelAction);
@@ -318,7 +320,7 @@ function delayedAction(action, abortController) {
 
   menu
     .addEventListener('mouseleave', (event) => {
-      delayedAction(() => {
+      abortPainelAction = delayedAction(() => {
         menu.classList.remove('ativo');
       }, abortPainelAction);
     });
@@ -326,7 +328,7 @@ function delayedAction(action, abortController) {
   let painelCategorias = document.querySelector('.painel-categorias');
 
   painelCategorias.addEventListener('mouseleave', (event) => {
-    delayedAction(() => {
+    abortPainelAction = delayedAction(() => {
       menu.classList.remove('ativo');
     }, abortPainelAction);
   });
@@ -337,7 +339,7 @@ function delayedAction(action, abortController) {
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
       categoria.addEventListener('mouseenter', (event) => {
-        delayedAction(() => {
+        abortCategoryAction = delayedAction(() => {
           activateCategory(categoria, index);
           centerArrow();
         }, abortCategoryAction);
@@ -348,7 +350,7 @@ function delayedAction(action, abortController) {
 
   linksCategoria.addEventListener('mouseover', (event) => {
     if (abortCategoryAction)
-      abortCategoryAction.abort()
+      abortCategoryAction.abort();
   });
 
   checkLogin();
