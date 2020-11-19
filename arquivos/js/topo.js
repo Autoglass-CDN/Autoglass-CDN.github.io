@@ -305,7 +305,7 @@ function delayedAction(action, abortController) {
   let menu = document
     .querySelector('.menu-categorias');
 
-  let abortPainelAction = null;
+  var abortPainelAction = null;
 
   menu
     .addEventListener('mouseover', (event) => {
