@@ -331,12 +331,12 @@ function delayedAction(action, abortController) {
     }, abortPainelAction);
   });
 
-  var abortCategoryAction = AbortController();
+  var abortCategoryAction = new AbortController();
 
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
-      categoria.addEventListener('mouseover', (event) => {
+      categoria.addEventListener('mouseenter', (event) => {
         delayedAction(() => {
           activateCategory(categoria, index);
           centerArrow();
