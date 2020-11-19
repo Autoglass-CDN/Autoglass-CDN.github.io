@@ -348,7 +348,7 @@ function delayedAction(action, abortController) {
 
   let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
 
-  linksCategoria.addEventListener('mouseover', (event) => {
+  linksCategoria.addEventListener('mouseenter', (event) => {
     if (abortCategoryAction)
       abortCategoryAction.abort();
   });
