@@ -291,6 +291,7 @@ function delayedAction(action, abortController) {
   });
 }
 
+
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   let prevBtn = document.getElementById('prev-btn');
@@ -308,7 +309,7 @@ function delayedAction(action, abortController) {
   var abortPainelAction = null;
 
   menu
-    .addEventListener('mouseover', (event) => {
+    .addEventListener('mouseenter', (event) => {
       delayedAction(() => {
         menu.classList.add('ativo');
         centerArrow();
@@ -333,7 +334,7 @@ function delayedAction(action, abortController) {
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
-      categoria.addEventListener('mouseover', (event) => {
+      categoria.addEventListener('mouseenter', (event) => {
         delayedAction(() => {
           activateCategory(categoria, index);
           centerArrow();
@@ -379,3 +380,4 @@ function delayedAction(action, abortController) {
   autocompleteInit(searchField);
 }
 )();
+
