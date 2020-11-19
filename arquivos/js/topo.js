@@ -45,13 +45,13 @@ function slideNext() {
     + parseInt(getComputedStyle(slider).marginLeft, 10);
 
   slider.style.transform = `translateX(${width - fullWidth}px)`;
-  
+
   slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
   toggleVisibility('next-btn');
   toggleVisibility('prev-btn');
 }
 
-function toggleVisibility(id){
+function toggleVisibility(id) {
   let element = document.getElementById(id);
   element.style.visibility = element.style.visibility === 'hidden' ? 'visible' : 'hidden';
 }
@@ -62,10 +62,10 @@ function getTranslateX(element) {
   return matrix.m41;
 }
 
-function slidePrev() { 
+function slidePrev() {
   let slider = document.querySelector('.painel-categorias__menu > ul');
   slider.style.transform = `translateX(0px)`;
-  
+
   slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
   toggleVisibility('next-btn');
   toggleVisibility('prev-btn');
@@ -181,15 +181,15 @@ async function updateCartItemsCount(carrinho, orderForm) {
   if (badge)
     badge.remove();
 
-  
+
   if (orderForm && orderForm.items.length) {
     badge = document.createElement('span');
     badge.classList.add('badge');
     badge.innerHTML = orderForm.items.length;
-    
+
     carrinho.append(badge);
-   
-    setTimeout(()=>carrinho.classList.add('loaded'),500);
+
+    setTimeout(() => carrinho.classList.add('loaded'), 500);
   }
 }
 
@@ -214,7 +214,7 @@ async function cartItemAddedConfirmation(eventData) {
     title.textContent = skuData.name;
 
     confirmationBox.style.opacity = '1';
-    
+
     setTimeout(() => {
       confirmationBox.style.opacity = '0';
       setTimeout(() => confirmationBox.style.visibility = 'hidden', 1000);
@@ -259,15 +259,15 @@ async function autocompleteSearch(searchTerm) {
  * 
  * @param {HTMLInputElement} searchInput Input HTML
  */
-async function autocompleteInit(searchInput){
+async function autocompleteInit(searchInput) {
   searchInput.addEventListener("input", async (e) => {
     let searchTerm = e.target.value.trim();
-    if(searchTerm.length < 4)
+    if (searchTerm.length < 4)
       return;
     let list = document.querySelector('#autocomplete-search');
     list.innerHTML = "<li><a>Aguarde...</a></li>";
     let searchResult = await autocompleteSearch(e.target.value);
-    list.innerHTML = searchResult.map(item=>`<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`).join('');
+    list.innerHTML = searchResult.map(item => `<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`).join('');
   });
 }
 
@@ -280,11 +280,11 @@ function delayedAction(action, abortController) {
     //return;
   }
 
-  abortController = new AbortController();
+  abortController = {};
 
   const delay = setTimeout(action, 500);
 
-  abortController.signal.onabort = () => {
+  abortController.abort = () => {
     console.log('Action aborted by the user');
 
     clearTimeout(delay);
@@ -306,7 +306,7 @@ function delayedAction(action, abortController) {
   let menu = document
     .querySelector('.menu-categorias');
 
-  var abortPainelAction = new AbortController();
+  var abortPainelAction = null;
 
   menu
     .addEventListener('mouseenter', (event) => {
@@ -317,11 +317,11 @@ function delayedAction(action, abortController) {
     });
 
   menu
-     .addEventListener('mouseleave', (event) => {
-       delayedAction(() => {
-         menu.classList.remove('ativo');
-       }, abortPainelAction);
-     });
+    .addEventListener('mouseleave', (event) => {
+      delayedAction(() => {
+        menu.classList.remove('ativo');
+      }, abortPainelAction);
+    });
 
   let painelCategorias = document.querySelector('.painel-categorias');
 
@@ -331,7 +331,7 @@ function delayedAction(action, abortController) {
     }, abortPainelAction);
   });
 
-  var abortCategoryAction = new AbortController();
+  var abortCategoryAction = null;
 
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
@@ -347,7 +347,8 @@ function delayedAction(action, abortController) {
   let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
 
   linksCategoria.addEventListener('mouseover', (event) => {
-    abortCategoryAction.abort()
+    if (abortCategoryAction)
+      abortCategoryAction.abort()
   });
 
   checkLogin();
