@@ -284,11 +284,11 @@ function delayedAction(action, abortController) {
 
   const delay = setTimeout(action, 500);
 
-  abortController.signal.addEventListener('abort', () => {
+  abortController.signal.onabort = () => {
     console.log('Action aborted by the user');
 
     clearTimeout(delay);
-  });
+  };
 }
 
 
