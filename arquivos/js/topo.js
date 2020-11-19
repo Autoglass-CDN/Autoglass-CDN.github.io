@@ -346,7 +346,9 @@ function delayedAction(action, abortController) {
 
   let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
 
-  linksCategoria.addEventListener('mouseover', (event) => abortCategoryAction.abort());
+  linksCategoria.addEventListener('mouseover', (event) => {
+    abortCategoryAction.abort()
+  });
 
   checkLogin();
   fixPlaceholderSearch();
