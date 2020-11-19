@@ -277,7 +277,7 @@ function delayedAction(action, abortController) {
 
     abortController = null;
 
-    return;
+    //return;
   }
 
   abortController = new AbortController();
