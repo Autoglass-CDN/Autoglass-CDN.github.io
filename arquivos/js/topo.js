@@ -336,7 +336,7 @@ function delayedAction(action, abortController) {
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
-      categoria.addEventListener('mouseenter', (event) => {
+      categoria.addEventListener('mouseover', (event) => {
         delayedAction(() => {
           activateCategory(categoria, index);
           centerArrow();
