@@ -306,7 +306,7 @@ function delayedAction(action, abortController) {
   let menu = document
     .querySelector('.menu-categorias');
 
-  var abortPainelAction = null;
+  var abortPainelAction = new AbortController();
 
   menu
     .addEventListener('mouseenter', (event) => {
@@ -331,6 +331,8 @@ function delayedAction(action, abortController) {
     }, abortPainelAction);
   });
 
+  var abortCategoryAction = AbortController();
+
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
@@ -338,9 +340,14 @@ function delayedAction(action, abortController) {
         delayedAction(() => {
           activateCategory(categoria, index);
           centerArrow();
-        }, abortPainelAction);
+        }, abortCategoryAction);
       })
     });
+
+  let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
+
+  linksCategoria.addEventListener('mouseenter', (event) => abortCategoryAction.abort());
+
   checkLogin();
   fixPlaceholderSearch();
   loadCart();
@@ -380,4 +387,3 @@ function delayedAction(action, abortController) {
   autocompleteInit(searchField);
 }
 )();
-
