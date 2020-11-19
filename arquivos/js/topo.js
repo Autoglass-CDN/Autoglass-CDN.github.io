@@ -316,16 +316,16 @@ function delayedAction(action, abortController) {
       }, abortPainelAction);
     });
 
-  // menu
-  //   .addEventListener('mouseout', (event) => {
-  //     delayedAction(() => {
-  //       menu.classList.remove('ativo');
-  //     }, abortPainelAction);
-  //   });
+  menu
+     .addEventListener('mouseleave', (event) => {
+       delayedAction(() => {
+         menu.classList.remove('ativo');
+       }, abortPainelAction);
+     });
 
   let painelCategorias = document.querySelector('.painel-categorias');
 
-  painelCategorias.addEventListener('mouseout', (event) => {
+  painelCategorias.addEventListener('mouseleave', (event) => {
     delayedAction(() => {
       menu.classList.remove('ativo');
     }, abortPainelAction);
@@ -346,7 +346,7 @@ function delayedAction(action, abortController) {
 
   let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
 
-  linksCategoria.addEventListener('mouseenter', (event) => abortCategoryAction.abort());
+  linksCategoria.addEventListener('mouseover', (event) => abortCategoryAction.abort());
 
   checkLogin();
   fixPlaceholderSearch();
