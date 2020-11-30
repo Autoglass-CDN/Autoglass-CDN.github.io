@@ -1,6 +1,8 @@
 :root {
-  --black-friday: #232323;
-  --black-friday-hover: #000000;
+  /*--black-friday: #232323;*/
+  /*--black-friday-hover: #000000;*/
+  --black-friday: #2D4F9E;
+  --black-friday-hover: #17274E;
 }
 
 .header-qd-v1 .header-qd-v1-search-wrap {
