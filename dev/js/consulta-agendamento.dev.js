@@ -211,7 +211,7 @@ $(function () {
         $('.pickup').removeClass('selected');
         $(this).parent('.pickup').addClass('selected');
 
-        saveSelectedPickupPoint($(this).attr('id'));
+        saveSelectedPickupPoint($(this).parent('.pickup').attr('id'));
 
         if (window.location.href.includes('checkout')) {
           $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
@@ -241,7 +241,7 @@ $(function () {
         }).then((order) => { forceChangeShipping(order); $('.mz-install__button--buy').unbind('click'); });
 
         function saveSelectedPickupPoint(id) {
-          const sla = PICKUP_POINTS.find(x => x.id === id);
+          const sla = PICKUP_POINTS.find(x => x.pickupStoreInfo.address.addressId === id);
 
           localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
           sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
