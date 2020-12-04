@@ -154,101 +154,200 @@ $(function () {
   }
 
   async function recuperarHorarios(address) {
-    $.ajax({
-      method: "GET",
-      url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
-        .datepicker("getDate")
-        .toISOString()
-        .split("T")[0]
-        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
-    })
-      .done(async function (data) {
-        $(".secao-agendamento .qtd").text(`Lojas encontradas: ${data.Total}`);
-        if (data.Total === 0)
-          $(".secao-agendamento > .store-list").append(noTimeAvailable());
 
-        if (address) {
-          let shippingData = await simulateShipping(address);
+    try {
+      let result = await $.ajax({
+        method: "GET",
+        url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
+          .datepicker("getDate")
+          .toISOString()
+          .split("T")[0]
+          }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
+      });
 
+      $(".secao-agendamento .qtd").text(`Lojas encontradas: ${result.Total}`);
+      if (result.Total === 0)
+        $(".secao-agendamento > .store-list").append(noTimeAvailable());
 
-          PICKUP_POINTS = shippingData
-            .logisticsInfo[0]
-            .slas
-            .filter(x => x.deliveryChannel === 'pickup-in-point');
-
-          $(".secao-agendamento > .store-list").append(`<ul></ul>`);
-
-          PICKUP_POINTS.forEach((pickupPoint, index) => {
-            let store = data.Registros.find(store => /(PG|MG|RC|SP|NW)[\d]{2,}/g.test(store.Nome));
-            $(".secao-agendamento > .store-list ul").append(`${populateStore(store, pickupPoint)}`);
-          });
-        }
+      if (address) {
+        let shippingData = await simulateShipping(address);
 
 
-        async function simulateShipping(address) {
-          const request = {
-            items: [{
-              id: CONFIG.SERVICE.SKU_ID,
-              quantity: 1,
-              seller: 1
-            }],
-            postalCode: address.postalCode,
-            country: CONFIG.SERVICE.COUNTRY
-          };
+        PICKUP_POINTS = shippingData
+          .logisticsInfo[0]
+          .slas
+          .filter(x => x.deliveryChannel === 'pickup-in-point');
 
-          return $.ajax({
-            url: "/api/checkout/pub/orderForms/simulation",
-            type: "POST",
-            dataType: "JSON",
-            contentType: "application/json",
-            data: JSON.stringify(request)
-          });
-        }
+        $(".secao-agendamento > .store-list").append(`<ul></ul>`);
 
-        $('.timestamp').click(function () {
-          $('.pickup').removeClass('selected');
-          $(this).parent('.pickup').addClass('selected');
-
-          saveSelectedPickupPoint($(this).attr('id'));
-
-          if (window.location.href.includes('checkout')) {
-            $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
-          }
-
-          $('.mz-install__button--buy').click(e => e.preventDefault());
-
-          const loja = $(this).attr('data-store');
-          const cep = $(this).attr('data-cep');
-          const horario = $(this).html();
-          const date = $(".secao-agendamento .data input")
-            .datepicker("getDate")
-            .toISOString()
-            .split("T")[0];
-
-          localStorage.setItem('AG_SelectedHour', JSON.stringify({
-            loja,
-            horario,
-            date,
-            _createAt: Date.now()
-          }));
-
-          vtexjs.checkout.calculateShipping({
-            postalCode: cep,
-            country: 'BRA',
-            addressType: 'search'
-          }).then((order) => { forceChangeShipping(order); $('.mz-install__button--buy').unbind('click'); });
-
-          function saveSelectedPickupPoint(id) {
-            const sla = PICKUP_POINTS.find(x => x.id === id);
-
-            localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
-            sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
-          }
+        PICKUP_POINTS.forEach((pickupPoint, index) => {
+          let store = result.Registros.find(store => /(PG|MG|RC|SP|NW)[\d]{2,}/g.test(store.Nome));
+          $(".secao-agendamento > .store-list ul").append(`${populateStore(store, pickupPoint)}`);
         });
-      })
-      .fail(() =>
-        $(".secao-agendamento > .store-list").append(noTimeAvailable())
-      );
+      }
+
+
+      async function simulateShipping(address) {
+        const request = {
+          items: [{
+            id: CONFIG.SERVICE.SKU_ID,
+            quantity: 1,
+            seller: 1
+          }],
+          postalCode: address.postalCode,
+          country: CONFIG.SERVICE.COUNTRY
+        };
+
+        return $.ajax({
+          url: "/api/checkout/pub/orderForms/simulation",
+          type: "POST",
+          dataType: "JSON",
+          contentType: "application/json",
+          data: JSON.stringify(request)
+        });
+      }
+
+      $('.timestamp').click(function () {
+        $('.pickup').removeClass('selected');
+        $(this).parent('.pickup').addClass('selected');
+
+        saveSelectedPickupPoint($(this).attr('id'));
+
+        if (window.location.href.includes('checkout')) {
+          $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
+        }
+
+        $('.mz-install__button--buy').click(e => e.preventDefault());
+
+        const loja = $(this).attr('data-store');
+        const cep = $(this).attr('data-cep');
+        const horario = $(this).html();
+        const date = $(".secao-agendamento .data input")
+          .datepicker("getDate")
+          .toISOString()
+          .split("T")[0];
+
+        localStorage.setItem('AG_SelectedHour', JSON.stringify({
+          loja,
+          horario,
+          date,
+          _createAt: Date.now()
+        }));
+
+        vtexjs.checkout.calculateShipping({
+          postalCode: cep,
+          country: 'BRA',
+          addressType: 'search'
+        }).then((order) => { forceChangeShipping(order); $('.mz-install__button--buy').unbind('click'); });
+
+        function saveSelectedPickupPoint(id) {
+          const sla = PICKUP_POINTS.find(x => x.id === id);
+
+          localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
+          sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
+        }
+      });
+
+    } catch (error) {
+      console.error(error);
+      $(".secao-agendamento > .store-list").append(noTimeAvailable());
+    }
+
+    // $.ajax({
+    //   method: "GET",
+    //   url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
+    //     .datepicker("getDate")
+    //     .toISOString()
+    //     .split("T")[0]
+    //     }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
+    // })
+    //   .done(async function (data) {
+    //     $(".secao-agendamento .qtd").text(`Lojas encontradas: ${data.Total}`);
+    //     if (data.Total === 0)
+    //       $(".secao-agendamento > .store-list").append(noTimeAvailable());
+
+    //     if (address) {
+    //       let shippingData = await simulateShipping(address);
+
+
+    //       PICKUP_POINTS = shippingData
+    //         .logisticsInfo[0]
+    //         .slas
+    //         .filter(x => x.deliveryChannel === 'pickup-in-point');
+
+    //       $(".secao-agendamento > .store-list").append(`<ul></ul>`);
+
+    //       PICKUP_POINTS.forEach((pickupPoint, index) => {
+    //         let store = data.Registros.find(store => /(PG|MG|RC|SP|NW)[\d]{2,}/g.test(store.Nome));
+    //         $(".secao-agendamento > .store-list ul").append(`${populateStore(store, pickupPoint)}`);
+    //       });
+    //     }
+
+
+    //     async function simulateShipping(address) {
+    //       const request = {
+    //         items: [{
+    //           id: CONFIG.SERVICE.SKU_ID,
+    //           quantity: 1,
+    //           seller: 1
+    //         }],
+    //         postalCode: address.postalCode,
+    //         country: CONFIG.SERVICE.COUNTRY
+    //       };
+
+    //       return $.ajax({
+    //         url: "/api/checkout/pub/orderForms/simulation",
+    //         type: "POST",
+    //         dataType: "JSON",
+    //         contentType: "application/json",
+    //         data: JSON.stringify(request)
+    //       });
+    //     }
+
+    //     $('.timestamp').click(function () {
+    //       $('.pickup').removeClass('selected');
+    //       $(this).parent('.pickup').addClass('selected');
+
+    //       saveSelectedPickupPoint($(this).attr('id'));
+
+    //       if (window.location.href.includes('checkout')) {
+    //         $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
+    //       }
+
+    //       $('.mz-install__button--buy').click(e => e.preventDefault());
+
+    //       const loja = $(this).attr('data-store');
+    //       const cep = $(this).attr('data-cep');
+    //       const horario = $(this).html();
+    //       const date = $(".secao-agendamento .data input")
+    //         .datepicker("getDate")
+    //         .toISOString()
+    //         .split("T")[0];
+
+    //       localStorage.setItem('AG_SelectedHour', JSON.stringify({
+    //         loja,
+    //         horario,
+    //         date,
+    //         _createAt: Date.now()
+    //       }));
+
+    //       vtexjs.checkout.calculateShipping({
+    //         postalCode: cep,
+    //         country: 'BRA',
+    //         addressType: 'search'
+    //       }).then((order) => { forceChangeShipping(order); $('.mz-install__button--buy').unbind('click'); });
+
+    //       function saveSelectedPickupPoint(id) {
+    //         const sla = PICKUP_POINTS.find(x => x.id === id);
+
+    //         localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
+    //         sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
+    //       }
+    //     });
+    //   })
+    //   .fail(() =>
+    //     $(".secao-agendamento > .store-list").append(noTimeAvailable())
+    //   );
 
     $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
       $(this).parent().next().toggleClass("hidden");
