@@ -162,7 +162,7 @@ $(function () {
         .split("T")[0]
         }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
     })
-      .done(function (data) {
+      .done(async function (data) {
         $(".secao-agendamento .qtd").text(`Lojas encontradas: ${data.Total}`);
         if (data.Total === 0)
           $(".secao-agendamento > .store-list").append(noTimeAvailable());
