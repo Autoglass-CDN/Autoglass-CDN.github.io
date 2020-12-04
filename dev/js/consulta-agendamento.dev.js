@@ -115,7 +115,9 @@ $(function () {
     onSelect: () => {
       $(".secao-agendamento > .store-list .store").remove();
       $(".secao-agendamento > .store-list #sem-lojas").remove();
-      recuperarHorarios();
+      const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
+      if (address)
+        recuperarHorarios(address);
     },
   });
   $(".secao-agendamento > .store-list > .filter > .data input").datepicker(
@@ -151,7 +153,7 @@ $(function () {
     })
   }
 
-  function recuperarHorarios(address) {
+  async function recuperarHorarios(address) {
     $.ajax({
       method: "GET",
       url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
