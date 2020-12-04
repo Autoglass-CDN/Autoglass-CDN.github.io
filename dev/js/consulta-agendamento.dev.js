@@ -211,7 +211,7 @@ $(function () {
         $('.pickup').removeClass('selected');
         $(this).parent('.pickup').addClass('selected');
 
-        saveSelectedPickupPoint($(this).parent('.pickup').attr('id'));
+        saveSelectedPickupPoint($(this).parents('.pickup').attr('id'));
 
         if (window.location.href.includes('checkout')) {
           $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
