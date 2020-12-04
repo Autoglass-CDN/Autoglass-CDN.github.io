@@ -19,8 +19,9 @@
 	display: unset;
 }
 
-.secao-agendamento .store-list .pickup__estimate .time {
+.secao-agendamento .store-list .time {
   padding: 12px;
+  border-top: 1px solid #f4f4f4;
 }
 
 
