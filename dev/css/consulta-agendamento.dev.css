@@ -5,6 +5,20 @@
   font-size: 14px !important;
 }
 
+.secao-agendamento .store-list > ul {
+	padding-inline-start: 0;
+}
+
+.secao-agendamento .store-list .pickup__estimate {
+    border-top: 1px solid #f4f4f4;
+    padding: 8px 8px 8px 100px;
+}
+
+.secao-agendamento .store-list .pickup__estimate span
+{
+	display: unset;
+}
+
 
 .secao-agendamento > .store-list > .filter {
   display: flex;

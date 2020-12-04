@@ -349,9 +349,9 @@ $(function () {
     //     $(".secao-agendamento > .store-list").append(noTimeAvailable())
     //   );
 
-    $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
-      $(this).parent().next().toggleClass("hidden");
-    });
+    // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
+    //   $(this).parent().next().toggleClass("hidden");
+    // });
   }
 
   function populateStore(store, { id, shippingEstimate, pickupDistance, pickupStoreInfo }) {
