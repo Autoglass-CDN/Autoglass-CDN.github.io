@@ -85,6 +85,7 @@
         SELECTS[0].values.push(...x.children.map(child => {
           let absolutePath = new URL(child.url);
           child.url = absolutePath.href.replace(absolutePath.origin, '');
+          return child;
         }));
       });
 
