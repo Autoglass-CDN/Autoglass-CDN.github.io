@@ -523,7 +523,9 @@
         url += location.origin;
         url += paths;
       } else {
-        url += optionSelected.url;
+        //url += optionSelected.url;
+        let absolutePath = new URL(optionSelected.url);
+        url += absolutePath.href.replace(absolutePath.origin, '');
       }
 
       url += `?${CONFIG.ASYNC.LID_FILTER}&${buildMapFilters(--index)}`;
