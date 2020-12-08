@@ -82,10 +82,13 @@
     categoryTree
       .filter(x => x.hasChildren)
       .forEach(x => {
-        SELECTS[0].values.push(...x.children.map(child => {
-          let absolutePath = new URL("https://www.autoglassonline.com.br/vidros/vidros/parabrisa");
-          child.url = absolutePath.href.replace(absolutePath.origin, '');
-        }));
+        SELECTS[0].values.push(...x.children
+          // .map(child => {
+          //   let absolutePath = new URL(child.url);
+          //   child.url = absolutePath.href.replace(absolutePath.origin, '');
+          //   return child;
+          // })
+        );
       });
 
     await Controller.checkRouterParams();
