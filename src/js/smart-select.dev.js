@@ -82,13 +82,7 @@
     categoryTree
       .filter(x => x.hasChildren)
       .forEach(x => {
-        SELECTS[0].values.push(...x.children
-          // .map(child => {
-          //   let absolutePath = new URL(child.url);
-          //   child.url = absolutePath.href.replace(absolutePath.origin, '');
-          //   return child;
-          // })
-        );
+        SELECTS[0].values.push(...x.children);
       });
 
     await Controller.checkRouterParams();
