@@ -392,7 +392,7 @@
 
       if (index !== 0) {
         select.routeSelected = optionSelected.url
-          ? optionSelected.url.replace(location.origin, '')
+          ? optionSelected.url.replace(new URL(optionSelected.url).origin, '')
           : optionSelected.name;
       }
 
@@ -520,7 +520,8 @@
         url += location.origin;
         url += paths;
       } else {
-        url += optionSelected.url;
+        let absolutePath = new URL(optionSelected.url);
+        url += absolutePath.href.replace(absolutePath.origin, '');
       }
 
       url += `?${CONFIG.ASYNC.LID_FILTER}&${buildMapFilters(--index)}`;
