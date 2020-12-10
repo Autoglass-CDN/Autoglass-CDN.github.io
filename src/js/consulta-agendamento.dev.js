@@ -116,7 +116,9 @@ $(function () {
     onSelect: () => {
       $(".secao-agendamento > .store-list .store").remove();
       $(".secao-agendamento > .store-list #sem-lojas").remove();
-      recuperarHorarios();
+      const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
+      if (address)
+        recuperarHorarios(address);
     },
   });
   $(".secao-agendamento > .store-list > .filter > .data input").datepicker(
@@ -152,111 +154,219 @@ $(function () {
     })
   }
 
-  function recuperarHorarios(address) {
-    $.ajax({
-      method: "GET",
-      url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
-        .datepicker("getDate")
-        .toISOString()
-        .split("T")[0]
-        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
-    })
-      .done(function (data) {
-        $(".secao-agendamento .qtd").text(`Lojas encontradas: ${data.Total}`);
-        if (data.Total === 0)
-          $(".secao-agendamento > .store-list").append(noTimeAvailable());
+  async function recuperarHorarios(address) {
 
-        if (address) {
-          let shippingData = await simulateShipping(address);
+    try {
+      let result = await $.ajax({
+        method: "GET",
+        url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
+          .datepicker("getDate")
+          .toISOString()
+          .split("T")[0]
+          }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
+      });
+
+      $(".secao-agendamento .qtd").text(`Lojas encontradas: ${result.Total}`);
+      if (result.Total === 0)
+        $(".secao-agendamento > .store-list").append(noTimeAvailable());
+
+      if (address) {
+        let shippingData = await simulateShipping(address);
 
 
-          PICKUP_POINTS = shippingData
-            .logisticsInfo[0]
-            .slas
-            .filter(x => x.deliveryChannel === 'pickup-in-point');
+        PICKUP_POINTS = shippingData
+          .logisticsInfo[0]
+          .slas
+          .filter(x => x.deliveryChannel === 'pickup-in-point');
 
-          $(".secao-agendamento > .store-list").append(`<ul></ul>`);
+        $(".secao-agendamento > .store-list").append(`<ul></ul>`);
 
-          PICKUP_POINTS.forEach((pickupPoint, index) => {
-            let store = data.Registros.find(store => /(PG|MG|RC|SP|NW)[\d]{2,}/g.test(store.Nome));
-            $(".secao-agendamento > .store-list ul").append(`${populateStore(store, pickupPoint)}`);
-          });
+        PICKUP_POINTS.forEach((pickupPoint, index) => {
+          let store = result.Registros.find(store => /(PG|MG|RC|SP|NW)[\d]{2,}/g.test(store.Nome));
+          $(".secao-agendamento > .store-list ul").append(`${populateStore(store, pickupPoint)}`);
+        });
+      }
+
+
+      async function simulateShipping(address) {
+        const request = {
+          items: [{
+            id: CONFIG.SERVICE.SKU_ID,
+            quantity: 1,
+            seller: 1
+          }],
+          postalCode: address.postalCode,
+          country: CONFIG.SERVICE.COUNTRY
+        };
+
+        return $.ajax({
+          url: "/api/checkout/pub/orderForms/simulation",
+          type: "POST",
+          dataType: "JSON",
+          contentType: "application/json",
+          data: JSON.stringify(request)
+        });
+      }
+
+      $('.timestamp').click(function () {
+        $('.pickup').removeClass('selected');
+        $(this).parent('.pickup').addClass('selected');
+
+        saveSelectedPickupPoint($(this).parents('.pickup').attr('id'));
+
+        if (window.location.href.includes('checkout')) {
+          $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
         }
 
+        $('.mz-install__button--buy').click(e => e.preventDefault());
 
-        async function simulateShipping(address) {
-          const request = {
-            items: [{
-              id: CONFIG.SERVICE.SKU_ID,
-              quantity: 1,
-              seller: 1
-            }],
-            postalCode: address.postalCode,
-            country: CONFIG.SERVICE.COUNTRY
-          };
+        const loja = $(this).attr('data-store');
+        const cep = $(this).attr('data-cep');
+        const horario = $(this).html();
+        const date = $(".secao-agendamento .data input")
+          .datepicker("getDate")
+          .toISOString()
+          .split("T")[0];
 
-          return $.ajax({
-            url: "/api/checkout/pub/orderForms/simulation",
-            type: "POST",
-            dataType: "JSON",
-            contentType: "application/json",
-            data: JSON.stringify(request)
-          });
+        localStorage.setItem('AG_SelectedHour', JSON.stringify({
+          loja,
+          horario,
+          date,
+          _createAt: Date.now()
+        }));
+
+        vtexjs.checkout.calculateShipping({
+          postalCode: cep,
+          country: 'BRA',
+          addressType: 'search'
+        }).then((order) => { forceChangeShipping(order); $('.mz-install__button--buy').unbind('click'); });
+
+        function saveSelectedPickupPoint(id) {
+          const sla = PICKUP_POINTS.find(x => x.pickupStoreInfo.address.addressId === id);
+
+          localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
+          sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
         }
-
-        $('.timestamp').click(function () {
-          $('.pickup').removeClass('selected');
-          $(this).parent('.pickup').addClass('selected');
-
-          saveSelectedPickupPoint($(this).attr('id'));
-
-          if (window.location.href.includes('checkout')) {
-            $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
-          }
-
-          $('.mz-install__button--buy').click(e => e.preventDefault());
-
-          const loja = $(this).attr('data-store');
-          const cep = $(this).attr('data-cep');
-          const horario = $(this).html();
-          const date = $(".secao-agendamento .data input")
-            .datepicker("getDate")
-            .toISOString()
-            .split("T")[0];
-
-          localStorage.setItem('AG_SelectedHour', JSON.stringify({
-            loja,
-            horario,
-            date,
-            _createAt: Date.now()
-          }));
+        function sendCalculateShipping(cep, type) {
+          $('.mz-pickup__button--buy').click(e => e.preventDefault());
 
           vtexjs.checkout.calculateShipping({
             postalCode: cep,
             country: 'BRA',
-            addressType: 'search'
-          }).then((order) => { forceChangeShipping(order); $('.mz-install__button--buy').unbind('click'); });
+            addressType: type
+          }).then(order => { forceChangeShipping(order); $('.mz-pickup__button--buy').unbind('click'); });
+        }
+      });
 
-          function saveSelectedPickupPoint(id) {
-            const sla = PICKUP_POINTS.find(x => x.id === id);
+    } catch (error) {
+      console.error(error);
+      $(".secao-agendamento > .store-list").append(noTimeAvailable());
+    }
 
-            localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
-            sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
-          }
-        });
-      })
-      .fail(() =>
-        $(".secao-agendamento > .store-list").append(noTimeAvailable())
-      );
+    // $.ajax({
+    //   method: "GET",
+    //   url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
+    //     .datepicker("getDate")
+    //     .toISOString()
+    //     .split("T")[0]
+    //     }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
+    // })
+    //   .done(async function (data) {
+    //     $(".secao-agendamento .qtd").text(`Lojas encontradas: ${data.Total}`);
+    //     if (data.Total === 0)
+    //       $(".secao-agendamento > .store-list").append(noTimeAvailable());
 
-    $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
-      $(this).parent().next().toggleClass("hidden");
-    });
+    //     if (address) {
+    //       let shippingData = await simulateShipping(address);
+
+
+    //       PICKUP_POINTS = shippingData
+    //         .logisticsInfo[0]
+    //         .slas
+    //         .filter(x => x.deliveryChannel === 'pickup-in-point');
+
+    //       $(".secao-agendamento > .store-list").append(`<ul></ul>`);
+
+    //       PICKUP_POINTS.forEach((pickupPoint, index) => {
+    //         let store = data.Registros.find(store => /(PG|MG|RC|SP|NW)[\d]{2,}/g.test(store.Nome));
+    //         $(".secao-agendamento > .store-list ul").append(`${populateStore(store, pickupPoint)}`);
+    //       });
+    //     }
+
+
+    //     async function simulateShipping(address) {
+    //       const request = {
+    //         items: [{
+    //           id: CONFIG.SERVICE.SKU_ID,
+    //           quantity: 1,
+    //           seller: 1
+    //         }],
+    //         postalCode: address.postalCode,
+    //         country: CONFIG.SERVICE.COUNTRY
+    //       };
+
+    //       return $.ajax({
+    //         url: "/api/checkout/pub/orderForms/simulation",
+    //         type: "POST",
+    //         dataType: "JSON",
+    //         contentType: "application/json",
+    //         data: JSON.stringify(request)
+    //       });
+    //     }
+
+    //     $('.timestamp').click(function () {
+    //       $('.pickup').removeClass('selected');
+    //       $(this).parent('.pickup').addClass('selected');
+
+    //       saveSelectedPickupPoint($(this).attr('id'));
+
+    //       if (window.location.href.includes('checkout')) {
+    //         $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
+    //       }
+
+    //       $('.mz-install__button--buy').click(e => e.preventDefault());
+
+    //       const loja = $(this).attr('data-store');
+    //       const cep = $(this).attr('data-cep');
+    //       const horario = $(this).html();
+    //       const date = $(".secao-agendamento .data input")
+    //         .datepicker("getDate")
+    //         .toISOString()
+    //         .split("T")[0];
+
+    //       localStorage.setItem('AG_SelectedHour', JSON.stringify({
+    //         loja,
+    //         horario,
+    //         date,
+    //         _createAt: Date.now()
+    //       }));
+
+    //       vtexjs.checkout.calculateShipping({
+    //         postalCode: cep,
+    //         country: 'BRA',
+    //         addressType: 'search'
+    //       }).then((order) => { forceChangeShipping(order); $('.mz-install__button--buy').unbind('click'); });
+
+    //       function saveSelectedPickupPoint(id) {
+    //         const sla = PICKUP_POINTS.find(x => x.id === id);
+
+    //         localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
+    //         sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
+    //       }
+    //     });
+    //   })
+    //   .fail(() =>
+    //     $(".secao-agendamento > .store-list").append(noTimeAvailable())
+    //   );
+
+    // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
+    //   $(this).parent().next().toggleClass("hidden");
+    // });
   }
 
   function populateStore(store, { id, shippingEstimate, pickupDistance, pickupStoreInfo }) {
     return `
-						<li id="${pickupStoreInfo.addressId}" class="pickup">
+						<li id="${pickupStoreInfo.address.addressId}" class="pickup">
 							<div class="pickup__info">
 								<div class="pickup__info-distance">
 									<svg class="pkpmodal-pickup-point-best-marker-image" width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.4917 22.3169L19.4918 22.3169L19.4967 22.3096C19.5843 22.1782 19.6709 22.0485 19.7564 21.9204C22.0478 18.4883 23.5645 16.2165 23.5645 12.5323C23.5645 6.16317 18.4013 1 12.0323 1C5.66317 1 0.5 6.16317 0.5 12.5323C0.5 16.5417 3.05396 20.5158 5.20313 23.2599C6.56216 24.9952 9.21424 28.1986 11.703 30.3763L12.0323 30.6644L12.3615 30.3763C14.8402 28.2075 16.7075 26.3386 19.4917 22.3169Z" fill="#2D78F6" stroke="white"></path><path d="M18.6968 9.73418L14.6509 9.14642L12.8407 5.48019C12.5239 4.83994 11.4759 4.83994 11.159 5.48019L9.3498 9.14642L5.30298 9.73418C4.53711 9.84573 4.22682 10.7906 4.78365 11.3344L7.71213 14.1878L7.02126 18.2178C6.89096 18.9808 7.69338 19.5667 8.38145 19.2058L11.9999 17.3038L15.6192 19.2068C16.3017 19.5639 17.1107 18.9874 16.9794 18.2187L16.2885 14.1888L19.217 11.3353C19.7729 10.7906 19.4626 9.84573 18.6968 9.73418Z" fill="white"></path></svg>
@@ -277,7 +387,7 @@ $(function () {
 								<span>Grátis</span>
 								<span>Pronto em até ${calculateTimeEstimate(shippingEstimate)}</span>
               </div>
-              <div class="time hidden">
+              <div class="time">
                 <p>Horários:</p>
                 <div class="time-list">
                 ${createTimestampList(store.Horarios, `${store.Nome} | ${store.Bairro}`, store.Cep).join("\n")}
