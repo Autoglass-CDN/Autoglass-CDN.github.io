@@ -44,9 +44,10 @@ $(function () {
   }
 
   const hmlCodServico = "17";
-  const baseUrlApi = window.location.href.includes("dev")
-    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
-    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
+  const baseUrlApi = //window.location.href.includes("dev")
+    //? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
+    //: 
+    "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
   let estado = codCidades[$.cookie("mzLocationUF")];
   let codCidade = estado.code || null;
 
