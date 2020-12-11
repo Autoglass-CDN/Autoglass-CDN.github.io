@@ -153,6 +153,15 @@
 }
 
 /* GLOBAL MODIFIERS */
+@media (max-width: 1200px){
+  .desktop {
+    display: none;
+  }
+
+  .mobile {
+    display: unset;
+  }
+}
 
 
 /* BLOCKS */
@@ -185,6 +194,7 @@
 
   align-items: center;
   margin: 0 15px;
+  padding: 0 10px;
   width: 100%;
   max-width: 1280px;
 
