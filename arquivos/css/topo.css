@@ -155,11 +155,21 @@
 /* GLOBAL MODIFIERS */
 @media (max-width: 1200px){
   .desktop {
-    display: none;
+    display: none !important;
   }
 
   .mobile {
     display: unset;
+  }
+}
+
+@media (min-width: 1201px){
+  .desktop {
+    display: unset;
+  }
+
+  .mobile {
+    display: none !important;
   }
 }
 
