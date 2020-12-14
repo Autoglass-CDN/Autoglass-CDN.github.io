@@ -104,7 +104,12 @@
 
 /* #endregion IMAGENS DE CATEGORIA */
 
-/* ÍCONES */
+/* #region ÍCONES */
+.menu-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/menu-icon.png');
+  height: 22px;
+}
+
 .map-marker-icon::before {
   content: url('https://autoglass-cdn.github.io/arquivos/img/map-marker.svg');
   height: 20px;
@@ -152,6 +157,8 @@
   height: 32px;
 }
 
+/* #endregion ÍCONES */
+
 /* GLOBAL MODIFIERS */
 @media (max-width: 1200px){
   .desktop {
@@ -175,6 +182,8 @@
 
 
 /* BLOCKS */
+
+/* #region TOPO */
 .topo {
   height: 40px;
   width: 100%;
@@ -302,6 +311,21 @@
 .topo .usuario .arrow-down-icon-white {
   margin-left: 5px;
 }
+
+.topo button.menu-btn {
+	font-weight: var(--semi-bold);
+	text-transform: uppercase;
+	font-size: 1.1667rem; /*14pt*/
+	color: var(--blue-700);
+	background: transparent;
+	border: 0;
+}
+
+.topo button.menu-btn .menu-icon {
+	margin-right: 10px;
+}
+
+/* #endregion TOPO */
 
 
 /* NAV */
