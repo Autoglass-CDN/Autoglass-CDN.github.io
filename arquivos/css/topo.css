@@ -312,19 +312,6 @@
   margin-left: 5px;
 }
 
-.topo button.menu-btn {
-	font-weight: var(--semi-bold);
-	text-transform: uppercase;
-	font-size: 1.1667rem; /*14pt*/
-	color: var(--blue-700);
-	background: transparent;
-	border: 0;
-}
-
-.topo button.menu-btn .menu-icon {
-	margin-right: 10px;
-}
-
 /* #endregion TOPO */
 
 
@@ -355,6 +342,19 @@
 
 .nav .container .logo:hover {
   opacity: .8;
+}
+
+.nav .container button.menu-btn {
+	font-weight: var(--semi-bold);
+	text-transform: uppercase;
+	font-size: 1.1667rem; /*14pt*/
+	color: var(--blue-700);
+	background: transparent;
+	border: 0;
+}
+
+.nav .container button.menu-btn .menu-icon {
+	margin-right: 10px;
 }
 
 .container .menu-categorias {
