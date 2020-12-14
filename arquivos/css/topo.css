@@ -105,6 +105,11 @@
 /* #endregion IMAGENS DE CATEGORIA */
 
 /* ÍCONES */
+.menu-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/menu-icon.png');
+  height: 22px;
+}
+
 .map-marker-icon::before {
   content: url('https://autoglass-cdn.github.io/arquivos/img/map-marker.svg');
   height: 20px;
