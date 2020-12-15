@@ -280,23 +280,6 @@
   border-left: 0px;
 }
 
-.cep button:hover {
-  background-color: #cccccc;
-}
-
-.cep button {
-  height: 24px;
-  transition: background-color .2s ease-out;
-  outline: none;
-  text-align: center;
-  text-transform: uppercase;
-  background-color: #dfdfdf;
-  color: #505570;
-  border: none;
-  border-top-right-radius: 3px;
-  border-bottom-right-radius: 3px;
-}
-
 #mostrar-datas-datepicker {
   display: flex;
   align-items: center;
