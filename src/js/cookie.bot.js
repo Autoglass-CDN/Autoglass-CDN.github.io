@@ -8,7 +8,7 @@
         const cookie = $.cookie('hasAcceptedCookies');
 
         if (!beCheckoutConfirmation) {
-            if (!cookie && (!cookie.accepted)) {
+            if (!cookie || (!cookie.accepted)) {
                 $.cookie('hasAcceptedCookies', JSON.stringify({
                     accepted: false,
                     created_date: Date.now()
