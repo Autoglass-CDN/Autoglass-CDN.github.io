@@ -1,0 +1,105 @@
+@media screen and (max-width:1170px) {
+    #cookiebanner {
+        border-radius: 0 !important;
+        bottom: 0 !important;
+    }
+}
+@media screen and (max-width:720px) {
+    #cookiebanner {
+        display: block;
+    }
+    #cookiebanner a.c-button {
+        width: 100%;
+        box-sizing: border-box;
+        text-align: center;
+        /* margin-bottom: 20px; */
+    }
+    #c-right {
+        float: none;
+    }
+    #c-left {
+        float: none;
+    }
+    #cookiebanner p.c-message {
+        margin-bottom: 20px;
+    }
+}
+@media screen and (min-width:720px) {
+    #cookiebanner {
+        display: flex !important;
+    }
+    #cookiebanner #c-left {
+        /* float: left;
+        max-width: 80%; */
+    }
+    #cookiebanner #c-right {
+        /* float: right; */
+    }
+}
+#cookiebanner #c-right {
+    min-width: fit-content;
+}
+#cookiebanner #c-left * {
+    margin-block-start: unset;
+    margin-block-end: unset;
+}
+#cookiebanner {
+    box-sizing: border-box;
+    background-color: white;
+    width: 100%;
+    padding: 15px 20px;
+    position: fixed;
+    z-index: 2147483645;
+    bottom: -800px;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    max-width: 1170px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    align-items: center;
+    justify-content: space-between;
+    transition: .2s;
+}
+#cookiebanner p {
+    font-size: 14px;
+    line-height: 1.4;
+}
+#cookiebanner .c-header {
+    text-transform: uppercase;
+    color: #1a3779;
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+#cookiebanner p.c-message {
+    font-size: 14px;
+    color: #999;
+}
+#cookiebanner a {
+    font-weight: bold;
+    color: #999;
+}
+#cookiebanner a:hover {
+    color: #1a3779;
+}
+#cookiebanner a.c-button {
+    border-radius: 4px;
+    background-color: #2D4F9E;
+    box-shadow: 0 2px 0 0 rgb(221, 221, 221);
+    border: 1px solid rgb(221, 221, 221);
+    padding: 12px 30px;
+    text-decoration: none;
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 10px;
+    color: white;
+    font-size: 16px;
+    -o-transition: .2s;
+    -ms-transition: .2s;
+    -moz-transition: .2s;
+    -webkit-transition: .2s;
+    transition: .2s;
+}
+#cookiebanner a.c-button:hover {
+    box-shadow: none;
+    background-color: #1a3779;
+}
