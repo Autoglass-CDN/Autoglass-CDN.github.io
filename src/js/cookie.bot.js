@@ -5,13 +5,13 @@
 
     function _init() {
         const beCheckoutConfirmation = location.pathname.includes('orderPlaced');
-        const cookie = $.cookie('hasAcceptedCookies');
+        const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
 
         if (!beCheckoutConfirmation) {
             if (!cookie || (!cookie.accepted)) {
                 $.cookie('hasAcceptedCookies', JSON.stringify({
                     accepted: false,
-                    created_date: Date.now()
+                    createdAt: Date.now()
                 }));
 
                 renderHtml();
@@ -20,11 +20,16 @@
         } else {
             $.ajax({
                 type: 'POST',
-                url: 'http://172.31.48.1:5010/api/master-datas/cookies',
+                url: 'http://172.41.38.1:5010/api/master-datas/cookies',
+                dataType: 'json',
+                contentType: 'application/json',
                 data: JSON.stringify({
                     "CodigoCompra": $('#order-id').html(),
                     "DataAceite": cookie ? new Date(cookie.acceptedAt) : null
-                })
+                }),
+                success: function(res) {
+                    console.log(res);
+                }
             });
         }
     }
