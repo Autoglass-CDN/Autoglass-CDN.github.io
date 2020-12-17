@@ -5,7 +5,8 @@
 
     function _init() {
         const beCheckoutConfirmation = location.pathname.includes('orderPlaced');
-        const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
+        const cookieString = $.cookie('hasAcceptedCookies')
+        const cookie = cookieString ? JSON.parse(cookieString) : null;
 
         if (!beCheckoutConfirmation) {
             if (!cookie || (!cookie.accepted)) {
@@ -20,7 +21,7 @@
         } else {
             $.ajax({
                 type: 'POST',
-                url: 'http://172.41.38.1:5010/api/master-datas/cookies',
+                url: 'http://localhost:55408/api/master-datas/cookies',
                 dataType: 'json',
                 contentType: 'application/json',
                 data: JSON.stringify({
