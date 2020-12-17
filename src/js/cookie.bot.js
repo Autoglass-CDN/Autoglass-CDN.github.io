@@ -18,9 +18,10 @@
                 showCookieBanner();
             }
         } else {
-            $.post('POST', {
+            $.ajax({
+                type: 'POST',
                 url: 'http://172.31.48.1:5010/api/master-datas/cookies',
-                body: JSON.stringify({
+                data: JSON.stringify({
                     "CodigoCompra": $('#order-id').html(),
                     "DataAceite": cookie ? new Date(cookie.acceptedAt) : null
                 })
