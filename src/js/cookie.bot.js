@@ -21,7 +21,7 @@
             $.post('POST', {
                 url: 'http://172.31.48.1:5010/api/master-datas/cookies',
                 body: JSON.stringify({
-                    "CodigoCompra": $('#something').html(),
+                    "CodigoCompra": $('#order-id').html(),
                     "DataAceite": cookie ? new Date(cookie.acceptedAt) : null
                 })
             });
