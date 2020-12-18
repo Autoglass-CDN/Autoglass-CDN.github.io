@@ -187,7 +187,7 @@ i.arrow-icon::before {
     display: none !important;
   }
   .nav {
-    height: 48px;
+    height: 48px !important;
   }
 }
 
