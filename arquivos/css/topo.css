@@ -177,6 +177,9 @@ i.arrow-icon::before {
   .mobile {
     display: unset;
   }
+  .nav {
+    height: 48px !important;
+  }
 }
 
 @media (min-width: 1201px) {
@@ -185,9 +188,6 @@ i.arrow-icon::before {
   }
   .mobile {
     display: none !important;
-  }
-  .nav {
-    height: 48px !important;
   }
 }
 
