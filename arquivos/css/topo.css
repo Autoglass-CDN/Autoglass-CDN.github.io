@@ -639,7 +639,17 @@ i.arrow-icon::before {
   font-weight: 500;
   color: #818181;
   display: block;
-  transition: 0.3s;
+  transition: background 0.8s, 0.3s;
+}
+
+.side-menu a:hover {
+  background: white radial-gradient(circle, transparent 1%, white 1%) center/15000%;
+}
+
+.side-menu a:active {
+  background-color: var(--gray-300);
+  background-size: 100%;
+  transition: background 0s;
 }
 
 .side-menu a+a {
