@@ -212,7 +212,7 @@
   display: flex;
 
   align-items: center;
-  margin: 0 15px;
+  /*margin: 0 15px;*/
   padding: 0 10px;
   width: 100%;
   max-width: 1280px;
@@ -222,7 +222,7 @@
 
 .geo-picker {
   display: flex;
-  min-width: 315px;
+  /*min-width: 315px;*/
 }
 
 .geo-picker>i {
