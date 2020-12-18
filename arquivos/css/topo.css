@@ -1,9 +1,6 @@
 /* import */
+
 @import url("/arquivos/css/theme.css");
-
-
-
-
 /* #region IMAGENS DE CATEGORIA */
 
 .nav .container .menu-categorias {
@@ -15,7 +12,6 @@
   --vidro-de-porta: url("/arquivos/img/preview/Vidro-de-Porta.jpg");
   --vidro-traseiro: url("/arquivos/img/preview/Vidro-Traseiro.jpg");
   /* #endregion VIDROS */
-
   /* #region FARÓIS */
   --aro-farol-auxiliar: url("/arquivos/img/preview/Arol-Farol-de-Milha.jpg");
   --farol-auxiliar: url("/arquivos/img/preview/Farol Auxiliar (Milha).jpg");
@@ -23,26 +19,22 @@
   --farol-principal: url("/arquivos/img/preview/Farol Principal.jpg");
   --moldura-farol-auxiliar: url("/arquivos/img/preview/Moldura-Farol-Auxiliar-(Milha).jpg");
   /* #endregion FARÓIS */
-
   /* #region LÂMPADAS */
   --lampada-farol-auxiliar: url("/arquivos/img/preview/Lampada-Farol.jpg");
   --lampada-lanterna: url("/arquivos/img/preview/Lampada-Farol.jpg");
   --lampada-lanterna-traseira: url("/arquivos/img/preview/Lampada-Lanterna.jpg");
   --lampada-painel: url("/arquivos/img/preview/Lampada-Painel.jpg");
   /* #endregion LÂMPADAS */
-
   /* #region LANTERNAS */
   --lanterna: url("/arquivos/img/preview/Lanterna-Traseira.jpg");
   --lanterna-parachoque: url("/arquivos/img/preview/Lanterna-Parachoque.jpg");
   /* #endregion LANTERNAS */
-
   /* #region PARACHOQUES */
   --grade-parachoques: url("/arquivos/img/preview/Grade-do-Parachoque.jpg");
   --moldura-paralama: url("/arquivos/img/preview/Moldura-Paralama.jpg");
   --parachoque-dianteiro: url("/arquivos/img/preview/Parchoque Dianteiro.jpg");
   --parachoque-traseiro: url("/arquivos/img/preview/Parachoque-Traseiro.jpg");
   /* #endregion PARACHOQUES */
-
   /* #region RETROVISORES */
   --retrovisores: url("/arquivos/img/preview/Retrovisor.jpg");
   --capa-de-retrovisores: url("/arquivos/img/preview/Capa-de-Retrovisor.jpg");
@@ -53,13 +45,11 @@
   --retrovisor-externo: url("/arquivos/img/preview/Retrovisor-Externo.jpg");
   --retrovisor-interno: url("/arquivos/img/preview/Retrovisor-Interno.jpg");
   /* #endregion RETROVISORES */
-
   /* #region SUSPENSÕES */
   --suspensoes: url("/arquivos/img/preview/Suspensao.jpg");
   --amortecedores: url("/arquivos/img/preview/Amortecedor.jpg");
   --amortecedor-suspensao: url("/arquivos/img/preview/Amortecedor.jpg");
   /* #endregion SUSPENSÕES */
-
   /* #region RADIADORES */
   --radiadores: url("/arquivos/img/preview/Radiador.jpg");
   --aditivo-radiador: url("/arquivos/img/preview/Aditivo-de-Radiador.jpg");
@@ -70,23 +60,19 @@
   --moldura-grade-radiador: url("/arquivos/img/preview/Moldura-Grande-do-Radiador.jpg");
   --radiador: url("/arquivos/img/preview/Radiador.jpg");
   /* #endregion RADIADORES */
-
   /* #region CONDENSADORES */
   --condensadores: url("/arquivos/img/preview/Condensador.jpg");
   --condensador-ar-condicionado: url("/arquivos/img/preview/Condensador Ar Condicionado.jpg");
   --gmv-condensador: url("/arquivos/img/preview/Gmv-Condensador.jpg");
   /* #endregion CONDENSADORES */
-
   /* #region HIGIENIZADORES */
   --higienizadores: url("/arquivos/img/preview/");
   --higienizador-de-ar-condicionado: url("/arquivos/img/preview/Higienizador-Ar-Condicionado.jpg");
   /* #endregion HIGIENIZADORES */
-
   /* #region FILTROS */
   --filtros: url("/arquivos/img/preview/Filtro.jpg");
   --filtro-ar-condicionado: url("/arquivos/img/preview/Filtro-de-Ar-Condicionado.jpg");
   /* #endregion FILTROS */
-
   /* #region BORRACHAS */
   --borracha-janela: url("/arquivos/img/preview/Borracha-Janela.jpg");
   --borracha-universal-parabrisa: url("/arquivos/img/preview/Borracha-de-Parabrisa.jpg");
@@ -94,7 +80,6 @@
   --borracha-vigia: url("/arquivos/img/preview/Borracha-do-Vidro-Traseiro.jpg");
   --borracha-parabrisa: url("/arquivos/img/preview/Borracha-de-Parabrisa.jpg");
   /* #endregion BORRACHAS */
-
   /* #region PALHETAS */
   --palhetas: url("/arquivos/img/preview/Palhetas.jpg");
   --palheta-para-brisa: url("/arquivos/img/preview/Palheta-Parabrisa.jpg");
@@ -105,6 +90,7 @@
 /* #endregion IMAGENS DE CATEGORIA */
 
 /* #region ÍCONES */
+
 .menu-icon::before {
   content: url('https://autoglass-cdn.github.io/arquivos/img/menu-icon.png');
   height: 22px;
@@ -157,37 +143,61 @@
   height: 32px;
 }
 
+i.categorias-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/categorias-icon.png');
+  height: 16px;
+  margin-right: 15px;
+}
+
+i.user-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/user-icon.png');
+  height: 12px;
+  width: 27px;
+  width: fit-content;
+}
+
+i.arrow-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/arrow-icon.png');
+  height: 12px;
+}
+
+.arrow-down-icon-gray::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/arrow-down-gray.png');
+  height: 20px;
+}
+
 /* #endregion ÍCONES */
 
 /* GLOBAL MODIFIERS */
-@media (max-width: 1200px){
+
+@media (max-width: 1200px) {
   .desktop {
     display: none !important;
   }
-
   .mobile {
     display: unset;
   }
 }
 
-@media (min-width: 1201px){
+@media (min-width: 1201px) {
   .desktop {
     display: unset;
   }
-
   .mobile {
     display: none !important;
   }
+  .nav {
+    height: 48px;
+  }
 }
-
 
 /* BLOCKS */
 
 /* #region TOPO */
+
 .topo {
   height: 40px;
   width: 100%;
-
   position: sticky;
   z-index: 10;
   top: 0;
@@ -200,23 +210,19 @@
   color: var(--white);
 }
 
-.topo a,
-.topo .usuario span {
+.topo a, .topo .usuario span {
   margin-left: 5px;
   padding: 10px 0;
   cursor: pointer;
 }
 
-.topo .container,
-.nav .container {
+.topo .container, .nav .container {
   display: flex;
-
   align-items: center;
   /*margin: 0 15px;*/
   padding: 0 10px;
   width: 100%;
   max-width: 1280px;
-
   position: relative;
 }
 
@@ -226,7 +232,6 @@
 }
 
 .geo-picker>i {
-
   margin-right: 5px;
 }
 
@@ -263,7 +268,7 @@
 }
 
 .topo .usuario span b {
-    text-transform: capitalize;
+  text-transform: capitalize;
 }
 
 .topo .usuario .usuario__opcoes {
@@ -292,8 +297,7 @@
   border-top: 1px solid var(--gray-300);
 }
 
-.topo .usuario .usuario__opcoes a,
-.topo .usuario .usuario__opcoes #logout button {
+.topo .usuario .usuario__opcoes a, .topo .usuario .usuario__opcoes #logout button {
   color: var(--gray-700);
   display: inline-block;
   width: 100%;
@@ -314,19 +318,16 @@
 
 /* #endregion TOPO */
 
-
 /* NAV */
 
 .nav {
   height: 80px;
   width: 100%;
-
   position: sticky;
   z-index: 9;
   top: 40px;
   display: flex;
   justify-content: center;
-
   background: var(--white);
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
 }
@@ -335,9 +336,18 @@
   justify-content: space-between;
 }
 
+/* .nav .container.mobile {
+  display: flex;
+  margin: unset;
+} */
+
 .nav .container .logo {
   transition: all .1s ease-in;
   width: 95px;
+}
+
+.nav .container.mobile .logo {
+  width: 58px;
 }
 
 .nav .container .logo:hover {
@@ -345,16 +355,29 @@
 }
 
 .nav .container button.menu-btn {
-	font-weight: var(--semi-bold);
-	text-transform: uppercase;
-	font-size: 1.1667rem; /*14pt*/
-	color: var(--blue-700);
-	background: transparent;
-	border: 0;
+  font-weight: var(--semi-bold);
+  text-transform: uppercase;
+  font-size: 1.1667rem;
+  /*14pt*/
+  color: var(--blue-700);
+  background: transparent;
+  border: 0;
+}
+
+.nav .container.mobile button.menu-btn {
+  font-size: 0.875rem;
+  min-width: 80px;
+  display: flex;
+  font-weight: normal;
+  outline: 0;
 }
 
 .nav .container button.menu-btn .menu-icon {
-	margin-right: 10px;
+  margin-right: 10px;
+}
+
+.nav .container.mobile .search-and-cart {
+  display: flex;
 }
 
 .container .menu-categorias {
@@ -362,12 +385,10 @@
   min-width: 185px;
   color: var(--primary);
   transition: all .1s ease-in;
-
   height: 100%;
   display: flex;
   align-items: center;
   z-index: 1;
-  
   cursor: pointer;
 }
 
@@ -387,14 +408,15 @@
   position: relative;
 }
 
+.nav .container.mobile .search-box {
+  margin-left: 25px;
+}
+
 .container .search-box fieldset.busca {
   width: 100%;
 }
 
-.container .search-box .busca select,
-.container .search-box .busca label,
-.container .search-box .busca legend,
-.container .search-box .busca input[type="button"] {
+.container .search-box .busca select, .container .search-box .busca label, .container .search-box .busca legend, .container .search-box .busca input[type="button"] {
   display: none;
 }
 
@@ -406,12 +428,10 @@
   border-radius: 4px;
   width: 100%;
   color: var(--gray-500);
-
   transition: border 500ms;
 }
 
-.container .search-box fieldset.busca input:focus,
-.container .search-box fieldset.busca input:hover {
+.container .search-box fieldset.busca input:focus, .container .search-box fieldset.busca input:hover {
   border-color: var(--primary);
   transition: border 500ms;
 }
@@ -436,22 +456,20 @@
   width: 100%;
   overflow-y: auto;
   color: var(--gray-500);
-
   opacity: 0;
   visibility: hidden;
   transition: 1s;
 }
 
 .container .search-box #autocomplete-search li:not(:first-of-type) {
-    border-top: none;
+  border-top: none;
 }
 
 .container .search-box #autocomplete-search li {
   border: 1px solid var(--gray-300);
 }
 
-.container .search-box #autocomplete-search li:hover,
-.container .search-box #autocomplete-search li:focus{
+.container .search-box #autocomplete-search li:hover, .container .search-box #autocomplete-search li:focus {
   background: var(--gray-300);
 }
 
@@ -478,6 +496,10 @@
   height: 100%;
   cursor: pointer;
   transition: .5s
+}
+
+.nav .container.mobile .menu-carrinho {
+  min-width: unset;
 }
 
 .container .menu-carrinho:hover {
@@ -516,17 +538,13 @@
   position: absolute;
   top: 110%;
   right: 0;
-
   display: flex;
   flex-direction: column;
-
-
   background: var(--white);
   width: 420px;
   height: 160px;
   border-radius: 4px;
   box-shadow: 0 0 10px rgb(0, 0, 0, .3);
-
   transition: 1s;
   opacity: 0;
   visibility: hidden;
@@ -589,12 +607,181 @@
   position: absolute;
 }
 
+.side-menu {
+  height: calc(100% - 88px);
+  width: 0;
+  position: fixed;
+  z-index: 900000;
+  top: 88px;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  /* overflow-x: hidden; */
+  transition: 0.5s;
+  box-shadow: 0 0 1px black;
+  display: none;
+  font-size: 1rem;
+}
 
+.side-menu hr {
+  width: 90%;
+  margin: 0 auto;
+}
 
+.side-menu>a {
+  padding: 0 !important;
+}
 
-.menu-categorias:hover .painel-categorias,
-.menu-categorias:focus .painel-categorias,
-.menu-categorias.ativo .painel-categorias {
+.side-menu a {
+  opacity: 0;
+  padding: 25px 8px 12px 50px;
+  text-decoration: none;
+  font-weight: 500;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.side-menu a+a {
+  padding: 12px 8px 12px 50px;
+}
+
+.side-menu a.destaque {
+  font-weight: bold;
+  color: #183884;
+  padding: 25px 8px 25px 15px;
+  display: flex;
+}
+
+.side-menu .closebtn {
+  position: absolute;
+  top: 0;
+  right: -40px;
+  font-size: 36px;
+  margin-left: 50px;
+  z-index: 1;
+  color: white;
+}
+
+.side-menu #main-menu, .side-menu #category-menu {
+  overflow-x: hidden;
+}
+
+.side-menu #main-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.side-menu .side-menu-content {
+  height: 100%;
+}
+
+.side-menu .side-menu-footer a {
+  display: flex;
+  align-items: center;
+}
+
+.side-menu .side-menu-footer a>i {
+  margin-right: 15px;
+}
+
+.side-menu #category-menu {
+  display: none;
+  opacity: 0;
+  transition: .5s;
+}
+
+.side-menu #category-menu h2, .side-menu #category-menu a {
+  padding-left: 15px;
+}
+
+.side-menu #category-menu h2 {
+  color: #183884;
+}
+
+.side-menu-header>a {
+  padding: 15px 8px 15px 15px;
+  font-size: 0.9rem;
+}
+
+.side-menu #category-menu .side-menu-header>a {
+  display: flex;
+  align-items: center;
+}
+
+.side-menu #category-menu .side-menu-header>a i {
+  margin-right: 15px;
+}
+
+.side-menu-categorias {
+  margin-top: 5px;
+  overflow-y: scroll;
+  height: calc(100% - 88px);
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-header {
+  display: flex;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-header.ativo {
+  position: sticky;
+  /* box-shadow: 0 0 1px grey; */
+  top: 0;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-header.ativo a {
+  background: white;
+  box-shadow: inset 0 0 5px #80808059;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-header img {
+  height: 40px;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-header h4 {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: 15px;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-header a {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-between;
+  padding: 15px;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-header a i {
+  margin-left: 5px;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-itens {
+  height: 0;
+  overflow: hidden;
+  transition: .5s;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-header.ativo+.side-menu-categorias__categoria-itens {
+  height: fit-content;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-itens a {
+  padding: 12px 8px 12px 50px !important;
+  font-size: 0.9rem;
+}
+
+.side-menu-categorias .side-menu-categorias__categoria-itens .side-menu-categorias__categoria-sub-itens>li>a {
+  padding-left: 60px !important;
+}
+
+.menu-categorias:hover .painel-categorias, .menu-categorias:focus .painel-categorias, .menu-categorias.ativo .painel-categorias {
   display: unset;
   opacity: 1;
 }
@@ -604,7 +791,8 @@
 }
 
 /*.menu-categorias:hover .menu-categorias__titulo,*/
-.menu-categorias.ativo .menu-categorias__titulo{
+
+.menu-categorias.ativo .menu-categorias__titulo {
   transform: scale(1.1);
   font-weight: var(--bold);
 }
@@ -615,20 +803,15 @@
   left: 0;
   padding: 15px 42px 42px 42px;
   opacity: 0;
-
   display: none;
   position: absolute;
   background: var(--white);
   margin-top: 55px;
-
-
   background-color: #fff;
   font-size: 1.25rem;
-
   border-radius: 4px;
   border: 1px solid var(--gray-300);
   box-shadow: 0 0.125rem 0.5rem rgba(0, 0, 0, .3), 0 0.0625rem 0.125rem rgba(0, 0, 0, .2);
-
   transition: all .1s ease-in;
 }
 
@@ -639,8 +822,6 @@
   left: 23.8rem;
   border: .75rem solid transparent;
   border-top: none;
-
-
   border-bottom-color: #fff;
   filter: drop-shadow(0 -0.0625rem 0.0625rem rgba(0, 0, 0, .1));
 }
@@ -663,7 +844,6 @@
   top: 72.5px;
   border: 0;
   outline: 0;
-  
   z-index: 1;
 }
 
@@ -705,16 +885,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-
   max-width: 146px;
   height: 155px;
   margin-top: 10px;
-
   color: var(--gray-500);
   font-weight: var(--light);
   text-align: center;
   white-space: normal;
-
   transition: all .2s ease-in;
 }
 
@@ -761,8 +938,6 @@
   transition: 1s;
 }
 
-
-
 .painel-categorias .painel-categorias__categoria-itens {
   font-size: 0.8750rem;
   padding: 32px 25px;
@@ -783,6 +958,7 @@
 }
 
 /* #region PREVIEW - VIDROS */
+
 #vidros.painel-categorias__categoria-itens.ativo a#parabrisa:hover:after {
   content: var(--parabrisa);
 }
@@ -810,6 +986,7 @@
 /* #endregion PREVIEW - VIDROS */
 
 /* #region PREVIEW - FARÓIS */
+
 #farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#aro-farol-auxiliar:hover:after {
   content: var(--aro-farol-auxiliar);
 }
@@ -833,6 +1010,7 @@
 /* #endregion PREVIEW - FARÓIS */
 
 /* #region PREVIEW - LÂMPADAS */
+
 #farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lampada-farol-auxiliar:hover:after {
   content: var(--lampada-farol-auxiliar);
 }
@@ -852,6 +1030,7 @@
 /* #endregion PREVIEW - LÂMPADAS */
 
 /* #region PREVIEW - LANTERNAS */
+
 #farois-lanternas-lampadas.painel-categorias__categoria-itens.ativo a#lanterna:hover:after {
   content: var(--lanterna);
 }
@@ -863,6 +1042,7 @@
 /* #endregion PREVIEW - LANTERNAS */
 
 /* #region PREVIEW - PARA-CHOQUES */
+
 #para-choques-grades-molduras.painel-categorias__categoria-itens.ativo a#grade-para-choque:hover:after {
   content: var(--grade-parachoques);
 }
@@ -1029,7 +1209,6 @@
 
 /* #endregion PREVIEW - PALHETAS */
 
-
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   padding-left: 5px;
 }
@@ -1067,12 +1246,9 @@
   background: var(--gray-100);
 }
 
-
 /* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
-.topo .container:before,
-.nav .container:before,
-.topo .container:after,
-.nav .container:after {
+
+.topo .container:before, .nav .container:before, .topo .container:after, .nav .container:after {
   display: unset;
   content: none;
   clear: none;
@@ -1099,25 +1275,26 @@ body.home {
 }
 
 .topo {
-  z-index:900001;
-} 
+  z-index: 900001;
+}
 
 .nav {
-  z-index:900000;
+  z-index: 900000;
 }
 
 body[data-qd-scroll-0="1"] {
-    padding-top: 0;
+  padding-top: 0;
 }
 
 .product-qd-v1-float-bar {
-   top: 120px !important;
-   box-shadow: 0 0 5px rgb(0,0,0,.3);
+  top: 120px !important;
+  box-shadow: 0 0 5px rgb(0, 0, 0, .3);
 }
 
-@media (min-width: 1200px)
-body[data-qd-scroll-1="1"] .product-qd-v1-float-bar {
+@media (min-width: 1200px) {
+  body[data-qd-scroll-1="1"] .product-qd-v1-float-bar {
     top: 110px;
+  }
 }
 
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
