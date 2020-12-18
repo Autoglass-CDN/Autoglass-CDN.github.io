@@ -293,6 +293,61 @@ function delayedAction(action, abortController) {
   return abortController;
 }
 
+//MOBILE
+
+function openNav() {
+  let sideMenu = document.getElementById("side-menu");
+  sideMenu.style.display = 'unset';
+  setTimeout(() => {
+    sideMenu.style.width = "270px";
+    setTimeout(() =>
+      sideMenu.querySelectorAll('a').forEach(a => a.style.opacity = "1")
+      , 200)
+  }, 300);
+  //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  let sideMenu = document.getElementById("side-menu");
+  sideMenu.querySelectorAll('a').forEach(a => a.style.opacity = '0');
+  setTimeout(() => {
+    sideMenu.style.width = "0";
+    //document.body.style.backgroundColor = "unset";
+    setTimeout(() => {
+      sideMenu.style.display = "none";
+    }, 200);
+  }, 300);
+}
+
+function openCategorias() {
+  let mainMenu = document.getElementById('main-menu');
+  let categoryMenu = document.getElementById('category-menu');
+
+  mainMenu.style.opacity = '0';
+  setTimeout(() => {
+    mainMenu.style.display = 'none';
+    categoryMenu.style.display = 'unset';
+    categoryMenu.style.opacity = '1';
+  }, 200);
+}
+
+function closeCategorias() {
+  let mainMenu = document.getElementById('main-menu');
+  let categoryMenu = document.getElementById('category-menu');
+
+  categoryMenu.style.opacity = '0';
+  setTimeout(() => {
+    categoryMenu.style.display = 'none';
+    mainMenu.style.display = 'flex';
+    mainMenu.style.opacity = '1';
+  }, 300);
+}
+
+function toggleCategory(self) {
+  console.log(self);
+  return self.parentNode.classList.contains('ativo') ? self.parentNode.classList.remove('ativo') : self.parentNode.classList.add('ativo')
+}
+
 
 (() => {
   let slider = document.querySelector('.painel-categorias__menu > ul');
