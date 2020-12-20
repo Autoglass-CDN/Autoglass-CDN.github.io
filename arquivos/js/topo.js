@@ -553,9 +553,12 @@ function toggleCategory(self) {
 
   loadCartMobile();
 
-  document
-    .querySelector('.side-menu-backdrop')
-    .addEventListener('click', (e) => closeNav());
+  document.onload = function () {
+    document
+      .querySelector('.side-menu-backdrop')
+      .addEventListener('click', (e) => closeNav());
+  };
+
 
   function removeFunctions() {
     $('.search-box-mobile').removeClass('search-box-mobile--opened');
