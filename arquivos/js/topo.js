@@ -134,7 +134,7 @@ async function checkLoginMobile() {
         </div>
       </div>
       <ul class="usuario__opcoes-mobile">
-        <li><a href="/_secure/account">Dados Pessoais</a></li>
+        <li><a href="/_secure/account#/profile">Dados Pessoais</a></li>
         <li><a href="/_secure/account#/addresses">Endereços</a></li>
         <li><a href="/_secure/account#/cards">Cartões</a></li>
         <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
@@ -264,6 +264,36 @@ async function cartItemAddedConfirmation(eventData) {
       confirmationBox.style.opacity = '0';
       setTimeout(() => confirmationBox.style.visibility = 'hidden', 1000);
     }, 3000);
+  }
+}
+
+async function loadCartMobile() {
+  let carrinho = document.querySelector('.mobile .menu-carrinho');
+  carrinho.addEventListener('click', (event) => {
+    window.location.href = '/checkout/#/cart';
+  });
+
+  let orderForm = await vtexjs.checkout.getOrderForm();
+
+  await updateCartItemsCountMobile(carrinho, orderForm);
+}
+
+async function updateCartItemsCountMobile(carrinho, orderForm) {
+  carrinho.classList.remove('loaded');
+  let badge = document.querySelector('.badge');
+
+  if (badge)
+    badge.remove();
+
+
+  if (orderForm && orderForm.items.length) {
+    badge = document.createElement('span');
+    badge.classList.add('badge');
+    badge.innerHTML = orderForm.items.length;
+
+    carrinho.append(badge);
+
+    setTimeout(() => carrinho.classList.add('loaded'), 500);
   }
 }
 
@@ -510,6 +540,8 @@ function toggleCategory(self) {
   autocompleteInitMobile(document.querySelector('#search-mobile-input'));
 
   checkLoginMobile();
+
+  loadCartMobile();
 
   function removeFunctions() {
     $('.search-box-mobile').removeClass('search-box-mobile--opened');
