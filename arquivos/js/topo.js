@@ -124,7 +124,7 @@ async function checkLoginMobile() {
       accountComponent.innerHTML = `<hr/>
       <div class="usuario-container-mobile">
         <div class="usuario-mobile">
-          <div class="user-avatar-icon"></div>
+          <i class="user-icon"></i>
           <span class="destaque">
           Olá, <b>${nameUser}</b>
           </span>
