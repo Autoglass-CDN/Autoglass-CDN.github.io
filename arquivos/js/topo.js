@@ -122,18 +122,23 @@ async function checkLoginMobile() {
       var nameUser = data.FirstName && data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
       //var nameUser = data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
       accountComponent.innerHTML = `<hr/>
-      <div class="user-avatar-icon"></div>
-        <span class="destaque">
+      <div class="usuario-container-mobile">
+        <div class="usuario-mobile">
+          <div class="user-avatar-icon"></div>
+          <span class="destaque">
           Olá, <b>${nameUser}</b>
-          <i class="arrow-down-icon-white"></i>
-        </span>
-        <ul class="usuario__opcoes-mobile">
-          <li><a href="/_secure/account">Dados Pessoais</a></li>
-          <li><a href="/_secure/account#/addresses">Endereços</a></li>
-          <li><a href="/_secure/account#/cards">Cartões</a></li>
-          <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
-          <li id="logout"><button onclick="document.querySelector('#saindo').style.display = 'block'">Sair</button></li>
-        </ul>`;
+          </span>
+        </div>
+        <div id="logout-mobile">
+          <button onclick="document.querySelector('#saindo').style.display = 'block'">Sair</button>
+        </div>
+      </div>
+      <ul class="usuario__opcoes-mobile">
+        <li><a href="/_secure/account">Dados Pessoais</a></li>
+        <li><a href="/_secure/account#/addresses">Endereços</a></li>
+        <li><a href="/_secure/account#/cards">Cartões</a></li>
+        <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
+      </ul>`;
       //<a id="logout" href="/no-cache/user/logout">Sair</a>
     } else {
       accountComponent.innerHTML = `<hr/>
