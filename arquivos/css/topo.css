@@ -697,7 +697,7 @@ i.arrow-icon::before {
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
-  z-index: 10;
+  z-index: 8;
   transition: .5s;
 }
 
