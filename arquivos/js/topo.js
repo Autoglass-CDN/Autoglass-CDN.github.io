@@ -447,3 +447,47 @@ function toggleCategory(self) {
   autocompleteInit(searchField);
 }
 )();
+
+//MOBILE AUTOCOMPLETE SEARCH
+
+(() => {
+  $('.container.mobile .search-icon').click(() => {
+    $('.search-box-mobile').addClass('search-box-mobile--opened');
+    $('.topo').click(() => removeFunctions());
+    // $('.container.mobile').click(() => removeFunctions());
+    $('.search-box-mobile').click(e => {
+      if (e.target === e.currentTarget) {
+        removeFunctions();
+      }
+    });
+  });
+  autocompleteInitMobile(document.querySelector('#search-mobile-input'))
+  function removeFunctions() {
+    $('.search-box-mobile').removeClass('search-box-mobile--opened');
+    $('.topo').unbind();
+    $('.container.mobile').unbind();
+  }
+  async function autocompleteInitMobile(searchInput) {
+    $('#search-mobile-input').focus();
+    searchInput.addEventListener("input", async (e) => {
+      let searchTerm = e.target.value.trim();
+      if (searchTerm.length < 4) {
+        $('.search-mobile-autocomplete').hide();
+        return;
+      }
+      let list = document.querySelector('.search-mobile-autocomplete');
+      let searchResult = await autocompleteSearch(e.target.value);
+      if (searchResult.length > 0) {
+        list.innerHTML = searchResult.filter((_, i) => i < 3)
+          .map(item => `
+          <li>
+            <a href='${item.href}'>${item.thumb}${item.name.replace(e.target.value, `<b>${e.target.value}</b>`)}</a>
+          </li>
+        `).join('');
+        $('.search-mobile-autocomplete').show();
+      } else {
+        $('.search-mobile-autocomplete').hide();
+      }
+    });
+  }
+})();
