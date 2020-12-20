@@ -380,6 +380,19 @@ i.arrow-icon::before {
   display: flex;
 }
 
+.nav .container.mobile .menu-carrinho {
+  position: relative;
+}
+
+.nav .container.mobile .menu-carrinho>.badge {
+  top: 0;
+}
+
+.nav .container.mobile .menu-carrinho.loaded>.badge {
+  top: -10px;
+  right: -15px;
+}
+
 /* #region Box de Pesquisa */
 
 .search-box-mobile {
