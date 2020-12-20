@@ -147,8 +147,9 @@ async function checkLoginMobile() {
         Cadastrar ou Entrar
       </a>`;
       document.body.classList.add("not-logged-user");
-
     }
+    document.querySelector('.side-menu #login')
+      .addEventListener('click', (e) => { closeNav(); });
   } catch (e) {
     if (typeof console !== "undefined" && typeof console.info === "function")
       console.info("Ops, algo saiu errado com o login.", e.message)
@@ -371,6 +372,10 @@ function delayedAction(action, abortController) {
 //MOBILE
 
 function openNav() {
+  let backdrop = document.querySelector('.side-menu-backdrop');
+  backdrop.style.display = 'unset';
+  backdrop.style.opacity = '1';
+
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = 'unset';
   setTimeout(() => {
@@ -383,15 +388,20 @@ function openNav() {
 }
 
 function closeNav() {
+  let backdrop = document.querySelector('.side-menu-backdrop');
   let sideMenu = document.getElementById("side-menu");
   sideMenu.querySelectorAll('a').forEach(a => a.style.opacity = '0');
+  backdrop.style.opacity = '1';
   setTimeout(() => {
     sideMenu.style.width = "0";
-    //document.body.style.backgroundColor = "unset";
+    backdrop.style.display = 'none';
     setTimeout(() => {
       sideMenu.style.display = "none";
     }, 200);
   }, 300);
+
+  document.querySelector('.side-menu-backdrop').style.display = 'none';
+
 }
 
 function openCategorias() {
