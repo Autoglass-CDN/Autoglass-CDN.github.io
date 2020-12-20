@@ -280,7 +280,7 @@ async function loadCartMobile() {
 
 async function updateCartItemsCountMobile(carrinho, orderForm) {
   carrinho.classList.remove('loaded');
-  let badge = document.querySelector('.badge');
+  let badge = document.querySelector('.mobile .badge');
 
   if (badge)
     badge.remove();
