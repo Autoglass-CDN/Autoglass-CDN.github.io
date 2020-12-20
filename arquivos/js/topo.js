@@ -110,6 +110,46 @@ async function checkLogin() {
   }
 }
 
+async function checkLoginMobile() {
+  var accountComponent = document.querySelector(".side-menu .usuario");
+
+  let response = await fetch("/no-cache/profileSystem/getProfile");
+  let data = await response.json();
+
+  try {
+    if (data.IsUserDefined) {
+      var emailReceived = data.Email;
+      var nameUser = data.FirstName && data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
+      //var nameUser = data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
+      accountComponent.innerHTML = `<hr/>
+      <div class="user-avatar-icon"></div>
+        <span class="destaque">
+          Olá, <b>${nameUser}</b>
+          <i class="arrow-down-icon-white"></i>
+        </span>
+        <ul class="usuario__opcoes-mobile">
+          <li><a href="/_secure/account">Dados Pessoais</a></li>
+          <li><a href="/_secure/account#/addresses">Endereços</a></li>
+          <li><a href="/_secure/account#/cards">Cartões</a></li>
+          <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
+          <li id="logout"><button onclick="document.querySelector('#saindo').style.display = 'block'">Sair</button></li>
+        </ul>`;
+      //<a id="logout" href="/no-cache/user/logout">Sair</a>
+    } else {
+      accountComponent.innerHTML = `<hr/>
+      <a href="#" class="destaque" style="opacity: 1;">
+        <i class="user-icon"></i> 
+        Cadastrar ou Entrar
+      </a>`;
+      document.body.classList.add("not-logged-user");
+
+    }
+  } catch (e) {
+    if (typeof console !== "undefined" && typeof console.info === "function")
+      console.info("Ops, algo saiu errado com o login.", e.message)
+  }
+}
+
 async function fixPlaceholderSearch() {
   var idSearchFilterP = $('.search-box input[type="text"].fulltext-search-box');
   if (!idSearchFilterP.length)
@@ -461,7 +501,11 @@ function toggleCategory(self) {
       }
     });
   });
-  autocompleteInitMobile(document.querySelector('#search-mobile-input'))
+
+  autocompleteInitMobile(document.querySelector('#search-mobile-input'));
+
+  checkLoginMobile();
+
   function removeFunctions() {
     $('.search-box-mobile').removeClass('search-box-mobile--opened');
     $('.topo').unbind();
