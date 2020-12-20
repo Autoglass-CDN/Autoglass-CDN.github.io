@@ -72,7 +72,7 @@ function slidePrev() {
 }
 
 async function checkLogin() {
-  var accountComponent = document.querySelector(".topo .usuario");
+  var accountComponent = document.querySelector(".topo .usuario.desktop");
 
   let response = await fetch("/no-cache/profileSystem/getProfile");
   let data = await response.json();
@@ -142,7 +142,7 @@ async function checkLoginMobile() {
       //<a id="logout" href="/no-cache/user/logout">Sair</a>
     } else {
       accountComponent.innerHTML = `<hr/>
-      <a href="#" class="destaque" style="opacity: 1;">
+      <a id="login" href="#" class="destaque" style="opacity: 1;">
         <i class="user-icon"></i> 
         Cadastrar ou Entrar
       </a>`;
@@ -209,7 +209,7 @@ async function fixPlaceholderSearch() {
 }
 
 async function loadCart() {
-  let carrinho = document.querySelector('.menu-carrinho');
+  let carrinho = document.querySelector('.desktop .menu-carrinho');
   carrinho.addEventListener('click', (event) => {
     window.location.href = '/checkout/#/cart';
   });
@@ -221,7 +221,7 @@ async function loadCart() {
 
 async function updateCartItemsCount(carrinho, orderForm) {
   carrinho.classList.remove('loaded');
-  let badge = document.querySelector('.badge');
+  let badge = document.querySelector('.desktop .badge');
 
   if (badge)
     badge.remove();
@@ -240,7 +240,7 @@ async function updateCartItemsCount(carrinho, orderForm) {
 
 async function cartItemAddedConfirmation(eventData) {
   let { skuData } = eventData;
-  let confirmationBox = document.querySelector('.menu-carrinho .confirmacao');
+  let confirmationBox = document.querySelector('.desktop .menu-carrinho .confirmacao');
 
   let img = confirmationBox.querySelector('.item img');
   let title = confirmationBox.querySelector('.item .titulo');
