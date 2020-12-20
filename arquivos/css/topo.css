@@ -687,6 +687,20 @@ i.arrow-icon::before {
   position: absolute;
 }
 
+.side-menu-backdrop {
+  display: none;
+  opacity: 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  z-index: 10;
+  transition: .5s;
+}
+
 .side-menu {
   height: calc(100% - 88px);
   width: 0;
@@ -1397,14 +1411,15 @@ body.home {
 
 .header-qd-v1 {
   padding-top: 0;
+  padding-bottom: 0;
 }
 
 .topo {
-  z-index: 900001;
+  /* z-index: 900001; */
 }
 
 .nav {
-  z-index: 900000;
+  /* z-index: 900000; */
 }
 
 body[data-qd-scroll-0="1"] {
