@@ -533,7 +533,7 @@ function toggleCategory(self) {
 }
 )();
 
-//MOBILE AUTOCOMPLETE SEARCH
+//MOBILE
 
 (() => {
   $('.container.mobile .search-icon').click(() => {
@@ -552,6 +552,10 @@ function toggleCategory(self) {
   checkLoginMobile();
 
   loadCartMobile();
+
+  document
+    .querySelector('.side-menu-backdrop')
+    .addEventListener('click', (e) => closeNav());
 
   function removeFunctions() {
     $('.search-box-mobile').removeClass('search-box-mobile--opened');
