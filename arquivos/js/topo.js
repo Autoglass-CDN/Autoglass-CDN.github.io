@@ -72,7 +72,7 @@ function slidePrev() {
 }
 
 async function checkLogin() {
-  var accountComponent = document.querySelector(".topo .usuario");
+  var accountComponent = document.querySelector(".topo .usuario.desktop");
 
   let response = await fetch("/no-cache/profileSystem/getProfile");
   let data = await response.json();
@@ -104,6 +104,52 @@ async function checkLogin() {
       document.body.classList.add("not-logged-user");
 
     }
+  } catch (e) {
+    if (typeof console !== "undefined" && typeof console.info === "function")
+      console.info("Ops, algo saiu errado com o login.", e.message)
+  }
+}
+
+async function checkLoginMobile() {
+  var accountComponent = document.querySelector(".side-menu .usuario");
+
+  let response = await fetch("/no-cache/profileSystem/getProfile");
+  let data = await response.json();
+
+  try {
+    if (data.IsUserDefined) {
+      var emailReceived = data.Email;
+      var nameUser = data.FirstName && data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
+      //var nameUser = data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
+      accountComponent.innerHTML = `<hr/>
+      <div class="usuario-container-mobile">
+        <div class="usuario-mobile">
+          <i class="user-icon"></i>
+          <span class="destaque">
+          Olá, <b>${nameUser}</b>
+          </span>
+        </div>
+        <div id="logout-mobile">
+          <button onclick="document.querySelector('#saindo').style.display = 'block'">Sair</button>
+        </div>
+      </div>
+      <ul class="usuario__opcoes-mobile">
+        <li><a href="/_secure/account#/profile">Dados Pessoais</a></li>
+        <li><a href="/_secure/account#/addresses">Endereços</a></li>
+        <li><a href="/_secure/account#/cards">Cartões</a></li>
+        <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
+      </ul>`;
+      //<a id="logout" href="/no-cache/user/logout">Sair</a>
+    } else {
+      accountComponent.innerHTML = `<hr/>
+      <a id="login" href="#" class="destaque" style="opacity: 1;">
+        <i class="user-icon"></i> 
+        Cadastrar ou Entrar
+      </a>`;
+      document.body.classList.add("not-logged-user");
+    }
+    document.querySelector('.side-menu #login')
+      .addEventListener('click', (e) => { closeNav(); });
   } catch (e) {
     if (typeof console !== "undefined" && typeof console.info === "function")
       console.info("Ops, algo saiu errado com o login.", e.message)
@@ -164,7 +210,7 @@ async function fixPlaceholderSearch() {
 }
 
 async function loadCart() {
-  let carrinho = document.querySelector('.menu-carrinho');
+  let carrinho = document.querySelector('.desktop .menu-carrinho');
   carrinho.addEventListener('click', (event) => {
     window.location.href = '/checkout/#/cart';
   });
@@ -176,7 +222,7 @@ async function loadCart() {
 
 async function updateCartItemsCount(carrinho, orderForm) {
   carrinho.classList.remove('loaded');
-  let badge = document.querySelector('.badge');
+  let badge = document.querySelector('.desktop .badge');
 
   if (badge)
     badge.remove();
@@ -195,7 +241,7 @@ async function updateCartItemsCount(carrinho, orderForm) {
 
 async function cartItemAddedConfirmation(eventData) {
   let { skuData } = eventData;
-  let confirmationBox = document.querySelector('.menu-carrinho .confirmacao');
+  let confirmationBox = document.querySelector('.desktop .menu-carrinho .confirmacao');
 
   let img = confirmationBox.querySelector('.item img');
   let title = confirmationBox.querySelector('.item .titulo');
@@ -219,6 +265,36 @@ async function cartItemAddedConfirmation(eventData) {
       confirmationBox.style.opacity = '0';
       setTimeout(() => confirmationBox.style.visibility = 'hidden', 1000);
     }, 3000);
+  }
+}
+
+async function loadCartMobile() {
+  let carrinho = document.querySelector('.mobile .menu-carrinho');
+  carrinho.addEventListener('click', (event) => {
+    window.location.href = '/checkout/#/cart';
+  });
+
+  let orderForm = await vtexjs.checkout.getOrderForm();
+
+  await updateCartItemsCountMobile(carrinho, orderForm);
+}
+
+async function updateCartItemsCountMobile(carrinho, orderForm) {
+  carrinho.classList.remove('loaded');
+  let badge = document.querySelector('.mobile .badge');
+
+  if (badge)
+    badge.remove();
+
+
+  if (orderForm && orderForm.items.length) {
+    badge = document.createElement('span');
+    badge.classList.add('badge');
+    badge.innerHTML = orderForm.items.length;
+
+    carrinho.append(badge);
+
+    setTimeout(() => carrinho.classList.add('loaded'), 500);
   }
 }
 
@@ -296,6 +372,10 @@ function delayedAction(action, abortController) {
 //MOBILE
 
 function openNav() {
+  let backdrop = document.querySelector('.side-menu-backdrop');
+  backdrop.style.display = 'unset';
+  backdrop.style.opacity = '1';
+
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = 'unset';
   setTimeout(() => {
@@ -308,15 +388,20 @@ function openNav() {
 }
 
 function closeNav() {
+  let backdrop = document.querySelector('.side-menu-backdrop');
   let sideMenu = document.getElementById("side-menu");
   sideMenu.querySelectorAll('a').forEach(a => a.style.opacity = '0');
+  backdrop.style.opacity = '1';
   setTimeout(() => {
     sideMenu.style.width = "0";
-    //document.body.style.backgroundColor = "unset";
+    backdrop.style.display = 'none';
     setTimeout(() => {
       sideMenu.style.display = "none";
     }, 200);
   }, 300);
+
+  document.querySelector('.side-menu-backdrop').style.display = 'none';
+
 }
 
 function openCategorias() {
@@ -447,3 +532,60 @@ function toggleCategory(self) {
   autocompleteInit(searchField);
 }
 )();
+
+//MOBILE
+
+(() => {
+  $('.container.mobile .search-icon').click(() => {
+    $('.search-box-mobile').addClass('search-box-mobile--opened');
+    $('.topo').click(() => removeFunctions());
+    // $('.container.mobile').click(() => removeFunctions());
+    $('.search-box-mobile').click(e => {
+      if (e.target === e.currentTarget) {
+        removeFunctions();
+      }
+    });
+  });
+
+  autocompleteInitMobile(document.querySelector('#search-mobile-input'));
+
+  checkLoginMobile();
+
+  loadCartMobile();
+
+  document.onload = function () {
+    document
+      .querySelector('.side-menu-backdrop')
+      .addEventListener('click', (e) => closeNav());
+  };
+
+
+  function removeFunctions() {
+    $('.search-box-mobile').removeClass('search-box-mobile--opened');
+    $('.topo').unbind();
+    $('.container.mobile').unbind();
+  }
+  async function autocompleteInitMobile(searchInput) {
+    $('#search-mobile-input').focus();
+    searchInput.addEventListener("input", async (e) => {
+      let searchTerm = e.target.value.trim();
+      if (searchTerm.length < 4) {
+        $('.search-mobile-autocomplete').hide();
+        return;
+      }
+      let list = document.querySelector('.search-mobile-autocomplete');
+      let searchResult = await autocompleteSearch(e.target.value);
+      if (searchResult.length > 0) {
+        list.innerHTML = searchResult.filter((_, i) => i < 3)
+          .map(item => `
+          <li>
+            <a href='${item.href}'>${item.thumb}${item.name.replace(e.target.value, `<b>${e.target.value}</b>`)}</a>
+          </li>
+        `).join('');
+        $('.search-mobile-autocomplete').show();
+      } else {
+        $('.search-mobile-autocomplete').hide();
+      }
+    });
+  }
+})();
