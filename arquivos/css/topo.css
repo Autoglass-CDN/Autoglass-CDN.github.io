@@ -774,6 +774,7 @@ i.arrow-icon::before {
   margin-left: 50px;
   z-index: 1;
   color: white;
+  background: transparent !important;
 }
 
 .side-menu #main-menu, .side-menu #category-menu {
