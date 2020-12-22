@@ -404,6 +404,10 @@ i.arrow-icon::before {
 
 /* #region Box de Pesquisa */
 
+.search-box.ativo>.search-icon::before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/search-blue.svg');
+}
+
 .search-box-mobile {
   position: fixed;
   top: 85px;

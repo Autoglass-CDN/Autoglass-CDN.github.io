@@ -538,6 +538,7 @@ function toggleCategory(self) {
 (() => {
   $('.container.mobile .search-icon').click(() => {
     closeNav();
+    $('.search-box').addClass('ativo');
     $('.search-box-mobile').addClass('search-box-mobile--opened');
     $('.topo').click(() => removeFunctions());
     // $('.container.mobile').click(() => removeFunctions());
@@ -562,6 +563,7 @@ function toggleCategory(self) {
 
 
   function removeFunctions() {
+    $('.search-box').removeClass('ativo');
     $('.search-box-mobile').removeClass('search-box-mobile--opened');
     $('.topo').unbind();
     $('.container.mobile').unbind();
