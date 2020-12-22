@@ -537,6 +537,7 @@ function toggleCategory(self) {
 
 (() => {
   $('.container.mobile .search-icon').click(() => {
+    closeNav();
     $('.search-box-mobile').addClass('search-box-mobile--opened');
     $('.topo').click(() => removeFunctions());
     // $('.container.mobile').click(() => removeFunctions());
