@@ -125,7 +125,8 @@ $(document).ready(function () {
     }
 
 
-    if (window.location.href.includes("www.autoglassonline.com.br")) {
+    if (window.location.href.includes("www.autoglassonline.com.br")
+        || window.location.href.includes("novotopo")) {
 
 
 
