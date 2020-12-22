@@ -228,7 +228,7 @@ i.arrow-icon::before {
 
 .geo-picker {
   display: flex;
-  /*min-width: 315px;*/
+  width: 100%;
 }
 
 .geo-picker>i {
@@ -243,6 +243,13 @@ i.arrow-icon::before {
   background: none;
   border: 0;
   margin: 0 5px;
+}
+
+.topo .geo-picker .header-qd-v1-valid-prices-local {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
 }
 
 .topo .links {
@@ -261,6 +268,7 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   margin-left: 50px;
+  white-space: nowrap;
 }
 
 .topo .usuario a {
