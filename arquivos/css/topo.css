@@ -229,6 +229,7 @@ i.arrow-icon::before {
 .geo-picker {
   display: flex;
   width: 100%;
+  align-items: center;
 }
 
 .geo-picker>i {
