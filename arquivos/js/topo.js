@@ -385,6 +385,7 @@ function openNav() {
       , 200)
   }, 300);
   //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  removeFunctions();
 }
 
 function closeNav() {
@@ -560,35 +561,34 @@ function toggleCategory(self) {
       .querySelector('.side-menu-backdrop')
       .addEventListener('click', (e) => closeNav());
   };
-
-
-  function removeFunctions() {
-    $('.search-box').removeClass('ativo');
-    $('.search-box-mobile').removeClass('search-box-mobile--opened');
-    $('.topo').unbind();
-    $('.container.mobile').unbind();
-  }
-  async function autocompleteInitMobile(searchInput) {
-    $('#search-mobile-input').focus();
-    searchInput.addEventListener("input", async (e) => {
-      let searchTerm = e.target.value.trim();
-      if (searchTerm.length < 4) {
-        $('.search-mobile-autocomplete').hide();
-        return;
-      }
-      let list = document.querySelector('.search-mobile-autocomplete');
-      let searchResult = await autocompleteSearch(e.target.value);
-      if (searchResult.length > 0) {
-        list.innerHTML = searchResult.filter((_, i) => i < 3)
-          .map(item => `
-          <li>
-            <a href='${item.href}'>${item.thumb}${item.name.replace(e.target.value, `<b>${e.target.value}</b>`)}</a>
-          </li>
-        `).join('');
-        $('.search-mobile-autocomplete').show();
-      } else {
-        $('.search-mobile-autocomplete').hide();
-      }
-    });
-  }
 })();
+
+function removeFunctions() {
+  $('.search-box').removeClass('ativo');
+  $('.search-box-mobile').removeClass('search-box-mobile--opened');
+  $('.topo').unbind();
+  $('.container.mobile').unbind();
+}
+async function autocompleteInitMobile(searchInput) {
+  $('#search-mobile-input').focus();
+  searchInput.addEventListener("input", async (e) => {
+    let searchTerm = e.target.value.trim();
+    if (searchTerm.length < 4) {
+      $('.search-mobile-autocomplete').hide();
+      return;
+    }
+    let list = document.querySelector('.search-mobile-autocomplete');
+    let searchResult = await autocompleteSearch(e.target.value);
+    if (searchResult.length > 0) {
+      list.innerHTML = searchResult.filter((_, i) => i < 3)
+        .map(item => `
+        <li>
+          <a href='${item.href}'>${item.thumb}${item.name.replace(e.target.value, `<b>${e.target.value}</b>`)}</a>
+        </li>
+      `).join('');
+      $('.search-mobile-autocomplete').show();
+    } else {
+      $('.search-mobile-autocomplete').hide();
+    }
+  });
+}
