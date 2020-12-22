@@ -1441,4 +1441,10 @@ body[data-qd-scroll-0="1"] {
   display: none !important;
 }
 
+@media (max-width: 991px) {
+  body:not(.home) {
+    padding-top: unset;
+  }
+}
+
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
