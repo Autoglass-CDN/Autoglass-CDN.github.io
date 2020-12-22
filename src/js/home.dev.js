@@ -4,14 +4,14 @@
 	const btnPrev = $('.banners-section .banners button[data-type="prev"]');
 	const btnNext = $('.banners-section .banners button[data-type="next"]');
 	const containers = $('.banners-section .banners-content');
-	let bannerContainer = window.innerWidth > 1100 ? $(containers[0]) : $(containers[1]);
+	let bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
 	let bannerImages = bannerContainer.children();
 
 	buildBars();
 	calculateMarginOfBtns();
 
 	window.addEventListener('resize', e => {
-		bannerContainer = window.innerWidth > 1100 ? $(containers[0]) : $(containers[1]);
+		bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
 		bannerImages = bannerContainer.children();
 
 		$('.banners-bars').html('');
