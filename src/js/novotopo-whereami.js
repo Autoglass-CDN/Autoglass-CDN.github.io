@@ -32,13 +32,13 @@ function switcharoo(mystate) {
         case "Minas Gerais":
         case "State of Minas Gerais":
         case "MG":
-            window.location.href = `https://loja.autoglassonline.com.br${window.location.pathname}?sc=2`;
+            window.location.href = `https://novotopocbyk.myvtex.com${window.location.pathname}?sc=2`;
             // alert("Você está em: Minas Gerais")
             break;
         case 'State of Espírito Santo':
         case "ES":
         case "Espírito Santo":
-            window.location.href = `https://loja.autoglassonline.com.br${window.location.pathname}?sc=3`
+            window.location.href = `https://novotopocbyk.myvtex.com${window.location.pathname}?sc=3`
             //  alert("Você está em: Espirito Santo")
             break;
 
@@ -81,7 +81,7 @@ $(document).ready(function () {
                     case "Minas Gerais":
                     case "State of Minas Gerais":
                     case "MG":
-                        window.location.href = `https://loja.autoglassonline.com.br${window.location.pathname}?sc=2`;
+                        window.location.href = `https://novotopocbyk.myvtex.com${window.location.pathname}?sc=2`;
 
 
                         // alert("Você está em: Minas Gerais")
@@ -90,7 +90,7 @@ $(document).ready(function () {
                     case "ES":
                     case "Espírito Santo":
                         // window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
-                        window.location.href = `https://loja.autoglassonline.com.br${window.location.pathname}?sc=3`;
+                        window.location.href = `https://novotopocbyk.myvtex.com${window.location.pathname}?sc=3`;
                         //  alert("Você está em: Espirito Santo")
                         break;
 
@@ -107,7 +107,7 @@ $(document).ready(function () {
                         // window.location.href = "https://cbykautoglass.myvtex.com/?sc=2"
                         console.log("localização ainda nao mapeada")
                         // window.location.href = "https://www.autoglassonline.com.br/"
-                        window.location.href = `https://www.autoglassonline.com.br${window.location.pathname}`
+                        window.location.href = `https://novotopo.myvtex.com${window.location.pathname}`
 
                 }
 
@@ -125,8 +125,7 @@ $(document).ready(function () {
     }
 
 
-    if (window.location.href.includes("www.autoglassonline.com.br")
-        || window.location.href.includes("novotopo.")) {
+    if (window.location.href.includes("novotopo.myvtex.com")) {
 
 
 
