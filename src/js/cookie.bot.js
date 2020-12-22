@@ -13,7 +13,7 @@
                 $.cookie('hasAcceptedCookies', JSON.stringify({
                     accepted: false,
                     createdAt: Date.now()
-                }));
+                }), { path: '/' });
 
                 renderHtml();
                 showCookieBanner();
@@ -28,7 +28,7 @@
                     "CodigoCompra": $('#order-id').html(),
                     "DataAceite": cookie ? new Date(cookie.acceptedAt) : null
                 }),
-                success: function(res) {
+                success: function (res) {
                     console.log(res);
                 }
             });
@@ -63,7 +63,7 @@
         cookie.accepted = true;
         cookie.acceptedAt = Date.now();
 
-        $.cookie('hasAcceptedCookies', JSON.stringify(cookie));
+        $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
     }
 
     function showCookieBanner() {
