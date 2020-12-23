@@ -7,6 +7,9 @@
         const beCheckoutConfirmation = location.pathname.includes('orderPlaced');
         const cookieString = $.cookie('hasAcceptedCookies')
         const cookie = cookieString ? JSON.parse(cookieString) : null;
+        const baseUrlApi = window.location.href.includes("dev")
+            ? "https://api-hml.autoglass.com.br/integracao-b2c/api/master-datas/cookies"
+            : "https://api.autoglass.com.br/integracao-b2c/api/master-datas/cookies";
 
         if (!beCheckoutConfirmation) {
             if (!cookie || (!cookie.accepted)) {
@@ -21,7 +24,7 @@
         } else {
             $.ajax({
                 type: 'POST',
-                url: 'http://localhost:55408/api/master-datas/cookies',
+                url: baseUrlApi,
                 dataType: 'json',
                 contentType: 'application/json',
                 data: JSON.stringify({
