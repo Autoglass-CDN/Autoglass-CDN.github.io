@@ -209,6 +209,59 @@ async function fixPlaceholderSearch() {
   }, 1000);
 }
 
+async function fixPlaceholderSearchMobile() {
+  var idSearchFilterP = $('.search-box-mobile input[type="text"].fulltext-search-box');
+  if (!idSearchFilterP.length)
+    return;
+  var idSearchFilter = idSearchFilterP.attr("id").replace("ftBox", "");
+  enableFullTextSearchBox("ftBox" + idSearchFilter, "ftDept" + idSearchFilter, "ftIdx" + idSearchFilter, "ftBtn" + idSearchFilter, "/SEARCHTERM?&utmi_p=_&utmi_pc=BuscaFullText&utmi_cp=SEARCHTERM", "Pesquise por peça, produto, montadora...");
+
+  setTimeout(() => {
+    $('.search-box .btn-buscar').unbind().click(e => {
+      e.preventDefault();
+      const input = $('.search-box input[type="text"].fulltext-search-box');
+
+      const DEFAULT = {
+        Initial: 'Pesquise por peça, produto, montadora...',
+        Invalid: 'Informe o produto que deseja procurar'
+      };
+
+      const isIllegalTerm = input.val() === DEFAULT.Initial || input.val() === DEFAULT.Invalid || input.val() === '';
+
+      if (isIllegalTerm) {
+        input.val('Informe o produto que deseja procurar');
+
+        input.unbind('focus');
+        input.unbind('blur');
+
+        input.focus(function () {
+          $(this).filter(function () {
+            return isIllegalTerm
+          }).val('');
+        });
+
+        input.blur(function () {
+          $(this).filter(function () {
+            return $(this).val() === '';
+          }).val(isIllegalTerm ? DEFAULT.Invalid : DEFAULT.Initial);
+        });
+
+        $(".search-box").css('border-color', '#E74C3C');
+      } else {
+        const id = input.attr('id').replace("ftBox", "");
+
+        doSearch(
+          "ftBox" + id,
+          "ftDept" + id,
+          "ftIdx" + id,
+          "/SEARCHTERM?&utmi_p=_&utmi_pc=BuscaFullText&utmi_cp=SEARCHTERM",
+          "Buscar"
+        );
+      }
+    });
+  }, 1000);
+}
+
 async function loadCart() {
   let carrinho = document.querySelector('.desktop .menu-carrinho');
   carrinho.addEventListener('click', (event) => {
@@ -385,6 +438,7 @@ function openNav() {
       , 200)
   }, 300);
   //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  removeFunctions();
 }
 
 function closeNav() {
@@ -498,7 +552,7 @@ function toggleCategory(self) {
   loadCart();
 
   $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
-    let carrinho = document.querySelector('.menu-carrinho');
+    let carrinho = document.querySelector('.desktop .menu-carrinho');
 
     updateCartItemsCount(carrinho, orderForm);
   });
@@ -510,9 +564,9 @@ function toggleCategory(self) {
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
 
-  let suggestions = document.querySelector('.container .search-box #autocomplete-search');
+  let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
 
-  let searchField = document.querySelector('.container .search-box .busca input.fulltext-search-box');
+  let searchField = document.querySelector('.container.desktop .search-box .busca input.fulltext-search-box');
 
   searchField.addEventListener('focus', () => {
     suggestions.style.visibility = 'visible';
@@ -536,18 +590,26 @@ function toggleCategory(self) {
 //MOBILE
 
 (() => {
+
   $('.container.mobile .search-icon').click(() => {
+    closeNav();
+    $('.search-box').addClass('ativo');
     $('.search-box-mobile').addClass('search-box-mobile--opened');
+    //$('.search-box-mobile .busca input.fulltext-search-box').focus();
+    document.querySelector('.search-box-mobile .busca input.fulltext-search-box').focus();
     $('.topo').click(() => removeFunctions());
     // $('.container.mobile').click(() => removeFunctions());
     $('.search-box-mobile').click(e => {
+      console.log(e.target, e.currentTarget);
       if (e.target === e.currentTarget) {
         removeFunctions();
       }
     });
   });
+  
+  let searchField = document.querySelector('.search-box-mobile .busca input.fulltext-search-box');
 
-  autocompleteInitMobile(document.querySelector('#search-mobile-input'));
+  autocompleteInitMobile(searchField);
 
   checkLoginMobile();
 
@@ -559,33 +621,43 @@ function toggleCategory(self) {
       .addEventListener('click', (e) => closeNav());
   };
 
+  $('.usuario__opcoes-mobile a').click(() => {
+    closeNav();
+  })
 
-  function removeFunctions() {
-    $('.search-box-mobile').removeClass('search-box-mobile--opened');
-    $('.topo').unbind();
-    $('.container.mobile').unbind();
-  }
-  async function autocompleteInitMobile(searchInput) {
-    $('#search-mobile-input').focus();
-    searchInput.addEventListener("input", async (e) => {
-      let searchTerm = e.target.value.trim();
-      if (searchTerm.length < 4) {
-        $('.search-mobile-autocomplete').hide();
-        return;
-      }
-      let list = document.querySelector('.search-mobile-autocomplete');
-      let searchResult = await autocompleteSearch(e.target.value);
-      if (searchResult.length > 0) {
-        list.innerHTML = searchResult.filter((_, i) => i < 3)
-          .map(item => `
-          <li>
-            <a href='${item.href}'>${item.thumb}${item.name.replace(e.target.value, `<b>${e.target.value}</b>`)}</a>
-          </li>
-        `).join('');
-        $('.search-mobile-autocomplete').show();
-      } else {
-        $('.search-mobile-autocomplete').hide();
-      }
-    });
-  }
+  $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
+    let carrinho = document.querySelector('.mobile .menu-carrinho');
+
+    updateCartItemsCountMobile(carrinho, orderForm);
+  });
 })();
+
+function removeFunctions() {
+  $('.search-box').removeClass('ativo');
+  $('.search-box-mobile').removeClass('search-box-mobile--opened');
+  $('.topo').unbind();
+  $('.container.mobile').unbind();
+}
+async function autocompleteInitMobile(searchInput) {
+  fixPlaceholderSearchMobile();
+  searchInput.addEventListener("input", async (e) => {
+    let searchTerm = e.target.value.trim();
+    if (searchTerm.length < 4) {
+      $('.search-mobile-autocomplete').hide();
+      return;
+    }
+    let list = document.querySelector('.search-mobile-autocomplete');
+    let searchResult = await autocompleteSearch(e.target.value);
+    if (searchResult.length > 0) {
+      list.innerHTML = searchResult.filter((_, i) => i < 3)
+        .map(item => `
+        <li>
+          <a href='${item.href}'>${item.thumb}${item.name.replace(e.target.value, `<b>${e.target.value}</b>`)}</a>
+        </li>
+      `).join('');
+      $('.search-mobile-autocomplete').show();
+    } else {
+      $('.search-mobile-autocomplete').hide();
+    }
+  });
+}
