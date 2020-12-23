@@ -436,6 +436,10 @@ i.arrow-icon::before {
   position: relative;
 }
 
+.search-box-mobile .busca {
+  width: 100%;
+}
+
 .search-box-mobile .busca input {
   outline: none;
   width: 100%;
