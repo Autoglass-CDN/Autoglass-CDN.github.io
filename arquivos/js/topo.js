@@ -537,12 +537,13 @@ function toggleCategory(self) {
 //MOBILE
 
 (() => {
-  
+
   $('.container.mobile .search-icon').click(() => {
     closeNav();
     $('.search-box').addClass('ativo');
     $('.search-box-mobile').addClass('search-box-mobile--opened');
-    $('.search-box-mobile .busca input.fulltext-search-box').focus();
+    //$('.search-box-mobile .busca input.fulltext-search-box').focus();
+    document.querySelector('.search-box-mobile .busca input.fulltext-search-box').focus();
     $('.topo').click(() => removeFunctions());
     // $('.container.mobile').click(() => removeFunctions());
     $('.search-box-mobile').click(e => {
