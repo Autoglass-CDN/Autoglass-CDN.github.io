@@ -537,12 +537,7 @@ function toggleCategory(self) {
 //MOBILE
 
 (() => {
-  let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
-
-  let searchField = document.querySelector('.search-box-mobile .busca input.fulltext-search-box');
-
-  autocompleteInitMobile(searchField);
-
+  
   $('.container.mobile .search-icon').click(() => {
     closeNav();
     $('.search-box').addClass('ativo');
@@ -551,12 +546,16 @@ function toggleCategory(self) {
     $('.topo').click(() => removeFunctions());
     // $('.container.mobile').click(() => removeFunctions());
     $('.search-box-mobile').click(e => {
+      console.log(e.target, e.currentTarget);
       if (e.target === e.currentTarget) {
         removeFunctions();
       }
     });
   });
+  
+  let searchField = document.querySelector('.search-box-mobile .busca input.fulltext-search-box');
 
+  autocompleteInitMobile(searchField);
 
   checkLoginMobile();
 
