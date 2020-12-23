@@ -1,6 +1,6 @@
 /* import */
-@import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
 
+@import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
 .smart-select-section {
   margin-top: -75px;
 }
@@ -14,13 +14,13 @@
   .smart-select-section {
     margin-top: 0px;
   }
-
   .home main {
     margin-top: 0px;
   }
 }
 
 /* #region Common */
+
 .container {
   max-width: 1110px;
   margin: 0 auto;
@@ -34,6 +34,7 @@
   text-align: center;
   text-transform: uppercase;
 }
+
 /* #endregion Common */
 
 /* #region Banners */
@@ -60,14 +61,14 @@
 .banners-section .banners-content {
   display: flex;
   align-items: center;
-
   overflow-x: auto;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
-
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .banners-section .banners-content.mobile {
@@ -98,8 +99,6 @@
   left: 50%;
   transform: translateX(-50%);
   bottom: 125px;
-
-
   list-style: none;
   display: flex;
 }
@@ -107,14 +106,13 @@
 .banners-section .banners-bars li {
   width: 30px;
   height: 4px;
-
   background-color: var(--gray-500);
   margin: 0 5px;
   cursor: pointer;
 }
 
 .banners-section .banners-bars li.active {
-  background-color:var(--primary);
+  background-color: var(--primary);
 }
 
 @media (min-width: 1920px) {
@@ -130,16 +128,13 @@
   .banners-section .banners-content.mobile {
     display: flex;
   }
-
   .banners-section .banners-content img {
     height: auto;
   }
-
   .banners-section .banners button {
     transform: translateY(calc(-50% - 25px));
   }
-
-	.banners-section .banners-bars {
+  .banners-section .banners-bars {
     display: none;
   }
 }
@@ -147,6 +142,7 @@
 /* #endregion Banners */
 
 /* #region Benefits */
+
 .benefits-section {
   color: #95989A;
 }
@@ -155,9 +151,10 @@
   display: flex;
   padding: 24px;
   justify-content: space-around;
-
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 .benefits-section .container::-webkit-scrollbar {
@@ -191,20 +188,17 @@
 @media (max-width: 1000px) {
   .benefits-section .container {
     justify-content: initial;
-
     overflow-x: auto;
     scroll-behavior: smooth;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
   }
-
   .benefits-section .benefit {
     max-width: initial;
     padding: 0 16px;
     scroll-snap-align: center;
     pointer-events: none;
   }
-
   .benefits-section .benefit-wrapper {
     justify-content: center;
   }
@@ -256,8 +250,9 @@
   padding: 20px;
   outline: none;
   cursor: pointer;
-  z-index: 9;
+  z-index: 8;
 }
+
 .ratings-section .ratings__slider button[id="rating-next"] {
   right: 0;
 }
@@ -274,15 +269,12 @@
   height: 285px;
   background-color: var(--gray-100);
   border-radius: 8px;
-
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
   margin: 5px;
-
   transition: transform .7s ease;
 }
 
@@ -310,7 +302,7 @@
 
 .ratings-section .ratings__rating .ratings__rating-content h3 {
   font-family: 'Open Sans', sans-serif;
-  color:var(--primary);
+  color: var(--primary);
   font-size: 16px;
   font-weight: var(--bold);
   margin: 16px 0;
@@ -327,7 +319,7 @@
 
 .ratings-section .ratings__rating.highlight {
   transform: scale(1.34);
-  background-color:#183884;
+  background-color: #183884;
   z-index: 1;
   cursor: initial;
 }
@@ -335,6 +327,7 @@
 .ratings-section .ratings__rating.highlight .ratings__rating-content h3 {
   color: var(--white);
 }
+
 .ratings-section .ratings__rating.highlight .ratings__rating-content p {
   color: var(--white);
 }
@@ -351,21 +344,19 @@
 .ratings-section .rating-bars li {
   width: 30px;
   height: 4px;
-
   background-color: var(--gray-500);
   margin: 0 5px;
   cursor: pointer;
 }
 
 .ratings-section .rating-bars li.active {
-  background-color:var(--primary);
+  background-color: var(--primary);
 }
 
 @media (max-width: 1050px) {
   .ratings-section .ratings__rating {
     display: none !important;
   }
-
   .ratings-section .ratings__rating.highlight {
     display: flex !important;
   }
@@ -375,15 +366,12 @@
   .ratings-section {
     padding-top: 15px
   }
-
   .section-title {
     font-size: 22px;
   }
-
   .ratings-section .ratings__slider {
     height: 350px;
   }
-
   .ratings-section .ratings__rating.highlight {
     transform: scale(1.1);
   }
@@ -394,9 +382,11 @@
     transform: scale(1);
   }
 }
+
 /* #endregion Rating */
 
 /* #region Why */
+
 .whys-section {
   padding: 80px 20px;
   background: url('https://autoglass.vteximg.com.br/arquivos/porque_autoglass-bg.svg');
@@ -424,7 +414,7 @@
   flex-direction: row-reverse;
 }
 
-.whys-section .why > div {
+.whys-section .why>div {
   margin: 15px;
 }
 
@@ -443,12 +433,12 @@
   opacity: .8;
 }
 
-.whys-section .why__content > * {
+.whys-section .why__content>* {
   padding: 8px;
 }
 
 .whys-section .why__content-title {
-  color:var(--primary);
+  color: var(--primary);
   font-size: 24px;
   font-weight: var(--bold);
 }
@@ -461,14 +451,14 @@
 }
 
 .whys-section .why__content-link {
-  color:var(--primary);
+  color: var(--primary);
   font-size: 16px;
   font-weight: var(--semi-bold);
   text-decoration: underline;
 }
 
 .whys-section .whys__link {
-  background-color:var(--primary);
+  background-color: var(--primary);
   color: var(--white);
   border-radius: 4px;
   padding: 12px;
@@ -481,20 +471,16 @@
   .whys-section .why:nth-child(n) {
     flex-direction: column;
   }
-
   .whys-section .why__content {
     align-items: center;
     margin: 0;
   }
-
   .whys-section .why__content-text {
     text-align: center;
   }
-
   .whys-section .why__image {
     min-width: 250px;
   }
-
   .whys-section .why__content-link {
     display: none;
   }
@@ -528,7 +514,7 @@
 
 .chat-section .chat__content-link {
   background-color: var(--white);
-  color:var(--primary);
+  color: var(--primary);
   font-size: 16px;
   font-weight: var(--bold);
   border-radius: 40px;
@@ -536,7 +522,6 @@
   text-align: center;
   text-transform: uppercase;
   cursor: pointer;
-
   transition: background-color .3 ease-in-out;
 }
 
@@ -549,16 +534,13 @@
     flex-direction: column;
     padding: 40px;
   }
-
   .chat-section .chat__content-menssage {
     display: flex;
     flex-direction: column;
   }
-
   .chat-section .chat__content-title {
     text-align: center;
   }
-
   .chat-section .chat__content-text {
     max-width: 230px;
     text-align: center;
