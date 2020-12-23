@@ -541,6 +541,7 @@ function toggleCategory(self) {
     closeNav();
     $('.search-box').addClass('ativo');
     $('.search-box-mobile').addClass('search-box-mobile--opened');
+    $('#search-mobile-input').focus();
     $('.topo').click(() => removeFunctions());
     // $('.container.mobile').click(() => removeFunctions());
     $('.search-box-mobile').click(e => {
