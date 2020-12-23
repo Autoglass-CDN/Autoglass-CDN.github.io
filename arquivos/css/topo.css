@@ -436,11 +436,22 @@ i.arrow-icon::before {
   position: relative;
 }
 
+.search-box-mobile .busca input {
+  outline: none;
+  width: 100%;
+  color: var(--gray-500);
+  transition: border 500ms;
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid var(--gray-500);
+}
+
 .search-box-mobile__form-input {
   flex: 1;
   padding: 10px;
   border-radius: 5px;
   border: 1px solid var(--gray-500);
+  display: none;
 }
 
 .search-mobile-autocomplete {
