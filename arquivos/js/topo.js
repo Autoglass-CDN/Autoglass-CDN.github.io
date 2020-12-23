@@ -502,6 +502,7 @@ function toggleCategory(self) {
     let carrinho = document.querySelector('.menu-carrinho');
 
     updateCartItemsCount(carrinho, orderForm);
+    updateCartItemsCountMobile(carrinho, orderForm);
   });
 
   $(document).ready(function () {
