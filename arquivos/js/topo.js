@@ -499,7 +499,7 @@ function toggleCategory(self) {
   loadCart();
 
   $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
-    let carrinho = document.querySelector('.menu-carrinho');
+    let carrinho = document.querySelector('.desktop .menu-carrinho');
 
     updateCartItemsCount(carrinho, orderForm);
   });
@@ -541,6 +541,7 @@ function toggleCategory(self) {
     closeNav();
     $('.search-box').addClass('ativo');
     $('.search-box-mobile').addClass('search-box-mobile--opened');
+    $('#search-mobile-input').focus();
     $('.topo').click(() => removeFunctions());
     // $('.container.mobile').click(() => removeFunctions());
     $('.search-box-mobile').click(e => {
@@ -561,6 +562,16 @@ function toggleCategory(self) {
       .querySelector('.side-menu-backdrop')
       .addEventListener('click', (e) => closeNav());
   };
+
+  $('.usuario__opcoes-mobile a').click(() => {
+    closeNav();
+  })
+
+  $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
+    let carrinho = document.querySelector('.mobile .menu-carrinho');
+
+    updateCartItemsCountMobile(carrinho, orderForm);
+  });
 })();
 
 function removeFunctions() {
