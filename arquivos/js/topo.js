@@ -511,9 +511,9 @@ function toggleCategory(self) {
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
 
-  let suggestions = document.querySelector('.container .search-box #autocomplete-search');
+  let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
 
-  let searchField = document.querySelector('.container .search-box .busca input.fulltext-search-box');
+  let searchField = document.querySelector('.container.desktop .search-box .busca input.fulltext-search-box');
 
   searchField.addEventListener('focus', () => {
     suggestions.style.visibility = 'visible';
@@ -537,11 +537,17 @@ function toggleCategory(self) {
 //MOBILE
 
 (() => {
+  let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
+
+  let searchField = document.querySelector('.search-box-mobile .busca input.fulltext-search-box');
+
+  autocompleteInitMobile(searchField);
+
   $('.container.mobile .search-icon').click(() => {
     closeNav();
     $('.search-box').addClass('ativo');
     $('.search-box-mobile').addClass('search-box-mobile--opened');
-    $('#search-mobile-input').focus();
+    $('.search-box-mobile .busca input.fulltext-search-box').focus();
     $('.topo').click(() => removeFunctions());
     // $('.container.mobile').click(() => removeFunctions());
     $('.search-box-mobile').click(e => {
@@ -551,7 +557,6 @@ function toggleCategory(self) {
     });
   });
 
-  autocompleteInitMobile(document.querySelector('#search-mobile-input'));
 
   checkLoginMobile();
 
@@ -581,7 +586,6 @@ function removeFunctions() {
   $('.container.mobile').unbind();
 }
 async function autocompleteInitMobile(searchInput) {
-  $('#search-mobile-input').focus();
   searchInput.addEventListener("input", async (e) => {
     let searchTerm = e.target.value.trim();
     if (searchTerm.length < 4) {
