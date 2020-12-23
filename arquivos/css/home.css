@@ -121,7 +121,7 @@
   }
 }
 
-@media (max-width: 1100px) {
+@media (max-width: 1200px) {
   .banners-section .banners-content.desktop {
     display: none;
   }
