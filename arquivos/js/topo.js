@@ -499,10 +499,9 @@ function toggleCategory(self) {
   loadCart();
 
   $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
-    let carrinho = document.querySelector('.menu-carrinho');
+    let carrinho = document.querySelector('.desktop .menu-carrinho');
 
     updateCartItemsCount(carrinho, orderForm);
-    updateCartItemsCountMobile(carrinho, orderForm);
   });
 
   $(document).ready(function () {
@@ -563,6 +562,16 @@ function toggleCategory(self) {
       .querySelector('.side-menu-backdrop')
       .addEventListener('click', (e) => closeNav());
   };
+
+  $('.usuario__opcoes-mobile a').click(() => {
+    closeNav();
+  })
+
+  $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
+    let carrinho = document.querySelector('.mobile .menu-carrinho');
+
+    updateCartItemsCountMobile(carrinho, orderForm);
+  });
 })();
 
 function removeFunctions() {
