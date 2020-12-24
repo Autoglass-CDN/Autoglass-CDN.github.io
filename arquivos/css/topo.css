@@ -938,6 +938,7 @@ i.arrow-icon::before {
 
 .side-menu-categorias .side-menu-categorias__categoria-header.ativo+.side-menu-categorias__categoria-itens {
   height: fit-content;
+  height: -moz-fit-content;
 }
 
 .side-menu-categorias .side-menu-categorias__categoria-itens a {
