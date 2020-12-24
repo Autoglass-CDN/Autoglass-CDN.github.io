@@ -1477,4 +1477,8 @@ body[data-qd-scroll-0="1"] {
   }
 }
 
+body div#ajaxBusy {
+  display: none !important;
+}
+
 /* #endregion RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
