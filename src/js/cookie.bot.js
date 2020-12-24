@@ -8,8 +8,8 @@
         const cookieString = $.cookie('hasAcceptedCookies')
         const cookie = cookieString ? JSON.parse(cookieString) : null;
         const baseUrlApi = window.location.href.includes("dev")
-            ? "https://api-hml.autoglass.com.br/integracao-b2c/api/master-datas/cookies"
-            : "https://api.autoglass.com.br/integracao-b2c/api/master-datas/cookies";
+            ? "https://api-hml.autoglass.com.br/integracao-b2c/api/api/web-app/master-datas/cookies"
+            : "https://api.autoglass.com.br/integracao-b2c/api/web-app/master-datas/cookies";
 
         if (!beCheckoutConfirmation) {
             if (!cookie || (!cookie.accepted)) {
