@@ -45,7 +45,7 @@
                     <p class="c-header">Protegemos seus dados pessoais</p>
                     <p class="c-message">
                         Autoglass protege seus dados pessoais e utiliza cookies para personalizar anúncios e melhorar a sua experiência no site.
-                        Ao continuar navegando, você concorda com a nossa <a>Política de Privacidade</a>
+                        Ao continuar navegando, você concorda com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade</a>
                     </p>
                 </div>
                 <div id="c-right">
