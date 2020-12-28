@@ -9,5 +9,6 @@ module.exports = {
     'js/smart-select': path.resolve(__dirname, 'src', 'js', 'smart-select.dev.js'),
     'js/home': path.resolve(__dirname, 'src', 'js', 'home.dev.js'),
     'js/cep.component': path.resolve(__dirname, 'src', 'js', 'cep.component.js'),
+    'js/cookie.bot': path.resolve(__dirname, 'src', 'js', 'cookie.bot.js'),
   }
 }
