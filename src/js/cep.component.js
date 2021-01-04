@@ -30,7 +30,7 @@ $(function CepComponent() {
 
 		async function init() {
 			const orderForm = await Service.getOrderForm();
-			Service.saveAddressOnLocalStorage(orderForm.shippingData.address);
+			Service.saveAddressOnLocalStorage(orderForm.shippingData);
 
 			$(CONFIG.SELECTOR).each(function (_, cepContainer) {
 				$(cepContainer)
@@ -52,7 +52,7 @@ $(function CepComponent() {
 
 				$(window).on(CONFIG.EVENTS.CEP_UPDATED, async (e) => {
 					const newOrderForm = e.originalEvent.detail;
-					Service.saveAddressOnLocalStorage(newOrderForm.shippingData.address);
+					Service.saveAddressOnLocalStorage(newOrderForm.shippingData);
 
 					$(cepContainer)
 						.html('')
@@ -272,10 +272,13 @@ $(function CepComponent() {
 			return orderForm;
 		}
 
-		function saveAddressOnLocalStorage(address) {
+		function saveAddressOnLocalStorage(shippingData) {
 			localStorage.setItem(
 				CONFIG.STORAGE,
-				JSON.stringify(address)
+				JSON.stringify({
+					...shippingData.address,
+					logisticsInfo: shippingData.logisticsInfo
+				})
 			);
 		}
 	}
