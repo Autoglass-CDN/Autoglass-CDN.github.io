@@ -504,7 +504,7 @@ $(function () {
   let minDate = new Date();
   minDate.setDate(minDate.getDate() + 1);
   let maxDate = new Date();
-  maxDate = new Date(maxDate.getFullYear(), minDate.getMonth() + 2, 0);
+  maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 2, 0);
 
   $('.mz-advantages__content .cep  input').mask('99999-999').val('');
 
@@ -556,6 +556,7 @@ $(function () {
     // Evento lançado pelo componente de cep
     $(window).on('cep-finish-load', e => {
       const orderForm = e.originalEvent.detail;
+      estimateDate(orderForm.shippingData.logisticsInfo);
       Carregar(orderForm.shippingData.address.postalCode);
     });
   }
@@ -563,9 +564,30 @@ $(function () {
   // Evento lançado pelo componente de cep
   $(window).on('cep-updated', e => {
     const orderForm = e.originalEvent.detail;
+    estimateDate(orderForm.shippingData.logisticsInfo);
     Carregar(orderForm.shippingData.address.postalCode);
   });
 
+  function estimateDate(logisticsInfo) {
+    let logistic = logisticsInfo[0];
+
+    if (logistic) {
+      let sla = logistic.slas.find(x => x.id.toLocaleLowerCase() === 'Autoglass Móvel'.toLocaleLowerCase());
+
+      if (sla) {
+        let estimate = sla.shippingEstimate;
+        let numberOfDays = +estimate.replace('bd', '');
+
+        let date = new Date();
+
+        minDate.setDate(date.getDate() + numberOfDays);
+        maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 2, 0);
+
+        $('#mostrar-datas-datepicker').datepicker('option', 'maxDate', maxDate);
+        $('#mostrar-datas-datepicker').datepicker('option', 'minDate', minDate);
+      }
+    }
+  }
 
   async function Carregar(cep) {
     $('#aviso-servico-movel').hide();
