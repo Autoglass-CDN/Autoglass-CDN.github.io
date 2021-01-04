@@ -509,7 +509,6 @@ $(function () {
         $('.store').remove();
 
         estimateDate(order.shippingData.logisticsInfo);
-
         recuperarHorarios();
       }
     });
@@ -583,8 +582,24 @@ $(function () {
 
   const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
-  if (address)
+  if (address) {
     estimateDate(address.logisticsInfo);
+    recuperarHorarios();
+  } else {
+    // Evento lançado pelo componente de cep
+    $(window).on('cep-finsh-load', e => {
+      const orderForm = e.originalEvent.detail;
+      estimateDate(orderForm.shippingData.logisticsInfo);
+      recuperarHorarios();
+    });
+  }
+
+  // Evento lançado pelo componente de cep
+  $(window).on('cep-updated', e => {
+    const orderForm = e.originalEvent.detail;
+    estimateDate(orderForm.shippingData.logisticsInfo);
+    recuperarHorarios();
+  });
 
   function estimateDate(logisticsInfo) {
     let logistic = logisticsInfo[0];
