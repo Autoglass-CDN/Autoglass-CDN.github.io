@@ -206,7 +206,7 @@ $(function LojasMaisProximas() {
                 // Evento lançado pelo componente de cep
                 $(window).on('cep-finish-load', e => {
                     const orderForm = e.originalEvent.detail;
-                    simulateShipping(orderForm.shippingData.address);
+                    simulateShipping(orderForm.shippingData?.address);
                 });
             }
 
@@ -214,7 +214,7 @@ $(function LojasMaisProximas() {
             $(window).on('cep-updated', e => {
                 const orderForm = e.originalEvent.detail;
                 console.log(orderForm.shippingData.address)
-                simulateShipping(orderForm.shippingData.address);
+                simulateShipping(orderForm.shippingData?.address);
             })
         }
 
