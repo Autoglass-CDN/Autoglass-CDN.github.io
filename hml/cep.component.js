@@ -186,9 +186,6 @@ $(function CepComponent() {
 						+ cepContainer.id
 					);
 			});
-
-			if (!address)
-				$(`#${cepContainer.id} .cep-info__location-button`).click();
 		}
 
 		function _renderNewCep(modalContent) {
