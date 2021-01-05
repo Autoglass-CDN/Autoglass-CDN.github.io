@@ -736,6 +736,7 @@ body.mz-sf-on .mz-modal-shipping {
   border-radius: 4px;
   padding: 0px 10px;
   margin: 10px 0px;
+  height: 50px;
 }
 
 .shipping .shipping__name b:before {
@@ -841,7 +842,6 @@ body.mz-sf-on .mz-modal-shipping {
     bottom: 0;
     right: 0;
     height: 100%;
-    /* width: 100%; */
     max-height: 480px;
     border: none;
 }

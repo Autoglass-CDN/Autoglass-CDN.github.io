@@ -977,7 +977,7 @@ $(function () {
         $('a.ui-state-active').removeClass('ui-state-active');
         $('a.ui-state-hover').removeClass('ui-state-hover');
 
-        $('#mostrar-datas-datepicker').css('height', '228px');
+        $('#mostrar-datas-datepicker').css('height', '270px');
       } catch (err) {
         let message;
 
