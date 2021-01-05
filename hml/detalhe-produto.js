@@ -220,8 +220,6 @@ $(function LojasMaisProximas() {
 
         async function simulateShipping(address) {
             if (address) {
-                $('.mz-pickup__stores').show();
-
                 let shippingData = await Service.simulateShipping(address);
 
                 SLA = shippingData
@@ -231,8 +229,6 @@ $(function LojasMaisProximas() {
 
                 View.buildListStore(SLA);
                 View.addClicks();
-            } else {
-                $('.mz-pickup__stores').hide();
             }
         }
     }
