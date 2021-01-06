@@ -162,8 +162,10 @@ $(function () {
     });
 
     try {
-        if (document.querySelector('.mz-prices__block') === null || document.querySelector('.mz-prices__block:empty'))
-            Product.bringInstallementTreatsData();
+        setTimeout(() => {
+            if (document.querySelector('.mz-prices__block') === null || document.querySelector('.mz-prices__block:empty'))
+                Product.bringInstallementTreatsData();
+        }, 3000);
     } catch {
         console.log('Falha ao criar o parcelamento.');
     }

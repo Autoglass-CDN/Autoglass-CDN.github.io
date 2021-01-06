@@ -223,7 +223,7 @@
   }
 
   .cep-info__location-button {
-    align-self: flex-end;
+    align-self: flex-start;
     padding-top: 5px;
   }
 }
