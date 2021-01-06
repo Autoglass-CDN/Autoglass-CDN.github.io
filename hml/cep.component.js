@@ -236,12 +236,17 @@ $(function CepComponent() {
 				setTimeout(() => $('.cep-new').remove(), 1000);
 			});
 
-			$('#cep-input').focus();
+			$('#cep-input').focus(function () {
+				$(this)[0].setSelectionRange(0, 0)
+			});
+			$("#cep-input").click(function () {
+				$(this)[0].setSelectionRange(0, 0)
+			});
 			$('#cep-input').keyup(e => e.target.value.replace('_', '').length === 9
 				&& Controller.submitEvent(e)
 			);
 
-			$('.cep-new__content-form').on('submit', Controller.submitEvent);
+			$('.cep-new__content-form').on('submit', e => $('#cep-input').val().replace('_', '').length === 9 && Controller.submitEvent(e));
 		}
 	}
 
