@@ -306,6 +306,13 @@
   border: 1px solid #223B76;
 }
 
+@media (max-width: 580px) {
+  .mz-modal-advantages {
+    height: 500px;
+    overflow-y: auto;
+  }
+}
+
 /* #endregion Modal - Instale em Casa */
 
 /* #region Modal - Retire na Loja */

@@ -5,30 +5,6 @@
   font-size: 14px !important;
 }
 
-.secao-agendamento .store-list > ul {
-	padding-inline-start: 0;
-}
-
-.secao-agendamento .store-list .pickup__estimate {
-    border-top: 1px solid #f4f4f4;
-    padding: 8px 8px 8px 100px;
-}
-
-.secao-agendamento .store-list .pickup__estimate span
-{
-	display: unset;
-}
-
-.secao-agendamento .store-list .pickup__estimate span + span
-{
-	margin-left: 20px;
-}
-
-.secao-agendamento .store-list .time {
-  padding: 12px;
-  border-top: 1px solid #f4f4f4;
-}
-
 
 .secao-agendamento > .store-list > .filter {
   display: flex;
@@ -37,7 +13,7 @@
   position: sticky;
   top: -20px;
   background: white;
-  padding: 0px 0px 10px;
+  padding: 20px 0px 10px;
 }
 
 .secao-agendamento > .store-list > .filter > .data {
@@ -323,12 +299,18 @@
   border: none;
 }
 
-.secao-agendamento .time-list > .timestamp:focus,
-.secao-agendamento .time-list > .timestamp.ativo {
+.secao-agendamento .time-list > .timestamp:focus {
   background-color: #223B76;
   color: white;
   outline: none;
   border: 1px solid #223B76;
+}
+
+@media (max-width: 580px) {
+  .mz-modal-advantages {
+    height: 500px;
+    overflow-y: auto;
+  }
 }
 
 /* #endregion Modal - Instale em Casa */

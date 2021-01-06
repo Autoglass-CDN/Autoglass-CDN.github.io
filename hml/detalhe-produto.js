@@ -162,9 +162,10 @@ $(function () {
     });
 
     try {
-        Product.bringInstallementTreatsData();
+        if (document.querySelector('.mz-prices__block') === null || document.querySelector('.mz-prices__block:empty'))
+            Product.bringInstallementTreatsData();
     } catch {
-        console.log('Falha ao criar o parcelamento.')
+        console.log('Falha ao criar o parcelamento.');
     }
 
 });
@@ -173,7 +174,6 @@ function consulteFrete() {
     let txtCep = document.getElementById("txtCep");
     txtCep.scrollIntoView({ behavior: "smooth", block: "center" });
     txtCep.focus();
-    console.log(txtCep);
 }
 
 $(function LojasMaisProximas() {
