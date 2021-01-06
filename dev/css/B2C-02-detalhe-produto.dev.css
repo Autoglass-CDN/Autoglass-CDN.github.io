@@ -86,6 +86,14 @@
   padding-left: 0;
 }
 
+.product-qd-v1-fixed-bar {
+  bottom: 0px !important;
+}
+
+#launcher {
+  bottom: 50px !important;
+}
+
 /* #endregion Reset CSS MZ */
 
 /* #region TOOLTIP DO CEP */
