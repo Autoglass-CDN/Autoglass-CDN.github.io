@@ -227,7 +227,7 @@ $(function CepComponent() {
 
 			setTimeout(() => $('.cep-new').css('transform', 'translateX(0)'), 100);
 
-			$('#cep-input').mask('99999-999');
+			//$('#cep-input').mask('99999-999');
 
 			$(`${modalContent} #cep-back-button`).click(e => {
 				$('.cep-new')
@@ -240,6 +240,7 @@ $(function CepComponent() {
 			$("#cep-input").click(function () {
 				$(this)[0].setSelectionRange(0, 0)
 			});
+
 			$('#cep-input').keyup(e => {
 				e.preventDefault();
 				if (e.target.value.replace('_', '').length === 9)
