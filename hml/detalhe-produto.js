@@ -1,4 +1,4 @@
-$(function () {//
+$(function () {
     let acessorio = document.querySelector(".mz-accesories__button--buy");
 
     if (acessorio) {
@@ -41,7 +41,8 @@ $(function () {//
                 const day = today.getDay();
 
                 if ((day === 0 || day === 6) //É Domingo ou Sábado?
-                    || (hour < 8 || hour >= 18) //Esta fora do horario de trabalho?
+                    ||
+                    (hour < 8 || hour >= 18) //Esta fora do horario de trabalho?
                 ) {
                     zE('webWidget', 'chat:addTags', 'fora-expediente');
                     zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 08-18h, no momento estamos sem consultor disponível. Por favor, informe seu Nome e Celular que entraremos em contato o mais breve possível. Produto para consulta: ${window.location.href}`);
@@ -80,14 +81,11 @@ $(function () {//
                     .location
                     .replace(
                         $("#similars .qd-product-is-in-stock-true a.shelf-qd-v1-stamps")[0]
-                            .href
-                        + '?utm_source=produtodisponivel&utm_medium=redirecionamento&utm_campaign='
-                        + product.productId);
+                            .href +
+                        '?utm_source=produtodisponivel&utm_medium=redirecionamento&utm_campaign=' +
+                        product.productId);
             });
-
-
         }
-
 
         ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
     } else {
@@ -162,6 +160,13 @@ $(function () {//
 
         shippingsDiv && observerShippingsDiv.observe(shippingsDiv, { attributes: true, childList: true, subtree: true });
     });
+
+    try {
+        Product.bringInstallementTreatsData();
+    } catch {
+        console.log('Falha ao criar o parcelamento.')
+    }
+
 });
 
 function consulteFrete() {
