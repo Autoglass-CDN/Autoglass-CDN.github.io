@@ -241,7 +241,7 @@ $(function CepComponent() {
 				&& Controller.submitEvent(e)
 			);
 
-			$('.cep-new__content-form').on('submit', Controller.submitEvent);
+			$('.cep-new__content-form').on('submit', e => $('#cep-input').val().replace('_', '').length === 9 && Controller.submitEvent(e));
 		}
 	}
 
