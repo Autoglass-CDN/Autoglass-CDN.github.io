@@ -236,20 +236,20 @@ $(function CepComponent() {
 				setTimeout(() => $('.cep-new').remove(), 1000);
 			});
 
-			$('#cep-input').focus(function () {
-				$(this)[0].setSelectionRange(0, 0)
-			});
+			$('#cep-input').focus();
 			$("#cep-input").click(function () {
 				$(this)[0].setSelectionRange(0, 0)
 			});
 			$('#cep-input').keyup(e => {
-				e.stopPropagation();
-				e.target.value.replace('_', '').length === 9 && Controller.submitEvent(e);
+				e.preventDefault();
+				if (e.target.value.replace('_', '').length === 9)
+					Controller.submitEvent(e);
 			});
 
 			$('.cep-new__content-form').on('submit', e => {
-				e.stopPropagation();
-				$('#cep-input').val().replace('_', '').length === 9 && Controller.submitEvent(e);
+				e.preventDefault();
+				if ($('#cep-input').val().replace('_', '').length === 9)
+					Controller.submitEvent(e);
 			});
 		}
 	}
