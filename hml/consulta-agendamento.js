@@ -972,6 +972,15 @@ $(function () {
           DataRoteiro: new Date(x.DataRoteiro)
         }));
 
+        if (response.Registros.filter(x => x.Disponivel === false).length === response.Registros.length)
+          $('#aviso-servico-movel')
+            .show()
+            .html(`
+              Instalação em Casa indisponível para sua região. Tente alterar o CEP ou
+              <a onclick="$zopim.livechat.window.show()"> clique aqui<a>
+              e fale com a gente pelo chat.
+            `);
+
         $('#mostrar-datas-datepicker').datepicker('setDate', minDate);
         $('#mostrar-datas-datepicker').datepicker('refresh');
         $('a.ui-state-active').removeClass('ui-state-active');
