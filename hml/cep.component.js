@@ -239,8 +239,9 @@ $(function CepComponent() {
 
 			$('#cep-input').focus();
 			$("#cep-input").click(function () {
-				$(this).val('');
-				$(this)[0].setSelectionRange(0, 0);
+				if (!isMobile) {
+					$(this)[0].setSelectionRange(0, 0);
+				}
 			});
 
 			$('#cep-input').keyup(e => {
