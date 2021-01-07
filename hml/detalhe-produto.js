@@ -282,7 +282,7 @@ $(function LojasMaisProximas() {
                 })
             } else {
                 $('.without-store').show();
-                html += '<span><a onclick="$zopim.livechat.window.show()">Clique aqui</a> e fale com a gente pelo chat!</span>';
+                html += '<span><a onclick="$zopim.livechat.window.show()"><b>Clique aqui</b></a> e fale com a gente pelo chat!</span>';
             }
 
             $(CONFIG.CSS.MODAL_LIST).html(html)
