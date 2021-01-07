@@ -1,5 +1,9 @@
 /* #region Reset CSS MZ */
 
+.product-qd-v1-image .product-qd-v1-stamps {
+  z-index: 0;
+}
+
 .product-qd-v1-sku-selection-box .product-qd-v1-sku-selection-row p {
   font-size: 14px;
   text-transform: initial;
@@ -484,7 +488,7 @@ body.mz-pu-on .mz-modal-pickup {
 /* #endregion Produto Indisponível - Outras Marcas */
 
 .product-qd-v1-float-bar {
-  z-index: 9993;
+  z-index: 1;
   top: 150px;
 }
 
