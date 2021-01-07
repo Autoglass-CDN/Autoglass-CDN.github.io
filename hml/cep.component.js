@@ -227,7 +227,8 @@ $(function CepComponent() {
 
 			setTimeout(() => $('.cep-new').css('transform', 'translateX(0)'), 100);
 
-			_defineHowCepInputWillWork();
+			const isMobile = _defineHowCepInputWillWork();
+			const maxLength = !isMobile ? 9 : 8;
 
 			$(`${modalContent} #cep-back-button`).click(e => {
 				$('.cep-new')
@@ -238,18 +239,20 @@ $(function CepComponent() {
 
 			$('#cep-input').focus();
 			$("#cep-input").click(function () {
-				$(this)[0].setSelectionRange(0, 0)
+				if (!isMobile) {
+					$(this)[0].setSelectionRange(0, 0);
+				}
 			});
 
 			$('#cep-input').keyup(e => {
 				e.preventDefault();
-				if (e.target.value.replace('_', '').length === 9)
+				if (e.target.value.replace('_', '').length === maxLength)
 					Controller.submitEvent(e);
 			});
 
 			$('.cep-new__content-form').on('submit', e => {
 				e.preventDefault();
-				if ($('#cep-input').val().replace('_', '').length === 9)
+				if ($('#cep-input').val().replace('_', '').length === maxLength)
 					Controller.submitEvent(e);
 			});
 		}
@@ -265,6 +268,8 @@ $(function CepComponent() {
 				$('#cep-input').attr('placeholder', '00000000');
 				$('#cep-input').attr('max-length', '8');
 			}
+
+			return isMobile;
 		}
 	}
 
