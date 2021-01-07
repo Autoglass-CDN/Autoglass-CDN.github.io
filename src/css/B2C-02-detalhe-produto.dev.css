@@ -488,7 +488,7 @@ body.mz-pu-on .mz-modal-pickup {
 /* #endregion Produto Indisponível - Outras Marcas */
 
 .product-qd-v1-float-bar {
-  z-index: 9993;
+  z-index: 1;
   top: 150px;
 }
 
