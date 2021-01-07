@@ -977,7 +977,7 @@ $(function () {
             .show()
             .html(`
               Instalação em Casa indisponível para sua região. Tente alterar o CEP ou
-              <a onclick="$zopim.livechat.window.show()"> clique aqui</a>
+              <a onclick="$zopim.livechat.window.show()"><b> clique aqui </b></a>
               e fale com a gente pelo chat.
             `);
         } else {

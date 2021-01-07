@@ -1,5 +1,9 @@
 /* #region Reset CSS MZ */
 
+.product-qd-v1-image .product-qd-v1-stamps {
+  z-index: 0;
+}
+
 .product-qd-v1-sku-selection-box .product-qd-v1-sku-selection-row p {
   font-size: 14px;
   text-transform: initial;
