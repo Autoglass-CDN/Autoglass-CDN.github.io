@@ -1,7 +1,11 @@
 /* #region Reset CSS MZ */
 
 .product-qd-v1-image .product-qd-v1-stamps {
-  z-index: 0;
+  z-index: 1;
+}
+
+.carousel-qd-v1-shelf .slick-arrow {
+  z-index: 1;
 }
 
 .product-qd-v1-sku-selection-box .product-qd-v1-sku-selection-row p {
@@ -488,7 +492,7 @@ body.mz-pu-on .mz-modal-pickup {
 /* #endregion Produto Indisponível - Outras Marcas */
 
 .product-qd-v1-float-bar {
-  z-index: 1;
+  z-index: 2;
   top: 150px;
 }
 
