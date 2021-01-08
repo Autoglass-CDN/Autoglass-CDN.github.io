@@ -85,6 +85,10 @@
   --palheta-para-brisa: url("/arquivos/img/preview/Palheta-Parabrisa.jpg");
   --palheta-vigia: url("/arquivos/img/preview/Palheta-Vidro-Traseiro.jpg");
   /* #endregion PALHETAS */
+  /* #region LATARIAS */
+  --latarias-capo: url("/arquivos/img/preview/Capo.jpg");
+  --latarias-paralama: url("/arquivos/img/preview/Paralama.jpg");
+  /* #endregion LATARIAS*/
 }
 
 /* #endregion IMAGENS DE CATEGORIA */
@@ -1377,6 +1381,18 @@ i.arrow-icon::before {
 }
 
 /* #endregion PREVIEW - PALHETAS */
+
+/* #region PREVIRE - LATARIAS */
+
+#latarias.painel-categorias__categoria-itens.ativo a#latarias-capo:hover:after {
+  content: var(--latarias-capo);
+}
+
+#latarias.painel-categorias__categoria-itens.ativo a#latarias-paralama:hover:after {
+  content: var(--latarias-paralama);
+}
+
+/* #endregion REVIRE - LATARIAS */
 
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   padding-left: 5px;
