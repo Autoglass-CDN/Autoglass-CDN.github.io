@@ -15,7 +15,8 @@
             if (!cookie || (!cookie.accepted)) {
                 $.cookie('hasAcceptedCookies', JSON.stringify({
                     accepted: false,
-                    createdAt: Date.now()
+                    createdAt: Date.now(),
+                    adulthood: false
                 }), { path: '/' });
 
                 renderHtml();
@@ -29,7 +30,8 @@
                 contentType: 'application/json',
                 data: JSON.stringify({
                     "CodigoCompra": $('#order-id').html(),
-                    "DataAceite": cookie ? new Date(cookie.acceptedAt) : null
+                    "DataAceite": cookie ? new Date(cookie.acceptedAt) : null,
+                    "MaiorIdade": cookie.adulthood
                 }),
                 success: function (res) {
                     console.log(res);
