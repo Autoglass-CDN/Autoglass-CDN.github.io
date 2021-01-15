@@ -5,6 +5,13 @@
   font-size: 14px !important;
 }
 
+.header-qd-v1-valid-prices.cep-modal p {
+  margin: 15px 0px;
+}
+
+.cep-modal .header-qd-v1-valid-prices-local button {
+  margin-left: 5px;
+}
 
 .secao-agendamento > .store-list > .filter {
   display: flex;
