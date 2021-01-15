@@ -833,8 +833,6 @@ $(function () {
   let maxDate = new Date();
   maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 2, 0);
 
-  $('.mz-advantages__content .cep  input').mask('99999-999').val('');
-
   $('#mostrar-datas-datepicker').datepicker({
     dateFormat: "dd/mm/yy",
     showAnim: 'slideDown',
