@@ -297,7 +297,8 @@ $(function LojasMaisProximas() {
 		}
 
 		function calculateTimeEstimate(estimate) {
-			const days = +estimate[0];
+			const match = estimate.match(/\d+/);
+			const days =  +match[0];
 
 			return days + (days > 0 ? ' dias úteis' : ' dia útil');
 		}
