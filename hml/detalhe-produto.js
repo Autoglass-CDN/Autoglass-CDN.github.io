@@ -170,6 +170,8 @@ $(function () {
         console.log('Falha ao criar o parcelamento.');
     }
 
+    // Atualiza a localização do cliente
+    $('.header-qd-v1-valid-prices-local b').html(localStorage.ufsaver);
 });
 
 function consulteFrete() {
