@@ -583,7 +583,7 @@ $(function () {
   const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
   if (address) {
-    estimateDate(address.logisticsInfo).then(recuperarHorarios);
+    estimateDate(address.logisticsInfo, vtexjs.checkout.orderForm.items).then(recuperarHorarios);
   } else {
     // Evento lançado pelo componente de cep
     $(window).on('cep-finsh-load', async e => {
@@ -617,12 +617,12 @@ $(function () {
       itemsSimulation = [
         {
           quantity: 1,
-          seller: 1,
+          seller: currentProduct.skus[0].sellerId,
           id: currentProduct.skus[0].sku
         },
         {
           quantity: 1,
-          seller: 1,
+          seller: installmentProduct.skus[0].sellerId,
           id: installmentProduct.skus[0].sku
         }
       ]
