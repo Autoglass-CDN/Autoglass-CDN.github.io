@@ -972,12 +972,22 @@ $(function () {
           DataRoteiro: new Date(x.DataRoteiro)
         }));
 
-        $('#mostrar-datas-datepicker').datepicker('setDate', minDate);
-        $('#mostrar-datas-datepicker').datepicker('refresh');
-        $('a.ui-state-active').removeClass('ui-state-active');
-        $('a.ui-state-hover').removeClass('ui-state-hover');
+        if (response.Registros.filter(x => x.Disponivel === false).length === response.Registros.length) {
+          $('#aviso-servico-movel')
+            .show()
+            .html(`
+              Instalação em Casa indisponível para sua região. Tente alterar o CEP ou
+              <a onclick="$zopim.livechat.window.show()"><b> clique aqui </b></a>
+              e fale com a gente pelo chat.
+            `);
+        } else {
+          $('#mostrar-datas-datepicker').datepicker('setDate', minDate);
+          $('#mostrar-datas-datepicker').datepicker('refresh');
+          $('a.ui-state-active').removeClass('ui-state-active');
+          $('a.ui-state-hover').removeClass('ui-state-hover');
 
-        $('#mostrar-datas-datepicker').css('height', '228px');
+          $('#mostrar-datas-datepicker').css('height', '270px');
+        }
       } catch (err) {
         let message;
 
