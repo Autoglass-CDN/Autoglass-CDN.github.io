@@ -617,12 +617,12 @@ $(function () {
       itemsSimulation = [
         {
           quantity: 1,
-          seller: currentProduct.skus[0].sellerId,
+          seller: 1,
           id: currentProduct.skus[0].sku
         },
         {
           quantity: 1,
-          seller: installmentProduct.skus[0].sellerId,
+          seller: 1,
           id: installmentProduct.skus[0].sku
         }
       ]
