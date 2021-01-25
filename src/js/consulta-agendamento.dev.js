@@ -585,7 +585,7 @@ $(function () {
   if (address) {
     let x;
 
-    if (vtexjs && vtexjs.checkout && vtexjs.checkout.orderForm && vtexjs.checkout.orderForm.items) {
+    if (typeof vtexjs !== 'undefined' && vtexjs.checkout && vtexjs.checkout.orderForm && vtexjs.checkout.orderForm.items) {
       x = vtexjs.checkout.orderForm.items;
     }
 
