@@ -585,7 +585,7 @@ $(function () {
   if (address) {
     let x;
 
-    if (vtexjs.checkout.orderForm && vtexjs.checkout.orderForm.items) {
+    if (vtexjs && vtexjs.checkout && vtexjs.checkout.orderForm && vtexjs.checkout.orderForm.items) {
       x = vtexjs.checkout.orderForm.items;
     }
 
@@ -615,6 +615,15 @@ $(function () {
         seller: x.seller,
         id: x.id
       }));
+    } else if (location.href.includes('orderPlaced')) {
+      const orderForm = await $.get(`/api/checkout/pub/orders/${$("#order-id").text().trim()}`);
+
+      itemsSimulation = orderForm.items.map(x => ({
+        quantity: x.quantity,
+        seller: x.seller,
+        id: x.id
+      }));
+
     } else {
       const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
       // 12685 -> Produto de Instalação
