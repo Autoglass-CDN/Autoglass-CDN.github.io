@@ -6,10 +6,10 @@ $(document).ready(function () {
     clickThumbs1();
     
     var imageControlListener = new Vtex.JSEvents.Listener('imageControlListener1', imageControl_OnSkuDataReceived1);
-    skuEventDispatcher.addListener(skuDataReceivedEventName1, imageControlListener1);
+    skuEventDispatcher.addListener(skuDataReceivedEventName, imageControlListener1);
 
     var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener1', imageControl_OnSkuImageRelatedSpecSelected1);
-    skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName1, imageControlSpecSelectedListener1);
+    skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener1);
 });
 
 function imageControl_OnSkuImageRelatedSpecSelected1(e) {
