@@ -3561,6 +3561,9 @@ eval(function (p, a, c, k, e, d) {
 		}))
 }
 )();
+$(document).ready(function () {
+	$('body').find('script[src="https://autoglass.vteximg.com.br/scripts/vtex.viewpart.imagecontrol3.js"]').remove()
+});
 $(window).load(function () {
 	/* Injetando código para controlar script da galeria de imagem/video */
 
