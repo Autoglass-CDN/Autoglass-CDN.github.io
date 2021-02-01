@@ -174,8 +174,8 @@ function ImageControl1(a, pi) {
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(p);
 
         // Query the elements
-        var iframeEle = document.getElementById('gtm-video-parabrisa-player');
-        var loadingEle = document.getElementById('loading');
+        const iframeEle = document.getElementById('gtm-video-parabrisa-player');
+        const loadingEle = document.getElementById('loading-video');
 
         iframeEle.addEventListener('load', function() {
             // Hide the loading indicator
