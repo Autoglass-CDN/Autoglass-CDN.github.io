@@ -146,7 +146,7 @@ function ImageControl1(a, pi) {
     }
 
     // Se não for um vídeo
-    if ($(a).attr("src").toString().indexOf('http://img.youtube.com/vi/', 0) == -1){
+    if ($(a).attr("rel") != undefined && $(a).attr("rel").toString().indexOf('http://img.youtube.com/vi/', 0) == -1){
 
         //Preencho as opcoes da imagem principal
         if (pi == 0) {
