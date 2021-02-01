@@ -127,6 +127,7 @@ function ImageControl1(a, pi) {
     var video = $('<iframe></iframe>').attr('style', 'opacity: 0; width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
     .attr('frameborder','0').attr('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
     .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
+    
     p.append(loading);
     p.append(video);
 
