@@ -6,9 +6,11 @@ $(document).ready(function () {
     clickThumbs1();
     
     var imageControlListener = new Vtex.JSEvents.Listener('imageControlListener', imageControl_OnSkuDataReceived1);
+    skuEventDispatcher.removeListener(skuDataReceivedEventName, imageControlListener);
     skuEventDispatcher.addListener(skuDataReceivedEventName, imageControlListener);
 
     var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
+    skuEventDispatcher.removeListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
     skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
 });
 
