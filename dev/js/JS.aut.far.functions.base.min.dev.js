@@ -3548,7 +3548,7 @@ eval(function (p, a, c, k, e, d) {
 	function b(a) {
 		var b = $("ul.thumbs").not(a);
 		a.html(b.html());
-		"function" === typeof clickThumbs && clickThumbs1();
+		"function" === typeof clickThumbs1 && clickThumbs1();
 		a.trigger("QuatroDigital.pt_callback", [a])
 	}
 	"function" !== typeof $.fn.QD_productThumbs && ($.fn.QD_productThumbs = function () {
@@ -3561,6 +3561,18 @@ eval(function (p, a, c, k, e, d) {
 		}))
 }
 )();
+$(window).load(function () {
+	/* Injetando código para controlar script da galeria de imagem/video */
+
+	var script=document.createElement('script');
+	script.type='text/javascript';
+	script.src="https://autoglass-cdn.github.io/dev/js/galeria-imagem-video.dev.js";
+
+	$("body").appendChild(script);
+
+	//document.querySelector("body").innerHTML = "";
+
+});
 $(window).load(function () {
 	var a = $(".fb-comments");
 	a.length && a.attr("data-href", document.location.href.split("#").shift().split("?").shift());
