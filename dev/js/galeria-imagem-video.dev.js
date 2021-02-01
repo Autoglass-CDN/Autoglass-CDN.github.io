@@ -3,6 +3,8 @@
 $(document).ready(function () {
     ImageControl1($("ul.thumbs a:first"), 0);
     
+    imageVideoGalery();
+
     clickThumbs1();
     
     var imageControlListener = new Vtex.JSEvents.Listener('imageControlListener', imageControl_OnSkuDataReceived1);
@@ -12,8 +14,6 @@ $(document).ready(function () {
     var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
     skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners[0] = null;
     skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
-
-    imageVideoGalery();
 });
 
 function imageControl_OnSkuImageRelatedSpecSelected1(e) {
@@ -83,8 +83,6 @@ function imageControl_OnSkuDataReceived1(e) {
 }
 
 function imageVideoGalery() {
-    //Limpo as imagens thumb
-    
     /*
         <p id="gtm-video-parabrisa" class="responsive-video">
             <iframe style="width: 100%" height="480" src="https://www.youtube.com/embed/EyXuvP3CKzY" frameborder="0" allow="accelerometer; 
@@ -103,8 +101,6 @@ function imageVideoGalery() {
 
     // preencho a ul com o li do video criado
     $("ul.thumbs").append(li);
-
-    //clickThumbs1();
 }
 
 function clickThumbs1() {
