@@ -81,6 +81,7 @@ function imageControl_OnSkuDataReceived1(e) {
 }
 
 function clickThumbs1() {
+    $("ul.thumbs a").unbind( "click" );
     $("ul.thumbs a").click(function () {
         ImageControl1(this, 0);
     });
