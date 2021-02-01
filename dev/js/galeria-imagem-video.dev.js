@@ -119,7 +119,7 @@ function ImageControl1(a, pi) {
     var image = $('<img />');
 
     /* Configurando loading */
-    var loading = $('<div></div>').attr('class','loading').attr('id','loading-video');
+    var loading = $('<div></div>').attr('class','loading').attr('id','loading-video').attr('style','left: 0; position: absolute; top: 0; height: 100%; width: 100%; align-items: center; display: flex; justify-content: center;');
     loading.html('<b>Carregando vídeo...</b>');
     
     /* Configuração do video a ser exibido */
