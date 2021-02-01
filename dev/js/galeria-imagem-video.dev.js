@@ -5,11 +5,13 @@ $(document).ready(function () {
     
     clickThumbs1();
     
-    var imageControlListener1 = new Vtex.JSEvents.Listener('imageControlListener', imageControl_OnSkuDataReceived1);
-    skuEventDispatcher.addListener(skuDataReceivedEventName, imageControlListener1);
+    var imageControlListener = new Vtex.JSEvents.Listener('imageControlListener', imageControl_OnSkuDataReceived1);
+    skuEventDispatcher.events.skuDataReceived.listeners[0].remove();
+    skuEventDispatcher.addListener(skuDataReceivedEventName, imageControlListener);
 
-    var imageControlSpecSelectedListener1 = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
-    skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener1);
+    var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
+    skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners[0].remove();
+    skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
 });
 
 function imageControl_OnSkuImageRelatedSpecSelected1(e) {
