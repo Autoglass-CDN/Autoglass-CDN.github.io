@@ -3568,9 +3568,7 @@ $(window).load(function () {
 	script.type='text/javascript';
 	script.src="https://autoglass-cdn.github.io/dev/js/galeria-imagem-video.dev.js";
 
-	$("body").appendChild(script);
-
-	//document.querySelector("body").innerHTML = "";
+	document.body.appendChild(script);
 
 });
 $(window).load(function () {
