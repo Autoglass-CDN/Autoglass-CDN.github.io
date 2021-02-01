@@ -119,12 +119,12 @@ function ImageControl1(a, pi) {
     var image = $('<img />');
 
     /* Configurando loading */
-    var loading = $('<div></div>').attr('class','loading').attr('','loading-video');
+    var loading = $('<div></div>').attr('class','loading').attr('id','loading-video');
     loading.html('<b>Carregando vídeo...</b>');
     
     /* Configuração do video a ser exibido */
     var p = $('<p></p>').attr('id','gtm-video-parabrisa').attr('class','responsive-video');
-    var video = $('<iframe></iframe>').attr('style', 'width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
+    var video = $('<iframe></iframe>').attr('style', 'opacity: 0; width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
     .attr('frameborder','0').attr('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
     .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
     p.append(loading);
