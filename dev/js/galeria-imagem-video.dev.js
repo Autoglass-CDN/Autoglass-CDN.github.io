@@ -118,11 +118,16 @@ function ImageControl1(a, pi) {
     var alt = $("[id=show] [id=include] [id=image][productIndex=" + pi + "] img").attr("alt"); //alt/title da imagem principal
     var image = $('<img />');
 
+    /* Configurando loading */
+    var loading = $('<div></div>').attr('class','loading').attr('','loading-video');
+    loading.html('<b>Carregando vídeo...</b>');
+    
     /* Configuração do video a ser exibido */
     var p = $('<p></p>').attr('id','gtm-video-parabrisa').attr('class','responsive-video');
     var video = $('<iframe></iframe>').attr('style', 'width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
     .attr('frameborder','0').attr('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
     .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
+    p.append(loading);
     p.append(video);
 
     $(a).addClass("ON");
@@ -166,6 +171,18 @@ function ImageControl1(a, pi) {
     else {
         // Injetando vídeo na página
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(p);
+
+        // Query the elements
+        var iframeEle = document.getElementById('gtm-video-parabrisa-player');
+        var loadingEle = document.getElementById('loading');
+
+        iframeEle.addEventListener('load', function() {
+            // Hide the loading indicator
+            loadingEle.style.display = 'none';
+
+            // Bring the iframe back
+            iframeEle.style.opacity = 1;
+        });
     }
 }
 
