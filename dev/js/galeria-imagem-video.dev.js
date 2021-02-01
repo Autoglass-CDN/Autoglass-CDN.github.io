@@ -87,7 +87,7 @@ function imageVideoGalery() {
     
     /*
         <p id="gtm-video-parabrisa" class="responsive-video">
-            <iframe style="width: 100%" width="854" height="480" src="https://www.youtube.com/embed/EyXuvP3CKzY" frameborder="0" allow="accelerometer; 
+            <iframe style="width: 100%" height="480" src="https://www.youtube.com/embed/EyXuvP3CKzY" frameborder="0" allow="accelerometer; 
                 autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" id="gtm-video-parabrisa-player">
             </iframe>
         </p>    
@@ -122,34 +122,54 @@ function ImageControl1(a, pi) {
     var alt = $("[id=show] [id=include] [id=image][productIndex=" + pi + "] img").attr("alt"); //alt/title da imagem principal
     var image = $('<img />');
 
+    /* Configuração do video a ser exibido */
+    var p = $('<p></p>').attr('id','gtm-video-parabrisa').attr('class','responsive-video');
+    var video = $('<iframe></iframe>').attr('style', 'width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
+    .attr('frameborder','0').attr('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
+    .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
+    p.append(video);
+
     $(a).addClass("ON");
+
     if (pos !== undefined && holder !== undefined) {
         $("div#setaThumbs").css({ 'left': (pos.left - holder.left + 30) + 'px' });
     }
+
     if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] a").length > 0) {
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "] a").remove();
     }
-    else {
+    else if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] img").length > 0) {
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "] img").remove();
     }
-
-    //Preencho as opcoes da imagem principal
-    if (pi == 0) {
-        image.attr("id", "image-main").attr("src", $(a).attr("rel")).attr('productIndex', pi).attr('class', 'sku-rich-image-main');
-    } else {
-        image.attr("id", "image-main").attr("src", $(a).attr("rel")).attr('productIndex', pi);
+    else if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] p").length > 0) {
+        $("[id=show] [id=include] [id=image][productIndex=" + pi + "] p").remove();
     }
 
-    // VERIFICO SE TEM ZOOM.
-    if ($(a).attr("zoom") == "") {
-        image.attr("alt", alt).attr("title", alt)
-        $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(image);
+    // Se não for um vídeo
+    if ($(a).attr("src").indexOf('http://img.youtube.com/vi/', 0) == -1){
+
+        //Preencho as opcoes da imagem principal
+        if (pi == 0) {
+            image.attr("id", "image-main").attr("src", $(a).attr("rel")).attr('productIndex', pi).attr('class', 'sku-rich-image-main');
+        } else {
+            image.attr("id", "image-main").attr("src", $(a).attr("rel")).attr('productIndex', pi);
+        }
+
+        // VERIFICO SE TEM ZOOM.
+        if ($(a).attr("zoom") == "") {
+            image.attr("alt", alt).attr("title", alt)
+            $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(image);
+        }
+        else {
+            var href = $("<a></a>").addClass("image-zoom").attr("href", $(a).attr("zoom"));
+            href.append(image);
+            $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(href);
+            LoadZoom(pi);
+        }
     }
     else {
-        var href = $("<a></a>").addClass("image-zoom").attr("href", $(a).attr("zoom"));
-        href.append(image);
-        $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(href);
-        LoadZoom(pi);
+        // Injetando vídeo na página
+        $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(p);
     }
 }
 
