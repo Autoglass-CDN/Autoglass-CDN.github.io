@@ -12,6 +12,8 @@ $(document).ready(function () {
     var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
     skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners[0] = null;
     skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
+
+    imageVideoGalery();
 });
 
 function imageControl_OnSkuImageRelatedSpecSelected1(e) {
@@ -78,6 +80,31 @@ function imageControl_OnSkuDataReceived1(e) {
     //recalculo a imagem zoom e os clicks
     ImageControl1($("ul.thumbs a:first"), pi);
     clickThumbs1();
+}
+
+function imageVideoGalery() {
+    //Limpo as imagens thumb
+    
+    /*
+        <p id="gtm-video-parabrisa" class="responsive-video">
+            <iframe style="width: 100%" width="854" height="480" src="https://www.youtube.com/embed/EyXuvP3CKzY" frameborder="0" allow="accelerometer; 
+                autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" id="gtm-video-parabrisa-player">
+            </iframe>
+        </p>    
+    */
+
+    var li = $("<li></li>");
+    var href = $("<a></a>").attr('rel', 'http://img.youtube.com/vi/EyXuvP3CKzY/0.jpg').attr('title', 'Zoom').attr('href', 'javascript:void(0);').attr("id", "botaoZoom").attr("class", "");
+    href.attr('zoom', '');
+    
+    var img = $('<img />').attr('title', 'Video Da Categoria').attr('src', 'http://img.youtube.com/vi/EyXuvP3CKzY/0.jpg');
+    href.append(img);
+    li.append(href);
+
+    // preencho a ul com o li do video criado
+    $("ul.thumbs").append(li);
+
+    //clickThumbs1();
 }
 
 function clickThumbs1() {
