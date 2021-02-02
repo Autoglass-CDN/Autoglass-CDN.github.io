@@ -137,15 +137,17 @@ function ImageControl1(a, pi) {
         $("div#setaThumbs").css({ 'left': (pos.left - holder.left + 30) + 'px' });
     }
 
-    if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] a").length > 0) {
-        $("[id=show] [id=include] [id=image][productIndex=" + pi + "] a").remove();
-    }
-    else if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] img").length > 0) {
-        $("[id=show] [id=include] [id=image][productIndex=" + pi + "] img").remove();
-    }
-    else if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] p").length > 0) {
+    if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] p").length > 0) {
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "] p").remove();
     }
+    else{
+        if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] a").length > 0) {
+            $("[id=show] [id=include] [id=image][productIndex=" + pi + "] a").remove();
+        }
+        else if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] img").length > 0) {
+            $("[id=show] [id=include] [id=image][productIndex=" + pi + "] img").remove();
+        }
+    }    
 
     // Se não for um vídeo
     if ($(a).attr("rel") != undefined && $(a).attr("rel").toString().indexOf('http://img.youtube.com/vi/', 0) == -1){
