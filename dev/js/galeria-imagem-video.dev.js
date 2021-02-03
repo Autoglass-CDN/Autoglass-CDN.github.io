@@ -128,7 +128,7 @@ function ImageControl1(a, pi) {
     var p = $("#gtm-video-parabrisa");
 
     /* Removendo o class par que não ocupe espaço na tela mesmo oculto */
-    p.attr('class', 'responsive-video');
+    p.attr('class', '');
 
     // var p = $('<p></p>').attr('id','gtm-video-parabrisa').attr('class','responsive-video');
     // var video = $('<iframe></iframe>').attr('style', 'opacity: 0; width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
