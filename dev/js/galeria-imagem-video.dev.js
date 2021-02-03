@@ -205,7 +205,7 @@ function ImageControl1(a, pi) {
         // Bucando os elementos do iframe e loading
         const iframeEle = document.getElementById('gtm-video-parabrisa-player');
         const loadingEle = document.getElementById('loading-video');
-        loadingEle.style.display = flex;
+        loadingEle.style.display = 'flex';
 
         iframeEle.addEventListener('load', function() {
              // Ocultando loading
