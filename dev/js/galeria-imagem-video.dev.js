@@ -119,7 +119,7 @@ function ImageControl1(a, pi) {
     var image = $('<img />');
 
     /* Configurando loading */
-    var loading = $('<div></div>').attr('class','loading').attr('id','loading-video').attr('style','left: 0; position: absolute; top: 0; height: 100%; width: 100%; align-items: center; display: flex; justify-content: center;');
+    var loading = $('<div></div>').attr('class','loading').attr('id','loading-video').attr('style','left: 0; position: absolute; top: 0; height: 100%; width: 100%; align-items: center; display: none; justify-content: center;');
     loading.html('<b>Carregando vídeo...</b><img src=\"https://devautoglass.vteximg.com.br/arquivos/ajax-loader.gif\" alt=\"Carregando\" />');
     
     /* Configuração do video a ser exibido */
@@ -199,20 +199,21 @@ function ImageControl1(a, pi) {
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(p);
         
         $("#gtm-video-parabrisa").children("iframe").attr('style','display: flex; width: 100%');
-        
+
         //$("gtm-video-parabrisa-player").attr('style','display: flex; width: 100%');
 
         // Bucando os elementos do iframe e loading
-        //const iframeEle = document.getElementById('gtm-video-parabrisa-player');
-        //const loadingEle = document.getElementById('loading-video');
+        const iframeEle = document.getElementById('gtm-video-parabrisa-player');
+        const loadingEle = document.getElementById('loading-video');
+        loadingEle.style.display = flex;
 
-        // iframeEle.addEventListener('load', function() {
-        //     // Ocultando loading
-        //     //loadingEle.style.display = 'none';
+        iframeEle.addEventListener('load', function() {
+             // Ocultando loading
+             loadingEle.style.display = 'none';
 
-        //     // Exibindo iframe
-        //     iframeEle.style.display = flex;
-        // });
+             // Exibindo iframe
+             iframeEle.style.display = flex;
+        });
     }
 }
 
