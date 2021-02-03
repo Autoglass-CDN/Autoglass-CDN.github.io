@@ -133,6 +133,10 @@
   width: 100%;
 }
 
+h4.group.Especificacoes {
+  display: none;
+}
+
 .group.Especificacoes td {
   padding: 5px 24px 0 0;
 }
