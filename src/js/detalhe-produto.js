@@ -57,3 +57,29 @@ const sectionCollapseInit = () => {
 };
 
 sectionCollapseInit();
+
+//Descrição da marca
+function insertBrandDescription() {
+  return fetch('/api/catalog_system/pub/brand/list')
+    .then(response => response.json())
+    .then(brandList => {
+      const brandName = document
+        .querySelector('.brandName')
+        .classList
+        .value
+        .replace('brandName', '')
+        .trim();
+
+      const brandDescription = brandList
+        .find(brand => brand.name == document
+          .querySelector('.brandName')
+          .classList
+          .value
+          .replace('brandName', '')
+          .trim()).metaTagDescription;
+
+      document.querySelector('#descricao-marca').textContent = brandDescription;
+    });
+}
+
+window.onload = insertBrandDescription;
