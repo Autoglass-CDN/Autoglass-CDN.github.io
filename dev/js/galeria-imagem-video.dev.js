@@ -197,18 +197,20 @@ function ImageControl1(a, pi) {
         
         // Injetando vídeo na página para ser viauzalidado na galeria de imagens
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(p);
+        
+        $("gtm-video-parabrisa-player").attr('style','display: flex; width: 100%');
 
         // Bucando os elementos do iframe e loading
-        const iframeEle = document.getElementById('gtm-video-parabrisa-player');
+        //const iframeEle = document.getElementById('gtm-video-parabrisa-player');
         //const loadingEle = document.getElementById('loading-video');
 
-        iframeEle.addEventListener('load', function() {
-            // Ocultando loading
-            //loadingEle.style.display = 'none';
+        // iframeEle.addEventListener('load', function() {
+        //     // Ocultando loading
+        //     //loadingEle.style.display = 'none';
 
-            // Exibindo iframe
-            iframeEle.style.display = flex;
-        });
+        //     // Exibindo iframe
+        //     iframeEle.style.display = flex;
+        // });
     }
 }
 
