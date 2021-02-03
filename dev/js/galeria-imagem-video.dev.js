@@ -212,7 +212,7 @@ function ImageControl1(a, pi) {
              loadingEle.style.display = 'none';
 
              // Exibindo iframe
-             iframeEle.style.display = flex;
+             iframeEle.style.display = 'flex';
         });
     }
 }
