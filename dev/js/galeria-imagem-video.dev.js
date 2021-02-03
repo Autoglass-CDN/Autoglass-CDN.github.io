@@ -123,13 +123,21 @@ function ImageControl1(a, pi) {
     loading.html('<b>Carregando vídeo...</b><img src=\"https://devautoglass.vteximg.com.br/arquivos/ajax-loader.gif\" alt=\"Carregando\" />');
     
     /* Configuração do video a ser exibido */
-    var p = $('<p></p>').attr('id','gtm-video-parabrisa').attr('class','responsive-video');
-    var video = $('<iframe></iframe>').attr('style', 'opacity: 0; width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
-    .attr('frameborder','0').attr('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
-    .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
+
+    /* Referência ao parágrafo onde o vídeo está incluído */
+    var p = $("#gtm-video-parabrisa");
+
+    /* Removendo o class par que não ocupe espaço na tela mesmo oculto */
+    p.attr('class', 'responsive-video');
+
+    // var p = $('<p></p>').attr('id','gtm-video-parabrisa').attr('class','responsive-video');
+    // var video = $('<iframe></iframe>').attr('style', 'opacity: 0; width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
+    // .attr('frameborder','0').attr('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
+    // .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
     
+    /* Adicionando loagind */
     p.append(loading);
-    p.append(video);
+    // p.append(video);
 
     $(a).addClass("ON");
 
@@ -139,6 +147,15 @@ function ImageControl1(a, pi) {
 
     if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] p").length > 0) {
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "] p").remove();
+        
+        /* Adicionando class para renderizar o vídeo corretamente */
+        p.attr('class', '');
+        
+        /* Adicionando a tag P com vídeo de volta ao local de ocultação */
+        $("#container-video-categoria").append(p);
+        
+        /* Ocultando tag do vídeo */
+        document.getElementById('gtm-video-parabrisa-player').style.display = 'none';
     }
     else{
         if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] a").length > 0) {
@@ -161,7 +178,7 @@ function ImageControl1(a, pi) {
 
         // VERIFICO SE TEM ZOOM.
         if ($(a).attr("zoom") == "") {
-            image.attr("alt", alt).attr("title", alt)
+            image.attr("alt", alt).attr("title", alt);
             $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(image);
         }
         else {
@@ -172,19 +189,25 @@ function ImageControl1(a, pi) {
         }
     }
     else {
-        // Injetando vídeo na página
+        // Removendo o iframe do local escondido
+        $("#container-video-categoria p").remove();
+        
+        /* Adicionando class para renderizar o vídeo corretamente */
+        p.attr('class', 'responsive-video');
+        
+        // Injetando vídeo na página para ser viauzalidado na galeria de imagens
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(p);
 
-        // Query the elements
+        // Bucando os elementos do iframe e loading
         const iframeEle = document.getElementById('gtm-video-parabrisa-player');
         const loadingEle = document.getElementById('loading-video');
 
         iframeEle.addEventListener('load', function() {
-            // Hide the loading indicator
+            // Ocultando loading
             loadingEle.style.display = 'none';
 
-            // Bring the iframe back
-            iframeEle.style.opacity = 1;
+            // Exibindo iframe
+            iframeEle.style.display = inherit;
         });
     }
 }
