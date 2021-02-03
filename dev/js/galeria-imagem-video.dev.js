@@ -136,7 +136,7 @@ function ImageControl1(a, pi) {
     // .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
     
     /* Adicionando loagind */
-    p.append(loading);
+    //p.append(loading);
     // p.append(video);
 
     $(a).addClass("ON");
@@ -200,14 +200,14 @@ function ImageControl1(a, pi) {
 
         // Bucando os elementos do iframe e loading
         const iframeEle = document.getElementById('gtm-video-parabrisa-player');
-        const loadingEle = document.getElementById('loading-video');
+        //const loadingEle = document.getElementById('loading-video');
 
         iframeEle.addEventListener('load', function() {
             // Ocultando loading
-            loadingEle.style.display = 'none';
+            //loadingEle.style.display = 'none';
 
             // Exibindo iframe
-            iframeEle.style.display = inherit;
+            iframeEle.style.display = flex;
         });
     }
 }
