@@ -136,7 +136,7 @@ function ImageControl1(a, pi) {
     // .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
     
     /* Adicionando loagind */
-    //p.append(loading);
+    p.append(loading);
     // p.append(video);
 
     $(a).addClass("ON");
