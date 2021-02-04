@@ -13,7 +13,7 @@ const inView = (section, width) => {
     top += section.offsetTop;
   }
   if (width) { //adiciona margem do topo no cálculo
-    top -= width > 1200 ? 165 : 130;
+    top -= width > 1200 ? 250 : 130;
   }
 
   return (
