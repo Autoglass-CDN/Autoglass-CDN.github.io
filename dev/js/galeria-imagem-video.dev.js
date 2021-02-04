@@ -135,7 +135,10 @@ function ImageControl1(a, pi) {
     // .attr('frameborder','0').attr('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
     // .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
     
-    /* Adicionando loagind */
+    /* Remove o loading caso já tenha sido inserido */
+    $("#container-video-categoria #loading-video").remove();
+
+    /* Adicionando loading */
     p.append(loading);
     // p.append(video);
 
