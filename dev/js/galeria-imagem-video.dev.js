@@ -213,12 +213,13 @@ function ImageControl1(a, pi) {
         loadingEle.style.display = 'flex';
 
         iframeEle.addEventListener('load', function() {
+            /* Remove o loading caso já tenha sido inserido */
+            $("#gtm-video-parabrisa #loading-video").remove();
             // Ocultando loading
-            loadingEle.style.display = 'none';
+            //loadingEle.style.display = 'none';
             // Exibindo iframe
             iframeEle.style.display = 'flex';
-            /* Remove o loading caso já tenha sido inserido */
-            $("#gtm-video-parabrisa #loading-video").remove();             
+                         
         });
     }
 }
