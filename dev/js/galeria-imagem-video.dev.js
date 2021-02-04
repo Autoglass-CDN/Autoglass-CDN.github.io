@@ -83,24 +83,25 @@ function imageControl_OnSkuDataReceived1(e) {
 }
 
 function imageVideoGalery() {
-    /*
-        <p id="gtm-video-parabrisa" class="responsive-video">
-            <iframe style="width: 100%" height="480" src="https://www.youtube.com/embed/EyXuvP3CKzY" frameborder="0" allow="accelerometer; 
-                autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen="" id="gtm-video-parabrisa-player">
-            </iframe>
-        </p>    
-    */
+    /* Somente será renderizado thumbnail do vídeo se houver vídeo renderizado ocultado na página */
+    if ($("#gtm-video-parabrisa").length > 0){
+        /* Busca o ID do vídeo e cria a URL para imágem do thumbnail */
+        var idVideo = $("#gtm-video-parabrisa-player")[0].src.split('/')[4];
+        var url = 'http://img.youtube.com/vi/' + idVideo + '/0.jpg';
 
-    var li = $("<li></li>");
-    var href = $("<a></a>").attr('rel', 'http://img.youtube.com/vi/EyXuvP3CKzY/0.jpg').attr('title', 'Zoom').attr('href', 'javascript:void(0);').attr("id", "botaoZoom").attr("class", "");
-    href.attr('zoom', '');
-    
-    var img = $('<img />').attr('title', 'Video Da Categoria').attr('src', 'http://img.youtube.com/vi/EyXuvP3CKzY/0.jpg');
-    href.append(img);
-    li.append(href);
+        /* Monta o objeto <li> */
+        var li = $("<li></li>");
+        var href = $("<a></a>").attr('rel', url).attr('title', 'Zoom').attr('href', 'javascript:void(0);').attr("id", "botaoZoom").attr("class", "");
+        href.attr('zoom', '');
+        
+        /* Monta objeto img */
+        var img = $('<img />').attr('title', 'Video Da Categoria').attr('src', url);
+        href.append(img);
+        li.append(href);
 
-    // preencho a ul com o li do video criado
-    $("ul.thumbs").append(li);
+        // preencho a ul com o li do video criado
+        $("ul.thumbs").append(li);
+    }
 }
 
 function clickThumbs1() {
@@ -214,12 +215,9 @@ function ImageControl1(a, pi) {
 
         iframeEle.addEventListener('load', function() {
             /* Remove o loading caso já tenha sido inserido */
-            $("#gtm-video-parabrisa #loading-video").remove();
-            // Ocultando loading
-            //loadingEle.style.display = 'none';
+            $("#gtm-video-parabrisa #loading-video").remove();            
             // Exibindo iframe
-            iframeEle.style.display = 'flex';
-                         
+            iframeEle.style.display = 'flex';                         
         });
     }
 }
