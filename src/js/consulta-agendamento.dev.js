@@ -707,7 +707,7 @@ $(function () {
           }
         });
 
-        $('.timestamp').click(function () {
+        $('.timestamp').click(function (e) {
           if (window.location.href.includes('checkout')) {
             $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
           }
@@ -728,6 +728,9 @@ $(function () {
             date,
             _createAt: Date.now()
           }));
+
+          $('.store .time .time-list button').removeClass('selected')
+          $(e.srcElement).addClass('selected');
 
           vtexjs.checkout.calculateShipping({
             postalCode: cep,
