@@ -102,7 +102,7 @@ $(function () {//
 
 	$('.store .time .time-list button').click(e => {
 		$('.store .time .time-list button').removeClass('selected')
-		$(this).addClass('selected');
+		$(e.srcElement).addClass('selected');
 	});
 
 	setTimeout(function () {
