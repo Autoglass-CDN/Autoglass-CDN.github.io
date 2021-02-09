@@ -100,11 +100,6 @@ $(function () {//
 	$('#instalar-em-casa-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'delivery'));
 	$('#receba-em-casa-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'delivery'));
 
-	$('.store .time .time-list button').click(e => {
-		$('.store .time .time-list button').removeClass('selected')
-		$(e.srcElement).addClass('selected');
-	});
-
 	setTimeout(function () {
 		$("#txtCep").after('<span class="ttp"></span>');
 	}, 500);
