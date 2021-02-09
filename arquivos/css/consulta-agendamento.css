@@ -306,7 +306,8 @@
   border: none;
 }
 
-.secao-agendamento .time-list > .timestamp:focus {
+.secao-agendamento .time-list > .timestamp:focus,
+.secao-agendamento .time-list > .timestamp.selected {
   background-color: #223B76;
   color: white;
   outline: none;
