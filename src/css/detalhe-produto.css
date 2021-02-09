@@ -1,0 +1,276 @@
+.white-background {
+  background: white;
+}
+
+.container-descricao {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  max-width: 1280px;
+  padding: 0px 10px;
+  position: relative;
+  max-width: 920px;
+  padding: 80px 0;
+}
+
+.nav-container {
+  width: 100%;
+  background: #F8F8F8;
+  position: sticky;
+  top: 205px;
+  z-index: 1;
+}
+
+.tabs-descricao {
+  margin: 0 auto;
+  max-width: 920px;
+  width: 100%;
+}
+
+.tabs-descricao ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.tabs-descricao .tab-link {
+  text-decoration: none;
+  color: inherit;
+  padding: 15px 5px 0;
+  display: inline-block;
+  color: #545454;
+}
+
+.tab-link::after {
+  content: "";
+  display: block;
+
+  width: 0;
+  height: 2px;
+
+  margin-top: 13px;
+  border-radius: 2px;
+
+  background: #183884
+    /*var(--primary)*/
+  ;
+
+  transition: width 200ms ease-in-out;
+}
+
+.tab-link.tab--current {
+  color: #183884;
+  font-weight: bold;
+}
+
+.tab-link.tab--current::after,
+.tab-link:hover::after {
+  width: 100%;
+}
+
+.tab-content h2 {
+  font-size: 24pt;
+  margin-bottom: 24px;
+}
+
+.side-video {
+  position: absolute;
+  right: 0;
+  top: 150px;
+  width: 445px;
+  height: 250px;
+  margin-left: 30px;
+  margin-right: 10px;
+}
+
+.side-video h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.info-box.left {
+  z-index: 1;
+  padding-right: 470px;
+}
+
+.info-box {
+  margin-bottom: 32px;
+}
+
+.info-box h3 {
+  margin-bottom: 10px;
+}
+
+.caracteristicas__caracteristica {
+  border: 1px solid #707070;
+  border-radius: 16px;
+  padding: 5px 15px;
+  margin: 5px 3px;
+  display: inline-block;
+}
+
+.table-zebra {
+  width: 100%;
+  text-align: center;
+}
+
+.table-zebra tr td:nth-child(1) {
+  text-align: justify;
+  padding: 10px 24px;
+}
+
+.table-zebra tr:nth-of-type(even) {
+  background-color: #F8F8F8;
+}
+
+
+.group.Especificacoes {
+  border-radius: 4px;
+  background: #F8F8F8;
+  text-align: justify;
+
+  width: 100%;
+}
+
+h4.group.Especificacoes {
+  display: none;
+}
+
+.group.Especificacoes td {
+  padding: 5px 24px 5px 15px;
+}
+
+.group.Especificacoes th {
+  padding: 5px 0 5px 16px;
+  font-weight: normal;
+  max-width: 120px;
+}
+
+.group.Especificacoes th,
+.group.Especificacoes td {
+  border-bottom: 1px solid #DBDBDB;
+}
+
+/* .group.Especificacoes th::before,
+.group.Especificacoes td::before {
+  content: '';
+  margin-left: 8px;
+  display: inline-block;
+} */
+
+/* .group.Especificacoes tr:last-child th,
+.group.Especificacoes tr:last-child td {
+  padding-bottom: 12px;
+} */
+
+.oculta-coluna {
+  width: 300px;
+}
+
+/* TABLET */
+@media only screen and (max-width: 1200px) {
+  .nav-container {
+    top: 85px;
+  }
+}
+
+/* MOBILE */
+@media only screen and (max-width: 768px) {
+  .oculta-coluna {
+    width: unset;
+  }
+
+  .container-descricao {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .tabs-descricao {
+    display: none;
+  }
+
+  .contents .tab-content {
+    padding: 24px 15px 0;
+  }
+
+  .contents .tab-content::after {
+    content: '';
+    border-bottom: 1px solid #DBDBDB;
+    display: block;
+    margin-top: 24px;
+  }
+
+  .contents .tab-content .info-box.left {
+    width: 100%;
+    padding-right: 0;
+  }
+
+  .contents .tab-content h2 {
+    color: #183884;
+    display: flex;
+    justify-content: space-between;
+    line-height: 30px;
+  }
+
+  .contents .tab-content h2::after {
+    content: '\2212';
+  }
+
+  .contents .tab-content.ativo h2::after {
+    content: '\002B';
+    display: unset;
+  }
+
+  .contents .tab-content.ativo h2 {
+    display: flex;
+  }
+
+  .contents .tab-content.ativo * {
+    display: none;
+  }
+
+  .side-video {
+    margin-left: 0;
+    margin-bottom: 32px;
+    top: 0;
+
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 56.5%;
+  }
+
+  .side-video h3 {
+    position: absolute;
+    top: 0;
+  }
+
+  .side-video iframe {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+
+  .table-zebra tr td {
+    padding-left: 0 !important;
+  }
+
+  .group.Especificacoes th,
+  .group.Especificacoes td {
+    padding-left: 5px;
+    padding-bottom: 5px !important;
+  }
+
+  .group.Especificacoes th::before,
+  .group.Especificacoes td::before {
+    margin-left: 0;
+  }
+}
