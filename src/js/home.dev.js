@@ -22,7 +22,7 @@
 	$('.banners-section .banners-content a').attr('tabindex', '-1');
 
 	const interval = setInterval(() => {
-		bannerContainer[0].scrollBy(150, 0);
+		bannerContainer[0].scrollBy(window.innerWidth, 0);
 
 		if ((bannerImages.length - 1) === position) {
 			bannerContainer[0].scrollBy(-bannerContainer[0].scrollWidth, 0);
@@ -35,7 +35,7 @@
 	}, 10000)
 
 	btnPrev.click(() => {
-		bannerContainer[0].scrollBy(-150, 0);
+		bannerContainer[0].scrollBy(-window.innerWidth, 0);
 		if (getScrollPercentage() === 0) {
 			bannerContainer[0].scrollBy(bannerContainer[0].scrollWidth, 0);
 			position = (bannerImages.length - 1);
@@ -49,7 +49,7 @@
 	});
 
 	btnNext.click(() => {
-		bannerContainer[0].scrollBy(150, 0);
+		bannerContainer[0].scrollBy(window.innerWidth, 0);
 
 		if (getScrollPercentage() >= 95) {
 			bannerContainer[0].scrollBy(-bannerContainer[0].scrollWidth, 0);
