@@ -73,7 +73,7 @@ function insertBrandDescription() {
         .split(' ')[0];
 
       const brandDescription = brandList
-        .find(brand => brand.name.includes(brandName + ' '))?.metaTagDescription;
+        .find(brand => brand.name.includes(brandName))?.metaTagDescription;
 
       document.querySelector('#descricao-marca').textContent = brandDescription;
     });
