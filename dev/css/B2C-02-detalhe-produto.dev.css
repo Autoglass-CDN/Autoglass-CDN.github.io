@@ -869,7 +869,7 @@ body.mz-sf-on .mz-modal-shipping {
 /* #region GALERIA ITEM VIDEO */
 
 /* TABLET */
-@media only screen and (mim-width: 993px) {
+@media only screen and (min-width: 993px) {
   .galeria-item-video {
     margin-bottom: 142px;
   }
