@@ -59,7 +59,7 @@ const sectionCollapseInit = () => {
 sectionCollapseInit();
 
 //Descrição da marca
-function insertBrandDescription() {
+async function insertBrandDescription() {
   return fetch('/api/catalog_system/pub/brand/list')
     .then(response => response.json())
     .then(brandList => {
@@ -79,4 +79,23 @@ function insertBrandDescription() {
     });
 }
 
-window.onload = insertBrandDescription;
+async function loadOptionals() {
+  $('#opcionais').hide();
+  const opcionaisContainer = $('#opcionais');
+
+  try {
+    // Não adicionei uma variavél de ambiente pq tu já deve ter uma kkkk 
+    const { Opcionais } = await $.get('http://localhost:5010/api/web-app/produtos/55270/opcionais');
+    if (Opcionais) {
+      opcionaisContainer.html(`
+      ${Opcionais.map(x => `<span class="caracteristicas__caracteristica">${x}</span>`).join('')}
+      `);
+      $('#opcionais').show();
+    }
+  } catch (ex) {
+    console.error('Falha ao renderizar opcionais. \n ', ex);
+  }
+}
+
+window.addEventListener('load', insertBrandDescription);
+window.addEventListener('load', loadOptionals);
