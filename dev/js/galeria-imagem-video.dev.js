@@ -198,7 +198,7 @@ function ImageControl1(a, pi) {
         $("#container-video-categoria p").remove();
         
         /* Adicionando class para renderizar o vídeo corretamente */
-        p.attr('class', 'responsive-video galeria-item-video');
+        //p.attr('class', 'responsive-video galeria-item-video');
         p.children("").html();
 
         // Injetando vídeo na página para ser viauzalidado na galeria de imagens
