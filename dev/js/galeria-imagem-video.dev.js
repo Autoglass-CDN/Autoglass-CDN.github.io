@@ -101,7 +101,7 @@ function imageVideoGalery() {
 
         // preencho a ul com o li do video criado
         //$("ul.thumbs").append(li);
-        $("ul.thumbs li:eq(1)").after(li);
+        $("ul.thumbs").first().after(li);
     }
 }
 
