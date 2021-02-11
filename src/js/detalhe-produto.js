@@ -68,6 +68,7 @@ function insertBrandDescription() {
         .classList
         .value
         .replace('brandName', '')
+        .replace('-', ' ')
         .trim();
 
       const brandDescription = brandList
