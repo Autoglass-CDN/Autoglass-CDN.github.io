@@ -68,16 +68,11 @@ function insertBrandDescription() {
         .classList
         .value
         .replace('brandName', '')
-        .replace('-', ' ')
-        .trim();
+        .trim()
+        .split(' ')[0];
 
       const brandDescription = brandList
-        .find(brand => brand.name == document
-          .querySelector('.brandName')
-          .classList
-          .value
-          .replace('brandName', '')
-          .trim()).metaTagDescription;
+        .find(brand => brand.name == brandName)?.metaTagDescription;
 
       document.querySelector('#descricao-marca').textContent = brandDescription;
     });
