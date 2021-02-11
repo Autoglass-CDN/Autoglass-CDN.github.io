@@ -80,7 +80,7 @@ async function insertBrandDescription() {
 }
 
 async function loadOptionals() {
-  $('#opcionais').hide();
+  $('#opcionais').parent().hide();
   const opcionaisContainer = $('#opcionais');
 
   try {
@@ -90,7 +90,7 @@ async function loadOptionals() {
       opcionaisContainer.html(`
       ${Opcionais.map(x => `<span class="caracteristicas__caracteristica">${x}</span>`).join('')}
       `);
-      $('#opcionais').show();
+      $('#opcionais').parent().show();
     }
   } catch (ex) {
     console.error('Falha ao renderizar opcionais. \n ', ex);
