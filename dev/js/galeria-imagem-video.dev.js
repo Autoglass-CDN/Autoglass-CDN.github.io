@@ -100,7 +100,8 @@ function imageVideoGalery() {
         li.append(href);
 
         // preencho a ul com o li do video criado
-        $("ul.thumbs").append(li);
+        //$("ul.thumbs").append(li);
+        $("ul.thumbs li:eq(1)").after(li);
     }
 }
 
@@ -215,9 +216,9 @@ function ImageControl1(a, pi) {
 
         iframeEle.addEventListener('load', function() {
             /* Remove o loading caso já tenha sido inserido */
-            $("#gtm-video-parabrisa #loading-video").remove();            
+            $("#gtm-video-parabrisa #loading-video").remove();
             // Exibindo iframe
-            iframeEle.style.display = 'flex';                         
+            iframeEle.style.display = 'flex';
         });
     }
 }
