@@ -102,7 +102,7 @@ function imageVideoGalery() {
         href.append(img);
         li.append(href);
 
-        var listaLi = $("ul.thumbs li");
+        var listaLi = $("thumbs product-qd-v1-image-thumbs QD-thumbs img-responsive li");
         $('ul.thumbs').html("");
 
         for (let index = 0; index < listaLi.length; index++) {
