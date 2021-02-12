@@ -104,7 +104,7 @@ function imageVideoGalery() {
 
         var lis = $("ul.thumbs")[0].children;
         for (let index = 0; index < lis.length; index++) {
-            arrayLi.append(lis[index]);
+            arrayLi.push(lis[index]);
         }   
 
         $('ul.thumbs').html("");
