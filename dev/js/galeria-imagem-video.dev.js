@@ -85,6 +85,9 @@ function imageControl_OnSkuDataReceived1(e) {
 function imageVideoGalery() {
     /* Somente será renderizado thumbnail do vídeo se houver vídeo renderizado ocultado na página */
     if ($("#gtm-video-parabrisa").length > 0){
+        
+        var arrayLi = new Array();
+
         /* Busca o ID do vídeo e cria a URL para imágem do thumbnail */
         var idVideo = $("#gtm-video-parabrisa-player")[0].src.split('/')[4];
         var url = 'http://img.youtube.com/vi/' + idVideo + '/0.jpg';
@@ -99,11 +102,39 @@ function imageVideoGalery() {
         href.append(img);
         li.append(href);
 
+        var listaLi = $("ul.thumbs");
+        $('ul.thumbs').html("");
+
+        for (let index = 0; index < listaLi.length; index++) {
+            if (index == 1){
+                //arrayLi[index].append(li);
+                $("ul.thumbs").append(li);
+            }
+            else {
+                //arrayLi[index].append(listaLi[index]);
+                $("ul.thumbs").append(listaLi[index]);
+            }
+        }
+
+        //$('ul.thumbs').html(arrayLi);
+        
+        // var liImg01 = $('ul.thumbs li:nth-child(0)');
+        // var liImg02 = $('ul.thumbs li:nth-child(1)');
+        // var liImg03 = $('ul.thumbs li:nth-child(2)');
+        // var liImg04 = $('ul.thumbs li:nth-child(3)');
+
+        // $('ul.thumbs').html("");
+        // $('ul.thumbs').append(liImg01);
+        // $('ul.thumbs').append(li);
+        // $('ul.thumbs').append(liImg01);
+        // $('ul.thumbs').append(liImg01);
+        // $('ul.thumbs').append(liImg01);
+
         // preencho a ul com o li do video criado
         //$("ul.thumbs").append(li);
         //$("ul.thumbs").eq(1).after(li);
-
-        $("ul.thumbs li")[1].after(li);
+        //$("ul.thumbs li")[1].after(li);
+        //$('ul.thumbs li:nth-child(1)').append(li);
     }
 }
 
