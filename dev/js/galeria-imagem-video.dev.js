@@ -102,9 +102,10 @@ function imageVideoGalery() {
         href.append(img);
         li.append(href);
 
-        $("ul.thumbs")[0].children.each(function() {
-            arrayLi.append($(this));
-        });
+        var lis = $("ul.thumbs")[0].children;
+        for (let index = 0; index < lis.length; index++) {
+            arrayLi.append(lis[index]);
+        }   
 
         $('ul.thumbs').html("");
 
