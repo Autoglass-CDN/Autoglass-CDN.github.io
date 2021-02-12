@@ -181,7 +181,6 @@ function ImageControl1(a, pi) {
         $("#container-video-categoria").append(p);
         
         /* Ocultando tag do vídeo */
-        //document.getElementById('gtm-video-parabrisa-player').style.display = 'none';
         $("#gtm-video-parabrisa").children("iframe").attr('style','display: none; width: 100%');
     }
     else{
@@ -227,8 +226,6 @@ function ImageControl1(a, pi) {
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(p);
         
         $("#gtm-video-parabrisa").children("iframe").attr('style','display: flex; width: 100%');
-
-        //$("gtm-video-parabrisa-player").attr('style','display: flex; width: 100%');
 
         // Bucando os elementos do iframe e loading
         const iframeEle = document.getElementById('gtm-video-parabrisa-player');
