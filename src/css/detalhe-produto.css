@@ -172,6 +172,27 @@ h4.group.Especificacoes {
   width: 300px;
 }
 
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards .card {
+  flex-basis: 50%;
+  display: inline-flex;
+  align-items: center;
+  margin: 35px 0;
+  padding-right: 70px;
+}
+
+.cards .card>img {
+  margin-right: 30px;
+}
+
+.cards .card>.card__text h6 {
+  margin-bottom: 10px;
+}
+
 /* TABLET */
 
 @media only screen and (max-width: 1200px) {
