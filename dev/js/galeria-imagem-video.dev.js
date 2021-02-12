@@ -102,17 +102,20 @@ function imageVideoGalery() {
         href.append(img);
         li.append(href);
 
-        var listaLi = $("ul.thumbs")[0].children;
+        $("ul.thumbs")[0].children.each(function() {
+            arrayLi.append($(this));
+        });
+
         $('ul.thumbs').html("");
 
-        for (let index = 0; index < listaLi.length; index++) {
+        for (let index = 0; index < arrayLi.length; index++) {
             if (index == 1){
                 //arrayLi[index].append(li);
                 $("ul.thumbs").append(li);
             }
             else {
                 //arrayLi[index].append(listaLi[index]);
-                $("ul.thumbs").append(listaLi[index]);
+                $("ul.thumbs").append(arrayLi[index]);
             }
         }
 
