@@ -45,17 +45,13 @@
 .tab-link::after {
   content: "";
   display: block;
-
   width: 0;
   height: 2px;
-
   margin-top: 13px;
   border-radius: 2px;
-
   background: #183884
-    /*var(--primary)*/
+  /*var(--primary)*/
   ;
-
   transition: width 200ms ease-in-out;
 }
 
@@ -64,14 +60,25 @@
   font-weight: bold;
 }
 
-.tab-link.tab--current::after,
-.tab-link:hover::after {
+.tab-link.tab--current::after, .tab-link:hover::after {
   width: 100%;
+}
+
+.tab-content h1 {
+  font-weight: var(--extra-bold);
+  color: var(--blue-700);
+  text-align: center;
+  font-size: 32px;
+  margin: 40px;
 }
 
 .tab-content h2 {
   font-size: 24pt;
   margin-bottom: 24px;
+}
+
+.tab-content ul>li {
+  padding-bottom: 10px;
 }
 
 .side-video {
@@ -124,12 +131,10 @@
   background-color: #F8F8F8;
 }
 
-
 .group.Especificacoes {
   border-radius: 4px;
   background: #F8F8F8;
   text-align: justify;
-
   width: 100%;
 }
 
@@ -147,8 +152,7 @@ h4.group.Especificacoes {
   max-width: 120px;
 }
 
-.group.Especificacoes th,
-.group.Especificacoes td {
+.group.Especificacoes th, .group.Especificacoes td {
   border-bottom: 1px solid #DBDBDB;
 }
 
@@ -169,6 +173,7 @@ h4.group.Especificacoes {
 }
 
 /* TABLET */
+
 @media only screen and (max-width: 1200px) {
   .nav-container {
     top: 85px;
@@ -176,78 +181,65 @@ h4.group.Especificacoes {
 }
 
 /* MOBILE */
+
 @media only screen and (max-width: 768px) {
   .oculta-coluna {
     width: unset;
   }
-
   .container-descricao {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
   }
-
   .tabs-descricao {
     display: none;
   }
-
   .contents .tab-content {
     padding: 24px 15px 0;
   }
-
   .contents .tab-content::after {
     content: '';
     border-bottom: 1px solid #DBDBDB;
     display: block;
     margin-top: 24px;
   }
-
   .contents .tab-content .info-box.left {
     width: 100%;
     padding-right: 0;
   }
-
   .contents .tab-content h2 {
     color: #183884;
     display: flex;
     justify-content: space-between;
     line-height: 30px;
   }
-
   .contents .tab-content h2::after {
     content: '\2212';
   }
-
   .contents .tab-content.ativo h2::after {
     content: '\002B';
     display: unset;
   }
-
   .contents .tab-content.ativo h2 {
     display: flex;
   }
-
   .contents .tab-content.ativo * {
     display: none;
   }
-
   .side-video {
     margin-left: 0;
     margin-bottom: 32px;
     top: 0;
-
     position: relative;
     width: 100%;
     overflow: hidden;
     padding-top: 56.5%;
   }
-
   .side-video h3 {
     position: absolute;
     top: 0;
   }
-
   .side-video iframe {
     position: absolute;
     top: 2rem;
@@ -258,19 +250,14 @@ h4.group.Especificacoes {
     height: 100%;
     border: none;
   }
-
   .table-zebra tr td {
     padding-left: 0 !important;
   }
-
-  .group.Especificacoes th,
-  .group.Especificacoes td {
+  .group.Especificacoes th, .group.Especificacoes td {
     padding-left: 5px;
     padding-bottom: 5px !important;
   }
-
-  .group.Especificacoes th::before,
-  .group.Especificacoes td::before {
+  .group.Especificacoes th::before, .group.Especificacoes td::before {
     margin-left: 0;
   }
 }
