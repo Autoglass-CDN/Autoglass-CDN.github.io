@@ -102,6 +102,7 @@ function imageVideoGalery() {
         href.append(img);
         li.append(href);
 
+        /* Buscando os itens da lista e inserindo no array */
         var lis = $("ul.thumbs")[0].children;
         for (let index = 0; index < lis.length; index++) {
             arrayLi.push(lis[index]);
@@ -110,35 +111,22 @@ function imageVideoGalery() {
         $('ul.thumbs').html("");
 
         for (let index = 0; index < arrayLi.length; index++) {
-            if (index == 1){
-                //arrayLi[index].append(li);
+            /* Produto possui somente uma imagem */
+            if (arrayLi.length == 1){
+                $("ul.thumbs").append(arrayLi[index]);
                 $("ul.thumbs").append(li);
             }
-            else {
-                //arrayLi[index].append(listaLi[index]);
-                $("ul.thumbs").append(arrayLi[index]);
+            else{
+                /* Produto possui mais de uma imagem */
+                if (index == 1){
+                    $("ul.thumbs").append(li);
+                }
+                else {
+                    $("ul.thumbs").append(arrayLi[index]);
+                }
             }
         }
-
-        //$('ul.thumbs').html(arrayLi);
-        
-        // var liImg01 = $('ul.thumbs li:nth-child(0)');
-        // var liImg02 = $('ul.thumbs li:nth-child(1)');
-        // var liImg03 = $('ul.thumbs li:nth-child(2)');
-        // var liImg04 = $('ul.thumbs li:nth-child(3)');
-
-        // $('ul.thumbs').html("");
-        // $('ul.thumbs').append(liImg01);
-        // $('ul.thumbs').append(li);
-        // $('ul.thumbs').append(liImg01);
-        // $('ul.thumbs').append(liImg01);
-        // $('ul.thumbs').append(liImg01);
-
-        // preencho a ul com o li do video criado
         //$("ul.thumbs").append(li);
-        //$("ul.thumbs").eq(1).after(li);
-        //$("ul.thumbs li")[1].after(li);
-        //$('ul.thumbs li:nth-child(1)').append(li);
     }
 }
 
@@ -161,19 +149,14 @@ function ImageControl1(a, pi) {
     var loading = $('<div></div>').attr('class','loading').attr('id','loading-video').attr('style','z-index:90; left: 0px; position: absolute; top: 0px; height: 100%; width: 100%; align-items: center; display: none; justify-content: center;');
     loading.html('<b>Carregando vídeo...</b><img src=\"https://devautoglass.vteximg.com.br/arquivos/ajax-loader.gif\" alt=\"Carregando\" />');
     
-    /* Configuração do video a ser exibido */
-
-    /* Referência ao parágrafo onde o vídeo está incluído */
+    /* Configuração do video a ser exibido
+     * Referência ao parágrafo onde o vídeo está incluído 
+     */
     var p = $("#gtm-video-parabrisa");
 
     /* Removendo o class par que não ocupe espaço na tela mesmo oculto */
     p.attr('class', '');
 
-    // var p = $('<p></p>').attr('id','gtm-video-parabrisa').attr('class','responsive-video');
-    // var video = $('<iframe></iframe>').attr('style', 'opacity: 0; width: 100%').attr('height', '480').attr('src','https://www.youtube.com/embed/EyXuvP3CKzY')
-    // .attr('frameborder','0').attr('allow','accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture')
-    // .attr('allowfullscreen','').attr('id','gtm-video-parabrisa-player');
-    
     /* Remove o loading caso já tenha sido inserido */
     $("#container-video-categoria #loading-video").remove();
 
