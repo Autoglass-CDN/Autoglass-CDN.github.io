@@ -102,7 +102,7 @@ function imageVideoGalery() {
         href.append(img);
         li.append(href);
 
-        var listaLi = $("ul.thumbs");
+        var listaLi = $("ul.thumbs li");
         $('ul.thumbs').html("");
 
         for (let index = 0; index < listaLi.length; index++) {
