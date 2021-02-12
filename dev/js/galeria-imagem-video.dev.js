@@ -119,14 +119,15 @@ function imageVideoGalery() {
             else{
                 /* Produto possui mais de uma imagem */
                 if (index == 1){
+                    /* Inserindo o video e posteriormente a próxima imagem */
                     $("ul.thumbs").append(li);
+                    $("ul.thumbs").append(arrayLi[index]);
                 }
                 else {
                     $("ul.thumbs").append(arrayLi[index]);
                 }
             }
         }
-        //$("ul.thumbs").append(li);
     }
 }
 
