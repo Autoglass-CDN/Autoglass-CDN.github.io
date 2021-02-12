@@ -9,7 +9,7 @@
 
 #whatsapp-icon-link img{
     height: auto;
-    width: 60px;
+    width: 50px;
 }
 
 @media only screen and (max-width: 992px) {
@@ -19,18 +19,5 @@
 
     #whatsapp-icon-link {
         display: inherit;
-    }
-}
-
-@media only screen and (max-width: 660px) {
-
-    
-    #whatsapp-icon-link {
-        display: inherit;
-        margin-bottom: 50px;
-    }
-
-    #whatsapp-icon-link img {
-        width: 50px;
     }
 }
