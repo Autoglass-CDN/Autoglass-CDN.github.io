@@ -84,7 +84,7 @@ function imageControl_OnSkuDataReceived1(e) {
 
 function imageVideoGalery() {
     /* Somente será renderizado thumbnail do vídeo se houver vídeo renderizado ocultado na página */
-    if ($("#gtm-video-parabrisa").length > 0){
+    if ($("#video-produto").length > 0){
         
         var arrayLi = new Array();
 
