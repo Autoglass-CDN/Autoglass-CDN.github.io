@@ -287,10 +287,10 @@ h4.group.Especificacoes {
   .cards {
     padding: 0 15px;
   }
-  .cards:nth-child(even) {
+  .cards .card:nth-child(even) {
     flex-direction: row-reverse;
   }
-  .cards:nth-child(even)>img {
+  .cards .card:nth-child(even)>img {
     margin: 0 0 0 30px
   }
   .cards .card {
