@@ -282,3 +282,16 @@ h4.group.Especificacoes {
     margin-left: 0;
   }
 }
+
+@media only screen and (max-width: 500px) {
+  .cards {
+    padding: 0 15px;
+  }
+  .cards .card {
+    flex-basis: unset;
+    padding-right: unset;
+  }
+  .cards .card>img {
+    margin: 0 0 0 30px
+  }
+}
