@@ -85,6 +85,10 @@ section.tab-content {
   margin: 32px 0;
 }
 
+#diferenciais.tab-content ul {
+  margin-left: 15px;
+}
+
 .tab-content ul>li {
   padding-bottom: 10px;
 }
