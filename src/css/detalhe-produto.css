@@ -283,7 +283,7 @@ h4.group.Especificacoes {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 650px) {
   .cards {
     padding: 0 15px;
   }
