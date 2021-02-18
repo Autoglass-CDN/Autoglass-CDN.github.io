@@ -68,7 +68,8 @@ section.tab-content {
   padding: 0 15px;
 }
 
-.tab-content h1,
+.tab-content h1, 
+#avaliacoes.tab-content h2, 
 #diferenciais.tab-content h2 {
   font-weight: var(--extra-bold);
   color: var(--blue-700);
@@ -289,6 +290,12 @@ h4.group.Especificacoes {
   }
   .group.Especificacoes th::before, .group.Especificacoes td::before {
     margin-left: 0;
+  }
+  #avaliacoes.tab-content h2, #diferenciais.tab-content h2 {
+    font-weight: unset;
+    font-size: 32px;
+    text-align: unset;
+    margin: unset;
   }
 }
 
