@@ -81,6 +81,10 @@ section.tab-content {
   margin-bottom: 24px;
 }
 
+#diferenciais.tab-content h3 {
+  margin: 32px 0;
+}
+
 .tab-content ul>li {
   padding-bottom: 10px;
 }
