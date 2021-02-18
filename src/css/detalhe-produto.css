@@ -68,7 +68,8 @@ section.tab-content {
   padding: 0 15px;
 }
 
-.tab-content h1 {
+.tab-content h1,
+#diferenciais.tab-content h2 {
   font-weight: var(--extra-bold);
   color: var(--blue-700);
   text-align: center;
@@ -186,7 +187,11 @@ h4.group.Especificacoes {
   display: inline-flex;
   align-items: center;
   margin: 35px 0;
-  padding-right: 70px;
+  padding-right: 25px;
+}
+
+.cards .card:nth-child(even) {
+  padding-right: 0;
 }
 
 .cards .card>img {
@@ -300,5 +305,6 @@ h4.group.Especificacoes {
   .cards .card {
     flex-basis: unset;
     padding-right: unset;
+    margin: 20px 0;
   }
 }
