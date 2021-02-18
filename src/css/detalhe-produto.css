@@ -64,6 +64,10 @@
   width: 100%;
 }
 
+section.tab-content {
+  padding: 0 15px;
+}
+
 .tab-content h1 {
   font-weight: var(--extra-bold);
   color: var(--blue-700);
