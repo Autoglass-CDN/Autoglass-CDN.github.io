@@ -121,7 +121,7 @@ $(window).on('ready', async () => {
   try {
       const veiculosCompativeis = await $.get(`http://localhost:5010/api/web-app/produtos/${productRefId}/veiculos-compativeis`);
 
-      if (veiculosCompativeis) {
+      if (veiculosCompativeis && veiculosCompativeis.length > 0) {
           veiculosCompatíveisContainer.html(`
               <h2>Veículos Compatíveis</h2>
               <div class="veiculos-compativeis__box">
