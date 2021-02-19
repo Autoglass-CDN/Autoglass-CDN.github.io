@@ -79,23 +79,162 @@ async function insertBrandDescription() {
     });
 }
 
+async function getProductRefIdByProductName() {
+  const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
+
+  const [_, productRefId] = currentProduct.name.match(/(\d+)(\s?\-?\s?[0-9]+)?$/);
+
+  return productRefId;
+}
+
 async function loadOptionals() {
   $('#opcionais').parent().hide();
   const opcionaisContainer = $('#opcionais');
+  const productRefId = await getProductRefIdByProductName();
 
   try {
-    // Não adicionei uma variavél de ambiente pq tu já deve ter uma kkkk 
-    const { Opcionais } = await $.get('http://localhost:5010/api/web-app/produtos/55270/opcionais');
-    if (Opcionais) {
-      opcionaisContainer.html(`
-      ${Opcionais.map(x => `<span class="caracteristicas__caracteristica">${x}</span>`).join('')}
-      `);
-      $('#opcionais').parent().show();
-    }
+      const { Opcionais } = await $.get(`http://localhost:5010/api/web-app/produtos/${productRefId}/opcionais`);
+
+      if (Opcionais) {
+          opcionaisContainer.html(`
+              <h2>Características</h2>
+              <div class="opcionais__box">
+                  ${Opcionais.map(x => `<span class="opcional">${x}</span>`).join('')}
+              </div>
+          `);
+      }
   } catch (ex) {
-    console.error('Falha ao renderizar opcionais. \n ', ex);
+      console.error('Falha ao renderizar opcionais. \n ', ex);
   }
 }
 
 window.addEventListener('load', insertBrandDescription);
 window.addEventListener('load', loadOptionals);
+
+
+/**
+ *  Cria bloco de Veículos Compatíveis
+*/
+$(window).on('ready', async () => {
+  const veiculosCompatíveisContainer = $('#veiculos-compativeis');
+  const productRefId = await getProductRefIdByProductName();
+
+  try {
+      const veiculosCompativeis = await $.get(`http://localhost:5010/api/web-app/produtos/${productRefId}/veiculos-compativeis`);
+
+      if (veiculosCompativeis) {
+          veiculosCompatíveisContainer.html(`
+              <h2>Veículos Compatíveis</h2>
+              <div class="veiculos-compativeis__box">
+                  <div class="veiculos-compativeis__box-header">
+                      <button id="group-prev" data-type="prev" type="button">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                          <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
+                      </svg>
+                      </button>
+                      ${veiculosCompativeis.map(buildHeader).join('')}
+                      <button id="group-next" data-type="next" type="button">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                              <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
+                          </svg>
+                      </button>
+                  </div>
+                  <div class="veiculos-compativeis__box-content">
+                      ${veiculosCompativeis.map(buildContent).join('')}
+                  </div>
+              </div>
+          `);
+
+          $('.veiculos-compativeis__header-option').first().addClass('active');
+          $(`.veiculos-compativeis__box-content div`).first().addClass('active');
+
+          $('.veiculos-compativeis__header-option').click(function () {
+              $('.veiculos-compativeis__header-option').removeClass('active');
+              $(this).addClass('active');
+
+              $(`.veiculos-compativeis__box-content div`).removeClass('active');
+              $(`.veiculos-compativeis__box-content div[data-for="${$(this).attr('id')}"]`)
+                  .addClass('active');
+          });
+
+          $('#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button')
+              .click(function () {
+                  const type = $(this).attr('data-type');
+                  const headerContainer = $('#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header');
+
+                  if (type === 'next') {
+                      headerContainer[0].scrollBy(200, 0);
+                  } else {
+                      headerContainer[0].scrollBy(-200, 0);
+                  }
+              });
+
+          const headerContainer = $('#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header');
+
+          checkIfNeedButtons(headerContainer);
+
+          headerContainer.on('scroll', function () { checkIfNeedButtons($(this)) });
+          $(window).on('resize', function () { checkIfNeedButtons(headerContainer) });
+      }
+  } catch (ex) {
+      console.error('Falha ao renderizar os veículos compativeis. \n ', ex);
+  }
+
+  function buildHeader(grupo, index) {
+      return `
+          <div id="${grupo.Grupo + index}" class="veiculos-compativeis__header-option">
+              <span>${grupo.Grupo}</span>
+          </div>
+      `
+  }
+
+  function buildContent(grupo, index) {
+      return `
+          <div data-for="${grupo.Grupo + index}">
+              ${grupo.Veiculos.map(veiculo => `
+                  <div class="veiculos-compativeis__content-compativel">
+                      <p>${veiculo.Veiculo}</p>
+                      <div>${veiculo.Anos.map(x => '<span>' + x + '</span>')}.</div>
+                  </div>
+              `).join('')}
+          </div>
+      `;
+  }
+
+  function checkIfNeedButtons(header) {
+      const buttons = $('#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button');
+
+      if (needButtons()) {
+          const scroll = getScrollPercentage(header[0]);
+
+          if (scroll === 0) {
+              buttons.last()
+                  .css('display', 'flex');
+
+              buttons.first()
+                  .css('display', 'none');
+
+          } else if (scroll === 100) {
+              buttons.first()
+                  .css('display', 'flex');
+
+              buttons.last()
+                  .css('display', 'none');
+          } else {
+              buttons.css('display', 'flex');
+          }
+      } else {
+          buttons.css('display', 'none');
+      }
+  }
+
+  function needButtons() {
+      return document.querySelector('.veiculos-compativeis__box-header')
+          .scrollWidth > window.innerWidth;
+  }
+
+  function getScrollPercentage(container) {
+      return 100 * container.scrollLeft
+          / (container.scrollWidth - container.clientWidth);
+  }
+});
