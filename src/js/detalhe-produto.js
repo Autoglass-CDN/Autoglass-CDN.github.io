@@ -88,7 +88,6 @@ async function getProductRefIdByProductName() {
 }
 
 async function loadOptionals() {
-  $('#opcionais').parent().hide();
   const opcionaisContainer = $('#opcionais');
   const productRefId = await getProductRefIdByProductName();
 
@@ -97,9 +96,9 @@ async function loadOptionals() {
 
       if (Opcionais) {
           opcionaisContainer.html(`
-              <h2>Características</h2>
-              <div class="opcionais__box">
-                  ${Opcionais.map(x => `<span class="opcional">${x}</span>`).join('')}
+              <h3>Características</h3>
+              <div class="caracteristicas__box">
+                  ${Opcionais.map(x => `<span class="caracteristicas__caracteristica">${x}</span>`).join('')}
               </div>
           `);
       }
