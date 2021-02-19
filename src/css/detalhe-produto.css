@@ -68,6 +68,13 @@ section.tab-content {
   padding: 0 15px;
 }
 
+section.tab-content:before {
+  content: '';
+  display: block;
+  height: 280px;
+  margin: -280px 0 0;
+}
+
 .tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2 {
   font-weight: var(--extra-bold);
   color: var(--blue-700);
