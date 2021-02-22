@@ -109,6 +109,10 @@ async function loadOptionals() {
 
 window.addEventListener('load', insertBrandDescription);
 window.addEventListener('load', loadOptionals);
+// Se não tem vídeo, remove ajuste de largura
+if (document.querySelector('#gtm-video-parabrisa').innerHTML === "") {
+  document.querySelectorAll('.info-box.left').forEach(box => box.classList.remove('left'));
+}
 
 
 /**
