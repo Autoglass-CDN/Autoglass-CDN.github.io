@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 .white-background {
   background: white;
 }
@@ -333,48 +337,36 @@ h4.group.Especificacoes {
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header {
   display: flex;
-
   position: relative;
-
   width: 100%;
   font-size: 20px;
   font-weight: bold;
   text-align: center;
   color: #183884;
-
   overflow: hidden;
 }
-
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div {
   display: flex;
   align-items: center;
   justify-content: center;
-
   width: 100%;
   max-width: 200px;
   padding: 10px 15px;
-
   border-bottom: 4px solid #F0F0F0;
   cursor: pointer;
-
-  transition: border-bottom  .2s ease-in-out;
+  transition: border-bottom .2s ease-in-out;
 }
-
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button {
   display: none;
   align-items: center;
   justify-content: center;
-
   position: sticky;
   top: 0;
   left: 0;
-
   transform: rotate(180deg);
-
   padding: 0px 10px;
-
   background: transparent;
   backdrop-filter: blur(2px);
   border: none;
@@ -396,44 +388,38 @@ h4.group.Especificacoes {
   border-bottom: 4px solid #183884;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content > div {
+#veiculos-compativeis .veiculos-compativeis__box-content>div {
   display: none;
-
   overflow: hidden;
   height: 305px;
-
   max-width: 920px;
   width: 100%;
-
   flex-direction: column;
   flex-wrap: wrap;
-
   border: 1px solid #F0F0F0;
   overflow-x: auto;
-
   padding: 25px 40px;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content > div.active {
+#veiculos-compativeis .veiculos-compativeis__box-content>div.active {
   display: flex;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content > div > div {
+#veiculos-compativeis .veiculos-compativeis__box-content>div>div {
   font-size: 14px;
   color: #707070;
-
   margin: 20px 30px 20px 0px;
   max-width: 300px;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content > div > div > p {
+#veiculos-compativeis .veiculos-compativeis__box-content>div>div>p {
   color: #183884;
   word-wrap: break-word;
   word-break: keep-all;
   font-weight: bold;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content > div > div > div {
+#veiculos-compativeis .veiculos-compativeis__box-content>div>div>div {
   display: flex;
   flex-wrap: wrap;
 }
