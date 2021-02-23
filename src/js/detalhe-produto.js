@@ -173,6 +173,7 @@ $(window).on('ready', async () => {
         });
 
       const headerContainer = $('#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header');
+      $('#veiculos-compativeis h2').click(() => toggleSectionCollapse(veiculosCompatíveisContainer[0]));
 
       checkIfNeedButtons(headerContainer);
 
