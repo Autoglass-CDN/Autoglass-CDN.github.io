@@ -308,7 +308,7 @@ h4.group.Especificacoes {
   .group.Especificacoes th::before, .group.Especificacoes td::before {
     margin-left: 0;
   }
-  #avaliacoes.tab-content h2, #diferenciais.tab-content h2 {
+  #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #duvidas.tab-content h2 {
     font-weight: var(--bold);
     font-size: 32px;
     text-align: unset;
