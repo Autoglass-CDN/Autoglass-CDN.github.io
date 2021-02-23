@@ -79,7 +79,7 @@ section.tab-content:before {
   margin: -280px 0 0;
 }
 
-.tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2 {
+.tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #duvidas.tab-content h2 {
   font-weight: var(--extra-bold);
   color: var(--blue-700);
   text-align: center;
@@ -424,8 +424,13 @@ h4.group.Especificacoes {
   flex-wrap: wrap;
 }
 
-#duvidas li {
+#duvidas h2 + ul li {
   list-style: none;
+}
+
+#duvidas h3 {
+  margin-top: 50px;
+  margin-bottom: 10px;
 }
 
 #duvidas li label {
@@ -440,7 +445,6 @@ h4.group.Especificacoes {
 
   border-left: 4px solid #DBDBDB;
 }
-
 
 #duvidas li p {
   display: none;
@@ -466,7 +470,6 @@ h4.group.Especificacoes {
   background-color: #F8F8F8;
   border-left: 4px solid #183884;
 }
-
 
 #duvidas li input[type="checkbox"]:checked + label::after {
   content: '';
