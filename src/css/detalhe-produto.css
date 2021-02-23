@@ -6,6 +6,24 @@ html {
   background: white;
 }
 
+#outras-marcas .white-background, #compre-junto .blue-background {
+  padding: 80px 30px;
+}
+
+.blue-background {
+  background: #234EB9;
+}
+
+#compre-junto .blue-background #sugestoes h2 {
+  color: white;
+  margin-bottom: 5px;
+}
+
+#compre-junto .blue-background #sugestoes p.descricao-rollout {
+  color: white;
+  margin: 0 0 24px 0;
+}
+
 .container-descricao {
   margin: 0 auto;
   width: 100%;
