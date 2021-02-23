@@ -92,7 +92,7 @@ async function loadOptionals() {
   const productRefId = await getProductRefIdByProductName();
 
   try {
-    const { Opcionais } = await $.get(`http://localhost:5010/api/web-app/produtos/${productRefId}/opcionais`);
+    const { Opcionais } = await $.get(`http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/produtos/${productRefId}/opcionais`);
 
     if (Opcionais) {
       opcionaisContainer.html(`
@@ -119,7 +119,7 @@ $(window).on('ready', async () => {
   const productRefId = await getProductRefIdByProductName();
 
   try {
-    const veiculosCompativeis = await $.get(`http://localhost:5010/api/web-app/produtos/${productRefId}/veiculos-compativeis`);
+    const veiculosCompativeis = await $.get(`http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/produtos/${productRefId}/veiculos-compativeis`);
 
     if (veiculosCompativeis && veiculosCompativeis.length > 0) {
       veiculosCompatíveisContainer.html(`
