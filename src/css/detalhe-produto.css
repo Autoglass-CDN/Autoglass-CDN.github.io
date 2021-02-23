@@ -96,7 +96,7 @@ section.tab-content:before {
   margin: 32px 0;
 }
 
-#diferenciais.tab-content ul {
+#diferenciais.tab-content ul, #duvidas.tab-content ul:last-child {
   margin-left: 15px;
 }
 
@@ -422,6 +422,10 @@ h4.group.Especificacoes {
 #veiculos-compativeis .veiculos-compativeis__box-content>div>div>div {
   display: flex;
   flex-wrap: wrap;
+}
+
+#duvidas h2 + ul {
+  margin-top: 30px;
 }
 
 #duvidas h2 + ul li {
