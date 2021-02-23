@@ -423,3 +423,55 @@ h4.group.Especificacoes {
   display: flex;
   flex-wrap: wrap;
 }
+
+#duvidas li {
+  list-style: none;
+}
+
+#duvidas li label {
+  padding: 15px 30px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #183884;
+  cursor: pointer;
+  position: relative;
+
+  width: 100%;
+
+  border-left: 4px solid #DBDBDB;
+}
+
+
+#duvidas li p {
+  display: none;
+  overflow: auto;
+
+  padding: 15px 30px;
+
+}
+
+#duvidas li input[type="checkbox"] {
+  display: none;
+}
+
+#duvidas li input[type="checkbox"] + label::after {
+  content: url("https://autoglass-cdn.github.io/arquivos/img/arrow-down-blue.svg");
+  position: absolute;
+  right: 10px;
+  transform: translateY(-50%) scale(1.5);
+  top: 50%;
+}
+
+#duvidas li input[type="checkbox"]:checked + label {
+  background-color: #F8F8F8;
+  border-left: 4px solid #183884;
+}
+
+
+#duvidas li input[type="checkbox"]:checked + label::after {
+  content: '';
+}
+
+#duvidas li input[type="checkbox"]:checked + label + p {
+  display: block;
+}
