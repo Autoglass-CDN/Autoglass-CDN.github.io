@@ -102,6 +102,9 @@ section.tab-content:before {
 
 .tab-content ul>li {
   padding-bottom: 10px;
+}
+
+#diferenciais.tab-content ul > li, #duvidas.tab-content ul:last-child > li{
   list-style: '-   ';
 }
 
