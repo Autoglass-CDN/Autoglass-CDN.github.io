@@ -129,6 +129,7 @@ section.tab-content:before {
 
 .tab-content ul>li {
   padding-bottom: 10px;
+  list-style: '-   ';
 }
 
 .side-video {
@@ -494,6 +495,7 @@ h4.group.Especificacoes {
   position: absolute;
   right: 10px;
   transform: translateY(-50%) scale(1.5);
+  transition: transform .2s ease-in-out;
   top: 50%;
 }
 
@@ -503,7 +505,7 @@ h4.group.Especificacoes {
 }
 
 #duvidas li input[type="checkbox"]:checked + label::after {
-  content: '';
+  transform: translateY(-50%) scale(1.5) rotate(180deg);
 }
 
 #duvidas li input[type="checkbox"]:checked + label + p {
