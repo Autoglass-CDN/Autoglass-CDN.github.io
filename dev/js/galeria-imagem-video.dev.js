@@ -230,14 +230,17 @@ function ImageControl1(a, pi) {
         // Bucando os elementos do iframe e loading
         const iframeEle = document.getElementById('gtm-video-player');
         const loadingEle = document.getElementById('loading-video');
-        loadingEle.style.display = 'flex';
+        
+        if (iframeEle && loadingEle){
+            loadingEle.style.display = 'flex';
 
-        iframeEle.addEventListener('load', function() {
-            /* Remove o loading caso já tenha sido inserido */
-            $("#video-produto #loading-video").remove();
-            // Exibindo iframe
-            iframeEle.style.display = 'flex';
-        });
+            iframeEle.addEventListener('load', function() {
+                /* Remove o loading caso já tenha sido inserido */
+                $("#video-produto #loading-video").remove();
+                // Exibindo iframe
+                iframeEle.style.display = 'flex';
+            });
+        }
     }
 }
 
