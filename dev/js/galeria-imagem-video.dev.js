@@ -89,7 +89,7 @@ function imageVideoGalery() {
         var arrayLi = new Array();
 
         /* Busca o ID do vídeo e cria a URL para imágem do thumbnail */
-        var idVideo = $("#gtm-video-parabrisa-player")[0].src.split('/')[4];
+        var idVideo = $("#gtm-video-player")[0].src.split('/')[4];
         var url = 'http://img.youtube.com/vi/' + idVideo + '/0.jpg';
 
         /* Monta o objeto <li> */
@@ -153,9 +153,9 @@ function ImageControl1(a, pi) {
     /* Configuração do video a ser exibido
      * Referência ao parágrafo onde o vídeo está incluído 
      */
-    var p = $("#gtm-video-parabrisa");
+    var p = $("#video-produto");
 
-    /* Removendo o class par que não ocupe espaço na tela mesmo oculto */
+    /* Removendo o class para que não ocupe espaço na tela mesmo oculto */
     p.attr('class', '');
 
     /* Remove o loading caso já tenha sido inserido */
@@ -181,7 +181,7 @@ function ImageControl1(a, pi) {
         $("#container-video-categoria").append(p);
         
         /* Ocultando tag do vídeo */
-        $("#gtm-video-parabrisa").children("iframe").attr('style','display: none; width: 100%');
+        $("#video-produto").children("iframe").attr('style','display: none; width: 100%');
     }
     else{
         if ($("[id=show] [id=include] [id=image][productIndex=" + pi + "] a").length > 0) {
@@ -225,16 +225,16 @@ function ImageControl1(a, pi) {
         // Injetando vídeo na página para ser viauzalidado na galeria de imagens
         $("[id=show] [id=include] [id=image][productIndex=" + pi + "]").append(p);
         
-        $("#gtm-video-parabrisa").children("iframe").attr('style','display: flex; width: 100%');
+        $("#video-produto").children("iframe").attr('style','display: flex; width: 100%');
 
         // Bucando os elementos do iframe e loading
-        const iframeEle = document.getElementById('gtm-video-parabrisa-player');
+        const iframeEle = document.getElementById('gtm-video-player');
         const loadingEle = document.getElementById('loading-video');
         loadingEle.style.display = 'flex';
 
         iframeEle.addEventListener('load', function() {
             /* Remove o loading caso já tenha sido inserido */
-            $("#gtm-video-parabrisa #loading-video").remove();
+            $("#video-produto #loading-video").remove();
             // Exibindo iframe
             iframeEle.style.display = 'flex';
         });
