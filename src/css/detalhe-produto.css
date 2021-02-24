@@ -94,7 +94,7 @@ section#outras-marcas.tab-content, section#compre-junto.tab-content {
   padding: unset;
 }
 
-section#outras-marcas.tab-content .slick-list, section#compre-junto.tab-content .slick-list {
+section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content .slick-track {
   width: 90%;
   margin: 0 auto;
 }
