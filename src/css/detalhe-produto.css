@@ -91,6 +91,7 @@ section.tab-content {
 }
 
 section#outras-marcas.tab-content, section#compre-junto.tab-content {
+  display: none;
   padding: unset;
 }
 
