@@ -200,6 +200,7 @@ $(window).on('ready', async () => {
       $(window).on('resize', function () { checkIfNeedButtons(headerContainer) });
     } else {
       $('a[href="#veiculos-compativeis"]').parent().hide();
+      veiculosCompatíveisContainer.hide();
     }
   } catch (ex) {
     $('a[href="#veiculos-compativeis"]').parent().hide();
