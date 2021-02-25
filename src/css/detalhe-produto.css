@@ -278,6 +278,12 @@ h4.group.Especificacoes {
   .contents .tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
     padding: 24px 15px 0;
   }
+  #avaliacoes.tab-content, 
+  #outras-marcas .white-background, 
+  #compre-junto .blue-background {
+    background-color: white;
+  }
+
   .contents .tab-content::after {
     content: '';
     border-bottom: 1px solid #DBDBDB;
@@ -346,11 +352,7 @@ h4.group.Especificacoes {
   .group.Especificacoes th::before, .group.Especificacoes td::before {
     margin-left: 0;
   }
-  #avaliacoes.tab-content h2, 
-  #diferenciais.tab-content h2, 
-  #outras-marcas.tab-content h2,
-  #compre-junto.tab-content h2,
-  #duvidas.tab-content h2 {
+  #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #outras-marcas.tab-content h2, #compre-junto.tab-content h2, #duvidas.tab-content h2 {
     font-weight: var(--bold);
     font-size: 19px;
     text-align: unset;
