@@ -132,7 +132,7 @@ section.tab-content:before {
   padding-bottom: 10px;
 }
 
-#diferenciais.tab-content ul > li, #duvidas.tab-content ul:last-child > li{
+#diferenciais.tab-content ul>li, #duvidas.tab-content ul:last-child>li {
   list-style: '-   ';
 }
 
@@ -275,9 +275,7 @@ h4.group.Especificacoes {
   .tabs-descricao {
     display: none;
   }
-  .contents .tab-content, 
-  #outras-marcas .white-background, 
-  #compre-junto .blue-background {
+  .contents .tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
     padding: 24px 15px 0;
   }
   .contents .tab-content::after {
@@ -296,6 +294,7 @@ h4.group.Especificacoes {
     justify-content: space-between;
     line-height: 30px;
     font-size: 19px;
+    padding: unset;
   }
   .contents .tab-content h2::after {
     content: '\2212';
@@ -304,10 +303,14 @@ h4.group.Especificacoes {
     content: '\002B';
     display: unset;
   }
-  .contents .tab-content.ativo h2 {
+  /* .contents .tab-content.ativo h2, 
+  .contents .tab-content.ativo .blue-background h2, .contents .tab-content.ativo .white-background h2 {
     display: flex;
+  } */
+  .contents .tab-content.ativo>*:not(h2):not(.blue-background):not(.white-background) {
+    display: none;
   }
-  .contents .tab-content.ativo * {
+  .contents .tab-content.ativo #similars>*:not(h2), .contents .tab-content.ativo #sugestoes>*:not(h2) {
     display: none;
   }
   .side-video {
@@ -459,11 +462,11 @@ h4.group.Especificacoes {
   flex-wrap: wrap;
 }
 
-#duvidas h2 + ul {
+#duvidas h2+ul {
   margin-top: 30px;
 }
 
-#duvidas h2 + ul li {
+#duvidas h2+ul li {
   list-style: none;
 }
 
@@ -479,25 +482,21 @@ h4.group.Especificacoes {
   color: #183884;
   cursor: pointer;
   position: relative;
-
   width: 100%;
-
   border-left: 4px solid #DBDBDB;
 }
 
 #duvidas li p {
   display: none;
   overflow: auto;
-
   padding: 15px 30px;
-
 }
 
 #duvidas li input[type="checkbox"] {
   display: none;
 }
 
-#duvidas li input[type="checkbox"] + label::after {
+#duvidas li input[type="checkbox"]+label::after {
   content: url("https://autoglass-cdn.github.io/arquivos/img/arrow-down-blue.svg");
   position: absolute;
   right: 10px;
@@ -506,15 +505,15 @@ h4.group.Especificacoes {
   top: 50%;
 }
 
-#duvidas li input[type="checkbox"]:checked + label {
+#duvidas li input[type="checkbox"]:checked+label {
   background-color: #F8F8F8;
   border-left: 4px solid #183884;
 }
 
-#duvidas li input[type="checkbox"]:checked + label::after {
+#duvidas li input[type="checkbox"]:checked+label::after {
   transform: translateY(-50%) scale(1.5) rotate(180deg);
 }
 
-#duvidas li input[type="checkbox"]:checked + label + p {
+#duvidas li input[type="checkbox"]:checked+label+p {
   display: block;
 }
