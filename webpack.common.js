@@ -10,5 +10,6 @@ module.exports = {
     'js/home': path.resolve(__dirname, 'src', 'js', 'home.dev.js'),
     'js/cep.component': path.resolve(__dirname, 'src', 'js', 'cep.component.js'),
     'js/cookie.bot': path.resolve(__dirname, 'src', 'js', 'cookie.bot.js'),
+    'js/whatsapp-icon': path.resolve(__dirname, 'src', 'js', 'whatsapp-icon.js'),
   }
 }
