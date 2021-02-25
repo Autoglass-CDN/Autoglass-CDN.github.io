@@ -47,11 +47,11 @@ const toggleSectionCollapse = (section) => {
 };
 
 const sectionCollapseInit = () => {
-  let sections = document.querySelectorAll('.contents .tab-content h2');
+  let headers = document.querySelectorAll('.contents .tab-content h2');
 
-  sections.forEach(section => {
-    section.onclick = (event) => {
-      toggleSectionCollapse(section.parentElement);
+  headers.forEach(header => {
+    header.onclick = (event) => {
+      toggleSectionCollapse(header.closest('.tab-content'));
     };
   })
 };

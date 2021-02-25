@@ -289,6 +289,7 @@ h4.group.Especificacoes {
     display: flex;
     justify-content: space-between;
     line-height: 30px;
+    font-size: 21px;
   }
   .contents .tab-content h2::after {
     content: '\2212';
@@ -338,7 +339,7 @@ h4.group.Especificacoes {
   }
   #avaliacoes.tab-content h2, #diferenciais.tab-content h2 {
     font-weight: var(--bold);
-    font-size: 32px;
+    font-size: 21px;
     text-align: unset;
     margin: unset;
   }
