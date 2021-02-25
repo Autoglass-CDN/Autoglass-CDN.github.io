@@ -198,6 +198,8 @@ $(window).on('ready', async () => {
 
       headerContainer.on('scroll', function () { checkIfNeedButtons($(this)) });
       $(window).on('resize', function () { checkIfNeedButtons(headerContainer) });
+    } else {
+      $('a[href="#veiculos-compativeis"]').parent().hide();
     }
   } catch (ex) {
     $('a[href="#veiculos-compativeis"]').parent().hide();
