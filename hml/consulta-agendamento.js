@@ -583,8 +583,13 @@ $(function () {
   const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
   if (address) {
-    estimateDate(address.logisticsInfo).then(recuperarHorarios);
-  } else {
+    let x;
+
+    if (typeof vtexjs !== 'undefined' && vtexjs.checkout && vtexjs.checkout.orderForm && vtexjs.checkout.orderForm.items) {
+      x = vtexjs.checkout.orderForm.items;
+    }
+
+    estimateDate(address.logisticsInfo, x).then(recuperarHorarios);
     // Evento lançado pelo componente de cep
     $(window).on('cep-finsh-load', async e => {
       const orderForm = e.originalEvent.detail;
