@@ -1,4 +1,4 @@
-/* Teste para galeria de imagens com vídeo */
+/* Script para galeria de imagens para incluir content do CMS com vídeo */
 
 $(document).ready(function () {
     ImageControl1($("ul.thumbs a:first"), 0);
@@ -148,7 +148,7 @@ function ImageControl1(a, pi) {
 
     /* Configurando loading */
     var loading = $('<div></div>').attr('class','loading').attr('id','loading-video').attr('style','z-index:90; left: 0px; position: absolute; top: 0px; height: 100%; width: 100%; align-items: center; display: none; justify-content: center;');
-    loading.html('<b>Carregando vídeo...</b><img src=\"https://devautoglass.vteximg.com.br/arquivos/ajax-loader.gif\" alt=\"Carregando\" />');
+    loading.html('<b>Carregando vídeo...</b><img src=\"https://autoglass.vteximg.com.br/arquivos/ajax-loader.gif\" alt=\"Carregando\" />');
     
     /* Configuração do video a ser exibido
      * Referência ao parágrafo onde o vídeo está incluído 
@@ -163,7 +163,6 @@ function ImageControl1(a, pi) {
 
     /* Adicionando loading */
     p.append(loading);
-    // p.append(video);
 
     $(a).addClass("ON");
 
