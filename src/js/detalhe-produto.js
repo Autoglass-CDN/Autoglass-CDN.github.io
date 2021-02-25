@@ -119,7 +119,7 @@ async function loadSimilars() {
   const isLoaded = (id) => document.querySelector(`#${id}`).innerHTML != "";
   const showComponent =
     (id) => (document.querySelector(`#${id}`).style.display = 'unset')
-      && (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = 'unset');
+      && (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = 'block');
 
   hideMenu('outras-marcas');
   hideMenu('compre-junto');
