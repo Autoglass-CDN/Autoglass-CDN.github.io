@@ -295,7 +295,7 @@ h4.group.Especificacoes {
     padding-right: 0;
   }
   .contents .tab-content h2 {
-    color: #183884;
+    color: #183884 !important;
     display: flex;
     justify-content: space-between;
     line-height: 30px;
