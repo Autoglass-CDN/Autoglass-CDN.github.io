@@ -439,7 +439,7 @@ h4.group.Especificacoes {
 #veiculos-compativeis .veiculos-compativeis__box-content>div>div {
   font-size: 14px;
   color: #707070;
-  margin: 20px 30px 20px 0px;
+  padding: 20px 30px 20px 0px;
   max-width: 300px;
 }
 
