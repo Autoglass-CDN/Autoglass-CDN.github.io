@@ -115,8 +115,14 @@ if (document.querySelector('#gtm-video-parabrisa').innerHTML === "") {
 }
 
 async function loadSimilars() {
+  const hideMenu = (id) => document.querySelector(`a[href="#${id}"]`).parentElement.style.display = 'none';
   const isLoaded = (id) => document.querySelector(`#${id}`).innerHTML != "";
-  const showComponent = (id) => document.querySelector(`#${id}`).style.display = 'unset';
+  const showComponent =
+    (id) => (document.querySelector(`#${id}`).style.display = 'unset')
+      && (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = 'unset');
+
+  hideMenu('outras-marcas');
+  hideMenu('compre-junto');
 
   if (isLoaded('similars')) {
     showComponent('outras-marcas');
