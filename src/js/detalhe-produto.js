@@ -114,6 +114,20 @@ if (document.querySelector('#gtm-video-parabrisa').innerHTML === "") {
   document.querySelectorAll('.info-box.left').forEach(box => box.classList.remove('left'));
 }
 
+async function loadSimilars() {
+  const isLoaded = (id) => document.querySelector(`#${id}`).innerHTML != "";
+  const showComponent = (id) => document.querySelector(`#${id}`).style.display = 'unset';
+
+  if (isLoaded('similars')) {
+    showComponent('outras-marcas');
+  }
+
+  if (isLoaded('sugestoes')) {
+    showComponent('compre-junto');
+  }
+}
+
+loadSimilars();
 
 /**
  *  Cria bloco de Veículos Compatíveis
