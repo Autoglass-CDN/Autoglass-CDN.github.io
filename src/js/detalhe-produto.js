@@ -118,8 +118,8 @@ async function loadSimilars() {
   const hideMenu = (id) => document.querySelector(`a[href="#${id}"]`).parentElement.style.display = 'none';
   const isLoaded = (id) => document.querySelector(`#${id}`).innerHTML != "";
   const showComponent =
-    (id) => (document.querySelector(`#${id}`).style.display = 'unset')
-      && (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = 'block');
+    (id) => (document.querySelector(`#${id}`).style.display = 'block')
+      && (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = 'unset');
 
   hideMenu('outras-marcas');
   hideMenu('compre-junto');
