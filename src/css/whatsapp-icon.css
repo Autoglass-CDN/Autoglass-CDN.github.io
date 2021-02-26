@@ -1,23 +1,23 @@
 #whatsapp-icon-link {
-    bottom: 0px;
-    display: none;
-    margin: 20px 15px;
-    position: fixed;
-    right: 0px;
-    z-index: 8000;
+  bottom: 0px;
+  display: none;
+  margin: 20px 15px;
+  position: fixed;
+  right: 0px;
+  z-index: 8000;
 }
 
-#whatsapp-icon-link img{
-    height: auto;
-    width: 50px;
+#whatsapp-icon-link img {
+  height: auto;
+  width: 60px;
 }
 
 @media only screen and (max-width: 992px) {
-    #launcher {
-        top: -10000px;
-    }
+  #launcher {
+    top: -10000px;
+  }
 
-    #whatsapp-icon-link {
-        display: inherit;
-    }
+  #whatsapp-icon-link {
+    display: inherit;
+  }
 }
