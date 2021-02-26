@@ -1,7 +1,7 @@
 /* Teste para galeria de imagens com vídeo */
 
 $(document).ready(function () {
-    if (Vtex != undefined){
+    if (typeof Vtex !== 'undefined'){
         ImageControl1($("ul.thumbs a:first"), 0);
     
         imageVideoGalery();
