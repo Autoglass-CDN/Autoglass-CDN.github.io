@@ -8,11 +8,11 @@ $(document).ready(function () {
     clickThumbs1();
     
     var imageControlListener = new Vtex.JSEvents.Listener('imageControlListener', imageControl_OnSkuDataReceived1);
-    skuEventDispatcher.events.skuDataReceived.listeners[0] = null;
+    skuEventDispatcher.events.skuDataReceived.listeners.Shift();
     skuEventDispatcher.addListener(skuDataReceivedEventName, imageControlListener);
 
     var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
-    skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners[0] = null;
+    skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners.Shift();
     skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
 });
 
