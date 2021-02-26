@@ -2,6 +2,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* RESET RATINGS COMPONENT */
+
+.ratings-section .ratings__slider button {
+  z-index: unset;
+}
+
+/* FIM RESET RATINGS COMPONENT */
+
 .white-background {
   background: white;
 }
