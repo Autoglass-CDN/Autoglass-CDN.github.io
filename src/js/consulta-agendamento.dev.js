@@ -508,7 +508,8 @@ $(function () {
 
         $('.store').remove();
 
-        await estimateDate(order.shippingData.logisticsInfo, order.items);
+        const datas = await getDeliveriesEstimates(order.shippingData.logisticsInfo, order.items);
+        setMinDateDatepicker(datas);
         recuperarHorarios();
       }
     });
@@ -849,7 +850,7 @@ $(function () {
   const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
   if (address) {
-    getDeliveriesEstimates(address.postalCode, address.logisticsInfo, undefined)
+    getDeliveriesEstimates(address.postalCode, undefined, undefined)
       .then((datas) => {
         setDateDatepicker(datas);
         Carregar(address.postalCode);
