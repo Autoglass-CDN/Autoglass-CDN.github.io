@@ -594,7 +594,7 @@ $(function () {
       });
   } else {
     // Evento lançado pelo componente de cep
-    $(window).on('cep-finsh-load', async e => {
+    $(window).on('cep-finsh-load', async (e) => {
       const orderForm = e.originalEvent.detail;
       const datas = await getDeliveriesEstimates(
         orderForm.shippingData.address.postalCode,
@@ -607,7 +607,7 @@ $(function () {
   }
 
   // Evento lançado pelo componente de cep
-  $(window).on('cep-updated', async e => {
+  $(window).on('cep-updated', async (e) => {
     const orderForm = e.originalEvent.detail;
     const datas = await getDeliveriesEstimates(
       orderForm.shippingData.address.postalCode,
@@ -849,10 +849,14 @@ $(function () {
   const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
   if (address) {
-    Carregar(address.postalCode);
+    getDeliveriesEstimates(address.postalCode, address.logisticsInfo, undefined)
+      .then((datas) => {
+        setDateDatepicker(datas);
+        Carregar(address.postalCode);
+      });
   } else {
     // Evento lançado pelo componente de cep
-    $(window).on('cep-finish-load', e => {
+    $(window).on('cep-finish-load', async (e) => {
       const orderForm = e.originalEvent.detail;
       const dates = await getDeliveriesEstimates(
         orderForm.shippingData.address.postalCode,
@@ -865,7 +869,7 @@ $(function () {
   }
 
   // Evento lançado pelo componente de cep
-  $(window).on('cep-updated', e => {
+  $(window).on('cep-updated', async (e) => {
     const orderForm = e.originalEvent.detail;
     const dates = await getDeliveriesEstimates(
       orderForm.shippingData.address.postalCode,
