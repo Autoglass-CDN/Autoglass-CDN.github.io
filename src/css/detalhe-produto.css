@@ -5,7 +5,7 @@ html {
 /* RESET RATINGS COMPONENT */
 
 .ratings-section .ratings__slider button {
-  z-index: unset;
+  z-index: unset im !important;
 }
 
 /* FIM RESET RATINGS COMPONENT */
