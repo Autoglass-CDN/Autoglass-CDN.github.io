@@ -883,10 +883,10 @@ $(function () {
   function setDateDatepicker(datas) {
     const minDate = datas.find(x => x.Nome.trim().toLocaleLowerCase() === 'Autoglass Móvel'.trim().toLocaleLowerCase());
 
-    maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 2, 0);
+    maxDate = new Date(minDate.Data.getFullYear(), minDate.Data.getMonth() + 2, 0);
 
     $('#mostrar-datas-datepicker').datepicker('option', 'maxDate', maxDate);
-    $('#mostrar-datas-datepicker').datepicker('option', 'minDate', minDate);
+    $('#mostrar-datas-datepicker').datepicker('option', 'minDate', minDate.Data);
   }
 
   async function Carregar(cep) {
