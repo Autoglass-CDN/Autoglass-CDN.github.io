@@ -108,11 +108,14 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
   margin: 0 auto;
 }
 
+/* adiciona offset de scrolling para as seções */
+
 section.tab-content:before {
   content: '';
   display: block;
   height: 280px;
   margin: -280px 0 0;
+  visibility: hidden;
 }
 
 .tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #duvidas.tab-content h2 {
@@ -293,7 +296,8 @@ h4.group.Especificacoes {
     content: '';
     border-bottom: 1px solid #DBDBDB;
     display: block;
-    margin-top: 24px;
+    height: 24px;
+    background: white !important;
   }
   .contents .tab-content .info-box.left {
     width: 100%;
@@ -306,6 +310,7 @@ h4.group.Especificacoes {
     line-height: 30px;
     font-size: 19px;
     padding: unset;
+    margin-bottom: unset;
   }
   .contents .tab-content h2::after {
     content: '\2212';
@@ -386,6 +391,12 @@ h4.group.Especificacoes {
   }
 }
 
+@media only screen and (max-width: 382px) {
+  .side-video iframe{
+    top: 3rem;
+  }
+
+}
 /* Veículos Compatíveis */
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header {
