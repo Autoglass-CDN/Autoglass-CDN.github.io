@@ -1044,7 +1044,9 @@ $(function () {
 
 async function getDeliveriesEstimates(postalCode, logistics, items) {
   const isConfirmationPage = location.href.includes('orderPlaced');
+  const isCheckoutPage = location.href.includes('checkout');
   const hasCartItems = items && items.length;
+
   const buildSimulationItems = (items) => items.map(i => ({
     quantity: i.quantity,
     seller: i.seller,
@@ -1054,11 +1056,11 @@ async function getDeliveriesEstimates(postalCode, logistics, items) {
   let simulationItems = [];
 
   try {
-    if (hasCartItems) {
-      simulationItems = buildSimulationItems(items);
-    } else if (isConfirmationPage) {
+    if (isConfirmationPage && hasCartItems) {
       const orderForm = await $.get(`/api/checkout/pub/orders/${$("#order-id").text().trim()}`);
       simulationItems = buildSimulationItems(orderForm.items);
+    } else if (isCheckoutPage && hasCartItems) {
+      simulationItems = buildSimulationItems(items);
     } else {
       // 12685 -> Produto de Instalação
       const installmentProduct = await vtexjs.catalog.getProductWithVariations(12685);
