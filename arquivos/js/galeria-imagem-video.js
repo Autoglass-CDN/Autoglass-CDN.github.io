@@ -1,19 +1,21 @@
 /* Script para galeria de imagens para incluir content do CMS com vídeo */
 
 $(document).ready(function () {
-    ImageControl1($("ul.thumbs a:first"), 0);
-    
-    imageVideoGalery();
+    if (typeof Vtex !== 'undefined'){
+        ImageControl1($("ul.thumbs a:first"), 0);
+        
+        imageVideoGalery();
 
-    clickThumbs1();
-    
-    var imageControlListener = new Vtex.JSEvents.Listener('imageControlListener', imageControl_OnSkuDataReceived1);
-    skuEventDispatcher.events.skuDataReceived.listeners[0] = null;
-    skuEventDispatcher.addListener(skuDataReceivedEventName, imageControlListener);
+        clickThumbs1();
+        
+        var imageControlListener = new Vtex.JSEvents.Listener('imageControlListener', imageControl_OnSkuDataReceived1);
+        skuEventDispatcher.events.skuDataReceived.listeners.shift();
+        skuEventDispatcher.addListener(skuDataReceivedEventName, imageControlListener);
 
-    var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
-    skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners[0] = null;
-    skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
+        var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
+        skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners.shift();
+        skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
+    }
 });
 
 function imageControl_OnSkuImageRelatedSpecSelected1(e) {
