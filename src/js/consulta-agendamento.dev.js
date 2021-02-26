@@ -881,7 +881,7 @@ $(function () {
   });
 
   function setDateDatepicker(datas) {
-    const minDate = datas.find(x => x.Nome.toLocaleLowerCase() === 'Autoglass Móvel'.toLocaleLowerCase());
+    const minDate = datas.find(x => x.Nome.trim().toLocaleLowerCase() === 'Autoglass Móvel'.trim().toLocaleLowerCase());
 
     maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 2, 0);
 
