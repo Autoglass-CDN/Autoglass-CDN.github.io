@@ -286,6 +286,9 @@ h4.group.Especificacoes {
   .tabs-descricao {
     display: none;
   }
+  .contents .tab-content:empty {
+    display: none;
+  }
   .contents .tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
     padding: 24px 15px 0;
   }
@@ -392,11 +395,11 @@ h4.group.Especificacoes {
 }
 
 @media only screen and (max-width: 382px) {
-  .side-video iframe{
+  .side-video iframe {
     top: 3rem;
   }
-
 }
+
 /* Veículos Compatíveis */
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header {
