@@ -9,11 +9,17 @@ $(document).ready(function () {
         clickThumbs1();
         
         var imageControlListener = new Vtex.JSEvents.Listener('imageControlListener', imageControl_OnSkuDataReceived1);
-        skuEventDispatcher.events.skuDataReceived.listeners.shift();
+        skuEventDispatcher.events.skuDataReceived.listeners = skuEventDispatcher.events.skuDataReceived.listeners.filter(function(l) {
+            return l.name !== 'imageControlListener';
+        });
+
         skuEventDispatcher.addListener(skuDataReceivedEventName, imageControlListener);
 
         var imageControlSpecSelectedListener = new Vtex.JSEvents.Listener('imageControlSpecSelectedListener', imageControl_OnSkuImageRelatedSpecSelected1);
-        skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners.shift();
+        skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners = skuEventDispatcher.events.skuImageRelatedSpecSelected.listeners.filter(function(l) {
+            return l.name !== 'imageControlSpecSelectedListener';
+        });
+
         skuEventDispatcher.addListener(skuImageRelatedSpecSelectedEventName, imageControlSpecSelectedListener);
     }
 });
