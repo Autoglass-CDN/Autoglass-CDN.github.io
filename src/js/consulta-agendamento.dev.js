@@ -638,7 +638,7 @@ $(function () {
 			});
 	} else {
 		// Evento lançado pelo componente de cep
-		$(window).on('cep-finsh-load', async (e) => {
+		$(window).on('cep-finish-load', async (e) => {
 			const orderForm = e.originalEvent.detail;
 			const datas = await getDeliveriesEstimates(
 				orderForm.shippingData.address.postalCode,
