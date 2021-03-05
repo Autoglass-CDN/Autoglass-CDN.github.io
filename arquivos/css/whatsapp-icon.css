@@ -1,9 +1,9 @@
 #whatsapp-icon-link {
   bottom: 0px;
   display: none;
-  margin: 20px 15px;
+  margin: 10px 15px;
   position: fixed;
-  right: 0px;
+  left: 0px;
   z-index: 8000;
 }
 
@@ -14,10 +14,14 @@
 
 @media only screen and (max-width: 992px) {
   #launcher {
-    top: -10000px;
+    /* top: -10000px; */
   }
 
   #whatsapp-icon-link {
     display: inherit;
+  }
+
+  .search-qd-v1-navigator-trigger {
+    bottom: 80px !important;
   }
 }
