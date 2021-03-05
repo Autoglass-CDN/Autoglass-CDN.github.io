@@ -95,7 +95,7 @@
   font-weight: 700;
 }
 
-.secao-agendamento .store > .time {
+.secao-agendamento .pickup > .time {
   border-top: 1px solid #dfdfdf;
   padding: 10px 15px;
   transition: ease;
@@ -156,7 +156,9 @@
 
 @media (min-width: 992px) {
   .mz-modal-installation,
-  .mz-modal-advantages { width: 700px; }
+  .mz-modal-advantages {
+    width: 700px;
+  }
 }
 
 /* MOBILE */
@@ -205,10 +207,10 @@
 }
 
 .mz-install__info {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #BABABA;
-    border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #bababa;
+  border-radius: 6px;
 }
 
 .mz-modal-advantages .mz-install__info {
@@ -220,28 +222,30 @@
 }
 
 .mz-install__info .mz-info__list ul li:before {
-    display: block;
-    content: '\f05a';
-    display: inline-block;
-    font-size: 1em;
-    font-style: normal;
-    font-weight: normal;
-    height: 1em;
-    text-align: center;
-    text-decoration: inherit;
-    text-rendering: optimizelegibility;
-    width: 1em;
-    font-family: 'FontAwesome';
-    margin-right: 10px;
-    font-size: 14px;
-    color: #2D4F9E;
+  display: block;
+  content: "\f05a";
+  display: inline-block;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  height: 1em;
+  text-align: center;
+  text-decoration: inherit;
+  text-rendering: optimizelegibility;
+  width: 1em;
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  font-size: 14px;
+  color: #2d4f9e;
 }
 
 .mz-accesories__name {
   margin-left: 15px;
 }
 
-.mz-acessories .mz-accesories__advantages .mz-accesories__advantages--button:before {
+.mz-acessories
+  .mz-accesories__advantages
+  .mz-accesories__advantages--button:before {
   display: none;
 }
 
@@ -292,7 +296,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: height .5s ease-in-out;
+  transition: height 0.5s ease-in-out;
 }
 
 .loading-dates {
@@ -300,18 +304,19 @@
   padding: 2px;
 }
 
-.ui-state-active, .ui-widget-content .ui-state-active {
-  background: #223B76 !important;
+.ui-state-active,
+.ui-widget-content .ui-state-active {
+  background: #223b76 !important;
   color: white;
   border: none;
 }
 
 .secao-agendamento .time-list > .timestamp:focus,
 .secao-agendamento .time-list > .timestamp.selected {
-  background-color: #223B76;
+  background-color: #223b76;
   color: white;
   outline: none;
-  border: 1px solid #223B76;
+  border: 1px solid #223b76;
 }
 
 @media (max-width: 580px) {
@@ -349,11 +354,11 @@
 }
 
 .pickup.selected {
-  border: 1px solid #223B76;
+  border: 1px solid #223b76;
 }
 
 .pickup.selected .pickup__estimate {
-  border-top: 1px solid #223B76;
+  border-top: 1px solid #223b76;
 }
 
 .pickup + .pickup {
@@ -371,12 +376,12 @@
 }
 
 .pickup__info-distance svg {
-   transform: translateY(-5px);
-   transition: transform;
+  transform: translateY(-5px);
+  transition: transform;
 }
 
 .pickup:hover .pickup__info-distance svg {
-   animation: hoverDistanceAnimation 1s infinite;
+  animation: hoverDistanceAnimation 1s infinite;
 }
 
 .pickup.selected .pickup__info-distance svg {

@@ -607,11 +607,19 @@ $(function () {
 		beforeShowDay: (data) => {
 			return [!data.toDateString().includes("Sun")];
 		},
-		onSelect: () => {
-			$(".secao-agendamento > .store-list .store").remove();
+		onSelect: async () => {
+			$(".secao-agendamento > .store-list .pickup").remove();
 			$(".secao-agendamento > .store-list #sem-lojas").remove();
-			recuperarHorarios();
+
+			const orderForm = vtexjs.checkout.orderForm;
+			const datas = await getDeliveriesEstimates(
+				orderForm.shippingData.address.postalCode,
+				orderForm.shippingData.logisticsInfo,
+				orderForm.items
+			);
+			recuperarHorarios(datas);
 		},
+		
 	});
 
 	$(".secao-agendamento > .store-list > .filter > .data input")
@@ -662,7 +670,7 @@ $(function () {
 		recuperarHorarios(datas);
 	});
 
-	// recuperarHorarios();
+	//recuperarHorarios();
 
 	function setMinDateDatepicker(datas) {
 		let minDate = datas[0].Data;
@@ -732,7 +740,7 @@ $(function () {
 						_createAt: Date.now()
 					}));
 
-					$('.store .time .time-list button').removeClass('selected')
+					$('.pickup-install .time .time-list button').removeClass('selected')
 					$(e.srcElement).addClass('selected');
 
 					vtexjs.checkout.calculateShipping({
@@ -746,9 +754,9 @@ $(function () {
 				$(".secao-agendamento > .store-list").append(noTimeAvailable())
 			);
 
-		$(".store-info .btn-ver-horarios:not(.danger)").click(function () {
-			$(this).parent().next().toggleClass("hidden");
-		});
+		// $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
+		// 	$(this).parent().next().toggleClass("hidden");
+		// });
 	}
 
 	function populateStore(pickupPoint) {
@@ -756,7 +764,7 @@ $(function () {
 		const dadosEndereco = pickupPoint.DadosPickupPoint.address;
 	 
 		return `
-			<div id="${dadosEndereco.addressId}" class="pickup">
+			<div id="${dadosEndereco.addressId}" class="pickup pickup-install">
 				<div class="pickup__info">
 					<div class="pickup__info-distance">
 						<svg class="pkpmodal-pickup-point-best-marker-image" width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -776,19 +784,17 @@ $(function () {
 						<p class="pickup__info-city">${dadosEndereco.neighborhood} - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
 					</div>
 				</div>
+				<div class="time">
+					${createTimestampList(store.Horarios, `${store.Nome} | ${store.Bairro}`, store.Cep).join("\n")}
+				</div>
 			</div>
 	
-		<div class="time">
-			<p>Horários:</p>
-			<div class="time-list">
-			${createTimestampList(store.Horarios, `${store.Nome} | ${store.Bairro}`, store.Cep).join("\n")}
-			</div>
-		</div>
-		</div>`;
+		`;
 	}
 
 	function createTimestampList(horarios, store, cep) {
-		return horarios.map(function (horario) {
+		if(!horarios.length) return ['<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>'];
+		const horariosArray = horarios.map(function (horario) {
 			let timestamp = new Date(horario.HoraInicial);
 			return horario.Disponibilidade.Value !== "Nao"
 				? `<button data-store="${store}" data-cep="${cep}" class="timestamp">${timestamp.toLocaleTimeString([], {
@@ -796,7 +802,9 @@ $(function () {
 					minute: "2-digit",
 				})}</button>`
 				: "";
+		
 		});
+		return ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat('</div>');
 	}
 
 	function noTimeAvailable() {
