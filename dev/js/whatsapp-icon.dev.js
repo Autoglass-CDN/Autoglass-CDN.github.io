@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-eval("(() => {\n    let whatsappIcon = document.querySelector('#whatsapp-icon-link');\n    if(document.querySelector('.product-qd-v1-fixed-bar')) {\n        whatsappIcon.style.marginBottom = '55px'\n    }\n})();\n\n//# sourceURL=webpack:///./src/js/whatsapp-icon.js?");
+eval("(() => {\n    let whatsappIcon = document.querySelector('#whatsapp-icon-link');\n    if(document.querySelector('.product-qd-v1-fixed-bar')) {\n        whatsappIcon.style.marginBottom = '55px'\n    }\n    \n    // while(!zdFrame){\n        \n    // }\n    const aaa = () => {\n        zdFrame = document.querySelector('#launcher').contentDocument\n        if(!zdFrame) {\n            console.log('não peguei o iframe!')\n            return;\n        }\n        console.log('peguei o iframe!')\n        zdFrame.querySelector('.u-userLauncherColor').style = 'border: 4px solid #FFF !important'\n        return;\n    }\n     \n    setTimeout(aaa, 5000)\n    \n\n})();\n\n//# sourceURL=webpack:///./src/js/whatsapp-icon.js?");
 
 /***/ })
 
