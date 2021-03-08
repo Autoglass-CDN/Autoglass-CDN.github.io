@@ -11,5 +11,6 @@ module.exports = {
     'js/cep.component': path.resolve(__dirname, 'src', 'js', 'cep.component.js'),
     'js/cookie.bot': path.resolve(__dirname, 'src', 'js', 'cookie.bot.js'),
     'js/whatsapp-icon': path.resolve(__dirname, 'src', 'js', 'whatsapp-icon.js'),
+    'js/detalhe-produto': path.resolve(__dirname, 'src', 'js', 'detalhe-produto.js'),
   }
 }
