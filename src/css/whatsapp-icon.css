@@ -17,8 +17,8 @@
 }
 
 #launcher {
-  width: auto !important;
-  height: 55px !important;
+  min-width: 60px !important;
+  height: 60px !important;
 }
 
 #launcher #document button {
