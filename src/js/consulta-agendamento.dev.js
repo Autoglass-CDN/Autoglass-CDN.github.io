@@ -508,7 +508,11 @@ $(function () {
 
         $('.store').remove();
 
-        const datas = await getDeliveriesEstimates(order.shippingData.logisticsInfo, order.items);
+        const datas = await getDeliveriesEstimates(
+          order.shippingData.address.postalCode,
+          order.shippingData.logisticsInfo,
+          order.items
+        );
         setMinDateDatepicker(datas);
         recuperarHorarios();
       }
