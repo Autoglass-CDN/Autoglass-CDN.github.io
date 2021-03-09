@@ -5,6 +5,35 @@
   font-size: 14px !important;
 }
 
+.mz-modal-installation.modal-instale-na-loja {
+  max-height: 750px;
+  height: 90vh;
+}
+
+.mz-modal-installation.modal-instale-na-loja > .mz-install__button {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .store-list > ul {
+  padding-inline-start: 0;
+  overflow-x: auto;
+  height: 315px;
+  margin-bottom: 20px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .mz-install__title {
+  margin-bottom: 10px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .filter {
+  padding: 5px 0px 12px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .mz-install__info {
+  margin-bottom: 0px;
+}
+
 .header-qd-v1-valid-prices.cep-modal p {
   margin: 15px 0px;
 }
@@ -13,7 +42,7 @@
   margin-left: 5px;
 }
 
-.secao-agendamento > .store-list > .filter {
+.secao-agendamento > .filter {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,15 +52,15 @@
   padding: 20px 0px 10px;
 }
 
-.secao-agendamento > .store-list > .filter > .data {
+.secao-agendamento > .filter > .data {
   position: relative;
 }
 
-.secao-agendamento > .store-list > .filter > .data label {
+.secao-agendamento > .filter > .data label {
   font-weight: unset;
 }
 
-.secao-agendamento > .store-list > .filter > .data label::after {
+.secao-agendamento > .filter > .data label::after {
   content: "\f073";
   font-family: "FontAwesome";
   position: absolute;
@@ -44,7 +73,7 @@
   cursor: pointer;
 }
 
-.secao-agendamento > .store-list > .filter > .data input,
+.secao-agendamento > .filter > .data input,
 .cep input {
   border: 1px solid #dfdfdf;
   border-radius: 4px;
@@ -55,7 +84,7 @@
   padding: 1px 5px;
 }
 
-.secao-agendamento > .store-list > .filter > .data input:disabled,
+.secao-agendamento > .filter > .data input:disabled,
 .cep input:disabled {
   background-color: white;
   border: 0;
