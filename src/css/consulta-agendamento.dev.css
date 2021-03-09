@@ -5,6 +5,35 @@
   font-size: 14px !important;
 }
 
+.mz-modal-installation.modal-instale-na-loja {
+  max-height: 750px;
+  height: 90vh;
+}
+
+.mz-modal-installation.modal-instale-na-loja > .mz-install__button {
+  margin-top: 10px;
+  padding: 10px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .store-list > ul {
+  padding-inline-start: 0;
+  overflow-x: auto;
+  height: 315px;
+  margin-bottom: 20px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .mz-install__title {
+  margin-bottom: 10px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .filter {
+  padding: 5px 0px 12px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .mz-install__info {
+  margin-bottom: 0px;
+}
+
 .header-qd-v1-valid-prices.cep-modal p {
   margin: 15px 0px;
 }
@@ -13,7 +42,7 @@
   margin-left: 5px;
 }
 
-.secao-agendamento > .store-list > .filter {
+.secao-agendamento > .filter {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,15 +52,15 @@
   padding: 20px 0px 10px;
 }
 
-.secao-agendamento > .store-list > .filter > .data {
+.secao-agendamento > .filter > .data {
   position: relative;
 }
 
-.secao-agendamento > .store-list > .filter > .data label {
+.secao-agendamento > .filter > .data label {
   font-weight: unset;
 }
 
-.secao-agendamento > .store-list > .filter > .data label::after {
+.secao-agendamento > .filter > .data label::after {
   content: "\f073";
   font-family: "FontAwesome";
   position: absolute;
@@ -44,7 +73,7 @@
   cursor: pointer;
 }
 
-.secao-agendamento > .store-list > .filter > .data input,
+.secao-agendamento > .filter > .data input,
 .cep input {
   border: 1px solid #dfdfdf;
   border-radius: 4px;
@@ -55,7 +84,7 @@
   padding: 1px 5px;
 }
 
-.secao-agendamento > .store-list > .filter > .data input:disabled,
+.secao-agendamento > .filter > .data input:disabled,
 .cep input:disabled {
   background-color: white;
   border: 0;
@@ -100,6 +129,12 @@
   padding: 10px 15px;
   transition: ease;
 }
+
+.secao-agendamento .time > .texto-horarios-indisponiveis {
+  color: #929292;
+  font-weight: bold;
+}
+
 .secao-agendamento .time > p {
   margin-bottom: 5px;
   margin-top: 0;
@@ -115,8 +150,13 @@
   font-weight: 500;
   color: #565656;
   background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+}
+
+.secao-agendamento .time-list > .timestamp:hover {
   border: 1px solid #929292;
 }
+
 .secao-agendamento .hidden {
   display: none;
 }
@@ -347,6 +387,28 @@
   border: 1px solid #f4f4f4;
   border-radius: 4px;
   cursor: pointer;
+}
+
+.pickup:hover {
+  border: 1px solid #c4c4c4;
+}
+
+.pickup.selected {
+  border: 1px solid #223b76;
+}
+
+.pickup.selected .pickup__estimate {
+  border-top: 1px solid #223b76;
+}
+
+.pickup + .pickup {
+  margin-top: 10px;
+}
+
+.pickup-install {
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  cursor: default;
 }
 
 .pickup:hover {
