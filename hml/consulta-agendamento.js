@@ -589,11 +589,21 @@ $(function () {
       x = vtexjs.checkout.orderForm.items;
     }
 
-    estimateDate(address.logisticsInfo, x).then(recuperarHorarios);
+    getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x)
+      .then((datas) => {
+        setMinDateDatepicker(datas);
+        recuperarHorarios();
+      });
+
     // Evento lançado pelo componente de cep
     $(window).on('cep-finsh-load', async e => {
       const orderForm = e.originalEvent.detail;
-      await estimateDate(orderForm.shippingData.logisticsInfo, orderForm.items);
+      const datas = await getDeliveriesEstimates(
+        orderForm.shippingData.address.postalCode,
+        orderForm.shippingData.logisticsInfo,
+        orderForm.items
+      );
+      setMinDateDatepicker(datas);
       recuperarHorarios();
     });
   }
@@ -601,78 +611,33 @@ $(function () {
   // Evento lançado pelo componente de cep
   $(window).on('cep-updated', async e => {
     const orderForm = e.originalEvent.detail;
-    await estimateDate(orderForm.shippingData.logisticsInfo, orderForm.items);
+    const datas = await getDeliveriesEstimates(
+      orderForm.shippingData.address.postalCode,
+      orderForm.shippingData.logisticsInfo,
+      orderForm.items
+    );
+    setMinDateDatepicker(datas);
     recuperarHorarios();
   });
 
-  async function estimateDate(logisticsInfo, items) {
-    let itemsSimulation = [];
-
-    if (items && items.length) {
-      itemsSimulation = items.map(x => ({
-        quantity: x.quantity,
-        seller: x.seller,
-        id: x.id
-      }));
-    } else {
-      const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
-      // 12685 -> Produto de Instalação
-      const installmentProduct = await vtexjs.catalog.getProductWithVariations(12685);
-
-      itemsSimulation = [
-        {
-          quantity: 1,
-          seller: currentProduct.skus[0].sellerId,
-          id: currentProduct.skus[0].sku
-        },
-        {
-          quantity: 1,
-          seller: installmentProduct.skus[0].sellerId,
-          id: installmentProduct.skus[0].sku
-        }
-      ]
-    }
-
-    const res = await $.ajax({
-      type: 'POST',
-      url: '/api/checkout/pub/orderForms/simulation',
-      dataType: 'json',
-      contentType: 'application/json',
-      data: JSON.stringify({
-        country: 'BRA',
-        items: itemsSimulation,
-        postalCode: address.postalCode
-      })
-    });
-
-    let logistic = res.logisticsInfo && res.logisticsInfo.length ? res.logisticsInfo[0] : logisticsInfo[0];
-
-    if (logistic) {
-      let sla = logistic.slas[0];
-
-      if (sla) {
-        let estimate = sla.shippingEstimate;
-        let numberOfDays = +estimate.replace('bd', '');
-
-        let date = new Date();
-
-        tomorrow.setDate(date.getDate() + numberOfDays);
-
-        $(".secao-agendamento > .store-list > .filter > .data input")
-          .datepicker('option', 'minDate', tomorrow);
-
-        $(".secao-agendamento > .store-list > .filter > .data input")
-          .datepicker('refresh');
-
-        $(".secao-agendamento > .store-list > .filter > .data input").datepicker(
-          "setDate",
-          tomorrow
-        );
-      }
-    }
-  }
-
   recuperarHorarios();
+
+  function setMinDateDatepicker(datas) {
+    let minDate = datas[0].Data;
+
+    minDate = datas && datas.length
+      ? datas[0].Data
+      : tomorrow;
+
+    $(".secao-agendamento > .store-list > .filter > .data input")
+      .datepicker('option', 'minDate', minDate);
+
+    $(".secao-agendamento > .store-list > .filter > .data input")
+      .datepicker('refresh');
+
+    $(".secao-agendamento > .store-list > .filter > .data input")
+      .datepicker("setDate", minDate);
+  }
 
   function recuperarHorarios() {
     $.ajax({
@@ -881,42 +846,44 @@ $(function () {
   const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
   if (address) {
-    Carregar(address.postalCode);
+    getDeliveriesEstimates(address.postalCode, undefined, undefined)
+      .then((datas) => {
+        setDateDatepicker(datas);
+        Carregar(address.postalCode);
+      });
   } else {
     // Evento lançado pelo componente de cep
-    $(window).on('cep-finish-load', e => {
+    $(window).on('cep-finish-load', async (e) => {
       const orderForm = e.originalEvent.detail;
-      estimateDate(orderForm.shippingData.logisticsInfo);
+      const dates = await getDeliveriesEstimates(
+        orderForm.shippingData.address.postalCode,
+        orderForm.shippingData.logisticsInfo,
+        orderForm.items
+      );
+      setDateDatepicker(dates);
       Carregar(orderForm.shippingData.address.postalCode);
     });
   }
 
   // Evento lançado pelo componente de cep
-  $(window).on('cep-updated', e => {
+  $(window).on('cep-updated', async (e) => {
     const orderForm = e.originalEvent.detail;
-    estimateDate(orderForm.shippingData.logisticsInfo);
+    const dates = await getDeliveriesEstimates(
+      orderForm.shippingData.address.postalCode,
+      orderForm.shippingData.logisticsInfo,
+      orderForm.items
+    );
+    setDateDatepicker(dates);
     Carregar(orderForm.shippingData.address.postalCode);
   });
 
-  function estimateDate(logisticsInfo) {
-    let logistic = logisticsInfo[0];
+  function setDateDatepicker(datas) {
+    const minDate = datas.find(x => x.Nome.trim().toLocaleLowerCase() === 'Autoglass Móvel'.trim().toLocaleLowerCase());
 
-    if (logistic) {
-      let sla = logistic.slas.find(x => x.id.toLocaleLowerCase() === 'Autoglass Móvel'.toLocaleLowerCase());
+    maxDate = new Date(minDate.Data.getFullYear(), minDate.Data.getMonth() + 2, 0);
 
-      if (sla) {
-        let estimate = sla.shippingEstimate;
-        let numberOfDays = +estimate.replace('bd', '');
-
-        let date = new Date();
-
-        minDate.setDate(date.getDate() + numberOfDays);
-        maxDate = new Date(minDate.getFullYear(), minDate.getMonth() + 2, 0);
-
-        $('#mostrar-datas-datepicker').datepicker('option', 'maxDate', maxDate);
-        $('#mostrar-datas-datepicker').datepicker('option', 'minDate', minDate);
-      }
-    }
+    $('#mostrar-datas-datepicker').datepicker('option', 'maxDate', maxDate);
+    $('#mostrar-datas-datepicker').datepicker('option', 'minDate', minDate.Data);
   }
 
   async function Carregar(cep) {
@@ -1070,3 +1037,82 @@ $(function () {
     return [false];
   }
 });
+
+async function getDeliveriesEstimates(postalCode, logistics, items) {
+  const isConfirmationPage = location.href.includes('orderPlaced');
+  const isCheckoutPage = location.href.includes('checkout');
+  const hasCartItems = items && items.length;
+
+  const buildSimulationItems = (items) => items.map(i => ({
+    quantity: i.quantity,
+    seller: i.seller,
+    id: i.id
+  }));
+
+  let simulationItems = [];
+
+  try {
+    if (isConfirmationPage && hasCartItems) {
+      const orderForm = await $.get(`/api/checkout/pub/orders/${$("#order-id").text().trim()}`);
+      simulationItems = buildSimulationItems(orderForm.items);
+    } else if (isCheckoutPage && hasCartItems) {
+      simulationItems = buildSimulationItems(items);
+    } else {
+      // 12685 -> Produto de Instalação
+      const installmentProduct = await vtexjs.catalog.getProductWithVariations(12685);
+      const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
+
+      simulationItems = [
+        {
+          quantity: 1,
+          seller: currentProduct.skus[0].sellerId,
+          id: currentProduct.skus[0].sku
+        },
+        {
+          quantity: 1,
+          seller: installmentProduct.skus[0].sellerId,
+          id: installmentProduct.skus[0].sku
+        }
+      ];
+    }
+
+    const { logisticsInfo } = await $.ajax({
+      type: 'POST',
+      url: '/api/checkout/pub/orderForms/simulation',
+      dataType: 'json',
+      contentType: 'application/json',
+      data: JSON.stringify({
+        country: 'BRA',
+        items: simulationItems,
+        postalCode
+      })
+    });
+
+    const logistic = logisticsInfo && logisticsInfo.length
+      ? logisticsInfo[0]
+      : logistics[0];
+
+    if (logistic) {
+      const slas = logistic.slas.map(sla => {
+        const estimate = sla.shippingEstimate;
+        const numberOfDays = +estimate.replace('bd', '');
+
+        const today = new Date();
+        const shippingEstimate = new Date();
+
+        shippingEstimate.setDate(today.getDate() + numberOfDays);
+
+        return {
+          Data: shippingEstimate,
+          Nome: sla.id,
+          Tipo: sla.deliveryChannel
+        }
+      });
+
+      return slas;
+    }
+  } catch (ex) {
+    console.error('Falha ao calcular o tempo de entrega!', ex);
+    return new Date();
+  }
+}
