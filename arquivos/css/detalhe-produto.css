@@ -1,0 +1,548 @@
+html {
+  scroll-behavior: smooth;
+}
+
+/* RESET RATINGS COMPONENT */
+
+.ratings-section .ratings__slider button {
+  z-index: unset !important;
+}
+
+/* FIM RESET RATINGS COMPONENT */
+
+.white-background {
+  background: white;
+}
+
+#outras-marcas .white-background, #compre-junto .blue-background {
+  padding: 80px 30px;
+}
+
+.blue-background {
+  background: #234EB9;
+}
+
+#compre-junto .blue-background #sugestoes h2 {
+  color: white;
+  margin-bottom: 5px;
+}
+
+#compre-junto .blue-background #sugestoes p.descricao-rollout {
+  color: white;
+  margin: 0 0 24px 0;
+}
+
+.container-descricao {
+  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  max-width: 1280px;
+  padding: 0px 10px;
+  position: relative;
+  max-width: 920px;
+  padding: 80px 0;
+}
+
+.nav-container {
+  width: 100%;
+  background: #F8F8F8;
+  position: sticky;
+  top: 205px;
+  z-index: 1;
+}
+
+.tabs-descricao {
+  margin: 0 auto;
+  max-width: 920px;
+  width: 100%;
+}
+
+.tabs-descricao ul {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+}
+
+.tabs-descricao .tab-link {
+  text-decoration: none;
+  color: inherit;
+  padding: 15px 5px 0;
+  display: inline-block;
+  color: #545454;
+}
+
+.tab-link::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 2px;
+  margin-top: 13px;
+  border-radius: 2px;
+  background: #183884
+  /*var(--primary)*/
+  ;
+  transition: width 200ms ease-in-out;
+}
+
+.tab-link.tab--current {
+  color: #183884;
+  font-weight: bold;
+}
+
+.tab-link.tab--current::after, .tab-link:hover::after {
+  width: 100%;
+}
+
+section.tab-content {
+  padding: 0 15px;
+}
+
+section#outras-marcas.tab-content, section#compre-junto.tab-content {
+  display: none;
+  padding: unset;
+}
+
+section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content .slick-track {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* adiciona offset de scrolling para as seções */
+
+section.tab-content:before {
+  content: '';
+  display: block;
+  height: 280px;
+  margin: -280px 0 0;
+  visibility: hidden;
+}
+
+.tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #duvidas.tab-content h2 {
+  font-weight: var(--extra-bold);
+  color: var(--blue-700);
+  text-align: center;
+  font-size: 32px;
+  margin: 40px;
+}
+
+.tab-content h2 {
+  font-size: 24pt;
+  margin-bottom: 24px;
+}
+
+#diferenciais.tab-content h3 {
+  margin: 32px 0;
+}
+
+#diferenciais.tab-content ul, #duvidas.tab-content ul:last-child {
+  margin-left: 15px;
+}
+
+.tab-content ul>li {
+  padding-bottom: 10px;
+}
+
+#diferenciais.tab-content ul>li, #duvidas.tab-content ul:last-child>li {
+  list-style: '-   ';
+}
+
+.side-video {
+  position: absolute;
+  right: 0;
+  top: 150px;
+  width: 445px;
+  height: 250px;
+  margin-left: 30px;
+  margin-right: 10px;
+}
+
+.side-video h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+
+.info-box.left {
+  z-index: 1;
+  padding-right: 470px;
+}
+
+.info-box {
+  margin-bottom: 32px;
+}
+
+.info-box h3 {
+  margin-bottom: 10px;
+}
+
+.caracteristicas__caracteristica {
+  border: 1px solid #707070;
+  border-radius: 16px;
+  padding: 5px 15px;
+  margin: 5px 3px;
+  display: inline-block;
+}
+
+.table-zebra {
+  width: 100%;
+  text-align: center;
+}
+
+.table-zebra tr td:nth-child(1) {
+  text-align: justify;
+  padding: 10px 24px;
+}
+
+.table-zebra tr:nth-of-type(even) {
+  background-color: #F8F8F8;
+}
+
+.group.Especificacoes {
+  border-radius: 4px;
+  background: #F8F8F8;
+  text-align: justify;
+  width: 100%;
+}
+
+h4.group.Especificacoes {
+  display: none;
+}
+
+.group.Especificacoes td {
+  padding: 5px 24px 5px 15px;
+}
+
+.group.Especificacoes th {
+  padding: 5px 0 5px 16px;
+  font-weight: normal;
+  max-width: 120px;
+}
+
+.group.Especificacoes th, .group.Especificacoes td {
+  border-bottom: 1px solid #DBDBDB;
+}
+
+/* .group.Especificacoes th::before,
+.group.Especificacoes td::before {
+  content: '';
+  margin-left: 8px;
+  display: inline-block;
+} */
+
+/* .group.Especificacoes tr:last-child th,
+.group.Especificacoes tr:last-child td {
+  padding-bottom: 12px;
+} */
+
+.oculta-coluna {
+  width: 300px;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cards .card {
+  flex-basis: 50%;
+  display: inline-flex;
+  align-items: center;
+  margin: 35px 0;
+  padding-right: 25px;
+}
+
+.cards .card:nth-child(even) {
+  padding-right: 0;
+}
+
+.cards .card>img {
+  margin-right: 30px;
+}
+
+.cards .card>.card__text h4 {
+  margin-bottom: 10px;
+}
+
+/* TABLET */
+
+@media only screen and (max-width: 1200px) {
+  .nav-container {
+    top: 85px;
+  }
+}
+
+/* MOBILE */
+
+@media only screen and (max-width: 768px) {
+  .oculta-coluna {
+    width: unset;
+  }
+  .container-descricao {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+  }
+  .tabs-descricao {
+    display: none;
+  }
+  .contents .tab-content:empty {
+    display: none;
+  }
+  .contents .tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
+    padding: 24px 15px 0;
+  }
+  #avaliacoes.tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
+    background-color: white;
+  }
+  .contents .tab-content::after {
+    content: '';
+    border-bottom: 1px solid #DBDBDB;
+    display: block;
+    height: 24px;
+    background: white !important;
+  }
+  .contents .tab-content .info-box.left {
+    width: 100%;
+    padding-right: 0;
+  }
+  .contents .tab-content h2 {
+    color: #183884 !important;
+    display: flex;
+    justify-content: space-between;
+    line-height: 30px;
+    font-size: 19px;
+    padding: unset;
+    margin-bottom: unset;
+  }
+  .contents .tab-content h2::after {
+    content: '\2212';
+  }
+  .contents .tab-content.ativo h2::after {
+    content: '\002B';
+    display: unset;
+  }
+  /* .contents .tab-content.ativo h2, 
+  .contents .tab-content.ativo .blue-background h2, .contents .tab-content.ativo .white-background h2 {
+    display: flex;
+  } */
+  .contents .tab-content.ativo>*:not(h2):not(.blue-background):not(.white-background) {
+    display: none;
+  }
+  .contents .tab-content.ativo #similars>*:not(h2), .contents .tab-content.ativo #sugestoes>*:not(h2) {
+    display: none;
+  }
+  .side-video {
+    margin-left: 0;
+    margin-bottom: 32px;
+    top: 0;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    padding-top: 56.5%;
+  }
+  .side-video h3 {
+    position: absolute;
+    top: 0;
+  }
+  .side-video iframe {
+    position: absolute;
+    top: 2rem;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  .table-zebra tr td {
+    padding-left: 0 !important;
+  }
+  .group.Especificacoes th, .group.Especificacoes td {
+    padding-left: 5px;
+    padding-bottom: 5px !important;
+  }
+  .group.Especificacoes th::before, .group.Especificacoes td::before {
+    margin-left: 0;
+  }
+  #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #outras-marcas.tab-content h2, #compre-junto.tab-content h2, #duvidas.tab-content h2 {
+    font-weight: var(--bold);
+    font-size: 19px;
+    text-align: unset;
+    margin: unset;
+  }
+  p.descricao-rollout {
+    margin-top: unset;
+    font-size: unset;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .cards {
+    padding: 0 15px;
+  }
+  .cards .card:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+  .cards .card:nth-child(even)>img {
+    margin: 0 0 0 30px
+  }
+  .cards .card {
+    flex-basis: unset;
+    padding-right: unset;
+    margin: 20px 0;
+  }
+}
+
+@media only screen and (max-width: 382px) {
+  .side-video iframe {
+    top: 3rem;
+  }
+}
+
+/* Veículos Compatíveis */
+
+#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header {
+  display: flex;
+  position: relative;
+  width: 100%;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  color: #183884;
+  overflow: hidden;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 200px;
+  padding: 10px 15px;
+  border-bottom: 4px solid #F0F0F0;
+  cursor: pointer;
+  transition: border-bottom .2s ease-in-out;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  left: 0;
+  transform: rotate(180deg);
+  padding: 0px 10px;
+  background: transparent;
+  backdrop-filter: blur(2px);
+  border: none;
+  outline: none;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button:last-child {
+  transform: rotate(0deg);
+  right: 0;
+  left: unset;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div:hover {
+  background: linear-gradient(to right, #F0F0F0, #f7f7f7, #F0F0F0);
+  transition: background .3s ease-in-out;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div.active {
+  border-bottom: 4px solid #183884;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box-content>div {
+  display: none;
+  overflow: hidden;
+  height: 305px;
+  max-width: 920px;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border: 1px solid #F0F0F0;
+  overflow-x: auto;
+  padding: 25px 40px;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box-content>div.active {
+  display: flex;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box-content>div>div {
+  font-size: 14px;
+  color: #707070;
+  padding: 20px 30px 20px 0px;
+  max-width: 300px;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box-content>div>div>p {
+  color: #183884;
+  word-wrap: break-word;
+  word-break: keep-all;
+  font-weight: bold;
+}
+
+#veiculos-compativeis .veiculos-compativeis__box-content>div>div>div {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#duvidas h2+ul {
+  margin-top: 30px;
+}
+
+#duvidas h2+ul li {
+  list-style: none;
+}
+
+#duvidas h3 {
+  margin-top: 50px;
+  margin-bottom: 10px;
+}
+
+#duvidas li label {
+  padding: 15px 30px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #183884;
+  cursor: pointer;
+  position: relative;
+  width: 100%;
+  border-left: 4px solid #DBDBDB;
+}
+
+#duvidas li p {
+  display: none;
+  overflow: auto;
+  padding: 15px 30px;
+}
+
+#duvidas li input[type="checkbox"] {
+  display: none;
+}
+
+#duvidas li input[type="checkbox"]+label::after {
+  content: url("https://autoglass-cdn.github.io/arquivos/img/arrow-down-blue.svg");
+  position: absolute;
+  right: 10px;
+  transform: translateY(-50%) scale(1.5);
+  transition: transform .2s ease-in-out;
+  top: 50%;
+}
+
+#duvidas li input[type="checkbox"]:checked+label {
+  background-color: #F8F8F8;
+  border-left: 4px solid #183884;
+}
+
+#duvidas li input[type="checkbox"]:checked+label::after {
+  transform: translateY(-50%) scale(1.5) rotate(180deg);
+}
+
+#duvidas li input[type="checkbox"]:checked+label+p {
+  display: block;
+}
