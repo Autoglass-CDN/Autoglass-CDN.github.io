@@ -72,10 +72,14 @@ async function insertBrandDescription() {
         .replace('-', ' ')
         .split(' ')[0];
 
-      const brandDescription = brandList
-        .find(brand => brand.name.includes(brandName))?.metaTagDescription;
+      const brand = brandList
+        .find(brand => brand.name.includes(brandName));
 
-      document.querySelector('#descricao-marca').textContent = brandDescription;
+      if (brand) {
+        const brandDescription = brand.metaTagDescription;
+
+        document.querySelector('#descricao-marca').textContent = brandDescription;
+      }
     });
 }
 
