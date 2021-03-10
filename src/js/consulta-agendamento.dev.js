@@ -565,8 +565,8 @@ $(function () {
       return [!data.toDateString().includes("Sun")];
     },
     onSelect: async () => {
-      $(".secao-agendamento > .store-list .pickup").remove();
-      $(".secao-agendamento > .store-list #sem-lojas").remove();
+      // $(".secao-agendamento > .store-list .pickup").remove();
+      // $(".secao-agendamento > .store-list #sem-lojas").remove();
 
       const orderForm = vtexjs.checkout.orderForm;
       const datas = await getDeliveriesEstimates(
@@ -666,6 +666,9 @@ $(function () {
       }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
     })
       .done(function (data) {
+        $(".modal-instale-na-loja .store-list .pickup-install").remove();
+        $(".modal-instale-na-loja .store-list .mz-install__info").remove();
+        $(".modal-instale-na-loja .store-list #sem-lojas").remove();
         pickupPoints = slas
           .filter((sla) => sla.Tipo === "pickup-in-point")
           .map((pickupPoint) => {
@@ -697,6 +700,26 @@ $(function () {
           //   });
           // }
         });
+
+        $(".secao-agendamento > .store-list > ul").append(
+          `
+          <div class="mz-install__info">
+            <div class="mz-info__list">
+              <ul>
+                <li>
+                  Após aprovação do pagamento, nossos analistas entrarão 
+                  em contato com você para confirmar o horário de agendamento.
+                </li>
+                <li>
+                  Será realizada uma análise pelo técnico e caso
+                  haja necessidade de troca de borrachas ou sensores,
+                  o valor será cobrado na loja.
+                </li>
+              </ul>
+            </div>
+          </div>
+          `
+        );
 
         $(".timestamp").click(function (e) {
           if (window.location.href.includes("checkout")) {
