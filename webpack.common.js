@@ -12,6 +12,6 @@ module.exports = {
     'js/cookie.bot': path.resolve(__dirname, 'src', 'js', 'cookie.bot.js'),
     'js/whatsapp-icon': path.resolve(__dirname, 'src', 'js', 'whatsapp-icon.js'),
     'js/detalhe-produto': path.resolve(__dirname, 'src', 'js', 'detalhe-produto.js'),
-    'js/detalhe-produto': path.resolve(__dirname, 'src', 'js', 'ratings.js'),
+    'js/ratings': path.resolve(__dirname, 'src', 'js', 'ratings.js'),
   }
 }
