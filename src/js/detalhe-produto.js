@@ -94,9 +94,12 @@ async function getProductRefIdByProductName() {
 async function loadOptionals() {
   const opcionaisContainer = $('#opcionais');
   const productRefId = await getProductRefIdByProductName();
+  const baseUrlApi = window.location.href.includes("dev") || window.location.href.includes("mvp")
+    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app"
+    : "https://api.autoglass.com.br/integracao-b2c/api/web-app";
 
   try {
-    const { Opcionais } = await $.get(`http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/produtos/${productRefId}/opcionais`);
+    const { Opcionais } = await $.get(`${baseUrlApi}/produtos/${productRefId}/opcionais`);
 
     if (Opcionais) {
       opcionaisContainer.html(`
@@ -145,9 +148,12 @@ loadSimilars();
 $(window).on('ready', async () => {
   const veiculosCompatíveisContainer = $('#veiculos-compativeis');
   const productRefId = await getProductRefIdByProductName();
+  const baseUrlApi = window.location.href.includes("dev") || window.location.href.includes("mvp")
+    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app"
+    : "https://api.autoglass.com.br/integracao-b2c/api/web-app";
 
   try {
-    const veiculosCompativeis = await $.get(`http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/produtos/${productRefId}/veiculos-compativeis`);
+    const veiculosCompativeis = await $.get(`${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`);
 
     if (veiculosCompativeis && veiculosCompativeis.length > 0) {
       veiculosCompatíveisContainer.html(`
