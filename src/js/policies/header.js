@@ -43,24 +43,32 @@ async function _initHeaderPolicy() {
         } catch {
             // Abrir modal de Localização
             $('#btn-alterar-open-modal').click();
+
+            const closeModal = () => {
+                let Uf = readCookie('myuf');
+
+                if (!Uf) {
+                    createCookie('myuf', 'SP', 100);
+                    window.location.href = `?sc=26`;
+                }
+
+                $('.header-qd-v1-location-modal').click();
+            };
+
+            $('.modal-backdrop.fade.in').click(closeModal);
+            $('.header-qd-v1-location-modal').click(closeModal);
+            $('#header-qd-v1-location-modal .modal-header button').click(closeModal);
+
             return;
         }
     }
 
     const estado = salvarUf(Uf);
+    const vtexSC = vtexsc ? +vtexsc.replace('sc=', '') : 0;
 
-    if (estado.Sc !== +vtexsc.replace('sc=', '')) {
-        createCookie('VTEXSC', 'sc=' + estado.Sc, 100);
+    if (estado.Sc !== vtexSC) {
         window.location.href = `?sc=${estado.Sc}`;
     }
-
-    $('.modal-backdrop.fade.in').click(() => {
-        let Uf = readCookie('myuf');
-
-        if (!Uf) {
-            window.location.href = `?sc=26`;
-        }
-    });
 
     $(".use-location").click(() => {
         if (navigator.geolocation) {
@@ -96,17 +104,7 @@ function salvarUf(uf) {
 }
 
 function configurarGoogleMaps(position) {
-    const geolocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-    };
-
-    var Globo = new google.maps.Circle({
-        center: geolocation,
-        radius: 1
-    });
-
-    autocomplete.setBounds(Globo.getBounds());
+    const { geolocation, Globo } = configurarRegiaoGoogleMaps(position);
 
     (new google.maps.Geocoder()).geocode({
         location: geolocation,
@@ -120,18 +118,44 @@ function configurarGoogleMaps(position) {
     })
 }
 
+function configurarRegiaoGoogleMaps(position) {
+    const geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+    };
+
+    var Globo = new google.maps.Circle({
+        center: geolocation,
+        radius: 1
+    });
+
+    autocomplete.setBounds(Globo.getBounds());
+
+    return { geolocation, Globo };
+}
+
 function redirecionarParaPolitica(googleMapsResult) {
     let Uf;
+    let vtexsc = readCookie('VTEXSC');
+
+    if (!googleMapsResult)
+        googleMapsResult = [autocomplete.getPlace()];
 
     googleMapsResult[0].address_components.forEach((item) => {
         if (item.types[0] == "administrative_area_level_1") {
-            uf = item.long_name
+            Uf = item.long_name
         }
     });
 
     const estado = salvarUf(Uf);
 
-    window.location.href = `?sc=${estado.Sc}`;
+    const vtexSC = vtexsc ? +vtexsc.replace('sc=', '') : 0;
+
+    if (estado.Sc !== vtexSC) {
+        window.location.href = `?sc=${estado.Sc}`;
+    }
+
+    $('.header-qd-v1-location-modal').click();
 }
 
 function initAutocomplete() {

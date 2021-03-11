@@ -1,9 +1,9 @@
 #whatsapp-icon-link {
   bottom: 0px;
-  display: none;
-  margin: 20px 15px;
+  display: inherit;
+  margin: 10px 15px;
   position: fixed;
-  right: 0px;
+  left: 0px;
   z-index: 8000;
 }
 
@@ -12,13 +12,31 @@
   width: 60px;
 }
 
-@media only screen and (max-width: 992px) {
-  #launcher {
-    top: -10000px;
+.search-qd-v1-navigator-trigger {
+  bottom: 80px !important;
+}
+
+#launcher {
+  min-width: 60px !important;
+  height: 60px !important;
+}
+
+#launcher #document button {
+  border: 4px solid #fff !important;
+}
+
+@media only screen and (min-width: 1200px) {
+  #whatsapp-icon-link {
+    margin-bottom: 10px !important;
   }
 
-  #whatsapp-icon-link {
-    display: inherit;
+  #launcher {
+    margin-bottom: 10px !important;
+    bottom: 0px !important;
   }
 }
- 
+
+/* apenas para teste no ambiente de dev */
+.fixed-buttons-qd-v1 {
+  display: none;
+}
