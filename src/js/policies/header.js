@@ -96,7 +96,7 @@ function salvarUf(uf) {
 }
 
 function configurarGoogleMaps(position) {
-     const { geolocation, Globo } = configurarRegiaoGoogleMaps(position);
+    const { geolocation, Globo } = configurarRegiaoGoogleMaps(position);
 
     (new google.maps.Geocoder()).geocode({
         location: geolocation,
@@ -123,7 +123,7 @@ function configurarRegiaoGoogleMaps(position) {
 
     autocomplete.setBounds(Globo.getBounds());
 
-    return  { geolocation, Globo };
+    return { geolocation, Globo };
 }
 
 function redirecionarParaPolitica(googleMapsResult) {
@@ -131,7 +131,7 @@ function redirecionarParaPolitica(googleMapsResult) {
     let vtexsc = readCookie('VTEXSC');
 
     if (!googleMapsResult)
-        googleMapsResult = autocomplete.getPlace();
+        googleMapsResult = [autocomplete.getPlace()];
 
     googleMapsResult[0].address_components.forEach((item) => {
         if (item.types[0] == "administrative_area_level_1") {
