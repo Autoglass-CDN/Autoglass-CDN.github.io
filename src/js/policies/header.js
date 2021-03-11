@@ -43,6 +43,22 @@ async function _initHeaderPolicy() {
         } catch {
             // Abrir modal de Localização
             $('#btn-alterar-open-modal').click();
+
+            const closeModal = () => {
+                let Uf = readCookie('myuf');
+
+                if (!Uf) {
+                    createCookie('myuf', 'SP', 100);
+                    window.location.href = `?sc=26`;
+                }
+
+                $('.header-qd-v1-location-modal').click();
+            };
+
+            $('.modal-backdrop.fade.in').click(closeModal);
+            $('.header-qd-v1-location-modal').click(closeModal);
+            $('#header-qd-v1-location-modal .modal-header button').click(closeModal);
+
             return;
         }
     }
@@ -53,14 +69,6 @@ async function _initHeaderPolicy() {
         createCookie('VTEXSC', 'sc=' + estado.Sc, 100);
         window.location.href = `?sc=${estado.Sc}`;
     }
-
-    $('.modal-backdrop.fade.in').click(() => {
-        let Uf = readCookie('myuf');
-
-        if (!Uf) {
-            window.location.href = `?sc=26`;
-        }
-    });
 
     $(".use-location").click(() => {
         if (navigator.geolocation) {
@@ -145,6 +153,8 @@ function redirecionarParaPolitica(googleMapsResult) {
         createCookie('VTEXSC', 'sc=' + estado.Sc, 100);
         window.location.href = `?sc=${estado.Sc}`;
     }
+
+    $('.header-qd-v1-location-modal').click();
 }
 
 function initAutocomplete() {
