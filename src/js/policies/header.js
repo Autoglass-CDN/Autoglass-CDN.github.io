@@ -32,8 +32,6 @@ function recuperarEstado(uf) {
 }
 
 $(document).ready(async function () {
-    initAutocomplete();
-
     let Uf = $.cookie('muyf');
 
     if (!Uf) {
@@ -46,7 +44,7 @@ $(document).ready(async function () {
         }
     }
 
-    salvarUf(Uf);
+    const estado = salvarUf(Uf);
 
     $('.modal-backdrop.fade.in').click(() => {
         let Uf = $.cookie('muyf');
@@ -87,6 +85,8 @@ function salvarUf(uf) {
     $("#thestate").text(`${estado.Nome}`);
 
     $.cookie('muyf', estado.Uf);
+
+    return estado;
 }
 
 function configurarGoogleMaps(position) {
@@ -123,7 +123,7 @@ function redirecionarParaPolitica(googleMapsResult) {
         }
     });
 
-    salvarUf(Uf);
+    const estado = salvarUf(Uf);
 
     window.location.href = `?sc=${estado.Sc}`;
 }
