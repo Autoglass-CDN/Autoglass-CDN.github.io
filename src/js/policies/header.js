@@ -96,17 +96,7 @@ function salvarUf(uf) {
 }
 
 function configurarGoogleMaps(position) {
-    const geolocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-    };
-
-    var Globo = new google.maps.Circle({
-        center: geolocation,
-        radius: 1
-    });
-
-    autocomplete.setBounds(Globo.getBounds());
+     const { geolocation, Globo } = configurarRegiaoGoogleMaps(position);
 
     (new google.maps.Geocoder()).geocode({
         location: geolocation,
@@ -120,18 +110,41 @@ function configurarGoogleMaps(position) {
     })
 }
 
+function configurarRegiaoGoogleMaps(position) {
+    const geolocation = {
+        lat: position.coords.latitude,
+        lng: position.coords.longitude
+    };
+
+    var Globo = new google.maps.Circle({
+        center: geolocation,
+        radius: 1
+    });
+
+    autocomplete.setBounds(Globo.getBounds());
+
+    return  { geolocation, Globo };
+}
+
 function redirecionarParaPolitica(googleMapsResult) {
     let Uf;
+    let vtexsc = readCookie('VTEXSC');
+
+    if (!googleMapsResult)
+        googleMapsResult = autocomplete.getPlace();
 
     googleMapsResult[0].address_components.forEach((item) => {
         if (item.types[0] == "administrative_area_level_1") {
-            uf = item.long_name
+            Uf = item.long_name
         }
     });
 
     const estado = salvarUf(Uf);
 
-    window.location.href = `?sc=${estado.Sc}`;
+    if (estado.Sc !== +vtexsc.replace('sc=', '')) {
+        createCookie('VTEXSC', 'sc=' + estado.Sc, 100);
+        window.location.href = `?sc=${estado.Sc}`;
+    }
 }
 
 function initAutocomplete() {
