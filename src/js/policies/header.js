@@ -35,8 +35,8 @@ function recuperarEstado(uf) {
 _initHeaderPolicy();
 
 async function _initHeaderPolicy() {
-    let Uf = $.cookie('muyf');
-    let vtexsc = $.cookie('VTEXSC');
+    let Uf = readCookie('myuf');
+    let vtexsc = readCookie('VTEXSC');
 
     if (!Uf) {
         try {
@@ -54,7 +54,7 @@ async function _initHeaderPolicy() {
         window.location.href = `?sc=${estado.Sc}`;
 
     $('.modal-backdrop.fade.in').click(() => {
-        let Uf = $.cookie('muyf');
+        let Uf = readCookie('myuf');
 
         if (!Uf) {
             window.location.href = `?sc=26`;
@@ -89,7 +89,7 @@ function salvarUf(uf) {
 
     $("#thestate").text(`${estado.Nome}`);
 
-    $.cookie('muyf', estado.Uf);
+    createCookie('myuf', estado.Uf, 100);
 
     return estado;
 }
@@ -146,4 +146,26 @@ function initAutocomplete() {
     // When the user selects an address from the drop-down, populate the
     // address fields in the form.
     autocomplete.addListener('place_changed', redirecionarParaPolitica);
+}
+
+
+function createCookie(name, value, days) {
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "; expires=" + date.toGMTString();
+    }
+    else var expires = "";
+    document.cookie = name + "=" + value + expires + "; path=/";
+}
+
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
 }
