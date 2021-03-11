@@ -5,6 +5,87 @@
   font-size: 14px !important;
 }
 
+.mz-modal-installation.modal-instale-na-loja {
+  max-height: 655px;
+  height: 95vh;
+  box-sizing: border-box;
+}
+
+.mz-modal-installation.modal-instale-na-loja > .mz-install__button {
+  margin-top: 15px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.mz-modal-installation.modal-instale-na-loja
+  > .mz-install__button
+  > .mz-install__button--buy {
+  border: #43c452 solid;
+  border-width: 2px;
+  transition: all 0.2s ease-out;
+  border-radius: 6px;
+  background: #43c452;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  font-size: 16px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.mz-modal-installation.modal-instale-na-loja .mz-install__title h2 {
+  color: #757575;
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 35px;
+  margin: 0px;
+}
+
+.mz-modal-installation.modal-instale-na-loja h3 {
+  display: block;
+  font-size: 1.17em;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  margin: 0px;
+  font-weight: bold;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .to-select-msg,
+.modal-instale-na-loja > .secao-agendamento > .selected-msg
+{
+  margin-bottom: 10px;;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .store-list > ul {
+  padding-inline-start: 0;
+  overflow-x: auto;
+  height: 330px;
+  margin-left: 0px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .mz-install__title {
+  margin-bottom: 10px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .filter {
+  padding: 5px 0px 12px;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .filter .date {
+  display: inline;
+}
+
+.modal-instale-na-loja > .secao-agendamento > .store-list .mz-install__info {
+  margin-top: 15px;
+}
+
 .header-qd-v1-valid-prices.cep-modal p {
   margin: 15px 0px;
 }
@@ -13,7 +94,7 @@
   margin-left: 5px;
 }
 
-.secao-agendamento > .store-list > .filter {
+.secao-agendamento > .filter {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -23,15 +104,15 @@
   padding: 20px 0px 10px;
 }
 
-.secao-agendamento > .store-list > .filter > .data {
+.secao-agendamento > .filter > .data {
   position: relative;
 }
 
-.secao-agendamento > .store-list > .filter > .data label {
+.secao-agendamento > .filter > .data label {
   font-weight: unset;
 }
 
-.secao-agendamento > .store-list > .filter > .data label::after {
+.secao-agendamento > .filter > .data label::after {
   content: "\f073";
   font-family: "FontAwesome";
   position: absolute;
@@ -44,7 +125,7 @@
   cursor: pointer;
 }
 
-.secao-agendamento > .store-list > .filter > .data input,
+.secao-agendamento > .filter > .data input,
 .cep input {
   border: 1px solid #dfdfdf;
   border-radius: 4px;
@@ -55,7 +136,7 @@
   padding: 1px 5px;
 }
 
-.secao-agendamento > .store-list > .filter > .data input:disabled,
+.secao-agendamento > .filter > .data input:disabled,
 .cep input:disabled {
   background-color: white;
   border: 0;
@@ -95,11 +176,17 @@
   font-weight: 700;
 }
 
-.secao-agendamento .store > .time {
+.secao-agendamento .pickup > .time {
   border-top: 1px solid #dfdfdf;
   padding: 10px 15px;
   transition: ease;
 }
+
+.secao-agendamento .time > .texto-horarios-indisponiveis {
+  color: #929292;
+  font-weight: bold;
+}
+
 .secao-agendamento .time > p {
   margin-bottom: 5px;
   margin-top: 0;
@@ -115,8 +202,13 @@
   font-weight: 500;
   color: #565656;
   background-color: #ffffff;
+  border: 1px solid #c4c4c4;
+}
+
+.secao-agendamento .time-list > .timestamp:hover {
   border: 1px solid #929292;
 }
+
 .secao-agendamento .hidden {
   display: none;
 }
@@ -156,7 +248,9 @@
 
 @media (min-width: 992px) {
   .mz-modal-installation,
-  .mz-modal-advantages { width: 700px; }
+  .mz-modal-advantages {
+    width: 700px;
+  }
 }
 
 /* MOBILE */
@@ -205,10 +299,10 @@
 }
 
 .mz-install__info {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #BABABA;
-    border-radius: 6px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #bababa;
+  border-radius: 6px;
 }
 
 .mz-modal-advantages .mz-install__info {
@@ -220,28 +314,30 @@
 }
 
 .mz-install__info .mz-info__list ul li:before {
-    display: block;
-    content: '\f05a';
-    display: inline-block;
-    font-size: 1em;
-    font-style: normal;
-    font-weight: normal;
-    height: 1em;
-    text-align: center;
-    text-decoration: inherit;
-    text-rendering: optimizelegibility;
-    width: 1em;
-    font-family: 'FontAwesome';
-    margin-right: 10px;
-    font-size: 14px;
-    color: #2D4F9E;
+  display: block;
+  content: "\f05a";
+  display: inline-block;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  height: 1em;
+  text-align: center;
+  text-decoration: inherit;
+  text-rendering: optimizelegibility;
+  width: 1em;
+  font-family: "FontAwesome";
+  margin-right: 10px;
+  font-size: 14px;
+  color: #2d4f9e;
 }
 
 .mz-accesories__name {
   margin-left: 15px;
 }
 
-.mz-acessories .mz-accesories__advantages .mz-accesories__advantages--button:before {
+.mz-acessories
+  .mz-accesories__advantages
+  .mz-accesories__advantages--button:before {
   display: none;
 }
 
@@ -292,7 +388,7 @@
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  transition: height .5s ease-in-out;
+  transition: height 0.5s ease-in-out;
 }
 
 .loading-dates {
@@ -300,18 +396,19 @@
   padding: 2px;
 }
 
-.ui-state-active, .ui-widget-content .ui-state-active {
-  background: #223B76 !important;
+.ui-state-active,
+.ui-widget-content .ui-state-active {
+  background: #223b76 !important;
   color: white;
   border: none;
 }
 
 .secao-agendamento .time-list > .timestamp:focus,
 .secao-agendamento .time-list > .timestamp.selected {
-  background-color: #223B76;
+  background-color: #223b76;
   color: white;
   outline: none;
-  border: 1px solid #223B76;
+  border: 1px solid #223b76;
 }
 
 @media (max-width: 580px) {
@@ -349,11 +446,33 @@
 }
 
 .pickup.selected {
-  border: 1px solid #223B76;
+  border: 1px solid #223b76;
 }
 
 .pickup.selected .pickup__estimate {
-  border-top: 1px solid #223B76;
+  border-top: 1px solid #223b76;
+}
+
+.pickup + .pickup {
+  margin-top: 10px;
+}
+
+.pickup-install {
+  border: 1px solid #c4c4c4;
+  border-radius: 4px;
+  cursor: default;
+}
+
+.pickup:hover {
+  border: 1px solid #c4c4c4;
+}
+
+.pickup.selected {
+  border: 1px solid #223b76;
+}
+
+.pickup.selected .pickup__estimate {
+  border-top: 1px solid #223b76;
 }
 
 .pickup + .pickup {
@@ -371,12 +490,12 @@
 }
 
 .pickup__info-distance svg {
-   transform: translateY(-5px);
-   transition: transform;
+  transform: translateY(-5px);
+  transition: transform;
 }
 
 .pickup:hover .pickup__info-distance svg {
-   animation: hoverDistanceAnimation 1s infinite;
+  animation: hoverDistanceAnimation 1s infinite;
 }
 
 .pickup.selected .pickup__info-distance svg {
