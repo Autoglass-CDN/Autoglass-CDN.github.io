@@ -669,6 +669,11 @@ $(function () {
         $(".modal-instale-na-loja .store-list .pickup-install").remove();
         $(".modal-instale-na-loja .store-list .mz-install__info").remove();
         $(".modal-instale-na-loja .store-list #sem-lojas").remove();
+
+        $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b").text("");
+        $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide()
+        $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show()
+
         pickupPoints = slas
           .filter((sla) => sla.Tipo === "pickup-in-point")
           .map((pickupPoint) => {
@@ -722,19 +727,25 @@ $(function () {
         );
 
         $(".timestamp").click(function (e) {
-          if (window.location.href.includes("checkout")) {
-            $("body").removeClass("mz-bo-on mz-as-on mz-il-on");
-          }
+          // if (window.location.href.includes("checkout")) {
+          //   // $("body").removeClass("mz-bo-on mz-as-on mz-il-on");
+            
+          // }
 
           $(".mz-install__button--buy").click((e) => e.preventDefault());
 
           const loja = $(this).attr("data-store");
           const cep = $(this).attr("data-cep");
+          const lojaBeauty = $(this).attr("data-friendly-name");
           const horario = $(this).html();
           const date = $(".secao-agendamento .data input")
             .datepicker("getDate")
             .toISOString()
             .split("T")[0];
+          const date_formated = $(".secao-agendamento .data input")
+            .datepicker("getDate")
+            .toLocaleDateString()
+            // .split("T")[0];
 
           localStorage.setItem(
             "AG_SelectedHour",
@@ -749,6 +760,10 @@ $(function () {
           $(".pickup-install .time .time-list button").removeClass("selected");
           $(e.srcElement).addClass("selected");
 
+          $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b")
+            .text(lojaBeauty + " - " + date_formated + " - " + horario);
+          $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").hide()
+          $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").show()
           vtexjs.checkout
             .calculateShipping({
               postalCode: cep,
@@ -798,37 +813,43 @@ $(function () {
 					</div>
 				</div>
 				<div class="time">
-					${createTimestampList(
+					${store
+            ? createTimestampList(
             store.Horarios,
             `${store.Nome} | ${store.Bairro}`,
-            store.Cep
-          ).join("\n")}
+            store.Cep,
+            pickupPoint.DadosPickupPoint.friendlyName).join("\n")
+            : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>')
+          }          
 				</div>
 			</div>
 	
 		`;
   }
 
-  function createTimestampList(horarios, store, cep) {
-    if (!horarios.length)
-      return [
-        '<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>',
-      ];
-    const horariosArray = horarios.map(function (horario) {
-      let timestamp = new Date(horario.HoraInicial);
-      return horario.Disponibilidade.Value !== "Nao"
-        ? `<button data-store="${store}" data-cep="${cep}" class="timestamp">${timestamp.toLocaleTimeString(
-            [],
-            {
-              hour: "2-digit",
-              minute: "2-digit",
-            }
-          )}</button>`
-        : "";
-    });
-    return ['<p>Horários:</p><div class="time-list">']
-      .concat(horariosArray)
-      .concat("</div>");
+  function createTimestampList(horarios, store, cep, friendlyName) {
+    let horariosDisponiveis = false
+    let horariosArray = []
+    if (horarios.length) {
+      horariosArray = horarios.map(function (horario) {
+        let timestamp = new Date(horario.HoraInicial);
+        if(horario.Disponibilidade.Value !== "Nao") {
+          horariosDisponiveis = true;
+          return `<button data-store="${store}" data-cep="${cep}" data-friendly-name="${friendlyName}" class="timestamp">
+            ${timestamp.toLocaleTimeString(
+              [],
+              {
+                hour: "2-digit",
+                minute: "2-digit",
+              }
+            )}</button>`
+        } else {
+          return "";
+        }
+      })};
+    return horariosDisponiveis
+      ? ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat("</div>")
+      : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>');
   }
 
   function noTimeAvailable() {
