@@ -50,8 +50,10 @@ async function _initHeaderPolicy() {
 
     const estado = salvarUf(Uf);
 
-    if (estado.Sc !== +vtexsc.replace('sc='))
+    if (estado.Sc !== +vtexsc.replace('sc=')) {
+        createCookie('VTEXSC', 'sc=' + estado.Sc, 100);
         window.location.href = `?sc=${estado.Sc}`;
+    }
 
     $('.modal-backdrop.fade.in').click(() => {
         let Uf = readCookie('myuf');
