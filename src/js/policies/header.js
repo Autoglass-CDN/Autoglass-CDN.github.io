@@ -64,8 +64,9 @@ async function _initHeaderPolicy() {
     }
 
     const estado = salvarUf(Uf);
+    const vtexSC = vtexsc ? +vtexsc.replace('sc=', '') : 0;
 
-    if (estado.Sc !== +vtexsc.replace('sc=', '')) {
+    if (estado.Sc !== vtexSC) {
         createCookie('VTEXSC', 'sc=' + estado.Sc, 100);
         window.location.href = `?sc=${estado.Sc}`;
     }
@@ -149,7 +150,9 @@ function redirecionarParaPolitica(googleMapsResult) {
 
     const estado = salvarUf(Uf);
 
-    if (estado.Sc !== +vtexsc.replace('sc=', '')) {
+    const vtexSC = vtexsc ? +vtexsc.replace('sc=', '') : 0;
+
+    if (estado.Sc !== vtexSC) {
         createCookie('VTEXSC', 'sc=' + estado.Sc, 100);
         window.location.href = `?sc=${estado.Sc}`;
     }
