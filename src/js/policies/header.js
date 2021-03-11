@@ -33,7 +33,7 @@ function recuperarEstado(uf) {
 
 $(async function () {
     let Uf = $.cookie('muyf');
-    let vtexsc = $;cookie('VTEXSC');
+    let vtexsc = $.cookie('VTEXSC');
 
     if (!Uf) {
         try {
