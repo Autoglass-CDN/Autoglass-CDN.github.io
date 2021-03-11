@@ -31,7 +31,7 @@ function recuperarEstado(uf) {
     return ESTADOS.find(estado => estado.GoogleMaps === uf || estado.Nome === uf || estado.Uf === uf);
 }
 
-//$(document).ready(async function () {
+$(async function () {
     let Uf = $.cookie('muyf');
     let vtexsc = $;cookie('VTEXSC');
 
@@ -73,7 +73,7 @@ function recuperarEstado(uf) {
     $("#autocomplete").on("click", function (e) {
         $("#intro-modal-text").fadeOut()
     });
-//});
+});
 
 async function recuperarEstadoPelaIpInfo() {
     const ipInfo = await $.get('https://ipinfo.io?token=c94f35a2492f58');
