@@ -31,8 +31,9 @@ function recuperarEstado(uf) {
     return ESTADOS.find(estado => estado.GoogleMaps === uf || estado.Nome === uf || estado.Uf === uf);
 }
 
-$(document).ready(async function () {
+//$(document).ready(async function () {
     let Uf = $.cookie('muyf');
+    let vtexsc = $;cookie('VTEXSC');
 
     if (!Uf) {
         try {
@@ -45,6 +46,9 @@ $(document).ready(async function () {
     }
 
     const estado = salvarUf(Uf);
+
+    if (estado.Sc !== +vtexsc.replace('sc='))
+        window.location.href = `?sc=${estado.Sc}`;
 
     $('.modal-backdrop.fade.in').click(() => {
         let Uf = $.cookie('muyf');
@@ -69,9 +73,7 @@ $(document).ready(async function () {
     $("#autocomplete").on("click", function (e) {
         $("#intro-modal-text").fadeOut()
     });
-
-    window.location.href = `?sc=${estado.Sc}`;
-});
+//});
 
 async function recuperarEstadoPelaIpInfo() {
     const ipInfo = await $.get('https://ipinfo.io?token=c94f35a2492f58');
