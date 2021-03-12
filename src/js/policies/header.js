@@ -33,19 +33,15 @@ function recuperarEstado(uf) {
 
 let executed = false;
 
-$(document).on('ready', function () {
+const init = () => {
     if (!executed) {
         executed = true;
         _initHeaderPolicy();
     }
-});
+}
 
-setTimeout(() => {
-    if (!executed) {
-        executed = true;
-        _initHeaderPolicy();
-    }
-}, 3000);
+$(document).on('ready', init);
+$(document).on('load', init);
 
 async function _initHeaderPolicy() {
     let Uf = readCookie('myuf');
