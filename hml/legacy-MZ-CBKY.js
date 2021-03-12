@@ -1258,17 +1258,24 @@ try {
 			const [sku1 = 0, sku2 = 0] = items.map(x => x.price);
 			const priceToPay = (sku1 + sku2) / 100;
 
+            let priceToPayFormatted = qd_number_format(priceToPay, 2, ',', '.');
+
+            $(".accessories-qd-v1-wrapper .box-preco-atualizado .selected-value")
+                .text(priceToPayFormatted);
+            $(".mz-acessories__prices--totalPrice")
+                .text(priceToPayFormatted);
+
 			if (priceToPay > 200 && priceToPay <= 500) {
 				const number = +priceToPay.toString()[0];
 
 				return {
 					number,
-					price: qd_number_format(priceToPay / number, 2, ',', ' ')
+					price: qd_number_format(priceToPay / number, 2, ',', '.')
 				}
 			} else if (priceToPay > 500) {
 				return {
 					number: 5,
-					price: qd_number_format(priceToPay / 5, 2, ',', ' ')
+					price: qd_number_format(priceToPay / 5, 2, ',', '.')
 				};
 			} else {
 				return { number: 0 };
@@ -1278,9 +1285,9 @@ try {
 			var wrapperPrice = $(".mz-acessories__prices");
 			var largestShare = installement.pop();
 			var largestShareValue = largestShare.value = largestShare.value.toString();
-			largestShareValue = qd_number_format(largestShareValue / 100, 2, ",", " ");
+			largestShareValue = qd_number_format(largestShareValue / 100, 2, ",", ".");
 			var firstByForPrice = parseFloat(largestShare.total) + parseFloat(largestShare.value);
-			firstByForPrice = qd_number_format(firstByForPrice / 100, 2, ",", " ");
+			firstByForPrice = qd_number_format(firstByForPrice / 100, 2, ",", ".");
 			var lineByFor = $('<span class="mz-acessories__prices--byfor">R$ ' + firstByForPrice + "</span>");
 			lineByFor.insertBefore($(".mz-acessories__prices--totalPrice"));
 
