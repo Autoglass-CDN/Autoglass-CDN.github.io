@@ -31,7 +31,21 @@ function recuperarEstado(uf) {
     return ESTADOS.find(estado => estado.GoogleMaps === uf || estado.Nome === uf || estado.Uf === uf);
 }
 
-$(document).on('ready', function () { _initHeaderPolicy() });
+let executed = false;
+
+$(document).on('ready', function () {
+    if (!executed) {
+        executed = true;
+        _initHeaderPolicy();
+    }
+});
+
+setTimeout(() => {
+    if (!executed) {
+        executed = true;
+        _initHeaderPolicy();
+    }
+}, 1000);
 
 async function _initHeaderPolicy() {
     let Uf = readCookie('myuf');
