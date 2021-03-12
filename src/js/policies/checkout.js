@@ -1,7 +1,8 @@
 const testLogs = true;
 
-// { nome: 'ES', Unidade: 'NW01', cMin: 00000000, cMax: 99999999, Uf: 'Espírito Santo', salesChannel: 0, imSpecial: false },
-// Cuidado com a ordem dos campos, influencia na política escolhida
+//{nome:'ES',cMin:00000000,cMax:99999999,Uf:'Espírito Santo',salesChannel:0,imSpecial:false},
+// Cuidado com a ordem do array, influência na política que será escolhida
+
 const States = [
     { nome: 'ES', Unidade: 'PG06', cMin: 29000000, cMax: 29999999, Uf: 'Espírito Santo', salesChannel: 3 },
     { nome: 'MG', Unidade: 'MG38', cMin: 30000000, cMax: 39999999, Uf: 'Minas Gerais', salesChannel: 2 },
@@ -46,21 +47,21 @@ const States = [
     { nome: 'SC', Unidade: 'MG31', cMin: 88000000, cMax: 89999999, Uf: 'Santa Catarina', salesChannel: 24 },
     { nome: 'SE', Unidade: 'MG07', cMin: 49000000, cMax: 49999999, Uf: 'Sergipe', salesChannel: 25 },
 
-    { nome: 'SP2', Unidade: 'NW01', cMin: 04000000, cMax: 04999999, Uf: 'São Paulo', salesChannel: 27, imSpecial: true },
-    { nome: 'SP2', Unidade: 'NW01', cMin: 05600000, cMax: 05899999, Uf: 'São Paulo', salesChannel: 27, imSpecial: true },
-    { nome: 'SP2', Unidade: 'NW01', cMin: 06750000, cMax: 06799999, Uf: 'São Paulo', salesChannel: 27, imSpecial: true },
-    { nome: 'SP2', Unidade: 'NW01', cMin: 06900000, cMax: 06949999, Uf: 'São Paulo', salesChannel: 27, imSpecial: true },
+    { nome: 'SP2', Unidade: 'NW01', cMin: 4000000, cMax: 4999999, Uf: 'São Paulo', salesChannel: 27, imSpecial: true },
+    { nome: 'SP2', Unidade: 'NW01', cMin: 5600000, cMax: 5899999, Uf: 'São Paulo', salesChannel: 27, imSpecial: true },
+    { nome: 'SP2', Unidade: 'NW01', cMin: 6750000, cMax: 6799999, Uf: 'São Paulo', salesChannel: 27, imSpecial: true },
+    { nome: 'SP2', Unidade: 'NW01', cMin: 6900000, cMax: 6949999, Uf: 'São Paulo', salesChannel: 27, imSpecial: true },
 
-    { nome: 'SP3', Unidade: 'NW02', cMin: 02200000, cMax: 02999999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
-    { nome: 'SP3', Unidade: 'NW02', cMin: 05100000, cMax: 05299999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
-    { nome: 'SP3', Unidade: 'NW02', cMin: 06400000, cMax: 06549999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
-    { nome: 'SP3', Unidade: 'NW02', cMin: 06600000, cMax: 06649999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
-    { nome: 'SP3', Unidade: 'NW02', cMin: 06850000, cMax: 06949999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
-    { nome: 'SP3', Unidade: 'NW02', cMin: 07700000, cMax: 07749999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
+    { nome: 'SP3', Unidade: 'NW02', cMin: 2200000, cMax: 2999999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
+    { nome: 'SP3', Unidade: 'NW02', cMin: 5100000, cMax: 5299999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
+    { nome: 'SP3', Unidade: 'NW02', cMin: 6400000, cMax: 6549999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
+    { nome: 'SP3', Unidade: 'NW02', cMin: 6600000, cMax: 6649999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
+    { nome: 'SP3', Unidade: 'NW02', cMin: 6850000, cMax: 6949999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
+    { nome: 'SP3', Unidade: 'NW02', cMin: 7700000, cMax: 7749999, Uf: 'São Paulo', salesChannel: 28, imSpecial: true },
 
-    { nome: 'SP4', Unidade: 'NW04', cMin: 03000000, cMax: 03999999, Uf: 'São Paulo', salesChannel: 29, imSpecial: true },
-    { nome: 'SP4', Unidade: 'NW04', cMin: 07000000, cMax: 07399999, Uf: 'São Paulo', salesChannel: 29, imSpecial: true },
-    { nome: 'SP4', Unidade: 'NW04', cMin: 08500000, cMax: 08599999, Uf: 'São Paulo', salesChannel: 29, imSpecial: true },
+    { nome: 'SP4', Unidade: 'NW04', cMin: 3000000, cMax: 3999999, Uf: 'São Paulo', salesChannel: 29, imSpecial: true },
+    { nome: 'SP4', Unidade: 'NW04', cMin: 7000000, cMax: 7399999, Uf: 'São Paulo', salesChannel: 29, imSpecial: true },
+    { nome: 'SP4', Unidade: 'NW04', cMin: 8500000, cMax: 8599999, Uf: 'São Paulo', salesChannel: 29, imSpecial: true },
 
     { nome: 'SP5', Unidade: 'SP01', cMin: 12900000, cMax: 12929999, Uf: 'São Paulo', salesChannel: 30, imSpecial: true },
     { nome: 'SP5', Unidade: 'SP01', cMin: 12940000, cMax: 12954999, Uf: 'São Paulo', salesChannel: 30, imSpecial: true },
@@ -76,13 +77,13 @@ const States = [
     { nome: 'SP5', Unidade: 'SP01', cMin: 13480000, cMax: 13489999, Uf: 'São Paulo', salesChannel: 30, imSpecial: true },
     { nome: 'SP5', Unidade: 'SP01', cMin: 13910000, cMax: 13919999, Uf: 'São Paulo', salesChannel: 30, imSpecial: true },
 
-    { nome: 'SP6', Unidade: 'NW06', cMin: 01000000, cMax: 01599999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
-    { nome: 'SP6', Unidade: 'NW06', cMin: 02000000, cMax: 02099999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
-    { nome: 'SP6', Unidade: 'NW06', cMin: 02055000, cMax: 02055001, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
-    { nome: 'SP6', Unidade: 'NW06', cMin: 05000000, cMax: 05099999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
-    { nome: 'SP6', Unidade: 'NW06', cMin: 05075020, cMax: 05075020, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
-    { nome: 'SP6', Unidade: 'NW06', cMin: 05300000, cMax: 05599999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
-    { nome: 'SP6', Unidade: 'NW06', cMin: 06000000, cMax: 06299999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
+    { nome: 'SP6', Unidade: 'NW06', cMin: 1000000, cMax: 1599999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
+    { nome: 'SP6', Unidade: 'NW06', cMin: 2000000, cMax: 2099999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
+    { nome: 'SP6', Unidade: 'NW06', cMin: 2055000, cMax: 2055001, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
+    { nome: 'SP6', Unidade: 'NW06', cMin: 5000000, cMax: 5099999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
+    { nome: 'SP6', Unidade: 'NW06', cMin: 5075020, cMax: 5075020, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
+    { nome: 'SP6', Unidade: 'NW06', cMin: 5300000, cMax: 5599999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
+    { nome: 'SP6', Unidade: 'NW06', cMin: 6000000, cMax: 6299999, Uf: 'São Paulo', salesChannel: 31, imSpecial: true },
 
     { nome: 'SP7', Unidade: 'NW07', cMin: 09000000, cMax: 09999999, Uf: 'São Paulo', salesChannel: 32, imSpecial: true },
 
@@ -133,12 +134,23 @@ const States = [
 ];
 const SPs = ["SP", "SP1", "SP2", "SP3", "SP4", "SP5", "SP6", "SP7", "SP8", "SP9", "SP10", "SP11", "SP12", "SP13"];
 
+function readCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    }
+    return null;
+}
+
 function findSalesChannelByCep(cep) {
     var cleanCep = parseInt(cep.replace(/\D+/g, ''));
     var city = States.find(cd => cleanCep >= cd.cMin && cleanCep <= cd.cMax);
 
     if (city) {
-        // Se o cep estiver no range, o valor da variável city será a primeira cidade que fez match com a expressão usada no método `find`
+        // Se o cep estiver no range, o valor da variável cidade será a primeira cidade que fez match com a expressão usada no método `find`
         return city;
     } else {
         console.error(`Infelizmente não conseguimos detectar seu CEP. Tente novamente.`);
@@ -158,6 +170,16 @@ async function changeSalesChannel(orderForm) {
 
     if (!postalCode) {
         console.error('Cep não encontrado: ', postalCode);
+
+        const myuf = readCookie('myuf');
+
+        const city = States.find(ct => ct.nome === myuf);
+
+        $('#myplace').text(city.Uf);
+
+        if (city.salesChannel !== +salesChannel)
+            await reAddCartItems(items, city.salesChannel);
+
         return;
     }
 
@@ -235,40 +257,41 @@ function startAnimation() {
     $('.summary-template-holder').css('opacity', 0);
     $('.cart-template-holder').css('opacity', 0);
 
-    // $("#theviewblocker").attr("style", `
-    //     display: block;
-    //     background-color: rgba(255,255,255,.8);
-    //     position: fixed;
-    //     left: 0;
-    //     right: 0;
-    //     top: 0;
-    //     bottom: 0;
-    //     width: 100%;
-    //     backdrop-filter: blur(9px);
-    //     height: 100%;
-    //     z-index: 99;`
-    // );
-
-    // $("#thegif").attr("style", `
-    //     display: block;
-    //     position: fixed;
-    //     z-index: 9999999;
-    //     backdrop-filter: blur(0px);
-    //     height: auto;
-    //     margin: auto;
-    //     top: 50%;
-    //     left: 50%;
-    //     transform: translate(-50%, -50%);
-    // `);
+    /*   $("#theviewblocker").attr("style", `
+           display: block;
+           background-color: rgba(255,255,255,.8);
+           position: fixed;
+           left: 0;
+           right: 0;
+           top: 0;
+           bottom: 0;
+           width: 100%;
+           backdrop-filter: blur(9px);
+           height: 100%;
+           z-index: 99;`
+       );
+   
+       $("#thegif").attr("style", `
+           display: block;
+           position: fixed;
+           z-index: 9999999;
+           backdrop-filter: blur(0px);
+           height: auto;
+           margin: auto;
+           top: 50%;
+           left: 50%;
+           transform: translate(-50%, -50%);
+       `); */
 }
 
 function finishAnimation() {
     $('.summary-template-holder').css('opacity', 1);
     $('.cart-template-holder').css('opacity', 1);
 
-    // $("#thegif").attr("style", "display:none");
-    // $("#theviewblocker").attr("style", "display:none");
-    // $(".product-item").css({ "visibility": "visible" });
+    /*   $("#thegif").attr("style", "display:none");
+       $("#theviewblocker").attr("style", "display:none");
+       $(".product-item").css({ "visibility": "visible" });*/
 }
 
 $(window).on("orderFormUpdated.vtex", (_, oF) => changeSalesChannel(oF));
+
