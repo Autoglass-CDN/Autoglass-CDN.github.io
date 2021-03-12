@@ -1191,10 +1191,10 @@ try {
 				$('#accessorySelect input[type="checkbox"]').trigger("click")
 			}, 100);
 			$('#accessorySelect input[type="checkbox"]').attr("checked", true);
-			setTimeout(function () {
-				var totalPrice = $(".accessories-qd-v1-wrapper .box-preco-atualizado .selected-value").text();
-				$(".mz-acessories__prices--totalPrice").text(totalPrice)
-			}, 2e3);
+			// setTimeout(function () {
+			// 	var totalPrice = $(".accessories-qd-v1-wrapper .box-preco-atualizado .selected-value").text();
+			// 	$(".mz-acessories__prices--totalPrice").text(totalPrice)
+			// }, 2e3);
 			$(".acessories-qd-v1-image-link").removeAttr("href");
 			$(".acessories-qd-v1-image-link").css("cursor", "default")
 		},
