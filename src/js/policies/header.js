@@ -100,9 +100,12 @@ async function _initHeaderPolicy() {
         }
     });
 
-    $("#autocomplete").on("click", function (e) {
-        $("#intro-modal-text").fadeOut()
-    });
+    const mq = window.matchMedia("(max-width: 1100px)");
+    if (mq.matches) {
+        $("#autocomplete").on("click", function (e) {
+            $("#intro-modal-text").fadeOut()
+        });
+    }
 
     // Limita as sugestões do autocomplete para o Brasil
     // no modal de alteração de Estado
