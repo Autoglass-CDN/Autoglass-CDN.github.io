@@ -47,8 +47,10 @@ async function _initHeaderPolicy() {
                 let Uf = readCookie('myuf');
 
                 if (!Uf) {
+                    // Caso não tenha Selecionado nada,
+                    // redireciona para o NW04 - 29
                     createCookie('myuf', 'SP', 100);
-                    window.location.href = `?sc=26`;
+                    window.location.href = `?sc=29`;
                 }
 
                 $('.header-qd-v1-location-modal').click();
