@@ -35,7 +35,6 @@ $(document).on('ready', function () { _initHeaderPolicy() });
 
 async function _initHeaderPolicy() {
     let Uf = readCookie('myuf');
-    let vtexsc = readCookie('VTEXSC');
 
     if (!Uf) {
         try {
@@ -64,9 +63,11 @@ async function _initHeaderPolicy() {
     }
 
     const estado = salvarUf(Uf);
-    const vtexSC = vtexsc ? +vtexsc.replace('sc=', '') : 0;
 
-    if (estado.Sc !== vtexSC) {
+    let vtexsc = readCookie('VTEXSC');
+    const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
+
+    if (estado.Sc !== policyOnSite) {
         window.location.href = `?sc=${estado.Sc}`;
     }
 
@@ -149,9 +150,9 @@ function redirecionarParaPolitica(googleMapsResult) {
 
     const estado = salvarUf(Uf);
 
-    const vtexSC = vtexsc ? +vtexsc.replace('sc=', '') : 0;
+    const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
 
-    if (estado.Sc !== vtexSC) {
+    if (estado.Sc !== policyOnSite) {
         window.location.href = `?sc=${estado.Sc}`;
     }
 
