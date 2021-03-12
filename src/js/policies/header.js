@@ -103,12 +103,14 @@ async function _initHeaderPolicy() {
         $("#intro-modal-text").fadeOut()
     });
 
+    // Limita as sugestões do autocomplete para o Brasil
+    // no modal de alteração de Estado
     var AutocompleteCircle = new google.maps.Circle({
         center: {
-            lat: -14.961975830180606,
-            lng: -50.78656993849165
+            lat: -10.35583364623009,
+            lng: -51.26453721934701
         },
-        radius: 280000 * 10,
+        radius: 262000 * 10,
     })
 
     autocomplete.setBounds(AutocompleteCircle.getBounds());
