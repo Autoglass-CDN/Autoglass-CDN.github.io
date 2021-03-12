@@ -102,6 +102,16 @@ async function _initHeaderPolicy() {
     $("#autocomplete").on("click", function (e) {
         $("#intro-modal-text").fadeOut()
     });
+
+    var AutocompleteCircle = new google.maps.Circle({
+        center: {
+            lat: -14.961975830180606,
+            lng: -50.78656993849165
+        },
+        radius: 280000 * 10,
+    })
+
+    autocomplete.setBounds(AutocompleteCircle.getBounds());
 }
 
 async function recuperarEstadoPelaIpInfo() {
@@ -145,8 +155,6 @@ function configurarRegiaoGoogleMaps(position) {
         center: geolocation,
         radius: 1
     });
-
-    autocomplete.setBounds(Globo.getBounds());
 
     return { geolocation, Globo };
 }
