@@ -211,7 +211,7 @@ async function changeSalesChannel(orderForm) {
 
         $('#myplace').text(currentSalesChannel.Uf);
         document.cookie = `myuf=${currentSalesChannel.nome.substr(0, 2)}; expires=Sun, 1 Jan 2099 00:00:00 UTC; path=/`;
-        document.cookie = `VTEXSC=sc=${currentSalesChannel.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC; path=/`;
+        document.cookie = `VTEXSC=sc=${currentSalesChannel.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC; domain=.${location.host.replace('www.', '')}; path=/`;
 
         if (salesChannel == currentSalesChannel.salesChannel)
             return;
