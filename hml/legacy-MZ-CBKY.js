@@ -1258,7 +1258,7 @@ try {
 			const [sku1 = 0, sku2 = 0] = items.map(x => x.price);
 			const priceToPay = (sku1 + sku2) / 100;
 
-            let priceToPayFormatted = qd_number_format(priceToPay, 2, ',', '.');
+            let priceToPayFormatted = 'R$ ' + qd_number_format(priceToPay, 2, ',', '.');
 
             $(".accessories-qd-v1-wrapper .box-preco-atualizado .selected-value")
                 .text(priceToPayFormatted);
