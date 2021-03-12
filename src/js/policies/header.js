@@ -137,7 +137,7 @@ function salvarUf(uf) {
 
 
 function setVtexScOnCookies(salesChannel) {
-    document.cookie = `VTEXSC=sc=${estado.Sc}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=.${location.host.replace('www.', '')}; path=/`;
+    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=.${location.host.replace('www.', '')}; path=/`;
 
 }
 
