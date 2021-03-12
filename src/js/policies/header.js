@@ -45,7 +45,7 @@ setTimeout(() => {
         executed = true;
         _initHeaderPolicy();
     }
-}, 1000);
+}, 3000);
 
 async function _initHeaderPolicy() {
     let Uf = readCookie('myuf');
