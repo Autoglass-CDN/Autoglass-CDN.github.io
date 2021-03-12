@@ -33,15 +33,19 @@ function recuperarEstado(uf) {
 
 let executed = false;
 
-const init = () => {
+$(document).on('ready', function () {
     if (!executed) {
         executed = true;
         _initHeaderPolicy();
     }
-}
+});
 
-$(document).on('ready', init);
-$(document).on('load', init);
+setTimeout(() => {
+    if (!executed) {
+        executed = true;
+        _initHeaderPolicy();
+    }
+}, 3000);
 
 async function _initHeaderPolicy() {
     let Uf = readCookie('myuf');
@@ -60,6 +64,7 @@ async function _initHeaderPolicy() {
                     // Caso não tenha Selecionado nada,
                     // redireciona para o NW04 - 29
                     createCookie('myuf', 'SP', 100);
+                    setVtexScOnCookies(29);
                     window.location.href = `?sc=29`;
                 }
 
@@ -125,7 +130,15 @@ function salvarUf(uf) {
 
     createCookie('myuf', estado.Uf, 100);
 
+    setVtexScOnCookies(estado.Sc);
+
     return estado;
+}
+
+
+function setVtexScOnCookies(salesChannel) {
+    document.cookie = `VTEXSC=sc=${estado.Sc}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=.${location.host.replace('www.', '')}; path=/`;
+
 }
 
 function configurarGoogleMaps(position) {
