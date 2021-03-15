@@ -101,7 +101,7 @@ async function loadOptionals() {
   try {
     const { Opcionais } = await $.get(`${baseUrlApi}/produtos/${productRefId}/opcionais`);
 
-    if (Opcionais) {
+    if (Opcionais && Opcionais.length > 0) {
       opcionaisContainer.html(`
               <h3>Características</h3>
               <div class="caracteristicas__box">
