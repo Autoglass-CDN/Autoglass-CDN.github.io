@@ -2,6 +2,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* FIX CONSULTE SEU FRETE */
+
+.product-qd-v1-shipping {
+  z-index: 1;
+}
+
+/* FIX CONSULTE SEU FRETE */
+
 /* RESET RATINGS COMPONENT */
 
 .ratings-section .ratings__slider button {
@@ -14,12 +22,13 @@ html {
   background: white;
 }
 
-#outras-marcas .white-background, #compre-junto .blue-background {
+#outras-marcas .white-background,
+#compre-junto .blue-background {
   padding: 80px 30px;
 }
 
 .blue-background {
-  background: #234EB9;
+  background: #234eb9;
 }
 
 #compre-junto .blue-background #sugestoes h2 {
@@ -45,7 +54,7 @@ html {
 
 .nav-container {
   width: 100%;
-  background: #F8F8F8;
+  background: #f8f8f8;
   position: sticky;
   top: 205px;
   z-index: 1;
@@ -79,9 +88,7 @@ html {
   height: 2px;
   margin-top: 13px;
   border-radius: 2px;
-  background: #183884
-  /*var(--primary)*/
-  ;
+  background: #183884 /*var(--primary)*/;
   transition: width 200ms ease-in-out;
 }
 
@@ -90,7 +97,8 @@ html {
   font-weight: bold;
 }
 
-.tab-link.tab--current::after, .tab-link:hover::after {
+.tab-link.tab--current::after,
+.tab-link:hover::after {
   width: 100%;
 }
 
@@ -98,12 +106,14 @@ section.tab-content {
   padding: 0 15px;
 }
 
-section#outras-marcas.tab-content, section#compre-junto.tab-content {
+section#outras-marcas.tab-content,
+section#compre-junto.tab-content {
   display: none;
   padding: unset;
 }
 
-section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content .slick-track {
+section#outras-marcas.tab-content .slick-track,
+section#compre-junto.tab-content .slick-track {
   width: 90%;
   margin: 0 auto;
 }
@@ -111,14 +121,17 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
 /* adiciona offset de scrolling para as seções */
 
 section.tab-content:before {
-  content: '';
+  content: "";
   display: block;
   height: 280px;
   margin: -280px 0 0;
   visibility: hidden;
 }
 
-.tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #duvidas.tab-content h2 {
+.tab-content h1,
+#avaliacoes.tab-content h2,
+#diferenciais.tab-content h2,
+#duvidas.tab-content h2 {
   font-weight: var(--extra-bold);
   color: var(--blue-700);
   text-align: center;
@@ -135,16 +148,18 @@ section.tab-content:before {
   margin: 32px 0;
 }
 
-#diferenciais.tab-content ul, #duvidas.tab-content ul:last-child {
+#diferenciais.tab-content ul,
+#duvidas.tab-content ul:last-child {
   margin-left: 15px;
 }
 
-.tab-content ul>li {
+.tab-content ul > li {
   padding-bottom: 10px;
 }
 
-#diferenciais.tab-content ul>li, #duvidas.tab-content ul:last-child>li {
-  list-style: '-   ';
+#diferenciais.tab-content ul > li,
+#duvidas.tab-content ul:last-child > li {
+  list-style: "-   ";
 }
 
 .side-video {
@@ -194,12 +209,12 @@ section.tab-content:before {
 }
 
 .table-zebra tr:nth-of-type(even) {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .group.Especificacoes {
   border-radius: 4px;
-  background: #F8F8F8;
+  background: #f8f8f8;
   text-align: justify;
   width: 100%;
 }
@@ -218,8 +233,9 @@ h4.group.Especificacoes {
   max-width: 120px;
 }
 
-.group.Especificacoes th, .group.Especificacoes td {
-  border-bottom: 1px solid #DBDBDB;
+.group.Especificacoes th,
+.group.Especificacoes td {
+  border-bottom: 1px solid #dbdbdb;
 }
 
 /* .group.Especificacoes th::before,
@@ -255,11 +271,11 @@ h4.group.Especificacoes {
   padding-right: 0;
 }
 
-.cards .card>img {
+.cards .card > img {
   margin-right: 30px;
 }
 
-.cards .card>.card__text h4 {
+.cards .card > .card__text h4 {
   margin-bottom: 10px;
 }
 
@@ -289,15 +305,19 @@ h4.group.Especificacoes {
   .contents .tab-content:empty {
     display: none;
   }
-  .contents .tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
+  .contents .tab-content,
+  #outras-marcas .white-background,
+  #compre-junto .blue-background {
     padding: 24px 15px 0;
   }
-  #avaliacoes.tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
+  #avaliacoes.tab-content,
+  #outras-marcas .white-background,
+  #compre-junto .blue-background {
     background-color: white;
   }
   .contents .tab-content::after {
-    content: '';
-    border-bottom: 1px solid #DBDBDB;
+    content: "";
+    border-bottom: 1px solid #dbdbdb;
     display: block;
     height: 24px;
     background: white !important;
@@ -316,20 +336,23 @@ h4.group.Especificacoes {
     margin-bottom: unset;
   }
   .contents .tab-content h2::after {
-    content: '\2212';
+    content: "\2212";
   }
   .contents .tab-content.ativo h2::after {
-    content: '\002B';
+    content: "\002B";
     display: unset;
   }
   /* .contents .tab-content.ativo h2, 
   .contents .tab-content.ativo .blue-background h2, .contents .tab-content.ativo .white-background h2 {
     display: flex;
   } */
-  .contents .tab-content.ativo>*:not(h2):not(.blue-background):not(.white-background) {
+  .contents
+    .tab-content.ativo
+    > *:not(h2):not(.blue-background):not(.white-background) {
     display: none;
   }
-  .contents .tab-content.ativo #similars>*:not(h2), .contents .tab-content.ativo #sugestoes>*:not(h2) {
+  .contents .tab-content.ativo #similars > *:not(h2),
+  .contents .tab-content.ativo #sugestoes > *:not(h2) {
     display: none;
   }
   .side-video {
@@ -358,14 +381,20 @@ h4.group.Especificacoes {
   .table-zebra tr td {
     padding-left: 0 !important;
   }
-  .group.Especificacoes th, .group.Especificacoes td {
+  .group.Especificacoes th,
+  .group.Especificacoes td {
     padding-left: 5px;
     padding-bottom: 5px !important;
   }
-  .group.Especificacoes th::before, .group.Especificacoes td::before {
+  .group.Especificacoes th::before,
+  .group.Especificacoes td::before {
     margin-left: 0;
   }
-  #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #outras-marcas.tab-content h2, #compre-junto.tab-content h2, #duvidas.tab-content h2 {
+  #avaliacoes.tab-content h2,
+  #diferenciais.tab-content h2,
+  #outras-marcas.tab-content h2,
+  #compre-junto.tab-content h2,
+  #duvidas.tab-content h2 {
     font-weight: var(--bold);
     font-size: 19px;
     text-align: unset;
@@ -384,8 +413,8 @@ h4.group.Especificacoes {
   .cards .card:nth-child(even) {
     flex-direction: row-reverse;
   }
-  .cards .card:nth-child(even)>img {
-    margin: 0 0 0 30px
+  .cards .card:nth-child(even) > img {
+    margin: 0 0 0 30px;
   }
   .cards .card {
     flex-basis: unset;
@@ -402,7 +431,9 @@ h4.group.Especificacoes {
 
 /* Veículos Compatíveis */
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header {
   display: flex;
   position: relative;
   width: 100%;
@@ -413,19 +444,25 @@ h4.group.Especificacoes {
   overflow: hidden;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  div {
   display: flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   max-width: 200px;
   padding: 10px 15px;
-  border-bottom: 4px solid #F0F0F0;
+  border-bottom: 4px solid #f0f0f0;
   cursor: pointer;
-  transition: border-bottom .2s ease-in-out;
+  transition: border-bottom 0.2s ease-in-out;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  button {
   display: none;
   align-items: center;
   justify-content: center;
@@ -440,22 +477,31 @@ h4.group.Especificacoes {
   outline: none;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button:last-child {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  button:last-child {
   transform: rotate(0deg);
   right: 0;
   left: unset;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div:hover {
-  background: linear-gradient(to right, #F0F0F0, #f7f7f7, #F0F0F0);
-  transition: background .3s ease-in-out;
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  div:hover {
+  background: linear-gradient(to right, #f0f0f0, #f7f7f7, #f0f0f0);
+  transition: background 0.3s ease-in-out;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div.active {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  div.active {
   border-bottom: 4px solid #183884;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div {
+#veiculos-compativeis .veiculos-compativeis__box-content > div {
   display: none;
   overflow: hidden;
   height: 305px;
@@ -463,39 +509,39 @@ h4.group.Especificacoes {
   width: 100%;
   flex-direction: column;
   flex-wrap: wrap;
-  border: 1px solid #F0F0F0;
+  border: 1px solid #f0f0f0;
   overflow-x: auto;
   padding: 25px 40px;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div.active {
+#veiculos-compativeis .veiculos-compativeis__box-content > div.active {
   display: flex;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div>div {
+#veiculos-compativeis .veiculos-compativeis__box-content > div > div {
   font-size: 14px;
   color: #707070;
   padding: 20px 30px 20px 0px;
   max-width: 300px;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div>div>p {
+#veiculos-compativeis .veiculos-compativeis__box-content > div > div > p {
   color: #183884;
   word-wrap: break-word;
   word-break: keep-all;
   font-weight: bold;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div>div>div {
+#veiculos-compativeis .veiculos-compativeis__box-content > div > div > div {
   display: flex;
   flex-wrap: wrap;
 }
 
-#duvidas h2+ul {
+#duvidas h2 + ul {
   margin-top: 30px;
 }
 
-#duvidas h2+ul li {
+#duvidas h2 + ul li {
   list-style: none;
 }
 
@@ -512,7 +558,7 @@ h4.group.Especificacoes {
   cursor: pointer;
   position: relative;
   width: 100%;
-  border-left: 4px solid #DBDBDB;
+  border-left: 4px solid #dbdbdb;
 }
 
 #duvidas li p {
@@ -525,24 +571,24 @@ h4.group.Especificacoes {
   display: none;
 }
 
-#duvidas li input[type="checkbox"]+label::after {
+#duvidas li input[type="checkbox"] + label::after {
   content: url("https://autoglass-cdn.github.io/arquivos/img/arrow-down-blue.svg");
   position: absolute;
   right: 10px;
   transform: translateY(-50%) scale(1.5);
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   top: 50%;
 }
 
-#duvidas li input[type="checkbox"]:checked+label {
-  background-color: #F8F8F8;
+#duvidas li input[type="checkbox"]:checked + label {
+  background-color: #f8f8f8;
   border-left: 4px solid #183884;
 }
 
-#duvidas li input[type="checkbox"]:checked+label::after {
+#duvidas li input[type="checkbox"]:checked + label::after {
   transform: translateY(-50%) scale(1.5) rotate(180deg);
 }
 
-#duvidas li input[type="checkbox"]:checked+label+p {
+#duvidas li input[type="checkbox"]:checked + label + p {
   display: block;
 }
