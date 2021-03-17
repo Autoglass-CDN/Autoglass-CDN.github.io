@@ -74,7 +74,7 @@ async function insertBrandDescription() {
 
       const brand = brandList.find((brand) => brand.name.includes(brandName));
 
-      if (brand) {
+      if (brand && brand.metaTagDescription !== '') {
         const brandDescription = brand.metaTagDescription;
 
         document.querySelector(
