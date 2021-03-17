@@ -14,7 +14,7 @@
             console.log('não peguei o iframe!')
             return;
         }
-        iframe.style.marginBottom = '5px';
+        iframe.style.margin = '5px 20px';
         console.log('peguei o iframe!')
         zdFrame.querySelector('.u-userLauncherColor').style = 'border: 4px solid #FFF !important'
         return;
