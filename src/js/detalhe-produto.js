@@ -81,7 +81,7 @@ async function insertBrandDescription() {
           "#descricao-marca"
         ).textContent = brandDescription;
         document.querySelector("#descricao-marca").parentElement.style.display =
-          "unset";
+          "block";
       }
     });
 }
