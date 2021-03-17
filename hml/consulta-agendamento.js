@@ -975,7 +975,19 @@ $(function () {
   const address = JSON.parse(localStorage.getItem("AG_AddressSelected"));
 
   if (address) {
-    getDeliveriesEstimates(address.postalCode, undefined, undefined).then(
+
+    let x;
+
+    if (
+      typeof vtexjs !== "undefined" &&
+      vtexjs.checkout &&
+      vtexjs.checkout.orderForm &&
+      vtexjs.checkout.orderForm.items
+    ) {
+      x = vtexjs.checkout.orderForm.items;
+    }
+
+    getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
       (datas) => {
         setDateDatepicker(datas);
         Carregar(address.postalCode);
