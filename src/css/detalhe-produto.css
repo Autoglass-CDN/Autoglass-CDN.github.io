@@ -115,6 +115,14 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
   margin: 0 auto;
 }
 
+@media only screen and (min-width: 991px) {
+  .carousel-qd-v1-shelf .prateleira {
+    max-width: 1000px;
+    margin: auto;
+  }
+}
+
+
 /* adiciona offset de scrolling para as seções */
 
 section.tab-content:before {
