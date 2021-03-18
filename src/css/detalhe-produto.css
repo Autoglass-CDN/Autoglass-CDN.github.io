@@ -334,7 +334,7 @@ h4.group.Especificacoes {
     display: flex;
   } */
   .contents .tab-content.ativo>*:not(h2):not(.blue-background):not(.white-background) {
-    display: none;
+    display: none !important;
   }
   .contents .tab-content.ativo #similars>*:not(h2), .contents .tab-content.ativo #sugestoes>*:not(h2) {
     display: none;
