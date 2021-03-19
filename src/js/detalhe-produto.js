@@ -52,7 +52,7 @@ const sectionCollapseInit = () => {
     header.onclick = (event) => {
       toggleSectionCollapse(header.closest(".tab-content"));
     };
-    if (header.textContent === 'Compre Junto')
+    if (header.textContent === 'Compre Junto' || header.textContent === 'Outras Marcas')
       setTimeout(
         () => toggleSectionCollapse(header.closest(".tab-content"))
         , 5000);
