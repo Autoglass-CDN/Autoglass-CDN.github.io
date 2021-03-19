@@ -120,6 +120,18 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
     max-width: 1000px;
     margin: auto;
   }
+
+  .shelf-qd-v1 .shelf-qd-v1-price,
+  .shelf-qd-v1 .shelf-qd-v1-name,
+  .shelf-qd-v1 .shelf-qd-v1-image
+   {
+    padding: 0 25px !important;
+  }
+
+  body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button{
+    margin-left: 25px;
+    margin-right: 25px;
+  }
 }
 
 
