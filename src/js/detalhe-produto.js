@@ -52,6 +52,10 @@ const sectionCollapseInit = () => {
     header.onclick = (event) => {
       toggleSectionCollapse(header.closest(".tab-content"));
     };
+    if (header.textContent === 'Compre Junto')
+      setTimeout(
+        () => toggleSectionCollapse(header.closest(".tab-content"))
+        , 1000);
   });
 };
 
