@@ -2,6 +2,14 @@ html {
   scroll-behavior: smooth;
 }
 
+/* FIX CONSULTE SEU FRETE */
+
+.product-qd-v1-shipping {
+  z-index: 1;
+}
+
+/* FIX CONSULTE SEU FRETE */
+
 /* RESET RATINGS COMPONENT */
 
 .ratings-section .ratings__slider button {
@@ -19,7 +27,7 @@ html {
 }
 
 .blue-background {
-  background: #234EB9;
+  background: #234eb9;
 }
 
 #compre-junto .blue-background #sugestoes h2 {
@@ -45,7 +53,7 @@ html {
 
 .nav-container {
   width: 100%;
-  background: #F8F8F8;
+  background: #f8f8f8;
   position: sticky;
   top: 205px;
   z-index: 1;
@@ -79,8 +87,7 @@ html {
   height: 2px;
   margin-top: 13px;
   border-radius: 2px;
-  background: #183884
-  /*var(--primary)*/
+  background: #183884/*var(--primary)*/
   ;
   transition: width 200ms ease-in-out;
 }
@@ -108,13 +115,21 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
   margin: 0 auto;
 }
 
+@media only screen and (min-width: 991px) {
+  .carousel-qd-v1-shelf .prateleira {
+    max-width: 1000px;
+    margin: auto;
+  }
+}
+
+
 /* adiciona offset de scrolling para as seções */
 
 section.tab-content:before {
-  content: '';
+  content: "";
   display: block;
-  height: 280px;
-  margin: -280px 0 0;
+  height: 240px;
+  margin: -240px 0 12px;
   visibility: hidden;
 }
 
@@ -144,7 +159,7 @@ section.tab-content:before {
 }
 
 #diferenciais.tab-content ul>li, #duvidas.tab-content ul:last-child>li {
-  list-style: '-   ';
+  list-style: "-   ";
 }
 
 .side-video {
@@ -194,12 +209,12 @@ section.tab-content:before {
 }
 
 .table-zebra tr:nth-of-type(even) {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
 }
 
 .group.Especificacoes {
   border-radius: 4px;
-  background: #F8F8F8;
+  background: #f8f8f8;
   text-align: justify;
   width: 100%;
 }
@@ -219,7 +234,7 @@ h4.group.Especificacoes {
 }
 
 .group.Especificacoes th, .group.Especificacoes td {
-  border-bottom: 1px solid #DBDBDB;
+  border-bottom: 1px solid #dbdbdb;
 }
 
 /* .group.Especificacoes th::before,
@@ -296,8 +311,8 @@ h4.group.Especificacoes {
     background-color: white;
   }
   .contents .tab-content::after {
-    content: '';
-    border-bottom: 1px solid #DBDBDB;
+    content: "";
+    border-bottom: 1px solid #dbdbdb;
     display: block;
     height: 24px;
     background: white !important;
@@ -316,10 +331,10 @@ h4.group.Especificacoes {
     margin-bottom: unset;
   }
   .contents .tab-content h2::after {
-    content: '\2212';
+    content: "\2212";
   }
   .contents .tab-content.ativo h2::after {
-    content: '\002B';
+    content: "\002B";
     display: unset;
   }
   /* .contents .tab-content.ativo h2, 
@@ -327,7 +342,7 @@ h4.group.Especificacoes {
     display: flex;
   } */
   .contents .tab-content.ativo>*:not(h2):not(.blue-background):not(.white-background) {
-    display: none;
+    display: none !important;
   }
   .contents .tab-content.ativo #similars>*:not(h2), .contents .tab-content.ativo #sugestoes>*:not(h2) {
     display: none;
@@ -385,7 +400,7 @@ h4.group.Especificacoes {
     flex-direction: row-reverse;
   }
   .cards .card:nth-child(even)>img {
-    margin: 0 0 0 30px
+    margin: 0 0 0 30px;
   }
   .cards .card {
     flex-basis: unset;
@@ -420,9 +435,9 @@ h4.group.Especificacoes {
   width: 100%;
   max-width: 200px;
   padding: 10px 15px;
-  border-bottom: 4px solid #F0F0F0;
+  border-bottom: 4px solid #f0f0f0;
   cursor: pointer;
-  transition: border-bottom .2s ease-in-out;
+  transition: border-bottom 0.2s ease-in-out;
 }
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button {
@@ -447,8 +462,8 @@ h4.group.Especificacoes {
 }
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div:hover {
-  background: linear-gradient(to right, #F0F0F0, #f7f7f7, #F0F0F0);
-  transition: background .3s ease-in-out;
+  background: linear-gradient(to right, #f0f0f0, #f7f7f7, #f0f0f0);
+  transition: background 0.3s ease-in-out;
 }
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div.active {
@@ -463,7 +478,7 @@ h4.group.Especificacoes {
   width: 100%;
   flex-direction: column;
   flex-wrap: wrap;
-  border: 1px solid #F0F0F0;
+  border: 1px solid #f0f0f0;
   overflow-x: auto;
   padding: 25px 40px;
 }
@@ -512,7 +527,7 @@ h4.group.Especificacoes {
   cursor: pointer;
   position: relative;
   width: 100%;
-  border-left: 4px solid #DBDBDB;
+  border-left: 4px solid #dbdbdb;
 }
 
 #duvidas li p {
@@ -530,12 +545,12 @@ h4.group.Especificacoes {
   position: absolute;
   right: 10px;
   transform: translateY(-50%) scale(1.5);
-  transition: transform .2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
   top: 50%;
 }
 
 #duvidas li input[type="checkbox"]:checked+label {
-  background-color: #F8F8F8;
+  background-color: #f8f8f8;
   border-left: 4px solid #183884;
 }
 
