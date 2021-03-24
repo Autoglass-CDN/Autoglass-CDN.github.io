@@ -25,8 +25,8 @@ const States = [
 
     { nome: 'PE', Unidade: 'RC01', cMin: 50000000, cMax: 53689999, Uf: 'Pernambuco', salesChannel: 15 },
     { nome: 'PE', Unidade: 'RC01', cMin: 54000000, cMax: 54599999, Uf: 'Pernambuco', salesChannel: 15 },
-    { nome: 'PE2', Unidade: 'MG23', cMin: 50000000, cMax: 56999999, Uf: 'Pernambuco', salesChannel: 16, imSpecial: true }, //faltando esse
     { nome: 'PE3', Unidade: 'MG40', cMin: 56300000, cMax: 56354999, Uf: 'Pernambuco', salesChannel: 17 },
+    { nome: 'PE2', Unidade: 'MG23', cMin: 50000000, cMax: 56999999, Uf: 'Pernambuco', salesChannel: 15, imSpecial: true }, //faltando esse
 
     { nome: 'PI', Unidade: 'MG33', cMin: 64000000, cMax: 64999999, Uf: 'Piauí', salesChannel: 18 },
 
@@ -128,6 +128,7 @@ const States = [
     { nome: 'SP13', Unidade: 'SP04', cMin: 16670000, cMax: 16679999, Uf: 'São Paulo', salesChannel: 38},
     { nome: 'SP13', Unidade: 'SP04', cMin: 17160000, cMax: 17179999, Uf: 'São Paulo', salesChannel: 38},
 
+    { nome: 'SP', Unidade: 'NW10', cMin: 00000000, cMax: 999999, Uf: 'São Paulo', salesChannel: 26, imSpecial: true },
     { nome: 'SP', Unidade: 'NW10', cMin: 01000000, cMax: 19999999, Uf: 'São Paulo', salesChannel: 26, imSpecial: true },
 
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
@@ -227,7 +228,7 @@ async function changeSalesChannel(orderForm) {
             else if (currentSalesChannel.nome === "PR")
                 await reAddCartItems(items, 19)
             else if (currentSalesChannel.nome === "PE2")
-                await reAddCartItems(items, 16)
+                await reAddCartItems(items, 15)
         } else {
             await reAddCartItems(items, currentSalesChannel.salesChannel);
         }
