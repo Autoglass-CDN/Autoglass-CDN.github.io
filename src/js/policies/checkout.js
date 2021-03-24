@@ -128,6 +128,7 @@ const States = [
     { nome: 'SP13', Unidade: 'SP04', cMin: 16670000, cMax: 16679999, Uf: 'São Paulo', salesChannel: 38},
     { nome: 'SP13', Unidade: 'SP04', cMin: 17160000, cMax: 17179999, Uf: 'São Paulo', salesChannel: 38},
 
+    { nome: 'SP', Unidade: 'NW10', cMin: 00000000, cMax: 999999, Uf: 'São Paulo', salesChannel: 26, imSpecial: true },
     { nome: 'SP', Unidade: 'NW10', cMin: 01000000, cMax: 19999999, Uf: 'São Paulo', salesChannel: 26, imSpecial: true },
 
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
