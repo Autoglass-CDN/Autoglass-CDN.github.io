@@ -883,7 +883,7 @@ $(function () {
         return {
           addressId: newSelectedAddresses[0].addressId,
           itemIndex: x.itemIndex,
-          selectedDeleveryChannel: "pickup-in-point",
+          selectedDeliveryChannel: "pickup-in-point",
           selectedSla: slas[0].id,
         };
       });
