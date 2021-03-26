@@ -163,7 +163,7 @@ const generalPolicies = [
     { nome: 'PA', Unidade: 'MG26', cMin: 66000000, cMax: 68899999, Uf: 'Pará', salesChannel: 13 },
     { nome: 'PB', Unidade: 'MG43', cMin: 58000000, cMax: 58999999, Uf: 'Paraíba', salesChannel: 14 },
     { nome: 'PR', Unidade: 'MG13', cMin: 80000000, cMax: 87999999, Uf: 'Paraná', salesChannel: 19},
-    { nome: 'PE', Unidade: 'MG23', cMin: 50000000, cMax: 56999999, Uf: 'Pernambuco', salesChannel: 15},
+    { nome: 'PE', Unidade: 'RC01', cMin: 50000000, cMax: 56999999, Uf: 'Pernambuco', salesChannel: 15},
     { nome: 'PI', Unidade: 'MG33', cMin: 64000000, cMax: 64999999, Uf: 'Piauí', salesChannel: 18 },
     { nome: 'RJ', Unidade: 'MG05', cMin: 20000000, cMax: 28999999, Uf: 'Rio de Janeiro', salesChannel: 21 },
     { nome: 'RN', Unidade: 'MG29', cMin: 59000000, cMax: 59999999, Uf: 'Rio Grande do Norte', salesChannel: 22 },
