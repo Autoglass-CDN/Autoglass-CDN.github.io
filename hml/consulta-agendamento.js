@@ -774,9 +774,11 @@ async function getDeliveriesEstimates(postalCode, logistics, items) {
       ];
     }
 
+    let vtexsc = readCookie('VTEXSC').replace('sc=', '');
+
     const { logisticsInfo } = await $.ajax({
       type: "POST",
-      url: "/api/checkout/pub/orderForms/simulation",
+      url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
       dataType: "json",
       contentType: "application/json",
       data: JSON.stringify({
@@ -814,4 +816,17 @@ async function getDeliveriesEstimates(postalCode, logistics, items) {
     console.error("Falha ao calcular o tempo de entrega!", ex);
     return new Date();
   }
+}
+
+function readCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(';');
+  for (var i = 0; i < ca.length; i++) {
+      var c = ca[i];
+      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  
+  console.error("Não foi possível recuprar cookie VTEXSC'\n");
+  return null;
 }

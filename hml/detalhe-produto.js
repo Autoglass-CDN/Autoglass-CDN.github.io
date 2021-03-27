@@ -324,9 +324,11 @@ $(function LojasMaisProximas() {
                 postalCode: address.postalCode,
                 country: CONFIG.SERVICE.COUNTRY
             };
+            
+            let vtexsc = readCookie('VTEXSC').replace('sc=', '');
 
             return $.ajax({
-                url: "/api/checkout/pub/orderForms/simulation",
+                url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
                 type: "POST",
                 dataType: "JSON",
                 contentType: "application/json",
@@ -610,8 +612,10 @@ $(function CalculeOFrete() {
                 country: CONFIG.SERVICE.COUNTRY
             };
 
+            let vtexsc = readCookie('VTEXSC').replace('sc=', '');
+
             return $.ajax({
-                url: "/api/checkout/pub/orderForms/simulation",
+                url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
                 type: "POST",
                 dataType: "JSON",
                 contentType: "application/json",

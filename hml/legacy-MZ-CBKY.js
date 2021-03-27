@@ -1240,8 +1240,11 @@ try {
 						postalCode: listStates[thisST].cep,
 						country: "BRA"
 					};
+					
+					let vtexsc = readCookie('VTEXSC').replace('sc=', '');
+
 					$.ajax({
-						url: "/api/checkout/pub/orderForms/simulation",
+						url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
 						type: "POST",
 						dataType: "JSON",
 						contentType: "application/json",
@@ -1441,8 +1444,11 @@ try {
 				postalCode: adInfo.CEP,
 				country: adInfo.countryCode
 			};
+
+			let vtexsc = readCookie('VTEXSC').replace('sc=', '');
+
 			return $.ajax({
-				url: "/api/checkout/pub/orderForms/simulation",
+				url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
 				type: "POST",
 				dataType: "JSON",
 				contentType: "application/json",
