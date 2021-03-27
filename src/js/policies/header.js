@@ -79,14 +79,7 @@ async function _initHeaderPolicy() {
         }
     }
 
-    const estado = salvarUf(Uf);
-
-    let vtexsc = readCookie('VTEXSC');
-    const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
-
-    if (estado.Sc !== policyOnSite) {
-        window.location.href = `?sc=${estado.Sc}`;
-    }
+    persistSalesChannel(Uf);
 
     $(".use-location").click(() => {
         if (navigator.geolocation) {
@@ -126,16 +119,26 @@ async function recuperarEstadoPelaIpInfo() {
     return ipInfo.region;
 }
 
-function salvarUf(uf) {
-    const estado = recuperarEstado(uf);
+function persistSalesChannel(Uf) { 
+    const estado = recuperarEstado(Uf);
+    
+    let vtexsc = readCookie('VTEXSC');
+    const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
 
-    $("#thestate").text(`${estado.Nome}`);
+    if (estado.Sc !== policyOnSite) {
+        salvarUf(estado);
+    } else {
+        $("#thestate").text(`${estado.Nome}`);
+    }
+}
+
+function salvarUf(estado) {  
 
     createCookie('myuf', estado.Uf, 100);
 
     setVtexScOnCookies(estado.Sc);
 
-    return estado;
+    window.location.href = `?sc=${estado.Sc}`;
 }
 
 
@@ -175,7 +178,7 @@ function configurarRegiaoGoogleMaps(position) {
 
 function redirecionarParaPolitica(googleMapsResult) {
     let Uf;
-    let vtexsc = readCookie('VTEXSC');
+    // let vtexsc = readCookie('VTEXSC');
 
     if (!googleMapsResult)
         googleMapsResult = [autocomplete.getPlace()];
@@ -186,13 +189,7 @@ function redirecionarParaPolitica(googleMapsResult) {
         }
     });
 
-    const estado = salvarUf(Uf);
-
-    const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
-
-    if (estado.Sc !== policyOnSite) {
-        window.location.href = `?sc=${estado.Sc}`;
-    }
+    persistSalesChannel(Uf);
 
     $('.header-qd-v1-location-modal').click();
 }
