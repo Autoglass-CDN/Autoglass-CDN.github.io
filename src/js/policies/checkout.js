@@ -200,7 +200,8 @@ async function changeSalesChannel(orderForm){
     
     $('#myplace').text(newSalesChannelObject.Uf);
     document.cookie = `myuf=${newSalesChannelObject.nome.substr(0, 2)}; expires=Sun, 1 Jan 2099 00:00:00 UTC; path=/`;
-    document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC; domain=.${location.host.replace('www.', '')}; path=/`;
+    document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC; path=/`;
+    // document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC; domain=.${location.host.replace('www.', '')}; path=/`;
     
     if (testLogs) logNewPolicy(newSalesChannelObject, shippingData)
 
