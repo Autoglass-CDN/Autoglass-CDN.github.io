@@ -143,7 +143,9 @@ function salvarUf(estado) {
 
 
 function setVtexScOnCookies(salesChannel) {
-    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=.${location.host.replace('www.', '')}; path=/`;
+    document.cookie = 'VTEXSC'+ `=; domain=.www.autoglassonline.com.br ;Max-Age=-99999999;`;
+    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC; path=/`;
+    // document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=.${location.host.replace('www.', '.www.')}; path=/`;
 
 }
 
@@ -217,8 +219,10 @@ function createCookie(name, value, days) {
         var expires = "; expires=" + date.toGMTString();
     }
     else var expires = "";
-    document.cookie = name + "=" + value + expires + `; domain=.${location.host.replace('www.', '')}; path=/`;
+    
+    document.cookie = name + "=" + value + expires + `; path=/`;
 }
+
 
 function readCookie(name) {
     var nameEQ = name + "=";
