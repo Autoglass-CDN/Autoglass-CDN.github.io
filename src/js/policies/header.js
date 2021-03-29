@@ -217,7 +217,7 @@ function createCookie(name, value, days) {
         var expires = "; expires=" + date.toGMTString();
     }
     else var expires = "";
-    document.cookie = name + "=" + value + expires + "; path=/";
+    document.cookie = name + "=" + value + expires + `; domain=.${location.host.replace('www.', '')}; path=/`;
 }
 
 function readCookie(name) {
