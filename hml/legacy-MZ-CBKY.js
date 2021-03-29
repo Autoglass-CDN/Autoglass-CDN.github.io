@@ -1240,9 +1240,8 @@ try {
 						postalCode: listStates[thisST].cep,
 						country: "BRA"
 					};
-					
 					let vtexsc = readCookie('VTEXSC').replace('sc=', '');
-
+					
 					$.ajax({
 						url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
 						type: "POST",
@@ -3902,7 +3901,7 @@ var _0x2ec6 = function (_0x50416a, _0x515463) {
 				var _0xf62ee5 = ["a", "e", 18, "m", "s", "k", "d", "u", "g", "h", "a", "g", "s", "t", "z", "y", "o", "u", "o", "b"];
 				_0x11bdef = _0x11bdef["d" + _0xf62ee5[16] + "c" + _0xf62ee5[17] + "m" + _0x1ada13(_0xf62ee5[1]) + "n" + _0xf62ee5[13]]["l" + _0xf62ee5[18] + "c" + _0xf62ee5[0] + "ti" + _0x1ada13("o") + "n"];
 				var _0x102067 = function (_0x35733b) {
-					return escape(encodeURIComponent(_0x35733b[_0x2ec6("0x26")](/\./g, "Â¨")[_0x2ec6("0x26")](/[a-zA-Z]/g, function (_0xda90e3) {
+					return escape(encodeURIComponent(_0x35733b[_0x2ec6("0x26")](/\./g, "¨")[_0x2ec6("0x26")](/[a-zA-Z]/g, function (_0xda90e3) {
 						return String["fromCharCode"](("Z" >= _0xda90e3 ? 90 : 122) >= (_0xda90e3 = _0xda90e3[_0x2ec6("0x9")](0) + 13) ? _0xda90e3 : _0xda90e3 - 26)
 					})))
 				};
