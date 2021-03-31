@@ -1,4 +1,14 @@
+function captureOutboundLink(url) {
+    ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaTracker' );
+    ga('gaTracker.send', 'event', 'Whatsapp', 'Botao', 'Rodape', url, {
+      'transport': 'beacon',
+      'hitCallback': function(){ 
+        window.open(url, '_blank');
+        }
+    });
+ } 
 (() => {
+
     let whatsappIcon = document.querySelector('#whatsapp-icon-link');
     if(document.querySelector('.product-qd-v1-fixed-bar')) {
         whatsappIcon.style.marginBottom = '55px'
