@@ -46,6 +46,10 @@
     flex: 1;
 }
 
+.ratings-section .ratings__rating > .ratings__rating-image {
+    display: none;
+}
+
 .ratings-section .ratings__rating {
     width: 300px;
     height: 285px;
