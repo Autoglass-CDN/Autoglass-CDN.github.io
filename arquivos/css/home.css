@@ -278,6 +278,10 @@
   transition: transform .7s ease;
 }
 
+.ratings-section .ratings__rating > .ratings__rating-image {
+  display: none;
+}
+
 .ratings-section .ratings__rating .ratings__rating-image img {
   width: 68px;
   height: 68px;
