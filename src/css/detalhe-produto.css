@@ -26,6 +26,10 @@ html {
   padding: 80px 30px;
 }
 
+#compre-junto .blue-background > .row > div{
+  z-index: 1;
+}
+
 .blue-background {
   background: #234eb9;
 }
@@ -56,7 +60,7 @@ html {
   background: #f8f8f8;
   position: sticky;
   top: 205px;
-  z-index: 1;
+  z-index: 2;
 }
 
 .tabs-descricao {
