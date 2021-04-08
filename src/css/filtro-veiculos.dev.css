@@ -64,7 +64,7 @@ fieldset[data-qd-class="ano"] {
     .search-qd-v1-navigator
     .search-qd-v1-navigator-trigger {
     position: fixed;
-    bottom: 60px;
+    bottom: 80px;
     left: -100px;
     z-index: 999999999;
     font-size: 0;
