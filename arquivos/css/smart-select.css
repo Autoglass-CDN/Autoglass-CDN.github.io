@@ -247,5 +247,6 @@
 
   .smart-select__main .smart-select__main-results input {
     width: calc(100% - 20px);
+    display: none;
   }
 }
