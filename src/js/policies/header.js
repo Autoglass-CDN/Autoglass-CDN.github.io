@@ -143,8 +143,8 @@ function salvarUf(estado) {
 
 
 function setVtexScOnCookies(salesChannel) {
-    document.cookie = 'VTEXSC'+ `=; domain=.www.autoglassonline.com.br ;Max-Age=-99999999;`;
-    document.cookie = 'VTEXSC'+ `=; domain=.autoglassonline.com.br ;Max-Age=-99999999;`;
+    document.cookie = 'VTEXSC'+ `=; domain=.www.autoglassonline.com.br ;Max-Age=-99999999;  path=/`;
+    document.cookie = 'VTEXSC'+ `=; domain=.autoglassonline.com.br ;Max-Age=-99999999; path=/`;
     document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC; path=/`;
     // document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=.${location.host.replace('www.', '.www.')}; path=/`;
 
