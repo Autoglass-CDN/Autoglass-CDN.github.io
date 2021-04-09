@@ -526,4 +526,26 @@
       return url;
     }
   }
+
+  
+  /**
+   * Em despositivos mobile e tablet, rola a tela diretamente para resultado das buscas
+   */
+  window.onload = () => {
+
+    if (window.matchMedia('(max-width: 1100px)').matches) {
+      
+      var aimElement = $('.system-error-qd-v1') //busca com resultado
+      if(!aimElement.length){
+        aimElement = $('.search-qd-v1-result') //busca vazia
+        if(!aimElement.length) return //não é pagina de busca
+      }
+
+      aimElementTopOffset = aimElement.offset().top;
+      offsets = $('header.nav').height() + $('div.topo').height();
+      pixelsToScroll = aimElementTopOffset - offsets;
+      $("html, body").animate({ scrollTop: pixelsToScroll }, "slow");		
+      
+    }
+  }
 })();
