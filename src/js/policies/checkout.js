@@ -34,10 +34,7 @@ const specialCasePolicies = [
     { nome: 'PE', Unidade: 'RC01', cMin: 50000000, cMax: 53689999, Uf: 'Pernambuco', salesChannel: 15 },
     { nome: 'PE', Unidade: 'RC01', cMin: 54000000, cMax: 54599999, Uf: 'Pernambuco', salesChannel: 15 },
 
-    //Políticas desabilitadas devido ao problema de habilitar todas as políticas no site
-    //Quando a VTEX  resolver o chamado, habilitar novamente
-
-    //{ nome: 'PE', Unidade: 'MG40', cMin: 56300000, cMax: 56354999, Uf: 'Pernambuco', salesChannel: 17 },
+    { nome: 'PE', Unidade: 'MG40', cMin: 56300000, cMax: 56354999, Uf: 'Pernambuco', salesChannel: 17 },
 
     { nome: 'PR', Unidade: 'MG13', cMin: 80000000, cMax: 83189999, Uf: 'Paraná', salesChannel: 19 },
     { nome: 'PR', Unidade: 'MG13', cMin: 83300000, cMax: 83349999, Uf: 'Paraná', salesChannel: 19 },
@@ -47,17 +44,13 @@ const specialCasePolicies = [
     { nome: 'PR', Unidade: 'MG13', cMin: 83700000, cMax: 83729999, Uf: 'Paraná', salesChannel: 19 },
     { nome: 'PR', Unidade: 'MG13', cMin: 83820000, cMax: 83839999, Uf: 'Paraná', salesChannel: 19 },
 
-
-    //Políticas desabilitadas devido ao problema de habilitar todas as políticas no site
-    //Quando a VTEX  resolver o chamado, habilitar novamente
-
-    // { nome: 'PR', Unidade: 'MG49', cMin: 86730000, cMax: 86754999, Uf: 'Paraná', salesChannel: 20 },
-    // { nome: 'PR', Unidade: 'MG49', cMin: 86770000, cMax: 86779999, Uf: 'Paraná', salesChannel: 20 },
-    // { nome: 'PR', Unidade: 'MG49', cMin: 86900000, cMax: 86909999, Uf: 'Paraná', salesChannel: 20 },
-    // { nome: 'PR', Unidade: 'MG49', cMin: 86975000, cMax: 87119999, Uf: 'Paraná', salesChannel: 20 },
-    // { nome: 'PR', Unidade: 'MG49', cMin: 87140000, cMax: 87154999, Uf: 'Paraná', salesChannel: 20 },
-    // { nome: 'PR', Unidade: 'MG49', cMin: 87160000, cMax: 87169999, Uf: 'Paraná', salesChannel: 20 },
-    // { nome: 'PR', Unidade: 'MG49', cMin: 87780000, cMax: 87789999, Uf: 'Paraná', salesChannel: 20 },
+    { nome: 'PR', Unidade: 'MG49', cMin: 86730000, cMax: 86754999, Uf: 'Paraná', salesChannel: 20 },
+    { nome: 'PR', Unidade: 'MG49', cMin: 86770000, cMax: 86779999, Uf: 'Paraná', salesChannel: 20 },
+    { nome: 'PR', Unidade: 'MG49', cMin: 86900000, cMax: 86909999, Uf: 'Paraná', salesChannel: 20 },
+    { nome: 'PR', Unidade: 'MG49', cMin: 86975000, cMax: 87119999, Uf: 'Paraná', salesChannel: 20 },
+    { nome: 'PR', Unidade: 'MG49', cMin: 87140000, cMax: 87154999, Uf: 'Paraná', salesChannel: 20 },
+    { nome: 'PR', Unidade: 'MG49', cMin: 87160000, cMax: 87169999, Uf: 'Paraná', salesChannel: 20 },
+    { nome: 'PR', Unidade: 'MG49', cMin: 87780000, cMax: 87789999, Uf: 'Paraná', salesChannel: 20 },
  
     { nome: 'SP', Unidade: 'NW01', cMin: 4000000, cMax: 4999999, Uf: 'São Paulo', salesChannel: 27},
     { nome: 'SP', Unidade: 'NW01', cMin: 5600000, cMax: 5899999, Uf: 'São Paulo', salesChannel: 27},
