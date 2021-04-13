@@ -31,8 +31,3 @@
     bottom: 0px !important;
   }
 }
-
-/* apenas para teste no ambiente de dev */
-.fixed-buttons-qd-v1 {
-  display: none;
-}
