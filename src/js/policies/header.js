@@ -62,10 +62,9 @@ async function _initHeaderPolicy() {
 
                 if (!Uf) {
                     // Caso não tenha Selecionado nada,
-                    // redireciona para o NW04 - 29
-                    createCookie('myuf', 'SP', 100);
-                    setVtexScOnCookies(29);
-                    window.location.href = `?sc=29`;
+                    // redireciona para SP
+                          
+                    persistSalesChannel('SP');
                 }
 
                 $('.header-qd-v1-location-modal').click();
@@ -143,11 +142,11 @@ function salvarUf(estado) {
 
 
 function setVtexScOnCookies(salesChannel) {
-    document.cookie = 'VTEXSC'+ `=; domain=.www.autoglassonline.com.br ;Max-Age=-99999999;  path=/`;
-    document.cookie = 'VTEXSC'+ `=; domain=.autoglassonline.com.br ;Max-Age=-99999999; path=/`;
-    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC; path=/`;
-    // document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=.${location.host.replace('www.', '.www.')}; path=/`;
-
+    
+    //houver cookie VTEXSC sem o ponto no início (no secure), apaga esse cookie.
+    document.cookie = 'VTEXSC'+ `=; Max-Age=-99999999;  path=/`;
+    
+    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=${location.host}; path=/; secure=true`;
 }
 
 function configurarGoogleMaps(position) {
