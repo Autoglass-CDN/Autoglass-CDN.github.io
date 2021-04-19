@@ -124,6 +124,12 @@ function persistSalesChannel(Uf) {
     let vtexsc = readCookie('VTEXSC');
     const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
 
+    let currentUf = readCookie('myuf');
+    
+    if (currentUf != Uf) {
+        localStorage.setItem('ufDefinedByTop', 1);   
+    }
+    
     if (estado.Sc !== policyOnSite) {
         salvarUf(estado);
     } else {
