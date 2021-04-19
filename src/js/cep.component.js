@@ -4,7 +4,7 @@
  * É o lugar aonde vai rendereziar
  * o painel de mudança de cep
  */
-$(function CepComponent() {
+ $(function CepComponent() {
 	const CONFIG = {
 		SELECTOR: '.cep:not(".link")',
 		LOCAL_TO_RENDER_CEP: 'data-render-cep',
@@ -49,7 +49,7 @@ $(function CepComponent() {
 				View.renderCepInfo(
 					cepContainer,
 					modalContent,
-					orderForm.shippingData.address
+					orderForm.shippingData?.address
 				);
 
 				$(window).on(CONFIG.EVENTS.CEP_UPDATED, async (e) => {
