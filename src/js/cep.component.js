@@ -4,7 +4,7 @@
  * É o lugar aonde vai rendereziar
  * o painel de mudança de cep
  */
-$(function CepComponent() {
+ $(function CepComponent() {
 	const CONFIG = {
 		SELECTOR: '.cep:not(".link")',
 		LOCAL_TO_RENDER_CEP: 'data-render-cep',
@@ -46,10 +46,22 @@ $(function CepComponent() {
 				$(modalContent).css('overflow', 'hidden');
 				$(modalContent).css('min-height', '150px');
 
+
+				let address;
+				let isCheckout = window.location.href.includes("/checkout");
+				let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
+				
+				if (!isCheckout && ufDefinedByTop){
+					address = null;
+				}
+				else {
+					address = orderForm.shippingData?.address;
+				}
+
 				View.renderCepInfo(
 					cepContainer,
 					modalContent,
-					orderForm.shippingData.address
+					address
 				);
 
 				$(window).on(CONFIG.EVENTS.CEP_UPDATED, async (e) => {
@@ -118,6 +130,8 @@ $(function CepComponent() {
 
 				$('.cep-new')
 					.css('transform', 'translateX(105%)');
+
+				localStorage.setItem('ufDefinedByTop', 0);
 
 				window.dispatchEvent(new CustomEvent(
 					CONFIG.EVENTS.CEP_UPDATED,

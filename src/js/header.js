@@ -92,6 +92,17 @@ async function _initHeaderPolicy() {
         }
     });
 
+    $(window).on("cep-updated", (e) => {
+        const orderForm = e.originalEvent.detail;
+        const newUf = orderForm.shippingData.address.state;
+        const currentUf = readCookie('myuf');
+        
+        if (currentUf != newUf){
+            persistSalesChannel(newUf);
+        }
+        
+    });
+
     const mq = window.matchMedia("(max-width: 1100px)");
     if (mq.matches) {
         $("#autocomplete").on("click", function (e) {
@@ -123,7 +134,7 @@ function persistSalesChannel(Uf) {
     
     let vtexsc = readCookie('VTEXSC');
     const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
-
+    
     if (estado.Sc !== policyOnSite) {
         salvarUf(estado);
     } else {
@@ -190,6 +201,12 @@ function redirecionarParaPolitica(googleMapsResult) {
             Uf = item.long_name
         }
     });
+
+    let currentUf = readCookie('myuf');
+
+    if (currentUf != Uf) {
+        localStorage.setItem('ufDefinedByTop', 1);   
+    }
 
     persistSalesChannel(Uf);
 
