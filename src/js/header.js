@@ -48,6 +48,7 @@ setTimeout(() => {
 }, 3000);
 
 async function _initHeaderPolicy() {
+    
     let Uf = readCookie('myuf');
 
     if (!Uf) {
@@ -101,8 +102,11 @@ async function _initHeaderPolicy() {
         if (currentUf != newUf){
 
             saveModalsState();
-	
+            localStorage.setItem('locationChanged', 1);
             persistSalesChannel(newUf);
+        }
+        else{
+            localStorage.setItem('locationChanged', 0);
         }
         
     });

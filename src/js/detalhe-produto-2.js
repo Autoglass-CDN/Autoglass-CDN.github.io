@@ -20,6 +20,7 @@ $(function () {
     });
     $(".mz-pickup__close--button,.mz-modal-overlay").click(function () {
         $(document.body).removeClass("mz-in-on mz-as-on mz-bo-on mz-pu-on");
+        localStorage.setItem('locationChanged', 0);
     });
 
     ga('create', 'UA-133498560-1', 'autoglassonline.com');
@@ -521,10 +522,12 @@ $(function CalculeOFrete() {
 
             $(CONFIG.CSS.MODAL.CLOSE).click(() => {
                 $(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
+                localStorage.setItem('locationChanged', 0);
             });
 
             $(CONFIG.CSS.MODAL.OVERLAY).click(() => {
                 $(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
+                localStorage.setItem('locationChanged', 0);
             });
 
             $(CONFIG.CSS.MODAL.BUTTON).click(() => {
