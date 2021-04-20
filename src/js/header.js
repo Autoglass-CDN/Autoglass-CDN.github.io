@@ -79,6 +79,7 @@ async function _initHeaderPolicy() {
     }
 
     persistSalesChannel(Uf);
+    recoverModalsState();
 
     $(".use-location").click(() => {
         if (navigator.geolocation) {
@@ -98,6 +99,9 @@ async function _initHeaderPolicy() {
         const currentUf = readCookie('myuf');
         
         if (currentUf != newUf){
+
+            saveModalsState();
+	
             persistSalesChannel(newUf);
         }
         
@@ -250,4 +254,33 @@ function readCookie(name) {
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
+}
+
+function saveModalsState() {
+
+    let reg = /mz-\w{2}-on/g;
+    let classes = $('body').attr('class');
+    let modalState = [];
+    let res;
+    while(true) {
+        res = reg.exec(classes);
+        if(res){
+            modalState.push(res);
+        }else {
+            break;
+        } 
+    }
+
+    localStorage.setItem('modalState', modalState.join());
+}
+
+function recoverModalsState() {
+    let string = localStorage.getItem('modalState');
+
+    if (string){
+        const classesList = string.split(',')
+        classesList.forEach(i => $('body').addClass(i));   
+        localStorage.removeItem('modalState');
+    }
+
 }
