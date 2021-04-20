@@ -192,14 +192,22 @@
 					`);
 			}
 
+			if (+localStorage.getItem('locationChanged')) {
+				const cepInfo = $(`#${cepContainer.id}`);
+				let html = cepInfo.html();
+				html = html + `<span class="cep-info__location-changed">Região alterada conforme novo CEP informado.</span>`;
+				cepInfo.html(html);
+			}
+			
 			$(`#${cepContainer.id} .cep-info__location-button`).click(() => {
 				modalContent
-					? _renderNewCep(modalContent)
-					: console.error(CONFIG.LOCAL_TO_RENDER_CEP
-						+ ' não encontrado. Id: '
-						+ cepContainer.id
+				? _renderNewCep(modalContent)
+				: console.error(CONFIG.LOCAL_TO_RENDER_CEP
+					+ ' não encontrado. Id: '
+					+ cepContainer.id
 					);
-			});
+				});
+
 		}
 
 		function _renderNewCep(modalContent) {

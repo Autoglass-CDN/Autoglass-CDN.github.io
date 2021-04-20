@@ -172,6 +172,8 @@ const generalPolicies = [
 
 $(window).on("orderFormUpdated.vtex", (_, oF) => changeSalesChannel(oF));
 
+localStorage.setItem('locationChanged', 0);
+
 async function changeSalesChannel(orderForm){
     
     if (!orderForm) {
@@ -192,6 +194,9 @@ async function changeSalesChannel(orderForm){
     }
     
     $('#myplace').text(newSalesChannelObject.Uf);
+
+    const myufCurrent = readCookie('myuf');
+
     document.cookie = `myuf=${newSalesChannelObject.nome.substr(0, 2)}; expires=Sun, 1 Jan 2099 00:00:00 UTC; path=/`;
 
     //houver cookie VTEXSC sem o ponto no início (no secure), apaga esse cookie.
@@ -210,8 +215,11 @@ async function changeSalesChannel(orderForm){
 
     if (newSalesChannelObject.salesChannel != +actualSalesChannel) {
 
-        if (testLogs) console.log("Política definida é diferente da atual.\n\nAplicando nova política...");
+        if(newSalesChannelObject.nome != myufCurrent){
+            localStorage.setItem('locationChanged', 1);
+        }
 
+        if (testLogs) console.log("Política definida é diferente da atual.\n\nAplicando nova política...");
 
         startAnimation();
         await reAddCartItems(items, newSalesChannelObject);
