@@ -78,6 +78,10 @@
 						newOrderForm.shippingData.address
 					);
 				});
+
+				$(window).on("orderFormUpdated.vtex", (_, order) => {
+					Service.saveAddressOnLocalStorage(order.shippingData);
+				});
 			});
 
 			window.dispatchEvent(new CustomEvent(
