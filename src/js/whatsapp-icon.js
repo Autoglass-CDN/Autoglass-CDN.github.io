@@ -13,6 +13,12 @@ captureOutboundLink = (url) => {
     if(document.querySelector('.product-qd-v1-fixed-bar')) {
         whatsappIcon.style.marginBottom = '55px'
     }
+
+    let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
+    whatsappIcon.addEventListener(touchEvent, () =>{
+        captureOutboundLink('https://api.whatsapp.com/send?phone=5527998260207&amp;text=Ol%C3%A1%2C%20estou%20navegando%20pelo%20e-commerce%2C%20pode%20me%20ajudar%3F');
+        return false;
+    })
     
     // while(!zdFrame){
         
