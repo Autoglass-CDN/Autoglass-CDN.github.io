@@ -132,23 +132,37 @@ $(function () {
   const address = JSON.parse(localStorage.getItem("AG_AddressSelected"));
 
   if (address) {
-    let x;
 
-    if (
-      typeof vtexjs !== "undefined" &&
-      vtexjs.checkout &&
-      vtexjs.checkout.orderForm &&
-      vtexjs.checkout.orderForm.items
-    ) {
-      x = vtexjs.checkout.orderForm.items;
+    let isCheckout = window.location.href.includes("/checkout");
+    let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
+        
+    if (!isCheckout && ufDefinedByTop) {
+      $(".secao-agendamento > .store-list > ul").html(`
+        <div>
+          <p>Por favor, informe um CEP para visualizar as lojas mais próximas</p>
+        </div>
+      `)
+    }
+    else{
+      let x;
+  
+      if (
+        typeof vtexjs !== "undefined" &&
+        vtexjs.checkout &&
+        vtexjs.checkout.orderForm &&
+        vtexjs.checkout.orderForm.items
+      ) {
+        x = vtexjs.checkout.orderForm.items;
+      }
+  
+      getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
+        (datas) => {
+          setMinDateDatepicker(datas);
+          recuperarHorarios(datas);
+        }
+      );
     }
 
-    getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
-      (datas) => {
-        setMinDateDatepicker(datas);
-        recuperarHorarios(datas);
-      }
-    );
   } else {
     // Evento lançado pelo componente de cep
     $(window).on("cep-finish-load", async (e) => {
@@ -197,6 +211,7 @@ $(function () {
   }
 
   function recuperarHorarios(slas) {
+
     $.ajax({
       method: "GET",
       url: `${baseUrlApi}/horarios-lojas?Data=${
@@ -210,6 +225,7 @@ $(function () {
         $(".modal-instale-na-loja .store-list .pickup-install").remove();
         $(".modal-instale-na-loja .store-list .mz-install__info").remove();
         $(".modal-instale-na-loja .store-list #sem-lojas").remove();
+        $(".secao-agendamento > .store-list > ul").html('');
 
         $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b").text("");
         $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide()
@@ -517,23 +533,31 @@ $(function () {
 
   if (address) {
 
-    let x;
-
-    if (
-      typeof vtexjs !== "undefined" &&
-      vtexjs.checkout &&
-      vtexjs.checkout.orderForm &&
-      vtexjs.checkout.orderForm.items
-    ) {
-      x = vtexjs.checkout.orderForm.items;
+    let isCheckout = window.location.href.includes("/checkout");
+    let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
+        
+    if (!isCheckout && ufDefinedByTop) {
+    }
+    else{
+      let x;
+  
+      if (
+        typeof vtexjs !== "undefined" &&
+        vtexjs.checkout &&
+        vtexjs.checkout.orderForm &&
+        vtexjs.checkout.orderForm.items
+      ) {
+        x = vtexjs.checkout.orderForm.items;
+      }
+  
+      getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
+        (datas) => {
+          setDateDatepicker(datas);
+          Carregar(address.postalCode);
+        }
+      );
     }
 
-    getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
-      (datas) => {
-        setDateDatepicker(datas);
-        Carregar(address.postalCode);
-      }
-    );
   } else {
     // Evento lançado pelo componente de cep
     $(window).on("cep-finish-load", async (e) => {
@@ -582,6 +606,7 @@ $(function () {
   }
 
   async function Carregar(cep) {
+
     $("#aviso-servico-movel").hide();
     $(".preview-data").hide();
 

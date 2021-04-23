@@ -55,7 +55,9 @@
 					address = null;
 				}
 				else {
-					address = orderForm.shippingData?.address;
+					if(orderForm.shippingData){
+						address = orderForm.shippingData.address;
+					}
 				}
 
 				View.renderCepInfo(

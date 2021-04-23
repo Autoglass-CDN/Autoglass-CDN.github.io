@@ -20,6 +20,7 @@ $(function () {
     });
     $(".mz-pickup__close--button,.mz-modal-overlay").click(function () {
         $(document.body).removeClass("mz-in-on mz-as-on mz-bo-on mz-pu-on");
+        localStorage.setItem('locationChanged', 0);
     });
 
     ga('create', 'UA-133498560-1', 'autoglassonline.com');
@@ -210,7 +211,16 @@ $(function LojasMaisProximas() {
             const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
             if (address) {
-                simulateShipping(address);
+
+                let isCheckout = window.location.href.includes("/checkout");
+                let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
+                    
+                if (!isCheckout && ufDefinedByTop) {
+                    View.noCepInformed()
+                }
+                else{
+                    simulateShipping(address);
+                }
             } else {
                 // Evento lançado pelo componente de cep
                 $(window).on('cep-finish-load', e => {
@@ -248,7 +258,8 @@ $(function LojasMaisProximas() {
     function ViewAPI() {
         return {
             buildListStore,
-            addClicks
+            addClicks,
+            noCepInformed
         }
 
         function buildListStore(pickups) {
@@ -287,6 +298,11 @@ $(function LojasMaisProximas() {
                 html += '<span><a onclick="$zopim.livechat.window.show()"><b>Clique aqui</b></a> e fale com a gente pelo chat!</span>';
             }
 
+            $(CONFIG.CSS.MODAL_LIST).html(html)
+        }
+
+        function noCepInformed(){
+            let html = '<p>Por favor, informe um CEP para visualizar as lojas mais próximas</p>';
             $(CONFIG.CSS.MODAL_LIST).html(html)
         }
 
@@ -435,7 +451,15 @@ $(function CalculeOFrete() {
             const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
             if (address) {
-                searchDeliverys(address.postalCode);
+
+                let isCheckout = window.location.href.includes("/checkout");
+                let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
+                    
+                if (!isCheckout && ufDefinedByTop) {
+                }
+                else{
+                    searchDeliverys(address.postalCode);
+                }
             } else {
                 // Evento lançado pelo componente de cep
                 $(window).on('cep-finish-load', e => {
@@ -498,10 +522,12 @@ $(function CalculeOFrete() {
 
             $(CONFIG.CSS.MODAL.CLOSE).click(() => {
                 $(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
+                localStorage.setItem('locationChanged', 0);
             });
 
             $(CONFIG.CSS.MODAL.OVERLAY).click(() => {
                 $(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
+                localStorage.setItem('locationChanged', 0);
             });
 
             $(CONFIG.CSS.MODAL.BUTTON).click(() => {

@@ -48,6 +48,7 @@ setTimeout(() => {
 }, 3000);
 
 async function _initHeaderPolicy() {
+    
     let Uf = readCookie('myuf');
 
     if (!Uf) {
@@ -79,6 +80,7 @@ async function _initHeaderPolicy() {
     }
 
     persistSalesChannel(Uf);
+    recoverModalsState();
 
     $(".use-location").click(() => {
         if (navigator.geolocation) {
@@ -90,6 +92,23 @@ async function _initHeaderPolicy() {
                 }
             );
         }
+    });
+
+    $(window).on("cep-updated", (e) => {
+        const orderForm = e.originalEvent.detail;
+        const newUf = orderForm.shippingData.address.state;
+        const currentUf = readCookie('myuf');
+        
+        if (currentUf != newUf){
+
+            saveModalsState();
+            localStorage.setItem('locationChanged', 1);
+            persistSalesChannel(newUf);
+        }
+        else{
+            localStorage.setItem('locationChanged', 0);
+        }
+        
     });
 
     const mq = window.matchMedia("(max-width: 1100px)");
@@ -123,7 +142,7 @@ function persistSalesChannel(Uf) {
     
     let vtexsc = readCookie('VTEXSC');
     const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
-
+    
     if (estado.Sc !== policyOnSite) {
         salvarUf(estado);
     } else {
@@ -191,6 +210,12 @@ function redirecionarParaPolitica(googleMapsResult) {
         }
     });
 
+    let currentUf = readCookie('myuf');
+
+    if (currentUf != Uf) {
+        localStorage.setItem('ufDefinedByTop', 1);   
+    }
+
     persistSalesChannel(Uf);
 
     $('.header-qd-v1-location-modal').click();
@@ -233,4 +258,33 @@ function readCookie(name) {
         if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
     }
     return null;
+}
+
+function saveModalsState() {
+
+    let reg = /mz-\w{2}-on/g;
+    let classes = $('body').attr('class');
+    let modalState = [];
+    let res;
+    while(true) {
+        res = reg.exec(classes);
+        if(res){
+            modalState.push(res);
+        }else {
+            break;
+        } 
+    }
+
+    localStorage.setItem('modalState', modalState.join());
+}
+
+function recoverModalsState() {
+    let string = localStorage.getItem('modalState');
+
+    if (string){
+        const classesList = string.split(',')
+        classesList.forEach(i => $('body').addClass(i));   
+        localStorage.removeItem('modalState');
+    }
+
 }
