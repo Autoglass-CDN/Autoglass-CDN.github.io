@@ -1309,11 +1309,13 @@ try {
 			});
 			$(".mz-install__close--button, .mz-advantages__close--button").click(function () {
 				$(document.body).removeClass(Product.mzOverlayClass)
+				localStorage.setItem('locationChanged', 0);
 			})
 		},
 		applyOverlayToggle: function () {
 			$(".mz-modal-overlay").click(function () {
 				$(document.body).removeClass(Product.mzOverlayClass)
+				localStorage.setItem('locationChanged', 0);
 			})
 		},
 		listStates: function () {
