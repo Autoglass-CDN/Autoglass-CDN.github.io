@@ -106,9 +106,6 @@ $(function () {
       return [!data.toDateString().includes("Sun")];
     },
     onSelect: async () => {
-      // $(".secao-agendamento > .store-list .pickup").remove();
-      // $(".secao-agendamento > .store-list #sem-lojas").remove();
-
       const orderForm = vtexjs.checkout.orderForm;
       const datas = await getDeliveriesEstimates(
         orderForm.shippingData.address.postalCode,
@@ -211,6 +208,8 @@ $(function () {
   }
 
   function recuperarHorarios(slas) {
+    
+    limpaModalInstaleLoja();
 
     $.ajax({
       method: "GET",
@@ -222,15 +221,9 @@ $(function () {
       }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
     })
       .done(function (data) {
-        $(".modal-instale-na-loja .store-list .pickup-install").remove();
-        $(".modal-instale-na-loja .store-list .mz-install__info").remove();
-        $(".modal-instale-na-loja .store-list #sem-lojas").remove();
-        $(".secao-agendamento > .store-list > ul").html('');
-
-        $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b").text("");
-        $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide()
-        $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show()
-
+  
+        limpaModalInstaleLoja();
+        
         pickupPoints = slas
           .filter((sla) => sla.Tipo === "pickup-in-point")
           .map((pickupPoint) => {
@@ -340,6 +333,17 @@ $(function () {
     // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
     // 	$(this).parent().next().toggleClass("hidden");
     // });
+  }
+
+  function limpaModalInstaleLoja(){
+    $(".modal-instale-na-loja .store-list .pickup-install").remove();
+    $(".modal-instale-na-loja .store-list .mz-install__info").remove();
+    $(".modal-instale-na-loja .store-list #sem-lojas").remove();
+    $(".secao-agendamento > .store-list > ul").html('');
+
+    $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b").text("");
+    $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide()
+    $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show()
   }
 
   function populateStore(pickupPoint) {
