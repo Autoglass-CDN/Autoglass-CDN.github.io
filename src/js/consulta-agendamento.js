@@ -242,34 +242,41 @@ $(function () {
         $(".secao-agendamento .qtd").text(
           `Lojas próximas: ${pickupPoints.length}`
         );
-        if (pickupPoints.length === 0)
-          $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
 
-        pickupPoints.forEach(function (pickupPoint, index) {
-          $(".secao-agendamento > .store-list > ul").append(
-            populateStore(pickupPoint)
-          );
+        let storeList = [];
+
+        pickupPoints.forEach(function (pickupPoint) {
+          const store = populateStore(pickupPoint);
+          storeList = store ? storeList.concat(store) : storeList; 
         });
 
-        $(".secao-agendamento > .store-list > ul").append(
-          `
-          <div class="mz-install__info">
-            <div class="mz-info__list">
-              <ul>
-                <li>
-                  Após aprovação do pagamento, nossos analistas entrarão 
-                  em contato com você para confirmar o horário de agendamento.
-                </li>
-                <li>
-                  Será realizada uma análise pelo técnico e caso
-                  haja necessidade de troca de borrachas ou sensores,
-                  o valor será cobrado na loja.
-                </li>
-              </ul>
+        
+        if (storeList.length === 0){
+          $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
+        }
+        else{
+          $(".secao-agendamento > .store-list > ul").append(storeList.join("\n"));
+  
+          $(".secao-agendamento > .store-list > ul").append(
+            `
+            <div class="mz-install__info">
+              <div class="mz-info__list">
+                <ul>
+                  <li>
+                    Após aprovação do pagamento, nossos analistas entrarão 
+                    em contato com você para confirmar o horário de agendamento.
+                  </li>
+                  <li>
+                    Será realizada uma análise pelo técnico e caso
+                    haja necessidade de troca de borrachas ou sensores,
+                    o valor será cobrado na loja.
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          `
-        );
+            `
+          );
+        }
 
         $(".timestamp").click(function (e) {
           if (window.location.href.includes("checkout")) {
@@ -345,7 +352,7 @@ $(function () {
     const store = pickupPoint.store;
     const dadosEndereco = pickupPoint.DadosPickupPoint.address;
 
-    if (!store) return "";
+    if (!store) return null;
 
     const timeStampList = createTimestampList(
       store.Horarios,
@@ -354,7 +361,7 @@ $(function () {
       pickupPoint.DadosPickupPoint.friendlyName)
 
     if (!timeStampList){
-      return "";
+      return null;
     }
 
     return `
