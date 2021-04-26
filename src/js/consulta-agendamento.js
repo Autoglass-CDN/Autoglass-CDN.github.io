@@ -223,7 +223,7 @@ $(function () {
       .done(function (data) {
   
         limpaModalInstaleLoja();
-        
+
         pickupPoints = slas
           .filter((sla) => sla.Tipo === "pickup-in-point")
           .map((pickupPoint) => {
@@ -249,11 +249,6 @@ $(function () {
           $(".secao-agendamento > .store-list > ul").append(
             populateStore(pickupPoint)
           );
-          // if (data.Registros.length - 1 === index) {
-          //   $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
-          //     $(this).parent().next().toggleClass("hidden");
-          //   });
-          // }
         });
 
         $(".secao-agendamento > .store-list > ul").append(
@@ -350,6 +345,18 @@ $(function () {
     const store = pickupPoint.store;
     const dadosEndereco = pickupPoint.DadosPickupPoint.address;
 
+    if (!store) return "";
+
+    const timeStampList = createTimestampList(
+      store.Horarios,
+      `${store.Nome} | ${store.Bairro}`,
+      store.Cep,
+      pickupPoint.DadosPickupPoint.friendlyName)
+
+    if (!timeStampList){
+      return "";
+    }
+
     return `
 			<div id="${dadosEndereco.addressId}" class="pickup pickup-install">
 				<div class="pickup__info">
@@ -375,11 +382,7 @@ $(function () {
 				</div>
 				<div class="time">
 					${store
-            ? createTimestampList(
-            store.Horarios,
-            `${store.Nome} | ${store.Bairro}`,
-            store.Cep,
-            pickupPoint.DadosPickupPoint.friendlyName).join("\n")
+            ? timeStampList.join("\n")
             : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>')
           }          
 				</div>
@@ -410,7 +413,7 @@ $(function () {
       })};
     return horariosDisponiveis
       ? ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat("</div>")
-      : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>');
+      : null;
   }
 
   function noTimeAvailable() {
