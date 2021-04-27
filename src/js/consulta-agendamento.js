@@ -106,9 +106,6 @@ $(function () {
       return [!data.toDateString().includes("Sun")];
     },
     onSelect: async () => {
-      // $(".secao-agendamento > .store-list .pickup").remove();
-      // $(".secao-agendamento > .store-list #sem-lojas").remove();
-
       const orderForm = vtexjs.checkout.orderForm;
       const datas = await getDeliveriesEstimates(
         orderForm.shippingData.address.postalCode,
@@ -211,6 +208,8 @@ $(function () {
   }
 
   function recuperarHorarios(slas) {
+    
+    limpaModalInstaleLoja();
 
     $.ajax({
       method: "GET",
@@ -222,14 +221,8 @@ $(function () {
       }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
     })
       .done(function (data) {
-        $(".modal-instale-na-loja .store-list .pickup-install").remove();
-        $(".modal-instale-na-loja .store-list .mz-install__info").remove();
-        $(".modal-instale-na-loja .store-list #sem-lojas").remove();
-        $(".secao-agendamento > .store-list > ul").html('');
-
-        $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b").text("");
-        $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide()
-        $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show()
+  
+        limpaModalInstaleLoja();
 
         pickupPoints = slas
           .filter((sla) => sla.Tipo === "pickup-in-point")
@@ -249,39 +242,41 @@ $(function () {
         $(".secao-agendamento .qtd").text(
           `Lojas próximas: ${pickupPoints.length}`
         );
-        if (pickupPoints.length === 0)
-          $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
 
-        pickupPoints.forEach(function (pickupPoint, index) {
-          $(".secao-agendamento > .store-list > ul").append(
-            populateStore(pickupPoint)
-          );
-          // if (data.Registros.length - 1 === index) {
-          //   $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
-          //     $(this).parent().next().toggleClass("hidden");
-          //   });
-          // }
+        let storeList = [];
+
+        pickupPoints.forEach(function (pickupPoint) {
+          const store = populateStore(pickupPoint);
+          storeList = store ? storeList.concat(store) : storeList; 
         });
 
-        $(".secao-agendamento > .store-list > ul").append(
-          `
-          <div class="mz-install__info">
-            <div class="mz-info__list">
-              <ul>
-                <li>
-                  Após aprovação do pagamento, nossos analistas entrarão 
-                  em contato com você para confirmar o horário de agendamento.
-                </li>
-                <li>
-                  Será realizada uma análise pelo técnico e caso
-                  haja necessidade de troca de borrachas ou sensores,
-                  o valor será cobrado na loja.
-                </li>
-              </ul>
+        
+        if (storeList.length === 0){
+          $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
+        }
+        else{
+          $(".secao-agendamento > .store-list > ul").append(storeList.join("\n"));
+  
+          $(".secao-agendamento > .store-list > ul").append(
+            `
+            <div class="mz-install__info">
+              <div class="mz-info__list">
+                <ul>
+                  <li>
+                    Após aprovação do pagamento, nossos analistas entrarão 
+                    em contato com você para confirmar o horário de agendamento.
+                  </li>
+                  <li>
+                    Será realizada uma análise pelo técnico e caso
+                    haja necessidade de troca de borrachas ou sensores,
+                    o valor será cobrado na loja.
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-          `
-        );
+            `
+          );
+        }
 
         $(".timestamp").click(function (e) {
           if (window.location.href.includes("checkout")) {
@@ -342,9 +337,32 @@ $(function () {
     // });
   }
 
+  function limpaModalInstaleLoja(){
+    $(".modal-instale-na-loja .store-list .pickup-install").remove();
+    $(".modal-instale-na-loja .store-list .mz-install__info").remove();
+    $(".modal-instale-na-loja .store-list #sem-lojas").remove();
+    $(".secao-agendamento > .store-list > ul").html('');
+
+    $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b").text("");
+    $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide()
+    $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show()
+  }
+
   function populateStore(pickupPoint) {
     const store = pickupPoint.store;
     const dadosEndereco = pickupPoint.DadosPickupPoint.address;
+
+    if (!store) return null;
+
+    const timeStampList = createTimestampList(
+      store.Horarios,
+      `${store.Nome} | ${store.Bairro}`,
+      store.Cep,
+      pickupPoint.DadosPickupPoint.friendlyName)
+
+    if (!timeStampList){
+      return null;
+    }
 
     return `
 			<div id="${dadosEndereco.addressId}" class="pickup pickup-install">
@@ -371,11 +389,7 @@ $(function () {
 				</div>
 				<div class="time">
 					${store
-            ? createTimestampList(
-            store.Horarios,
-            `${store.Nome} | ${store.Bairro}`,
-            store.Cep,
-            pickupPoint.DadosPickupPoint.friendlyName).join("\n")
+            ? timeStampList.join("\n")
             : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>')
           }          
 				</div>
@@ -406,7 +420,7 @@ $(function () {
       })};
     return horariosDisponiveis
       ? ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat("</div>")
-      : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>');
+      : null;
   }
 
   function noTimeAvailable() {
@@ -416,11 +430,15 @@ $(function () {
 			flex-direction: column;
 			justify-content: space-evenly;">
 			<p style="text-align: center;">
-				Não encontramos horários de instalação disponíveis para essa data.
+        Não encontramos loja para esta data, por favor selecione outra data.
 			</p>
-			<small style="text-align: center;">
-				Por favor, tente outras datas ou fale com nossos consultores no chat.
-			</small>
+			<h4 style="text-align: center; font-weight: normal;">
+        Qualquer dúvida,
+          <span style="font-weight: bold;">
+            <a onclick="$zopim.livechat.window.show()"> clique aqui </a> 
+          </span>
+        e fale com a gente pelo chat.
+			</h4>
 		</div>`;
   }
 
