@@ -430,11 +430,15 @@ $(function () {
 			flex-direction: column;
 			justify-content: space-evenly;">
 			<p style="text-align: center;">
-				Não encontramos horários de instalação disponíveis para essa data.
+        Não encontramos loja para esta data, por favor selecione outra data.
 			</p>
-			<small style="text-align: center;">
-				Por favor, tente outras datas ou fale com nossos consultores no chat.
-			</small>
+			<h4 style="text-align: center; font-weight: normal;">
+        Qualquer dúvida,
+          <span style="font-weight: bold;">
+            <a onclick="$zopim.livechat.window.show()"> clique aqui </a> 
+          </span>
+        e fale com a gente pelo chat.
+			</h4>
 		</div>`;
   }
 
