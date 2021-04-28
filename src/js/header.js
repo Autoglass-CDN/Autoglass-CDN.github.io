@@ -4,6 +4,7 @@ const ESTADOS = [
     { GoogleMaps: 'State of Minas Gerais', Uf: 'MG', Nome: 'Minas Gerais', Sc: 2 },
     { GoogleMaps: 'State of Espírito Santo', Uf: 'ES', Nome: 'Espírito Santo', Sc: 3 },
     { GoogleMaps: 'State of Alagoas', Uf: 'AL', Nome: 'Alagoas', Sc: 4 },
+    { GoogleMaps: 'State of Amapá', Uf: 'AP', Nome: 'Amapá', Sc: 21 },
     { GoogleMaps: 'State of Amazonas', Uf: 'AM', Nome: 'Amazonas', Sc: 5 },
     { GoogleMaps: 'State of Roraima', Uf: 'RR', Nome: 'Roraima', Sc: 5 },
     { GoogleMaps: 'State of Bahia', Uf: 'BA', Nome: 'Bahia', Sc: 6 },
