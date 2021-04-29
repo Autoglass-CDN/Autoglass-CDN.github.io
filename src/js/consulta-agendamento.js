@@ -239,11 +239,17 @@ $(function () {
             return pickupPoint;
           });
 
+        if(pickupPoints.length == 0){
+          $(".secao-agendamento > .store-list > ul").append(noStoreAvailable());
+          return;
+        }
+
         $(".secao-agendamento .qtd").text(
           `Lojas próximas: ${pickupPoints.length}`
         );
 
         let storeList = [];
+        horariosDisponiveisGeral = false
 
         pickupPoints.forEach(function (pickupPoint) {
           const store = populateStore(pickupPoint);
@@ -251,7 +257,7 @@ $(function () {
         });
 
         
-        if (storeList.length === 0){
+        if (!horariosDisponiveisGeral){
           $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
         }
         else{
@@ -354,18 +360,14 @@ $(function () {
 
     if (!store) return null;
 
-    const timeStampList = createTimestampList(
+    let {horariosDisponiveisLoja, timeStampList} = createTimestampList(
       store.Horarios,
       `${store.Nome} | ${store.Bairro}`,
       store.Cep,
       pickupPoint.DadosPickupPoint.friendlyName)
 
-    if (!timeStampList){
-      return null;
-    }
-
     return `
-			<div id="${dadosEndereco.addressId}" class="pickup pickup-install">
+			<div id="${dadosEndereco.addressId}" class="${horariosDisponiveisLoja?"":"card-horarios-indisponiveis"} pickup pickup-install">
 				<div class="pickup__info">
 					<div class="pickup__info-distance">
 						<svg class="pkpmodal-pickup-point-best-marker-image" width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -390,7 +392,7 @@ $(function () {
 				<div class="time">
 					${store
             ? timeStampList.join("\n")
-            : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis <p>')
+            : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>')
           }          
 				</div>
 			</div>
@@ -399,13 +401,14 @@ $(function () {
   }
 
   function createTimestampList(horarios, store, cep, friendlyName) {
-    let horariosDisponiveis = false
+    let horariosDisponiveisLoja = false
     let horariosArray = []
     if (horarios.length) {
       horariosArray = horarios.map(function (horario) {
         let timestamp = new Date(horario.HoraInicial);
         if(horario.Disponibilidade.Value !== "Nao") {
-          horariosDisponiveis = true;
+          horariosDisponiveisLoja = true;
+          horariosDisponiveisGeral = true;
           return `<button data-store="${store}" data-cep="${cep}" data-friendly-name="${friendlyName}" class="timestamp">
             ${timestamp.toLocaleTimeString(
               [],
@@ -418,9 +421,11 @@ $(function () {
           return "";
         }
       })};
-    return horariosDisponiveis
-      ? ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat("</div>")
-      : null;
+    
+    let timeStampList = horariosDisponiveisLoja
+    ? ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat("</div>")
+    : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>');;
+    return {horariosDisponiveisLoja, timeStampList}
   }
 
   function noTimeAvailable() {
@@ -438,6 +443,15 @@ $(function () {
             <a onclick="$zopim.livechat.window.show()"> clique aqui </a> 
           </span>
         e fale com a gente pelo chat.
+			</h4>
+		</div>`;
+  }
+
+  function noStoreAvailable() {
+    return `<div id="sem-lojas-proximas" style="
+			min-height: 50px;
+			<h4 style="text-align: center;">
+        Não encontramos lojas próximas à região informada.
 			</h4>
 		</div>`;
   }
