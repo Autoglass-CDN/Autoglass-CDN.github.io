@@ -360,18 +360,14 @@ $(function () {
 
     if (!store) return null;
 
-    const timeStampList = createTimestampList(
+    let {horariosDisponiveisLoja, timeStampList} = createTimestampList(
       store.Horarios,
       `${store.Nome} | ${store.Bairro}`,
       store.Cep,
       pickupPoint.DadosPickupPoint.friendlyName)
 
-    // if (!timeStampList){
-    //   return null;
-    // }
-
     return `
-			<div id="${dadosEndereco.addressId}" class="pickup pickup-install">
+			<div id="${dadosEndereco.addressId}" class="${horariosDisponiveisLoja?"":"card-horarios-indisponiveis"} pickup pickup-install">
 				<div class="pickup__info">
 					<div class="pickup__info-distance">
 						<svg class="pkpmodal-pickup-point-best-marker-image" width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -425,9 +421,11 @@ $(function () {
           return "";
         }
       })};
-    return horariosDisponiveisLoja
-      ? ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat("</div>")
-      : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>');;
+    
+    let timeStampList = horariosDisponiveisLoja
+    ? ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat("</div>")
+    : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>');;
+    return {horariosDisponiveisLoja, timeStampList}
   }
 
   function noTimeAvailable() {
