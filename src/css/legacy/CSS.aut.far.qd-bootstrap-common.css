@@ -2942,7 +2942,7 @@ p.flag[class*='esconder'] {
 }
 
 #returnToTop .arrowToTop {
-    background: url("//devautoglass.vteximg.com.br/arquivos/returnToTop.png") no-repeat #000000;
+    background: url("//www.autoglassonline.com.br/arquivos/returnToTop.png") no-repeat #000000;
     width: 32px;
     height: 32px;
     position: absolute;
@@ -2979,7 +2979,7 @@ div#ajaxBusy p {
     letter-spacing: 1px;
     margin: -2px auto 0;
     padding: 8px 30px 8px 8px;
-    background: url("//devautoglass.vteximg.com.br/arquivos/ajax-loader-2.gif") no-repeat 90px center #fff6bf;
+    background: url("//www.autoglassonline.com.br/arquivos/ajax-loader-2.gif") no-repeat 90px center #fff6bf;
     border: #382e1a solid;
     border-width: 1px;
     white-space: nowrap
@@ -2991,8 +2991,8 @@ body.qd-ssr-reloading div#ajaxBusy {
 
 @font-face {
     font-family: 'icomoon';
-    src: url('//devautoglass.vteximg.com.br/arquivos/icomoon.eot.txt?vo3bh6');
-    src: url('//devautoglass.vteximg.com.br/arquivos/icomoon.eot.txt?vo3bh6#iefix') format('embedded-opentype'),url('//devautoglass.vteximg.com.br/arquivos/icomoon.ttf.txt?vo3bh6') format('truetype'),url('//devautoglass.vteximg.com.br/arquivos/icomoon.woff.txt?vo3bh6') format('woff'),url('//devautoglass.vteximg.com.br/arquivos/icomoon.svg.txt?vo3bh6#icomoon') format('svg');
+    src: url('//www.autoglassonline.com.br/arquivos/icomoon.eot.txt?vo3bh6');
+    src: url('//www.autoglassonline.com.br/arquivos/icomoon.eot.txt?vo3bh6#iefix') format('embedded-opentype'),url('//www.autoglassonline.com.br/arquivos/icomoon.ttf.txt?vo3bh6') format('truetype'),url('//www.autoglassonline.com.br/arquivos/icomoon.woff.txt?vo3bh6') format('woff'),url('//www.autoglassonline.com.br/arquivos/icomoon.svg.txt?vo3bh6#icomoon') format('svg');
     font-weight: normal;
     font-style: normal
 }
@@ -4645,7 +4645,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
 .component-qd-v1-sidemeu-right .header-qd-v1-user-action-login {
     height: 167px;
     padding: 60px 15px;
-    background: url("//devautoglass.vteximg.com.br/arquivos/fundo-login-mobile-297x130.png") no-repeat 50% 50%;
+    background: url("//www.autoglassonline.com.br/arquivos/fundo-login-mobile-297x130.png") no-repeat 50% 50%;
     background-size: cover;
     background-color: #2D4F9E;
     text-align: center
@@ -5854,7 +5854,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
     height: 24px;
     position: relative;
     top: 6px;
-    background: url('//devautoglass.vteximg.com.br/arquivos/home-filtro-icon.png');
+    background: url('//www.autoglassonline.com.br/arquivos/home-filtro-icon.png');
     content: "";
     margin-right: 10px
 }
@@ -6736,14 +6736,14 @@ body.account .footer-qd-v1-newsletter-social .footer-qd-v1-newsletter-form .qd_n
 .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock div {
     width: 10px;
     height: 6px;
-    background-image: url('//devautoglass.vteximg.com.br/arquivos/setDown.png');
+    background-image: url('//www.autoglassonline.com.br/arquivos/setDown.png');
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 12px 7px
 }
 
 .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock .MZf-setUp {
-    background-image: url('//devautoglass.vteximg.com.br/arquivos/setUp.png')
+    background-image: url('//www.autoglassonline.com.br/arquivos/setUp.png')
 }
 
 .footer-qd-v1-content .footer-qd-v1-contact-information {
@@ -6949,7 +6949,7 @@ body.account .footer-qd-v1-newsletter-social .footer-qd-v1-newsletter-form .qd_n
 }
 
 .footer-qd-v1-payment-stamps [class*="stamp"] {
-    background: url('//devautoglass.vteximg.com.br/arquivos/qd-payment-stamp-flat.png') no-repeat 0 0;
+    background: url('//www.autoglassonline.com.br/arquivos/qd-payment-stamp-flat.png') no-repeat 0 0;
     width: 47px;
     height: 28px;
     margin-right: 10px;
@@ -8830,7 +8830,7 @@ body.produto .carousel-qd-v1-shelf h2 {
     position: absolute;
     right: 0;
     bottom: 15px;
-    background-image: url('//devautoglass.vteximg.com.br/arquivos/icon-close-modals.png?v=1');
+    background-image: url('//www.autoglassonline.com.br/arquivos/icon-close-modals.png?v=1');
     background-position: center center;
     background-repeat: no-repeat
 }
@@ -9022,7 +9022,7 @@ body.qd-bb-lightBoxBodyProdAdd.qd-ddc-product-add-time .smart-cart-qd-v1-wrapper
     position: absolute;
     top: 0;
     left: 0;
-    background: #FFF url("//devautoglass.vteximg.com.br/arquivos/ajax-loader.gif") no-repeat center center;
+    background: #FFF url("//www.autoglassonline.com.br/arquivos/ajax-loader.gif") no-repeat center center;
     display: none;
     margin: 0
 }
@@ -9034,7 +9034,7 @@ body.qd-bb-lightBoxBodyProdAdd.qd-ddc-product-add-time .smart-cart-qd-v1-wrapper
     width: 100%;
     height: auto !important;
     min-height: 30px;
-    background: url("//devautoglass.vteximg.com.br/arquivos/ajax-loader.gif") no-repeat center center #FFF;
+    background: url("//www.autoglassonline.com.br/arquivos/ajax-loader.gif") no-repeat center center #FFF;
     border-radius: 3px
 }
 
@@ -9219,7 +9219,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper {
     max-width: 410px;
     width: 90%;
     display: block;
-    background: url("//devautoglass.vteximg.com.br/arquivos/ajax-loader.gif") no-repeat center center #FFF;
+    background: url("//www.autoglassonline.com.br/arquivos/ajax-loader.gif") no-repeat center center #FFF;
     color: #000;
     min-height: 30px;
     z-index: 999999999;
