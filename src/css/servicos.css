@@ -1,0 +1,41 @@
+.banner .banner__image {
+    background-image: var(--url-background-banner);
+    height: 275px;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.banner .banner__image h1,
+.banner .banner__image span
+{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 1;
+    text-align: center
+}
+
+.banner .banner__image span{
+    color: #f87711;
+}
+
+@media only screen and (max-width: 768px) {
+    html {
+        font-size: 12px !important;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    html {
+        font-size: 8px !important;
+    }
+}
