@@ -1,3 +1,10 @@
+html {
+    --form-width: 400px;
+    --topo-height: 122px
+}
+
+
+/* banner */
 .banner .banner__image {
     background-image: var(--url-background-banner);
     height: 275px;
@@ -20,7 +27,7 @@
     color: white;
     font-weight: 700;
     font-size: 4rem;
-    line-height: 1;
+    line-height: 1.1;
     text-align: center
 }
 
@@ -28,14 +35,77 @@
     color: #f87711;
 }
 
+
+
+main {
+    position: relative;
+}
+
+/* descricao */
+section.servico-descricao {
+    /* provisorio */
+    background-color:yellow;
+    min-height: 700px;
+
+}
+
+
+/* formulario */
+section.form-section {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: var(--form-width);
+    height: 100%;
+}
+
+section.form-section .form {
+    /* provisorio */
+    background-color:blue;
+    min-height: 500px;
+
+
+    position: sticky;
+    top: var(--topo-height);
+}
+
+
+/* vantagens */
+section.servico-vantagens {
+    /* provisorio */
+    background-color:red;
+    min-height: 600px;
+
+}
+
+
+/* Responsividade */
+
 @media only screen and (max-width: 768px) {
     html {
-        font-size: 12px !important;
+        font-size: 13px !important;
+    }
+
+    .banner .banner__image h1,
+    .banner .banner__image span
+    {
+        line-height: 1.2;
     }
 }
 
 @media only screen and (max-width: 576px) {
     html {
         font-size: 8px !important;
+    }
+
+    .banner .banner__image{
+        height: 210px;
+
+    }
+
+    .banner .banner__image h1,
+    .banner .banner__image span
+    {
+        line-height: 1.5;
     }
 }
