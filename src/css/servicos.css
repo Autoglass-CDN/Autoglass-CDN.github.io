@@ -60,11 +60,7 @@ section.form-section {
 }
 
 section.form-section .form {
-    /* provisorio */
-    background-color:blue;
-    min-height: 500px;
-
-
+    
     position: sticky;
     top: var(--topo-height);
 }
