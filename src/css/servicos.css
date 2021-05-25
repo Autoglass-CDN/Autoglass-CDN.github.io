@@ -1,6 +1,11 @@
 html {
-    --form-width: 400px;
-    --topo-height: 122px
+    --form-width: 700px;
+    --topo-height: 122px;
+
+    /* cores */
+    --azul-titulos: #003da5;
+    --cinza: #828282;
+
 }
 
 
@@ -32,7 +37,7 @@ html {
 }
 
 .banner .banner__image span{
-    color: #f87711;
+    color: var(--cor-titulos-servico); /*varaívael definida no template*/
 }
 
 
@@ -41,13 +46,40 @@ main {
     position: relative;
 }
 
+section div {
+    padding: 1em 3em;
+}
+
 /* descricao */
 section.servico-descricao {
-    /* provisorio */
-    background-color:yellow;
-    min-height: 700px;
-
+    padding-right: var(--form-width);
 }
+
+section.servico-descricao .descricao__titulo h2{
+    margin-top: 1rem;
+
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--azul-titulos);
+}
+
+section.servico-descricao .descricao__titulo h2 > span{
+    font-size: 3rem;
+    color: var(--cor-titulos-servico); /*varaívael definida no template*/
+    text-transform: capitalize;
+    font-weight: 800;
+}
+
+section.servico-descricao .descricao__texto p{
+    margin: 0 2rem;
+
+    font-size: 1.125rem;
+    text-align: justify;
+    color: #828282;
+}
+
 
 
 /* formulario */
@@ -60,7 +92,10 @@ section.form-section {
 }
 
 section.form-section .form {
-    
+    /* provisorio */
+    background-color:blue;
+    min-height: 350px;
+
     position: sticky;
     top: var(--topo-height);
 }
@@ -68,12 +103,16 @@ section.form-section .form {
 
 /* vantagens */
 section.servico-vantagens {
+    padding-right: var(--form-width);    
+}
+
+section.servico-vantagens div{
+    
     /* provisorio */
     background-color:red;
     min-height: 600px;
 
 }
-
 
 /* Responsividade */
 
