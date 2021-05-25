@@ -1,5 +1,5 @@
 html {
-    --form-width: 700px;
+    --form-width: 500px;
     --topo-height: 122px;
 
     /* cores */
@@ -44,15 +44,21 @@ html {
 
 main {
     position: relative;
+    padding-right: var(--form-width);
 }
 
-section div {
+main > div {
+    max-width: 1300px;
+    margin: auto;
+}
+
+main section > div {
     padding: 1em 3em;
 }
 
 /* descricao */
 section.servico-descricao {
-    padding-right: var(--form-width);
+    
 }
 
 section.servico-descricao .descricao__titulo h2{
@@ -80,6 +86,11 @@ section.servico-descricao .descricao__texto p{
     color: #828282;
 }
 
+.descricao__etapa__icone {
+    width: 150px;
+    fill: var(--cor-titulos-servico);
+}
+
 
 
 /* formulario */
@@ -93,7 +104,7 @@ section.form-section {
 
 section.form-section .form {
     /* provisorio */
-    background-color:blue;
+    background-color:greenyellow;
     min-height: 350px;
 
     position: sticky;
