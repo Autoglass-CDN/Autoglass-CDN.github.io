@@ -1,15 +1,15 @@
-html {
-    font-size: 14px;
-}
-
 .form-servico {
-    border-radius: 5px;
-    padding: 10px 25px;
-    max-width: 400px;
+    border-radius: 0.3rem;
+    padding: 0.6rem 1.6rem;
+    width: calc(var(--form-width) - 6rem);
     display: flex;
     flex-direction: column;
 
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+.form-servico p {
+    margin: 1rem 0;
 }
 
 .form-servico .title {
@@ -18,7 +18,7 @@ html {
 }
 
 .form-servico > label > input {
-    max-width: 320px;
+    max-width: 20rem;
 }
 
 .form-servico .form-servico__cidade-estado {
@@ -32,21 +32,21 @@ html {
 }
 
 .form-servico__cidade-estado .cidade > input {
-    max-width: 175px;
+    max-width: 11rem;
 }
 
 .form-servico__cidade-estado .estado {
-    margin-left: 5px;
-    width: 140px;
+    margin-left: 0.3rem;
+    width: 8.8rem;
 }
 
 .form-servico__cidade-estado .estado > select {
-    margin-left: 5px;
-    width: 100px;
+    margin-left: 0.3rem;
+    width: 6.3rem;
 }
 
 .form-servico__content-submit {
-    margin: 15px 0;
+    margin: 0.9rem 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,8 +62,8 @@ html {
 }
 
 .mais-opcoes-da-peca {
-    padding-top: 20px;
-    padding-left: 25px;
+    padding-top: 1.3rem;
+    padding-left: 1.6rem;
 }
 
 .esconder {
@@ -73,5 +73,5 @@ html {
 /* Subcrisção do componente multiseleção */
 .select2-container {
     display: inline !important;
-    min-width: 342px !important;
+    width: 20rem !important;
 }
