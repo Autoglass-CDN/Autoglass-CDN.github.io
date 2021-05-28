@@ -1,0 +1,77 @@
+/* Possível padrão de layout */
+:root {
+    --color-blue: #003DA5;
+    --color-green: #42b942;
+    --color-silver: #b4b4b4;
+}
+
+.input {
+    margin: 6px 0;
+}
+
+.input > input {
+    outline: none;
+    border-radius: 5px;
+    border: 0.4px var(--color-silver) solid;
+    padding: 5px 10px;
+}
+
+.input-line {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.input-line > input {
+    flex-grow: 1;
+}
+
+.input-column {
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+}
+
+.button {
+    border-radius: 5px;
+    border: none;
+    padding: 8px 30px;
+    letter-spacing: 0.2rem;
+}
+
+.btn-confirm {
+    color: white;
+    background-color: var(--color-green);
+}
+
+.select {
+    outline: none;
+    border-radius: 5px;
+    border: 0.4px var(--color-silver) solid;
+    padding: 5px 3px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: url("../assets/svg/angle-down-solid.svg") 90% / 15% no-repeat transparent;
+
+    cursor: pointer;
+}
+
+.button-radio {
+    margin: 0 5px;
+    border-radius: 5px;
+    border: 0.4px var(--color-silver) solid;
+    padding: 5px 20px;
+}
+
+.button-radio input {
+    border-radius: 5px;
+    padding: 5px 20px;
+    display: none;
+}
+
+.button-radio-checked {
+    color: white;
+    background-color: var(--color-blue);
+}
