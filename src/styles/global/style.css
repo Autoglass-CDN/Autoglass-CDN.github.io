@@ -53,7 +53,7 @@
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
-    background: url("../assets/svg/angle-down-solid.svg") 90% / 15% no-repeat transparent;
+    background: url("https://autoglass-cdn.github.io/src/img/servicos/angle-down-solid.svg") 90% / 15% no-repeat transparent;
 
     cursor: pointer;
 }
