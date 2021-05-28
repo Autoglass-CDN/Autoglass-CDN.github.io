@@ -1,10 +1,11 @@
 html {
-    --form-width: 500px;
+    --form-width: 400px;
     --topo-height: 122px;
 
     /* cores */
     --azul-titulos: #003da5;
     --cinza: #828282;
+    --cinza-claro: #EFEFEF;
 
 }
 
@@ -44,21 +45,22 @@ html {
 
 main {
     position: relative;
-    padding-right: var(--form-width);
 }
 
-main > div {
-    max-width: 1300px;
-    margin: auto;
+main .section-container {
+    margin-right: var(--form-width);
 }
 
-main section > div {
+main .section-container > div {
     padding: 1em 3em;
+    max-width: 1300px;
+    margin-left :auto;
+    margin-right :auto;
 }
 
 /* descricao */
 section.servico-descricao {
-    
+    background-color: white;
 }
 
 section.servico-descricao .descricao__titulo h2{
@@ -73,7 +75,7 @@ section.servico-descricao .descricao__titulo h2{
 
 section.servico-descricao .descricao__titulo h2 > span{
     font-size: 3rem;
-    color: var(--cor-titulos-servico); /*varaívael definida no template*/
+    color: var(--cor-titulos-servico); /*variável definida no template*/
     text-transform: capitalize;
     font-weight: 800;
 }
@@ -86,15 +88,129 @@ section.servico-descricao .descricao__texto p{
     color: #828282;
 }
 
-.descricao__etapa__icone {
-    width: 150px;
-    fill: var(--cor-titulos-servico);
+section.servico-descricao .descricao__etapas {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--cinza);
+
 }
+
+section.servico-descricao .descricao__etapa {
+    width: 10rem;
+    margin: 0 10px;
+    
+}
+
+section.servico-descricao .descricao__etapa__icone {
+    fill: var(--cor-titulos-servico);
+
+    width: 8rem;
+}
+
+section.servico-descricao .descricao__etapas__setas{
+    display: flex;
+    width: auto;
+    height: 8rem;
+    
+    align-items: center;
+
+    fill: var(--cor-titulos-servico);
+    opacity: 0.5;
+}
+
+section.servico-descricao .descricao__etapas__setas svg {
+
+    height: 1.1rem;
+}
+
+section.servico-descricao .descricao__etapas__setas svg:not(:last-child) {
+
+    
+    margin-right: 0.5rem;
+}
+
+
+
+/* vantagens */
+section.servico-vantagens {
+    background-color: white;  
+}
+
+section.servico-vantagens .vantagens__titulo {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+
+section.servico-vantagens .vantagens__titulo h3 {
+    text-align: center;
+    color: #F9A51A;
+    font-size: 2.5rem;
+    font-weight: 800;
+}
+
+section.servico-vantagens .vantagens-container{
+    display: flex;  
+    align-items: center;
+}
+
+section.servico-vantagens .vantagens__vantagens {
+    margin-right: 20px;
+}
+
+section.servico-vantagens .vantagens__vantagem {
+    display: flex;
+    align-items: center;
+}
+
+section.servico-vantagens .vantagens__vantagem.vantagem1{
+    color: #F48120;
+    fill: #F48120;
+}
+
+section.servico-vantagens .vantagens__vantagem.vantagem2{
+    color: #F9A51A;
+    fill: #F9A51A;
+    margin-left: 2.5vw;
+}
+
+section.servico-vantagens .vantagens__vantagem.vantagem3{
+    color: #FFCA05;
+    fill: #FFCA05;
+    margin-left: 5vw;
+}
+
+
+section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone {
+    width: 5vw;
+    margin: 1vw 0;
+}
+
+section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
+    font-size: 1.5vw;
+    font-weight: 800;
+    font-style: italic;
+    width: 5vw;
+    line-height: 1.5vw;
+}
+
+section.servico-vantagens .vantagens__imagem {
+    background: url("https://autoglass-cdn.github.io/src/img/landing-pages/carro-pintura.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    height: 24vw;
+    width: 100%;
+}
+
 
 
 
 /* formulario */
 section.form-section {
+    background-color: transparent;
     position: absolute;
     right: 0;
     top: 0;
@@ -103,31 +219,21 @@ section.form-section {
 }
 
 section.form-section .form {
-    /* provisorio */
-    background-color:greenyellow;
-    min-height: 350px;
-
     position: sticky;
     top: var(--topo-height);
-}
-
-
-/* vantagens */
-section.servico-vantagens {
-    padding-right: var(--form-width);    
-}
-
-section.servico-vantagens div{
     
-    /* provisorio */
-    background-color:red;
-    min-height: 600px;
+    width: fit-content;
+    margin: auto auto;
+
+    background-color: white;
+    border: 1px solid var(--cinza-claro);
 
 }
+
 
 /* Responsividade */
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
     html {
         font-size: 13px !important;
     }
@@ -137,7 +243,32 @@ section.servico-vantagens div{
     {
         line-height: 1.2;
     }
+
+    main .section-container {
+        margin-right: 0;
+    }
+
+    /* formulario */
+    section.form-section {
+        position: relative;
+        background-color: white;
+        right: unset;
+        top: unset;
+        width: 100%;
+        height: auto;
+    }
+
+    section.form-section .form {
+        background-color: white;
+        border: none;
+
+        position: relative;
+        top: unset;
+    }
 }
+
+
+
 
 @media only screen and (max-width: 576px) {
     html {
