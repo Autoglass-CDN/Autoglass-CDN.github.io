@@ -248,6 +248,45 @@ section.form-section .form {
         margin-right: 0;
     }
 
+
+    /* vantagens */
+    section.servico-vantagens .vantagens-container{
+        display: block; 
+    }
+
+    section.servico-vantagens .vantagens__vantagens {
+        display: flex;
+        justify-content: center;
+    }
+
+    section.servico-vantagens .vantagens__vantagem {
+        flex-direction: column;
+        width: 11vw;
+        text-align: center;
+        margin: 0px 4.125vw;
+    }
+
+    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone{
+        width: auto;
+        margin: 1vw 0;
+
+    }
+
+    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
+        font-size: 2.5vw;
+        width: auto;
+        line-height: 2.5vw;
+    }
+
+    section.servico-vantagens .vantagens__imagem {
+        background-size: cover;
+        height: 39vw;
+        width: 65vw;
+        margin: 2vw auto;
+        border-radius: 20px;
+    }
+
+
     /* formulario */
     section.form-section {
         position: relative;
