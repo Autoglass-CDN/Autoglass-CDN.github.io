@@ -1,0 +1,77 @@
+html {
+    font-size: 14px;
+}
+
+.form-servico {
+    border-radius: 5px;
+    padding: 10px 25px;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+
+    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+}
+
+.form-servico .title {
+    text-align: center;
+    color: var(--color-blue);
+}
+
+.form-servico > label > input {
+    max-width: 320px;
+}
+
+.form-servico .form-servico__cidade-estado {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.form-servico__cidade-estado .cidade {
+    flex: 1;
+}
+
+.form-servico__cidade-estado .cidade > input {
+    max-width: 175px;
+}
+
+.form-servico__cidade-estado .estado {
+    margin-left: 5px;
+    width: 140px;
+}
+
+.form-servico__cidade-estado .estado > select {
+    margin-left: 5px;
+    width: 100px;
+}
+
+.form-servico__content-submit {
+    margin: 15px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container-de-opcoes {
+    font-style: italic;
+}
+
+.titulo-estado-da-peca,
+.titulo-tipo-da-cor {
+    font-style: normal;
+}
+
+.mais-opcoes-da-peca {
+    padding-top: 20px;
+    padding-left: 25px;
+}
+
+.esconder {
+    display: none !important;
+}
+
+/* Subcrisção do componente multiseleção */
+.select2-container {
+    display: inline !important;
+    min-width: 342px !important;
+}
