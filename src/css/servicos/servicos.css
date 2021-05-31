@@ -1,11 +1,12 @@
 html {
-    --form-width: 400px;
+    --form-width: 520px;
     --topo-height: 122px;
 
     /* cores */
     --azul-titulos: #003da5;
     --cinza: #828282;
     --cinza-claro: #EFEFEF;
+    --cinza-backgorund: #F1F1F1;
 
 }
 
@@ -41,7 +42,9 @@ html {
     color: var(--cor-titulos-servico); /*varaívael definida no template*/
 }
 
-
+body {
+    background-color: white;
+}
 
 main {
     position: relative;
@@ -52,7 +55,7 @@ main .section-container {
 }
 
 main .section-container > div {
-    padding: 1em 3em;
+    padding: 1rem 3rem;
     max-width: 1300px;
     margin-left :auto;
     margin-right :auto;
@@ -207,6 +210,118 @@ section.servico-vantagens .vantagens__imagem {
 
 
 
+/* por que contratar? */
+
+section.por_que_contratar {
+    text-align: center;
+    line-height: 18px;
+    background-color: var(--cinza-backgorund);
+    color: var(--azul-titulos);
+    
+}
+
+section.por_que_contratar table {
+    margin: 1.5rem auto;
+}
+
+section.por_que_contratar td,
+section.por_que_contratar th {
+    padding: 0.5rem 1rem;
+}
+
+section.por_que_contratar table td {
+    margin: 0.5rem;
+}
+
+section.por_que_contratar table th{
+    font-weight: 800;
+}
+
+section.por_que_contratar .table-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    padding-bottom: 1.5rem;
+}
+
+section.por_que_contratar table th:nth-child(2),
+section.por_que_contratar table th:nth-child(3)
+{
+    text-align: center;
+    vertical-align: bottom;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+}
+
+section.por_que_contratar table td:nth-child(2) {
+    border-right: 1px solid #003da570;
+    
+}
+
+section.por_que_contratar table td:first-child{
+    text-align: left;
+    font-weight: 600;
+}
+
+section.por_que_contratar table td:nth-child(2),
+section.por_que_contratar table td:nth-child(3)
+{
+    width: 3rem;
+}
+
+section.por_que_contratar table th:nth-child(3){
+    opacity: 65%;
+}
+
+section.por_que_contratar .positive-check{
+    background: url(https://autoglass-cdn.github.io/src/img/servicos/pos_check.png);
+}
+
+section.por_que_contratar .negative-check{
+    background: url(https://autoglass-cdn.github.io/src/img/servicos/neg_check.png);
+}
+
+section.por_que_contratar .positive-check,
+section.por_que_contratar .negative-check {
+    height: 22px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+section.por_que_contratar .table-index {
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+
+    border-radius: 50%;
+    background-color: var(--azul-titulos);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    text-align: center;
+}
+
+
+section.avaliacoes-consumidores {
+    text-align: center;
+    background-color: white;
+    color: var(--azul-titulos);
+}
+
+section.avaliacoes-consumidores h2{
+    font-weight: var(--extra-bold);
+    color: var(--blue-700);
+    text-align: center;
+    font-size: 32px;
+    margin: 40px;
+}
+
+section.avaliacoes-consumidores .container.ratings{
+    min-width: unset;
+    width: auto !important;
+}
+
 
 /* formulario */
 section.form-section {
@@ -232,6 +347,32 @@ section.form-section .form {
 
 
 /* Responsividade */
+
+@media screen and (min-width: 2000px) {
+    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone {
+        width: 100px;
+        margin: 20px 0;
+    }
+
+    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
+        font-size: 30px;
+        width: 100px;
+        line-height: 30px;
+    }
+
+    section.servico-vantagens .vantagens__imagem {
+        height: 480px;
+    }
+}
+
+@media (max-width: 1550px){
+    .ratings-section .ratings__rating {
+        display: none !important;
+    }
+    .ratings-section .ratings__rating.highlight {
+        display: flex !important;
+    }
+}
 
 @media only screen and (max-width: 992px) {
     html {
@@ -280,8 +421,8 @@ section.form-section .form {
 
     section.servico-vantagens .vantagens__imagem {
         background-size: cover;
-        height: 39vw;
-        width: 65vw;
+        height: 44vw;
+        width: 75vw;
         margin: 2vw auto;
         border-radius: 20px;
     }
@@ -312,6 +453,10 @@ section.form-section .form {
 @media only screen and (max-width: 576px) {
     html {
         font-size: 8px !important;
+    }
+
+    main .section-container > div {
+        padding: 1rem 0rem;
     }
 
     .banner .banner__image{
