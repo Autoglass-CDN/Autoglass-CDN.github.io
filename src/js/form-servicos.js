@@ -305,9 +305,35 @@ class FormSubmit {
     }
 }
 
+class AnchorButton {
+
+    static init() {
+
+        window.onload = () => {
+            const formElm = document.querySelector("#form-orcamento");
+            const anchorElm = document.querySelector("#anchor-form");
+
+            anchorElm.addEventListener('click', () => window.scrollTo(0, formOffsetTop))
+            
+            const formOffsetTop = formElm.offsetTop;
+            console.log(formOffsetTop)
+            window.onscroll = () => {
+                if (document.documentElement.scrollTop >= formOffsetTop - 200) {
+                    anchorElm.style.display = "none";
+                }
+                else{
+                    anchorElm.style.display = "block";
+                }
+            }
+        }
+    }
+
+}
+
 (function(){ 
     DetalhamentoDePeçaDanificada.init();
     ValidacaoDeInput.init();
     Select2.init();
     FormSubmit.init();
+    AnchorButton.init();
 })();
