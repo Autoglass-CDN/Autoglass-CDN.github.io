@@ -9,6 +9,9 @@ html {
 
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 /* banner */
 .banner .banner__image {
@@ -208,6 +211,10 @@ section.servico-vantagens .vantagens__imagem {
 }
 
 
+/* avaliações */
+.ratings-section .ratings__slider button {
+    z-index: 8 !important;
+}
 
 /* por que contratar? */
 
@@ -216,7 +223,7 @@ section.por_que_contratar {
     line-height: 18px;
     background-color: var(--cinza-backgorund);
     color: var(--azul-titulos);
-    
+    padding: 0 10px;
 }
 
 section.por_que_contratar table {
