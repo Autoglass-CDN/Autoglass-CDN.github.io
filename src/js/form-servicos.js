@@ -35,14 +35,18 @@ class DetalhamentoDePeçaDanificada {
         adicionaEventoRadioButtons();
 
         function adicionaEventoRadioButtons() {
-            const buttonsRadio = document.querySelectorAll(".button-radio input[name=estado-da-peca]");
-            
-            for (const button of buttonsRadio) {
-                button.addEventListener("click", clickButtonRadio);
+            const buttonsRadioEstadoPeca = document.querySelectorAll(".button-radio input[name=estado-da-peca]");
+            for (const button of buttonsRadioEstadoPeca) {
+                button.addEventListener("click", clickButtonRadioEstadoPeca);
+            }
+
+            const buttonsRadioMedidaDano = document.querySelectorAll(".mais-opcoes-da-peca input[name=dimensao-do-dano]");
+            for (const button of buttonsRadioMedidaDano) {
+                button.addEventListener("click", clickButtonRadioMedidaDano);
             }
         }
     
-        function clickButtonRadio(evento) {
+        function clickButtonRadioEstadoPeca(evento) {
             const { target: elemento } = evento;
     
             if(Boolean(elemento.value=="true"))
@@ -58,6 +62,26 @@ class DetalhamentoDePeçaDanificada {
     
         function ocultar() {
             const maisOpcoesDaPeca = document.querySelector(".container-de-opcoes .estado-da-peca .mais-opcoes-da-peca");
+            maisOpcoesDaPeca.classList.add("esconder");
+        }
+
+
+        function clickButtonRadioMedidaDano(evento) {
+            const { target: elemento } = evento;
+    
+            if(elemento.value=="Acima de 30 cm")
+                ocultarPinturaCompleta();
+            else
+                mostrarPituraCompleta();
+        }
+
+        function mostrarPituraCompleta() {
+            const maisOpcoesDaPeca = document.querySelector(".container-de-opcoes .estado-da-peca .mais-opcoes-da-peca .pintura-completa");
+            maisOpcoesDaPeca.classList.remove("esconder");
+        }
+
+        function ocultarPinturaCompleta() {
+            const maisOpcoesDaPeca = document.querySelector(".container-de-opcoes .estado-da-peca .mais-opcoes-da-peca .pintura-completa");
             maisOpcoesDaPeca.classList.add("esconder");
         }
     }
