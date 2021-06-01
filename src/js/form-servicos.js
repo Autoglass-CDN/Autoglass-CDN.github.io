@@ -146,11 +146,29 @@ class FormSubmit {
             const button = document.querySelector(".form-servico__content-submit .button.btn-confirm");
             button.addEventListener('click', event => {
                 event.preventDefault();
-                const orcamento = buildOrcamento();
-
-                const response = sendOrcamento(url, orcamento);
                 
-                console.log(response)
+                let orcamento = {};
+                try{
+                    orcamento = buildOrcamento();
+                }
+                catch(err){
+                    alert("Por favor, preencha todos os campos");
+                    return;
+                }
+
+                const response = sendOrcamento(url, orcamento)
+                    .then(res => res)
+                    .then(res => {
+                        if (res.status=="200"){
+                            alert("Sua solicitação foi enviada com sucesso! Em breve enviaremos o orçamento para o e-mail informado.")
+                            location.reload()
+                        }
+                        else{
+                            alert("Houve algum problema ao enviar sua solicitação. Pro favor, tente novamente mais tarde.")
+                        }
+                    })
+                    .catch(err => alert("Houve algum problema ao enviar sua solicitação. Pro favor, tente novamente mais tarde."));
+                
             });
 
         }
@@ -176,21 +194,55 @@ class FormSubmit {
 
 
             // obtendo valores
-            const Servico = servicoElm.textContent;
-            const Nome = nomeElm.value;
-            const Cidade = cidadeElm.value;
-            const Estado = estadoElm.value;
-            const Celular = celularElm.value;
-            const Email = emailElm.value;
-            const PlacaDoVeiculo = placaDoVeiculoElm.value;
-            const PecasDoVeiculo = pecasDoVeiculoElm.map(peca => peca.title);
-            const CorDaPintura = corDaPinturaElm ? corDaPinturaElm.value : "";
-            const PecaDanificada = pecaDanificadaElm ? pecaDanificadaElm.value == "true" : "";
-            const TipoDeDano = tipoDeDanoElm ? tipoDeDanoElm.value : "";
-            const MedidaDoDano = medidaDoDanoElm ? medidaDoDanoElm.value : "";
-            const PinturaCompletaDaPeca = pinturaCompletaElm ? pinturaCompletaElm.value == "Sim" : "";
-            const DataHora = new Date();
-            
+            let Servico = "";
+            let Nome = "";
+            let Cidade = "";
+            let Estado = "";
+            let Celular = "";
+            let Email = "";
+            let PlacaDoVeiculo = "";
+            let PecasDoVeiculo = [];
+            let CorDaPintura = "";
+            let PecaDanificada = null;
+            let TipoDeDano = "";
+            let MedidaDoDano = "";
+            let PinturaCompletaDaPeca = null;
+            let DataHora = "";
+
+            try{
+                Servico = validaString(servicoElm.textContent);
+                Nome = validaString(nomeElm.value);
+                Cidade = validaString(cidadeElm.value);
+                Estado = validaString(estadoElm.value);
+                Celular = validaString(celularElm.value);
+                Email = validaString(emailElm.value);
+                PlacaDoVeiculo = validaString(placaDoVeiculoElm.value);
+                PecasDoVeiculo = validaArray(pecasDoVeiculoElm.map(peca => peca.title));
+                CorDaPintura = validaString(corDaPinturaElm ? corDaPinturaElm.value : "");
+                PecaDanificada = validaBoolean(pecaDanificadaElm ? pecaDanificadaElm.value == "true" : null);
+                
+                if(PecaDanificada){
+
+                    TipoDeDano = validaString(tipoDeDanoElm ? tipoDeDanoElm.value : "");
+                    MedidaDoDano = validaString(medidaDoDanoElm ? medidaDoDanoElm.value : "");
+
+                    if (MedidaDoDano == "Acima de 30 cm")
+                    {
+                        PinturaCompletaDaPeca = true;
+                    }
+                    else{
+                        PinturaCompletaDaPeca = validaBoolean(pinturaCompletaElm ? pinturaCompletaElm.value == "Sim" : null);
+                    }
+                }
+                else{
+                    //para não invalidar no back-end quando PecaDanificada é false
+                    PinturaCompletaDaPeca = false;                  
+                }
+                DataHora = new Date();
+            }
+            catch(err) {
+                throw new Error('Pelo menos um campo está vazio');
+            }
 
             const orcamento = {
                 Servico,
@@ -214,13 +266,40 @@ class FormSubmit {
             return JSON.stringify(orcamento);
         }
 
-        async function sendOrcamento(url, request){
-            return response = await fetch(url, {
+        function validaString(str) {
+            if (str=="") {
+                throw new Error("Campo vazio");
+            }
+            else {
+                return str;
+            }
+        }
+
+        function validaArray(array) {
+            if (array.length==0) {
+                throw new Error("Array vazio");
+            }
+            else {
+                return array;
+            }
+        }
+
+        function validaBoolean(bool) {
+            if (bool == null) {
+                throw new Error("Indefinido");
+            }
+            else {
+                return bool;
+            }
+        }
+
+        function sendOrcamento(url, req){
+            return fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: request
+                body: req
             })
         }
     }
