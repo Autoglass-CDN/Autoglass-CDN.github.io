@@ -208,6 +208,10 @@ section.servico-vantagens .vantagens__imagem {
 }
 
 
+/* avaliações */
+.ratings-section .ratings__slider button {
+    z-index: 8 !important;
+}
 
 /* por que contratar? */
 
