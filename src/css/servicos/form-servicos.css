@@ -7,6 +7,10 @@
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
+.form-servico label {
+    font-weight: normal;
+}
+
 .form-servico p {
     margin-top: 8px;
     margin-bottom: 3px;
