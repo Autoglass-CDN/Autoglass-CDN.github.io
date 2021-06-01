@@ -9,6 +9,9 @@ html {
 
 }
 
+html {
+    scroll-behavior: smooth;
+}
 
 /* banner */
 .banner .banner__image {
@@ -220,7 +223,7 @@ section.por_que_contratar {
     line-height: 18px;
     background-color: var(--cinza-backgorund);
     color: var(--azul-titulos);
-    
+    padding: 0 10px;
 }
 
 section.por_que_contratar table {
