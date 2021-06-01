@@ -85,8 +85,8 @@ section.servico-descricao .descricao__titulo h2 > span{
     font-weight: 800;
 }
 
-section.servico-descricao .descricao__texto p{
-    margin: 0 2rem;
+section.servico-descricao .descricao__texto p {
+    margin: 0 12.5%;
 
     font-size: 1.125rem;
     text-align: justify;
