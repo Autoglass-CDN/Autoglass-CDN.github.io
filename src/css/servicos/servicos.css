@@ -1,6 +1,5 @@
 html {
-    --form-width: 520px;
-    --topo-height: 122px;
+    --form-width: 480px;
 
     /* cores */
     --azul-titulos: #003da5;
@@ -335,10 +334,10 @@ section.form-section {
 
 section.form-section .form {
     position: sticky;
-    top: var(--topo-height);
+    top: 122px;
     
-    width: fit-content;
-    margin: auto auto;
+    width: 100%;
+    margin: 0;
 
     background-color: white;
     border: 1px solid var(--cinza-claro);
@@ -371,6 +370,12 @@ section.form-section .form {
     }
     .ratings-section .ratings__rating.highlight {
         display: flex !important;
+    }
+}
+
+@media (max-width: 1200px){
+    section.form-section .form {
+        top: 90px;
     }
 }
 
@@ -434,8 +439,10 @@ section.form-section .form {
         background-color: white;
         right: unset;
         top: unset;
-        width: 100%;
         height: auto;
+        margin: auto;
+        width: 100%;
+        max-width: var(--form-width);
     }
 
     section.form-section .form {
@@ -468,5 +475,25 @@ section.form-section .form {
     .banner .banner__image span
     {
         line-height: 1.5;
+    }
+
+    /* por que comprar */
+    section.por_que_contratar .table-title {
+        text-align: center;
+    }
+
+    section.por_que_contratar .table-index {
+        height: 15px;
+        width: 15px;
+        
+        font-size: 1.25rem;
+    }
+
+    section.por_que_contratar table th:nth-child(2), section.por_que_contratar table th:nth-child(3) {
+       font-size: 1.125rem;
+    }
+
+    section.por_que_contratar table td:first-child{
+        font-size: 12px;
     }
 }
