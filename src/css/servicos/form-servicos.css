@@ -137,11 +137,21 @@
 }
 
 @media only screen and (max-width: 992px) {
+    .form-servico .form-servico__cidade-estado {
+        flex-direction: column;
+    }
+
+    .form-servico .form-servico__cidade-estado select {
+        margin-left: 0;
+        width: 100%;
+        max-width: 140px;
+    } 
+
     .form-servico__content-submit {
         font-size: 20px;
         letter-spacing: 1px;
         margin: 20px 0;
-    }
+    }   
 
     #anchor-form {
         display: block;
