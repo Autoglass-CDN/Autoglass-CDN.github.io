@@ -6597,6 +6597,31 @@ body.account .footer-qd-v1-newsletter-social .footer-qd-v1-newsletter-form .qd_n
     overflow: hidden
 }
 
+
+@media (min-width: 770px) {
+    .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
+        display: grid;
+        grid-template: "autoglass suporte"
+                       "servicos  suporte";
+    }
+
+    .footer-qd-v1-content .footer-qd-v1-menu-list ul.footer-qd-v1-menu-grid li.qd-am-has-ul {
+        width: auto
+    }
+
+    .footer-qd-v1-content .footer-qd-v1-menu-list ul.footer-qd-v1-menu-grid .grid-area-autoglass {
+        grid-area: autoglass;
+    }
+
+    .footer-qd-v1-content .footer-qd-v1-menu-list ul.footer-qd-v1-menu-grid .grid-area-servicos {
+        grid-area: servicos;
+    }
+
+    .footer-qd-v1-content .footer-qd-v1-menu-list ul.footer-qd-v1-menu-grid .grid-area-suporte {
+        grid-area: suporte;
+    }
+}
+
 @media (max-width: 992px) {
     .footer-qd-v1-content .footer-qd-v1-menu-list {
         text-align:center
