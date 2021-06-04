@@ -138,79 +138,6 @@ section.servico-descricao .descricao__etapas__setas svg:not(:last-child) {
 }
 
 
-
-/* vantagens */
-section.servico-vantagens {
-    background-color: white;  
-}
-
-section.servico-vantagens .vantagens__titulo {
-    padding-top: 3rem;
-    padding-bottom: 1rem;
-}
-
-section.servico-vantagens .vantagens__titulo h3 {
-    text-align: center;
-    color: #F9A51A;
-    font-size: 2.5rem;
-    font-weight: 800;
-}
-
-section.servico-vantagens .vantagens-container{
-    display: flex;  
-    align-items: center;
-}
-
-section.servico-vantagens .vantagens__vantagens {
-    margin-right: 20px;
-}
-
-section.servico-vantagens .vantagens__vantagem {
-    display: flex;
-    align-items: center;
-}
-
-section.servico-vantagens .vantagens__vantagem.vantagem1{
-    color: #F48120;
-    fill: #F48120;
-}
-
-section.servico-vantagens .vantagens__vantagem.vantagem2{
-    color: #F9A51A;
-    fill: #F9A51A;
-    margin-left: 2.5vw;
-}
-
-section.servico-vantagens .vantagens__vantagem.vantagem3{
-    color: #FFCA05;
-    fill: #FFCA05;
-    margin-left: 5vw;
-}
-
-
-section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone {
-    width: 5vw;
-    margin: 1vw 0;
-}
-
-section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
-    font-size: 1.5vw;
-    font-weight: 800;
-    font-style: italic;
-    width: 5vw;
-    line-height: 1.5vw;
-}
-
-section.servico-vantagens .vantagens__imagem {
-    background: url("https://autoglass-cdn.github.io/src/img/servicos/carro-pintura.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: right;
-    height: 24vw;
-    width: 100%;
-}
-
-
 /* avaliações */
 .ratings-section .ratings__slider button {
     z-index: 8 !important;
@@ -354,23 +281,6 @@ section.form-section .form {
 
 /* Responsividade */
 
-@media screen and (min-width: 2000px) {
-    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone {
-        width: 100px;
-        margin: 20px 0;
-    }
-
-    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
-        font-size: 30px;
-        width: 100px;
-        line-height: 30px;
-    }
-
-    section.servico-vantagens .vantagens__imagem {
-        height: 480px;
-    }
-}
-
 @media (max-width: 1550px){
     .ratings-section .ratings__rating {
         display: none !important;
@@ -401,45 +311,6 @@ section.form-section .form {
         margin-right: 0;
     }
 
-
-    /* vantagens */
-    section.servico-vantagens .vantagens-container{
-        display: block; 
-    }
-
-    section.servico-vantagens .vantagens__vantagens {
-        display: flex;
-        justify-content: center;
-    }
-
-    section.servico-vantagens .vantagens__vantagem {
-        flex-direction: column;
-        width: 11vw;
-        text-align: center;
-        margin: 0px 4.125vw;
-    }
-
-    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone{
-        width: auto;
-        margin: 1vw 0;
-
-    }
-
-    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
-        font-size: 2.5vw;
-        width: auto;
-        line-height: 2.5vw;
-    }
-
-    section.servico-vantagens .vantagens__imagem {
-        background-size: cover;
-        height: 44vw;
-        width: 75vw;
-        margin: 2vw auto;
-        border-radius: 20px;
-    }
-
-
     /* formulario */
     section.form-section {
         position: relative;
@@ -460,8 +331,6 @@ section.form-section .form {
         top: unset;
     }
 }
-
-
 
 
 @media only screen and (max-width: 576px) {
