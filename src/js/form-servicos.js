@@ -239,6 +239,7 @@ class FormSubmit {
                     PinturaCompletaDaPeca = false;                  
                 }
                 DataHora = new Date();
+                DataHora = new Date(DataHora.valueOf() - DataHora.getTimezoneOffset() * 60000);
             }
             catch(err) {
                 throw new Error('Pelo menos um campo está vazio');
