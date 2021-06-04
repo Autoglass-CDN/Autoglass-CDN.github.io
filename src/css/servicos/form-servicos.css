@@ -114,6 +114,10 @@
     margin-bottom: 10px;
 }
 
+.form-servico .titulo-estado-da-peca::before{
+    content: var(--texto-pergunta-estado-da-peca);
+}
+
 .form-servico .mais-opcoes-da-peca {
     padding-top: 11px;
     padding-left: 11px;
