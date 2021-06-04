@@ -6,6 +6,7 @@ html {
     --cinza: #828282;
     --cinza-claro: #EFEFEF;
     --cinza-backgorund: #F1F1F1;
+    --alaranjado: #F07A19;
 
 }
 
@@ -41,7 +42,7 @@ html {
 }
 
 .banner .banner__image span{
-    color: var(--cor-titulos-servico); /*varaívael definida no template*/
+    color: var(--alaranjado); /*varaívael definida no template*/
 }
 
 body {
@@ -110,7 +111,7 @@ section.servico-descricao .descricao__etapa {
 }
 
 section.servico-descricao .descricao__etapa__icone {
-    fill: var(--cor-titulos-servico);
+    fill: var(--cor-icones-etapas);
 
     width: 8rem;
 }
@@ -122,7 +123,7 @@ section.servico-descricao .descricao__etapas__setas{
     
     align-items: center;
 
-    fill: var(--cor-titulos-servico);
+    fill: var(--cor-setas-etapas);
     opacity: 0.5;
 }
 
@@ -133,10 +134,13 @@ section.servico-descricao .descricao__etapas__setas svg {
 
 section.servico-descricao .descricao__etapas__setas svg:not(:last-child) {
 
-    
     margin-right: 0.5rem;
 }
 
+section.servico-descricao .descricao__etapa_texto {
+
+    color: var(--cor-texto-etapas);;
+}
 
 /* avaliações */
 .ratings-section .ratings__slider button {
