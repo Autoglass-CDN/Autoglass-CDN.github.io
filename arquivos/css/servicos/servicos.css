@@ -1,0 +1,379 @@
+html {
+    --form-width: 480px;
+
+    /* cores */
+    --azul-titulos: #003da5;
+    --cinza: #828282;
+    --cinza-claro: #EFEFEF;
+    --cinza-backgorund: #F1F1F1;
+    --alaranjado: #F07A19;
+
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* banner */
+.banner .banner__image {
+    background-image: var(--url-background-banner);
+    height: 275px;
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.banner .banner__image h1,
+.banner .banner__image span
+{
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+    font-weight: 700;
+    font-size: 4rem;
+    line-height: 1.1;
+    text-align: center
+}
+
+.banner .banner__image span{
+    color: var(--alaranjado); /*varaívael definida no template*/
+}
+
+body {
+    background-color: white;
+}
+
+main {
+    position: relative;
+}
+
+main .section-container {
+    margin-right: var(--form-width);
+}
+
+main .section-container > div {
+    padding: 1rem 3rem;
+    max-width: 1300px;
+    margin-left :auto;
+    margin-right :auto;
+}
+
+/* descricao */
+section.servico-descricao {
+    background-color: white;
+}
+
+section.servico-descricao .descricao__titulo h2{
+    margin-top: 1rem;
+
+    font-size: 1.5rem;
+    font-weight: 400;
+    text-align: center;
+    text-transform: uppercase;
+    color: var(--azul-titulos);
+}
+
+section.servico-descricao .descricao__titulo h2 > span{
+    font-size: 3rem;
+    color: var(--cor-titulos-servico); /*variável definida no template*/
+    text-transform: capitalize;
+    font-weight: 800;
+}
+
+section.servico-descricao .descricao__texto p {
+    margin: 0 12.5%;
+
+    font-size: 1.125rem;
+    text-align: justify;
+    color: #828282;
+}
+
+section.servico-descricao .descricao__etapas {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--cinza);
+
+}
+
+section.servico-descricao .descricao__etapa {
+    width: 10rem;
+    margin: 0 10px;
+    
+}
+
+section.servico-descricao .descricao__etapa__icone {
+    fill: var(--cor-icones-etapas);
+
+    width: 8rem;
+}
+
+section.servico-descricao .descricao__etapas__setas{
+    display: flex;
+    width: auto;
+    height: 8rem;
+    
+    align-items: center;
+
+    fill: var(--cor-setas-etapas);
+    opacity: 0.5;
+}
+
+section.servico-descricao .descricao__etapas__setas svg {
+
+    height: 1.1rem;
+}
+
+section.servico-descricao .descricao__etapas__setas svg:not(:last-child) {
+
+    margin-right: 0.5rem;
+}
+
+section.servico-descricao .descricao__etapa_texto {
+
+    color: var(--cor-texto-etapas);;
+}
+
+/* avaliações */
+.ratings-section .ratings__slider button {
+    z-index: 8 !important;
+}
+
+/* por que contratar? */
+
+section.por_que_contratar {
+    text-align: center;
+    line-height: 18px;
+    background-color: var(--cinza-backgorund);
+    color: var(--azul-titulos);
+    padding: 0 10px;
+}
+
+section.por_que_contratar table {
+    margin: 1.5rem auto;
+}
+
+section.por_que_contratar td,
+section.por_que_contratar th {
+    padding: 0.5rem 1rem;
+}
+
+section.por_que_contratar table td {
+    margin: 0.5rem;
+}
+
+section.por_que_contratar table th{
+    font-weight: 800;
+}
+
+section.por_que_contratar .table-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    padding-bottom: 1.5rem;
+}
+
+section.por_que_contratar table th:nth-child(2),
+section.por_que_contratar table th:nth-child(3)
+{
+    text-align: center;
+    vertical-align: bottom;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+}
+
+section.por_que_contratar table td:nth-child(2) {
+    border-right: 1px solid #003da570;
+    
+}
+
+section.por_que_contratar table td:first-child{
+    text-align: left;
+    font-weight: 600;
+}
+
+section.por_que_contratar table td:nth-child(2),
+section.por_que_contratar table td:nth-child(3)
+{
+    width: 3rem;
+}
+
+section.por_que_contratar table th:nth-child(3){
+    opacity: 65%;
+}
+
+section.por_que_contratar .positive-check{
+    background: url(https://autoglass-cdn.github.io/arquivos/img/servicos/pos_check.png);
+}
+
+section.por_que_contratar .negative-check{
+    background: url(https://autoglass-cdn.github.io/arquivos/img/servicos/neg_check.png);
+}
+
+section.por_que_contratar .positive-check,
+section.por_que_contratar .negative-check {
+    height: 22px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+section.por_que_contratar .table-index {
+    height: 18px;
+    width: 18px;
+    display: inline-block;
+
+    border-radius: 50%;
+    background-color: var(--azul-titulos);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-right: 0.5rem;
+    text-align: center;
+}
+
+
+section.avaliacoes-consumidores {
+    text-align: center;
+    background-color: white;
+    color: var(--azul-titulos);
+}
+
+section.avaliacoes-consumidores h2{
+    font-weight: var(--extra-bold);
+    color: var(--blue-700);
+    text-align: center;
+    font-size: 32px;
+    margin: 40px;
+}
+
+section.avaliacoes-consumidores .container.ratings{
+    min-width: unset;
+    width: auto !important;
+}
+
+
+/* formulario */
+section.form-section {
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: var(--form-width);
+    height: 100%;
+}
+
+section.form-section .form {
+    position: sticky;
+    top: 122px;
+    
+    width: 100%;
+    margin: 0;
+
+    background-color: white;
+    border: 1px solid var(--cinza-claro);
+
+}
+
+
+/* Responsividade */
+
+@media (max-width: 1550px){
+    .ratings-section .ratings__rating {
+        display: none !important;
+    }
+    .ratings-section .ratings__rating.highlight {
+        display: flex !important;
+    }
+}
+
+@media (max-width: 1200px){
+    section.form-section .form {
+        top: 90px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    html {
+        font-size: 13px !important;
+    }
+
+    .banner .banner__image h1,
+    .banner .banner__image span
+    {
+        line-height: 1.2;
+    }
+
+    main .section-container {
+        margin-right: 0;
+    }
+
+    /* formulario */
+    section.form-section {
+        position: relative;
+        background-color: white;
+        right: unset;
+        top: unset;
+        height: auto;
+        margin: auto;
+        width: 100%;
+        max-width: var(--form-width);
+    }
+
+    section.form-section .form {
+        background-color: white;
+        border: none;
+
+        position: relative;
+        top: unset;
+    }
+}
+
+
+@media only screen and (max-width: 576px) {
+    html {
+        font-size: 8px !important;
+    }
+
+    main .section-container > div {
+        padding: 1rem 0rem;
+    }
+
+    .banner .banner__image{
+        height: 210px;
+
+    }
+
+    .banner .banner__image h1,
+    .banner .banner__image span
+    {
+        line-height: 1.5;
+    }
+
+    /* por que comprar */
+    section.por_que_contratar .table-title {
+        text-align: center;
+    }
+
+    section.por_que_contratar .table-index {
+        height: 15px;
+        width: 15px;
+        
+        font-size: 1.25rem;
+    }
+
+    section.por_que_contratar table th:nth-child(2), section.por_que_contratar table th:nth-child(3) {
+       font-size: 1.125rem;
+    }
+
+    section.por_que_contratar table td:first-child{
+        font-size: 12px;
+    }
+}
