@@ -77,3 +77,65 @@ input {
     color: white;
     background-color: var(--color-blue);
 }
+
+@media only screen and (max-width: 992px) {
+    input {
+        border-radius: 0.24rem;
+        border: 0.024rem var(--color-silver) solid;
+        padding: 0.16rem 0.5rem;
+    }
+
+    .button {
+        border-radius: 0.24rem;
+        padding: 0.4rem 1.53rem;
+    }
+
+    .select {
+        border-radius: 0.24rem;
+        border: 0.024rem var(--color-silver) solid;
+        padding: 0.24rem 0.16rem;
+    }
+
+    .button-radio {
+        margin: 0 0.24rem;
+        border-radius: 0.24rem;
+        border: 0.024rem var(--color-silver) solid;
+        padding: 0.24rem 1.1rem;
+    }
+    
+    .button-radio input {
+        border-radius: 0.24rem;
+        padding: 0.24rem 1.1rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    input {
+        border-radius: 0.15rem;
+        border: 0.015rem var(--color-silver) solid;
+        padding: 0.1rem 0.3rem;
+    }
+
+    .button {
+        border-radius: 0.15rem;
+        padding: 0.25rem 0.94rem;
+    }
+
+    .select {
+        border-radius: 0.15rem;
+        border: 0.015rem var(--color-silver) solid;
+        padding: 0.15rem 0.1rem;
+    }
+
+    .button-radio {
+        margin: 0 0.15rem;
+        border-radius: 0.15rem;
+        border: 0.015rem var(--color-silver) solid;
+        padding: 0.15rem 0.65rem;
+    }
+    
+    .button-radio input {
+        border-radius: 0.15rem;
+        padding: 0.15rem 0.65rem;
+    }
+}
