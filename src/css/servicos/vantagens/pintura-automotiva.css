@@ -127,3 +127,25 @@ section.servico-vantagens .vantagens__imagem {
         border-radius: 20px;
     }
 }
+
+@media only screen and (max-width: 992px) {
+    section.servico-vantagens .vantagens__titulo {
+        padding-top: 24rem;
+        padding-bottom: 0.8rem;
+    }
+
+    section.servico-vantagens .vantagens__titulo h3 {
+        font-size: 2.0rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    section.servico-vantagens .vantagens__titulo {
+        padding-top: 1.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    section.servico-vantagens .vantagens__titulo h3 {
+        font-size: 1.25rem;
+    }
+}
