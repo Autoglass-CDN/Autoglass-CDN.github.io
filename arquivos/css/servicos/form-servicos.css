@@ -141,6 +141,13 @@
 }
 
 @media only screen and (max-width: 992px) {
+
+    .form-servico {
+        border-radius: 0.24rem;
+        padding: 0.49rem 1.3rem;
+    }
+
+
     .form-servico .form-servico__cidade-estado {
         flex-direction: column;
     }
@@ -155,7 +162,16 @@
         font-size: 20px;
         letter-spacing: 1px;
         margin: 20px 0;
-    }   
+    }  
+    
+    .mais-opcoes-da-peca {
+        padding-top: 1.1rem;
+        padding-left: 1.3rem;
+    }
+
+    .form-servico .select2-container--default.select2-container--focus .select2-selection--multiple {
+        border: 0.024rem var(--color-silver) solid;
+    }
 
     #anchor-form {
         display: block;

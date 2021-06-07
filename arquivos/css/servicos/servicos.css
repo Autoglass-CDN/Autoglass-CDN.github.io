@@ -301,13 +301,14 @@ section.form-section .form {
 }
 
 @media only screen and (max-width: 992px) {
-    html {
+    /* html {
         font-size: 13px !important;
-    }
+    } */
 
     .banner .banner__image h1,
     .banner .banner__image span
     {
+        font-size: 3.25rem;
         line-height: 1.2;
     }
 
@@ -315,6 +316,92 @@ section.form-section .form {
         margin-right: 0;
     }
 
+    main .section-container > div {
+        padding: 0.8125rem 2.4375rem;
+    }
+
+
+    /* descricao */
+    section.servico-descricao .descricao__titulo h2{
+        margin-top: 0.8125rem;
+        font-size: 1.219rem;
+    }
+
+    section.servico-descricao .descricao__titulo h2 > span{
+        font-size: 2.438rem;
+    }
+
+    section.servico-descricao .descricao__texto p {
+        font-size: 0.9rem;
+    }
+
+    section.servico-descricao .descricao__etapas {
+        font-size: 0.9rem;
+    }
+
+    section.servico-descricao .descricao__etapa {
+        width: 8.125rem;        
+    }
+
+    section.servico-descricao .descricao__etapa__icone {    
+        width: 6.5rem;
+    }
+
+    section.servico-descricao .descricao__etapas__setas{
+        height: 6.5rem;
+    }
+
+    section.servico-descricao .descricao__etapas__setas svg {
+        height: 0.9rem;
+    }
+
+    section.servico-descricao .descricao__etapas__setas svg:not(:last-child) {
+        margin-right: 0.4rem;
+    }
+
+    
+    /* por que contratar? */
+    section.por_que_contratar table {
+        margin: 1.2rem auto;
+    }
+
+    section.por_que_contratar td,
+    section.por_que_contratar th {
+        padding: 0.4rem 0.8rem;
+    }
+
+    section.por_que_contratar table td {
+        margin: 0.4rem;
+    }
+
+    section.por_que_contratar .table-title {
+        font-size: 1.4rem;
+        padding-bottom: 1.2rem;
+    }
+
+    section.por_que_contratar table th:nth-child(2),
+    section.por_que_contratar table th:nth-child(3)
+    {
+        text-align: center;
+        vertical-align: bottom;
+        font-size: 0.6rem;
+        line-height: 0.6rem;
+    }
+
+    section.por_que_contratar table td:nth-child(2),
+    section.por_que_contratar table td:nth-child(3)
+    {
+        width: 2.4rem;
+    }
+
+    
+    section.por_que_contratar .table-index {
+        font-size: 0.6rem;
+        margin-right: 0.4rem;
+    }
+
+    
+    
     /* formulario */
     section.form-section {
         position: relative;
@@ -338,12 +425,12 @@ section.form-section .form {
 
 
 @media only screen and (max-width: 576px) {
-    html {
+    /* html {
         font-size: 8px !important;
-    }
+    } */
 
     main .section-container > div {
-        padding: 1rem 0rem;
+        padding: 0.5rem 0rem;
     }
 
     .banner .banner__image{
@@ -354,23 +441,99 @@ section.form-section .form {
     .banner .banner__image h1,
     .banner .banner__image span
     {
+        font-size: 2rem;
         line-height: 1.5;
     }
 
-    /* por que comprar */
+    /* descricao */
+    section.servico-descricao .descricao__titulo h2{
+        margin-top: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    section.servico-descricao .descricao__titulo h2 > span{
+        font-size: 1.5rem;
+    }
+
+    section.servico-descricao .descricao__texto p {
+        font-size: 0.563rem;
+    }
+
+    section.servico-descricao .descricao__etapas {
+        font-size: 0.563rem;
+    }
+
+    section.servico-descricao .descricao__etapa {
+        width: 5rem;        
+    }
+
+    section.servico-descricao .descricao__etapa__icone {    
+        width: 4rem;
+    }
+
+    section.servico-descricao .descricao__etapas__setas{
+        height: 4rem;
+    }
+    
+    section.servico-descricao .descricao__etapas__setas svg {
+        height: 0.55rem;
+    }
+
+    section.servico-descricao .descricao__etapas__setas svg:not(:last-child) {
+        margin-right: 0.25rem;
+    }
+
+
+
+    /* por que contratar */
+
+    section.por_que_contratar table {
+        margin: 0.75rem auto;
+    }
+
+    section.por_que_contratar td,
+    section.por_que_contratar th {
+        padding: 0.25rem 0.5rem;
+    }
+
+    section.por_que_contratar table td {
+        margin: 0.25rem;
+    }
+
+    section.por_que_contratar .table-title {
+        font-size: 0.875rem;
+        padding-bottom: 0.75rem;
+    }
+
     section.por_que_contratar .table-title {
         text-align: center;
+    }
+
+    section.por_que_contratar table th:nth-child(2),
+    section.por_que_contratar table th:nth-child(3)
+    {
+        text-align: center;
+        vertical-align: bottom;
+        font-size: 0.375rem;
+        line-height: 0.375rem;
+    }
+
+    section.por_que_contratar table td:nth-child(2),
+    section.por_que_contratar table td:nth-child(3)
+    {
+        width: 1.5rem;
     }
 
     section.por_que_contratar .table-index {
         height: 15px;
         width: 15px;
         
-        font-size: 1.25rem;
+        font-size: 0.625rem;
+        margin-right: 0.25rem;
     }
 
     section.por_que_contratar table th:nth-child(2), section.por_que_contratar table th:nth-child(3) {
-       font-size: 1.125rem;
+       font-size: 0.56rem;
     }
 
     section.por_que_contratar table td:first-child{
