@@ -170,13 +170,39 @@ const generalPolicies = [
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
 ];
 
-$(window).on("orderFormUpdated.vtex", (_, oF) => changeSalesChannel(oF));
+$(window).on("orderFormUpdated.vtex", (_, oF) => {
+    checkSelectedDeliveryChannel(oF);
+    changeSalesChannel(oF);
+});
 
 localStorage.setItem('locationChanged', 0);
 
-async function changeSalesChannel(orderForm){
+function checkSelectedDeliveryChannel(orderForm) {
+    activeDeliveryChannel = localStorage.getItem('activeDeliveryChannel');
+    let logisticsInfo = orderForm.shippingData.logisticsInfo;
+    const selectedAddresses = orderForm.shippingData.selectedAddresses;
+    const hasPickupInPoint = logisticsInfo[0].slas.find(sla => sla.deliveryChannel == 'pickup-in-point');
 
-    checkSelectedDeliveryChannel(orderForm);
+    actualSelectedDeliveryChannel = logisticsInfo[0].selectedDeliveryChannel;
+
+    if (activeDeliveryChannel == 'pickup-in-point' && actualSelectedDeliveryChannel != 'pickup-in-point' && hasPickupInPoint) {
+
+        logisticsInfo = logisticsInfo.map(item => {
+            item.selectedDeliveryChannel = 'pickup-in-point';
+            item.selectedSla = hasPickupInPoint.id;
+            return item;
+        })
+       
+        vtexjs.checkout.sendAttachment("shippingData", {
+            logisticsInfo,
+            selectedAddresses
+        });
+            
+        return;
+    }
+}
+
+async function changeSalesChannel(orderForm){
 
     if (!orderForm) {
         console.error('OrderForm inválido. \n', orderForm)
@@ -234,32 +260,6 @@ async function changeSalesChannel(orderForm){
         if (testLogs) console.log("Política desterminada já é a atual");
     }
 }
-
-function checkSelectedDeliveryChannel(orderForm) {
-    activeDeliveryChannel = localStorage.getItem('activeDeliveryChannel');
-    let logisticsInfo = orderForm.shippingData.logisticsInfo;
-    const selectedAddresses = orderForm.shippingData.selectedAddresses;
-    const hasPickupInPoint = logisticsInfo[0].slas.find(sla => sla.deliveryChannel == 'pickup-in-point');
-
-    actualSelectedDeliveryChannel = logisticsInfo[0].selectedDeliveryChannel;
-
-    if (activeDeliveryChannel == 'pickup-in-point' && actualSelectedDeliveryChannel != 'pickup-in-point' && hasPickupInPoint) {
-
-        logisticsInfo = logisticsInfo.map(item => {
-            item.selectedDeliveryChannel = 'pickup-in-point';
-            item.selectedSla = hasPickupInPoint.id;
-            return item;
-        })
-       
-        vtexjs.checkout.sendAttachment("shippingData", {
-            logisticsInfo,
-            selectedAddresses
-        });
-            
-        return;
-    }
-}
-
 
 function determineNewSalesChannel(shippingData) {
 
