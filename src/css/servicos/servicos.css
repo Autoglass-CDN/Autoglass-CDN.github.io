@@ -7,7 +7,6 @@ html {
     --cinza-claro: #EFEFEF;
     --cinza-backgorund: #F1F1F1;
     --alaranjado: #F07A19;
-
 }
 
 html {
@@ -27,7 +26,6 @@ html {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-
 }
 
 .banner .banner__image h1,
@@ -49,12 +47,8 @@ body {
     background-color: white;
 }
 
-main {
-    position: relative;
-}
-
 main .section-container {
-    margin-right: var(--form-width);
+    margin: auto;
 }
 
 main .section-container > div {
@@ -101,18 +95,15 @@ section.servico-descricao .descricao__etapas {
     font-size: 1.125rem;
     font-weight: 600;
     color: var(--cinza);
-
 }
 
 section.servico-descricao .descricao__etapa {
     width: 10rem;
     margin: 0 10px;
-    
 }
 
 section.servico-descricao .descricao__etapa__icone {
     fill: var(--cor-icones-etapas);
-
     width: 8rem;
 }
 
@@ -128,17 +119,14 @@ section.servico-descricao .descricao__etapas__setas{
 }
 
 section.servico-descricao .descricao__etapas__setas svg {
-
     height: 1.1rem;
 }
 
 section.servico-descricao .descricao__etapas__setas svg:not(:last-child) {
-
     margin-right: 0.5rem;
 }
 
 section.servico-descricao .descricao__etapa_texto {
-
     color: var(--cor-texto-etapas);;
 }
 
@@ -148,7 +136,6 @@ section.servico-descricao .descricao__etapa_texto {
 }
 
 /* por que contratar? */
-
 section.por_que_contratar {
     text-align: center;
     line-height: 18px;
@@ -239,7 +226,6 @@ section.por_que_contratar .table-index {
     text-align: center;
 }
 
-
 section.avaliacoes-consumidores {
     text-align: center;
     background-color: white;
@@ -259,32 +245,15 @@ section.avaliacoes-consumidores .container.ratings{
     width: auto !important;
 }
 
-
 /* formulario */
 section.form-section {
-    background-color: transparent;
-    position: absolute;
-    right: 0;
-    top: 0;
+    margin: auto;
     width: var(--form-width);
     height: 100%;
+    background-color: transparent;    
 }
-
-section.form-section .form {
-    position: sticky;
-    top: 122px;
-    
-    width: 100%;
-    margin: 0;
-
-    background-color: white;
-    border: 1px solid var(--cinza-claro);
-
-}
-
 
 /* Responsividade */
-
 @media (max-width: 1550px){
     .ratings-section .ratings__rating {
         display: none !important;
@@ -319,7 +288,6 @@ section.form-section .form {
     main .section-container > div {
         padding: 0.8125rem 2.4375rem;
     }
-
 
     /* descricao */
     section.servico-descricao .descricao__titulo h2{
@@ -358,7 +326,6 @@ section.form-section .form {
     section.servico-descricao .descricao__etapas__setas svg:not(:last-child) {
         margin-right: 0.4rem;
     }
-
     
     /* por que contratar? */
     section.por_que_contratar table {
@@ -393,33 +360,16 @@ section.form-section .form {
     {
         width: 2.4rem;
     }
-
     
     section.por_que_contratar .table-index {
         font-size: 0.6rem;
         margin-right: 0.4rem;
     }
-
-    
     
     /* formulario */
     section.form-section {
-        position: relative;
-        background-color: white;
-        right: unset;
-        top: unset;
-        height: auto;
-        margin: auto;
         width: 100%;
         max-width: var(--form-width);
-    }
-
-    section.form-section .form {
-        background-color: white;
-        border: none;
-
-        position: relative;
-        top: unset;
     }
 }
 
@@ -435,7 +385,6 @@ section.form-section .form {
 
     .banner .banner__image{
         height: 210px;
-
     }
 
     .banner .banner__image h1,
@@ -486,7 +435,6 @@ section.form-section .form {
 
 
     /* por que contratar */
-
     section.por_que_contratar table {
         margin: 0.75rem auto;
     }
