@@ -17,7 +17,7 @@ const pickupPointsPolicies = [
     { nome: 'SP', Unidade: 'NW04', Uf: 'São Paulo', salesChannel: 29},
     { nome: 'SP', Unidade: 'SP01', Uf: 'São Paulo', salesChannel: 30},
     { nome: 'SP', Unidade: 'NW06', Uf: 'São Paulo', salesChannel: 31},
-    { nome: 'SP', Unidade: 'NW07', Uf: 'São Paulo', salesChannel: 32},
+    { nome: 'SP', Unidade: 'MG61', Uf: 'São Paulo', salesChannel: 32},
     { nome: 'SP', Unidade: 'NW08', Uf: 'São Paulo', salesChannel: 33},
     { nome: 'SP', Unidade: 'NW11', Uf: 'São Paulo', salesChannel: 34},
     { nome: 'SP', Unidade: 'NW12', Uf: 'São Paulo', salesChannel: 35},
@@ -88,7 +88,7 @@ const specialCasePolicies = [
     { nome: 'SP', Unidade: 'NW06', cMin: 5300000, cMax: 5599999, Uf: 'São Paulo', salesChannel: 31},
     { nome: 'SP', Unidade: 'NW06', cMin: 6000000, cMax: 6299999, Uf: 'São Paulo', salesChannel: 31},
     
-    { nome: 'SP', Unidade: 'NW07', cMin: 09000000, cMax: 09999999, Uf: 'São Paulo', salesChannel: 32},
+    { nome: 'SP', Unidade: 'MG61', cMin: 09000000, cMax: 09999999, Uf: 'São Paulo', salesChannel: 32},
 
     { nome: 'SP', Unidade: 'NW08', cMin: 15000000, cMax: 15104999, Uf: 'São Paulo', salesChannel: 33},
     { nome: 'SP', Unidade: 'NW08', cMin: 15110000, cMax: 15119999, Uf: 'São Paulo', salesChannel: 33},
@@ -170,12 +170,40 @@ const generalPolicies = [
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
 ];
 
-$(window).on("orderFormUpdated.vtex", (_, oF) => changeSalesChannel(oF));
+$(window).on("orderFormUpdated.vtex", (_, oF) => {
+    checkSelectedDeliveryChannel(oF);
+    changeSalesChannel(oF);
+});
 
 localStorage.setItem('locationChanged', 0);
 
+function checkSelectedDeliveryChannel(orderForm) {
+    activeDeliveryChannel = localStorage.getItem('activeDeliveryChannel');
+    let logisticsInfo = orderForm.shippingData.logisticsInfo;
+    const selectedAddresses = orderForm.shippingData.selectedAddresses;
+    const hasPickupInPoint = logisticsInfo[0].slas.find(sla => sla.deliveryChannel == 'pickup-in-point');
+
+    actualSelectedDeliveryChannel = logisticsInfo[0].selectedDeliveryChannel;
+
+    if (activeDeliveryChannel == 'pickup-in-point' && actualSelectedDeliveryChannel != 'pickup-in-point' && hasPickupInPoint) {
+
+        logisticsInfo = logisticsInfo.map(item => {
+            item.selectedDeliveryChannel = 'pickup-in-point';
+            item.selectedSla = hasPickupInPoint.id;
+            return item;
+        })
+       
+        vtexjs.checkout.sendAttachment("shippingData", {
+            logisticsInfo,
+            selectedAddresses
+        });
+            
+        return;
+    }
+}
+
 async function changeSalesChannel(orderForm){
-    
+
     if (!orderForm) {
         console.error('OrderForm inválido. \n', orderForm)
         return;
@@ -232,7 +260,6 @@ async function changeSalesChannel(orderForm){
         if (testLogs) console.log("Política desterminada já é a atual");
     }
 }
-
 
 function determineNewSalesChannel(shippingData) {
 
