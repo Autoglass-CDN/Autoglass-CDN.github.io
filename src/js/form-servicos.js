@@ -309,47 +309,32 @@ class FormSubmit {
 class AnchorButton {
 
     static init() {
-        adicionaEventoScroll();
 
-        function adicionaEventoScroll() {
+        window.onload = () => {
             const formElm = document.querySelector("#form-orcamento");
             const anchorElm = document.querySelector("#anchor-form");
 
-            handleWindowScroll(formElm, anchorElm);
-            addEventAnchorButtonClick(formElm, anchorElm);
-        }
-
-        function handleWindowScroll(formElm, anchorElm) {
-            const currentScrollTop = document.documentElement.scrollTop;
-            const formOffsetTop = formElm.offsetTop;
-            const formHeight = formElm.offsetHeight;
-
-            // console.log({offsetTop: formOffsetTop}, {scrollTop: currentScrollTop}, {point: currentScrollTop + formHeight});
-            // console.log(formOffsetTop + (formHeight/2) < currentScrollTop);
-            // console.log(formOffsetTop > currentScrollTop + formHeight);
-
-            if ((formOffsetTop + (formHeight/2) < currentScrollTop) || (formOffsetTop > currentScrollTop + formHeight)) {
-                anchorElm.style.display = "block";   
-            }
-            else{
-                anchorElm.style.display = "none";
-            }   
-        }
-
-        function addEventAnchorButtonClick(formElm, anchorElm) {
-            const formOffsetTop = formElm.offsetTop;
+            anchorElm.addEventListener('click', () => window.scrollTo(0, formOffsetTop))
             
-            anchorElm.addEventListener('click', () => window.scrollTo(0, formOffsetTop - 200))   
-        }                
+            const formOffsetTop = formElm.offsetTop;
+            console.log(formOffsetTop)
+            window.onscroll = () => {
+                if (document.documentElement.scrollTop >= formOffsetTop - 200) {
+                    anchorElm.style.display = "none";
+                }
+                else{
+                    anchorElm.style.display = "block";
+                }
+            }
+        }
     }
+
 }
 
 (function(){ 
-    window.onload = () => {
-        DetalhamentoDePeçaDanificada.init();
-        ValidacaoDeInput.init();
-        Select2.init();
-        FormSubmit.init();
-        AnchorButton.init();
-    }
+    DetalhamentoDePeçaDanificada.init();
+    ValidacaoDeInput.init();
+    Select2.init();
+    FormSubmit.init();
+    AnchorButton.init();
 })();
