@@ -177,7 +177,7 @@ section.por_que_contratar table th:nth-child(3)
 }
 
 section.por_que_contratar table td:nth-child(2) {
-    border-right: 1px solid #003da570;
+    border-right: 1px solid #003da570;    
 }
 
 section.por_que_contratar table td:first-child{
