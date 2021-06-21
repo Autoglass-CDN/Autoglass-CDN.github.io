@@ -137,7 +137,18 @@
 }
 
 #anchor-form {
-    display: none;
+    z-index: 10;
+    display: block;
+    position: fixed;
+    bottom: 80px;
+    left: 10px;
+
+    width: 85px;
+    padding: 3px;
+    color: white;
+    background-color: var(--color-green);
+    border-radius: 5px;
+    border: none;
 }
 
 @media only screen and (max-width: 992px) {
@@ -171,19 +182,5 @@
 
     .form-servico .select2-container--default.select2-container--focus .select2-selection--multiple {
         border: 0.024rem var(--color-silver) solid;
-    }
-
-    #anchor-form {
-        display: block;
-        position: fixed;
-        bottom: 80px;
-        left: 10px;
-
-        width: 85px;
-        padding: 3px;
-        color: white;
-        background-color: var(--color-green);
-        border-radius: 5px;
-        border: none;
     }
 }
