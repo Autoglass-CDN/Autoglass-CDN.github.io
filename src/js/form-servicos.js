@@ -320,21 +320,19 @@ class AnchorButton {
         }
 
         function handleWindowScroll(formElm, anchorElm) {
-            const currentScrollTop = document.documentElement.scrollTop;
-            const formOffsetTop = formElm.offsetTop;
-            const formHeight = formElm.offsetHeight;
-
-            // console.log({offsetTop: formOffsetTop}, {scrollTop: currentScrollTop}, {point: currentScrollTop + formHeight});
-            // console.log(formOffsetTop + (formHeight/2) < currentScrollTop);
-            // console.log(formOffsetTop > currentScrollTop + formHeight);
-
-            if ((formOffsetTop + (formHeight/2) < currentScrollTop) || (formOffsetTop > currentScrollTop + formHeight)) {
-                anchorElm.style.display = "block";   
+            window.onscroll = () => {
+                const currentScrollTop = document.documentElement.scrollTop;
+                const formOffsetTop = formElm.offsetTop;
+                const formHeight = formElm.offsetHeight;
+                
+                if ((formOffsetTop + (formHeight/2) < currentScrollTop) || (formOffsetTop > currentScrollTop + formHeight)) {
+                    anchorElm.style.display = "block";   
+                }
+                else{
+                    anchorElm.style.display = "none";
+                }   
             }
-            else{
-                anchorElm.style.display = "none";
-            }   
-        }
+        } 
 
         function addEventAnchorButtonClick(formElm, anchorElm) {
             const formOffsetTop = formElm.offsetTop;
