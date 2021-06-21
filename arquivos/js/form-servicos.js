@@ -309,32 +309,45 @@ class FormSubmit {
 class AnchorButton {
 
     static init() {
+        adicionaEventoScroll();
 
-        window.onload = () => {
+        function adicionaEventoScroll() {
             const formElm = document.querySelector("#form-orcamento");
             const anchorElm = document.querySelector("#anchor-form");
 
-            anchorElm.addEventListener('click', () => window.scrollTo(0, formOffsetTop))
-            
-            const formOffsetTop = formElm.offsetTop;
-            console.log(formOffsetTop)
+            handleWindowScroll(formElm, anchorElm);
+            addEventAnchorButtonClick(formElm, anchorElm);
+        }
+
+        function handleWindowScroll(formElm, anchorElm) {
             window.onscroll = () => {
-                if (document.documentElement.scrollTop >= formOffsetTop - 200) {
-                    anchorElm.style.display = "none";
+                const currentScrollTop = document.documentElement.scrollTop;
+                const formOffsetTop = formElm.offsetTop;
+                const formHeight = formElm.offsetHeight;
+                
+                if ((formOffsetTop + (formHeight/2) < currentScrollTop) || (formOffsetTop > currentScrollTop + formHeight)) {
+                    anchorElm.style.display = "block";   
                 }
                 else{
-                    anchorElm.style.display = "block";
-                }
+                    anchorElm.style.display = "none";
+                }   
             }
-        }
-    }
+        } 
 
+        function addEventAnchorButtonClick(formElm, anchorElm) {
+            const formOffsetTop = formElm.offsetTop;
+            
+            anchorElm.addEventListener('click', () => window.scrollTo(0, formOffsetTop - 200))   
+        }                
+    }
 }
 
 (function(){ 
-    DetalhamentoDePeçaDanificada.init();
-    ValidacaoDeInput.init();
-    Select2.init();
-    FormSubmit.init();
-    AnchorButton.init();
+    window.onload = () => {
+        DetalhamentoDePeçaDanificada.init();
+        ValidacaoDeInput.init();
+        Select2.init();
+        FormSubmit.init();
+        AnchorButton.init();
+    }
 })();
