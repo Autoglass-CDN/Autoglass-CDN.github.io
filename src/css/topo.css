@@ -1488,6 +1488,10 @@ body[data-qd-scroll-0="1"] {
 }
 
 @media (max-width: 991px) {
+  .geo-picker {
+    width: calc(100% - 60px);
+  }
+
   body:not(.home) {
     padding-top: unset;
   }
