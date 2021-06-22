@@ -218,7 +218,7 @@ $(function () {
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]
-      }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}`,
+      }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1`,
     })
       .done(function (data) {
   
