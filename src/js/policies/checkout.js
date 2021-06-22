@@ -17,7 +17,7 @@ const pickupPointsPolicies = [
     { nome: 'SP', Unidade: 'NW04', Uf: 'São Paulo', salesChannel: 29},
     { nome: 'SP', Unidade: 'SP01', Uf: 'São Paulo', salesChannel: 30},
     { nome: 'SP', Unidade: 'NW06', Uf: 'São Paulo', salesChannel: 31},
-    { nome: 'SP', Unidade: 'NW07', Uf: 'São Paulo', salesChannel: 32},
+    { nome: 'SP', Unidade: 'MG61', Uf: 'São Paulo', salesChannel: 32},
     { nome: 'SP', Unidade: 'NW08', Uf: 'São Paulo', salesChannel: 33},
     { nome: 'SP', Unidade: 'NW11', Uf: 'São Paulo', salesChannel: 34},
     { nome: 'SP', Unidade: 'NW12', Uf: 'São Paulo', salesChannel: 35},
@@ -88,7 +88,7 @@ const specialCasePolicies = [
     { nome: 'SP', Unidade: 'NW06', cMin: 5300000, cMax: 5599999, Uf: 'São Paulo', salesChannel: 31},
     { nome: 'SP', Unidade: 'NW06', cMin: 6000000, cMax: 6299999, Uf: 'São Paulo', salesChannel: 31},
     
-    { nome: 'SP', Unidade: 'NW07', cMin: 09000000, cMax: 09999999, Uf: 'São Paulo', salesChannel: 32},
+    { nome: 'SP', Unidade: 'MG61', cMin: 09000000, cMax: 09999999, Uf: 'São Paulo', salesChannel: 32},
 
     { nome: 'SP', Unidade: 'NW08', cMin: 15000000, cMax: 15104999, Uf: 'São Paulo', salesChannel: 33},
     { nome: 'SP', Unidade: 'NW08', cMin: 15110000, cMax: 15119999, Uf: 'São Paulo', salesChannel: 33},
@@ -411,3 +411,6 @@ function finishAnimation() {
     $('.summary-template-holder').css('opacity', 1);
     $('.cart-template-holder').css('opacity', 1);
 }
+
+
+
