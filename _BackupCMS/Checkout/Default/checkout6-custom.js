@@ -55,7 +55,7 @@ $(window).on('load', () => {
 
     Controller._init();
     Controller.loadScripts();
-
+    
     function ControllerAPI() {
         return {
             _init,
@@ -70,7 +70,7 @@ $(window).on('load', () => {
             View.formatItemList(orderForm);
 
             _removePaymentPickupIfIsDelivery(orderForm);
-
+  
             ga('create', CONFIG.GA.ID, CONFIG.GA.URL);
 
             $(window).on(
@@ -105,7 +105,9 @@ $(window).on('load', () => {
 
             _removePaymentPickupIfIsDelivery(orderForm);
 
-            if (window.location.hash.includes('payment')) return;
+            if (window.location.hash.includes('payment')) {
+              	_formatLabelOnPayment(orderForm) 
+            }
           	
           	if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
                 $('.newsletter').append(`
@@ -125,29 +127,17 @@ $(window).on('load', () => {
             }
 			
             let hasInstall = Service.checkIfHasInstall(orderForm.items);
+			let title = $('#shipping-data .accordion-toggle.collapsed');
 
             if (hasInstall) {
-                let title = $('#shipping-data .accordion-toggle.collapsed');
-
-                if (title.length && !title.html().includes('Receber')) {
-                    if (!title.is('.accordion-toggle-active')) {
-                        let element = $("#shipping-data .shp-summary-group-title.vtex-omnishipping-1-x-SummaryItemTitle");
-
-                        if (element.length && element.html().includes("Retirar")) {
-                            if (orderForm.shippingData
-                                .logisticsInfo[0]
-                                .selectedDeliveryChannel === 'pickup-in-point') {
-                                element.html('Instalar na Loja')
-                            }
-                        }
-                    } else {
-                        title.html('<i class="icon-home"></i> Instalar');
-                    }
+                if (title.is('.accordion-toggle-active')) {
+                  	title.html('<i class="icon-home"></i> Instalar');
                 }
-
                 View.addInstallTexts(orderForm);
+            } else if (title.is('.accordion-toggle-active')){
+             	title.html('<i class="icon-home"></i> Receber ou Retirar');
             }
-
+			
             View.createCepInfo(orderForm, hasInstall);
         }
 
@@ -163,21 +153,63 @@ $(window).on('load', () => {
             }
         }
 
+		function _formatLabelOnPayment(orderForm){
+				let title = $('#shipping-data .accordion-toggle.collapsed');
+              	let selectedDeliveryChannel = orderForm.shippingData
+                            .logisticsInfo[0]
+                            .selectedDeliveryChannel
+                let hasInstall = Service.checkIfHasInstall(orderForm.items);
+          
+                let titleText = ' Receber';
+                
+                if(hasInstall && (selectedDeliveryChannel === 'pickup-in-point')){
+                  titleText = 'Instalar na Loja';
+                }
+                else if(hasInstall && (selectedDeliveryChannel === 'delivery')){
+                  titleText = 'Instalar em Casa';
+                }
+                else if(!hasInstall && (selectedDeliveryChannel === 'pickup-in-point')){
+                  titleText = 'Retirar na Loja';
+                }
+                else if(!hasInstall && (selectedDeliveryChannel === 'delivery')){
+                  titleText = 'Receber em Casa';
+                }
+          
+          		let child1 = title[0].children[0];
+                let child2 = title[0].children[1];
+                title[0].innerHTML = '';
+                title[0].appendChild(child1);
+                title[0].append(' ' + titleText);
+          
+          		if (!title.is('.accordion-toggle-active')) {
+                    title[0].appendChild(child2);
+                }
+                            	
+                  
+                let secondLabel = document.querySelectorAll('.shp-summary-group-title.vtex-omnishipping-1-x-SummaryItemTitle')
+                if(secondLabel.length > 1){
+                    secondLabel[0].style.display = "none";
+                }
+              	              
+            	return;  
+        }
+
+
         async function loadScripts() {
           
-          	const addId = id => script => {
+            const addId = id => script => {
               script.id = id;          
             }
-            
+              
           	await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             await loadScript("/scripts/jquery.ui.core.js");
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
-          	await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/hml/consulta-agendamento.js');
-          
+
           	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
           	
             loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
@@ -209,7 +241,7 @@ $(window).on('load', () => {
                 callback && callback(script);
                 document.getElementsByTagName("head")[0].appendChild(script);
             });
-        }
+        }     
     }
 
     function ViewAPI() {
@@ -274,7 +306,7 @@ $(window).on('load', () => {
                 $("span").remove(".instalar");
                 $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
                 $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
-                $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Entrega');
+                $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Entrega ou Retirada');
             }
 
             View.createCepInfo(orderForm, hasInstall);
@@ -603,7 +635,7 @@ $(window).on('load', () => {
         function _createInfoPickup(address) {
             const selectedAppointment = Service.getSelectedAppointment();
 
-            $('.vtex-omnishipping-1-x-shippingSectionTitle').html('Data de Agendamento');
+            $('.pickup-packages.vtex-omnishipping-1-x-packages .vtex-omnishipping-1-x-shippingSectionTitle').html('Data de Agendamento');
 
             if (!selectedAppointment) {
                 $('.srp-pickup-info .instalar-na-loja').html(`
