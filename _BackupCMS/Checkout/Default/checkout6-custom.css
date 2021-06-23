@@ -1,0 +1,324 @@
+/* /files/checkout5-custom.css */
+
+/* Botão Adicionar Instalação */
+
+.product-name button.btn-add-instalacao {
+    display: block;
+    padding: 5px 15px;
+    font-size: 12px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #5059b1;
+}
+
+.mini-cart .item .fn {
+    width: 90%;
+}
+
+@media (max-width: 490px) {
+    .mini-cart .item .fn {
+        margin-left: 0 !important;
+    }
+    .full-cart .cart table tbody tr td.product-name {
+        margin-left: 100px;
+    }
+}
+
+.onda-v1 .instalacao label,
+.accordion-inner.instalacao button span {
+    color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.onda-v1 .srp-toggle.instalacao label,
+.accordion-inner.instalacao button span {
+    font-size: 0;
+}
+
+.onda-v1 .instalacao label span {
+    color: #979899;
+    font-size: 13px;
+}
+
+.onda-v1 .instalacao label.blue span {
+    color: #368df7;
+}
+
+.accordion-inner.instalacao button span span {
+    color: #666;
+    font-size: 16px;
+}
+
+.accordion-inner.instalacao button.vtex-omnishipping-1-x-deliveryOptionActive span span {
+    color: #fff;
+}
+
+@media (max-width: 390px) {
+    .accordion-inner.instalacao button span span {
+        font-size: 14px;
+    }
+}
+
+
+/* Modais de Instalação */
+
+.mz-modal-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9996;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    display: none;
+}
+
+body.mz-bo-on .mz-modal-overlay,
+body.mz-as-on .mz-modal-advantages,
+body.mz-il-on .mz-modal-installation {
+    display: block;
+}
+
+.mz-modal-advantages,
+.mz-modal-installation {
+    width: 80%;
+    position: fixed;
+    padding: 20px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 9997;
+    background-color: #FFF;
+    border-radius: 4px;
+    display: none;
+    max-width: 700px;
+}
+
+.mz-modal-advantages .mz-advantages__close,
+.mz-modal-installation .mz-install__close {
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.mz-modal-advantages .mz-advantages__close span,
+.mz-modal-installation .mz-install__close span {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    cursor: pointer;
+    font-size: 0;
+}
+
+.mz-modal-advantages .mz-advantages__close span:before,
+.mz-modal-installation .mz-install__close span:before {
+    content: '\f00d';
+    display: inline-block;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+    height: 1em;
+    text-align: center;
+    text-decoration: inherit;
+    text-rendering: optimizelegibility;
+    width: 1em;
+    font-family: 'FontAwesome';
+    font-size: 18px;
+}
+
+.cep>div {
+    display: flex;
+}
+
+
+/* Mundaças críticas para personalização do checkout */
+
+body.hasInstall .srp-delivery-info label,
+body.hasInstall .srp-pickup-info label {
+    display: none !important;
+}
+
+.instalar-em-casa > a,
+.instalar-na-loja > a {
+	display: flex;
+	position: relative;
+	border: 1px solid #c4c4c4;
+	border-radius: 10px;
+	padding: 10px;
+  	font-size: 1rem;
+  	margin-top: 15px;
+  	cursor: pointer;
+    color: rgba(0,0,0,.7);
+}
+
+.instalar-em-casa .instalar_calendar,
+.instalar-na-loja .instalar_calendar {
+    padding-right: 10px;
+    font-size: 16px;
+}
+
+.instalar-em-casa .instalar_content,
+.instalar-na-loja .instalar_content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.instalar-em-casa .instalar_alterar,
+.instalar-na-loja .instalar_alterar {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 10px;
+}
+
+.mz-modal-installation .mz-install__info {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #BABABA;
+    border-radius: 6px;
+}
+
+.mz-modal-installation .mz-install__info .mz-info__list ul {
+    list-style: none;
+    margin: 0;
+}
+
+.mz-modal-installation .mz-install__info .mz-info__list ul li:before {
+    display: block;
+    content: '\f05a';
+    display: inline-block;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+    height: 1em;
+    text-align: center;
+    text-decoration: inherit;
+    text-rendering: optimizelegibility;
+    width: 1em;
+    font-family: 'FontAwesome';
+    margin-right: 10px;
+    font-size: 14px;
+    color: #2D4F9E;
+}
+
+body.hasInstall .shipping-date,
+body.hasInstall .shp-summary-package-time {
+    display: none;
+}
+
+#confirmacao-sm {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 25px;
+}
+
+#confirm-sm-btn {
+    background: #43C452;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.secao-agendamento>.store-list>.filter>.data label {
+    display: inline-block;
+}
+
+.ui-datepicker-inline {
+    max-height: 222px !important;
+}
+
+#back-to-address-list {
+    display: none;
+}
+
+#deliver-at-text .srp-address-title:after {
+    content: 'Alterar';
+    margin-left: 15px;
+}
+
+#deliver-at-text .srp-address-title:hover:after {
+    text-decoration: underline;
+}
+
+.body-order-form .totalizers-list>.Shipping {
+    display: table-row !important;
+}
+
+@media (max-width: 400px) {
+    .mz-modal-advantages {
+        max-height: 500px;
+        overflow: auto;
+    }
+    #confirmacao-sm {
+        flex-direction: column;
+    }
+}
+
+
+/* CEP COMPONENT */
+
+.cep-new__content-form input {
+    border: none;
+    box-shadow: none !important;
+    outline: none;
+}
+
+.ui-datepicker.ui-datepicker-multi {
+    min-height: 250px;
+}
+
+
+.srp-delivery-header > span,
+.srp-pickup-info > span {
+   display: none;
+}
+
+.srp-delivery-header .cep-info,
+.srp-pickup-info .cep-info {
+    position: relative;
+    flex-direction: column;
+    align-items: flex-start;
+
+    font-size: 14px;
+    width: 100%;
+}
+
+.srp-delivery-header .cep-info__title,
+.srp-pickup-info .cep-info__title {
+    display: flex;
+    align-items: center;
+}
+
+.srp-delivery-header .cep-info__title b {
+	margin-left: 5px;
+}
+
+.srp-delivery-header .cep-info__location-street,
+.srp-pickup-info .cep-info__location-street {
+    text-decoration: unset;
+    font-size: 14px;
+    margin-left: 25px;
+    width: 250px;
+}
+
+.srp-delivery-header .cep-info__title svg,
+.srp-pickup-info .cep-info__title svg {
+    margin-right: 8px;
+}
+
+.srp-delivery-header .cep-info__location-button,
+.srp-pickup-info .cep-info__location-button {
+    position: absolute;
+    right: 0;
+    bottom: 6px;
+    color: #368df7;
+    font-weight: 500;
+}
