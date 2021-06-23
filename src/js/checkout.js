@@ -177,6 +177,12 @@ $(window).on("orderFormUpdated.vtex", (_, oF) => {
 
 localStorage.setItem('locationChanged', 0);
 
+ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaTracker' );
+ga(function(tracker) {
+    // Logs the client ID for the current user.
+    console.log(tracker.get('clientId'));
+});
+
 function checkSelectedDeliveryChannel(orderForm) {
     activeDeliveryChannel = localStorage.getItem('activeDeliveryChannel');
     let logisticsInfo = orderForm.shippingData.logisticsInfo;
@@ -250,6 +256,14 @@ async function changeSalesChannel(orderForm){
         if (testLogs) console.log("Política definida é diferente da atual.\n\nAplicando nova política...");
 
         startAnimation();
+
+        await ga('send', 'event', 'SalesChannel', 'changed', newSalesChannelObject.salesChannel, {
+            nonInteraction: true,
+            'hitCallback': function(){
+                console.log("ga evente hit");
+            }
+          });
+
         await reAddCartItems(items, newSalesChannelObject);
 
         if (!!$('.vtex-pickup-points-modal-3-x-modalBackdrop.pkpmodal-backdrop').length)
