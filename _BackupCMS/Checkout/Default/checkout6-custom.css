@@ -1,4 +1,4 @@
-/* /files/checkout5-custom.css */
+/* /files/checkout6-custom.css */
 
 /* Botão Adicionar Instalação */
 
@@ -322,3 +322,14 @@ body.hasInstall .shp-summary-package-time {
     color: #368df7;
     font-weight: 500;
 }
+
+
+/* Decrição Carrinho */
+.srp-description {
+  font-size: 0;
+}
+
+.srp-description::after {
+  font-size: 13px;
+  content: "Veja as opções de entrega, retirada ou instalação com prazos e valores.";
+} 
