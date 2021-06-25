@@ -1,151 +1,146 @@
-
 /* vantagens */
-section.servico-vantagens {
+.vantagens {
     background-color: white;  
 }
 
-section.servico-vantagens .vantagens__titulo {
+.vantagens .titulo {
     padding-top: 3rem;
     padding-bottom: 1rem;
 }
 
-section.servico-vantagens .vantagens__titulo h3 {
+.vantagens .titulo__texto {
     text-align: center;
-    color: #F9A51A;
     font-size: 2.5rem;
     font-weight: 800;
+    color: #F9A51A;
 }
 
-section.servico-vantagens .vantagens-container{
+.vantagens .vantagens__container {
     display: flex;  
     align-items: center;
 }
 
-section.servico-vantagens .vantagens__vantagens {
+.vantagens .icones {
     margin-right: 20px;
 }
 
-section.servico-vantagens .vantagens__vantagem {
+.vantagens .icones__vantagem {
     display: flex;
     align-items: center;
 }
 
-section.servico-vantagens .vantagens__vantagem.vantagem1{
-    color: #F48120;
+.vantagens .icones__vantagem:nth-child(1) {
     fill: #F48120;
+    color: #F48120;
 }
 
-section.servico-vantagens .vantagens__vantagem.vantagem2{
-    color: #F9A51A;
-    fill: #F9A51A;
+.vantagens .icones__vantagem:nth-child(2) {
     margin-left: 2.5vw;
+    fill: #F9A51A;
+    color: #F9A51A;
 }
 
-section.servico-vantagens .vantagens__vantagem.vantagem3{
-    color: #FFCA05;
-    fill: #FFCA05;
+.vantagens .icones__vantagem:nth-child(3) {
     margin-left: 5vw;
+    fill: #FFCA05;
+    color: #FFCA05;
 }
 
-
-section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone {
-    width: 5vw;
+.vantagens .icones__vantagem__imagem {
     margin: 1vw 0;
+    width: 5vw;
 }
 
-section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
+.vantagens .icones__vantagem__text {
+    width: 5vw;
     font-size: 1.5vw;
     font-weight: 800;
     font-style: italic;
-    width: 5vw;
     line-height: 1.5vw;
 }
 
-section.servico-vantagens .vantagens__imagem {
+.vantagens .vantagens__imagem {
+    width: 100%;
+    height: 24vw;
     background: url("https://autoglass-cdn.github.io/src/img/servicos/carro-pintura.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: right;
-    height: 24vw;
-    width: 100%;
 }
 
-
 /* Responsividade */
-
 @media screen and (min-width: 2000px) {
-    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone {
-        width: 100px;
+    .vantagens .icones__vantagem__imagem {
         margin: 20px 0;
+        width: 100px;
     }
 
-    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
-        font-size: 30px;
+    .vantagens .icones__vantagem__texto {
         width: 100px;
+        font-size: 30px;
         line-height: 30px;
     }
 
-    section.servico-vantagens .vantagens__imagem {
+    .vantagens .vantagens__imagem {
         height: 480px;
     }
 }
 
 @media only screen and (max-width: 992px) {
-    section.servico-vantagens .vantagens-container{
+    .vantagens .vantagens__container {
         display: block; 
     }
 
-    section.servico-vantagens .vantagens__vantagens {
+    .vantagens .icones {
         display: flex;
         justify-content: center;
     }
 
-    section.servico-vantagens .vantagens__vantagem {
-        flex-direction: column;
-        width: 11vw;
-        text-align: center;
+    .vantagens .icones__vantagem {
         margin: 0px 4.125vw;
+        width: 11vw;
+        flex-direction: column;
+        text-align: center;
     }
 
-    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__icone{
-        width: auto;
+    .vantagens .icones__vantagem__imagem {
         margin: 1vw 0;
-
+        width: auto;
     }
 
-    section.servico-vantagens .vantagens__vantagem .vantagens__vantagem__texto {
-        font-size: 2.5vw;
+    .vantagens .icones__vantagem__text {
         width: auto;
+        font-size: 2.5vw;
         line-height: 2.5vw;
     }
 
-    section.servico-vantagens .vantagens__imagem {
-        background-size: cover;
-        height: 44vw;
-        width: 75vw;
+    .vantagens .vantagens__imagem {
         margin: 2vw auto;
         border-radius: 20px;
+        width: 75vw;
+        height: 44vw;
+        background-size: cover;
     }
 }
 
 @media only screen and (max-width: 992px) {
-    section.servico-vantagens .vantagens__titulo {
+    .vantagens .titulo {
         padding-top: 2.4rem;
         padding-bottom: 0.8rem;
     }
 
-    section.servico-vantagens .vantagens__titulo h3 {
+    .vantagens .titulo__texto {
         font-size: 2.0rem;
     }
 }
 
 @media only screen and (max-width: 576px) {
-    section.servico-vantagens .vantagens__titulo {
+    .vantagens .titulo {
         padding-top: 1.5rem;
         padding-bottom: 0.5rem;
     }
 
-    section.servico-vantagens .vantagens__titulo h3 {
+    .vantagens .titulo__texto {
         font-size: 1.25rem;
     }
 }
