@@ -46,7 +46,7 @@ body {
     margin: auto;
 }
 
-.servicos__container > .servicos__container--alinhamento {
+.servicos__container .servicos__container__alinhamento {
     margin-left :auto;
     margin-right :auto;
     padding: 1rem 3rem;
