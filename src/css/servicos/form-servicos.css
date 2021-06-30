@@ -60,7 +60,7 @@
 }
 
 .form-servico__content-submit {
-    margin: 8px 0;
+    margin: 8px 0 8px 30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,6 +68,7 @@
 
 .container-de-opcoes {
     font-style: italic;
+    padding-left: 15%;
 }
 
 .container-de-opcoes label {
@@ -182,5 +183,9 @@
 
     .form-servico .select2-container--default.select2-container--focus .select2-selection--multiple {
         border: 0.024rem var(--color-silver) solid;
-    }    
+    }
+    
+    .container-de-opcoes {
+        padding-left: 0;
+    }
 }
