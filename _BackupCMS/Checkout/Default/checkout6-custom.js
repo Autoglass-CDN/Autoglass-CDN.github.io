@@ -149,7 +149,7 @@ $(window).on('load', () => {
                     .selectedDeliveryChannel === "delivery"
             ) {
                 $("#payment-group-creditCardPaymentGroup").click();
-                $(".pg-pagamento-na-retirada.payment-group-item").remove();
+                $(".pg-pagamento-na-loja.payment-group-item").remove();
             }
         }
 
