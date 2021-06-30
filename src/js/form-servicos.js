@@ -348,6 +348,6 @@ class AnchorButton {
         ValidacaoDeInput.init();
         Select2.init();
         FormSubmit.init();
-        AnchorButton.init();
+        // AnchorButton.init();
     }
 })();
