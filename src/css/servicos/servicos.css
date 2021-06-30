@@ -130,6 +130,14 @@ body {
     background-color: transparent;    
 }
 
+.formulario:before {
+    content: "";
+    margin-top: -120px;
+    height: 120px;
+    display: block;
+    visibility: hidden;
+}
+
 /* por que contratar? */
 .por-que-contratar {
     padding: 0 10px;
@@ -184,7 +192,6 @@ body {
 .por-que-contratar .tabela__linha .tabela__coluna:not(:first-child) {
     width: 3rem;
 }
-
 
 .por-que-contratar .tabela__coluna__index {
     margin-right: 0.5rem;
@@ -302,6 +309,11 @@ body {
     .formulario {
         width: 100%;
         max-width: var(--form-width);
+    }
+
+    .formulario:before {
+        margin-top: -90px;
+        height: 90px;
     }
     
     /* por que contratar? */
