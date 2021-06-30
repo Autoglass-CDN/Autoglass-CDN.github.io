@@ -3,7 +3,6 @@
     padding: 0.6rem 1.6rem;
     display: flex;
     flex-direction: column;
-
     font-family: 'Open Sans', Arial, Helvetica, sans-serif;
 }
 
@@ -20,22 +19,20 @@
 .form-servico .title {
     margin-bottom: 12px;
     text-align: center;
-    color: var(--color-blue);
     font-size: 25px;
     font-weight: 800;
-
+    color: var(--color-blue);
 }
 
-.form-servico .form-data{
+.form-servico .form-data {
     display: flex;
     align-items: center;
 }
 
 .form-servico .form-data > label {
-    display: inline-table;
-    width: 61px;
-
     padding-right: 10px;
+    width: 61px;
+    display: inline-table;
     text-align: end;
 }
 
@@ -60,13 +57,14 @@
 }
 
 .form-servico__content-submit {
-    margin: 8px 0;
+    margin: 8px 0 8px 30px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .container-de-opcoes {
+    padding-left: 15%;
     font-style: italic;
 }
 
@@ -91,14 +89,14 @@
 
 /* Subcrisção do componente multiseleção */
 .select2-container {
-    display: inline !important;
     width: 100% !important;
+    display: inline !important;
 }
 
 .form-servico .select2-container--default .select2-selection--multiple .select2-selection__choice {
     float: unset;
-    display: block;
     width: fit-content;
+    display: block;
 }
 
 .form-servico .select2-selection.select2-selection--multiple{
@@ -110,11 +108,11 @@
 }
 
 .form-servico .titulo-estado-da-peca{
-    font-weight: bold;
     margin-bottom: 10px;
+    font-weight: bold;
 }
 
-.form-servico .titulo-estado-da-peca::before{
+.form-servico .titulo-estado-da-peca::before {
     content: var(--texto-pergunta-estado-da-peca);
 }
 
@@ -138,26 +136,23 @@
 
 #anchor-form {
     z-index: 10;
-    display: block;
     position: fixed;
     bottom: 80px;
     left: 10px;
-
-    width: 85px;
+    border: none;
+    border-radius: 5px;
     padding: 3px;
+    width: 85px;
+    display: block;
     color: white;
     background-color: var(--color-green);
-    border-radius: 5px;
-    border: none;
 }
 
 @media only screen and (max-width: 992px) {
-
     .form-servico {
         border-radius: 0.24rem;
         padding: 0.49rem 1.3rem;
     }
-
 
     .form-servico .form-servico__cidade-estado {
         flex-direction: column;
@@ -170,9 +165,9 @@
     } 
 
     .form-servico__content-submit {
+        margin: 20px 0;
         font-size: 20px;
         letter-spacing: 1px;
-        margin: 20px 0;
     }  
     
     .mais-opcoes-da-peca {
@@ -182,5 +177,9 @@
 
     .form-servico .select2-container--default.select2-container--focus .select2-selection--multiple {
         border: 0.024rem var(--color-silver) solid;
-    }    
+    }
+    
+    .container-de-opcoes {
+        padding-left: 0;
+    }
 }
