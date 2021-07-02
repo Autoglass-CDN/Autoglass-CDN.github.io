@@ -2620,6 +2620,11 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     color: #333333;
 }
 
+.product-qd-v1-float-bar span.product-qd-v1-name, 
+.product-qd-v1-block-above-image span.product-qd-v1-name {
+    font-weight: 600;
+}
+
 .product-qd-v1-block-above-image .product-qd-v1-ref-code {
     font-size: 12px;
     color: #757575;
