@@ -177,6 +177,24 @@ $(window).on("orderFormUpdated.vtex", (_, oF) => {
 
 localStorage.setItem('locationChanged', 0);
 
+ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaTracker' );
+ga('send', 'event', 'SalesChannel', 'script-loaded', 'Sc setted = ' + vtexjs.checkout.orderForm.salesChannel, {
+    nonInteraction: true,
+    // 'hitCallback': function(){
+    //     console.log("ga event SalesChannel script-loaded hit");
+    // }
+  });
+
+const botaoFinalizaCompra = document.querySelectorAll('#payment-data-submit')
+botaoFinalizaCompra[1].addEventListener('click', () => {
+    ga('send', 'event', 'SalesChannel', 'on-payment', 'Sc setted = ' + vtexjs.checkout.orderForm.salesChannel, {
+        nonInteraction: true,
+        // 'hitCallback': function(){
+        //     console.log("ga event SalesChannel on-payment hit");
+        // }
+      });
+})
+
 function checkSelectedDeliveryChannel(orderForm) {
     activeDeliveryChannel = localStorage.getItem('activeDeliveryChannel');
     let logisticsInfo = orderForm.shippingData.logisticsInfo;
@@ -250,6 +268,14 @@ async function changeSalesChannel(orderForm){
         if (testLogs) console.log("Política definida é diferente da atual.\n\nAplicando nova política...");
 
         startAnimation();
+        
+        ga('send', 'event', 'SalesChannel', 'changed', 'Setting Sc = ' +newSalesChannelObject.salesChannel, {
+            nonInteraction: true,
+            // 'hitCallback': function(){
+            //     console.log("ga event SalesChannel changed hit");
+            // }
+          });
+
         await reAddCartItems(items, newSalesChannelObject);
 
         if (!!$('.vtex-pickup-points-modal-3-x-modalBackdrop.pkpmodal-backdrop').length)
