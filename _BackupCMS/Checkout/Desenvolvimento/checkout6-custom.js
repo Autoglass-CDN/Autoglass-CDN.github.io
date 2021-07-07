@@ -1,3 +1,5 @@
+// dev2autoglass
+
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE. THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
 
@@ -53,9 +55,11 @@ $(window).on('load', () => {
 
     View._init();
 
+  	
     Controller._init();
     Controller.loadScripts();
     
+
     function ControllerAPI() {
         return {
             _init,
@@ -138,6 +142,7 @@ $(window).on('load', () => {
              	title.html('<i class="icon-home"></i> Receber ou Retirar');
             }
 			
+
             View.createCepInfo(orderForm, hasInstall);
         }
 
@@ -206,11 +211,12 @@ $(window).on('load', () => {
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
-            await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
-            await loadScript('https://autoglass-cdn.github.io/arquivos/js/cep.component.js');
-            await loadScript('https://autoglass-cdn.github.io/hml/consulta-agendamento.js');
+          	await loadScript('https://autoglass-cdn.github.io/src/js/checkout.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
 
           	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+          	
           	
             loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
         }
@@ -241,7 +247,9 @@ $(window).on('load', () => {
                 callback && callback(script);
                 document.getElementsByTagName("head")[0].appendChild(script);
             });
-        }     
+        }
+        
+        
     }
 
     function ViewAPI() {

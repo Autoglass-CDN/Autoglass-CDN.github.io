@@ -1,0 +1,188 @@
+.garantia-desktop__conteudo {
+    display: flex;
+}
+
+.garantia-desktop__conteudo > div {
+    flex: 2;
+}
+
+.garantia-desktop__conteudo > div:first-child {
+    flex: 3;
+}
+
+.garantia-desktop__conteudo p,
+.garantia-mobile__conteudo p {
+    color:#2f4e9e;
+}
+
+.garantia-desktop .garantia-desktop__titulo,
+.garantia-mobile .garantia-mobile__titulo {    
+    text-transform: uppercase;
+    font-size: 2em;
+    color:#2f4e9e;
+}
+
+.garantia-desktop__sub-titulo,
+.garantia-mobile__sub-titulo {
+    font-weight: 900 !important;
+}
+
+.garantia-desktop__acoes {
+    display: flex;
+    height: 75px;
+    margin: 0px -20px;
+}
+
+.garantia-desktop__pdf {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex: 1;
+    background-color: #43C452;
+    transition: background-color .2s ease-in-out;
+}
+
+.garantia-desktop__pdf-link {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    text-decoration: none !important;
+}
+
+.garantia-desktop__pdf-link i {
+    display: block !important;
+}
+
+.garantia-desktop__pdf a:hover,
+.garantia-mobile__pdf a:hover {
+    color: white;
+}
+
+.garantia-desktop__pdf i {
+    font-size: 26px;
+    color: #fff;
+    margin-right: 50px;
+    margin-left: 10px;
+}
+
+.garantia-desktop__pdf p,
+.garantia-mobile__pdf p {
+    color: #fff;
+    margin: 0;
+    width: 220px;
+}
+
+.garantia-desktop__contato {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    background-color: #ededed;
+}
+
+.garantia-desktop__contato p {
+    margin: 0;
+    margin-left: 30px;
+    color: #2f4e9e;
+}
+
+.garantia-desktop__contato-icone {
+    margin-left: 20px;
+    height: 32px;
+}
+
+.garantia-desktop__imagem img,
+.garantia-mobile__imagem img {
+    width: 100%;
+}
+
+.garantia-desktop__contato-icone svg,
+.garantia-mobile__contato-icone svg {
+    width: 32px;
+    color: #2f4e9e;
+}
+
+.garantia-desktop__videos {
+    display: flex;
+    margin-top: 20px;
+}
+
+.garantia-desktop__videos > div {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.garantia-desktop__videos p,
+.garantia-mobile__videos p {
+    color: #2f4e9e;
+}
+
+.garantia-desktop__videos b {
+    font-weight: 900;
+}
+
+.garantia-desktop__videos iframe {
+    width: 90%;
+    height: 240px;
+}
+
+.garantia-mobile {
+    display: none;
+    text-align: center;
+}
+
+.garantia-mobile__pdf {
+    background-color: #43C452;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    margin: 30px 0px;
+}
+.garantia-mobile__pdf-link {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.garantia-mobile__contato {
+    padding: 20px;
+    background-color: #ededed;
+}
+
+.garantia-mobile__contato p {
+    margin: 0;
+    color: #2f4e9e;
+}
+
+.garantia-mobile__contato p b {
+    font-weight: bold;
+}
+
+.garantia-mobile__imagem {
+    margin: 15px auto;
+    max-width: 300px;
+}
+
+.garantia-mobile__videos {
+    margin-bottom: 15px;
+}
+
+.garantia-mobile__videos iframe {
+    width: 100%;
+    height: 240px;
+}
+
+@media (max-width: 1200px) {
+    .garantia-mobile {
+        display: block;
+    }
+
+    .garantia-desktop {
+        display: none;
+    }
+}
