@@ -219,7 +219,7 @@ body {
 }
 
 .por-que-contratar .tabela__coluna__negative-check {
-    background: url(https://autoglass-cdn.github.io/arquivos/img/servicos/neg_check.png);
+    background-image: url(https://autoglass-cdn.github.io/arquivos/img/servicos/neg_check.png);
 }
 
 .avaliacoes-consumidores {
