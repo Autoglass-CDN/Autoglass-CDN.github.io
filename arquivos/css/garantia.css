@@ -15,9 +15,10 @@
     color:#2f4e9e;
 }
 
-.garantia-desktop__titulo,
-.garantia-mobile__titulo {
+.garantia-desktop .garantia-desktop__titulo,
+.garantia-mobile .garantia-mobile__titulo {    
     text-transform: uppercase;
+    font-size: 2em;
     color:#2f4e9e;
 }
 
