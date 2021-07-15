@@ -1,0 +1,408 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+:root {
+    --cor-primaria: #193f91;
+    --cor-secundaria: #fb7000;
+    --tamanho-maximo: 1280px;
+}
+
+body {
+    font-size: 16px;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--tamanho-maximo);
+}
+
+.banner,
+.video,
+.prevencao,
+.beneficio {
+    display: flex;
+    justify-content: center;
+}
+
+.video,
+.prevencao,
+.beneficio {
+    margin-top: 3.1em;
+}
+
+.cabecalho {
+    padding: 0.6em 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: white;
+}
+
+.cabecalho__selo {
+    width: 5em;
+    height: 5.9em;
+}
+
+.cabecalho__logo__imagem {
+    width: 6.3em;
+    height: 4.4em;
+}
+
+.cabecalho__logo__texto {
+    display: block;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 0.6em;
+    font-weight: 600;
+}
+
+.banner {
+    width: 100%;
+    height: 31.9em;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../assets/transito-mais-livre/banner.png");
+    overflow: hidden;
+}
+
+.banner__informacao {
+    margin-top: 3.1em;
+    margin-left: 10%;
+    box-shadow: 0 0 0.6em -0.1em black;
+    padding: 2.5em;
+    width: 25em;
+    height: 25em;
+    background-color: white;
+}
+
+.informacao__titulo {
+    font-weight: 800;
+    font-size: 2.1em;
+    line-height: 1.1em;
+    color: var(--cor-primaria);
+}
+
+.informacao__texto {
+    padding-top: 1.9em;
+    padding-left: 1.3em;
+    font-weight: 600;
+}
+
+.video .container {
+    display: grid;
+    grid-template:
+        "video titulo" auto
+        "video estatisticas" auto
+        "video fonte" auto / 50% 50%;
+}
+
+.video__titulo {
+    grid-area: titulo;
+    margin: 0.6em 0 1.3em 0;
+    color: var(--cor-primaria);
+}
+
+.video__youtube {
+    grid-area: video;
+    padding-right: 1.6em;
+    width: 100%;
+    height: 100%;
+    max-height: 19.7em;
+}
+
+.estatisticas {
+    grid-area: estatisticas;
+    list-style: none;
+}
+
+.estatisticas__item {
+    margin-bottom: 1.3em;
+    display: flex;
+    align-items: center;
+}
+
+.estatistica__icone {
+    margin-right: 0.6em;
+    width: 1.9em;
+    height: 1.9em;
+}
+
+.estatistica__texto {
+    font-weight: 800;
+}
+
+.video__fonte {
+    grid-area: fonte;
+    font-size: 0.8em;
+    font-weight: 600;
+    opacity: 40%;
+}
+
+.prevencao .container {
+    display: flex;
+}
+
+.prevencao__informacao {
+    padding: 1.3em 2.5em;
+}
+
+.prevencao__titulo {
+    margin-bottom: 1.6em;
+    color: var(--cor-secundaria);
+}
+
+.prevencao__texto {
+    font-size: 0.8em;
+    font-weight: 700;
+    word-spacing: 0.24em;
+    line-height: 2em;
+    color: var(--cor-primaria);
+}
+
+.prevencao__imagem {
+    width: 100%;
+    height: 22em;
+}
+
+.beneficio {
+    background-color: #e8e8e8;
+}
+
+.beneficio .container {
+    padding: 3.1em 0;
+    display: grid;
+    grid-template:
+        "imagem titulo" auto
+        "imagem ganhos" auto
+        "imagem cta" auto / 50% 50%;
+}
+
+.beneficio__titulo {
+    grid-area: titulo;
+    width: 80%;
+    font-weight: 800;
+    font-size: 3.1em;
+    color: var(--cor-secundaria);
+}
+
+.beneficio__imagem {
+    grid-area: imagem;
+    margin: 0 auto;
+    width: 30em;
+    height: 38em;
+    display: block;
+}
+
+.ganhos {
+    grid-area: ganhos;
+}
+
+.ganhos__questionamento {
+    margin: 1.3em 0 1.9em 1.9em;
+    font-weight: 600;
+}
+
+.ganhos__sugestao {
+    font-weight: 600;
+    font-display: var(--cor-primaria);
+    line-height: 2.4em;
+    color: white;
+}
+
+.ganhos__sugestao__marcacao {
+    padding: 0.4em 0.3em;
+    background-color: var(--cor-primaria);
+}
+
+.cta {
+    grid-area: cta;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.cta__texto {
+    margin-left: 3.1em;
+    margin-bottom: 1.6em;
+    font-weight: 600;
+}
+
+.cta__botao {
+    border: none;
+    border-radius: 0.3em;
+    padding: 0.9em 3.1em;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    color: white;
+    background-color: var(--cor-secundaria);
+}
+
+@media only screen and (max-width: 950px) {
+    body {
+        font-size: 12px;
+    }
+    .container {
+        padding: 0 1.5em;
+    }
+
+    .video,
+    .prevencao,
+    .beneficio {
+        margin-top: 1em;
+    }
+
+    .video .container {
+        grid-template:
+            "titulo titulo" auto
+            "video video" auto
+            "estatisticas estatisticas" auto
+            "fonte fonte" auto / 50% 50%;
+    }
+
+    .video__titulo {
+        font-size: 1.8em;
+    }
+
+    .video__youtube {
+        padding-right: 0;
+        min-height: 25em;
+    }
+
+    .estatisticas {
+        margin-top: 1rem;
+        display: flex;
+    }
+
+    .estatisticas__item {
+        flex: 1;
+        align-items: stretch;
+        align-self: flex-start;
+    }
+
+    .video__fonte {
+        margin-left: auto;
+        width: 30%;
+        text-align: right;
+    }
+
+    .prevencao .container {
+        padding: 1.5rem 0;
+        background-color: var(--cor-secundaria);
+    }
+    
+    .prevencao__informacao {
+        padding: 2em 1em;
+    }
+    
+    .prevencao__titulo {
+        color: var(--cor-primaria);
+    }
+    
+    .prevencao__texto {
+        font-weight: 600;
+        color: white;
+        opacity: 0.9;
+    }
+    
+    .prevencao__imagem {
+        width: 50%;
+        height: 30em;
+        object-fit: cover;
+        object-position: 63% 50%;
+    }
+
+    .beneficio {
+        margin-top: 0;
+    }
+    
+    .beneficio .container {
+        grid-template:
+            "imagem titulo" auto
+            "imagem ganhos" auto
+            "cta cta" auto / 50% 50%;
+    }
+    
+    .beneficio__titulo {
+        margin-top: 0;
+        width: 90%;
+        font-size: 2.5em;
+        line-height: 1em;
+    }
+    
+    .beneficio__imagem {
+        margin: 0;
+        margin-right: auto;
+        width: 95%;
+        height: 28em;
+        object-fit: cover;
+    }
+    
+    .ganhos__questionamento {
+        margin: 0;
+        margin-top: 2em;
+    }
+    
+    .ganhos__sugestao {
+        margin-top: 2em;
+        line-height: 2em;
+    }
+    
+    .ganhos__sugestao__marcacao {
+        padding: 0.2em 0;
+    }
+    
+    .cta {
+        margin-top: 1.5em;
+        align-items: center;
+    }
+    
+    .cta__texto {
+        margin-left: 0;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 420px) {
+    body {
+        font-size: 10px;
+    }
+
+    .video__fonte {
+        width: 100%;
+    }
+    
+    .prevencao__informacao {
+        padding: 0 0.7em;
+    }
+
+    .beneficio .container {
+        grid-template:
+            "titulo titulo" auto
+            "imagem ganhos" auto
+            "imagem ganhos" auto
+            "cta cta" auto / 50% 50%;
+    }
+    
+    .beneficio__titulo {
+        margin: 0 auto;
+        margin-bottom: 1em;
+        width: 90%;
+        text-align: center;
+    }
+    
+    .beneficio__imagem {
+        height: 23em;
+    }
+    
+    .ganhos__questionamento {
+        margin: 0;
+    }
+}
