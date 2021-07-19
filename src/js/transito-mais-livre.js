@@ -55,13 +55,14 @@ class Formulario {
 
             async function enviarRequisicao(req) {
                 try {
+                    const dadosEmTexto = JSON.stringify({ fonte: "Landing Page - Trânsito Livre", ...req });
                     const response = await fetch('https://api-int-hml.autoglass.com.br/integracao-b2c/api/web-app/leads',
                         {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json'
                             },
-                            body: { fonte: "Landing Page - Trânsito Livre", ...req },
+                            body: dadosEmTexto,
                         }
                     );
 
