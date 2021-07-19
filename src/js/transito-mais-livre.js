@@ -29,24 +29,27 @@ class Formulario {
             const botaoAbrir = document.querySelector('#cta-botao_js');
             const modal = document.querySelector('#modal_js');
 
-            botaoEnviar.addEventListener('click', () => { enviarFomulario(formulario); });
+            botaoEnviar.addEventListener('click', (evento) => { enviarFomulario(evento, formulario); });
             formulario.addEventListener('click', pararPropagacao);
             botaoFechar.addEventListener('click', () => { fecharModal(modal); });
             modal.addEventListener('click', () => { fecharModal(modal); });
             botaoAbrir.addEventListener('click', () => { abrirModal(modal); });
         }
 
-        async function enviarFomulario(formulario) {
+        async function enviarFomulario(evento, formulario) {
+            const { target: botaoEnviar } = evento;
             const { nome_js: nome, email_js: email, telefone_js: telefone, } = formulario;
             const data = { nome, email, telefone };
 
             try {
                 validarDados(data);
+                habilitaOuDesabilitaBotaoDeEnviar(botaoEnviar);
                 await enviarRequisicao(data);
                 alert("Sua solicitação foi enviada com sucesso! Em breve entraremos em contato.");
 
                 resetarFormulario();
             } catch (error) {
+                habilitaOuDesabilitaBotaoDeEnviar(botaoEnviar);
                 alert(error.message);
             }
 
@@ -80,6 +83,12 @@ class Formulario {
 
             function resetarFormulario() {
                 location.reload();
+            }
+
+            function habilitaOuDesabilitaBotaoDeEnviar(botaoEnviar) {
+                const estadoAtual = botaoEnviar.disabled;
+
+                botaoEnviar.disabled = !estadoAtual;
             }
         }
 
