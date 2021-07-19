@@ -42,8 +42,8 @@ class Formulario {
             const data = { nome, email, telefone };
 
             try {
-                validarDados(data);
                 habilitaOuDesabilitaBotaoDeEnviar(botaoEnviar);
+                validarDados(data);
                 await enviarRequisicao(data);
                 alert("Sua solicitação foi enviada com sucesso! Em breve entraremos em contato.");
 
