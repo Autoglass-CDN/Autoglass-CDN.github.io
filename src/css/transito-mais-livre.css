@@ -252,7 +252,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    display: block;
+    display: none;
     min-width: 100vw;
     min-height: 100vh;
     background-color: #000000CC;
