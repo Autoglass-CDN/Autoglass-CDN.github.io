@@ -76,7 +76,7 @@ class Formulario {
 
             function validarDados(data) {
                 for (const key in data) {
-                    if (data[key].value == "") {
+                    if (data[key] == "") {
                         throw new Error("Por favor, preencha todos os campos.");
                     }
                 }
