@@ -39,7 +39,7 @@ class Formulario {
         async function enviarFomulario(evento, formulario) {
             const { target: botaoEnviar } = evento;
             const { nome_js: nome, email_js: email, telefone_js: telefone, } = formulario;
-            const data = { nome, email, telefone };
+            const data = { nome: nome.value, email: email.value, telefone: telefone.value };
 
             try {
                 habilitaOuDesabilitaBotaoDeEnviar(botaoEnviar);
