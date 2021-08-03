@@ -18,7 +18,7 @@ const pickupPointsPolicies = [
     { nome: 'SP', Unidade: 'SP01', Uf: 'São Paulo', salesChannel: 30},
     { nome: 'SP', Unidade: 'MG62', Uf: 'São Paulo', salesChannel: 31},
     { nome: 'SP', Unidade: 'MG61', Uf: 'São Paulo', salesChannel: 32},
-    { nome: 'SP', Unidade: 'NW08', Uf: 'São Paulo', salesChannel: 33},
+    { nome: 'SP', Unidade: 'MG68', Uf: 'São Paulo', salesChannel: 33},
     { nome: 'SP', Unidade: 'NW11', Uf: 'São Paulo', salesChannel: 34},
     { nome: 'SP', Unidade: 'NW12', Uf: 'São Paulo', salesChannel: 35},
     { nome: 'SP', Unidade: 'SP02', Uf: 'São Paulo', salesChannel: 36},
@@ -90,12 +90,12 @@ const specialCasePolicies = [
     
     { nome: 'SP', Unidade: 'MG61', cMin: 09000000, cMax: 09999999, Uf: 'São Paulo', salesChannel: 32},
 
-    { nome: 'SP', Unidade: 'NW08', cMin: 15000000, cMax: 15104999, Uf: 'São Paulo', salesChannel: 33},
-    { nome: 'SP', Unidade: 'NW08', cMin: 15110000, cMax: 15119999, Uf: 'São Paulo', salesChannel: 33},
-    { nome: 'SP', Unidade: 'NW08', cMin: 15130000, cMax: 15159999, Uf: 'São Paulo', salesChannel: 33},
-    { nome: 'SP', Unidade: 'NW08', cMin: 15170000, cMax: 15179999, Uf: 'São Paulo', salesChannel: 33},
-    { nome: 'SP', Unidade: 'NW08', cMin: 15400000, cMax: 15409999, Uf: 'São Paulo', salesChannel: 33},
-    { nome: 'SP', Unidade: 'NW08', cMin: 15440000, cMax: 15449999, Uf: 'São Paulo', salesChannel: 33},
+    { nome: 'SP', Unidade: 'MG68', cMin: 15000000, cMax: 15104999, Uf: 'São Paulo', salesChannel: 33},
+    { nome: 'SP', Unidade: 'MG68', cMin: 15110000, cMax: 15119999, Uf: 'São Paulo', salesChannel: 33},
+    { nome: 'SP', Unidade: 'MG68', cMin: 15130000, cMax: 15159999, Uf: 'São Paulo', salesChannel: 33},
+    { nome: 'SP', Unidade: 'MG68', cMin: 15170000, cMax: 15179999, Uf: 'São Paulo', salesChannel: 33},
+    { nome: 'SP', Unidade: 'MG68', cMin: 15400000, cMax: 15409999, Uf: 'São Paulo', salesChannel: 33},
+    { nome: 'SP', Unidade: 'MG68', cMin: 15440000, cMax: 15449999, Uf: 'São Paulo', salesChannel: 33},
     
     { nome: 'SP', Unidade: 'NW11', cMin: 11000000, cMax: 11599999, Uf: 'São Paulo', salesChannel: 34},
     { nome: 'SP', Unidade: 'NW11', cMin: 11700000, cMax: 11759999, Uf: 'São Paulo', salesChannel: 34},
