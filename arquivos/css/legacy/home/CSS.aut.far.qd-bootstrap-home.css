@@ -348,7 +348,7 @@ body .box-banner a[href] {
 }
 
 .modal-backdrop.in {
-    opacity: .75;
+    opacity: .75 !important;
     filter: alpha(opacity=75)
 }
 
