@@ -1440,11 +1440,11 @@ i.arrow-icon::before {
 }
 
 body.home {
-  padding-top: 0;
+  padding-top: 0 !important;
 }
 
 .home main {
-  margin-top: unset;
+  margin-top: unset !important;
 }
 
 .shelf-qd-v1:hover {
@@ -1491,7 +1491,6 @@ body[data-qd-scroll-0="1"] {
   .geo-picker {
     width: calc(100% - 60px);
   }
-
   body:not(.home) {
     padding-top: unset;
   }
