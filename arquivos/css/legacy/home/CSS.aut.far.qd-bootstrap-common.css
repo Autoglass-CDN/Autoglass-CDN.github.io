@@ -8907,6 +8907,10 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
     color: transparent
 }
 
+.components-qd-v1-overlay {
+    display: none
+}
+
 body.qd-am-on .components-qd-v1-overlay, body.qd-rs-on .components-qd-v1-overlay, body.qd-sn-on .components-qd-v1-overlay, body.qd-cart-show .components-qd-v1-overlay {
     display: block
 }
