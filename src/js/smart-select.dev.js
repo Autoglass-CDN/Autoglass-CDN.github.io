@@ -385,6 +385,9 @@
       // Não pode ser === Pq um pode ser INT e outro STRING, mas o valores são iguais;
       const optionSelected = select.values.find(x => x.id == event.target.id);
 
+      const modalDeCarregamento = new ModalDeCarregamento();
+      modalDeCarregamento.mostarSpinner();
+
       View.resetResults(index);
 
       if (index !== 0) {
@@ -414,6 +417,8 @@
       }
 
       View.createNavigation(select.class, event.target.innerHTML);
+
+      modalDeCarregamento.ocultarSpinner();
     }
 
     async function checkRouterParams() {
@@ -527,25 +532,42 @@
     }
   }
 
-  
   /**
    * Em despositivos mobile e tablet, rola a tela diretamente para resultado das buscas
    */
   window.onload = () => {
 
     if (window.matchMedia('(max-width: 1100px)').matches) {
-      
+
       var aimElement = $('.system-error-qd-v1') //busca com resultado
-      if(!aimElement.length){
+      if (!aimElement.length) {
         aimElement = $('.search-qd-v1-result') //busca vazia
-        if(!aimElement.length) return //não é pagina de busca
+        if (!aimElement.length) return //não é pagina de busca
       }
 
       aimElementTopOffset = aimElement.offset().top;
       offsets = $('header.nav').height() + $('div.topo').height();
       pixelsToScroll = aimElementTopOffset - offsets;
-      $("html, body").animate({ scrollTop: pixelsToScroll }, "slow");		
-      
+      $("html, body").animate({ scrollTop: pixelsToScroll }, "slow");
+
+    }
+  }
+
+  class ModalDeCarregamento {
+    constructor() {
+      const listasDeResultados = document.querySelectorAll('.smart-select__main-results');
+      const modal = document.querySelector('.smart-select__main .smart-select__modal');
+      const cabecalho = document.querySelector('.smart-select__header');
+
+      this.elementos = [...listasDeResultados, modal, cabecalho];
+    }
+
+    mostarSpinner() {
+      this.elementos.forEach(elemento => elemento.classList.add('loader-modal--show'));
+    }
+
+    ocultarSpinner() {
+      this.elementos.forEach(elemento => elemento.classList.remove('loader-modal--show'));
     }
   }
 })();

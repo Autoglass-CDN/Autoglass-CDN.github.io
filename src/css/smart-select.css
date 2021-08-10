@@ -1,252 +1,308 @@
 /* New Smart Select */
 .smart-select-section {
-  width: 100%;
+    width: 100%;
 }
 
 .smart-select {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.loader-modal--show {
+    cursor: no-drop;
+}
+
+.smart-select__header.loader-modal--show:after,
+.smart-select__main-results.loader-modal--show:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: inherit;
+    min-width: 100%;
+    height: 100%;
+    background-color: #000000c0;
 }
 
 .smart-select__header,
 .smart-select__main {
-  background-color: #1c3162;
+    background-color: #1c3162;
 }
 
 /* #region Header */
 
 .smart-select__header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
+    z-index: 1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
-  max-width: 345px;
-  width: 100%;
-  min-height: 50px;
+    max-width: 345px;
+    width: 100%;
+    min-height: 50px;
 
-  position: absolute;
-  top: -40px;
-  left: 50%;
-  transform: translate(-50%, 0);
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translate(-50%, 0);
 
-  border-top-right-radius: 75px;
-  border-top-left-radius: 75px;
+    border-top-right-radius: 75px;
+    border-top-left-radius: 75px;
 
-  transition: max-width .5s ease-in-out;
+    transition: max-width 0.5s ease-in-out;
 }
 
 .smart-select__header h2 {
-  color: white;
-  font-size: 24px;
+    color: white;
+    font-size: 24px;
 }
-
 /* #endregion Header */
 
 /* #region Main */
 .smart-select__main {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 50px 50px;
-  border-radius: 24px;
-  width: 100%;
-  max-width: 1110px;
-  margin: 0 85px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: 50px 50px;
+    border-radius: 24px;
+    width: 100%;
+    max-width: 1110px;
+    margin: 0 85px;
 
-  transition: border-radius .5s ease-in-out;
+    transition: border-radius 0.5s ease-in-out;
 }
 
 .smart-select__main > div {
-  width: calc(100%/8);
-  min-width: 140px;
-  height: 50px;
+    width: calc(100% / 8);
+    min-width: 140px;
+    height: 50px;
 }
 
 .smart-select__main > div.ano {
-  max-width: 100px;
-  min-width: 100px;
+    max-width: 100px;
+    min-width: 100px;
 }
 
 .smart-select__main > div + div {
-  margin-left: 18px;
+    margin-left: 18px;
 }
 
 .smart-select__main > div > div:first-child {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-  background-color: white;
-  font-size: 18px;
-  color: #868686;
-  border-radius: 4px;
-  padding: 15px;
-  cursor: pointer;
-  transition: color .2s ease-in-out;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+    background-color: white;
+    font-size: 18px;
+    color: #868686;
+    border-radius: 4px;
+    padding: 15px;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
 }
 
 .smart-select__main div.empty {
-  position: relative;
-  cursor: none;
+    position: relative;
+    cursor: none;
 }
 
 .smart-select__main div.empty:hover::before {
-  content: 'Preencha os campos anteriores';
-  background-color: white;
-  color: #1c3162;
-  font-size: 14px;
+    content: "Preencha os campos anteriores";
+    background-color: white;
+    color: #1c3162;
+    font-size: 14px;
 
-  width: 230px;
+    width: 230px;
 
-  text-align: center;
+    text-align: center;
 
-  position: absolute;
-  bottom: -35px;
-  left: 50%;
-  transform: translate(-50%, 0);
+    position: absolute;
+    bottom: -35px;
+    left: 50%;
+    transform: translate(-50%, 0);
 
-  padding: 5px 10px;
-  border-radius: 4px;
-  z-index: 8;
+    padding: 5px 10px;
+    border-radius: 4px;
+    z-index: 8;
 }
 
 .smart-select__main div.empty:hover::after {
-  content: '';
+    content: "";
 
-  position: absolute;
-  bottom: -10px;
-  left: 50%;
-  transform: translate(-50%, 0);
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translate(-50%, 0);
 
-  border: 4px solid white;
-  transform: rotate(45deg);
-  z-index: 9;
+    border: 4px solid white;
+    transform: rotate(45deg);
+    z-index: 9;
 }
 
 .smart-select__main > div > div:first-child > span {
-  max-width: 100px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    max-width: 100px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .smart-select__main > div > div:hover,
-.smart-select__main > div > div:focus  {
-  color: #1c3162;
+.smart-select__main > div > div:focus {
+    color: #1c3162;
 }
 
 .smart-select__main button {
-  background-color: #43C452;
-  color: white;
-  font-size: 16px;
-  text-transform: uppercase;
-  height: 50px;
-  width: 100%;
-  border: 0;
-  border-radius: 4px;
-  cursor: pointer;
-  transition: background-color .5s ease-in-out;
+    background-color: #43c452;
+    color: white;
+    font-size: 16px;
+    text-transform: uppercase;
+    height: 50px;
+    width: 100%;
+    border: 0;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.5s ease-in-out;
 }
 
 .smart-select__main button:hover {
-  background-color: #33a140;
+    background-color: #33a140;
 }
+
+.smart-select__modal {
+    display: none;
+}
+
+.smart-select__modal.loader-modal--show {
+    position: absolute;
+    margin: 0;
+    border-radius: inherit;
+    min-width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #000000c0;
+}
+
+.smart-select__modal__spinner {
+    border: 8px solid #f3f3f3c0;
+    border-top: 8px solid #183884;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+}
+
+.loader-modal--show .smart-select__modal__spinner {
+    animation: spinner 2s linear infinite;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 /* #endregion Main */
 
 /* #region Main - Results */
 .smart-select__main .smart-select__main-results {
-  background: white;
-  position: absolute;
-  flex-direction: column;
-  max-width: 202px;
+    background: white;
+    position: absolute;
+    flex-direction: column;
+    max-width: 202px;
 
-  padding: 0;
-  border-radius: 0px 0px 4px 4px;
-  border: 1px solid #A8A8A8;
-  z-index: 9;
+    padding: 0;
+    border-radius: 0px 0px 4px 4px;
+    border: 1px solid #a8a8a8;
+    z-index: 9;
 }
 
 .smart-select__main .smart-select__main-results input {
-  margin: 10px;
-  padding: 10px;
-  font-size: 14px;
-  border-radius: 4px;
-  border: 1px solid #A8A8A8;
+    margin: 10px;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #a8a8a8;
 }
 .smart-select__main .smart-select__main-results ul {
-  list-style-type: none;
-  overflow: auto;
-  max-height: 200px;
-  padding: 0;
+    list-style-type: none;
+    overflow: auto;
+    max-height: 200px;
+    padding: 0;
 }
 
 .smart-select__main .smart-select__main-results ul li {
-  font-size: 16px;
-  padding: 10px 15px;
-  color: #707070;
-  cursor: pointer;
-  width: inherit;
+    font-size: 16px;
+    padding: 10px 15px;
+    color: #707070;
+    cursor: pointer;
+    width: inherit;
 }
 
 .smart-select__main .smart-select__main-results ul li.selected {
-  background-color: #DBDBDB;
+    background-color: #dbdbdb;
 }
 
 .smart-select__main .smart-select__main-results ul li.highlight {
-  background-color: #1c3162;
-  color:white;
+    background-color: #1c3162;
+    color: white;
 }
 /* #endregion Main - Results */
 
 @media (max-width: 1100px) {
-  .smart-select__header {
-    max-width: 100%;
-    border-radius: 80px 80px 15px 15px;
-  }
+    .smart-select__header {
+        max-width: 100%;
+        border-radius: 80px 80px 15px 15px;
+    }
 
-  .smart-select__main {
-    flex-direction: column;
-    border-radius: 0;
-    margin: 0;
-    padding: 2vw;
-    padding-bottom: 50px;
-  }
+    .smart-select__main {
+        flex-direction: column;
+        border-radius: 0;
+        margin: 0;
+        padding: 2vw;
+        padding-bottom: 50px;
+    }
 
-  .smart-select__main > div {
-    margin: 10px 0px;
-    width: 100%;
-    position: relative;
-  }
+    .smart-select__main > div {
+        margin: 10px 0px;
+        width: 100%;
+        position: relative;
+    }
 
-  .smart-select__main div.empty:hover::before {
-    z-index: 9;
-    border: 1px solid #A8A8A8;
-  }
+    .smart-select__main div.empty:hover::before {
+        z-index: 9;
+        border: 1px solid #a8a8a8;
+    }
 
-  .smart-select__main > div + div {
-    margin-left: 0px;
-  }
+    .smart-select__main > div + div {
+        margin-left: 0px;
+    }
 
-  .smart-select__main > div.ano {
-    max-width: unset;
-    min-width: unset;
-  }
+    .smart-select__main > div.ano {
+        max-width: unset;
+        min-width: unset;
+    }
 
-  .smart-select__main > div > div:first-child > span {
-    max-width: 200px;
-  }
+    .smart-select__main > div > div:first-child > span {
+        max-width: 200px;
+    }
 
-  .smart-select__main .smart-select__main-results {
-    width: 100%;
-    max-width: unset;
-  }
+    .smart-select__main .smart-select__main-results {
+        width: 100%;
+        max-width: unset;
+    }
 
-  .smart-select__main .smart-select__main-results input {
-    width: calc(100% - 20px);
-    display: none;
-  }
+    .smart-select__main .smart-select__main-results input {
+        width: calc(100% - 20px);
+        display: none;
+    }
 }
