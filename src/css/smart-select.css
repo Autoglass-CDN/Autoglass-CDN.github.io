@@ -272,6 +272,10 @@
         padding-bottom: 50px;
     }
 
+    .smart-select__modal.loader-modal--show {
+        z-index: 10;
+    }
+
     .smart-select__main > div {
         margin: 10px 0px;
         width: 100%;
