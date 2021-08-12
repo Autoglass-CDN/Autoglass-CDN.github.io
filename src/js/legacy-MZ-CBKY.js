@@ -3575,6 +3575,8 @@ $(document).ready(function () {
 });
 $(window).load(function () {
 	/* Injetando código para controlar script da galeria de imagem/video */
+	const isNotPageProduct = !/\/p$/.test(window.location.href);
+	if (isNotPageProduct) return;
 
 	var script=document.createElement('script');
 	script.type='text/javascript';
