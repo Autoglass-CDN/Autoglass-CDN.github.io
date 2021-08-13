@@ -274,6 +274,7 @@
 
     .smart-select__modal.loader-modal--show {
         z-index: 10;
+        bottom: 0;
     }
 
     .smart-select__main > div {
