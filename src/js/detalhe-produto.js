@@ -271,7 +271,8 @@ $(window).on("ready", async () => {
       sugestoesContainer
         .html(veiculosBuscaveis.map((a) =>
           a.Veiculos.filter(b =>
-            new RegExp(texto, "i")
+            new RegExp(texto.split(" ")
+              .map(str => `(?=.*${str})`).join(""), "i")
               .test(b.Veiculo)))
           .filter(a => a.length > 0)
           .flat()
