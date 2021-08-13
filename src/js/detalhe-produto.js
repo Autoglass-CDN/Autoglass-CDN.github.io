@@ -3,6 +3,7 @@ const getLinkById = (id) => document.querySelector(`a[href='#${id}']`);
 // configura busca de veículos compatíveis
 var veiculosBuscaveis = [];
 const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');
+$('.veiculos-compativeis-search').hide();
 
 const inView = (section, width) => {
   let top = section.offsetTop;
@@ -251,6 +252,9 @@ $(window).on("ready", async () => {
       $(window).on("resize", function () {
         checkIfNeedButtons(headerContainer);
       });
+
+      $('.veiculos-compativeis-search').show();
+
     } else {
       $('a[href="#veiculos-compativeis"]').parent().hide();
       veiculosCompatíveisContainer.hide();
