@@ -271,7 +271,7 @@ $(window).on("ready", async () => {
       sugestoesContainer
         .html(veiculosBuscaveis.map((a) =>
           a.Veiculos.filter(b =>
-            new RegExp("gol", "i")
+            new RegExp(texto, "i")
               .test(b.Veiculo)))
           .filter(a => a.length > 0)
           .flat()
