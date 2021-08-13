@@ -275,20 +275,20 @@ $(window).on("ready", async () => {
               .test(b.Veiculo)))
           .filter(a => a.length > 0)
           .flat()
-          .map(buildContentBusca))
+          .map(buildContentBusca)
+          .join(""))
     }
   }
 
-  function buildContentBusca(veiculos, index) {
-    return veiculos.map(
-      (veiculo) => `
+  function buildContentBusca(veiculo, index) {
+    return `
                   <div class="veiculos-compativeis__content-compativel">
                       <p>${veiculo.Veiculo}</p>
                       <div>${veiculo.Anos.map(
-        (x) => "<span>" + x + "</span>"
-      )}.</div>
+      (x) => "<span>" + x + "</span>"
+    )}.</div>
                   </div>
-              `).join("");
+              `;
   }
 
   function buildHeader(grupo, index) {
