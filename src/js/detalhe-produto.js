@@ -269,8 +269,20 @@ $(window).on("ready", async () => {
   function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 2) {
       sugestoesContainer
-        .html(veiculosBuscaveis.map(buildHeader).join(""));
+        .html(veiculosBuscaveis.map(buildContentBusca));
     }
+  }
+
+  function buildContentBusca(grupo, index) {
+    return grupo.Veiculos.map(
+      (veiculo) => `
+                  <div class="veiculos-compativeis__content-compativel">
+                      <p>${veiculo.Veiculo}</p>
+                      <div>${veiculo.Anos.map(
+        (x) => "<span>" + x + "</span>"
+      )}.</div>
+                  </div>
+              `).join("");
   }
 
   function buildHeader(grupo, index) {
