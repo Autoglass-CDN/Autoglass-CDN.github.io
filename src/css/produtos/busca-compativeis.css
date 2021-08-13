@@ -57,13 +57,13 @@
 
 @media (max-width: 992px) {
   .veiculos-compativeis-search.desktop {
-    display: none;
+    display: none !important;
   }
 }
 
 @media (min-width: 992px) {
   .veiculos-compativeis-search.mobile {
-    display: none;
+    display: none !important;
   }
 }
 
