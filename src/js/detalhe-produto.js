@@ -262,9 +262,9 @@ $(window).on("ready", async () => {
 
   //Busca de Veículos Compatíveis
   $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input')
-    .on('input', () => await buscaCompativeis($(this).val()));
+    .on('input', () => buscaCompativeis($(this).val()));
 
-  async function buscaCompativeis(texto) {
+  function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 2) {
       sugestoesContainer
         .html(veiculosCompativeis.map(buildHeader).join(""));
