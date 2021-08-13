@@ -275,6 +275,7 @@ $(window).on("ready", async () => {
               .test(b.Veiculo)))
           .filter(a => a.length > 0)
           .flat()
+          .slice(0, 3)
           .map(buildContentBusca)
           .join(""))
     }
