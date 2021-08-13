@@ -269,7 +269,7 @@ $(window).on("ready", async () => {
   function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 2) {
       sugestoesContainer
-        .html(veiculosCompativeis.map(buildHeader).join(""));
+        .html(veiculosBuscaveis.map(buildHeader).join(""));
     }
   }
 
