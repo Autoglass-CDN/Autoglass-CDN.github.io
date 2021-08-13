@@ -2,7 +2,7 @@ const sections = [...document.querySelectorAll("section")];
 const getLinkById = (id) => document.querySelector(`a[href='#${id}']`);
 // configura busca de veículos compatíveis
 var veiculosBuscaveis = [];
-const sugestoesContainer = document.querySelector('.veiculos-compativeis-search__search-suggestions');
+const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');
 
 const inView = (section, width) => {
   let top = section.offsetTop;
