@@ -1,5 +1,8 @@
 const sections = [...document.querySelectorAll("section")];
 const getLinkById = (id) => document.querySelector(`a[href='#${id}']`);
+// configura busca de veículos compatíveis
+var veiculosBuscaveis = [];
+const sugestoesContainer = document.querySelector('.veiculos-compativeis-search__search-suggestions');
 
 const inView = (section, width) => {
   let top = section.offsetTop;
@@ -140,8 +143,8 @@ if (document.querySelector("#gtm-video-parabrisa").innerHTML === "") {
 
 async function loadSimilars() {
   const hideMenu = (id) =>
-    (document.querySelector(`a[href="#${id}"]`).parentElement.style.display =
-      "none");
+  (document.querySelector(`a[href="#${id}"]`).parentElement.style.display =
+    "none");
   const isLoaded = (id) => document.querySelector(`#${id}`).innerHTML != "";
   const showComponent = (id) =>
     (document.querySelector(`#${id}`).style.display = "block") &&
@@ -177,6 +180,8 @@ $(window).on("ready", async () => {
     const veiculosCompativeis = await $.get(
       `${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`
     );
+
+    veiculosBuscaveis = veiculosCompativeis;
 
     if (veiculosCompativeis && veiculosCompativeis.length > 0) {
       veiculosCompatíveisContainer.html(`
@@ -255,11 +260,21 @@ $(window).on("ready", async () => {
     console.error("Falha ao renderizar os veículos compativeis. \n ", ex);
   }
 
+  //Busca de Veículos Compatíveis
+  $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input')
+    .on('input', () => buscaCompativeis($(this).val()));
+
+  async function buscaCompativeis(texto) {
+    if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 2) {
+      sugestoesContainer
+        .html(veiculosCompativeis.map(buildHeader).join(""));
+    }
+  }
+
   function buildHeader(grupo, index) {
     return `
-          <div id="${
-            grupo.Grupo + index
-          }" class="veiculos-compativeis__header-option">
+          <div id="${grupo.Grupo + index
+      }" class="veiculos-compativeis__header-option">
               <span>${grupo.Grupo}</span>
           </div>
       `;
@@ -277,7 +292,7 @@ $(window).on("ready", async () => {
                       )}.</div>
                   </div>
               `
-              ).join("")}
+    ).join("")}
           </div>
       `;
   }
