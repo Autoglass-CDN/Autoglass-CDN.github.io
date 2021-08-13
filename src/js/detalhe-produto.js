@@ -269,12 +269,18 @@ $(window).on("ready", async () => {
   function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 2) {
       sugestoesContainer
-        .html(veiculosBuscaveis.map(buildContentBusca));
+        .html(veiculosBuscaveis.map((a) =>
+          a.Veiculos.filter(b =>
+            new RegExp("gol", "i")
+              .test(b.Veiculo)))
+          .filter(a => a.length > 0)
+          .flat()
+          .map(buildContentBusca))
     }
   }
 
-  function buildContentBusca(grupo, index) {
-    return grupo.Veiculos.map(
+  function buildContentBusca(veiculos, index) {
+    return veiculos.map(
       (veiculo) => `
                   <div class="veiculos-compativeis__content-compativel">
                       <p>${veiculo.Veiculo}</p>
