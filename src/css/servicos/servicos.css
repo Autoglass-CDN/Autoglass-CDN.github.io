@@ -3,11 +3,12 @@ html {
     --form-width: 480px;
 
     /* cores */
-    --azul-titulos: #003da5;
+    --azul-titulos: #003ca5;
+    --azul-titulos-claro: #003da5a6;
     --cinza: #828282;
-    --cinza-claro: #EFEFEF;
-    --cinza-backgorund: #F1F1F1;
-    --alaranjado: #F07A19;
+    --cinza-claro: #efefef;
+    --cinza-backgorund: #f1f1f1;
+    --alaranjado: #f07a19;
 }
 
 body {
@@ -31,7 +32,7 @@ body {
 .banner__texto-principal,
 .banner__texto-fixo {
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: "Open Sans", sans-serif;
     font-weight: 700;
     font-size: 4rem;
     line-height: 1.1;
@@ -47,8 +48,8 @@ body {
 }
 
 .servicos__container .servicos__container__alinhamento {
-    margin-left :auto;
-    margin-right :auto;
+    margin-left: auto;
+    margin-right: auto;
     padding: 1rem 3rem;
     max-width: 1300px;
 }
@@ -59,9 +60,12 @@ body {
 }
 
 .descricao .servico__titulo {
+    display: block;
     margin-top: 1rem;
     text-align: center;
     text-transform: uppercase;
+    font-style: italic;
+    letter-spacing: 5px;
     font-weight: 400;
     font-size: 1.5rem;
     color: var(--azul-titulos);
@@ -69,6 +73,7 @@ body {
 
 .descricao .servico__nome {
     display: block;
+    text-align: center;
     text-transform: capitalize;
     font-weight: 800;
     font-size: 3rem;
@@ -81,6 +86,15 @@ body {
     font-size: 1.125rem;
     color: #828282;
 }
+
+.descricao .botao .button ,
+.por-que-contratar .botao .button {
+    margin: auto;
+    padding: 12px 20px;
+    display: block;
+}
+
+
 
 .descricao .etapa {
     display: flex;
@@ -124,10 +138,14 @@ body {
 
 /* formulario */
 .formulario {
-    margin: auto;
-    width: var(--form-width);
-    height: 100%;
-    background-color: transparent;    
+    display: none;
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    background-color: #000000CC;
 }
 
 .formulario:before {
@@ -136,6 +154,47 @@ body {
     height: 120px;
     display: block;
     visibility: hidden;
+}
+
+.formulario .orcamento {
+    padding: 1em 1em;
+    width: 30em;
+    justify-content: center;
+    background-color: White;
+}
+
+.formulario .formulario__container {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario .formulario__cabecalho {
+    width: 30em;
+    background-color: transparent;
+}
+
+.formulario .cabecalho__botao {
+    /* padding: 0.6em; */
+    float: right;
+    background-color: transparent;
+    border: none;
+    color: white;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    /* font-size: 0.9em; */
+}
+
+.formulario .cabecalho__botao::after {
+    content: "\f00d";
+    padding-left: 0.2em;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 1.3em;
+    font-family: "Font Awesome 5 Free";
 }
 
 /* por que contratar? */
@@ -147,50 +206,220 @@ body {
     background-color: var(--cinza-backgorund);
 }
 
-.por-que-contratar .tabela {
+
+
+
+
+.por-que-contratar .tabela__alinhamento {
+    /* display: block;
     margin: 1.5rem auto;
+    justify-content: center;  */
+    /* color: #828282; */
+  }
+
+/* .por-que-contratar .tabela {
+    counter-reset: rowNumber_textos;
+    margin: 1.5rem auto;
+    border-spacing: 0px;
+    overflow: hidden;
+    border-collapse: separate;
+} */
+.por-que-contratar .tabela_check {
+    /* display: block; */
+    /* box-sizing: border-box; */
+    counter-reset: rowNumber;
+    margin: 1.5rem auto;
+    border-spacing: 0px;
+    border-collapse: separate;
+    /* margin-left: auto;
+    margin-right: auto; */
+}
+
+.por-que-contratar .tabela {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.por-que-contratar .tabela_check .tabela__linha {
+    counter-increment: rowNumber;
+}
+
+.por-que-contratar .tabela_textos .tabela__linha {
+    counter-increment: rowNumber_textos;
 }
 
 .por-que-contratar .tabela__coluna {
     padding: 0.5rem 1rem;
 }
+.por-que-contratar .tabela .tabela__coluna {
+    padding: 0.5rem 1rem;
+}
+
+/* .por-que-contratar .tabela__coluna:not(:first-child) {
+    background-color: white;
+} */
+.por-que-contratar .tabela_check .tabela__coluna {
+    background-color: white;
+}
 
 .por-que-contratar .tabela__linha .tabela__coluna {
     margin: 0.5rem;
+}
+.por-que-contratar .tabela .tabela__linha .tabela__coluna {
+    margin: 0.5rem;
+}
+
+.por-que-contratar .tabela__titulo {
+    padding-bottom: 1.5rem;
+    text-align: inherit;
+    font-size: 1.85rem;
+    line-height: 2.5rem;
+    font-weight: var(--extra-bold);
+    color: 1px solid var(--azul-titulos);
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 3rem;
+    max-width: 1070px;
+}
+.por-que-contratar .tabela .tabela__titulo {
+    padding-bottom: 1.5rem;
+    text-align: inherit;
+    font-size: 1.85rem;
+    line-height: 2.5rem;
+    font-weight: var(--extra-bold);
+    color: 1px solid var(--azul-titulos);
+}
+
+.por-que-contratar .tabela .tabela_textos,
+.por-que-contratar .tabela .tabela_check {
+    margin: 1rem;
+    /* margin: 1.5rem auto; */
+    /* display: table; */
+    /* display: inline; */
+    /* min-width: 300px; */
+    /* float: left; */
+    /* text-align: center; */
+}
+
+.por-que-contratar .tabela .tabela_textos .tabela__coluna::before {
+    content: counter(rowNumber_textos);
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    background-color: var(--azul-titulos);
+}
+
+.por-que-contratar .tabela .tabela_textos {
+    position: relative;
+    top: 20px;
+    line-height:1.3rem
 }
 
 .por-que-contratar .tabela__cabecalho {
     font-weight: 800;
 }
-
-.por-que-contratar .tabela__cabecalho__pergunta {
-    padding-bottom: 1.5rem;
-    font-size: 1.75rem;
+.por-que-contratar .tabela .tabela__cabecalho {
+    font-weight: 800;
 }
 
 .por-que-contratar .tabela__cabecalho__autoglass,
 .por-que-contratar .tabela__cabecalho__outra {
-    vertical-align: bottom;
+    border-top: 1px solid var(--azul-titulos-claro);
+    padding-top: 7px;
+    vertical-align: center;
     text-align: center;
     font-size: 0.75rem;
     line-height: 0.75rem;
+    font-weight: var(--extra-bold);
+}
+
+.por-que-contratar .tabela__cabecalho__autoglass {
+    border-top-left-radius: 15px;
+}
+.por-que-contratar .tabela .tabela__cabecalho__autoglass {
+    border-top-left-radius: 15px;
 }
 
 .por-que-contratar .tabela__cabecalho__outra {
-    opacity: 65%;
+    border-right: 1px solid var(--azul-titulos-claro);
+    border-top-right-radius: 15px;
+    color: var(--azul-titulos-claro);
+}
+.por-que-contratar .tabela .tabela__cabecalho__outra {
+    border-right: 1px solid var(--azul-titulos-claro);
+    border-top-right-radius: 15px;
+    color: var(--azul-titulos-claro);
+}
+
+.por-que-contratar .tabela__cabecalho .tabela__cabecalho__autoglass {
+    border-right: 1px solid var(--azul-titulos-claro);
+    border-left: 1px solid var(--azul-titulos-claro);
+}
+.por-que-contratar .tabela .tabela__cabecalho .tabela__cabecalho__autoglass {
+    border-right: 1px solid var(--azul-titulos-claro);
+    border-left: 1px solid var(--azul-titulos-claro);
+}
+
+.por-que-contratar .tabela_check .tabela__linha:last-child .tabela__coluna:last-child {
+    border-bottom: 1px solid var(--azul-titulos-claro);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.por-que-contratar .tabela .tabela__linha:last-child .tabela__coluna:last-child,
+.por-que-contratar .tabela .tabela__linha:last-child .tabela__coluna:first-child {
+    /* border-bottom: 1px solid var(--azul-titulos-claro); */
+    padding-bottom: 10px;
+    margin-bottom: 10px;
 }
 
 .por-que-contratar .tabela__linha .tabela__coluna:nth-child(2) {
-    border-right: 1px solid #003da570;   
+    border-right: 1px solid var(--azul-titulos-claro);
+    /* border-left: 1px solid var(--azul-titulos-claro); */
+}
+.por-que-contratar .tabela_check .tabela__linha .tabela__coluna:first-child {
+    border-right: 1px solid var(--azul-titulos-claro);
+    border-left: 1px solid var(--azul-titulos-claro);
 }
 
+
+
+
+
+
+
 .por-que-contratar .tabela__linha .tabela__coluna:first-child {
+    text-align: left;
+    font-weight: 600;
+}
+.por-que-contratar .tabela .tabela__linha .tabela__coluna:first-child {
+    position: relative;
     text-align: left;
     font-weight: 600;
 }
 
 .por-que-contratar .tabela__linha .tabela__coluna:not(:first-child) {
     width: 3rem;
+}
+.por-que-contratar .tabela .tabela__linha .tabela__coluna:not(:first-child) {
+    width: 3rem;
+}
+
+.por-que-contratar .tabela_check .tabela__linha:last-child .tabela__coluna:first-child {
+    border-bottom-left-radius: 15px;
+    border-bottom: 1px solid var(--azul-titulos-claro);
+}
+
+.por-que-contratar .tabela__linha:last-child .tabela__coluna:last-child {
+    border-bottom-right-radius: 15px;
 }
 
 .por-que-contratar .tabela__coluna__index {
@@ -214,7 +443,7 @@ body {
     background-position: center;
 }
 
-.por-que-contratar  .tabela__coluna__positive-check {
+.por-que-contratar .tabela__coluna__positive-check {
     background-image: url(https://autoglass-cdn.github.io/src/img/servicos/pos_check.png);
 }
 
@@ -230,11 +459,50 @@ body {
 
 .avaliacoes-consumidores .avaliacoes__titulo {
     margin: 40px;
+    margin-bottom: 0px;
     text-align: center;
-    font-size: 32px;
+    font-size: 24px;
     font-weight: var(--extra-bold);
-    color: var(--blue-700);
 }
+
+.chat {
+    background-color: #333697;
+}
+
+.chat .servicos__container__alinhamento {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    padding: 50px 100px;
+}
+
+.chat .mensagem__titulo {
+    font-size: 22px;
+    font-weight: var(--semi-bold);
+}
+  
+.chat .mensagem__texto {
+    font-size: 18px;
+    margin: 0px 20px;
+}
+
+.chat .chat__botao {
+    background-color: var(--white);
+    color: var(--primary);
+    font-size: 16px;
+    font-weight: var(--bold);
+    border-radius: 40px;
+    padding: 10px 25px;
+    text-align: center;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background-color .3 ease-in-out;
+}
+
+
+
+
 
 /* Responsividade */
 @media (max-width: 1550px) {
@@ -286,10 +554,10 @@ body {
     }
 
     .descricao .icone {
-        width: 8.125rem;        
+        width: 8.125rem;
     }
 
-    .descricao .etapa .icone__imagem {    
+    .descricao .etapa .icone__imagem {
         width: 6.5rem;
     }
 
@@ -312,14 +580,24 @@ body {
     }
 
     .formulario:before {
-        margin-top: -90px;
-        height: 90px;
+        display: none;
     }
-    
+    .formulario .formulario__cabecalho{
+        display: none;
+    }
+
+    .formulario {
+        position: relative;
+        min-height: auto;
+        background-color: white;
+    }
+
+    .formulario .formulario__container {
+        min-width: 0vw;
+        min-height: 0vh;
+    }
+
     /* por que contratar? */
-    .por-que-contratar .tabela {
-        margin: 1.2rem auto;
-    }
 
     .por-que-contratar .tabela__cabecalho .tabela__coluna,
     .por-que-contratar .tabela__linha .tabela__coluna {
@@ -346,16 +624,43 @@ body {
     .por-que-contratar .tabela__linha .tabela__coluna:not(:first-child) {
         width: 2.4rem;
     }
-    
+
     .por-que-contratar .tabela__coluna__index {
         margin-right: 0.4rem;
-        font-size: 0.6rem;
     }
+
+    .chat .servicos__container__alinhamento {
+        flex-direction: column;
+        padding: 40px;
+    }
+    .chat .chat__mensagem {
+        display: flex;
+        flex-direction: column;
+    }
+    .chat .mensagem__titulo {
+        text-align: center;
+    }
+    .chat .mensagem__texto {
+        max-width: 230px;
+        text-align: center;
+        margin: 10px 0px 20px 0px;
+    }
+    
+    .avaliacoes-consumidores {
+        display: none;
+    }
+    
+
 }
 
 
+
+
+
+
+
 @media only screen and (max-width: 576px) {
-    .servicos__container > .servicos__container--alinhamento {
+    .servicos__container > .servicos__container__alinhamento {
         padding: 0.5rem 0rem;
     }
 
@@ -375,12 +680,19 @@ body {
         font-size: 0.75rem;
     }
 
+
+    .descricao .texto__descricao--paragrafo {
+        padding-top: 10px;
+        display: block;
+    }
+
     .descricao .servico__nome {
         font-size: 1.5rem;
     }
 
     .descricao .texto__descricao {
-        font-size: 0.563rem;
+        margin: 0 15%;
+        font-size: 0.75rem;
     }
 
     .descricao .etapa {
@@ -388,17 +700,17 @@ body {
     }
 
     .descricao .icone {
-        width: 5rem;        
+        width: 5rem;
     }
 
-    .descricao .etapa .icone__imagem {    
+    .descricao .etapa .icone__imagem {
         width: 4rem;
     }
 
     .descricao .etapa .setas {
         height: 4rem;
     }
-    
+
     .descricao .etapa .setas__imagem {
         height: 0.55rem;
     }
@@ -407,11 +719,10 @@ body {
         margin-right: 0.25rem;
     }
 
-
     /* por que contratar */
-    .por-que-contratar .tabela {
+    /* .por-que-contratar .tabela {
         margin: 0.75rem auto;
-    }
+    } */
 
     .por-que-contratar .tabela__cabecalho .tabela__coluna,
     .por-que-contratar .tabela__linha .tabela__coluna {
@@ -422,10 +733,9 @@ body {
         margin: 0.25rem;
     }
 
-    .por-que-contratar .tabela__cabecalho__pergunta {
-        padding-bottom: 0.75rem;
+    .por-que-contratar .tabela__titulo {
         text-align: center;
-        font-size: 0.875rem;
+        font-size: 1.5rem;
     }
 
     .por-que-contratar .tabela__cabecalho__autoglass,
@@ -442,17 +752,44 @@ body {
 
     .por-que-contratar .tabela__coluna__index {
         margin-right: 0.25rem;
-        width: 15px;
-        height: 15px;
-        font-size: 0.625rem;
+        width: 18px;
+        height: 18px;
     }
 
     .por-que-contratar .tabela__cabecalho__autoglass,
     .por-que-contratar .tabela__cabecalho__outra {
-       font-size: 0.56rem;
+        font-size: 0.56rem;
     }
 
     .por-que-contratar .tabela__linha .tabela__coluna:first-child {
         font-size: 12px;
     }
+
+    .por-que-contratar .tabela  {
+        flex-direction: column;
+    }
+
+    .por-que-contratar .tabela .tabela_textos {
+        top: 0px;
+    }
+
+    .por-que-contratar .tabela_check .tabela__linha .tabela__coluna:first-child::before {
+        position: absolute;
+        left: -10px;
+        content: counter(rowNumber);
+        margin-right: 0.5rem;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        display: inline-block;
+        text-align: center;
+        font-weight: 600;
+        color: white;
+        background-color: var(--azul-titulos);
+    }
+
+    .servicos__container .servicos__container__alinhamento {
+        padding: 1rem;
+    }
+
 }
