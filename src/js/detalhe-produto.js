@@ -1,5 +1,5 @@
 const sections = [...document.querySelectorAll("section.tab-content")];
-const getLinkById = (id) => document.querySelector(`a[href='#${id}']`);
+const getLinkById = (id) => document.querySelector(`a[href='#${id}'].tab-link`);
 // configura busca de veículos compatíveis
 var veiculosBuscaveis = [];
 const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');
