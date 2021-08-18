@@ -17,7 +17,6 @@ body {
 
 /* banner */
 .banner .banner__image {
-    height: 275px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -27,6 +26,9 @@ body {
     background-repeat: no-repeat;
     background-image: var(--url-background-banner);
     overflow: hidden;
+    width: 100%;
+    height: 0;
+    padding-top: 25%;
 }
 
 .banner__texto-principal,
@@ -224,7 +226,7 @@ body {
     overflow: hidden;
     border-collapse: separate;
 } */
-.por-que-contratar .tabela_check {
+.por-que-contratar .tabela__check {
     /* display: block; */
     /* box-sizing: border-box; */
     counter-reset: rowNumber;
@@ -242,11 +244,11 @@ body {
 }
 
 
-.por-que-contratar .tabela_check .tabela__linha {
+.por-que-contratar .tabela__check .tabela__linha {
     counter-increment: rowNumber;
 }
 
-.por-que-contratar .tabela_textos .tabela__linha {
+.por-que-contratar .tabela__textos .tabela__linha {
     counter-increment: rowNumber_textos;
 }
 
@@ -260,7 +262,7 @@ body {
 /* .por-que-contratar .tabela__coluna:not(:first-child) {
     background-color: white;
 } */
-.por-que-contratar .tabela_check .tabela__coluna {
+.por-que-contratar .tabela__check .tabela__coluna {
     background-color: white;
 }
 
@@ -294,8 +296,8 @@ body {
     color: 1px solid var(--azul-titulos);
 }
 
-.por-que-contratar .tabela .tabela_textos,
-.por-que-contratar .tabela .tabela_check {
+.por-que-contratar .tabela .tabela__textos,
+.por-que-contratar .tabela .tabela__check {
     margin: 1rem;
     /* margin: 1.5rem auto; */
     /* display: table; */
@@ -305,7 +307,7 @@ body {
     /* text-align: center; */
 }
 
-.por-que-contratar .tabela .tabela_textos .tabela__coluna::before {
+.por-que-contratar .tabela .tabela__textos .tabela__coluna::before {
     content: counter(rowNumber_textos);
     margin-right: 0.5rem;
     border-radius: 50%;
@@ -318,7 +320,7 @@ body {
     background-color: var(--azul-titulos);
 }
 
-.por-que-contratar .tabela .tabela_textos {
+.por-que-contratar .tabela .tabela__textos {
     position: relative;
     top: 20px;
     line-height:1.3rem
@@ -369,7 +371,7 @@ body {
     border-left: 1px solid var(--azul-titulos-claro);
 }
 
-.por-que-contratar .tabela_check .tabela__linha:last-child .tabela__coluna:last-child {
+.por-que-contratar .tabela__check .tabela__linha:last-child .tabela__coluna:last-child {
     border-bottom: 1px solid var(--azul-titulos-claro);
     padding-bottom: 10px;
     margin-bottom: 10px;
@@ -385,7 +387,7 @@ body {
     border-right: 1px solid var(--azul-titulos-claro);
     /* border-left: 1px solid var(--azul-titulos-claro); */
 }
-.por-que-contratar .tabela_check .tabela__linha .tabela__coluna:first-child {
+.por-que-contratar .tabela__check .tabela__linha .tabela__coluna:first-child {
     border-right: 1px solid var(--azul-titulos-claro);
     border-left: 1px solid var(--azul-titulos-claro);
 }
@@ -412,8 +414,13 @@ body {
 .por-que-contratar .tabela .tabela__linha .tabela__coluna:not(:first-child) {
     width: 3rem;
 }
-
-.por-que-contratar .tabela_check .tabela__linha:last-child .tabela__coluna:first-child {
+/* 
+.por-que-contratar .tabela__linha:last-child .tabela__coluna:nth-child(2) {
+    border-bottom-left-radius: 15px;
+    border-left: 1px solid var(--azul-titulos-claro);
+    border-bottom: 1px solid var(--azul-titulos-claro);
+} */
+.por-que-contratar .tabela__check .tabela__linha:last-child .tabela__coluna:first-child {
     border-bottom-left-radius: 15px;
     border-bottom: 1px solid var(--azul-titulos-claro);
 }
@@ -521,6 +528,8 @@ body {
 }
 
 @media only screen and (max-width: 992px) {
+
+    
     .banner__texto-principal,
     .banner__texto-fixo {
         font-size: 3.25rem;
@@ -598,6 +607,9 @@ body {
     }
 
     /* por que contratar? */
+    /* .por-que-contratar .tabela {
+        margin: 1.2rem auto;
+    } */
 
     .por-que-contratar .tabela__cabecalho .tabela__coluna,
     .por-que-contratar .tabela__linha .tabela__coluna {
@@ -660,13 +672,26 @@ body {
 
 
 @media only screen and (max-width: 576px) {
+
+    .banner .banner__image {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-position: top;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: var(--url-background-banner-mobile);
+        overflow: hidden;
+        width: 100%;
+        height: 0;
+        padding-top: 85%;
+    }
+    
     .servicos__container > .servicos__container__alinhamento {
         padding: 0.5rem 0rem;
     }
 
-    .banner .banner__image {
-        height: 210px;
-    }
 
     .banner__texto-principal,
     .banner__texto-fixo {
@@ -769,11 +794,11 @@ body {
         flex-direction: column;
     }
 
-    .por-que-contratar .tabela .tabela_textos {
+    .por-que-contratar .tabela .tabela__textos {
         top: 0px;
     }
 
-    .por-que-contratar .tabela_check .tabela__linha .tabela__coluna:first-child::before {
+    .por-que-contratar .tabela__check .tabela__linha .tabela__coluna:first-child::before {
         position: absolute;
         left: -10px;
         content: counter(rowNumber);
