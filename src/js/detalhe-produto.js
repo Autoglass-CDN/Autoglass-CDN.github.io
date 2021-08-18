@@ -282,7 +282,10 @@ $(window).on("ready", async () => {
           .flat()
           .slice(0, 3)
           .map(buildContentBusca)
-          .join(""))
+          .join("") + `<div class="veiculos-compativeis-search__link">
+  <a href="#veiculos-compativeis">Ver todos</a>
+</div>`
+        )
     }
   }
 
