@@ -96,8 +96,6 @@ body {
     display: block;
 }
 
-
-
 .descricao .etapa {
     display: flex;
     justify-content: center;
@@ -136,6 +134,138 @@ body {
 
 .descricao .etapa .setas__imagem:not(:last-child) {
     margin-right: 0.5rem;
+}
+
+/* por que contratar? */
+.por-que-contratar {
+    padding: 0 10px;
+    color: var(--azul-titulos);
+    background-color: var(--cinza-backgorund);
+}
+
+.por-que-contratar .tabela {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.por-que-contratar .tabela__check .tabela__coluna {
+    background-color: white;
+}
+
+.por-que-contratar .tabela__check {
+    border-collapse: revert;
+}
+
+.por-que-contratar .tabela__textos .tabela__linha {
+    counter-increment: contagemVantagensTexto;
+}
+
+.por-que-contratar .tabela__coluna {
+    padding: 0.5rem 1rem;
+}
+
+.por-que-contratar .tabela__titulo {
+    padding-bottom: 1.5rem;
+    font-size: 1.85rem;
+    line-height: 2.5rem;
+    font-weight: var(--extra-bold);
+    color: 1px solid var(--azul-titulos);
+    display: block;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 3rem;
+    max-width: 1050px;
+}
+
+.por-que-contratar .tabela .tabela__textos,
+.por-que-contratar .tabela .tabela__check {
+    margin: 1rem;
+}
+
+.por-que-contratar .tabela .tabela__textos .tabela__coluna::before {
+    content: counter(contagemVantagensTexto);
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    text-align: center;
+    font-weight: 600;
+    color: white;
+    background-color: var(--azul-titulos);
+}
+
+.por-que-contratar .tabela .tabela__textos {
+    position: relative;
+    top: 20px;
+    line-height:1.3rem
+}
+
+.por-que-contratar .tabela__cabecalho__autoglass,
+.por-que-contratar .tabela__cabecalho__outra {
+    border-top: 0.5px solid var(--azul-titulos-claro);
+    padding-top: 7px;
+    vertical-align: center;
+    text-align: center;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    font-weight: var(--extra-bold);
+}
+
+.por-que-contratar .tabela .tabela__cabecalho__autoglass {
+    border-top-left-radius: 15px;
+}
+
+.por-que-contratar .tabela .tabela__cabecalho__outra {
+    border-top-right-radius: 15px;
+    color: var(--azul-titulos-claro);
+}
+
+.por-que-contratar .tabela__check .tabela__linha:last-child .tabela__coluna:first-child {
+    border-bottom-left-radius: 15px;
+}
+
+.por-que-contratar .tabela__check .tabela__linha:last-child .tabela__coluna:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+.por-que-contratar .tabela__check .tabela__coluna {
+    width: 3rem;
+    border-right: 0.5px solid var(--azul-titulos-claro);
+}
+
+.por-que-contratar .tabela__check .tabela__coluna:first-child {
+    border-left: 0.5px solid var(--azul-titulos-claro);
+}
+
+.por-que-contratar .tabela__check .tabela__linha:last-child .tabela__coluna {
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+    border-bottom: 0.5px solid var(--azul-titulos-claro);
+}
+
+.por-que-contratar .tabela .tabela__linha .tabela__coluna:first-child {
+    position: relative;
+    text-align: left;
+    font-weight: 600;
+}
+
+.por-que-contratar .tabela__coluna__positive-check,
+.por-que-contratar .tabela__coluna__negative-check {
+    height: 22px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+
+.por-que-contratar .tabela__coluna__positive-check {
+    background-image: url(https://autoglass-cdn.github.io/src/img/servicos/pos_check.png);
+}
+
+.por-que-contratar .tabela__coluna__negative-check {
+    background-image: url(https://autoglass-cdn.github.io/src/img/servicos/neg_check.png);
 }
 
 /* formulario */
@@ -199,265 +329,7 @@ body {
     font-family: "Font Awesome 5 Free";
 }
 
-/* por que contratar? */
-.por-que-contratar {
-    padding: 0 10px;
-    text-align: center;
-    line-height: 18px;
-    color: var(--azul-titulos);
-    background-color: var(--cinza-backgorund);
-}
-
-
-
-
-
-.por-que-contratar .tabela__alinhamento {
-    /* display: block;
-    margin: 1.5rem auto;
-    justify-content: center;  */
-    /* color: #828282; */
-  }
-
-/* .por-que-contratar .tabela {
-    counter-reset: rowNumber_textos;
-    margin: 1.5rem auto;
-    border-spacing: 0px;
-    overflow: hidden;
-    border-collapse: separate;
-} */
-.por-que-contratar .tabela__check {
-    /* display: block; */
-    /* box-sizing: border-box; */
-    counter-reset: rowNumber;
-    margin: 1.5rem auto;
-    border-spacing: 0px;
-    border-collapse: separate;
-    /* margin-left: auto;
-    margin-right: auto; */
-}
-
-.por-que-contratar .tabela {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-.por-que-contratar .tabela__check .tabela__linha {
-    counter-increment: rowNumber;
-}
-
-.por-que-contratar .tabela__textos .tabela__linha {
-    counter-increment: rowNumber_textos;
-}
-
-.por-que-contratar .tabela__coluna {
-    padding: 0.5rem 1rem;
-}
-.por-que-contratar .tabela .tabela__coluna {
-    padding: 0.5rem 1rem;
-}
-
-/* .por-que-contratar .tabela__coluna:not(:first-child) {
-    background-color: white;
-} */
-.por-que-contratar .tabela__check .tabela__coluna {
-    background-color: white;
-}
-
-.por-que-contratar .tabela__linha .tabela__coluna {
-    margin: 0.5rem;
-}
-.por-que-contratar .tabela .tabela__linha .tabela__coluna {
-    margin: 0.5rem;
-}
-
-.por-que-contratar .tabela__titulo {
-    padding-bottom: 1.5rem;
-    text-align: inherit;
-    font-size: 1.85rem;
-    line-height: 2.5rem;
-    font-weight: var(--extra-bold);
-    color: 1px solid var(--azul-titulos);
-    display: block;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 1rem 3rem;
-    max-width: 1070px;
-}
-.por-que-contratar .tabela .tabela__titulo {
-    padding-bottom: 1.5rem;
-    text-align: inherit;
-    font-size: 1.85rem;
-    line-height: 2.5rem;
-    font-weight: var(--extra-bold);
-    color: 1px solid var(--azul-titulos);
-}
-
-.por-que-contratar .tabela .tabela__textos,
-.por-que-contratar .tabela .tabela__check {
-    margin: 1rem;
-    /* margin: 1.5rem auto; */
-    /* display: table; */
-    /* display: inline; */
-    /* min-width: 300px; */
-    /* float: left; */
-    /* text-align: center; */
-}
-
-.por-que-contratar .tabela .tabela__textos .tabela__coluna::before {
-    content: counter(rowNumber_textos);
-    margin-right: 0.5rem;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    text-align: center;
-    font-weight: 600;
-    color: white;
-    background-color: var(--azul-titulos);
-}
-
-.por-que-contratar .tabela .tabela__textos {
-    position: relative;
-    top: 20px;
-    line-height:1.3rem
-}
-
-.por-que-contratar .tabela__cabecalho {
-    font-weight: 800;
-}
-.por-que-contratar .tabela .tabela__cabecalho {
-    font-weight: 800;
-}
-
-.por-que-contratar .tabela__cabecalho__autoglass,
-.por-que-contratar .tabela__cabecalho__outra {
-    border-top: 1px solid var(--azul-titulos-claro);
-    padding-top: 7px;
-    vertical-align: center;
-    text-align: center;
-    font-size: 0.75rem;
-    line-height: 0.75rem;
-    font-weight: var(--extra-bold);
-}
-
-.por-que-contratar .tabela__cabecalho__autoglass {
-    border-top-left-radius: 15px;
-}
-.por-que-contratar .tabela .tabela__cabecalho__autoglass {
-    border-top-left-radius: 15px;
-}
-
-.por-que-contratar .tabela__cabecalho__outra {
-    border-right: 1px solid var(--azul-titulos-claro);
-    border-top-right-radius: 15px;
-    color: var(--azul-titulos-claro);
-}
-.por-que-contratar .tabela .tabela__cabecalho__outra {
-    border-right: 1px solid var(--azul-titulos-claro);
-    border-top-right-radius: 15px;
-    color: var(--azul-titulos-claro);
-}
-
-.por-que-contratar .tabela__cabecalho .tabela__cabecalho__autoglass {
-    border-right: 1px solid var(--azul-titulos-claro);
-    border-left: 1px solid var(--azul-titulos-claro);
-}
-.por-que-contratar .tabela .tabela__cabecalho .tabela__cabecalho__autoglass {
-    border-right: 1px solid var(--azul-titulos-claro);
-    border-left: 1px solid var(--azul-titulos-claro);
-}
-
-.por-que-contratar .tabela__check .tabela__linha:last-child .tabela__coluna:last-child {
-    border-bottom: 1px solid var(--azul-titulos-claro);
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-.por-que-contratar .tabela .tabela__linha:last-child .tabela__coluna:last-child,
-.por-que-contratar .tabela .tabela__linha:last-child .tabela__coluna:first-child {
-    /* border-bottom: 1px solid var(--azul-titulos-claro); */
-    padding-bottom: 10px;
-    margin-bottom: 10px;
-}
-
-.por-que-contratar .tabela__linha .tabela__coluna:nth-child(2) {
-    border-right: 1px solid var(--azul-titulos-claro);
-    /* border-left: 1px solid var(--azul-titulos-claro); */
-}
-.por-que-contratar .tabela__check .tabela__linha .tabela__coluna:first-child {
-    border-right: 1px solid var(--azul-titulos-claro);
-    border-left: 1px solid var(--azul-titulos-claro);
-}
-
-
-
-
-
-
-
-.por-que-contratar .tabela__linha .tabela__coluna:first-child {
-    text-align: left;
-    font-weight: 600;
-}
-.por-que-contratar .tabela .tabela__linha .tabela__coluna:first-child {
-    position: relative;
-    text-align: left;
-    font-weight: 600;
-}
-
-.por-que-contratar .tabela__linha .tabela__coluna:not(:first-child) {
-    width: 3rem;
-}
-.por-que-contratar .tabela .tabela__linha .tabela__coluna:not(:first-child) {
-    width: 3rem;
-}
-/* 
-.por-que-contratar .tabela__linha:last-child .tabela__coluna:nth-child(2) {
-    border-bottom-left-radius: 15px;
-    border-left: 1px solid var(--azul-titulos-claro);
-    border-bottom: 1px solid var(--azul-titulos-claro);
-} */
-.por-que-contratar .tabela__check .tabela__linha:last-child .tabela__coluna:first-child {
-    border-bottom-left-radius: 15px;
-    border-bottom: 1px solid var(--azul-titulos-claro);
-}
-
-.por-que-contratar .tabela__linha:last-child .tabela__coluna:last-child {
-    border-bottom-right-radius: 15px;
-}
-
-.por-que-contratar .tabela__coluna__index {
-    margin-right: 0.5rem;
-    border-radius: 50%;
-    width: 18px;
-    height: 18px;
-    display: inline-block;
-    text-align: center;
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: white;
-    background-color: var(--azul-titulos);
-}
-
-.por-que-contratar .tabela__coluna__positive-check,
-.por-que-contratar .tabela__coluna__negative-check {
-    height: 22px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-}
-
-.por-que-contratar .tabela__coluna__positive-check {
-    background-image: url(https://autoglass-cdn.github.io/src/img/servicos/pos_check.png);
-}
-
-.por-que-contratar .tabela__coluna__negative-check {
-    background-image: url(https://autoglass-cdn.github.io/src/img/servicos/neg_check.png);
-}
-
+/* Avaliações de consumidores */
 .avaliacoes-consumidores {
     text-align: center;
     color: var(--azul-titulos);
@@ -472,6 +344,7 @@ body {
     font-weight: var(--extra-bold);
 }
 
+/* Chat */
 .chat {
     background-color: #333697;
 }
@@ -508,9 +381,6 @@ body {
 }
 
 
-
-
-
 /* Responsividade */
 @media (max-width: 1550px) {
     .ratings-section .ratings__rating {
@@ -521,15 +391,15 @@ body {
     }
 }
 
+
 @media (max-width: 1200px) {
     .formulario .orcamento {
         top: 90px;
     }
 }
 
-@media only screen and (max-width: 992px) {
 
-    
+@media only screen and (max-width: 992px) {
     .banner__texto-principal,
     .banner__texto-fixo {
         font-size: 3.25rem;
@@ -591,6 +461,7 @@ body {
     .formulario:before {
         display: none;
     }
+
     .formulario .formulario__cabecalho{
         display: none;
     }
@@ -620,11 +491,6 @@ body {
         margin: 0.4rem;
     }
 
-    .por-que-contratar .tabela__cabecalho__autoglass {
-        padding-bottom: 1.2rem;
-        font-size: 1.4rem;
-    }
-
     .por-que-contratar .tabela__cabecalho__autoglass,
     .por-que-contratar .tabela__cabecalho__outra {
         text-align: center;
@@ -637,21 +503,20 @@ body {
         width: 2.4rem;
     }
 
-    .por-que-contratar .tabela__coluna__index {
-        margin-right: 0.4rem;
-    }
-
     .chat .servicos__container__alinhamento {
         flex-direction: column;
         padding: 40px;
     }
+
     .chat .chat__mensagem {
         display: flex;
         flex-direction: column;
     }
+
     .chat .mensagem__titulo {
         text-align: center;
     }
+
     .chat .mensagem__texto {
         max-width: 230px;
         text-align: center;
@@ -661,14 +526,7 @@ body {
     .avaliacoes-consumidores {
         display: none;
     }
-    
-
 }
-
-
-
-
-
 
 
 @media only screen and (max-width: 576px) {
@@ -685,13 +543,12 @@ body {
         overflow: hidden;
         width: 100%;
         height: 0;
-        padding-top: 85%;
+        padding-top: 80%;
     }
     
     .servicos__container > .servicos__container__alinhamento {
         padding: 0.5rem 0rem;
     }
-
 
     .banner__texto-principal,
     .banner__texto-fixo {
@@ -704,7 +561,6 @@ body {
         margin-top: 0.5rem;
         font-size: 0.75rem;
     }
-
 
     .descricao .texto__descricao--paragrafo {
         padding-top: 10px;
@@ -745,9 +601,9 @@ body {
     }
 
     /* por que contratar */
-    /* .por-que-contratar .tabela {
-        margin: 0.75rem auto;
-    } */
+    .por-que-contratar .tabela__check .tabela__linha {
+        counter-increment: contagemVantagensCheck;
+    }
 
     .por-que-contratar .tabela__cabecalho .tabela__coluna,
     .por-que-contratar .tabela__linha .tabela__coluna {
@@ -759,26 +615,12 @@ body {
     }
 
     .por-que-contratar .tabela__titulo {
-        text-align: center;
         font-size: 1.5rem;
     }
 
     .por-que-contratar .tabela__cabecalho__autoglass,
     .por-que-contratar .tabela__cabecalho__outra {
-        text-align: center;
-        font-size: 0.375rem;
-        vertical-align: bottom;
-        line-height: 0.375rem;
-    }
-
-    .por-que-contratar .tabela__linha .tabela__coluna:not(:first-child) {
-        width: 1.5rem;
-    }
-
-    .por-que-contratar .tabela__coluna__index {
-        margin-right: 0.25rem;
-        width: 18px;
-        height: 18px;
+        vertical-align: middle;
     }
 
     .por-que-contratar .tabela__cabecalho__autoglass,
@@ -801,7 +643,7 @@ body {
     .por-que-contratar .tabela__check .tabela__linha .tabela__coluna:first-child::before {
         position: absolute;
         left: -10px;
-        content: counter(rowNumber);
+        content: counter(contagemVantagensCheck);
         margin-right: 0.5rem;
         border-radius: 50%;
         width: 18px;
@@ -816,5 +658,4 @@ body {
     .servicos__container .servicos__container__alinhamento {
         padding: 1rem;
     }
-
 }
