@@ -292,6 +292,8 @@ body {
     padding: 1em 1em;
     width: 30em;
     justify-content: center;
+    max-height: calc(100vh);
+    overflow-y: auto;
     background-color: White;
 }
 
