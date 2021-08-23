@@ -170,6 +170,10 @@
         letter-spacing: 1px;
     }  
     
+    .form-servico__content-submit button {
+        font-size:14px;
+    }
+
     .mais-opcoes-da-peca {
         padding-top: 1.1rem;
         padding-left: 1.3rem;
