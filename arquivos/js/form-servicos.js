@@ -113,7 +113,6 @@ class ValidacaoDeInput {
             }
         }
 
-
         function validandoDigitacao(evento) {
             const { target } = evento;
             target.value = groupoDeInputsFormaDeValidacao[target.id](target.value);
@@ -342,12 +341,42 @@ class AnchorButton {
     }
 }
 
+class Formulario {
+    static init() {
+        adicionaEventosDeClick();
+
+        function adicionaEventosDeClick() {
+            const formulario = document.querySelector('#formulario_js');
+            const botaoFechar = document.querySelector('#fechar-modal_js');
+            const botoesAbrir = document.querySelectorAll('.abrir-modal_js');
+            const modal = document.querySelector('#form-orcamento');
+
+            formulario.addEventListener('click', pararPropagacao);
+            botaoFechar.addEventListener('click', () => { fecharModal(modal); });
+            modal.addEventListener('click', () => { fecharModal(modal); });
+            botoesAbrir.forEach(botao => botao.addEventListener('click', () => { abrirModal(modal); }));
+        }
+
+        function fecharModal(modal) {
+            modal.style.display = "none";
+        }
+
+        function abrirModal(modal) {
+            modal.style.display = "block";
+            window.location.href = '#form-orcamento';
+        }
+
+        function pararPropagacao(evento) {
+            evento.stopPropagation();
+        }
+    }
+}
 (function(){ 
     window.onload = () => {
         DetalhamentoDePeçaDanificada.init();
         ValidacaoDeInput.init();
         Select2.init();
         FormSubmit.init();
-        // AnchorButton.init();
+        Formulario.init();
     }
 })();
