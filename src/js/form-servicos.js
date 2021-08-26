@@ -167,7 +167,8 @@ class FormSubmit {
                     alert("Por favor, preencha todos os campos");
                     return;
                 }
-
+                
+                alert(url + " # " + JSON.stringify(orcamento));
                 const response = sendOrcamento(url, orcamento)
                     .then((res) => res)
                     .then((res) => {
