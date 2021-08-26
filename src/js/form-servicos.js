@@ -183,9 +183,9 @@ class FormSubmit {
                         }
                     })
                     .catch((err) => {
-                        alert(
-                            "Não foi possível enviar a sua solicitação. Pro favor, tente novamente mais tarde."
-                        );
+                        // alert(
+                        //     "Não foi possível enviar a sua solicitação. Pro favor, tente novamente mais tarde."
+                        // );
                         alert("Mensagem de Erro: ", err.message);
                     });
             });
