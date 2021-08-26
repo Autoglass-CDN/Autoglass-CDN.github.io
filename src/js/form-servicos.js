@@ -186,7 +186,7 @@ class FormSubmit {
                         // alert(
                         //     "Não foi possível enviar a sua solicitação. Pro favor, tente novamente mais tarde."
                         // );
-                        alert("Mensagem de Erro: ", err.message);
+                        alert("Mensagem de Erro: " + err.message);
                     });
             });
         }
