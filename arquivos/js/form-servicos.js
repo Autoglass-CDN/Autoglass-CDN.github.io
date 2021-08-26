@@ -163,10 +163,10 @@ class FormSubmit {
                             location.reload()
                         }
                         else{
-                            alert("Houve algum problema ao enviar sua solicitação. Pro favor, tente novamente mais tarde.")
+                            alert("Houve algum problema ao enviar sua solicitação. Por favor, tente novamente mais tarde.")
                         }
                     })
-                    .catch(err => alert("Houve algum problema ao enviar sua solicitação. Pro favor, tente novamente mais tarde."));
+                    .catch(err => alert("Não foi possível enviar a sua solicitação. Por favor, tente novamente mais tarde."));
                 
             });
 

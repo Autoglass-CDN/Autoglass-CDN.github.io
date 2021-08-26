@@ -168,7 +168,6 @@ class FormSubmit {
                     return;
                 }
                 
-                alert(url + " # " + JSON.stringify(orcamento));
                 const response = sendOrcamento(url, orcamento)
                     .then((res) => res)
                     .then((res) => {
@@ -179,15 +178,14 @@ class FormSubmit {
                             location.reload();
                         } else {
                             alert(
-                                "Houve algum problema ao enviar sua solicitação. Pro favor, tente novamente mais tarde."
+                                "Houve algum problema ao enviar sua solicitação. Por favor, tente novamente mais tarde."
                             );
                         }
                     })
                     .catch((err) => {
-                        // alert(
-                        //     "Não foi possível enviar a sua solicitação. Pro favor, tente novamente mais tarde."
-                        // );
-                        alert("Mensagem de Erro: " + err.message);
+                        alert(
+                            "Não foi possível enviar a sua solicitação. Por favor, tente novamente mais tarde."
+                        );
                     });
             });
         }
