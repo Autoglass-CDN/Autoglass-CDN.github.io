@@ -247,3 +247,8 @@
     max-width: 230px;
   }
 }
+
+/* Retira "USAR MINHA LOCALIZAÇÃO" */
+.srp-pickup-empty.tc .srp-pickup-empty__my-location{
+  display:none;
+}
