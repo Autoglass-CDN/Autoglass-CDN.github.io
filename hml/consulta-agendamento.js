@@ -559,7 +559,7 @@ $(function () {
     beforeShowDay: validadeAvailableDays,
   });
 
-  $("#input-cep-btn").click(Carregar($("#cep-input").val()));
+  $("#input-cep-btn").click(function (ev) { Carregar($("#cep-input").val()) });
 
   const address = JSON.parse(localStorage.getItem("AG_AddressSelected"));
 
