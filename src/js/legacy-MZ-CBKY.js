@@ -1047,24 +1047,6 @@ try {
 			Product.scrollToBuyButton();
 			Product.applyConfigsInstallationModals();
 			Product.applyOverlayToggle();
-			var stateFormated = readCookie("myuf");
-			var listStates = Product.listStates();
-
-			vtexjs.checkout.calculateShipping({
-				postalCode: listStates[stateFormated].cep,
-				country: "BRA",
-				addressType: "search",
-			}).then(
-				(orderForm) => {
-					localStorage.setItem(
-						"AG_AddressSelected",
-						JSON.stringify({
-							...orderForm.shippingData.address,
-							logisticsInfo: orderForm.shippingData.logisticsInfo,
-						})
-					)
-				}
-			);
 		},
 		ajaxStop: function () { },
 		windowOnload: function () {

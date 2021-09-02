@@ -28,6 +28,91 @@ const ESTADOS = [
     { GoogleMaps: 'State of Tocantins', Uf: 'TO', Nome: 'Tocantins', Sc: 39 },
 ];
 
+const CEP_STATES = {
+    SE: {
+        cep: "49070376"
+    },
+    TO: {
+        cep: "77066356"
+    },
+    RO: {
+        cep: "76803888"
+    },
+    RR: {
+        cep: "69300000"
+    },
+    AC: {
+        cep: "69922000"
+    },
+    AP: {
+        cep: "68950000"
+    },
+    BA: {
+        cep: "40020240"
+    },
+    ES: {
+        cep: "29168074"
+    },
+    DF: {
+        cep: "71065023"
+    },
+    RS: {
+        cep: "90030140"
+    },
+    RJ: {
+        cep: "25056400"
+    },
+    MT: {
+        cep: "78080375"
+    },
+    PR: {
+        cep: "82130760"
+    },
+    MS: {
+        cep: "79004610"
+    },
+    GO: {
+        cep: "74919376"
+    },
+    AL: {
+        cep: "57035470"
+    },
+    CE: {
+        cep: "60511390"
+    },
+    PA: {
+        cep: "66053270"
+    },
+    RN: {
+        cep: "59078130"
+    },
+    SC: {
+        cep: "88310573"
+    },
+    MA: {
+        cep: "65085160"
+    },
+    PI: {
+        // cep: "64041400"
+        cep: "64001495"
+    },
+    MG: {
+        cep: "33860390"
+    },
+    PB: {
+        cep: "58108096"
+    },
+    AM: {
+        cep: "69046170"
+    },
+    PE: {
+        cep: "54280145"
+    },
+    SP: {
+        cep: "08090284"
+    }
+};
+
 function recuperarEstado(uf) {
     return ESTADOS.find(estado => estado.GoogleMaps === uf || estado.Nome === uf || estado.Uf === uf);
 }
@@ -152,9 +237,23 @@ function persistSalesChannel(Uf) {
 }
 
 function salvarUf(estado) {  
-
     createCookie('myuf', estado.Uf, 100);
 
+    vtexjs.checkout.calculateShipping({
+        postalCode: CEP_STATES[estado.Uf].cep,
+        country: "BRA",
+        addressType: "search",
+    }).then(
+        (orderForm) => {
+            localStorage.setItem(
+                "AG_AddressSelected",
+                JSON.stringify({
+                    ...orderForm.shippingData.address,
+                    logisticsInfo: orderForm.shippingData.logisticsInfo,
+                })
+            )
+        }
+    );
     setVtexScOnCookies(estado.Sc);
 
     window.location.href = `?sc=${estado.Sc}`;
