@@ -276,7 +276,7 @@ $(function CepComponent() {
                 }
             });
 
-            $("#btnFreteSimulacao").click((e) => {
+            $("#txtCep").keyup((e) => {
                 e.preventDefault();
                 if ($("#txtCep").val().replace("_", "").length === maxLength) {
                     const cep = $("#txtCep").val();
