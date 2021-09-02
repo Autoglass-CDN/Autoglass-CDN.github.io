@@ -1253,19 +1253,22 @@ try {
 						var config = Product.getNumberOfInstallments(data.items);
 						Product.renderDataInInstallements(installmentsList, config);
 
-						const {shippingData} = await vtexjs.checkout.calculateShipping({
+						vtexjs.checkout.calculateShipping({
 							postalCode: listStates[thisST].cep,
 							country: "BRA",
 							addressType: "search",
-						});
-
-						localStorage.setItem(
-							"AG_AddressSelected",
-							JSON.stringify({
-								...shippingData.address,
-								logisticsInfo: shippingData.logisticsInfo,
-							})
+						}).then(
+							(orderForm) => {
+								localStorage.setItem(
+									"AG_AddressSelected",
+									JSON.stringify({
+										...orderForm.shippingData.address,
+										logisticsInfo: orderForm.shippingData.logisticsInfo,
+									})
+								)
+							}
 						);
+
 					})
 				}
 			}
