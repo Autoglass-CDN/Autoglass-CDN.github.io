@@ -85,6 +85,14 @@ $(function CepComponent() {
                     detail: orderForm,
                 })
             );
+
+			$("#txtCep").keyup((e) => {
+                e.preventDefault();
+                if ($("#txtCep").val().replace("_", "").length === maxLength) {
+                    const cep = $("#txtCep").val();
+                    Controller.submitEvent(e, cep);
+                }
+            });
         }
 
         function formatAddress(address) {
@@ -276,13 +284,6 @@ $(function CepComponent() {
                 }
             });
 
-            $("#txtCep").keyup((e) => {
-                e.preventDefault();
-                if ($("#txtCep").val().replace("_", "").length === maxLength) {
-                    const cep = $("#txtCep").val();
-                    Controller.submitEvent(e, cep);
-                }
-            });
         }
 
         function _defineHowCepInputWillWork() {
