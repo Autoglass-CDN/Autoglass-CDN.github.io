@@ -1252,6 +1252,20 @@ try {
 						var installmentsList = data.paymentData.installmentOptions[0].installments;
 						var config = Product.getNumberOfInstallments(data.items);
 						Product.renderDataInInstallements(installmentsList, config);
+
+						const {shippingData} = await vtexjs.checkout.calculateShipping({
+							postalCode: listStates[thisST].cep,
+							country: "BRA",
+							addressType: "search",
+						});
+
+						localStorage.setItem(
+							"AG_AddressSelected",
+							JSON.stringify({
+								...shippingData.address,
+								logisticsInfo: shippingData.logisticsInfo,
+							})
+						);
 					})
 				}
 			}
