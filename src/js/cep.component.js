@@ -85,10 +85,11 @@ $(function CepComponent() {
                     detail: orderForm,
                 })
             );
-
-			$("#txtCep").keyup((e) => {
+			
+            const cepMaxLength = 9;
+			$("#btnFreteSimulacao").click((e) => {
                 e.preventDefault();
-                if ($("#txtCep").val().replace("_", "").length === maxLength) {
+                if ($("#txtCep").val().replace("_", "").length === cepMaxLength) {
                     const cep = $("#txtCep").val();
                     Controller.submitEvent(e, cep);
                 }
