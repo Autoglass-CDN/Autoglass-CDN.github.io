@@ -1046,7 +1046,25 @@ try {
 			Product.applySmartQuantity();
 			Product.scrollToBuyButton();
 			Product.applyConfigsInstallationModals();
-			Product.applyOverlayToggle()
+			Product.applyOverlayToggle();
+			var stateFormated = readCookie("myuf");
+			var listStates = Product.listStates();
+
+			vtexjs.checkout.calculateShipping({
+				postalCode: listStates[stateFormated].cep,
+				country: "BRA",
+				addressType: "search",
+			}).then(
+				(orderForm) => {
+					localStorage.setItem(
+						"AG_AddressSelected",
+						JSON.stringify({
+							...orderForm.shippingData.address,
+							logisticsInfo: orderForm.shippingData.logisticsInfo,
+						})
+					)
+				}
+			);
 		},
 		ajaxStop: function () { },
 		windowOnload: function () {
@@ -1252,23 +1270,6 @@ try {
 						var installmentsList = data.paymentData.installmentOptions[0].installments;
 						var config = Product.getNumberOfInstallments(data.items);
 						Product.renderDataInInstallements(installmentsList, config);
-
-						vtexjs.checkout.calculateShipping({
-							postalCode: listStates[thisST].cep,
-							country: "BRA",
-							addressType: "search",
-						}).then(
-							(orderForm) => {
-								localStorage.setItem(
-									"AG_AddressSelected",
-									JSON.stringify({
-										...orderForm.shippingData.address,
-										logisticsInfo: orderForm.shippingData.logisticsInfo,
-									})
-								)
-							}
-						);
-
 					})
 				}
 			}
