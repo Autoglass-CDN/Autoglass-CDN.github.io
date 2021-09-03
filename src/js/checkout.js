@@ -171,6 +171,7 @@ const generalPolicies = [
 ];
 
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
+    oF.logisticsInfo = JSON.parse(localStorage.getItem('AG_AddressSelected')).logisticsInfo;
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
 });
