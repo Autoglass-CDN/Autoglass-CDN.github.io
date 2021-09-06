@@ -1046,7 +1046,7 @@ try {
 			Product.applySmartQuantity();
 			Product.scrollToBuyButton();
 			Product.applyConfigsInstallationModals();
-			Product.applyOverlayToggle()
+			Product.applyOverlayToggle();
 		},
 		ajaxStop: function () { },
 		windowOnload: function () {
