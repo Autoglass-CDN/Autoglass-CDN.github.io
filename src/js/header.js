@@ -254,7 +254,22 @@ function salvarUf(estado) {
                     ...orderForm.shippingData.address,
                     logisticsInfo: orderForm.shippingData.logisticsInfo,
                 })
-            )
+            );
+            fetch('https://dev2autoglass.myvtex.com/api/sessions', {
+                    method: 'POST',
+                    headers: {
+                      'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(
+                      {
+                        "public": {
+                          "postalCode": {
+                            "value": orderForm.shippingData.postalCode
+                          }
+                        }
+                      }
+                  )
+                  });
         }
     );
     setVtexScOnCookies(estado.Sc);
