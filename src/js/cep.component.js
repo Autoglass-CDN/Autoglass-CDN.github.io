@@ -31,8 +31,10 @@ $(function CepComponent() {
         async function init() {
             const orderForm = await Service.getOrderForm();
 
-            if (orderForm.shippingData)
+            if (orderForm.shippingData) {
                 Service.saveAddressOnLocalStorage(orderForm.shippingData);
+                updateVtexSessionPostalCode(orderForm.shippingData.postalCode);
+            }
 
             $(CONFIG.SELECTOR).each(function (_, cepContainer) {
                 $(cepContainer).html("").addClass("ghost-loading");
@@ -65,6 +67,9 @@ $(function CepComponent() {
                     Service.saveAddressOnLocalStorage(
                         newOrderForm.shippingData
                     );
+                    updateVtexSessionPostalCode(
+                        newOrderForm.shippingData.postalCode
+                    );
 
                     $(cepContainer).html("").addClass("ghost-loading");
 
@@ -77,6 +82,7 @@ $(function CepComponent() {
 
                 $(window).on("orderFormUpdated.vtex", (_, order) => {
                     Service.saveAddressOnLocalStorage(order.shippingData);
+                    updateVtexSessionPostalCode(order.shippingData.postalCode);
                 });
             });
 
@@ -85,14 +91,21 @@ $(function CepComponent() {
                     detail: orderForm,
                 })
             );
-			
-            const cepMaxLength = 9;
-			$("#btnFreteSimulacao").click((e) => {
-                e.preventDefault();
-                if ($("#txtCep").val().replace("_", "").length === cepMaxLength) {
-                    const cep = $("#txtCep").val();
-                    Controller.submitEvent(e, cep);
-                }
+        }
+
+        async function updateVtexSessionPostalCode(postalCode) {
+            return fetch("https://dev2autoglass.myvtex.com/api/sessions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    public: {
+                        postalCode: {
+                            value: postalCode,
+                        },
+                    },
+                }),
             });
         }
 
@@ -118,8 +131,9 @@ $(function CepComponent() {
             return addressFormatted ? addressFormatted : postalCode;
         }
 
-        async function submitEvent(e, cep) {
+        async function submitEvent(e) {
             e.preventDefault();
+            const cep = $("#cep-input").val();
 
             if (!cep) {
                 $(this).addClass("cep-new__content-form--error");
@@ -269,22 +283,15 @@ $(function CepComponent() {
 
             $("#cep-input").keyup((e) => {
                 e.preventDefault();
-                if (e.target.value.replace("_", "").length === maxLength) {
-                    const cep = $("#cep-input").val();
-                    Controller.submitEvent(e, cep);
-                }
+                if (e.target.value.replace("_", "").length === maxLength)
+                    Controller.submitEvent(e);
             });
 
             $(".cep-new__content-form").on("submit", (e) => {
                 e.preventDefault();
-                if (
-                    $("#cep-input").val().replace("_", "").length === maxLength
-                ) {
-                    const cep = $("#cep-input").val();
-                    Controller.submitEvent(e, cep);
-                }
+                if ($("#cep-input").val().replace("_", "").length === maxLength)
+                    Controller.submitEvent(e);
             });
-
         }
 
         function _defineHowCepInputWillWork() {
