@@ -99,6 +99,7 @@ $(function CepComponent() {
                     const cep = $("#txtCep").val();
                     updateVtexSessionPostalCode(cep);
                     Controller.submitEvent(e, cep);
+
                 }
             });
         }
