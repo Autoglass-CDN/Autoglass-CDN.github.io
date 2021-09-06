@@ -171,7 +171,6 @@ const generalPolicies = [
 ];
 
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
-    oF.logisticsInfo = JSON.parse(localStorage.getItem('AG_AddressSelected')).logisticsInfo;
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
 });
@@ -198,8 +197,7 @@ botaoFinalizaCompra[1].addEventListener('click', () => {
 
 function checkSelectedDeliveryChannel(orderForm) {
     activeDeliveryChannel = localStorage.getItem('activeDeliveryChannel');
-    let logisticsInfo = JSON.parse(localStorage.getItem('AG_AddressSelected')).logisticsInfo;
-    // let logisticsInfo = orderForm.shippingData.logisticsInfo;
+    let logisticsInfo = orderForm.shippingData.logisticsInfo;
     const selectedAddresses = orderForm.shippingData.selectedAddresses;
     const hasPickupInPoint = logisticsInfo[0].slas.find(sla => sla.deliveryChannel == 'pickup-in-point');
 
