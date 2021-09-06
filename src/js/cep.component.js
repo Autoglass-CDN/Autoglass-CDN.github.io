@@ -4,162 +4,192 @@
  * É o lugar aonde vai rendereziar
  * o painel de mudança de cep
  */
-$(function CepComponent() {
-    const CONFIG = {
-        SELECTOR: '.cep:not(".link")',
-        LOCAL_TO_RENDER_CEP: "data-render-cep",
-        EVENTS: {
-            FINISH_LOAD: "cep-finish-load",
-            CEP_UPDATED: "cep-updated",
-        },
-        STORAGE: "AG_AddressSelected",
-    };
+ $(function CepComponent() {
+	const CONFIG = {
+		SELECTOR: '.cep:not(".link")',
+		LOCAL_TO_RENDER_CEP: 'data-render-cep',
+		EVENTS: {
+			FINISH_LOAD: 'cep-finish-load',
+			CEP_UPDATED: 'cep-updated'
+		},
+		STORAGE: 'AG_AddressSelected'
+	}
 
-    const Controller = ControllerAPI();
-    const View = ViewAPI();
-    const Service = ServiceAPI();
+	const Controller = ControllerAPI();
+	const View = ViewAPI();
+	const Service = ServiceAPI();
 
-    Controller.init();
+	Controller.init();
 
-    function ControllerAPI() {
-        return {
-            init,
-            formatAddress,
-            submitEvent,
-        };
+	function ControllerAPI() {
+		return {
+			init,
+			formatAddress,
+			submitEvent
+		}
 
-        async function init() {
-            const orderForm = await Service.getOrderForm();
+		async function init() {
+			const orderForm = await Service.getOrderForm();
 
-            if (orderForm.shippingData)
-                Service.saveAddressOnLocalStorage(orderForm.shippingData);
+			if (orderForm.shippingData){
+				Service.saveAddressOnLocalStorage(orderForm.shippingData);
+				updateVtexSessionPostalCode(orderForm.shippingData.postalCode);
+			}
 
-            $(CONFIG.SELECTOR).each(function (_, cepContainer) {
-                $(cepContainer).html("").addClass("ghost-loading");
+			$(CONFIG.SELECTOR).each(function (_, cepContainer) {
+				$(cepContainer)
+					.html('')
+					.addClass('ghost-loading');
 
-                const modalContent = $(cepContainer).attr(
-                    CONFIG.LOCAL_TO_RENDER_CEP
-                );
-                cepContainer.id = "cep" + _;
+				const modalContent = $(cepContainer).attr(CONFIG.LOCAL_TO_RENDER_CEP);
+				cepContainer.id = 'cep' + _;
 
-                $(modalContent).css("position", "relative");
-                $(modalContent).css("overflow", "hidden");
-                $(modalContent).css("min-height", "150px");
+				$(modalContent).css('position', 'relative');
+				$(modalContent).css('overflow', 'hidden');
+				$(modalContent).css('min-height', '150px');
 
-                let address;
-                let isCheckout = window.location.href.includes("/checkout");
-                let ufDefinedByTop = +localStorage.getItem("ufDefinedByTop");
 
-                if (!isCheckout && ufDefinedByTop) {
-                    address = null;
-                } else {
-                    if (orderForm.shippingData) {
-                        address = orderForm.shippingData.address;
-                    }
-                }
+				let address;
+				let isCheckout = window.location.href.includes("/checkout");
+				let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
+				
+				if (!isCheckout && ufDefinedByTop){
+					address = null;
+				}
+				else {
+					if(orderForm.shippingData){
+						address = orderForm.shippingData.address;
+					}
+				}
 
-                View.renderCepInfo(cepContainer, modalContent, address);
+				View.renderCepInfo(
+					cepContainer,
+					modalContent,
+					address
+				);
 
-                $(window).on(CONFIG.EVENTS.CEP_UPDATED, async (e) => {
-                    const newOrderForm = e.originalEvent.detail;
-                    Service.saveAddressOnLocalStorage(
-                        newOrderForm.shippingData
-                    );
+				$(window).on(CONFIG.EVENTS.CEP_UPDATED, async (e) => {
+					const newOrderForm = e.originalEvent.detail;
+					Service.saveAddressOnLocalStorage(newOrderForm.shippingData);
+					updateVtexSessionPostalCode(newOrderForm.shippingData.postalCode);
 
-                    $(cepContainer).html("").addClass("ghost-loading");
+					$(cepContainer)
+						.html('')
+						.addClass('ghost-loading');
 
-                    View.renderCepInfo(
-                        cepContainer,
-                        modalContent,
-                        newOrderForm.shippingData.address
-                    );
-                });
+					View.renderCepInfo(
+						cepContainer,
+						modalContent,
+						newOrderForm.shippingData.address
+					);
+				});
 
-                $(window).on("orderFormUpdated.vtex", (_, order) => {
-                    Service.saveAddressOnLocalStorage(order.shippingData);
-                });
-            });
+				$(window).on("orderFormUpdated.vtex", (_, order) => {
+					Service.saveAddressOnLocalStorage(order.shippingData);
+					updateVtexSessionPostalCode(order.shippingData.postalCode);
+				});
+			});
 
-            window.dispatchEvent(
-                new CustomEvent(CONFIG.EVENTS.FINISH_LOAD, {
-                    detail: orderForm,
-                })
-            );
-			
-            const cepMaxLength = 9;
-			$("#btnFreteSimulacao").click((e) => {
-                e.preventDefault();
-                if ($("#txtCep").val().replace("_", "").length === cepMaxLength) {
-                    const cep = $("#txtCep").val();
-                    Controller.submitEvent(e, cep);
-                }
-            });
-        }
+			window.dispatchEvent(new CustomEvent(
+				CONFIG.EVENTS.FINISH_LOAD,
+				{ detail: orderForm }
+			));
+		}
 
-        function formatAddress(address) {
-            const { city, neighborhood, state, street, postalCode } = address;
-            let addressFormatted = "";
+		async function updateVtexSessionPostalCode (postalCode) {
+			return fetch('https://dev2autoglass.myvtex.com/api/sessions', {
+				method: 'POST',
+				headers: {
+				  'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(
+				  {
+					"public": {
+					  "postalCode": {
+						"value": postalCode
+					  }
+					}
+				  }
+			  )
+			  });
+		}
 
-            if (street) addressFormatted += street;
-            if (neighborhood) {
-                if (street) addressFormatted += " - ";
-                addressFormatted += neighborhood;
-            }
-            if (city) {
-                if (neighborhood) addressFormatted += ", ";
-                addressFormatted += city;
-            }
-            if (state) {
-                if (city) addressFormatted += " - ";
 
-                addressFormatted += state;
-            }
+		function formatAddress(address) {
+			const { city, neighborhood, state, street, postalCode } = address;
+			let addressFormatted = '';
 
-            return addressFormatted ? addressFormatted : postalCode;
-        }
+			if (street)
+				addressFormatted += street;
+			if (neighborhood) {
+				if (street)
+					addressFormatted += ' - ';
+				addressFormatted += neighborhood;
+			}
+			if (city) {
+				if (neighborhood)
+					addressFormatted += ', ';
+				addressFormatted += city;
+			}
+			if (state) {
+				if (city)
+					addressFormatted += ' - ';
 
-        async function submitEvent(e, cep) {
-            e.preventDefault();
+				addressFormatted += state;
+			}
 
-            if (!cep) {
-                $(this).addClass("cep-new__content-form--error");
-                return;
-            }
+			return addressFormatted ? addressFormatted : postalCode;
+		}
 
-            $(".cep-new__content--loading").show().css("right", "0");
+		async function submitEvent(e) {
+			e.preventDefault();
+			const cep = $('#cep-input').val();
 
-            try {
-                const [cepChanged] = await Service.calculateShipping(cep);
+			if (!cep) {
+				$(this).addClass('cep-new__content-form--error');
+				return;
+			}
 
-                $(".cep-new").css("transform", "translateX(105%)");
+			$('.cep-new__content--loading')
+				.show()
+				.css('right', '0');
 
-                localStorage.setItem("ufDefinedByTop", 0);
+			try {
+				const [cepChanged] = await Service.calculateShipping(cep);
 
-                window.dispatchEvent(
-                    new CustomEvent(CONFIG.EVENTS.CEP_UPDATED, {
-                        detail: cepChanged,
-                    })
-                );
+				$('.cep-new')
+					.css('transform', 'translateX(105%)');
 
-                setTimeout(() => $(".cep-new").remove(), 1000);
-            } catch (ex) {
-                $(".cep-new__content--loading").hide().css("right", "unset");
+				localStorage.setItem('ufDefinedByTop', 0);
 
-                console.error(ex);
-            }
-        }
-    }
+				window.dispatchEvent(new CustomEvent(
+					CONFIG.EVENTS.CEP_UPDATED,
+					{ detail: cepChanged }
+				));
 
-    function ViewAPI() {
-        return {
-            renderCepInfo,
-        };
+				setTimeout(() => $('.cep-new').remove(), 1000);
+			} catch (ex) {
+				$('.cep-new__content--loading')
+					.hide()
+					.css('right', 'unset');
 
-        function renderCepInfo(cepContainer, modalContent, address) {
-            if (address) {
-                const addressFormatted = Controller.formatAddress(address);
+				console.error(ex);
+			}
+		}
+	}
 
-                $(cepContainer).removeClass("ghost-loading").html(`
+	function ViewAPI() {
+		return {
+			renderCepInfo
+		}
+
+		function renderCepInfo(cepContainer, modalContent, address) {
+			if (address) {
+				const addressFormatted = Controller.formatAddress(address);
+
+				$(cepContainer)
+					.removeClass('ghost-loading')
+					.html(`
 						<div class="cep-info">
 							<div class="cep-info__location">
 								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor"
@@ -173,8 +203,10 @@ $(function CepComponent() {
 							<button id="change-cep-button" class="cep-info__location-button">Alterar</button>
 						</div>
 					`);
-            } else {
-                $(cepContainer).removeClass("ghost-loading").html(`
+			} else {
+				$(cepContainer)
+					.removeClass('ghost-loading')
+					.html(`
 						<div class="cep-info">
 							<div class="cep-info__location">
 								<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor"
@@ -187,30 +219,28 @@ $(function CepComponent() {
 							<button id="change-cep-button" class="cep-info__location-button">Informe seu cep aqui</button>
 						</div>
 					`);
-            }
+			}
 
-            if (+localStorage.getItem("locationChanged")) {
-                const cepInfo = $(`#${cepContainer.id}`);
-                let html = cepInfo.html();
-                html =
-                    html +
-                    `<span class="cep-info__location-changed">Região alterada conforme novo CEP informado.</span>`;
-                cepInfo.html(html);
-            }
+			if (+localStorage.getItem('locationChanged')) {
+				const cepInfo = $(`#${cepContainer.id}`);
+				let html = cepInfo.html();
+				html = html + `<span class="cep-info__location-changed">Região alterada conforme novo CEP informado.</span>`;
+				cepInfo.html(html);
+			}
+			
+			$(`#${cepContainer.id} .cep-info__location-button`).click(() => {
+				modalContent
+				? _renderNewCep(modalContent)
+				: console.error(CONFIG.LOCAL_TO_RENDER_CEP
+					+ ' não encontrado. Id: '
+					+ cepContainer.id
+					);
+				});
 
-            $(`#${cepContainer.id} .cep-info__location-button`).click(() => {
-                modalContent
-                    ? _renderNewCep(modalContent)
-                    : console.error(
-                          CONFIG.LOCAL_TO_RENDER_CEP +
-                              " não encontrado. Id: " +
-                              cepContainer.id
-                      );
-            });
-        }
+		}
 
-        function _renderNewCep(modalContent) {
-            $(modalContent).append(`
+		function _renderNewCep(modalContent) {
+			$(modalContent).append(`
 				<div class="cep-new">
 					<div class="cep-new__content">
 						<div class="cep-new__content--loading">
@@ -246,100 +276,91 @@ $(function CepComponent() {
 				</div>
 			`);
 
-            setTimeout(
-                () => $(".cep-new").css("transform", "translateX(0)"),
-                100
-            );
+			setTimeout(() => $('.cep-new').css('transform', 'translateX(0)'), 100);
 
-            const isMobile = _defineHowCepInputWillWork();
-            const maxLength = !isMobile ? 9 : 8;
+			const isMobile = _defineHowCepInputWillWork();
+			const maxLength = !isMobile ? 9 : 8;
 
-            $(`${modalContent} #cep-back-button`).click((e) => {
-                $(".cep-new").css("transform", "translateX(-105%)");
+			$(`${modalContent} #cep-back-button`).click(e => {
+				$('.cep-new')
+					.css('transform', 'translateX(-105%)');
 
-                setTimeout(() => $(".cep-new").remove(), 1000);
-            });
+				setTimeout(() => $('.cep-new').remove(), 1000);
+			});
 
-            $("#cep-input").focus();
-            $("#cep-input").click(function () {
-                if (!isMobile) {
-                    $(this)[0].setSelectionRange(0, 0);
-                }
-            });
+			$('#cep-input').focus();
+			$("#cep-input").click(function () {
+				if (!isMobile) {
+					$(this)[0].setSelectionRange(0, 0);
+				}
+			});
 
-            $("#cep-input").keyup((e) => {
-                e.preventDefault();
-                if (e.target.value.replace("_", "").length === maxLength) {
-                    const cep = $("#cep-input").val();
-                    Controller.submitEvent(e, cep);
-                }
-            });
+			$('#cep-input').keyup(e => {
+				e.preventDefault();
+				if (e.target.value.replace('_', '').length === maxLength)
+					Controller.submitEvent(e);
+			});
 
-            $(".cep-new__content-form").on("submit", (e) => {
-                e.preventDefault();
-                if (
-                    $("#cep-input").val().replace("_", "").length === maxLength
-                ) {
-                    const cep = $("#cep-input").val();
-                    Controller.submitEvent(e, cep);
-                }
-            });
+			$('.cep-new__content-form').on('submit', e => {
+				e.preventDefault();
+				if ($('#cep-input').val().replace('_', '').length === maxLength)
+					Controller.submitEvent(e);
+			});
+		}
 
-        }
+		function _defineHowCepInputWillWork() {
+			const isMobile = window.innerWidth < 1200;
 
-        function _defineHowCepInputWillWork() {
-            const isMobile = window.innerWidth < 1200;
+			if (!isMobile) {
+				$('#cep-input').attr('placeholder', '00000-000');
+				$('#cep-input').attr('max-length', '9');
+				$('#cep-input').mask('99999-999');
+			} else {
+				$('#cep-input').attr('placeholder', '00000000');
+				$('#cep-input').attr('max-length', '8');
+			}
 
-            if (!isMobile) {
-                $("#cep-input").attr("placeholder", "00000-000");
-                $("#cep-input").attr("max-length", "9");
-                $("#cep-input").mask("99999-999");
-            } else {
-                $("#cep-input").attr("placeholder", "00000000");
-                $("#cep-input").attr("max-length", "8");
-            }
+			return isMobile;
+		}
+	}
 
-            return isMobile;
-        }
-    }
+	function ServiceAPI() {
+		return {
+			calculateShipping,
+			getOrderForm,
+			saveAddressOnLocalStorage
+		}
 
-    function ServiceAPI() {
-        return {
-            calculateShipping,
-            getOrderForm,
-            saveAddressOnLocalStorage,
-        };
+		async function calculateShipping(cep) {
+			const search = await vtexjs.checkout.calculateShipping({
+				postalCode: cep,
+				country: 'BRA',
+				addressType: 'search'
+			});
 
-        async function calculateShipping(cep) {
-            const search = await vtexjs.checkout.calculateShipping({
-                postalCode: cep,
-                country: "BRA",
-                addressType: "search",
-            });
+			const residential = await vtexjs.checkout.calculateShipping({
+				postalCode: cep,
+				country: 'BRA',
+				addressType: 'residential'
+			});
 
-            const residential = await vtexjs.checkout.calculateShipping({
-                postalCode: cep,
-                country: "BRA",
-                addressType: "residential",
-            });
+			return [search, residential];
+		}
 
-            return [search, residential];
-        }
+		async function getOrderForm() {
+			const orderForm = await vtexjs.checkout.getOrderForm();
 
-        async function getOrderForm() {
-            const orderForm = await vtexjs.checkout.getOrderForm();
+			return orderForm;
+		}
 
-            return orderForm;
-        }
-
-        function saveAddressOnLocalStorage(shippingData) {
-            localStorage.setItem(
-                CONFIG.STORAGE,
-                JSON.stringify({
-                    ...shippingData.address,
-                    logisticsInfo: shippingData.logisticsInfo,
-                })
-            );
-        }
-    }
+		function saveAddressOnLocalStorage(shippingData) {
+			localStorage.setItem(
+				CONFIG.STORAGE,
+				JSON.stringify({
+					...shippingData.address,
+					logisticsInfo: shippingData.logisticsInfo
+				})
+			);
+		}
+	}
 });
