@@ -97,6 +97,7 @@ $(function CepComponent() {
                 e.preventDefault();
                 if ($("#txtCep").val().replace("_", "").length === cepMaxLength) {
                     const cep = $("#txtCep").val();
+                    updateVtexSessionPostalCode(cep);
                     Controller.submitEvent(e, cep);
                 }
             });
