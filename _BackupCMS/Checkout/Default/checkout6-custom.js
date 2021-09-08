@@ -148,8 +148,15 @@ $(window).on('load', () => {
                     .logisticsInfo[0]
                     .selectedDeliveryChannel === "delivery"
             ) {
-                $("#payment-group-creditCardPaymentGroup").click();
-                $(".pg-pagamento-na-loja.payment-group-item").remove();
+                setTimeout(function(){
+                    while(true) {
+                        if(document.querySelector("fieldset.payment-group").style.display=='none')
+                            continue;
+                        $("#payment-group-creditCardPaymentGroup").click();
+                        $(".pg-pagamento-na-loja.payment-group-item").css("display","none");
+                        break;
+                    }
+                }, 1);
             }
         }
 
