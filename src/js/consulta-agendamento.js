@@ -59,7 +59,7 @@ $(function () {
   let tomorrow = new Date();
   tomorrow.setDate(tomorrow.getDate() + 2);
 
-  $(".secao-agendamento .filter .data input").datepicker({
+  $(".secao-agendamento > .filter > .data input").datepicker({
     dateFormat: "dd/mm/yy",
     dayNames: [
       "Domingo",
@@ -116,7 +116,10 @@ $(function () {
     },
   });
 
-  $(".secao-agendamento .filter .data input").datepicker("setDate", tomorrow);
+  $(".secao-agendamento > .filter > .data input").datepicker(
+    "setDate",
+    tomorrow
+  );
 
   $("#btn-alterar-local-instalacao").click(function () {
     $(".mz-install__close--button").click();
@@ -187,15 +190,18 @@ $(function () {
 
     minDate = datas && datas.length ? datas[0].Data : tomorrow;
 
-    $(".secao-agendamento .filter .data input").datepicker(
+    $(".secao-agendamento > .filter > .data input").datepicker(
       "option",
       "minDate",
       minDate
     );
 
-    $(".secao-agendamento .filter .data input").datepicker("refresh");
+    $(".secao-agendamento > .filter > .data input").datepicker("refresh");
 
-    $(".secao-agendamento .filter .data input").datepicker("setDate", minDate);
+    $(".secao-agendamento > .filter > .data input").datepicker(
+      "setDate",
+      minDate
+    );
   }
 
   function recuperarHorarios(slas) {
@@ -204,7 +210,7 @@ $(function () {
     $.ajax({
       method: "GET",
       url: `${baseUrlApi}/horarios-lojas?Data=${
-        $(".secao-agendamento .data input:visible")
+        $(".secao-agendamento .data input:vu")
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]
