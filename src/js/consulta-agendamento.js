@@ -210,7 +210,7 @@ $(function () {
     $.ajax({
       method: "GET",
       url: `${baseUrlApi}/horarios-lojas?Data=${
-        $(".secao-agendamento .data input:vu")
+        $(".secao-agendamento .data input")
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]

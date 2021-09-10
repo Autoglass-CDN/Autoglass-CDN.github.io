@@ -1,241 +1,305 @@
-<link rel="stylesheet" href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" />
-<link rel="stylesheet" type="text/css"
-    href="https://cdn.quatrodigital.com/autoglass-arquivos/CSS.aut.far.product.css" />
+<link
+  rel="stylesheet"
+  href="http://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css"
+/>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.quatrodigital.com/autoglass-arquivos/CSS.aut.far.product.css"
+/>
 
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.qd-bootstrap-common.css"
-    type="text/css" />
+<link
+  rel="stylesheet"
+  href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.qd-bootstrap-common.css"
+  type="text/css"
+/>
 
-
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/consulta-agendamento.css" />
+<link
+  rel="stylesheet"
+  href="https://autoglass-cdn.github.io/arquivos/css/consulta-agendamento.css"
+/>
 <style type="text/css">
-    html {
-        font-size: 100%;
-    }
+  html {
+    font-size: 100%;
+  }
 
-    body {
-        padding-top: unset;
-        background: unset;
-    }
+  body {
+    padding-top: unset;
+    background: unset;
+  }
 
-    #checkout-confirmation-top {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        justify-items: center;
+  #checkout-confirmation-top {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-items: center;
 
-        padding: 0 1rem;
-    }
+    padding: 0 1rem;
+  }
 
-    #app-top>div,
-    .texto,
-    .agendamento-instalacao,
-    .agendamento-servico-movel {
-        width: 100%;
-        max-width: 960px;
+  #app-top > div,
+  .texto,
+  .agendamento-instalacao,
+  .agendamento-servico-movel {
+    width: 100%;
+    max-width: 960px;
+  }
 
-    }
+  .texto {
+    margin: 10px 0;
+  }
 
-    .texto {
-        margin: 10px 0;
-    }
+  .filter {
+    margin-top: 10px;
+  }
 
+  .secao-agendamento.hidden {
+    display: none;
+  }
 
-    .filter {
-        margin-top: 10px;
-    }
+  .secao-agendamento > .store-list > .filter > .data input {
+    height: auto;
+    vertical-align: baseline;
+  }
 
-    .secao-agendamento.hidden {
-        display: none;
-    }
+  .secao-agendamento > .store-list > .store.active {
+    border: 1px solid #0d47a1;
+    box-shadow: 0 0 5px 0px #0d47a1;
+  }
 
-    .secao-agendamento>.store-list>.filter>.data input {
-        height: auto;
-        vertical-align: baseline;
-    }
+  .secao-agendamento .time-list > .timestamp {
+    border: 1px solid #a1a1a1;
+    background-color: #fff;
+  }
 
-    .secao-agendamento>.store-list>.store.active {
-        border: 1px solid #0d47a1;
-        box-shadow: 0 0 5px 0px #0d47a1;
-    }
+  .secao-agendamento .time-list > .timestamp.active {
+    border: 0;
+    background-color: #0d47a1;
+    color: #fff;
+  }
 
-    .secao-agendamento .time-list>.timestamp {
-        border: 1px solid #a1a1a1;
-        background-color: #fff;
-    }
+  .cep-modal {
+    float: right;
+    margin-top: -2em;
+    /*margin-right: 25px;*/
+    font-size: 14px;
+    color: #333333;
+  }
 
-    .secao-agendamento .time-list>.timestamp.active {
-        border: 0;
-        background-color: #0d47a1;
-        color: #fff;
-    }
+  .cep-modal .header-qd-v1-valid-prices-local {
+    margin-top: -10px;
+    font-weight: 600;
+  }
 
-    .cep-modal {
-        float: right;
-        margin-top: -2em;
-        /*margin-right: 25px;*/
-        font-size: 14px;
-        color: #333333;
-    }
+  .cep-modal .header-qd-v1-valid-prices-local button {
+    color: #2d4f9e;
+    text-decoration: underline;
+    background: #fff;
+    border: none;
+  }
 
-    .cep-modal .header-qd-v1-valid-prices-local {
-        margin-top: -10px;
-        font-weight: 600;
-    }
+  #confirmacao-agendamento,
+  #confirmacao-servico-movel {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-    .cep-modal .header-qd-v1-valid-prices-local button {
-        color: #2d4f9e;
-        text-decoration: underline;
-        background: #fff;
-        border: none;
-    }
+  #confirmacao-agendamento p {
+    font-size: 17px;
+  }
 
-    #confirmacao-agendamento,
-    #confirmacao-servico-movel {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+  #confirmacao-agendamento p .agendamento {
+    font-weight: 500;
+  }
 
-    #confirmacao-agendamento p {
-        font-size: 17px;
-    }
+  #btn-confirmar-agendamento {
+    background-color: #3257ae;
+    border: 0;
+    color: #fff;
+    padding: 10px 25px;
+    border-radius: 4px;
+    max-height: 40px;
+  }
 
-    #confirmacao-agendamento p .agendamento {
-        font-weight: 500;
-    }
+  .msg-agendamento {
+    display: flex;
+    flex-direction: column;
 
-    #btn-confirmar-agendamento {
-        background-color: #3257AE;
-        border: 0;
-        color: #FFF;
-        padding: 10px 25px;
-        border-radius: 4px;
-        max-height: 40px;
-    }
+    width: 100%;
+    max-width: 945px;
 
-    .msg-agendamento {
-        display: flex;
-        flex-direction: column;
+    border-radius: 4px;
+    border: 1px solid;
+    margin: 15px;
+    padding: 10px 15px;
+  }
 
-        width: 100%;
-        max-width: 945px;
+  .msg-agendamento p {
+    margin-top: 20px;
+  }
 
-        border-radius: 4px;
-        border: 1px solid;
-        margin: 15px;
-        padding: 10px 15px;
-    }
+  .info {
+    /* border: 1px solid #0d47a1; */
+    /* box-shadow: 0 0 5px 0px #0d47a1; */
+    background-color: #d4e0f7;
+    color: #0d47a1;
+  }
 
-    .msg-agendamento p {
-        margin-top: 20px;
-    }
+  .erro {
+    background-color: #ffdfdf;
+    color: #e7040f;
+  }
 
-    .info {
-        /* border: 1px solid #0d47a1; */
-        /* box-shadow: 0 0 5px 0px #0d47a1; */
-        background-color: #d4e0f7;
-        color: #0d47a1;
-    }
-
-    .erro {
-        background-color: #ffdfdf;
-        color: #e7040f;
-    }
-
-    #loader svg {
-        width: 50%;
-        height: 50%;
-    }
+  #loader svg {
+    width: 50%;
+    height: 50%;
+  }
 </style>
 
-
 <div class="texto">
-    <hr />
-    <div>
-        <h4>Importante</h4>
-        <br>
-        <p>Caso tenha realizado pagamento via cartão de crédito, o prazo de entrega começa a valer após a confirmação do
-            pagamento pela operadora. Esse prazo pode variar em até 3 dias, qualquer dúvida entre em contato conosco.
-        </p>
-        <p>Por questões de segurança, a operadora de cartões pode entrar em contato com você por telefone para confirmar
-            a compra. Por gentileza, <strong>fique atento pois esta ligação pode ser de um DDD diferente de sua
-                cidade</strong>. Caso a operadora não consiga contato, <strong>a compra pode ser cancelada</strong> e a
-            Autoglass entrará em contato para refazer seu pedido.</p>
-    </div>
-    <hr />
+  <hr />
+  <div>
+    <h4>Importante</h4>
+    <br />
+    <p>
+      Caso tenha realizado pagamento via cartão de crédito, o prazo de entrega
+      começa a valer após a confirmação do pagamento pela operadora. Esse prazo
+      pode variar em até 3 dias, qualquer dúvida entre em contato conosco.
+    </p>
+    <p>
+      Por questões de segurança, a operadora de cartões pode entrar em contato
+      com você por telefone para confirmar a compra. Por gentileza,
+      <strong
+        >fique atento pois esta ligação pode ser de um DDD diferente de sua
+        cidade</strong
+      >. Caso a operadora não consiga contato,
+      <strong>a compra pode ser cancelada</strong> e a Autoglass entrará em
+      contato para refazer seu pedido.
+    </p>
+  </div>
+  <hr />
 </div>
-
-
 
 <div class="msg-agendamento hidden"></div>
 <div id="loader" class="hidden">
-    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-        style="margin: auto; background: rgba(241, 242, 243, 0); display: block;" width="200px" height="200px"
-        viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
-        <rect x="17.5" y="30" width="15" height="40" fill="#0051a2">
-            <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1"
-                values="18;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
-            <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1"
-                values="64;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.2s"></animate>
-        </rect>
-        <rect x="42.5" y="30" width="15" height="40" fill="#1b75be">
-            <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1"
-                values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
-            <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1"
-                values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1" begin="-0.1s"></animate>
-        </rect>
-        <rect x="67.5" y="29.8383" width="15" height="40.3235" fill="#408ee0">
-            <animate attributeName="y" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1"
-                values="20.999999999999996;30;30" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
-            <animate attributeName="height" repeatCount="indefinite" dur="1s" calcMode="spline" keyTimes="0;0.5;1"
-                values="58.00000000000001;40;40" keySplines="0 0.5 0.5 1;0 0.5 0.5 1"></animate>
-        </rect>
-    </svg>
-
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    style="margin: auto; background: rgba(241, 242, 243, 0); display: block"
+    width="200px"
+    height="200px"
+    viewBox="0 0 100 100"
+    preserveAspectRatio="xMidYMid"
+  >
+    <rect x="17.5" y="30" width="15" height="40" fill="#0051a2">
+      <animate
+        attributeName="y"
+        repeatCount="indefinite"
+        dur="1s"
+        calcMode="spline"
+        keyTimes="0;0.5;1"
+        values="18;30;30"
+        keySplines="0 0.5 0.5 1;0 0.5 0.5 1"
+        begin="-0.2s"
+      ></animate>
+      <animate
+        attributeName="height"
+        repeatCount="indefinite"
+        dur="1s"
+        calcMode="spline"
+        keyTimes="0;0.5;1"
+        values="64;40;40"
+        keySplines="0 0.5 0.5 1;0 0.5 0.5 1"
+        begin="-0.2s"
+      ></animate>
+    </rect>
+    <rect x="42.5" y="30" width="15" height="40" fill="#1b75be">
+      <animate
+        attributeName="y"
+        repeatCount="indefinite"
+        dur="1s"
+        calcMode="spline"
+        keyTimes="0;0.5;1"
+        values="20.999999999999996;30;30"
+        keySplines="0 0.5 0.5 1;0 0.5 0.5 1"
+        begin="-0.1s"
+      ></animate>
+      <animate
+        attributeName="height"
+        repeatCount="indefinite"
+        dur="1s"
+        calcMode="spline"
+        keyTimes="0;0.5;1"
+        values="58.00000000000001;40;40"
+        keySplines="0 0.5 0.5 1;0 0.5 0.5 1"
+        begin="-0.1s"
+      ></animate>
+    </rect>
+    <rect x="67.5" y="29.8383" width="15" height="40.3235" fill="#408ee0">
+      <animate
+        attributeName="y"
+        repeatCount="indefinite"
+        dur="1s"
+        calcMode="spline"
+        keyTimes="0;0.5;1"
+        values="20.999999999999996;30;30"
+        keySplines="0 0.5 0.5 1;0 0.5 0.5 1"
+      ></animate>
+      <animate
+        attributeName="height"
+        repeatCount="indefinite"
+        dur="1s"
+        calcMode="spline"
+        keyTimes="0;0.5;1"
+        values="58.00000000000001;40;40"
+        keySplines="0 0.5 0.5 1;0 0.5 0.5 1"
+      ></animate>
+    </rect>
+  </svg>
 </div>
 
 <div class="agendamento-instalacao hidden">
-    <h3>Agende sua Instalação</h3>
-    <div class="secao-agendamento">
-        <span>Confira abaixo as lojas e horários disponíveis para instalação:</span>
-        <div class="store-list">
-            <div class="filter">
-                <div class="data">
-                    <label class="date" for="alterar-data-input">Data: </label>
-                    <input type="text" name="data" id="alterar-data-input" />
-                </div>
-                <div class="qtd">
-                    Lojas encontradas: 0
-                </div>
-            </div>
-
-        </div>
+  <h3>Agende sua Instalação</h3>
+  <div class="secao-agendamento">
+    <span>Confira abaixo as lojas e horários disponíveis para instalação:</span>
+    <div class="filter">
+      <div class="data">
+        <label class="date" for="alterar-data-input">Data: </label>
+        <input type="text" name="data" id="alterar-data-input" />
+      </div>
+      <div class="qtd">Lojas encontradas: 0</div>
+      <div class="store-list"></div>
     </div>
-    <hr />
-    <div id="confirmacao-agendamento">
-    </div>
+  </div>
+  <hr />
+  <div id="confirmacao-agendamento"></div>
 </div>
 
 <div class="agendamento-servico-movel hidden">
-    <h3>Instale em Casa</h3>
-    <div class="mz-advantages__content">
-        <span>Confira abaixo os dias disponíveis para instalação:</span>
-        <div class="cep hidden">
-            <label for="cep-input">Informe seu CEP:</label>
-            <div style="display: flex;">
-                <input style="transition: none; height: 24px; box-shadow: none;" id="cep-input" type="text" />
-                <button id="input-cep-btn" type="button">Buscar</button>
-            </div>
-        </div>
-        <div class="datas-disponiveis" style="display: none">
-            <label>Datas disponíveis:</label>
-            <div id="aviso-servico-movel" style="display: none"></div>
-            <div class="loading-dates">
-                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Carregando...
-            </div>
-            <div id="mostrar-datas-datepicker"></div>
-        </div>
+  <h3>Instale em Casa</h3>
+  <div class="mz-advantages__content">
+    <span>Confira abaixo os dias disponíveis para instalação:</span>
+    <div class="cep hidden">
+      <label for="cep-input">Informe seu CEP:</label>
+      <div style="display: flex">
+        <input
+          style="transition: none; height: 24px; box-shadow: none"
+          id="cep-input"
+          type="text"
+        />
+        <button id="input-cep-btn" type="button">Buscar</button>
+      </div>
     </div>
-    <hr />
-    <div id="confirmacao-servico-movel"></div>
+    <div class="datas-disponiveis" style="display: none">
+      <label>Datas disponíveis:</label>
+      <div id="aviso-servico-movel" style="display: none"></div>
+      <div class="loading-dates">
+        <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Carregando...
+      </div>
+      <div id="mostrar-datas-datepicker"></div>
+    </div>
+  </div>
+  <hr />
+  <div id="confirmacao-servico-movel"></div>
 </div>
