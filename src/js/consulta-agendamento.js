@@ -38,21 +38,16 @@ $(function () {
   let codCidade = estado.code || null;
 
   if (window.location.href.includes("checkout")) {
+    if (window.location.search.includes('og=')) {
+      let orderId = window.location.search.split('=')[1];
+
+      vtexjs.getOrders(orderId).then(async (order) => {
+        await loadAvailableStores(order);
+      });
+    }
+
     $(window).on("orderFormUpdated.vtex", async (_, order) => {
-      if (order.shippingData.address && order.shippingData.address.state) {
-        estado = codCidades[order.shippingData.address.state];
-        codCidade = estado.code || null;
-
-        $(".store").remove();
-
-        const datas = await getDeliveriesEstimates(
-          order.shippingData.address.postalCode,
-          order.shippingData.logisticsInfo,
-          order.items
-        );
-        setMinDateDatepicker(datas);
-        recuperarHorarios(datas);
-      }
+      await loadAvailableStores(order);
     });
   }
 
@@ -183,6 +178,23 @@ $(function () {
     recuperarHorarios(datas);
   });
 
+  async function loadAvailableStores(order) {
+    if (order.shippingData.address && order.shippingData.address.state) {
+      estado = codCidades[order.shippingData.address.state];
+      codCidade = estado.code || null;
+
+      $(".store").remove();
+
+      const datas = await getDeliveriesEstimates(
+        order.shippingData.address.postalCode,
+        order.shippingData.logisticsInfo,
+        order.items
+      );
+      setMinDateDatepicker(datas);
+      recuperarHorarios(datas);
+    }
+  }
+
   //recuperarHorarios();
 
   function setMinDateDatepicker(datas) {
@@ -209,12 +221,11 @@ $(function () {
 
     $.ajax({
       method: "GET",
-      url: `${baseUrlApi}/horarios-lojas?Data=${
-        $(".secao-agendamento .data input")
+      url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]
-      }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1`,
+        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1`,
     })
       .done(function (data) {
         limpaModalInstaleLoja();
@@ -367,8 +378,7 @@ $(function () {
     );
 
     return `
-			<div id="${
-        dadosEndereco.addressId
+			<div id="${dadosEndereco.addressId
       }" class="${horariosDisponiveisLoja ? "" : "card-horarios-indisponiveis"} pickup pickup-install">
 				<div class="pickup__info">
 					<div class="pickup__info-distance">
@@ -386,19 +396,17 @@ $(function () {
 							${dadosEndereco.street} ${dadosEndereco.number},
 							
 						</p>
-						<p class="pickup__info-city">${
-              dadosEndereco.neighborhood
-            } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
+						<p class="pickup__info-city">${dadosEndereco.neighborhood
+      } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
 					</div>
 				</div>
 				<div class="time">
-					${
-            store
-              ? timeStampList.join("\n")
-              : [].concat(
-                  '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
-                )
-          }
+					${store
+        ? timeStampList.join("\n")
+        : [].concat(
+          '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
+        )
+      }
 				</div>
 			</div>
 	
@@ -427,11 +435,11 @@ $(function () {
 
     let timeStampList = horariosDisponiveisLoja
       ? ['<p>Horários:</p><div class="time-list">']
-          .concat(horariosArray)
-          .concat("</div>")
+        .concat(horariosArray)
+        .concat("</div>")
       : [].concat(
-          '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
-        );
+        '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
+      );
     return { horariosDisponiveisLoja, timeStampList };
   }
 
@@ -466,7 +474,7 @@ $(function () {
   function forceChangeShipping(orderForm) {
     const newSelectedAddresses = [
       orderForm.shippingData.availableAddresses[
-        orderForm.shippingData.availableAddresses.length - 1
+      orderForm.shippingData.availableAddresses.length - 1
       ],
     ];
     const logistic = orderForm.shippingData.logisticsInfo[0];
