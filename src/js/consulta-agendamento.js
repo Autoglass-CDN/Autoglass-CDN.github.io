@@ -41,7 +41,7 @@ $(function () {
     if (window.location.search.includes('og=')) {
       let orderId = window.location.search.split('=')[1];
 
-      vtexjs.getOrders(orderId).then(async (order) => {
+      vtexjs.checkout.getOrders(orderId).then(async (order) => {
         await loadAvailableStores(order);
       });
     }
