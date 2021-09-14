@@ -294,7 +294,12 @@ async function updateCartItemsCount(carrinho, orderForm) {
 
 async function cartItemAddedConfirmation(eventData) {
   let { skuData } = eventData;
-  let confirmationBox = document.querySelector('.desktop .menu-carrinho .confirmacao');
+  let windowWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+  let confirmationBox = windowWidth >= 1200
+    ? document.querySelector('.desktop .menu-carrinho .confirmacao')
+    : document.querySelector('.mobile .menu-carrinho .confirmacao');
 
   let img = confirmationBox.querySelector('.item img');
   let title = confirmationBox.querySelector('.item .titulo');
