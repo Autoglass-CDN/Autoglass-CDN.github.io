@@ -662,6 +662,12 @@ i.arrow-icon::before {
   visibility: hidden;
 }
 
+.container.mobile .menu-carrinho .confirmacao {
+  top: 167%;
+  right: -50px;
+  width: 340px;
+}
+
 .container .menu-carrinho .confirmacao>.item {
   display: flex;
   align-items: center;
