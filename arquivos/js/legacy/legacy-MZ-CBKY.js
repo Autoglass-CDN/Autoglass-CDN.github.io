@@ -1044,7 +1044,7 @@ try {
 			Product.removeBuyButtonAlert();
 			Product.smartBuyButton();
 			Product.applySmartQuantity();
-			Product.scrollToBuyButton();
+			// Product.scrollToBuyButton();
 			Product.applyConfigsInstallationModals();
 			Product.applyOverlayToggle()
 		},
