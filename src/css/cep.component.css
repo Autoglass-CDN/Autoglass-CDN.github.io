@@ -248,6 +248,10 @@
   }
 }
 
+p.ship-receiverName {
+  clear: left;
+}
+
 /* Retira "USAR MINHA LOCALIZAÇÃO" */
 .srp-pickup-empty.tc .srp-pickup-empty__my-location{
   display:none;
