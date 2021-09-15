@@ -1164,7 +1164,7 @@ try {
 				e.preventDefault();
 				
 				$("html, body").stop().animate({
-					scrollTop: $("#informacoes-gerais").offset().top - 300
+					scrollTop: $("#informacoes-gerais").offset().top - 88
 				}, 400, "swing");
 			})
 		},
