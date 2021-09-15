@@ -38,21 +38,16 @@ $(function () {
   let codCidade = estado.code || null;
 
   if (window.location.href.includes("checkout")) {
+    if (window.location.search.includes('og=')) {
+      let orderId = window.location.search.split('=')[1];
+
+      vtexjs.checkout.getOrders(orderId).then((orders) => {
+        loadAvailableStores(orders[0]);
+      });
+    }
+
     $(window).on("orderFormUpdated.vtex", async (_, order) => {
-      if (order.shippingData.address && order.shippingData.address.state) {
-        estado = codCidades[order.shippingData.address.state];
-        codCidade = estado.code || null;
-
-        $(".store").remove();
-
-        const datas = await getDeliveriesEstimates(
-          order.shippingData.address.postalCode,
-          order.shippingData.logisticsInfo,
-          order.items
-        );
-        setMinDateDatepicker(datas);
-        recuperarHorarios(datas);
-      }
+      await loadAvailableStores(order);
     });
   }
 
@@ -129,20 +124,18 @@ $(function () {
   const address = JSON.parse(localStorage.getItem("AG_AddressSelected"));
 
   if (address) {
-
     let isCheckout = window.location.href.includes("/checkout");
-    let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
-        
+    let ufDefinedByTop = +localStorage.getItem("ufDefinedByTop");
+
     if (!isCheckout && ufDefinedByTop) {
       $(".secao-agendamento > .store-list > ul").html(`
         <div>
           <p>Por favor, informe um CEP para visualizar as lojas mais próximas</p>
         </div>
-      `)
-    }
-    else{
+      `);
+    } else {
       let x;
-  
+
       if (
         typeof vtexjs !== "undefined" &&
         vtexjs.checkout &&
@@ -151,7 +144,7 @@ $(function () {
       ) {
         x = vtexjs.checkout.orderForm.items;
       }
-  
+
       getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
         (datas) => {
           setMinDateDatepicker(datas);
@@ -159,7 +152,6 @@ $(function () {
         }
       );
     }
-
   } else {
     // Evento lançado pelo componente de cep
     $(window).on("cep-finish-load", async (e) => {
@@ -186,6 +178,23 @@ $(function () {
     recuperarHorarios(datas);
   });
 
+  async function loadAvailableStores(order) {
+    if (order.shippingData.address && order.shippingData.address.state) {
+      estado = codCidades[order.shippingData.address.state];
+      codCidade = estado.code || null;
+
+      $(".store").remove();
+
+      const datas = await getDeliveriesEstimates(
+        order.shippingData.address.postalCode,
+        order.shippingData.logisticsInfo,
+        order.items
+      );
+      setMinDateDatepicker(datas);
+      recuperarHorarios(datas);
+    }
+  }
+
   //recuperarHorarios();
 
   function setMinDateDatepicker(datas) {
@@ -208,20 +217,17 @@ $(function () {
   }
 
   function recuperarHorarios(slas) {
-    
     limpaModalInstaleLoja();
 
     $.ajax({
       method: "GET",
-      url: `${baseUrlApi}/horarios-lojas?Data=${
-        $(".secao-agendamento .data input")
+      url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]
-      }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1`,
+        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1`,
     })
       .done(function (data) {
-  
         limpaModalInstaleLoja();
 
         pickupPoints = slas
@@ -239,7 +245,7 @@ $(function () {
             return pickupPoint;
           });
 
-        if(pickupPoints.length == 0){
+        if (pickupPoints.length == 0) {
           $(".secao-agendamento > .store-list > ul").append(noStoreAvailable());
           return;
         }
@@ -249,20 +255,20 @@ $(function () {
         );
 
         let storeList = [];
-        horariosDisponiveisGeral = false
+        horariosDisponiveisGeral = false;
 
         pickupPoints.forEach(function (pickupPoint) {
           const store = populateStore(pickupPoint);
-          storeList = store ? storeList.concat(store) : storeList; 
+          storeList = store ? storeList.concat(store) : storeList;
         });
 
-        
-        if (!horariosDisponiveisGeral){
+        if (!horariosDisponiveisGeral) {
           $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
-        }
-        else{
-          $(".secao-agendamento > .store-list > ul").append(storeList.join("\n"));
-  
+        } else {
+          $(".secao-agendamento > .store-list > ul").append(
+            storeList.join("\n")
+          );
+
           $(".secao-agendamento > .store-list > ul").append(
             `
             <div class="mz-install__info">
@@ -287,7 +293,6 @@ $(function () {
         $(".timestamp").click(function (e) {
           if (window.location.href.includes("checkout")) {
             $("body").removeClass("mz-bo-on mz-as-on mz-il-on");
-            
           }
 
           $(".mz-install__button--buy").click((e) => e.preventDefault());
@@ -302,8 +307,8 @@ $(function () {
             .split("T")[0];
           const date_formated = $(".secao-agendamento .data input")
             .datepicker("getDate")
-            .toLocaleDateString()
-            // .split("T")[0];
+            .toLocaleDateString();
+          // .split("T")[0];
 
           localStorage.setItem(
             "AG_SelectedHour",
@@ -318,10 +323,15 @@ $(function () {
           $(".pickup-install .time .time-list button").removeClass("selected");
           $(e.srcElement).addClass("selected");
 
-          $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b")
-            .text(lojaBeauty + " - " + date_formated + " - " + horario);
-          $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").hide()
-          $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").show()
+          $(
+            ".modal-instale-na-loja > .secao-agendamento > .selected-msg b"
+          ).text(lojaBeauty + " - " + date_formated + " - " + horario);
+          $(
+            ".modal-instale-na-loja > .secao-agendamento > .to-select-msg"
+          ).hide();
+          $(
+            ".modal-instale-na-loja > .secao-agendamento > .selected-msg"
+          ).show();
           vtexjs.checkout
             .calculateShipping({
               postalCode: cep,
@@ -343,15 +353,15 @@ $(function () {
     // });
   }
 
-  function limpaModalInstaleLoja(){
+  function limpaModalInstaleLoja() {
     $(".modal-instale-na-loja .store-list .pickup-install").remove();
     $(".modal-instale-na-loja .store-list .mz-install__info").remove();
     $(".modal-instale-na-loja .store-list #sem-lojas").remove();
-    $(".secao-agendamento > .store-list > ul").html('');
+    $(".secao-agendamento > .store-list > ul").html("");
 
     $(".modal-instale-na-loja > .secao-agendamento > .selected-msg b").text("");
-    $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide()
-    $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show()
+    $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide();
+    $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show();
   }
 
   function populateStore(pickupPoint) {
@@ -360,14 +370,16 @@ $(function () {
 
     if (!store) return null;
 
-    let {horariosDisponiveisLoja, timeStampList} = createTimestampList(
+    let { horariosDisponiveisLoja, timeStampList } = createTimestampList(
       store.Horarios,
       `${store.Nome} | ${store.Bairro}`,
       store.Cep,
-      pickupPoint.DadosPickupPoint.friendlyName)
+      pickupPoint.DadosPickupPoint.friendlyName
+    );
 
     return `
-			<div id="${dadosEndereco.addressId}" class="${horariosDisponiveisLoja?"":"card-horarios-indisponiveis"} pickup pickup-install">
+			<div id="${dadosEndereco.addressId
+      }" class="${horariosDisponiveisLoja ? "" : "card-horarios-indisponiveis"} pickup pickup-install">
 				<div class="pickup__info">
 					<div class="pickup__info-distance">
 						<svg class="pkpmodal-pickup-point-best-marker-image" width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -384,16 +396,17 @@ $(function () {
 							${dadosEndereco.street} ${dadosEndereco.number},
 							
 						</p>
-						<p class="pickup__info-city">${
-              dadosEndereco.neighborhood
-            } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
+						<p class="pickup__info-city">${dadosEndereco.neighborhood
+      } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
 					</div>
 				</div>
 				<div class="time">
 					${store
-            ? timeStampList.join("\n")
-            : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>')
-          }          
+        ? timeStampList.join("\n")
+        : [].concat(
+          '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
+        )
+      }
 				</div>
 			</div>
 	
@@ -401,31 +414,33 @@ $(function () {
   }
 
   function createTimestampList(horarios, store, cep, friendlyName) {
-    let horariosDisponiveisLoja = false
-    let horariosArray = []
+    let horariosDisponiveisLoja = false;
+    let horariosArray = [];
     if (horarios.length) {
       horariosArray = horarios.map(function (horario) {
         let timestamp = new Date(horario.HoraInicial);
-        if(horario.Disponibilidade.Value !== "Nao") {
+        if (horario.Disponibilidade.Value !== "Nao") {
           horariosDisponiveisLoja = true;
           horariosDisponiveisGeral = true;
           return `<button data-store="${store}" data-cep="${cep}" data-friendly-name="${friendlyName}" class="timestamp">
-            ${timestamp.toLocaleTimeString(
-              [],
-              {
-                hour: "2-digit",
-                minute: "2-digit",
-              }
-            )}</button>`
+            ${timestamp.toLocaleTimeString([], {
+              hour: "2-digit",
+              minute: "2-digit",
+            })}</button>`;
         } else {
           return "";
         }
-      })};
-    
+      });
+    }
+
     let timeStampList = horariosDisponiveisLoja
-    ? ['<p>Horários:</p><div class="time-list">'].concat(horariosArray).concat("</div>")
-    : [].concat('<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>');;
-    return {horariosDisponiveisLoja, timeStampList}
+      ? ['<p>Horários:</p><div class="time-list">']
+        .concat(horariosArray)
+        .concat("</div>")
+      : [].concat(
+        '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
+      );
+    return { horariosDisponiveisLoja, timeStampList };
   }
 
   function noTimeAvailable() {
@@ -459,7 +474,7 @@ $(function () {
   function forceChangeShipping(orderForm) {
     const newSelectedAddresses = [
       orderForm.shippingData.availableAddresses[
-        orderForm.shippingData.availableAddresses.length - 1
+      orderForm.shippingData.availableAddresses.length - 1
       ],
     ];
     const logistic = orderForm.shippingData.logisticsInfo[0];
@@ -559,20 +574,20 @@ $(function () {
     beforeShowDay: validadeAvailableDays,
   });
 
-  $("#input-cep-btn").click(function (ev) { Carregar($("#cep-input").val()) });
+  $("#input-cep-btn").click(function (ev) {
+    Carregar($("#cep-input").val());
+  });
 
   const address = JSON.parse(localStorage.getItem("AG_AddressSelected"));
 
   if (address) {
-
     let isCheckout = window.location.href.includes("/checkout");
-    let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
-        
+    let ufDefinedByTop = +localStorage.getItem("ufDefinedByTop");
+
     if (!isCheckout && ufDefinedByTop) {
-    }
-    else{
+    } else {
       let x;
-  
+
       if (
         typeof vtexjs !== "undefined" &&
         vtexjs.checkout &&
@@ -581,7 +596,7 @@ $(function () {
       ) {
         x = vtexjs.checkout.orderForm.items;
       }
-  
+
       getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
         (datas) => {
           setDateDatepicker(datas);
@@ -589,7 +604,6 @@ $(function () {
         }
       );
     }
-
   } else {
     // Evento lançado pelo componente de cep
     $(window).on("cep-finish-load", async (e) => {
@@ -638,7 +652,6 @@ $(function () {
   }
 
   async function Carregar(cep) {
-
     $("#aviso-servico-movel").hide();
     $(".preview-data").hide();
 
@@ -815,7 +828,8 @@ async function getDeliveriesEstimates(postalCode, logistics, items) {
       const installmentProduct = await vtexjs.catalog.getProductWithVariations(
         12685
       );
-      const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
+      const currentProduct =
+        await vtexjs.catalog.getCurrentProductWithVariations();
 
       simulationItems = [
         {
@@ -831,7 +845,7 @@ async function getDeliveriesEstimates(postalCode, logistics, items) {
       ];
     }
 
-    let vtexsc = readCookie('VTEXSC').replace('sc=', '');
+    let vtexsc = readCookie("VTEXSC").replace("sc=", "");
 
     const { logisticsInfo } = await $.ajax({
       type: "POST",
@@ -877,13 +891,13 @@ async function getDeliveriesEstimates(postalCode, logistics, items) {
 
 function readCookie(name) {
   var nameEQ = name + "=";
-  var ca = document.cookie.split(';');
+  var ca = document.cookie.split(";");
   for (var i = 0; i < ca.length; i++) {
-      var c = ca[i];
-      while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-      if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+    var c = ca[i];
+    while (c.charAt(0) == " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
   }
-  
+
   console.error("Não foi possível recuprar cookie VTEXSC'\n");
   return null;
 }
