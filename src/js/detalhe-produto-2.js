@@ -1,10 +1,14 @@
 $(function () {
     let acessorio = document.querySelector(".mz-accesories__button--buy");
+    let uriOrigin = window.location.origin;
+    let uriCrosSelling = uriOrigin + '/api/catalog_system/pub/products/crossselling/suggestions/'
+
+    let produto = vtexjs.getCurrentProductWithVariations().then();
 
     if (acessorio) {
         $(".product-qd-v1-standard .buy-button").addClass("secondary");
     }
-
+    
     let skuList = Product.captureSkuSelectors();
     var urlCart =
         "/checkout/cart/add?sku=" +
@@ -173,6 +177,8 @@ $(function () {
 
     // Atualiza a localização do cliente
     $('.header-qd-v1-valid-prices-local b').html(localStorage.ufsaver);
+
+    let item = fetch(uriCrosSelling + product.productId).then(response => response.json()).then(console.log);
 });
 
 function consulteFrete() {
@@ -648,5 +654,6 @@ $(function CalculeOFrete() {
                 data: JSON.stringify(request)
             });
         }
+
     }
 });
