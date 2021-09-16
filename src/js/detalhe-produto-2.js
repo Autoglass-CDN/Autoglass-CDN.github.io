@@ -183,9 +183,11 @@ $(function () {
     $('.header-qd-v1-valid-prices-local b').html(localStorage.ufsaver);
 
     fetch(uriCrossSelling + codigoProduto)
-        .then(function(reponse) {
-            localStorage.setItem('CrossSelling', reponse.json())
-        });
+        .then(
+            response => response.json()
+        ).then(
+            json => localStorage.setItem('CrossSelling', json)
+    );
 });
 
 function consulteFrete() {
