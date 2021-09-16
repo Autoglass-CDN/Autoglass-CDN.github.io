@@ -1,7 +1,7 @@
 $(function () {
     let acessorio = document.querySelector(".mz-accesories__button--buy");
     let uriOrigin = window.location.origin;
-    let uriCrosSelling = uriOrigin + '/api/catalog_system/pub/products/crossselling/suggestions/'
+    let uriCrossSelling = uriOrigin + '/api/catalog_system/pub/products/crossselling/suggestions/'
     let codigoProduto;
 
     vtexjs.catalog.getCurrentProductWithVariations()
@@ -182,7 +182,10 @@ $(function () {
     // Atualiza a localização do cliente
     $('.header-qd-v1-valid-prices-local b').html(localStorage.ufsaver);
 
-    let item = fetch(uriCrosSelling + codigoProduto).then(response => response.json()).then(console.log);
+    fetch(uriCrossSelling + codigoProduto)
+        .then(function(reponse) {
+            localStorage.setItem('CrossSelling', reponse.json())
+        });
 });
 
 function consulteFrete() {
