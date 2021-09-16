@@ -2,10 +2,11 @@ $(function () {
     let acessorio = document.querySelector(".mz-accesories__button--buy");
     let uriOrigin = window.location.origin;
     let uriCrosSelling = uriOrigin + '/api/catalog_system/pub/products/crossselling/suggestions/'
+    let codigoProduto;
 
     vtexjs.catalog.getCurrentProductWithVariations()
         .then(function(params) {
-            const codigoProduto = params.productId 
+            codigoProduto = params.productId 
         });
 
     if (acessorio) {
