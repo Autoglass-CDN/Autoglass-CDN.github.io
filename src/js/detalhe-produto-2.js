@@ -186,7 +186,7 @@ $(function () {
         .then(
             response => response.json()
         ).then(
-            json => localStorage.setItem('CrossSelling', json)
+            json => localStorage.setItem('CrossSelling', JSON.stringify(json))
     );
 });
 
