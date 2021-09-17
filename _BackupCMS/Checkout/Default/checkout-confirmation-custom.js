@@ -121,7 +121,7 @@ const Installment = {
           .append(agendamentoLojaService.textoConfirmacao(
             $("#alterar-data-input").val(),
             $(".timestamp.active").text(),
-            $(this).closest(".store").find(".store-name").text()
+            $(this)[0].dataset.store
           ))
           .append(agendamentoLojaService.createConfirmationButton())
           .fadeIn(500);

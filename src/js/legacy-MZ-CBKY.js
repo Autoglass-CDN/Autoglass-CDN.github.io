@@ -1162,15 +1162,10 @@ try {
 		scrollToDescription: function () {
 			$(".product-qd-v1-link-description").click(function (e) {
 				e.preventDefault();
-				if ($(window).width() > 900) {
-					$("html, body").stop().animate({
-						scrollTop: $(".product-qd-v1-description").offset().top - 300
-					}, 900, "swing")
-				} else {
-					$("html, body").stop().animate({
-						scrollTop: $(".product-qd-v1-description").offset().top - 170
-					}, 900, "swing")
-				}
+				
+				$("html, body").stop().animate({
+					scrollTop: $("#informacoes-gerais").offset().top - 88
+				}, 400, "swing");
 			})
 		},
 		removeBuyButtonAlert: function () {
@@ -7265,8 +7260,8 @@ String.prototype.trim || (String.prototype.trim = function () {
 			insertMenuAfter: ".search-multiple-navigator h3:first",
 			emptySearchElem: $('<div class="vtexsr-emptySearch"></div>'),
 			elemLoading: '<div id="scrollLoading">Carregando ... </div>',
-			emptySearchMsg: "<h3>Esta combinaÃ§Ã£o de filtros nÃ£o retornou nenhum resultado!</h3>",
-			filterErrorMsg: "Houve um erro ao tentar filtrar a pÃ¡gina!",
+			emptySearchMsg: "<h3>Esta combinação de filtros não retornou nenhum resultado!</h3>",
+			filterErrorMsg: "Houve um erro ao tentar filtrar a página!",
 			usePopup: false,
 			showLinks: true,
 			mergeMenuList: true,
