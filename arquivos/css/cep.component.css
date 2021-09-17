@@ -247,3 +247,7 @@
     max-width: 230px;
   }
 }
+
+p.ship-receiverName {
+  clear: left;
+}
