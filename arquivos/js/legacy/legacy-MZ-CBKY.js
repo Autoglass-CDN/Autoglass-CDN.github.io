@@ -1162,15 +1162,9 @@ try {
 		scrollToDescription: function () {
 			$(".product-qd-v1-link-description").click(function (e) {
 				e.preventDefault();
-				if ($(window).width() > 900) {
-					$("html, body").stop().animate({
-						scrollTop: $(".product-qd-v1-description").offset().top - 300
-					}, 900, "swing")
-				} else {
-					$("html, body").stop().animate({
-						scrollTop: $(".product-qd-v1-description").offset().top - 170
-					}, 900, "swing")
-				}
+				$("html, body").stop().animate({
+					scrollTop: $("#informacoes-gerais").offset().top - 88
+				}, 400, "swing");
 			})
 		},
 		removeBuyButtonAlert: function () {
