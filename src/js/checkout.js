@@ -438,5 +438,6 @@ function finishAnimation() {
     $('.cart-template-holder').css('opacity', 1);
 }
 
-
-
+function recuperarCrossSelling() {
+    let itensCrossSelling = JSON.parse(localStorage.getItem('CrossSelling'));
+}
