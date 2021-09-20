@@ -170,6 +170,8 @@ const generalPolicies = [
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
 ];
 
+const itensCrossSelling = JSON.parse(localStorage.getItem('CrossSelling'));
+
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
@@ -436,8 +438,4 @@ function startAnimation() {
 function finishAnimation() {
     $('.summary-template-holder').css('opacity', 1);
     $('.cart-template-holder').css('opacity', 1);
-}
-
-function recuperarCrossSelling() {
-    let itensCrossSelling = JSON.parse(localStorage.getItem('CrossSelling'));
 }
