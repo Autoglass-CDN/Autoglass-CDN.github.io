@@ -453,13 +453,13 @@ function CrossSelling() {
         .then(json => {
             json.forEach(b => {
                 itensCrossSelling.push(b);
-                
-                if(itensCrossSelling.length !== 0){
-                    itensCrossSelling.forEach(e => {
-                        $("#imagensCorssSelling").append("<img src=" + e.items[0].images[0].imageUrl +">");
-                    });
-                }
-            });    
+            });   
+             
+            if(itensCrossSelling.length !== 0){
+                itensCrossSelling.forEach(e => {
+                    $("#imagensCorssSelling").append("<img src=" + e.items[0].images[0].imageUrl +">");
+                });
+            }
         });
     });
 }
