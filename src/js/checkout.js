@@ -171,6 +171,7 @@ const generalPolicies = [
 ];
 
 const itensCrossSelling = JSON.parse(localStorage.getItem('CrossSelling'));
+nameteste();
 
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
@@ -438,4 +439,12 @@ function startAnimation() {
 function finishAnimation() {
     $('.summary-template-holder').css('opacity', 1);
     $('.cart-template-holder').css('opacity', 1);
+}
+
+function nameteste(itensCrossSelling) {
+    if(itensCrossSelling !== null) {
+        itensCrossSelling.forEach(element => {
+            $("#imagensCorssSelling").append("<img src=" + element.items[0].imagems[0].imageUrl +">");
+        });
+    }
 }
