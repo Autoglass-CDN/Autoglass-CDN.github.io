@@ -170,9 +170,6 @@ const generalPolicies = [
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
 ];
 
-const itensCrossSelling = JSON.parse(localStorage.getItem('CrossSelling'));
-nameteste(itensCrossSelling);
-
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
@@ -441,10 +438,26 @@ function finishAnimation() {
     $('.cart-template-holder').css('opacity', 1);
 }
 
-function nameteste(itensCrossSelling) {
-    if(itensCrossSelling !== null) {
-        itensCrossSelling.forEach(element => {
-            $("#imagensCorssSelling").append("<img src=" + element.items[0].images[0].imageUrl +">");
-        });
-    }
+/*--------*/
+
+function CrossSelling() {
+    const sessao = JSON.parse(localStorage.getItem('impulse_session'));
+    const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/';
+    const itensCrossSelling = [];
+    
+    sessao.cartItems.forEach(e => {
+        fetch(uriCrossSelling + e.pid)
+        .then(
+            response => response.json()
+        ).then(
+            json => itensCrossSelling.push(JSON.stringify(json))
+        );
+    });
+    console.log(itensCrossSelling);
+    
+    // if(itensCrossSelling !== null) {
+    //     itensCrossSelling.forEach(element => {
+    //         $("#imagensCorssSelling").append("<img src=" + element.items[0].images[0].imageUrl +">");
+    //     });
+    // }
 }
