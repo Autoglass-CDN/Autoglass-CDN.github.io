@@ -456,7 +456,7 @@ function CrossSelling() {
                 
                 if(itensCrossSelling.length !== 0){
                     itensCrossSelling.forEach(e => {
-                        $("#imagensCorssSelling").append("<img src=" + element.items[0].images[0].imageUrl +">");
+                        $("#imagensCorssSelling").append("<img src=" + e.items[0].images[0].imageUrl +">");
                     });
                 }
             });    
