@@ -171,7 +171,7 @@ const generalPolicies = [
 ];
 
 const itensCrossSelling = JSON.parse(localStorage.getItem('CrossSelling'));
-nameteste();
+nameteste(itensCrossSelling);
 
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
