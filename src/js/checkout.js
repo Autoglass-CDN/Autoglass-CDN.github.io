@@ -447,13 +447,14 @@ function CrossSelling() {
     const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/';
     const itensCrossSelling = [];
     
-    sessao.cartItems.forEach(e => {
-        fetch(uriCrossSelling + e.pid)
-        .then(
-            response => response.json()
-        ).then(
-            json => itensCrossSelling.push(json)
-        );
+    sessao.cartItems.forEach(a => {
+        fetch(uriCrossSelling + a.pid)
+        .then(response => response.json())
+        .then(json => {
+            json.forEach(b => {
+                itensCrossSelling.push(b);
+            });    
+        });
     });
     console.log(itensCrossSelling);
 
