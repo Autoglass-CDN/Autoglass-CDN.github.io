@@ -445,7 +445,7 @@ function finishAnimation() {
 function CrossSelling() {
     const sessao = JSON.parse(localStorage.getItem('impulse_session'));
     const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/';
-    const itensCrossSelling = [];
+    let itensCrossSelling = [];
     
     sessao.cartItems.forEach(a => {
         fetch(uriCrossSelling + a.pid)
@@ -459,8 +459,8 @@ function CrossSelling() {
                 itensCrossSelling.forEach(e => {
                     $("#imagensCorssSelling").append("<img src=" + e.items[0].images[0].imageUrl +">");
                 });
-                itensCrossSelling = [];
             }
+            itensCrossSelling = [];
         });
     });
 }
