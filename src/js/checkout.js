@@ -456,11 +456,10 @@ function CrossSelling() {
             });    
         });
     });
-    console.log(itensCrossSelling);
 
-    // if(itensCrossSelling !== null) {
-    //     itensCrossSelling.forEach(element => {
-    //         $("#imagensCorssSelling").append("<img src=" + element.items[0].images[0].imageUrl +">");
-    //     });
-    // }
+    if(itensCrossSelling.length !== 0){
+        itensCrossSelling.forEach(e => {
+            $("#imagensCorssSelling").append("<img src=" + element.items[0].images[0].imageUrl +">");
+        });
+    }
 }
