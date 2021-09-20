@@ -170,6 +170,8 @@ const generalPolicies = [
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
 ];
 
+CrossSelling()
+
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
@@ -450,11 +452,11 @@ function CrossSelling() {
         .then(
             response => response.json()
         ).then(
-            json => itensCrossSelling.push(JSON.stringify(json))
+            json => itensCrossSelling.push(json)
         );
     });
     console.log(itensCrossSelling);
-    
+
     // if(itensCrossSelling !== null) {
     //     itensCrossSelling.forEach(element => {
     //         $("#imagensCorssSelling").append("<img src=" + element.items[0].images[0].imageUrl +">");
