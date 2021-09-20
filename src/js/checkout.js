@@ -444,7 +444,7 @@ function finishAnimation() {
 function nameteste(itensCrossSelling) {
     if(itensCrossSelling !== null) {
         itensCrossSelling.forEach(element => {
-            $("#imagensCorssSelling").append("<img src=" + element.items[0].imagems[0].imageUrl +">");
+            $("#imagensCorssSelling").append("<img src=" + element.items[0].images[0].imageUrl +">");
         });
     }
 }
