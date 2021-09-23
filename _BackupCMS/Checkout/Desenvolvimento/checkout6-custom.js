@@ -91,7 +91,7 @@ $(window).on('load', () => {
                 if ($(".srp-toggle__pickup").length !== 0) {
                     const seletedChannel = Service.getSelectedChannel();
                     if (seletedChannel) {
-                        View.changeChannel(seletedChannel);
+                        localStorage.removeItem(CONFIG.STORAGE.CHANNEL);
                     }
 
                     if (orderForm) {
