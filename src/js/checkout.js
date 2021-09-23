@@ -457,7 +457,7 @@ function CrossSelling() {
 
             if(itensCrossSelling.length !== 0){
                 itensCrossSelling.forEach(e => {
-                    $("#imagensCorssSelling").append("<img src=" + e.items[0].images[0].imageUrl +">");
+                    $("#imagensCorssSelling").append("<div><img src=" + e.items[0].images[0].imageUrl +"></div>");
                 });
             }
             itensCrossSelling = [];
@@ -471,8 +471,8 @@ $('.responsive').slick({
       nextArrow: $('.next'),
     infinite: false,
     speed: 300,
-    slidesToShow: 4,
-    slidesToScroll: 4,
+    slidesToShow: 3,
+    slidesToScroll: 3,
     responsive: [
       {
         breakpoint: 1024,
