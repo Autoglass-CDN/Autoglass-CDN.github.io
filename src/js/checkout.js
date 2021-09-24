@@ -466,8 +466,12 @@ function CrossSelling() {
     
     $('.carousel').slick({
         dots: true,
+        prevArrow: $('.prev'),
+        nextArrow: $('.next'),
         infinite: true,
         slidesToShow: 4,
-        slidesToScroll: 4
+        slidesToScroll: 4,
+        autoplay: true,  
+        autoplaySpeed: 5000,
     });
 }
