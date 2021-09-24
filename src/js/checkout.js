@@ -463,16 +463,17 @@ function CrossSelling() {
 
             itensCrossSelling = [];
 
-            $('.carousel').slick({
-                dots: true,
-                prevArrow: $('.prev'),
-                nextArrow: $('.next'),
-                infinite: true,
-                slidesToShow: 3,
-                slidesToScroll: 3,
-                autoplay: true,  
-                autoplaySpeed: 5000,
-            });
+        });
+        
+        $('.carousel').slick({
+            dots: true,
+            prevArrow: $('.prev'),
+            nextArrow: $('.next'),
+            infinite: true,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            autoplay: true,  
+            autoplaySpeed: 5000,
         });
     });
 }
