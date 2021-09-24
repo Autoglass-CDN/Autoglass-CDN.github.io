@@ -170,7 +170,7 @@ const generalPolicies = [
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
 ];
 
-CrossSelling()
+CrossSelling();
 
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
@@ -460,18 +460,19 @@ function CrossSelling() {
                     $(".carousel").append("<div><img src="+ e.items[0].images[0].imageUrl +"></div>");
                 });
             }
+
             itensCrossSelling = [];
+
+            $('.carousel').slick({
+                dots: true,
+                prevArrow: $('.prev'),
+                nextArrow: $('.next'),
+                infinite: true,
+                slidesToShow: 3,
+                slidesToScroll: 3,
+                autoplay: true,  
+                autoplaySpeed: 5000,
+            });
         });
-    });
-    
-    $('.carousel').slick({
-        dots: true,
-        prevArrow: $('.prev'),
-        nextArrow: $('.next'),
-        infinite: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        autoplay: true,  
-        autoplaySpeed: 5000,
     });
 }
