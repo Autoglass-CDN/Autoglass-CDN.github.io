@@ -213,7 +213,7 @@ $(window).on('load', () => {
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
-            await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
+            await loadScript('https://autoglass-cdn.github.io/arquivos/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/hml/consulta-agendamento.js');
 
