@@ -87,7 +87,7 @@ $(window).on('load', () => {
                 if ($(".srp-toggle__pickup").length !== 0) {
                     const seletedChannel = Service.getSelectedChannel();
                     if (seletedChannel) {
-                        View.changeChannel(seletedChannel);
+                        localStorage.removeItem(CONFIG.STORAGE.CHANNEL);
                     }
 
                     if (orderForm) {
@@ -256,7 +256,6 @@ $(window).on('load', () => {
             _init,
             formatItemList,
             addInstallTexts,
-            changeChannel,
             createCepInfo
         }
 
@@ -336,18 +335,6 @@ $(window).on('load', () => {
                 $('body').addClass('hasInstall');
                 _buildDeliveryInfo(orderForm);
             }, 500);
-        }
-
-        function changeChannel(type) {
-            setTimeout(() => {
-                if (type === 'delivery') {
-                    $('.srp-toggle__delivery').click();
-                } else {
-                    $('.srp-toggle__pickup').click();
-                }
-
-                localStorage.removeItem(CONFIG.STORAGE.CHANNEL);
-            }, 500)
         }
 
         async function _implementsInstallButtom(item, accessory) {
