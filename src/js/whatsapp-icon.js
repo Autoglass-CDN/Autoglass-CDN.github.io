@@ -12,7 +12,7 @@
         
         ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaTracker');
         ga('gaTracker.set', 'transport', 'beacon');
-        ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', 'Whats +55 27 99826-0207');
+        ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', 'Rodapé +55 27 99826-0207');
 
     });
     
