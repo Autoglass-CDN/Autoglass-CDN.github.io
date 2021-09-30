@@ -170,7 +170,7 @@ const generalPolicies = [
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
 ];
 
-CrossSelling();
+ObterItensCrossSelling();
 
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
@@ -442,38 +442,56 @@ function finishAnimation() {
 
 /*--------*/
 
-function CrossSelling() {
+function ObterItensCrossSelling() {
     const sessao = JSON.parse(localStorage.getItem('impulse_session'));
     const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/';
     let itensCrossSelling = [];
-    
+    let urls = [];
+
     sessao.cartItems.forEach(a => {
-        fetch(uriCrossSelling + a.pid)
-        .then(response => response.json())
-        .then(json => {
-            json.forEach(b => {
-                itensCrossSelling.push(b);
-            });   
+        urls.push(uriCrossSelling + a.pid)
+    });
 
-            if(itensCrossSelling.length !== 0){
-                itensCrossSelling.forEach(e => {
-                    $(".carousel").append("<div><img src="+ e.items[0].images[0].imageUrl +"></div>");
+    Promise.all(urls.map(url =>
+        fetch(url)
+            .then(response => response.json())
+            .then(json => {
+                json.forEach(b =>{
+                    itensCrossSelling.push(b);
                 });
-            }
+        }))
+    ).then(() => {
+        AdicionarItensCrossSeling(itensCrossSelling);
+    });
+}
 
-            itensCrossSelling = [];
-
+function AdicionarItensCrossSeling(itensCrossSelling) {
+    if(itensCrossSelling.length !== 0){
+        itensCrossSelling.forEach(e => {
+                $(".splide__list").append(
+                    "<li class=splide__slide>" + 
+                        "<div class=splide__slide__container>" +
+                            "<a href=" + e.link +">" +
+                                "<img src="+ e.items[0].images[0].imageUrl +">" +
+                            "</a>" +
+                            "<h4>"+ e.items[0].name +"</h4>" +
+                            "<div>" +
+                                "<a href=" + e.items[0].sellers[0].addToCartLink + " class=addCart>Adicionar ao carrinho</a>" +
+                            "</div>" +
+                        "</div>" +
+                    "</li>"
+                );
         });
         
-        $('.carousel').slick({
-            dots: true,
-            prevArrow: $('.prev'),
-            nextArrow: $('.next'),
-            infinite: true,
-            slidesToShow: 3,
-            slidesToScroll: 3,
-            autoplay: true,  
-            autoplaySpeed: 5000,
-        });
-    });
+        new Splide( '#image-slider', {
+            type: 'loop',
+            perPage: 3,
+            //width: '100%',
+            breakpoints: {
+                600: {
+                    perPage: 1,
+                }
+            }
+        }).mount();
+    }
 }
