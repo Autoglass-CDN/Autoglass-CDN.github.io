@@ -468,25 +468,27 @@ function ObterItensCrossSelling() {
 function AdicionarItensCrossSeling(itensCrossSelling) {
     if(itensCrossSelling.length !== 0){
         itensCrossSelling.forEach(e => {
-                $(".splide__list").append(
-                    "<li class=splide__slide>" + 
-                        "<div class=splide__slide__container>" +
-                            "<a href=" + e.link +">" +
-                                "<img src="+ e.items[0].images[0].imageUrl +">" +
-                            "</a>" +
-                            "<h4>"+ e.items[0].name +"</h4>" +
-                            "<div>" +
-                                "<a href=" + e.items[0].sellers[0].addToCartLink + " class=addCart>Adicionar ao carrinho</a>" +
-                            "</div>" +
+            const urlBase = "https://autoglass.vteximg.com.br"  
+            let urlImagem = e.items[0].images[0].imageTag.allReplace({'~':urlBase, '#width#':'500','#height#':'500'});
+            
+            $(".splide__list").append(
+                "<li class=splide__slide>" + 
+                    "<div class=splide__slide__container>" +
+                        "<a href=" + e.link +">" +
+                            urlImagem +
+                        "</a>" +
+                        "<h4 style=height:40px;>"+ e.items[0].name +"</h4>" +
+                        "<div>" +
+                            "<a href=" + e.items[0].sellers[0].addToCartLink + " class=addCart>Adicionar ao carrinho</a>" +
                         "</div>" +
-                    "</li>"
-                );
+                    "</div>" +
+                "</li>"
+            );
         });
-        
+
         new Splide( '#image-slider', {
             type: 'loop',
             perPage: 3,
-            //width: '100%',
             breakpoints: {
                 600: {
                     perPage: 1,
@@ -495,3 +497,12 @@ function AdicionarItensCrossSeling(itensCrossSelling) {
         }).mount();
     }
 }
+
+/*função para substituir multiplas strings*/
+String.prototype.allReplace = function(obj) {
+    var retStr = this;
+    for (var x in obj) {
+        retStr = retStr.replace(new RegExp(x, 'g'), obj[x]);
+    }
+    return retStr;
+};
