@@ -55,7 +55,7 @@ $(window).on('load', () => {
 
     View._init();
 
-  	
+
     Controller._init();
     Controller.loadScripts();
     
@@ -70,11 +70,13 @@ $(window).on('load', () => {
             $(window).on(CONFIG.EVENTS.HASH_CHANGE, _watchHashChange);
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
+            
+            _createInstallButtonObserver();
 
             View.formatItemList(orderForm);
 
             _removePaymentPickupIfIsDelivery(orderForm);
-  
+
             ga('create', CONFIG.GA.ID, CONFIG.GA.URL);
 
             $(window).on(
@@ -83,6 +85,31 @@ $(window).on('load', () => {
             )
 
         }
+                                           
+                                           
+        function _createInstallButtonObserver() {
+            const itemsObserver = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if(mutation.removedNodes[0] instanceof HTMLElement) {
+                        if (!!mutation.removedNodes[0]?.querySelector('.product-name')?.querySelector('.btn-add-instalacao')) {
+                            console.log('Removeu o elemento do item, recriar o observer')
+                            const orderForm = vtexjs.checkout.orderForm;
+                            View.formatItemList(orderForm);
+                        }
+                    }
+                })
+            });
+            
+            const tabelCartItemsObserver = document.querySelectorAll(".table.cart-items");
+            
+            tabelCartItemsObserver.forEach((element) => {
+                itemsObserver.observe(element, {
+                    subtree: true,
+                    childList: true,
+                });
+            });
+        }
+
 
         function _watchHashChangeAndOrderForm(_, orderForm) {
             orderForm && Service.sendGAEvent(orderForm);
@@ -218,6 +245,8 @@ $(window).on('load', () => {
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
+            await loadScript('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js');
+            await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
           	await loadScript('https://autoglass-cdn.github.io/src/js/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
@@ -225,7 +254,7 @@ $(window).on('load', () => {
           	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
           	
           	
-            loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
+            loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');     
         }
 
         function loadScript(src, callback) {
@@ -359,7 +388,7 @@ $(window).on('load', () => {
                 bestPrice === 0
             );
 
-            if ($(`[data-sku='${item.id}'] .product-name .btn-add-instalacao`)
+            if ($(`[data-sku='${item.id}'].product-item .product-name .btn-add-instalacao`)
                 .length === 0) {
                 $(`[data-sku='${item.id}'] .product-name`).append(btnInstall);
             }
