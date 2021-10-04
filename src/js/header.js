@@ -231,7 +231,7 @@ function persistSalesChannel(Uf) {
     let vtexsc = readCookie('VTEXSC');
     const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
     
-    if (estado.Sc !== policyOnSite) {
+    if (estado.Sc !== policyOnSite || !readCookie('myuf')) {
         salvarUf(estado);
     } else {
         $("#thestate").text(`${estado.Nome}`);
