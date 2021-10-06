@@ -67,6 +67,8 @@ $(window).on('load', () => {
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
 
+            _createInstallButtonObserver();
+
             View.formatItemList(orderForm);
 
             _removePaymentPickupIfIsDelivery(orderForm);
@@ -79,6 +81,30 @@ $(window).on('load', () => {
             )
 
         }
+
+        function _createInstallButtonObserver() {
+            const instalationSku = '10748';
+            const itemsObserver = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if(mutation.removedNodes[0] instanceof HTMLElement) {
+                        if (!!mutation.removedNodes[0].querySelector('.product-name')?.querySelector('.btn-add-instalacao') || (mutation.removedNodes[0].dataset.sku == instalationSku)) {
+                            const orderForm = vtexjs.checkout.orderForm;
+                            View.formatItemList(orderForm);
+                        }
+                    }
+                })
+            });
+            
+            const tabelCartItemsObserver = document.querySelectorAll(".table.cart-items");
+            
+            tabelCartItemsObserver.forEach((element) => {
+                itemsObserver.observe(element, {
+                    subtree: true,
+                    childList: true,
+                });
+            });
+        }
+
 
         function _watchHashChangeAndOrderForm(_, orderForm) {
             orderForm && Service.sendGAEvent(orderForm);
@@ -351,7 +377,7 @@ $(window).on('load', () => {
                 bestPrice === 0
             );
 
-            if ($(`[data-sku='${item.id}'] .product-name .btn-add-instalacao`)
+            if ($(`[data-sku='${item.id}'].product-item .product-name .btn-add-instalacao`)
                 .length === 0) {
                 $(`[data-sku='${item.id}'] .product-name`).append(btnInstall);
             }
