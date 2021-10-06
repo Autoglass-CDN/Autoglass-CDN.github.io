@@ -88,11 +88,11 @@ $(window).on('load', () => {
                                            
                                            
         function _createInstallButtonObserver() {
+            const instalationSku = '10748';
             const itemsObserver = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
                     if(mutation.removedNodes[0] instanceof HTMLElement) {
-                        if (!!mutation.removedNodes[0]?.querySelector('.product-name')?.querySelector('.btn-add-instalacao')) {
-                            console.log('Removeu o elemento do item, recriar o observer')
+                        if (!!mutation.removedNodes[0].querySelector('.product-name')?.querySelector('.btn-add-instalacao') || (mutation.removedNodes[0].dataset.sku == instalationSku)) {
                             const orderForm = vtexjs.checkout.orderForm;
                             View.formatItemList(orderForm);
                         }
