@@ -55,10 +55,8 @@ $(window).on('load', () => {
 
     View._init();
 
-
     Controller._init();
     Controller.loadScripts();
-    
 
     function ControllerAPI() {
         return {
@@ -85,8 +83,7 @@ $(window).on('load', () => {
             )
 
         }
-                                           
-                                           
+
         function _createInstallButtonObserver() {
             const instalationSku = '10748';
             const itemsObserver = new MutationObserver(function (mutations) {
@@ -169,7 +166,6 @@ $(window).on('load', () => {
              	title.html('<i class="icon-home"></i> Receber ou Retirar');
             }
 			
-
             View.createCepInfo(orderForm, hasInstall);
         }
 
@@ -253,7 +249,6 @@ $(window).on('load', () => {
 
           	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
           	
-          	
             loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');     
         }
 
@@ -284,8 +279,6 @@ $(window).on('load', () => {
                 document.getElementsByTagName("head")[0].appendChild(script);
             });
         }
-        
-        
     }
 
     function ViewAPI() {
