@@ -1,0 +1,1198 @@
+<!-- dev-header -->
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/topo.css" />
+<!--<link href="/arquivos/locationFetcher.css" rel="stylesheet" type="text/css" />-->
+
+<script>
+    console.log('ESTAMOS EM AMBIENTE DE HOMOLOGAÇÃO');
+</script>
+
+<script src="https://autoglass-cdn.github.io/src/js/header.js"></script>
+
+<!--TESTE!-->
+<!--<script src="https://cdn.jsdelivr.net/gh/Autoglass-CDN/Autoglass-CDN.github.io@B2C-TestBranch/src/js/header.js"></script>-->
+
+<div class="topo">
+    <div class="container">
+        <div class="geo-picker">
+            <i class="map-marker-icon"></i>
+            <span class="header-qd-v1-valid-prices-local">
+                Preços válidos para <b id="thestate">...</b>.
+            </span>
+            <button type="button" data-toggle="modal" data-target="#header-qd-v1-location-modal"
+                id="btn-alterar-open-modal">Alterar</button>
+        </div>
+        <div class="links" style="display: flex;">
+            <a class="desktop" href="/rede-de-lojas/" target="_blank" style="display: none; width: 85px;">Nossas
+                Lojas</a>
+            <a href="/blog" style="display: inline-flex;">Blog</a>
+        </div>
+        <div class="usuario desktop" style="margin-left: 20px !important;">
+            <div class="user-avatar-icon"></div>
+            <span id="login"><b>Entrar ou Cadastrar</b> <i class="arrow-down-icon-white"></i></span>
+            <div style="display:none">
+                <vtex.cmc:welcomeMessage />
+            </div>
+        </div>
+    </div>
+</div>
+<header class="nav">
+    <!-- Desktop -->
+    <div class="container desktop">
+        <a href="/"><img src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass"
+                class="logo" /></a>
+        <div class="menu-categorias">
+            <span class="menu-categorias__titulo">Compre por Categoria <i class="arrow-down-icon"></i></span>
+
+            <ul class="painel-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+                <div class="slider-handlers">
+                    <button id="prev-btn">
+                        <i></i>
+                    </button>
+                    <button id="next-btn">
+                        <i></i>
+                    </button>
+                </div>
+                <li class="painel-categorias__menu">
+                    <ul>
+                        <li class="painel-categorias__categoria ativo">
+                            <div class="painel-categorias__categoria-header ativo">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-vidros.png" alt="Vidros"
+                                    class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/vidros" title="Vidro" itemprop="url">Vidros</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="painel-categorias__categoria">
+                            <div class="painel-categorias__categoria-header">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-farois.png"
+                                    alt="Faróis, Lanterna e Lâmpadas" class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/farois-lanternas-e-lampadas" title="Faróis, Lanterna e Lâmpadas">Faróis,
+                                        Lanterna e Lâmpadas</a>
+                                </h3>
+                            </div>
+
+                        </li>
+                        <li class="painel-categorias__categoria">
+                            <div class="painel-categorias__categoria-header">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-parachoques.png"
+                                    alt="Parachoques, Grades e Molduras" class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/para-choques-grades-e-molduras" title="Parachoques, Grades e Molduras"
+                                        itemprop="url">Parachoques, Grades e Molduras</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="painel-categorias__categoria">
+                            <div class="painel-categorias__categoria-header">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-retrovisores.png"
+                                    alt="Retrovisores internos e externos"
+                                    class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/retrovisores-internos-e-externos" title="Retrovisores internos e externos"
+                                        itemprop="url">Retrovisores internos e externos</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="painel-categorias__categoria">
+                            <div class="painel-categorias__categoria-header">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-suspensoes.png"
+                                    alt="Suspensão" class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/suspensao/#1" title="Suspensão" itemprop="url">Suspensão</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="painel-categorias__categoria">
+                            <div class="painel-categorias__categoria-header">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-radiadores.png"
+                                    alt="Radiadores e Condensadores" class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/radiadores-e-condensadores" title="Radiadores e Condensadores"
+                                        itemprop="url">Radiadores e Condensadores</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="painel-categorias__categoria">
+                            <div class="painel-categorias__categoria-header">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-filtros-2.jpg"
+                                    alt="Higienizadores e Filtros" class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/higienizadores-e-filtros" title="Higienizadores e Filtros"
+                                        itemprop="url">Higienizadores e Filtros</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="painel-categorias__categoria">
+                            <div class="painel-categorias__categoria-header">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-latarias.png"
+                                    alt="Paralama e Capô" class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/latarias" title="Latarias" itemprop="url">Paralama e Capô</a>
+                                </h3>
+                            </div>
+                        </li>
+                        <li class="painel-categorias__categoria">
+                            <div class="painel-categorias__categoria-header">
+                                <img src="https://autoglass-cdn.github.io/src/img/categoria-borrachas.png"
+                                    alt="Palhetas e Borrachas" class="painel-categorias__categoria-imagem" />
+                                <h3>
+                                    <a href="/borrachas-e-outros" title="Palhetas e Borrachas" itemprop="url">Palhetas e
+                                        Borrachas</a>
+                                </h3>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <div class="arrow"></div>
+                <li class="painel-categorias__categoria-conteudo">
+                    <hr class="painel-categorias__categoria-divisor" />
+                    <div id="vidros" class="painel-categorias__categoria-itens ativo">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/vidros" title="Vidros" itemprop="url">
+                                    Vidros
+                                </a>
+                                <ul>
+                                    <li><a id="parabrisa" href="/vidros/vidros/parabrisa" title="Parabrisa I"
+                                            itemprop="url">Parabrisa</a>
+                                    </li>
+                                    <li><a id="cantoneira" href="/vidros/vidros/cantoneira" title="Cantoneira"
+                                            itemprop="url">Cantoneira</a></li>
+                                    <li><a id="janela" href="/vidros/vidros/janela" title="Janela"
+                                            itemprop="url">Janela</a></li>
+                                    <li><a id="quebra-vento" href="/vidros/vidros/quebra-vento" title="Quebra-Vento"
+                                            itemprop="url">Quebra-Vento</a>
+                                    </li>
+                                    <li><a id="vidro-de-porta" href="/vidros/vidros/vidro-de-porta"
+                                            title="Vidro de Porta" itemprop="url">Vidro de
+                                            Porta</a></li>
+                                    <li><a id="vigia" href="/vidros/vidros/vigia" title="Vigia" itemprop="url">Vidro
+                                            Traseiro
+                                            (Vigia)</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="farois-lanternas-lampadas" class="painel-categorias__categoria-itens">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/farois-lanternas-e-lampadas/farois/" title="Faróis" itemprop="url">
+                                    Faróis
+                                </a>
+
+                                <ul>
+                                    <li><a id="aro-farol-auxiliar"
+                                            href="/farois-lanternas-e-lampadas/farois/aro-farol-auxiliar"
+                                            title="Aro Farol Auxiliar" itemprop="url">Aro Farol Auxiliar</a></li>
+                                    <li><a id="farol-auxiliar"
+                                            href="/farois-lanternas-e-lampadas/farois/farol-auxiliar#1"
+                                            title="Farol Auxiliar" itemprop="url">Farol Auxiliar</a></li>
+                                    <li><a id="farol-diurno" href="/farois-lanternas-e-lampadas/farois/farol-diurno#1"
+                                            title="Farol Diurno" itemprop="url">Farol Diurno</a>
+                                    </li>
+                                    <li><a id="farol-principal"
+                                            href="/farois-lanternas-e-lampadas/farois/farol-principal/#1"
+                                            title="Farol Principal" itemprop="url">Farol Principal</a></li>
+                                    <li><a id="moldura-farol-auxiliar"
+                                            href="/farois-lanternas-e-lampadas/farois/moldura-farol-auxiliar"
+                                            title="Moldura Farol Auxiliar" itemprop="url">Moldura Farol Auxiliar</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/farois-lanternas-e-lampadas/lampadas/" title="Lâmpadas" itemprop="url">
+                                    Lâmpadas
+                                </a>
+
+                                <ul>
+                                    <li>
+                                        <a id="lampada-lanterna"
+                                            href="/farois-lanternas-e-lampadas/lampadas/lampada-lanterna"
+                                            title="Lâmpada Lanterna" itemprop="url">
+                                            Lâmpada Lanterna
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="lampada-lanterna-traseira"
+                                            href="/farois-lanternas-e-lampadas/lampadas/lampada-lanterna-traseira"
+                                            title="Lâmpada Lanterna Traseira" itemprop="url">
+                                            Lâmpada Lanterna Traseira
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="lampada-painel"
+                                            href="/farois-lanternas-e-lampadas/lampadas/lampada-painel"
+                                            title="Lâmpada Painel" itemprop="url">
+                                            Lâmpada Painel
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/farois-lanternas-e-lampadas/lanternas/" title="Lanternas" itemprop="url">
+                                    Lanternas
+                                </a>
+
+                                <ul>
+                                    <li>
+                                        <a id="lanterna" href="/farois-lanternas-e-lampadas/lanternas/lanterna"
+                                            title="Lanterna" itemprop="url">
+                                            Lanterna
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="lanterna-para-choque"
+                                            href="/farois-lanternas-e-lampadas/lanternas/lanterna-para-choque#1"
+                                            title="Lanterna Para-Choque" itemprop="url">
+                                            Lanterna Para-Choque
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="para-choques-grades-molduras" class="painel-categorias__categoria-itens">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/para-choques-grades-e-molduras/para-choque/#1" title="Para-choque"
+                                    itemprop="url">
+                                    Para-choques
+                                </a>
+                                <ul>
+                                    <li><a id="grade-para-choque"
+                                            href="/para-choques-grades-e-molduras/para-choque/grade-do-para-choque"
+                                            title="Grade do Para-choque" itemprop="url">
+                                            Grade do Para-choque
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="moldura-paralama"
+                                            href="/para-choques-grades-e-molduras/para-choque/moldura-paralama"
+                                            title="Moldura Paralama" itemprop="url">
+                                            Moldura Paralama
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="para-choque-dianteiro"
+                                            href="/para-choques-grades-e-molduras/para-choque/para-choque-dianteiro"
+                                            title="Para-choque Dianteiro" itemprop="url">
+                                            Para-choque Dianteiro
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a id="para-choque-traseiro"
+                                            href="/para-choques-grades-e-molduras/para-choque/para-choque-traseiro"
+                                            title="Para-choque Traseiro" itemprop="url">
+                                            Para-choque Traseiro
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="retrovisores" class="painel-categorias__categoria-itens">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/retrovisores-internos-e-externos" title="Retrovisores internos e externos"
+                                    itemprop="url">Retrovisores internos e externos</a>
+
+                                <ul>
+                                    <li><a id="retrovisor" href="/retrovisores-internos-e-externos/retrovisores/#1"
+                                            title="Retrovisores" itemprop="url">Retrovisores</a></li>
+                                    <li><a id="capa-retrovisor"
+                                            href="/retrovisores-internos-e-externos/retrovisores/capa-de-retrovisores/"
+                                            title="Capa de Retrovisores" itemprop="url">Capa de Retrovisores</a></li>
+                                    <li><a id="retrovisor-externo"
+                                            href="/retrovisores-internos-e-externos/retrovisores/retrovisores-externo/"
+                                            title="Retrovisores Externo" itemprop="url">Retrovisor Externo</a></li>
+                                    <li><a id="retrovisor-interno"
+                                            href="/retrovisores-internos-e-externos/retrovisores/retrovisores-interno/"
+                                            title="Retrovisores Interno" itemprop="url">Retrovisor Interno</a></li>
+                                    <li><a id="lente-do-retrovisor"
+                                            href="/retrovisores-internos-e-externos/retrovisores/lente-do-retrovisor"
+                                            title="Lente do Retrovisor" itemprop="url">Lente do Retrovisor</a></li>
+                                    <li><a id="pisca-retrovisor"
+                                            href="/retrovisores-internos-e-externos/retrovisores/pisca-retrovisor/"
+                                            title="Pisca Retrovisor" itemprop="url">Pisca Retrovisor</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="suspensoes" class="painel-categorias__categoria-itens">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/suspensao/#1" title="Suspensão" itemprop="url">Suspensão</a>
+
+                                <ul>
+                                    <li><a id="amortecedor" href="/suspensao/amortecedor/#1" title="Amortecedores"
+                                            itemprop="url">Amortecedores</a>
+                                    </li>
+                                    <li><a id="amortecedor-suspensao"
+                                            href="/suspensao/amortecedor/amortecedor-suspensao#1"
+                                            title="Amortecedor Suspensão" itemprop="url">Amortecedor Suspensão</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="radiadores-condensadores" class="painel-categorias__categoria-itens">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/radiadores-e-condensadores/radiadores/radiador/" title="Radiadores"
+                                    itemprop="url">Radiadores</a>
+                                <ul>
+                                    <li><a id="aditivo-radiador"
+                                            href="/radiadores-e-condensadores/radiadores/aditivo-radiador"
+                                            title="Aditivo Radiador" itemprop="url">Aditivo
+                                            Radiador</a></li>
+                                    <li><a id="defletor-radiador"
+                                            href="/radiadores-e-condensadores/radiadores/defletor-radiador"
+                                            title="Defletor Radiador" itemprop="url">Defletor Radiador</a></li>
+                                    <li><a id="eletroventilador-radiador"
+                                            href="/radiadores-e-condensadores/radiadores/eletroventilador-radiador"
+                                            title="Eletroventilador Radiador" itemprop="url">Eletroventilador
+                                            Radiador</a></li>
+                                    <li><a id="gmv-radiador" href="/radiadores-e-condensadores/radiadores/gmv-radiador"
+                                            title="GMV Radiador" itemprop="url">GMV Radiador</a>
+                                    </li>
+                                    <li><a id="grade-do-radiador"
+                                            href="/radiadores-e-condensadores/radiadores/grade-do-radiador"
+                                            title="Grade do Radiador" itemprop="url">Grade
+                                            do Radiador</a></li>
+                                    <li><a id="moldura-grade-radiador"
+                                            href="/radiadores-e-condensadores/radiadores/moldura-grade-radiador"
+                                            title="Moldura Grade Radiador" itemprop="url">Moldura Grade Radiador</a>
+                                    </li>
+                                    <li><a id="radiador" href="/radiadores-e-condensadores/radiadores/radiador"
+                                            title="Radiador" itemprop="url">Radiador</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/radiadores-e-condensadores/condensadores" title="Condensadores"
+                                    itemprop="url">Condensadores</a>
+                                <ul>
+                                    <li><a id="condensador-ar-condicionado"
+                                            href="/radiadores-e-condensadores/condensadores/condensador-ar-condicionado"
+                                            title="Condensador Ar Condicionado" itemprop="url">Condensador Ar
+                                            Condicionado</a></li>
+                                    <li>
+                                        <a id="gmv-condensador"
+                                            href="/radiadores-e-condensadores/condensadores/gmv-condensador"
+                                            title="GMV Condensador" itemprop="url">
+                                            GMV Condensador
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="higienizadores-filtros" class="painel-categorias__categoria-itens">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/higienizadores-e-filtros/higienizadores/" title="Higienizadores"
+                                    itemprop="url">Higienizadores</a>
+                                <ul>
+                                    <li><a id="higienizador-ar-condicionado"
+                                            href="/higienizadores-e-filtros/higienizadores/higienizador-de-ar-condicionado"
+                                            title="Higienizador de ar-condicionado" itemprop="url">Higienizador de
+                                            ar-condicionado</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/higienizadores-e-filtros/filtros/" title="Filtros" itemprop="url">Filtros</a>
+                                <ul>
+
+                                    <li><a id="filtro-ar-condicionado"
+                                            href="/higienizadores-e-filtros/filtros/filtro-ar-condicionado"
+                                            title="Filtro Ar Condicionado" itemprop="url">Filtro Ar Condicionado</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="latarias" class="painel-categorias__categoria-itens">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/latarias" title="latarias" itemprop="url">
+                                    Paralama e Capô
+                                </a>
+                                <ul>
+                                    <li><a id="latarias-capo" href="/latarias/latarias/capo" title="Capô"
+                                            itemprop="url">Capô</a>
+                                    </li>
+                                    <li><a id="latarias-paralama" href="/latarias/latarias/paralama" title="Paralama"
+                                            itemprop="url">Paralama</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="borrachas-palhetas" class="painel-categorias__categoria-itens">
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/borrachas-e-outros/palhetas" title="Palhetas" itemprop="url">
+                                    Palhetas
+                                </a>
+                                <ul>
+                                    <li><a id="palheta-para-brisa"
+                                            href="/borrachas-e-outros/palhetas/palheta-para-brisa"
+                                            title="Palheta Para-brisa" itemprop="url">Palheta Para-brisa</a></li>
+                                    <li><a id="palheta-vigia" href="/borrachas-e-outros/palhetas/palheta-vigia"
+                                            title="Palheta Vigia" itemprop="url">Palheta Vigia</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li class="painel-categorias__categoria-itens-titulo">
+                                <a href="/borrachas-e-outros/borracha" title="Borrachas" itemprop="url">
+                                    Borrachas
+                                </a>
+                                <ul>
+                                    <li><a id="borracha-janela" href="/borrachas-e-outros/borracha/borracha-janela"
+                                            title="Borracha Janela" itemprop="url">Borracha Janela</a></li>
+                                    <li><a id="borracha-universal-parabrisa"
+                                            href="/borrachas-e-outros/borracha/borracha-universal-parabrisa"
+                                            title="Borracha Universal Parabrisa" itemprop="url">Borracha Universal
+                                            Parabrisa</a>
+                                    </li>
+                                    <li><a id="borracha-vigia" href="/borrachas-e-outros/borracha/borracha-vigia"
+                                            title="Borracha Janela" itemprop="url">Borracha Vigia</a></li>
+                                    <li><a id="borracha-parabrisa"
+                                            href="/borrachas-e-outros/borracha/borracha-parabrisa"
+                                            title="Borracha Parabrisa" itemprop="url">Borracha Parabrisa</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="search-box">
+            <vtex.cmc:fullTextSearchBox />
+            <i class="search-icon"></i>
+            <ul id="autocomplete-search">
+                <li><a class="no-capitalize">Pesquise por peça, produto, montadora...</a></li>
+            </ul>
+        </div>
+        <div class="menu-carrinho">
+            <i class="cart-icon"></i> Meu Carrinho
+            <div class="confirmacao">
+                <div class="item">
+                    <img src="" alt="Meu Carrinho" />
+                    <span class="titulo"></span>
+                </div>
+                <div class="mensagem">
+                    Produto adicionado ao carrinho com sucesso!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile -->
+    <div class="container mobile">
+        <button class="menu-btn" onclick="openNav()">
+            <i class="menu-icon"></i>
+            Menu
+        </button>
+        <div class="logo">
+            <a href="/">
+                <img src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" 
+                    class="logo" />
+            </a>
+        </div>
+        <div class="search-and-cart">
+            <div class="menu-carrinho"><i class="cart-icon"></i>
+                <div class="confirmacao">
+                    <div class="item">
+                        <img src="" alt="Meu Carrinho" /><span class="titulo"></span>
+                    </div>
+                    <div class="mensagem">
+                        Produto adicionado ao carrinho com sucesso!
+                    </div>
+                </div>
+            </div>
+            <div class="search-box"><i class="search-icon"></i></div>
+        </div>
+    </div>
+</header>
+
+<div id="side-menu" class="side-menu">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215;</a>
+    <div id="main-menu">
+        <div class="side-menu-header">
+            <a href="javascript:openCategorias()" class="destaque"><i class="categorias-icon"></i> Compre por
+                Categorias</a>
+            <hr />
+        </div>
+        <div class="side-menu-content">
+            <a href="#" style="display: none;">Nossas Lojas</a>
+            <a href="#" style="display: none;">Blog</a>
+        </div>
+        <div class="side-menu-footer usuario">
+            <hr />
+            <a id="login-mobile" href="#" class="destaque"><i class="user-icon"></i> Cadastrar ou Entrar</a>
+        </div>
+    </div>
+    <div id="category-menu">
+        <div class="side-menu-header">
+            <a href="javascript:closeCategorias()"><i class="arrow-icon"></i> Voltar ao Menu Principal</a>
+        </div>
+        <div class="side-menu-content">
+            <h2>Categorias</h2>
+            <ul class="side-menu-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+
+                <li class="side-menu-categorias__lista">
+                    <ul>
+                        <li class="side-menu-categorias__categoria ativo">
+                            <div class="side-menu-categorias__categoria-header">
+                                <a title="Vidro" onclick="toggleCategory(this)">
+                                    <img src="https://autoglass-cdn.github.io/src/img/categoria-vidros.png" alt="Vidros"
+                                        class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Vidros
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+                                <li>
+                                    <a href="/vidros/vidros/parabrisa" title="Parabrisa I" itemprop="url">Parabrisa</a>
+                                </li>
+                                <li>
+                                    <a href="/vidros/vidros/cantoneira" title="Cantoneira" itemprop="url">Cantoneira</a>
+                                </li>
+                                <li>
+                                    <a href="/vidros/vidros/janela" title="Janela" itemprop="url">Janela</a>
+                                </li>
+                                <li>
+                                    <a href="/vidros/vidros/quebra-vento" title="Quebra-Vento"
+                                        itemprop="url">Quebra-Vento</a>
+                                </li>
+                                <li>
+                                    <a href="/vidros/vidros/vidro-de-porta" title="Vidro de Porta" itemprop="url">Vidro
+                                        de
+                                        Porta</a>
+                                </li>
+                                <li>
+                                    <a href="/vidros/vidros/vigia" title="Vigia" itemprop="url">Vidro Traseiro
+                                        (Vigia)</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="side-menu-categorias__categoria">
+                            <div class="side-menu-categorias__categoria-header">
+                                <a title="Faróis, Lanterna e Lâmpadas" onclick="toggleCategory(this)">
+                                    <img src="https://autoglass-cdn.github.io/src/img/categoria-farois.png"
+                                        alt="Faróis, Lanterna e Lâmpadas"
+                                        class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Faróis, Lanterna e Lâmpadas
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+                                <li>
+                                    <ul>
+                                        <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                                href="/farois-lanternas-e-lampadas/farois/" title="Faróis"
+                                                itemprop="url">
+                                                Faróis
+                                            </a>
+                                            <ul class="side-menu-categorias__categoria-sub-itens">
+                                                <li><a id="aro-farol-auxiliar"
+                                                        href="/farois-lanternas-e-lampadas/farois/aro-farol-auxiliar"
+                                                        title="Aro Farol Auxiliar" itemprop="url">Aro Farol Auxiliar</a>
+                                                </li>
+                                                <li><a id="farol-auxiliar"
+                                                        href="/farois-lanternas-e-lampadas/farois/farol-auxiliar#1"
+                                                        title="Farol Auxiliar" itemprop="url">Farol Auxiliar</a></li>
+                                                <li><a id="farol-diurno"
+                                                        href="/farois-lanternas-e-lampadas/farois/farol-diurno#1"
+                                                        title="Farol Diurno" itemprop="url">Farol Diurno</a></li>
+                                                <li><a id="farol-principal"
+                                                        href="/farois-lanternas-e-lampadas/farois/farol-principal/#1"
+                                                        title="Farol Principal" itemprop="url">Farol Principal</a></li>
+                                                <li><a id="moldura-farol-auxiliar"
+                                                        href="/farois-lanternas-e-lampadas/farois/moldura-farol-auxiliar"
+                                                        title="Moldura Farol Auxiliar" itemprop="url">Moldura Farol
+                                                        Auxiliar</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                                href="/farois-lanternas-e-lampadas/lampadas/" title="Lâmpadas"
+                                                itemprop="url">
+                                                Lâmpadas
+                                            </a>
+                                            <ul class="side-menu-categorias__categoria-sub-itens">
+                                                <li><a id="lampada-lanterna"
+                                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-lanterna"
+                                                        title="Lâmpada Lanterna" itemprop="url">
+                                                        Lâmpada Farol
+                                                    </a></li>
+                                                <li><a id="lampada-lanterna-traseira"
+                                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-lanterna-traseira"
+                                                        title="Lâmpada Lanterna Traseira" itemprop="url">
+                                                        Lâmpada Lanterna Traseira
+                                                    </a></li>
+                                                <li><a id="lampada-painel"
+                                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-painel"
+                                                        title="Lâmpada Painel" itemprop="url">
+                                                        Lâmpada Painel
+                                                    </a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                                href="/farois-lanternas-e-lampadas/lanternas/" title="Lanternas"
+                                                itemprop="url">
+                                                Lanternas
+                                            </a>
+                                            <ul class="side-menu-categorias__categoria-sub-itens">
+                                                <li><a id="lanterna"
+                                                        href="/farois-lanternas-e-lampadas/lanternas/lanterna"
+                                                        title="Lanterna" itemprop="url">
+                                                        Lanterna
+                                                    </a></li>
+                                                <li><a id="lanterna-para-choque"
+                                                        href="/farois-lanternas-e-lampadas/lanternas/lanterna-para-choque#1"
+                                                        title="Lanterna Para-Choque" itemprop="url">
+                                                        Lanterna Para-Choque
+                                                    </a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="side-menu-categorias__categoria">
+                            <div class="side-menu-categorias__categoria-header">
+                                <a title="Parachoques, Grades e Molduras" itemprop="url" onclick="toggleCategory(this)">
+                                    <img src="https://autoglass-cdn.github.io/src/img/categoria-parachoques.png"
+                                        alt="Parachoques, Grades e Molduras"
+                                        class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Parachoques, Grades e Molduras
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+                                <li><a id="grade-para-choque"
+                                        href="/para-choques-grades-e-molduras/para-choque/grade-do-para-choque"
+                                        title="Grade do Para-choque" itemprop="url">
+                                        Grade do Para-choque
+                                    </a></li>
+                                <li><a id="moldura-paralama"
+                                        href="/para-choques-grades-e-molduras/para-choque/moldura-paralama"
+                                        title="Moldura Paralama" itemprop="url">
+                                        Moldura Paralama
+                                    </a></li>
+                                <li><a id="para-choque-dianteiro"
+                                        href="/para-choques-grades-e-molduras/para-choque/para-choque-dianteiro"
+                                        title="Para-choque Dianteiro" itemprop="url">
+                                        Para-choque Dianteiro
+                                    </a></li>
+                                <li><a id="para-choque-traseiro"
+                                        href="/para-choques-grades-e-molduras/para-choque/para-choque-traseiro"
+                                        title="Para-choque Traseiro" itemprop="url">
+                                        Para-choque Traseiro
+                                    </a></li>
+                            </ul>
+                        </li>
+                        <li class="side-menu-categorias__categoria">
+                            <div class="side-menu-categorias__categoria-header">
+                                <a title="Retrovisores internos e externos" itemprop="url"
+                                    onclick="toggleCategory(this)">
+                                    <img src="https://autoglass-cdn.github.io/src/img/categoria-retrovisores.png"
+                                        alt="Retrovisores internos e externos"
+                                        class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Retrovisores internos e externos
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+                                <li><a id="retrovisor" href="/retrovisores-internos-e-externos/retrovisores/#1"
+                                        title="Retrovisores" itemprop="url">Retrovisores</a></li>
+                                <li><a id="capa-retrovisor"
+                                        href="/retrovisores-internos-e-externos/retrovisores/capa-de-retrovisores/"
+                                        title="Capa de Retrovisores" itemprop="url">Capa de Retrovisores</a></li>
+                                <li><a id="retrovisor-externo"
+                                        href="/retrovisores-internos-e-externos/retrovisores/retrovisores-externo/"
+                                        title="Retrovisores Externo" itemprop="url">Retrovisor Externo</a></li>
+                                <li><a id="retrovisor-interno"
+                                        href="/retrovisores-internos-e-externos/retrovisores/retrovisores-interno/"
+                                        title="Retrovisores Interno" itemprop="url">Retrovisor Interno</a></li>
+                                <li><a id="lente-do-retrovisor"
+                                        href="/retrovisores-internos-e-externos/retrovisores/lente-do-retrovisor"
+                                        title="Lente do Retrovisor" itemprop="url">Lente do Retrovisor</a></li>
+                                <li><a id="pisca-retrovisor"
+                                        href="/retrovisores-internos-e-externos/retrovisores/pisca-retrovisor/"
+                                        title="Pisca Retrovisor" itemprop="url">Pisca Retrovisor</a></li>
+                            </ul>
+                        </li>
+                        <li class="side-menu-categorias__categoria">
+                            <div class="side-menu-categorias__categoria-header">
+                                <a title="Suspensão" itemprop="url" onclick="toggleCategory(this)">
+                                    <img src="https://autoglass-cdn.github.io/src/img/categoria-suspensoes.png"
+                                        alt="Suspensão" class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Suspensão
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+
+                                <li><a id="amortecedor" href="/suspensao/amortecedor/#1" title="Amortecedores"
+                                        itemprop="url">Amortecedores</a>
+                                </li>
+                                <li><a id="amortecedor-suspensao" href="/suspensao/amortecedor/amortecedor-suspensao#1"
+                                        title="Amortecedor Suspensão" itemprop="url">Amortecedor Suspensão</a></li>
+
+                            </ul>
+                        </li>
+                        <li class="side-menu-categorias__categoria">
+                            <div class="side-menu-categorias__categoria-header">
+                                <a title="Radiadores e Condensadores" itemprop="url" onclick="toggleCategory(this)">
+                                    <img src="https://autoglass-cdn.github.io/src/img/categoria-radiadores.png"
+                                        alt="Radiadores e Condensadores"
+                                        class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Radiadores e Condensadores
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+                                <li>
+                                    <ul>
+                                        <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                                href="/radiadores-e-condensadores/radiadores/radiador/"
+                                                title="Radiadores" itemprop="url">Radiadores</a>
+                                            <ul class="side-menu-categorias__categoria-sub-itens">
+                                                <li><a id="aditivo-radiador"
+                                                        href="/radiadores-e-condensadores/radiadores/aditivo-radiador"
+                                                        title="Aditivo Radiador" itemprop="url">Aditivo
+                                                        Radiador</a></li>
+                                                <li><a id="defletor-radiador"
+                                                        href="/radiadores-e-condensadores/radiadores/defletor-radiador"
+                                                        title="Defletor Radiador" itemprop="url">Defletor Radiador</a>
+                                                </li>
+                                                <li><a id="eletroventilador-radiador"
+                                                        href="/radiadores-e-condensadores/radiadores/eletroventilador-radiador"
+                                                        title="Eletroventilador Radiador"
+                                                        itemprop="url">Eletroventilador Radiador</a>
+                                                </li>
+                                                <li><a id="gmv-radiador"
+                                                        href="/radiadores-e-condensadores/radiadores/gmv-radiador"
+                                                        title="GMV Radiador" itemprop="url">GMV Radiador</a></li>
+                                                <li><a id="grade-do-radiador"
+                                                        href="/radiadores-e-condensadores/radiadores/grade-do-radiador"
+                                                        title="Grade do Radiador" itemprop="url">Grade
+                                                        do Radiador</a></li>
+                                                <li><a id="moldura-grade-radiador"
+                                                        href="/radiadores-e-condensadores/radiadores/moldura-grade-radiador"
+                                                        title="Moldura Grade Radiador" itemprop="url">Moldura Grade
+                                                        Radiador</a></li>
+                                                <li><a id="radiador"
+                                                        href="/radiadores-e-condensadores/radiadores/radiador"
+                                                        title="Radiador" itemprop="url">Radiador</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                                href="/radiadores-e-condensadores/condensadores" title="Condensadores"
+                                                itemprop="url">Condensadores</a>
+                                            <ul class="side-menu-categorias__categoria-sub-itens">
+                                                <li><a id="condensador-ar-condicionado"
+                                                        href="/radiadores-e-condensadores/condensadores/condensador-ar-condicionado"
+                                                        title="Condensador Ar Condicionado" itemprop="url">Condensador
+                                                        Ar
+                                                        Condicionado</a></li>
+                                                <li><a id="gmv-condensador"
+                                                        href="/radiadores-e-condensadores/condensadores/gmv-condensador"
+                                                        title="GMV Condensador" itemprop="url">GMV
+                                                        Condensador</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="side-menu-categorias__categoria">
+                            <div class="side-menu-categorias__categoria-header">
+                                <a title="Higienizadores e Filtros" itemprop="url" onclick="toggleCategory(this)">
+                                    <img src="https://autoglass-cdn.github.io/src/img/categoria-filtros-2.jpg"
+                                        alt="Higienizadores e Filtros" class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Higienizadores
+                                        e
+                                        Filtros
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+                                <li>
+                                    <ul>
+                                        <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                                href="/higienizadores-e-filtros/higienizadores/" title="Higienizadores"
+                                                itemprop="url">Higienizadores</a>
+                                            <ul class="side-menu-categorias__categoria-sub-itens">
+                                                <li><a id="higienizador-ar-condicionado"
+                                                        href="/higienizadores-e-filtros/higienizadores/higienizador-de-ar-condicionado"
+                                                        title="Higienizador de ar-condicionado"
+                                                        itemprop="url">Higienizador de
+                                                        ar-condicionado</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <ul>
+                                        <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                                href="/higienizadores-e-filtros/filtros/" title="Filtros"
+                                                itemprop="url">Filtros</a>
+                                            <ul class="side-menu-categorias__categoria-sub-itens">
+                                                <li><a id="filtro-ar-condicionado"
+                                                        href="/higienizadores-e-filtros/filtros/filtro-ar-condicionado"
+                                                        title="Filtro Ar Condicionado" itemprop="url">Filtro Ar
+                                                        Condicionado</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="side-menu-categorias__categoria">
+                    <div class="side-menu-categorias__categoria-header">
+                        <a title="Paralamas e Capô" itemprop="url" onclick="toggleCategory(this)">
+                            <img src="https://autoglass-cdn.github.io/src/img/categoria-latarias.png"
+                                alt="Paralamas e Capô" class="side-menu-categorias__categoria-imagem" />
+                            <h4>
+                                Paralamas
+                                e
+                                Capô
+                                <i class="arrow-down-icon-gray"></i>
+                            </h4>
+                        </a>
+                    </div>
+                    <ul class="side-menu-categorias__categoria-itens">
+                        <li>
+                            <ul>
+                                <li class="side-menu-categorias__categoria-itens-titulo"><a href="/latarias/latarias/"
+                                        title="Capô" itemprop="url">Paralama e Capô</a>
+                                    <ul class="side-menu-categorias__categoria-sub-itens">
+                                        <li><a id="latarias-capo" href="/latarias/latarias/capo" title="Capô"
+                                                itemprop="url">Capô</a>
+                                        </li>
+                                        <li><a id="latarias-capo" href="/latarias/latarias/paralama" title="Paralama"
+                                                itemprop="url">Paralama</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li class="side-menu-categorias__categoria">
+                    <div class="side-menu-categorias__categoria-header">
+                        <a title="Palhetas e Borrachas" itemprop="url" onclick="toggleCategory(this)">
+                            <img src="https://autoglass-cdn.github.io/src/img/categoria-borrachas.png"
+                                alt="Palhetas e Borrachas" class="side-menu-categorias__categoria-imagem" />
+                            <h4>
+                                Palhetas e Borrachas
+                                <i class="arrow-down-icon-gray"></i>
+                            </h4>
+                        </a>
+                    </div>
+                    <ul class="side-menu-categorias__categoria-itens">
+                        <li>
+                            <ul>
+                                <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                        href="/borrachas-e-outros/palhestas" title="Palhetas"
+                                        itemprop="url">Palhetas</a>
+                                    <ul class="side-menu-categorias__categoria-sub-itens">
+                                        <li><a href="/borrachas-e-outros/palhetas/palheta-para-brisa"
+                                                title="Palheta Para-brisa" itemprop="url">Palheta Para-brisa</a></li>
+                                        <li><a href="/borrachas-e-outros/palhetas/palheta-vigia" title="Palheta Vigia"
+                                                itemprop="url">Palheta Vigia</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                            <ul>
+                                <li class="side-menu-categorias__categoria-itens-titulo"><a
+                                        href="/borrachas-e-outros/borracha" title="Borrachas"
+                                        itemprop="url">Borrachas</a>
+                                    <ul class="side-menu-categorias__categoria-sub-itens">
+                                        <li><a href="/borrachas-e-outros/borracha/borracha-janela"
+                                                title="Borracha Janela" itemprop="url">Borracha Janela</a></li>
+                                        <li><a href="/borrachas-e-outros/borracha/borracha-universal-parabrisa"
+                                                title="Borracha Universal Parabrisa" itemprop="url">Borracha Universal
+                                                Parabrisa</a>
+                                        </li>
+                                        <li><a href="/borrachas-e-outros/borracha/borracha-vigia"
+                                                title="Borracha Janela" itemprop="url">Borracha Vigia</a></li>
+                                        <li><a href="/borrachas-e-outros/borracha/borracha-parabrisa"
+                                                title="Borracha Parabrisa" itemprop="url">Borracha Parabrisa</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="search-box-mobile">
+    <form class="search-box-mobile__form">
+        <div class="search-box-mobile__form-group">
+            <vtex.cmc:fullTextSearchBox />
+            <input id="search-mobile-input" class="search-box-mobile__form-input" type="text"
+                placeholder=" Pesquise por peça, produto, veículo..." />
+            <ul class="search-mobile-autocomplete" style="display:none;"></ul>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript" src="https://autoglass-cdn.github.io/src/js/topo.js"></script>
+<script src="https://www.googleoptimize.com/optimize.js?id=OPT-MTHHM4S"></script>
+<!--<script type="text/javascript" src="/arquivos/B2C-1605-locationFetcher.js"></script>-->
+<!--<script src="/arquivos/whereami.js" type="text/javascript"></script>-->
+
+<vtex.cmc:googlemaps />
+
+<style type="text/css">
+    .modal .titulo {
+        font-size: 2em;
+    }
+
+    /* The Modal (background) */
+    #saindo.modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.7);
+        /* Black w/ opacity */
+        z-index: 1000000;
+    }
+
+    #saindo .modal-close {
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    /* Modal Header */
+    #saindo .modal-header h2 {
+        color: #757575;
+        font-size: 26px;
+        font-weight: 400;
+    }
+
+    #saindo .modal-header {
+        border: 0;
+        text-align: center;
+    }
+
+    /* Modal Body */
+    #saindo .modal-body p {
+        color: #333333;
+        margin: 10px auto;
+    }
+
+    #saindo .modal-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+    /* Modal Content */
+    #saindo .modal-content {
+        max-width: 700px;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+
+        padding: 20px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9997;
+        background-color: #FFF;
+        border-radius: 4px;
+    }
+
+
+    /* Add Animation */
+    @keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+
+    #saindo .modal-content .modal-body button {
+        background: var(--blue-700);
+        color: var(--white);
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 5px;
+    }
+
+    #saindo .modal-content .modal-body button#sair {
+        background: var(--danger);
+    }
+</style>
+
+<div id="saindo" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+        <div class="modal-close">
+            <span class="close"></span>
+        </div>
+        <div class="modal-header">
+            <h2>Deseja mesmo sair?</h2>
+        </div>
+        <div class="modal-body">
+            <button onclick="document.querySelector('#saindo').style.display = 'none'">Cancelar</button>
+            <button id="sair"
+                onclick="document.querySelector('#saindo').style.display = 'none';window.location.href = '/no-cache/user/logout'">Sair</button>
+        </div>
+    </div>
+</div>
+
+<div class="components-qd-v1-overlay modal-backdrop in"></div>
+
+<div class="modal fade in header-qd-v1-location-modal  newlocalmodal gtm-estado-fechar-fora-overlay"
+    id="header-qd-v1-location-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true"
+    style="display: none; z-index: 9999; position: fixed;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    FECHAR <i class="fas fa-times gtm-estado-fechar-btn"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="row" id="intro-modal-text">
+                        <h2 class="titulo">Onde voce está?</h2>
+                        <p>Sabendo disso, iremos oferecer produtos e serviços customizados para a sua região</p>
+                    </div>
+                    <div class="row">
+                        <div class="modal-content">
+                            <div class="col-md-6 col-md-offset-3">
+                                <button class="use-location modal-buttom-identity gtm-estado-usar-localizacao-link">
+                                    <img alt="Autoglass Online PIN de localização" src="/arquivos/pin-white.png"
+                                        style="margin-top: -3px;" /> Usar sua localização
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal-content">
+                            <div class="col-md-6 col-md-offset-3" style="padding: 0.8em;">
+                                <span>OU</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="modal-content">
+                            <div class="col-md-8 col-md-offset-2">
+                                <div class="search-location">
+                                    <div id="locationField">
+                                        <input id="autocomplete" placeholder="Informe sua cidade ou estado"
+                                            type="text" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <p id="atttext">
+                    <strong>Atenção!</strong> Os preços de produtos e serviços Autoglass podem variar de acordo com a
+                    região
+                    escolhida
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade in modal-confirmation" id="header-qd-v1-location-modal-confirm" tabindex="-1" role="dialog"
+    aria-labelledby="basicModal" aria-hidden="true" style="display: none; z-index: 999999; position: fixed;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                    FECHAR <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="">
+                    <div class="row" id="intro-modal-text">
+                        <h2 class="titulo">Bem-vindo!</h2>
+                        <p>Por favor, confirme sua região para exibir melhores ofertas.</p>
+                    </div>
+                    <div class="row">
+                        <div class="modal-content">
+                            <div class="col-md-12" style="margin-bottom: 20px;">
+                                <button class="use-default-stuff modal-buttom-identity" id="btn-stillhere"></button>
+                            </div>
+                            <div class="col-md-12" style="margin-bottom: 20px;">
+                                <button class="use-default-stuff modal-buttom-identity" id="btn-nothere">Alterar
+                                    estado</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
