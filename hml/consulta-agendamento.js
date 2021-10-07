@@ -134,7 +134,7 @@ $(function () {
         </div>
       `);
     } else {
-      let x;
+      let items;
 
       if (
         typeof vtexjs !== "undefined" &&
@@ -142,15 +142,29 @@ $(function () {
         vtexjs.checkout.orderForm &&
         vtexjs.checkout.orderForm.items
       ) {
-        x = vtexjs.checkout.orderForm.items;
+        items = vtexjs.checkout.orderForm.items;
       }
 
-      getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
-        (datas) => {
-          setMinDateDatepicker(datas);
-          recuperarHorarios(datas);
-        }
-      );
+      if(items) {
+        getDeliveriesEstimates(address.postalCode, address.logisticsInfo, items).then(
+          (datas) => {
+            setMinDateDatepicker(datas);
+            recuperarHorarios(datas);
+          }
+        );
+      }
+      else {
+        vtexjs.checkout.getOrderForm().then(orderForm => {
+          items = orderForm.items;
+          }).then(
+            getDeliveriesEstimates(address.postalCode, address.logisticsInfo, items).then(
+              (datas) => {
+                setMinDateDatepicker(datas);
+                recuperarHorarios(datas);
+              }
+            )
+          );
+      }
     }
   } else {
     // Evento lançado pelo componente de cep
@@ -198,7 +212,7 @@ $(function () {
   //recuperarHorarios();
 
   function setMinDateDatepicker(datas) {
-    let minDate = datas[0].Data;
+    let minDate;
 
     minDate = datas && datas.length ? datas[0].Data : tomorrow;
 
@@ -217,8 +231,6 @@ $(function () {
   }
 
   function recuperarHorarios(slas) {
-    limpaModalInstaleLoja();
-
     $.ajax({
       method: "GET",
       url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
@@ -345,7 +357,10 @@ $(function () {
         });
       })
       .fail(() =>
-        $(".secao-agendamento > .store-list > ul").append(noTimeAvailable())
+      {
+        limpaModalInstaleLoja();
+        $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
+      }
       );
 
     // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
@@ -578,46 +593,8 @@ $(function () {
     Carregar($("#cep-input").val());
   });
 
-  const address = JSON.parse(localStorage.getItem("AG_AddressSelected"));
 
-  if (address) {
-    let isCheckout = window.location.href.includes("/checkout");
-    let ufDefinedByTop = +localStorage.getItem("ufDefinedByTop");
-
-    if (!isCheckout && ufDefinedByTop) {
-    } else {
-      let x;
-
-      if (
-        typeof vtexjs !== "undefined" &&
-        vtexjs.checkout &&
-        vtexjs.checkout.orderForm &&
-        vtexjs.checkout.orderForm.items
-      ) {
-        x = vtexjs.checkout.orderForm.items;
-      }
-
-      getDeliveriesEstimates(address.postalCode, address.logisticsInfo, x).then(
-        (datas) => {
-          setDateDatepicker(datas);
-          Carregar(address.postalCode);
-        }
-      );
-    }
-  } else {
-    // Evento lançado pelo componente de cep
-    $(window).on("cep-finish-load", async (e) => {
-      const orderForm = e.originalEvent.detail;
-      const dates = await getDeliveriesEstimates(
-        orderForm.shippingData.address.postalCode,
-        orderForm.shippingData.logisticsInfo,
-        orderForm.items
-      );
-      setDateDatepicker(dates);
-      Carregar(orderForm.shippingData.address.postalCode);
-    });
-  }
-
+  
   // Evento lançado pelo componente de cep
   $(window).on("cep-updated", async (e) => {
     const orderForm = e.originalEvent.detail;
