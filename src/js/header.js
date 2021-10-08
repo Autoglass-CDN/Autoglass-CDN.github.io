@@ -1,5 +1,3 @@
-// teste branch
-
 const ESTADOS = [
     { GoogleMaps: 'State of Minas Gerais', Uf: 'MG', Nome: 'Minas Gerais', Sc: 2 },
     { GoogleMaps: 'State of Espírito Santo', Uf: 'ES', Nome: 'Espírito Santo', Sc: 3 },
@@ -119,23 +117,120 @@ function recuperarEstado(uf) {
     return ESTADOS.find(estado => estado.GoogleMaps === uf || estado.Nome === uf || estado.Uf === uf);
 }
 
-let executed = false;
-
 $(document).on('ready', function () {
-    if (!executed) {
-        executed = true;
-        _initHeaderPolicy();
-    }
+    
+    initHeaderPolicy();
+
+    (() => {
+
+        let selectedState;
+        const isMobile = window.matchMedia('(max-width: 768px)').matches;
+        const stateNameButtons = document.querySelectorAll('.state-name-btn');
+        const stateMapButtons = document.querySelectorAll('.state-map-btn');
+      
+        stateNameButtons.forEach(element => {
+            element.addEventListener('click', event => {
+                event.preventDefault();
+      
+                const state = event.target.getAttribute('data-state');
+                setSelectedState(state);
+            });
+      
+            element.addEventListener('mouseover', toggleHoverOnMapBtn);
+            element.addEventListener('mouseout', toggleHoverOnMapBtn);
+        });
+      
+      
+        if(!isMobile) {
+            stateMapButtons.forEach(element => {
+                element.addEventListener('click', event => {
+                    event.preventDefault();
+        
+                    const state = event.target.closest('.state-map-btn').getAttribute('data-state');
+                    setSelectedState(state);
+                });
+            
+                element.addEventListener('mouseover', toggleHoverOnNameBtn);
+                element.addEventListener('mouseout', toggleHoverOnNameBtn);
+            });
+        }
+      
+        document.getElementById('stateConfirmationBtn')
+                .addEventListener('click', preventModalDismissing);
+      
+        document.getElementById('localizationModalCloseBtn')
+                .addEventListener('click', preventModalDismissing);
+      
+        function toggleHoverOnNameBtn(event) {
+            const state = event.target.closest('.state-map-btn').getAttribute('data-state');
+            const element = document.getElementById(state + 'nameBtn');
+          
+            toggleHoverOnElement(element);
+        }
+      
+        function toggleHoverOnElement(element) {
+            const currentClasses = element.getAttribute('class');
+          
+            element.setAttribute(
+                'class',
+                currentClasses.includes('hover')
+                    ? currentClasses.replace(' hover', '')
+                    : currentClasses + ' hover'
+            );
+        }
+      
+        function toggleHoverOnMapBtn(event) {
+            const state = event.target.getAttribute('data-state');
+            const element = document.getElementById(state + 'mapBtn');
+          
+            toggleHoverOnElement(element);
+        }
+      
+        function setSelectedState(state) {
+            if(selectedState && state !== selectedState) {
+                const previousSelectedMapBtn = document.getElementById(selectedState + 'mapBtn');
+                previousSelectedMapBtn.setAttribute(
+                    'class',
+                    previousSelectedMapBtn.getAttribute('class')
+                                          .replaceAll(' selected', '')
+                );
+      
+                const previousSelectedNameBtn = document.getElementById(selectedState + 'nameBtn');
+                previousSelectedNameBtn.setAttribute(
+                    'class',
+                    previousSelectedNameBtn.getAttribute('class')
+                                           .replaceAll(' selected', '')
+                );
+            }
+      
+            const selectedMapBtn = document.getElementById(state + 'mapBtn');
+            selectedMapBtn.setAttribute('class', selectedMapBtn.getAttribute('class') + ' selected');
+      
+            const selectedNameBtn = document.getElementById(state + 'nameBtn');
+            selectedNameBtn.setAttribute('class', selectedNameBtn.getAttribute('class') + ' selected');
+      
+            selectedState = state;
+            enableConfirmationBtn();
+        }
+      
+        function enableConfirmationBtn() {
+            document.getElementById('stateConfirmationBtn').removeAttribute('disabled');
+        }
+      
+        function preventModalDismissing(event) {
+            event.stopImmediatePropagation();
+            
+            const message = selectedState
+                ? 'Confirme a sua região clicando no botão de confirmação.'
+                : 'É preciso selecionar um estado primeiro.'
+      
+            window.alert(message);
+        }
+      
+    })();
 });
 
-setTimeout(() => {
-    if (!executed) {
-        executed = true;
-        _initHeaderPolicy();
-    }
-}, 3000);
-
-async function _initHeaderPolicy() {
+async function initHeaderPolicy() {
     
     let Uf = readCookie('myuf');
 
@@ -170,20 +265,8 @@ async function _initHeaderPolicy() {
     persistSalesChannel(Uf);
     recoverModalsState();
 
-    $(".use-location").click(() => {
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(
-                configurarGoogleMaps,
-                error => {
-                    $("#autocomplete").focus();
-                    console.error('Usuário negou a localização.', error);
-                }
-            );
-        }
-    });
-
-    $(window).on("cep-updated", (e) => {
-        const orderForm = e.originalEvent.detail;
+    $(window).on("cep-updated", (event) => {
+        const orderForm = event.originalEvent.detail;
         const newUf = orderForm.shippingData.address.state;
         const currentUf = readCookie('myuf');
         
@@ -195,28 +278,8 @@ async function _initHeaderPolicy() {
         }
         else{
             localStorage.setItem('locationChanged', 0);
-        }
-        
+        } 
     });
-
-    const mq = window.matchMedia("(max-width: 1100px)");
-    if (mq.matches) {
-        $("#autocomplete").on("click", function (e) {
-            $("#intro-modal-text").fadeOut()
-        });
-    }
-
-    // Limita as sugestões do autocomplete para o Brasil
-    // no modal de alteração de Estado
-    var AutocompleteCircle = new google.maps.Circle({
-        center: {
-            lat: -10.35583364623009,
-            lng: -51.26453721934701
-        },
-        radius: 262000 * 10,
-    })
-
-    autocomplete.setBounds(AutocompleteCircle.getBounds());
 }
 
 async function recuperarEstadoPelaIpInfo() {
@@ -256,88 +319,22 @@ function salvarUf(estado) {
             )
         }
     );
+
     setVtexScOnCookies(estado.Sc);
 
     window.location.href = `?sc=${estado.Sc}`;
 }
 
+function initAutocomplete() {
+    console.warn('Autocomplete desativado.');
+}
 
-function setVtexScOnCookies(salesChannel) {
-    
-    //houver cookie VTEXSC sem o ponto no início (no secure), apaga esse cookie.
+function setVtexScOnCookies(salesChannel) {  
     document.cookie = 'VTEXSC'+ `=; Max-Age=-99999999;  path=/`;
     
-    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=${location.host}; path=/; secure=true`;
+    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, \
+        1 Jan 2099 00:00:00 UTC;domain=${location.host}; path=/; secure=true`;
 }
-
-function configurarGoogleMaps(position) {
-    const { geolocation, Globo } = configurarRegiaoGoogleMaps(position);
-
-    (new google.maps.Geocoder()).geocode({
-        location: geolocation,
-        bounds: Globo.getBounds()
-    }, (result, status) => {
-        if (status === "OK") {
-            redirecionarParaPolitica(result);
-        } else {
-            console.error('Falha ao recuperar a informações do Maps.')
-        }
-    })
-}
-
-function configurarRegiaoGoogleMaps(position) {
-    const geolocation = {
-        lat: position.coords.latitude,
-        lng: position.coords.longitude
-    };
-
-    var Globo = new google.maps.Circle({
-        center: geolocation,
-        radius: 1
-    });
-
-    return { geolocation, Globo };
-}
-
-function redirecionarParaPolitica(googleMapsResult) {
-    let Uf;
-    // let vtexsc = readCookie('VTEXSC');
-
-    if (!googleMapsResult)
-        googleMapsResult = [autocomplete.getPlace()];
-
-    googleMapsResult[0].address_components.forEach((item) => {
-        if (item.types[0] == "administrative_area_level_1") {
-            Uf = item.long_name
-        }
-    });
-
-    let currentUf = readCookie('myuf');
-
-    if (currentUf != Uf) {
-        localStorage.setItem('ufDefinedByTop', 1);   
-    }
-
-    persistSalesChannel(Uf);
-
-    $('.header-qd-v1-location-modal').click();
-}
-
-function initAutocomplete() {
-    // Create the autocomplete object, restricting the search predictions to
-    // geographical location types.
-    autocomplete = new google.maps.places.Autocomplete(
-        document.getElementById('autocomplete'), { types: ['geocode'] });
-
-    // Avoid paying for data that you don't need by restricting the set of
-    // place fields that are returned to just the address components.
-    autocomplete.setFields(['address_component']);
-
-    // When the user selects an address from the drop-down, populate the
-    // address fields in the form.
-    autocomplete.addListener('place_changed', redirecionarParaPolitica);
-}
-
 
 function createCookie(name, value, days) {
     if (days) {
@@ -352,29 +349,35 @@ function createCookie(name, value, days) {
 
 
 function readCookie(name) {
-    var nameEQ = name + "=";
     var ca = document.cookie.split(';');
+    
     for (var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        let c = ca[i];
+
+        while (c.charAt(0) == ' ')
+            c = c.substring(1, c.length);
+
+        if (c.indexOf(`${name}=`) == 0)
+            return c.substring(`${name}=`.length, c.length);
     }
+
     return null;
 }
 
 function saveModalsState() {
-
-    let reg = /mz-\w{2}-on/g;
+    let regex = /mz-\w{2}-on/g;
     let classes = $('body').attr('class');
     let modalState = [];
-    let res;
+    let resp;
+
     while(true) {
-        res = reg.exec(classes);
-        if(res){
-            modalState.push(res);
-        }else {
+        resp = regex.exec(classes);
+        
+        if(resp) {
+            modalState.push(resp);
+        } else {
             break;
-        } 
+        }
     }
 
     localStorage.setItem('modalState', modalState.join());
@@ -383,10 +386,9 @@ function saveModalsState() {
 function recoverModalsState() {
     let string = localStorage.getItem('modalState');
 
-    if (string){
-        const classesList = string.split(',')
-        classesList.forEach(i => $('body').addClass(i));   
+    if (string) {
+        const classes = string.split(',')
+        classes.forEach(_class => $('body').addClass(_class));   
         localStorage.removeItem('modalState');
     }
-
 }
