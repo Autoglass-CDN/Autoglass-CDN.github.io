@@ -1,268 +1,64 @@
 const ESTADOS = [
-    { GoogleMaps: 'State of Minas Gerais', Uf: 'MG', Nome: 'Minas Gerais', Sc: 2 },
-    { GoogleMaps: 'State of Espírito Santo', Uf: 'ES', Nome: 'Espírito Santo', Sc: 3 },
-    { GoogleMaps: 'State of Alagoas', Uf: 'AL', Nome: 'Alagoas', Sc: 4 },
-    { GoogleMaps: 'State of Amapá', Uf: 'AP', Nome: 'Amapá', Sc: 21 },
-    { GoogleMaps: 'State of Amazonas', Uf: 'AM', Nome: 'Amazonas', Sc: 5 },
-    { GoogleMaps: 'State of Roraima', Uf: 'RR', Nome: 'Roraima', Sc: 5 },
-    { GoogleMaps: 'State of Bahia', Uf: 'BA', Nome: 'Bahia', Sc: 6 },
-    { GoogleMaps: 'State of Ceará', Uf: 'CE', Nome: 'Ceará', Sc: 7 },
-    { GoogleMaps: 'Federal District', Uf: 'DF', Nome: 'Distrito Federal', Sc: 8 },
-    { GoogleMaps: 'State of Goiás', Uf: 'GO', Nome: 'Goiás', Sc: 9 },
-    { GoogleMaps: 'State of Maranhão', Uf: 'MA', Nome: 'Maranhão', Sc: 10 },
-    { GoogleMaps: 'State of Mato Grosso do Sul', Uf: 'MS', Nome: 'Mato Grosso do Sul', Sc: 11 },
-    { GoogleMaps: 'State of Mato Grosso', Uf: 'MT', Nome: 'Mato Grosso', Sc: 12 },
-    { GoogleMaps: 'State of Acre', Uf: 'AC', Nome: 'Acre', Sc: 12 },
-    { GoogleMaps: 'State of Rondônia', Uf: 'RO', Nome: 'Rondônia', Sc: 12 },
-    { GoogleMaps: 'State of Pará', Uf: 'PA', Nome: 'Pará', Sc: 13 },
-    { GoogleMaps: 'State of Paraíba', Uf: 'PB', Nome: 'Paraíba', Sc: 14 },
-    { GoogleMaps: 'State of Pernambuco', Uf: 'PE', Nome: 'Pernambuco', Sc: 15 },
-    { GoogleMaps: 'State of Piauí', Uf: 'PI', Nome: 'Piauí', Sc: 18 },
-    { GoogleMaps: 'State of Paraná', Uf: 'PR', Nome: 'Paraná', Sc: 19 },
-    { GoogleMaps: 'State of Rio de Janeiro', Uf: 'RJ', Nome: 'Rio de Janeiro', Sc: 21 },
-    { GoogleMaps: 'State of Rio Grande do Norte', Uf: 'RN', Nome: 'Rio Grande do Norte', Sc: 22 },
-    { GoogleMaps: 'State of Rio Grande do Sul', Uf: 'RS', Nome: 'Rio Grande do Sul', Sc: 23 },
-    { GoogleMaps: 'State of Santa Catarina', Uf: 'SC', Nome: 'Santa Catarina', Sc: 24 },
-    { GoogleMaps: 'State of Sergipe', Uf: 'SE', Nome: 'Sergipe', Sc: 25 },
-    { GoogleMaps: 'State of São Paulo', Uf: 'SP', Nome: 'São Paulo', Sc: 26 },
-    { GoogleMaps: 'State of Tocantins', Uf: 'TO', Nome: 'Tocantins', Sc: 39 },
+    { GoogleMaps: 'State of Minas Gerais', Uf: 'MG', Nome: 'Minas Gerais', Sc: 2, Cep: '33860390' },
+    { GoogleMaps: 'State of Espírito Santo', Uf: 'ES', Nome: 'Espírito Santo', Sc: 3, Cep: '29168074' },
+    { GoogleMaps: 'State of Alagoas', Uf: 'AL', Nome: 'Alagoas', Sc: 4, Cep: '57035470' },
+    { GoogleMaps: 'State of Amapá', Uf: 'AP', Nome: 'Amapá', Sc: 21, Cep: '68950000' },
+    { GoogleMaps: 'State of Amazonas', Uf: 'AM', Nome: 'Amazonas', Sc: 5, Cep: '69046170' },
+    { GoogleMaps: 'State of Roraima', Uf: 'RR', Nome: 'Roraima', Sc: 5, Cep: '69300000' },
+    { GoogleMaps: 'State of Bahia', Uf: 'BA', Nome: 'Bahia', Sc: 6, Cep: '40020240' },
+    { GoogleMaps: 'State of Ceará', Uf: 'CE', Nome: 'Ceará', Sc: 7, Cep: '60511390' },
+    { GoogleMaps: 'Federal District', Uf: 'DF', Nome: 'Distrito Federal', Sc: 8, Cep: '71065023' },
+    { GoogleMaps: 'State of Goiás', Uf: 'GO', Nome: 'Goiás', Sc: 9, Cep: '74919376' },
+    { GoogleMaps: 'State of Maranhão', Uf: 'MA', Nome: 'Maranhão', Sc: 10, Cep: '65085160' },
+    { GoogleMaps: 'State of Mato Grosso do Sul', Uf: 'MS', Nome: 'Mato Grosso do Sul', Sc: 11, Cep: '79004610' },
+    { GoogleMaps: 'State of Mato Grosso', Uf: 'MT', Nome: 'Mato Grosso', Sc: 12, Cep: '78080375' },
+    { GoogleMaps: 'State of Acre', Uf: 'AC', Nome: 'Acre', Sc: 12, Cep: '69922000' },
+    { GoogleMaps: 'State of Rondônia', Uf: 'RO', Nome: 'Rondônia', Sc: 12, Cep: '76803888' },
+    { GoogleMaps: 'State of Pará', Uf: 'PA', Nome: 'Pará', Sc: 13, Cep: '66053270' },
+    { GoogleMaps: 'State of Paraíba', Uf: 'PB', Nome: 'Paraíba', Sc: 14, Cep: '58108096' },
+    { GoogleMaps: 'State of Pernambuco', Uf: 'PE', Nome: 'Pernambuco', Sc: 15, Cep: '54280145' },
+    { GoogleMaps: 'State of Piauí', Uf: 'PI', Nome: 'Piauí', Sc: 18, Cep: '64001495' /* 64041400 */ },
+    { GoogleMaps: 'State of Paraná', Uf: 'PR', Nome: 'Paraná', Sc: 19, Cep: '82130760' },
+    { GoogleMaps: 'State of Rio de Janeiro', Uf: 'RJ', Nome: 'Rio de Janeiro', Sc: 21, Cep: '25056400' },
+    { GoogleMaps: 'State of Rio Grande do Norte', Uf: 'RN', Nome: 'Rio Grande do Norte', Sc: 22, Cep: '59078130' },
+    { GoogleMaps: 'State of Rio Grande do Sul', Uf: 'RS', Nome: 'Rio Grande do Sul', Sc: 23, Cep: '90030140' },
+    { GoogleMaps: 'State of Santa Catarina', Uf: 'SC', Nome: 'Santa Catarina', Sc: 24, Cep: '88310573' },
+    { GoogleMaps: 'State of Sergipe', Uf: 'SE', Nome: 'Sergipe', Sc: 25, Cep: '49070376' },
+    { GoogleMaps: 'State of São Paulo', Uf: 'SP', Nome: 'São Paulo', Sc: 26, Cep: '08090284' },
+    { GoogleMaps: 'State of Tocantins', Uf: 'TO', Nome: 'Tocantins', Sc: 39, Cep: '77066356' },
 ];
-
-const CEP_STATES = {
-    SE: {
-        cep: "49070376"
-    },
-    TO: {
-        cep: "77066356"
-    },
-    RO: {
-        cep: "76803888"
-    },
-    RR: {
-        cep: "69300000"
-    },
-    AC: {
-        cep: "69922000"
-    },
-    AP: {
-        cep: "68950000"
-    },
-    BA: {
-        cep: "40020240"
-    },
-    ES: {
-        cep: "29168074"
-    },
-    DF: {
-        cep: "71065023"
-    },
-    RS: {
-        cep: "90030140"
-    },
-    RJ: {
-        cep: "25056400"
-    },
-    MT: {
-        cep: "78080375"
-    },
-    PR: {
-        cep: "82130760"
-    },
-    MS: {
-        cep: "79004610"
-    },
-    GO: {
-        cep: "74919376"
-    },
-    AL: {
-        cep: "57035470"
-    },
-    CE: {
-        cep: "60511390"
-    },
-    PA: {
-        cep: "66053270"
-    },
-    RN: {
-        cep: "59078130"
-    },
-    SC: {
-        cep: "88310573"
-    },
-    MA: {
-        cep: "65085160"
-    },
-    PI: {
-        // cep: "64041400"
-        cep: "64001495"
-    },
-    MG: {
-        cep: "33860390"
-    },
-    PB: {
-        cep: "58108096"
-    },
-    AM: {
-        cep: "69046170"
-    },
-    PE: {
-        cep: "54280145"
-    },
-    SP: {
-        cep: "08090284"
-    }
-};
-
-function recuperarEstado(uf) {
-    return ESTADOS.find(estado => estado.GoogleMaps === uf || estado.Nome === uf || estado.Uf === uf);
-}
 
 $(document).on('ready', function () {
     
     initHeaderPolicy();
 
-    (() => {
-
-        let selectedState;
-        const isMobile = window.matchMedia('(max-width: 768px)').matches;
-        const stateNameButtons = document.querySelectorAll('.state-name-btn');
-        const stateMapButtons = document.querySelectorAll('.state-map-btn');
-      
-        stateNameButtons.forEach(element => {
-            element.addEventListener('click', event => {
-                event.preventDefault();
-      
-                const state = event.target.getAttribute('data-state');
-                setSelectedState(state);
-            });
-      
-            element.addEventListener('mouseover', toggleHoverOnMapBtn);
-            element.addEventListener('mouseout', toggleHoverOnMapBtn);
-        });
-      
-      
-        if(!isMobile) {
-            stateMapButtons.forEach(element => {
-                element.addEventListener('click', event => {
-                    event.preventDefault();
-        
-                    const state = event.target.closest('.state-map-btn').getAttribute('data-state');
-                    setSelectedState(state);
-                });
-            
-                element.addEventListener('mouseover', toggleHoverOnNameBtn);
-                element.addEventListener('mouseout', toggleHoverOnNameBtn);
-            });
-        }
-      
-        document.getElementById('stateConfirmationBtn')
-                .addEventListener('click', preventModalDismissing);
-      
-        document.getElementById('localizationModalCloseBtn')
-                .addEventListener('click', preventModalDismissing);
-      
-        function toggleHoverOnNameBtn(event) {
-            const state = event.target.closest('.state-map-btn').getAttribute('data-state');
-            const element = document.getElementById(state + 'nameBtn');
-          
-            toggleHoverOnElement(element);
-        }
-      
-        function toggleHoverOnElement(element) {
-            const currentClasses = element.getAttribute('class');
-          
-            element.setAttribute(
-                'class',
-                currentClasses.includes('hover')
-                    ? currentClasses.replace(' hover', '')
-                    : currentClasses + ' hover'
-            );
-        }
-      
-        function toggleHoverOnMapBtn(event) {
-            const state = event.target.getAttribute('data-state');
-            const element = document.getElementById(state + 'mapBtn');
-          
-            toggleHoverOnElement(element);
-        }
-      
-        function setSelectedState(state) {
-            if(selectedState && state !== selectedState) {
-                const previousSelectedMapBtn = document.getElementById(selectedState + 'mapBtn');
-                previousSelectedMapBtn.setAttribute(
-                    'class',
-                    previousSelectedMapBtn.getAttribute('class')
-                                          .replaceAll(' selected', '')
-                );
-      
-                const previousSelectedNameBtn = document.getElementById(selectedState + 'nameBtn');
-                previousSelectedNameBtn.setAttribute(
-                    'class',
-                    previousSelectedNameBtn.getAttribute('class')
-                                           .replaceAll(' selected', '')
-                );
-            }
-      
-            const selectedMapBtn = document.getElementById(state + 'mapBtn');
-            selectedMapBtn.setAttribute('class', selectedMapBtn.getAttribute('class') + ' selected');
-      
-            const selectedNameBtn = document.getElementById(state + 'nameBtn');
-            selectedNameBtn.setAttribute('class', selectedNameBtn.getAttribute('class') + ' selected');
-      
-            selectedState = state;
-            enableConfirmationBtn();
-        }
-      
-        function enableConfirmationBtn() {
-            document.getElementById('stateConfirmationBtn').removeAttribute('disabled');
-        }
-      
-        function preventModalDismissing(event) {
-            event.stopImmediatePropagation();
-            
-            const message = selectedState
-                ? 'Confirme a sua região clicando no botão de confirmação.'
-                : 'É preciso selecionar um estado primeiro.'
-      
-            window.alert(message);
-        }
-      
-    })();
 });
 
 async function initHeaderPolicy() {
     
-    let Uf = readCookie('myuf');
+    let uf = readCookie('myuf');
+    let localizationModal = startLocalizationModal();
 
-    if (!Uf) {
+    if (!uf) {
         try {
-            Uf = await recuperarEstadoPelaIpInfo();
+            
+            uf = await recuperarEstadoPelaIpInfo();
+        
         } catch {
-            // Abrir modal de Localização
-            $('#btn-alterar-open-modal').click();
+            
+            uf = 'SP';
 
-            const closeModal = () => {
-                let Uf = readCookie('myuf');
-
-                if (!Uf) {
-                    // Caso não tenha Selecionado nada,
-                    // redireciona para SP
-                          
-                    persistSalesChannel('SP');
-                }
-
-                $('.header-qd-v1-location-modal').click();
-            };
-
-            $('.modal-backdrop.fade.in').click(closeModal);
-            $('.header-qd-v1-location-modal').click(closeModal);
-            $('#header-qd-v1-location-modal .modal-header button').click(closeModal);
-
-            return;
         }
+
+        localizationModal.open(uf);
+
+    } else {
+
+        localizationModal.setState(uf);
+        persistSalesChannel(uf);
+
     }
 
-    persistSalesChannel(Uf);
     recoverModalsState();
 
     $(window).on("cep-updated", (event) => {
@@ -271,15 +67,18 @@ async function initHeaderPolicy() {
         const currentUf = readCookie('myuf');
         
         if (currentUf != newUf){
-
             saveModalsState();
+
             localStorage.setItem('locationChanged', 1);
             persistSalesChannel(newUf);
-        }
-        else{
+        } else {
             localStorage.setItem('locationChanged', 0);
         } 
     });
+}
+
+function recuperarEstado(uf) {
+    return ESTADOS.find(state => state.GoogleMaps === uf || state.Nome === uf || state.Uf === uf);
 }
 
 async function recuperarEstadoPelaIpInfo() {
@@ -288,24 +87,24 @@ async function recuperarEstadoPelaIpInfo() {
     return ipInfo.region;
 }
 
-function persistSalesChannel(Uf) { 
-    const estado = recuperarEstado(Uf);
+function persistSalesChannel(uf) { 
+    const state = recuperarEstado(uf);
     
     let vtexsc = readCookie('VTEXSC');
     const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
     
-    if (estado.Sc !== policyOnSite || !readCookie('myuf')) {
-        salvarUf(estado);
+    if (state.Sc !== policyOnSite || !readCookie('myuf')) {
+        salvarUf(state);
     } else {
-        $("#thestate").text(`${estado.Nome}`);
+        $("#thestate").text(state.Nome);
     }
 }
 
-function salvarUf(estado) {  
-    createCookie('myuf', estado.Uf, 100);
+function salvarUf(state) {  
+    createCookie('myuf', state.Uf, 100);
 
     vtexjs.checkout.calculateShipping({
-        postalCode: CEP_STATES[estado.Uf].cep,
+        postalCode: state.Cep,
         country: "BRA",
         addressType: "search",
     }).then(
@@ -320,9 +119,9 @@ function salvarUf(estado) {
         }
     );
 
-    setVtexScOnCookies(estado.Sc);
+    setVtexScOnCookies(state.Sc);
 
-    window.location.href = `?sc=${estado.Sc}`;
+    window.location.href = `?sc=${state.Sc}`;
 }
 
 function initAutocomplete() {
@@ -391,4 +190,128 @@ function recoverModalsState() {
         classes.forEach(_class => $('body').addClass(_class));   
         localStorage.removeItem('modalState');
     }
+}
+
+function startLocalizationModal() {
+    let selectedState;
+
+    const stateNameButtons = document.querySelectorAll('.state-name-btn');
+    const stateMapButtons = document.querySelectorAll('.state-map-btn');
+
+    function openLocalizationModal(uf) {
+        const state = recuperarEstado(uf);
+
+        $('#myModal').modal({ backdrop: 'static', keyboard: false });
+        setSelectedState(state.Uf);
+    }
+    
+    stateNameButtons.forEach(element => {
+        element.addEventListener('click', event => {
+            event.preventDefault();
+    
+            const state = event.target.getAttribute('data-state');
+            setSelectedState(state);
+        });
+    
+        element.addEventListener('mouseover', toggleHoverOnMapBtn);
+        element.addEventListener('mouseout', toggleHoverOnMapBtn);
+    });
+    
+    
+    stateMapButtons.forEach(element => {
+        element.addEventListener('click', event => {
+            event.preventDefault();
+
+            const state = event.target.closest('.state-map-btn').getAttribute('data-state');
+            setSelectedState(state);
+        });
+    
+        element.addEventListener('mouseover', toggleHoverOnNameBtn);
+        element.addEventListener('mouseout', toggleHoverOnNameBtn);
+    });
+    
+    
+    document.getElementById('stateConfirmationBtn')
+            .addEventListener('click', closeModalAndPersistSc);
+    
+    document.getElementById('localizationModalCloseBtn')
+            .addEventListener('click', preventModalDismissing);
+    
+    
+    function toggleHoverOnNameBtn(event) {
+        const state = event.target.closest('.state-map-btn').getAttribute('data-state');
+        const element = document.getElementById(state + 'nameBtn');
+        
+        toggleHoverOnElement(element);
+    }
+    
+    function toggleHoverOnElement(element) {
+        const currentClasses = element.getAttribute('class');
+        
+        element.setAttribute(
+            'class',
+            currentClasses.includes('hover')
+                ? currentClasses.replace(' hover', '')
+                : currentClasses + ' hover'
+        );
+    }
+    
+    function toggleHoverOnMapBtn(event) {
+        const state = event.target.getAttribute('data-state');
+        const element = document.getElementById(state + 'mapBtn');
+        
+        toggleHoverOnElement(element);
+    }
+    
+    function setSelectedState(state) {
+        if(selectedState && state !== selectedState) {
+            const previousSelectedMapBtn = document.getElementById(selectedState + 'mapBtn');
+            previousSelectedMapBtn.setAttribute(
+                'class',
+                previousSelectedMapBtn.getAttribute('class')
+                                        .replaceAll(' selected', '')
+            );
+    
+            const previousSelectedNameBtn = document.getElementById(selectedState + 'nameBtn');
+            previousSelectedNameBtn.setAttribute(
+                'class',
+                previousSelectedNameBtn.getAttribute('class')
+                                       .replaceAll(' selected', '')
+            );
+        }
+    
+        const selectedMapBtn = document.getElementById(state + 'mapBtn');
+        selectedMapBtn.setAttribute('class', selectedMapBtn.getAttribute('class') + ' selected');
+    
+        const selectedNameBtn = document.getElementById(state + 'nameBtn');
+        selectedNameBtn.setAttribute('class', selectedNameBtn.getAttribute('class') + ' selected');
+    
+        selectedState = state;
+        enableConfirmationBtn();
+    }
+    
+    function enableConfirmationBtn() {
+        document.getElementById('stateConfirmationBtn').removeAttribute('disabled');
+    }
+    
+    function preventModalDismissing(event) {
+        event.stopImmediatePropagation();
+        
+        const message = selectedState
+            ? 'Confirme a sua região clicando no botão de confirmação.'
+            : 'É preciso selecionar um estado primeiro.'
+    
+        window.alert(message);
+    }
+
+    function closeModalAndPersistSc(event) {
+        $('#myModal').modal('hide');
+
+        persistSalesChannel(selectedState || 'SP');
+    }
+
+    return {
+        setState: setSelectedState,
+        open: openLocalizationModal,
+    };
 }
