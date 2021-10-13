@@ -320,8 +320,6 @@ function startLocalizationModal() {
         persistSalesChannel(selectedState || 'SP');
     }
 
-    console.log('Vindo daqui!!!');
-
     return {
         setState: setSelectedState,
         open: openLocalizationModal,
