@@ -236,7 +236,12 @@ function startLocalizationModal() {
     
     document.getElementById('localizationModalCloseBtn')
             .addEventListener('click', preventModalDismissing);
-    
+
+    document.getElementById('mobileStateSelector')
+            .addEventListener('change', (event) => {
+
+        setSelectedState(event.target.value);
+    });
     
     function toggleHoverOnNameBtn(event) {
         const state = event.target.closest('.state-map-btn').getAttribute('data-state');
@@ -269,7 +274,7 @@ function startLocalizationModal() {
             previousSelectedMapBtn.setAttribute(
                 'class',
                 previousSelectedMapBtn.getAttribute('class')
-                                        .replaceAll(' selected', '')
+                                      .replaceAll(' selected', '')
             );
     
             const previousSelectedNameBtn = document.getElementById(selectedState + 'nameBtn');
@@ -279,12 +284,17 @@ function startLocalizationModal() {
                                        .replaceAll(' selected', '')
             );
         }
+
+        const mobileStateSelector = $("#mobileStateSelector");
+        if (mobileStateSelector.val() !== state) {
+            mobileStateSelector.val(state);
+        }
     
         const selectedMapBtn = document.getElementById(state + 'mapBtn');
         selectedMapBtn.setAttribute('class', selectedMapBtn.getAttribute('class') + ' selected');
     
         const selectedNameBtn = document.getElementById(state + 'nameBtn');
-        selectedNameBtn.setAttribute('class', selectedNameBtn.getAttribute('class') + ' selected');
+        selectedNameBtn.setAttribute('class', selectedNameBtn.getAttribute('class') + ' selected'); 
     
         selectedState = state;
         enableConfirmationBtn();
