@@ -201,7 +201,7 @@ function startLocalizationModal() {
     function openLocalizationModal(uf) {
         const state = recuperarEstado(uf);
 
-        $('#myModal').modal({ backdrop: 'static', keyboard: false });
+        $('#stateSelectorModal').modal({ backdrop: 'static', keyboard: false });
         setSelectedState(state.Uf);
     }
     
@@ -315,7 +315,7 @@ function startLocalizationModal() {
     }
 
     function closeModalAndPersistSc(event) {
-        $('#myModal').modal('hide');
+        $('#stateSelectorModal').modal('hide');
 
         persistSalesChannel(selectedState || 'SP');
     }
