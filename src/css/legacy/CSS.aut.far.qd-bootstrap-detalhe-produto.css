@@ -1,4 +1,4 @@
-/* 07-04 - Migrando do CDN quatro digital para CDN no git */
+07-04 - Migrando do CDN quatro digital para CDN no git
 /* PC-QUARTO - 04/06/2020 19:17:14 GMT-0300 */
 /*! Não edite esse arquivo, ele foi gerado de maneira automatizada */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
@@ -16,16 +16,8 @@ article,footer,header,main,nav,section {
     display: block
 }
 
-[hidden] {
-    display: none
-}
-
 a {
     background-color: transparent
-}
-
-a:active,a:hover {
-    outline: 0
 }
 
 b,strong {
@@ -60,11 +52,6 @@ svg:not(:root) {
     overflow: hidden
 }
 
-hr {
-    box-sizing: content-box;
-    height: 0
-}
-
 button,input,select {
     color: inherit;
     font: inherit;
@@ -82,11 +69,6 @@ button,select {
 button,html input[type="button"] {
     -webkit-appearance: button;
     cursor: pointer
-}
-
-button::-moz-focus-inner,input::-moz-focus-inner {
-    border: 0;
-    padding: 0
 }
 
 input {
@@ -116,49 +98,6 @@ table {
 
 td,th {
     padding: 0
-}
-
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
-@media print {
-    *,*:before,*:after {
-        background: transparent !important;
-        color: #000 !important;
-        box-shadow: none !important;
-        text-shadow: none !important
-    }
-
-    a,a:visited {
-        text-decoration: underline
-    }
-
-    a[href]:after {
-        content: " (" attr(href) ")"
-    }
-
-    a[href^="#"]:after,a[href^="javascript:"]:after {
-        content: ""
-    }
-
-    thead {
-        display: table-header-group
-    }
-
-    tr,img {
-        page-break-inside: avoid
-    }
-
-    img {
-        max-width: 100% !important
-    }
-
-    p,h2,h3 {
-        orphans: 3;
-        widows: 3
-    }
-
-    h2,h3 {
-        page-break-after: avoid
-    }
 }
 
 * {
@@ -197,16 +136,6 @@ a {
     text-decoration: none
 }
 
-a:hover,a:focus {
-    color: inherit;
-    text-decoration: underline
-}
-
-a:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px
-}
-
 img {
     vertical-align: middle
 }
@@ -215,13 +144,6 @@ img {
     display: block;
     max-width: 100%;
     height: auto
-}
-
-hr {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    border: 0;
-    border-top: 1px solid #eee
 }
 
 .container {
@@ -304,10 +226,6 @@ hr {
         float:left
     }
 
-    .col-md-12 {
-        width: 100%
-    }
-
     .col-md-8 {
         width: 66.66666667%
     }
@@ -346,10 +264,6 @@ hr {
 
     .col-md-push-1 {
         left: 8.33333333%
-    }
-
-    .col-md-offset-3 {
-        margin-left: 25%
     }
 
     .col-md-offset-2 {
@@ -395,11 +309,6 @@ input[type="checkbox"] {
     margin: 4px 0 0;
     margin-top: 1px \9;
     line-height: normal
-}
-
-input[type="checkbox"]:focus {
-    outline: 5px auto -webkit-focus-ring-color;
-    outline-offset: -2px
 }
 
 .fade {
@@ -482,24 +391,9 @@ input[type="checkbox"]:focus {
     filter: alpha(opacity=50)
 }
 
-.modal-header {
-    padding: 15px;
-    border-bottom: 1px solid #e5e5e5
-}
-
-.modal-header .close {
-    margin-top: -2px
-}
-
 .modal-body {
     position: relative;
     padding: 15px
-}
-
-.modal-footer {
-    padding: 15px;
-    text-align: right;
-    border-top: 1px solid #e5e5e5
 }
 
 @media (min-width: 768px) {
@@ -542,10 +436,6 @@ input[type="checkbox"]:focus {
     float: left !important
 }
 
-@-ms-viewport {
-    width: device-width
-}
-
 .visible-lg {
     display: none !important
 }
@@ -586,32 +476,6 @@ div#ajaxBusy {
     text-align: center
 }
 
-div#ajaxBusy p {
-    color: #000;
-    display: block;
-    font-weight: 400;
-    border-radius: 0 0 5px 5px;
-    font-size: 14px;
-    width: 120px;
-    height: auto;
-    box-shadow: 0 0 10px rgba(0,0,0,0.4);
-    letter-spacing: 1px;
-    margin: -2px auto 0;
-    padding: 8px 30px 8px 8px;
-    background: url("//www.autoglassonline.com.br/arquivos/ajax-loader-2.gif") no-repeat 90px center #fff6bf;
-    border: #382e1a solid;
-    border-width: 1px;
-    white-space: nowrap
-}
-
-@font-face {
-    font-family: 'icomoon';
-    src: url('//www.autoglassonline.com.br/arquivos/icomoon.eot.txt?vo3bh6');
-    src: url('//www.autoglassonline.com.br/arquivos/icomoon.eot.txt?vo3bh6#iefix') format('embedded-opentype'),url('//www.autoglassonline.com.br/arquivos/icomoon.ttf.txt?vo3bh6') format('truetype'),url('//www.autoglassonline.com.br/arquivos/icomoon.woff.txt?vo3bh6') format('woff'),url('//www.autoglassonline.com.br/arquivos/icomoon.svg.txt?vo3bh6#icomoon') format('svg');
-    font-weight: normal;
-    font-style: normal
-}
-
 body {
     padding-top: 154px;
     background: #F9F9F9
@@ -620,16 +484,6 @@ body {
 @media (max-width: 991px) {
     body:not(.home) {
         padding-top:80px
-    }
-}
-
-body[data-qd-scroll-0="1"] {
-    padding-top: 159px
-}
-
-@media (max-width: 992px) {
-    body[data-qd-scroll-0="1"] {
-        padding-top:60px
     }
 }
 
@@ -667,10 +521,6 @@ body[data-qd-scroll-0="1"] {
     display: block;
     margin: 0;
     padding: 0
-}
-
-.slick-list:focus {
-    outline: none
 }
 
 .slick-slider .slick-track,.slick-slider .slick-list {
@@ -731,47 +581,6 @@ body[data-qd-scroll-0="1"] {
     opacity: 1
 }
 
-.header-qd-v1-location-modal .modal-header {
-    position: relative;
-    background: transparent;
-    border: none
-}
-
-.header-qd-v1-location-modal .modal-header button {
-    box-shadow: none;
-    text-shadow: none;
-    border: none;
-    border-radius: 0;
-    padding: 0;
-    text-align: center;
-    outline: none;
-    display: inline-block;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    bottom: 10px;
-    background: transparent;
-    color: #FFF;
-    font-size: 12px;
-    font-family: 'Montserrat',sans-serif
-}
-
-.header-qd-v1-location-modal .modal-header button:hover {
-    text-decoration: none;
-    outline: none
-}
-
-.header-qd-v1-location-modal .modal-header button:focus,.header-qd-v1-location-modal .modal-header button:active {
-    text-decoration: none;
-    outline: none;
-    box-shadow: none
-}
-
-.header-qd-v1-location-modal .modal-header button i {
-    font-size: 18px;
-    padding-left: 5px
-}
-
 .header-qd-v1-location-modal .modal-dialog {
     width: 340px
 }
@@ -782,27 +591,11 @@ body[data-qd-scroll-0="1"] {
     border: none
 }
 
-.header-qd-v1-location-modal .modal-content p {
-    font-size: 10px;
-    color: #757575;
-    line-height: 14px;
-    text-align: left
-}
-
 .header-qd-v1-location-modal .modal-body {
     background: #FFF;
     padding: 30px 30px 0 30px;
     border-top-left-radius: 3px;
     border-top-right-radius: 3px
-}
-
-.header-qd-v1-location-modal .modal-footer {
-    background: #FFF;
-    text-align: center;
-    margin-top: -15px;
-    padding: 20px 30px 30px 30px;
-    border-bottom-left-radius: 3px;
-    border-bottom-right-radius: 3px
 }
 
 .footer-qd-v1-content {
@@ -886,11 +679,6 @@ body[data-qd-scroll-0="1"] {
     background-color: #223B76;
     border-radius: 50%;
     margin-left: 13px
-}
-
-.footer-qd-v1-content .footer-qd-v1-social-networks ul>li>a:hover {
-    background-color: #17274e;
-    transform: translateY(-3px)
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks ul>li>a>i {
@@ -1008,12 +796,6 @@ body[data-qd-scroll-0="1"] {
     margin-bottom: 20px
 }
 
-.footer-qd-v1-content .footer-qd-v1-menu-list ul>li>a:hover,.footer-qd-v1-content .footer-qd-v1-menu-list ul>li>a:focus,.footer-qd-v1-content .footer-qd-v1-menu-list ul>li>a:active {
-    padding-left: 10px;
-    text-decoration: none;
-    background-color: #223B76
-}
-
 .footer-qd-v1-content .footer-qd-v1-menu-list>ul>li {
     border-bottom: 1px solid #bdbdbd
 }
@@ -1039,13 +821,6 @@ body[data-qd-scroll-0="1"] {
     padding: 5px 10px 5px 0;
     font-size: 14px;
     font-weight: 400
-}
-
-.footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li>a:hover,.footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li>a:focus,.footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li>a:active {
-    padding-left: 20px;
-    text-decoration: none;
-    color: #FFF;
-    background-color: #2D4F9E
 }
 
 .footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li a {
@@ -1140,10 +915,6 @@ body[data-qd-scroll-0="1"] {
     transition: all .2s ease-out
 }
 
-.footer-qd-v1-content .footer-qd-v1-contact-information li>a:hover,.footer-qd-v1-content .footer-qd-v1-contact-information li>a:focus,.footer-qd-v1-content .footer-qd-v1-contact-information li>a:active {
-    text-decoration: none
-}
-
 .footer-qd-v1-content .footer-qd-v1-contact-information i {
     margin-left: 30px;
     font-size: 21px;
@@ -1200,11 +971,6 @@ body[data-qd-scroll-0="1"] {
 
 .footer-qd-v1-content .footer-qd-v1-info-content li>a {
     transition: all .2s ease-out
-}
-
-.footer-qd-v1-content .footer-qd-v1-info-content li>a:hover,.footer-qd-v1-content .footer-qd-v1-info-content li>a:focus,.footer-qd-v1-content .footer-qd-v1-info-content li>a:active {
-    color: #223B76;
-    text-decoration: none
 }
 
 .footer-qd-v1-content .footer-qd-v1-info-content i {
@@ -1340,11 +1106,6 @@ body[data-qd-scroll-0="1"] {
     display: block
 }
 
-.footer-qd-v1-security-stamps a:hover,.footer-qd-v1-security-stamps a:focus,.footer-qd-v1-security-stamps a:active {
-    opacity: 1;
-    filter: alpha(opacity=100)
-}
-
 .footer-qd-v1-security-stamps ul {
     padding-inline-start:0}
 
@@ -1420,21 +1181,6 @@ body[data-qd-scroll-0="1"] {
 .shelf-qd-v1:after {
     left: auto;
     right: 0
-}
-
-.shelf-qd-v1:hover {
-    z-index: 10
-}
-
-.shelf-qd-v1:hover:before,.shelf-qd-v1:hover:after {
-    top: 0;
-    bottom: 0
-}
-
-.shelf-qd-v1:hover .shelf-qd-v1-buy-button {
-    opacity: 1;
-    filter: alpha(opacity=100);
-    visibility: visible
 }
 
 .shelf-qd-v1 a {
@@ -1540,10 +1286,6 @@ body[data-qd-scroll-0="1"] {
     text-decoration: none
 }
 
-.shelf-qd-v1 .shelf-qd-v1-name a:hover,.shelf-qd-v1 .shelf-qd-v1-name a:focus,.shelf-qd-v1 .shelf-qd-v1-name a:active {
-    text-decoration: none
-}
-
 .shelf-qd-v1 .shelf-qd-v1-price {
     margin-top: 15px;
     margin-bottom: 10px;
@@ -1576,19 +1318,6 @@ body[data-qd-scroll-0="1"] {
     font-weight: 600
 }
 
-.shelf-qd-v1 .shelf-qd-v1-price .shelf-qd-v1-price-instalment {
-    margin-top: 5px;
-    color: #333333;
-    font-size: 18px;
-    font-weight: 600;
-    width: 100%
-}
-
-.shelf-qd-v1 .shelf-qd-v1-price .shelf-qd-v1-price-instalment .shelf-qd-v1-price-instalment-multiplier,.shelf-qd-v1 .shelf-qd-v1-price .shelf-qd-v1-price-instalment .shelf-qd-v1-price-instalment-value {
-    font-weight: 700;
-    color: #2D4F9E
-}
-
 .shelf-qd-v1 .shelf-qd-v1-buy-button {
     transition: 0s;
     display: none !important;
@@ -1601,12 +1330,6 @@ body[data-qd-scroll-0="1"] {
 @media (min-width: 1200px) {
     .shelf-qd-v1 .shelf-qd-v1-buy-button {
         visibility:hidden
-    }
-}
-
-@media (max-width: 420px) {
-    .shelf-qd-v1 .shelf-qd-v1-buy-button {
-        margin-top:30px
     }
 }
 
@@ -1634,40 +1357,15 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     border-radius: 3px
 }
 
-.shelf-qd-v1 .shelf-qd-v1-buy-button a:hover,.shelf-qd-v1 .shelf-qd-v1-buy-button a:focus {
-    color: #FFF;
-    background: #43C452;
-    border-color: #43C452
-}
-
-.shelf-qd-v1 .shelf-qd-v1-buy-button a:active {
-    background: #43C452;
-    color: #FFF
-}
-
-.shelf-qd-v1 .shelf-qd-v1-buy-button a:hover,.shelf-qd-v1 .shelf-qd-v1-buy-button a:focus,.shelf-qd-v1 .shelf-qd-v1-buy-button a:active {
-    text-decoration: none
-}
-
 @media (min-width: 1200px) {
     .shelf-qd-v1 .shelf-qd-v1-buy-button a {
         padding:15px 10px
     }
 }
 
-.shelf-qd-v1 .shelf-qd-v1-buy-button a:hover,.shelf-qd-v1 .shelf-qd-v1-buy-button a:focus,.shelf-qd-v1 .shelf-qd-v1-buy-button a:active {
-    background: #33a140;
-    border-color: #33a140;
-    text-decoration: none
-}
-
 .shelf-qd-v1 .shelf-qd-v1-buy-button a:before {
     font-size: 14px;
     content: "Adicionar ao carrinho"
-}
-
-.shelf-qd-v1 .shelf-qd-v1-buy-button a:hover {
-    display: block
 }
 
 .shelf-qd-v1 .qd_cpShow {
@@ -1721,10 +1419,6 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     margin: 0;
     margin-bottom: 5px;
     display: none !important
-}
-
-.shelf-qd-v1-highlight-discount-percentage::before,.product-qd-v1-stamps-highlight-discount::before {
-    content: '-'
 }
 
 .carousel-qd-v1-shelf {
@@ -1801,45 +1495,9 @@ body.produto .carousel-qd-v1-shelf h2 {
     }
 }
 
-.modal-qd-v1-search .modal-qd-v1-close {
-    float: right;
-    color: #FFF;
-    font-size: 12px;
-    text-transform: uppercase;
-    cursor: pointer;
-    line-height: 21px;
-    font-family: 'Montserrat',sans-serif
-}
-
-.modal-qd-v1-search .modal-qd-v1-close:hover {
-    opacity: .75;
-    filter: alpha(opacity=75)
-}
-
-.modal-qd-v1-search .modal-qd-v1-close:after {
-    content: "\f00d";
-    display: inline-block;
-    font-size: 1em;
-    font-style: normal;
-    font-weight: normal;
-    height: 1em;
-    text-align: center;
-    text-decoration: inherit;
-    text-rendering: optimizelegibility;
-    width: 1em;
-    font-family: 'FontAwesome';
-    margin-left: 5px;
-    font-size: 21px;
-    vertical-align: bottom
-}
-
 .modal-qd-v1-search .modal-qd-v1-search-wrap {
     border-radius: 3px;
     margin-top: 120px
-}
-
-.modal-qd-v1-search .modal-qd-v1-search-wrap select,.modal-qd-v1-search .modal-qd-v1-search-wrap label,.modal-qd-v1-search .modal-qd-v1-search-wrap legend {
-    display: none
 }
 
 .modal-qd-v1-search .modal-qd-v1-search-wrap input[type="text"] {
@@ -1858,41 +1516,6 @@ body.produto .carousel-qd-v1-shelf h2 {
 .modal-qd-v1-search .modal-qd-v1-search-wrap fieldset {
     position: relative;
     width: 100%
-}
-
-.modal-qd-v1-search .modal-qd-v1-search-wrap fieldset:before {
-    position: absolute;
-    top: 7px;
-    left: auto;
-    right: 14px;
-    content: '\f002';
-    font-family: "FontAwesome";
-    color: #FFF;
-    font-size: 21px;
-    z-index: 55;
-    pointer-events: none
-}
-
-.modal-qd-v1-search .modal-qd-v1-search-wrap .btn-buscar {
-    position: absolute;
-    top: 0;
-    left: auto;
-    right: 0;
-    text-indent: 0;
-    color: transparent;
-    font-size: 0;
-    bottom: 0;
-    z-index: 10;
-    width: 51px;
-    outline: none;
-    background-color: #223B76;
-    border: none;
-    cursor: pointer;
-    border-radius: 0 3px 3px 0
-}
-
-.modal-qd-v1-search .modal-qd-v1-search-wrap .btn-buscar:hover {
-    background-color: #17274e
 }
 
 .smart-cart-qd-v2-wrapper {
@@ -1927,13 +1550,4 @@ body.produto .carousel-qd-v1-shelf h2 {
 
 .components-qd-v1-overlay {
     display: none
-}
-
-.components-qd-v1-overlay .close-mobile-amazing-menu-mobile .fa {
-    color: #FFF;
-    position: absolute;
-    top: 50%;
-    left: auto;
-    right: 10px;
-    font-size: 21px
 }
