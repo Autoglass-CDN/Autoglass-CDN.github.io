@@ -36,26 +36,26 @@ $(document).on('ready', function () {
 
 async function initHeaderPolicy() {
     
-    let uf = readCookie('myuf');
+    let Uf = readCookie('myuf');
     let localizationModal = startLocalizationModal();
 
-    if (!uf) {
+    if (!Uf) {
         try {
             
-            uf = await recuperarEstadoPelaIpInfo();
+            Uf = await recuperarEstadoPelaIpInfo();
         
         } catch {
             
-            uf = 'SP';
+            Uf = 'SP';
 
         }
 
-        localizationModal.open(uf);
+        localizationModal.open(Uf);
 
     } else {
 
-        localizationModal.setState(uf);
-        persistSalesChannel(uf);
+        localizationModal.setState(Uf);
+        persistSalesChannel(Uf);
 
     }
 
@@ -77,8 +77,8 @@ async function initHeaderPolicy() {
     });
 }
 
-function recuperarEstado(uf) {
-    return ESTADOS.find(state => state.GoogleMaps === uf || state.Nome === uf || state.Uf === uf);
+function recuperarEstado(Uf) {
+    return ESTADOS.find(state => state.GoogleMaps === Uf || state.Nome === Uf || state.Uf === Uf);
 }
 
 async function recuperarEstadoPelaIpInfo() {
@@ -87,8 +87,8 @@ async function recuperarEstadoPelaIpInfo() {
     return ipInfo.region;
 }
 
-function persistSalesChannel(uf) { 
-    const state = recuperarEstado(uf);
+function persistSalesChannel(Uf) { 
+    const state = recuperarEstado(Uf);
     
     let vtexsc = readCookie('VTEXSC');
     const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
