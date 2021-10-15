@@ -28,11 +28,21 @@ const ESTADOS = [
     { GoogleMaps: 'State of Tocantins', Uf: 'TO', Nome: 'Tocantins', Sc: 39, Cep: '77066356' },
 ];
 
-$(document).on('ready', function () {
-    
-    initHeaderPolicy();
+let executed = false;
 
+$(document).on('ready', function () {
+    if (!executed) {
+        executed = true;
+        initHeaderPolicy();
+    }
 });
+
+setTimeout(() => {
+    if (!executed) {
+        executed = true;
+        initHeaderPolicy();
+    }
+}, 3000);
 
 async function initHeaderPolicy() {
     
@@ -52,13 +62,11 @@ async function initHeaderPolicy() {
 
         localizationModal.open(Uf);
 
-    } else {
-
-        localizationModal.setState(Uf);
-        persistSalesChannel(Uf);
-
+        return;
     }
 
+    localizationModal.setState(Uf);
+    persistSalesChannel(Uf);
     recoverModalsState();
 
     $(window).on("cep-updated", (event) => {
@@ -129,10 +137,11 @@ function initAutocomplete() {
 }
 
 function setVtexScOnCookies(salesChannel) {  
+
+    //houver cookie VTEXSC sem o ponto no início (no secure), apaga esse cookie.
     document.cookie = 'VTEXSC'+ `=; Max-Age=-99999999;  path=/`;
     
-    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, \
-        1 Jan 2099 00:00:00 UTC;domain=${location.host}; path=/; secure=true`;
+    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=${location.host}; path=/; secure=true`;
 }
 
 function createCookie(name, value, days) {
