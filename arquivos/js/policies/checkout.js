@@ -247,8 +247,9 @@ async function changeSalesChannel(orderForm){
 
     //houver cookie VTEXSC sem o ponto no início (no secure), apaga esse cookie.
     document.cookie = 'VTEXSC'+ `=; Max-Age=-99999999;  path=/`;
-    document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=${location.host}; path=/; secure=true`;
-
+    //setar o cookie para www.domain.com e domain.com, evita entrar em loop infinito.
+    document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=www.autoglassonline.com.br; path=/; secure=true`;
+    document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=autoglassonline.com.br; path=/; secure=true`;
     
     if (testLogs) logNewPolicy(newSalesChannelObject, shippingData)
 
