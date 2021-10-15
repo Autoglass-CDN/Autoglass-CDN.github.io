@@ -19,7 +19,7 @@ const pickupPointsPolicies = [
     { nome: 'SP', Unidade: 'MG62', Uf: 'São Paulo', salesChannel: 31},
     { nome: 'SP', Unidade: 'MG61', Uf: 'São Paulo', salesChannel: 32},
     { nome: 'SP', Unidade: 'MG68', Uf: 'São Paulo', salesChannel: 33},
-    { nome: 'SP', Unidade: 'NW11', Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG70', Uf: 'São Paulo', salesChannel: 34},
     { nome: 'SP', Unidade: 'MG71', Uf: 'São Paulo', salesChannel: 35},
     { nome: 'SP', Unidade: 'SP02', Uf: 'São Paulo', salesChannel: 36},
     { nome: 'SP', Unidade: 'SP03', Uf: 'São Paulo', salesChannel: 37},
@@ -97,8 +97,8 @@ const specialCasePolicies = [
     { nome: 'SP', Unidade: 'MG68', cMin: 15400000, cMax: 15409999, Uf: 'São Paulo', salesChannel: 33},
     { nome: 'SP', Unidade: 'MG68', cMin: 15440000, cMax: 15449999, Uf: 'São Paulo', salesChannel: 33},
     
-    { nome: 'SP', Unidade: 'NW11', cMin: 11000000, cMax: 11599999, Uf: 'São Paulo', salesChannel: 34},
-    { nome: 'SP', Unidade: 'NW11', cMin: 11700000, cMax: 11759999, Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG70', cMin: 11000000, cMax: 11599999, Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG70', cMin: 11700000, cMax: 11759999, Uf: 'São Paulo', salesChannel: 34},
     
     { nome: 'SP', Unidade: 'MG71', cMin: 13300000, cMax: 13314999, Uf: 'São Paulo', salesChannel: 35},
     { nome: 'SP', Unidade: 'MG71', cMin: 18000000, cMax: 18119999, Uf: 'São Paulo', salesChannel: 35},
