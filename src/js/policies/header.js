@@ -42,7 +42,7 @@ setTimeout(() => {
         executed = true;
         initHeaderPolicy();
     }
-}, 3000);
+}, 4000);
 
 async function initHeaderPolicy() {
     
@@ -125,7 +125,9 @@ function setVtexScOnCookies(salesChannel) {
     //houver cookie VTEXSC sem o ponto no início (no secure), apaga esse cookie.
     document.cookie = 'VTEXSC'+ `=; Max-Age=-99999999;  path=/`;
     
-    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=${location.host}; path=/; secure=true`;
+    //setar o cookie para www.domain.com e domain.com, evita entrar em loop infinito.
+    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=www.autoglassonline.com.br; path=/; secure=true`;
+    document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=autoglassonline.com.br; path=/; secure=true`;
 }
 
 function createCookie(name, value, days) {
