@@ -501,11 +501,12 @@ async function adicionarItensCrossSeling() {
     let itensCrossSelling = await ObterItensCrossSelling();
 
     $(".splide__slide").remove();
-    
+    $(".transactions-container").remove();
+
     if(itensCrossSelling.length !== 0) {
         itensCrossSelling.forEach(e => {
             const urlBase = "https://autoglass.vteximg.com.br"  
-            let urlImagem = e.items[0].images[0].imageTag.allReplace({'~':urlBase, '#width#':'500','#height#':'500'});
+            let urlImagem = e.items[0].images[0].imageTag.allReplace({'~':urlBase, '#width#':'300','#height#':'300'});
             
             $(".splide__list").append(
                 "<li class=splide__slide>" + 
@@ -513,9 +514,9 @@ async function adicionarItensCrossSeling() {
                         "<a href=" + e.link +">" +
                             urlImagem +
                         "</a>" +
-                        "<h4 class=itemName >"+ e.items[0].name + "</h4>" +
+                        "<h4 class=itemName >" + e.items[0].name + "</h4>" +
                         "<h4 class=priceSplide>" + e.items[0].sellers[0].commertialOffer.Price + "</h4>" +
-                        "<div>" +
+                        "<div class=addcartPosition>" +
                             "<a class=addCart href=" + e.items[0].sellers[0].addToCartLink + ">Adicionar ao carrinho</a>" +
                         "</div>" +
                     "</div>" +
@@ -528,8 +529,14 @@ async function adicionarItensCrossSeling() {
             perPage: 3,
             updated: true,
             breakpoints: {
-                600: {
+                1200:{
+                    perPage: 2,
+                },
+                750: {
                     perPage: 1,
+                },
+                400:{
+                    perPage: 0,
                 }
             }
         }).mount();
