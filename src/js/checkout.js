@@ -506,7 +506,7 @@ async function adicionarItensCrossSeling() {
     if(itensCrossSelling.length !== 0) {
         itensCrossSelling.forEach(e => {
             const urlBase = "https://autoglass.vteximg.com.br"  
-            let urlImagem = e.items[0].images[0].imageTag.allReplace({'~':urlBase, '#width#':'300','#height#':'300'});
+            let urlImagem = e.items[0].images[0].imageTag.allReplace({'~':urlBase, '#width#':'500','#height#':'500'});
             
             $(".splide__list").append(
                 "<li class=splide__slide>" + 
