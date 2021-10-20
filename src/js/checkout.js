@@ -170,12 +170,9 @@ const generalPolicies = [
     { nome: 'TO', Unidade: 'MG56', cMin: 77000000, cMax: 77999999, Uf: 'Tocantins', salesChannel: 39 },
 ];
 
-let enderecoAtualizado = [];
-
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
-    enderecoAtualizado = oF.shippingData.address;
     adicionarItensCrossSeling();
 });
 
@@ -461,7 +458,7 @@ async function ObterItensCrossSelling() {
     if(arrayItensSugeridos.length > 0) {
         for (const items of arrayItensSugeridos) {
            for (const item of items) {
-                item.items[0].sellers[0].commertialOffer.Price = await simularShippingItensSugeridos(enderecoAtualizado, item.items[0].itemId)
+                item.items[0].sellers[0].commertialOffer.Price = await simularShippingItensSugeridos(item.items[0].itemId)
                 itensCrossSelling.push(item);       
             } 
         }
@@ -470,7 +467,7 @@ async function ObterItensCrossSelling() {
 }
 
 /*oF.shippingData.address*/
-async function simularShippingItensSugeridos(enderecoAtualizado, itemId) {
+async function simularShippingItensSugeridos(itemId) {
     let vtexsc = readCookie('VTEXSC').replace('sc=', '');
     let country = readCookie('myuf');
 
@@ -480,7 +477,6 @@ async function simularShippingItensSugeridos(enderecoAtualizado, itemId) {
             quantity: 1,
             seller: 1
         }],
-        postalCode: enderecoAtualizado.postalCode,
         country: country
     };
 
