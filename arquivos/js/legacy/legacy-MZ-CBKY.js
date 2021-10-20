@@ -3569,12 +3569,12 @@ $(document).ready(function () {
 });
 $(window).load(function () {
 	/* Injetando código para controlar script da galeria de imagem/video */
-	const isPageProduct = /\/p$|\/p\?/.test(window.location.href);
-	if (!isPageProduct) return;
+	const isNotPageProduct = !/\/p$/.test(window.location.href);
+	if (isNotPageProduct) return;
 
 	var script=document.createElement('script');
 	script.type='text/javascript';
-	script.src="https://autoglass-cdn.github.io/src/js/detalhe-produto-video.js";
+	script.src="https://autoglass-cdn.github.io/src/js/galeria-imagem-video.js";
 
 	document.body.appendChild(script);
 
