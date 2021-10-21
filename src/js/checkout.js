@@ -10,8 +10,6 @@ const pickupPointsPolicies = [
 
     { nome: 'PR', Unidade: 'MG13', Uf: 'Paraná', salesChannel: 19},
     { nome: 'PR', Unidade: 'MG49', Uf: 'Paraná', salesChannel: 20},
-    { nome: 'PR', Unidade: 'MG63', Uf: 'Paraná', salesChannel: 49},
-    { nome: 'PR', Unidade: 'MG65', Uf: 'Paraná', salesChannel: 49},
     
     { nome: 'SP', Unidade: 'MG69', Uf: 'São Paulo', salesChannel: 26},
     { nome: 'SP', Unidade: 'MG73', Uf: 'São Paulo', salesChannel: 27},
@@ -27,9 +25,7 @@ const pickupPointsPolicies = [
     { nome: 'SP', Unidade: 'SP03', Uf: 'São Paulo', salesChannel: 37},
     { nome: 'SP', Unidade: 'SP04', Uf: 'São Paulo', salesChannel: 38},
     
-    { nome: 'SC', Unidade: 'MG64', Uf: 'Santa Cararina', salesChannel: 19},
-    { nome: 'MA', Unidade: 'MG60', Uf: 'Maranhão', salesChannel: 10},
-    { nome: 'MT', Unidade: 'MG57', Uf: 'Mato Grosso', salesChannel: 12}, 
+    { nome: 'MT', Unidade: 'MG57', Uf: 'Mato Grosso', salesChannel: 12},
 ]
 
 /**
