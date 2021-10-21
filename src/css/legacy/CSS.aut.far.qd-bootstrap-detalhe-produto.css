@@ -1183,6 +1183,31 @@ body {
     right: 0
 }
 
+.shelf-qd-v1:hover {
+    z-index: 10
+}
+
+.shelf-qd-v1:hover:before,.shelf-qd-v1:hover:after {
+    top: 0;
+    bottom: 0
+}
+
+.shelf-qd-v1:hover .shelf-qd-v1-image img+img {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
+.shelf-qd-v1:hover .shelf-qd-v1-buy-button {
+    opacity: 1;
+    filter: alpha(opacity=100);
+    visibility: visible
+}
+
+.shelf-qd-v1.qd-product-is-in-stock-false .shelf-qd-v1-image img {
+    opacity: .5;
+    filter: alpha(opacity=50)
+}
+
 .shelf-qd-v1 a {
     outline: none
 }
