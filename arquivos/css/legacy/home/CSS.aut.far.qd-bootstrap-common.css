@@ -5984,12 +5984,6 @@ body.account .footer-qd-v1-newsletter-social .footer-qd-v1-newsletter-form .qd_n
     margin-left: 32px
 }
 
-@media (max-width: 1200px) {
-    .footer-qd-v1-content .footer-qd-v1-contact-information i {
-        display: none
-    }
-}
-
 @media (max-width: 992px) {
     .footer-qd-v1-content .footer-qd-v1-contact-information i {
         display: inline-block
