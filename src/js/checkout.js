@@ -10,7 +10,6 @@ const pickupPointsPolicies = [
 
     { nome: 'PR', Unidade: 'MG13', Uf: 'Paraná', salesChannel: 19},
     { nome: 'PR', Unidade: 'MG49', Uf: 'Paraná', salesChannel: 20},
-    { nome: 'PR', Unidade: 'MG63', Uf: 'Paraná', salesChannel: 20},
     
     { nome: 'SP', Unidade: 'MG69', Uf: 'São Paulo', salesChannel: 26},
     { nome: 'SP', Unidade: 'MG73', Uf: 'São Paulo', salesChannel: 27},
