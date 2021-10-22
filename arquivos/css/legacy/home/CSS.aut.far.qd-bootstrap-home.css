@@ -995,12 +995,6 @@ a:focus {
     font-weight: 500 !important
 }
 
-@media (max-width: 1200px) {
-    .footer-qd-v1-content .footer-qd-v1-contact-information i {
-        display: none
-    }
-}
-
 @media (max-width: 992px) {
     .footer-qd-v1-content .footer-qd-v1-contact-information i {
         display: inline-block
