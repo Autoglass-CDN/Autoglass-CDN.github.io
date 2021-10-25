@@ -43,6 +43,10 @@
     border-top: 1px solid #e5e5e5;
 }
 
+.col-xs-6, .col-xs-12 {
+    float: left
+}
+
 @media (max-width: 767px) {
     .hidden-xs {
         display: none !important
