@@ -62,6 +62,7 @@
 .veiculos-compativeis-search__search-suggestions .veiculos-compativeis__content-compativel-link>div {
   display: flex;
   flex-wrap: wrap;
+  justify-content: end;
 }
 
 .veiculos-compativeis-search__search-suggestions .veiculos-compativeis-search__link {
