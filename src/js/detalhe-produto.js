@@ -265,6 +265,12 @@ $(window).on("ready", async () => {
   }
 
   //Busca de Veículos Compatíveis
+  let skuList = Product.captureSkuSelectors();
+  const urlAddCart = "/checkout/cart/add?sku=" +
+    skuList[0] +
+    "&qty=1&seller=1&redirect=true&" +
+    readCookie("VTEXSC");
+
   $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input')
     .on('input', function () {
       buscaCompativeis($(this).val())
@@ -291,12 +297,10 @@ $(window).on("ready", async () => {
 
   function buildContentBusca(veiculo, index) {
     return `
-                  <div class="veiculos-compativeis__content-compativel">
+                  <a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
                       <p>${veiculo.Veiculo}</p>
-                      <div>${veiculo.Anos.map(
-      (x) => "<span>" + x + "</span>"
-    )}.</div>
-                  </div>
+                      <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>")}.</div>
+                  </a>
               `;
   }
 
