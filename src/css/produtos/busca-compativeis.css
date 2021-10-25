@@ -49,6 +49,7 @@
   font-size: 14px;
   color: #707070;
   padding: 10px 0 10px 0;
+  text-decoration: underline;
 }
 
 .veiculos-compativeis-search__search-suggestions .veiculos-compativeis__content-compativel-link>p {
@@ -61,6 +62,7 @@
 .veiculos-compativeis-search__search-suggestions .veiculos-compativeis__content-compativel-link>div {
   display: flex;
   flex-wrap: wrap;
+  justify-content: end;
 }
 
 .veiculos-compativeis-search__search-suggestions .veiculos-compativeis-search__link {
@@ -70,10 +72,6 @@
 
 .veiculos-compativeis-search__search-suggestions .veiculos-compativeis-search__link a {
   text-decoration: underline !important;
-}
-
-.veiculos-compativeis-search__hint {
-  text-decoration: underline;
 }
 
 @media (max-width: 992px) {
