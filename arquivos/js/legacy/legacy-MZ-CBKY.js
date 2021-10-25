@@ -3574,7 +3574,7 @@ $(window).load(function () {
 
 	var script=document.createElement('script');
 	script.type='text/javascript';
-	script.src="https://autoglass-cdn.github.io/src/js/detalhe-produto-video.js";
+	script.src="https://autoglass-cdn.github.io/arquivos/js/detalhe-produto-video.js";
 
 	document.body.appendChild(script);
 
