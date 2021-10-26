@@ -278,30 +278,42 @@ $(window).on("ready", async () => {
 
   function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 2) {
-      sugestoesContainer
-        .html(veiculosBuscaveis.map((a) =>
+      const veiculosBuscaveisFiltrado = veiculosBuscaveis.map((a) =>
           a.Veiculos.filter(b =>
             new RegExp(texto.split(" ")
               .map(str => `(?=.*${str})`).join(""), "i")
               .test(b.Veiculo)))
-          .filter(a => a.length > 0)
-          .flat()
-          .slice(0, 3)
-          .map(buildContentBusca)
-          .join("") + `<div class="veiculos-compativeis-search__link">
-  <a href="#veiculos-compativeis">Ver todos</a>
-</div>`
-        )
+          .filter(a => a.length > 0);
+      
+      if(!!veiculosBuscaveisFiltrado.length) {
+        sugestoesContainer.html(
+          veiculosBuscaveisFiltrado.flat()
+            .slice(0, 3)
+            .map(buildContentBusca)
+            .join("") + `<div class="veiculos-compativeis-search__link">
+                            <a href="#veiculos-compativeis">Ver todos</a>
+                          </div>`
+        );
+      } else {
+        sugestoesContainer.html(`
+          <div class="veiculos-compativeis-search__disclaimer">
+            Modelo de carro não compatível :(
+          </div>
+          <div class="veiculos-compativeis-search__link">
+            <a href="#veiculos-compativeis">Ver todos</a>
+          </div>
+        `);
+      }
+    } else {
+      sugestoesContainer.empty();
     }
   }
 
   function buildContentBusca(veiculo, index) {
-    return `
-                  <a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
-                      <p>${veiculo.Veiculo}</p>
-                      <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>")}.</div>
-                  </a>
-              `;
+    return `<a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
+              <p>${veiculo.Veiculo}</p>
+              <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>")}.</div>
+            </a>`;
   }
 
   function buildHeader(grupo, index) {
