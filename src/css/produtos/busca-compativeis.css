@@ -74,6 +74,12 @@
   text-decoration: underline !important;
 }
 
+.veiculos-compativeis-search__search-suggestions .veiculos-compativeis-search__disclaimer {
+  padding: 5px;
+  font-weight: 600;
+  color: var(--danger);
+}
+
 @media (max-width: 992px) {
   .veiculos-compativeis-search.desktop {
     display: none !important;
