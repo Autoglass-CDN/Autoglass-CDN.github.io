@@ -95,6 +95,20 @@
   }
 }
 
+.veiculos-compativeis-search.desktop {
+  position: relative;
+  z-index: 1;
+}
+
 .veiculos-compativeis-search.mobile {
-  padding: 0 10px;
+  padding: 30px 10px 0 10px;
+  margin: 15px auto 0 auto;
+}
+
+@media (max-width: 600px) {
+  .veiculos-compativeis-search.mobile {
+    padding: 30px 30px 0;
+    max-width: 100%;
+    width: 100%;
+  }
 }
