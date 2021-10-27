@@ -625,7 +625,7 @@ body.qd-product-unavailable
 }
 @media (max-width: 767px) {
     .product-qd-v1-sku-selection-box .product-qd-v1-description-short {
-        padding: 50px 30px 15px;
+        padding: 30px 30px 15px;
     }
 }
 .product-qd-v1-sku-selection-box
@@ -654,6 +654,7 @@ body.qd-product-unavailable
     font-size: 14px;
     font-weight: 600;
     font-family: "Montserrat", sans-serif;
+    margin-bottom: 25px;
 }
 @media (max-width: 767px) {
     .product-qd-v1-sku-selection-box .product-qd-v1-link-description {
