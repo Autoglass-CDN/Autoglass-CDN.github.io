@@ -14,7 +14,7 @@ const pickupPointsPolicies = [
     { nome: 'SP', Unidade: 'MG69', Uf: 'São Paulo', salesChannel: 26},
     { nome: 'SP', Unidade: 'MG73', Uf: 'São Paulo', salesChannel: 27},
     { nome: 'SP', Unidade: 'MG66', Uf: 'São Paulo', salesChannel: 28},
-    { nome: 'SP', Unidade: 'NW04', Uf: 'São Paulo', salesChannel: 29},
+    { nome: 'SP', Unidade: 'MG67', Uf: 'São Paulo', salesChannel: 29},
     { nome: 'SP', Unidade: 'SP01', Uf: 'São Paulo', salesChannel: 30},
     { nome: 'SP', Unidade: 'MG62', Uf: 'São Paulo', salesChannel: 31},
     { nome: 'SP', Unidade: 'MG61', Uf: 'São Paulo', salesChannel: 32},
