@@ -175,6 +175,7 @@ const generalPolicies = [
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
+    adicionarItensCrossSeling();
 });
 
 localStorage.setItem('locationChanged', 0);
@@ -442,4 +443,129 @@ function finishAnimation() {
 }
 
 
+
+/*--------*/
+async function ObterItensCrossSelling() {
+    const sessao = JSON.parse(localStorage.getItem('impulse_session'));
+    const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/';
+    let itensCrossSelling = [];
+    let urls = [];
+
+    sessao.cartItems.forEach(a => {
+        urls.push(uriCrossSelling + a.pid)
+    });
+
+    let arrayItensSugeridos = await Promise.all(urls.map(async (url) => {
+        const response = await fetch(url);
+        return await response.json();
+    }));
+
+    if(arrayItensSugeridos.length > 0) {
+        for (const items of arrayItensSugeridos) {
+           for (const item of items) {
+                item.items[0].sellers[0].commertialOffer.Price = await simularShippingItensSugeridos(item.items[0].itemId)
+                itensCrossSelling.push(item);       
+            } 
+        }
+    }
+    return itensCrossSelling;
+}
+
+/*oF.shippingData.address*/
+async function simularShippingItensSugeridos(itemId) {
+    let vtexsc = readCookie('VTEXSC').replace('sc=', '');
+    let country = readCookie('myuf');
+
+    const request = {
+        items: [{
+            id: itemId,
+            quantity: 1,
+            seller: 1
+        }],
+        country: country
+    };
+
+    let data = await fetch(`/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)})
+        
+    let i =  await data.json();
+
+    return formatPrice(i.items[0].price);    
+}
+
+async function adicionarItensCrossSeling() {
+
+    let itensCrossSelling = await ObterItensCrossSelling();
+
+    $(".splide__slide").remove();
+    $(".transactions-container").remove();
+
+    if(itensCrossSelling.length !== 0) {
+        itensCrossSelling.forEach(e => {
+            const urlBase = "https://autoglass.vteximg.com.br"  
+            let urlImagem = e.items[0].images[0].imageTag.allReplace({'~':urlBase, '#width#':'500','#height#':'500'});
+            
+            $(".splide__list").append(
+                "<li class=splide__slide>" + 
+                    "<div class=splide__slide__container>" +
+                        "<a href=" + e.link +">" +
+                            urlImagem +
+                        "</a>" +
+                        "<h4 class=itemName >" + e.items[0].name + "</h4>" +
+                        "<h4 class=priceSplide>" + e.items[0].sellers[0].commertialOffer.Price + "</h4>" +
+                        "<div class=addcartPosition>" +
+                            "<a class=addCart href=" + e.items[0].sellers[0].addToCartLink + ">Adicionar ao carrinho</a>" +
+                        "</div>" +
+                    "</div>" +
+                "</li>"
+            );
+        });
+
+        new Splide('#image-slider', {
+            type: 'loop',
+            perPage: 3,
+            updated: true,
+            breakpoints: {
+                1200:{
+                    perPage: 2,
+                },
+                750: {
+                    perPage: 1,
+                },
+                400:{
+                    perPage: 0,
+                }
+            }
+        }).mount();
+    }
+}
+
+/* Função para substituir multiplas strings */
+String.prototype.allReplace = function(obj) {
+    var retStr = this;
+    for (var x in obj) {
+        retStr = retStr.replace(new RegExp(x, 'g'), obj[x]);
+    }
+    return retStr;
+};
+
+/* Formatar preço do produto */
+function formatPrice(price) {
+    let value = 'R$ ';
+
+    if (price === 0) return 'Grátis';
+
+    price = price + "";
+    const [decimal] = price.match(/\w{2}$/);
+
+    value += price.slice(0, price.length - 2);
+    value += ',';
+    value += decimal;
+
+    return value;
+}
 
