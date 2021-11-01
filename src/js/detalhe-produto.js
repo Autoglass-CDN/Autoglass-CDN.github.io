@@ -174,9 +174,9 @@ $(window).on("ready", async () => {
   window.addEventListener("resize", adjustProductThumbHeight);
 
   function adjustProductThumbHeight() {
-    $('.product-qd-v1-image #image-main').css('min-height', $('.product-qd-v1-image #image-main').width())
+    $('.product-qd-v1-image div#image').css('min-height', $('.product-qd-v1-image #image-main').width())
   }
-  
+
   adjustProductThumbHeight();
 
   /**
