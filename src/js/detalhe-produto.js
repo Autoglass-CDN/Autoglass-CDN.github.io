@@ -166,10 +166,22 @@ async function loadSimilars() {
 
 loadSimilars();
 
-/**
- *  Cria bloco de Veículos Compatíveis
- */
+
 $(window).on("ready", async () => {
+  /*
+   * Corrige problema com variação da altura na thumb de produto
+   */
+  window.addEventListener("resize", adjustProductThumbHeight);
+
+  function adjustProductThumbHeight() {
+    $('.product-qd-v1-image #image-main').css('min-height', $('.product-qd-v1-image #image-main').width())
+  }
+  
+  adjustProductThumbHeight();
+
+  /**
+   * Cria bloco de Veículos Compatíveis
+   */
   const veiculosCompatíveisContainer = $("#veiculos-compativeis");
   const productRefId = await getProductRefIdByProductName();
   const baseUrlApi =
