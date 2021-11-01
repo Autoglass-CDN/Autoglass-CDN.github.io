@@ -1570,3 +1570,10 @@ body.produto .carousel-qd-v1-shelf h2 {
 .components-qd-v1-overlay {
     display: none
 }
+
+.footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li>a:hover, .footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li>a:focus, .footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li>a:active {
+    padding-left: 20px;
+    text-decoration: none;
+    color: #FFF;
+    background-color: #2D4F9E
+}
