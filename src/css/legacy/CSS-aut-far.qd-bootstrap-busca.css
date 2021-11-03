@@ -3,7 +3,8 @@
 /* PC-QUARTO - 04/06/2020 19:17:14 GMT-0300 */
 /*! Não edite esse arquivo, ele foi gerado de maneira automatizada */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
-@import url("//fonts.googleapis.com/css?family=Montserrat:300,400,400i,600,700i,800");@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800");@import url("//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap");@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");html {
+
+html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
     -webkit-text-size-adjust: 100%
