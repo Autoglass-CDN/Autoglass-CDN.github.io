@@ -14,7 +14,7 @@
         ga('gaTracker.set', 'transport', 'beacon');
         ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', 'Rodapé +55 27 99826-0207');
 
-    });
+    }, {passive: true});
     
     const addBorderZDButton = () => {
         let iframe = document.querySelector('#launcher');
