@@ -1799,3 +1799,14 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     right: 10px;
     font-size: 21px
 }
+
+.shelf-qd-v1 .shelf-qd-v1-no-stock {
+    height: 151px;
+    text-align: center;
+    padding-top: 50px
+}
+
+.shelf-qd-v1.qd-product-is-in-stock-false .shelf-qd-v1-image img {
+    opacity: .5;
+    filter: alpha(opacity=50)
+}
