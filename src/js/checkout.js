@@ -175,7 +175,7 @@ const generalPolicies = [
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
-    adicionarItensCrossSeling();
+    adicionarItensCrossSeling(oF);
 });
 
 localStorage.setItem('locationChanged', 0);
@@ -442,14 +442,16 @@ function finishAnimation() {
 }
 
 /*--------*/
-async function ObterItensCrossSelling() {
-    const sessao = JSON.parse(localStorage.getItem('impulse_session'));
+async function ObterItensCrossSelling(orderForm) {
+    const items = orderForm.items;
     const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/';
     let itensCrossSelling = [];
     let urls = [];
 
-    sessao.cartItems.forEach(a => {
-        urls.push(uriCrossSelling + a.pid)
+    $(".compreJunto").css("display","block");
+
+    items.forEach(e => {
+        urls.push(uriCrossSelling + e.productId) 
     });
 
     let arrayItensSugeridos = await Promise.all(urls.map(async (url) => {
@@ -494,9 +496,9 @@ async function simularShippingItensSugeridos(itemId) {
     return formatPrice(i.items[0].price);    
 }
 
-async function adicionarItensCrossSeling() {
+async function adicionarItensCrossSeling(orderForm) {
 
-    let itensCrossSelling = await ObterItensCrossSelling();
+    let itensCrossSelling = await ObterItensCrossSelling(orderForm);
 
     $(".splide__slide").remove();
     $(".transactions-container").remove();
