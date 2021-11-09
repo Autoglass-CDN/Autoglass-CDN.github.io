@@ -4,7 +4,7 @@ $(function () {
     if (acessorio) {
         $(".product-qd-v1-standard .buy-button").addClass("secondary");
     }
-
+    
     let skuList = Product.captureSkuSelectors();
     var urlCart =
         "/checkout/cart/add?sku=" +
@@ -648,5 +648,6 @@ $(function CalculeOFrete() {
                 data: JSON.stringify(request)
             });
         }
+
     }
 });
