@@ -1,0 +1,312 @@
+@import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+:root {
+  font-family: "Open Sans", sans-serif;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  box-sizing: border-box;
+}
+
+/* HELPERS */
+.c-busca .h-flex {
+  display: flex;
+  flex-direction: column;
+}
+
+.l-container {
+  max-width: 1010px;
+  margin: 0 auto;
+}
+
+/* MOBILE */
+.c-busca {
+  --active-bg-color: #234eb9;
+  --primary: #42c552;
+  margin: 10px;
+  position: relative;
+}
+
+/* #region TABS */
+.c-busca .c-busca__tabs {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  /* width: 100%; */
+}
+
+.c-busca .c-busca__tabs li {
+  background-color: gray;
+  border-radius: 10px;
+  list-style: none;
+  /* margin: 0 5px; */
+  font-size: 0.7em;
+  flex-grow: 1;
+}
+
+.c-busca .c-busca__tabs li:last-child {
+  margin-left: 2.5px;
+}
+
+.c-busca .c-busca__tabs li:first-child {
+  margin-right: 2.5px;
+}
+
+.c-busca .c-busca__tabs li.is-active {
+  background-color: var(--active-bg-color);
+  padding: 5px;
+  flex-shrink: 0;
+  font-size: 1em;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+@media screen and (max-width: 420px) {
+  /* Ativar quando tiver busca por veículo ou adicionar mais uma aba */
+  .c-busca .c-busca__tabs li,
+  .c-busca .c-busca__tabs li.is-active {
+    font-size: 0.7em;
+    flex-shrink: 1;
+  }
+}
+
+.c-busca .c-busca__tabs li a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 1100px) {
+  .c-busca .c-busca__tabs {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .c-busca .c-busca__tabs li {
+    color: white;
+    list-style: none;
+    flex: 1;
+    text-align: center;
+    position: relative;
+
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+
+    border-right: 1px solid white;
+    border-left: 1px solid white;
+  }
+
+  .c-busca .c-busca__tabs li a {
+    text-decoration: none;
+    font-weight: 600;
+    color: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    height: 100%;
+  }
+
+  .c-busca .c-busca__tabs li.active:not(:first-child) a:before,
+  .c-busca .c-busca__tabs li.active:not(:last-child) a:after {
+    content: "";
+    z-index: 2;
+    background: #a8a8a8;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    bottom: 0;
+    border-radius: 10px;
+  }
+
+  .c-busca .c-busca__tabs li.active:not(:first-child) a:before {
+    left: -30px;
+  }
+
+  .c-busca .c-busca__tabs li.active:not(:last-child) a:after {
+    z-index: 3;
+    right: -30px;
+  }
+}
+
+/* #endregion TABS */
+
+/* #region TAB CONTAINER */
+.c-busca .c-busca__tabs-content {
+  /* background-color: var(--active-bg-color); */
+  color: white;
+  /* border-radius: 10px; */
+  /* position: relative; */
+}
+
+.c-busca .c-busca__tab-content {
+  padding: 10px;
+  display: none;
+}
+
+.c-busca .c-busca__tab-content.is-active {
+  display: block;
+  background-color: var(--active-bg-color);
+  border-radius: 10px;
+}
+
+.c-busca .c-busca__tab-content:first-child.is-active {
+  border-top-left-radius: 0;
+}
+
+.c-busca .c-busca__tab-content:last-child.is-active {
+  border-top-right-radius: 0;
+}
+
+.c-busca .c-busca__input,
+.c-busca .c-busca__select,
+.c-busca .c-busca__botao {
+  margin: 5px;
+  position: relative;
+}
+
+.c-busca .c-busca__input input,
+.c-busca .c-busca__select select,
+.c-busca .c-busca__botao button,
+.c-busca .c-busca__select div > div:first-child {
+  width: 100%;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.c-busca .c-busca__select div > div:first-child {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+  background-color: white;
+  font-size: 14px;
+  color: #868686;
+  border-radius: 4px;
+  padding: 15px;
+  cursor: pointer;
+  transition: color 0.2s ease-in-out;
+}
+
+.c-busca .c-busca__select div > div:hover,
+.c-busca .c-busca__select div > div:focus {
+  color: #1c3162;
+}
+
+.c-busca__tab-content .smart-select__main-results {
+  background: white;
+  position: absolute;
+  flex-direction: column;
+  max-width: 212px;
+  padding: 0;
+  border-radius: 0px 0px 4px 4px;
+  border: 1px solid #a8a8a8;
+  z-index: 9;
+  left: 0;
+  right: 0;
+}
+
+.c-busca__tab-content .smart-select__main-results input {
+  margin: 10px;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #a8a8a8;
+}
+
+.c-busca__tab-content .smart-select__main-results ul {
+  list-style-type: none;
+  overflow: auto;
+  max-height: 200px;
+  padding: 0;
+}
+
+.c-busca__tab-content .smart-select__main-results ul li {
+  font-size: 14px;
+  padding: 10px 15px;
+  color: #707070;
+  cursor: pointer;
+  width: inherit;
+}
+
+.c-busca__tab-content .smart-select__main-results ul li.highlight {
+  background-color: #1c3162;
+  color: white;
+}
+
+@media (max-width: 1100px) {
+  .c-busca__tab-content .smart-select__main-results {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .c-busca__tab-content .smart-select__main-results input {
+    width: calc(100% - 20px);
+    display: none;
+  }
+
+  .c-busca .smart-select__modal.loader-modal--show {
+    z-index: 10;
+    bottom: 0;
+  }
+}
+
+.c-busca .smart-select__modal {
+  display: none;
+}
+
+.c-busca .smart-select__modal.loader-modal--show {
+  position: absolute;
+  cursor: no-drop;
+  margin: 0;
+  /* border-radius: inherit; */
+  border-radius: 4px;
+
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  /* height: 100%; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000c0;
+}
+
+.c-busca .smart-select__modal.loader-modal--show .smart-select__modal__spinner {
+  animation: spinner 2s linear infinite;
+}
+
+.c-busca .smart-select__modal .smart-select__modal__spinner {
+  border: 8px solid #f3f3f3c0;
+  border-top: 8px solid #183884;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+
+.c-botao--primary {
+  background-color: var(--primary);
+  color: white;
+}
+
+.c-busca .c-busca__descricao {
+  font-size: 0.7em;
+  text-align: center;
+  margin: 5px;
+}
+
+/* #endregion TAB CONTAINER */
+
+/* MOBILE */
+
+/* DESKTOP */
+/* DESKTOP */

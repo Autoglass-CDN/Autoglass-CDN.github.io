@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8" />
+    <title>Busca de Peças</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="l-container">
+      <section class="c-busca">
+        <ul class="c-busca__tabs">
+          <li class="is-active">
+            <a href="#busca-peca">
+              <img
+                src="./search-solid.svg"
+                alt="placa"
+                width="30"
+                height="30"
+                style="
+                  filter: invert(1);
+                  margin-right: 5px;
+                  fill: white;
+                  opacity: 0.7;
+                "
+              />
+              Busca por peça
+            </a>
+          </li>
+          <!-- <li>
+            <a href="#busca-veiculo">
+              <img
+                src="./car-solid.svg"
+                alt="placa"
+                width="30"
+                height="30"
+                style="
+                  filter: invert(1);
+                  margin-right: 5px;
+                  fill: white;
+                  opacity: 0.7;
+                "
+              />
+              Busca por veículo
+            </a>
+          </li> -->
+          <li>
+            <a href="#busca-placa"
+              ><img
+                src="./plate-icon.svg"
+                alt="placa"
+                width="50"
+                height="30"
+                style="filter: invert(1); margin-right: 5px; fill: white"
+              />
+              Busca por placa</a
+            >
+          </li>
+        </ul>
+        <div class="c-busca__tabs-content">
+          <div class="c-busca__tab-content is-active" id="busca-peca">
+            <div class="h-flex">
+              <div class="c-busca__select">
+                <div id="produtos-select">
+                  <div class="gtm-smart-produto-select">
+                    <span>Produto</span>
+                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-close" style="display: none"></i>
+                  </div>
+                  <div class="smart-select__main-results" style="display: none">
+                    <input
+                      id="produtos-input"
+                      placeholder="Digite aqui:"
+                      type="text"
+                      autocomplete="off"
+                    />
+                    <ul></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="c-busca__select">
+                <div id="pecas-select" class="empty">
+                  <div class="gtm-smart-peca-select">
+                    <span>Peça</span>
+                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-close" style="display: none"></i>
+                  </div>
+                  <div class="smart-select__main-results" style="display: none">
+                    <input
+                      id="peca-input"
+                      placeholder="Digite aqui:"
+                      type="text"
+                      autocomplete="off"
+                    />
+                    <ul></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="c-busca__select">
+                <div id="montadora-select" class="empty">
+                  <div class="gtm-smart-montadora-select">
+                    <span>Montadora</span>
+                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-close" style="display: none"></i>
+                  </div>
+                  <div class="smart-select__main-results" style="display: none">
+                    <input
+                      id="montadora-input"
+                      placeholder="Digite aqui:"
+                      type="text"
+                      autocomplete="off"
+                    />
+                    <ul></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="c-busca__select">
+                <div id="veiculo-select" class="empty">
+                  <div class="gtm-smart-veiculo-select">
+                    <span>Veículo</span>
+                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-close" style="display: none"></i>
+                  </div>
+                  <div class="smart-select__main-results" style="display: none">
+                    <input
+                      id="veiculo-input"
+                      placeholder="Digite aqui:"
+                      type="text"
+                      autocomplete="off"
+                    />
+                    <ul></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="c-busca__select">
+                <div id="ano-select" class="empty">
+                  <div class="gtm-smart-ano-select">
+                    <span>Ano</span>
+                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-close" style="display: none"></i>
+                  </div>
+                  <div class="smart-select__main-results" style="display: none">
+                    <input
+                      id="ano-input"
+                      placeholder="Digite aqui:"
+                      type="text"
+                      autocomplete="off"
+                    />
+                    <ul></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="c-busca__botao">
+                <button
+                  id="btn-busca-peca"
+                  class="c-botao c-botao--primary"
+                  type="button"
+                >
+                  BUSCAR
+                </button>
+              </div>
+              <div class="smart-select__modal">
+                <span class="smart-select__modal__spinner"></span>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="c-busca__tab-content" id="busca-veiculo">
+            <div>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero,
+              quaerat nemo iste ut nisi sint corrupti at doloribus placeat
+              officiis dolores magnam consectetur quia, exercitationem impedit
+              laboriosam perferendis iure iusto?
+            </div>
+          </div> -->
+          <div class="c-busca__tab-content" id="busca-placa">
+            <div class="h-flex">
+              <div class="c-busca__input">
+                <input
+                  type="text"
+                  name="placa-input"
+                  id="placa-input"
+                  placeholder="Digite a sua placa"
+                />
+              </div>
+              <!-- <div class="c-busca__select">
+                <div id="produtos-select-placa">
+                  <div class="gtm-smart-produto-select">
+                    <span>Produto</span>
+                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-close" style="display: none"></i>
+                  </div>
+                  <div class="smart-select__main-results" style="display: none">
+                    <input
+                      id="produtos-input-placa"
+                      placeholder="Digite aqui:"
+                      type="text"
+                      autocomplete="off"
+                    />
+                    <ul></ul>
+                  </div>
+                </div>
+              </div>
+              <div class="c-busca__select">
+                <div id="pecas-select-placa" class="empty">
+                  <div class="gtm-smart-peca-select">
+                    <span>Peça</span>
+                    <i class="fa fa-caret-down"></i>
+                    <i class="fa fa-close" style="display: none"></i>
+                  </div>
+                  <div class="smart-select__main-results" style="display: none">
+                    <input
+                      id="peca-input-placa"
+                      placeholder="Digite aqui:"
+                      type="text"
+                      autocomplete="off"
+                    />
+                    <ul></ul>
+                  </div>
+                </div>
+              </div> -->
+              <div class="c-busca__botao">
+                <button
+                  id="btn-busca-placa"
+                  class="c-botao c-botao--primary"
+                  type="button"
+                >
+                  BUSCAR
+                </button>
+              </div>
+            </div>
+            <div class="c-busca__descricao">
+              <span
+                ><strong>Digite a placa do seu carro</strong>, caminhonete, SUV
+                ou van para encontrar o item desejado.</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <script>
+      let tabs = document.querySelectorAll(".c-busca__tabs li");
+
+      tabs.forEach((tab) => {
+        tab.addEventListener("click", (evento) => {
+          //   evento.preventDefault();
+          tabs.forEach((t) => t.classList.remove("is-active"));
+          tab.classList.add("is-active");
+
+          let tabContentDivs = document.querySelectorAll(
+            ".c-busca__tab-content"
+          );
+
+          tabContentDivs.forEach((div) => div.classList.remove("is-active"));
+
+          let selectedSection = document.querySelector(
+            tab.querySelector("a").hash
+          );
+          selectedSection.classList.add("is-active");
+        });
+      });
+    </script>
+
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous"
+    ></script>
+    <script src="./index.js"></script>
+  </body>
+</html>
