@@ -47,13 +47,13 @@
     float: left
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
     .hidden-xs {
         display: none !important
     }
 }
 
-@media (min-width: 768px) and (max-width:991px) {
+@media (min-width: 769px) and (max-width:991px) {
     .hidden-sm {
         display: none !important
     }
@@ -187,13 +187,13 @@
     }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 769px) {
     #stateSelectorModal.modal-confirmation div.modal-dialog {
         margin: 20px auto;
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 769px) {
     #stateSelectorModal.modal-confirmation div.modal-dialog {
         width: auto;
     }
