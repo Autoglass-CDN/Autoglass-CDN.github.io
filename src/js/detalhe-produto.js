@@ -166,10 +166,22 @@ async function loadSimilars() {
 
 loadSimilars();
 
-/**
- *  Cria bloco de Veículos Compatíveis
- */
+
 $(window).on("ready", async () => {
+  /*
+   * Corrige problema com variação da altura na thumb de produto
+   */
+  window.addEventListener("resize", adjustProductThumbHeight);
+
+  function adjustProductThumbHeight() {
+    $('.product-qd-v1-image div#image').css('min-height', $('.product-qd-v1-image #image-main').width())
+  }
+
+  adjustProductThumbHeight();
+
+  /**
+   * Cria bloco de Veículos Compatíveis
+   */
   const veiculosCompatíveisContainer = $("#veiculos-compativeis");
   const productRefId = await getProductRefIdByProductName();
   const baseUrlApi =
@@ -265,6 +277,12 @@ $(window).on("ready", async () => {
   }
 
   //Busca de Veículos Compatíveis
+  let skuList = Product.captureSkuSelectors();
+  const urlAddCart = "/checkout/cart/add?sku=" +
+    skuList[0] +
+    "&qty=1&seller=1&redirect=true&" +
+    readCookie("VTEXSC");
+
   $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input')
     .on('input', function () {
       buscaCompativeis($(this).val())
@@ -272,32 +290,42 @@ $(window).on("ready", async () => {
 
   function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 2) {
-      sugestoesContainer
-        .html(veiculosBuscaveis.map((a) =>
+      const veiculosBuscaveisFiltrado = veiculosBuscaveis.map((a) =>
           a.Veiculos.filter(b =>
             new RegExp(texto.split(" ")
               .map(str => `(?=.*${str})`).join(""), "i")
               .test(b.Veiculo)))
-          .filter(a => a.length > 0)
-          .flat()
-          .slice(0, 3)
-          .map(buildContentBusca)
-          .join("") + `<div class="veiculos-compativeis-search__link">
-  <a href="#veiculos-compativeis">Ver todos</a>
-</div>`
-        )
+          .filter(a => a.length > 0);
+      
+      if(!!veiculosBuscaveisFiltrado.length) {
+        sugestoesContainer.html(
+          veiculosBuscaveisFiltrado.flat()
+            .slice(0, 3)
+            .map(buildContentBusca)
+            .join("") + `<div class="veiculos-compativeis-search__link">
+                            <a href="#veiculos-compativeis">Ver todos</a>
+                          </div>`
+        );
+      } else {
+        sugestoesContainer.html(`
+          <div class="veiculos-compativeis-search__disclaimer">
+            Modelo de carro não compatível :(
+          </div>
+          <div class="veiculos-compativeis-search__link">
+            <a href="#veiculos-compativeis">Ver todos</a>
+          </div>
+        `);
+      }
+    } else {
+      sugestoesContainer.empty();
     }
   }
 
   function buildContentBusca(veiculo, index) {
-    return `
-                  <div class="veiculos-compativeis__content-compativel">
-                      <p>${veiculo.Veiculo}</p>
-                      <div>${veiculo.Anos.map(
-      (x) => "<span>" + x + "</span>"
-    )}.</div>
-                  </div>
-              `;
+    return `<a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
+              <p>${veiculo.Veiculo}</p>
+              <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>")}.</div>
+            </a>`;
   }
 
   function buildHeader(grupo, index) {

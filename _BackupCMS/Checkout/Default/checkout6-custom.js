@@ -67,6 +67,8 @@ $(window).on('load', () => {
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
 
+            _createInstallButtonObserver();
+
             View.formatItemList(orderForm);
 
             _removePaymentPickupIfIsDelivery(orderForm);
@@ -80,6 +82,30 @@ $(window).on('load', () => {
 
         }
 
+        function _createInstallButtonObserver() {
+            const instalationSku = '10748';
+            const itemsObserver = new MutationObserver(function (mutations) {
+                mutations.forEach(function (mutation) {
+                    if(mutation.removedNodes[0] instanceof HTMLElement) {
+                        if (!!mutation.removedNodes[0].querySelector('.product-name')?.querySelector('.btn-add-instalacao') || (mutation.removedNodes[0].dataset.sku == instalationSku)) {
+                            const orderForm = vtexjs.checkout.orderForm;
+                            View.formatItemList(orderForm);
+                        }
+                    }
+                })
+            });
+            
+            const tabelCartItemsObserver = document.querySelectorAll(".table.cart-items");
+            
+            tabelCartItemsObserver.forEach((element) => {
+                itemsObserver.observe(element, {
+                    subtree: true,
+                    childList: true,
+                });
+            });
+        }
+
+
         function _watchHashChangeAndOrderForm(_, orderForm) {
             orderForm && Service.sendGAEvent(orderForm);
 
@@ -87,7 +113,7 @@ $(window).on('load', () => {
                 if ($(".srp-toggle__pickup").length !== 0) {
                     const seletedChannel = Service.getSelectedChannel();
                     if (seletedChannel) {
-                        View.changeChannel(seletedChannel);
+                        localStorage.removeItem(CONFIG.STORAGE.CHANNEL);
                     }
 
                     if (orderForm) {
@@ -213,7 +239,7 @@ $(window).on('load', () => {
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
-            await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
+            await loadScript('https://autoglass-cdn.github.io/arquivos/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/hml/consulta-agendamento.js');
 
@@ -256,7 +282,6 @@ $(window).on('load', () => {
             _init,
             formatItemList,
             addInstallTexts,
-            changeChannel,
             createCepInfo
         }
 
@@ -338,18 +363,6 @@ $(window).on('load', () => {
             }, 500);
         }
 
-        function changeChannel(type) {
-            setTimeout(() => {
-                if (type === 'delivery') {
-                    $('.srp-toggle__delivery').click();
-                } else {
-                    $('.srp-toggle__pickup').click();
-                }
-
-                localStorage.removeItem(CONFIG.STORAGE.CHANNEL);
-            }, 500)
-        }
-
         async function _implementsInstallButtom(item, accessory) {
             const product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
 
@@ -364,7 +377,7 @@ $(window).on('load', () => {
                 bestPrice === 0
             );
 
-            if ($(`[data-sku='${item.id}'] .product-name .btn-add-instalacao`)
+            if ($(`[data-sku='${item.id}'].product-item .product-name .btn-add-instalacao`)
                 .length === 0) {
                 $(`[data-sku='${item.id}'] .product-name`).append(btnInstall);
             }

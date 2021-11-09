@@ -625,7 +625,7 @@ body.qd-product-unavailable
 }
 @media (max-width: 767px) {
     .product-qd-v1-sku-selection-box .product-qd-v1-description-short {
-        padding: 50px 30px 15px;
+        padding: 30px 30px 15px;
     }
 }
 .product-qd-v1-sku-selection-box
@@ -654,6 +654,7 @@ body.qd-product-unavailable
     font-size: 14px;
     font-weight: 600;
     font-family: "Montserrat", sans-serif;
+    margin-bottom: 25px;
 }
 @media (max-width: 767px) {
     .product-qd-v1-sku-selection-box .product-qd-v1-link-description {
@@ -3616,6 +3617,9 @@ body.qd-product-unavailable .product-qd-v1-installation {
     margin-block-start: 0;
     margin-block-end: 0;
     padding-inline-start: 0;
+}
+.product-qd-v1-installation .accessories-qd-v1-item ul > li {
+    list-style-type: none;
 }
 .product-qd-v1-installation .acessories-qd-v1-price {
     margin-bottom: 10px;

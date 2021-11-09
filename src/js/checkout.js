@@ -12,18 +12,20 @@ const pickupPointsPolicies = [
     { nome: 'PR', Unidade: 'MG49', Uf: 'Paraná', salesChannel: 20},
     
     { nome: 'SP', Unidade: 'MG69', Uf: 'São Paulo', salesChannel: 26},
-    { nome: 'SP', Unidade: 'NW01', Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', Uf: 'São Paulo', salesChannel: 27},
     { nome: 'SP', Unidade: 'MG66', Uf: 'São Paulo', salesChannel: 28},
-    { nome: 'SP', Unidade: 'NW04', Uf: 'São Paulo', salesChannel: 29},
+    { nome: 'SP', Unidade: 'MG67', Uf: 'São Paulo', salesChannel: 29},
     { nome: 'SP', Unidade: 'SP01', Uf: 'São Paulo', salesChannel: 30},
     { nome: 'SP', Unidade: 'MG62', Uf: 'São Paulo', salesChannel: 31},
     { nome: 'SP', Unidade: 'MG61', Uf: 'São Paulo', salesChannel: 32},
     { nome: 'SP', Unidade: 'MG68', Uf: 'São Paulo', salesChannel: 33},
-    { nome: 'SP', Unidade: 'NW11', Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG70', Uf: 'São Paulo', salesChannel: 34},
     { nome: 'SP', Unidade: 'MG71', Uf: 'São Paulo', salesChannel: 35},
     { nome: 'SP', Unidade: 'SP02', Uf: 'São Paulo', salesChannel: 36},
     { nome: 'SP', Unidade: 'SP03', Uf: 'São Paulo', salesChannel: 37},
     { nome: 'SP', Unidade: 'SP04', Uf: 'São Paulo', salesChannel: 38},
+    
+    { nome: 'MT', Unidade: 'MG57', Uf: 'Mato Grosso', salesChannel: 12},
 ]
 
 /**
@@ -52,10 +54,10 @@ const specialCasePolicies = [
     { nome: 'PR', Unidade: 'MG49', cMin: 87160000, cMax: 87169999, Uf: 'Paraná', salesChannel: 20 },
     { nome: 'PR', Unidade: 'MG49', cMin: 87780000, cMax: 87789999, Uf: 'Paraná', salesChannel: 20 },
  
-    { nome: 'SP', Unidade: 'NW01', cMin: 4000000, cMax: 4999999, Uf: 'São Paulo', salesChannel: 27},
-    { nome: 'SP', Unidade: 'NW01', cMin: 5600000, cMax: 5899999, Uf: 'São Paulo', salesChannel: 27},
-    { nome: 'SP', Unidade: 'NW01', cMin: 6750000, cMax: 6799999, Uf: 'São Paulo', salesChannel: 27},
-    { nome: 'SP', Unidade: 'NW01', cMin: 6900000, cMax: 6949999, Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', cMin: 4000000, cMax: 4999999, Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', cMin: 5600000, cMax: 5899999, Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', cMin: 6750000, cMax: 6799999, Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', cMin: 6900000, cMax: 6949999, Uf: 'São Paulo', salesChannel: 27},
     
     { nome: 'SP', Unidade: 'MG66', cMin: 2200000, cMax: 2999999, Uf: 'São Paulo', salesChannel: 28},
     { nome: 'SP', Unidade: 'MG66', cMin: 5100000, cMax: 5299999, Uf: 'São Paulo', salesChannel: 28},
@@ -64,9 +66,9 @@ const specialCasePolicies = [
     { nome: 'SP', Unidade: 'MG66', cMin: 6800000, cMax: 6889999, Uf: 'São Paulo', salesChannel: 28},
     { nome: 'SP', Unidade: 'MG66', cMin: 7700000, cMax: 7749999, Uf: 'São Paulo', salesChannel: 28},
     
-    { nome: 'SP', Unidade: 'NW04', cMin: 3000000, cMax: 3999999, Uf: 'São Paulo', salesChannel: 29},
-    { nome: 'SP', Unidade: 'NW04', cMin: 7000000, cMax: 7399999, Uf: 'São Paulo', salesChannel: 29},
-    { nome: 'SP', Unidade: 'NW04', cMin: 8500000, cMax: 8599999, Uf: 'São Paulo', salesChannel: 29},
+    { nome: 'SP', Unidade: 'MG67', cMin: 3000000, cMax: 3999999, Uf: 'São Paulo', salesChannel: 29},
+    { nome: 'SP', Unidade: 'MG67', cMin: 7000000, cMax: 7399999, Uf: 'São Paulo', salesChannel: 29},
+    { nome: 'SP', Unidade: 'MG67', cMin: 8500000, cMax: 8599999, Uf: 'São Paulo', salesChannel: 29},
     
     { nome: 'SP', Unidade: 'SP01', cMin: 12900000, cMax: 12929999, Uf: 'São Paulo', salesChannel: 30},
     { nome: 'SP', Unidade: 'SP01', cMin: 12940000, cMax: 12954999, Uf: 'São Paulo', salesChannel: 30},
@@ -97,8 +99,8 @@ const specialCasePolicies = [
     { nome: 'SP', Unidade: 'MG68', cMin: 15400000, cMax: 15409999, Uf: 'São Paulo', salesChannel: 33},
     { nome: 'SP', Unidade: 'MG68', cMin: 15440000, cMax: 15449999, Uf: 'São Paulo', salesChannel: 33},
     
-    { nome: 'SP', Unidade: 'NW11', cMin: 11000000, cMax: 11599999, Uf: 'São Paulo', salesChannel: 34},
-    { nome: 'SP', Unidade: 'NW11', cMin: 11700000, cMax: 11759999, Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG70', cMin: 11000000, cMax: 11599999, Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG70', cMin: 11700000, cMax: 11759999, Uf: 'São Paulo', salesChannel: 34},
     
     { nome: 'SP', Unidade: 'MG71', cMin: 13300000, cMax: 13314999, Uf: 'São Paulo', salesChannel: 35},
     { nome: 'SP', Unidade: 'MG71', cMin: 18000000, cMax: 18119999, Uf: 'São Paulo', salesChannel: 35},
@@ -173,6 +175,7 @@ const generalPolicies = [
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
+    adicionarItensCrossSeling(oF);
 });
 
 localStorage.setItem('locationChanged', 0);
@@ -438,5 +441,129 @@ function finishAnimation() {
     $('.cart-template-holder').css('opacity', 1);
 }
 
+/*--------*/
+async function ObterItensCrossSelling(orderForm) {
+    const items = orderForm.items;
+    const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/';
+    let itensCrossSelling = [];
+    let urls = [];
 
+    $(".compreJunto").css("display","block");
 
+    items.forEach(e => {
+        urls.push(uriCrossSelling + e.productId) 
+    });
+
+    let arrayItensSugeridos = await Promise.all(urls.map(async (url) => {
+        const response = await fetch(url);
+        return await response.json();
+    }));
+
+    if(arrayItensSugeridos.length > 0) {
+        for (const items of arrayItensSugeridos) {
+           for (const item of items) {
+                item.items[0].sellers[0].commertialOffer.Price = await simularShippingItensSugeridos(item.items[0].itemId)
+                itensCrossSelling.push(item);       
+            } 
+        }
+    }
+    return itensCrossSelling;
+}
+
+/*oF.shippingData.address*/
+async function simularShippingItensSugeridos(itemId) {
+    let vtexsc = readCookie('VTEXSC').replace('sc=', '');
+    let country = readCookie('myuf');
+
+    const request = {
+        items: [{
+            id: itemId,
+            quantity: 1,
+            seller: 1
+        }],
+        country: country
+    };
+
+    let data = await fetch(`/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)})
+        
+    let i =  await data.json();
+
+    return formatPrice(i.items[0].price);    
+}
+
+async function adicionarItensCrossSeling(orderForm) {
+
+    let itensCrossSelling = await ObterItensCrossSelling(orderForm);
+
+    $(".splide__slide").remove();
+    $(".transactions-container").remove();
+
+    if(itensCrossSelling.length !== 0) {
+        itensCrossSelling.forEach(e => {
+            const urlBase = "https://autoglass.vteximg.com.br"  
+            let urlImagem = e.items[0].images[0].imageTag.allReplace({'~':urlBase, '#width#':'500','#height#':'500'});
+            
+            $(".splide__list").append(
+                "<li class=splide__slide>" + 
+                    "<div class=splide__slide__container>" +
+                        "<a href=" + e.link +">" +
+                            urlImagem +
+                        "</a>" +
+                        "<h4 class=itemName >" + e.items[0].name + "</h4>" +
+                        "<h4 class=priceSplide>" + e.items[0].sellers[0].commertialOffer.Price + "</h4>" +
+                        "<div class=addcartPosition>" +
+                            "<a class=addCart href=" + e.items[0].sellers[0].addToCartLink + ">Adicionar ao carrinho</a>" +
+                        "</div>" +
+                    "</div>" +
+                "</li>"
+            );
+        });
+
+        new Splide('#image-slider', {
+            type: 'loop',
+            perPage: 3,
+            updated: true,
+            breakpoints: {
+                1200:{
+                    perPage: 2,
+                },
+                750: {
+                    perPage: 1,
+                },
+                400:{
+                    perPage: 0,
+                }
+            }
+        }).mount();
+    }
+}
+
+/* Função para substituir multiplas strings */
+String.prototype.allReplace = function(obj) {
+    var retStr = this;
+    for (var x in obj) {
+        retStr = retStr.replace(new RegExp(x, 'g'), obj[x]);
+    }
+    return retStr;
+};
+
+/* Formatar preço do produto */
+function formatPrice(price) {
+    let value = 'R$ ';
+
+    if (price === 0) return 'Grátis';
+
+    price = price + "";
+    const [decimal] = price.match(/\w{2}$/);
+
+    value += price.slice(0, price.length - 2);
+    value += ',';
+    value += decimal;
+
+    return value;
+}
