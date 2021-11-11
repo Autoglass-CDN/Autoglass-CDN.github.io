@@ -228,9 +228,6 @@ function startLocalizationModal() {
     
     document.getElementById('stateConfirmationBtn')
             .addEventListener('click', closeModalAndPersistSc);
-    
-    document.getElementById('localizationModalCloseBtn')
-            .addEventListener('click', preventModalDismissing);
 
     document.getElementById('mobileStateSelector')
             .addEventListener('change', (event) => {
@@ -297,11 +294,6 @@ function startLocalizationModal() {
     
     function enableConfirmationBtn() {
         document.getElementById('stateConfirmationBtn').removeAttribute('disabled');
-    }
-    
-    function preventModalDismissing(event) {
-        event.stopImmediatePropagation();
-        closeModalAndPersistSc(event);
     }
 
     function closeModalAndPersistSc(event) {
