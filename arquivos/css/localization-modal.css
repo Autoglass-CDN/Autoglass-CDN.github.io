@@ -47,22 +47,48 @@
     float: left
 }
 
-@media (max-width: 768px) {
-    .hidden-xs {
-        display: none !important
-    }
+.d-none {
+    display: none !important;
 }
 
-@media (min-width: 769px) and (max-width:991px) {
-    .hidden-sm {
-        display: none !important
-    }
+.d-block {
+    display: block !important;
 }
 
-@media (min-width: 992px) and (max-width:1199px) {
-    .hidden-md {
-        display: none !important
+@media (min-width: 576px) {
+    .d-sm-none {
+        display: none !important;
     }
+    .d-sm-block {
+        display: block !important;
+    }
+}
+  
+@media (min-width: 768px) {
+    .d-md-none {
+        display: none !important;
+    }
+    .d-md-block {
+        display: block !important;
+    }
+}
+  
+@media (min-width: 992px) {
+    .d-lg-none {
+        display: none !important;
+    }
+    .d-lg-block {
+        display: block !important;
+    }
+}
+  
+@media (min-width: 1200px) {
+    .d-xl-none {
+        display: none !important;
+    }
+    .d-xl-block {
+        display: block !important;
+    }  
 }
 
 #svg-map { margin-top: 30px; }
@@ -92,7 +118,7 @@
 #stateSelectorModal.modal-confirmation img {
     width: 90px;
     height: auto;
-    margin-bottom: 15px;
+    margin: 0 auto 15px;
 }
 
 #stateSelectorModal.modal-confirmation h4.modal-title {
@@ -193,7 +219,7 @@
     }
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 768px) {
     #stateSelectorModal.modal-confirmation div.modal-dialog {
         width: auto;
     }
