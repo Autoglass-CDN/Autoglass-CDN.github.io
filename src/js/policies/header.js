@@ -301,17 +301,11 @@ function startLocalizationModal() {
     
     function preventModalDismissing(event) {
         event.stopImmediatePropagation();
-        
-        const message = selectedState
-            ? 'Confirme a sua região clicando no botão de confirmação.'
-            : 'É preciso selecionar um estado primeiro.'
-    
-        window.alert(message);
+        closeModalAndPersistSc(event);
     }
 
     function closeModalAndPersistSc(event) {
         $('#stateSelectorModal').modal('hide');
-
         persistSalesChannel(selectedState || 'SP');
     }
 
