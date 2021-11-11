@@ -102,6 +102,14 @@
 #svg-map a.selected path { fill:#43C452 !important }
 #svg-map a.selected .circle { fill:#43C452 !important; }
 
+#stateSelectorModal {
+    z-index: 10000000;
+}
+
+#stateSelectorModal div.modal-content {
+    -webkit-box-shadow: 0px 2px 9px -5px #000000; 
+    box-shadow: 0px 2px 9px -5px #000000;
+}
 
 #stateSelectorModal.modal-confirmation.modal {
     display: none;
