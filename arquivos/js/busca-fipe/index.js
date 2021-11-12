@@ -637,7 +637,7 @@
   }
 
   /**
-   * Em despositivos mobile e tablet, rola a tela diretamente para resultado das buscas
+   * Em dispositivos mobile e tablet, rola a tela diretamente para resultado das buscas
    */
   window.onload = () => {
     if (window.matchMedia("(max-width: 1100px)").matches) {
@@ -654,7 +654,7 @@
     }
   };
 
-  class ModalDeCarregamento {
+  /* class ModalDeCarregamento {
     constructor() {
       const listasDeResultados = document.querySelectorAll(
         ".smart-select__main-results"
@@ -679,7 +679,7 @@
         elemento.classList.remove("loader-modal--show")
       );
     }
-  }
+  } */
 })();
 
 let btnBuscaPlaca = document.querySelector("#btn-busca-placa");
@@ -703,10 +703,14 @@ async function buscaPorPlaca(placaString) {
     ANO: 48,
   };
 
+  const modalDeCarregamento = new ModalDeCarregamento();
+
   let placaSemCaracteresEspeciais =
     removerCaracteresNaoAlfanumericos(placaString);
 
   try {
+    modalDeCarregamento.mostarSpinner();
+
     const response = await fetch(
       `https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
     );
@@ -810,11 +814,13 @@ async function buscaPorPlaca(placaString) {
       !modelosEncontrados.length
     ) {
       alert(
-        "Desculpe, não conseguimos encontrar seu veículo, favor utilizar a busca por peça ou digitar seu carro e produto na busca livre no topo do site"
+        "Desculpe, não conseguimos encontrar seu veículo, favor utilizar a busca por \
+        peça ou digitar seu carro e produto na busca livre no topo do site."
       );
 
       document.querySelector("a[href='#busca-peca']").click();
     }
+
     if (anosEncontrados.length) {
       url += `/${anosEncontrados[0].Value}`;
       parametrosUrl += `specificationFilter_${FILTROS_VTEX.ANO},`;
@@ -833,9 +839,11 @@ async function buscaPorPlaca(placaString) {
     url += parametrosUrl; //`?PS=24&map=specificationFilter_${FILTROS_VTEX.ANO},specificationFilter_${FILTROS_VTEX.MONTADORA},specificationFilter_${FILTROS_VTEX.VEICULO}`;
 
     console.log(url);
-    location.href = url;
+    //location.href = url;
   } catch (error) {
     console.log(error);
+    modalDeCarregamento.ocultarSpinner();
+
     alert(
       "Perdão pelo inconveniente! O serviço de busca por placa está fora do ar no momento. Favor utilizar a busca por peça!"
     );
@@ -844,8 +852,8 @@ async function buscaPorPlaca(placaString) {
   }
 
   function removerCaracteresNaoAlfanumericos(placaString) {
-    let isNotAlphanumericChar = /[\W_]+/g;
-    let sanitized = placaString.trim().replace(isNotAlphanumericChar, "");
+    const isNotAlphanumericChar = /[\W_]+/g;
+    const sanitized = placaString.trim().replace(isNotAlphanumericChar, "");
     return sanitized;
   }
   // const regexPotenciaDoMotor = /\d\.\d[A-z]/g;
@@ -953,7 +961,7 @@ class ModalDeCarregamento {
       ".smart-select__main-results"
     );
     const modal = document.querySelector(
-      ".c-busca__tab-content .smart-select__modal"
+      ".c-busca .smart-select__modal"
     );
     // const cabecalho = document.querySelector(".smart-select__header");
 
