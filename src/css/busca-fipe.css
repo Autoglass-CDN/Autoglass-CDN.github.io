@@ -230,6 +230,7 @@
   width: 100%;
   padding: 15px;
   border-radius: 4px;
+  border: none;
 }
 
 .c-busca .c-busca__select div > div:first-child {
