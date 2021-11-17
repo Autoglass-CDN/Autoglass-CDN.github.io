@@ -654,8 +654,9 @@
   let tabs = document.querySelectorAll(".c-busca__tabs li");
 
   tabs.forEach((tab) => {
-    tab.addEventListener("click", (evento) => {
-      // evento.preventDefault();
+    tab.addEventListener("click", (event) => {
+      event.preventDefault();
+      
       tabs.forEach((t) => t.classList.remove("is-active"));
       tab.classList.add("is-active");
 
