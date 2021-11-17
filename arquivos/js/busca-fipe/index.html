@@ -18,46 +18,33 @@
               <img
                 src="./search-solid.svg"
                 alt="placa"
-                width="30"
-                height="30"
-                style="
-                  filter: invert(1);
-                  margin-right: 5px;
-                  fill: white;
-                  opacity: 0.7;
-                "
+                width="25"
+                height="25"
+                class="c-busca__tab-icon c-busca__tab-icon_opacity-soft"
               />
               Busca por peça
             </a>
           </li>
           <!-- <li>
             <a href="#busca-veiculo">
-              <img
-                src="./car-solid.svg"
-                alt="placa"
-                width="30"
-                height="30"
-                style="
-                  filter: invert(1);
-                  margin-right: 5px;
-                  fill: white;
-                  opacity: 0.7;
-                "
+              <img src="./car-solid.svg"
+                   alt="placa"
+                   width="30"
+                   height="30"
+                   class="c-busca__tab-icon c-busca__tab-icon_opacity-soft"
               />
               Busca por veículo
             </a>
           </li> -->
           <li>
-            <a href="#busca-placa"
-              ><img
-                src="./plate-icon.svg"
-                alt="placa"
-                width="50"
-                height="30"
-                style="filter: invert(1); margin-right: 5px; fill: white"
-              />
-              Busca por placa</a
-            >
+            <a href="#busca-placa">
+              <img src="./plate-icon.svg"
+                   alt="placa"
+                   width="42"
+                   height="25"
+                   class="c-busca__tab-icon"/>
+              Busca por placa
+            </a>
           </li>
         </ul>
         <div class="c-busca__tabs-content">
@@ -162,9 +149,6 @@
                   BUSCAR
                 </button>
               </div>
-              <div class="smart-select__modal">
-                <span class="smart-select__modal__spinner"></span>
-              </div>
             </div>
           </div>
           <!-- <div class="c-busca__tab-content" id="busca-veiculo">
@@ -222,22 +206,23 @@
                 </div>
               </div> -->
               <div class="c-busca__botao">
-                <button
-                  id="btn-busca-placa"
-                  class="c-botao c-botao--primary"
-                  type="button"
-                >
+                <button id="btn-busca-placa"
+                        class="c-botao c-botao--primary"
+                        type="button">
                   BUSCAR
                 </button>
               </div>
             </div>
             <div class="c-busca__descricao">
-              <span
-                ><strong>Digite a placa do seu carro</strong>, caminhonete, SUV
-                ou van para encontrar o item desejado.</span
-              >
+              <span>
+                <strong>Digite a placa do seu carro</strong>, caminhonete, SUV
+                ou van para encontrar o item desejado.
+              </span>
             </div>
           </div>
+        </div>
+        <div class="smart-select__modal">
+          <span class="smart-select__modal__spinner"></span>
         </div>
       </section>
     </div>
@@ -247,7 +232,7 @@
 
       tabs.forEach((tab) => {
         tab.addEventListener("click", (evento) => {
-          //   evento.preventDefault();
+          // evento.preventDefault();
           tabs.forEach((t) => t.classList.remove("is-active"));
           tab.classList.add("is-active");
 

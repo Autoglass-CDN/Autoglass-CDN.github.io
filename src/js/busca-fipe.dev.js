@@ -85,8 +85,6 @@
         SELECTS[0].values.push(...x.children);
       });
 
-    console.log(SELECTS);
-
     await Controller.checkRouterParams();
 
     View.buildList(SELECTS[0].values, SELECTS[0].id);
@@ -710,8 +708,6 @@
       const DOM = new DOMParser().parseFromString(html, "text/html");
       const secaoDetalhesDoVeiculo = DOM.querySelector(".fipeTablePriceDetail");
   
-      console.log(DOM);
-  
       const obterConteudoPeloTituloDaLinhaDaTabela = async (titulo) => {
         const xPathStringTdContemTexto = `//TD[contains(B,'${titulo}')]`;
         const label = document.evaluate(
@@ -740,10 +736,6 @@
       const anoModelo = await obterConteudoPeloTituloDaLinhaDaTabela(
         LABEL_DADOS_TABELA.ANO_MODELO
       );
-      // const placa = DOM.querySelector(".site-content h1").innerText.split(" ")[1];
-      // const fipe = await obterConteudoPeloTituloDaLinhaDaTabela(
-      //   LABEL_DADOS_TABELA.FIPE
-      // );
   
       const responseMontadorasVtex = await fetch(
         `https://www.autoglassonline.com.br/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
@@ -755,16 +747,11 @@
         new RegExp(montadora.split(" ").join("|"), "gi").test(item.Value)
       );
   
-      console.log(montadorasEncontradas);
-  
       const responseModelosVtex = await fetch(
         `https://www.autoglassonline.com.br/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.VEICULO}`
       );
   
       const modelosVTEX = await responseModelosVtex.json();
-  
-      //let montadoraModelo = modelo.replace(montadora, "").trim().split(" ")[0];
-      // Se não encontrar modelo, pesquisar montadora + modelo
   
       let modelosEncontrados = modelosVTEX.filter((item) =>
         new RegExp(
@@ -775,26 +762,14 @@
         ).test(item.Value)
       );
   
-      console.log(modelosEncontrados);
-  
       const responseAnosVtex = await fetch(
         `https://www.autoglassonline.com.br/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.ANO}`
       );
   
       const anosVTEX = await responseAnosVtex.json();
   
-      console.log(
-        anoModelo,
-        anoModelo.trim(),
-        anosVTEX.filter(
-          (item) => new RegExp(anoModelo.trim(), "gi").test(item.Value)
-          //new RegExp(modelo.split(" ").join("|"), "gi").test(item.Value)
-        )
-      );
-  
       let anosEncontrados = anosVTEX.filter(
         (item) => new RegExp(anoModelo.trim(), "gi").test(item.Value)
-        //new RegExp(modelo.split(" ").join("|"), "gi").test(item.Value)
       );
   
       let url = "",
@@ -828,7 +803,7 @@
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO}`;
       }
   
-      url += parametrosUrl; //`?PS=24&map=specificationFilter_${FILTROS_VTEX.ANO},specificationFilter_${FILTROS_VTEX.MONTADORA},specificationFilter_${FILTROS_VTEX.VEICULO}`;
+      url += parametrosUrl;
   
       location.href = url;
     } catch (error) {
@@ -847,104 +822,6 @@
       const sanitized = placaString.trim().replace(isNotAlphanumericChar, "");
       return sanitized;
     }
-  
-    // const regexPotenciaDoMotor = /\d\.\d[A-z]/g;
-    // const regexCaracteresAlfabeticos = /[A-z]/g;
-  
-    // let regexStringFipeDeveConter = modelo
-    //   .split(" ")
-    //   .map((parteDoModelo) =>
-    //     regexPotenciaDoMotor.test(parteDoModelo)
-    //       ? parteDoModelo.replace(regexCaracteresAlfabeticos, "")
-    //       : parteDoModelo
-    //   )
-    //   .map((parteDoModelo) => `(?=.*${parteDoModelo})`)
-    //   .join(""); //Exemplo: /(?=.*HB20S)(?=.*1.6)(?=.*PREM)/i
-  
-    // console.log(regexStringFipeDeveConter);
-  
-    // let regexFipeDeveConterCaseInsensitive = new RegExp(
-    //   regexStringFipeDeveConter,
-    //   "i"
-    // );
-  
-    // let sugestoesFipe = DOM.querySelector(".fipe-mobile");
-  
-    // const xPathStringTdContemTextoModelo = `//TD[contains(text(),'Modelo:')]`;
-  
-    // let iterator = document.evaluate(
-    //   xPathStringTdContemTextoModelo,
-    //   sugestoesFipe,
-    //   null,
-    //   XPathResult.UNORDERED_NODE_ITERATOR_TYPE,
-    //   null
-    // );
-  
-    // let possiveisFipe = retornarFipesPossiveis(
-    //   iterator,
-    //   regexFipeDeveConterCaseInsensitive
-    // );
-  
-    // let modeloUrl = retornarUrlDeBusca();
-    // let modeloUrl2 = retornarUrlDeBusca2();
-  
-    // console.log(
-    //   montadora,
-    //   modelo,
-    //   anoModelo,
-    //   regexFipeDeveConterCaseInsensitive,
-    //   placa,
-    //   possiveisFipe,
-    //   modeloUrl,
-    //   modeloUrl2
-    // );
-  
-    // function retornarUrlDeBusca2(anoModelo, montadora, modelo) {
-    //   return `https://autoglassonline.com.br/vidros?fq=specificationFilter_48:${anoModelo}&fq=specificationFilter_36:${montadora
-    //     .replaceAll(" ", "%20")
-    //     .replace(/\w\S*/g, function (txt) {
-    //       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    //     })}&fq=specificationFilter_50:${modelo
-    //     .replaceAll(" ", "%20")
-    //     .replace(/\w\S*/g, function (txt) {
-    //       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    //     })}`;
-    // }
-  
-    // function retornarUrlDeBusca(anoModelo, montadora, modelo) {
-    //   return `https://www.autoglassonline.com.br/${anoModelo}/${montadora
-    //     .replaceAll(" ", "%20") //Substitui espaços por %20
-    //     .replace(/\w\S*/g, function (txt) {
-    //       return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    //     })}/${modelo.replaceAll(" ", "%20").replace(/\w\S*/g, function (txt) {
-    //     return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-    //   })}?PS=24&map=specificationFilter_${FILTROS_VTEX.ANO},specificationFilter_${
-    //     FILTROS_VTEX.MONTADORA
-    //   },specificationFilter_${FILTROS_VTEX.VEICULO}`;
-    // }
-  
-    // function retornarFipesPossiveis(
-    //   iterator,
-    //   regexFipeDeveConterCaseInsensitive
-    // ) {
-    //   let possiveisFipe = [];
-  
-    //   try {
-    //     var thisNode = iterator.iterateNext();
-    //     while (thisNode) {
-    //       if (regexFipeDeveConterCaseInsensitive.test(thisNode.innerText)) {
-    //         possiveisFipe.push(thisNode.innerText.replace("Modelo:", "").trim());
-    //         console.log(thisNode.innerText, thisNode);
-    //       }
-    //       thisNode = iterator.iterateNext();
-    //     }
-    //   } catch (e) {
-    //     console.log(
-    //       "Erro: A árvore de documentos foi modificada durante a iteração " + e
-    //     );
-    //   }
-    //   return possiveisFipe;
-    // }
   }
   
   class ModalDeCarregamento {
@@ -955,9 +832,7 @@
       const modal = document.querySelector(
         ".c-busca .smart-select__modal"
       );
-      // const cabecalho = document.querySelector(".smart-select__header");
-  
-      // this.elementos = [...listasDeResultados, modal, cabecalho];
+
       this.elementos = [...listasDeResultados, modal];
     }
   
