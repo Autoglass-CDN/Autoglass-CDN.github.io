@@ -198,6 +198,16 @@ botaoFinalizaCompra[1].addEventListener('click', () => {
       });
 })
 
+const btnFechaPedido = document.querySelector('#cart-to-orderform')
+
+function selectCreditCardAsPaymentOption () {
+    $("#payment-group-creditCardPaymentGroup").click();
+}
+
+btnFechaPedido.onclick = function () {
+    selectCreditCardAsPaymentOption();
+}
+
 function checkSelectedDeliveryChannel(orderForm) {
     activeDeliveryChannel = localStorage.getItem('activeDeliveryChannel');
     let logisticsInfo = orderForm.shippingData.logisticsInfo;
