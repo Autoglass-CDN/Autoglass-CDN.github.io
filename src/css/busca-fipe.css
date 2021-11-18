@@ -233,6 +233,10 @@
   border: none;
 }
 
+.c-busca .c-busca__input input {
+  color: rgba(0, 0, 0, .87);
+}
+
 .c-busca .c-busca__select div > div:first-child {
   display: flex;
   justify-content: space-between;

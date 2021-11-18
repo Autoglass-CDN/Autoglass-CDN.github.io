@@ -25,7 +25,7 @@
 
 /* MOBILE */
 .c-busca {
-  --active-bg-color: #234eb9;
+  --active-bg-color: #1c3162; /* #234eb9 */
   --primary: #42c552;
   margin: 10px;
   position: relative;
@@ -44,7 +44,7 @@
   border-radius: 10px;
   list-style: none;
   /* margin: 0 5px; */
-  font-size: 0.7em;
+  font-size: 1em;
   flex-grow: 1;
 }
 
@@ -60,7 +60,6 @@
   background-color: var(--active-bg-color);
   padding: 5px;
   flex-shrink: 0;
-  font-size: 1em;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
 }
@@ -74,7 +73,7 @@
   height: 10px;
   width: 40px;
   border-bottom-right-radius: 10px;
-  box-shadow: 25px 0px 0 0 #234eb9;
+  box-shadow: 25px 0px 0 0 var(--active-bg-color);
 }
 
 .c-busca .c-busca__tabs li:first-child.is-active::after {
@@ -86,7 +85,7 @@
   height: 10px;
   width: 40px;
   border-bottom-left-radius: 10px;
-  box-shadow: -25px 0px 0 0 #234eb9;
+  box-shadow: -25px 0px 0 0 var(--active-bg-color);
 }
 
 @media screen and (max-width: 420px) {
@@ -245,6 +244,10 @@
   padding: 15px;
   border-radius: 4px;
   border: none;
+}
+
+.c-busca .c-busca__input input {
+  color: rgba(0, 0, 0, .87);
 }
 
 .c-busca .c-busca__select div > div:first-child {
@@ -413,9 +416,9 @@
 }
 
 .c-busca .c-busca__descricao {
-  font-size: 0.7em;
+  font-size: 0.8em;
   text-align: center;
-  margin: 7px;
+  margin: 6px;
 }
 
 /* #endregion TAB CONTAINER */
