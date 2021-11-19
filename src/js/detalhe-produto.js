@@ -323,7 +323,7 @@ $(window).on("ready", async () => {
 
   function buildContentBusca(veiculo, index) {
     return `<a href="${urlAddCart}"
-               onclick="gaBuscaCompativeisClique(${veiculo.Veiculo})"
+               onclick="gaBuscaCompativeisClique('${veiculo.Veiculo}')"
                class="veiculos-compativeis__content-compativel-link">
               <p>${veiculo.Veiculo}</p>
               <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>")}.</div>
@@ -340,7 +340,7 @@ $(window).on("ready", async () => {
   }
 
   function gaBuscaCompativeisClique(veiculo) {
-    ga('send', 'event', 'Busca Compatíveis', 'Clique', veiculo);
+    ga('send', 'event', 'Link SelectCar', 'Clique', veiculo);
   }
 
   function buildContent(grupo, index) {
