@@ -359,7 +359,7 @@ async function updateCartItemsCountMobile(carrinho, orderForm) {
 async function autocompleteSearch(searchTerm) {
   let response = await fetch('/buscaautocomplete?' + new URLSearchParams({
     maxRows: 12,
-    productNameContains: searchTerm,
+    productNameContains: encodeURIComponent(searchTerm),
   }));
   let { itemsReturned } = await response.json();
   return itemsReturned && itemsReturned.map(item => {
