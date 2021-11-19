@@ -674,6 +674,31 @@
     }
   };
 
+  /** CÓDIGO PARA TROCAR AS TABS */
+  let tabs = document.querySelectorAll(".c-busca__tabs li");
+
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", (event) => {
+      event.preventDefault();
+
+      tabs.forEach((t) => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
+
+      activeTab = tab.querySelector('a').attributes.href.nodeValue;
+
+      let tabContentDivs = document.querySelectorAll(
+        ".c-busca__tab-content"
+      );
+
+      tabContentDivs.forEach((div) => div.classList.remove("is-active"));
+
+      let selectedSection = document.querySelector(
+        tab.querySelector("a").hash
+      );
+      selectedSection.classList.add("is-active");
+    });
+  });
+
 
   /** BUSCA POR PLACA */
   const PLACA_SELECTS = [
@@ -704,42 +729,18 @@
       if(placa.length) {
         buscaPorPlaca(placa);
       } else {
-        alert('Você deve inserir pelo menos a sua placa!');
+        alert('Você deve inserir a placa do seu veículo!');
       }
     });
   }
-
-  let tabs = document.querySelectorAll(".c-busca__tabs li");
-
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", (event) => {
-      event.preventDefault();
-
-      tabs.forEach((t) => t.classList.remove("is-active"));
-      tab.classList.add("is-active");
-
-      activeTab = tab.querySelector('a').attributes.href.nodeValue;
-
-      let tabContentDivs = document.querySelectorAll(
-        ".c-busca__tab-content"
-      );
-
-      tabContentDivs.forEach((div) => div.classList.remove("is-active"));
-
-      let selectedSection = document.querySelector(
-        tab.querySelector("a").hash
-      );
-      selectedSection.classList.add("is-active");
-    });
-  });
 
   function handleSelection(event, _id) {
     const select = PLACA_SELECTS[0];
     const optionSelected = select.values.find((x) => x.id == event.target.id);
 
     select.routeSelected = optionSelected.url
-          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
-          : optionSelected.name;
+        ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
+        : '/' + optionSelected.name.toLowerCase();
                 
     $(`.c-busca__tab-content  #${select.id} > div > span`).html(event.target.innerHTML);
     $(
@@ -789,9 +790,11 @@
       modalDeCarregamento.mostarSpinner();
   
       const response = await fetch(
-        'https://api.allorigins.win/get?url=' + encodeURIComponent(`https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`)
-        //`https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
+        // 'https://api.allorigins.win/get?url=' + encodeURIComponent(`https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`) + '&callback=?'
+        // `https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
+        `https://cors-anywhere.herokuapp.com/https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
       );
+
       const html = await response.text();
       const DOM = new DOMParser().parseFromString(html, "text/html");
       const secaoDetalhesDoVeiculo = DOM.querySelector(".fipeTablePriceDetail");
@@ -901,7 +904,9 @@
 
       if(select.routeSelected.length) {
         url += select.routeSelected;
-        parametrosUrl += `c,c,`;
+        parametrosUrl += (
+          (select.routeSelected.split("/").length - 1 === 1) ? 'c,' : `c,c,`
+        );
       }
   
       if (anosEncontrados.length) {

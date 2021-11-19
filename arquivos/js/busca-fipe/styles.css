@@ -290,9 +290,9 @@
     0 4px 5px #00000024,
     0 1px 10px #0000001f;
   border-radius: 4px;
-  bottom: -34px;
+  bottom: -35px;
   color: #1c3162;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
   height: auto;
   left: 50%;
@@ -343,7 +343,7 @@
 }
 
 .c-busca__tab-content .smart-select__main-results ul li.highlight {
-  background-color: #1c3162;
+  background-color: #234eb9;
   color: white;
 }
 
