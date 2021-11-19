@@ -1,8 +1,9 @@
 (function () {
-  /** BUSCA POR VEÍCULO */
+  /** BUSCA POR PEÇA */
   const Service = ServiceAPI();
   const View = ViewAPI();
   const Controller = ControllerAPI();
+  let activeTab = '#busca-peca';
 
   const CONFIG = {
     ASYNC: {
@@ -23,10 +24,10 @@
       SELECTED: "selected",
     },
     CANT_OPEN: false,
-    ORIGIN: "https://autoglassonline.com.br", //location.origin,
+    ORIGIN: "https://dev2autoglass.myvtex.com", // location.origin,
   };
 
-  const SELECTS = [
+  const PECA_SELECTS = [
     {
       title: "Produto",
       id: "produtos-select",
@@ -77,19 +78,30 @@
   _init();
 
   async function _init() {
-    let categoryTree = await Service.getCategoryTree();
+    const categoryTree = await Service.getCategoryTree();
+    const childrenCategories = [];
 
     categoryTree
       .filter((x) => x.hasChildren)
       .forEach((x) => {
-        SELECTS[0].values.push(...x.children);
+        childrenCategories.push(...x.children);
       });
+
+    await _initBucaPeca(childrenCategories);
+    _initBucaPlaca(childrenCategories);
+  }
+
+  async function _initBucaPeca(values) {
+
+    PECA_SELECTS[0].values = values;
+
+    console.log(PECA_SELECTS);
 
     await Controller.checkRouterParams();
 
-    View.buildList(SELECTS[0].values, SELECTS[0].id);
+    View.buildList(PECA_SELECTS[0].values, PECA_SELECTS[0].id);
 
-    SELECTS.forEach(View._initSelect_);
+    PECA_SELECTS.forEach(View._initSelect_);
 
     // Create Button Function
     $("#btn-busca-peca").click(Service.search);
@@ -128,13 +140,16 @@
         }
       });
 
-      $(`.c-busca__tab-content #${select.id} > div:first-child`)
+      /* $(`.c-busca__tab-content #${select.id} > div:first-child`)
         .focus(() => {
+          console.log('Hi');
+
           $(`.c-busca__tab-content #${select.id} > div:first-child`).on(
             "keyup",
             (event) => {
               if (event.key === "Delete" || event.key === "Backspace") {
-                const index = SELECTS.findIndex((x) => x.id === select.id);
+                console.log('Hello');
+                const index = PECA_SELECTS.findIndex((x) => x.id === select.id);
                 View.resetResults(index);
                 $(`.c-busca__tab-content #${select.id}`).click();
               }
@@ -148,7 +163,7 @@
           $(`.c-busca__tab-content #${select.id} > div:first-child`).unbind(
             "keyup"
           );
-        });
+        }); */
 
       $(`.c-busca__tab-content #${select.id} .smart-select__main-results input`)
         .on("keydown", (e) => {
@@ -292,6 +307,7 @@
           }
         })
         .on("keyup", (e) => {
+          console.log(`Filtrando`);
           if (
             !["Tab", "ArrowDown", "ArrowUp", "Enter"].find((x) => x === e.key)
           )
@@ -328,7 +344,16 @@
 
             $(event.target).addClass(CONFIG.CSS.HIGHLIGHT);
           })
-          .click((event) => Controller.addClick(event, _id));
+          .click((event) => {
+            switch (activeTab) {
+              case '#busca-peca':
+                Controller.addClick(event, _id)
+                break;
+              case '#busca-placa':
+                handleSelection(event, _id);
+                break;
+            }
+          });
 
         $(`.c-busca__tab-content  #${_id} ul li`)
           .first()
@@ -365,9 +390,9 @@
     }
 
     function resetResults(_index) {
-      for (let i = _index; i <= SELECTS.length - 1; i++) {
-        const select = SELECTS[i];
-        const nextSelect = SELECTS[i + 1];
+      for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
+        const select = PECA_SELECTS[i];
+        const nextSelect = PECA_SELECTS[i + 1];
 
         $(`.c-busca__tab-content  #${select.id} > div > span`).html(
           select.title
@@ -393,9 +418,9 @@
     }
 
     function createNavigation(_class, new_title) {
-      const index = SELECTS.findIndex((x) => x.id === _class);
-      const select = SELECTS[index];
-      const nextSelect = SELECTS[index + 1];
+      const index = PECA_SELECTS.findIndex((x) => x.id === _class);
+      const select = PECA_SELECTS[index];
+      const nextSelect = PECA_SELECTS[index + 1];
 
       $(`.c-busca__tab-content  #${select.id} > div > span`).html(new_title);
       $(
@@ -466,9 +491,9 @@
     };
 
     async function addClick(event, _id) {
-      const index = SELECTS.findIndex((x) => x.id === _id);
-      const select = SELECTS[index];
-      const nextSelect = SELECTS[index + 1];
+      const index = PECA_SELECTS.findIndex((x) => x.id === _id);
+      const select = PECA_SELECTS[index];
+      const nextSelect = PECA_SELECTS[index + 1];
       // Não pode ser === Pq um pode ser INT e outro STRING, mas o valores são iguais;
       const optionSelected = select.values.find((x) => x.id == event.target.id);
 
@@ -497,7 +522,7 @@
           );
 
           // Caso seja Ano (Ultimo campo) tem que ser decrescente
-          index + 1 === SELECTS.length - 1
+          index + 1 === PECA_SELECTS.length - 1
             ? values.sort((a, b) => b.name.localeCompare(a.name))
             : values.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -537,7 +562,7 @@
         ];
 
         for (let i = 0; i < params.length; i++) {
-          const select = SELECTS[i];
+          const select = PECA_SELECTS[i];
           const value = select.values.find((x) =>
             x.url ? x.url.includes(params[i]) : x.name.includes(params[i])
           );
@@ -580,7 +605,7 @@
     }
 
     function getPaths() {
-      return SELECTS.filter((x) => x.routeSelected)
+      return PECA_SELECTS.filter((x) => x.routeSelected)
         .map((x) =>
           x.routeSelected.includes("/")
             ? x.routeSelected
@@ -590,7 +615,7 @@
     }
 
     async function search() {
-      const index = SELECTS.filter((x) => x.routeSelected).length;
+      const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
 
@@ -649,16 +674,17 @@
     }
   };
 
-
-  /** BUSCA POR PLACA */
+  /** CÓDIGO PARA TROCAR AS TABS */
   let tabs = document.querySelectorAll(".c-busca__tabs li");
 
   tabs.forEach((tab) => {
     tab.addEventListener("click", (event) => {
       event.preventDefault();
-      
+
       tabs.forEach((t) => t.classList.remove("is-active"));
       tab.classList.add("is-active");
+
+      activeTab = tab.querySelector('a').attributes.href.nodeValue;
 
       let tabContentDivs = document.querySelectorAll(
         ".c-busca__tab-content"
@@ -673,14 +699,75 @@
     });
   });
 
-  let btnBuscaPlaca = document.querySelector("#btn-busca-placa");
+
+  /** BUSCA POR PLACA */
+  const PLACA_SELECTS = [
+    {
+      title: "Produto",
+      id: "categoria-select",
+      values: [],
+      routeSelected: "",
+      isAsyncSearch: false,
+      asyncSearchTerm: "",
+      canBeClear: false,
+    },
+  ];
+
+  function _initBucaPlaca(values) {
+    
+    PLACA_SELECTS[0].values = values;
+
+    View.buildList(PLACA_SELECTS[0].values, PLACA_SELECTS[0].id);
+
+    View._initSelect_(PLACA_SELECTS[0]);
+
+    let btnBuscaPlaca = document.querySelector("#btn-busca-placa");
   
-  btnBuscaPlaca.addEventListener("click", (evento) => {
-    let placa = document.querySelector("#placa-input").value;
-    buscaPorPlaca(placa);
-  });
+    btnBuscaPlaca.addEventListener("click", (event) => {
+      let placa = document.querySelector("#placa-input").value;
+
+      if(placa.length) {
+        buscaPorPlaca(placa);
+      } else {
+        alert('Você deve inserir a placa do seu veículo!');
+      }
+    });
+  }
+
+  function handleSelection(event, _id) {
+    const select = PLACA_SELECTS[0];
+    const optionSelected = select.values.find((x) => x.id == event.target.id);
+
+    select.routeSelected = optionSelected.url
+        ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
+        : '/' + optionSelected.name.toLowerCase();
+                
+    $(`.c-busca__tab-content  #${select.id} > div > span`).html(event.target.innerHTML);
+    $(
+      `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
+      ).hide();
+    $(`.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`)
+      .show()
+      .on("click", () => {
+        $(`.c-busca__tab-content  #${select.id} > div > span`).html(
+          select.title
+        );
+        select.routeSelected = "";
+
+        $(
+          `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
+        ).show();
+        $(
+          `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`
+        ).hide();
+      });
+
+    $('.c-busca__tab-content .c-busca__input #placa-input').click().focus();
+  }
   
   async function buscaPorPlaca(placaString) {
+    const select = PLACA_SELECTS[0];
+
     const LABEL_DADOS_TABELA = {
       MONTADORA: "Marca",
       MODELO: "Modelo",
@@ -703,11 +790,16 @@
       modalDeCarregamento.mostarSpinner();
   
       const response = await fetch(
-        `https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
+        // 'https://api.allorigins.win/get?url=' + encodeURIComponent(`https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`) + '&callback=?'
+        // `https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
+        `https://cors-anywhere.herokuapp.com/https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
       );
+
       const html = await response.text();
       const DOM = new DOMParser().parseFromString(html, "text/html");
       const secaoDetalhesDoVeiculo = DOM.querySelector(".fipeTablePriceDetail");
+  
+      console.log(DOM);
   
       const obterConteudoPeloTituloDaLinhaDaTabela = async (titulo) => {
         const xPathStringTdContemTexto = `//TD[contains(B,'${titulo}')]`;
@@ -748,11 +840,16 @@
         new RegExp(montadora.split(" ").join("|"), "gi").test(item.Value)
       );
   
+      console.log(montadorasEncontradas);
+  
       const responseModelosVtex = await fetch(
         `https://www.autoglassonline.com.br/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.VEICULO}`
       );
   
       const modelosVTEX = await responseModelosVtex.json();
+  
+      //let montadoraModelo = modelo.replace(montadora, "").trim().split(" ")[0];
+      // Se não encontrar modelo, pesquisar montadora + modelo
   
       let modelosEncontrados = modelosVTEX.filter((item) =>
         new RegExp(
@@ -763,19 +860,29 @@
         ).test(item.Value)
       );
   
+      console.log(modelosEncontrados);
+  
       const responseAnosVtex = await fetch(
         `https://www.autoglassonline.com.br/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.ANO}`
       );
   
       const anosVTEX = await responseAnosVtex.json();
   
+      console.log(
+        anoModelo,
+        anoModelo.trim(),
+        anosVTEX.filter(
+          (item) => new RegExp(anoModelo.trim(), "gi").test(item.Value)
+        )
+      );
+  
       let anosEncontrados = anosVTEX.filter(
         (item) => new RegExp(anoModelo.trim(), "gi").test(item.Value)
       );
   
       let url = "",
-        parametrosUrl = "?PS=24&map=";
-  
+        parametrosUrl = "?PS=20&map=";
+
       if (
         !anosEncontrados.length &&
         !montadorasEncontradas.length &&
@@ -787,6 +894,13 @@
         );
   
         document.querySelector("a[href='#busca-peca']").click();
+      }
+
+      if(select.routeSelected.length) {
+        url += select.routeSelected;
+        parametrosUrl += (
+          (select.routeSelected.split("/").length - 1 === 1) ? 'c,' : `c,c,`
+        );
       }
   
       if (anosEncontrados.length) {
@@ -823,6 +937,7 @@
       const sanitized = placaString.trim().replace(isNotAlphanumericChar, "");
       return sanitized;
     }
+
   }
   
   class ModalDeCarregamento {
