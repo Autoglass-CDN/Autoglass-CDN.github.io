@@ -791,8 +791,8 @@
   
       const response = await fetch(
         // 'https://api.allorigins.win/get?url=' + encodeURIComponent(`https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`) + '&callback=?'
-        // `https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
-        `https://cors-anywhere.herokuapp.com/https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
+        `https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
+        // `https://cors-anywhere.herokuapp.com/https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
       );
 
       const html = await response.text();
