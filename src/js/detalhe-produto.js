@@ -322,7 +322,9 @@ $(window).on("ready", async () => {
   }
 
   function buildContentBusca(veiculo, index) {
-    return `<a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
+    return `<a href="${urlAddCart}"
+               onclick="gaBuscaCompativeisClique(${veiculo.Veiculo})"
+               class="veiculos-compativeis__content-compativel-link">
               <p>${veiculo.Veiculo}</p>
               <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>")}.</div>
             </a>`;
@@ -335,6 +337,10 @@ $(window).on("ready", async () => {
               <span>${grupo.Grupo}</span>
           </div>
       `;
+  }
+
+  function gaBuscaCompativeisClique(veiculo) {
+    ga('send', 'event', 'Busca Compatíveis', 'Clique', veiculo);
   }
 
   function buildContent(grupo, index) {
