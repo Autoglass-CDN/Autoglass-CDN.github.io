@@ -1046,7 +1046,7 @@ try {
 			Product.applySmartQuantity();
 			Product.scrollToBuyButton();
 			Product.applyConfigsInstallationModals();
-			Product.applyOverlayToggle()
+			Product.applyOverlayToggle();
 		},
 		ajaxStop: function () { },
 		windowOnload: function () {
@@ -1162,15 +1162,9 @@ try {
 		scrollToDescription: function () {
 			$(".product-qd-v1-link-description").click(function (e) {
 				e.preventDefault();
-				if ($(window).width() > 900) {
-					$("html, body").stop().animate({
-						scrollTop: $(".product-qd-v1-description").offset().top - 300
-					}, 900, "swing")
-				} else {
-					$("html, body").stop().animate({
-						scrollTop: $(".product-qd-v1-description").offset().top - 170
-					}, 900, "swing")
-				}
+				$("html, body").stop().animate({
+					scrollTop: $("#informacoes-gerais").offset().top - 88
+				}, 400, "swing");
 			})
 		},
 		removeBuyButtonAlert: function () {
@@ -3575,12 +3569,12 @@ $(document).ready(function () {
 });
 $(window).load(function () {
 	/* Injetando código para controlar script da galeria de imagem/video */
-	const isNotPageProduct = !/\/p$/.test(window.location.href);
-	if (isNotPageProduct) return;
+	const isPageProduct = /\/p$|\/p\?/.test(window.location.href);
+	if (!isPageProduct) return;
 
 	var script=document.createElement('script');
 	script.type='text/javascript';
-	script.src="https://autoglass-cdn.github.io/src/js/galeria-imagem-video.js";
+	script.src="https://autoglass-cdn.github.io/src/js/detalhe-produto-video.js";
 
 	document.body.appendChild(script);
 
