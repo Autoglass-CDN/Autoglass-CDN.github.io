@@ -91,7 +91,7 @@
 	}
 
 	function calculateMarginOfBtns() {
-		const distance = (window.innerWidth - $('.smart-select__main')[0].offsetWidth) / 2;
+		const distance = (window.innerWidth - $('.c-busca')[0].offsetWidth) / 2;
 
 		btnPrev.css('left', distance);
 		btnNext.css('right', distance);
