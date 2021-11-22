@@ -113,8 +113,9 @@ function salvarUf(state) {
 
     setVtexScOnCookies(state.Sc);
 
-    if(window.location.href.endsWith('fq=H:195')){ //TODO:: Remover este if após o término da promoção de arrefecimento
-        window.location.href = window.location.href + `&sc=${state.Sc}`
+    promocaoArrefecimento = 'fq=H:195'; //TODO:: Remover este if após o término da promoção de arrefecimento
+    if(window.location.href.includes(promocaoArrefecimento)){
+        window.location.href = `?${promocaoArrefecimento}&sc=${state.Sc}`
     }
     else{
         window.location.href = `?sc=${state.Sc}`;
