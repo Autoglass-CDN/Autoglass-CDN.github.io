@@ -30,7 +30,7 @@
   border-radius: 10px;
   list-style: none;
   /* margin: 0 5px; */
-  font-size: 1em;
+  font-size: 1.1em;
   flex-grow: 1;
 }
 
@@ -74,15 +74,6 @@
   box-shadow: -25px 0px 0 0 var(--active-bg-color);
 }
 
-@media screen and (max-width: 420px) {
-  /* Ativar quando tiver busca por veículo ou adicionar mais uma aba */
-  .c-busca .c-busca__tabs li,
-  .c-busca .c-busca__tabs li.is-active {
-    font-size: 0.7em;
-    flex-shrink: 1;
-  }
-}
-
 .c-busca .c-busca__tabs li a {
   display: flex;
   align-items: center;
@@ -90,6 +81,21 @@
   color: white;
   padding: 10px;
   font-weight: 600;
+}
+
+.c-busca .c-busca__tabs li a span {
+  display: inline-block;
+  color: inherit;
+  font-weight: inherit;
+}
+
+@media screen and (max-width: 440px) {
+  /* Ativar quando tiver busca por veículo ou adicionar mais uma aba */
+  .c-busca .c-busca__tabs li,
+  .c-busca .c-busca__tabs li.is-active {
+    font-size: 0.8em;
+    flex-shrink: 1;
+  }
 }
 
 @media screen and (min-width: 1100px) {
@@ -118,7 +124,6 @@
   .c-busca .c-busca__tabs li a {
     text-decoration: none;
     font-weight: 600;
-    color: unset;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -149,13 +154,8 @@
 }
 
 .c-busca__tab-icon {
-  filter: invert(1);
-  margin-right: 5px;
-  fill: white;
-}
-
-.c-busca__tab-icon_opacity-soft {
-  opacity: 0.7;
+  margin-right: 8px;
+  opacity: 0.9;
 }
 /* #endregion TABS */
 
@@ -191,30 +191,6 @@
   display: block;
   width: auto;
   min-width: unset;
-}
-
-@media screen and (min-width: 1100px) {
-  .c-busca .c-busca__input,
-  .c-busca .c-busca__select {
-    width: 100%;
-  }
-
-  .c-busca .c-busca__botao {
-    min-width: 150px;
-    width: 150px;
-  }
-
-  .c-busca .c-busca__tab-content {
-    padding: 25px;
-  }
-
-  .c-busca .c-busca__tab-content:first-child.is-active {
-    border-top-right-radius: 0;
-  }
-  
-  .c-busca .c-busca__tab-content:last-child.is-active {
-    border-top-left-radius: 0;
-  }
 }
 
 .c-busca .c-busca__select span {
@@ -262,7 +238,7 @@
   z-index: 9;
   left: 0;
   right: 0;
-  top: 54px;
+  top: 52px;
   box-shadow: 0 2px 4px -1px #0003,
     0 4px 5px #00000024,
     0 1px 10px #0000001f;
@@ -276,7 +252,7 @@
     0 4px 5px #00000024,
     0 1px 10px #0000001f;
   border-radius: 4px;
-  bottom: -38px;
+  bottom: -35px;
   color: #1c3162;
   font-size: 13px;
   font-weight: bold;
@@ -402,9 +378,45 @@
 }
 
 .c-busca .c-busca__descricao {
+  position: static;
   font-size: 0.8em;
   text-align: center;
   margin: 6px;
+}
+
+@media screen and (min-width: 1100px) {
+  .c-busca {
+    margin: 10px 0;
+  }
+
+  .c-busca .c-busca__input,
+  .c-busca .c-busca__select {
+    width: 100%;
+  }
+
+  .c-busca .c-busca__botao {
+    min-width: 150px;
+    width: 150px;
+  }
+
+  .c-busca .c-busca__tab-content {
+    padding: 25px;
+  }
+
+  .c-busca .c-busca__tab-content:first-child.is-active {
+    border-top-right-radius: 0;
+  }
+  
+  .c-busca .c-busca__tab-content:last-child.is-active {
+    border-top-left-radius: 0;
+  }
+
+  .c-busca .c-busca__descricao {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 6px;
+  }
 }
 
 /* #endregion TAB CONTAINER */
