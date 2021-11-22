@@ -3,8 +3,7 @@ console.warn("Código legado carregado.");
 
 String.prototype.trim || (String.prototype.trim = function () {
 	return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "")
-}
-);
+});
 "function" !== typeof String.prototype.replaceSpecialChars && (String.prototype.replaceSpecialChars = function () {
 	var b = {
 		"ç": "c",
@@ -1540,15 +1539,14 @@ try {
 }
 try {
 	(function () {
+		const searchSelector = ".resultado-busca, .departamento, .categoria, .busca-vazia";
 		var body, ajaxStop, windowLoad;
-		Search.isSearch = $(document.body).is(".resultado-busca");
-		Search.isDepartament = $(document.body).is(".departamento");
-		Search.isCategory = $(document.body).is(".categoria");
+
 		windowLoad = function () {
 			Common.windowOnload();
 			if (body.is(".home"))
 				Home.windowOnload();
-			else if (body.is(".resultado-busca, .departamento, .categoria"))
+			else if (body.is(searchSelector))
 				Search.windowOnload();
 			else if (body.is(".produto"))
 				Product.windowOnload();
@@ -1560,13 +1558,13 @@ try {
 				Orders.windowOnload();
 			else if (body.is(".b2b"))
 				B2B.windowOnload()
-		}
-			;
+		};
+
 		ajaxStop = function () {
 			Common.ajaxStop();
 			if (body.is(".home"))
 				Home.ajaxStop();
-			else if (body.is(".resultado-busca, .departamento, .categoria"))
+			else if (body.is(searchSelector))
 				Search.ajaxStop();
 			else if (body.is(".produto"))
 				Product.ajaxStop();
@@ -1578,14 +1576,15 @@ try {
 				Orders.ajaxStop();
 			else if (body.is(".b2b"))
 				B2B.ajaxStop()
-		}
-			;
+		};
+
 		$(function () {
 			body = $(document.body);
 			Common.init();
+
 			if (body.is(".home"))
 				Home.init();
-			else if (body.is(".resultado-busca, .departamento, .categoria"))
+			else if (body.is(searchSelector))
 				Search.init();
 			else if (body.is(".produto"))
 				Product.init();
@@ -1597,6 +1596,7 @@ try {
 				Orders.init();
 			else if (body.is(".b2b"))
 				B2B.init();
+
 			$(document).ajaxStop(ajaxStop);
 			$(window).load(windowLoad);
 			body.addClass("jsFullLoaded")
