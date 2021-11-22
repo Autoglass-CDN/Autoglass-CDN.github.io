@@ -342,8 +342,12 @@ $(window).on("ready", async () => {
       `;
   }
 
-  function sendGaClickEvent(veiculo) {
-    ga('send', 'event', 'Link SelectCar', 'Clique ' + veiculo, veiculo);
+  function sendGaClickEvent(event) {
+    event.preventDefault();
+
+    const veiculo = event.target.querySelector('p').innerText;
+
+    ga('send', 'event', 'Link SelectCar', 'Clique ' + veiculo);
   }
 
   function buildContent(grupo, index) {
