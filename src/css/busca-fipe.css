@@ -89,7 +89,7 @@
   font-size: inherit;
 }
 
-@media screen and (max-width: 440px) {
+@media screen and (max-width: 460px) {
   /* Ativar quando tiver busca por veículo ou adicionar mais uma aba */
   .c-busca .c-busca__tabs li,
   .c-busca .c-busca__tabs li.is-active {
@@ -127,7 +127,6 @@
 
   .c-busca .c-busca__tabs li a {
     text-decoration: none;
-    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
