@@ -343,9 +343,7 @@ $(window).on("ready", async () => {
   }
 
   function sendGaClickEvent(event) {
-    event.preventDefault();
-
-    const veiculo = event.target.querySelector('p').innerText;
+    const veiculo = this.querySelector('p').innerText;
 
     ga('send', 'event', 'Link SelectCar', 'Clique ' + veiculo);
   }
