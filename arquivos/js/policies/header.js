@@ -113,7 +113,15 @@ function salvarUf(state) {
 
     setVtexScOnCookies(state.Sc);
 
-    window.location.href = `?sc=${state.Sc}`;
+    promotionParameter = 'fq';
+    url = new URL(window.location);
+    promotion = url.searchParams.get(promotionParameter);
+    if (promotion) {
+        window.location.href = `?${promotionParameter}=${promotion}&sc=${state.Sc}`
+    }
+    else{
+        window.location.href = `?sc=${state.Sc}`;
+    }
 }
 
 function initAutocomplete() {
