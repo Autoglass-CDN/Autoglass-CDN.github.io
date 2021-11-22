@@ -6442,13 +6442,12 @@ if ("function" !== typeof String.prototype.trim)
 							, m = k + j - (h.top + g + f);
 						e = Math.max(l, m) === l ? "top" : "bottom"
 					}
-					if ("top" === e ? i.top += -f : i.top += g,
-						d !== document.body) {
+					if ("top" === e ? i.top += -f : i.top += g, d !== document.body) {
 						var n, o = c.css("opacity");
 						b.visible || c.css("opacity", 0).show(),
 							n = c.offsetParent().offset(),
 							i.top -= n.top,
-							i.top += d.scrollTop,
+							i.top += d ? d.scrollTop : 0,
 							i.left -= n.left,
 							b.visible || c.css("opacity", o).hide()
 					}
