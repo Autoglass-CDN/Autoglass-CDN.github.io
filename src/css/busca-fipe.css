@@ -418,7 +418,7 @@
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
-    bottom: 6px;
+    bottom: 4px;
   }
 }
 
