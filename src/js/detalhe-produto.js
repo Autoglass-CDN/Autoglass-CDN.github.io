@@ -345,7 +345,8 @@ $(window).on("ready", async () => {
   function sendGaClickEvent(event) {
     const veiculo = this.querySelector('p').innerText;
 
-    ga('send', 'event', 'Link SelectCar', 'Clique ' + veiculo);
+    ga('set', 'transport', 'beacon');
+    ga('send', 'event', 'Link SelectCar', 'Clique ' + veiculo, veiculo);
   }
 
   function buildContent(grupo, index) {
