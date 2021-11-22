@@ -343,10 +343,8 @@ $(window).on("ready", async () => {
   }
 
   function sendGaClickEvent(event) {
-    const veiculo = this.querySelector('p').innerText;
-
     ga('set', 'transport', 'beacon');
-    ga('send', 'event', 'Link SelectCar', 'Clique ' + veiculo, veiculo);
+    ga('send', 'event', 'Link SelectCar', 'Clique', 'Add ao Carrinho');
   }
 
   function buildContent(grupo, index) {
