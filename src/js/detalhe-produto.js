@@ -306,6 +306,10 @@ $(window).on("ready", async () => {
                             <a href="#veiculos-compativeis">Ver todos</a>
                           </div>`
         );
+
+        document.querySelectorAll(
+          'a.veiculos-compativeis__content-compativel-link'
+        ).forEach((element) => element.addEventListener('click', sendGaClickEvent));
       } else {
         sugestoesContainer.html(`
           <div class="veiculos-compativeis-search__disclaimer">
@@ -323,7 +327,6 @@ $(window).on("ready", async () => {
 
   function buildContentBusca(veiculo, index) {
     return `<a href="${urlAddCart}"
-               onclick="gaBuscaCompativeisClique('${veiculo.Veiculo}')"
                class="veiculos-compativeis__content-compativel-link">
               <p>${veiculo.Veiculo}</p>
               <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>")}.</div>
@@ -339,8 +342,8 @@ $(window).on("ready", async () => {
       `;
   }
 
-  function gaBuscaCompativeisClique(veiculo) {
-    ga('send', 'event', 'Link SelectCar', 'Clique', veiculo);
+  function sendGaClickEvent(veiculo) {
+    ga('send', 'event', 'Link SelectCar', 'Clique ' + veiculo, veiculo);
   }
 
   function buildContent(grupo, index) {
