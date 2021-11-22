@@ -241,7 +241,7 @@
   z-index: 9;
   left: 0;
   right: 0;
-  top: 52px;
+  top: 54px;
   box-shadow: 0 2px 4px -1px #0003,
     0 4px 5px #00000024,
     0 1px 10px #0000001f;
@@ -255,7 +255,7 @@
     0 4px 5px #00000024,
     0 1px 10px #0000001f;
   border-radius: 4px;
-  bottom: -35px;
+  bottom: -38px;
   color: #1c3162;
   font-size: 13px;
   font-weight: bold;
@@ -382,7 +382,7 @@
 
 .c-busca .c-busca__descricao {
   position: static;
-  font-size: 0.8em;
+  font-size: 0.9em;
   text-align: center;
   margin: 6px;
 }
