@@ -113,7 +113,12 @@ function salvarUf(state) {
 
     setVtexScOnCookies(state.Sc);
 
-    window.location.href = `?sc=${state.Sc}`;
+    if(window.location.href.endsWith('fq=H:195')){ //TODO:: Remover este if após o término da promoção de arrefecimento
+        window.location.href = window.location.href + `&sc=${state.Sc}`
+    }
+    else{
+        window.location.href = `?sc=${state.Sc}`;
+    }
 }
 
 function initAutocomplete() {
