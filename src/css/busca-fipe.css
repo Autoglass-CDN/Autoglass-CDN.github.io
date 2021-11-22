@@ -29,8 +29,6 @@
   background-color: gray;
   border-radius: 10px;
   list-style: none;
-  /* margin: 0 5px; */
-  font-size: 1.1em;
   flex-grow: 1;
 }
 
@@ -80,21 +78,27 @@
   text-decoration: none;
   color: white;
   padding: 10px;
-  font-weight: 600;
+  font-weight: 700;
+  font-size: 1.3em;
 }
 
 .c-busca .c-busca__tabs li a span {
   display: inline-block;
   color: inherit;
   font-weight: inherit;
+  font-size: inherit;
 }
 
 @media screen and (max-width: 440px) {
   /* Ativar quando tiver busca por veículo ou adicionar mais uma aba */
   .c-busca .c-busca__tabs li,
   .c-busca .c-busca__tabs li.is-active {
-    font-size: 0.8em;
     flex-shrink: 1;
+  }
+
+  .c-busca .c-busca__tabs li a {
+    font-size: 0.8em;
+    font-weight: 600;
   }
 }
 
