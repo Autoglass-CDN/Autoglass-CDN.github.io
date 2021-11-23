@@ -767,13 +767,6 @@
   
   async function buscaPorPlaca(placaString) {
     const select = PLACA_SELECTS[0];
-
-    const LABEL_DADOS_TABELA = {
-      MONTADORA: "Marca",
-      MODELO: "Modelo",
-      ANO_MODELO: "Ano",
-      FIPE: "FIPE",
-    };
   
     const FILTROS_VTEX = {
       MONTADORA: 36,
@@ -790,45 +783,10 @@
       modalDeCarregamento.mostarSpinner();
   
       const response = await fetch(
-        // 'https://api.allorigins.win/get?url=' + encodeURIComponent(`https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`) + '&callback=?'
-        //`https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
-        `https://cors-anywhere.herokuapp.com/https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
+        `https://crawler-keplaca.herokuapp.com/placa/${placaSemCaracteresEspeciais}`
       );
-
-      const html = await response.text();
-      const DOM = new DOMParser().parseFromString(html, "text/html");
-      const secaoDetalhesDoVeiculo = DOM.querySelector(".fipeTablePriceDetail");
   
-      console.log(DOM);
-  
-      const obterConteudoPeloTituloDaLinhaDaTabela = async (titulo) => {
-        const xPathStringTdContemTexto = `//TD[contains(B,'${titulo}')]`;
-        const label = document.evaluate(
-          xPathStringTdContemTexto,
-          secaoDetalhesDoVeiculo,
-          null,
-          XPathResult.FIRST_ORDERED_NODE_TYPE,
-          null
-        ).singleNodeValue;
-  
-        if (!label) {
-          return console.error(`Não foi possível encontrar o campo ${titulo}.`);
-        }
-  
-        let valor = label.closest("tr").querySelectorAll("td")[1].innerText;
-  
-        return valor;
-      };
-  
-      const montadora = await obterConteudoPeloTituloDaLinhaDaTabela(
-        LABEL_DADOS_TABELA.MONTADORA
-      );
-      const modelo = await obterConteudoPeloTituloDaLinhaDaTabela(
-        LABEL_DADOS_TABELA.MODELO
-      );
-      const anoModelo = await obterConteudoPeloTituloDaLinhaDaTabela(
-        LABEL_DADOS_TABELA.ANO_MODELO
-      );
+      const [montadora, modelo, anoModelo] = await response.json();
   
       const responseMontadorasVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
@@ -840,16 +798,11 @@
         new RegExp(montadora.split(" ").join("|"), "gi").test(item.Value)
       );
   
-      console.log(montadorasEncontradas);
-  
       const responseModelosVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.VEICULO}`
       );
   
       const modelosVTEX = await responseModelosVtex.json();
-  
-      //let montadoraModelo = modelo.replace(montadora, "").trim().split(" ")[0];
-      // Se não encontrar modelo, pesquisar montadora + modelo
   
       let modelosEncontrados = modelosVTEX.filter((item) =>
         new RegExp(
@@ -860,21 +813,11 @@
         ).test(item.Value)
       );
   
-      console.log(modelosEncontrados);
-  
       const responseAnosVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.ANO}`
       );
   
       const anosVTEX = await responseAnosVtex.json();
-  
-      console.log(
-        anoModelo,
-        anoModelo.trim(),
-        anosVTEX.filter(
-          (item) => new RegExp(anoModelo.trim(), "gi").test(item.Value)
-        )
-      );
   
       let anosEncontrados = anosVTEX.filter(
         (item) => new RegExp(anoModelo.trim(), "gi").test(item.Value)
@@ -919,7 +862,6 @@
       }
   
       url += parametrosUrl;
-  
       location.href = url;
     } catch (error) {
       console.log(error);
@@ -937,9 +879,8 @@
       const sanitized = placaString.trim().replace(isNotAlphanumericChar, "");
       return sanitized;
     }
-
   }
-  
+
   class ModalDeCarregamento {
     constructor() {
       const listasDeResultados = document.querySelectorAll(
