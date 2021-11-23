@@ -792,10 +792,14 @@
       const response = await fetch(
         // 'https://api.allorigins.win/get?url=' + encodeURIComponent(`https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`) + '&callback=?'
         // `https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
-        `https://cors-anywhere.herokuapp.com/https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
+        // `https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
+
+        `https://crawler-keplaca.herokuapp.com/placa/${placaSemCaracteresEspeciais}`
       );
 
-      const html = await response.text();
+      const [montadora, modelo, anoModelo] = await response.json();
+
+      /* const html = await response.text();
       const DOM = new DOMParser().parseFromString(html, "text/html");
       const secaoDetalhesDoVeiculo = DOM.querySelector(".fipeTablePriceDetail");
   
@@ -828,7 +832,7 @@
       );
       const anoModelo = await obterConteudoPeloTituloDaLinhaDaTabela(
         LABEL_DADOS_TABELA.ANO_MODELO
-      );
+      ); */
       // const placa = DOM.querySelector(".site-content h1").innerText.split(" ")[1];
       // const fipe = await obterConteudoPeloTituloDaLinhaDaTabela(
       //   LABEL_DADOS_TABELA.FIPE
@@ -927,7 +931,7 @@
       url += parametrosUrl; //`?PS=24&map=specificationFilter_${FILTROS_VTEX.ANO},specificationFilter_${FILTROS_VTEX.MONTADORA},specificationFilter_${FILTROS_VTEX.VEICULO}`;
   
       console.log(url);
-      // location.href = url;
+      //location.href = url;
     } catch (error) {
       console.log(error);
       modalDeCarregamento.ocultarSpinner();
