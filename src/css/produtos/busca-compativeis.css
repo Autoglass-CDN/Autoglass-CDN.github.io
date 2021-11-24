@@ -88,10 +88,10 @@
 
 @media (min-width: 992px) {
   .veiculos-compativeis-search.desktop {
-    display: flex !important;
+    display: flex;
   }
   .veiculos-compativeis-search.mobile {
-    display: none !important;
+    display: none;
   }
 }
 
