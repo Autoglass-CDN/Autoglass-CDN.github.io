@@ -4,7 +4,7 @@
  * É o lugar aonde vai rendereziar
  * o painel de mudança de cep
  */
-$(function CepComponent() {
+ $(function CepComponent() {
     const CONFIG = {
         SELECTOR: '.cep:not(".link")',
         LOCAL_TO_RENDER_CEP: "data-render-cep",
@@ -33,7 +33,6 @@ $(function CepComponent() {
 
             if (orderForm.shippingData) {
                 Service.saveAddressOnLocalStorage(orderForm.shippingData);
-                // updateVtexSessionPostalCode(orderForm.shippingData.postalCode);
             }
 
             $(CONFIG.SELECTOR).each(function (_, cepContainer) {
@@ -67,9 +66,6 @@ $(function CepComponent() {
                     Service.saveAddressOnLocalStorage(
                         newOrderForm.shippingData
                     );
-                    // updateVtexSessionPostalCode(
-                    //     newOrderForm.shippingData.postalCode
-                    // );
 
                     $(cepContainer).html("").addClass("ghost-loading");
 
@@ -82,7 +78,6 @@ $(function CepComponent() {
 
                 $(window).on("orderFormUpdated.vtex", (_, order) => {
                     Service.saveAddressOnLocalStorage(order.shippingData);
-                    // updateVtexSessionPostalCode(order.shippingData.postalCode);
                 });
             });
 
@@ -91,31 +86,6 @@ $(function CepComponent() {
                     detail: orderForm,
                 })
             );
-			
-            // const cepMaxLength = 9;
-			// $("#btnFreteSimulacao").click((e) => {
-            //     e.preventDefault();
-            //     if ($("#txtCep").val().replace("_", "").length === cepMaxLength) {
-            //         const cep = $("#txtCep").val();
-            //         Controller.submitEvent(e, cep);
-            //     }
-            // });
-        // }
-
-        // async function updateVtexSessionPostalCode(postalCode) {
-        //     return fetch("https://dev2autoglass.myvtex.com/api/sessions", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //         },
-        //         body: JSON.stringify({
-        //             public: {
-        //                 postalCode: {
-        //                     value: postalCode,
-        //                 },
-        //             },
-        //         }),
-        //     });
         }
 
         function formatAddress(address) {
