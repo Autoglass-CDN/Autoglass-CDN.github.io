@@ -195,8 +195,10 @@ $(window).on("ready", async () => {
     );
 
     veiculosBuscaveis = veiculosCompativeis;
+    
+    const possuiVeiculosCompativeis = veiculosCompativeis? (veiculosCompativeis.length>0) : false;
 
-    if (veiculosCompativeis && veiculosCompativeis.length > 0) {
+    if (possuiVeiculosCompativeis > 0) {
       veiculosCompatíveisContainer.html(`
             <h2>Veículos Compatíveis</h2>
             <div class="veiculos-compativeis__box">
