@@ -1245,7 +1245,11 @@ try {
 					}).done(function (data) {
 						var installmentsList = data.paymentData.installmentOptions[0].installments;
 						var config = Product.getNumberOfInstallments(data.items);
-						Product.renderDataInInstallements(installmentsList, config);
+						if (document.querySelector('.mz-prices__block') === null 
+						|| document.querySelector('.mz-prices__block:empty'))
+						{
+							Product.renderDataInInstallements(installmentsList, config);
+						}
 					})
 				}
 			}
