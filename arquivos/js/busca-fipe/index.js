@@ -87,8 +87,8 @@
         childrenCategories.push(...x.children);
       });
 
-    await _initBucaPeca(childrenCategories);
     _initBucaPlaca(childrenCategories);
+    await _initBucaPeca(childrenCategories);
   }
 
   async function _initBucaPeca(values) {
@@ -621,6 +621,15 @@
 
       if (paths) {
         url += paths;
+
+        localStorage.setItem('smartSelectHistory', JSON.stringify({
+          type: activeTab,
+          params: {
+            plate: null,
+            url,
+          },
+        }));
+
         url += `?${buildMapFilters(index - 1)}`;
       }
 
@@ -721,6 +730,15 @@
 
     View._initSelect_(PLACA_SELECTS[0]);
 
+    const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+
+    if(searchHistory && searchHistory.type === '#busca-placa') {
+      restoreBuscaPlaca(searchHistory);
+
+      localStorage.removeItem('smartSelectHistory');
+      document.querySelector("a[href='#busca-placa']").click();
+    }
+
     let btnBuscaPlaca = document.querySelector("#btn-busca-placa");
   
     btnBuscaPlaca.addEventListener("click", (event) => {
@@ -732,6 +750,39 @@
         alert('Você deve inserir a placa do seu veículo!');
       }
     });
+  }
+
+  function restoreBuscaPlaca(searchHistory) {
+    document.querySelector("#placa-input").value = searchHistory.params.plate;
+
+    if(searchHistory.params.url) {
+      const arrayPaths = searchHistory.params.url
+        .split("/")
+        .filter((x) => x);
+
+      if(arrayPaths.length > 3) {
+        const param = arrayPaths.length === 5
+          ? arrayPaths
+            .slice(0, 2)
+            .join("/")
+          : arrayPaths[0];
+          
+        const select = PLACA_SELECTS[0];
+        const value = select.values.find((x) =>
+          x.url ? x.url.includes(param) : x.name.includes(param)
+        );
+  
+        handleSelection(
+          {
+            target: {
+              id: value.id,
+              innerHTML: value.name,
+            },
+          },
+          select.id
+        );
+      }
+    }
   }
 
   function handleSelection(event, _id) {
@@ -790,7 +841,6 @@
       modalDeCarregamento.mostarSpinner();
   
       const response = await fetch(
-        // 'https://api.allorigins.win/get?url=' + encodeURIComponent(`https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`) + '&callback=?'
         // `https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
         // `https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
 
@@ -928,8 +978,16 @@
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO}`;
       }
   
-      url += parametrosUrl; //`?PS=24&map=specificationFilter_${FILTROS_VTEX.ANO},specificationFilter_${FILTROS_VTEX.MONTADORA},specificationFilter_${FILTROS_VTEX.VEICULO}`;
-  
+      localStorage.setItem('smartSelectHistory', JSON.stringify({
+        type: activeTab,
+        params: {
+          plate: placaSemCaracteresEspeciais,
+          url,
+        },
+      }));
+
+      url += parametrosUrl;
+
       console.log(url);
       //location.href = url;
     } catch (error) {
@@ -946,7 +1004,8 @@
     function removerCaracteresNaoAlfanumericos(placaString) {
       const isNotAlphanumericChar = /[\W_]+/g;
       const sanitized = placaString.trim().replace(isNotAlphanumericChar, "");
-      return sanitized;
+
+      return sanitized.toUpperCase();
     }
   
     // const regexPotenciaDoMotor = /\d\.\d[A-z]/g;
