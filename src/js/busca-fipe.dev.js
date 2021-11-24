@@ -838,7 +838,7 @@
       const [montadora, modelo, anoModelo] = await response.json();
   
       const responseMontadorasVtex = await fetch(
-        `https://www.autoglassonline.com.br/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
+        `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
       );
   
       const montadorasVTEX = await responseMontadorasVtex.json();
@@ -848,7 +848,7 @@
       );
     
       const responseModelosVtex = await fetch(
-        `https://www.autoglassonline.com.br/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.VEICULO}`
+        `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.VEICULO}`
       );
   
       const modelosVTEX = await responseModelosVtex.json();
@@ -863,7 +863,7 @@
       );
   
       const responseAnosVtex = await fetch(
-        `https://www.autoglassonline.com.br/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.ANO}`
+        `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.ANO}`
       );
   
       const anosVTEX = await responseAnosVtex.json();
