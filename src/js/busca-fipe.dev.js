@@ -757,14 +757,21 @@
       const arrayPaths = searchHistory.params.url
         .split("/")
         .filter((x) => x);
+      
+      const length = arrayPaths.length;
+      const termsArray = arrayPaths
+        .slice(length - 3, length)
+        .reverse();
 
-      if(arrayPaths.length > 3) {
-        const param = arrayPaths.length === 5
-          ? arrayPaths
-            .slice(0, 2)
-            .join("/")
-          : arrayPaths[0];
-          
+      const searchTerm = termsArray[0] + ' ' + termsArray[2];
+      $(".resultado-busca-termo .value").first().text(searchTerm);
+
+      if(length > 3) {
+        const end = length === 5 ? 2 : 1;
+        const param = arrayPaths
+            .slice(0, end)
+            .join("/");
+                  
         const select = PLACA_SELECTS[0];
         const value = select.values.find((x) =>
           x.url ? x.url.includes(param) : x.name.includes(param)
