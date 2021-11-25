@@ -125,14 +125,12 @@
 .system-error-qd-v1 .system-error-qd-v1-wrap #busca-ft-alternative-text {
     display: none;
 }
-.system-error-qd-v1 .system-error-qd-v1-wrap #busca-ft:empty + h2 {
+.system-error-qd-v1 .system-error-qd-v1-wrap #busca-ft:empty + h2,
+.system-error-qd-v1 .system-error-qd-v1-wrap h2 {
     display: block;
 }
-.system-error-qd-v1 .system-error-qd-v1-wrap h2 {
-    display: inline;
-}
-.system-error-qd-v1 .system-error-qd-v1-wrap h2#busca-ft,
-.system-error-qd-v1 .system-error-qd-v1-wrap h2#busca-ft-alternative-text {
+.system-error-qd-v1 .system-error-qd-v1-wrap h2#busca-ft span,
+.system-error-qd-v1 .system-error-qd-v1-wrap h2#busca-ft-alternative-text span {
     color: #2d4f9e;
     font-style: italic;
 }
