@@ -857,6 +857,12 @@
 
       const [montadora, modelo, anoModelo] = await response.json();
 
+      console.table({
+        "Montadora": montadora,
+        "Modelo": modelo,
+        "Ano": anoModelo,
+      });
+
       /* const html = await response.text();
       const DOM = new DOMParser().parseFromString(html, "text/html");
       const secaoDetalhesDoVeiculo = DOM.querySelector(".fipeTablePriceDetail");
@@ -899,54 +905,29 @@
       const responseMontadorasVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
       );
-  
       const montadorasVTEX = await responseMontadorasVtex.json();
-  
-      let montadorasEncontradas = montadorasVTEX.filter((item) =>
-        new RegExp(montadora.split(" ").join("|"), "gi").test(item.Value)
-      );
+      const regexMontadoras = obterRegexMontadoras(montadora);
+      let montadorasEncontradas = montadorasVTEX.filter((item) => regexMontadoras.test(item.Value));
   
       console.log(montadorasEncontradas);
-  
+
       const responseModelosVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.VEICULO}`
       );
-  
       const modelosVTEX = await responseModelosVtex.json();
-  
-      //let montadoraModelo = modelo.replace(montadora, "").trim().split(" ")[0];
-      // Se não encontrar modelo, pesquisar montadora + modelo
-  
-      let modelosEncontrados = modelosVTEX.filter((item) =>
-        new RegExp(
-          `${modelo.split(" ")[0]}$|${montadora} ${
-            modelo.replace(montadora, "").trim().split(" ")[0]
-          }$`,
-          "gi"
-        ).test(item.Value)
-      );
+      const regexModelos = obterRegexModelos(montadora, modelo);
+      let modelosEncontrados = modelosVTEX.filter((item) => regexModelos.test(item.Value));
   
       console.log(modelosEncontrados);
   
       const responseAnosVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.ANO}`
       );
-  
       const anosVTEX = await responseAnosVtex.json();
-  
-      console.log(
-        anoModelo,
-        anoModelo.trim(),
-        anosVTEX.filter(
-          (item) => new RegExp(anoModelo.trim(), "gi").test(item.Value)
-          //new RegExp(modelo.split(" ").join("|"), "gi").test(item.Value)
-        )
-      );
-  
-      let anosEncontrados = anosVTEX.filter(
-        (item) => new RegExp(anoModelo.trim(), "gi").test(item.Value)
-        //new RegExp(modelo.split(" ").join("|"), "gi").test(item.Value)
-      );
+      const regexAnos = obterRegexAnos(anoModelo);
+      let anosEncontrados = anosVTEX.filter((item) => regexAnos.test(item.Value));
+
+      console.log(anosEncontrados);
   
       let url = "",
         parametrosUrl = "?PS=20&map=";
@@ -966,9 +947,7 @@
 
       if(select.routeSelected.length) {
         url += select.routeSelected;
-        parametrosUrl += (
-          (select.routeSelected.split("/").length - 1 === 1) ? 'c,' : `c,c,`
-        );
+        parametrosUrl += `c,c,`
       }
   
       if (anosEncontrados.length) {
@@ -1014,6 +993,29 @@
       const sanitized = placaString.trim().replace(isNotAlphanumericChar, "");
 
       return sanitized.toUpperCase();
+    }
+
+    function obterRegexMontadoras(montadora) {
+      return new RegExp(montadora.split(" ").join("|"), "gi");
+    }
+
+    function obterRegexModelos(montadora, modelo) {
+      const montadoraTerms = montadora.split(" ")
+        .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
+
+      const modeloSemMontadora = modelo.replace(
+        new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ")[0];
+
+      const pattern = `${modeloSemMontadora}$` + montadoraTerms.reduce(
+        (acc, montadoraTerm) => {
+          return `${acc}|${montadoraTerm} ${modeloSemMontadora}$`
+        }, "");
+
+      return new RegExp(pattern, "gi");
+    }
+
+    function obterRegexAnos(anoModelo) {
+      return new RegExp(anoModelo.trim(), "gi")
     }
   
     // const regexPotenciaDoMotor = /\d\.\d[A-z]/g;
