@@ -764,10 +764,16 @@
         .reverse();
 
       const searchTerm = termsArray[0] + ' ' + termsArray[2];
+      
       const termContainer = $(".resultado-busca-termo").first();
       if(termContainer.length) {
         termContainer.find('.value').html(searchTerm);
         termContainer.addClass("has-value");
+      }
+
+      const buscaVaziaContainer = $("#busca-ft span");
+      if(buscaVaziaContainer.length) {
+        buscaVaziaContainer.text(searchTerm + '.');
       }
 
       if(length > 3) {
