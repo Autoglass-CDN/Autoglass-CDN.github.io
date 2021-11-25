@@ -87,7 +87,7 @@ async function loadScripts(data) {
   $.cookie("mzLocationUF", data.shippingData.address.state);
 
   await loadScript("/arquivos/jquery-ui.datepicker.js");
-  await loadScript("https://autoglass-cdn.github.io/hml/consulta-agendamento.js");
+  await loadScript("https://autoglass-cdn.github.io/arquivos/js/consulta-agendamento.js");
   await loadScript(
     "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
     script => script.id = "ze-snippet"
