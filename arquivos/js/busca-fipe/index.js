@@ -956,7 +956,10 @@
       }
   
       if (montadorasEncontradas.length) {
-        url += `/${montadorasEncontradas[0].Value}`;
+        let montadora1 = montadorasEncontradas[0].Value;
+        montadora1 = montadora1 === 'Gm' ? 'Chevrolet' : montadora1;
+
+        url += `/${montadora1}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA},`;
       }
   
