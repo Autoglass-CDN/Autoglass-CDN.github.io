@@ -764,7 +764,7 @@
         .reverse();
 
       const searchTerm = termsArray[0] + ' ' + termsArray[2];
-      $(".resultado-busca-termo .value").first().text(searchTerm);
+      $(".resultado-busca-termo .value").first().html(searchTerm);
 
       if(length > 3) {
         const end = length === 5 ? 2 : 1;
