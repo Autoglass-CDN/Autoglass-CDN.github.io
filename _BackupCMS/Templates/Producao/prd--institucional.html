@@ -1,0 +1,84 @@
+<!-- prd- -institucional -->
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<vtex:contentPlaceHolder id="qd_head" />
+	<vtex:metaTags />
+    <vtex:contentPlaceHolder id="SEO_link_alternate" />
+	<title>
+		<vtex.cmc:productPageTitle />
+	</title>
+	<vtex:template id="prd--head-tags" />
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.atendimento.css"
+		type="text/css" />
+</head>
+
+<body class="institucional" data-qd-scroll-limit="200">
+	<div class="common-qd-v1-structure">
+		<!-- Header -->
+		<vtex:template id="prd--header" />
+		<!-- Header -->
+
+		<div class="container">
+			<div class="row visible-xs institucional-qd-v1-menu-toggle-wrap">
+				<div class="col-xs-10 col-xs-offset-1">
+					<a href="#" class="institucional-qd-v1-menu-toggle btn btn-block">Menu Institucional</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<!-- Sidebar -->
+				<div class="col-xs-12 col-sm-4 col-md-3 institucional-qd-v1-side-menu-wrap">
+					<div class="institucional-qd-v1-navigator">
+						<vtex.cmc:prdInstitucionalMenuLateral />
+					</div>
+				</div>
+				<!-- Sidebar -->
+
+				<div class="institucional-qd-v1-side-menu-wrap-close"></div>
+
+				<!-- Institutional content -->
+				<div class="col-xs-12 col-sm-8 col-md-9">
+					<div class="attendance-qd-v1-contact">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="attendance-qd-v1-contact-title">
+									<vtex:contentPlaceHolder id="titulo_institucional" />
+								</div>
+								<vtex:contentPlaceHolder id="descricao_institucional" />
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="vtx-placeholder vtx-banners-wrap qd-banner-responsive img-responsive"
+									data-qd-help="5" data-qd-help-id="Conteúdo abaixo do hr de atendimento">
+									<vtex:contentPlaceHolder id="conteudo_abaixo_do_hr_de_atendimento" />
+								</div>
+							</div>
+						</div>
+
+						<!-- mosaico de banners -->
+						<div class="container">
+							<div class="row">
+								<div class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-2">
+									<vtex:contentPlaceHolder id="mosaico_de_banners" />
+								</div>
+							</div>
+						</div>
+						<!-- mosaico de banners  -->
+					</div>
+				</div>
+				<!-- Institutional content -->
+			</div>
+            
+		</div>
+
+		<!-- Footer -->
+		<vtex:template id="prd--footer" />
+		<!-- Footer -->
+	</div>
+</body>
+
+</html>
