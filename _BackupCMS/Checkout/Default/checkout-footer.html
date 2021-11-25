@@ -1,0 +1,159 @@
+<div class="container container-main container-cart">
+  <h1 class="compreJunto">Compre Junto</h1>
+  <div class="checkout-container row-fluid cart-active">
+    <div id="image-slider" class="splide">
+      <div class="splide__track">
+        <ul class="splide__list">
+            
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer-qd-v1 checkout-qd-v1-footer-structure">
+    <div class="footer-qd-v1-security-information">
+        <div class="container">
+            <div class="row-fluid">
+                <div class="span8">
+                    <div class="footer-qd-v1-payment-stamps-content">
+                        <h3 class="heading-3">Formas de pagamento</h3>
+
+                        <ul class="footer-qd-v1-payment-stamps list-inline">
+                            <li class="payment-stamp pull-left stamp-visa"></li>
+                            <!--li class="payment-stamp pull-left stamp-hipercard"></li-->
+                            <li class="payment-stamp pull-left stamp-diners"></li>
+                            <li class="payment-stamp pull-left stamp-elo"></li>
+                            <li class="payment-stamp pull-left stamp-master"></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="span4">
+                    <div class="footer-qd-v1-security-stamps">
+                        <h3 class="heading-3">Segurança e Qualidade</h3>
+                        <ul style="list-style: none;">
+                            <li><a href="https://transparencyreport.google.com/safe-browsing/search?url=www.autoglassonline.com.br"
+                                    target="_Blank"><img src="/arquivos/selo-seguro-google.png?=v009009"></a></li>
+                            <li><a href="https://www.reclameaqui.com.br/empresa/autoglass/" target="_Blank"><img
+                                        src="/arquivos/selo-otimo-reclameaqui.png?v=02491"></a></li>
+                            <li><a href="https://secure.vtex.com/?an=autoglass" target="_Blank"><img
+                                        src="/arquivos/selo-certificado-vtex.png?v=2109058129"></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+ <!-- Modal Instale na loja - B2C-1863 --> 
+    <div class="mz-modal-installation modal-instale-na-loja">
+      <div class="mz-install__close">
+        <span class="mz-install__close--button"></span>
+      </div>
+      
+      <div class="secao-agendamento">
+        <div class="mz-install__title">
+          <h2>Instalação na Loja</h2>
+        </div>
+        <span>Veja nossa agenda e selecione o dia e horário disponível para instalação:</span>
+        <div class="cep" data-render-cep=".secao-agendamento"></div>
+        <div class="filter">
+          <div class="data">
+            <label class="date" for="alterar-data-input">Data: </label>
+            <input type="text" name="data" id="alterar-data-input" />
+          </div>
+          <div class="qtd" style="display: none">
+            Lojas encontradas: 0
+          </div>
+        </div>
+        <div class="to-select-msg"> <h3> Selecione a loja mais próxima de você: </h3> </div>
+        <div class="selected-msg" hidden="true"> <i class="fa fa-check" aria-hidden="true" style="color: green; margin-right: 5px;"></i>
+          Selecionado: 
+          <b></b>
+        </div>
+        <div class="store-list">
+          <ul>
+          </ul>
+        </div>
+        <div class="mz-title__bottomBorder"></div>
+        
+      </div>
+      
+      <!-- <div class="mz-install__button">
+        <a class="mz-install__button--buy lock-button">
+          Agendar nessa loja
+        </a>
+      </div> -->
+</div>
+
+<!-- Modal Instale na loja
+<div class="mz-modal-installation">
+    <div class="mz-install__close">
+        <span class="mz-install__close--button"></span>
+    </div>
+    <div class="mz-install__title">
+        <h2>Instalação na Loja</h2>
+        <div class="secao-agendamento">
+            <span>Confira abaixo as lojas e horários disponíveis para instalação:</span>
+            <div class="store-list">
+                <div class="filter">
+                    <div class="data">
+                        <label class="date" for="alterar-data-input">Data: </label>
+                        <input type="text" name="data" id="alterar-data-input" />
+                    </div>
+                    <div class="qtd">
+                        Lojas encontradas: 0
+                    </div>
+                </div>
+            </div>
+            <div class="mz-title__bottomBorder"></div>
+            <div class="mz-install__info">
+                <div class="mz-info__list">
+                    <ul>
+                        <li>
+                            Após aprovação do pagamento, nossos analistas entrarão
+                            em contato com você para confirmar o horário de agendamento.
+                        </li>
+                        <li>
+                            Será realizada uma análise pelo técnico e caso
+                            haja necessidade de troca de borrachas ou sensores,
+                            o valor será cobrado na loja.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- // Modal Instale na loja -->
+
+<!-- Modal Instale em Casa -->
+<div class="mz-modal-advantages">
+    <div class="mz-advantages__close">
+        <span class="mz-advantages__close--button"></span>
+    </div>
+    <div class="mz-advantages__title">
+        <h2>Instalação em Casa</h2>
+    </div>
+    <div class="mz-advantages__content">
+        <span>Confira abaixo os dias disponíveis para instalação:</span>
+        <div class="cep" data-render-cep=".mz-advantages__content"></div>
+        <div class="datas-disponiveis" style="display: none">
+            <label>Datas disponíveis:</label>
+            <div id="aviso-servico-movel" style="display: none"></div>
+            <div class="loading-dates">
+                <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Carregando...
+            </div>
+            <div id="mostrar-datas-datepicker"></div>
+        </div>
+
+        <div id="confirmacao-sm"></div>
+    </div>
+</div>
+<!-- // Modal Instale em Casa -->
+
+<div class="mz-modal-overlay"></div>
+
+<link href="https://autoglass-cdn.github.io/arquivos/css/cookie.bot.css" rel="stylesheet" type="text/css" />

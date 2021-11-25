@@ -239,9 +239,10 @@ $(window).on('load', () => {
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
+            await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/cep.component.js');
-            await loadScript('https://autoglass-cdn.github.io/hml/consulta-agendamento.js');
+            await loadScript('https://autoglass-cdn.github.io/arquivos/js/consulta-agendamento.js');
 
           	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
           	
