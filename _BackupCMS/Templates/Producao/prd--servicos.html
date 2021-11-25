@@ -1,0 +1,149 @@
+<!-- prd- -servicos -->
+<!DOCTYPE html>
+
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+    <meta charset="UTF-8" />
+    <vtex:contentPlaceHolder id="SEO_link_alternate" />
+    <vtex:metaTags />
+    <vtex:contentPlaceHolder id="page_title" />
+    <vtex:template id="prd--head-tags" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com"></link>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&amp;display=swap"
+        rel="stylesheet">
+    </link>
+
+    <style>
+        :root {
+            --url-background-banner: url("<vtex:contentPlaceHolder id="caminho_imagem_banner"/>");
+            --url-background-banner-mobile: url("<vtex:contentPlaceHolder id="caminho_imagem_banner_mobile"/>");
+            --cor-titulos-servico: <vtex:contentPlaceHolder id="cor_titulos_servico"/>;
+            --cor-icones-etapas: <vtex:contentPlaceHolder id="cor_icones_etapas"/>;
+            --cor-setas-etapas: <vtex:contentPlaceHolder id="cor_setas_etapas"/>;
+            --cor-texto-etapas: <vtex:contentPlaceHolder id="cor_texto_etapas"/>;
+            --texto-pergunta-estado-da-peca: "<vtex:contentPlaceHolder id="texto_pergunta_estado_da_peca"/>";
+
+        }
+    </style>
+
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/servicos/servicos.css" type="text/css"></link>
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/styles/global/style.css" type="text/css"></link>
+    
+    <script>
+        const url = "<vtex:contentPlaceHolder id="url_API"/>";
+    </script>
+
+</head>
+
+<body>
+    <!-- Header -->
+    <vtex:template id="prd--header" />
+
+    <section class="banner">
+        <a class="banner__image abrir-modal_js" href="#formulario_js"></a>
+    </section>
+    <!-- Header -->
+
+    <main>
+
+        <section class="descricao">
+
+            <div class="servicos__container">
+
+                <div class="servico servicos__container__alinhamento">
+                    <span class="servico__titulo">Serviço</span>
+                    <h1 id="nome-servico" class="servico__nome">
+                        <vtex:contentPlaceHolder id="nome_servico" />
+                    </h1>
+                </div>
+
+                <div class="texto servicos__container__alinhamento">
+                    <p class="texto__descricao">
+                        <vtex:contentPlaceHolder id="texto_descricao_servico" />
+                    </p>
+                </div>
+
+                <div class="botao servicos__container__alinhamento">
+                    <button class="button btn-confirm abrir-modal_js" type="button">Quero receber um orçamento!</button>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="por-que-contratar">
+            <div class="servicos__container">
+                <div class=".servicos__container__alinhamento" style="overflow-x:auto;">
+
+                    <span class="tabela__titulo">
+                        <vtex:contentPlaceHolder id="por_que_contratar_servico" />
+                    </span>
+                    <div class="tabela">
+                        <vtex:contentPlaceHolder id="tabela__textos" />
+                        <vtex:contentPlaceHolder id="tabela__check" />
+                    </div>
+
+                    <div class="botao servicos__container__alinhamento">
+                        <button class="button btn-confirm abrir-modal_js" type="button">Receba um orçamento on-line</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="avaliacoes-consumidores">
+            <div class="servicos__container">
+                <article class="contents">
+                    <section id="avaliacoes">
+                        <h2 class="avaliacoes__titulo">Avaliações de quem já contratou este serviço</h2>
+                        <vtex.cmc:prdRatingsComponent />
+                    </section>
+                </article>
+
+            </div>
+        </section>
+    </main>
+
+    <section id="form-orcamento" class="formulario">
+        <div class="formulario__container">
+                <div class="formulario__cabecalho">
+                    <button id="fechar-modal_js" class="cabecalho__botao" type="button">
+                        Fechar <i class="cabecalho__botao__fragmento"></i>
+                    </button>
+                </div>
+
+                <div id="formulario_js" class="orcamento">
+                    <vtex:template id="prd--servicos-formulario" />
+                </div>
+
+                <button id="anchor-form" style="display: none;">Faça já seu orçamento</button>
+            </div>
+    </section>
+
+    <section class="chat">
+        <div class="servicos__container">
+            <div class="servicos__container__alinhamento">
+                <div class="chat__mensagem">
+                    <span class="mensagem__titulo">
+                        Ficou Com Dúvidas?
+                    </span>
+                    <span class="mensagem__texto">
+                        Fale com a gente no chat!
+                    </span>
+                </div>
+                <a class="chat__botao" onclick="$zopim.livechat.window.show()">
+                    Abrir Chat
+                </a>
+            </div>
+        </div>
+    </section>
+
+        
+    <!-- Footer -->
+    <vtex:template id="prd--footer" />
+    <!-- Footer -->
+
+</body>
+
+</html>
