@@ -1539,7 +1539,7 @@ try {
 }
 try {
 	(function () {
-		const searchSelector = ".resultado-busca, .departamento, .categoria, .busca-vazia";
+		const searchSelector = ".busca, .resultado-busca, .departamento, .categoria, .busca-vazia";
 		var body, ajaxStop, windowLoad;
 
 		windowLoad = function () {
