@@ -212,22 +212,16 @@
 }
 .system-error-qd-v1-category-banners {
     padding: 0;
-    margin-bottom: 90px;
+    margin-bottom: 60px;
 }
 .system-error-qd-v1-category-banners a.btn {
     text-align: center;
-    margin: 0 auto;
+    margin: 35px auto 0;
     background: #43c452;
     padding: 10px;
     color: #fff;
     border-radius: 3px;
     width: 165px;
-    position: absolute;
-    margin-top: 35px;
-    left: 0;
-    right: 0;
-    margin-left: auto;
-    margin-right: auto;
     display: block;
     font-weight: 700;
 }
@@ -247,6 +241,10 @@
 }
 .system-error-qd-v1-category-banners .carousel-qd-v1-shelf .qd-mb-row {
     padding-top: 0;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
 }
 @media (max-width: 992px) {
     .system-error-qd-v1-category-banners .carousel-qd-v1-shelf h2 {
