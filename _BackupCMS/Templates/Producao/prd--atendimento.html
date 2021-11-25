@@ -1,0 +1,137 @@
+<!-- prd- -atendimento -->
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<vtex:contentPlaceHolder id="qd_head" />
+	<vtex:metaTags />
+	<title>
+		<vtex.cmc:productPageTitle />
+	</title>
+	<vtex:template id="prd--head-tags" />
+	<link rel="stylesheet" href="//cdn.quatrodigital.com/autoglass-arquivos/CSS.aut.far.atendimento.css"
+		type="text/css" />
+</head>
+
+<body class="institucional" data-qd-scroll-limit="200">
+	<div class="common-qd-v1-structure">
+		<!-- Header -->
+		<vtex:template id="prd--header" />
+		<!-- Header -->
+
+		<!-- Conteúdo abaixo do Header -->
+		<div class="container">
+			<div class="row">
+				<div class="banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3"
+					data-qd-help="1" data-qd-help-id="Conteúdo abaixo do Header">
+					<vtex:contentPlaceHolder id="conteudo_abaixo_do_header" />
+				</div>
+			</div>
+		</div>
+		<!-- Conteúdo abaixo do Header -->
+
+		<div class="container">
+			<div class="row visible-xs institucional-qd-v1-menu-toggle-wrap">
+				<div class="col-xs-10 col-xs-offset-1">
+					<a href="#" class="institucional-qd-v1-menu-toggle btn btn-block">Menu Institucional</a>
+				</div>
+			</div>
+
+			<div class="row">
+				<!-- Sidebar -->
+				<div class="col-xs-12 col-sm-4 col-md-3 institucional-qd-v1-side-menu-wrap">
+					<div class="banner-qd-v1-responsive img-responsive">
+						<!-- Conteúdo acima do menu lateral -->
+						<vtex:contentPlaceHolder id="conteudo_acima_do_menu_lateral" />
+						<!-- Conteúdo acima do menu lateral -->
+					</div>
+
+					<div class="institucional-qd-v1-navigator">
+						<vtex.cmc:prdInstitucionalMenuLateral />
+					</div>
+
+					<div class="banner-qd-v1-responsive img-responsive">
+						<!-- Conteúdo abaixo do menu lateral -->
+						<vtex:contentPlaceHolder id="conteudo_abaixo_do_menu_lateral" />
+						<!-- Conteúdo abaixo do menu lateral -->
+					</div>
+				</div>
+				<!-- Sidebar -->
+
+				<div class="institucional-qd-v1-side-menu-wrap-close"></div>
+
+				<!-- Institutional content -->
+				<div class="col-xs-12 col-sm-8 col-md-9">
+					<div class="attendance-qd-v1-contact">
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="attendance-qd-v1-contact-title">
+									<vtex:contentPlaceHolder id="titulo_central_de_atendimento" />
+								</div>
+								<vtex:contentPlaceHolder id="descricao_central_de_atendimento" />
+							</div>
+						</div>
+
+						<div class="row">
+							<!-- TELEFONE -->
+							<div class="col-xs-12 col-md-6">
+								<div class="attendance-qd-v1-contact-phone">
+									<div>
+										<i class="fa fa-phone"></i>
+										<vtex.cmc:prdNumeroTelefone /><br />
+									</div>
+								</div>
+							</div>
+							<!-- TELEFONE -->
+
+							<!-- EMAIL -->
+							<div class="col-xs-12 col-md-6">
+								<div class="attendance-qd-v1-contact-mail">
+									<i class="fa fa-envelope"></i>
+									<vtex.cmc:prdEnderecoEmail />
+								</div>
+							</div>
+							<!-- EMAIL -->
+
+							<!-- WORKTIME -->
+							<div class="col-xs-12">
+								<div class="attendance-qd-v1-working-time">
+									<vtex.cmc:prdHorarioAtendimento />
+								</div>
+							</div>
+							<!-- WORKTIME -->
+						</div>
+
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="vtx-placeholder vtx-banners-wrap qd-banner-responsive img-responsive"
+									data-qd-help="5" data-qd-help-id="Conteúdo abaixo do hr de atendimento">
+									<vtex:contentPlaceHolder id="conteudo_abaixo_do_hr_de_atendimento" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Institutional content -->
+			</div>
+		</div>
+
+		<!-- Conteúdo acima do Footer -->
+		<div class="container">
+			<div class="row">
+				<div class="banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3"
+					data-qd-help="1" data-qd-help-id="Conteúdo abaixo do Carrossel">
+					<vtex:contentPlaceHolder id="conteudo_acima_do_footer" />
+				</div>
+			</div>
+		</div>
+		<!-- Conteúdo acima do Footer -->
+
+		<!-- Footer -->
+		<vtex:template id="prd--footer" />
+		<!-- Footer -->
+	</div>
+</body>
+
+</html>
