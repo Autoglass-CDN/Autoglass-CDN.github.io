@@ -528,7 +528,7 @@ i.arrow-icon::before {
   width: 100%;
 }
 
-.container .search-box fieldset.busca i.search-icon {
+.container .search-box fieldset.busca + i.search-icon {
   line-height: 1;
 }
 
