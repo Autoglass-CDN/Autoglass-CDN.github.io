@@ -142,13 +142,10 @@
 
       /* $(`.c-busca__tab-content #${select.id} > div:first-child`)
         .focus(() => {
-          console.log('Hi');
-
           $(`.c-busca__tab-content #${select.id} > div:first-child`).on(
             "keyup",
             (event) => {
               if (event.key === "Delete" || event.key === "Backspace") {
-                console.log('Hello');
                 const index = PECA_SELECTS.findIndex((x) => x.id === select.id);
                 View.resetResults(index);
                 $(`.c-busca__tab-content #${select.id}`).click();
