@@ -739,9 +739,11 @@
       document.querySelector("a[href='#busca-placa']").click();
     }
 
-    let btnBuscaPlaca = document.querySelector("#btn-busca-placa");
-  
-    btnBuscaPlaca.addEventListener("click", (event) => {
+    let formBuscaPlaca = document.querySelector("#form-busca-placa");
+
+    formBuscaPlaca.addEventListener('submit', (event) => {
+      event.preventDefault();
+
       let placa = document.querySelector("#placa-input").value;
 
       if(placa.length) {

@@ -166,41 +166,43 @@
             </div>
           </div> -->
           <div class="c-busca__tab-content" id="busca-placa">
-            <div class="h-flex">
-              <div class="c-busca__select">
-                <div id="categoria-select">
-                  <div class="gtm-smart-categoria-select">
-                    <span>Produto</span>
-                    <i class="fa fa-caret-down"></i>
-                    <i class="fa fa-close" style="display: none"></i>
-                  </div>
-                  <div class="smart-select__main-results" style="display: none">
-                    <input
-                      id="categoria-input"
-                      placeholder="Digite aqui:"
-                      type="text"
-                      autocomplete="off"
-                    />
-                    <ul></ul>
+            <form id="form-busca-placa" action="#">
+              <div class="h-flex">
+                <div class="c-busca__select">
+                  <div id="categoria-select">
+                    <div class="gtm-smart-categoria-select">
+                      <span>Produto</span>
+                      <i class="fa fa-caret-down"></i>
+                      <i class="fa fa-close" style="display: none"></i>
+                    </div>
+                    <div class="smart-select__main-results" style="display: none">
+                      <input
+                        id="categoria-input"
+                        placeholder="Digite aqui:"
+                        type="text"
+                        autocomplete="off"
+                      />
+                      <ul></ul>
+                    </div>
                   </div>
                 </div>
+                <div class="c-busca__input">
+                  <input
+                    type="text"
+                    name="placa-input"
+                    id="placa-input"
+                    placeholder="Digite a sua placa"
+                  />
+                </div>
+                <div class="c-busca__botao">
+                  <button id="btn-busca-placa"
+                          class="c-botao c-botao--primary"
+                          type="submit">
+                    BUSCAR
+                  </button>
+                </div>
               </div>
-              <div class="c-busca__input">
-                <input
-                  type="text"
-                  name="placa-input"
-                  id="placa-input"
-                  placeholder="Digite a sua placa"
-                />
-              </div>
-              <div class="c-busca__botao">
-                <button id="btn-busca-placa"
-                        class="c-botao c-botao--primary"
-                        type="button">
-                  BUSCAR
-                </button>
-              </div>
-            </div>
+            </form>
             <div class="c-busca__descricao">
               <span>
                 <strong>Digite a placa do seu carro</strong>, caminhonete, SUV
