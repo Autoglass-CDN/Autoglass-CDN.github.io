@@ -528,6 +528,10 @@ i.arrow-icon::before {
   width: 100%;
 }
 
+.container .search-box fieldset.busca i.search-icon {
+  line-height: 1;
+}
+
 .container.desktop .search-box .busca select, .container.desktop .search-box .busca label, .container.desktop .search-box .busca legend, .container.desktop .search-box .busca input[type="button"], .search-box-mobile .busca select, .search-box-mobile .busca label, .search-box-mobile .busca legend, .search-box-mobile .busca input[type="button"] {
   display: none;
 }

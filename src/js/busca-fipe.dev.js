@@ -853,12 +853,6 @@
 
       const [montadora, modelo, anoModelo] = await response.json();
 
-      console.table({
-        "Montadora": montadora,
-        "Modelo": modelo,
-        "Ano": anoModelo,
-      });
-  
       const responseMontadorasVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
       );
