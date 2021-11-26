@@ -848,15 +848,44 @@
     try {
       modalDeCarregamento.mostarSpinner();
   
-      const response = await fetch(
+      /* const response = await fetch(
         // `https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
         // `https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
 
         `https://crawler-keplaca.herokuapp.com/placa/${placaSemCaracteresEspeciais}`
       );
 
-      const [montadora, modelo, anoModelo] = await response.json();
+      const [montadora, modelo, anoModelo] = await response.json(); */
 
+      const endpointFragaAuth = 'https://admin.catalogofraga.com.br/connect/token';
+      const fragaAuthResponse = await fetch(endpointFragaAuth, {
+        method: 'POST',
+        headers: new Headers({
+          "Content-Type": "application/x-www-form-urlencoded",
+        }),
+        body: (() => {
+          return 'grant_type=client_credentials&' +
+            'client_id=f5cf87e8-88b8-400e-b494-047' +
+            'client_secret=81a77f34df5cf48402b2a12'; // Pegar o correto no e-mail
+        })()
+      });
+
+      const { access_token } = await fragaAuthResponse.json();
+      const endpointFragaApi = 'https://api.catalogofraga.com.br/v1/veiculos?placa=';
+      const fragaApiResponse = await fetch(endpointFragaApi + placaSemCaracteresEspeciais, {
+        method: 'GET',
+        headers: new Headers({
+          "Authorization": "Bearer " + access_token,
+        }),
+      });
+
+      const {
+        marca:  montadora,
+        modelos: [{ modelo }],
+        anoModelo: ano
+      } = await fragaApiResponse.json();
+      const anoModelo = ano.toString();
+      
       console.table({
         "Montadora": montadora,
         "Modelo": modelo,
@@ -985,7 +1014,8 @@
       modalDeCarregamento.ocultarSpinner();
   
       alert(
-        "Perdão pelo inconveniente! O serviço de busca por placa está fora do ar no momento. Favor utilizar a busca por peça!"
+        "Perdão pelo inconveniente! O serviço de busca por placa está fora do \
+        ar no momento. Favor utilizar a busca por peça!"
       );
   
       document.querySelector("a[href='#busca-peca']").click();
