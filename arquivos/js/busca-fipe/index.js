@@ -795,7 +795,10 @@
         .split("/")
         .filter((x) => x);
       
-      const params = query.includes('c,c,') ? paths.slice(2, paths.length) : paths;
+      let params = query.includes('c,c,') ? paths.slice(2, paths.length) : paths;
+
+      if(params.length === 3)
+        params.splice(1, 1);
 
       const searchTerm = params.reverse().join(" ");
       
