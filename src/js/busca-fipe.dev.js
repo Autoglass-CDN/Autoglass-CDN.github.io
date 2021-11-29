@@ -782,6 +782,12 @@
     }
 
     if(isHistoryValid && searchHistory.params.url) {
+      search ||= ""; pathname ||= ""
+      if(!search.includes('?PS=24&map=') && !pathname.includes('buscavazia')) {
+        localStorage.removeItem('smartSelectHistory'); 
+        return;
+      }
+      
       const [ path, query ] = searchHistory.params.url.split('?');
       const paths = path
         .split("/")
