@@ -104,7 +104,7 @@
     PECA_SELECTS.forEach(View._initSelect_);
 
     // Create Button Function
-    $("#btn-busca-peca").click(Service.search);
+    $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() });
   }
 
   function ViewAPI() {
@@ -618,17 +618,16 @@
 
       if (paths) {
         url += paths;
-
-        localStorage.setItem('smartSelectHistory', JSON.stringify({
-          type: activeTab,
-          params: {
-            plate: null,
-            url,
-          },
-        }));
-
         url += `?${buildMapFilters(index - 1)}`;
       }
+
+      localStorage.setItem('smartSelectHistory', JSON.stringify({
+        type: activeTab,
+        params: {
+          plate: null,
+          url,
+        },
+      }));
 
       location.href = url;
     }

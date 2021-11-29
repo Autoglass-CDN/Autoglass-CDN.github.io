@@ -102,7 +102,7 @@
     PECA_SELECTS.forEach(View._initSelect_);
 
     // Create Button Function
-    $("#btn-busca-peca").click(Service.search);
+    $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() });
   }
 
   function ViewAPI() {
@@ -140,13 +140,11 @@
 
       /* $(`.c-busca__tab-content #${select.id} > div:first-child`)
         .focus(() => {
-          console.log('Hi');
 
           $(`.c-busca__tab-content #${select.id} > div:first-child`).on(
             "keyup",
             (event) => {
               if (event.key === "Delete" || event.key === "Backspace") {
-                console.log('Hello');
                 const index = PECA_SELECTS.findIndex((x) => x.id === select.id);
                 View.resetResults(index);
                 $(`.c-busca__tab-content #${select.id}`).click();
@@ -618,18 +616,17 @@
       let url = CONFIG.ORIGIN;
 
       if (paths) {
-        url += paths;
-
-        localStorage.setItem('smartSelectHistory', JSON.stringify({
-          type: activeTab,
-          params: {
-            plate: null,
-            url,
-          },
-        }));
-
+        url += paths;  
         url += `?${buildMapFilters(index - 1)}`;
       }
+
+      localStorage.setItem('smartSelectHistory', JSON.stringify({
+        type: activeTab,
+        params: {
+          plate: null,
+          url,
+        },
+      }));
 
       location.href = url;
     }
