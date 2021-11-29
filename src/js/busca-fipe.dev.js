@@ -727,14 +727,7 @@
 
     View._initSelect_(PLACA_SELECTS[0]);
 
-    const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-
-    if(searchHistory && searchHistory.type === '#busca-placa') {
-      restoreBuscaPlaca(searchHistory);
-
-      localStorage.removeItem('smartSelectHistory');
-      document.querySelector("a[href='#busca-placa']").click();
-    }
+    restoreBuscaPlaca();
 
     let formBuscaPlaca = document.querySelector("#form-busca-placa");
 
@@ -751,38 +744,22 @@
     });
   }
 
-  function restoreBuscaPlaca(searchHistory) {
-    document.querySelector("#placa-input").value = searchHistory.params.plate;
+  function restoreBuscaPlaca() {
+    let { pathname, search } = location;
 
-    if(searchHistory.params.url) {
-      const arrayPaths = searchHistory.params.url
-        .split("/")
-        .filter((x) => x);
-      
-      const length = arrayPaths.length;
-      const termsArray = arrayPaths
-        .slice(length - 3, length)
-        .reverse();
+    const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+    const isHistoryValid = searchHistory && searchHistory.type == '#busca-placa';
+    
+    if (search && search.includes('?PS=24&map=')) {
+      if(search.includes('c,c,')) {
+        const arrayPaths = decodeURI(pathname)
+          .split("/")
+          .filter((x) => x);
 
-      const searchTerm = termsArray[0] + ' ' + termsArray[2];
-      
-      const termContainer = $(".resultado-busca-termo").first();
-      if(termContainer.length) {
-        termContainer.find('.value').html(searchTerm);
-        termContainer.addClass("has-value");
-      }
-
-      const buscaVaziaContainer = $("#busca-ft span");
-      if(buscaVaziaContainer.length) {
-        buscaVaziaContainer.text(searchTerm + '.');
-      }
-
-      if(length > 3) {
-        const end = length === 5 ? 2 : 1;
         const param = arrayPaths
-            .slice(0, end)
-            .join("/");
-                  
+          .slice(0, 2)
+          .join("/");
+
         const select = PLACA_SELECTS[0];
         const value = select.values.find((x) =>
           x.url ? x.url.includes(param) : x.name.includes(param)
@@ -797,6 +774,35 @@
           },
           select.id
         );
+      }
+
+      if(isHistoryValid) {
+        document
+          .querySelector("a[href='#busca-placa']").click();
+        document
+          .querySelector("#placa-input").value = searchHistory.params.plate;
+      }
+    }
+
+    if(isHistoryValid && searchHistory.params.url) {
+      const [ path, query ] = searchHistory.params.url.split('?');
+      const paths = path
+        .split("/")
+        .filter((x) => x);
+      
+      const params = query.includes('c,c,') ? paths.slice(2, paths.length) : paths;
+
+      const searchTerm = params.reverse().join(" ");
+      
+      const termContainer = $(".resultado-busca-termo");
+      if(termContainer.length) {
+        termContainer.addClass("has-value");
+        termContainer.find('.value').text(searchTerm);
+      }
+
+      const buscaVaziaContainer = $("#busca-ft span");
+      if(buscaVaziaContainer.length) {
+        buscaVaziaContainer.text(searchTerm + '.');
       }
     }
   }
