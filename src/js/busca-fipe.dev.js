@@ -880,7 +880,7 @@
       let anosEncontrados = anosVTEX.filter((item) => regexAnos.test(item.Value));
   
       let url = "",
-        parametrosUrl = "?PS=20&map=";
+        parametrosUrl = "?PS=24&map=";
   
       if (
         !anosEncontrados.length &&
@@ -918,6 +918,8 @@
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO}`;
       }
   
+      url += parametrosUrl;
+
       localStorage.setItem('smartSelectHistory', JSON.stringify({
         type: activeTab,
         params: {
@@ -926,7 +928,6 @@
         },
       }));
 
-      url += parametrosUrl;
       location.href = url;
     } catch (error) {
       console.log(error);
