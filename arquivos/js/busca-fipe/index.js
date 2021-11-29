@@ -24,7 +24,7 @@
       SELECTED: "selected",
     },
     CANT_OPEN: false,
-    ORIGIN: "https://dev2autoglass.myvtex.com", // location.origin,
+    ORIGIN: "https://www.autoglassonline.com.br", // location.origin,
   };
 
   const PECA_SELECTS = [
@@ -727,14 +727,7 @@
 
     View._initSelect_(PLACA_SELECTS[0]);
 
-    const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-
-    if(searchHistory && searchHistory.type === '#busca-placa') {
-      restoreBuscaPlaca(searchHistory);
-
-      localStorage.removeItem('smartSelectHistory');
-      document.querySelector("a[href='#busca-placa']").click();
-    }
+    restoreBuscaPlaca();
 
     let formBuscaPlaca = document.querySelector("#form-busca-placa");
 
@@ -751,29 +744,22 @@
     });
   }
 
-  function restoreBuscaPlaca(searchHistory) {
-    document.querySelector("#placa-input").value = searchHistory.params.plate;
+  function restoreBuscaPlaca() {
+    let { pathname, search } = location;
 
-    if(searchHistory.params.url) {
-      const arrayPaths = searchHistory.params.url
-        .split("/")
-        .filter((x) => x);
+    const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+    const isHistoryValid = searchHistory && searchHistory.type == '#busca-placa';
+    
+    if (search && search.includes('?PS=24&map=')) {
+      if(search.includes('c,c,')) {
+        const arrayPaths = decodeURI(pathname)
+          .split("/")
+          .filter((x) => x);
 
-      const length = arrayPaths.length;
-      const termsArray = arrayPaths
-        .slice(length - 3, length)
-        .reverse();
-
-      const searchTerm = termsArray[0] + ' ' + termsArray[2];
-
-      console.log(searchTerm);
-
-      if(length > 3) {
-        const end = length === 5 ? 2 : 1;
         const param = arrayPaths
-            .slice(0, end)
-            .join("/");
-                  
+          .slice(0, 2)
+          .join("/");
+
         const select = PLACA_SELECTS[0];
         const value = select.values.find((x) =>
           x.url ? x.url.includes(param) : x.name.includes(param)
@@ -788,6 +774,35 @@
           },
           select.id
         );
+      }
+
+      if(isHistoryValid) {
+        document
+          .querySelector("a[href='#busca-placa']").click();
+        document
+          .querySelector("#placa-input").value = searchHistory.params.plate;
+      }
+    }
+
+    if(isHistoryValid && searchHistory.params.url) {
+      const [ path, query ] = searchHistory.params.url.split('?');
+      const paths = path
+        .split("/")
+        .filter((x) => x);
+      
+      const params = query.includes('c,c,') ? paths.slice(2, paths.length) : paths;
+
+      const searchTerm = params.reverse().join(" ");
+      
+      const termContainer = $(".resultado-busca-termo");
+      if(termContainer.length) {
+        termContainer.addClass("has-value");
+        termContainer.find('.value').text(searchTerm);
+      }
+
+      const buscaVaziaContainer = $("#busca-ft span");
+      if(buscaVaziaContainer.length) {
+        buscaVaziaContainer.text(searchTerm + '.');
       }
     }
   }
@@ -847,15 +862,17 @@
     try {
       modalDeCarregamento.mostarSpinner();
   
-      /* const response = await fetch(
-        // `https://www.placafipe.com/placa/${placaSemCaracteresEspeciais}`
-        // `https://www.keplaca.com/placa/${placaSemCaracteresEspeciais}`
-
+      const response = await fetch(
+        // Foi configurado um Crawler em Pyhton nesse endereço que busca no Keplaca
+        // Ele evita o bloqueio do CloudFlare e de CORS, e já faz o parsing no HTML
         `https://crawler-keplaca.herokuapp.com/placa/${placaSemCaracteresEspeciais}`
       );
 
-      const [montadora, modelo, anoModelo] = await response.json(); */
+      const [montadora, modelo, anoModelo] = await response.json();
 
+      /**
+       * Teste com API do Fraga, ao invés do Crawler em Python
+       *
       const endpointFragaAuth = 'https://admin.catalogofraga.com.br/connect/token';
       const fragaAuthResponse = await fetch(endpointFragaAuth, {
         method: 'POST',
@@ -884,14 +901,12 @@
         anoModelo: ano
       } = await fragaApiResponse.json();
       const anoModelo = ano.toString();
-      
-      console.table({
-        "Montadora": montadora,
-        "Modelo": modelo,
-        "Ano": anoModelo,
-      });
+      */
 
-      /* const html = await response.text();
+      /**
+       * Parsing antigo feito diretamento no Front. Isso é feito pelo Crawler em Python agora
+       * 
+      const html = await response.text();
       const DOM = new DOMParser().parseFromString(html, "text/html");
       const secaoDetalhesDoVeiculo = DOM.querySelector(".fipeTablePriceDetail");
   
@@ -924,11 +939,14 @@
       );
       const anoModelo = await obterConteudoPeloTituloDaLinhaDaTabela(
         LABEL_DADOS_TABELA.ANO_MODELO
-      ); */
-      // const placa = DOM.querySelector(".site-content h1").innerText.split(" ")[1];
-      // const fipe = await obterConteudoPeloTituloDaLinhaDaTabela(
-      //   LABEL_DADOS_TABELA.FIPE
-      // );
+      );
+      */
+      
+      console.table({
+        "Montadora": montadora,
+        "Modelo": modelo,
+        "Ano": anoModelo,
+      });
   
       const responseMontadorasVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
@@ -958,7 +976,7 @@
       console.log(anosEncontrados);
   
       let url = "",
-        parametrosUrl = "?PS=20&map=";
+        parametrosUrl = "?PS=24&map=";
   
       if (
         !anosEncontrados.length &&
@@ -995,6 +1013,8 @@
         url += `/${modelosEncontrados[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO}`;
       }
+      
+      url += parametrosUrl;
   
       localStorage.setItem('smartSelectHistory', JSON.stringify({
         type: activeTab,
@@ -1004,10 +1024,8 @@
         },
       }));
 
-      url += parametrosUrl;
-
       console.log(url);
-      //location.href = url;
+      // location.href = url;
     } catch (error) {
       console.log(error);
       modalDeCarregamento.ocultarSpinner();
