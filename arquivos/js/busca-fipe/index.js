@@ -787,7 +787,9 @@
     }
 
     if(isHistoryValid && searchHistory.params.url) {
-      search ||= ""; pathname ||= ""
+      if(!search) { search = "" };
+      if(!pathname) { pathname = "" };
+      
       if(!search.includes('?PS=24&map=') && !pathname.includes('buscavazia')) {
         localStorage.removeItem('smartSelectHistory'); 
         return;
@@ -852,12 +854,12 @@
   async function buscaPorPlaca(placaString) {
     const select = PLACA_SELECTS[0];
 
-    const LABEL_DADOS_TABELA = {
+    /* const LABEL_DADOS_TABELA = {
       MONTADORA: "Marca",
       MODELO: "Modelo",
       ANO_MODELO: "Ano",
       FIPE: "FIPE",
-    };
+    }; */
   
     const FILTROS_VTEX = {
       MONTADORA: 36,
