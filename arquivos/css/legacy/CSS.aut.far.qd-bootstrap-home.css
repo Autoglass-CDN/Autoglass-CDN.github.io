@@ -797,3 +797,10 @@ body .box-banner a[href] {
     border-bottom-right-radius: 40px;
     border-bottom-left-radius: 40px
 }
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee
+}
