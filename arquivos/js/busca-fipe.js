@@ -24,7 +24,7 @@
       SELECTED: "selected",
     },
     CANT_OPEN: false,
-    ORIGIN: "https://autoglassonline.com.br", // location.origin,
+    ORIGIN: location.origin,
   };
 
   const PECA_SELECTS = [
