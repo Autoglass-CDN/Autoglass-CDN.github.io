@@ -24,7 +24,7 @@
       SELECTED: "selected",
     },
     CANT_OPEN: false,
-    ORIGIN: "https://dev2autoglass.myvtex.com", // location.origin,
+    ORIGIN: "https://autoglassonline.com.br", // location.origin,
   };
 
   const PECA_SELECTS = [
