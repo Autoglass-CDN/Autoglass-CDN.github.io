@@ -5,6 +5,10 @@
   margin-top: -75px;
 }
 
+.l-container {
+  margin-top: -115px !important;
+}  
+
 .home main {
   margin-top: 25px;
   background: #FFF;
@@ -13,6 +17,9 @@
 @media (max-width: 1100px) {
   .smart-select-section {
     margin-top: 0px;
+  }
+  .l-container {
+    margin-top: 0 !important;
   }
   .home main {
     margin-top: 0px;
