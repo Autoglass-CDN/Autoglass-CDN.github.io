@@ -731,12 +731,15 @@
     formBuscaPlaca.addEventListener('submit', (event) => {
       event.preventDefault();
       
-      let placa = document.querySelector("#placa-input").value;
+      const placa = document.querySelector("#placa-input").value;
+      const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
 
-      if(placa.length) {
-        buscaPorPlaca(placa);
-      } else {
+      if(0 === placa.length) {
         alert('Você deve inserir a placa do seu veículo!');
+      } else if(!placa.trim().match(regexPlaca)) {
+        alert('Sua placa não segue um padrão válido!');
+      } else {
+        buscaPorPlaca(placa);
       }
     });
   }
@@ -854,9 +857,7 @@
     };
   
     const modalDeCarregamento = new ModalDeCarregamento();
-  
-    let placaSemCaracteresEspeciais =
-      removerCaracteresNaoAlfanumericos(placaString);
+    let placaSemCaracteresEspeciais = sanitizePlate(placaString);
   
     try {
       modalDeCarregamento.mostarSpinner();
@@ -866,6 +867,14 @@
       );
 
       const [montadora, modelo, anoModelo] = await response.json();
+
+      if (
+        null === montadora &&
+        null === modelo &&
+        null === anoModelo
+      ) {
+        throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
+      }
 
       const responseMontadorasVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
@@ -896,12 +905,7 @@
         !montadorasEncontradas.length &&
         !modelosEncontrados.length
       ) {
-        alert(
-          "Desculpe, não conseguimos encontrar seu veículo, favor utilizar a busca por \
-          peça ou digitar seu carro e produto na busca livre no topo do site."
-        );
-  
-        document.querySelector("a[href='#busca-peca']").click();
+        throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
       }
 
       if(select.routeSelected.length) {
@@ -939,21 +943,24 @@
 
       location.href = url;
     } catch (error) {
-      console.log(error);
+      if (error instanceof VehicleNotFoundException) {
+        alert(
+          "Desculpe, não conseguimos encontrar o seu veículo, favor utilizar a busca por " +
+          "peça ou digitar seu carro e produto na busca livre no topo do site."
+        );
+      } else {
+        alert(
+          "Perdão pelo inconveniente! O serviço de busca por placa está fora do " +
+          "ar no momento. Favor utilizar a busca por peça!"
+        );
+      }
+
       modalDeCarregamento.ocultarSpinner();
-  
-      alert(
-        "Perdão pelo inconveniente! O serviço de busca por placa está fora do ar no momento. Favor utilizar a busca por peça!"
-      );
-  
       document.querySelector("a[href='#busca-peca']").click();
     }
   
-    function removerCaracteresNaoAlfanumericos(placaString) {
-      const isNotAlphanumericChar = /[\W_]+/g;
-      const sanitized = placaString.trim().replace(isNotAlphanumericChar, "");
-
-      return sanitized.toUpperCase();
+    function sanitizePlate(plate) {
+      return plate.trim().replace(/[\W_]+/g, "").toUpperCase();
     }
 
     function obterRegexMontadoras(montadora) {
@@ -977,6 +984,14 @@
   
     function obterRegexAnos(anoModelo) {
       return new RegExp(anoModelo.trim(), "gi")
+    }
+
+    function VehicleNotFoundException(value) {
+      this.value = value;
+      this.message = " não retornou resultados.";
+      this.toString = function() {
+        return this.value + this.message;
+      };
     }
   }
 
