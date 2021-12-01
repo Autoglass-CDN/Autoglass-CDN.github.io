@@ -878,6 +878,8 @@
         throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
       }
 
+      registerGaEvent(placaSemCaracteresEspeciais, `${modelo} ${anoModelo}`);
+
       const responseMontadorasVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
       );
@@ -959,6 +961,7 @@
 
       modalDeCarregamento.ocultarSpinner();
       document.querySelector("a[href='#busca-peca']").click();
+      registerGaEvent(placaSemCaracteresEspeciais, `não encontrado`);
     }
   
     function sanitizePlate(plate) {
@@ -994,6 +997,10 @@
       this.toString = function() {
         return this.value + this.message;
       };
+    }
+
+    function registerGaEvent(placa, modelo) {
+      ga('send', 'event', 'Busca por placa', `Consultar ${placa}`, `Resultado: ${modelo}`);
     }
   }
 
