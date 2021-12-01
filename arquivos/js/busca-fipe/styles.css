@@ -26,7 +26,8 @@
 /* MOBILE */
 .c-busca {
   --active-bg-color: #1c3162; /* #234eb9 */
-  --primary: #42c552;
+  --primary: #43C452;
+  --primary-darker: #33a140;
   margin: 10px;
   position: relative;
 }
@@ -393,6 +394,10 @@
   background-color: var(--primary);
   color: white;
   cursor: pointer;
+}
+
+.c-botao--primary:hover {
+  background-color: var(--primary-darker);
 }
 
 .c-busca .c-busca__descricao {
