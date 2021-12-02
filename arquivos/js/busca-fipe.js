@@ -979,11 +979,17 @@
       const modeloSemMontadora = modelo.replace(
         new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ")[0];
   
-      const pattern = `${modeloSemMontadora}$` + montadoraTerms.reduce(
+      const modeloSemCaractesEspeciais = modeloSemMontadora.replace(/[\W]+/gi, "");
+
+      const patternModelo = modeloSemMontadora === modeloSemCaractesEspeciais
+        ? modeloSemMontadora
+        : `(${modeloSemMontadora}|${modeloSemCaractesEspeciais})`;
+
+      const pattern = `${patternModelo}$` + montadoraTerms.reduce(
         (acc, montadoraTerm) => {
-          return `${acc}|${montadoraTerm} ${modeloSemMontadora}$`
+          return `${acc}|${montadoraTerm} ${patternModelo}$`
         }, "");
-  
+
       return new RegExp(pattern, "gi");
     }
   
@@ -1000,7 +1006,9 @@
     }
 
     function registerGaEvent(placa, modelo) {
-      ga('send', 'event', 'Busca por placa', `Consultar ${placa}`, `Resultado: ${modelo}`);
+      ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaBPTracker');
+      ga('gaBPTracker.set', 'transport', 'beacon');
+      ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${modelo}`);
     }
   }
 
