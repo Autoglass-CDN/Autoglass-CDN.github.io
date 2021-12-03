@@ -540,7 +540,7 @@
     async function checkRouterParams() {
       let { pathname, search } = location;
 
-      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0])) {
+      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0]) || search.includes('?PS=20&map=c,c')) {
         CONFIG.CANT_OPEN = true;
         const arrayPaths = decodeURI(pathname)
           .split("/")
@@ -829,7 +829,7 @@
         termContainer.find('.value').text(searchTerm);
       }
 
-      const buscaVaziaContainer = $("#busca-ft span");
+      const buscaVaziaContainer = $("#busca-ft span:empty");
       if(buscaVaziaContainer.length) {
         buscaVaziaContainer.text(searchTerm + '.');
       }
