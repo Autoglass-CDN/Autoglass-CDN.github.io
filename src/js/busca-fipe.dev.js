@@ -557,6 +557,8 @@
           ...arrayPaths.slice(3, arrayPaths.length),
         ];
 
+        console.log(params);
+
         for (let i = 0; i < params.length; i++) {
           const select = PECA_SELECTS[i];
           const value = select.values.find((x) =>
