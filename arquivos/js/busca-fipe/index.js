@@ -499,11 +499,11 @@
 
       View.resetResults(index);
 
-      if (index !== 0) {
+      //if (index !== 0) {
         select.routeSelected = optionSelected.url
           ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
           : optionSelected.name;
-      }
+      //}
 
       if (nextSelect) {
         if (optionSelected && select.isAsyncSearch) {
@@ -612,15 +612,27 @@
     }
 
     async function search() {
+      const firstRouteSelected = PECA_SELECTS[0].routeSelected;
+      PECA_SELECTS[0].routeSelected = "";
+
       const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
+
+      if(firstRouteSelected.length === 0) {
+        alert("Selecione pelo menos o produto!");
+        return;
+      }
 
       if (paths) {
         url += paths;
         url += `?${buildMapFilters(index - 1)}`;
       }
 
+      if(index < 1) {
+        url = getUrlForFirstSelect(firstRouteSelected, url);
+      }
+      
       localStorage.setItem('smartSelectHistory', JSON.stringify({
         type: activeTab,
         params: {
@@ -630,6 +642,12 @@
       }));
 
       location.href = url;
+    }
+
+    function getUrlForFirstSelect(route, url) {
+      const routeSelected = route.includes("/") ? route : `/${route}`;
+
+      return url + routeSelected + '?PS=20&map=c,c';
     }
 
     function buildMapFilters(step) {
@@ -1069,13 +1087,20 @@
       const montadoraTerms = montadora.split(" ")
         .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
 
+      if(montadoraTerms[0].toUpperCase() === 'VOLKSWAGEN') {
+        montadoraTerms.push('VW');
+      }
+
       const modeloSemMontadora = modelo.replace(
         new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ")[0];
+      const modeloSemCaractesEspeciais = modeloSemMontadora.replace(/[\W]+/gi, "");
 
-      const pattern = `${modeloSemMontadora}$` + montadoraTerms.reduce(
-        (acc, montadoraTerm) => {
-          return `${acc}|${montadoraTerm} ${modeloSemMontadora}$`
-        }, "");
+      const patternMontadora = `(${montadoraTerms.join('|')})`;
+      const patternModelo = modeloSemMontadora === modeloSemCaractesEspeciais
+        ? modeloSemMontadora
+        : `(${modeloSemMontadora}|${modeloSemCaractesEspeciais})`;
+
+      const pattern = `${patternModelo}$|${patternMontadora} ${patternModelo}$`;
 
       return new RegExp(pattern, "gi");
     }

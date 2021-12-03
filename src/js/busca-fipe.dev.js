@@ -611,13 +611,25 @@
     }
 
     async function search() {
+      const firstRouteSelected = PECA_SELECTS[0].routeSelected;
+      PECA_SELECTS[0].routeSelected = "";
+
       const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
 
+      if(firstRouteSelected.length === 0) {
+        alert("Selecione pelo menos o produto!");
+        return;
+      }
+
       if (paths) {
         url += paths;  
         url += `?${buildMapFilters(index - 1)}`;
+      }
+
+      if(index < 1) {
+        url = getUrlForFirstSelect(firstRouteSelected, url);
       }
 
       localStorage.setItem('smartSelectHistory', JSON.stringify({
@@ -629,6 +641,12 @@
       }));
 
       location.href = url;
+    }
+
+    function getUrlForFirstSelect(route, url) {
+      const routeSelected = route.includes("/") ? route : `/${route}`;
+
+      return url + routeSelected + '?PS=20&map=c,c';
     }
 
     function buildMapFilters(step) {
