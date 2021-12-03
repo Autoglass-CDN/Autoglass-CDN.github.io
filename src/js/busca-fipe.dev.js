@@ -540,7 +540,8 @@
     async function checkRouterParams() {
       let { pathname, search } = location;
 
-      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0]) || search.includes('?PS=20&map=c,c')) {
+      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0]) ||
+                    search.includes('?PS=20&map=c,c')) {
         CONFIG.CANT_OPEN = true;
         const arrayPaths = decodeURI(pathname)
           .split("/")
@@ -551,13 +552,17 @@
           .join("/")
           .match(/(\w+\/\w+)/);
 
-        const params = [
+        let params = [
           rest[0],
           input,
           ...arrayPaths.slice(3, arrayPaths.length),
         ];
 
-        console.log(params);
+        if(search.includes('?PS=20&map=c,c')) {
+          params = [
+            rest[0],
+          ];
+        }
 
         for (let i = 0; i < params.length; i++) {
           const select = PECA_SELECTS[i];
