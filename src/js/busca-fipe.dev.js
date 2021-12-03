@@ -878,8 +878,6 @@
         throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
       }
 
-      registerGaEvent(placaSemCaracteresEspeciais, `${modelo} ${anoModelo}`);
-
       const responseMontadorasVtex = await fetch(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
       );
@@ -934,6 +932,8 @@
         url += `/${modelosEncontrados[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO}`;
       }
+
+      registerGaEvent(placaSemCaracteresEspeciais, url);
   
       url += parametrosUrl;
 
@@ -975,20 +975,21 @@
     function obterRegexModelos(montadora, modelo) {
       const montadoraTerms = montadora.split(" ")
         .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
+
+      if(montadoraTerms[0].toUpperCase() === 'VOLKSWAGEN') {
+        montadoraTerms.push('VW');
+      }
   
       const modeloSemMontadora = modelo.replace(
         new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ")[0];
-  
       const modeloSemCaractesEspeciais = modeloSemMontadora.replace(/[\W]+/gi, "");
 
+      const patternMontadora = `(${montadoraTerms.join('|')})`;
       const patternModelo = modeloSemMontadora === modeloSemCaractesEspeciais
         ? modeloSemMontadora
         : `(${modeloSemMontadora}|${modeloSemCaractesEspeciais})`;
 
-      const pattern = `${patternModelo}$` + montadoraTerms.reduce(
-        (acc, montadoraTerm) => {
-          return `${acc}|${montadoraTerm} ${patternModelo}$`
-        }, "");
+      const pattern = `${patternModelo}$|${patternMontadora} ${patternModelo}$`;
 
       return new RegExp(pattern, "gi");
     }
@@ -1005,10 +1006,10 @@
       };
     }
 
-    function registerGaEvent(placa, modelo) {
+    function registerGaEvent(placa, pathGerado) {
       ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaBPTracker');
       ga('gaBPTracker.set', 'transport', 'beacon');
-      ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${modelo}`);
+      ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${pathGerado}`);
     }
   }
 
