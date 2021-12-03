@@ -498,11 +498,11 @@
 
       View.resetResults(index);
 
-      if (index !== 0) {
+      // if (index !== 0) {
         select.routeSelected = optionSelected.url
           ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
           : optionSelected.name;
-      }
+      // }
 
       if (nextSelect) {
         if (optionSelected && select.isAsyncSearch) {
