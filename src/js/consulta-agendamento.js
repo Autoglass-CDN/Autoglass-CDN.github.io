@@ -35,7 +35,11 @@ $(function () {
     ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
   let estado = codCidades[$.cookie("myuf")];
-  let codCidade = estado?.code || null;
+
+  let codCidade = null;
+  if(estado != null){
+    codCidade = estado.code;
+  } 
 
   if (window.location.href.includes("checkout")) {
     if (window.location.search.includes('og=')) {
@@ -165,8 +169,6 @@ $(function () {
             )
           );
       }
-
-      
     }
   } else {
     // Evento lançado pelo componente de cep
@@ -594,8 +596,6 @@ $(function () {
   $("#input-cep-btn").click(function (ev) {
     Carregar($("#cep-input").val());
   });
-
-
 
   // Evento lançado pelo componente de cep
   $(window).on("cep-updated", async (e) => {
