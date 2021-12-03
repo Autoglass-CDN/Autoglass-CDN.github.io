@@ -1027,7 +1027,7 @@ try {
 				}
 			};
 			var termo = getUrlParameter("ft");
-			$("#busca-ft span:empty").text(termo + ".")
+			if(termo) { $("#busca-ft span:empty").text(termo + "."); }
 		}
 	};
 	var Product = {

@@ -831,7 +831,7 @@
         termContainer.find('.value').text(searchTerm);
       }
 
-      const buscaVaziaContainer = $("#busca-ft span");
+      const buscaVaziaContainer = $("#busca-ft span:empty");
       if(buscaVaziaContainer.length) {
         buscaVaziaContainer.text(searchTerm + '.');
       }
