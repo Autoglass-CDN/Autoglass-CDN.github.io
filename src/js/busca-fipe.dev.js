@@ -558,7 +558,7 @@
           ...arrayPaths.slice(3, arrayPaths.length),
         ];
 
-        if(search.includes('?PS=20&map=c,c')) {
+        if(search.match(/\?PS=20&map=c,c$/)) {
           params = [
             rest[0],
           ];
