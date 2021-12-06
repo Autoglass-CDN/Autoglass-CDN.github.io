@@ -1,0 +1,194 @@
+<!-- prd- -busca-fipe -->
+<div class="l-container">
+  <section class="c-busca">
+      <ul class="c-busca__tabs">
+          <li class="is-active">
+              <a href="#busca-peca">
+                  <img
+                      src="https://autoglass-cdn.github.io/arquivos/img/search-solid.svg"
+                      alt="placa"
+                      width="25"
+                      height="25"
+                      class="c-busca__tab-icon"
+                  />
+                  <span class="c-busca__tab-text">
+                      Busca por peça
+                  </span>
+              </a>
+          </li>
+          <li>
+              <a href="#busca-placa">
+                  <img 
+                      src="https://autoglass-cdn.github.io/arquivos/img/plate-icon.svg"
+                      alt="placa"
+                      width="55"
+                      height="25"
+                      class="c-busca__tab-icon"
+                  />
+                  <span class="c-busca__tab-text">
+                      Busca por placa
+                  </span>
+              </a>
+          </li>
+      </ul>
+      <div class="c-busca__tabs-content">
+          <div class="c-busca__tab-content is-active" id="busca-peca">
+              <form id="form-busca-peca" action="#">
+                  <div class="h-flex">
+                      <div class="c-busca__select">
+                          <div id="produtos-select">
+                              <div class="gtm-smart-produto-select">
+                                  <span>Produto</span>
+                                  <i class="fa fa-caret-down"></i>
+                                  <i class="fa fa-close" style="display: none"></i>
+                              </div>
+                              <div class="smart-select__main-results" style="display: none">
+                                  <input
+                                      id="produtos-input"
+                                      placeholder="Digite aqui:"
+                                      type="text"
+                                      autocomplete="off"
+                                  />
+                                  <ul></ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="c-busca__select">
+                          <div id="pecas-select" class="empty">
+                              <div class="gtm-smart-peca-select">
+                                  <span>Peça</span>
+                                  <i class="fa fa-caret-down"></i>
+                                  <i class="fa fa-close" style="display: none"></i>
+                              </div>
+                              <div class="smart-select__main-results" style="display: none">
+                                  <input
+                                      id="peca-input"
+                                      placeholder="Digite aqui:"
+                                      type="text"
+                                      autocomplete="off"
+                                  />
+                                  <ul></ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="c-busca__select">
+                          <div id="montadora-select" class="empty">
+                              <div class="gtm-smart-montadora-select">
+                                  <span>Montadora</span>
+                                  <i class="fa fa-caret-down"></i>
+                                  <i class="fa fa-close" style="display: none"></i>
+                              </div>
+                              <div class="smart-select__main-results" style="display: none">
+                                  <input
+                                      id="montadora-input"
+                                      placeholder="Digite aqui:"
+                                      type="text"
+                                      autocomplete="off"
+                                  />
+                                  <ul></ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="c-busca__select">
+                          <div id="veiculo-select" class="empty">
+                              <div class="gtm-smart-veiculo-select">
+                                  <span>Veículo</span>
+                                  <i class="fa fa-caret-down"></i>
+                                  <i class="fa fa-close" style="display: none"></i>
+                              </div>
+                              <div class="smart-select__main-results" style="display: none">
+                                  <input
+                                      id="veiculo-input"
+                                      placeholder="Digite aqui:"
+                                      type="text"
+                                      autocomplete="off"
+                                  />
+                                  <ul></ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="c-busca__select">
+                          <div id="ano-select" class="empty">
+                              <div class="gtm-smart-ano-select">
+                                  <span>Ano</span>
+                                  <i class="fa fa-caret-down"></i>
+                                  <i class="fa fa-close" style="display: none"></i>
+                              </div>
+                              <div class="smart-select__main-results" style="display: none">
+                                  <input
+                                      id="ano-input"
+                                      placeholder="Digite aqui:"
+                                      type="text"
+                                      autocomplete="off"
+                                  />
+                                  <ul></ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="c-busca__botao">
+                          <button
+                              id="btn-busca-peca"
+                              class="c-botao c-botao--primary"
+                              type="submit"
+                          >
+                              BUSCAR
+                          </button>
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <div class="c-busca__tab-content" id="busca-placa">
+              <form id="form-busca-placa" action="#">
+                  <div class="h-flex">
+                      <div class="c-busca__select">
+                          <div id="categoria-select">
+                              <div class="gtm-smart-categoria-select">
+                                  <span>Produto</span>
+                                  <i class="fa fa-caret-down"></i>
+                                  <i class="fa fa-close" style="display: none"></i>
+                              </div>
+                              <div class="smart-select__main-results" style="display: none">
+                                  <input
+                                      id="categoria-input"
+                                      placeholder="Digite aqui:"
+                                      type="text"
+                                      autocomplete="off"
+                                  />
+                                  <ul></ul>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="c-busca__input">
+                          <input
+                              type="text"
+                              name="placa-input"
+                              id="placa-input"
+                              placeholder="Digite a sua placa"
+                          />
+                      </div>
+                      <div class="c-busca__botao">
+                          <button
+                              id="btn-busca-placa"
+                              class="c-botao c-botao--primary"
+                              type="submit">
+                              BUSCAR
+                          </button>
+                      </div>
+                  </div>
+              </form>
+              <div class="c-busca__descricao">
+                  <span>
+                      <strong>Digite a placa do seu carro</strong>, caminhonete, SUV
+                      ou van para encontrar o item desejado.
+                  </span>
+              </div>
+          </div>
+      </div>
+      <div class="smart-select__modal">
+          <span class="smart-select__modal__spinner"></span>
+      </div>
+  </section>
+</div>
+
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/busca-fipe.css" type="text/css"/>
+<script src="https://autoglass-cdn.github.io/arquivos/js/busca-fipe.js" type="text/javascript"></script>
