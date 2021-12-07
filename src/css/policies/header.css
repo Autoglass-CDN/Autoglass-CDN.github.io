@@ -1,0 +1,333 @@
+.modal-confirmation {
+    text-align: center;
+    display: block;
+}
+.modal-confirmation.modal {
+    top: 200px;
+    display: block;
+    border-radius: 5px;
+    overflow: unset;
+    position: absolute;
+}
+
+.header-qd-v1-location-modal.newlocalmodal{
+    top: 135px;
+    display: none;
+}
+
+
+.modal-confirmation.fade {
+    opacity: 1;
+}
+.modal-confirmation .modal-header {
+    position: relative;
+    background: transparent;
+    border: none;
+}
+.modal-confirmation .modal-header button {
+    box-shadow: none;
+    text-shadow: none;
+    border: none;
+    border-radius: 0;
+    padding: 0;
+    text-align: center;
+    outline: none;
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    background: transparent;
+    color: #fff;
+    font-size: 12px;
+    font-family: "Montserrat", sans-serif;
+}
+.modal-confirmation .modal-header button:hover {
+    text-decoration: none;
+    outline: none;
+}
+.modal-confirmation .modal-header button:focus,
+.modal-confirmation .modal-header button:active {
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+}
+.modal-confirmation .modal-header button[disabled] {
+    opacity: 0.8;
+    filter: alpha(opacity=80);
+}
+.modal-confirmation .modal-header button i {
+    font-size: 18px;
+    padding-left: 5px;
+}
+.modal-confirmation .modal-dialog {
+    width: 340px;
+}
+.modal-confirmation .modal-content {
+    box-shadow: none;
+    background: transparent;
+    border: none;
+}
+.modal-confirmation .modal-content p {
+    font-size: 10px;
+    color: #757575;
+    line-height: 14px;
+    text-align: left;
+}
+.modal-confirmation .modal-body {
+    background: #fff;
+    padding: 30px 30px 0 30px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+.modal-confirmation .modal-body a {
+    color: #1c3162;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: underline;
+}
+.modal-confirmation .modal-body i {
+    font-size: 15px;
+}
+.modal-confirmation .modal-body b {
+    display: block;
+    width: 100%;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+.modal-confirmation .modal-footer {
+    background: #fff;
+    text-align: center;
+    margin-top: -15px;
+    padding: 20px 30px 30px 30px;
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+.modal-confirmation .header-qd-v1-location-modal-button-ok {
+    transition: all 0.2s ease-out;
+    border: #62ce6f solid;
+    border-width: 2px;
+    display: inline-block;
+    padding: 15px 32px;
+    color: #fff;
+    font-size: 14px;
+    outline: none;
+    text-align: center;
+    text-shadow: none;
+    text-transform: uppercase;
+    background-color: #62ce6f;
+    border-radius: 4px;
+    background-color: #223b76;
+    padding: 15px;
+    font-size: 16px;
+    text-transform: none;
+    border: 1px solid #223b76;
+    font-weight: 700;
+    min-width: 100%;
+    border-radius: 3px;
+}
+.modal-confirmation .header-qd-v1-location-modal-button-ok:hover {
+    text-decoration: none;
+    background: #53c960;
+    border-color: #53c960;
+}
+.modal-confirmation .header-qd-v1-location-modal-button-ok:focus,
+.modal-confirmation .header-qd-v1-location-modal-button-ok:active {
+    text-decoration: none;
+    background: #53c960;
+    border-color: #53c960;
+}
+.modal-confirmation .header-qd-v1-location-modal-button-ok:hover {
+    background-color: #17274e;
+    border-color: #17274e;
+}
+.modal-confirmation select {
+    margin-top: 25px;
+    background-color: #fff;
+    height: 45px;
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid #dddddd;
+    padding: 0 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+.pac-container{
+    z-index: 99999 !important;
+}
+
+.header-qd-v1-location-modal.newlocalmodal .modal-dialog{
+    width: 774px !important;
+}
+
+#igounder{
+    z-index: 999 !important;
+}
+
+
+#header-qd-v1-location-modal-confirm .modal-content p{
+    font-size: 15px;
+    color: #757575;
+    line-height: 20px;
+    text-align: left;
+    margin: 2em;
+}
+
+
+.header-qd-v1-location{
+display: none !important;
+}
+
+
+#header-qd-v1-location-modal-confirm .modal-dialog{
+    width: 557px !important;
+}
+#autocomplete{
+    width: 100%;
+    height: 44px;
+    border: solid 1px #757575;
+    padding: 8px;
+    border-radius: 3px;
+    outline: none;
+    border-color: #757575;
+}
+#thestate{
+    font-weight: 700;
+}
+
+.header-qd-v1-location-modal.newlocalmodal .header-qd-v1-location-modal-button-ok{
+    min-width: 35% !important;
+    margin-top: 2em;
+}
+
+.header-qd-v1-location-modal.newlocalmodal .modal-content p{
+    text-align: center;
+    margin: 24px 0px;
+    line-height: 20px;
+    font-size: 17px !important;
+}
+
+.header-qd-v1-location-modal.newlocalmodal .modal-body i{
+    color: white !important;
+    margin-right: 6px;
+}
+
+.use-location, .use-default-stuff {
+    color: white !important;
+    background-color: #223B76 !important;
+    border-color: #223B76 !important;
+    padding: 8px !important;
+    font-size: 16px;
+    border-radius: 3px !important;
+    outline: none;
+    text-align: center;
+    text-shadow: none;
+    width: 100%;
+    height: 44px;
+}
+
+.use-default-stuff{
+    width: 60% !important;
+}
+
+#btn-nothere{
+    background-color: #999 !important;
+    border-color: #999 !important;
+}
+
+
+.modal-buttom-identity {
+    transition: all .2s ease-out;
+    border-width: 2px;
+    display: inline-block;
+    padding: 15px 32px;
+    color: #FFF;
+    font-size: 14px;
+    outline: none;
+    text-align: center;
+    text-shadow: none;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background-color: #223B76;
+    padding: 15px;
+    font-size: 16px;
+    text-transform: none;
+    border: 1px solid #223B76;
+    border-radius: 3px;
+}
+
+#btn-stillhere:hover, .modal-buttom-identity:hover{
+    background-color: #17274e !important;
+    border-color: #17274e !important;
+}
+
+#btn-nothere:hover{
+    background-color: #757575 !important;
+    border-color: #757575 !important;
+}
+
+
+
+.pac-logo:after{
+    background-image: none !important;
+    padding: 0;
+    height: 2px;
+}
+
+.hdpi.pac-logo:after{
+    background-image: none !important;
+}
+
+
+
+@media screen and (max-width: 700px) {
+
+    #header-qd-v1-location-modal-confirm .modal-dialog{
+        width: 299px !important;
+    }
+
+    .use-default-stuff{
+        width: 100%;
+        font-size: 14px;
+    }
+
+ 
+    .use-default-stuff {
+        width: 80% !important;
+    }
+
+
+    .header-qd-v1-location-modal.newlocalmodal .modal-dialog{
+        width: 95% !important;
+    }
+
+    .header-qd-v1-location-modal.newlocalmodal.modal{
+        top: 0px;
+    }
+
+    #header-qd-v1-location-modal-confirm .modal-dialog {
+        width:95% !important
+    }
+
+    #header-qd-v1-location-modal-confirm  {
+        top: 55px !important;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    #atttext{
+        padding: 0% 20%;
+    }
+    .use-location{
+        width: 85%;
+    }
+}
