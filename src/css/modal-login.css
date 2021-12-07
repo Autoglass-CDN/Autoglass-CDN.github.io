@@ -1,0 +1,870 @@
+
+
+.clearfix:before,.clearfix:after,.modal-header:before,.modal-header:after,.modal-footer:before,.modal-footer:after {
+    content: "";
+    display: table
+}
+
+.clearfix:after,.modal-header:after,.modal-footer:after {
+    clear: both
+}
+
+#vtexIdContainer {
+    background-color: rgba(0,0,0,0.8) !important;
+    position: fixed !important
+}
+
+
+@media (max-width: 998px) {
+    #vtexIdContainer .vtexIdUI-show-app {
+        background-color:rgba(0,0,0,0.005) !important;
+        z-index: 9 !important
+    }
+
+    #vtexIdContainer .vtexIdUI-classic-login {
+        display: block;
+        top: 250px !important
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-header,#vtexIdContainer .vtexIdUI .modal-footer {
+        background: none !important
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn {
+        width:100% !important;
+        background-color: rgba(41,216,70,0.75) !important;
+        border-radius: 3px !important
+    }
+
+    #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
+        border: none !important
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-header .close {
+        border-radius: 50%;
+        border: 2px solid #FFF;
+        width: 30px;
+        height: 30px;
+        font-size: 18px !important;
+        right: 5px !important;
+        top: 25px !important;
+    }
+
+    #vtexIdContainer .vtexIdUI-heading span {
+        font-size: 0;
+        height: 0;
+    }
+
+    #vtexIdContainer .vtexIdUI-heading span:before {
+        content: 'Crie uma conta';
+        text-transform: uppercase;
+        color: white;
+        width: 100%;
+        position: absolute;
+        top: 20px;
+        font-size: 15px;
+        left: -10px
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-header {
+        border: none !important
+    }
+
+    #vtexIdContainer #loginWithAccessKeyBtn {
+        background: #FFF !important;
+        color: #5887F9;
+        border-radius: 5px;
+        margin-top: -10px !important;
+        width: fit-content;
+        margin: 0 auto;
+        height: 50px;
+        padding-left: 10px !important;
+        padding-right: 10px !important;
+        position: relative;
+        font-size: 12px;
+    }
+
+    #vtexIdContainer #loginWithAccessKeyBtn i {
+        display: none;
+    }
+
+    #vtexIdContainer #vtexIdUI-auth-selector div {
+        background: none !important
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login * {
+        background: none !important;
+        overflow-y: inherit
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link {
+        display: none !important
+    }
+
+
+    #vtexIdContainer #vtexIdUI-form-classic-login .modal-header .vtexIdUI-heading {
+        font-family: 'Open Sans','Droid Sans',Tahoma,Arial,sans-serif !important;
+        font-size: 16px !important;
+        width: 100% !important;
+        padding-bottom: 20px !important
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login * {
+        color: #FFF
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login input {
+        border-bottom: 1px solid #FFF !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        border: none;
+        color: #FFF !important
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-footer {
+        box-shadow: none !important;
+        border: none !important
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd {
+        background-color: #FFF;
+        height: 100% !important
+    }
+
+
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-body * {
+        color: #999 !important
+    }
+
+    #vtexIdContainer #vtexIdUI-email-confirmation {
+        background-color: #FFF;
+        height: 100% !important
+    }
+
+    #vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close {
+        display: none !important
+    }
+
+    #vtexIdContainer #loginWithUserAndPasswordBtn {
+        display: none
+    }
+
+    #vtexIdContainer #vtexIdUI-confirm-access-code {
+        height: 100% !important;
+        background: #FFF
+    }
+
+    #vtexIdContainer .vtexIdUI-back-link {
+        width: 30px !important;
+        height: 30px !important;
+        right: 5px !important;
+        top: 0 !important;
+        color: #9a9a9a !important;
+        position: absolute;
+        font-size: 12px !important;
+        padding: 8px 6px 0 0;
+    }
+
+    #vtexIdContainer .vtexIdUI-back-link span {
+        display: none !important
+    }
+
+    #vtexIdContainer .vtexIdUI label {
+        color: #FFF !important
+    }
+
+    #vtexIdContainer .vtexIdUI-close {
+        z-index: 10
+    }
+
+    #vtexIdContainer .vtexIdUI .vtexid-icon-lock.bottom-icon {
+        display: none
+    }
+
+    #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
+        border-radius: 7px !important;
+        padding: 7px 5px 2px 5px !important;
+        color: #333 !important
+    }
+
+    #vtexIdContainer .vtexIdUI-confirm-email .modal-header {
+        color: #333 !important
+    }
+
+    #vtexIdContainer .vtexIdUI {
+        position: fixed;
+        top: 0 ;
+        height: 100% !important;
+        width: 100% ;
+        margin-left: 0 ;
+        left: 0;
+    }
+
+    #vtexIdContainer .vtexIdUI .vtexIdUI-providers-list,#vtexIdContainer .vtexIdUI .account-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap
+    }
+
+    #vtexIdContainer #vtexIdUI-google-plus {
+        height: 50px;
+        width: 50px;
+        border: none;
+        box-shadow: none;
+        background-color: transparent;
+        margin-right: 15px;
+        background-image: url(https://www.autoglass.com.br/ecommerce/svg/mail.svg) !important;
+        filter: invert(1)
+    }
+
+    #vtexIdContainer #vtexIdUI-google-plus i,#vtexIdContainer #vtexIdUI-google-plus p {
+        display: none;
+    }
+
+    #vtexIdContainer ul.vtexIdUI-providers-list li:first-child {
+        flex: 1 0 100%;
+        text-align: center
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login h4 span {
+        color: transparent !important;
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login h4 span:before {
+        content: 'ACESSE SUA CONTA';
+        color: #fff;
+        position: absolute;
+        left: -10px;
+        right: 0;
+    }
+
+}
+
+
+
+
+
+
+@media (min-width: 768px) and (max-width:998px) {
+    #vtexIdContainer ul.vtexIdUI-providers-list li:nth-child(2),#vtexIdContainer ul.vtexIdUI-providers-list li:nth-child(3) {
+        margin-top:10%
+    }
+
+    #vtexIdContainer ul.vtexIdUI-providers-list:before {
+        top: 45%
+    }
+}
+
+
+
+
+
+@media (min-height: 569px) and (max-width:998px) {
+    #vtexIdContainer #vtexIdUI-form-classic-login {
+        margin-top:5%
+    }
+}
+
+
+
+
+
+
+@media (min-width: 998px) {
+
+    #vtexIdContainer ul.vtexIdUI-providers-list li:nth-child(2)>button {
+        margin-top: 25px !important;
+    }
+
+    #vtexIdContainer .vtexIdUI #vtexIdUI-google-plus {
+        box-shadow: none;
+        border-radius: 5px;
+        border: none;
+        color: #6d6d6d;
+        font-weight: normal;
+        font-size: 14px;
+        height: 50px
+    }
+
+    #vtexIdContainer ul.vtexIdUI-providers-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        height: 304px
+    }
+
+    #vtexIdContainer ul.vtexIdUI-providers-list li {
+        width: 100%
+    }
+
+    #vtexIdContainer #loginWithAccessKeyBtn {
+        margin: 0 !important
+    }
+
+    #vtexIdContainer .vtexIdUI #vtexIdUI-google-plus {
+        top: 0 !important
+    }
+
+    #vtexIdContainer ul.vtexIdUI-providers-list li:first-child {
+        order: 3;
+        position: absolute;
+        bottom: 10px
+    }
+
+
+
+    #vtexIdContainer #vtexIdUI-google-plus i.vtexid-icon-google-plus {
+        display: none
+    }
+
+    #vtexIdContainer #vtexIdUI-google-plus:before {
+        background: url(https://www.autoglass.com.br/ecommerce/svg/gmail.svg);
+        content: '';
+        background-repeat: no-repeat;
+        position: absolute;
+        width: 45px;
+        left: 30px;
+        height: 85%;
+        top: 0;
+        bottom: 0;
+        margin: auto
+    }
+
+    #vtexIdContainer input#access-code {
+        border-width: 0px 0px 1px 0;
+        box-shadow: none
+    }
+
+    #vtexIdContainer input#appendedInputButton {
+        border-width: 0px 0px 1px 0;
+        box-shadow: none;
+        margin: 50px 0 0 0
+    }
+
+    #vtexIdContainer div#vtexIdUI-classic-login {
+        width: 340px !important;
+        margin-left: 30px
+    }
+
+    #vtexIdContainer .vtexIdUI .vtexIdUI-confirm-email form {
+        width: 350px;
+        margin: 0 auto;
+    }
+
+    #vtexIdContainer .vtexIdUI-classic-login {
+        display: block;
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-header,#vtexIdContainer .vtexIdUI .modal-footer {
+        background: none !important
+    }
+
+    #vtexIdContainer .vtexIdUI .btn-success {
+        border: none !important;
+        box-shadow: none !important
+    }
+
+
+    #vtexIdContainer .vtexIdUI .modal-header .close {
+        border-radius: 50%;
+        border: 2px solid #FFF;
+        width: 36px;
+        height: 36px;
+        font-size: 26px;
+        right: -40px;
+        color: #a1a1a1;
+        background-color: #d3d3d3;
+        opacity: .7;
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-header .close:hover {
+        opacity: 1 !important
+    }
+
+    #vtexIdContainer .vtexIdUI-auth-code .modal-body {
+        margin-top: 30px !important
+    }
+
+    #vtexIdContainer div#vtexIdUI-auth-selector {
+        width: 340px;
+        left: 400px;
+    }
+
+    #vtexIdContainer .vtexIdUI-heading span {
+        display: none;
+    }
+
+    #vtexIdContainer div#vtexIdUI-auth-selector .vtexIdUI-heading:after {
+        content: "ACESSE COM SUA REDE SOCIAL";
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-header {
+        border: none;
+    }
+
+    #vtexIdContainer #loginWithAccessKeyBtn,
+    #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn
+     {
+        background: #234EB9 !important;
+        color: #FFF;
+        border-radius: 5px ;
+        font-size: 14px;
+        width: 100%;
+        height: 50px;
+    }
+
+    #vtexIdContainer #loginWithAccessKeyBtn:hover,
+    #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn:hover {
+        background-color: #223B76 !important
+    }
+
+
+
+    #vtexIdContainer .vtexIdUI .modal-header .close:active {
+        outline: none !important
+    }
+
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-back-link {
+        display: none
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-close {
+        right: -30px;
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd {
+        background-color: #FFF;
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-body * {
+        color: #999
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-heading {
+        position: relative;
+        top: -20px
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-body {
+        top: -10px;
+        width: 60%;
+        margin: 0 auto;
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements {
+        height: 180px;
+        padding: 10px 0
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements ul li {
+        margin: 2px 0 2px 0;
+        width: 50%;
+        float: left
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .btn-success {
+        background: #234EB9;
+        border-radius: 5px;
+        font-size: 14px ;
+        width: 250px
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-footer {
+        position: relative;
+        bottom: 130px;
+        display: flex;
+        justify-content: center
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd input {
+        border-width: 0px 0px 1px 0;
+        box-shadow: none;
+        border-radius: 0
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd input:focus {
+        border-bottom: 1px solid #234EB9
+    }
+
+    #vtexIdContainer #loginWithAccessKeyBtn i {
+        display: none !important
+    }
+
+    #vtexIdContainer #vtexIdUI-auth-selector div {
+        background: none !important
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login * {
+        background: none !important;
+        overflow-y: inherit
+    }
+
+
+    
+
+    #vtexIdContainer a.dead-link.pull-right {
+        color: #234eb9 !important;
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link {
+        display: none !important
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login .modal-header .vtexIdUI-heading {
+        width: 100%;
+        float: left;
+        margin: 5px 0 0 0 !important;
+        padding-bottom: 20px 
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login * {
+        font-size: 12px;
+    }
+
+    #vtexIdContainer .vtexIdUI {
+        box-shadow: none;
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login input {
+        border-bottom: 1px solid #808080 !important;
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+        padding: 0 10px
+    }
+
+    #vtexIdContainer #vtexIdUI-form-classic-login input:focus {
+        border-bottom: 1px solid #234EB9 !important
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-footer {
+        border: none
+    }
+
+
+    #vtexIdContainer #vtexIdUI-email-confirmation {
+        background-color: #FFF;
+        height: 100%
+    }
+
+    #vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close {
+        display: none !important
+    }
+
+    #vtexIdContainer #loginWithUserAndPasswordBtn {
+        display: none
+    }
+
+    #vtexIdContainer #vtexIdUI-confirm-access-code {
+        background: #FFF;
+        height: 100% 
+    }
+
+    #vtexIdContainer .vtexIdUI-back-link {
+        border-radius: 50%;
+        border: 2px solid #dbdbdb;
+        width: 36px;
+        height: 36px;
+        right: 2px;
+        top: -8px;
+        color: #bbbbbb;
+        position: absolute;
+        font-size: 12px ;
+        padding: 10px 6px 0 8px ;
+        text-align: center
+    }
+
+    
+
+    #vtexIdContainer .vtexIdUI-back-link span {
+        display: none
+    }
+    
+
+    #vtexIdContainer .vtexIdUI label {
+        color: #808080 !important
+    }
+
+    #vtexIdContainer .vtexIdUI-close {
+        display: block !important
+    }
+
+    #vtexIdContainer .vtexIdUI .vtexid-icon-lock.bottom-icon {
+        display: none
+    }
+
+    #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
+        border-radius: 7px !important;
+        padding: 7px 5px 2px 5px !important;
+        color: #333 !important
+    }
+
+    #vtexIdContainer .vtexIdUI-confirm-email .modal-header {
+        color: #333 !important
+    }
+
+    #vtexIdContainer .vtexIdUI-confirm-email .btn-success {
+        background-color: #fff !important;
+        text-shadow: none !important;
+        border-radius: 7px !important
+    }
+
+    #vtexIdContainer .vtexIdUI {
+        position: fixed !important;
+        top: 150px !important;
+        height: 400px !important;
+        width: 780px !important;
+        background: #fff !important;
+        left: 0;
+        right: 0;
+        margin-left: auto !important;
+        margin-right: auto !important
+    }
+
+    #vtexIdContainer .vtexIdUI-heading {
+        color: #808080;
+        font-family: 'Open Sans','Droid Sans',Tahoma,Arial,sans-serif;
+        text-transform: uppercase;
+        font-size: 18px !important;
+        font-weight: normal;
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-header {
+        padding: 50px 15px 0;
+    }
+}
+
+#vtexIdContainer a.dead-link.pull-right {
+    margin: -3px 0 0 0
+}
+
+#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success {
+    color: #ffffff;
+    background-color: #43c452 !important;
+    background-image: none;
+    margin-right: 44%;
+    right: -60px;
+    width: 180px;
+}
+
+
+#vtexIdContainer .vtexIdUI .alert {
+    bottom: -10px;
+    text-align: center;
+    border:none
+}
+
+#vtexIdContainer .vtexIdUI .alert span {
+    position: relative
+}
+
+#vtexIdContainer .vtexIdUI .alert span:after {
+    content: "*";
+    position: absolute;
+    left: -8px;
+    top: 0;
+}
+
+#vtexIdContainer .vtexIdUI-back-link {
+    text-decoration: none !important;
+    outline: none;
+    margin-right: 6px;
+}
+
+#vtexIdContainer .vtexIdUI-back-link:hover {
+    opacity: .4;
+}
+
+#vtexIdContainer .vtexIdUI-close {
+    margin-right: 10px
+}
+
+
+#vtexIdContainer .vtexIdUI .vtexIdUI-user {
+    margin-bottom: 0;
+    display: none !important
+}
+
+#vtexIdContainer .vtexIdUI h4 {
+    margin: 0 !important
+}
+
+#vtexIdContainer .vtexIdUI .info-why {
+    text-align: center;
+    margin-bottom: 16px
+}
+
+#vtexIdContainer .vtexIdUI .info-why span {
+    font-size: 14px
+}
+
+#vtexIdContainer .vtexid-password-requirements-description {
+    font-weight: normal 
+}
+
+#vtexIdContainer .vtexid-password-requirements-list {
+    margin-left: 0;
+}
+
+#vtexIdContainer .vtexIdUI .ng-binding {
+    line-height: 20px;
+    font-weight: 600
+}
+
+#vtexIdContainer div#vtexIdUI-change-pswd .close {
+    margin-right: 33px !important
+}
+
+#vtexIdContainer div#vtexIdUI-change-pswd .modal-header {
+    padding: 30px 15px 0 !important
+}
+
+#vtexIdContainer #vtexIdUI-confirm-access-code .alert {
+    position: relative;
+    padding: 5px 0
+}
+
+
+#vtexIdContainer #vtexIdUI-classic-login .modal-body .alert-info span,#vtexIdContainer .modal-body .alert-warning span {
+    font-size: 11px
+}
+
+#vtexIdContainer #vtexIdUI-classic-login .modal-footer {
+    position: absolute;
+    width: 100%;
+    top: 315px
+}
+
+@media (max-width: 768px) {
+    #vtexIdContainer #vtexIdUI-change-pswd .btn-success {
+        background:#234EB9 !important;
+        box-shadow: none;
+        border-radius: 5px ;
+        font-size: 12px;
+        width: 250px
+    }
+
+    #vtexIdContainer #loginWithAccessKeyBtn {
+        margin-top: 50px !important
+    }
+
+    #vtexIdContainer #vtexIdUI-classic-login {
+        top: 215px !important
+    }
+
+    #vtexIdContainer #vtexIdUI-classic-login .modal-header {
+        margin-top: -40px
+    }
+
+    #vtexIdContainer #vtexIdUI-classic-login .modal-body {
+        margin-top: -30px
+    }
+
+    #vtexIdContainer #vtexIdUI-classic-login .modal-footer {
+        top: 220px
+    }
+
+    #vtexIdContainer .vtexIdUI h4 {
+        color: #9e9e9e;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        padding-right: 15px
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-heading {
+        font-size: 14px;
+        text-transform: uppercase
+    }
+
+    #vtexIdContainer .vtexIdUI .ng-binding,#vtexIdContainer .vtexIdUI .info-why span,#vtexIdContainer .modal-body .control-label span,#vtexIdContainer .vtexid-password-requirements-description,#vtexIdContainer .vtexid-password-requirements-list li {
+        font-size: 12px
+    }
+    
+    #vtexIdContainer div#vtexIdUI-change-pswd .modal-header {
+        padding: 120px 15px 0 !important
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-body {
+        padding-top: 0
+    }
+
+    #vtexIdContainer .vtexIdUI .modal-header {
+        padding: 0 !important
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-back-link {
+        border: 2px solid #ccc !important;
+        margin-top: 5px;
+        margin-right: 0;
+        border-radius: 50% !important
+    }
+
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements-list {
+        padding-top: 8px
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements-list li {
+        padding: 1px 0;
+        width: 50%;
+        float: left
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements {
+        width: 100%;
+        padding-top: 15px
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-footer {
+        display: flex;
+        justify-content: center
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-user {
+        margin-bottom: 5px
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd input {
+        box-shadow: none !important;
+        border-top: none !important;
+        border-left: none !important;
+        border-right: none !important;
+        border-radius: 0 !important
+    }
+
+    #vtexIdContainer #vtexIdUI-change-pswd input:focus {
+        border-bottom: 1px solid #234EB9
+    }
+
+    #vtexIdContainer .vtexIdUI .btn-success {
+        background-color: #43C452 !important;
+        background-image: linear-gradient(to bottom, #62c462, #62c462) !important;
+        border: none !important;
+        box-shadow: none !important;
+    }
+}
+
+#vtexIdContainer .modal-header {
+    text-align: center;
+    background: #FFF;
+    color: #FFF
+}
+
+
+#vtexIdContainer .modal-header .close {
+    background: transparent;
+    font-size: 0;
+    border-radius: 0;
+    padding: 0;
+    line-height: 1;
+    position: absolute;
+    top: 4px;
+    left: auto;
+    right: 0;
+}
+
+#vtexIdContainer .modal-body {
+    position: relative
+}
