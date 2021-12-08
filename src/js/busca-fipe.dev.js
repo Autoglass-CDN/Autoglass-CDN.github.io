@@ -4,6 +4,7 @@
   const View = ViewAPI();
   const Controller = ControllerAPI();
   let activeTab = '#busca-peca';
+  let firstRouteSelected = "";
 
   const CONFIG = {
     ASYNC: {
@@ -498,11 +499,15 @@
 
       View.resetResults(index);
 
-      // if (index !== 0) {
+      if (index !== 0) {
         select.routeSelected = optionSelected.url
           ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
           : optionSelected.name;
-      // }
+      } else {
+        firstRouteSelected = optionSelected.url
+          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
+          : optionSelected.name;
+      }
 
       if (nextSelect) {
         if (optionSelected && select.isAsyncSearch) {
@@ -618,9 +623,6 @@
     }
 
     async function search() {
-      const firstRouteSelected = PECA_SELECTS[0].routeSelected;
-      PECA_SELECTS[0].routeSelected = "";
-
       const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
