@@ -4,6 +4,7 @@
   const View = ViewAPI();
   const Controller = ControllerAPI();
   let activeTab = '#busca-peca';
+  let firstRouteSelected = "";
 
   const CONFIG = {
     ASYNC: {
@@ -499,11 +500,15 @@
 
       View.resetResults(index);
 
-      //if (index !== 0) {
+      if (index !== 0) {
         select.routeSelected = optionSelected.url
           ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
           : optionSelected.name;
-      //}
+      } else {
+        firstRouteSelected = optionSelected.url
+          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
+          : optionSelected.name;
+      }
 
       if (nextSelect) {
         if (optionSelected && select.isAsyncSearch) {
@@ -541,7 +546,8 @@
     async function checkRouterParams() {
       let { pathname, search } = location;
 
-      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0])) {
+      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0]) ||
+                    search.includes('?PS=20&map=c,c')) {
         CONFIG.CANT_OPEN = true;
         const arrayPaths = decodeURI(pathname)
           .split("/")
@@ -552,11 +558,17 @@
           .join("/")
           .match(/(\w+\/\w+)/);
 
-        const params = [
+        let params = [
           rest[0],
           input,
           ...arrayPaths.slice(3, arrayPaths.length),
         ];
+
+        if(search.match(/\?PS=20&map=c,c$/)) {
+          params = [
+            rest[0],
+          ];
+        }
 
         for (let i = 0; i < params.length; i++) {
           const select = PECA_SELECTS[i];
@@ -612,9 +624,6 @@
     }
 
     async function search() {
-      const firstRouteSelected = PECA_SELECTS[0].routeSelected;
-      PECA_SELECTS[0].routeSelected = "";
-
       const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
