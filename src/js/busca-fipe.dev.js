@@ -1056,9 +1056,9 @@
         const selectedRoute = select.routeSelected;
         
         if(
-          selectedRoute.includes('lampadas') ||
-          selectedRoute.includes('filtros') ||
-          selectedRoute.includes('higienizadores')
+          selectedRoute.includes('/lampadas') ||
+          selectedRoute.includes('/filtros') ||
+          selectedRoute.includes('/higienizadores')
         ) {
           return [true, selectedRoute + '?PS=20&map=c,c']
         }
