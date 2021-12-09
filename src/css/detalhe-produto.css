@@ -557,7 +557,7 @@ h4.group.Especificacoes {
 }
 
 #duvidas li input[type="checkbox"]+label::after {
-  content: url("https://autoglass-cdn.github.io/arquivos/img/arrow-down-blue.svg");
+  content: url("https://autoglass-cdn.github.io/src/img/arrow-down-blue.svg");
   position: absolute;
   right: 10px;
   transform: translateY(-50%) scale(1.5);
