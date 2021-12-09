@@ -1141,12 +1141,11 @@
         const selectedRoute = select.routeSelected;
         
         if(
-          selectedRoute.includes('lanternas') ||
           selectedRoute.includes('lampadas') ||
           selectedRoute.includes('filtros') ||
           selectedRoute.includes('higienizadores')
         ) {
-          return [true, selectedRoute + '?PS=24&map=c,c']
+          return [true, selectedRoute + '?PS=20&map=c,c']
         }
       }
       return [false, ""];
