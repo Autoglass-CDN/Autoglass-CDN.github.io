@@ -500,13 +500,9 @@
       View.resetResults(index);
 
       if (index !== 0) {
-        select.routeSelected = optionSelected.url
-          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
-          : optionSelected.name;
+        select.routeSelected = getSelectedRouteByOption(optionSelected);
       } else {
-        firstRouteSelected = optionSelected.url
-          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
-          : optionSelected.name;
+        firstRouteSelected = getSelectedRouteByOption(optionSelected);
       }
 
       if (nextSelect) {
@@ -540,6 +536,12 @@
       View.createNavigation(select.id, event.target.innerHTML);
 
       modalDeCarregamento.ocultarSpinner();
+    }
+
+    function getSelectedRouteByOption(optionSelected) {
+      return optionSelected.url
+          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
+          : optionSelected.name;
     }
 
     async function checkRouterParams() {
@@ -628,7 +630,7 @@
       let url = CONFIG.ORIGIN;
 
       if(firstRouteSelected.length === 0) {
-        alert("Selecione pelo menos o produto!");
+        alert("Selecione pelo menos o primeiro campo!");
         return;
       }
 
