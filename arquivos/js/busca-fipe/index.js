@@ -899,6 +899,16 @@
   
     try {
       modalDeCarregamento.mostarSpinner();
+      
+      const [
+        isUniversalProduct,
+        redirectUrl
+      ] = checkIfUniversalProductSearch();
+
+      if(isUniversalProduct) {
+        location.href = redirectUrl;
+        return;
+      }
   
       const response = await fetch(
         // Foi configurado um Crawler em Pyhton nesse endereço que busca no Keplaca
@@ -1124,6 +1134,22 @@
       this.toString = function() {
         return this.value + this.message;
       };
+    }
+
+    function checkIfUniversalProductSearch() {
+      if(select.routeSelected.length) {
+        const selectedRoute = select.routeSelected;
+        
+        if(
+          selectedRoute.includes('lanternas') ||
+          selectedRoute.includes('lampadas') ||
+          selectedRoute.includes('filtros') ||
+          selectedRoute.includes('higienizadores')
+        ) {
+          return [true, selectedRoute + '?PS=24&map=c,c']
+        }
+      }
+      return [false, ""];
     }
   
     // const regexPotenciaDoMotor = /\d\.\d[A-z]/g;
