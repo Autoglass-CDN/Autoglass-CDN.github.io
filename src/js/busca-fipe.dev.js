@@ -892,6 +892,16 @@
   
     try {
       modalDeCarregamento.mostarSpinner();
+
+      const [
+        isUniversalProduct,
+        redirectUrl
+      ] = checkIfUniversalProductSearch();
+
+      if(isUniversalProduct) {
+        location.href = redirectUrl;
+        return;
+      }
   
       const response = await fetch(
         `https://crawler-keplaca.herokuapp.com/placa/${placaSemCaracteresEspeciais}`
@@ -1039,6 +1049,22 @@
       ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaBPTracker');
       ga('gaBPTracker.set', 'transport', 'beacon');
       ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${pathGerado}`);
+    }
+
+    function checkIfUniversalProductSearch() {
+      if(select.routeSelected.length) {
+        const selectedRoute = select.routeSelected;
+        
+        if(
+          selectedRoute.includes('lanternas') ||
+          selectedRoute.includes('lampadas') ||
+          selectedRoute.includes('filtros') ||
+          selectedRoute.includes('higienizadores')
+        ) {
+          return [true, selectedRoute + '?PS=24&map=c,c']
+        }
+      }
+      return [false, ""];
     }
   }
 
