@@ -4,6 +4,7 @@
   const View = ViewAPI();
   const Controller = ControllerAPI();
   let activeTab = '#busca-peca';
+  let firstRouteSelected = "";
 
   const CONFIG = {
     ASYNC: {
@@ -499,9 +500,9 @@
       View.resetResults(index);
 
       if (index !== 0) {
-        select.routeSelected = optionSelected.url
-          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
-          : optionSelected.name;
+        select.routeSelected = getSelectedRouteByOption(optionSelected);
+      } else {
+        firstRouteSelected = getSelectedRouteByOption(optionSelected);
       }
 
       if (nextSelect) {
@@ -537,10 +538,17 @@
       modalDeCarregamento.ocultarSpinner();
     }
 
+    function getSelectedRouteByOption(optionSelected) {
+      return optionSelected.url
+          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
+          : optionSelected.name;
+    }
+
     async function checkRouterParams() {
       let { pathname, search } = location;
 
-      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0])) {
+      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0]) ||
+                    search.includes('?PS=20&map=c,c')) {
         CONFIG.CANT_OPEN = true;
         const arrayPaths = decodeURI(pathname)
           .split("/")
@@ -556,6 +564,12 @@
           input,
           ...arrayPaths.slice(3, arrayPaths.length),
         ];
+
+        if(search.match(/\?PS=20&map=c,c$/)) {
+          params = [
+            rest[0],
+          ];
+        }
 
         for (let i = 0; i < params.length; i++) {
           const select = PECA_SELECTS[i];
@@ -615,9 +629,18 @@
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
 
+      if(firstRouteSelected.length === 0) {
+        alert("Selecione pelo menos o primeiro campo!");
+        return;
+      }
+
       if (paths) {
         url += paths;  
         url += `?${buildMapFilters(index - 1)}`;
+      }
+
+      if(index < 1) {
+        url = getUrlForFirstSelect(firstRouteSelected, url);
       }
 
       localStorage.setItem('smartSelectHistory', JSON.stringify({
@@ -629,6 +652,12 @@
       }));
 
       location.href = url;
+    }
+
+    function getUrlForFirstSelect(route, url) {
+      const routeSelected = route.includes("/") ? route : `/${route}`;
+
+      return url + routeSelected + '?PS=20&map=c,c';
     }
 
     function buildMapFilters(step) {
