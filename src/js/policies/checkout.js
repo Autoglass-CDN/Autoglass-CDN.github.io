@@ -12,18 +12,20 @@ const pickupPointsPolicies = [
     { nome: 'PR', Unidade: 'MG49', Uf: 'Paraná', salesChannel: 20},
     
     { nome: 'SP', Unidade: 'MG69', Uf: 'São Paulo', salesChannel: 26},
-    { nome: 'SP', Unidade: 'NW01', Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', Uf: 'São Paulo', salesChannel: 27},
     { nome: 'SP', Unidade: 'MG66', Uf: 'São Paulo', salesChannel: 28},
     { nome: 'SP', Unidade: 'MG67', Uf: 'São Paulo', salesChannel: 29},
     { nome: 'SP', Unidade: 'SP01', Uf: 'São Paulo', salesChannel: 30},
     { nome: 'SP', Unidade: 'MG62', Uf: 'São Paulo', salesChannel: 31},
     { nome: 'SP', Unidade: 'MG61', Uf: 'São Paulo', salesChannel: 32},
     { nome: 'SP', Unidade: 'MG68', Uf: 'São Paulo', salesChannel: 33},
-    { nome: 'SP', Unidade: 'NW11', Uf: 'São Paulo', salesChannel: 34},
-    { nome: 'SP', Unidade: 'NW12', Uf: 'São Paulo', salesChannel: 35},
+    { nome: 'SP', Unidade: 'MG70', Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG71', Uf: 'São Paulo', salesChannel: 35},
     { nome: 'SP', Unidade: 'SP02', Uf: 'São Paulo', salesChannel: 36},
     { nome: 'SP', Unidade: 'SP03', Uf: 'São Paulo', salesChannel: 37},
     { nome: 'SP', Unidade: 'SP04', Uf: 'São Paulo', salesChannel: 38},
+
+    { nome: 'MT', Unidade: 'MG57', Uf: 'Mato Grosso', salesChannel: 12}, 
 ]
 
 /**
@@ -52,10 +54,10 @@ const specialCasePolicies = [
     { nome: 'PR', Unidade: 'MG49', cMin: 87160000, cMax: 87169999, Uf: 'Paraná', salesChannel: 20 },
     { nome: 'PR', Unidade: 'MG49', cMin: 87780000, cMax: 87789999, Uf: 'Paraná', salesChannel: 20 },
  
-    { nome: 'SP', Unidade: 'NW01', cMin: 4000000, cMax: 4999999, Uf: 'São Paulo', salesChannel: 27},
-    { nome: 'SP', Unidade: 'NW01', cMin: 5600000, cMax: 5899999, Uf: 'São Paulo', salesChannel: 27},
-    { nome: 'SP', Unidade: 'NW01', cMin: 6750000, cMax: 6799999, Uf: 'São Paulo', salesChannel: 27},
-    { nome: 'SP', Unidade: 'NW01', cMin: 6900000, cMax: 6949999, Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', cMin: 4000000, cMax: 4999999, Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', cMin: 5600000, cMax: 5899999, Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', cMin: 6750000, cMax: 6799999, Uf: 'São Paulo', salesChannel: 27},
+    { nome: 'SP', Unidade: 'MG73', cMin: 6900000, cMax: 6949999, Uf: 'São Paulo', salesChannel: 27},
     
     { nome: 'SP', Unidade: 'MG66', cMin: 2200000, cMax: 2999999, Uf: 'São Paulo', salesChannel: 28},
     { nome: 'SP', Unidade: 'MG66', cMin: 5100000, cMax: 5299999, Uf: 'São Paulo', salesChannel: 28},
@@ -97,16 +99,16 @@ const specialCasePolicies = [
     { nome: 'SP', Unidade: 'MG68', cMin: 15400000, cMax: 15409999, Uf: 'São Paulo', salesChannel: 33},
     { nome: 'SP', Unidade: 'MG68', cMin: 15440000, cMax: 15449999, Uf: 'São Paulo', salesChannel: 33},
     
-    { nome: 'SP', Unidade: 'NW11', cMin: 11000000, cMax: 11599999, Uf: 'São Paulo', salesChannel: 34},
-    { nome: 'SP', Unidade: 'NW11', cMin: 11700000, cMax: 11759999, Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG70', cMin: 11000000, cMax: 11599999, Uf: 'São Paulo', salesChannel: 34},
+    { nome: 'SP', Unidade: 'MG70', cMin: 11700000, cMax: 11759999, Uf: 'São Paulo', salesChannel: 34},
     
-    { nome: 'SP', Unidade: 'NW12', cMin: 13300000, cMax: 13314999, Uf: 'São Paulo', salesChannel: 35},
-    { nome: 'SP', Unidade: 'NW12', cMin: 18000000, cMax: 18119999, Uf: 'São Paulo', salesChannel: 35},
-    { nome: 'SP', Unidade: 'NW12', cMin: 18125000, cMax: 18146999, Uf: 'São Paulo', salesChannel: 35},
-    { nome: 'SP', Unidade: 'NW12', cMin: 18160000, cMax: 18179999, Uf: 'São Paulo', salesChannel: 35},
-    { nome: 'SP', Unidade: 'NW12', cMin: 18185000, cMax: 18194999, Uf: 'São Paulo', salesChannel: 35},
-    { nome: 'SP', Unidade: 'NW12', cMin: 18200000, cMax: 18215999, Uf: 'São Paulo', salesChannel: 35},
-    { nome: 'SP', Unidade: 'NW12', cMin: 18120000, cMax: 18124999, Uf: 'São Paulo', salesChannel: 35},
+    { nome: 'SP', Unidade: 'MG71', cMin: 13300000, cMax: 13314999, Uf: 'São Paulo', salesChannel: 35},
+    { nome: 'SP', Unidade: 'MG71', cMin: 18000000, cMax: 18119999, Uf: 'São Paulo', salesChannel: 35},
+    { nome: 'SP', Unidade: 'MG71', cMin: 18125000, cMax: 18146999, Uf: 'São Paulo', salesChannel: 35},
+    { nome: 'SP', Unidade: 'MG71', cMin: 18160000, cMax: 18179999, Uf: 'São Paulo', salesChannel: 35},
+    { nome: 'SP', Unidade: 'MG71', cMin: 18185000, cMax: 18194999, Uf: 'São Paulo', salesChannel: 35},
+    { nome: 'SP', Unidade: 'MG71', cMin: 18200000, cMax: 18215999, Uf: 'São Paulo', salesChannel: 35},
+    { nome: 'SP', Unidade: 'MG71', cMin: 18120000, cMax: 18124999, Uf: 'São Paulo', salesChannel: 35},
     
     { nome: 'SP', Unidade: 'SP02', cMin: 14000000, cMax: 14109999, Uf: 'São Paulo', salesChannel: 36},
     { nome: 'SP', Unidade: 'SP02', cMin: 14300000, cMax: 14349999, Uf: 'São Paulo', salesChannel: 36},
@@ -173,7 +175,7 @@ const generalPolicies = [
 $(window).on("orderFormUpdated.vtex", (_, oF) => {
     checkSelectedDeliveryChannel(oF);
     changeSalesChannel(oF);
-    adicionarItensCrossSeling();
+    adicionarItensCrossSeling(oF);
 });
 
 localStorage.setItem('locationChanged', 0);
@@ -195,6 +197,16 @@ botaoFinalizaCompra[1].addEventListener('click', () => {
         // }
       });
 })
+
+const btnFechaPedido = document.querySelector('#cart-to-orderform')
+
+function selectCreditCardAsPaymentOption () {
+    $("#payment-group-creditCardPaymentGroup").click();
+}
+
+btnFechaPedido.onclick = function () {
+    selectCreditCardAsPaymentOption();
+}
 
 function checkSelectedDeliveryChannel(orderForm) {
     activeDeliveryChannel = localStorage.getItem('activeDeliveryChannel');
@@ -248,8 +260,9 @@ async function changeSalesChannel(orderForm){
 
     //houver cookie VTEXSC sem o ponto no início (no secure), apaga esse cookie.
     document.cookie = 'VTEXSC'+ `=; Max-Age=-99999999;  path=/`;
-    document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=${location.host}; path=/; secure=true`;
-
+    //setar o cookie para www.domain.com e domain.com, evita entrar em loop infinito.
+    document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=www.autoglassonline.com.br; path=/; secure=true`;
+    document.cookie = `VTEXSC=sc=${newSalesChannelObject.salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=autoglassonline.com.br; path=/; secure=true`;
     
     if (testLogs) logNewPolicy(newSalesChannelObject, shippingData)
 
@@ -439,16 +452,17 @@ function finishAnimation() {
     $('.cart-template-holder').css('opacity', 1);
 }
 
-
 /*--------*/
-async function ObterItensCrossSelling() {
-    const sessao = JSON.parse(localStorage.getItem('impulse_session'));
+async function ObterItensCrossSelling(orderForm) {
+    const items = orderForm.items;
     const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/';
     let itensCrossSelling = [];
     let urls = [];
 
-    sessao.cartItems.forEach(a => {
-        urls.push(uriCrossSelling + a.pid)
+    $(".compreJunto").css("display","block");
+
+    items.forEach(e => {
+        urls.push(uriCrossSelling + e.productId) 
     });
 
     let arrayItensSugeridos = await Promise.all(urls.map(async (url) => {
@@ -493,9 +507,9 @@ async function simularShippingItensSugeridos(itemId) {
     return formatPrice(i.items[0].price);    
 }
 
-async function adicionarItensCrossSeling() {
+async function adicionarItensCrossSeling(orderForm) {
 
-    let itensCrossSelling = await ObterItensCrossSelling();
+    let itensCrossSelling = await ObterItensCrossSelling(orderForm);
 
     $(".splide__slide").remove();
     $(".transactions-container").remove();
@@ -564,5 +578,4 @@ function formatPrice(price) {
 
     return value;
 }
-
 
