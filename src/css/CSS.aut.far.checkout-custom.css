@@ -2277,3 +2277,8 @@ body.body-order-form #go-to-shipping:hover, body.body-order-form #btn-go-to-paym
   white-space: normal;
   width: 75%;
 }
+
+fieldset.payment-group div.required.payment-group-list-btn{
+  display: flex;
+  flex-direction: column-reverse;
+}
