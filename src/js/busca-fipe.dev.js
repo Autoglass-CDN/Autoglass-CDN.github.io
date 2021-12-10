@@ -1056,6 +1056,7 @@
         const selectedRoute = select.routeSelected;
         
         if(
+          selectedRoute.includes('/borrachas') ||
           selectedRoute.includes('/lampadas') ||
           selectedRoute.includes('/filtros') ||
           selectedRoute.includes('/higienizadores')
