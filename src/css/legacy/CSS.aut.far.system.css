@@ -125,6 +125,9 @@
 .system-error-qd-v1 .system-error-qd-v1-wrap #busca-ft-alternative-text {
     display: none;
 }
+.system-error-qd-v1 .system-error-qd-v1-wrap #busca-ft:empty + h2 {
+    display: block;
+}
 .system-error-qd-v1 .system-error-qd-v1-wrap #busca-ft:empty + h2,
 .system-error-qd-v1 .system-error-qd-v1-wrap h2 {
     display: block;
@@ -241,10 +244,6 @@
 }
 .system-error-qd-v1-category-banners .carousel-qd-v1-shelf .qd-mb-row {
     padding-top: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
 }
 @media (max-width: 992px) {
     .system-error-qd-v1-category-banners .carousel-qd-v1-shelf h2 {
