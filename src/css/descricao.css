@@ -1,0 +1,54 @@
+#short-description-desktop {
+	margin-left: -100px;
+	padding: 0 20px 0 0;
+}
+
+#short-description-desktop .product-qd-v1-link-description {
+	transition: all .2s ease-out;
+	display: inline-block;
+	color: #223B76;
+	line-height: 14px;
+	font-size: 14px;
+	font-weight: 600;
+	font-family: 'Montserrat',sans-serif;
+}
+
+#short-description-desktop .product-qd-v1-link-description:hover, #short-description-desktop .product-qd-v1-link-description:focus, #short-description-desktop .product-qd-v1-link-description:active {
+    color: #1c3162;
+    text-shadow: .5px 0 0 currentColor;
+    text-decoration: none;
+}
+
+#short-description-desktop .product-qd-v1-description-short .productDescriptionShort:before {
+	display: block;
+	margin-bottom: 10px;
+	color: #333333;
+	font-weight: 600;
+	font-family: 'Montserrat',sans-serif;
+	font-size: 14px;
+	text-transform: uppercase;
+	content: "Descrição";
+}
+
+#short-description-desktop .product-qd-v1-description-short .productDescriptionShort {
+    color: #757575;
+    font-size: 14px;
+}
+
+#short-description-desktop .product-qd-v1-description-short {
+    display: block;
+    padding-top: 37px;
+    margin-bottom: 22px;
+}
+
+@media (max-width: 992px){
+		#short-description-desktop{
+        display: none;
+    }
+}
+
+@media (min-width: 992px){
+		#short-description-mobile{
+        display: none;
+    }
+}
