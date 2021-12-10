@@ -1060,7 +1060,7 @@
           selectedRoute.includes('/filtros') ||
           selectedRoute.includes('/higienizadores')
         ) {
-          return [true, selectedRoute + '?PS=20&map=c,c']
+          return [true, `${selectedRoute}?PS=20&map=c,c`]
         }
       }
       return [false, ""];
