@@ -28,18 +28,18 @@ const ESTADOS = [
     { GoogleMaps: 'State of Tocantins', Uf: 'TO', Nome: 'Tocantins', Sc: 39, Cep: '77066356' },
 ];
 
-let executed = false;
+let headerInitiated = false;
 
 $(document).on('ready', function () {
-    if (!executed) {
-        executed = true;
+    if (!headerInitiated) {
+        headerInitiated = true;
         initHeaderPolicy();
     }
 });
 
 setTimeout(() => {
-    if (!executed) {
-        executed = true;
+    if (!headerInitiated) {
+        headerInitiated = true;
         initHeaderPolicy();
     }
 }, 4000);

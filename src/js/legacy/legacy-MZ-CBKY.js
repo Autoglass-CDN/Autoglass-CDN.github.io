@@ -1,5 +1,6 @@
 /* PC-QUARTO - 04/06/2020 21:55:54 GMT-0300 */
 console.warn("Código legado carregado.");
+console.log("Ambiente de dev");
 
 String.prototype.trim || (String.prototype.trim = function () {
 	return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "")
@@ -1161,7 +1162,6 @@ try {
 		scrollToDescription: function () {
 			$(".product-qd-v1-link-description").click(function (e) {
 				e.preventDefault();
-				
 				$("html, body").stop().animate({
 					scrollTop: $("#informacoes-gerais").offset().top - 88
 				}, 400, "swing");
@@ -1245,7 +1245,11 @@ try {
 					}).done(function (data) {
 						var installmentsList = data.paymentData.installmentOptions[0].installments;
 						var config = Product.getNumberOfInstallments(data.items);
-						Product.renderDataInInstallements(installmentsList, config);
+						if (document.querySelector('.mz-prices__block') === null 
+						|| document.querySelector('.mz-prices__block:empty'))
+						{
+							Product.renderDataInInstallements(installmentsList, config);
+						}
 					})
 				}
 			}
@@ -1539,9 +1543,9 @@ try {
 }
 try {
 	(function () {
-		const searchSelector = ".busca, .resultado-busca, .departamento, .categoria, .busca-vazia";
+		const searchSelector = ".resultado-busca, .departamento, .categoria";
 		var body, ajaxStop, windowLoad;
-
+		
 		windowLoad = function () {
 			Common.windowOnload();
 			if (body.is(".home"))
@@ -1601,6 +1605,7 @@ try {
 			$(window).load(windowLoad);
 			body.addClass("jsFullLoaded")
 		});
+
 		Common.run();
 		if (location.pathname.substr(location.pathname.length - 2, 2).toLowerCase() == "/p")
 			Product.run();
