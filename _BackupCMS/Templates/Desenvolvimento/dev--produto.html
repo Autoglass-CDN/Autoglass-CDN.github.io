@@ -1,0 +1,762 @@
+<!-- dev- -produto -->
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+  xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+  <vtex:contentPlaceHolder id="qd_head" />
+  <meta charset="UTF-8" />
+  <title>
+    <vtex.cmc:productPageTitle />
+  </title>
+  <vtex:template id="dev--detalhe-produto--head-tags" />
+  <vtex:metaTags />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.product.css"
+    type="text/css" onload="this.media='all'"/>
+
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" onload="this.media='all'"/>
+  <script defer="" type="text/javascript" src="/scripts/jquery.maskedinput-1.2.2.js"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/src/js/jquery-ui.datepicker.js" type="text/javascript"></script>
+
+  <script defer="" src="https://autoglass-cdn.github.io/src/js/legacy/detalhe-produto-legado.js" type="text/javascript"></script>
+  
+  <script defer="" src="https://autoglass-cdn.github.io/src/js/cep.component.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/B2C-02-detalhe-produto.css" 
+  type="text/css" onload="this.media='all'"/>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/descricao.css" type="text/css" onload="this.media='all'"/>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/cep.component.css" type="text/css" onload="this.media='all'"/>
+  <style type="text/css">
+    .mz-acessories .mz-acessories__prices .mz-prices__block,
+    .mz-acessories .mz-acessories__prices .mz-acessories__prices--byfor {
+      display: block !important;
+    }
+  </style>
+   <!-- <script type="application/ld+json">
+      {
+          "@context": "https://schema.org/",
+          "@type": "Product",
+          "name": "<vtex.cmc:productName/>",
+          "image": "https://autoglass.vteximg.com.br/arquivos/ids/200476-1000-1000/664984.jpg?v=637236022490970000",
+          "description": "A moldura do paralama é um item de grande importância. Ela garante a fixação correta, dando acabamento ao para lama, que, por sua vez, proporciona proteção contra respingos de água e lama ou detritos.
+  
+  Esta moldura possui todos as características exigidas pela montadora e cumpre com as especificações fundamentais para sua fixação correta.",
+          "brand": "Kj",
+          "offers":
+          {
+              "@type": "Offer",
+              "url": "https://www.autoglassonline.com.br/moldura-paralama-ford-ecosport-2003-a-2012-preto-esquerdo-traseiro-kj - - - 664984/p",
+              "priceCurrency": "BRL",
+              *"price": "116,32",
+              "availability": "https://schema.org/InStock",
+              "itemCondition": "https://schema.org/NewCondition"
+          }
+      }
+      </script>
+    <script>
+      const crossSelling = [];
+    </script> -->
+</head>
+
+<body class="produto">
+  <!-- Header -->
+  <vtex:template id="dev--header" />
+  <!-- Header -->
+
+  <main>
+    <div class="common-qd-v1-structure">
+      <!--FLOAT BAR PRODUCT_________________-->
+      <div class="col-xs-12">
+        <div class="product-qd-v1-float-bar">
+          <div class="container">
+            <div class="row">
+              <div class="col-xs-3">
+                <span class="product-qd-v1-name">
+                  <vtex.cmc:productName />
+                </span>
+              </div>
+              <div class="col-xs-3">
+                <a class="product-qd-v1-link-description" href="#rolagemSobreOProduto">Descrição
+                  Completa</a>
+              </div>
+              <div class="col-xs-3">
+                <div class="product-qd-v1-price">
+                  <vtex.cmc:skuPrice />
+                </div>
+              </div>
+              <div class="col-xs-3">
+                <div class="product-qd-v1-buy-button">
+                  <vtex.cmc:BuyButton />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--_________________ FLOAT BAR PRODUCT-->
+
+      <!-- Main Content -->
+      <div class="container">
+        <!-- Informações principais do produto -->
+        <section>
+          <!-- Breadcrumb -->
+          <div class="breadcrumb-qd-v1">
+            <div class="row">
+              <div class="col-xs-12">
+                <vtex.cmc:breadCrumb />
+              </div>
+            </div>
+          </div>
+          <!-- Breadcrumb -->
+
+          <div class="col-xs-12">
+            <div class="product-qd-v1-block-above-image">
+              <!-- Product name -->
+              <span class="product-qd-v1-name mob">
+                <vtex.cmc:productName />
+              </span>
+              <!-- Product name -->
+              <div class="product-qd-v1-block mob">
+                <!-- Reference code -->
+                <span class="product-qd-v1-ref-code mob">
+                  <vtex.cmc:productReference />
+                </span>
+                <!-- Reference code -->
+                <!-- Brand names -->
+                <div class="product-qd-v1-brand-name mob">
+                  Marca:
+                  <vtex.cmc:brandName />
+                </div>
+                <!-- Brand names -->
+              </div>
+            </div>
+          </div>
+
+          <!-- Product image -->
+          <div class="col-xs-12 col-md-6 col-md-push-1">
+            <div class="product-qd-v1-image">
+              <!-- Selos de destaque -->
+              <div class="product-qd-v1-stamps">
+                <div class="product-qd-v1-stamps-highlight-discount">
+                  <vtex.cmc:discountHightLight />
+                </div>
+
+                <div class="product-qd-v1-stamps-highlight">
+                  <vtex.cmc:hightLight />
+                </div>
+              </div>
+              <!-- Selos de destaque -->
+
+              <vtex.cmc:ProductImage zoom="on" />
+            </div>
+            <!-- Descrição -->
+            <div id="short-description-desktop">
+            </div>
+            <vtex:template id="dev--detalhe-produto--busca-compativeis-desktop" />
+          </div>
+          <!-- Product image -->
+
+          <!-- Product thumbs -->
+          <div class="col-xs-12 col-md-1 col-md-pull-6">
+            <ul class="thumbs product-qd-v1-image-thumbs QD-thumbs img-responsive"></ul>
+          </div>
+          <!-- Product thumbs -->
+
+          <!-- SKU selection box -->
+          <div class="product-qd-v1-sku-selection-wrapper col-xs-12 col-md-5">
+            <div class="product-qd-v1-sku-selection-box">
+              <div class="product-qd-v1-sku-selection-row">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <!-- Product name -->
+                    <h1 class="product-qd-v1-name">
+                      <vtex.cmc:productName />
+                    </h1>
+                    <!-- Product name -->
+                    <div class="product-qd-v1-block">
+                      <!-- Reference code -->
+                      <span class="product-qd-v1-ref-code">
+                        <vtex.cmc:productReference />
+                      </span>
+                      <!-- Reference code -->
+                      <!-- Brand names -->
+                      <div class="product-qd-v1-brand-name">
+                        Marca:
+                        <vtex.cmc:brandName />
+                      </div>
+                      <!-- Brand names -->
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ProdutoIndiponível - Outras Marcas  -->
+                <div class="product-qd-v1-unavailable other-brands" style="display: none;">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="product-qd-v1-standard row">
+                        <h3>OUTRAS MARCAS</h3>
+                        <p>Produto indisponível, mas temos outras opções para seu veículo!</p>
+                        <div class="product-qd-v1-buy-button">
+                          <button type="button" class="buy-button outras-marcas-btn"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ProdutoIndiponível - Outras Marcas  -->
+
+                <!-- Produto Indisponível - Fale com o Vendedor -->
+                <div class="product-qd-v1-unavailable talk-to-seller" style="display: none;">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div class="product-qd-v1-standard row">
+                        <h3>CONSULTE DISPONIBILIDADE</h3>
+                        <p>Produto indisponível no site, mas podemos ter em outro canal de
+                          vendas. Informe o que procura
+                          pelo chat! :)</p>
+                        <div class="product-qd-v1-buy-button">
+                          <button class="product-unavailable"></button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Produto Indisponível - Fale com o Vendedor -->
+
+                <!-- Venda de Instalação (NOVA) -->
+                <div class="product-qd-v1-installation">
+                  <div class="row">
+                    <div class="col-xs-12">
+                      <div
+                        class="product-qd-v1-installation-content accessories-qd-v1-wrapper banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3">
+                        <vtex:contentPlaceHolder id="acessorios" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Venda de Instalação (NOVA) -->
+
+                <!-- Product price -->
+                <div class="product-qd-v1-standard row">
+                  <div class="header">
+                    <div class="col">
+                      <img src="https://autoglass-cdn.github.io/src/img/receba-em-casa-compressed.jpg" alt="Icone Entrega"
+                        class="entrega" />
+                    </div>
+                    <div class="col">
+                      <div class="option">
+                        <span class="title">Receba em casa</span>
+                        <button id="receba-em-casa-btn" class="link cep gtm-receba-em-casa-btn">
+                          Consulte o frete
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="or">
+                        <span>ou</span>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <div class="option">
+                        <span class="title">Retire na loja</span>
+                        <button id="retire-na-loja-btn" class="link lojas gtm-retire-na-loja-btn">
+                          Ver lojas próximas
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-xs-12">
+                    <div class="product-qd-v1-price">
+                      <vtex.cmc:skuPrice />
+                    </div>
+                  </div>
+                  <!-- Product price -->
+
+                  <!-- SKU Selection - variacao -->
+                  <div class="col-xs-12">
+                    <div class="row">
+                      <div class="product-qd-v1-sku-selection-row">
+                        <div class="product-qd-v1-sku-selection">
+                          <vtex.cmc:skuSelection />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- SKU Selection - variacao -->
+
+                  <!-- Teste -->
+                  <div style="display: none;">
+                    <vtex.cmc:stockKeepingUnitSelection />
+                  </div>
+                  <!-- // Teste -->
+
+                  <div class="col-xs-12">
+                    <div class="product-qd-v1-buy-box">
+                      <!-- Product quantity -->
+                      <div class="product-qd-v1-smart-qtt">
+                        <!-- Buy button -->
+                        <div class="product-qd-v1-buy-button">
+                          <vtex.cmc:BuyButton />
+                        </div>
+                        <!-- Buy button -->
+                      </div>
+                      <!-- Product quantity -->
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Shipping calculator -->
+              <div class="product-qd-v1-shipping">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <p class="product-qd-v1-shipping-title">
+                      Consulte o frete
+                    </p>
+
+                    <div class="product-qd-v1-shipping-freight">
+                      <div class="product-qd-v1-shipping-freight-result">
+                        <vtex.cmc:shippingValue />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Shipping calculator -->
+
+              <!-- Compre junto -->
+              <section>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <!--<div class="product-qd-v1-buy-together">
+                      <vtex.cmc:BuyTogether />
+                    </div>-->
+                    <vtex:template id="dev--detalhe-produto--busca-compativeis-mobile" />
+                  </div>
+                </div>
+              </section>
+              <!-- Compre junto -->
+
+              <!-- Short description -->
+              <div class="row" id="short-description-mobile">
+                <div class="col-xs-12">
+                  <div class="product-qd-v1-description-short">
+                    <vtex.cmc:productDescriptionShort />
+                  </div>
+                  <a class="product-qd-v1-link-description" href="#rolagemSobreOProduto">
+                    Ver mais sobre o produto <i class="fa fa-angle-double-down"></i>
+                  </a>
+                </div>
+              </div>
+              <!-- Short description -->
+            </div>
+          </div>
+          <!-- SKU selection box -->
+        </section>
+        <!-- Informações principais do produto -->
+
+        <!-- Product Test Video Galery -->
+        <!-- <vtex.cmc:devGaleriaVideo /> -->
+        <!-- Product Test Video Galery -->
+
+        <section>
+          <div class="product-qd-v1-information-wrapper">
+            <div id="rolagemSobreOProduto"></div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <!-- Descrição -->
+    <div>
+      <div class="nav-container">
+        <nav class="tabs-descricao">
+          <ul>
+            <li><a href="#informacoes-gerais" class="tab-link">Informações Gerais</a></li>
+            <li><a href="#veiculos-compativeis" class="tab-link">Veículos Compatíveis</a></li>
+            <li><a href="#diferenciais" class="tab-link">Diferenciais Autoglass</a></li>
+            <li><a href="#avaliacoes" class="tab-link">Avaliações</a></li>
+            <li><a href="#outras-marcas" class="tab-link">Outras Marcas</a></li>
+            <li><a href="#compre-junto" class="tab-link">Compre Junto</a></li>
+            <li><a href="#duvidas" class="tab-link">Dúvidas</a></li>
+          </ul>
+        </nav>
+      </div>
+      <vtex:template id="dev--detalhe-produto--descricao" />
+      <!--<vtex:template id="prd- -detalhe-produto- -descricao" />-->
+      <!-- Descrição -->
+
+      <article class="contents">
+        <section id="outras-marcas" class="tab-content">
+          <div class="white-background">
+            <!-- Produtos Similares e Equivalentes -->
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="product-qd-v1-related">
+                  <div id="similars"
+                    class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                    
+                    <vtex:contentPlaceHolder id="similares" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="compre-junto" class="tab-content">
+          <div class="blue-background">
+            <!-- Sugestoes -->
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="product-qd-v1-related">
+                  <div id="sugestoes"
+                    class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                    <vtex:contentPlaceHolder id="sugestoes" />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Sugestoes -->
+          </div>
+        </section>
+      </article>
+      <div class="white-background">
+        <div class="container-descricao">
+          <article class="contents">
+            <section id="duvidas" class="tab-content ativo">
+              <h2>Dúvidas Frequentes</h2>
+              <vtex.cmc:devDetalheDuvidasCategoria />
+              <vtex.cmc:devDetalheDuvidasFixo />
+            </section>
+          </article>
+        </div>
+      </div>
+    </div>
+    <script defer="" src="https://autoglass-cdn.github.io/src/js/detalhe-produto.js" type="text/javascript"></script>
+    <div class="common-qd-v1-structure">
+      <div class="container">
+        <section>
+          <!-- Quem viu, viu também -->
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="product-qd-v1-related">
+                <div
+                  class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                  <vtex:contentPlaceHolder id="quem_viu_viu_tambem" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Quem viu, viu também -->
+
+          <!-- Conteúdo acima do quem viu, viu também -->
+          <div class="row">
+            <div class="col-xs-12">
+              <div
+                class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+                <vtex:contentPlaceHolder id="conteudo_acima_do_quem_viu_viu_tambem" />
+              </div>
+            </div>
+          </div>
+          <!-- Conteúdo acima do quem viu, viu também -->
+        </section>
+      </div>
+      <!-- // Main Content -->
+
+      <!-- Fixed bar -->
+      <div class="product-qd-v1-fixed-bar">
+        <div class="row">
+          <div class="col-xs-5">
+            <div class="product-qd-v1-price">
+              <vtex.cmc:skuPrice />
+            </div>
+          </div>
+
+          <div class="col-xs-7">
+            <div class="product-qd-v1-buy-button">
+              <vtex.cmc:BuyButton />
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Fixed bar -->
+    </div>
+  </main>
+
+  <style type="text/css">
+    .cep-modal {
+      float: right;
+      margin-top: -4.5em;
+      margin-right: 25px;
+      font-size: 12px;
+      color: #333333;
+    }
+
+    .cep-modal .header-qd-v1-valid-prices-local {
+      margin-top: -10px;
+      font-weight: 600;
+    }
+
+    .cep-modal .header-qd-v1-valid-prices-local button {
+      color: #2d4f9e;
+      text-decoration: underline;
+      background: #fff;
+      border: none;
+    }
+  </style>
+  <!--<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/consulta-agendamento.css" />-->
+  
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/consulta-agendamento.css" />
+  <!-- <script type="text/javascript" src="/arquivos/consulta-agendamentoCBYK.js" ></script> -->
+  <!--<script src="https://autoglass-cdn.github.io/hml/consulta-agendamento.js" type="text/javascript"></script>-->
+  <script src="https://autoglass-cdn.github.io/src/js/consulta-agendamento.js" type="text/javascript"></script>
+
+
+
+  <!-- Modal Instale na loja - B2C-1863 -->
+  <div class="mz-modal-installation modal-instale-na-loja">
+    <div class="mz-install__close">
+      <span class="mz-install__close--button"></span>
+    </div>
+
+    <div class="secao-agendamento">
+      <div class="mz-install__title">
+        <h2>Instalação na Loja</h2>
+      </div>
+      <span>Veja nossa agenda e selecione o dia e horário disponível para instalação:</span>
+      <div class="cep" data-render-cep=".secao-agendamento"></div>
+      <div class="filter">
+        <div class="data">
+          <label class="date" for="alterar-data-input">Data: </label>
+          <input type="text" name="data" id="alterar-data-input" class="gtm-instale-na-loja-data-input" />
+        </div>
+        <div class="qtd" style="display: none">
+          Lojas encontradas: 0
+        </div>
+      </div>
+      <div class="to-select-msg">
+        <h3> Selecione a loja mais próxima de você: </h3>
+      </div>
+      <div class="selected-msg" hidden="true"> <i class="fa fa-check" aria-hidden="true"
+          style="color: green; margin-right: 5px;"></i>
+        Selecionado:
+        <b></b>
+      </div>
+      <div class="store-list">
+        <ul>
+        </ul>
+      </div>
+      <div class="mz-title__bottomBorder"></div>
+    </div>
+
+    <div class="mz-install__button">
+      <a class="mz-install__button--buy lock-button gtm-instale-na-loja-comprar-btn">
+        Comprar com instalação
+      </a>
+    </div>
+  </div>
+  <!-- // Modal Instale na loja -->
+
+  <!-- Modal retire na loja -->
+  <div class="mz-modal-pickup">
+    <div class="mz-pickup__close">
+      <span class="mz-pickup__close--button"></span>
+    </div>
+    <div class="mz-pickup__title">
+      <h2>Retire na Loja</h2>
+      <span style="font-size: 14px">Confira e selecione abaixo a loja mais próxima do seu endereço:</span>
+    </div>
+    <div class="mz-content">
+      <div class="cep" data-render-cep=".mz-content"></div>
+      <div class="mz-pickup__stores">
+        <div class="mz-stores__title">
+          <h3 class="store">Selecione a loja mais próxima de você:</h3>
+          <h3 class="without-store">Não encontramos pontos de retirada próximos a você.</h3>
+        </div>
+        <div class="mz-pickup-stores__list">
+          <ul></ul>
+        </div>
+      </div>
+      <div class="mz-pickup__button">
+        <a class="mz-pickup__button--buy lock-button">Comprar</a>
+      </div>
+    </div>
+  </div>
+  <!-- // Modal retire na loja -->
+
+  <!-- Modal - Calcule o Frete -->
+  <div class="mz-modal-shipping">
+    <div class="mz-shipping__close">
+      <span class="mz-shipping__close--button"></span>
+    </div>
+    <div class="mz-shipping__title">
+      <h2>Formas de entrega</h2>
+      <span style="font-size: 14px">Confira abaixo as opções de entrega na sua região:</span>
+    </div>
+    <div class="mz-shipping-cep-content">
+      <div class="cep" data-render-cep=".mz-shipping-cep-content"></div>
+      <div class="mz-shipping__content">
+        <div class="mz-content__title">
+          <h3 class="mz-content__title--empty">
+            Não encontramos entrega para sua região
+            <br />
+            <span><a onclick="$zopim.livechat.window.show()">Clique aqui</a> e fale com a gente pelo
+              chat!</span>
+          </h3>
+        </div>
+        <div class="mz-shipping__list">
+          <ul></ul>
+        </div>
+        <div class="mz-shipping__button">
+          <a class="mz-shipping__button--buy lock-button">Comprar</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- // Modal - Calcule o Frete -->
+
+  <!-- Modal Instale em Casa -->
+  <div class="mz-modal-advantages">
+    <div class="mz-advantages__close">
+      <span class="mz-advantages__close--button"></span>
+    </div>
+    <div class="mz-advantages__title">
+      <h2>Instalação em Casa</h2>
+    </div>
+    <div class="mz-advantages__content">
+      <span>Veja nossa agenda e selecione o dia disponível para instalação:</span>
+      <div class="cep" data-render-cep=".mz-advantages__content"></div>
+      <div class="datas-disponiveis" style="display: none">
+        <div id="aviso-servico-movel" style="display: none"></div>
+        <div class="loading-dates">
+          <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Carregando...
+        </div>
+        <div id="mostrar-datas-datepicker"></div>
+      </div>
+      <div class="preview-data" style="display:none; text-align: center; padding-top: 15px">
+        <i class="fa fa-check" aria-hidden="true" style="color: green; margin-right: 5px;"></i>
+        Data escolhida:
+        <b></b>
+      </div>
+      <div class="mz-install__info">
+        <div class="mz-info__list">
+          <ul>
+            <li>
+              Após aprovação do pagamento, nossos analistas entrarão
+              em contato com você para confirmar o horário de agendamento.
+            </li>
+            <li>
+              Será realizada uma análise pelo técnico e caso
+              haja necessidade de troca de borrachas ou sensores,
+              o valor será cobrado avulso.
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="mz-advantages__button">
+        <a class="mz-advantages__button--buy lock-button">
+          Comprar com instalação
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- // Modal Instale em Casa -->
+
+  <style type="text/css">
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    .modal-close {
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    /* Modal Header */
+    .modal-header h2 {
+      color: #757575;
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    /* Modal Body */
+    .modal-body p {
+      color: #333333;
+      margin: 10px auto;
+    }
+
+
+
+    /* Modal Content */
+    .modal-content,
+    .header-qd-v1-location-modal:not('.modal-content') {
+      max-width: 700px;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      animation-name: animatetop;
+      animation-duration: 0.4s;
+
+      padding: 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9997;
+      background-color: #FFF;
+      border-radius: 4px;
+    }
+
+
+    /* Add Animation */
+    @keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+  </style>
+
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div class="modal-content">
+      <div class="modal-close">
+        <span class="close"></span>
+      </div>
+      <div class="modal-header">
+        <h2>Aguarde...</h2>
+      </div>
+      <div class="modal-body">
+        <p>Estamos selecionando as melhores opções para você! :)</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Overlay -->
+  <div class="mz-modal-overlay"></div>
+  <!-- // Modal Overlay -->
+
+  <!-- Footer -->
+  <vtex:template id="dev--footer" />
+  <!-- Footer -->
+  <!--<vtex.cmc:devGoogleMaps />-->
+</body>
+
+</html>

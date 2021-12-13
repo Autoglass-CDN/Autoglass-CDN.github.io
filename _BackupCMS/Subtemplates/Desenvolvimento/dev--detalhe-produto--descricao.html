@@ -1,0 +1,102 @@
+<!-- dev- -detalhe-produto- -descricao -->
+
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/detalhe-produto.css" />
+<div class="white-background">
+    <div class="container-descricao">
+        <article class="contents">
+            <section id="informacoes-gerais" class="tab-content">
+                <h2>Informações Gerais</h2>
+                <div class="info-box left">
+                    <h3>Descrição do Produto</h3>
+                    <p>
+                        <vtex.cmc:productDescriptionShort />
+                    </p>
+                </div>
+                <div id="gtm-video-parabrisa" class="side-video">
+                    <vtex.cmc:devDetalheProdutoVideo />
+                </div>
+                <div class="info-box left">
+                    <vtex.cmc:devDetalheDescricaoCategoria />
+                </div>
+                <div class="info-box left">
+                    <h3>Marca</h3>
+                    <p id="descricao-marca"></p>
+                </div>
+                <div class="info-box">
+                    <div id="opcionais" class="caracteristicas"></div>
+                </div>
+                <div class="info-box">
+                    <vtex.cmc:devDetalheConteudoDaCompraCategoria />
+                </div>
+                <div class="info-box">
+                    <h3>Especificações</h3>
+                    <vtex.cmc:productSpecification />
+                </div>
+            </section>
+            <section id="veiculos-compativeis" class="tab-content ativo"></section>
+            <section id="diferenciais" class="tab-content ativo">
+                <h2>Diferenciais Autoglass</h2>
+                <vtex.cmc:devDetalheDiferenciaisCategoria />
+
+                <h3>Por que Autoglass é o nome certo para você?</h3>
+                <div class="cards">
+                    <div class="card">
+                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/detalhe/detalhe_seguranca.png"
+                            alt="Detalhe Segurança" />
+                        <div class="card__text">
+                            <h4>Segurança e Qualidade</h4>
+                            <p>As peças são rigorosamente inspecionadas pelo Controle de Qualidade Autoglass.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/detalhe/detalhe_atendimento.png"
+                            alt="Detalhe Atendimento" />
+                        <div class="card__text">
+                            <h4>O Melhor Atendimento</h4>
+                            <p>Ganhamos o 1º lugar no Prêmio Reclame Aqui como “A melhor empresa para o consumidor”.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/detalhe/detalhe_praticidade.png"
+                            alt="Detalhe Praticidade" />
+                        <div class="card__text">
+                            <h4>Praticidade e Agilidade</h4>
+                            <p>Receba seu produto em casa, retire em uma de nossas lojas ou instale com nossa equipe.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/detalhe/detalhe_garantia.png"
+                            alt="Detalhe Garantia" />
+                        <div class="card__text">
+                            <h4>Garantia Exclusiva</h4>
+                            <p>Oferecemos 1 ano de garantia na instalação de vidros, retrovisores e iluminação.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/detalhe/detalhe_estoque.png"
+                            alt="Detalhe Estoque" />
+                        <div class="card__text">
+                            <h4>O Maior Estoque do Brasil</h4>
+                            <p>A Autoglass tem o maior estoque de vidros e autopeças da América Latina.</p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/detalhe/detalhe_lojas.png"
+                            alt="Detalhe Lojas" />
+                        <div class="card__text">
+                            <h4>Lojas em Todo o Brasil</h4>
+                            <p>Contamos com mais de 70 lojas próprias e uma rede de mais de 1.400 credenciados.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </article>
+    </div>
+</div>
+<article class="contents">
+    <section id="avaliacoes" class="tab-content ativo">
+        <h2>Avaliação dos Consumidores</h2>
+        <vtex.cmc:devRatingsComponent />
+    </section>
+</article>
