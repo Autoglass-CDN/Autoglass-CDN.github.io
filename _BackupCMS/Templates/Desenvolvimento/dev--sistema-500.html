@@ -1,0 +1,31 @@
+<!-- dev- -sistema-500 -->
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<head>
+	<vtex:contentPlaceHolder id="qd_head" />
+	<title><vtex.cmc:productPageTitle /></title>
+    <vtex:template id="dev--head-tags" />
+	<vtex:metaTags />
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.system.css" type="text/css" />
+</head>
+<body class="system-500" data-qd-scroll-limit="200">
+	<!-- Header -->
+    <vtex:template id="dev--header" />
+	<!-- Header -->
+	
+	<main>
+		<div class="common-qd-v1-structure">
+			<div class="system-error-qd-v1">
+				<div class="system-error-qd-v1-content-error-500">
+					<vtex:contentPlaceHolder id="conteudo_da_pagina" />
+				</div>
+			</div>
+		</div>			
+	</main>
+
+	<!-- Footer -->
+	<vtex:template id="dev--footer" />
+    <!-- Footer -->
+    <vtex.cmc:devGoogleMaps />
+</body>
+</html>

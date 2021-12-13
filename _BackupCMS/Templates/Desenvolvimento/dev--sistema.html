@@ -1,0 +1,115 @@
+<!-- dev- -sistema -->
+<!DOCTYPE html>
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+    <vtex:contentPlaceHolder id="qd_head" />
+    <title>
+        <vtex.cmc:productPageTitle />
+    </title>
+    <vtex:template id="dev--head-tags" />
+    <vtex:metaTags />
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.system.css"
+        type="text/css" />
+    <style>
+        @media (max-width: 500px) {
+            #busca-ft-alternative-text+p {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            #busca-ft-alternative-text+p a:last-child {
+                margin-left: 0px !important;
+                margin-top: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body class="system-404" data-qd-scroll-limit="200">
+    <!-- Header -->
+    <vtex:template id="dev--header" />
+    <!-- Header -->
+
+    <main>
+        <div class="common-qd-v1-structure">
+            <!-- Conteúdo abaixo do header -->
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+                        <vtex:contentPlaceHolder id="conteudo_abaixo_do_header" />
+                    </div>
+                </div>
+            </div>
+            <!-- Conteúdo abaixo do header -->
+
+            <!-- Smart Select -->
+            <div style="margin-top: 45px;">
+                <vtex:template id="dev--busca-fipe" />
+            </div>
+            <!-- Smart Select -->
+
+            <div class="system-error-qd-v1">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="system-error-qd-v1-wrap">
+                                <vtex:contentPlaceHolder id="conteudo_da_pagina" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <!-- Banners de Categorias -->
+                <section>
+                    <div class="system-error-qd-v1-category-banners">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div
+                                    class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-2">
+                                    <vtex:contentPlaceHolder id="banners_categorias" />
+                                    <a href="/busca" class="btn">Ver todos</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <!-- Banners de Categorias -->
+            </div>
+
+            <!-- vitrine 1 -->
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+                        <vtex:contentPlaceHolder id="vitrine_um" />
+                    </div>
+                </div>
+            </div>
+            <!-- vitrine 1 -->
+
+            <!-- vitrine 2 -->
+            <div class="container">
+                <div class="row">
+                    <div
+                        class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+                        <vtex:contentPlaceHolder id="vitrine_dois" />
+                    </div>
+                </div>
+            </div>
+            <!-- vitrine 2 -->
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <vtex:template id="dev--footer" />
+    <!-- Footer -->
+    <vtex.cmc:devGoogleMaps />
+</body>
+
+</html>
