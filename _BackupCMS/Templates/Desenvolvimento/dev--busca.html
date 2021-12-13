@@ -1,0 +1,142 @@
+<!-- dev- -busca -->
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>
+		<vtex.cmc:productPageTitle />
+	</title>
+	<vtex:template id="dev--busca--head-tags" />
+	<vtex:metaTags />
+
+
+	<script language="javascript" src="https://autoglass-cdn.github.io/src/js/B2C-02-filtro-busca.js"
+		type="text/javascript"></script>
+
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.search.css"
+		type="text/css" />
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/filtro-veiculos.css" type="text/css" />
+
+</head>
+
+<body class="resultado-busca">
+	<!-- Header -->
+	<vtex:template id="dev--header" />
+	<!-- Header -->
+
+	<!-- Main Content -->
+	<main>
+		<div class="common-qd-v1-structure">
+			<section>
+				<!-- Full banner -->
+				<div class="search-qd-v1-full-banner">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-xs-12">
+								<div
+									class="banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+									<vtex:contentPlaceHolder id="banner_full_no_topo_da_pagina" />
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Full banner -->
+
+				<!-- Smart Select -->
+				<div style="margin-top: 45px;">
+					<vtex:template id="dev--busca-fipe" />
+				</div>
+				<!-- Smart Select -->
+
+				<!-- Bredcrumb -->
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12">
+							<div class="breadcrumb-qd-v1">
+								<vtex.cmc:breadCrumb />
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- Bredcrumb -->
+
+				<div class="container">
+					<div class="row">
+						<aside>
+							<div class="col-xs-12 col-lg-3">
+								<div class="search-qd-v1-navigator">
+									<a class="search-qd-v1-navigator-trigger" href="#" role="button">Filtrar
+										resultado</a>
+
+									<div class="search-qd-v1-navigator-list">
+										<div class="search-qd-v1-navigator-title">Filtrar Resultados</div>
+
+										<!-- Filtered -->
+										<div class="search-qd-v1-navigator-research-filtered"></div>
+										<!-- // Filtered -->
+
+										<!-- Smart Research -->
+										<div class="search-qd-v1-navigator-research">
+											<!-- searchNavigator -->
+											<vtex.cmc:searchNavigator />
+											<!-- // searchNavigator -->
+										</div>
+										<!-- // Smart Research -->
+
+										<!-- Mobile Filter Button -->
+										<div class="search-qd-v1-navigator-mobile-results">
+											<button>Ver Resultados</button>
+										</div>
+										<!-- // Mobile Filter Button -->
+
+									</div>
+								</div>
+
+								<!-- Side banners -->
+								<div class="search-qd-v1-side-banners">
+									<div
+										class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+										<vtex:contentPlaceHolder id="banners_do_menu_lateral" />
+									</div>
+								</div>
+								<!-- Side banners -->
+							</div>
+						</aside>
+
+						<div class="col-xs-12 col-lg-9">
+							<div class="row">
+								<div class="search-qd-v1-result qd-shelf-xs-6 qd-shelf-lg-4">
+									<vtex.cmc:searchResult layout="28ebc157-f21d-420f-a86c-a1fa025b3189" itemCount="24"
+										columnCount="1" /> <!-- QD Farmen prateleira row qd-xs -->
+								</div>
+							</div>
+
+							<!-- SEO Text -->
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="search-qd-v1-seo-text">
+										<div class="h1 h2 h3 h4 h5 h6 p ul dl">
+											<vtex:contentPlaceHolder id="texto_SEO_para_melhor_indexacao" />
+										</div>
+									</div>
+								</div>
+							</div>
+							<!-- SEO Text -->
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+	</main>
+	<!-- Main Content -->
+
+	<!-- Footer -->
+	<vtex:template id="dev--footer" />
+	<vtex.cmc:devGoogleMaps />
+	<!-- Footer -->
+</body>
+
+</html>
