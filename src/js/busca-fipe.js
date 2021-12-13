@@ -88,11 +88,11 @@
         childrenCategories.push(...x.children);
       });
 
-    _initBucaPlaca(childrenCategories);
-    await _initBucaPeca(childrenCategories);
+    _initBuscaPlaca(childrenCategories);
+    await _initBuscaPeca(childrenCategories);
   }
 
-  async function _initBucaPeca(values) {
+  async function _initBuscaPeca(values) {
 
     PECA_SELECTS[0].values = values;
 
@@ -745,7 +745,7 @@
     },
   ];
 
-  function _initBucaPlaca(values) {
+  function _initBuscaPlaca(values) {
     
     PLACA_SELECTS[0].values = values;
 
