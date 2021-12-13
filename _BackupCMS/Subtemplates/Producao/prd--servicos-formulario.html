@@ -1,177 +1,177 @@
 <!-- prd- -servicos-formulario -->
-<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
-<!-- Importação dos styles será feita via CDN do Github -->
-<link href="https://autoglass-cdn.github.io/arquivos/styles/global/style.css" rel="stylesheet" />    
-<link href="https://autoglass-cdn.github.io/arquivos/css/servicos/form-servicos.css" rel="stylesheet" />
+    <!-- Importação dos styles será feita via CDN do Github -->
+    <link href="https://autoglass-cdn.github.io/arquivos/styles/global/style.css" rel="stylesheet" />
+    <link href="https://autoglass-cdn.github.io/arquivos/css/servicos/form-servicos.css" rel="stylesheet" />
 
-<form class="form-servico" action="">
-    <h2 class="title">Faça agora o seu orçamento</h2>
-    
-    <div class="form-data">
-        <label class="input input-line" for="placa"> Placa </label>
-        <input id="placa" type="text" pattern="[A-Za-z]{3}[0-9]{1}[A-Za-z0-9]{1}[0-9]{2}" maxlength="7" placeholder="Ex.: ABC1D23"></input>
-    </div>
-
-    <div class="form-data">
-        <label class="input input-line" for="nome"> Nome </label>
-        <input id="nome" type="text" maxlength="50" placeholder="Nome Completo"></input>
-    </div>        
-    
-    <div class="form-servico__cidade-estado">
-    
-        <div class="form-data">
-            <label class="input input-line cidade" for="cidade"> Cidade </label>
-            <input id="cidade" type="text" placeholder="Ex.: Vila Velha"></input>
-        </div>        
-
-        <div class="form-data">
-            <label class="input input-line estado" for="estados"> Estado </label>
-            <select class="select" name="uf" id="estados">
-                <option value="" hidden="true">Selecione</option>
-                <option value="AC">AC</option>
-                <option value="AL">AL</option>
-                <option value="AP">AP</option>
-                <option value="AM">AM</option>
-                <option value="BA">BA</option>
-                <option value="CE">CE</option>
-                <option value="DF">DF</option>
-                <option value="ES">ES</option>
-                <option value="GO">GO</option>
-                <option value="MA">MA</option>
-                <option value="MT">MT</option>
-                <option value="MS">MS</option>
-                <option value="MG">MG</option>
-                <option value="PA">PA</option>
-                <option value="PB">PB</option>
-                <option value="PR">PR</option>
-                <option value="PE">PE</option>
-                <option value="PI">PI</option>
-                <option value="RJ">RJ</option>
-                <option value="RN">RN</option>
-                <option value="RS">RS</option>
-                <option value="RO">RO</option>
-                <option value="RR">RR</option>
-                <option value="SC">SC</option>
-                <option value="SP">SP</option>
-                <option value="SE">SE</option>
-                <option value="TO">TO</option>
-            </select>   
-        </div>        
-    </div>
-    
-    <div class="form-data">
-        <label class="input input-line" for="celular"> Celular </label>
-        <input id="celular" type="text" pattern="\d*" maxlength="15" placeholder="(XX) 9 1234-5678"></input>
-    </div>        
-    
-    <div class="form-data">
-        <label class="input input-line" for="email"> E-mail </label>
-        <input id="email" type="email" maxlength="100" placeholder="Digite seu e-mail principal"></input>
-    </div>        
-    
-    <div class="form-data">
-        <label class="input input-line"> Peças </label>
-        <select class="selecao-de-pecas" name="pecas[]" multiple="multiple">
-            <option value="capo">Capô</option>
-            <option value="colunaDoParabrisa">Coluna do Parabrisa</option>
-            <option value="colunaDoVidroTraseiro">Coluna do Vidro Traseiro</option>
-            <option value="lateralTraseiraDireita">Lateral Traseira Direita</option>
-            <option value="lateralTraseiraEsquerda">Lateral Traseira Esquerda</option>
-            <option value="paraChoqueDianteiro">Para-choque Dianteiro</option>
-            <option value="paraChoqueTraseiro">Para-choque Traseiro</option>
-            <option value="paralamaDianteiroDireito">Paralama Dianteiro Direito</option>
-            <option value="paralamaDianteiroEsquerdo">Paralama Dianteiro Esquerdo</option>
-            <option value="portaDianteiraDireita">Porta Dianteira Direita</option>
-            <option value="portaDianteiraEsquerda">Porta Dianteira Esquerda</option>
-            <option value="portaMala">Porta Mala</option>
-            <option value="portaTraseiraDireita">Porta Traseira Direita</option>
-            <option value="portaTraseiraEsquerda">Porta Traseira Esquerda</option>
-            <option value="retrovisorDireito">Retrovisor Direito</option>
-            <option value="retrovisorEsquerdo">Retrovisor Esquerdo</option>
-        </select>
-    </div>        
-
-    <div class="container-de-opcoes">
-        <div class="estado-da-peca">
+    <form class="form-servico" action="">
+        <h2 class="title">Faça agora o seu orçamento</h2>
         
-            <p class="titulo-estado-da-peca"></p> 
-            <label class="button-radio">
-                <input type="radio" name="estado-da-peca" value="true"></input>
-                Sim, tem dano
-            </label>
-            <label class="button-radio">
-                <input type="radio" name="estado-da-peca" value="false"></input>
-                Não. A peça é nova
-            </label>
-
-            <div class="mais-opcoes-da-peca esconder">
-                <div>
-                    <label>
-                        <input type="radio" name="tipo-de-dano" value="Arranhão"></input>
-                        Arranhão
-                    </label>
-                    <label>
-                        <input type="radio" name="tipo-de-dano" value="Arranhão + amassado"></input>
-                        Arranhão + amassado
-                    </label>
-                </div>
-
-                <div>
-                    <p>Medida do dano</p>
-                    <label>
-                        <input type="radio" name="dimensao-do-dano" value="Até 15 cm"></input>
-                        Até 15 cm
-                    </label>
-                    <label>
-                        <input type="radio" name="dimensao-do-dano" value="15 à 30 cm"></input>
-                        15 à 30 cm
-                    </label>
-                    <label>
-                        <input type="radio" name="dimensao-do-dano" value="Acima de 30 cm"></input>
-                        Acima de 30 cm
-                    </label>
-                </div>
-
-                <div class="pintura-completa esconder">
-                    <p>Pintura da peça completa?</p>
-                    <label>
-                        <input type="radio" name="pintura-completa" value="Sim"></input>
-                        Sim
-                    </label>
-                    <label>
-                        <input type="radio" name="pintura-completa" value="Nao"></input>
-                        Não
-                    </label>
-                </div>  
-            </div>                    
-        </div>    
-        
-        <div class="tipos-de-cor">
-            <p class="titulo-tipo-da-cor">Cor</p>
-            <label>
-                <input type="radio" name="tipo-da-cor" value="Sólida"></input>
-                Sólida
-            </label>
-            <label>
-                <input type="radio" name="tipo-da-cor" value="Metálica"></input>
-                Metálica
-            </label>
-            <label>
-                <input type="radio" name="tipo-da-cor" value="Perolizada"></input>
-                Perolizada
-            </label>
+        <div class="form-data">
+            <label class="input input-line" for="placa"> Placa </label>
+            <input id="placa" type="text" pattern="[A-Za-z]{3}[0-9]{1}[A-Za-z0-9]{1}[0-9]{2}" maxlength="7" placeholder="Ex.: ABC1D23"></input>
         </div>
-    </div>
 
-    <div class="form-servico__content-submit">
-        <button class="button btn-confirm" type="submit">
-            Receba seu orçamento
-        </button>
-    </div>
-</form>
+        <div class="form-data">
+            <label class="input input-line" for="nome"> Nome </label>
+            <input id="nome" type="text" maxlength="50" placeholder="Nome Completo"></input>
+        </div>        
+        
+        <div class="form-servico__cidade-estado">
+        
+            <div class="form-data">
+                <label class="input input-line cidade" for="cidade"> Cidade </label>
+                <input id="cidade" type="text" placeholder="Ex.: Vila Velha"></input>
+            </div>    
 
-<!-- Importação dos scpripts será feita via CDN do Github -->    
-<script src="https://autoglass-cdn.github.io/arquivos/styles/global/index.js"></script>    
-<script src="https://autoglass-cdn.github.io/arquivos/js/form-servicos.js"></script>
+            <div class="form-data">
+                <label class="input input-line estado" for="estados"> Estado </label>
+                <select class="select" name="uf" id="estados">
+                    <option value="" hidden="true">Selecione</option>
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AP">AP</option>
+                    <option value="AM">AM</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                </select>   
+            </div>        
+        </div>
+        
+        <div class="form-data">
+            <label class="input input-line" for="celular"> Celular </label>
+            <input id="celular" type="text" pattern="\d*" maxlength="15" placeholder="(XX) 9 1234-5678"></input>
+        </div>        
+        
+        <div class="form-data">
+            <label class="input input-line" for="email"> E-mail </label>
+            <input id="email" type="email" maxlength="100" placeholder="Digite seu e-mail principal"></input>
+        </div>        
+        
+        <div class="form-data">
+            <label class="input input-line"> Peças </label>
+            <select class="selecao-de-pecas" name="pecas[]" multiple="multiple">
+                <option value="capo">Capô</option>
+                <option value="colunaDoParabrisa">Coluna do Parabrisa</option>
+                <option value="colunaDoVidroTraseiro">Coluna do Vidro Traseiro</option>
+                <option value="lateralTraseiraDireita">Lateral Traseira Direita</option>
+                <option value="lateralTraseiraEsquerda">Lateral Traseira Esquerda</option>
+                <option value="paraChoqueDianteiro">Para-choque Dianteiro</option>
+                <option value="paraChoqueTraseiro">Para-choque Traseiro</option>
+                <option value="paralamaDianteiroDireito">Paralama Dianteiro Direito</option>
+                <option value="paralamaDianteiroEsquerdo">Paralama Dianteiro Esquerdo</option>
+                <option value="portaDianteiraDireita">Porta Dianteira Direita</option>
+                <option value="portaDianteiraEsquerda">Porta Dianteira Esquerda</option>
+                <option value="portaMala">Porta Mala</option>
+                <option value="portaTraseiraDireita">Porta Traseira Direita</option>
+                <option value="portaTraseiraEsquerda">Porta Traseira Esquerda</option>
+                <option value="retrovisorDireito">Retrovisor Direito</option>
+                <option value="retrovisorEsquerdo">Retrovisor Esquerdo</option>
+            </select>
+        </div>        
+
+        <div class="container-de-opcoes">
+            <div class="estado-da-peca">
+            
+                <p class="titulo-estado-da-peca"></p> 
+                <label class="button-radio">
+                    <input type="radio" name="estado-da-peca" value="true"></input>
+                    Sim, tem dano
+                </label>
+                <label class="button-radio">
+                    <input type="radio" name="estado-da-peca" value="false"></input>
+                    Não. A peça é nova
+                </label>
+
+                <div class="mais-opcoes-da-peca esconder">
+                    <div>
+                        <label>
+                            <input type="radio" name="tipo-de-dano" value="Arranhão"></input>
+                            Arranhão
+                        </label>
+                        <label>
+                            <input type="radio" name="tipo-de-dano" value="Arranhão + amassado"></input>
+                            Arranhão + amassado
+                        </label>
+                    </div>
+    
+                    <div>
+                        <p>Medida do dano</p>
+                        <label>
+                            <input type="radio" name="dimensao-do-dano" value="Até 15 cm"></input>
+                            Até 15 cm
+                        </label>
+                        <label>
+                            <input type="radio" name="dimensao-do-dano" value="15 à 30 cm"></input>
+                            15 à 30 cm
+                        </label>
+                        <label>
+                            <input type="radio" name="dimensao-do-dano" value="Acima de 30 cm"></input>
+                            Acima de 30 cm
+                        </label>
+                    </div>
+    
+                    <div class="pintura-completa esconder">
+                        <p>Pintura da peça completa?</p>
+                        <label>
+                            <input type="radio" name="pintura-completa" value="Sim"></input>
+                            Sim
+                        </label>
+                        <label>
+                            <input type="radio" name="pintura-completa" value="Nao"></input>
+                            Não
+                        </label>
+                    </div>  
+                </div>                    
+            </div>    
+            
+            <div class="tipos-de-cor">
+                <p class="titulo-tipo-da-cor">Cor</p>
+                <label>
+                    <input type="radio" name="tipo-da-cor" value="Sólida"></input>
+                    Sólida
+                </label>
+                <label>
+                    <input type="radio" name="tipo-da-cor" value="Metálica"></input>
+                    Metálica
+                </label>
+                <label>
+                    <input type="radio" name="tipo-da-cor" value="Perolizada"></input>
+                    Perolizada
+                </label>
+            </div>
+        </div>
+
+        <div class="form-servico__content-submit">
+            <button class="button btn-confirm" type="submit">
+                Receba seu orçamento
+            </button>
+        </div>
+    </form>
+
+    <!-- Importação dos scpripts será feita via CDN do Github -->    
+    <script src="https://autoglass-cdn.github.io/arquivos/styles/global/index.js"></script>    
+    <script src="https://autoglass-cdn.github.io/arquivos/js/form-servicos.js"></script>
