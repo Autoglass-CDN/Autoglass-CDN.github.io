@@ -760,15 +760,27 @@
     formBuscaPlaca.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      const placa = document.querySelector("#placa-input").value;
-      const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+      const [
+        isUniversalProduct,
+        redirectUrl
+      ] = checkIfUniversalProductSearch();
 
-      if(0 === placa.length) {
-        alert('Você deve inserir a placa do seu veículo!');
-      } else if(!placa.trim().match(regexPlaca)) {
-        alert('Sua placa não segue um padrão válido!');
+      if(isUniversalProduct) {
+        const modalDeCarregamento = new ModalDeCarregamento();
+        modalDeCarregamento.mostarSpinner();
+
+        location.href = redirectUrl;
       } else {
-        buscaPorPlaca(placa);
+        const placa = document.querySelector("#placa-input").value;
+        const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+  
+        if(0 === placa.length) {
+          alert('Você deve inserir a placa do seu veículo!');
+        } else if(!placa.trim().match(regexPlaca)) {
+          alert('Sua placa não segue um padrão válido!');
+        } else {
+          buscaPorPlaca(placa);
+        }
       }
     });
   }
@@ -899,16 +911,6 @@
   
     try {
       modalDeCarregamento.mostarSpinner();
-      
-      const [
-        isUniversalProduct,
-        redirectUrl
-      ] = checkIfUniversalProductSearch();
-
-      if(isUniversalProduct) {
-        location.href = redirectUrl;
-        return;
-      }
   
       const response = await fetch(
         // Foi configurado um Crawler em Pyhton nesse endereço que busca no Keplaca
@@ -1135,22 +1137,6 @@
         return this.value + this.message;
       };
     }
-
-    function checkIfUniversalProductSearch() {
-      if(select.routeSelected.length) {
-        const selectedRoute = select.routeSelected;
-        
-        if(
-          selectedRoute.includes('/borrachas') ||
-          selectedRoute.includes('/lampadas') ||
-          selectedRoute.includes('/filtros') ||
-          selectedRoute.includes('/higienizadores')
-        ) {
-          return [true, selectedRoute + '?PS=20&map=c,c']
-        }
-      }
-      return [false, ""];
-    }
   
     // const regexPotenciaDoMotor = /\d\.\d[A-z]/g;
     // const regexCaracteresAlfabeticos = /[A-z]/g;
@@ -1251,6 +1237,30 @@
     // }
   }
   
+  function checkIfUniversalProductSearch() {
+    const select = PLACA_SELECTS[0];
+
+    if(select.routeSelected.length) {
+      const selectedRoute = select.routeSelected;
+      
+      if(
+        selectedRoute.includes('/lampadas') ||
+        selectedRoute.includes('/filtros') ||
+        selectedRoute.includes('/higienizadores')
+      ) {
+        return [
+          true,
+          `${selectedRoute}?PS=20&map=c,c`
+        ];
+      } else if(selectedRoute.includes('/borrachas')) {
+        return [
+          true,
+          `/borrachas-e-outros/borracha/borracha-universal-parabrisa?PS=20&map=c,c,c`
+        ];
+      }
+    }
+    return [false, ""];
+  }
   class ModalDeCarregamento {
     constructor() {
       const listasDeResultados = document.querySelectorAll(
