@@ -1060,17 +1060,14 @@
 
     if(select.routeSelected.length) {
       const selectedRoute = select.routeSelected;
+      const universalProducts = ['/lampadas', '/filtros', '/higienizadores'];
       
-      if(
-        selectedRoute.includes('/lampadas') ||
-        selectedRoute.includes('/filtros') ||
-        selectedRoute.includes('/higienizadores')
-      ) {
+      if(universalProducts.some(o => selectedRoute.includes(o))) {
         return [
           true,
           `${selectedRoute}?PS=20&map=c,c`
         ];
-      } else if(selectedRoute.includes('/borrachas')) {
+      } else if(selectedRoute.includes('/borrachas-e-outros/borracha')) {
         return [
           true,
           `/borrachas-e-outros/borracha/borracha-universal-parabrisa?PS=20&map=c,c,c`
