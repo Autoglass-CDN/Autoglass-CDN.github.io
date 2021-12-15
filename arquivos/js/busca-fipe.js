@@ -88,11 +88,11 @@
         childrenCategories.push(...x.children);
       });
 
-    _initBucaPlaca(childrenCategories);
-    await _initBucaPeca(childrenCategories);
+    _initBuscaPlaca(childrenCategories);
+    await _initBuscaPeca(childrenCategories);
   }
 
-  async function _initBucaPeca(values) {
+  async function _initBuscaPeca(values) {
 
     PECA_SELECTS[0].values = values;
 
@@ -745,7 +745,7 @@
     },
   ];
 
-  function _initBucaPlaca(values) {
+  function _initBuscaPlaca(values) {
     
     PLACA_SELECTS[0].values = values;
 
@@ -760,15 +760,27 @@
     formBuscaPlaca.addEventListener('submit', (event) => {
       event.preventDefault();
       
-      const placa = document.querySelector("#placa-input").value;
-      const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+      const [
+        isUniversalProduct,
+        redirectUrl
+      ] = checkIfUniversalProductSearch();
 
-      if(0 === placa.length) {
-        alert('Você deve inserir a placa do seu veículo!');
-      } else if(!placa.trim().match(regexPlaca)) {
-        alert('Sua placa não segue um padrão válido!');
+      if(isUniversalProduct) {
+        const modalDeCarregamento = new ModalDeCarregamento();
+        modalDeCarregamento.mostarSpinner();
+
+        location.href = redirectUrl;
       } else {
-        buscaPorPlaca(placa);
+        const placa = document.querySelector("#placa-input").value;
+        const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+  
+        if(0 === placa.length) {
+          alert('Você deve inserir a placa do seu veículo!');
+        } else if(!placa.trim().match(regexPlaca)) {
+          alert('Sua placa não segue um padrão válido!');
+        } else {
+          buscaPorPlaca(placa);
+        }
       }
     });
   }
@@ -1040,6 +1052,28 @@
       ga('gaBPTracker.set', 'transport', 'beacon');
       ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${pathGerado}`);
     }
+  }
+
+  function checkIfUniversalProductSearch() {
+    const select = PLACA_SELECTS[0];
+
+    if(select.routeSelected.length) {
+      const selectedRoute = select.routeSelected;
+      const universalProducts = ['/lampadas', '/higienizadores-e-filtros/higienizadores'];
+      
+      if(universalProducts.some(o => selectedRoute.includes(o))) {
+        return [
+          true,
+          `${selectedRoute}?PS=20&map=c,c`
+        ];
+      } else if(selectedRoute.includes('/borrachas-e-outros/borracha')) {
+        return [
+          true,
+          `/borrachas-e-outros/borracha/borracha-universal-parabrisa?PS=20&map=c,c,c`
+        ];
+      }
+    }
+    return [false, ""];
   }
 
   class ModalDeCarregamento {
