@@ -1077,7 +1077,7 @@
 
     if(select.routeSelected.length) {
       const selectedRoute = select.routeSelected;
-      const universalProducts = ['/lampadas', '/filtros', '/higienizadores'];
+      const universalProducts = ['/lampadas', '/higienizadores-e-filtros/higienizadores'];
       
       if(universalProducts.some(o => selectedRoute.includes(o))) {
         return [
