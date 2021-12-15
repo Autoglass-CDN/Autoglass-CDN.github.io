@@ -1037,8 +1037,6 @@
 
       const pattern =  `${(isModeloStrada ? '^' : '')}${patternModelo}$|${patternMontadora} ${patternModelo}$`;
 
-      console.log(pattern);
-
       return new RegExp(pattern, "gi");
     }
   
