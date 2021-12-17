@@ -551,6 +551,10 @@ async function adicionarItensCrossSeling(orderForm) {
                 }
             }
         }).mount();
+        $('.compre-junto').show();
+    }
+    else {
+        $('.compre-junto').hide();
     }
 }
 
