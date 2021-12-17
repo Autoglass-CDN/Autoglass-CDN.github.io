@@ -545,9 +545,6 @@ async function adicionarItensCrossSeling(orderForm) {
                 },
                 750: {
                     perPage: 1,
-                },
-                400:{
-                    perPage: 0,
                 }
             }
         }).mount();
