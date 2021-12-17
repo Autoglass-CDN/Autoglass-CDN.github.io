@@ -243,7 +243,7 @@ $(window).on('load', () => {
             await loadScript("/arquivos/jquery-ui.datepicker.js");
             await loadScript('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.7.1/slick.js');
             await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
-          	await loadScript('https://autoglass-cdn.github.io/src/js/checkout.js');
+          	await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
 
