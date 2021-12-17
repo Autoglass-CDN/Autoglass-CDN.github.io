@@ -88,11 +88,11 @@
         childrenCategories.push(...x.children);
       });
 
-    _initBucaPlaca(childrenCategories);
-    await _initBucaPeca(childrenCategories);
+    _initBuscaPlaca(childrenCategories);
+    await _initBuscaPeca(childrenCategories);
   }
 
-  async function _initBucaPeca(values) {
+  async function _initBuscaPeca(values) {
 
     PECA_SELECTS[0].values = values;
 
@@ -745,7 +745,7 @@
     },
   ];
 
-  function _initBucaPlaca(values) {
+  function _initBuscaPlaca(values) {
     
     PLACA_SELECTS[0].values = values;
 
@@ -760,15 +760,27 @@
     formBuscaPlaca.addEventListener('submit', (event) => {
       event.preventDefault();
       
-      const placa = document.querySelector("#placa-input").value;
-      const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+      const [
+        isUniversalProduct,
+        redirectUrl
+      ] = checkIfUniversalProductSearch();
 
-      if(0 === placa.length) {
-        alert('Você deve inserir a placa do seu veículo!');
-      } else if(!placa.trim().match(regexPlaca)) {
-        alert('Sua placa não segue um padrão válido!');
+      if(isUniversalProduct) {
+        const modalDeCarregamento = new ModalDeCarregamento();
+        modalDeCarregamento.mostarSpinner();
+
+        location.href = redirectUrl;
       } else {
-        buscaPorPlaca(placa);
+        const placa = document.querySelector("#placa-input").value;
+        const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+  
+        if(0 === placa.length) {
+          alert('Você deve inserir a placa do seu veículo!');
+        } else if(!placa.trim().match(regexPlaca)) {
+          alert('Sua placa não segue um padrão válido!');
+        } else {
+          buscaPorPlaca(placa);
+        }
       }
     });
   }
@@ -1008,17 +1020,34 @@
       if(montadoraTerms[0].toUpperCase() === 'VOLKSWAGEN') {
         montadoraTerms.push('VW');
       }
-  
-      const modeloSemMontadora = modelo.replace(
-        new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ")[0];
+
+      if(montadoraTerms[0].toUpperCase() === 'GM') {
+        montadoraTerms.push('CHEV');
+      }
+
+      const modeloSemMontadoraTerms = modelo.replace(
+        new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ");
+
+      const newVariants = ['NOVA', 'NOVO'];
+      let modeloSemMontadora = newVariants.some(
+          e => modeloSemMontadoraTerms.find((o) => o.toUpperCase() === e)
+        ) ? modeloSemMontadoraTerms[1]
+          : modeloSemMontadoraTerms[0];
+
+      if(modeloSemMontadoraTerms[0].toUpperCase() === 'PAJERO' && modeloSemMontadoraTerms[1]) {
+        modeloSemMontadora = modeloSemMontadoraTerms[0] + ' ' + modeloSemMontadoraTerms[1];
+      }
+
       const modeloSemCaractesEspeciais = modeloSemMontadora.replace(/[\W]+/gi, "");
-      
+
       const patternMontadora = `(${montadoraTerms.join('|')})`;
       const patternModelo = modeloSemMontadora === modeloSemCaractesEspeciais
         ? modeloSemMontadora
         : `(${modeloSemMontadora}|${modeloSemCaractesEspeciais})`;
 
-      const pattern = `${patternModelo}$|${patternMontadora} ${patternModelo}$`;
+      const isModeloStrada = modeloSemCaractesEspeciais.toUpperCase() === 'STRADA';
+
+      const pattern =  `${(isModeloStrada ? '^' : '')}${patternModelo}$|${patternMontadora} ${patternModelo}$`;
 
       return new RegExp(pattern, "gi");
     }
@@ -1040,6 +1069,28 @@
       ga('gaBPTracker.set', 'transport', 'beacon');
       ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${pathGerado}`);
     }
+  }
+
+  function checkIfUniversalProductSearch() {
+    const select = PLACA_SELECTS[0];
+
+    if(select.routeSelected.length) {
+      const selectedRoute = select.routeSelected;
+      const universalProducts = ['/lampadas', '/higienizadores-e-filtros/higienizadores'];
+      
+      if(universalProducts.some(o => selectedRoute.includes(o))) {
+        return [
+          true,
+          `${selectedRoute}?PS=20&map=c,c`
+        ];
+      } else if(selectedRoute.includes('/borrachas-e-outros/borracha')) {
+        return [
+          true,
+          `/borrachas-e-outros/borracha/borracha-universal-parabrisa?PS=20&map=c,c,c`
+        ];
+      }
+    }
+    return [false, ""];
   }
 
   class ModalDeCarregamento {

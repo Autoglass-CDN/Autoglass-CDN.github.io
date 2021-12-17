@@ -1012,7 +1012,7 @@
     function obterRegexMontadoras(montadora) {
       return new RegExp(montadora.split(" ").join("|"), "gi");
     }
-  
+
     function obterRegexModelos(montadora, modelo) {
       const montadoraTerms = montadora.split(" ")
         .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
@@ -1020,9 +1020,24 @@
       if(montadoraTerms[0].toUpperCase() === 'VOLKSWAGEN') {
         montadoraTerms.push('VW');
       }
-  
-      const modeloSemMontadora = modelo.replace(
-        new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ")[0];
+
+      if(montadoraTerms[0].toUpperCase() === 'GM') {
+        montadoraTerms.push('CHEV');
+      }
+
+      const modeloSemMontadoraTerms = modelo.replace(
+        new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ");
+
+      const newVariants = ['NOVA', 'NOVO'];
+      let modeloSemMontadora = newVariants.some(
+          e => modeloSemMontadoraTerms.find((o) => o.toUpperCase() === e)
+        ) ? modeloSemMontadoraTerms[1]
+          : modeloSemMontadoraTerms[0];
+
+      if(modeloSemMontadoraTerms[0].toUpperCase() === 'PAJERO' && modeloSemMontadoraTerms[1]) {
+        modeloSemMontadora = modeloSemMontadoraTerms[0] + ' ' + modeloSemMontadoraTerms[1];
+      }
+
       const modeloSemCaractesEspeciais = modeloSemMontadora.replace(/[\W]+/gi, "");
 
       const patternMontadora = `(${montadoraTerms.join('|')})`;
@@ -1030,7 +1045,9 @@
         ? modeloSemMontadora
         : `(${modeloSemMontadora}|${modeloSemCaractesEspeciais})`;
 
-      const pattern = `${patternModelo}$|${patternMontadora} ${patternModelo}$`;
+      const isModeloStrada = modeloSemCaractesEspeciais.toUpperCase() === 'STRADA';
+
+      const pattern =  `${(isModeloStrada ? '^' : '')}${patternModelo}$|${patternMontadora} ${patternModelo}$`;
 
       return new RegExp(pattern, "gi");
     }
@@ -1060,17 +1077,14 @@
 
     if(select.routeSelected.length) {
       const selectedRoute = select.routeSelected;
+      const universalProducts = ['/lampadas', '/higienizadores-e-filtros/higienizadores'];
       
-      if(
-        selectedRoute.includes('/lampadas') ||
-        selectedRoute.includes('/filtros') ||
-        selectedRoute.includes('/higienizadores')
-      ) {
+      if(universalProducts.some(o => selectedRoute.includes(o))) {
         return [
           true,
           `${selectedRoute}?PS=20&map=c,c`
         ];
-      } else if(selectedRoute.includes('/borrachas')) {
+      } else if(selectedRoute.includes('/borrachas-e-outros/borracha')) {
         return [
           true,
           `/borrachas-e-outros/borracha/borracha-universal-parabrisa?PS=20&map=c,c,c`
