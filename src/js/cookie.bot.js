@@ -23,20 +23,19 @@
                 showCookieBanner();
             }
         } else {
-            $.ajax({
-                type: 'POST',
-                url: baseUrlApi,
-                dataType: 'json',
-                contentType: 'application/json',
-                data: JSON.stringify({
+            fetch(baseUrlApi, {
+                method: 'POST',
+                headers: (() => {
+                    let headers = new Headers();
+                    headers.append("Content-Type", "application/json");
+                    return headers;
+                })(),
+                body: {
                     "CodigoCompra": $('#order-id').html(),
                     "DataAceite": cookie ? new Date(cookie.acceptedAt) : null,
-                    "MaiorIdade": cookie.adulthood
-                }),
-                success: function (res) {
-                    console.log(res);
+                    "MaiorIdade": cookie.accepted
                 }
-            });
+            }).then(res => console.log(res));
         }
     }
 
