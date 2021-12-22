@@ -151,18 +151,18 @@ const Installment = {
     $('#input-cep-btn').trigger('click');
 
     //if (!$('#mostrar-datas-datepicker').datepicker("option", "onSelect")) {
-    $('#mostrar-datas-datepicker').datepicker(
-      "option",
-      "onSelect",
-      (date) => {
-        $("#confirmacao-servico-movel").html('');
+      $('#mostrar-datas-datepicker').datepicker(
+        "option",
+        "onSelect",
+        (date) => {
+          $("#confirmacao-servico-movel").html('');
 
-        $("#confirmacao-servico-movel")
-          .append(agendamentoCasaService.textoConfirmacao(date))
-          .append(agendamentoCasaService.createConfirmationButton())
-          .fadeIn(500);
-      }
-    )
+          $("#confirmacao-servico-movel")
+            .append(agendamentoCasaService.textoConfirmacao(date))
+            .append(agendamentoCasaService.createConfirmationButton())
+            .fadeIn(500);
+        }
+      )
     //}
 
   }
@@ -495,7 +495,7 @@ function AgendamentoCasaService() {
           </strong>, foi solicitado.
           </p>
           <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
-      );
+        );
       $("#loader").addClass("hidden");
     }).fail(function (err) {
       $(".msg-agendamento")
@@ -510,3 +510,207 @@ function AgendamentoCasaService() {
     });
   }
 }
+
+
+/*
+function loadScript(src, callback) {
+  var script = document.createElement("script");
+  script.type = "text/javascript";
+
+  if (script.readyState) {
+    //IE
+    script.onreadystatechange = function () {
+      if (script.readyState == "loaded" || script.readyState == "complete") {
+        script.onreadystatechange = null;
+        callback();
+      }
+    };
+  } else {
+    //Others
+    script.onload = function () {
+      callback();
+    };
+  }
+
+  script.src = src;
+  document.getElementsByTagName("head")[0].appendChild(script);
+}
+
+var dadosCompra, Cliente;
+
+setTimeout(() => {
+  $.ajax({
+    jsonp: false,
+    url: `/api/checkout/pub/orders/${$("#order-id").text().trim()}`,
+    contentType: "application/json",
+    type: "GET",
+  }).done(function (data) {
+    dados = data;
+    let temInstalacao = data.items.some(
+      (item) => item.additionalInfo.brandId == "2000108"
+    );
+
+    if (temInstalacao) {
+      Cliente = {
+        NomeCliente: `${data.clientProfileData.firstName} ${data.clientProfileData.lastName}`,
+        CPF: "",
+        Email: `${data.clientProfileData.email}`,
+        Telefone: `${data.clientProfileData.phone}`,
+        Endereco: `${data.shippingData.address.street}, ${data.shippingData.address.number}, ${data.shippingData.address.complement}, ${data.shippingData.address.neighborhood} - ${data.shippingData.address.city} - ${data.shippingData.address.state}`,
+        CEP: `${data.shippingData.address.postalCode}`,
+      };
+
+      loadScript("/scripts/jquery.ui.core.js", () =>
+        loadScript("/arquivos/jquery.cookie.js", () => {
+          $.cookie("mzLocationUF", data.shippingData.address.state);
+          loadScript("/arquivos/jquery-ui.datepicker.js", () =>
+            loadScript("/arquivos/consulta-agendamento.dev.js", () => {
+              calculateAvailableAppointmentDate(data);
+
+              $(".agendamento-instalacao").removeClass("hidden");
+
+              $("body").on("DOMSubtreeModified", ".store-list", function () {
+                $(".timestamp").on("click").unbind();
+                $(".timestamp").on("click", function () {
+                  $(".timestamp.active").removeClass("active");
+                  $(".store.active").removeClass("active");
+                  $(this).addClass("active");
+                  $(this).closest(".store").addClass("active");
+                  $("#confirmacao-agendamento")
+                    .hide()
+                    .empty()
+                    .append(
+                      textoConfirmacao(
+                        $("#alterar-data-input").val(),
+                        $(".timestamp.active").text(),
+                        $(this).closest(".store").find(".store-name").text()
+                      )
+                    )
+                    .append(createConfirmationButton())
+                    .fadeIn(500);
+
+                  $(".store:not(.active) .time").addClass("hidden");
+                  $("html, body").animate(
+                    {
+                      scrollTop:
+                        $("#confirmacao-agendamento").offset().top - 200,
+                    },
+                    500
+                  );
+                });
+              });
+            })
+          );
+        })
+      );
+    }
+  });
+
+let script = document.createElement("script");
+  script.type = "text/javascript";
+
+  script.src = "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c";
+  script.id = "ze-snippet";
+  document.getElementsByTagName("head")[0].appendChild(script);
+
+}, 1000);
+
+function textoConfirmacao(data, hora, loja) {
+  return `<p>Você selecionou <span class="agendamento"><span id="agendamento-data">${data}</span> às <span id="agendamento-hora">${hora}</span> na <span id="agendamento-loja">${loja}</span></span>.
+      <br>
+      <strong>Deseja confirmar o agendamento da instalação para essa data/horário?</strong>
+    </p>`;
+}
+
+function createConfirmationButton() {
+  let btn = document.createElement("button");
+  btn.id = "btn-confirmar-agendamento";
+  btn.innerText = "Agendar";
+  $(btn).on("click", solicitarAgendamento);
+
+  return btn;
+}
+
+function solicitarAgendamento() {
+  let body = { ...agendamento(), Cliente };
+  $(".agendamento-instalacao").addClass("hidden");
+  $("#loader").removeClass("hidden");
+  $("html, body").animate(
+    {
+      scrollTop: $("#loader").offset().top - 200,
+    },
+    500
+  );
+
+  return $.ajax({
+    crossDomain: true,
+    jsonp: false,
+    url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamento",
+    contentType: "application/json",
+    type: "POST",
+    data: JSON.stringify(body),
+  })
+    .done(function (data) {
+      $(".msg-agendamento")
+        .removeClass("hidden erro")
+        .addClass("info")
+        .html(
+          `<h3>Sua solicitação foi enviada!</h3><p>O agendamento de instalação em <strong>${$(
+            "#agendamento-loja"
+          )
+            .text()
+            .trim()}</strong>, no dia <strong>${$("#agendamento-data")
+            .text()
+            .trim()}</strong> às <strong>${$("#agendamento-hora")
+            .text()
+            .trim()}</strong> foi solicitado.</p> <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
+        );
+      $("#loader").addClass("hidden");
+    })
+    .fail(function (err) {
+      $(".msg-agendamento")
+        .removeClass("hidden info")
+        .addClass("erro")
+        .html(
+          `<h3>Erro no agendamento</h3><p>${
+            err.Message ||
+            "Ocorreu um erro não identificado na solicitação de agendamento. Fique tranquilo, nossos consultores estrarão em contato por telefone para concluir o agendamento. Se preferir, tente novamente ou <strong><a href=\"javascript:$zopim.livechat.window.show();\">clique aqui</a></strong> e fale conosco pelo chat.</strong>."
+          }</p>`
+        );
+      $(".agendamento-instalacao").removeClass("hidden");
+      $("#loader").addClass("hidden");
+    });
+}
+
+function agendamento() {
+  return {
+    CodigoPedidoVTEX: $("#order-id").text(),
+    Unidade: $("#agendamento-loja").text().trim(),
+    DataInstalacao: $("#agendamento-data").text().trim(),
+    HoraInstalacao: $("#agendamento-hora").text().trim(),
+  };
+}
+
+
+function calculateAvailableAppointmentDate(data) {
+  const { days } = getShippingEstimate(data.shippingData);
+
+  const estimateDate = new Date();
+  estimateDate.setDate(estimateDate.getDate() + parseInt(days) + 1);
+
+  const minDate = new Date();
+  minDate.setDate(estimateDate.getDate() + (estimateDate.getDay() === 6 ? 2 : 1));
+
+  $(".secao-agendamento > .store-list > .filter > .data input").datepicker("option", "minDate", minDate);
+}
+
+function getShippingEstimate(shippingData) {
+  const [adressSelect] = shippingData.logisticsInfo;
+  const selectedSla = adressSelect.selectedSla;
+  const sla = adressSelect.slas.find(x => x.id === selectedSla || x.name === selectedSla);
+
+  const [, days, type] = sla.shippingEstimate.match(/(\d+)(\w+)/);
+
+  return { days, type }
+}
+*/
