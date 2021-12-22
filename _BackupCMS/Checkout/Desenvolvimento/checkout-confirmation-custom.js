@@ -95,7 +95,7 @@ async function loadScripts(data) {
     script => script.id = "ze-snippet"
   );
 
-  loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
+  loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
 }
 
 const Installment = {
