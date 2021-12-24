@@ -35,6 +35,8 @@
                 Service.saveAddressOnLocalStorage(orderForm.shippingData);
             }
 
+            let address = getCurrentAddress(orderForm);
+
             $(CONFIG.SELECTOR).each(function (_, cepContainer) {
                 $(cepContainer).html("").addClass("ghost-loading");
 
@@ -43,21 +45,9 @@
                 );
                 cepContainer.id = "cep" + _;
 
-                $(modalContent).css("position", "relative");
+                //$(modalContent).css("position", "relative");
                 $(modalContent).css("overflow", "hidden");
                 $(modalContent).css("min-height", "150px");
-
-                let address;
-                let isCheckout = window.location.href.includes("/checkout");
-                let ufDefinedByTop = +localStorage.getItem("ufDefinedByTop");
-
-                if (!isCheckout && ufDefinedByTop) {
-                    address = null;
-                } else {
-                    if (orderForm.shippingData) {
-                        address = orderForm.shippingData.address;
-                    }
-                }
 
                 View.renderCepInfo(cepContainer, modalContent, address);
 
@@ -81,11 +71,76 @@
                 });
             });
 
+            checkIfNoAddressAndPreRenderCepView(orderForm);
+
             window.dispatchEvent(
                 new CustomEvent(CONFIG.EVENTS.FINISH_LOAD, {
                     detail: orderForm,
                 })
             );
+        }
+
+        function getCurrentAddress(orderForm) {
+            let address;
+            const isCheckout  = window.location.href.includes("/checkout");
+            const ufDefinedByTop = +localStorage.getItem("ufDefinedByTop");
+
+            if (!isCheckout && ufDefinedByTop) {
+                address = null;
+            } else if (orderForm.shippingData) {
+                address = orderForm.shippingData.address;
+            }
+
+            return address;
+        }
+
+        function checkIfNoAddressAndPreRenderCepView(orderForm) {
+            const containersList = {
+                'mz-pu-on': {
+                    rendered: false,
+                    container: '.mz-content'
+                },
+                'mz-in-on': {
+                    rendered: false,
+                    container: '.secao-agendamento'
+                },
+                'mz-as-on': {
+                    rendered: false,
+                    container: '.mz-advantages__content'
+                },
+                'mz-sf-on': {
+                    rendered: false,
+                    container: '.mz-shipping-cep-content'
+                }
+            }
+
+            const mutationObserver = new MutationObserver((mutations) => {
+                const address = getCurrentAddress(orderForm);
+                
+                if(!address) {
+                    mutations.forEach(mutation => {
+                        if (mutation.attributeName === 'class') {
+                            const classList = mutation.target.classList;
+
+                            for (let _class in containersList) {
+                                if(classList.contains(_class) && !containersList[_class].rendered) {
+                                    containersList[_class].rendered = true;
+                                    View.renderNewCep(containersList[_class].container);
+                                }
+                            }
+                        }
+                    });
+                }
+            });
+
+            mutationObserver.observe(
+                document.getElementsByTagName('body')[0],
+                { attributes: true }
+            );
+
+            $(window).on("orderFormUpdated.vtex", (_, order) => {
+                orderForm = order;
+            });
         }
 
         function formatAddress(address) {
@@ -145,6 +200,7 @@
     function ViewAPI() {
         return {
             renderCepInfo,
+            renderNewCep,
         };
 
         function renderCepInfo(cepContainer, modalContent, address) {
@@ -192,7 +248,7 @@
 
             $(`#${cepContainer.id} .cep-info__location-button`).click(() => {
                 modalContent
-                    ? _renderNewCep(modalContent)
+                    ? renderNewCep(modalContent)
                     : console.error(
                           CONFIG.LOCAL_TO_RENDER_CEP +
                               " não encontrado. Id: " +
@@ -201,7 +257,7 @@
             });
         }
 
-        function _renderNewCep(modalContent) {
+        function renderNewCep(modalContent) {
             $(modalContent).append(`
 				<div class="cep-new">
 					<div class="cep-new__content">
