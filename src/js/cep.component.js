@@ -132,7 +132,6 @@
                     });
                 }
             });
-            
 
             mutationObserver.observe(
                 document.getElementsByTagName('body')[0],
