@@ -45,7 +45,6 @@
                 );
                 cepContainer.id = "cep" + _;
 
-                //$(modalContent).css("position", "relative");
                 $(modalContent).css("overflow", "hidden");
                 $(modalContent).css("min-height", "150px");
 
@@ -125,7 +124,7 @@
                             for (let _class in containersList) {
                                 if(classList.contains(_class) && !containersList[_class].rendered) {
                                     containersList[_class].rendered = true;
-                                    View.renderNewCep(containersList[_class].container);
+                                    View.renderNewCep(containersList[_class].container, address);
                                 }
                             }
                         }
@@ -248,7 +247,7 @@
 
             $(`#${cepContainer.id} .cep-info__location-button`).click(() => {
                 modalContent
-                    ? renderNewCep(modalContent)
+                    ? renderNewCep(modalContent, address)
                     : console.error(
                           CONFIG.LOCAL_TO_RENDER_CEP +
                               " não encontrado. Id: " +
@@ -257,7 +256,7 @@
             });
         }
 
-        function renderNewCep(modalContent) {
+        function renderNewCep(modalContent, address) {
             $(modalContent).append(`
 				<div class="cep-new">
 					<div class="cep-new__content">
@@ -288,9 +287,13 @@
 							</button>
 						</form>
 					</div>
-					<div class="cep-new__footer">
-						<button id="cep-back-button" type="button" class="cep-new__footer-back-button">Voltar</button>
-					</div>
+					${address ?
+                        '<div class="cep-new__footer">\
+						    <button id="cep-back-button" type="button" class="cep-new__footer-back-button">Voltar</button>\
+					    </div>'
+                        :
+                        ''
+                    }
 				</div>
 			`);
 
