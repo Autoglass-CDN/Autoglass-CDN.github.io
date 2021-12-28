@@ -1,7 +1,8 @@
 /* Possível padrão de layout */
 :root {
     --color-blue: #003DA5;
-    --color-green: #42b942;
+    --color-green: #43C452;
+    --color-green-hover: #33a140;
     --color-silver: #b4b4b4;
 }
 
@@ -43,8 +44,14 @@ input {
 }
 
 .btn-confirm {
-    color: white;
+    font-size:14px;
+	color: #FFF;
+	font-weight: 600;
     background-color: var(--color-green);
+}
+
+.btn-confirm:hover {
+    background-color: var(--color-green-hover);
 }
 
 .select {

@@ -10,34 +10,34 @@
 }
 
 #vtexIdContainer {
-    background-color: rgba(0,0,0,0.8) !important;
-    position: fixed !important
+    background-color: rgba(0,0,0,0.8) ;
+    position: fixed 
 }
 
 
 @media (max-width: 998px) {
     #vtexIdContainer .vtexIdUI-show-app {
-        background-color:rgba(0,0,0,0.005) !important;
-        z-index: 9 !important
+        background-color:rgba(0,0,0,0.005) ;
+        z-index: 9 
     }
 
     #vtexIdContainer .vtexIdUI-classic-login {
         display: block;
-        top: 250px !important
+        top: 250px 
     }
 
     #vtexIdContainer .vtexIdUI .modal-header,#vtexIdContainer .vtexIdUI .modal-footer {
-        background: none !important
+        background: none 
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn {
-        width:100% !important;
-        background-color: rgba(41,216,70,0.75) !important;
-        border-radius: 3px !important
+        width:100% ;
+        background-color: rgba(41,216,70,0.75) ;
+        border-radius: 3px 
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
-        border: none !important
+        border: none 
     }
 
     #vtexIdContainer .vtexIdUI .modal-header .close {
@@ -45,9 +45,9 @@
         border: 2px solid #FFF;
         width: 30px;
         height: 30px;
-        font-size: 18px !important;
-        right: 5px !important;
-        top: 25px !important;
+        font-size: 18px ;
+        right: 5px ;
+        top: 25px ;
     }
 
     #vtexIdContainer .vtexIdUI-heading span {
@@ -67,19 +67,19 @@
     }
 
     #vtexIdContainer .vtexIdUI .modal-header {
-        border: none !important
+        border: none 
     }
 
     #vtexIdContainer #loginWithAccessKeyBtn {
-        background: #FFF !important;
+        background: #FFF ;
         color: #5887F9;
         border-radius: 5px;
-        margin-top: -10px !important;
+        margin-top: -10px ;
         width: fit-content;
         margin: 0 auto;
         height: 50px;
-        padding-left: 10px !important;
-        padding-right: 10px !important;
+        padding-left: 10px ;
+        padding-right: 10px ;
         position: relative;
         font-size: 12px;
     }
@@ -89,24 +89,24 @@
     }
 
     #vtexIdContainer #vtexIdUI-auth-selector div {
-        background: none !important
+        background: none 
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login * {
-        background: none !important;
+        background: none ;
         overflow-y: inherit
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link {
-        display: none !important
+        display: none 
     }
 
 
     #vtexIdContainer #vtexIdUI-form-classic-login .modal-header .vtexIdUI-heading {
-        font-family: 'Open Sans','Droid Sans',Tahoma,Arial,sans-serif !important;
-        font-size: 16px !important;
-        width: 100% !important;
-        padding-bottom: 20px !important
+        font-family: 'Open Sans','Droid Sans',Tahoma,Arial,sans-serif ;
+        font-size: 16px ;
+        width: 100% ;
+        padding-bottom: 20px 
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login * {
@@ -114,35 +114,35 @@
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login input {
-        border-bottom: 1px solid #FFF !important;
-        border-radius: 0 !important;
-        box-shadow: none !important;
+        border-bottom: 1px solid #FFF ;
+        border-radius: 0 ;
+        box-shadow: none ;
         border: none;
-        color: #FFF !important
+        color: #FFF 
     }
 
     #vtexIdContainer .vtexIdUI .modal-footer {
-        box-shadow: none !important;
-        border: none !important
+        box-shadow: none ;
+        border: none 
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd {
         background-color: #FFF;
-        height: 100% !important
+        height: 100% 
     }
 
 
     #vtexIdContainer #vtexIdUI-change-pswd .modal-body * {
-        color: #999 !important
+        color: #999 
     }
 
     #vtexIdContainer #vtexIdUI-email-confirmation {
         background-color: #FFF;
-        height: 100% !important
+        height: 100% 
     }
 
     #vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close {
-        display: none !important
+        display: none 
     }
 
     #vtexIdContainer #loginWithUserAndPasswordBtn {
@@ -150,27 +150,27 @@
     }
 
     #vtexIdContainer #vtexIdUI-confirm-access-code {
-        height: 100% !important;
+        height: 100% ;
         background: #FFF
     }
 
     #vtexIdContainer .vtexIdUI-back-link {
-        width: 30px !important;
-        height: 30px !important;
-        right: 5px !important;
-        top: 0 !important;
-        color: #9a9a9a !important;
+        width: 30px ;
+        height: 30px ;
+        right: 5px ;
+        top: 0 ;
+        color: #9a9a9a ;
         position: absolute;
-        font-size: 12px !important;
+        font-size: 12px ;
         padding: 8px 6px 0 0;
     }
 
     #vtexIdContainer .vtexIdUI-back-link span {
-        display: none !important
+        display: none 
     }
 
     #vtexIdContainer .vtexIdUI label {
-        color: #FFF !important
+        color: #FFF 
     }
 
     #vtexIdContainer .vtexIdUI-close {
@@ -182,19 +182,19 @@
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
-        border-radius: 7px !important;
-        padding: 7px 5px 2px 5px !important;
-        color: #333 !important
+        border-radius: 7px ;
+        padding: 7px 5px 2px 5px ;
+        color: #333 
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .modal-header {
-        color: #333 !important
+        color: #333 
     }
 
     #vtexIdContainer .vtexIdUI {
         position: fixed;
         top: 0 ;
-        height: 100% !important;
+        height: 100% ;
         width: 100% ;
         margin-left: 0 ;
         left: 0;
@@ -213,7 +213,7 @@
         box-shadow: none;
         background-color: transparent;
         margin-right: 15px;
-        background-image: url(https://www.autoglass.com.br/ecommerce/svg/mail.svg) !important;
+        background-image: url(https://www.autoglass.com.br/ecommerce/svg/mail.svg) ;
         filter: invert(1)
     }
 
@@ -227,7 +227,7 @@
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login h4 span {
-        color: transparent !important;
+        color: transparent ;
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login h4 span:before {
@@ -273,7 +273,7 @@
 @media (min-width: 998px) {
 
     #vtexIdContainer ul.vtexIdUI-providers-list li:nth-child(2)>button {
-        margin-top: 25px !important;
+        margin-top: 25px ;
     }
 
     #vtexIdContainer .vtexIdUI #vtexIdUI-google-plus {
@@ -298,11 +298,11 @@
     }
 
     #vtexIdContainer #loginWithAccessKeyBtn {
-        margin: 0 !important
+        margin: 0 
     }
 
     #vtexIdContainer .vtexIdUI #vtexIdUI-google-plus {
-        top: 0 !important
+        top: 0 
     }
 
     #vtexIdContainer ul.vtexIdUI-providers-list li:first-child {
@@ -342,7 +342,7 @@
     }
 
     #vtexIdContainer div#vtexIdUI-classic-login {
-        width: 340px !important;
+        width: 340px ;
         margin-left: 30px
     }
 
@@ -356,12 +356,12 @@
     }
 
     #vtexIdContainer .vtexIdUI .modal-header,#vtexIdContainer .vtexIdUI .modal-footer {
-        background: none !important
+        background: none 
     }
 
     #vtexIdContainer .vtexIdUI .btn-success {
-        border: none !important;
-        box-shadow: none !important
+        border: none ;
+        box-shadow: none 
     }
 
 
@@ -378,11 +378,11 @@
     }
 
     #vtexIdContainer .vtexIdUI .modal-header .close:hover {
-        opacity: 1 !important
+        opacity: 1 
     }
 
     #vtexIdContainer .vtexIdUI-auth-code .modal-body {
-        margin-top: 30px !important
+        margin-top: 30px 
     }
 
     #vtexIdContainer div#vtexIdUI-auth-selector {
@@ -405,7 +405,7 @@
     #vtexIdContainer #loginWithAccessKeyBtn,
     #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn
      {
-        background: #234EB9 !important;
+        background: #234EB9 ;
         color: #FFF;
         border-radius: 5px ;
         font-size: 14px;
@@ -415,13 +415,13 @@
 
     #vtexIdContainer #loginWithAccessKeyBtn:hover,
     #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn:hover {
-        background-color: #223B76 !important
+        background-color: #223B76 
     }
 
 
 
     #vtexIdContainer .vtexIdUI .modal-header .close:active {
-        outline: none !important
+        outline: none 
     }
 
 
@@ -488,15 +488,15 @@
     }
 
     #vtexIdContainer #loginWithAccessKeyBtn i {
-        display: none !important
+        display: none 
     }
 
     #vtexIdContainer #vtexIdUI-auth-selector div {
-        background: none !important
+        background: none 
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login * {
-        background: none !important;
+        background: none ;
         overflow-y: inherit
     }
 
@@ -504,17 +504,17 @@
     
 
     #vtexIdContainer a.dead-link.pull-right {
-        color: #234eb9 !important;
+        color: #234eb9 ;
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link {
-        display: none !important
+        display: none 
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login .modal-header .vtexIdUI-heading {
         width: 100%;
         float: left;
-        margin: 5px 0 0 0 !important;
+        margin: 5px 0 0 0 ;
         padding-bottom: 20px 
     }
 
@@ -549,7 +549,7 @@
     }
 
     #vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close {
-        display: none !important
+        display: none 
     }
 
     #vtexIdContainer #loginWithUserAndPasswordBtn {
@@ -583,11 +583,11 @@
     
 
     #vtexIdContainer .vtexIdUI label {
-        color: #808080 !important
+        color: #808080 
     }
 
     #vtexIdContainer .vtexIdUI-close {
-        display: block !important
+        display: block 
     }
 
     #vtexIdContainer .vtexIdUI .vtexid-icon-lock.bottom-icon {
@@ -595,31 +595,31 @@
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
-        border-radius: 7px !important;
-        padding: 7px 5px 2px 5px !important;
-        color: #333 !important
+        border-radius: 7px ;
+        padding: 7px 5px 2px 5px ;
+        color: #333 
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .modal-header {
-        color: #333 !important
+        color: #333 
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .btn-success {
-        background-color: #fff !important;
-        text-shadow: none !important;
-        border-radius: 7px !important
+        background-color: #fff ;
+        text-shadow: none ;
+        border-radius: 7px 
     }
 
     #vtexIdContainer .vtexIdUI {
-        position: fixed !important;
-        top: 150px !important;
-        height: 400px !important;
-        width: 780px !important;
-        background: #fff !important;
+        position: fixed ;
+        top: 150px ;
+        height: 400px ;
+        width: 780px ;
+        background: #fff ;
         left: 0;
         right: 0;
-        margin-left: auto !important;
-        margin-right: auto !important
+        margin-left: auto ;
+        margin-right: auto 
     }
 
     #vtexIdContainer .vtexIdUI-heading {
@@ -640,14 +640,21 @@
 }
 
 #vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success {
-    color: #ffffff;
-    background-color: #43c452 !important;
+	font-size: 14px;
+    color: #fff;
+	font-weight: 600;
+	border: #43C452 solid;
+    background-color: #43C452 ;
     background-image: none;
     margin-right: 44%;
     right: -60px;
     width: 180px;
 }
 
+#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success:hover {
+	border: #33a140 solid;
+    background-color: #33a140 ;
+}
 
 #vtexIdContainer .vtexIdUI .alert {
     bottom: -10px;
@@ -667,7 +674,7 @@
 }
 
 #vtexIdContainer .vtexIdUI-back-link {
-    text-decoration: none !important;
+    text-decoration: none ;
     outline: none;
     margin-right: 6px;
 }
@@ -683,11 +690,11 @@
 
 #vtexIdContainer .vtexIdUI .vtexIdUI-user {
     margin-bottom: 0;
-    display: none !important
+    display: none 
 }
 
 #vtexIdContainer .vtexIdUI h4 {
-    margin: 0 !important
+    margin: 0 
 }
 
 #vtexIdContainer .vtexIdUI .info-why {
@@ -713,11 +720,11 @@
 }
 
 #vtexIdContainer div#vtexIdUI-change-pswd .close {
-    margin-right: 33px !important
+    margin-right: 33px 
 }
 
 #vtexIdContainer div#vtexIdUI-change-pswd .modal-header {
-    padding: 30px 15px 0 !important
+    padding: 30px 15px 0 
 }
 
 #vtexIdContainer #vtexIdUI-confirm-access-code .alert {
@@ -738,7 +745,7 @@
 
 @media (max-width: 768px) {
     #vtexIdContainer #vtexIdUI-change-pswd .btn-success {
-        background:#234EB9 !important;
+        background:#234EB9 ;
         box-shadow: none;
         border-radius: 5px ;
         font-size: 12px;
@@ -746,11 +753,11 @@
     }
 
     #vtexIdContainer #loginWithAccessKeyBtn {
-        margin-top: 50px !important
+        margin-top: 50px 
     }
 
     #vtexIdContainer #vtexIdUI-classic-login {
-        top: 215px !important
+        top: 215px 
     }
 
     #vtexIdContainer #vtexIdUI-classic-login .modal-header {
@@ -783,7 +790,7 @@
     }
     
     #vtexIdContainer div#vtexIdUI-change-pswd .modal-header {
-        padding: 120px 15px 0 !important
+        padding: 120px 15px 0 
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd .modal-body {
@@ -791,14 +798,14 @@
     }
 
     #vtexIdContainer .vtexIdUI .modal-header {
-        padding: 0 !important
+        padding: 0 
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-back-link {
-        border: 2px solid #ccc !important;
+        border: 2px solid #ccc ;
         margin-top: 5px;
         margin-right: 0;
-        border-radius: 50% !important
+        border-radius: 50% 
     }
 
 
@@ -827,11 +834,11 @@
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd input {
-        box-shadow: none !important;
-        border-top: none !important;
-        border-left: none !important;
-        border-right: none !important;
-        border-radius: 0 !important
+        box-shadow: none ;
+        border-top: none ;
+        border-left: none ;
+        border-right: none ;
+        border-radius: 0 
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd input:focus {
@@ -839,10 +846,10 @@
     }
 
     #vtexIdContainer .vtexIdUI .btn-success {
-        background-color: #43C452 !important;
-        background-image: linear-gradient(to bottom, #62c462, #62c462) !important;
-        border: none !important;
-        box-shadow: none !important;
+        background-color: #43C452 ;
+        background-image: linear-gradient(to bottom, #62c462, #62c462) ;
+        border: none ;
+        box-shadow: none ;
     }
 }
 
@@ -867,4 +874,22 @@
 
 #vtexIdContainer .modal-body {
     position: relative
+}
+
+#saindo .modal-content .modal-body button {
+    font-size: 14px;
+	color: #FFF;
+	font-weight: 600;
+}
+
+#saindo .modal-content .modal-body button:first-child {
+    background-color:#234EB9;
+}
+
+#saindo .modal-content .modal-body button:first-child:hover {
+    background-color:#223B76;
+}
+
+#saindo .modal-content .modal-body button#sair:hover {
+    background-color:#c11515;
 }
