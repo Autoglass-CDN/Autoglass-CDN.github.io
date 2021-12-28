@@ -8,6 +8,7 @@
 :root {
     --cor-primaria: #193f91;
     --cor-secundaria: #fb7000;
+    --laranja-hover: #b15000;
     --tamanho-maximo: 1280px;
 }
 
@@ -244,7 +245,12 @@ body {
     text-transform: uppercase;
     font-size: 0.9em;
     color: white;
+    font-weight: 600;
     background-color: var(--cor-secundaria);
+}
+
+.beneficio .cta__botao:hover {
+    background-color: var(--laranja-hover);
 }
 
 .formulario {
