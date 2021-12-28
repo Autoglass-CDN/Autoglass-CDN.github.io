@@ -172,7 +172,7 @@
                 return;
             }
 
-            $(".cep-new__content--loading").show().css("right", "0");
+            $(".cep-new__content--loading").show().css("right", "-1px");
 
             try {
                 const [cepChanged] = await Service.calculateShipping(cep);
@@ -298,56 +298,58 @@
 			`);
 
             setTimeout(
-                () => $(".cep-new").css("transform", "translateX(0)"),
+                () => $(`${modalContent} .cep-new`).css("transform", "translateX(0)"),
                 100
             );
-
-            const isMobile = _defineHowCepInputWillWork();
+            
+            const inputSelector = `${modalContent} .cep-new__content-input`;
+            const isMobile = _defineHowCepInputWillWork(inputSelector);
             const maxLength = !isMobile ? 9 : 8;
 
-            $(`${modalContent} #cep-back-button`).click((e) => {
+            $(`${modalContent} .cep-new__footer-back-button`).click((e) => {
                 $(".cep-new").css("transform", "translateX(-105%)");
 
-                setTimeout(() => $(".cep-new").remove(), 1000);
+                setTimeout(() => $(`${modalContent} .cep-new`).remove(), 1000);
             });
 
-            $("#cep-input").focus();
-            $("#cep-input").click(function () {
+
+            $(inputSelector).focus();
+            $(inputSelector).click(function () {
                 if (!isMobile) {
                     $(this)[0].setSelectionRange(0, 0);
                 }
             });
 
-            $("#cep-input").keyup((e) => {
+            $(inputSelector).keyup((e) => {
                 e.preventDefault();
                 if (e.target.value.replace("_", "").length === maxLength) {
-                    const cep = $("#cep-input").val();
+                    const cep = $(inputSelector).val();
                     Controller.submitEvent(e, cep);
                 }
             });
 
-            $(".cep-new__content-form").on("submit", (e) => {
+            $(`${modalContent} .cep-new__content-form`).on("submit", (e) => {
                 e.preventDefault();
                 if (
-                    $("#cep-input").val().replace("_", "").length === maxLength
+                    $(inputSelector).val().replace("_", "").length === maxLength
                 ) {
-                    const cep = $("#cep-input").val();
+                    const cep = $(inputSelector).val();
                     Controller.submitEvent(e, cep);
                 }
             });
 
         }
 
-        function _defineHowCepInputWillWork() {
+        function _defineHowCepInputWillWork(inputSelector) {
             const isMobile = window.innerWidth < 1200;
 
             if (!isMobile) {
-                $("#cep-input").attr("placeholder", "00000-000");
-                $("#cep-input").attr("max-length", "9");
-                $("#cep-input").mask("99999-999");
+                $(inputSelector).attr("placeholder", "00000-000");
+                $(inputSelector).attr("max-length", "9");
+                $(inputSelector).mask("99999-999");
             } else {
-                $("#cep-input").attr("placeholder", "00000000");
-                $("#cep-input").attr("max-length", "8");
+                $(inputSelector).attr("placeholder", "00000000");
+                $(inputSelector).attr("max-length", "8");
             }
 
             return isMobile;
