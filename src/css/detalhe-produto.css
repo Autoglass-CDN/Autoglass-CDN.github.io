@@ -23,7 +23,7 @@ html {
 }
 
 #outras-marcas .white-background, #compre-junto .blue-background {
-  padding: 80px 30px;
+  padding: 30px;
 }
 
 #compre-junto .blue-background > .row > div{
@@ -52,7 +52,7 @@ html {
   padding: 0px 10px;
   position: relative;
   max-width: 920px;
-  padding: 80px 0;
+  padding: 30px 0;
 }
 
 .nav-container {
@@ -141,20 +141,12 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
 
 /* adiciona offset de scrolling para as seções */
 
-section.tab-content:before {
-  content: "";
-  display: block;
-  height: 240px;
-  margin: -240px 0 12px;
-  visibility: hidden;
-}
-
 .tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #duvidas.tab-content h2 {
   font-weight: var(--extra-bold);
   color: var(--blue-700);
   text-align: center;
   font-size: 32px;
-  margin: 40px;
+  margin: 20px;
 }
 
 .tab-content h2 {

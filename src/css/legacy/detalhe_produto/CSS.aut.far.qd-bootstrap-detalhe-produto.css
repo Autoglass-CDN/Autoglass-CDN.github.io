@@ -515,6 +515,27 @@ body {
     -webkit-tap-highlight-color: transparent
 }
 
+@media (max-width: 1200px) {
+    #sugestoes .slick-slider {
+        display: flex;
+        align-items: center;
+    }
+    
+    
+    #sugestoes .slick-slider button{
+        background: #ccc;
+        border: 0;
+        border-radius: 50%;
+        width: 100px;
+        height: 30px;
+    }
+    
+    #sugestoes .slick-slider button:hover{
+        background: rgb(161, 161, 161);
+        transform: scale(1.2); 
+    }
+}
+
 .slick-list {
     position: relative;
     overflow: hidden;
@@ -1100,6 +1121,11 @@ body {
     display: block
 }
 
+.footer-qd-v1-security-stamps a:hover, .footer-qd-v1-security-stamps a:focus, .footer-qd-v1-security-stamps a:active {
+    opacity: 1;
+    filter: alpha(opacity=100)
+}
+
 .footer-qd-v1-security-stamps ul {
     padding-inline-start:0}
 
@@ -1191,10 +1217,9 @@ body {
     filter: alpha(opacity=100)
 }
 
-.shelf-qd-v1:hover .shelf-qd-v1-buy-button {
-    opacity: 1;
-    filter: alpha(opacity=100);
-    visibility: visible
+.shelf-qd-v1 .shelf-qd-v1-buy-button a:hover {
+    border: #33a140 solid;
+	background: #33a140;
 }
 
 .shelf-qd-v1.qd-product-is-in-stock-false .shelf-qd-v1-image img {
@@ -1346,31 +1371,21 @@ body {
     margin: 0 auto
 }
 
-@media (min-width: 1200px) {
-    .shelf-qd-v1 .shelf-qd-v1-buy-button {
-        visibility:hidden
-    }
-}
-
 body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     display: block !important
 }
 
 .shelf-qd-v1 .shelf-qd-v1-buy-button a {
     border: #43C452 solid;
-    border-width: 2px;
+	background: #43C452;
     transition: all .2s ease-out;
     display: block;
-    border-radius: 6px;
-    background: #FFF;
-    color: #43C452;
     padding: 15px 30px;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 600;
     text-align: center;
     transition: none;
     font-size: 0;
-    background: #43C452;
     color: #FFF;
     padding: 5px;
     border-radius: 3px
@@ -1480,6 +1495,24 @@ body.produto .carousel-qd-v1-shelf h2 {
 @media (max-width: 992px) {
     .carousel-qd-v1-shelf .prateleira {
         padding:0 10px
+    }
+    
+    #similars .prateleira {
+        display: flex;
+        align-items: center;
+    }
+
+    #similars .prateleira button{
+        height: 24px;
+        width: 80px;
+        border-radius: 50%;
+        border: 0px;
+        background-color: #DDD;
+    }
+    
+    #similars .prateleira button:hover{
+        background-color: #AAA;
+        transform: scale(1.2); 
     }
 }
 

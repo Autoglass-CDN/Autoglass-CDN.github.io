@@ -246,8 +246,12 @@
     cursor: pointer;
     border-radius: 3px;
 }
+.search-qd-v1-result .resultado-busca-filtro .orderBy select:hover {
+    background-color:#EEE;
+}
 .search-qd-v1-result .resultado-busca-filtro .orderBy select:focus,
 .search-qd-v1-result .resultado-busca-filtro .orderBy select:active {
+    background-color: #fff;
     outline: none;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;

@@ -857,12 +857,11 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
 }
 .product-qd-v1-buy-button .buy-button:hover,
 .product-qd-v1-buy-button .buy-button:focus {
-    color: #fff;
-    background: #39b547;
-    border-color: #39b547;
+    background: #33a140;
+    border-color: #33a140;
 }
 .product-qd-v1-buy-button .buy-button:active {
-    background: #39b547;
+    background: #33a140;
     color: #fff;
 }
 .product-qd-v1-buy-button .buy-button:hover,
@@ -1703,6 +1702,9 @@ body.qd-product-unavailable .product-qd-v1-shipping {
     border: none;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
+}
+#btnFreteSimulacao:hover {
+    background-color: #223B76;
 }
 @media (max-width: 1200px) {
     .product-qd-v1-shipping
@@ -2589,7 +2591,6 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     max-width: 140px;
     padding: 8px;
     text-align: right;
-    background: #43c452;
     border: none;
     border-radius: 3px;
     text-align: center;
@@ -2833,11 +2834,11 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 .mz-acessories .mz-accesories__button .mz-accesories__button--buy:hover,
 .mz-acessories .mz-accesories__button .mz-accesories__button--buy:focus {
     color: #fff;
-    background: #39b547;
-    border-color: #39b547;
+    background: #33a140;
+    border-color: #33a140;
 }
 .mz-acessories .mz-accesories__button .mz-accesories__button--buy:active {
-    background: #39b547;
+    background: #33a140;
     color: #fff;
 }
 .mz-acessories .mz-accesories__button .mz-accesories__button--buy:hover,
@@ -3192,11 +3193,11 @@ body.mz-as-on .mz-modal-advantages {
 .mz-modal-advantages .mz-advantages__button .mz-advantages__button--buy:hover,
 .mz-modal-advantages .mz-advantages__button .mz-advantages__button--buy:focus {
     color: #fff;
-    background: #43c452;
-    border-color: #43c452;
+    background: #33a140;
+    border-color: #33a140;
 }
 .mz-modal-advantages .mz-advantages__button .mz-advantages__button--buy:active {
-    background: #43c452;
+    background: #33a140;
     color: #fff;
 }
 .mz-modal-advantages .mz-advantages__button .mz-advantages__button--buy:hover,
