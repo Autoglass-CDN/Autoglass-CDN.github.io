@@ -307,11 +307,10 @@
             const maxLength = !isMobile ? 9 : 8;
 
             $(`${modalContent} .cep-new__footer-back-button`).click((e) => {
-                $(".cep-new").css("transform", "translateX(-105%)");
+                $(`${modalContent} .cep-new`).css("transform", "translateX(-105%)");
 
                 setTimeout(() => $(`${modalContent} .cep-new`).remove(), 1000);
             });
-
 
             $(inputSelector).focus();
             $(inputSelector).click(function () {
