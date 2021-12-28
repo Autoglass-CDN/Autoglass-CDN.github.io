@@ -12,6 +12,10 @@
     background-color: #5059b1;
 }
 
+.product-name button.btn-add-instalacao:hover {
+    background-color: #223B76;
+}
+
 .mini-cart .item .fn {
     width: 90%;
 }
@@ -342,8 +346,6 @@ body.hasInstall .shp-summary-package-time {
   content: "Veja as opções de entrega, retirada ou instalação com prazos e valores.";
 }
 
-
-
 /* Itens crossSelling */
 .addCart {
 	background-color:#43C452;
@@ -362,7 +364,8 @@ body.hasInstall .shp-summary-package-time {
   	transition:none;
 }
 .splide__list .splide__slide .splide__slide__container .addCart:hover {
-	background-color:#43C452;
+	background-color:#33a140;
+    text-decoration: none;
     color: #ffffff;
 }
 .addCart:active {
@@ -398,4 +401,11 @@ body.hasInstall .shp-summary-package-time {
 
 .compreJunto {
 	display: none;
+}
+
+@media (max-width:991px) {
+    .addcartPosition {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
 }

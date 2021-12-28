@@ -1,0 +1,81 @@
+<!-- dev- -carrinho-abandonado -->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+  xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Carrinho Abandonado</title>
+  <vtex:metaTags />
+  <style type="text/css">
+    ul{list-style-type:none !important;}
+    #btn-finalizar-pedido:hover{background-color: #33a140 !important;}
+  </style>
+  
+</head>
+
+<body style="display: block; margin: auto; max-width: 620px">
+  <img class="banner__head" src="https://autoglass.vteximg.com.br/arquivos/email-top.png" alt=""
+    style="height: auto; max-width: 100%" />
+  <div style="font-family: Open Sans, sans-serif; padding: 10px">
+    <p>Olá, <strong>{!Nome}</strong></p>
+    <p>
+      Notamos que você não finalizou sua compra. Estamos oferecendo
+      pra você <strong>5% de desconto</strong> para finalizar a compra agora, o
+      desconto é válido apenas para hoje.
+    </p>
+    <p>
+      Insira o cupom <strong>PROMO5</strong> e ganhe <strong>5% de desconto na hora</strong>, válido
+      APENAS PARA COMPRA NO SITE.
+    </p>
+  </div>
+  <div style="  text-align: center; 
+                padding-bottom: 30px;
+                padding-top: 30px;">
+    <a style="
+              border-radius: 0.3rem;
+              border: none;
+              padding: 1rem 1.88rem;
+              letter-spacing: 1px;
+              cursor: pointer;
+              color: #FFF;
+              font-weight: 600;
+              background-color: #43C452;
+              font-family: Open Sans, sans-serif;
+              text-decoration: none;
+              white-space: nowrap;
+    "
+    id="btn-finalizar-pedido"
+    href="https://www.autoglassonline.com.br/checkout/cart/{!rclastcart}&amp;utm_source=Carrinho+abandonado&amp;utm_medium=Vtex"
+    >
+      CLIQUE AQUI PARA FINALIZAR SEU PEDIDO
+    </a>
+  </div>
+  <div>
+    <vtex.cmc:ProductQueryStringReferenceShelf layout="6c3081ba-1150-4a4a-b791-2d5cc02ab5a3" itemCount="50"
+      columnCount="100" showUnavailable="true" />
+      <!-- prd- -carrinho-abandonado -->
+  </div>
+  <div style="text-align: center">
+    <img style="max-width: 100%" width="280px;"
+      src="https://autoglass.vteximg.com.br/arquivos/imagem-rodape-template-emails.jpg" />
+  </div>
+  <p style="
+                color: #909090;
+                font-size: 14px;
+                font-family: Helvetica, sans-serif;
+                width: 100%;
+                text-align: center;
+                display: block;
+                margin-top: 4px;
+                margin-bottom: 0px;
+                padding-bottom: 4px;
+            ">
+    Autoglass 2021 - todos os direitos reservados. CNPJ:
+    16.922.038/0001-51
+  </p>
+</body>
+
+</html>
