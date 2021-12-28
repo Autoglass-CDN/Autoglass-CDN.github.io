@@ -95,7 +95,7 @@
 .cep-new__content--loading {
   display: none;
   position: absolute;
-  left: 0;
+  left: -1px;
   top: -5px;
   bottom: -5px;
   background-color: #FFFFFF;
