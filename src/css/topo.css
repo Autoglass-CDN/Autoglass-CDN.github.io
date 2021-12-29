@@ -522,7 +522,12 @@ i.arrow-icon::before {
 }
 
 .nav .container.mobile .search-box {
+  transition: 0.2s ease-in-out 0s;
   margin-left: 25px;
+}
+
+.nav .container.mobile .search-box:hover {
+  transform: scale(1.2); 
 }
 
 .container .search-box fieldset.busca {
