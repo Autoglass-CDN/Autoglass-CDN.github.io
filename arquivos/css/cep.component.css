@@ -54,7 +54,7 @@
   border: 0;
   font-size: 16px;
   font-weight: bold;
-  color: #424242;
+  color: var(--blue-500);
   cursor: pointer;
   outline: none;
 }
@@ -69,22 +69,25 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-
+  align-items: center;
   padding: 10px;
-  width: 100%;
-  height: 100%;
   background-color: #FFFFFF;
 
   transform: translateX(-105%);
   transition: transform 1s ease-in-out;
 
   position: absolute;
-  top: 0;
+  top: 70px;
+  bottom: 15px;
+  left: 0;
+  right: 0;
+  z-index: 1;
 }
 
 .cep-new__content {
   display: flex;
   align-items: center;
+  flex-direction: column;
   position: relative;
   margin-bottom: 75px;
 }
@@ -92,7 +95,7 @@
 .cep-new__content--loading {
   display: none;
   position: absolute;
-  left: 0;
+  left: -1px;
   top: -5px;
   bottom: -5px;
   background-color: #FFFFFF;
@@ -125,7 +128,8 @@
 }
 
 .cep-new__content-title {
-  margin-right: 20px;
+  display: block;
+  margin-bottom: 10px;
   color: #A8A8A8;
   font-weight: 600;
 }
