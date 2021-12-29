@@ -3079,6 +3079,7 @@ body.mz-in-on .mz-modal-installation {
     background-color: #fff;
     border-radius: 4px;
     display: none;
+    overflow-x: hidden;
 }
 @media (min-width: 992px) {
     .mz-modal-advantages {
