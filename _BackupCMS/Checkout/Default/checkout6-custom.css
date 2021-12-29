@@ -97,6 +97,14 @@ body.mz-il-on .mz-modal-installation {
     border-radius: 4px;
     display: none;
     max-width: 700px;
+    overflow-x: hidden;
+}
+
+.mz-modal-advantages .mz-advantages__title h2 {
+    color: #757575;
+    font-size: 26px;
+    font-weight: 400;
+    margin: 0;
 }
 
 .mz-modal-advantages .mz-advantages__close,

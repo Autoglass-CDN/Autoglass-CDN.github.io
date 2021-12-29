@@ -224,7 +224,7 @@
 
 .mz-modal-installation .mz-install__button {
   position: sticky;
-  bottom: -20px;
+  bottom: -10px;
   width: 100%;
   background: white;
   padding: 15px;
