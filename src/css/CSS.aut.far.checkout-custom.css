@@ -2299,7 +2299,10 @@ fieldset.payment-group div.required.payment-group-list-btn{
 	background: #33a140;
 }
 
-.btn-success {
+.btn-success,
+.cconf-myorders-button,
+.cconf-continue-button,
+#cart-coupon-add  {
   border-color: #43C452;
   background: #43C452;
   font-size:14px; 
@@ -2309,25 +2312,12 @@ fieldset.payment-group div.required.payment-group-list-btn{
   text-shadow: none
 }
 
-.btn-success:hover {
+.btn-success:hover,
+.cconf-myorders-button:hover,
+.cconf-continue-button:hover,
+#cart-coupon-add:hover   {
   border-color: #33a140;
 	background: #33a140;
-}
-
-.cconf-myorders-button,
-.cconf-continue-button {
-  border-color: #43C452;
-  background: #43C452;  
-  font-size:14px;
-  color: #FFF;
-  font-weight: 600;
-}
-
-.cconf-myorders-button:hover,
-.cconf-continue-button:hover {
-  border-color: #33a140;
-  background: #33a140;
-  font-size:14px;
   color: #FFF;
   font-weight: 600;
 }
