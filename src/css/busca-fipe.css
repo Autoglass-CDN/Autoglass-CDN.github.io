@@ -232,7 +232,7 @@
   transition: color 0.2s ease-in-out;
 }
 
-.c-busca .c-busca__select div > div:hover,
+.c-busca .c-busca__select div > div:first-child:hover,
 .c-busca .c-busca__select div > div:focus {
   color: #1c3162;
   font-weight:600;

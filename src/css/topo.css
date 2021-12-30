@@ -261,10 +261,6 @@ i.arrow-icon::before {
   margin-left: auto;
 }
 
-.topo .links a {
-  text-decoration: none;
-}
-
 .topo .links a+a {
   margin-left: 25px;
 }
