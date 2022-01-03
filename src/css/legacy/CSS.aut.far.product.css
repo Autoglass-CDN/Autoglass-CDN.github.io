@@ -166,6 +166,30 @@
     margin-left: auto;
     width: 500px;
 }
+.product-qd-v1-image div#image {
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    min-height: unset;
+}
+@media screen and (max-width: 1200px) {
+    .product-qd-v1-image div#image {
+        width: 430px;
+        height: 430px;
+    }
+}
+@media screen and (max-width: 991px) {
+    .product-qd-v1-image div#image {
+        width: 500px;
+        height: 500px;
+    }
+}
+@media screen and (max-width: 767px) {
+    .product-qd-v1-image div#image {
+        width: 100%;
+        height: auto;
+    }
+}
 .product-qd-v1-image .qd-playerWrapper {
     position: absolute;
     top: 0;
@@ -224,8 +248,7 @@ body.qdpv-video-on .product-qd-v1-image .qd-playerWrapper {
     position: relative;
 }
 .product-qd-v1-image .zoomPup {
-    border: #000000 solid;
-    border-width: 1px;
+    border: 1px solid #ddd;
     opacity: 0.6;
     filter: alpha(opacity=60);
     background: #d1d1d1;
