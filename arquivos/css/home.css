@@ -52,13 +52,17 @@
 
 .banners-section .banners button {
   position: absolute;
-  top: 50%;
-  transform: translateY(calc(-50% - 70px));
+  top: 25%;
   background-color: transparent;
   border: none;
   padding: 20px;
   outline: none;
   cursor: pointer;
+}
+
+.banners-section .banners button:hover {
+  transform: scale(1.2); 
+  border-radius: 50%;
 }
 
 .banners-section .banners button[id="banner-next"] {
@@ -139,7 +143,8 @@
     height: auto;
   }
   .banners-section .banners button {
-    transform: translateY(calc(-50% - 25px));
+    /* transform: translateY(calc(-50% - 25px)); */
+    top: 40%;
   }
   .banners-section .banners-bars {
     display: none;
@@ -250,14 +255,16 @@
 
 .ratings-section .ratings__slider button {
   position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
   background-color: transparent;
   border: none;
   padding: 20px;
   outline: none;
   cursor: pointer;
   z-index: 8;
+}
+
+.ratings-section .ratings__slider button:hover {
+  transform: scale(1.2);
 }
 
 .ratings-section .ratings__slider button[id="rating-next"] {
@@ -537,7 +544,8 @@
 }
 
 .chat-section .chat__content-link:hover {
-  background-color: var(--gray-100);
+  background-color: var(--gray-300);
+  text-decoration: none;
 }
 
 @media (max-width: 1000px) {

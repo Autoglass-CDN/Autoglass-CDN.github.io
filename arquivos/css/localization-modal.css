@@ -195,14 +195,19 @@
 }
 
 #stateSelectorModal.modal-confirmation button#stateConfirmationBtn {
-    background-color: #183884;
+    background-color: #234EB9;
     border: none;
     border-radius: 4px;
     color: #fff;
+	font-weight: 600;
     padding: 10px 40px;
     display: block;
     width: 280px;
     margin: 0 auto;
+}
+
+#stateSelectorModal.modal-confirmation button#stateConfirmationBtn:hover {
+	background-color: #223B76;
 }
 
 #stateSelectorModal.modal-confirmation button#stateConfirmationBtn:disabled {
