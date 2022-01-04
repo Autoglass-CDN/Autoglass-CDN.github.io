@@ -170,21 +170,26 @@ $(window).on('load', () => {
         }
 
         function _removePaymentPickupIfIsDelivery(orderForm) {
+      		var maxLoopInteractions=0;
             if (window.location.hash.includes("payment")
                 && orderForm
                     .shippingData
                     .logisticsInfo[0]
                     .selectedDeliveryChannel === "delivery"
             ) {
-                setTimeout(function(){
-                    while(true) {
-                        if(document.querySelector("fieldset.payment-group").style.display=='none')
-                            continue;
-                        $("#payment-group-creditCardPaymentGroup").click();
-                        $(".pg-pagamento-na-loja.payment-group-item").css("display","none");
-                        break;
+               var checkPaymentOptionLoop = setInterval(function(){
+                  if(document.querySelector("fieldset.payment-group").style.display!='none')
+                  {
+                    $("#payment-group-creditCardPaymentGroup").click();
+                    $(".pg-pagamento-na-loja.payment-group-item").css("display","none");
+                    let tipoDePagamento = vtexjs.checkout.orderForm.paymentData.payments[0].paymentSystem;
+                    const pagamentoNaLoja = '201';
+                    if(tipoDePagamento != pagamentoNaLoja || 
+                       ++maxLoopInteractions > 50){
+                      clearInterval(checkPaymentOptionLoop);
                     }
-                }, 1);
+                  }
+                }, 100, maxLoopInteractions);
             }
         }
 
