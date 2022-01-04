@@ -573,13 +573,6 @@ table.cart-items tbody {
   border-top: none
 }
 
-.link-choose-more-products-wrapper a {
-  border: 1px solid #2D4F9E;
-  padding: 7px 10px;
-  border-radius: 3px;
-  color: #2D4F9E
-}
-
 .link-choose-more-products-wrapper a::before {
   content: '\f053';
   font-family: 'FontAwesome';
@@ -587,11 +580,20 @@ table.cart-items tbody {
   margin-right: 5px
 }
 
-.coupon-fieldset .link-coupon-add {
+.coupon-fieldset .link-coupon-add,
+.link-choose-more-products-wrapper a {
   border: 1px solid #2D4F9E;
   padding: 7px 10px;
   border-radius: 3px;
   color: #2D4F9E
+}
+
+.coupon-fieldset .link-coupon-add:hover,
+.link-choose-more-products-wrapper a:hover,
+body.body-order-form #orderform-to-cart:hover {
+  background-color: #2D4F9E;
+  color: #FFF;
+  text-decoration: none;
 }
 
 .coupon-fieldset .link-coupon-add::before {
@@ -621,7 +623,8 @@ table.cart-items tbody {
 
 #cart-to-orderform:hover {
   text-decoration: none;
-  outline: none
+  outline: none;
+	background: #33a140;
 }
 
 #cart-to-orderform:focus, #cart-to-orderform:active {
@@ -672,6 +675,12 @@ body.body-order-form #orderform-to-cart {
   color: #2D4F9E
 }
 
+/* body.body-order-form #orderform-to-cart:hover {
+  border: 1px solid #2D4F9E;
+  border-radius: 3px;
+  color: #2D4F9E
+} */
+
 body.body-order-form #go-to-shipping, body.body-order-form #btn-go-to-payment, body.body-order-form #payment-data-submit {
   padding: 0;
   outline: none;
@@ -715,12 +724,12 @@ body.body-order-form #go-to-shipping[disabled], body.body-order-form #btn-go-to-
 
 body.body-order-form #go-to-shipping:hover, body.body-order-form #btn-go-to-payment:hover, body.body-order-form #payment-data-submit:hover, body.body-order-form #go-to-shipping:focus, body.body-order-form #btn-go-to-payment:focus, body.body-order-form #payment-data-submit:focus {
   color: #FFF;
-  background: #39b547;
-  border-color: #39b547
+  background: #33a140;
+  border-color: #33a140
 }
 
 body.body-order-form #go-to-shipping:active, body.body-order-form #btn-go-to-payment:active, body.body-order-form #payment-data-submit:active {
-  background: #39b547;
+  background: #33a140;
   color: #FFF
 }
 
@@ -748,7 +757,7 @@ body.body-order-form #go-to-shipping:hover, body.body-order-form #btn-go-to-paym
   background: #43C452;
   color: #FFF;
   padding: 15px 30px;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
   text-align: center;
   display: block;
@@ -776,8 +785,8 @@ body.body-order-form #go-to-shipping:hover, body.body-order-form #btn-go-to-paym
 
 #btn-client-pre-email:hover, #btn-client-pre-email:focus {
   color: #FFF;
-  background: #39b547;
-  border-color: #39b547
+  background: #33a140;
+  border-color: #33a140
 }
 
 #btn-client-pre-email:active {
@@ -2275,4 +2284,46 @@ body.body-order-form #go-to-shipping:hover, body.body-order-form #btn-go-to-paym
 fieldset.payment-group div.required.payment-group-list-btn{
   display: flex;
   flex-direction: column-reverse;
+}
+
+#shipping-data .box-step button.vtex-omnishipping-1-x-btnDelivery:hover {
+  background-color: #223B76;
+}
+
+#cart-choose-products {
+  border: #43C452 solid;
+  background: #43C452;
+  box-shadow: none;
+  text-shadow: none;
+  font-size:14px;
+  color: #FFF;
+  font-weight: 600;
+}
+
+#cart-choose-products:hover { 
+	border: #33a140 solid;
+	background: #33a140;
+}
+
+.btn-success,
+.cconf-myorders-button,
+.cconf-continue-button,
+#cart-coupon-add  {
+  border-color: #43C452;
+  background: #43C452;
+  font-size:14px; 
+  color: #FFF;
+  font-weight: 600;
+  box-shadow: none;
+  text-shadow: none
+}
+
+.btn-success:hover,
+.cconf-myorders-button:hover,
+.cconf-continue-button:hover,
+#cart-coupon-add:hover   {
+  border-color: #33a140;
+	background: #33a140;
+  color: #FFF;
+  font-weight: 600;
 }

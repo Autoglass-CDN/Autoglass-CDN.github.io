@@ -2,10 +2,6 @@
     padding-top: 0;
 }
 
-#avaliacoes .ratings-section .ratings__rating.highlight {
-    z-index: unset;
-}
-
 .ratings-section {
     padding: 80px 0px;
 }
@@ -25,14 +21,16 @@
 
 .ratings-section .ratings__slider button {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
     background-color: transparent;
     border: none;
     padding: 20px;
     outline: none;
     cursor: pointer;
     z-index: 9;
+}
+
+.ratings-section .ratings__slider button:hover {
+    transform: scale(1.2); 
 }
 
 .ratings-section .ratings__slider button[id="rating-next"] {

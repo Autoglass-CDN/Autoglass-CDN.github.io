@@ -38,6 +38,14 @@
   text-decoration: none;
 }
 
+.mz-modal-installation.modal-instale-na-loja
+  > .mz-install__button
+  > .mz-install__button--buy:hover {
+  border: #33a140 solid;
+  border-width: 2px;
+  background: #33a140;
+}
+
 .mz-modal-installation.modal-instale-na-loja .mz-install__title h2 {
   color: #757575;
   font-size: 26px;
