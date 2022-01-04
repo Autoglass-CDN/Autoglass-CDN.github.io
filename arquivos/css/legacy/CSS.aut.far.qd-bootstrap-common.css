@@ -11011,6 +11011,11 @@ body.qd-cart-show .components-qd-v1-overlay {
     border-radius: 5px !important
 }
 
+#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success:hover {
+	border: #33a140 solid;
+    background-color: #33a140 !important;
+}
+
 #vtexIdContainer .vtexIdUI .vtexIdUI-back-link {
     margin: 19px 15px
 }
@@ -11290,4 +11295,23 @@ body.qd-cart-show .components-qd-v1-overlay {
         background-color: rgba(41,216,70,0.75) !important;
         border-radius: 3px !important
     }
+}
+
+.servicos__container__alinhamento .chat__botao:hover {
+    background-color: var(--gray-300);
+    text-decoration: none;
+}
+
+.system-error-qd-v1 a {
+	font-weight: 600;
+	color: #FFF;
+}
+
+.system-error-qd-v1 a:hover {
+    background-color: #17274e
+}
+
+.account-qd-v1-accountUserProfile .vtex-account__page .b--action-primary:hover {
+    border-color: #223B76 ;
+	background-color: #223B76;
 }
