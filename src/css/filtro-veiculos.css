@@ -66,7 +66,7 @@ fieldset[data-qd-class="ano"] {
     position: fixed;
     bottom: 80px;
     left: -100px;
-    z-index: 999999999;
+    z-index: 2;
     font-size: 0;
     animation: search-navigator 0.5s forwards ease-in-out;
   }

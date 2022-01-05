@@ -52,10 +52,6 @@ $(function () {
 			);
 		});
 	}); ''
-	// Expõe as opções com filtro logo no carregamento do componente
-	$(
-		`fieldset[data-qd-class="veiculo"] > h5, fieldset[data-qd-class="ano"] > h5`
-	).click();
 });
 
 /**
