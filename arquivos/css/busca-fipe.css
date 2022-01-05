@@ -289,6 +289,7 @@
   border-radius: 4px;
   border: 1px solid #a8a8a8;
   width: calc(100% - 20px);
+  color: rgba(0, 0, 0, .87);
 }
 
 .c-busca__tab-content .smart-select__main-results ul {
