@@ -1296,6 +1296,13 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
     overflow-y: auto !important;
     max-height: 212px;
 }
+.search-multiple-navigator fieldset div div {
+    min-height: 50px;
+}
+.search-multiple-navigator fieldset[data-qd-class="ano"] div:not(input)[style*="display: block;"] {
+    display: flex !important;
+    flex-direction: column-reverse;
+}
 
 .search-multiple-navigator fieldset div div {
     overflow:hidden;

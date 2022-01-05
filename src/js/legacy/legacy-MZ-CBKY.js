@@ -833,14 +833,20 @@ try {
 			wrapper.find("h4, h5").click(function (evt) {
 				var $t = $(this);
 				if ($(evt.target).is(wrapper.find("h4")) || $(evt.target).is(wrapper.find("h5"))) {
+					const filterName = $t.text();
+					const maxFilterItemsQuantityToShow=5;
+					var currentFilterItems = $t.find("+ div").find('label');
 					$t.find("+ div").slideToggle(100, function () {
-						maxFilterItemsQuantityToShow=5;
-						currentFilterItems = $(this).find('label');
-						if (currentFilterItems.length <= maxFilterItemsQuantityToShow){
-							$t.find("+ div label:last").css("marginBottom", "10px");
-						}
 						$t.toggleClass("qd-seach-active-menu");
 					})
+					if (currentFilterItems.length <= maxFilterItemsQuantityToShow){
+						$t.find("+ div label:last").css("marginBottom", "10px");
+					}
+					else if(filterName == 'Ano' ){
+						yearFilter = $(".search-multiple-navigator fieldset[data-qd-class='ano'] div");
+						yearFilterHeight = yearFilter[0].scrollHeight;
+						yearFilter.scrollTop(-yearFilterHeight);
+					}
 				}
 			});
 			$(".search-multiple-navigator h5").click(function () {

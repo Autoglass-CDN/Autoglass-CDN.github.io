@@ -3,6 +3,11 @@ fieldset > div > div.filtro {
   position: sticky;
   top: 0;
 }
+fieldset[data-qd-class="ano"] > div > div.filtro {
+  position: static;
+  order: 1;
+  overflow: hidden !important;
+}
 
 fieldset > div > div.filtro::after {
   content: "\f002";
