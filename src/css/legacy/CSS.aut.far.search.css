@@ -1293,7 +1293,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
 }
 
 .search-multiple-navigator fieldset div:not(input) {
-    overflow-y: auto;
+    overflow-y: auto !important;
     max-height: 212px;
 }
 
