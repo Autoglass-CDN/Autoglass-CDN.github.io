@@ -174,10 +174,19 @@ $(window).on("ready", async () => {
   window.addEventListener("resize", adjustProductThumbHeight);
 
   function adjustProductThumbHeight() {
-    $('.product-qd-v1-image div#image').css('min-height', $('.product-qd-v1-image #image-main').width())
+    $('.product-qd-v1-image div#image').css('min-height', $('.product-qd-v1-image #image-main').width());
   }
 
   adjustProductThumbHeight();
+
+  /*
+   * Ajusta links do Social Sharing 
+   */
+  const productLink = encodeURIComponent(location.href);
+  $(`.product-qd-v1-social-share a.whatsapp`).attr(`href`, `https://api.whatsapp.com/send?text=${productLink}`);
+  $(`.product-qd-v1-social-share a.twitter`).attr(`href`, `https://twitter.com/intent/tweet?text=${productLink}`);
+  $(`.product-qd-v1-social-share a.mail`).attr(`href`, `mailto:?subject=Autoglass%20Online&body=Veja%20este%20produto%20na%20Autoglass:%0D%0A${productLink}`);
+  $(`.product-qd-v1-social-share a.facebook`).attr(`href`, `https://www.facebook.com/sharer.php?u=${productLink}`);
 
   /**
    * Cria bloco de Veículos Compatíveis
