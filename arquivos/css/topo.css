@@ -1462,7 +1462,7 @@ body.home {
 }
 
 .modal-backdrop {
-  z-index: 10;
+  z-index: 9999999;
 }
 
 .header-qd-v1 {
