@@ -839,10 +839,8 @@ try {
 					$t.find("+ div").slideToggle(100, function () {
 						$t.toggleClass("qd-seach-active-menu");
 					})
-					if (currentFilterItems.length <= maxFilterItemsQuantityToShow){
-						$t.find("+ div label:last").css("marginBottom", "10px");
-					}
-					else if(filterName == 'Ano' ){
+					if (currentFilterItems.length > maxFilterItemsQuantityToShow 
+						&& filterName == 'Ano' ){
 						yearFilter = $(".search-multiple-navigator fieldset[data-qd-class='ano'] div");
 						yearFilterHeight = yearFilter[0].scrollHeight;
 						yearFilter.scrollTop(-yearFilterHeight);
