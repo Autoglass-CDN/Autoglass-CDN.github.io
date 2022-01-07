@@ -194,7 +194,7 @@ $(window).on("ready", async () => {
   });
   $(`.product-qd-v1-social-share a.copy`).click((e) => {
     e.preventDefault();
-    navigator.clipboard.writeText(productLink);
+    navigator.clipboard.writeText(location.href);
     $(`.product-qd-v1-social-share a.copy`).html('<i class="fas fa-check"></i>');
   });
 
