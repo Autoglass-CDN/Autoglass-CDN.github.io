@@ -147,8 +147,10 @@
     margin: 0 auto;
 }
 .product-qd-v1-image {
-    position: relative;
     padding: 0 2%;
+}
+.product-qd-v1-image-wrapper {
+    position: relative;
 }
 @media (max-width: 1199px) {
     .product-qd-v1-image {
@@ -276,17 +278,12 @@ body.qdpv-video-on .product-qd-v1-image .qd-playerWrapper {
     position: absolute;
     z-index: 2;
     top: 5px;
-    right: calc(5px + 2.1%);
+    right: 5px;
     background-color: #FFF;
     border-radius: 50rem;
     padding: 4px 8px;
     -webkit-box-shadow: 0px 0px 10px 0px #FFFFFF; 
     box-shadow: 0px 0px 10px 0px #FFFFFF;
-}
-@media screen and (max-width: 1199px) {
-    .product-qd-v1-image .product-qd-v1-social-share {
-        right: 25px;
-    }
 }
 .product-qd-v1-image .product-qd-v1-social-share a {
     font-size: 1.6em;
@@ -296,20 +293,67 @@ body.qdpv-video-on .product-qd-v1-image .qd-playerWrapper {
     transition: opacity .3s ease-in-out;
     opacity: 1;
 }
+.product-qd-v1-image .product-qd-v1-social-share.desktop a {
+    font-size: 1.8em;
+}
+.product-qd-v1-image .product-qd-v1-social-share.mobile a:not(.popup-trigger) {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    color: white;
+}
+.product-qd-v1-image .product-qd-v1-social-share .product-qd-v1-social-share-options-popup {
+    display: none;
+    position: absolute;
+    top: 35px;
+    right: 0px;
+    background-color: #FFF;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px -1px #0003,
+        0 4px 5px #00000024,
+        0 1px 10px #0000001f;
+}
+.product-qd-v1-social-share-options-popup .share-options-wrapper {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
 .product-qd-v1-image .product-qd-v1-social-share a ~ a {
     margin-left: 8px;
 }
 .product-qd-v1-image .product-qd-v1-social-share a.whatsapp {
     color: #25D366;
 }
+.product-qd-v1-image .product-qd-v1-social-share.mobile a.whatsapp {
+    background-color: #25D366;
+}
 .product-qd-v1-image .product-qd-v1-social-share a.twitter {
-    color: #1DA1F2
+    color: #1DA1F2;
+}
+.product-qd-v1-image .product-qd-v1-social-share.mobile a.twitter {
+    background-color: #1DA1F2;
 }
 .product-qd-v1-image .product-qd-v1-social-share a.facebook {
     color: #4267B2;
 }
+.product-qd-v1-image .product-qd-v1-social-share.mobile a.messenger {
+    background-color: #006AFF;
+}
+.product-qd-v1-image .product-qd-v1-social-share a.copy {
+    color: #7d7d7d;
+}
+.product-qd-v1-image .product-qd-v1-social-share.mobile a.copy {
+    background-color: #7d7d7d;
+}
 .product-qd-v1-image .product-qd-v1-social-share a.mail {
     color: #F77737;
+}
+.product-qd-v1-image .product-qd-v1-social-share.mobile a.mail {
+    background-color: #F77737;
 }
 .product-qd-v1-image .product-qd-v1-social-share a:hover {
     opacity: .6;

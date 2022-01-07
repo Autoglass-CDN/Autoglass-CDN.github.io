@@ -186,7 +186,17 @@ $(window).on("ready", async () => {
   $(`.product-qd-v1-social-share a.whatsapp`).attr(`href`, `https://api.whatsapp.com/send?text=${productLink}`);
   $(`.product-qd-v1-social-share a.twitter`).attr(`href`, `https://twitter.com/intent/tweet?text=${productLink}`);
   $(`.product-qd-v1-social-share a.mail`).attr(`href`, `mailto:?subject=Quero%20compartilhar%20um%20produto%20da%20Autoglass&body=Veja%20este%20produto%20na%20Autoglass:%0D%0A${productLink}`);
+  $(`.product-qd-v1-social-share a.messenger`).attr(`href`, `fb-messenger://share?link=${productLink}`);
   $(`.product-qd-v1-social-share a.facebook`).attr(`href`, `https://www.facebook.com/sharer.php?u=${productLink}`);
+  $('.product-qd-v1-social-share a.popup-trigger').click((e) => {
+    e.preventDefault();
+    $('div.product-qd-v1-social-share-options-popup').fadeToggle();
+  });
+  $(`.product-qd-v1-social-share a.copy`).click((e) => {
+    e.preventDefault();
+    navigator.clipboard.writeText(productLink);
+    $(`.product-qd-v1-social-share a.copy`).html('<i class="fas fa-check"></i>');
+  });
 
   /**
    * Cria bloco de Veículos Compatíveis
