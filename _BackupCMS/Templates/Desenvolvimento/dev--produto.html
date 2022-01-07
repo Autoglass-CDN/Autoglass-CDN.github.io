@@ -135,36 +135,64 @@
           <!-- Product image -->
           <div class="col-xs-12 col-md-6 col-md-push-1">
             <div class="product-qd-v1-image">
-              <!-- Social Sharing -->
-              <div class="product-qd-v1-social-share">
-                <a title="Compartilhar no WhatsApp" aria-label="Compartilhar no WhatsApp" href="#" target="_blank" class="whatsapp">
-                  <i class="fa fa-whatsapp" aria-hidden="true"></i>
-                </a>
-                <a title="Compartilhar no Twitter" aria-label="Compartilhar no Twitter" href="#" target="_blank" class="twitter">
-                  <i class="fa fa-twitter-square" aria-hidden="true"></i>
-                </a>
-                <a title="Compartilhar por E-mail" aria-label="Compartilhar por E-mail" href="#" class="mail">
-                  <i class="fa fa-envelope-o" aria-hidden="true"></i>
-                </a>
-                <a title="Compartilhar no Facebook" aria-label="Compartilhar no Facebook" href="#" target="_blank" class="facebook">
-                  <i class="fa fa-facebook-square" aria-hidden="true"></i>
-                </a>
-              </div>
-              <!-- Social Sharing -->
-
-              <!-- Selos de destaque -->
-              <div class="product-qd-v1-stamps">
-                <div class="product-qd-v1-stamps-highlight-discount">
-                  <vtex.cmc:discountHightLight />
+              <div class="product-qd-v1-image-wrapper">
+                <!-- Social Sharing -->
+                <div class="product-qd-v1-social-share desktop">
+                  <a title="Compartilhar no WhatsApp" aria-label="Compartilhar no WhatsApp" href="#" target="_blank" class="whatsapp">
+                    <i class="fab fa-whatsapp-square"></i>
+                  </a>
+                  <a title="Compartilhar no Twitter" aria-label="Compartilhar no Twitter" href="#" target="_blank" class="twitter">
+                    <i class="fab fa-twitter-square"></i>
+                  </a>
+                  <a title="Compartilhar no E-mail" aria-label="Compartilhar no E-mail" href="#" class="mail">
+                    <i class="fas fa-envelope"></i>
+                  </a>
+                  <a title="Compartilhar no Messenger" aria-label="Compartilhar no Messenger" href="#" target="_blank" class="messenger">
+                    <i class="fab fa-facebook-square"></i>
+                  </a>
                 </div>
-
-                <div class="product-qd-v1-stamps-highlight">
-                  <vtex.cmc:hightLight />
+                
+                <div class="product-qd-v1-social-share mobile">
+                  <a  title="Compartilhar" aria-label="Compartilhar" href="#" target="_blank" class="popup-trigger">
+                    <i class="fas fa-share-alt"></i>
+                  </a>
+  
+                  <div class="product-qd-v1-social-share-options-popup">
+                      <div class="share-options-wrapper">
+                        <a title="Copiar para a área de tranferência" aria-label="Copiar para a área de tranferência" href="#" target="_blank" class="copy">
+                          <i class="far fa-copy"></i>
+                        </a>
+                        <a title="Compartilhar no WhatsApp" aria-label="Compartilhar no WhatsApp" href="#" target="_blank" class="whatsapp">
+                          <i class="fab fa-whatsapp"></i>
+                        </a>
+                        <a title="Compartilhar no Twitter" aria-label="Compartilhar no Twitter" href="#" target="_blank" class="twitter">
+                          <i class="fab fa-twitter"></i>
+                        </a>
+                        <a title="Compartilhar por E-mail" aria-label="Compartilhar por E-mail" href="#" class="mail">
+                          <i class="far fa-envelope"></i>
+                        </a>
+                        <a title="Compartilhar no Messenger" aria-label="Compartilhar no Messenger" href="#" target="_blank" class="messenger">
+                          <i class="fab fa-facebook-messenger" aria-hidden="true"></i>
+                        </a>
+                      </div>
+                  </div>
                 </div>
-              </div>
-              <!-- Selos de destaque -->
+                <!-- Social Sharing -->
 
-              <vtex.cmc:ProductImage zoom="on" />
+                <!-- Selos de destaque -->
+                <div class="product-qd-v1-stamps">
+                  <div class="product-qd-v1-stamps-highlight-discount">
+                    <vtex.cmc:discountHightLight />
+                  </div>
+
+                  <div class="product-qd-v1-stamps-highlight">
+                    <vtex.cmc:hightLight />
+                  </div>
+                </div>
+                <!-- Selos de destaque -->
+
+                <vtex.cmc:ProductImage zoom="on" />
+              </div>
             </div>
             <!-- Descrição -->
             <div id="short-description-desktop">
