@@ -1519,3 +1519,28 @@ hr {
   border: 0;
   border-top: 1px solid #eee
 }
+
+#banner_topo_desktop,
+#banner_topo_mobile {
+  display: block;
+  width: 100vw;
+}
+#banner_topo_desktop {
+  object-fit: cover; 
+  vertical-align: middle;
+  min-height: 34px;
+  max-height: 50px;
+}
+
+@media (min-width: 992px) {
+  #banner_topo_mobile {
+    display: none;  
+  }
+
+}
+
+@media (max-width: 992px) {
+  #banner_topo_desktop {
+    display: none;
+  }
+}
