@@ -99,6 +99,49 @@
 })();
 //#endregion Banners
 
+(function () {
+	const btnPrev = $('.banners-promocionais-section button[data-type="prev"]');
+	const btnNext = $('.banners-promocionais-section button[data-type="next"]');
+	const container = $('.banners-promocionais-itens');
+	const itensQuantityToShow = 3;
+	bannerContainer = container;
+	let itensQuantity =  container.children().length;
+	let itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
+	if (itensQuantity < itensQuantityToShow){
+		$('.banners-promocionais-itens').width(itensQuantity*(itemSize+1));
+	}
+	btnNext.click(() => {
+		itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
+		if (getScrollPercentage() >= 95) {
+			scrollSmoothlyToLeft(bannerContainer[0].scrollWidth);
+			return;
+		}
+		scrollSmoothlyToRight(itemSize);
+	});
+	btnPrev.click(() => {
+		itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
+		if (getScrollPercentage() <= 5) {
+			scrollSmoothlyToRight(bannerContainer[0].scrollWidth);
+			return;
+		}
+		scrollSmoothlyToLeft(itemSize);
+	});
+	function getScrollPercentage() {
+		return 100 * bannerContainer[0].scrollLeft
+			/ (bannerContainer[0].scrollWidth - bannerContainer[0].clientWidth);
+	}
+	function scrollSmoothlyToRight(pixelsToScroll) {
+		return bannerContainer[0].scrollBy({
+			top: 0,
+			left: pixelsToScroll,
+			behavior : "smooth"
+		})
+	}
+	function scrollSmoothlyToLeft(pixelsToScroll) {
+		return scrollSmoothlyToRight(-pixelsToScroll)
+	}
+})();
+
 //#region Benefits
 (function () {
 	const benefitsContainer = $('.benefits-section .container');
