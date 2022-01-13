@@ -704,8 +704,17 @@
   .banners-nossos-servicos .box-banner[title]:after{
     position: absolute;
     top: auto;
-    bottom: -60px;
+    bottom: calc(-3vw - 40px);
     width: 100%;
     font-size: 4vw;
+  }
+
+  .banners-promocionais-section button, 
+  .nossos-servicos-section button{
+    margin: 0px;
+  }
+
+  .ratings-section {
+    padding: 20px 0px;
   }
 }
