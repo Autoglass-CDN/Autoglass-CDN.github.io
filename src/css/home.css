@@ -406,7 +406,7 @@
 /* #region Why */
 
 .whys-section {
-  padding: 80px 20px;
+  padding: 40px 20px 0px 20px;
   background: url('https://autoglass.vteximg.com.br/arquivos/porque_autoglass-bg.svg');
   background-repeat: no-repeat;
   background-position: center;
@@ -423,7 +423,7 @@
 }
 
 .whys-section .why {
-  margin: 40px 0;
+  margin: 30px 0;
   display: flex;
   align-items: center;
 }
@@ -459,6 +459,7 @@
   color: var(--primary);
   font-size: 24px;
   font-weight: var(--bold);
+  text-align: center;
 }
 
 .whys-section .why__content-text {
@@ -575,7 +576,7 @@
   justify-content: center;
   align-items: center;
   height: 300px;
-  padding: 20px;
+  padding: 20px 20px 40px;
 }
 
 .nossos-servicos-section{
