@@ -190,12 +190,15 @@ $(window).on("ready", async () => {
   $(`.product-qd-v1-social-share a.facebook`).attr(`href`, `https://www.facebook.com/sharer.php?u=${productLink}`);
   $('.product-qd-v1-social-share a.popup-trigger').click((e) => {
     e.preventDefault();
-    $('div.product-qd-v1-social-share-options-popup').fadeToggle();
+    $('div.product-qd-v1-social-share-options-popup').fadeToggle(400, 'swing', () => {
+      $(`.product-qd-v1-social-share a.copy`).children('i.fas.fa-check').attr('class', 'far fa-copy');
+    });
   });
   $(`.product-qd-v1-social-share a.copy`).click((e) => {
     e.preventDefault();
     navigator.clipboard.writeText(location.href);
-    $(`.product-qd-v1-social-share a.copy`).html('<i class="fas fa-check"></i>');
+    $(`.product-qd-v1-social-share a.copy`).children('i.far.fa-copy')
+     .fadeOut("fast").attr('class', 'fas fa-check').fadeIn("fast");
   });
 
   /**
