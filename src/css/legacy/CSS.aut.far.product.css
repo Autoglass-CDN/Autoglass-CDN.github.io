@@ -305,10 +305,14 @@ body.qdpv-video-on .product-qd-v1-image .qd-playerWrapper {
     border-radius: 50%;
     color: white;
 }
+.product-qd-v1-image .product-qd-v1-social-share a.popup-trigger {
+    padding: 2px 4px 6px 8px;
+    color: #2d4f9e;
+}
 .product-qd-v1-image .product-qd-v1-social-share .product-qd-v1-social-share-options-popup {
     display: none;
     position: absolute;
-    top: 35px;
+    top: 38px;
     right: 0px;
     background-color: #FFF;
     border-radius: 4px;
