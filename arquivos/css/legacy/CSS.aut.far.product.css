@@ -147,8 +147,10 @@
     margin: 0 auto;
 }
 .product-qd-v1-image {
-    position: relative;
     padding: 0 2%;
+}
+.product-qd-v1-image-wrapper {
+    position: relative;
 }
 @media (max-width: 1199px) {
     .product-qd-v1-image {
