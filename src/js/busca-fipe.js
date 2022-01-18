@@ -1068,9 +1068,8 @@
       ga('gaBPTracker.set', 'transport', 'beacon');
       ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${pathGerado}`);
     }
-
   }
-  
+
   function checkIfUniversalProductSearch() {
     const select = PLACA_SELECTS[0];
 
@@ -1119,7 +1118,7 @@
   }
 
   function selectRightSearchMethod() {
-    var smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+    const smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
     if(smartSelectHistory != null 
       && smartSelectHistory.type == "#busca-placa") {
         document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active")
