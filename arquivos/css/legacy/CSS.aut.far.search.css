@@ -513,10 +513,8 @@ body.departamento .search-qd-v1-seo-text {
     background-color: #2d4f9e;
     border-radius: 3px;
 }
-@media (max-width: 1200px) {
-    .search-qd-v1-navigator .search-qd-v1-navigator-trigger {
-        display: block;
-    }
+.search-qd-v1-navigator .search-qd-v1-navigator-trigger:hover {
+    background-color: #223B76;
 }
 .search-qd-v1-navigator .search-qd-v1-navigator-trigger:before {
     content: "\f0b0";
@@ -916,11 +914,10 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
         position: fixed;
         top: 77px;
         bottom: 0;
-        left: -85%;
-        z-index: 999999999;
-        max-width: 410px;
+        left: -100vw;
+        z-index: 999999;
         padding: 15px;
-        width: 85%;
+        width: 100vw;
         background-color: #fff;
         overflow: auto;
     }
@@ -935,10 +932,11 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
 }
 @media (max-width: 1199px) and (max-width: 1200px) {
     body.qd-sn-on .search-qd-v1-navigator .search-qd-v1-navigator-list {
+        height: calc(100vh - 60px - 48px - 40px);
         left: 0;
-        top: 77px;
+        top: 88px;
         border-top: 1px solid #2d4f9e;
-        padding-bottom: 25px;
+        padding-bottom: 0px;
     }
 }
 .search-qd-v1-navigator .search-qd-v1-navigator-list .search-single-navigator {
@@ -1215,14 +1213,10 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
     font-family: "FontAwesome";
 }
 .search-qd-v1-navigator-mobile-results {
+    width: 75vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-}
-@media (min-width: 992px) {
-    .search-qd-v1-navigator-mobile-results {
-        display: none;
-    }
 }
 .search-qd-v1-navigator-mobile-results button {
     color: #fff;
@@ -1232,6 +1226,9 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
     background-color: #2d4f9e;
     outline: none;
     border: none;
+}
+.search-qd-v1-navigator-mobile-results button:hover {
+	background-color: #223B76;
 }
 #returnToTop {
     display: none;
@@ -1293,4 +1290,81 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
     content: "Carregando resultados...";
     font-size: 12px;
     color: #888888;
+}
+
+.search-multiple-navigator fieldset div:not(input) {
+    overflow-y: auto !important;
+    max-height: 212px;
+}
+.search-multiple-navigator fieldset div div {
+    min-height: 50px;
+}
+.search-multiple-navigator fieldset[data-qd-class="ano"] div:not(input)[style*="display: block;"] {
+    display: flex !important;
+    flex-direction: column-reverse;
+}
+
+.search-multiple-navigator fieldset div div {
+    overflow:hidden;
+}
+
+.search-multiple-navigator fieldset:not([data-qd-class^="ano"]) div label:last-child,
+.search-multiple-navigator fieldset[data-qd-class="ano"] div label:nth-child(2) {
+    margin-bottom:10px
+}
+
+@media (max-width: 1199px) {
+    .search-multiple-navigator fieldset div:not(input) {
+        max-height: 282px !important;
+    }
+
+    .search-qd-v1-navigator-research fieldset label {
+        height: 40px;
+    }
+
+
+    .wrapper-search-qd-v1-navigator-mobile-results {
+        position: fixed;
+        margin-left: -15px;
+        bottom: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #EEE;
+        height: 60px;
+        width: 100vw;
+        box-shadow: 0 -5px 5px -3px #888;
+    }
+
+    .qd-sn-on button.search-qd-v1-navigator-exit{
+        transform: scale(0.8);
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        border: 0px;
+        font-size: 26px;
+        position: fixed;
+        right: 16px;
+        top: 106px;
+        background: #2d4f9e;
+        opacity: .7;
+        color: #FFF;
+        z-index: 1;
+    }
+    
+    .qd-sn-on button.search-qd-v1-navigator-exit:hover {
+        opacity: 1;
+    }
+}
+@media (min-width: 1199px) {
+    .search-qd-v1-navigator-mobile-results,
+    button.search-qd-v1-navigator-exit {
+        display: none;
+    }
+}
+
+@media (max-width: 1199px) {
+    .search-qd-v1-navigator .search-qd-v1-navigator-trigger {
+        display: block;
+    }
 }

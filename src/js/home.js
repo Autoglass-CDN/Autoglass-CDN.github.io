@@ -151,7 +151,77 @@
 })();
 //#endregion Benefits
 
-//#region Retings
+//#region Itens Promocionais
+(function () {
+	var btnPrev = $('.banners-promocionais-section button[data-type="prev"]');
+	var btnNext = $('.banners-promocionais-section button[data-type="next"]');
+	const container = $('.banners-promocionais-itens');
+	const itensQuantityToShow = 3;
+	const bannerContainer = container[0];
+	let itensQuantity =  container.children().length;
+	let itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
+	if (itensQuantity < itensQuantityToShow){
+		$('.banners-promocionais-itens').width(itensQuantity*(itemSize+1));
+	}
+	btnNext.click(() => {
+		itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
+		if (getScrollPercentage(bannerContainer) >= 95) {
+			scrollSmoothlyToLeft(bannerContainer, bannerContainer.scrollWidth);
+			return;
+		}
+		scrollSmoothlyToRight(bannerContainer, itemSize);
+	});
+	btnPrev.click(() => {
+		itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
+		if (getScrollPercentage(bannerContainer) <= 5) {
+			scrollSmoothlyToRight(bannerContainer, bannerContainer.scrollWidth);
+			return;
+		}
+		scrollSmoothlyToLeft(bannerContainer, itemSize);
+	});
+})();
+//#endrefio Itens Promocionais
+
+////#region Nossos Servicos
+(function() {
+	document.querySelectorAll(".banners-nossos-servicos .box-banner > a").forEach(
+		function(currentValue, currentIndex, listObj) {
+			currentValue.parentElement.title = currentValue.children[0].getAttribute('alt');
+		}
+	);
+
+
+	const btnPrev = $('.nossos-servicos-section button[data-type="prev"]');
+	const btnNext = $('.nossos-servicos-section button[data-type="next"]');
+	const container = $('.banners-nossos-servicos');
+	const itensQuantityToShow = 3;
+	const bannerContainer = container[0];
+	let itensQuantity =  container.children().length;
+	let itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
+	if (itensQuantity < itensQuantityToShow){
+		$('.banners-nossos-servicos').width(itensQuantity*(itemSize+1));
+	}
+	btnNext.click(() => {
+		itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
+		if (getScrollPercentage(bannerContainer) >= 95) {
+			scrollSmoothlyToLeft(bannerContainer, bannerContainer.scrollWidth);
+			return;
+		}
+		scrollSmoothlyToRight(bannerContainer, itemSize);
+	});
+	btnPrev.click(() => {
+		itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
+		if (getScrollPercentage(bannerContainer) <= 5) {
+			scrollSmoothlyToRight(bannerContainer, bannerContainer.scrollWidth);
+			return;
+		}
+		scrollSmoothlyToLeft(bannerContainer, itemSize);
+	});
+
+})();
+//#endregion Nossos Servicos
+
+//#region Ratings
 (function () {
 	let position = 1;
 	const btnPrev = $('.ratings-section .ratings__slider button[data-type="prev"]');
@@ -272,3 +342,18 @@
 	}
 })();
 //#endregion Retings
+
+function getScrollPercentage(element) {
+	return 100 * element.scrollLeft
+		/ (element.scrollWidth - element.clientWidth);
+}
+function scrollSmoothlyToRight(element, pixelsToScroll) {
+	return element.scrollBy({
+		top: 0,
+		left: pixelsToScroll,
+		behavior : "smooth"
+	})
+}
+function scrollSmoothlyToLeft(element, pixelsToScroll) {
+	return scrollSmoothlyToRight(element, -pixelsToScroll)
+}
