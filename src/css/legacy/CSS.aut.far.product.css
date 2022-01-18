@@ -286,6 +286,9 @@ body.qdpv-video-on .product-qd-v1-image .qd-playerWrapper {
     -webkit-box-shadow: 0px 0px 10px 0px #FFFFFF; 
     box-shadow: 0px 0px 10px 0px #FFFFFF;
 }
+.product-qd-v1-image .product-qd-v1-social-share.mobile {
+    padding: 4px 8px;
+}
 .product-qd-v1-image .product-qd-v1-social-share a {
     font-size: 1em;
     line-height: 1;
