@@ -71,7 +71,7 @@ fieldset[data-qd-class="ano"] {
     position: fixed;
     bottom: 80px;
     left: -100px;
-    z-index: 2;
+    z-index: 6;
     font-size: 0;
     animation: search-navigator 0.5s forwards ease-in-out;
   }

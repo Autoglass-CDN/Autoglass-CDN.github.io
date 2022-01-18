@@ -79,6 +79,7 @@
   _init();
 
   async function _init() {
+    selectRightSearchMethod();
     const categoryTree = await Service.getCategoryTree();
     const childrenCategories = [];
 
@@ -818,10 +819,8 @@
       }
 
       if(isHistoryValid) {
-        document
-          .querySelector("a[href='#busca-placa']").click();
-        document
-          .querySelector("#placa-input").value = searchHistory.params.plate;
+        document.querySelector("a[href='#busca-placa']").click();
+        document.querySelector("#placa-input").value = searchHistory.params.plate;
       }
     }
 
@@ -1117,5 +1116,16 @@
         elemento.classList.remove("loader-modal--show")
       );
     }
+  }
+
+  function selectRightSearchMethod() {
+    var smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+    if(smartSelectHistory != null 
+      && smartSelectHistory.type == "#busca-placa") {
+        document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active")
+        document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active")
+        document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active")
+        document.querySelector("#form-busca-placa").parentNode.classList.add("is-active")
+      }
   }
 })();
