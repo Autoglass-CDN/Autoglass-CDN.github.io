@@ -210,9 +210,9 @@ $(window).on("ready", async () => {
 
     const networkClicked = array.join(' ');
 
-    ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaSSTracker');
-    ga('gaSSTracker.set', 'transport', 'beacon');
-    ga('gaSSTracker.send', 'event', 'Social Share', `Compartilhar ${networkClicked}`, `Botão ${networkClicked}`);
+    //ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaSSTracker');
+    //ga('gaSSTracker.set', 'transport', 'beacon');
+    ga('send', 'event', 'Social Share', `Compartilhar ${networkClicked}`, `Botão ${networkClicked}`);
   });
 
   /**
