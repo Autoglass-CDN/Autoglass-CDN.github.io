@@ -180,7 +180,7 @@ $(window).on("ready", async () => {
   adjustProductThumbHeight();
 
   /*
-   * Ajusta links do Social Sharing 
+   * Funcionalidades do Social Sharing
    */
   const productLink = encodeURIComponent(location.href);
   $(`.product-qd-v1-social-share a.whatsapp`).attr(`href`, `https://api.whatsapp.com/send?text=${productLink}`);
@@ -199,6 +199,20 @@ $(window).on("ready", async () => {
     navigator.clipboard.writeText(location.href);
     $(`.product-qd-v1-social-share a.copy`).children('i.far.fa-copy')
      .fadeOut("fast").attr('class', 'fas fa-check').fadeIn("fast");
+  });
+  $('.product-qd-v1-social-share a:not(.popup-trigger)').click((e) => {
+    const element = $(e.target).closest('a').attr('class');
+    const array = element.replace('_', '').split(' ');
+
+    for (let index = 0; index < array.length; index++) {
+      array[index] = array[index].charAt(0).toUpperCase() + array[index].slice(1);
+    }
+
+    const networkClicked = array.join(' ');
+
+    ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaSSTracker');
+    ga('gaSSTracker.set', 'transport', 'beacon');
+    ga('gaSSTracker.send', 'event', 'Social Share', `Compartilhar ${networkClicked}`, `Botão ${networkClicked}`);
   });
 
   /**
