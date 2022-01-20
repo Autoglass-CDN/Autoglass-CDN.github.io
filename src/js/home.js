@@ -152,57 +152,38 @@
 //#endregion Benefits
 
 //#region Itens Promocionais
-(function () {
-	var btnPrev = $('.banners-promocionais-section button[data-type="prev"]');
-	var btnNext = $('.banners-promocionais-section button[data-type="next"]');
-	const container = $('.banners-promocionais-itens');
-	const itensQuantityToShow = 3;
-	const bannerContainer = container[0];
-	let itensQuantity =  container.children().length;
-	let itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
-	if (itensQuantity < itensQuantityToShow){
-		$('.banners-promocionais-itens').width(itensQuantity*(itemSize+1));
-	}
-	btnNext.click(() => {
-		itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
-		if (getScrollPercentage(bannerContainer) >= 95) {
-			scrollSmoothlyToLeft(bannerContainer, bannerContainer.scrollWidth);
-			return;
-		}
-		scrollSmoothlyToRight(bannerContainer, itemSize);
-	});
-	btnPrev.click(() => {
-		itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
-		if (getScrollPercentage(bannerContainer) <= 5) {
-			scrollSmoothlyToRight(bannerContainer, bannerContainer.scrollWidth);
-			return;
-		}
-		scrollSmoothlyToLeft(bannerContainer, itemSize);
-	});
-})();
+
+configureBanners('.banners-promocionais-section', '.banners-promocionais-itens');
+
 //#endrefio Itens Promocionais
 
 ////#region Nossos Servicos
-(function() {
-	document.querySelectorAll(".banners-nossos-servicos .box-banner > a").forEach(
-		function(currentValue, currentIndex, listObj) {
-			currentValue.parentElement.title = currentValue.children[0].getAttribute('alt');
-		}
-	);
 
+document.querySelectorAll(".banners-nossos-servicos .box-banner > a").forEach(
+	function(currentValue) {
+		currentValue.parentElement.title = currentValue.children[0].getAttribute('alt');
+	}
+);
+configureBanners('.nossos-servicos-section', '.banners-nossos-servicos');
 
-	const btnPrev = $('.nossos-servicos-section button[data-type="prev"]');
-	const btnNext = $('.nossos-servicos-section button[data-type="next"]');
-	const container = $('.banners-nossos-servicos');
+//#endregion Nossos Servicos
+
+function configureBanners(section, banner) {
+	const btnPrev = $(`${section} button[data-type="prev"]`);
+	const btnNext = $(`${section} button[data-type="next"]`);
+	const container = $(`${banner}`);
 	const itensQuantityToShow = 3;
 	const bannerContainer = container[0];
 	let itensQuantity =  container.children().length;
-	let itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
+	let itemSize = $(`${banner} .box-banner:first-child`).outerWidth(true);
+	if (itensQuantity == 0){
+		container.parent().remove();
+	}
 	if (itensQuantity < itensQuantityToShow){
-		$('.banners-nossos-servicos').width(itensQuantity*(itemSize+1));
+		$(`${banner}`).width(itensQuantity*(itemSize+1));
 	}
 	btnNext.click(() => {
-		itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
+		itemSize = getItemSize(banner);
 		if (getScrollPercentage(bannerContainer) >= 95) {
 			scrollSmoothlyToLeft(bannerContainer, bannerContainer.scrollWidth);
 			return;
@@ -210,16 +191,18 @@
 		scrollSmoothlyToRight(bannerContainer, itemSize);
 	});
 	btnPrev.click(() => {
-		itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
+		itemSize = getItemSize(banner);
 		if (getScrollPercentage(bannerContainer) <= 5) {
 			scrollSmoothlyToRight(bannerContainer, bannerContainer.scrollWidth);
 			return;
 		}
 		scrollSmoothlyToLeft(bannerContainer, itemSize);
 	});
+}
 
-})();
-//#endregion Nossos Servicos
+function getItemSize(banner){
+	return $(`${banner} .box-banner:first-child`).outerWidth(true);
+}
 
 //#region Ratings
 (function () {
