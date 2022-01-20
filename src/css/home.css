@@ -10,7 +10,6 @@
 }
 
 .home main {
-  margin-top: 25px;
   background: #FFF;
 }
 
@@ -22,7 +21,7 @@
     margin-top: 0 !important;
   }
   .home main {
-    margin-top: 0px;
+    background-color: var(--gray-100)
   }
 }
 
@@ -138,6 +137,10 @@
   }
   .banners-section .banners-content.mobile {
     display: flex;
+    border-radius: 20px;
+    margin: 10px;
+    aspect-ratio: 6/5;
+    overflow: hidden;
   }
   .banners-section .banners-content img {
     height: auto;
@@ -583,17 +586,19 @@
   height: 340px;
 }
 
-.banners-promocionais-itens {
-  display: -webkit-box;
-  overflow: hidden;
-  width: 1110px;
-  height: 100%;
-}
-
+.banners-promocionais-itens,
 .banners-nossos-servicos {
   display: -webkit-box;
   overflow: hidden;
   width: 1110px;
+  -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
+}
+
+.banners-promocionais-itens {
+  height: 100%;
+}
+
+.banners-nossos-servicos {
   height: 300px;
   padding-bottom: 50px;
   position: relative;
@@ -633,31 +638,9 @@
   margin: 20px;
 }
 
-.banners-promocionais-section button:first-child::after,
-.banners-promocionais-section button:last-Child::before,
-.nossos-servicos-section button:first-child::after,
-.nossos-servicos-section button:last-Child::before {
-  content: '';
-  font-weight: bold;
-  display: block;
-  position: absolute;
-  height: 260px;
-  width: 20px;
-}
-.nossos-servicos-section button:first-child::after,
-.nossos-servicos-section button:last-Child::before {
-  height: 300px;
-}
-
-.banners-promocionais-section button:first-child::after,
-.nossos-servicos-section button:first-child::after {
-  background:linear-gradient(to left, transparent, #FFF);
-  left: 36px;
-}
-.banners-promocionais-section button:last-child::before,
-.nossos-servicos-section button:last-child::before {
-  background:linear-gradient(to right, transparent, #FFF);
-  right: 36px;
+.banners-promocionais-section button svg,
+.nossos-servicos-section button svg{
+  transition: 0.2s;
 }
 
 .banners-promocionais-section button:hover svg,
@@ -672,7 +655,7 @@
   text-align: center;
   vertical-align: middle;
   top: 10px;
-  font-size: 22px;
+  font-size: 21px;
   color: darkgray;
   width: 75%;
 }
@@ -687,12 +670,7 @@
     flex-basis: calc(100% - 20px);
     position: relative;
   }
-  .banners-promocionais-section button::after,
-  .banners-promocionais-section button::before,
-  .nossos-servicos-section button::after,
-  .nossos-servicos-section button::before {
-    display:none !important;
-  }
+
   .banners-nossos-servicos .box-banner:after{
     width: 100%;    
   }
