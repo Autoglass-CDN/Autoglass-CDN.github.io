@@ -159,7 +159,26 @@
 /* #region Benefits */
 
 .benefits-section {
+  position: relative;
   color: #95989A;
+}
+
+.benefits-section .benefits-dots-mobile-container {
+  display:none;
+}
+
+.benefits-section .benefits-dots-mobile-container .dot {
+  background: #95989A;
+  opacity: 0.4;
+  height: 10px;
+  width: 10px;
+  left: 72px;
+  border-radius: 50%;
+  margin: 0px 1.5px;
+}
+
+.benefits-section .benefits-dots-mobile-container .dot.focus {
+  opacity: 1;
 }
 
 .benefits-section .container {
@@ -232,6 +251,15 @@
   }
   .benefits-section .benefit:last-child {
     padding-right: 20%;
+  }
+  .benefits-section .benefits-dots-mobile-container{
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    height: 10px;
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
   }
 }
 
@@ -648,6 +676,13 @@
   transform: scale(1.2);
 }
 
+.banners-promocionais-section.hide-buttons button,
+.nossos-servicos-section.hide-buttons button,
+.banners-promocionais-section.button-mobile-only button,
+.nossos-servicos-section.button-mobile-only button {
+  display: none;
+}
+
 .banners-nossos-servicos .box-banner[title]:after{
   content: attr(title);
   position: relative;
@@ -664,6 +699,10 @@
   .banners-promocionais-section, 
   .nossos-servicos-section, .banners-nossos-servicos {
     height: auto;
+  }
+  .banners-promocionais-itens,
+  .banners-nossos-servicos{
+    width: -webkit-fill-available !important;
   }
   .banners-promocionais-itens .box-banner,
   .banners-nossos-servicos .box-banner { 
@@ -691,6 +730,11 @@
   .banners-promocionais-section button, 
   .nossos-servicos-section button{
     margin: 0px;
+  }
+
+  .banners-promocionais-section.button-mobile-only button,
+  .nossos-servicos-section.button-mobile-only button {
+    display: flex;
   }
 
   .ratings-section {
