@@ -36,7 +36,7 @@
 
 	btnPrev.click(() => {
 		bannerContainer[0].scrollBy(-window.innerWidth, 0);
-		if (getScrollPercentage() === 0) {
+		if (getScrollPercentage(bannerContainer[0]) === 0) {
 			bannerContainer[0].scrollBy(bannerContainer[0].scrollWidth, 0);
 			position = (bannerImages.length - 1);
 		} else {
@@ -51,7 +51,7 @@
 	btnNext.click(() => {
 		bannerContainer[0].scrollBy(window.innerWidth, 0);
 
-		if (getScrollPercentage() >= 95) {
+		if (getScrollPercentage(bannerContainer[0]) >= 95) {
 			bannerContainer[0].scrollBy(-bannerContainer[0].scrollWidth, 0);
 			position = 0;
 		} else {
@@ -83,11 +83,6 @@
 
 			$($('.banners-bars li')[index]).addClass('active');
 		}
-	}
-
-	function getScrollPercentage() {
-		return 100 * bannerContainer[0].scrollLeft
-			/ (bannerContainer[0].scrollWidth - bannerContainer[0].clientWidth);
 	}
 
 	function calculateMarginOfBtns() {
@@ -161,11 +156,8 @@ configureBanners('.banners-promocionais-section', '.banners-promocionais-itens')
 
 ////#region Nossos Servicos
 
-document.querySelectorAll(".banners-nossos-servicos .box-banner > a").forEach(
-	function(currentValue) {
-		currentValue.parentElement.title = currentValue.children[0].getAttribute('alt');
-	}
-);
+configureBannerSubtitles(".banners-nossos-servicos .box-banner > a");
+
 configureBanners('.nossos-servicos-section', '.banners-nossos-servicos');
 
 //#endregion Nossos Servicos
@@ -177,13 +169,60 @@ function configureBanners(section, banner) {
 	const itensQuantityToShow = 3;
 	const bannerContainer = container[0];
 	let itensQuantity =  container.children().length;
-	let itemSize = $(`${banner} .box-banner:first-child`).outerWidth(true);
-	if (itensQuantity == 0){
-		container.parent().remove();
+	let itemSize = $(`${banner} .box-banner:first-child`).outerWidth(true)+1;
+
+	switch(true){
+		case itensQuantity == 0:
+			if(container.parent()[0].previousSibling.tagName == 'H2'){
+				container.parent()[0].previousSibling.remove();
+			}
+			container.parent().remove();
+			break;
+		case itensQuantity == 1:
+			changeContainerWidth(container, itensQuantity, itemSize)
+			container.parent().addClass('hide-buttons')
+			break;
+		case itensQuantity < itensQuantityToShow:
+			changeContainerWidth(container, itensQuantity, itemSize)
+			container.parent().addClass('button-mobile-only')
+			configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer);
+			break;
+		case itensQuantity == itensQuantityToShow:
+			createResizeObserver(banner, itensQuantity, itemSize);
+			configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer);
+			break;
+		default:
+			configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer);
+			break;
 	}
-	if (itensQuantity < itensQuantityToShow){
-		$(`${banner}`).width(itensQuantity*(itemSize+1));
-	}
+}
+
+function configureBannerSubtitles(anchor){
+	document.querySelectorAll(anchor).forEach(
+		function(currentValue) {
+			currentValue.parentElement.title = currentValue.children[0].getAttribute('alt');
+		}
+	);
+}
+
+function changeContainerWidth(container, itensQuantity, itemSize){
+	container.width(itensQuantity*(itemSize));
+}
+
+function createResizeObserver(banner, itensQuantity, itemSize){
+	const myObserver = new ResizeObserver(entries => {
+		if(entries[0].contentRect.width < itensQuantity*itemSize){
+			entries[0].target.parentElement.classList.remove('hide-buttons')
+		} else{
+			entries[0].target.parentElement.classList.add('hide-buttons')
+		}
+	});
+	
+	const element = document.querySelector(banner);
+	myObserver.observe(element);
+}
+
+function configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer){
 	btnNext.click(() => {
 		itemSize = getItemSize(banner);
 		if (getScrollPercentage(bannerContainer) >= 95) {
