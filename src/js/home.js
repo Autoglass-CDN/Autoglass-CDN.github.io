@@ -103,6 +103,7 @@
 (function () {
 	const benefitsContainer = $('.benefits-section .container');
 	const benefits = $('.benefits-section .container .benefit');
+	const benefitsDots = $('.benefits-section .benefits-dots-mobile-container .dot');
 
 	const interval = setInterval(() => {
 		const scrollPercentage = calculateScrollPercentage();
@@ -127,17 +128,18 @@
 	});
 
 	benefitsContainer.scroll(() => {
-		const percentItem = 100 / benefits.length;
+		const percentPerItem = 100 / benefits.length;
 		const scrollPercentage = calculateScrollPercentage();
 
-		benefits.each((index, element) => {
-			const up = percentItem * (index + 1);
-			const down = percentItem * index;
-
-			$(element).removeClass('focus');
-
+		benefits.each((index) => {
+			const up = percentPerItem * (index + 1);
+			const down = percentPerItem * index;
+			benefits.eq(index).removeClass('focus');
+			benefitsDots.eq(index).removeClass('focus')
+			
 			if (scrollPercentage >= down && scrollPercentage <= up) {
-				$(element).addClass('focus');
+				benefits.eq(index).addClass('focus');
+				benefitsDots.eq(index).addClass('focus')
 			}
 		});
 
