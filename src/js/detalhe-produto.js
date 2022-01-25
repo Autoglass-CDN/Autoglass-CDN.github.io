@@ -67,9 +67,6 @@ sectionCollapseInit();
 
 //Descrição da marca
 async function insertBrandDescription() {
-  document.querySelector("#descricao-marca").parentElement.style.display =
-    "none";
-
   return fetch("/api/catalog_system/pub/brand/list")
     .then((response) => response.json())
     .then((brandList) => {
@@ -84,12 +81,10 @@ async function insertBrandDescription() {
 
       if (brand && brand.metaTagDescription !== '') {
         const brandDescription = brand.metaTagDescription;
-
-        document.querySelector(
-          "#descricao-marca"
-        ).textContent = brandDescription;
-        document.querySelector("#descricao-marca").parentElement.style.display =
-          "block";
+        const descricaoMarcaParagraph = document.querySelector("#descricao-marca");
+        
+        descricaoMarcaParagraph.textContent = brandDescription;
+        descricaoMarcaParagraph.parentElement.parentElement.style.display = "block";
       }
     });
 }
@@ -119,14 +114,17 @@ async function loadOptionals() {
 
     if (Opcionais && Opcionais.length > 0) {
       opcionaisContainer.html(`
-              <h3>Características</h3>
-              <div class="caracteristicas__box">
-                  ${Opcionais.map(
-                    (x) =>
-                      `<span class="caracteristicas__caracteristica">${x}</span>`
-                  ).join("")}
-              </div>
-          `);
+        <a role="button" data-toggle="collapse" href="#informacoes-gerais-caracteristicas" class="collapsed">
+          <h3>Características</h3>
+        </a>
+        <div class="collapse" id="informacoes-gerais-caracteristicas">
+          <div class="caracteristicas__box">
+            ${Opcionais.map(
+              (x) => `<span class="caracteristicas__caracteristica">${x}</span>`
+            ).join("")}
+          </div>
+        </div>
+      `);
     }
   } catch (ex) {
     console.error("Falha ao renderizar opcionais. \n ", ex);
@@ -135,12 +133,6 @@ async function loadOptionals() {
 
 window.addEventListener("load", insertBrandDescription);
 window.addEventListener("load", loadOptionals);
-// Se não tem vídeo, remove ajuste de largura
-if (document.querySelector("#gtm-video-parabrisa").innerHTML === "") {
-  document
-    .querySelectorAll(".info-box.left")
-    .forEach((box) => box.classList.remove("left"));
-}
 
 async function loadSimilars() {
   const hideMenu = (id) =>
@@ -166,7 +158,6 @@ async function loadSimilars() {
 
 loadSimilars();
 
-
 $(window).on("ready", async () => {
   /*
    * Corrige problema com variação da altura na thumb de produto
@@ -179,27 +170,7 @@ $(window).on("ready", async () => {
 
   adjustProductThumbHeight();
 
-  /*
-   * Ajusta links do Social Sharing 
-   */
-  const productLink = encodeURIComponent(location.href);
-  $(`.product-qd-v1-social-share a.whatsapp`).attr(`href`, `https://api.whatsapp.com/send?text=${productLink}`);
-  $(`.product-qd-v1-social-share a.twitter`).attr(`href`, `https://twitter.com/intent/tweet?text=${productLink}`);
-  $(`.product-qd-v1-social-share a.mail`).attr(`href`, `mailto:?subject=Quero%20compartilhar%20um%20produto%20da%20Autoglass&body=Veja%20este%20produto%20na%20Autoglass:%0D%0A${productLink}`);
-  $(`.product-qd-v1-social-share a.messenger`).attr(`href`, `fb-messenger://share?link=${productLink}`);
-  $(`.product-qd-v1-social-share a.facebook`).attr(`href`, `https://www.facebook.com/sharer.php?u=${productLink}`);
-  $('.product-qd-v1-social-share a.popup-trigger').click((e) => {
-    e.preventDefault();
-    $('div.product-qd-v1-social-share-options-popup').fadeToggle(400, 'swing', () => {
-      $(`.product-qd-v1-social-share a.copy`).children('i.fas.fa-check').attr('class', 'far fa-copy');
-    });
-  });
-  $(`.product-qd-v1-social-share a.copy`).click((e) => {
-    e.preventDefault();
-    navigator.clipboard.writeText(location.href);
-    $(`.product-qd-v1-social-share a.copy`).children('i.far.fa-copy')
-     .fadeOut("fast").attr('class', 'fas fa-check').fadeIn("fast");
-  });
+  initializeSocialShareLinks();
 
   /**
    * Cria bloco de Veículos Compatíveis
@@ -222,26 +193,26 @@ $(window).on("ready", async () => {
 
     if (possuiVeiculosCompativeis > 0) {
       veiculosCompatíveisContainer.html(`
-            <h2>Veículos Compatíveis</h2>
-            <div class="veiculos-compativeis__box">
-                <div class="veiculos-compativeis__box-header">
-                    <button id="group-prev" data-type="prev" type="button">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                        <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
-                    </svg>
-                    </button>
-                    ${veiculosCompativeis.map(buildHeader).join("")}
-                    <button id="group-next" data-type="next" type="button">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                            <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
-                        </svg>
-                    </button>
-                </div>
-                <div class="veiculos-compativeis__box-content">
-                    ${veiculosCompativeis.map(buildContent).join("")}
-                </div>
-            </div>
-        `);
+        <h2>Veículos Compatíveis</h2>
+        <div class="veiculos-compativeis__box">
+          <div class="veiculos-compativeis__box-header">
+            <button id="group-prev" data-type="prev" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+              <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
+            </svg>
+            </button>
+            ${veiculosCompativeis.map(buildHeader).join("")}
+            <button id="group-next" data-type="next" type="button">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+                <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
+              </svg>
+            </button>
+          </div>
+          <div class="veiculos-compativeis__box-content">
+              ${veiculosCompativeis.map(buildContent).join("")}
+          </div>
+        </div>
+      `);
 
       $(".veiculos-compativeis__header-option").first().addClass("active");
       $(`.veiculos-compativeis__box-content div`).first().addClass("active");
@@ -373,19 +344,19 @@ $(window).on("ready", async () => {
 
   function buildContent(grupo, index) {
     return `
-          <div data-for="${grupo.Grupo + index}">
-              ${grupo.Veiculos.map(
-                (veiculo) => `
-                  <div class="veiculos-compativeis__content-compativel">
-                      <p>${veiculo.Veiculo}</p>
-                      <div>${veiculo.Anos.map(
-                        (x) => "<span>" + x + "</span>"
-                      )}.</div>
-                  </div>
-              `
-    ).join("")}
-          </div>
-      `;
+      <div data-for="${grupo.Grupo + index}">
+          ${grupo.Veiculos.map(
+            (veiculo) => `
+              <div class="veiculos-compativeis__content-compativel">
+                  <p>${veiculo.Veiculo}</p>
+                  <div>${veiculo.Anos.map(
+                    (x) => "<span>" + x + "</span>"
+                  )}.</div>
+              </div>
+          `
+          ).join("")}
+      </div>
+    `;
   }
 
   function checkIfNeedButtons(header) {
@@ -424,5 +395,27 @@ $(window).on("ready", async () => {
       (100 * container.scrollLeft) /
       (container.scrollWidth - container.clientWidth)
     );
+  }
+
+  function initializeSocialShareLinks() {
+    const productLink = encodeURIComponent(location.href);
+
+    $(`.product-qd-v1-social-share a.whatsapp`).attr(`href`, `https://api.whatsapp.com/send?text=${productLink}`);
+    $(`.product-qd-v1-social-share a.twitter`).attr(`href`, `https://twitter.com/intent/tweet?text=${productLink}`);
+    $(`.product-qd-v1-social-share a.mail`).attr(`href`, `mailto:?subject=Quero%20compartilhar%20um%20produto%20da%20Autoglass&body=Veja%20este%20produto%20na%20Autoglass:%0D%0A${productLink}`);
+    $(`.product-qd-v1-social-share a.messenger`).attr(`href`, `fb-messenger://share?link=${productLink}`);
+    $(`.product-qd-v1-social-share a.facebook`).attr(`href`, `https://www.facebook.com/sharer.php?u=${productLink}`);
+    $('.product-qd-v1-social-share a.popup-trigger').click((e) => {
+      e.preventDefault();
+      $('div.product-qd-v1-social-share-options-popup').fadeToggle(400, 'swing', () => {
+        $(`.product-qd-v1-social-share a.copy`).children('i.fas.fa-check').attr('class', 'far fa-copy');
+      });
+    });
+    $(`.product-qd-v1-social-share a.copy`).click((e) => {
+      e.preventDefault();
+      navigator.clipboard.writeText(location.href);
+      $(`.product-qd-v1-social-share a.copy`).children('i.far.fa-copy')
+      .fadeOut("fast").attr('class', 'fas fa-check').fadeIn("fast");
+    });
   }
 });
