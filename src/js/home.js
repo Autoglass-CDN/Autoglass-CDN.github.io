@@ -36,7 +36,7 @@
 
 	btnPrev.click(() => {
 		bannerContainer[0].scrollBy(-window.innerWidth, 0);
-		if (getScrollPercentage() === 0) {
+		if (getScrollPercentage(bannerContainer[0]) === 0) {
 			bannerContainer[0].scrollBy(bannerContainer[0].scrollWidth, 0);
 			position = (bannerImages.length - 1);
 		} else {
@@ -51,7 +51,7 @@
 	btnNext.click(() => {
 		bannerContainer[0].scrollBy(window.innerWidth, 0);
 
-		if (getScrollPercentage() >= 95) {
+		if (getScrollPercentage(bannerContainer[0]) >= 95) {
 			bannerContainer[0].scrollBy(-bannerContainer[0].scrollWidth, 0);
 			position = 0;
 		} else {
@@ -85,11 +85,6 @@
 		}
 	}
 
-	function getScrollPercentage() {
-		return 100 * bannerContainer[0].scrollLeft
-			/ (bannerContainer[0].scrollWidth - bannerContainer[0].clientWidth);
-	}
-
 	function calculateMarginOfBtns() {
 		const distance = (window.innerWidth - $('.c-busca')[0].offsetWidth) / 2;
 
@@ -103,6 +98,7 @@
 (function () {
 	const benefitsContainer = $('.benefits-section .container');
 	const benefits = $('.benefits-section .container .benefit');
+	const benefitsDots = $('.benefits-section .benefits-dots-mobile-container .dot');
 
 	const interval = setInterval(() => {
 		const scrollPercentage = calculateScrollPercentage();
@@ -127,17 +123,18 @@
 	});
 
 	benefitsContainer.scroll(() => {
-		const percentItem = 100 / benefits.length;
+		const percentPerItem = 100 / benefits.length;
 		const scrollPercentage = calculateScrollPercentage();
 
-		benefits.each((index, element) => {
-			const up = percentItem * (index + 1);
-			const down = percentItem * index;
-
-			$(element).removeClass('focus');
-
+		benefits.each((index) => {
+			const up = percentPerItem * (index + 1);
+			const down = percentPerItem * index;
+			benefits.eq(index).removeClass('focus');
+			benefitsDots.eq(index).removeClass('focus')
+			
 			if (scrollPercentage >= down && scrollPercentage <= up) {
-				$(element).addClass('focus');
+				benefits.eq(index).addClass('focus');
+				benefitsDots.eq(index).addClass('focus')
 			}
 		});
 
@@ -152,57 +149,82 @@
 //#endregion Benefits
 
 //#region Itens Promocionais
-(function () {
-	var btnPrev = $('.banners-promocionais-section button[data-type="prev"]');
-	var btnNext = $('.banners-promocionais-section button[data-type="next"]');
-	const container = $('.banners-promocionais-itens');
-	const itensQuantityToShow = 3;
-	const bannerContainer = container[0];
-	let itensQuantity =  container.children().length;
-	let itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
-	if (itensQuantity < itensQuantityToShow){
-		$('.banners-promocionais-itens').width(itensQuantity*(itemSize+1));
-	}
-	btnNext.click(() => {
-		itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
-		if (getScrollPercentage(bannerContainer) >= 95) {
-			scrollSmoothlyToLeft(bannerContainer, bannerContainer.scrollWidth);
-			return;
-		}
-		scrollSmoothlyToRight(bannerContainer, itemSize);
-	});
-	btnPrev.click(() => {
-		itemSize = $('.banners-promocionais-itens .box-banner:first-child').outerWidth(true);
-		if (getScrollPercentage(bannerContainer) <= 5) {
-			scrollSmoothlyToRight(bannerContainer, bannerContainer.scrollWidth);
-			return;
-		}
-		scrollSmoothlyToLeft(bannerContainer, itemSize);
-	});
-})();
+
+configureBanners('.banners-promocionais-section', '.banners-promocionais-itens');
+
 //#endrefio Itens Promocionais
 
 ////#region Nossos Servicos
-(function() {
-	document.querySelectorAll(".banners-nossos-servicos .box-banner > a").forEach(
-		function(currentValue, currentIndex, listObj) {
-			currentValue.parentElement.title = currentValue.children[0].getAttribute('alt');
-		}
-	);
 
+configureBannerSubtitles(".banners-nossos-servicos .box-banner > a");
 
-	const btnPrev = $('.nossos-servicos-section button[data-type="prev"]');
-	const btnNext = $('.nossos-servicos-section button[data-type="next"]');
-	const container = $('.banners-nossos-servicos');
+configureBanners('.nossos-servicos-section', '.banners-nossos-servicos');
+
+//#endregion Nossos Servicos
+
+function configureBanners(section, banner) {
+	const btnPrev = $(`${section} button[data-type="prev"]`);
+	const btnNext = $(`${section} button[data-type="next"]`);
+	const container = $(`${banner}`);
 	const itensQuantityToShow = 3;
 	const bannerContainer = container[0];
 	let itensQuantity =  container.children().length;
-	let itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
-	if (itensQuantity < itensQuantityToShow){
-		$('.banners-nossos-servicos').width(itensQuantity*(itemSize+1));
+	let itemSize = $(`${banner} .box-banner:first-child`).outerWidth(true)+1;
+
+	switch(true){
+		case itensQuantity == 0:
+			if(container.parent()[0].previousSibling.tagName == 'H2'){
+				container.parent()[0].previousSibling.remove();
+			}
+			container.parent().remove();
+			break;
+		case itensQuantity == 1:
+			changeContainerWidth(container, itensQuantity, itemSize)
+			container.parent().addClass('hide-buttons')
+			break;
+		case itensQuantity < itensQuantityToShow:
+			changeContainerWidth(container, itensQuantity, itemSize)
+			container.parent().addClass('button-mobile-only')
+			configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer);
+			break;
+		case itensQuantity == itensQuantityToShow:
+			createResizeObserver(banner, itensQuantity, itemSize);
+			configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer);
+			break;
+		default:
+			configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer);
+			break;
 	}
+}
+
+function configureBannerSubtitles(anchor){
+	document.querySelectorAll(anchor).forEach(
+		function(currentValue) {
+			currentValue.parentElement.title = currentValue.children[0].getAttribute('alt');
+		}
+	);
+}
+
+function changeContainerWidth(container, itensQuantity, itemSize){
+	container.width(itensQuantity*(itemSize));
+}
+
+function createResizeObserver(banner, itensQuantity, itemSize){
+	const myObserver = new ResizeObserver(entries => {
+		if(entries[0].contentRect.width < itensQuantity*itemSize){
+			entries[0].target.parentElement.classList.remove('hide-buttons')
+		} else{
+			entries[0].target.parentElement.classList.add('hide-buttons')
+		}
+	});
+	
+	const element = document.querySelector(banner);
+	myObserver.observe(element);
+}
+
+function configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer){
 	btnNext.click(() => {
-		itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
+		itemSize = getItemSize(banner);
 		if (getScrollPercentage(bannerContainer) >= 95) {
 			scrollSmoothlyToLeft(bannerContainer, bannerContainer.scrollWidth);
 			return;
@@ -210,16 +232,18 @@
 		scrollSmoothlyToRight(bannerContainer, itemSize);
 	});
 	btnPrev.click(() => {
-		itemSize = $('.banners-nossos-servicos .box-banner:first-child').outerWidth(true);
+		itemSize = getItemSize(banner);
 		if (getScrollPercentage(bannerContainer) <= 5) {
 			scrollSmoothlyToRight(bannerContainer, bannerContainer.scrollWidth);
 			return;
 		}
 		scrollSmoothlyToLeft(bannerContainer, itemSize);
 	});
+}
 
-})();
-//#endregion Nossos Servicos
+function getItemSize(banner){
+	return $(`${banner} .box-banner:first-child`).outerWidth(true);
+}
 
 //#region Ratings
 (function () {
