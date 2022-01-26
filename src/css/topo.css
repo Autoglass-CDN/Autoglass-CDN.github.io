@@ -667,7 +667,6 @@ i.arrow-icon::before {
 .container .menu-carrinho {
   display: flex;
   align-items: center;
-  min-width: 140px;
   height: 100%;
   cursor: pointer;
   transition: .5s
@@ -1061,7 +1060,7 @@ i.arrow-icon::before {
   position: relative;
   width: 100%;
   left: 0;
-  padding: 0px 30px;
+  padding: 0px 10px;
   background-color: #fff;
   font-size: 1.25rem;
   transition: all .1s ease-in;
@@ -1098,6 +1097,10 @@ i.arrow-icon::before {
   margin: 0 20px;
 }
 
+.painel-categorias .painel-categorias__categoria:first-child {
+  margin-left: 0;
+}
+
 .painel-categorias .painel-categorias__categoria h3{
   transition: 0s ease-in-out .1s
 }
@@ -1109,6 +1112,7 @@ i.arrow-icon::before {
 
 .painel-categorias .painel-categorias__menu {
   position: relative;
+  overflow: hidden;
   background: #FFF;
   height: 135px;
   white-space: nowrap;
@@ -1609,7 +1613,7 @@ hr {
 #banner_topo_desktop,
 #banner_topo_mobile {
   display: block;
-  width: 100vw;
+  width: 100%;
 }
 #banner_topo_desktop {
   object-fit: contain; 
