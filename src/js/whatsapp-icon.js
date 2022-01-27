@@ -1,22 +1,22 @@
 (() => {
 
-    let whatsappIcon = document.querySelector('#whatsapp-icon-link');
+    let whatsappIconDesktop = document.querySelector('#whatsapp-icon-link-desktop');
+    let whatsappIconMobile = document.querySelector('#whatsapp-icon-link-mobile');
     
-    if(document.querySelector('.product-qd-v1-fixed-bar')) {
-        whatsappIcon.style.marginBottom = '55px'
-    }
-
     let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
     
-    whatsappIcon.addEventListener(touchEvent, (ev) => {
-        
-        ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaTracker');
-        ga('gaTracker.set', 'transport', 'beacon');
-        ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', 'Rodapé +55 27 99826-0207');
+    createGAWhatsapp(whatsappIconDesktop, 'Desktop');
+    createGAWhatsapp(whatsappIconMobile, 'Mobile');
 
-    }, {passive: true});
+    function createGAWhatsapp (icon, device) {
+        icon.addEventListener(touchEvent, (_) => {
+            ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaTracker');
+            ga('gaTracker.set', 'transport', 'beacon');
+            ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', `Botão ${device}`);
+        }, {passive: true});
+    }
     
-    const addBorderZDButton = () => {
+    const addBorderZDButton = () => { //ZENDESK -- Remover caso deixe de usar
         let iframe = document.querySelector('#launcher');
         zdFrame = document.querySelector('#launcher').contentDocument
         
