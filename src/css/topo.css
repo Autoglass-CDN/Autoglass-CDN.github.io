@@ -727,7 +727,7 @@ i.arrow-icon::before {
 
 .container.mobile .menu-carrinho .confirmacao {
   top: 167%;
-  right: -50px;
+  right: -10px;
   width: 340px;
 }
 
@@ -784,7 +784,7 @@ i.arrow-icon::before {
   border-right: 10px solid transparent;
   border-bottom: 10px solid #FFF;
   top: -8px;
-  right: 50px;
+  right: 10px;
   position: absolute;
 }
 
