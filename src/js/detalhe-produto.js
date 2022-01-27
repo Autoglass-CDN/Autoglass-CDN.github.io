@@ -114,15 +114,11 @@ async function loadOptionals() {
 
     if (Opcionais && Opcionais.length > 0) {
       opcionaisContainer.html(`
-        <a role="button" data-toggle="collapse" href="#informacoes-gerais-caracteristicas" class="collapsed">
-          <h3>Características</h3>
-        </a>
-        <div class="collapse" id="informacoes-gerais-caracteristicas">
-          <div class="caracteristicas__box">
-            ${Opcionais.map(
-              (x) => `<span class="caracteristicas__caracteristica">${x}</span>`
-            ).join("")}
-          </div>
+        <h3>Características</h3>
+        <div class="caracteristicas__box">
+          ${Opcionais.map(
+            (x) => `<span class="caracteristicas__caracteristica">${x}</span>`
+          ).join("")}
         </div>
       `);
     }
