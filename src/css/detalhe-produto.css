@@ -18,7 +18,7 @@ html {
 
 /* FIM RESET RATINGS COMPONENT */
 
-.white-background {
+#outras-marcas.tab-content , .white-background {
   background: white;
 }
 
@@ -30,7 +30,7 @@ html {
   z-index: 1;
 }
 
-.blue-background {
+#compre-junto.tab-content, .blue-background {
   background: #234eb9;
 }
 
@@ -91,8 +91,7 @@ html {
   height: 2px;
   margin-top: 13px;
   border-radius: 2px;
-  background: #183884/*var(--primary)*/
-  ;
+  background: #183884/*var(--primary)*/;
   transition: width 200ms ease-in-out;
 }
 
@@ -106,12 +105,11 @@ html {
 }
 
 section.tab-content {
-  padding: 0 15px;
+  padding: 0 5px;
 }
 
 section#outras-marcas.tab-content, section#compre-junto.tab-content {
   display: none;
-  padding: unset;
 }
 
 section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content .slick-track {
@@ -260,8 +258,11 @@ a[data-toggle=collapse] + div > *:first-child {
   border: 1px solid #707070;
   border-radius: 16px;
   padding: 5px 15px;
-  margin: 5px 3px;
   display: inline-block;
+}
+
+.caracteristicas__caracteristica ~ .caracteristicas__caracteristica {
+  margin-left: 3px;
 }
 
 .table-zebra {
@@ -343,6 +344,12 @@ h4.group.Especificacoes {
   }
 }
 
+@media screen and (max-width: 992px) {
+  section.tab-content {
+    padding: 0 15px;
+  }
+}
+
 /* MOBILE */
 @media only screen and (max-width: 768px) {
   .oculta-coluna {
@@ -368,10 +375,14 @@ h4.group.Especificacoes {
   .contents .tab-content:empty {
     display: none;
   }
-  .contents .tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
-    padding: 24px 15px 0;
+  .contents .tab-content {
+    padding: 24px 20px 0;
   }
-  #avaliacoes.tab-content, #outras-marcas .white-background, #compre-junto .blue-background {
+  #outras-marcas .white-background, #compre-junto .blue-background {
+    padding: 0;
+  }
+  #avaliacoes.tab-content, #outras-marcas.tab-content, #compre-junto.tab-content,
+  #outras-marcas .white-background, #compre-junto .blue-background {
     background-color: white;
   }
   .contents .tab-content::after {

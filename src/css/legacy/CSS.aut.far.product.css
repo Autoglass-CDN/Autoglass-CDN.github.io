@@ -84,8 +84,8 @@
     .product-qd-v1-image-thumbs {
         padding-top: 18px;
         max-width: 100%;
-        padding-right: 15px;
-        padding-left: 15px;
+        padding-right: 20px;
+        padding-left: 20px;
     }
 }
 .product-qd-v1-image-thumbs li {
@@ -560,8 +560,8 @@ body.qd-product-unavailable
 }
 @media (max-width: 992px) {
     .product-qd-v1-sku-selection-box .product-qd-v1-sku-selection-row {
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 20px;
+        padding-left: 20px;
     }
     .product-qd-v1-sku-selection-box
         .product-qd-v1-sku-selection-row
@@ -1683,13 +1683,13 @@ body.qd-product-unavailable .product-qd-v1-shipping {
 @media (max-width: 1200px) {
     .product-qd-v1-shipping {
         padding-top: 15px;
-        padding-bottom: 15px;
+        padding-bottom: 20px;
     }
 }
 @media (max-width: 992px) {
     .product-qd-v1-shipping {
-        padding-right: 30px;
-        padding-left: 30px;
+        padding-right: 20px;
+        padding-left: 20px;
     }
 }
 .product-qd-v1-shipping .product-qd-v1-shipping-title {
@@ -2753,7 +2753,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 .product-qd-v1-block-above-image .product-qd-v1-name,
 .product-qd-v1-block-above-image .product-qd-v1-ref-code,
 .product-qd-v1-block-above-image .product-qd-v1-brand-name {
-    padding: 0 30px;
+    padding: 0 20px;
 }
 .product-qd-v1-block-above-image .product-qd-v1-name.mob,
 .product-qd-v1-block-above-image .product-qd-v1-ref-code.mob,
