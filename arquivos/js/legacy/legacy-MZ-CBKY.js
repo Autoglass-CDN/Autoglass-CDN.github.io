@@ -1562,6 +1562,7 @@ try {
 		$(function () {
 			body = $(document.body);
 			Common.init();
+
 			if (body.is(".home"))
 				Home.init();
 			else if (body.is(searchSelector))
@@ -1576,6 +1577,7 @@ try {
 				Orders.init();
 			else if (body.is(".b2b"))
 				B2B.init();
+
 			$(document).ajaxStop(ajaxStop);
 			$(window).load(windowLoad);
 			body.addClass("jsFullLoaded")
@@ -3547,18 +3549,6 @@ eval(function (p, a, c, k, e, d) {
 )();
 $(document).ready(function () {
 	$('body').find('script[src="https://autoglasshml.vteximg.com.br/scripts/vtex.viewpart.imagecontrol3.js"]').remove()
-});
-$(window).load(function () {
-	/* Injetando código para controlar script da galeria de imagem/video */
-	const isPageProduct = /\/p$|\/p\?/.test(window.location.href);
-	if (!isPageProduct) return;
-
-	var script=document.createElement('script');
-	script.type='text/javascript';
-	script.src="https://autoglass-cdn.github.io/arquivos/js/detalhe-produto-video.js";
-
-	document.body.appendChild(script);
-
 });
 $(window).load(function () {
 	var a = $(".fb-comments");
