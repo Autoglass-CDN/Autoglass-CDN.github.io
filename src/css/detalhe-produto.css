@@ -18,7 +18,7 @@ html {
 
 /* FIM RESET RATINGS COMPONENT */
 
-#outras-marcas.tab-content , .white-background {
+#outras-marcas.tab-content, .white-background {
   background: white;
 }
 
@@ -458,7 +458,6 @@ h4.group.Especificacoes {
 }
 
 /* Veículos Compatíveis */
-
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header {
   display: flex;
   position: relative;
