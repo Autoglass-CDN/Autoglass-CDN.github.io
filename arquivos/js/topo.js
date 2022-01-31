@@ -1,10 +1,15 @@
 
-function centerArrow() {
+function centerArrow(min, max) {
   let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
   let arrow = document.querySelector('.arrow');
   let arrowPositions = arrow.getBoundingClientRect();
   let positions = categoriaAtiva.getBoundingClientRect();
-  arrow.style.left = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10))) + 'px';
+  let deslocate = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10)));
+  arrow.style.left = valueBetweenRange(deslocate, min, max) + 'px';
+}
+
+function valueBetweenRange (value, min, max) {
+  return value < min ? min : (value > max ? max : value);
 }
 
 function activateCategory(categoriaAtual, indexConteudoAtual) {
@@ -15,20 +20,21 @@ function activateCategory(categoriaAtual, indexConteudoAtual) {
   if (categoriaAnterior) {
     categoriaAnterior
       .querySelector('.painel-categorias__categoria-header.ativo')
-      .classList.remove('ativo');
+      ?.classList.remove('ativo');
     categoriaAnterior.classList.remove('ativo');
     document
       .querySelector('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo')
-      .classList.remove('ativo');
+      ?.classList.remove('ativo');
 
     // event.target.style.transition = '0.8s';
     // event.target.style.opacity = 0;
   }
   categoriaAtual
     .querySelector('.painel-categorias__categoria-header')
-    .classList.add('ativo');
-  categoriaAtual.classList.add('ativo');
-  conteudoAtual.classList.add('ativo');
+    ?.classList.add('ativo');
+  categoriaAtual?.classList.add('ativo');
+  conteudoAtual?.classList.add('ativo');
+  currentCategory = categoriaAtual;
 }
 
 function slideNext() {
@@ -70,6 +76,60 @@ function slidePrev() {
   toggleVisibility('next-btn');
   toggleVisibility('prev-btn');
 }
+
+let currentCategory = null;
+
+function isActiveElement(element) {
+  return element instanceof jQuery ? element.hasClass('ativo') : element.classList.contains('ativo');
+}
+
+function getMenuIdName(element){
+  return replaceBlankSpaces(removeSpecialChars(removeAccent($(element).text().toLowerCase())),'-');
+}
+
+function removeAccent(text) {
+  return text.normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+}
+
+function removeSpecialChars(text) {
+  return text.replace(/[^\w\s]/gi, '');
+}
+
+function replaceBlankSpaces(text, newChar) {
+  return text.replace(/\s/g, newChar);
+}
+
+void function initializeCategoryPanelMenu() {
+  let lastActiveCategory = null;
+  var painelCategoriasMenu = $('.painel-categorias__menu ul li:first-child.ativo');
+  
+  $('.painel-categorias__categoria-itens-lista-menu li a').hover(
+    function(){
+      if(lastActiveCategory != this){
+        $(`#${getMenuIdName(lastActiveCategory)}`).removeClass('ativo');
+      }
+      let currentCategory = $(`#${getMenuIdName(this)}`);
+      if(!isActiveElement(currentCategory)) {
+        currentCategory.addClass('ativo')
+      }
+      lastActiveCategory = this;
+    },
+  )
+  
+  var observer = new MutationObserver(function(mutations) {
+    if(!isActiveElement(mutations[0].target)){
+      if(lastActiveCategory &&
+        currentCategory.innerText != lastActiveCategory.innerText){
+        $(`#${getMenuIdName(lastActiveCategory)}`).removeClass('ativo')
+      }
+    }
+  });
+
+  observer.observe(painelCategoriasMenu[0], {
+    attributes: true,
+    attributeFilter: ['class']
+  });
+}();
 
 async function checkLogin() {
   var accountComponent = document.querySelector(".topo .usuario.desktop");
@@ -416,11 +476,9 @@ function delayedAction(action, abortController) {
 
   abortController = {};
 
-  const delay = setTimeout(action, 500);
+  const delay = setTimeout(action, 100);
 
   abortController.abort = () => {
-    console.log('Action aborted by the user');
-
     clearTimeout(delay);
   };
 
@@ -504,43 +562,20 @@ function toggleCategory(self) {
   if (getTranslateX(slider) < 0) nextBtn.style.visibility = 'hidden';
   else prevBtn.style.visibility = 'hidden';
 
-  let menu = document
-    .querySelector('.menu-categorias');
+  let abortCategoryAction = null;
 
-  var abortPainelAction = null;
-
-  menu
-    .addEventListener('mouseenter', (event) => {
-      abortPainelAction = delayedAction(() => {
-        menu.classList.add('ativo');
-        centerArrow();
-      }, abortPainelAction);
-    });
-
-  menu
-    .addEventListener('mouseleave', (event) => {
-      abortPainelAction = delayedAction(() => {
-        menu.classList.remove('ativo');
-      }, abortPainelAction);
-    });
-
-  let painelCategorias = document.querySelector('.painel-categorias');
-
-  painelCategorias.addEventListener('mouseleave', (event) => {
-    abortPainelAction = delayedAction(() => {
-      menu.classList.remove('ativo');
-    }, abortPainelAction);
-  });
-
-  var abortCategoryAction = null;
+  const minArrowLeft = 10;
+  const maxArrowRight = 1250;
 
   document
     .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
     .forEach((categoria, index) => {
       categoria.addEventListener('mouseenter', (event) => {
         abortCategoryAction = delayedAction(() => {
-          activateCategory(categoria, index);
-          centerArrow();
+          if(!isActiveElement(categoria)){
+            activateCategory(categoria, index);
+            centerArrow(minArrowLeft, maxArrowRight);
+          }
         }, abortCategoryAction);
       })
     });
@@ -596,22 +631,6 @@ function toggleCategory(self) {
 
 (() => {
 
-  $('.container.mobile .search-icon').click(() => {
-    closeNav();
-    $('.search-box').addClass('ativo');
-    $('.search-box-mobile').addClass('search-box-mobile--opened');
-    //$('.search-box-mobile .busca input.fulltext-search-box').focus();
-    document.querySelector('.search-box-mobile .busca input.fulltext-search-box').focus();
-    $('.topo').click(() => removeFunctions());
-    // $('.container.mobile').click(() => removeFunctions());
-    $('.search-box-mobile').click(e => {
-      console.log(e.target, e.currentTarget);
-      if (e.target === e.currentTarget) {
-        removeFunctions();
-      }
-    });
-  });
-  
   let searchField = document.querySelector('.search-box-mobile .busca input.fulltext-search-box');
 
   autocompleteInitMobile(searchField);
@@ -639,7 +658,6 @@ function toggleCategory(self) {
 
 function removeFunctions() {
   $('.search-box').removeClass('ativo');
-  $('.search-box-mobile').removeClass('search-box-mobile--opened');
   $('.topo').unbind();
   $('.container.mobile').unbind();
 }
