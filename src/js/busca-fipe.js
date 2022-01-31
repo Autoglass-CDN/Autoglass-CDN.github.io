@@ -1,9 +1,11 @@
 (function () {
+  let activeTab = '#busca-placa';
+  selectRightSearchMethod();
+
   /** BUSCA POR PEÇA DEV */
   const Service = ServiceAPI();
   const View = ViewAPI();
   const Controller = ControllerAPI();
-  let activeTab = '#busca-peca';
   let firstRouteSelected = "";
 
   const CONFIG = {
@@ -79,7 +81,6 @@
   _init();
 
   async function _init() {
-    selectRightSearchMethod();
     const categoryTree = await Service.getCategoryTree();
     const childrenCategories = [];
 
@@ -139,29 +140,6 @@
           }
         }
       });
-
-      /* $(`.c-busca__tab-content #${select.id} > div:first-child`)
-        .focus(() => {
-
-          $(`.c-busca__tab-content #${select.id} > div:first-child`).on(
-            "keyup",
-            (event) => {
-              if (event.key === "Delete" || event.key === "Backspace") {
-                const index = PECA_SELECTS.findIndex((x) => x.id === select.id);
-                View.resetResults(index);
-                $(`.c-busca__tab-content #${select.id}`).click();
-              }
-
-              if (event.key === "Enter")
-                $(`.c-busca__tab-content #${select.id}`).click();
-            }
-          );
-        })
-        .blur(() => {
-          $(`.c-busca__tab-content #${select.id} > div:first-child`).unbind(
-            "keyup"
-          );
-        }); */
 
       $(`.c-busca__tab-content #${select.id} .smart-select__main-results input`)
         .on("keydown", (e) => {
@@ -348,7 +326,7 @@
                 Controller.addClick(event, _id)
                 break;
               case '#busca-placa':
-                handleSelection(event, _id);
+                handleBuscaPlacaSelection(event, _id);
                 break;
             }
           });
@@ -644,13 +622,7 @@
         url = getUrlForFirstSelect(firstRouteSelected, url);
       }
 
-      localStorage.setItem('smartSelectHistory', JSON.stringify({
-        type: activeTab,
-        params: {
-          plate: null,
-          url,
-        },
-      }));
+      saveSearchInLocalStorage(null, url);
 
       location.href = url;
     }
@@ -708,7 +680,7 @@
     }
   };
 
-  /** CÓDIGO PARA TROCAR AS TABS */
+  // Alternas as abas da busca
   let tabs = document.querySelectorAll(".c-busca__tabs li");
 
   tabs.forEach((tab) => {
@@ -807,7 +779,7 @@
           x.url ? x.url.includes(param) : x.name.includes(param)
         );
   
-        handleSelection(
+        handleBuscaPlacaSelection(
           {
             target: {
               id: value.id,
@@ -819,7 +791,6 @@
       }
 
       if(isHistoryValid) {
-        document.querySelector("a[href='#busca-placa']").click();
         document.querySelector("#placa-input").value = searchHistory.params.plate;
       }
     }
@@ -858,7 +829,7 @@
     }
   }
 
-  function handleSelection(event, _id) {
+  function handleBuscaPlacaSelection(event, _id) {
     const select = PLACA_SELECTS[0];
     const optionSelected = select.values.find((x) => x.id == event.target.id);
 
@@ -904,43 +875,32 @@
     try {
       modalDeCarregamento.mostarSpinner();
   
-      const response = await fetch(
-        `https://crawler-keplaca.herokuapp.com/placa/${placaSemCaracteresEspeciais}`
-      );
+      const {
+        montadora,
+        modelo,
+        anoModelo,
+      } = await obterDadosDoVeiculoViaFraga(placaSemCaracteresEspeciais);
+      
+      let [
+        montadorasEncontradas,
+        modelosEncontrados,
+        anosEncontrados
+      ] = await Promise.all([
+        encontrarDadosNoCadastroVtex({
+          filtro: FILTROS_VTEX.MONTADORA,
+          regex: obterRegexMontadoras(montadora),
+        }),
 
-      const [montadora, modelo, anoModelo] = await response.json();
+        encontrarDadosNoCadastroVtex({
+          filtro: FILTROS_VTEX.VEICULO,
+          regex: obterRegexModelos(montadora, modelo),
+        }),
 
-      if (
-        null === montadora &&
-        null === modelo &&
-        null === anoModelo
-      ) {
-        throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
-      }
-
-      const responseMontadorasVtex = await fetch(
-        `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.MONTADORA}`
-      );
-      const montadorasVTEX = await responseMontadorasVtex.json();
-      const regexMontadoras = obterRegexMontadoras(montadora);
-      let montadorasEncontradas = montadorasVTEX.filter((item) => regexMontadoras.test(item.Value));
-  
-      const responseModelosVtex = await fetch(
-        `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.VEICULO}`
-      );
-      const modelosVTEX = await responseModelosVtex.json();
-      const regexModelos = obterRegexModelos(montadora, modelo);
-      let modelosEncontrados = modelosVTEX.filter((item) => regexModelos.test(item.Value));
-  
-      const responseAnosVtex = await fetch(
-        `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${FILTROS_VTEX.ANO}`
-      );
-      const anosVTEX = await responseAnosVtex.json();
-      const regexAnos = obterRegexAnos(anoModelo);
-      let anosEncontrados = anosVTEX.filter((item) => regexAnos.test(item.Value));
-  
-      let url = "",
-        parametrosUrl = "?PS=24&map=";
+        encontrarDadosNoCadastroVtex({
+          filtro: FILTROS_VTEX.ANO,
+          regex: obterRegexAnos(anoModelo),
+        }),
+      ]);
   
       if (
         !anosEncontrados.length &&
@@ -949,6 +909,9 @@
       ) {
         throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
       }
+
+      let url = "",
+        parametrosUrl = "?PS=24&map=";
 
       if(select.routeSelected.length) {
         url += select.routeSelected;
@@ -974,16 +937,10 @@
       }
 
       registerGaEvent(placaSemCaracteresEspeciais, url);
-  
+      
       url += parametrosUrl;
-
-      localStorage.setItem('smartSelectHistory', JSON.stringify({
-        type: activeTab,
-        params: {
-          plate: placaSemCaracteresEspeciais,
-          url,
-        },
-      }));
+      
+      saveSearchInLocalStorage(placaSemCaracteresEspeciais, url);
 
       location.href = url;
     } catch (error) {
@@ -1016,43 +973,37 @@
       const montadoraTerms = montadora.split(" ")
         .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
 
-      if(montadoraTerms[0].toUpperCase() === 'VOLKSWAGEN') {
-        montadoraTerms.push('VW');
-      }
+      const modeloSemMontadora = modelo.replace(
+        new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ")[0];
 
-      if(montadoraTerms[0].toUpperCase() === 'GM') {
-        montadoraTerms.push('CHEV');
-      }
-
-      const modeloSemMontadoraTerms = modelo.replace(
-        new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ");
-
-      const newVariants = ['NOVA', 'NOVO'];
-      let modeloSemMontadora = newVariants.some(
-          e => modeloSemMontadoraTerms.find((o) => o.toUpperCase() === e)
-        ) ? modeloSemMontadoraTerms[1]
-          : modeloSemMontadoraTerms[0];
-
-      if(modeloSemMontadoraTerms[0].toUpperCase() === 'PAJERO' && modeloSemMontadoraTerms[1]) {
-        modeloSemMontadora = modeloSemMontadoraTerms[0] + ' ' + modeloSemMontadoraTerms[1];
-      }
-
-      const modeloSemCaractesEspeciais = modeloSemMontadora.replace(/[\W]+/gi, "");
+      const modeloSemMontadoraSanitizado = modeloSemMontadora.replace(/[\W]+/gi, "");
 
       const patternMontadora = `(${montadoraTerms.join('|')})`;
-      const patternModelo = modeloSemMontadora === modeloSemCaractesEspeciais
+      const patternModelo = 
+        (modeloSemMontadora === modeloSemMontadoraSanitizado)
         ? modeloSemMontadora
-        : `(${modeloSemMontadora}|${modeloSemCaractesEspeciais})`;
+        : `(${modeloSemMontadora}|${modeloSemMontadoraSanitizado})`;
 
-      const isModeloStrada = modeloSemCaractesEspeciais.toUpperCase() === 'STRADA';
+      const isModeloStrada = modeloSemMontadoraSanitizado.toUpperCase() === 'STRADA';
 
-      const pattern =  `${(isModeloStrada ? '^' : '')}${patternModelo}$|${patternMontadora} ${patternModelo}$`;
+      const pattern = `${(isModeloStrada ? '^' : '')}${patternModelo}$|${patternMontadora} ${patternModelo}$`;
 
       return new RegExp(pattern, "gi");
     }
   
     function obterRegexAnos(anoModelo) {
       return new RegExp(anoModelo.trim(), "gi")
+    }
+
+    async function encontrarDadosNoCadastroVtex({ filtro, regex }) {
+      const responseVtex = await fetch(
+        `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${filtro}`
+      );
+
+      const dadosVtex = await responseVtex.json();
+      const dadosVtexFiltrados = dadosVtex.filter((item) => regex.test(item.Value));
+
+      return dadosVtexFiltrados;
     }
 
     function VehicleNotFoundException(value) {
@@ -1068,6 +1019,71 @@
       ga('gaBPTracker.set', 'transport', 'beacon');
       ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${pathGerado}`);
     }
+
+    async function obterDadosDoVeiculoViaKeplaca(placa) {
+      const response = await fetch(
+        `https://crawler-keplaca.herokuapp.com/placa/${placa}`
+      );
+
+      const [montadora, modelo, anoModelo] = await response.json();
+
+      if (
+        null === montadora &&
+        null === modelo &&
+        null === anoModelo
+      ) {
+        throw new VehicleNotFoundException(placa);
+      }
+
+      return { montadora, modelo, anoModelo };
+    }
+
+    async function obterDadosDoVeiculoViaFraga(placa) {
+      const fragaAuthEndpoint = 'https://admin.catalogofraga.com.br/connect/token';
+      const fragaAuthResponse = await fetch(fragaAuthEndpoint, {
+        method: 'POST',
+        headers: new Headers({
+          "Content-Type": "application/x-www-form-urlencoded",
+        }),
+        body: (() => {
+          return 'grant_type=client_credentials&' +
+            'client_id=f5cf87e8-88b8-400e-b494-04707621cff5&' +
+            'client_secret=81a77f34df5cf48402b2a129c00405ae';
+        })(),
+      });
+
+      const { access_token } = await fragaAuthResponse.json();
+      const endpointFragaApi = 'https://api.catalogofraga.com.br/v1/veiculos?placa=';
+      const fragaApiResponse = await fetch(endpointFragaApi + placaSemCaracteresEspeciais, {
+        method: 'GET',
+        headers: new Headers({
+          "Authorization": "Bearer " + access_token,
+        }),
+      });
+
+      if(fragaApiResponse.status === 404) {
+        throw new VehicleNotFoundException(placa);
+      }
+
+      const {
+        marca:  montadora,
+        modelos: [{ modelo }],
+        anoModelo: ano
+      } = await fragaApiResponse.json();
+      const anoModelo = ano.toString();
+
+      return { montadora, modelo, anoModelo };
+    }
+  }
+
+  function saveSearchInLocalStorage(placa, url) {
+    localStorage.setItem('smartSelectHistory', JSON.stringify({
+      type: activeTab,
+      params: {
+        plate: placa,
+        url,
+      },
+    }));
   }
 
   function checkIfUniversalProductSearch() {
@@ -1120,14 +1136,16 @@
   function selectRightSearchMethod() {
     const { search } = location;
     const smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-    const isValidHistory = smartSelectHistory !== null && smartSelectHistory.type == "#busca-placa";
-    const isShelveProductsPage = search && search.includes('?PS=24&map=');
+    const isValidHistory = smartSelectHistory !== null && smartSelectHistory.type == "#busca-peca";
+    const isShelveProductsPage = search && search.includes('?PS=20&map=');
 
     if(isValidHistory && isShelveProductsPage) {
-      document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active");
-      document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
-      document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active");
-      document.querySelector("#form-busca-placa").parentNode.classList.add("is-active");
+      activeTab = '#busca-peca';
+
+      document.querySelector("a[href='#busca-placa']").parentNode.classList.remove("is-active");
+      document.querySelector("#form-busca-placa").parentNode.classList.remove("is-active");
+      document.querySelector("a[href='#busca-peca']").parentNode.classList.add("is-active");
+      document.querySelector("#form-busca-peca").parentNode.classList.add("is-active");
     }
   }
 })();
