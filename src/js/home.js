@@ -173,7 +173,8 @@ function configureBanners(section, banner) {
 
 	switch(true){
 		case itensQuantity == 0:
-			if(container.parent()[0].previousSibling.tagName == 'H2'){
+			if(container.parent()[0] &&
+				container.parent()[0].previousSibling.tagName == 'H2'){
 				container.parent()[0].previousSibling.remove();
 			}
 			container.parent().remove();
@@ -365,7 +366,7 @@ function getItemSize(banner){
 		}
 	}
 })();
-//#endregion Retings
+//#endregion Ratings
 
 function getScrollPercentage(element) {
 	return 100 * element.scrollLeft
