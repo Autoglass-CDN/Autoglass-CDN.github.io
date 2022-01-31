@@ -526,7 +526,7 @@ i.arrow-icon::before {
 }
 
 .search-box-mobile__form:after{
-  content: url('https://autoglass-cdn.github.io/src/img/search.svg');
+  content: url('https://autoglass-cdn.github.io/arquivos/img/search.svg');
   position: absolute;
   right: 20px;
   top: 20px;
