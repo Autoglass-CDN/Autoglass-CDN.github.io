@@ -139,7 +139,7 @@
     display: flex;
     border-radius: 20px;
     margin: 10px;
-    aspect-ratio: 6/5;
+    /* aspect-ratio: 6/5; */
     overflow: hidden;
   }
   .banners-section .banners-content img {
