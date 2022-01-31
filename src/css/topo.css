@@ -1373,7 +1373,7 @@ i.arrow-icon::before {
   content: var(--amortecedores);
 }
 
-#suspensoes.painel-categorias__categoria-itens.ativo a#amortecedor-suspensao:hover:after {
+#suspensao.painel-categorias__categoria-itens.ativo a#amortecedor-suspensao:hover:after {
   content: var(--amortecedor-suspensao);
 }
 
@@ -1608,7 +1608,8 @@ hr {
   position: absolute;
   width: 100%;
   border: 0;
-  border-top: 1px solid #eee
+  border-top: 1px solid #eee;
+  margin: 0;
 }
 
 #banner_topo_desktop,
