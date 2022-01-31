@@ -170,32 +170,90 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
   list-style: "-   ";
 }
 
-.side-video {
+.container-especificacao {
+  display: flex;
+  flex-flow: row nowrap;
+  width: 100%;
+  gap: 20px;
+}
+
+.container-especificacao div.info-box {
+  flex: 1 1 1px;
+}
+
+.side-video > div {
+  position: relative;
+  height: 0;
+  padding-top: 56.25%;
+  width:100%;
+}
+
+.side-video div iframe {
+  border: none;
   position: absolute;
-  right: 0;
-  top: 150px;
-  width: 445px;
-  height: 250px;
-  margin-left: 30px;
-  margin-right: 10px;
-}
-
-.side-video h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-}
-
-.info-box.left {
-  z-index: 1;
-  padding-right: 470px;
+  top: 0; left: 0;
+  border: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .info-box {
   margin-bottom: 32px;
 }
 
-.info-box h3 {
+.info-box h3:not(a > h3) {
   margin-bottom: 10px;
+}
+
+a[data-toggle=collapse] {
+  position: relative;
+  padding: 15px;
+  display: block;
+  width: 100%;
+  text-decoration: none;
+  background-color: #f8f8f8;
+  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+}
+
+a[data-toggle=collapse]:hover  {
+  background-color: #dfdfdf;
+}
+
+a[data-toggle=collapse]:not(.collapsed) h3 {
+  color: #183884;
+}
+
+a[data-toggle=collapse]::after {
+  position: absolute;
+  content: url("https://autoglass-cdn.github.io/src/img/arrow-down-blue.svg");
+  transform: translateY(-50%) rotate(180deg);
+  transition: transform 0.2s ease-in-out;
+  right: 15px;
+  top: 50%;
+}
+
+a[data-toggle=collapse].collapsed::after {
+  transform: translateY(-50%) rotate(0deg);
+}
+
+a[data-toggle=collapse] + div > *:first-child {
+  margin-top: 15px;
+}
+
+.collapse {
+  display: none;
+}
+
+.collapse.in {
+  display: block;
+}
+
+.collapsing {
+  position: relative;
+  height: 0;
+  overflow: hidden;
+  transition: height .35s ease;
 }
 
 .caracteristicas__caracteristica {
@@ -241,21 +299,13 @@ h4.group.Especificacoes {
   max-width: 120px;
 }
 
+.group.Especificacoes tr:nth-last-child(1), .group.Especificacoes tr:nth-last-child(2) {
+  display: none;
+}
+
 .group.Especificacoes th, .group.Especificacoes td {
   border-bottom: 1px solid #dbdbdb;
 }
-
-/* .group.Especificacoes th::before,
-.group.Especificacoes td::before {
-  content: '';
-  margin-left: 8px;
-  display: inline-block;
-} */
-
-/* .group.Especificacoes tr:last-child th,
-.group.Especificacoes tr:last-child td {
-  padding-bottom: 12px;
-} */
 
 .oculta-coluna {
   width: 300px;
@@ -287,7 +337,6 @@ h4.group.Especificacoes {
 }
 
 /* TABLET */
-
 @media only screen and (max-width: 1200px) {
   .nav-container {
     top: 85px;
@@ -295,7 +344,6 @@ h4.group.Especificacoes {
 }
 
 /* MOBILE */
-
 @media only screen and (max-width: 768px) {
   .oculta-coluna {
     width: unset;
@@ -305,6 +353,14 @@ h4.group.Especificacoes {
     padding: 0;
     width: 100%;
     height: 100%;
+  }
+  .container-especificacao {
+    flex-flow: column nowrap;
+    margin-top: 10px;
+    gap: 0px;
+  }
+  .info-box {
+    margin-bottom: 15px;
   }
   .tabs-descricao {
     display: none;
@@ -345,38 +401,11 @@ h4.group.Especificacoes {
     content: "\002B";
     display: unset;
   }
-  /* .contents .tab-content.ativo h2, 
-  .contents .tab-content.ativo .blue-background h2, .contents .tab-content.ativo .white-background h2 {
-    display: flex;
-  } */
   .contents .tab-content.ativo>*:not(h2):not(.blue-background):not(.white-background) {
     display: none !important;
   }
   .contents .tab-content.ativo #similars>*:not(h2), .contents .tab-content.ativo #sugestoes>*:not(h2) {
     display: none;
-  }
-  .side-video {
-    margin-left: 0;
-    margin-bottom: 32px;
-    top: 0;
-    position: relative;
-    width: 100%;
-    overflow: hidden;
-    padding-top: 56.5%;
-  }
-  .side-video h3 {
-    position: absolute;
-    top: 0;
-  }
-  .side-video iframe {
-    position: absolute;
-    top: 2rem;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    width: 100%;
-    height: 100%;
-    border: none;
   }
   .table-zebra tr td {
     padding-left: 0 !important;
@@ -414,12 +443,6 @@ h4.group.Especificacoes {
     flex-basis: unset;
     padding-right: unset;
     margin: 20px 0;
-  }
-}
-
-@media only screen and (max-width: 382px) {
-  .side-video iframe {
-    top: 3rem;
   }
 }
 

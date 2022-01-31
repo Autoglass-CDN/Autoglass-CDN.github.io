@@ -1118,13 +1118,16 @@
   }
 
   function selectRightSearchMethod() {
+    const { search } = location;
     const smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-    if(smartSelectHistory != null 
-      && smartSelectHistory.type == "#busca-placa") {
-        document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active")
-        document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active")
-        document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active")
-        document.querySelector("#form-busca-placa").parentNode.classList.add("is-active")
-      }
+    const isValidHistory = smartSelectHistory !== null && smartSelectHistory.type == "#busca-placa";
+    const isShelveProductsPage = search && search.includes('?PS=24&map=');
+
+    if(isValidHistory && isShelveProductsPage) {
+      document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active");
+      document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
+      document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active");
+      document.querySelector("#form-busca-placa").parentNode.classList.add("is-active");
+    }
   }
 })();

@@ -3552,18 +3552,6 @@ $(document).ready(function () {
 	$('body').find('script[src="https://autoglasshml.vteximg.com.br/scripts/vtex.viewpart.imagecontrol3.js"]').remove()
 });
 $(window).load(function () {
-	/* Injetando código para controlar script da galeria de imagem/video */
-	const isPageProduct = /\/p$|\/p\?/.test(window.location.href);
-	if (!isPageProduct) return;
-
-	var script=document.createElement('script');
-	script.type='text/javascript';
-	script.src="https://autoglass-cdn.github.io/src/js/detalhe-produto-video.js";
-
-	document.body.appendChild(script);
-
-});
-$(window).load(function () {
 	var a = $(".fb-comments");
 	a.length && a.attr("data-href", document.location.href.split("#").shift().split("?").shift());
 	$("#fb-root").length || $("body").append('<div id="fb-root"></div>');
