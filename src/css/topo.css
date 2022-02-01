@@ -1209,10 +1209,10 @@ i.arrow-icon::before {
 }
 
 ul.menu-division {
-  position: relative;
-  height: 328px;
-  top: 21px;
-  border-left: 1px solid #c9c9c9;
+  position: absolute;
+  height: 85%;
+  left: 400px;
+  border-left: 1px solid #eee;
 }
 
 .painel-categorias .painel-categorias__categoria-itens {
