@@ -1208,6 +1208,13 @@ i.arrow-icon::before {
   transition: 0.5s;
 }
 
+ul.menu-division {
+  position: relative;
+  height: 328px;
+  top: 21px;
+  border-left: 1px solid #c9c9c9;
+}
+
 .painel-categorias .painel-categorias__categoria-itens {
   font-size: 0.8750rem;
   padding: 32px 50px;
