@@ -666,8 +666,10 @@ i.arrow-icon::before {
 }
 
 .container .menu-carrinho {
+  position: relative;
   display: flex;
   align-items: center;
+  min-width: 140px;
   height: 100%;
   cursor: pointer;
   transition: .5s
@@ -687,7 +689,7 @@ i.arrow-icon::before {
 
 .container .menu-carrinho>.badge {
   position: absolute;
-  right: -5px;
+  right: -13px;
   top: 35%;
   background: var(--danger);
   color: var(--white);
@@ -706,7 +708,7 @@ i.arrow-icon::before {
 .container .menu-carrinho.loaded>.badge {
   visibility: visible;
   opacity: 1;
-  top: 30%;
+  top: 35%;
 }
 
 .container .menu-carrinho .confirmacao {
