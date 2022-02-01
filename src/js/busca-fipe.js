@@ -680,7 +680,7 @@
     }
   };
 
-  // Alternas as abas da busca
+  // Alterna as abas da busca
   let tabs = document.querySelectorAll(".c-busca__tabs li");
 
   tabs.forEach((tab) => {
@@ -884,7 +884,7 @@
       let [
         montadorasEncontradas,
         modelosEncontrados,
-        anosEncontrados
+        anosEncontrados,
       ] = await Promise.all([
         encontrarDadosNoCadastroVtex({
           filtro: FILTROS_VTEX.MONTADORA,
@@ -924,10 +924,7 @@
       }
   
       if (montadorasEncontradas.length) {
-        let montadora1 = montadorasEncontradas[0].Value;
-        montadora1 = montadora1 === 'Gm' ? 'Chevrolet' : montadora1;
-
-        url += `/${montadora1}`;
+        url += `/${montadorasEncontradas[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA},`;
       }
   
@@ -1053,8 +1050,8 @@
       });
 
       const { access_token } = await fragaAuthResponse.json();
-      const endpointFragaApi = 'https://api.catalogofraga.com.br/v1/veiculos?placa=';
-      const fragaApiResponse = await fetch(endpointFragaApi + placaSemCaracteresEspeciais, {
+      const fragaApiEndpoint = 'https://api.catalogofraga.com.br/v1/veiculos?placa=';
+      const fragaApiResponse = await fetch(fragaApiEndpoint + placa, {
         method: 'GET',
         headers: new Headers({
           "Authorization": "Bearer " + access_token,
@@ -1136,10 +1133,10 @@
   function selectRightSearchMethod() {
     const { search } = location;
     const smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-    const isValidHistory = smartSelectHistory !== null && smartSelectHistory.type == "#busca-peca";
-    const isShelveProductsPage = search && search.includes('?PS=20&map=');
+    const isValidSearch = smartSelectHistory !== null && smartSelectHistory.type == "#busca-peca";
+    const isProductsListPage = search && search.includes('?PS=20&map=');
 
-    if(isValidHistory && isShelveProductsPage) {
+    if(isValidSearch && isProductsListPage) {
       activeTab = '#busca-peca';
 
       document.querySelector("a[href='#busca-placa']").parentNode.classList.remove("is-active");
