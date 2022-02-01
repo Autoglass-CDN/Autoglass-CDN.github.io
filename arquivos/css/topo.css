@@ -450,6 +450,7 @@ i.arrow-icon::before {
 @media (max-width: 1200px) {
   .search-box-mobile {
     display:block;
+    position: sticky;
     overflow: inherit;
     top: 85px;
     right: 0px;
@@ -464,7 +465,6 @@ i.arrow-icon::before {
   width: 100%;
   background-color: var(--gray-100);
   padding: 10px;
-  padding-bottom: 0;
   position: relative;
 }
 
