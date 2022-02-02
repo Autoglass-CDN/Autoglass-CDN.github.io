@@ -2,33 +2,28 @@
 
     let whatsappIconDesktop = document.querySelector('#whatsapp-icon-link-desktop');
     let whatsappIconMobile = document.querySelector('#whatsapp-icon-link-mobile');
+    let whatsappIconRodape = document.querySelector('#whatsapp-icon-rodape');
     
     //---------------------------------------------
-    let whatsappIcon = document.querySelector('#whatsapp-icon-link');
-    
-    whatsappIcon.addEventListener(touchEvent, (ev) => {
-        
-        ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaTracker');
-        ga('gaTracker.set', 'transport', 'beacon');
-        ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', 'Rodapé +55 27 99826-0207');
-        
-    }, {passive: true});
+    let whatsappIconFlutuante = document.querySelector('#whatsapp-icon-link');
     
     if(document.querySelector('.product-qd-v1-fixed-bar')) {
-        whatsappIcon.style.marginBottom = '55px'
+        whatsappIconFlutuante.style.marginBottom = '55px'
     }
     //---------------------------------------------
 
     let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
     
-    createGAWhatsapp(whatsappIconDesktop, 'Desktop');
-    createGAWhatsapp(whatsappIconMobile, 'Mobile');
+    createGAWhatsapp(whatsappIconDesktop, 'Topo');
+    createGAWhatsapp(whatsappIconMobile, 'Topo');
+    createGAWhatsapp(whatsappIconFlutuante, 'Flutuante');
+    createGAWhatsapp(whatsappIconRodape, 'Rodapé');
 
     function createGAWhatsapp (icon, device) {
         icon.addEventListener(touchEvent, (_) => {
             ga('create', 'UA-133498560-1', 'autoglassonline.com', 'gaTracker');
             ga('gaTracker.set', 'transport', 'beacon');
-            ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', `Botão ${device}`);
+            ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', `${device}`);
         }, {passive: true});
     }
     
