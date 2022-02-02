@@ -51,17 +51,11 @@ async function initHeaderPolicy() {
 
     if (!Uf) {
         try {
-            
             Uf = await recuperarEstadoPelaIpInfo();
-        
         } catch {
-            
             Uf = 'SP';
-
         }
-
         localizationModal.open(Uf);
-
         return;
     }
 
