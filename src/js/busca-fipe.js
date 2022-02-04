@@ -971,7 +971,6 @@
         .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
 
       const modeloSemMontadora = mapeiaModeloParaNomenclaturaVtex(modelo, montadoraTermos);
-
       const modeloSemMontadoraSanitizado = modeloSemMontadora.replace(/[\W]+/gi, "");
 
       const patternMontadora = `(${montadoraTermos.join('|')})`;
