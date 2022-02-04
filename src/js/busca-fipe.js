@@ -967,23 +967,17 @@
     }
 
     function obterRegexModelos(montadora, modelo) {
-      const montadoraTerms = montadora.split(" ")
+      const montadoraTermos = montadora.split(" ")
         .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
 
-      const modeloSemMontadora = modelo.replace(
-        new RegExp(montadoraTerms.join('|'), "gi"), "").trim().split(" ")[0];
+      const modeloSemMontadora = mapeiaModeloParaNomenclaturaVtex(modelo, montadoraTermos);
 
       const modeloSemMontadoraSanitizado = modeloSemMontadora.replace(/[\W]+/gi, "");
 
-      const patternMontadora = `(${montadoraTerms.join('|')})`;
-      const patternModelo = 
-        (modeloSemMontadora === modeloSemMontadoraSanitizado)
-        ? modeloSemMontadora
-        : `(${modeloSemMontadora}|${modeloSemMontadoraSanitizado})`;
+      const patternMontadora = `(${montadoraTermos.join('|')})`;
+      const patternModelo = `(${modeloSemMontadora}|${modeloSemMontadoraSanitizado})`;
 
-      const isModeloStrada = modeloSemMontadoraSanitizado.toUpperCase() === 'STRADA';
-
-      const pattern = `${(isModeloStrada ? '^' : '')}${patternModelo}$|${patternMontadora} ${patternModelo}$`;
+      const pattern = `^${patternModelo}$|${patternMontadora} ${patternModelo}$`;
 
       return new RegExp(pattern, "gi");
     }
@@ -1070,6 +1064,45 @@
       const anoModelo = ano.toString();
 
       return { montadora, modelo, anoModelo };
+    }
+  }
+
+  function mapeiaModeloParaNomenclaturaVtex(modelo, montadoraTermos) {
+    switch (true) {
+      case "NEW CLASSIC" === modelo:
+        return "CLASSIC";
+      case "CROSS UP!" === modelo:
+        return "Up!";
+      case "FH 520" === modelo:
+        return "FH 520";
+      case (new RegExp(/^FH (12 )?\d{3}$/i).test(modelo)):
+        return "FH 12 Globetroter";
+      case (new RegExp(/^FH 16 \d{3}$/i).test(modelo)):
+        return "FH 16 Globetroter";
+      case (new RegExp(/^NH 12 \d{3}$/i).test(modelo)):
+        return "NH 12";
+      case (new RegExp(/^NH 10 \d{3}$/i).test(modelo)):
+        return "NH 10";
+      case "XC70" === modelo:
+        return "S40";
+      case "E-DELIVERY" === modelo:
+        return "DELIVERY";
+      case "POLO CLASSIC" === modelo:
+        return "Polo Sedan";
+      case "SS10" === modelo:
+        return "S10";
+      case "TTS" === modelo:
+        return "TT";
+      case (new RegExp(/^RANGE ROVER SPORT .*$/i).test(modelo)):
+        return "RANGE ROVER SPORT";
+      case (new RegExp(/^RANGE ROVER .*$/i).test(modelo)):
+        return "RANGE ROVER";
+      case (new RegExp(/^[A-Z]-CLASS$/i).test(modelo)):
+        return "Classe " + modelo.replace(/-CLASS/gi, ""); 
+      default:
+        const modeloSemMontadoraTermos = modelo.replace(
+          new RegExp(montadoraTermos.join('|'), "gi"), "").trim().split(" ");
+        return modeloSemMontadoraTermos[0];
     }
   }
 
