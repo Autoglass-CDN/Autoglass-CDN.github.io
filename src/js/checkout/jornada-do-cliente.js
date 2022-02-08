@@ -8,13 +8,14 @@ const pages = [
 
 let initialPageSubdomain = window.location.href.split("/").pop();
 updateCurrentPageIcon(initialPageSubdomain);
-enableCustomerJourney();
+updateFilledItems(vtexjs.checkout.orderForm)
+toggleCustomerJourneyVisibility(vtexjs.checkout.orderForm.items);
 
 function updateCurrentPageIcon(currentPageSubdomain, previsousPageSubdomain) {
-    updateFilledItems();
     const currentPageStep = getPageStepBySubdomain(currentPageSubdomain);
     const totalSteps = pages.at(-1).step;
     findPageByStep(currentPageStep).element.addClass("pagina-atual");
+    removePageStyle(currentPageSubdomain, "bloqueado");
 
     if (
         previsousPageSubdomain &&
@@ -37,31 +38,42 @@ window.addEventListener("popstate", function () {
     }
 });
 
-async function updateFilledItems() {
-    const orderForm = await vtexjs.checkout.getOrderForm();
+$(window).on("orderFormUpdated.vtex", function(_, orderForm) {
+    updateFilledItems(orderForm);
+})
+
+function updateFilledItems(orderForm) {
+    if (!orderForm.items.length) {
+        toggleCustomerJourneyVisibility(orderForm.items)
+    }
     if (
         !!orderForm.clientProfileData &&
         orderForm.clientProfileData.email
     ) {
         fillItem(".dados-pessoais");
-        removePageStyle("shipping", "bloqueado");
+        removePageStyle("profile", "bloqueado");
     }
     let shipping = orderForm.shippingData.selectedAddresses[0];
     if (
         !!shipping &&
         shipping.postalCode &&
-        shipping.number &&
+        (shipping.number || (
+            orderForm.shippingData.logisticsInfo[0].selectedDeliveryChannel == "pickup-in-point" &&
+            !!orderForm.invoiceData)) &&
+        orderForm.shippingData.logisticsInfo[0].selectedSla &&
         shipping.receiverName
     ) {
         fillItem(".localizacao");
-        removePageStyle("payment", "bloqueado");
+        removePageStyle("shipping", "bloqueado");
     }
 }
 
-async function enableCustomerJourney() {
-    const orderForm = await vtexjs.checkout.getOrderForm();
-    // if (!!orderForm.items.length)
-    $(".container-jornada-do-cliente").attr("style", "");
+function toggleCustomerJourneyVisibility(orderFormItems) {
+    if (!!orderFormItems.length){
+        $(".container-jornada-do-cliente").attr("style", "");
+    } else {
+        $(".container-jornada-do-cliente").attr("style", "opacity: 0; pointer-events: none; transition: 0.2s;");
+    }
 }
 
 function removeClassAtRight(currentPageStep, totalSteps) {
@@ -96,7 +108,3 @@ function updateProgressBar(step, totalSteps) {
     const progressBarClass = ".jornada-do-cliente-linha-progresso-verde";
     $(progressBarClass).width(`${((step - 1) * 100) / (totalSteps - 1)}%`);
 }
-
-//TODO::
-// - Se não estiver preenchido, não poder pular etapa!
-// - Se não tiver produto no carrinho, não mostrar a jornada do cliente.
