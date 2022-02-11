@@ -4,14 +4,17 @@
 
 
 /*<!-- Facebook Pixel Code -->*/
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window,document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
+!function (f, b, e, v, n, t, s) {
+    if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+    };
+    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+    n.queue = []; t = b.createElement(e); t.async = !0;
+    t.src = v; s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s)
+}(window, document, 'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '674711539752032');
 fbq('track', 'PageView');
 
@@ -48,7 +51,7 @@ const CONFIG = {
     }
 }
 
-$(window).on('load', () => {  
+$(window).on('load', () => {
     const Controller = ControllerAPI();
     const Service = ServiceAPI();
     const View = ViewAPI();
@@ -68,7 +71,7 @@ $(window).on('load', () => {
             $(window).on(CONFIG.EVENTS.HASH_CHANGE, _watchHashChange);
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
-            
+
             _createInstallButtonObserver();
 
             View.formatItemList(orderForm);
@@ -88,7 +91,7 @@ $(window).on('load', () => {
             const instalationSku = '10748';
             const itemsObserver = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
-                    if(mutation.removedNodes[0] instanceof HTMLElement) {
+                    if (mutation.removedNodes[0] instanceof HTMLElement) {
                         if (!!mutation.removedNodes[0].querySelector('.product-name')?.querySelector('.btn-add-instalacao') || (mutation.removedNodes[0].dataset.sku == instalationSku)) {
                             const orderForm = vtexjs.checkout.orderForm;
                             View.formatItemList(orderForm);
@@ -96,9 +99,9 @@ $(window).on('load', () => {
                     }
                 })
             });
-            
+
             const tabelCartItemsObserver = document.querySelectorAll(".table.cart-items");
-            
+
             tabelCartItemsObserver.forEach((element) => {
                 itemsObserver.observe(element, {
                     subtree: true,
@@ -134,10 +137,10 @@ $(window).on('load', () => {
             _removePaymentPickupIfIsDelivery(orderForm);
 
             if (window.location.hash.includes('payment')) {
-              	_formatLabelOnPayment(orderForm) 
+                _formatLabelOnPayment(orderForm)
             }
-          	
-          	if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
+
+            if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
                 $('.newsletter').append(`
                   <label class="checkbox adulthood-label">
                       <input type="checkbox" id="opt-in-adulthood">
@@ -145,116 +148,115 @@ $(window).on('load', () => {
                   </label>
                 `);
 
-              	$('#opt-in-adulthood').on('click', () => {
-					const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
+                $('#opt-in-adulthood').on('click', () => {
+                    const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
 
-					cookie.adulthood = $('#opt-in-adulthood').is(':checked');
-                  
-                  	$.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
-				})
+                    cookie.adulthood = $('#opt-in-adulthood').is(':checked');
+
+                    $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
+                })
             }
-			
+
             let hasInstall = Service.checkIfHasInstall(orderForm.items);
-			let title = $('#shipping-data .accordion-toggle.collapsed');
+            let title = $('#shipping-data .accordion-toggle.collapsed');
 
             if (hasInstall) {
                 if (title.is('.accordion-toggle-active')) {
-                  	title.html('<i class="icon-home"></i> Instalar');
+                    title.html('<i class="icon-home"></i> Instalar');
                 }
                 View.addInstallTexts(orderForm);
-            } else if (title.is('.accordion-toggle-active')){
-             	title.html('<i class="icon-home"></i> Receber ou Retirar');
+            } else if (title.is('.accordion-toggle-active')) {
+                title.html('<i class="icon-home"></i> Receber ou Retirar');
             }
-			
+
             View.createCepInfo(orderForm, hasInstall);
         }
 
         function _removePaymentPickupIfIsDelivery(orderForm) {
-      		var maxLoopInteractions=0;
+            var maxLoopInteractions = 0;
             if (window.location.hash.includes("payment")
                 && orderForm
                     .shippingData
                     .logisticsInfo[0]
                     .selectedDeliveryChannel === "delivery"
             ) {
-               var checkPaymentOptionLoop = setInterval(function(){
-                  if(document.querySelector("fieldset.payment-group").style.display!='none')
-                  {
-                    $("#payment-group-creditCardPaymentGroup").click();
-                    $(".pg-pagamento-na-loja.payment-group-item").css("display","none");
-                    let tipoDePagamento = vtexjs.checkout.orderForm.paymentData.payments[0].paymentSystem;
-                    const pagamentoNaLoja = '201';
-                    if(tipoDePagamento != pagamentoNaLoja || 
-                       ++maxLoopInteractions > 50){
-                      clearInterval(checkPaymentOptionLoop);
+                var checkPaymentOptionLoop = setInterval(function () {
+                    if (document.querySelector("fieldset.payment-group").style.display != 'none') {
+                        $("#payment-group-creditCardPaymentGroup").click();
+                        $(".pg-pagamento-na-loja.payment-group-item").css("display", "none");
+                        let tipoDePagamento = vtexjs.checkout.orderForm.paymentData.payments[0].paymentSystem;
+                        const pagamentoNaLoja = '201';
+                        if (tipoDePagamento != pagamentoNaLoja ||
+                            ++maxLoopInteractions > 50) {
+                            clearInterval(checkPaymentOptionLoop);
+                        }
                     }
-                  }
                 }, 100, maxLoopInteractions);
             }
         }
 
-		function _formatLabelOnPayment(orderForm){
-				let title = $('#shipping-data .accordion-toggle.collapsed');
-              	let selectedDeliveryChannel = orderForm.shippingData
-                            .logisticsInfo[0]
-                            .selectedDeliveryChannel
-                let hasInstall = Service.checkIfHasInstall(orderForm.items);
-          
-                let titleText = ' Receber';
-                
-                if(hasInstall && (selectedDeliveryChannel === 'pickup-in-point')){
-                  titleText = 'Instalar na Loja';
-                }
-                else if(hasInstall && (selectedDeliveryChannel === 'delivery')){
-                  titleText = 'Instalar em Casa';
-                }
-                else if(!hasInstall && (selectedDeliveryChannel === 'pickup-in-point')){
-                  titleText = 'Retirar na Loja';
-                }
-                else if(!hasInstall && (selectedDeliveryChannel === 'delivery')){
-                  titleText = 'Receber em Casa';
-                }
-          
-          		let child1 = title[0].children[0];
-                let child2 = title[0].children[1];
-                title[0].innerHTML = '';
-                title[0].appendChild(child1);
-                title[0].append(' ' + titleText);
-          
-          		if (!title.is('.accordion-toggle-active')) {
-                    title[0].appendChild(child2);
-                }
-                            	
-                  
-                let secondLabel = document.querySelectorAll('.shp-summary-group-title.vtex-omnishipping-1-x-SummaryItemTitle')
-                if(secondLabel.length > 1){
-                    secondLabel[0].style.display = "none";
-                }
-              	              
-            	return;  
+        function _formatLabelOnPayment(orderForm) {
+            let title = $('#shipping-data .accordion-toggle.collapsed');
+            let selectedDeliveryChannel = orderForm.shippingData
+                .logisticsInfo[0]
+                .selectedDeliveryChannel
+            let hasInstall = Service.checkIfHasInstall(orderForm.items);
+
+            let titleText = ' Receber';
+
+            if (hasInstall && (selectedDeliveryChannel === 'pickup-in-point')) {
+                titleText = 'Instalar na Loja';
+            }
+            else if (hasInstall && (selectedDeliveryChannel === 'delivery')) {
+                titleText = 'Instalar em Casa';
+            }
+            else if (!hasInstall && (selectedDeliveryChannel === 'pickup-in-point')) {
+                titleText = 'Retirar na Loja';
+            }
+            else if (!hasInstall && (selectedDeliveryChannel === 'delivery')) {
+                titleText = 'Receber em Casa';
+            }
+
+            let child1 = title[0].children[0];
+            let child2 = title[0].children[1];
+            title[0].innerHTML = '';
+            title[0].appendChild(child1);
+            title[0].append(' ' + titleText);
+
+            if (!title.is('.accordion-toggle-active')) {
+                title[0].appendChild(child2);
+            }
+
+
+            let secondLabel = document.querySelectorAll('.shp-summary-group-title.vtex-omnishipping-1-x-SummaryItemTitle')
+            if (secondLabel.length > 1) {
+                secondLabel[0].style.display = "none";
+            }
+
+            return;
         }
 
 
         async function loadScripts() {
-          
+
             const addId = id => script => {
-              script.id = id;          
+                script.id = id;
             }
-              
-          	await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
+
+            await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             await loadScript("/scripts/jquery.ui.core.js");
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
-            await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
-          	await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
+            // await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
             loadScript('https://autoglass-cdn.github.io/src/js/checkout/jornada-do-cliente.js');
 
-          	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
-          	// loadScript('https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127', addId('hi-chat-script'));
-          	
+            loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+            // loadScript('https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127', addId('hi-chat-script'));
+
             loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
         }
@@ -299,17 +301,17 @@ $(window).on('load', () => {
         function _init() {
             $('.mz-modal-overlay').click(() => {
                 $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
-          		localStorage.setItem('locationChanged', 0);
+                localStorage.setItem('locationChanged', 0);
             });
 
             $('.mz-modal-advantages .mz-advantages__close span').click(() => {
                 $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
-          		localStorage.setItem('locationChanged', 0);
+                localStorage.setItem('locationChanged', 0);
             });
 
             $('.mz-modal-installation .mz-install__close span').click(() => {
                 $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
-          		localStorage.setItem('locationChanged', 0);
+                localStorage.setItem('locationChanged', 0);
             });
         }
 
@@ -344,7 +346,7 @@ $(window).on('load', () => {
                         });
                     });
                 });
- 
+
                 $('body').removeClass('hasInstall');
                 $("span").remove(".instalar");
                 $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
@@ -448,7 +450,7 @@ $(window).on('load', () => {
          * Caso não informe se há instalação ele busca
          */
         function createCepInfo({ shippingData, items }, hasInstall) {
-            setTimeout(() => {                
+            setTimeout(() => {
                 const { formatedAddress, title, logistics, selector } = getParams(shippingData);
 
                 if (hasInstall === undefined) {
@@ -504,11 +506,11 @@ $(window).on('load', () => {
 
                 const isDelivery = localStorage.getItem('activeDeliveryChannel') === 'delivery';
 
-              	if (!selectedAddresses) {
-              		console.error('Não há endereço selecionado!');
-              		return {};
-            	}
-              
+                if (!selectedAddresses) {
+                    console.error('Não há endereço selecionado!');
+                    return {};
+                }
+
                 if (isDelivery) {
                     const groups = selectedAddresses.postalCode
                         .replace('-', '')
@@ -542,10 +544,10 @@ $(window).on('load', () => {
                     const cepBox = $('.srp-result  .cep-info');
 
                     if (cepBox.length === 0) {
-              			try {
-                          const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
-                          $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
-            			} catch {console.log('Falha ao renderizar o Cep');}                        
+                        try {
+                            const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
+                            $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
+                        } catch { console.log('Falha ao renderizar o Cep'); }
                     }
 
                     selector = '.srp-pickup-info';
@@ -593,14 +595,14 @@ $(window).on('load', () => {
                     return;
                 }
 
-              	/*
+                /*
+            selectedChannel === 'delivery'
+                ? $('#open-modal-ic')[0].click()
+                : $('#open-modal-il')[0].click(); 
+            */
                 selectedChannel === 'delivery'
-                    ? $('#open-modal-ic')[0].click()
-                    : $('#open-modal-il')[0].click(); 
-                */
-              	selectedChannel === 'delivery'
-              		? $('body').addClass('mz-bo-on mz-as-on')
-              		: $('#open-modal-il')[0].click();
+                    ? $('body').addClass('mz-bo-on mz-as-on')
+                    : $('#open-modal-il')[0].click();
             }
         }
 
@@ -643,21 +645,21 @@ $(window).on('load', () => {
                     `);
             }
 
-              try {
+            try {
 
                 setTimeout(() => {
-                   $('#mostrar-datas-datepicker').datepicker('option', 'onSelect', 
-                    (selectedDate, details) => {
-                      _createConfirmButtonSM(selectedDate, details);
-                    });	
+                    $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
+                        (selectedDate, details) => {
+                            _createConfirmButtonSM(selectedDate, details);
+                        });
 
                 }, 500);
 
-              } catch {
-                   console.error('Falha ao criar onSelect no datepicker')
-              }
-        		      
-           
+            } catch {
+                console.error('Falha ao criar onSelect no datepicker')
+            }
+
+
             $('#alterar-shipping-btn').click(() => {
                 $('body').addClass('mz-bo-on mz-as-on');
             });
@@ -821,4 +823,3 @@ $(window).on('load', () => {
         }
     }
 });
-                  
