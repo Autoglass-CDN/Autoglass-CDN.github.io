@@ -416,7 +416,7 @@ function delayedAction(action, abortController) {
 
   abortController = {};
 
-  const delay = setTimeout(action, 500);
+  const delay = setTimeout(action, 100);
 
   abortController.abort = () => {
     console.log('Action aborted by the user');
