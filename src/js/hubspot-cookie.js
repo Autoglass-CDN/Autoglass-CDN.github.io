@@ -1,59 +1,83 @@
 (function () {
 
+  let hubspotutkSent = false;
 
-  //let loginButton = document.querySelector('.topo a#login');
+  $(window).on('rendered.vtexid', getEmailFromLoginFormAndSendDataToMasterData);
+  $(window).on('checkoutRequestEnd.vtex', getEmailFromOrderFormAndSendDataToMasterData);
 
-  $(window).on('checkoutRequestEnd.vtex', (event, orderForm) => console.log("checkoutRequestEnd.vtex", orderForm));
+  function getEmailFromLoginFormAndSendDataToMasterData(event) {
+    if(hubspotutkSent)
+      return;
 
-  $(window).on('authenticatedUser.vtexid', (event, orderForm) => {
-    console.log("authenticatedUser.vtexid");
-    console.log(orderForm);
-  });
+    const emailInput = document.querySelector('#vtexIdUI-form-classic-login #inputEmail');
+    const loginForm = document.getElementById('vtexIdUI-form-classic-login');
 
-  $(window).on('started.vtexid', (event, orderForm) => console.log("started.vtexid", orderForm));
+    loginForm.addEventListener('submit', (e) => {
+      const email = emailInput.value;
 
-  $(window).on('guestUser.vtexid', (event, orderForm) => console.log("guestUser.vtexid", orderForm));
-  
-  $(window).on("rendered.vtexid", (event) => console.log('Renderizado'));
+      email && sendHubspotUtkToVtexMasterData(email);
+    });
+  }
 
-  $(window).on('validate.vtex', (event, orderForm) => console.log("validate.vtex", orderForm));
+  function getEmailFromOrderFormAndSendDataToMasterData(event, orderForm) {
+    try {
+      if(hubspotutkSent)
+        return;
 
-  $(window).on('enable.vtex', (event, orderForm) => console.log("enable.vtex", orderForm));
+      const vetexJsOrderForm = vtexjs.checkout.orderForm;
+      
+      let email = "";
 
-  //console.log(loginButton);
+      if(orderForm && orderForm.clientProfileData)
+        email = orderForm.clientProfileData.email;
+      else if(vetexJsOrderForm.clientProfileData && vetexJsOrderForm.clientProfileData.email)
+        email = vetexJsOrderForm.clientProfileData.email;
 
-  //loginButton.addEventListener('click', loginButtonCallback);
-
-    /* setTimeout(() => {
-      console.log('Aqui 2')
-      while(true) {
-        const loginForm = document.querySelector('#vtexIdUI-form-classic-login');
-
-        if(loginForm) {
-          console.log(loginForm);
-          break;
-        }
+      if(!email) {
+        getEmailFromPreEmailFormAndSendDataToMasterData();
+        return;
       }
-    }, 1000); */
+
+      sendHubspotUtkToVtexMasterData(email);
+    } catch (e) {
+      console.warn('Falha ao obter e-mail para enviar o Hubspotutk ao MasterData!');
+    }
+  }
+
+  function getEmailFromPreEmailFormAndSendDataToMasterData() {
+    const locationHref = location.href;
+
+    if(locationHref.includes('checkout/#/email')) {
+      const preEmailForm = document.querySelector('#client-profile-data form.client-pre-email');
+      const preEmailInput = document.querySelector('form.client-pre-email input#client-pre-email');
   
-
-  /* const loginForm = document.querySelector('#vtexIdUI-form-classic-login');
-
-  console.log(loginForm);
-
-  loginForm.addEventListener('submit',
-    event => sendHubspotUtkToVtexMasterData(event, '.vtexIdUI-classic-login #inputEmail'),
-  ); */
-
-  function loginButtonCallback() {
-    console.log('Aqui');
+      preEmailForm.addEventListener('submit', (e) => {
+        const email = preEmailInput.value;  
+        email && sendHubspotUtkToVtexMasterData(email);
+      });
+    }
   }
 
-  function sendHubspotUtkToVtexMasterData(event, emailFieldSelector) {
-    console.log("Aqui");
+  async function sendHubspotUtkToVtexMasterData(email) {
+    try {
+      const hubspotutk = $.cookie('hubspotutk');
 
-    const email = document.querySelector(emailFieldSelector).value;
+      if(hubspotutk) {
+        await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
+          method: 'PUT',
+          headers: new Headers({
+            "Content-Type": "application/json",
+          }),
+          body: JSON.stringify({
+            hubspotutk,
+          }),
+        });
 
-    console.log(email);
+        hubspotutkSent = true;
+      }
+    } catch (e) {
+      console.warn('Falha ao enviar Hubspotutk ao MasterData!');
+    }
   }
+  
 })();
