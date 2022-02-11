@@ -1,27 +1,27 @@
 const pages = [
-    { subDomain: "cart", element: $(".seu-carrinho"), step: 1 },
-    { subDomain: "email", element: $(".dados-pessoais"), step: 2 },
-    { subDomain: "profile", element: $(".dados-pessoais"), step: 2 },
-    { subDomain: "shipping", element: $(".localizacao"), step: 3 },
-    { subDomain: "payment", element: $(".pagamento"), step: 4 },
+    { path: "cart", element: $(".seu-carrinho"), step: 1 },
+    { path: "email", element: $(".dados-pessoais"), step: 2 },
+    { path: "profile", element: $(".dados-pessoais"), step: 2 },
+    { path: "shipping", element: $(".localizacao"), step: 3 },
+    { path: "payment", element: $(".pagamento"), step: 4 },
 ];
 
-let initialPageSubdomain = window.location.href.split("/").pop();
-updateCurrentPageIcon(initialPageSubdomain);
-updateFilledItems(vtexjs.checkout.orderForm)
+let initialPagePath = window.location.href.split("/").pop();
+updateCurrentPageIcon(initialPagePath);
+updateFilledItems(vtexjs.checkout.orderForm);
 toggleCustomerJourneyVisibility(vtexjs.checkout.orderForm.items);
 
-function updateCurrentPageIcon(currentPageSubdomain, previsousPageSubdomain) {
-    const currentPageStep = getPageStepBySubdomain(currentPageSubdomain);
+function updateCurrentPageIcon(currentPagePath, previsousPagePath) {
+    const currentPageStep = getPageStepByPath(currentPagePath);
     const totalSteps = pages.at(-1).step;
     findPageByStep(currentPageStep).element.addClass("pagina-atual");
-    removePageStyle(currentPageSubdomain, "bloqueado");
+    removePageStyle(currentPagePath, "bloqueado");
 
     if (
-        previsousPageSubdomain &&
-        getPageStepBySubdomain(previsousPageSubdomain) != currentPageStep
+        previsousPagePath &&
+        getPageStepByPath(previsousPagePath) != currentPageStep
     ) {
-        removePageStyle(previsousPageSubdomain, "pagina-atual");
+        removePageStyle(previsousPagePath, "pagina-atual");
     }
 
     removeClassAtRight(currentPageStep, totalSteps);
@@ -32,9 +32,9 @@ function updateCurrentPageIcon(currentPageSubdomain, previsousPageSubdomain) {
 window.addEventListener("popstate", function () {
     let currentPage = location.href.split("/").pop();
     console.log("URL CHANGED TO: " + currentPage);
-    if (currentPage != initialPageSubdomain) {
-        updateCurrentPageIcon(currentPage, initialPageSubdomain);
-        initialPageSubdomain = currentPage;
+    if (currentPage != initialPagePath) {
+        updateCurrentPageIcon(currentPage, initialPagePath);
+        initialPagePath = currentPage;
     }
 });
 
@@ -88,16 +88,16 @@ function addClassAtLeft(currentPageStep) {
     }
 }
 
-function removePageStyle(pageSubdomain, style) {
-    pages.find((x) => x.subDomain == pageSubdomain).element.removeClass(style);
+function removePageStyle(pagePath, style) {
+    pages.find((x) => x.path == pagePath).element.removeClass(style);
 }
 
 function findPageByStep(step) {
     return pages.find((x) => x.step == step);
 }
 
-function getPageStepBySubdomain(pageSubdomain) {
-    return pages.find((x) => x.subDomain == pageSubdomain).step;
+function getPageStepByPath(pagePath) {
+    return pages.find((x) => x.path == pagePath).step;
 }
 
 function fillItem(item) {
