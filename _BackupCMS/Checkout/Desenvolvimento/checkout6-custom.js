@@ -253,7 +253,8 @@ $(window).on('load', () => {
 
           	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
           	
-            loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');     
+            loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
+            loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
         }
 
         function loadScript(src, callback) {
