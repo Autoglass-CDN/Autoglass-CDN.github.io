@@ -9,10 +9,8 @@
     justify-content: center;
     position: relative;
     max-width: 500px;
-    /* background: blue; */
     justify-content: space-between;
     margin: 5px auto;
-    /* opacity: 1 !important; */
     transition: 2s;
     transform: scale(0.8);
 }
@@ -57,7 +55,6 @@
     border-color: var(--nao-preenchido);
     width: 50px;
     height: 50px;
-    /* flex-shrink: 0; */
 }
 
 .container-jornada-do-cliente a::before {
@@ -105,4 +102,12 @@
     transition: 0.2s;
 }
 
-.container-jornada-do-cliente div:hover a.bloqueado::after { opacity:1; }
+.container-jornada-do-cliente div:hover a.bloqueado::after { 
+    opacity:1; 
+}
+
+@media only screen and (hover: none) and (pointer: coarse){
+    .container-jornada-do-cliente a {
+        border-width: medium;
+    }
+}
