@@ -31,7 +31,6 @@ function updateCurrentPageIcon(currentPagePath, previsousPagePath) {
 
 window.addEventListener("popstate", function () {
     let currentPage = location.href.split("/").pop();
-    console.log("URL CHANGED TO: " + currentPage);
     if (currentPage != initialPagePath) {
         updateCurrentPageIcon(currentPage, initialPagePath);
         initialPagePath = currentPage;
