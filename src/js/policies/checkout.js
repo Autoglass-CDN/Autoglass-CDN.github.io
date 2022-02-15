@@ -51,12 +51,12 @@ function checkSelectedDeliveryChannel(orderForm) {
             item.selectedSla = hasPickupInPoint.id;
             return item;
         })
-       
+
         vtexjs.checkout.sendAttachment("shippingData", {
             logisticsInfo,
             selectedAddresses
         });
-            
+
         return;
     }
 }
@@ -79,7 +79,7 @@ async function changeSalesChannel(orderForm){
         console.error('Houve algum problema ao determinar a nova política a ser aplicada');
         return;
     }
-    
+
     $('#myplace').text(newSalesChannelObject.Uf);
 
     const myufCurrent = readCookie('myuf');
@@ -109,7 +109,7 @@ async function changeSalesChannel(orderForm){
         if (testLogs) console.log("Política definida é diferente da atual.\n\nAplicando nova política...");
 
         startAnimation();
-        
+
         ga('send', 'event', 'SalesChannel', 'changed', 'Setting Sc = ' +newSalesChannelObject.salesChannel, {
             nonInteraction: true,
             // 'hitCallback': function(){
@@ -155,7 +155,7 @@ async function determineNewSalesChannel(shippingData) {
 
     //se não houver DeliveryChannel definido, provavelmente o CEP digitado com sales channel atual não resultou em nenhuma opção
     if (!selectedDeliveryChannel){
-        
+
         if(testLogs){
             console.log("selectedDeliveryChannel indefinido. Definindo politica geral")
         }
@@ -186,7 +186,7 @@ async function determineNewSalesChannel(shippingData) {
     {
         const salesChannelObject = findSalesChannelByCep(policies.specialCasePolicies, postalCode);
 
-        if (salesChannelObject) 
+        if (salesChannelObject)
             return salesChannelObject //se encontrou CEP nos casos especiais aplica a politica correspondente
         //se não, continua execução para aplicação da política de caso geral
     }
@@ -197,7 +197,7 @@ async function determineNewSalesChannel(shippingData) {
     {
         const salesChannelObject = findSalesChannelByCep(policies.routePolicies, postalCode);
 
-        if (salesChannelObject) 
+        if (salesChannelObject)
             return salesChannelObject;
     }
 
@@ -237,7 +237,7 @@ function findSalesChannelByCep(policiesArray, cep) {
 }
 
 function findSalesChannelByStore(policiesArray, storeId) {
-    
+
     var policy = policiesArray.find(pol => pol.Unidade == storeId);
 
     if (policy) {
@@ -269,7 +269,7 @@ function logEstadoAtual (actualSalesChannel, items) {
 function logNewPolicy (newSalesChannelObject, shippingData) {
     selectedDeliveryChannel = shippingData.logisticsInfo[0]?.selectedDeliveryChannel; //delivery, pickup-in-point (...)
     selectedSla = shippingData.logisticsInfo[0]?.selectedSla; //express, autoglass móvel, retirada (...)
-    
+
     let log = 'Política determinada:\n\nLogística:\n';
     log += 'Cep: ' + shippingData.address?.postalCode;;
     log += '\nSc: ' + newSalesChannelObject.salesChannel + ' - ' + newSalesChannelObject.Unidade;
@@ -307,7 +307,7 @@ async function loadPolicies() {
 //     $(".compreJunto").css("display","block");
 
 //     items.forEach(e => {
-//         urls.push(uriCrossSelling + e.productId) 
+//         urls.push(uriCrossSelling + e.productId)
 //     });
 
 //     let arrayItensSugeridos = await Promise.all(urls.map(async (url) => {
@@ -319,8 +319,8 @@ async function loadPolicies() {
 //         for (const items of arrayItensSugeridos) {
 //            for (const item of items) {
 //                 item.items[0].sellers[0].commertialOffer.Price = await simularShippingItensSugeridos(item.items[0].itemId)
-//                 itensCrossSelling.push(item);       
-//             } 
+//                 itensCrossSelling.push(item);
+//             }
 //         }
 //     }
 //     return itensCrossSelling;
@@ -346,10 +346,10 @@ async function loadPolicies() {
 //             'Content-Type': 'application/json'
 //         },
 //         body: JSON.stringify(request)})
-        
+
 //     let i =  await data.json();
 
-//     return formatPrice(i.items[0].price);    
+//     return formatPrice(i.items[0].price);
 // }
 
 // async function adicionarItensCrossSeling(orderForm) {
@@ -361,11 +361,11 @@ async function loadPolicies() {
 
 //     if(itensCrossSelling.length !== 0) {
 //         itensCrossSelling.forEach(e => {
-//             const urlBase = "https://autoglass.vteximg.com.br"  
+//             const urlBase = "https://autoglass.vteximg.com.br"
 //             let urlImagem = e.items[0].images[0].imageTag.allReplace({'~':urlBase, '#width#':'500','#height#':'500'});
-            
+
 //             $(".splide__list").append(
-//                 "<li class=splide__slide>" + 
+//                 "<li class=splide__slide>" +
 //                     "<div class=splide__slide__container>" +
 //                         "<a href=" + e.link +">" +
 //                             urlImagem +
