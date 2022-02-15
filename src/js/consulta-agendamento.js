@@ -583,8 +583,8 @@ $(function () {
         })
       );
 
-      $(".preview-data").fadeOut(500, () => {
-        $(".preview-data b").html(selectedDay);
+      $(".preview-data").first().fadeOut(500, () => {
+        $(".preview-data b").first().html(selectedDay);
         $(".preview-data").fadeIn(500);
       });
 

@@ -226,8 +226,22 @@ body.hasInstall .shp-summary-package-time {
 
 #confirmacao-sm {
     display: flex;
-    justify-content: space-between;
-    padding-top: 25px;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 10px;
+}
+
+#confirmacao-sm p{
+    text-align: center;
+}
+
+#confirmacao-sm p i{
+    color:green;
+    margin-right:5px;
+}
+
+#confirmacao-sm strong{
+    padding-top: 20px;
 }
 
 #confirm-sm-btn {
@@ -268,9 +282,6 @@ body.hasInstall .shp-summary-package-time {
     .mz-modal-advantages {
         max-height: 500px;
         overflow: auto;
-    }
-    #confirmacao-sm {
-        flex-direction: column;
     }
 }
 
