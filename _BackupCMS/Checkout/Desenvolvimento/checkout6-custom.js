@@ -714,11 +714,12 @@ $(window).on('load', () => {
 
         function _createConfirmButtonSM(selectedDate, details) {
             $('#confirmacao-sm').html(`
-                    <p>Você selecionou
+                    <p><i class="fa fa-check"></i>Data escolhida:
                         <span class="agendamento">
-                            <span id="agendamento-data">${selectedDate}</span>
+                            <b id="agendamento-data">${selectedDate}</b>
                         </span>.
                         <br>
+                        <p><i class="fa fa-check"></i>Horário de atendimento: <b>08:00 às 18:00</b></p>
                         <strong>Deseja confirmar o agendamento da instalação para esse dia?</strong>
                     </p>
                     <button id="confirm-sm-btn">Confirmar</button>
