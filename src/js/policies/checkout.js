@@ -296,7 +296,7 @@ async function loadPolicies() {
     .catch(error => console.log(error));
 }
 
-// APAGAR OS COMENTÁRIOS ABAIXO APÓS O DIA 29/02/2022
+// APAGAR OS COMENTÁRIOS ABAIXO EM DEV E EM PRD APÓS O DIA 29/02/2022. FALAR COM O CÉLIO ANTES SOBRE A REMOÇÃO DO CROSS SELLING
 // /*--------*/
 // async function ObterItensCrossSelling(orderForm) {
 //     const items = orderForm.items;
