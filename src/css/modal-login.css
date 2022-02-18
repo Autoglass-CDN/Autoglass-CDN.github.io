@@ -11,33 +11,33 @@
 
 #vtexIdContainer {
     background-color: rgba(0,0,0,0.8) ;
-    position: fixed 
+    position: fixed
 }
 
 
 @media (max-width: 998px) {
     #vtexIdContainer .vtexIdUI-show-app {
         background-color:rgba(0,0,0,0.005) ;
-        z-index: 9 
+        z-index: 9
     }
 
     #vtexIdContainer .vtexIdUI-classic-login {
         display: block;
-        top: 250px 
+        top: 250px
     }
 
     #vtexIdContainer .vtexIdUI .modal-header,#vtexIdContainer .vtexIdUI .modal-footer {
-        background: none 
+        background: none
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn {
         width:100% ;
         background-color: rgba(41,216,70,0.75) ;
-        border-radius: 3px 
+        border-radius: 3px
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
-        border: none 
+        border: none
     }
 
     #vtexIdContainer .vtexIdUI .modal-header .close {
@@ -67,7 +67,7 @@
     }
 
     #vtexIdContainer .vtexIdUI .modal-header {
-        border: none 
+        border: none
     }
 
     #vtexIdContainer #loginWithAccessKeyBtn {
@@ -89,7 +89,7 @@
     }
 
     #vtexIdContainer #vtexIdUI-auth-selector div {
-        background: none 
+        background: none
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login * {
@@ -98,7 +98,7 @@
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link {
-        display: none 
+        display: none
     }
 
 
@@ -106,7 +106,7 @@
         font-family: 'Open Sans','Droid Sans',Tahoma,Arial,sans-serif ;
         font-size: 16px ;
         width: 100% ;
-        padding-bottom: 20px 
+        padding-bottom: 20px
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login * {
@@ -118,31 +118,31 @@
         border-radius: 0 ;
         box-shadow: none ;
         border: none;
-        color: #FFF 
+        color: #FFF
     }
 
     #vtexIdContainer .vtexIdUI .modal-footer {
         box-shadow: none ;
-        border: none 
+        border: none
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd {
         background-color: #FFF;
-        height: 100% 
+        height: 100%
     }
 
 
     #vtexIdContainer #vtexIdUI-change-pswd .modal-body * {
-        color: #999 
+        color: #999
     }
 
     #vtexIdContainer #vtexIdUI-email-confirmation {
         background-color: #FFF;
-        height: 100% 
+        height: 100%
     }
 
     #vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close {
-        display: none 
+        display: none
     }
 
     #vtexIdContainer #loginWithUserAndPasswordBtn {
@@ -166,11 +166,11 @@
     }
 
     #vtexIdContainer .vtexIdUI-back-link span {
-        display: none 
+        display: none
     }
 
     #vtexIdContainer .vtexIdUI label {
-        color: #FFF 
+        color: #FFF
     }
 
     #vtexIdContainer .vtexIdUI-close {
@@ -184,11 +184,11 @@
     #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
         border-radius: 7px ;
         padding: 7px 5px 2px 5px ;
-        color: #333 
+        color: #333
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .modal-header {
-        color: #333 
+        color: #333
     }
 
     #vtexIdContainer .vtexIdUI {
@@ -298,11 +298,11 @@
     }
 
     #vtexIdContainer #loginWithAccessKeyBtn {
-        margin: 0 
+        margin: 0
     }
 
     #vtexIdContainer .vtexIdUI #vtexIdUI-google-plus {
-        top: 0 
+        top: 0
     }
 
     #vtexIdContainer ul.vtexIdUI-providers-list li:first-child {
@@ -356,12 +356,12 @@
     }
 
     #vtexIdContainer .vtexIdUI .modal-header,#vtexIdContainer .vtexIdUI .modal-footer {
-        background: none 
+        background: none
     }
 
     #vtexIdContainer .vtexIdUI .btn-success {
         border: none ;
-        box-shadow: none 
+        box-shadow: none
     }
 
 
@@ -378,11 +378,11 @@
     }
 
     #vtexIdContainer .vtexIdUI .modal-header .close:hover {
-        opacity: 1 
+        opacity: 1
     }
 
     #vtexIdContainer .vtexIdUI-auth-code .modal-body {
-        margin-top: 30px 
+        margin-top: 30px
     }
 
     #vtexIdContainer div#vtexIdUI-auth-selector {
@@ -415,13 +415,13 @@
 
     #vtexIdContainer #loginWithAccessKeyBtn:hover,
     #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn:hover {
-        background-color: #223B76 
+        background-color: #223B76
     }
 
 
 
     #vtexIdContainer .vtexIdUI .modal-header .close:active {
-        outline: none 
+        outline: none
     }
 
 
@@ -488,11 +488,11 @@
     }
 
     #vtexIdContainer #loginWithAccessKeyBtn i {
-        display: none 
+        display: none
     }
 
     #vtexIdContainer #vtexIdUI-auth-selector div {
-        background: none 
+        background: none
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login * {
@@ -501,21 +501,21 @@
     }
 
 
-    
+
 
     #vtexIdContainer a.dead-link.pull-right {
         color: #234eb9 ;
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link {
-        display: none 
+        display: none
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login .modal-header .vtexIdUI-heading {
         width: 100%;
         float: left;
         margin: 5px 0 0 0 ;
-        padding-bottom: 20px 
+        padding-bottom: 20px
     }
 
     #vtexIdContainer #vtexIdUI-form-classic-login * {
@@ -549,7 +549,7 @@
     }
 
     #vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close {
-        display: none 
+        display: none
     }
 
     #vtexIdContainer #loginWithUserAndPasswordBtn {
@@ -558,7 +558,7 @@
 
     #vtexIdContainer #vtexIdUI-confirm-access-code {
         background: #FFF;
-        height: 100% 
+        height: 100%
     }
 
     #vtexIdContainer .vtexIdUI-back-link {
@@ -575,19 +575,19 @@
         text-align: center
     }
 
-    
+
 
     #vtexIdContainer .vtexIdUI-back-link span {
         display: none
     }
-    
+
 
     #vtexIdContainer .vtexIdUI label {
-        color: #808080 
+        color: #808080
     }
 
     #vtexIdContainer .vtexIdUI-close {
-        display: block 
+        display: block
     }
 
     #vtexIdContainer .vtexIdUI .vtexid-icon-lock.bottom-icon {
@@ -597,17 +597,17 @@
     #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
         border-radius: 7px ;
         padding: 7px 5px 2px 5px ;
-        color: #333 
+        color: #333
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .modal-header {
-        color: #333 
+        color: #333
     }
 
     #vtexIdContainer .vtexIdUI-confirm-email .btn-success {
         background-color: #fff ;
         text-shadow: none ;
-        border-radius: 7px 
+        border-radius: 7px
     }
 
     #vtexIdContainer .vtexIdUI {
@@ -619,7 +619,7 @@
         left: 0;
         right: 0;
         margin-left: auto ;
-        margin-right: auto 
+        margin-right: auto
     }
 
     #vtexIdContainer .vtexIdUI-heading {
@@ -690,11 +690,11 @@
 
 #vtexIdContainer .vtexIdUI .vtexIdUI-user {
     margin-bottom: 0;
-    display: none 
+    display: none
 }
 
 #vtexIdContainer .vtexIdUI h4 {
-    margin: 0 
+    margin: 0
 }
 
 #vtexIdContainer .vtexIdUI .info-why {
@@ -707,7 +707,7 @@
 }
 
 #vtexIdContainer .vtexid-password-requirements-description {
-    font-weight: normal 
+    font-weight: normal
 }
 
 #vtexIdContainer .vtexid-password-requirements-list {
@@ -720,11 +720,11 @@
 }
 
 #vtexIdContainer div#vtexIdUI-change-pswd .close {
-    margin-right: 33px 
+    margin-right: 33px
 }
 
 #vtexIdContainer div#vtexIdUI-change-pswd .modal-header {
-    padding: 30px 15px 0 
+    padding: 30px 15px 0
 }
 
 #vtexIdContainer #vtexIdUI-confirm-access-code .alert {
@@ -753,11 +753,11 @@
     }
 
     #vtexIdContainer #loginWithAccessKeyBtn {
-        margin-top: 50px 
+        margin-top: 50px
     }
 
     #vtexIdContainer #vtexIdUI-classic-login {
-        top: 215px 
+        top: 215px
     }
 
     #vtexIdContainer #vtexIdUI-classic-login .modal-header {
@@ -788,9 +788,9 @@
     #vtexIdContainer .vtexIdUI .ng-binding,#vtexIdContainer .vtexIdUI .info-why span,#vtexIdContainer .modal-body .control-label span,#vtexIdContainer .vtexid-password-requirements-description,#vtexIdContainer .vtexid-password-requirements-list li {
         font-size: 12px
     }
-    
+
     #vtexIdContainer div#vtexIdUI-change-pswd .modal-header {
-        padding: 120px 15px 0 
+        padding: 120px 15px 0
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd .modal-body {
@@ -798,14 +798,14 @@
     }
 
     #vtexIdContainer .vtexIdUI .modal-header {
-        padding: 0 
+        padding: 0
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-back-link {
         border: 2px solid #ccc ;
         margin-top: 5px;
         margin-right: 0;
-        border-radius: 50% 
+        border-radius: 50%
     }
 
 
@@ -838,7 +838,7 @@
         border-top: none ;
         border-left: none ;
         border-right: none ;
-        border-radius: 0 
+        border-radius: 0
     }
 
     #vtexIdContainer #vtexIdUI-change-pswd input:focus {
