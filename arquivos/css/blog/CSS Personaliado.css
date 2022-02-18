@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,700;1,500;1,600;1,800&display=swap');
+
+#Header_wrapper .logo {
+    display: none;
+}
+
+#menu-menu-principal > .menu-item > a {
+    margin: 0px !important;
+    /*border-radius: 0px !important;*/
+}
+
+#Top_bar {
+    width: 100vw;
+}
+
+#Top_bar .top_bar_right {
+    height: 40px;
+}
+
+#Top_bar .top_bar_right  #search_button {
+    display: none;
+}
+
+#Top_bar .top_bar_right_wrapper {
+    top: 7px;
+}
+
+#Top_bar .menu  a {
+    color: #234eb9 !important;
+}
+
+#Top_bar a.responsive-menu-toggle {
+    /*right: -55px;*/
+}
+
+#Filters .reset {
+    display: none;
+}
+
+#text-header {
+    position: absolute;
+    transform: translatey(50%);
+    top: 13%;
+    text-transform: uppercase;
+    width: 100%;
+    visibility: hidden;
+}
+
+#text-header > h1 {
+    font-size: 69px;
+    text-align: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    margin: auto;
+}
+
+#text-header > h1 > a > span{
+    color: #FDC405;
+    font-weight: bold;
+}
+
+
+#Header > .header_placeholder {
+    height: 0px !important;
+}
+
+.section_wrapper {
+    max-width: 900px;
+}
+
+@media only screen and (min-width: 767px) {
+    #Top_bar.is-sticky {
+        top: 121px !important;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+   #Header_wrapper {
+      background-size: cover;
+   }
+}
+
+@media only screen and (max-width: 767px) {
+   #Top_bar:not(.is-sticky) {
+      position: absolute  !important;
+      height: fit-content;
+      top: unset !important;
+      bottom: 0px;
+   }
+
+   #Top_bar.is-sticky {
+      position: fixed !important;
+      height: fit-content;
+      top: 89px !important;
+      bottom: unset;
+   }
+
+   #Top_bar a.responsive-menu-toggle {
+       top: 28px;
+   }
+
+   #text-header {
+       top: -13%;
+   }
+   #text-header > h1 {
+       font-size: 45px;
+       line-height: 60px;
+       max-width: 360px;
+   }
+}
+
+@media only screen and  (min-width: 767px) and (max-width: 1220px) {
+    #Top_bar a.responsive-menu-toggle {
+        margin-top: 0px;
+    }
+
+    #Top_bar a#search_button {
+        top: 0px;
+    }
+
+    #Top_bar.is-sticky {
+       position: fixed !important;
+       top: 89px !important;
+    }
+}
+
+@media only screen and  (min-width: 767px) and (max-width: 967px) {
+    #text-header{
+        top: -19%;
+    }
+
+    #text-header > h1 {
+        font-size: 63px;
+        line-height: 60px !important;
+    }
+}
+
+.post-photo-wrapper > .image_wrapper > .image_links.double {
+     display: none;
+}
+
+
+
+/*Botão Whatsapp*/
+
+#whatsapp-icon-link {
+  bottom: 0px;
+  display: inherit;
+  margin: 10px 15px;
+  position: fixed;
+  left: 0px;
+  z-index: 8000;
+}
+
+#whatsapp-icon-link img {
+  height: auto;
+  width: 60px;
+}
+
+@media only screen and (min-width: 1200px) {
+  #whatsapp-icon-link {
+    margin-bottom: 10px !important;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+    body:not(.template-slider) #Header_wrapper {
+        background-image: url("https://blog.autoglassonline.com.br/wp-content/uploads/2022/01/banner-mobile.png");
+        background-position: 50% calc(50% - 40px);
+    }
+}
