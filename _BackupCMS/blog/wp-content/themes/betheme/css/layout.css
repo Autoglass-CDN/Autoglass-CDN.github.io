@@ -247,7 +247,7 @@ body.minimalist-header.header-below:not(.template-slider) #Header{min-height:90p
 #Action_bar .social-menu li:last-child{margin-right:0;padding-right:0;border-right-width:0}
 
 /* Top Bar --------------------------------------------------------------------------- */
-#Top_bar{position:absolute;left:0;top:61px;width:100%;border-bottom:1px solid transparent;z-index:30}
+#Top_bar{position:absolute;left:0;top:61px;width:100%;border-bottom:1px solid transparent;z-index:5}
 #Top_bar .column{margin-bottom:0}
 .layout-full-width.header-fw #Action_bar .container,.layout-full-width.header-fw #Top_bar .container{max-width:100%}
 #Top_bar .top_bar_left{position:relative;float:left;width:990px}
