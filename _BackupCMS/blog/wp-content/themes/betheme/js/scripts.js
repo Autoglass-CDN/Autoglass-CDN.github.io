@@ -57,6 +57,8 @@
       return false;
     }
 
+    mfnStickyH();
+
     var startY = headerH;
     var windowY = $(window).scrollTop();
 
