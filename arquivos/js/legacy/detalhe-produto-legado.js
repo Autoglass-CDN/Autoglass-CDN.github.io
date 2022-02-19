@@ -41,13 +41,17 @@ $(function () {
                 const hour = today.getHours();
                 const day = today.getDay();
 
-                if ((day === 0 || day === 6) //É Domingo ou Sábado?
-                    ||
-                    (hour < 8 || hour >= 18) //Esta fora do horario de trabalho?
-                ) {
-                    zE('webWidget', 'chat:addTags', 'fora-expediente');
-                    zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 08-18h, no momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js \nProduto de interesse: ${window.location.href}`);
-                } else {
+                const ehDomingo = (day === 0);
+                const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
+                const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour > 21);
+
+                if (ehDomingo
+                    || ehSabadoForaDoExpediente
+                    || ehSemanaForaDoExpediente) {
+                  zE('webWidget', 'chat:addTags', 'fora-expediente');
+                  zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 08-18h, no momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js \nProduto de interesse: ${window.location.href}`);
+                } 
+                else {
                     zE('webWidget', 'chat:send', `Olá, tenho interesse neste produto, mas está indisponível no site: ${window.location.href}`);
                 }
 
