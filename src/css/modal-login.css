@@ -17,22 +17,34 @@
   z-index: 1000;
 }
 
-#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success {
+#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success,
+#confirmLoginAccessKeyBtn,
+#changePswdBtn {
   font-size: 14px;
   color: #fff;
   font-weight: 600;
   border: #43C452 solid;
   border-radius: 7px;
-  background-color: #43C452 ;
+  background-color: #43C452;
   background-image: none;
   margin-right: 44%;
   right: -60px;
   width: 180px;
   text-shadow: none;
   box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#confirmLoginAccessKeyBtn,
+#changePswdBtn {
+  margin: 0;
+  right: 0;
 }
 
-#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success:hover {
+#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success:hover,
+#confirmLoginAccessKeyBtn:hover,
+#changePswdBtn:hover {
   border: #33a140 solid;
   background-color: #33a140 ;
 }
@@ -99,12 +111,8 @@
   font-weight: 600
 }
 
-#vtexIdContainer div#vtexIdUI-change-pswd .close {
-  margin-right: 33px
-}
-
 #vtexIdContainer div#vtexIdUI-change-pswd .modal-header {
-  padding: 30px 15px 0
+  padding: 50px 15px 0
 }
 
 #vtexIdContainer #vtexIdUI-confirm-access-code .alert {
@@ -180,7 +188,8 @@
   margin: -3px 0 0 0
 }
 
-#vtexIdContainer .vtexIdUI .modal-header .close {
+#vtexIdContainer .vtexIdUI .modal-header .close,
+#vtexIdContainer div#vtexIdUI-change-pswd .close {
   border-radius: 50%;
   border: 2px solid #FFF;
   width: 36px;
@@ -191,14 +200,16 @@
   opacity: .7;
 }
 
-#vtexIdContainer .vtexIdUI .modal-header .close:hover {
+#vtexIdContainer .vtexIdUI .modal-header .close:hover,
+#vtexIdContainer div#vtexIdUI-change-pswd .close:hover {
   opacity: 1
 }
 
 #vtexIdContainer #loginWithAccessKeyBtn,
-#vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn
+#vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn,
+#vtexIdContainer #vtexIdUI-change-pswd .btn-success
 {
-  background: #234EB9 ;
+  background: #234EB9;
   color: #FFF;
   border-radius: 5px ;
   font-size: 14px;
@@ -207,8 +218,14 @@
   box-shadow: none;
 }
 
+#vtexIdContainer #vtexIdUI-change-pswd .btn-success {
+  margin-top:20px;
+  width: 250px
+}
+
 #vtexIdContainer #loginWithAccessKeyBtn:hover,
-#vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn:hover {
+#vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn:hover,
+#vtexIdContainer #vtexIdUI-change-pswd .btn-success:hover {
   background-color: #223B76
 }
 
@@ -268,6 +285,16 @@
 
 #vtexIdContainer #vtexIdUI-google-plus i.vtexid-icon-google-plus {
   display: none
+}
+
+#vtexIdContainer .vtexIdUI .modal-footer {
+  display:flex;
+  justify-content: center;
+}
+
+#vtexIdContainer #vtexIdUI-confirm-access-code {
+  background: #FFF;
+  height: 100%
 }
 
 
@@ -334,14 +361,12 @@
     background: none
   }
 
-  #vtexIdContainer .vtexIdUI .btn-success {
-    border: none ;
-    box-shadow: none
-  }
-
-
   #vtexIdContainer .vtexIdUI .modal-header .close {
     right: -40px;
+  }
+
+  #vtexIdContainer div#vtexIdUI-change-pswd .close {
+    right: -5px;
   }
 
   #vtexIdContainer .vtexIdUI-auth-code .modal-body {
@@ -365,7 +390,8 @@
     border: none;
   }
 
-  #vtexIdContainer .vtexIdUI .modal-header .close:active {
+  #vtexIdContainer .vtexIdUI .modal-header .close:active,
+  #vtexIdContainer div#vtexIdUI-change-pswd .close:active {
     outline: none
   }
 
@@ -406,13 +432,6 @@
     margin: 2px 0 2px 0;
     width: 50%;
     float: left
-  }
-
-  #vtexIdContainer #vtexIdUI-change-pswd .btn-success {
-    background: #234EB9;
-    border-radius: 5px;
-    font-size: 14px ;
-    width: 250px
   }
 
   #vtexIdContainer #vtexIdUI-change-pswd .modal-footer {
@@ -496,11 +515,6 @@
 
   #vtexIdContainer #loginWithUserAndPasswordBtn {
     display: none
-  }
-
-  #vtexIdContainer #vtexIdUI-confirm-access-code {
-    background: #FFF;
-    height: 100%
   }
 
   #vtexIdContainer .vtexIdUI label {
@@ -616,7 +630,8 @@
     color: #999
   }
 
-  #vtexIdContainer #vtexIdUI-email-confirmation {
+  #vtexIdContainer #vtexIdUI-email-confirmation,
+  #vtexIdContainer #vtexIdUI-confirm-access-code {
     background-color: #FFF;
     height: 100%;
     top: 43px;
@@ -628,11 +643,6 @@
 
   #vtexIdContainer #loginWithUserAndPasswordBtn {
     display: none
-  }
-
-  #vtexIdContainer #vtexIdUI-confirm-access-code {
-    height: 100% ;
-    background: #FFF
   }
 
   #vtexIdContainer .vtexIdUI-close {
@@ -723,6 +733,10 @@
 
   #vtexIdContainer .vtexIdUI .modal-header .close {
     top: calc(8px - var( --deslocate-create-account));
+  }
+
+  #vtexIdContainer div#vtexIdUI-change-pswd .close {
+    top:8px;
   }
 
   #vtexIdContainer #vtexIdUI-main-content div:nth-child(2) .modal-header {
