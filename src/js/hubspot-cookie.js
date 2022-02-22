@@ -63,7 +63,7 @@
       const hubspotutk = $.cookie('hubspotutk');
 
       if(hubspotutk) {
-        await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
+        await fetch(`https://api-int-hml.autoglass.com.br/api/master-datas/clientes/${email.trim()}`, {
           method: 'PUT',
           headers: new Headers({
             "Content-Type": "application/json",
