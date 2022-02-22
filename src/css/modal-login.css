@@ -664,6 +664,7 @@
     width: 100% ;
     margin-left: 0 ;
     left: 0;
+    border: 0;
   }
 
   #vtexIdContainer .vtexIdUI .vtexIdUI-providers-list,#vtexIdContainer .vtexIdUI .account-list {
@@ -735,5 +736,10 @@
 
   #vtexIdContainer #vtexIdUI-main-content div:nth-child(2) .modal-header {
     padding:0;
+  }
+
+  #vtexIdContainer .alert-warning.alert-wrong-pswd {
+    position: absolute;
+    bottom: -32px;
   }
 }
