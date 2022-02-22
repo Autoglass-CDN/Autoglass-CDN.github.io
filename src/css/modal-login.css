@@ -27,19 +27,13 @@
   border-radius: 7px;
   background-color: #43C452;
   background-image: none;
-  margin-right: 44%;
-  right: -60px;
+  margin: 0 auto;
   width: 180px;
   text-shadow: none;
   box-shadow: none;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-#confirmLoginAccessKeyBtn,
-#changePswdBtn {
-  margin: 0;
-  right: 0;
 }
 
 #vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success:hover,
