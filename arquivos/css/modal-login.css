@@ -762,7 +762,7 @@
     bottom: -280px;
   }
 
-  @media (max-height: 330px) and (orientation:portrait){
+  @media (max-height: 330px){
     .gtm-whatsapp-botao-rodape,
     #launcher {
       display:none;
