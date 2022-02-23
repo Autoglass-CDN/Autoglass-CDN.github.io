@@ -738,8 +738,22 @@
     padding:0;
   }
 
-  #vtexIdContainer .alert-warning.alert-wrong-pswd {
+  #vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning.alert-wrong-pswd {
     position: absolute;
-    bottom: -32px;
+    bottom: -37px;
+  }
+
+  #vtexIdContainer .alert.alert-info,
+  #vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning {
+    position: absolute;
+    background: #FFF;
+  }
+
+  #vtexIdContainer .alert.alert-info {
+    bottom: -300px;
+  }
+
+  #vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning {
+    bottom: -280px;
   }
 }
