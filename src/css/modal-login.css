@@ -555,7 +555,7 @@
 @media (max-width: 998px) {
 
   #vtexIdContainer  > div.vtexIdUI  {
-    overflow: auto !important;
+    overflow-y: auto;
   }
 
   #vtexIdContainer .vtexIdUI-show-app {
