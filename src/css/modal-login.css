@@ -553,6 +553,11 @@
 
 /* MOBILE */
 @media (max-width: 998px) {
+
+  #vtexIdContainer  > div.vtexIdUI  {
+    overflow: auto !important;
+  }
+
   #vtexIdContainer .vtexIdUI-show-app {
     z-index: 9
   }
@@ -755,5 +760,12 @@
 
   #vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning {
     bottom: -280px;
+  }
+
+  @media (max-height: 330px) and (orientation:portrait){
+    .gtm-whatsapp-botao-rodape,
+    #launcher {
+      display:none;
+    }
   }
 }
