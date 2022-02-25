@@ -41,6 +41,10 @@
   text-transform: uppercase;
 }
 
+.section-title.nossos-servicos{
+  margin-top: 20px;
+}
+
 /* #endregion Common */
 
 /* #region Banners */
@@ -60,7 +64,7 @@
 }
 
 .banners-section .banners button:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
   border-radius: 50%;
 }
 
@@ -608,7 +612,7 @@
   justify-content: center;
   align-items: center;
   height: 300px;
-  padding: 20px 20px 40px;
+  padding: 20px;
 }
 
 .nossos-servicos-section{
@@ -697,7 +701,7 @@
 }
 
 @media (max-width: 992px) {
-  .banners-promocionais-section, 
+  .banners-promocionais-section,
   .nossos-servicos-section, .banners-nossos-servicos {
     height: auto;
   }
@@ -706,13 +710,13 @@
     width: -webkit-fill-available !important;
   }
   .banners-promocionais-itens .box-banner,
-  .banners-nossos-servicos .box-banner { 
+  .banners-nossos-servicos .box-banner {
     flex-basis: calc(100% - 20px);
     position: relative;
   }
 
   .banners-nossos-servicos .box-banner:after{
-    width: 100%;    
+    width: 100%;
   }
   .banners-nossos-servicos .box-banner:after{
     position:absolute;
@@ -728,7 +732,7 @@
     font-size: 4vw;
   }
 
-  .banners-promocionais-section button, 
+  .banners-promocionais-section button,
   .nossos-servicos-section button{
     margin: 0px;
   }

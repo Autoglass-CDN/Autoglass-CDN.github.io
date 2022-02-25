@@ -341,6 +341,10 @@ body .box-banner a[href] {
     cursor: pointer
 }
 
+body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
+  cursor: pointer;
+}
+
 @media (min-width: 1200px) {
     .container {
         width: 90%;
