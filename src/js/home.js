@@ -131,7 +131,7 @@
 			const down = percentPerItem * index;
 			benefits.eq(index).removeClass('focus');
 			benefitsDots.eq(index).removeClass('focus')
-			
+
 			if (scrollPercentage >= down && scrollPercentage <= up) {
 				benefits.eq(index).addClass('focus');
 				benefitsDots.eq(index).addClass('focus')
@@ -158,11 +158,11 @@ configureBanners('.banners-promocionais-section', '.banners-promocionais-itens')
 
 configureBannerSubtitles(".banners-nossos-servicos .box-banner > a");
 
-configureBanners('.nossos-servicos-section', '.banners-nossos-servicos');
+configureBanners('.nossos-servicos-section', '.banners-nossos-servicos', true);
 
 //#endregion Nossos Servicos
 
-function configureBanners(section, banner) {
+function configureBanners(section, banner, openChat) {
 	const btnPrev = $(`${section} button[data-type="prev"]`);
 	const btnNext = $(`${section} button[data-type="next"]`);
 	const container = $(`${banner}`);
@@ -196,6 +196,18 @@ function configureBanners(section, banner) {
 			configureButonsNextPrev(btnNext, btnPrev, banner, bannerContainer);
 			break;
 	}
+
+	if (openChat) {
+		const showZendeskOnClick = '$zopim.livechat.window.show()';
+		bannerContainer.childNodes.forEach((element)=>{
+			if (!element.children[0].href){
+				element.children[0].setAttribute('onclick', showZendeskOnClick);
+        const img = element.children[0].firstElementChild
+				img.setAttribute('onclick', `zE('webWidget', 'chat:send', 'Olá, gostaria de saber mais sobre ${img.alt}')`);
+        ;
+			}
+		})
+	}
 }
 
 function configureBannerSubtitles(anchor){
@@ -218,7 +230,7 @@ function createResizeObserver(banner, itensQuantity, itemSize){
 			entries[0].target.parentElement.classList.add('hide-buttons')
 		}
 	});
-	
+
 	const element = document.querySelector(banner);
 	myObserver.observe(element);
 }
