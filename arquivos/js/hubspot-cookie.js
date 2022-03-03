@@ -124,18 +124,18 @@
       }
 
       if(hubspotutk) {
-        await fetch(`https://api.autoglass.com.br/api/master-datas/clientes/${email.trim()}`, {
+        await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
           method: 'PUT',
           headers: new Headers({
             "Content-Type": "application/json",
           }),
           body: JSON.stringify({
             hubspotutk,
-            lastOrderInfo: {
-              items: cartItems,
-              orderFormId,
-              orderId,
-            }
+            lastOrderFormItems: {
+              items: cartItems
+            },
+            lastOrderFormId: orderFormId,
+            lastOrderId: orderId,
           }),
         });
 
