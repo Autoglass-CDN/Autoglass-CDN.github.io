@@ -661,3 +661,16 @@ body {
         padding: 1rem;
     }
 }
+
+
+
+@media only screen and (hover: none) and (pointer: coarse){
+  .formulario {
+    z-index: 1;
+  }
+  .formulario .orcamento {
+    padding: 1em 0em;
+    width: 100%;
+    overflow:hidden;
+  }
+}
