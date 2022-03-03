@@ -372,7 +372,8 @@ class FormSubmit {
 
       function stringifyDate(date) {
         const days = date.toLocaleDateString('pt-BR', {timeZone: 'UTC'});
-        const hour = date.getHours();
+        const timeZoneOffset = date.getTimezoneOffset()/60;
+        const hour = date.getHours() + timeZoneOffset;
         return `${days} às ${hour}h`
       }
 
