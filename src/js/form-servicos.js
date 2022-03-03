@@ -315,10 +315,9 @@ class FormSubmit {
         const initialMessage = `Olá! Gostaria de fazer um orçamento de ${service}. Segue os meus dados:`
         const form = createWhatsappForm(orcamento);
 
-        try{
-          window.open(`http://wa.me/${atgWhatsappNumber}?text=${initialMessage}%0a${form}`, '_blank')
-        } catch {
-          alert("Não foi possível enviar a sua solicitação. Por favor, tente novamente mais tarde.");
+        let whatsappPage = window.open(`http://wa.me/${atgWhatsappNumber}?text=${initialMessage}%0a${form}`, "whatsappPage", '_blank')
+        if (whatsappPage == null){
+          alert("Não foi possível enviar a sua solicitação. Por favor, desbloqueie os pop-ups e tente novamente.");
         }
       }
 
