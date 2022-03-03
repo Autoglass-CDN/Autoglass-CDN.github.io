@@ -39,6 +39,7 @@ $(document).ready(function () {
   $('.carrinho-line').addClass('active');
   $('.identificacao-line').addClass('active');
   $('.entrega-line').addClass('active');
+  loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
 });
 
 
