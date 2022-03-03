@@ -7,7 +7,19 @@
 <head>
     <meta charset="UTF-8" />
     <vtex:contentPlaceHolder id="SEO_link_alternate" />
-    <vtex:metaTags />
+
+    <!-- Substituição do <vtex:metaTags /> -->
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"></meta>
+    <vtex:contentPlaceHolder id="page_metaTag" />
+    <!--<meta name="description" content="A Autoglass realiza a pintura do seu automóvel com alta qualidade e rapidez. Faça agora um orçamento!"></meta>-->
+    <!--<meta name="description" content="Um serviço da Autoglass capaz de deixar seu carro novo de novo. Melhora a pintura, disfarça arranhões e também martelinho para pequenos amassados."></meta>-->
+    <meta name="Abstract" content="Autoglass - O Maior Estoque de Vidros Automotivos da America Latina"></meta>
+    <meta name="author" content="Autoglass Online"></meta>
+    <meta name="copyright" content="Autoglass Online"></meta>
+    <meta name="vtex-version" content="1.5.47.2456"></meta>
+    <meta http-equiv="pragma" content="no-cache"></meta>
+    <!---->
+
     <vtex:contentPlaceHolder id="page_title" />
     <vtex:template id="dev--head-tags" />
 
@@ -31,7 +43,7 @@
 
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/servicos/servicos.css" type="text/css"></link>
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/styles/global/style.css" type="text/css"></link>
-    
+
     <script>
         const url = "<vtex:contentPlaceHolder id="url_API"/>";
     </script>
@@ -139,7 +151,7 @@
         </div>
     </section>
 
-        
+
     <!-- Footer -->
     <vtex:template id="dev--footer" />
     <!-- Footer -->
