@@ -155,18 +155,24 @@ class FormSubmit {
                   return;
               }
 
-              const response = sendOrcamento(url, orcamento)
-                  .then(res => res)
-                  .then(res => {
-                      if (res.status=="200"){
-                          alert("Sua solicitação foi enviada com sucesso! Em breve enviaremos o orçamento para o e-mail informado.")
-                          location.reload()
-                      }
-                      else{
-                          alert("Houve algum problema ao enviar sua solicitação. Por favor, tente novamente mais tarde.")
-                      }
-                  })
-                  .catch(err => alert("Não foi possível enviar a sua solicitação. Por favor, tente novamente mais tarde."));
+              const isMobile = window.matchMedia("only screen and (hover: none) and (pointer: coarse)").matches;
+              if (isMobile){
+                sendOrcamentoWhatsapp(orcamento)
+              }
+              else {
+                sendOrcamentoZendesk(url, orcamento)
+                    .then(res => res)
+                    .then(res => {
+                        if (res.status=="200"){
+                            alert("Sua solicitação foi enviada com sucesso! Em breve enviaremos o orçamento para o e-mail informado.")
+                            location.reload()
+                        }
+                        else{
+                            alert("Houve algum problema ao enviar sua solicitação. Por favor, tente novamente mais tarde.")
+                        }
+                    })
+                    .catch(err => alert("Não foi possível enviar a sua solicitação. Por favor, tente novamente mais tarde."));
+              }
 
           });
 
@@ -263,7 +269,7 @@ class FormSubmit {
               DataHora
           };
 
-          return JSON.stringify(orcamento);
+          return orcamento;
       }
 
       function validaString(str) {
@@ -293,14 +299,96 @@ class FormSubmit {
           }
       }
 
-      function sendOrcamento(url, req){
+      function sendOrcamentoZendesk(url, reqObj){
           return fetch(url, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json'
               },
-              body: req
+              body: JSON.stringify(reqObj)
           })
+      }
+
+      function sendOrcamentoWhatsapp(orcamento) {
+        const atgWhatsappNumber = '5527998260207';
+        const service = orcamento.Servico;
+        const initialMessage = `Olá! Gostaria de fazer um orçamento de ${service}. Segue os meus dados:`
+        const form = createWhatsappForm(orcamento);
+
+        try{
+          window.open(`http://wa.me/${atgWhatsappNumber}?text=${initialMessage}%0a${form}`, '_blank')
+        } catch {
+          alert("Não foi possível enviar a sua solicitação. Por favor, tente novamente mais tarde.");
+        }
+      }
+
+      function createWhatsappForm(orcamento) {
+        let filledForm = orcamento;
+
+        const servico = filledForm.Servico;
+        const placaVeiculo = filledForm.PlacaDoVeiculo;
+        const nome = filledForm.Solicitante.Nome;
+        const cidade = filledForm.Solicitante.Cidade;
+        const estado = filledForm.Solicitante.Estado;
+        const celular = filledForm.Solicitante.Celular;
+        const email = filledForm.Solicitante.Email;
+        const pecasVeiculo = filledForm.PecasDoVeiculo.join(', ');
+        const cor = filledForm.CorDaPintura;
+        const pecaDanificada = changeBooleanToPortuguese(filledForm.PecaDanificada);
+        const tipoDano = filledForm.TipoDeDano;
+        const medidaDano = filledForm.MedidaDoDano;
+        const pinturaCompletaDaPeca = changeBooleanToPortuguese (filledForm.PinturaCompletaDaPeca);
+        const dataHora = stringifyDate(filledForm.DataHora);
+
+        let form = new Array(
+          ["Serviço: ",servico],
+          ["- Placa: ",placaVeiculo],
+          ["- Nome: ",nome],
+          ["- Cidade: ",cidade],
+          ["- Estado: ",estado],
+          ["- Celular: ",celular],
+          ["- E-mail: ",email],
+          ["- Peças: ",pecasVeiculo],
+          ["- Cor: ",cor],
+          ["- Peça danificada? ",pecaDanificada],
+          ["- Tipo do dano: ",tipoDano],
+          ["- Medida do dano: ",medidaDano],
+          ["- Pintura completa? ",pinturaCompletaDaPeca],
+          ["- Data/Hora: ",dataHora]
+          )
+        form = removeUnfilledProperties(form);
+        form = stringifyToWhatsapp(form);
+        return form;
+      }
+
+      function removeUnfilledProperties(formArray){
+        var filtered = formArray.filter(function(value){
+           if(value[1] !== ''){
+             return value;
+           }
+        });
+        return filtered;
+      }
+
+      function stringifyDate(date) {
+        const days = date.toLocaleDateString('pt-BR', {timeZone: 'UTC'});
+        const hour = date.getHours();
+        return `${days} às ${hour}h`
+      }
+
+      function changeBooleanToPortuguese (value) {
+        return value ? 'Sim' : 'Não';
+      }
+
+      function stringifyToWhatsapp (formArray) {
+        const newLine = '%0a';
+        const plusSign = '%2b';
+
+        return JSON.stringify(formArray)
+                   .replaceAll('],', newLine)
+                   .replaceAll('","', '')
+                   .replace(/\{|\}|\"|\[|\]/g, '')
+                   .replace(/\+/g, plusSign)
       }
   }
 }
