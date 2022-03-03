@@ -338,7 +338,7 @@ class FormSubmit {
         const tipoDano = filledForm.TipoDeDano;
         const medidaDano = filledForm.MedidaDoDano;
         const pinturaCompletaDaPeca = changeBooleanToPortuguese (filledForm.PinturaCompletaDaPeca);
-        const dataHora = stringifyDate(filledForm.DataHora);
+        const dataHora = stringifyDate(new Date());
 
         let form = new Array(
           ["Serviço: ",servico],
@@ -372,8 +372,7 @@ class FormSubmit {
 
       function stringifyDate(date) {
         const days = date.toLocaleDateString('pt-BR', {timeZone: 'UTC'});
-        const timeZoneOffset = date.getTimezoneOffset()/60;
-        const hour = date.getHours() + timeZoneOffset;
+        const hour = date.getHours();
         return `${days} às ${hour}h`
       }
 
