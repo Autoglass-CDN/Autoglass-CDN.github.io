@@ -1,11 +1,9 @@
 (function () {
 
   let isDataSent = false;
-  let cartItems = [];
 
   $(window).on('rendered.vtexid', getEmailFromLoginFormAndSendDataToMasterData);
   $(window).on('checkoutRequestEnd.vtex', getEmailFromOrderFormAndSendDataToMasterData);
-  $(window).on('orderFormUpdated.vtex', checkIfShoppingCartHasNewItemsAndSendDataToMasterData);
   $(window).on('load', sendOrderIdToMasterData);
 
   async function sendOrderIdToMasterData() {
@@ -22,37 +20,7 @@
 
       const email = order.clientProfileData.email;
 
-      email && sendDataToVtexMasterData(email, { orderId });
-    }
-  }
-
-  function checkIfShoppingCartHasNewItemsAndSendDataToMasterData(event, orderForm) {
-    if(orderForm.items) {
-      let currentCartItems = [];
-
-      for (let index = 0; index < orderForm.items.length; index++) {
-        currentCartItems.push({
-          refId: orderForm.items[index].productRefId,
-          quantity: orderForm.items[index].quantity,
-        });
-      }
-
-      if(
-        currentCartItems.length !== cartItems.length ||
-        cartItems.every((value, index) => {
-          value.refId !== currentCartItems[index].refId && value.quantity !== currentCartItems[index].quantity
-        })
-      ) {
-        cartItems = currentCartItems;
-
-        const orderForm = vtexjs.checkout.orderForm;
-
-        if(orderForm.clientProfileData && orderForm.clientProfileData.email) {
-          const email = orderForm.clientProfileData.email;
-
-          sendDataToVtexMasterData(email);
-        }
-      }
+      email && sendDataToVtexMasterData(email, null, orderId);
     }
   }
 
@@ -93,9 +61,7 @@
         return;
       }
 
-      sendDataToVtexMasterData(email, {
-        orderFormId: orderFormId,
-      });
+      sendDataToVtexMasterData(email, orderFormId);
     } catch (e) {
       console.warn('Falha ao obter e-mail para enviar o Hubspotutk ao MasterData!');
     }
@@ -115,32 +81,26 @@
     }
   }
 
-  async function sendDataToVtexMasterData(email, { orderFormId = null, orderId = null }) {
+  async function sendDataToVtexMasterData(email, orderFormId = null, orderId = null) {
     try {
-      const hubspotutk = $.cookie('hubspotutk');
+      const hubspotutk = getHubspotutk();
 
       if(null === orderFormId) {
         orderFormId = getOrderFormId();
       }
 
-      if(hubspotutk) {
-        await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
-          method: 'PUT',
-          headers: new Headers({
-            "Content-Type": "application/json",
-          }),
-          body: JSON.stringify({
-            hubspotutk,
-            lastOrderFormItems: {
-              items: cartItems
-            },
-            lastOrderFormId: orderFormId,
-            lastOrderId: orderId,
-          }),
-        });
+      /* await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
+        method: 'PUT',
+        headers: new Headers({
+          "Content-Type": "application/json",
+        }),
+        body: JSON.stringify({
+          hubspotutk,
+          lastOrderFormId: orderFormId,
+          lastOrderId: orderId,
+        }),
+      }).then(() => {isDataSent = true}); */
 
-        isDataSent = true;
-      }
     } catch (e) {
       console.warn('Falha ao enviar dados ao MasterData!');
     }
@@ -151,6 +111,16 @@
       const orderForm = vtexjs.checkout.orderForm;
 
       return orderForm.orderFormId;
+    } catch (e) {
+
+      return null;
+    }
+  }
+
+  function getHubspotutk() {
+    try {
+
+      return $.cookie('hubspotutk');
     } catch (e) {
 
       return null;
