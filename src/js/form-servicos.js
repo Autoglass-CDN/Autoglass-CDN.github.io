@@ -155,7 +155,7 @@ class FormSubmit {
                   return;
               }
 
-              const isMobile = window.matchMedia("only screen and (hover: none) and (pointer: coarse)").matches;
+              const isMobile = window.matchMedia("only screen and (max-width: 992px)").matches;
               if (isMobile){
                 sendOrcamentoWhatsapp(orcamento)
               }
