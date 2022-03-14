@@ -171,8 +171,20 @@
     }
 
     .form-servico__content-submit button {
-        font-size:14px;
-        padding: 12px 20px;
+      font-size:14px;
+      padding: 6px 20px;
+      display:flex;
+      align-items:center;
+    }
+
+    .form-servico__content-submit button:before {
+      font-family: "FontAwesome";
+      content: "\f232";
+      color: #FFF;
+      font-size: 22px;
+      border-radius: 50%;
+      margin: 0 10px;
+      font-weight: initial;
     }
 
     .mais-opcoes-da-peca {
@@ -185,24 +197,9 @@
     }
 
     .container-de-opcoes {
-        padding-left: 0;
+      padding-left: 0;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
     }
-}
-
-@media only screen and (hover: none) and (pointer: coarse){
-  .form-servico__content-submit button {
-    padding: 6px 20px;
-    display:flex;
-    align-items:center;
-  }
-
-  .form-servico__content-submit button:before {
-    font-family: "FontAwesome";
-    content: "\f232";
-    color: #FFF;
-    font-size: 22px;
-    border-radius: 50%;
-    margin: 0 10px;
-    font-weight: initial;
-  }
 }
