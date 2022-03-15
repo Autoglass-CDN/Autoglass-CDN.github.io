@@ -1,5 +1,5 @@
 (function () {
-  let activeTab = '#busca-placa';
+  let activeTab = '#busca-peca';
   selectRightSearchMethod();
 
   /** BUSCA POR PEÇA */
@@ -526,6 +526,8 @@
     async function checkRouterParams() {
       let { pathname, search } = location;
 
+      search = decodeURIComponent(search);
+
       if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0]) ||
                     search.includes('?PS=20&map=c,c')) {
         CONFIG.CANT_OPEN = true;
@@ -614,7 +616,7 @@
       }
 
       if (paths) {
-        url += paths;  
+        url += paths;
         url += `?${buildMapFilters(index - 1)}`;
       }
 
@@ -719,7 +721,7 @@
   ];
 
   function _initBuscaPlaca(values) {
-    
+
     PLACA_SELECTS[0].values = values;
 
     View.buildList(PLACA_SELECTS[0].values, PLACA_SELECTS[0].id);
@@ -732,7 +734,7 @@
 
     formBuscaPlaca.addEventListener('submit', (event) => {
       event.preventDefault();
-      
+
       const [
         isUniversalProduct,
         redirectUrl
@@ -746,7 +748,7 @@
       } else {
         const placa = document.querySelector("#placa-input").value;
         const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
-  
+
         if(0 === placa.length) {
           alert('Você deve inserir a placa do seu veículo!');
         } else if(!placa.trim().match(regexPlaca)) {
@@ -763,7 +765,7 @@
 
     const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
     const isHistoryValid = searchHistory && searchHistory.type == '#busca-placa';
-    
+
     if (search && search.includes('?PS=24&map=')) {
       if(search.includes('c,c,')) {
         const arrayPaths = decodeURI(pathname)
@@ -778,7 +780,7 @@
         const value = select.values.find((x) =>
           x.url ? x.url.includes(param) : x.name.includes(param)
         );
-  
+
         handleBuscaPlacaSelection(
           {
             target: {
@@ -798,24 +800,24 @@
     if(isHistoryValid && searchHistory.params.url) {
       if(!search) { search = "" };
       if(!pathname) { pathname = "" };
-      
+
       if(!search.includes('?PS=24&map=') && !pathname.includes('buscavazia')) {
-        localStorage.removeItem('smartSelectHistory'); 
+        localStorage.removeItem('smartSelectHistory');
         return;
       }
-      
+
       const [ path, query ] = searchHistory.params.url.split('?');
       const paths = path
         .split("/")
         .filter((x) => x);
-      
+
       let params = query.includes('c,c,') ? paths.slice(2, paths.length) : paths;
-      
+
       if(params.length === 3)
         params.splice(1, 1);
 
       const searchTerm = params.reverse().join(" ");
-      
+
       const termContainer = $(".resultado-busca-termo");
       if(termContainer.length) {
         termContainer.addClass("has-value");
@@ -836,7 +838,7 @@
     select.routeSelected = optionSelected.url
         ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
         : '/' + optionSelected.name.toLowerCase();
-                
+
     $(`.c-busca__tab-content  #${select.id} > div > span`).html(event.target.innerHTML);
     $(
       `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
@@ -859,28 +861,28 @@
 
     $('.c-busca__tab-content .c-busca__input #placa-input').click().focus();
   }
-  
+
   async function buscaPorPlaca(placaString) {
     const select = PLACA_SELECTS[0];
-  
+
     const FILTROS_VTEX = {
       MONTADORA: 36,
       VEICULO: 50,
       ANO: 48,
     };
-  
+
     const modalDeCarregamento = new ModalDeCarregamento();
     let placaSemCaracteresEspeciais = sanitizePlate(placaString);
-  
+
     try {
       modalDeCarregamento.mostarSpinner();
-  
+
       const {
         montadora,
         modelo,
         anoModelo,
       } = await obterDadosDoVeiculoViaFraga(placaSemCaracteresEspeciais);
-      
+
       let [
         montadorasEncontradas,
         modelosEncontrados,
@@ -901,7 +903,7 @@
           regex: obterRegexAnos(anoModelo),
         }),
       ]);
-  
+
       if (
         !anosEncontrados.length &&
         !montadorasEncontradas.length &&
@@ -917,24 +919,24 @@
         url += select.routeSelected;
         parametrosUrl += `c,c,`;
       }
-  
+
       if (anosEncontrados.length) {
         url += `/${anosEncontrados[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.ANO},`;
       }
-  
+
       if (montadorasEncontradas.length) {
         url += `/${montadorasEncontradas[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA},`;
       }
-  
+
       if (modelosEncontrados.length) {
         url += `/${modelosEncontrados[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO}`;
       }
 
       registerGaEvent(placaSemCaracteresEspeciais, url);
-  
+
       url += parametrosUrl;
 
       saveSearchInLocalStorage(placaSemCaracteresEspeciais, url);
@@ -957,7 +959,7 @@
       document.querySelector("a[href='#busca-peca']").click();
       registerGaEvent(placaSemCaracteresEspeciais, `não encontrado`);
     }
-  
+
     function sanitizePlate(plate) {
       return plate.trim().replace(/[\W_]+/g, "").toUpperCase();
     }
@@ -980,7 +982,7 @@
 
       return new RegExp(pattern, "gi");
     }
-  
+
     function obterRegexAnos(anoModelo) {
       return new RegExp(anoModelo.trim(), "gi")
     }
@@ -1079,7 +1081,7 @@
       case (new RegExp(/^RANGE ROVER .*$/i).test(modelo)):
         return "RANGE ROVER";
       case (new RegExp(/^[A-Z]-CLASS$/i).test(modelo)):
-        return "Classe " + modelo.replace(/-CLASS/gi, ""); 
+        return "Classe " + modelo.replace(/-CLASS/gi, "");
       default:
         const modeloSemMontadoraTermos = modelo.replace(
           new RegExp(montadoraTermos.join('|'), "gi"), "").trim().split(" ");
@@ -1103,7 +1105,7 @@
     if(select.routeSelected.length) {
       const selectedRoute = select.routeSelected;
       const universalProducts = ['/lampadas', '/higienizadores-e-filtros/higienizadores'];
-      
+
       if(universalProducts.some(o => selectedRoute.includes(o))) {
         return [
           true,
@@ -1130,13 +1132,13 @@
 
       this.elementos = [...listasDeResultados, modal];
     }
-  
+
     mostarSpinner() {
       this.elementos.forEach((elemento) =>
         elemento.classList.add("loader-modal--show")
       );
     }
-  
+
     ocultarSpinner() {
       this.elementos.forEach((elemento) =>
         elemento.classList.remove("loader-modal--show")
@@ -1147,16 +1149,16 @@
   function selectRightSearchMethod() {
     const { search } = location;
     const smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-    const isValidSearch = smartSelectHistory !== null && smartSelectHistory.type == "#busca-peca";
-    const isProductsListPage = search && search.includes('?PS=20&map=');
+    const isValidSearch = smartSelectHistory !== null && smartSelectHistory.type == "#busca-placa";
+    const isProductsListPage = search && search.includes('?PS=24&map=');
 
     if(isValidSearch && isProductsListPage) {
-      activeTab = '#busca-peca';
+      activeTab = '#busca-placa';
 
-      document.querySelector("a[href='#busca-placa']").parentNode.classList.remove("is-active");
-      document.querySelector("#form-busca-placa").parentNode.classList.remove("is-active");
-      document.querySelector("a[href='#busca-peca']").parentNode.classList.add("is-active");
-      document.querySelector("#form-busca-peca").parentNode.classList.add("is-active");
+      document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active");
+      document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
+      document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active");
+      document.querySelector("#form-busca-placa").parentNode.classList.add("is-active");
     }
   }
 })();
