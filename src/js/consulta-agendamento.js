@@ -39,7 +39,7 @@ $(function () {
   let codCidade = null;
   if(estado != null){
     codCidade = estado.code;
-  } 
+  }
 
   if (window.location.href.includes("checkout")) {
     if (window.location.search.includes('og=')) {
@@ -291,7 +291,7 @@ $(function () {
               <div class="mz-info__list">
                 <ul>
                   <li>
-                    Após aprovação do pagamento, nossos analistas entrarão 
+                    Após aprovação do pagamento, nossos analistas entrarão
                     em contato com você para confirmar o horário de agendamento.
                   </li>
                   <li>
@@ -413,7 +413,7 @@ $(function () {
 						</div>
 						<p class="address-location">
 							${dadosEndereco.street} ${dadosEndereco.number},
-							
+
 						</p>
 						<p class="pickup__info-city">${dadosEndereco.neighborhood
       } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
@@ -428,7 +428,7 @@ $(function () {
       }
 				</div>
 			</div>
-	
+
 		`;
   }
 
@@ -474,7 +474,7 @@ $(function () {
 			<h4 style="text-align: center; font-weight: normal;">
         Qualquer dúvida,
           <span style="font-weight: bold;">
-            <a onclick="$zopim.livechat.window.show()"> clique aqui </a> 
+            <a onclick="$zopim.livechat.window.show()"> clique aqui </a>
           </span>
         e fale com a gente pelo chat.
 			</h4>
@@ -847,9 +847,8 @@ async function getDeliveriesEstimates(postalCode, logistics, items) {
         const numberOfDays = +estimate.replace("bd", "");
 
         const today = new Date();
-        const shippingEstimate = new Date();
 
-        shippingEstimate.setDate(today.getDate() + numberOfDays);
+        const shippingEstimate = addBusinessDays(today,numberOfDays);
 
         return {
           Data: shippingEstimate,
@@ -866,6 +865,37 @@ async function getDeliveriesEstimates(postalCode, logistics, items) {
     console.error("Falha ao calcular o tempo de entrega!", ex);
     return new Date();
   }
+}
+
+function addBusinessDays (date, addDays) {
+  date = skipWeekends(date);
+  while (!!addDays){
+    date = getNextBusinessDay(date);
+    addDays--;
+  }
+  return new Date(date);
+}
+
+function getNextBusinessDay(date) {
+  date = addDay(date, 1);
+  skipWeekends(date);
+  return date;
+}
+
+function skipWeekends(date){
+  while(isWeekend(date)) {
+    date = addDay(date, 1);
+  }
+  return date;
+}
+
+function isWeekend(date) {
+  const currentDay = date.getDay();
+  return currentDay == 6 || currentDay == 0;
+}
+
+function addDay (date, days) {
+  return new Date(date.setDate(date.getDate()+days));
 }
 
 function readCookie(name) {
