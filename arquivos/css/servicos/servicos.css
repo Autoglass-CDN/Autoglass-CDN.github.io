@@ -275,7 +275,7 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 100vh;
     background-color: #000000CC;
 }
@@ -298,7 +298,7 @@ body {
 }
 
 .formulario .formulario__container {
-    min-width: 100vw;
+    min-width: 100%;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -363,7 +363,7 @@ body {
     font-size: 22px;
     font-weight: var(--semi-bold);
 }
-  
+
 .chat .mensagem__texto {
     font-size: 18px;
     margin: 0px 20px;
@@ -520,7 +520,7 @@ body {
         text-align: center;
         margin: 10px 0px 20px 0px;
     }
-    
+
     .avaliacoes-consumidores {
         display: none;
     }
@@ -543,7 +543,7 @@ body {
         height: 0;
         padding-top: 80%;
     }
-    
+
     .servicos__container > .servicos__container__alinhamento {
         padding: 0.5rem 0rem;
     }
@@ -655,5 +655,15 @@ body {
 
     .servicos__container .servicos__container__alinhamento {
         padding: 1rem;
+    }
+
+    .formulario {
+      z-index: 1;
+    }
+
+    .formulario .orcamento {
+      display: table;
+      padding: 1em 0em;
+      width: 100%;
     }
 }

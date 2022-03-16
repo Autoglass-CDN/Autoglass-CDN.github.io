@@ -127,7 +127,7 @@
     font-weight: normal;
     margin-right: 15px;
     margin-left: 15px;
-    
+
 }
 
 .form-servico .titulo-tipo-da-cor {
@@ -162,17 +162,29 @@
         margin-left: 0;
         width: 100%;
         max-width: 140px;
-    } 
+    }
 
     .form-servico__content-submit {
         margin: 20px 0;
         font-size: 20px;
         letter-spacing: 1px;
-    }  
-    
+    }
+
     .form-servico__content-submit button {
-        font-size:14px;
-        padding: 12px 20px;
+      font-size:14px;
+      padding: 6px 20px;
+      display:flex;
+      align-items:center;
+    }
+
+    .form-servico__content-submit button:before {
+      font-family: "FontAwesome";
+      content: "\f232";
+      color: #FFF;
+      font-size: 22px;
+      border-radius: 50%;
+      margin: 0 10px;
+      font-weight: initial;
     }
 
     .mais-opcoes-da-peca {
@@ -183,8 +195,8 @@
     .form-servico .select2-container--default.select2-container--focus .select2-selection--multiple {
         border: 0.024rem var(--color-silver) solid;
     }
-    
+
     .container-de-opcoes {
-        padding-left: 0;
+      padding-left: 0;
     }
 }
