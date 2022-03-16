@@ -362,9 +362,9 @@ class FormSubmit {
 
       function removeUnfilledProperties(formArray){
         var filtered = formArray.filter(function(value){
-           if(value[1] !== ''){
-             return value;
-           }
+          if(value[1] !== ''){
+            return value;
+          }
         });
         return filtered;
       }
