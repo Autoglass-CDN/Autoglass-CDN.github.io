@@ -529,7 +529,7 @@ i.arrow-icon::before {
   content: url('https://autoglass-cdn.github.io/src/img/search.svg');
   position: absolute;
   right: 20px;
-  top: 20px;
+  top: 27px;
 }
 /* #endregion Box de Pesquisa */
 
@@ -547,7 +547,7 @@ i.arrow-icon::before {
 }
 
 .nav .container.mobile .search-box:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 
 .container .search-box fieldset.busca {
@@ -1542,7 +1542,7 @@ ul.menu-division {
 
 .painel-categorias .painel-categorias__categoria-itens-lista .painel-categorias__categoria-itens-lista-menu>li>a:hover{
   color: var(--blue-500);
-  font-weight: var(--bold);  
+  font-weight: var(--bold);
 }
 /* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
@@ -1626,7 +1626,7 @@ hr {
   width: 100%;
 }
 #banner_topo_desktop {
-  object-fit: contain; 
+  object-fit: contain;
   vertical-align: middle;
   min-height: 34px;
   max-height: 50px;
@@ -1634,7 +1634,7 @@ hr {
 
 @media (min-width: 992px) {
   #banner_topo_mobile {
-    display: none;  
+    display: none;
   }
 
 }
