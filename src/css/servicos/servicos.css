@@ -661,14 +661,13 @@ body {
         padding: 1rem;
     }
 
-
     .formulario {
       z-index: 1;
     }
 
     .formulario .orcamento {
+      display: table;
       padding: 1em 0em;
       width: 100%;
-      overflow:hidden;
     }
 }
