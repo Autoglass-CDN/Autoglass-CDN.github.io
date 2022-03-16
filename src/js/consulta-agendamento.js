@@ -878,7 +878,7 @@ function addBusinessDays (date, addDays) {
 
 function getNextBusinessDay(date) {
   date = addDay(date, 1);
-  skipWeekends(date);
+  date = skipWeekends(date);
   return date;
 }
 
