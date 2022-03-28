@@ -46,7 +46,7 @@ const CONFIG = {
     }
 }
 
-$(window).on('load', () => {  
+$(window).on('load', () => {
     const Controller = ControllerAPI();
     const Service = ServiceAPI();
     const View = ViewAPI();
@@ -55,7 +55,7 @@ $(window).on('load', () => {
 
     Controller._init();
     Controller.loadScripts();
-    
+
     function ControllerAPI() {
         return {
             _init,
@@ -72,7 +72,7 @@ $(window).on('load', () => {
             View.formatItemList(orderForm);
 
             _removePaymentPickupIfIsDelivery(orderForm);
-  
+
             ga('create', CONFIG.GA.ID, CONFIG.GA.URL);
 
             $(window).on(
@@ -94,9 +94,9 @@ $(window).on('load', () => {
                     }
                 })
             });
-            
+
             const tabelCartItemsObserver = document.querySelectorAll(".table.cart-items");
-            
+
             tabelCartItemsObserver.forEach((element) => {
                 itemsObserver.observe(element, {
                     subtree: true,
@@ -131,9 +131,9 @@ $(window).on('load', () => {
             _removePaymentPickupIfIsDelivery(orderForm);
 
             if (window.location.hash.includes('payment')) {
-              	_formatLabelOnPayment(orderForm) 
+              	_formatLabelOnPayment(orderForm)
             }
-          	
+
           	if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
                 $('.newsletter').append(`
                   <label class="checkbox adulthood-label">
@@ -146,11 +146,11 @@ $(window).on('load', () => {
 					const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
 
 					cookie.adulthood = $('#opt-in-adulthood').is(':checked');
-                  
+
                   	$.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
 				})
             }
-			
+
             let hasInstall = Service.checkIfHasInstall(orderForm.items);
 			let title = $('#shipping-data .accordion-toggle.collapsed');
 
@@ -162,7 +162,7 @@ $(window).on('load', () => {
             } else if (title.is('.accordion-toggle-active')){
              	title.html('<i class="icon-home"></i> Receber ou Retirar');
             }
-			
+
             View.createCepInfo(orderForm, hasInstall);
         }
 
@@ -181,7 +181,7 @@ $(window).on('load', () => {
                     $(".pg-pagamento-na-loja.payment-group-item").css("display","none");
                     let tipoDePagamento = vtexjs.checkout.orderForm.paymentData.payments[0].paymentSystem;
                     const pagamentoNaLoja = '201';
-                    if(tipoDePagamento != pagamentoNaLoja || 
+                    if(tipoDePagamento != pagamentoNaLoja ||
                        ++maxLoopInteractions > 50){
                       clearInterval(checkPaymentOptionLoop);
                     }
@@ -196,9 +196,9 @@ $(window).on('load', () => {
                             .logisticsInfo[0]
                             .selectedDeliveryChannel
                 let hasInstall = Service.checkIfHasInstall(orderForm.items);
-          
+
                 let titleText = ' Receber';
-                
+
                 if(hasInstall && (selectedDeliveryChannel === 'pickup-in-point')){
                   titleText = 'Instalar na Loja';
                 }
@@ -211,33 +211,33 @@ $(window).on('load', () => {
                 else if(!hasInstall && (selectedDeliveryChannel === 'delivery')){
                   titleText = 'Receber em Casa';
                 }
-          
+
           		let child1 = title[0].children[0];
                 let child2 = title[0].children[1];
                 title[0].innerHTML = '';
                 title[0].appendChild(child1);
                 title[0].append(' ' + titleText);
-          
+
           		if (!title.is('.accordion-toggle-active')) {
                     title[0].appendChild(child2);
                 }
-                            	
-                  
+
+
                 let secondLabel = document.querySelectorAll('.shp-summary-group-title.vtex-omnishipping-1-x-SummaryItemTitle')
                 if(secondLabel.length > 1){
                     secondLabel[0].style.display = "none";
                 }
-              	              
-            	return;  
+
+            	return;
         }
 
 
         async function loadScripts() {
-          
+
             const addId = id => script => {
-              script.id = id;          
+              script.id = id;
             }
-              
+
           	await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             await loadScript("/scripts/jquery.ui.core.js");
             await loadScript("/arquivos/jquery.cookie.js");
@@ -249,7 +249,7 @@ $(window).on('load', () => {
             loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/jornada-do-cliente.js');
 
           	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
-          	
+
             loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/hubspot-cookie.js');
         }
@@ -280,7 +280,7 @@ $(window).on('load', () => {
                 callback && callback(script);
                 document.getElementsByTagName("head")[0].appendChild(script);
             });
-        }     
+        }
     }
 
     function ViewAPI() {
@@ -339,7 +339,7 @@ $(window).on('load', () => {
                         });
                     });
                 });
- 
+
                 $('body').removeClass('hasInstall');
                 $("span").remove(".instalar");
                 $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
@@ -443,7 +443,7 @@ $(window).on('load', () => {
          * Caso não informe se há instalação ele busca
          */
         function createCepInfo({ shippingData, items }, hasInstall) {
-            setTimeout(() => {                
+            setTimeout(() => {
                 const { formatedAddress, title, logistics, selector } = getParams(shippingData);
 
                 if (hasInstall === undefined) {
@@ -503,7 +503,7 @@ $(window).on('load', () => {
               		console.error('Não há endereço selecionado!');
               		return {};
             	}
-              
+
                 if (isDelivery) {
                     const groups = selectedAddresses.postalCode
                         .replace('-', '')
@@ -540,7 +540,7 @@ $(window).on('load', () => {
               			try {
                           const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
                           $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
-            			} catch {console.log('Falha ao renderizar o Cep');}                        
+            			} catch {console.log('Falha ao renderizar o Cep');}
                     }
 
                     selector = '.srp-pickup-info';
@@ -591,7 +591,7 @@ $(window).on('load', () => {
               	/*
                 selectedChannel === 'delivery'
                     ? $('#open-modal-ic')[0].click()
-                    : $('#open-modal-il')[0].click(); 
+                    : $('#open-modal-il')[0].click();
                 */
               	selectedChannel === 'delivery'
               		? $('body').addClass('mz-bo-on mz-as-on')
@@ -641,18 +641,18 @@ $(window).on('load', () => {
               try {
 
                 setTimeout(() => {
-                   $('#mostrar-datas-datepicker').datepicker('option', 'onSelect', 
+                   $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
                     (selectedDate, details) => {
                       _createConfirmButtonSM(selectedDate, details);
-                    });	
+                    });
 
                 }, 500);
 
               } catch {
                    console.error('Falha ao criar onSelect no datepicker')
               }
-        		      
-           
+
+
             $('#alterar-shipping-btn').click(() => {
                 $('body').addClass('mz-bo-on mz-as-on');
             });
@@ -817,4 +817,3 @@ $(window).on('load', () => {
         }
     }
 });
-                  
