@@ -155,11 +155,11 @@ class FormSubmit {
                   return;
               }
 
-              const isMobile = window.matchMedia("only screen and (max-width: 992px)").matches;
-              if (isMobile){
-                sendOrcamentoWhatsapp(orcamento)
-              }
-              else {
+              // const isMobile = window.matchMedia("only screen and (max-width: 992px)").matches;
+              // if (isMobile){
+              //   sendOrcamentoWhatsapp(orcamento)
+              // }
+              // else {
                 sendOrcamentoZendesk(url, orcamento)
                     .then(res => res)
                     .then(res => {
@@ -172,7 +172,7 @@ class FormSubmit {
                         }
                     })
                     .catch(err => alert("Não foi possível enviar a sua solicitação. Por favor, tente novamente mais tarde."));
-              }
+              // }
 
           });
 
