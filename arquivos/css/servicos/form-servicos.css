@@ -172,12 +172,12 @@
 
     .form-servico__content-submit button {
       font-size:14px;
-      padding: 6px 20px;
+      padding: 10px 20px;
       display:flex;
       align-items:center;
     }
 
-    .form-servico__content-submit button:before {
+    /* .form-servico__content-submit button:before {
       font-family: "FontAwesome";
       content: "\f232";
       color: #FFF;
@@ -185,7 +185,7 @@
       border-radius: 50%;
       margin: 0 10px;
       font-weight: initial;
-    }
+    } */
 
     .mais-opcoes-da-peca {
         padding-top: 1.1rem;
