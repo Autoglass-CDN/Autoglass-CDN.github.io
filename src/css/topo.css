@@ -31,6 +31,8 @@
   /* #endregion LANTERNAS */
   /* #region PARACHOQUES */
   --grade-parachoques: url("/src/img/preview/Grade-do-Parachoque.jpg");
+  --guia-parachoques: url("/src/img/preview/Guia-de-Para-choque.jpg");
+  --moldura-parachoques: url("/src/img/preview/Moldura-de-Para-choque.jpg");
   --moldura-paralama: url("/src/img/preview/Moldura-Paralama.jpg");
   --parachoque-dianteiro: url("/src/img/preview/Parchoque Dianteiro.jpg");
   --parachoque-traseiro: url("/src/img/preview/Parachoque-Traseiro.jpg");
@@ -47,8 +49,10 @@
   /* #endregion RETROVISORES */
   /* #region SUSPENSÕES */
   --suspensoes: url("/src/img/preview/Suspensao.jpg");
-  --amortecedores: url("/src/img/preview/Amortecedor.jpg");
   --amortecedor-suspensao: url("/src/img/preview/Amortecedor.jpg");
+  --bandeja-suspensao: url("/src/img/preview/Bandeja-de-Suspensao.jpg");
+  --bieleta-suspensao: url("/src/img/preview/Bieleta-de-Suspensao.jpg");
+  --pivo-suspensao: url("/src/img/preview/Pivo-de-Suspensao.jpg");
   /* #endregion SUSPENSÕES */
   /* #region RADIADORES */
   --radiadores: url("/src/img/preview/Radiador.jpg");
@@ -59,12 +63,17 @@
   --grade-do-radiador: url("/src/img/preview/Grade do Radiador.jpg");
   --moldura-grade-radiador: url("/src/img/preview/Moldura-Grande-do-Radiador.jpg");
   --radiador: url("/src/img/preview/Radiador.jpg");
+  --reservatorio-de-agua-radiador: url("/src/img/preview/Reservatorio-de-Agua-Radiador.jpg");
   /* #endregion RADIADORES */
   /* #region CONDENSADORES */
   --condensadores: url("/src/img/preview/Condensador.jpg");
   --condensador-ar-condicionado: url("/src/img/preview/Condensador Ar Condicionado.jpg");
   --gmv-condensador: url("/src/img/preview/Gmv-Condensador.jpg");
   /* #endregion CONDENSADORES */
+  /* #region AROMATIZANTES */
+  --aromatizante: url("/src/img/preview/");
+  --aromatizante-aromatizante: url("/src/img/preview/Aromatizante.jpg");
+  /* #endregion AROMATIZANTES */
   /* #region HIGIENIZADORES */
   --higienizadores: url("/src/img/preview/");
   --higienizador-de-ar-condicionado: url("/src/img/preview/Higienizador-Ar-Condicionado.jpg");
@@ -84,9 +93,11 @@
   --palhetas: url("/src/img/preview/Palhetas.jpg");
   --palheta-para-brisa: url("/src/img/preview/Palheta-Parabrisa.jpg");
   --palheta-vigia: url("/src/img/preview/Palheta-Vidro-Traseiro.jpg");
+  --reservatorio-de-agua-limpador: url("/src/img/preview/Reservatorio-de-Agua-limpador.jpg");
   /* #endregion PALHETAS */
   /* #region LATARIAS */
   --latarias-capo: url("/src/img/preview/Capo.jpg");
+  --latarias-para-barro: url("/src/img/preview/Para-barro.jpg");
   --latarias-paralama: url("/src/img/preview/Paralama.jpg");
   /* #endregion LATARIAS*/
 }
@@ -1042,7 +1053,7 @@ i.arrow-icon::before {
 
 .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
   transform: scaleY(0.2);
-  top: -100px;
+  top: -110px;
   z-index: 1;
 }
 
@@ -1325,6 +1336,14 @@ ul.menu-division {
   content: var(--grade-parachoques);
 }
 
+#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo a#guia-para-choque:hover:after {
+  content: var(--guia-parachoques);
+}
+
+#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo a#moldura-para-choque:hover:after {
+  content: var(--moldura-parachoques);
+}
+
 #parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo a#moldura-paralama:hover:after {
   content: var(--moldura-paralama);
 }
@@ -1377,12 +1396,20 @@ ul.menu-division {
 
 /* #region PREVIEW - SUSPENSÕES */
 
-#suspensao.painel-categorias__categoria-itens.ativo a#amortecedor:hover:after {
-  content: var(--amortecedores);
-}
-
 #suspensao.painel-categorias__categoria-itens.ativo a#amortecedor-suspensao:hover:after {
   content: var(--amortecedor-suspensao);
+}
+
+#suspensao.painel-categorias__categoria-itens.ativo a#bandeja-de-suspensao:hover:after {
+  content: var(--bandeja-suspensao);
+}
+
+#suspensao.painel-categorias__categoria-itens.ativo a#bieleta-de-suspensao:hover:after {
+  content: var(--bieleta-suspensao);
+}
+
+#suspensao.painel-categorias__categoria-itens.ativo a#pivo-de-suspensao:hover:after {
+  content: var(--pivo-suspensao);
 }
 
 /* #endregion PREVIEW - SUSPENSÕES */
@@ -1421,6 +1448,10 @@ ul.menu-division {
   content: var(--radiador);
 }
 
+#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo a#reservatorio-de-agua-radiador:hover:after {
+  content: var(--reservatorio-de-agua-radiador);
+}
+
 /* #endregion PREVIEW - RADIADORES */
 
 /* #region PREVIEW - CONDENSADORES */
@@ -1434,6 +1465,14 @@ ul.menu-division {
 }
 
 /* #endregion PREVIEW - CONDENSADORES */
+
+/* #region PREVIEW - AROMATIZANTES */
+
+#higienizadores-e-filtros.painel-categorias__categoria-itens.ativo a#aromatizante:hover:after {
+  content: var(--aromatizante-aromatizante);
+}
+
+/* #endregion PREVIEW - AROMATIZANTES */
 
 /* #region PREVIEW - HIGIENIZADORES */
 
@@ -1485,12 +1524,20 @@ ul.menu-division {
   content: var(--palheta-vigia);
 }
 
+#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo a#reservatorio-de-agua-limpador:hover:after {
+  content: var(--reservatorio-de-agua-limpador);
+}
+
 /* #endregion PREVIEW - PALHETAS */
 
 /* #region PREVIRE - LATARIAS */
 
 #paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-capo:hover:after {
   content: var(--latarias-capo);
+}
+
+#paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-para-barro:hover:after {
+  content: var(--latarias-para-barro);
 }
 
 #paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-paralama:hover:after {
