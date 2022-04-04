@@ -540,7 +540,7 @@ i.arrow-icon::before {
   content: url('https://autoglass-cdn.github.io/src/img/search.svg');
   position: absolute;
   right: 20px;
-  top: 27px;
+  top: 20px;
 }
 /* #endregion Box de Pesquisa */
 
