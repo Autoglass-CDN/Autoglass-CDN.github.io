@@ -299,6 +299,33 @@
       .then(response => response.json())
       .catch(error => console.log(error));
     }
+
+    const changeButtonStyle = "change-button-style";
+    const parentClassNameRemove = "undefined delivery-group-content";
+    const changeButtonStyleText = "Veja os horários disponíveis";
+    const mutationObserver = new MutationObserver((mutations) => {
+      mutations.forEach(mutation => {
+        mutation.removedNodes.forEach(function(removed_node){
+          if(removed_node.className == parentClassNameRemove) {
+            $('#shipping-data').removeClass(changeButtonStyle)
+          }
+        })
+        mutation.addedNodes.forEach(function(added_node){
+          if(added_node.innerText == changeButtonStyleText) {
+            $('#shipping-data').addClass(changeButtonStyle)
+          }
+          else if( added_node.id == 'alterar-pickup-btn'){
+            $('#shipping-data').removeClass(changeButtonStyle)
+          }
+        })
+      });
+  });
+
+  mutationObserver.observe(
+    $('#shipping-data')[0],
+    {subtree: true, childList: true}
+  );
+
   })();
 
   // APAGAR OS COMENTÁRIOS ABAIXO APÓS O DIA 29/02/2022
