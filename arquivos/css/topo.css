@@ -31,6 +31,8 @@
   /* #endregion LANTERNAS */
   /* #region PARACHOQUES */
   --grade-parachoques: url("/arquivos/img/preview/Grade-do-Parachoque.jpg");
+  --guia-parachoques: url("/arquivos/img/preview/Guia-de-Para-choque.jpg");
+  --moldura-parachoques: url("/arquivos/img/preview/Moldura-de-Para-choque.jpg");
   --moldura-paralama: url("/arquivos/img/preview/Moldura-Paralama.jpg");
   --parachoque-dianteiro: url("/arquivos/img/preview/Parchoque Dianteiro.jpg");
   --parachoque-traseiro: url("/arquivos/img/preview/Parachoque-Traseiro.jpg");
@@ -49,6 +51,9 @@
   --suspensoes: url("/arquivos/img/preview/Suspensao.jpg");
   --amortecedores: url("/arquivos/img/preview/Amortecedor.jpg");
   --amortecedor-suspensao: url("/arquivos/img/preview/Amortecedor.jpg");
+  --bandeja-suspensao: url("/arquivos/img/preview/Bandeja-de-Suspensao.jpg");
+  --bieleta-suspensao: url("/arquivos/img/preview/Bieleta-de-Suspensao.jpg");
+  --pivo-suspensao: url("/arquivos/img/preview/Pivo-de-Suspensao.jpg");
   /* #endregion SUSPENSÕES */
   /* #region RADIADORES */
   --radiadores: url("/arquivos/img/preview/Radiador.jpg");
@@ -59,12 +64,17 @@
   --grade-do-radiador: url("/arquivos/img/preview/Grade do Radiador.jpg");
   --moldura-grade-radiador: url("/arquivos/img/preview/Moldura-Grande-do-Radiador.jpg");
   --radiador: url("/arquivos/img/preview/Radiador.jpg");
+  --reservatorio-de-agua-radiador: url("/arquivos/img/preview/Reservatorio-de-Agua-Radiador.jpg");
   /* #endregion RADIADORES */
   /* #region CONDENSADORES */
   --condensadores: url("/arquivos/img/preview/Condensador.jpg");
   --condensador-ar-condicionado: url("/arquivos/img/preview/Condensador Ar Condicionado.jpg");
   --gmv-condensador: url("/arquivos/img/preview/Gmv-Condensador.jpg");
   /* #endregion CONDENSADORES */
+  /* #region AROMATIZANTES */
+  --aromatizante: url("/arquivos/img/preview/");
+  --aromatizante-aromatizante: url("/arquivos/img/preview/Aromatizante.jpg");
+  /* #endregion AROMATIZANTES */
   /* #region HIGIENIZADORES */
   --higienizadores: url("/arquivos/img/preview/");
   --higienizador-de-ar-condicionado: url("/arquivos/img/preview/Higienizador-Ar-Condicionado.jpg");
@@ -84,6 +94,7 @@
   --palhetas: url("/arquivos/img/preview/Palhetas.jpg");
   --palheta-para-brisa: url("/arquivos/img/preview/Palheta-Parabrisa.jpg");
   --palheta-vigia: url("/arquivos/img/preview/Palheta-Vidro-Traseiro.jpg");
+  --reservatorio-de-agua-limpador: url("/arquivos/img/preview/Reservatorio-de-Agua-limpador.jpg");
   /* #endregion PALHETAS */
   /* #region LATARIAS */
   --latarias-capo: url("/arquivos/img/preview/Capo.jpg");
@@ -547,7 +558,7 @@ i.arrow-icon::before {
 }
 
 .nav .container.mobile .search-box:hover {
-  transform: scale(1.2); 
+  transform: scale(1.2);
 }
 
 .container .search-box fieldset.busca {
@@ -1042,7 +1053,7 @@ i.arrow-icon::before {
 
 .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
   transform: scaleY(0.2);
-  top: -100px;
+  top: -120px;
   z-index: 1;
 }
 
@@ -1132,6 +1143,7 @@ i.arrow-icon::before {
   flex-direction: column;
   align-items: center;
   max-width: 146px;
+  min-width: 92px;
   height: 155px;
   color: var(--gray-500);
   font-weight: var(--light);
@@ -1325,6 +1337,14 @@ ul.menu-division {
   content: var(--grade-parachoques);
 }
 
+#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo a#guia-para-choque:hover:after {
+  content: var(--guia-parachoques);
+}
+
+#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo a#moldura-para-choque:hover:after {
+  content: var(--moldura-parachoques);
+}
+
 #parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo a#moldura-paralama:hover:after {
   content: var(--moldura-paralama);
 }
@@ -1377,12 +1397,20 @@ ul.menu-division {
 
 /* #region PREVIEW - SUSPENSÕES */
 
-#suspensao.painel-categorias__categoria-itens.ativo a#amortecedor:hover:after {
-  content: var(--amortecedores);
-}
-
 #suspensao.painel-categorias__categoria-itens.ativo a#amortecedor-suspensao:hover:after {
   content: var(--amortecedor-suspensao);
+}
+
+#suspensao.painel-categorias__categoria-itens.ativo a#bandeja-de-suspensao:hover:after {
+  content: var(--bandeja-suspensao);
+}
+
+#suspensao.painel-categorias__categoria-itens.ativo a#bieleta-de-suspensao:hover:after {
+  content: var(--bieleta-suspensao);
+}
+
+#suspensao.painel-categorias__categoria-itens.ativo a#pivo-de-suspensao:hover:after {
+  content: var(--pivo-suspensao);
 }
 
 /* #endregion PREVIEW - SUSPENSÕES */
@@ -1421,6 +1449,10 @@ ul.menu-division {
   content: var(--radiador);
 }
 
+#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo a#reservatorio-de-agua-radiador:hover:after {
+  content: var(--reservatorio-de-agua-radiador);
+}
+
 /* #endregion PREVIEW - RADIADORES */
 
 /* #region PREVIEW - CONDENSADORES */
@@ -1434,6 +1466,14 @@ ul.menu-division {
 }
 
 /* #endregion PREVIEW - CONDENSADORES */
+
+/* #region PREVIEW - AROMATIZANTES */
+
+#higienizadores-e-filtros.painel-categorias__categoria-itens.ativo a#aromatizante:hover:after {
+  content: var(--aromatizante-aromatizante);
+}
+
+/* #endregion PREVIEW - AROMATIZANTES */
 
 /* #region PREVIEW - HIGIENIZADORES */
 
@@ -1485,12 +1525,20 @@ ul.menu-division {
   content: var(--palheta-vigia);
 }
 
+#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo a#reservatorio-de-agua-limpador:hover:after {
+  content: var(--reservatorio-de-agua-limpador);
+}
+
 /* #endregion PREVIEW - PALHETAS */
 
 /* #region PREVIRE - LATARIAS */
 
 #paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-capo:hover:after {
   content: var(--latarias-capo);
+}
+
+#paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-para-barro:hover:after {
+  content: var(--latarias-para-barro);
 }
 
 #paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-paralama:hover:after {
@@ -1542,7 +1590,7 @@ ul.menu-division {
 
 .painel-categorias .painel-categorias__categoria-itens-lista .painel-categorias__categoria-itens-lista-menu>li>a:hover{
   color: var(--blue-500);
-  font-weight: var(--bold);  
+  font-weight: var(--bold);
 }
 /* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
@@ -1626,7 +1674,7 @@ hr {
   width: 100%;
 }
 #banner_topo_desktop {
-  object-fit: contain; 
+  object-fit: contain;
   vertical-align: middle;
   min-height: 34px;
   max-height: 50px;
@@ -1634,7 +1682,7 @@ hr {
 
 @media (min-width: 992px) {
   #banner_topo_mobile {
-    display: none;  
+    display: none;
   }
 
 }
