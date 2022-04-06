@@ -50,6 +50,10 @@
     margin-right: auto;
     margin-left: auto
   }
+
+  .full-cart .cart table tr td.quantity input {
+      width: 30px;
+  }
 }
 
 .checkout-qd-v1-header .span4 {
@@ -499,6 +503,14 @@ table.cart-items tbody {
     position: absolute !important;
     bottom: 15px !important;
     right: 0 !important
+  }
+  .full-cart .cart table tbody tr td.quantity::before {
+    background: transparent;
+    color: transparent;
+    content: "-";
+    display: flex;
+    height: 15px;
+    padding: 0;
   }
 }
 
