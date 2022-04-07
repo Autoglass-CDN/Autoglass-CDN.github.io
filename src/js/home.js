@@ -97,54 +97,85 @@
 //#region Benefits
 (function () {
 	const benefitsContainer = $('.benefits-section .container');
-	const benefits = $('.benefits-section .container .benefit');
-	const benefitsDots = $('.benefits-section .benefits-dots-mobile-container .dot');
+	const benefits          = $('.benefits-section .container .benefit');
+	const benefitsDots      = $('.benefits-section .benefits-dots-mobile-container .dot');
+  let   screenWidth       = getScreenWidth();
 
-	const interval = setInterval(() => {
-		const scrollPercentage = calculateScrollPercentage();
-		if (scrollPercentage >= 99) {
-			benefitsContainer[0].scrollBy(-benefitsContainer[0].scrollWidth, 0);
-		} else {
-			benefitsContainer[0].scrollBy(150, 0);
-		}
-	}, 5000)
+  var addEvent = function(object, type, callback) {
+      if (object == null || typeof(object) == 'undefined') return;
+      if (object.addEventListener) {
+          object.addEventListener(type, callback, false);
+      } else if (object.attachEvent) {
+          object.attachEvent("on" + type, callback);
+      } else {
+          object["on"+type] = callback;
+      }
+  };
 
-	benefitsContainer.on('wheel', event => {
-		event.preventDefault();
-		const { deltaY, target } = event.originalEvent;
+  addEvent(window, "resize", function(event) {
+    screenWidth = getScreenWidth();
 
-		if (deltaY > 0) {
-			target.scrollBy(150, 0)
-		} else {
-			target.scrollBy(-150, 0)
-		}
+    if(screenWidth < 1000) {
+      prepareToMobile();
+    }
+  });
 
-		clearInterval(interval);
-	});
+  if(screenWidth < 1000) { prepareToMobile(); }
 
-	benefitsContainer.scroll(() => {
-		const percentPerItem = 100 / benefits.length;
-		const scrollPercentage = calculateScrollPercentage();
+  function getScreenWidth() {
+    return   window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+  }
 
-		benefits.each((index) => {
-			const up = percentPerItem * (index + 1);
-			const down = percentPerItem * index;
-			benefits.eq(index).removeClass('focus');
-			benefitsDots.eq(index).removeClass('focus')
+  function prepareToMobile() {
 
-			if (scrollPercentage >= down && scrollPercentage <= up) {
-				benefits.eq(index).addClass('focus');
-				benefitsDots.eq(index).addClass('focus')
-			}
-		});
+    const interval = setInterval(() => {
+      const scrollPercentage = calculateScrollPercentage();
+      if (scrollPercentage >= 99) {
+        benefitsContainer[0].scrollBy(-benefitsContainer[0].scrollWidth, 0);
+      } else {
+        benefitsContainer[0].scrollBy(150, 0);
+      }
+    }, 5000)
 
-		clearInterval(interval);
-	});
+    benefitsContainer.on('wheel', event => {
+      event.preventDefault();
+      const { deltaY, target } = event.originalEvent;
 
-	function calculateScrollPercentage() {
-		return 100 * benefitsContainer[0].scrollLeft
-			/ (benefitsContainer[0].scrollWidth - benefitsContainer[0].clientWidth);
-	}
+      if (deltaY > 0) {
+        target.scrollBy(150, 0)
+      } else {
+        target.scrollBy(-150, 0)
+      }
+
+      clearInterval(interval);
+    });
+
+    benefitsContainer.scroll(() => {
+      const percentPerItem = 100 / benefits.length;
+      const scrollPercentage = calculateScrollPercentage();
+
+      benefits.each((index) => {
+        const up = percentPerItem * (index + 1);
+        const down = percentPerItem * index;
+        benefits.eq(index).removeClass('focus');
+        benefitsDots.eq(index).removeClass('focus')
+
+        if (scrollPercentage >= down && scrollPercentage <= up) {
+          benefits.eq(index).addClass('focus');
+          benefitsDots.eq(index).addClass('focus')
+        }
+      });
+
+      clearInterval(interval);
+    });
+
+  }
+
+  function calculateScrollPercentage() {
+    return 100 * benefitsContainer[0].scrollLeft
+      / (benefitsContainer[0].scrollWidth - benefitsContainer[0].clientWidth);
+  }
+
 })();
 //#endregion Benefits
 
