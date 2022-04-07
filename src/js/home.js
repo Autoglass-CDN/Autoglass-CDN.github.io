@@ -99,45 +99,23 @@
 	const benefitsContainer = $('.benefits-section .container');
 	const benefits          = $('.benefits-section .container .benefit');
 	const benefitsDots      = $('.benefits-section .benefits-dots-mobile-container .dot');
-  let   screenWidth       = getScreenWidth();
-
-  var addEvent = function(object, type, callback) {
-      if (object == null || typeof(object) == 'undefined') return;
-      if (object.addEventListener) {
-          object.addEventListener(type, callback, false);
-      } else if (object.attachEvent) {
-          object.attachEvent("on" + type, callback);
-      } else {
-          object["on"+type] = callback;
-      }
-  };
-
-  addEvent(window, "resize", function(event) {
-    screenWidth = getScreenWidth();
-
-    if(screenWidth < 1000) {
-      prepareToMobile();
-    }
-  });
-
-  if(screenWidth < 1000) { prepareToMobile(); }
 
   function getScreenWidth() {
     return   window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
   }
 
-  function prepareToMobile() {
+  const interval = setInterval(() => {
+    const scrollPercentage = calculateScrollPercentage();
+    if (scrollPercentage >= 99) {
+      benefitsContainer[0].scrollBy(-benefitsContainer[0].scrollWidth, 0);
+    } else {
+      benefitsContainer[0].scrollBy(150, 0);
+    }
+  }, 5000)
 
-    const interval = setInterval(() => {
-      const scrollPercentage = calculateScrollPercentage();
-      if (scrollPercentage >= 99) {
-        benefitsContainer[0].scrollBy(-benefitsContainer[0].scrollWidth, 0);
-      } else {
-        benefitsContainer[0].scrollBy(150, 0);
-      }
-    }, 5000)
-
-    benefitsContainer.on('wheel', event => {
+  const maxWindowSizeToScroll = 1000;
+  benefitsContainer.on('wheel', event => {
+    if(getScreenWidth() < maxWindowSizeToScroll) {
       event.preventDefault();
       const { deltaY, target } = event.originalEvent;
 
@@ -148,28 +126,27 @@
       }
 
       clearInterval(interval);
+    }
+  });
+
+  benefitsContainer.scroll(() => {
+    const percentPerItem = 100 / benefits.length;
+    const scrollPercentage = calculateScrollPercentage();
+
+    benefits.each((index) => {
+      const up = percentPerItem * (index + 1);
+      const down = percentPerItem * index;
+      benefits.eq(index).removeClass('focus');
+      benefitsDots.eq(index).removeClass('focus')
+
+      if (scrollPercentage >= down && scrollPercentage <= up) {
+        benefits.eq(index).addClass('focus');
+        benefitsDots.eq(index).addClass('focus')
+      }
     });
 
-    benefitsContainer.scroll(() => {
-      const percentPerItem = 100 / benefits.length;
-      const scrollPercentage = calculateScrollPercentage();
-
-      benefits.each((index) => {
-        const up = percentPerItem * (index + 1);
-        const down = percentPerItem * index;
-        benefits.eq(index).removeClass('focus');
-        benefitsDots.eq(index).removeClass('focus')
-
-        if (scrollPercentage >= down && scrollPercentage <= up) {
-          benefits.eq(index).addClass('focus');
-          benefitsDots.eq(index).addClass('focus')
-        }
-      });
-
-      clearInterval(interval);
-    });
-
-  }
+    clearInterval(interval);
+  });
 
   function calculateScrollPercentage() {
     return 100 * benefitsContainer[0].scrollLeft
