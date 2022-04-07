@@ -504,13 +504,9 @@ table.cart-items tbody {
     bottom: 15px !important;
     right: 0 !important
   }
-  .full-cart .cart table tbody tr td.quantity::before {
-    background: transparent;
-    color: transparent;
-    content: "-";
-    display: flex;
-    height: 15px;
-    padding: 0;
+
+  .full-cart .cart table tbody tr td.product-name {
+    min-height: 75px;
   }
 }
 
