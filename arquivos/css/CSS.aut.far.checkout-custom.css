@@ -2329,3 +2329,36 @@ fieldset.payment-group div.required.payment-group-list-btn{
   color: #FFF;
   font-weight: 600;
 }
+
+#shipping-data.change-button-style div .box-step .undefined.delivery-group-content .pickup-packages div.vtex-omnishipping-1-x-leanShippingGroupList.shp-lean label {
+  background: #FFF;
+  border-radius: 5px;
+  border: 1px solid #368df7;
+  padding: 7px;
+}
+
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .pickup-packages div.vtex-omnishipping-1-x-leanShippingGroupList.shp-lean label:hover,
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .vtex-omnishipping-1-x-findPickup div button:hover {
+  background: #368df7;
+}
+
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .pickup-packages div label:hover > div > div > span > a,
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .vtex-omnishipping-1-x-findPickup div button:hover{
+  color: #FFF;
+  text-shadow: none;
+}
+
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .pickup-packages div label > div:first-of-type,
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .pickup-packages div label > div:last-of-type {
+  display:none
+}
+
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .pickup-packages div label > div {
+  text-align: center;
+  border: none;
+}
+
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .pickup-packages div label > div > div > span > a {
+  text-decoration: none;
+  font-size: 13px;
+}
