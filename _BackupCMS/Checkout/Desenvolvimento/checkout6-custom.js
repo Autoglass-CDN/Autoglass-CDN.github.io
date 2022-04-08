@@ -2,15 +2,6 @@
 
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE. THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
-
-// HubSpot Script Loader. Please do not block this resource. See more: http://hubs.ly/H0702_H0
-
-!function(t,e,r){if(!document.getElementById(t)){var n=document.createElement("script");for(var a in n.src="https://js.usemessages.com/conversations-embed.js",n.type="text/javascript",n.id=t,r)r.hasOwnProperty(a)&&n.setAttribute(a,r[a]);var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(n,i)}}("hubspot-messages-loader",0,{"data-loader":"hs-scriptloader","data-hsjs-portal":20753913,"data-hsjs-env":"prod","data-hsjs-hublet":"na1"});
-var _hsp = window._hsp = window._hsp || [];
- _hsp.push(['addEnabledFeatureGates', []]);
-!function(t,e,r){if(!document.getElementById(t)){var n=document.createElement("script");for(var a in n.src="https://js.hs-banner.com/20753913.js",n.type="text/javascript",n.id=t,r)r.hasOwnProperty(a)&&n.setAttribute(a,r[a]);var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(n,i)}}("cookieBanner-20753913",0,{"data-cookieconsent":"ignore","data-hs-ignore":true,"data-loader":"hs-scriptloader","data-hsjs-portal":20753913,"data-hsjs-env":"prod","data-hsjs-hublet":"na1"});
-!function(e,t){if(!document.getElementById(e)){var c=document.createElement("script");c.src="https://js.hs-analytics.net/analytics/1649363400000/20753913.js",c.type="text/javascript",c.id=e;var n=document.getElementsByTagName("script")[0];n.parentNode.insertBefore(c,n)}}("hs-analytics");
-
 /*<!-- Facebook Pixel Code -->*/
 !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () {
@@ -267,6 +258,7 @@ $(window).on('load', () => {
 
             loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
+            loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
         }
 
         function loadScript(src, callback) {
