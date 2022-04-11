@@ -252,6 +252,7 @@ $(window).on('load', () => {
 
             loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/hubspot-cookie.js');
+            loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
         }
 
         function loadScript(src, callback) {
