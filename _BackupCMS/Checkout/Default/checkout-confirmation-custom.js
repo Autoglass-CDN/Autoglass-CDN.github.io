@@ -38,6 +38,7 @@ $(document).ready(function () {
   $('.identificacao-line').addClass('active');
   $('.entrega-line').addClass('active');
   loadScript('https://autoglass-cdn.github.io/arquivos/js/hubspot-cookie.js');
+  loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
 });
 
 
