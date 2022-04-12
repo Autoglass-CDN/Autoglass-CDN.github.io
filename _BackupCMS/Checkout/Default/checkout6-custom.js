@@ -246,7 +246,7 @@ $(window).on('load', () => {
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/consulta-agendamento.js');
-            // loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/jornada-do-cliente.js');
+            loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/jornada-do-cliente.js');
 
           	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
 
