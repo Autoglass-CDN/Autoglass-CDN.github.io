@@ -19,24 +19,28 @@
   }
 
   function checkIfHasInputElement() {
-    const input = getInputElement();
-    if (input) {
+    if (getInputElement())
       keepInputAlwaysFilled();
-    }
   }
 
   function getInputElement() {
-    return document.querySelector(
-      "#shipping-data .box-step > div:last-of-type .ship-number input"
-    );
+    const isReceiveShipping = $('.box-step #postalCode-finished-loading .shipping-method-toggle-delivery').length;
+    const inputElement = document.querySelector("#shipping-data .box-step > div:last-of-type .ship-number input");
+    if (isReceiveShipping || !inputElement) {
+      goToPaymentButton.enable();
+      return null;
+    }
+      return inputElement;
   }
 
   function keepInputAlwaysFilled() {
-    const isInputFilled = !!getInputElement().value.trim();
+    input = getInputElement();
+    if(!input) return
+    const isInputFilled = !!input.value.trim();
     if (isInputFilled) {
       goToPaymentButton.enable();
     } else {
-      setNativeValue(getInputElement(), " ");
+      setNativeValue(input, " ");
     }
     input = getInputElement();
     input.onkeydown = function (pressed) {
@@ -44,7 +48,6 @@
       if (pressed.key == "Backspace" && current.length <= 1) {
         setNativeValue(input, "  ");
         goToPaymentButton.disable();
-      } else {
       }
       input.dispatchEvent(new Event("input", { bubbles: true }));
     };
@@ -89,16 +92,10 @@
     const itemsObserver = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
         const initialButton =
-          mutation.target.querySelectorAll(preencherEnderecoNFButtonQuery);
-        const inputFather = mutation.target.querySelectorAll(
-          ".box-step > div:last-of-type .ship-number"
-        );
-        if (initialButton.length) {
-          initialButton[0].click();
-        }
-        if (inputFather.length) {
-          keepInputAlwaysFilled();
-        }
+          mutation?.target?.querySelectorAll(preencherEnderecoNFButtonQuery);
+        if (initialButton.length)
+          return initialButton[0].click();
+        keepInputAlwaysFilled();
       });
     });
 
