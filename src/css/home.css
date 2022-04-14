@@ -148,9 +148,6 @@
     overflow: hidden;
     overflow-x: scroll;
   }
-  .banners-section .banners-content.mobile::-webkit-scrollbar {
-    display: none;
-  }
   .banners-section .banners-content img {
     height: auto;
   }
