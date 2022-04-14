@@ -147,7 +147,6 @@
     /* aspect-ratio: 6/5; */
     overflow: hidden;
     overflow-x: scroll;
-    pointer-events: none;
   }
   .banners-section .banners-content.mobile::-webkit-scrollbar {
     display: none;
@@ -714,7 +713,7 @@
   .banners-nossos-servicos{
     width: -webkit-fill-available !important;
     overflow-x: auto;
-    pointer-events: none;
+    touch-action: pan-y;
   }
   .banners-promocionais-itens::-webkit-scrollbar,
   .banners-nossos-servicos::-webkit-scrollbar {
