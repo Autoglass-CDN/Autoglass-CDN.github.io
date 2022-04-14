@@ -402,19 +402,3 @@ function scrollSmoothlyToRight(element, pixelsToScroll) {
 function scrollSmoothlyToLeft(element, pixelsToScroll) {
 	return scrollSmoothlyToRight(element, -pixelsToScroll)
 }
-
-
-// const supportsSmoothScrolling = () => {
-  const body = document.body;
-  const scrollSave = body.style.scrollBehavior;
-  body.style.scrollBehavior = 'smooth';
-  const hasSmooth = getComputedStyle(body).scrollBehavior === 'smooth';
-  body.style.scrollBehavior = scrollSave;
-  if(hasSmooth)
-  {
-    alert('POSSUI SUPORTE PARA SCROLL!')
-  } else
-  {
-    alert('NÃO POSSUI SUPORTE PARA SCROLL!')
-  }
-// }
