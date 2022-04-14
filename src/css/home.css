@@ -708,6 +708,7 @@
   .banners-promocionais-itens,
   .banners-nossos-servicos{
     width: -webkit-fill-available !important;
+    overflow-x: scroll;
   }
   .banners-promocionais-itens .box-banner,
   .banners-nossos-servicos .box-banner {
