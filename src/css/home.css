@@ -152,8 +152,8 @@
     height: auto;
   }
   .banners-section .banners button {
-    /* transform: translateY(calc(-50% - 25px)); */
     top: 40%;
+    z-index: 2;
   }
   .banners-section .banners-bars {
     display: none;
