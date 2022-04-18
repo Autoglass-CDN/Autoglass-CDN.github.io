@@ -13,7 +13,7 @@ toggleCustomerJourneyVisibility(vtexjs.checkout.orderForm.items);
 
 function updateCurrentPageIcon(currentPagePath, previsousPagePath) {
     const currentPageStep = getPageStepByPath(currentPagePath);
-    const totalSteps = pages.at(-1).step;
+    const totalSteps = pages[pages.length-1].step;
     findPageByStep(currentPageStep).element.addClass("pagina-atual");
     removePageStyle(currentPagePath, "bloqueado");
 
