@@ -146,6 +146,7 @@
     margin-top: 0;
     /* aspect-ratio: 6/5; */
     overflow: hidden;
+    overflow-x: scroll;
   }
   .banners-section .banners-content img {
     height: auto;
@@ -153,6 +154,7 @@
   .banners-section .banners button {
     /* transform: translateY(calc(-50% - 25px)); */
     top: 40%;
+    z-index: 2;
   }
   .banners-section .banners-bars {
     display: none;
@@ -708,6 +710,12 @@
   .banners-promocionais-itens,
   .banners-nossos-servicos{
     width: -webkit-fill-available !important;
+    overflow-x: auto;
+    touch-action: pan-y;
+  }
+  .banners-promocionais-itens::-webkit-scrollbar,
+  .banners-nossos-servicos::-webkit-scrollbar {
+    display: none;
   }
   .banners-promocionais-itens .box-banner,
   .banners-nossos-servicos .box-banner {
