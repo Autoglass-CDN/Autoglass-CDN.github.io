@@ -82,7 +82,7 @@ async function insertBrandDescription() {
       if (brand && brand.metaTagDescription !== '') {
         const brandDescription = brand.metaTagDescription;
         const descricaoMarcaParagraph = document.querySelector("#descricao-marca");
-        
+
         descricaoMarcaParagraph.textContent = brandDescription;
         descricaoMarcaParagraph.parentElement.parentElement.style.display = "block";
       }
@@ -166,7 +166,7 @@ $(window).on("ready", async () => {
 
   adjustProductThumbHeight();
 
-  initializeSocialShareLinks();  
+  initializeSocialShareLinks();
 
   /**
    * Cria bloco de Veículos Compatíveis
@@ -184,7 +184,7 @@ $(window).on("ready", async () => {
     );
 
     veiculosBuscaveis = veiculosCompativeis;
-    
+
     const possuiVeiculosCompativeis = veiculosCompativeis? (veiculosCompativeis.length>0) : false;
 
     if (possuiVeiculosCompativeis > 0) {
@@ -280,14 +280,14 @@ $(window).on("ready", async () => {
     });
 
   function buscaCompativeis(texto) {
-    if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 2) {
+    if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 0) {
       const veiculosBuscaveisFiltrado = veiculosBuscaveis.map((a) =>
           a.Veiculos.filter(b =>
             new RegExp(texto.split(" ")
               .map(str => `(?=.*${str})`).join(""), "i")
               .test(b.Veiculo)))
           .filter(a => a.length > 0);
-      
+
       if(!!veiculosBuscaveisFiltrado.length) {
         sugestoesContainer.html(
           veiculosBuscaveisFiltrado.flat()
