@@ -1,5 +1,3 @@
-(function () {
-
 const device = {
   desktop: ".desktop",
   mobile: ".mobile"
@@ -670,4 +668,3 @@ async function autocompleteInitMobile(searchInput) {
     }
   });
 }
-})();
