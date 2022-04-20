@@ -16,6 +16,10 @@
     background-color: #223B76;
 }
 
+.cart ul.cart-items.unstyled.clearfix span.fn.product-name button.btn-add-instalacao {
+	display: none;
+}
+
 .mini-cart .item .fn {
     width: 90%;
 }
@@ -356,6 +360,11 @@ body.hasInstall .shp-summary-package-time {
   font-size: 13px;
   content: "Veja as opções de entrega, retirada ou instalação com prazos e valores.";
 }
+
+.srp-content.onda-v1 h2{
+    display:none;
+}
+
 
 /* Itens crossSelling */
 .addCart {
