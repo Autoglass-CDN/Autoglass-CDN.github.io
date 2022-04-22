@@ -1,0 +1,106 @@
+:root {
+  /* --green-selected: rgb(51, 218, 79); */
+  --green-selected: #43c450;
+  --gray-label: #CCC;
+}
+
+#shipping-preview-container #shipping-calculate-link {
+  background: rgb(0, 61, 165);
+  color: #eee;
+  font-size: 0;
+  font-weight: 600;
+}
+
+#shipping-preview-container #shipping-calculate-link:after {
+  content: "INSIRA SEU CEP";
+  font-size: 14px;
+}
+
+#shipping-preview-container .srp-toggle__wrapper {
+  box-shadow: none;
+  flex-direction: row-reverse;
+}
+
+#shipping-preview-container .srp-toggle__wrapper > div {
+  display: none;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label {
+  text-transform: none;
+  width: 48%;
+  font-size: 16px;
+  border: 1.5px solid var(--gray-label);
+  border-radius: 5px;
+  margin-right: 5px;
+  font-weight: 600;
+  -webkit-box-shadow: 0px 0px 0px 0px var(--green-selected);
+  transition: 0.5s;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label.blue {
+  color: #666;
+  border-color: var(--green-selected);
+  -webkit-box-shadow: 0px 0px 8px 0px var(--green-selected);
+}
+
+#shipping-preview-container .srp-toggle__wrapper label input {
+  display:initial;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"] {
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: var(--gray-label);
+  border-radius: 3px;
+  display: inline-block;
+  height: 15px;
+  margin-right: 3px;
+  position: relative;
+  top: -1px;
+  width: 15px;
+  -webkit-appearance: none;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:focus {
+  outline: none;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked{
+  /* background-color: #f66; */
+}
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked::after{
+  content:'\f00c';
+  font-family: fontAwesome;
+  color:var(--green-selected);
+  position: absolute;
+  top: -4px;
+  text-shadow: 2px 1px #FFF, 1px -2px #FFF;
+}
+
+
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten {
+  align-items: flex-start;
+  margin-left: 5px;
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten #cart-shipping-calculate {
+  margin-top: 20px;
+}
+
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input::placeholder{
+  color: red;
+  opacity: 1; /* Firefox */
+}
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input::placeholder {
+  /* color:#666; */
+  content:"Line 1\A Line 2\A Line 3\A";
+  color: red;
+  opacity: 1; /* Firefox */
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input:focus {
+  -webkit-box-shadow: 0px 0px 8px 0px var(--green-selected);
+}
+
