@@ -1,7 +1,9 @@
 :root {
   /* --green-selected: rgb(51, 218, 79); */
-  --green-selected: #43c450;
-  --gray-label: #CCC;
+  --green-receber-retirar: #43c450;
+  --gray-receber-retirar: #CCC;
+  --dark-gray-receber-retirar: #666;
+  --azul-receber-retirar: #003ca5;
 }
 
 #shipping-preview-container #shipping-calculate-link {
@@ -18,7 +20,7 @@
 
 #shipping-preview-container .srp-toggle__wrapper {
   box-shadow: none;
-  flex-direction: row-reverse;
+  /* flex-direction: row-reverse; */
 }
 
 #shipping-preview-container .srp-toggle__wrapper > div {
@@ -29,18 +31,18 @@
   text-transform: none;
   width: 48%;
   font-size: 16px;
-  border: 1.5px solid var(--gray-label);
+  border: 1.5px solid var(--gray-receber-retirar);
   border-radius: 5px;
   margin-right: 5px;
   font-weight: 600;
-  -webkit-box-shadow: 0px 0px 0px 0px var(--green-selected);
+  -webkit-box-shadow: 0px 0px 0px 0px var(--green-receber-retirar);
   transition: 0.5s;
 }
 
 #shipping-preview-container .srp-toggle__wrapper label.blue {
-  color: #666;
-  border-color: var(--green-selected);
-  -webkit-box-shadow: 0px 0px 8px 0px var(--green-selected);
+  color: var(--dark-gray-receber-retirar);
+  border-color: var(--green-receber-retirar);
+  -webkit-box-shadow: 0px 0px 8px 0px var(--green-receber-retirar);
 }
 
 #shipping-preview-container .srp-toggle__wrapper label input {
@@ -50,7 +52,7 @@
 #shipping-preview-container .srp-toggle__wrapper label input[type="radio"] {
   border-width: 1.5px;
   border-style: solid;
-  border-color: var(--gray-label);
+  border-color: var(--gray-receber-retirar);
   border-radius: 3px;
   display: inline-block;
   height: 15px;
@@ -65,19 +67,14 @@
   outline: none;
 }
 
-#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked{
-  /* background-color: #f66; */
-}
 #shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked::after{
   content:'\f00c';
   font-family: fontAwesome;
-  color:var(--green-selected);
+  color:var(--green-receber-retirar);
   position: absolute;
   top: -4px;
   text-shadow: 2px 1px #FFF, 1px -2px #FFF;
 }
-
-
 
 #shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten {
   align-items: flex-start;
@@ -88,19 +85,63 @@
   margin-top: 20px;
 }
 
-
-#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input::placeholder{
-  color: red;
-  opacity: 1; /* Firefox */
-}
-#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input::placeholder {
-  /* color:#666; */
-  content:"Line 1\A Line 2\A Line 3\A";
-  color: red;
-  opacity: 1; /* Firefox */
-}
-
 #shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input:focus {
-  -webkit-box-shadow: 0px 0px 8px 0px var(--green-selected);
+  -webkit-box-shadow: 0px 0px 8px 0px var(--green-receber-retirar);
 }
 
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info{
+  color: var(--azul-receber-retirar);
+  display: flex;
+  flex-direction: initial;
+  height: 40px;
+  padding: 0;
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title {
+  white-space: nowrap;
+  color:var(--dark-gray-receber-retirar);
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title svg,
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title b,
+#shipping-preview-container .srp-pickup-info .cep-info.cep-info .cep-info__title svg  {
+  color: var(--azul-receber-retirar);
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location {
+  display: contents;
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location span,
+#shipping-preview-container .srp-pickup-info .cep-info .cep-info__location span {
+  width:auto;
+}
+#shipping-preview-container .srp-pickup-info .cep-info .cep-info__location span {
+  white-space: initial;
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location .cep-info__location-street {
+  margin: 0;
+  margin-left: 5px;
+  color: var(--azul-receber-retirar);
+}
+#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location .cep-info__location-street::before {
+  content: '| '
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info #change-button,
+#shipping-preview-container .srp-pickup-info .cep-info #change-button{
+  position: absolute;
+  bottom: 0px;
+  left: 28px;
+  font-size: 12px;
+  font-style: italic;
+  color: #29abe2;
+  font-weight: normal;
+  right: auto;
+}
+
+#shipping-preview-container .srp-pickup-info .cep-info #change-button {
+  position: initial;
+  padding-left: 23px;
+}
