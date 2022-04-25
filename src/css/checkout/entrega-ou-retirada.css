@@ -30,19 +30,39 @@
 #shipping-preview-container .srp-toggle__wrapper label {
   text-transform: none;
   width: 48%;
-  font-size: 16px;
   border: 1.5px solid var(--gray-receber-retirar);
   border-radius: 5px;
   margin-right: 5px;
   font-weight: 600;
   -webkit-box-shadow: 0px 0px 0px 0px var(--green-receber-retirar);
-  transition: 0.5s;
+  transition: -webkit-box-shadow 0.5s;
+}
+
+#shipping-preview-container .srp-toggle:not(.instalacao) .srp-toggle__wrapper label,
+#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper label span.instalar{
+  font-size: 16px;
+  color: var(--dark-gray-receber-retirar);
+  margin: 0 7px;
 }
 
 #shipping-preview-container .srp-toggle__wrapper label.blue {
   color: var(--dark-gray-receber-retirar);
   border-color: var(--green-receber-retirar);
   -webkit-box-shadow: 0px 0px 8px 0px var(--green-receber-retirar);
+}
+
+#shipping-preview-container .srp-toggle.instalacao {
+  width: min(120%, 100vw - 70px);
+}
+
+#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper .srp-toggle__delivery span.instalar {
+  font-size: 0;
+  display: flex;
+}
+
+#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper .srp-toggle__delivery span.instalar::after {
+  content:'Instalação móvel';
+  font-size: 16px;
 }
 
 #shipping-preview-container .srp-toggle__wrapper label input {
@@ -56,11 +76,14 @@
   border-radius: 3px;
   display: inline-block;
   height: 15px;
-  margin-right: 3px;
+  margin: 0 7px;
   position: relative;
-  top: -1px;
+  top: -2px;
   width: 15px;
   -webkit-appearance: none;
+}
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"] {
+  top: 0px;
 }
 
 #shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:focus {
@@ -70,6 +93,7 @@
 #shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked::after {
   content: "\f00c";
   font-family: fontAwesome;
+  font-size: 16px;
   color: var(--green-receber-retirar);
   position: absolute;
   top: -4px;
@@ -174,6 +198,39 @@
   color: #29abe2;
   font-weight: normal;
   right: auto;
+}
+
+#shipping-preview-container .srp-delivery-info > div,
+#shipping-preview-container .srp-pickup-info > label.srp-shipping-current-single,
+#shipping-preview-container #open-modal-ic,
+#shipping-preview-container #open-modal-il
+{
+  border-color: var(--azul-receber-retirar);
+  border-width: thin;
+  border-radius: 5px;
+}
+
+#shipping-preview-container .srp-delivery-info > div.instalar > a,
+#shipping-preview-container .srp-pickup-info > div.instalar > a {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+#shipping-preview-container .srp-delivery-info > div.instalar > a .instalar_calendar,
+#shipping-preview-container .srp-pickup-info > div.instalar > a .instalar_calendar {
+  color: var(--azul-receber-retirar);
+}
+
+#shipping-preview-container .srp-delivery-info .srp-delivery-current-many__description .srp-delivery-current-many__price,
+#shipping-preview-container .srp-pickup-info .srp-shipping-current-single__wrapper .srp-shipping-current-single__description .srp-shipping-current-single__price {
+  color: var(--azul-receber-retirar);
+  font-size: 16px;
+  font-weight: 600;
+  border-left: 1px solid;
+}
+
+#shipping-preview-container .srp-pickup-info .srp-shipping-current-single__wrapper > div.srp-shipping-current-single__bullet {
+  opacity: 0;
 }
 
 #shipping-preview-container .srp-pickup-info .cep-info #change-button {
