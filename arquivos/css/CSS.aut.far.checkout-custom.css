@@ -2362,3 +2362,8 @@ fieldset.payment-group div.required.payment-group-list-btn{
   text-decoration: none;
   font-size: 13px;
 }
+
+#shipping-data.change-button-style .box-step .undefined.delivery-group-content .pickup-packages div label .shp-option-text a {
+  display: block;
+  width: 100%;
+}
