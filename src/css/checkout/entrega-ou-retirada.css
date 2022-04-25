@@ -1,7 +1,7 @@
 :root {
   /* --green-selected: rgb(51, 218, 79); */
   --green-receber-retirar: #43c450;
-  --gray-receber-retirar: #CCC;
+  --gray-receber-retirar: #ccc;
   --dark-gray-receber-retirar: #666;
   --azul-receber-retirar: #003ca5;
 }
@@ -46,7 +46,7 @@
 }
 
 #shipping-preview-container .srp-toggle__wrapper label input {
-  display:initial;
+  display: initial;
 }
 
 #shipping-preview-container .srp-toggle__wrapper label input[type="radio"] {
@@ -67,13 +67,13 @@
   outline: none;
 }
 
-#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked::after{
-  content:'\f00c';
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked::after {
+  content: "\f00c";
   font-family: fontAwesome;
-  color:var(--green-receber-retirar);
+  color: var(--green-receber-retirar);
   position: absolute;
   top: -4px;
-  text-shadow: 2px 1px #FFF, 1px -2px #FFF;
+  text-shadow: 2px 1px #fff, 1px -2px #fff;
 }
 
 #shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten {
@@ -85,11 +85,46 @@
   margin-top: 20px;
 }
 
-#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input:focus {
+#shipping-preview-container .vtex-shipping-preview-0-x-pc {
+  position: relative;
+}
+#shipping-preview-container .vtex-shipping-preview-0-x-pc::before,
+#shipping-preview-container .vtex-shipping-preview-0-x-pc::after {
+  content: "\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0 na sua casa ou \a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0 em uma das nossas lojas";
+  position: absolute;
+  top: -20px;
+  font-size: 15px;
+  width: 90%;
+  padding-left: 5px;
+  left: 0;
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-pc::after {
+  content: "Receba\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0retire";
+  font-weight: 600;
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-pc p.input > label:first-of-type{
+  opacity: 0;
+}
+
+/* #shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input::placeholder {
+  content: "SOMETHING";
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+} */
+
+#shipping-preview-container
+  .vtex-shipping-preview-0-x-postalCodeForgotten
+  input:focus {
   -webkit-box-shadow: 0px 0px 8px 0px var(--green-receber-retirar);
 }
 
-#shipping-preview-container .srp-delivery-header .cep-info.cep-info{
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info {
   color: var(--azul-receber-retirar);
   display: flex;
   flex-direction: initial;
@@ -99,12 +134,12 @@
 
 #shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title {
   white-space: nowrap;
-  color:var(--dark-gray-receber-retirar);
+  color: var(--dark-gray-receber-retirar);
 }
 
 #shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title svg,
 #shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title b,
-#shipping-preview-container .srp-pickup-info .cep-info.cep-info .cep-info__title svg  {
+#shipping-preview-container .srp-pickup-info .cep-info.cep-info .cep-info__title svg {
   color: var(--azul-receber-retirar);
 }
 
@@ -114,7 +149,7 @@
 
 #shipping-preview-container .srp-delivery-header .cep-info .cep-info__location span,
 #shipping-preview-container .srp-pickup-info .cep-info .cep-info__location span {
-  width:auto;
+  width: auto;
 }
 #shipping-preview-container .srp-pickup-info .cep-info .cep-info__location span {
   white-space: initial;
@@ -126,11 +161,11 @@
   color: var(--azul-receber-retirar);
 }
 #shipping-preview-container .srp-delivery-header .cep-info .cep-info__location .cep-info__location-street::before {
-  content: '| '
+  content: "| ";
 }
 
 #shipping-preview-container .srp-delivery-header .cep-info #change-button,
-#shipping-preview-container .srp-pickup-info .cep-info #change-button{
+#shipping-preview-container .srp-pickup-info .cep-info #change-button {
   position: absolute;
   bottom: 0px;
   left: 28px;
