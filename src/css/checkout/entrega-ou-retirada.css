@@ -6,6 +6,10 @@
   --azul-receber-retirar: #003ca5;
 }
 
+.srp-description.mw5 {
+  opacity: 0;
+}
+
 #shipping-preview-container #shipping-calculate-link {
   background: rgb(0, 61, 165);
   color: #eee;
