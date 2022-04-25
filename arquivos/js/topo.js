@@ -1,3 +1,7 @@
+const device = {
+  desktop: ".desktop",
+  mobile: ".mobile"
+}
 
 function centerArrow(min, max) {
   let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
@@ -102,7 +106,7 @@ function replaceBlankSpaces(text, newChar) {
 void function initializeCategoryPanelMenu() {
   let lastActiveCategory = null;
   var painelCategoriasMenu = $('.painel-categorias__menu ul li:first-child.ativo');
-  
+
   $('.painel-categorias__categoria-itens-lista-menu li a').hover(
     function(){
       if(lastActiveCategory != this){
@@ -115,7 +119,7 @@ void function initializeCategoryPanelMenu() {
       lastActiveCategory = this;
     },
   )
-  
+
   var observer = new MutationObserver(function(mutations) {
     if(!isActiveElement(mutations[0].target)){
       if(lastActiveCategory &&
@@ -203,7 +207,7 @@ async function checkLoginMobile() {
     } else {
       accountComponent.innerHTML = `<hr/>
       <a id="login" href="#" class="destaque" style="opacity: 1;">
-        <i class="user-icon"></i> 
+        <i class="user-icon"></i>
         Cadastrar ou Entrar
       </a>`;
       document.body.classList.add("not-logged-user");
@@ -322,8 +326,8 @@ async function fixPlaceholderSearchMobile() {
   }, 1000);
 }
 
-async function loadCart() {
-  let carrinho = document.querySelector('.desktop .menu-carrinho');
+async function loadCart(device) {
+  let carrinho = document.querySelector(`${device} .menu-carrinho`);
   carrinho.addEventListener('click', (event) => {
     window.location.href = '/checkout/#/cart';
   });
@@ -334,37 +338,36 @@ async function loadCart() {
 }
 
 async function updateCartItemsCount(carrinho, orderForm) {
-  carrinho.classList.remove('loaded');
-  let badge = document.querySelector('.desktop .badge');
-
-  if (badge)
-    badge.remove();
-
-
-  if (orderForm && orderForm.items.length) {
-    badge = document.createElement('span');
-    badge.classList.add('badge');
-    badge.innerHTML = orderForm.items.length;
-
-    carrinho.append(badge);
-
-    setTimeout(() => carrinho.classList.add('loaded'), 500);
+  if (!orderForm){
+    return updateBadge (carrinho)
   }
+  return updateBadge (carrinho, orderForm.items.length)
+}
+
+function updateBadge (carrinho, count) {
+  let badge = carrinho.querySelector('.badge') ? carrinho.querySelector('.badge') : document.createElement('span')
+  badge.classList.add('badge');
+  badge.innerHTML = typeof(count) == 'number' ? count : Number.parseInt((badge.innerHTML))+1 || 1;
+  if (badge.innerHTML != 0)
+    carrinho.append(badge);
+  setTimeout(() => carrinho.classList.add('loaded'), 500);
 }
 
 async function cartItemAddedConfirmation(eventData) {
-  let { skuData } = eventData;
-  let windowWidth = window.innerWidth
+  const { skuData } = eventData;
+  const windowWidth = window.innerWidth
     || document.documentElement.clientWidth
     || document.body.clientWidth;
-  let confirmationBox = windowWidth >= 1200
-    ? document.querySelector('.desktop .menu-carrinho .confirmacao')
-    : document.querySelector('.mobile .menu-carrinho .confirmacao');
+  const currentDevice = windowWidth >= 1200 ? device.desktop : device.mobile
+  const confirmationBox = document.querySelector(`${currentDevice} .menu-carrinho .confirmacao`)
 
-  let img = confirmationBox.querySelector('.item img');
-  let title = confirmationBox.querySelector('.item .titulo');
+  const img = confirmationBox.querySelector('.item img');
+  const title = confirmationBox.querySelector('.item .titulo');
 
   confirmationBox.style.visibility = 'visible';
+
+  const carrinho = document.querySelector(`${currentDevice} .menu-carrinho`);
+  updateCartItemsCount(carrinho, false)
 
   if (skuData) {
     let data = skuData
@@ -386,35 +389,6 @@ async function cartItemAddedConfirmation(eventData) {
   }
 }
 
-async function loadCartMobile() {
-  let carrinho = document.querySelector('.mobile .menu-carrinho');
-  carrinho.addEventListener('click', (event) => {
-    window.location.href = '/checkout/#/cart';
-  });
-
-  let orderForm = await vtexjs.checkout.getOrderForm();
-
-  await updateCartItemsCountMobile(carrinho, orderForm);
-}
-
-async function updateCartItemsCountMobile(carrinho, orderForm) {
-  carrinho.classList.remove('loaded');
-  let badge = document.querySelector('.mobile .badge');
-
-  if (badge)
-    badge.remove();
-
-
-  if (orderForm && orderForm.items.length) {
-    badge = document.createElement('span');
-    badge.classList.add('badge');
-    badge.innerHTML = orderForm.items.length;
-
-    carrinho.append(badge);
-
-    setTimeout(() => carrinho.classList.add('loaded'), 500);
-  }
-}
 
 async function autocompleteSearch(searchTerm) {
   let response = await fetch('/buscaautocomplete?' + new URLSearchParams({
@@ -450,7 +424,7 @@ async function autocompleteSearch(searchTerm) {
 }
 
 /**
- * 
+ *
  * @param {HTMLInputElement} searchInput Input HTML
  */
 async function autocompleteInit(searchInput) {
@@ -589,7 +563,7 @@ function toggleCategory(self) {
 
   checkLogin();
   fixPlaceholderSearch();
-  loadCart();
+  loadCart(device.desktop);
 
   $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
     let carrinho = document.querySelector('.desktop .menu-carrinho');
@@ -600,9 +574,19 @@ function toggleCategory(self) {
   $(document).ready(function () {
     if (!document.querySelector('.shelf-qd-v1-buy-button'))
       return;
-    var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener', cartItemAddedConfirmation);
+    var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener',
+      debounce((event) => cartItemAddedConfirmation(event))
+    );
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
+
+  function debounce(func, timeout = 200){
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+  }
 
   let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
 
@@ -637,7 +621,7 @@ function toggleCategory(self) {
 
   checkLoginMobile();
 
-  loadCartMobile();
+  loadCart(device.mobile);
 
   document.onload = function () {
     document
@@ -652,7 +636,7 @@ function toggleCategory(self) {
   $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
     let carrinho = document.querySelector('.mobile .menu-carrinho');
 
-    updateCartItemsCountMobile(carrinho, orderForm);
+    updateCartItemsCount(carrinho, orderForm);
   });
 })();
 
