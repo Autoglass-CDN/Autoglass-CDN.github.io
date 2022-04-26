@@ -118,6 +118,22 @@
 #shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten {
   align-items: flex-start;
   margin-left: 5px;
+  margin-top: 25px;
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten::before{
+  content: "\f041";
+  font-family: fontAwesome;
+  position: absolute;
+  font-size: 16px;
+  color:var(--gray-receber-retirar);
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten::after {
+  content: "CEP";
+  position: absolute;
+  padding-left: 13px;
+  color:var(--gray-receber-retirar);
 }
 
 #shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten #cart-shipping-calculate {
