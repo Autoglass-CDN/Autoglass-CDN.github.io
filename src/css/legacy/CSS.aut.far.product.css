@@ -3581,10 +3581,7 @@ body.qd-product-unavailable .product-qd-v1-float-bar .product-qd-v1-buy-button {
 }
 @media (max-width: 767px) {
 }
-.accessories-qd-v1-wrapper .accessories-qd-v1-item label {
-    color: transparent;
-}
-/* .accessories-qd-v1-wrapper .accessories-qd-v1-item fieldset {
+.accessories-qd-v1-wrapper .accessories-qd-v1-item fieldset {
     margin-top: 15px;
     text-align: center;
     cursor: pointer;
@@ -3626,7 +3623,7 @@ body.qd-product-unavailable .product-qd-v1-float-bar .product-qd-v1-buy-button {
     ~ label:before {
     color: #2d4f9e;
     content: "\f046";
-} */
+}
 .product-qd-v1-installation {
     display: block !important;
     background-color: #fff;
