@@ -1610,3 +1610,6 @@ body.produto .carousel-qd-v1-shelf h2 {
     color: #FFF;
     background-color: #2D4F9E
 }
+
+.product-qd-v1-installation .acessorios_instalacao fieldset,
+.product-qd-v1-installation .accessories-qd-v1-item fieldset { display:none }
