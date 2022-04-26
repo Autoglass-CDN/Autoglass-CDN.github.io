@@ -173,6 +173,16 @@
   opacity: 0;
 }
 
+/* #shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten input::placeholder {
+  content: "SOMETHING";
+  width: 100px;
+  height: 100px;
+  background: red;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+} */
+
 #shipping-preview-container
   .vtex-shipping-preview-0-x-postalCodeForgotten
   input:focus {
@@ -231,8 +241,8 @@
   right: auto;
 }
 
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) > div,
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) > label.srp-shipping-current-single,
+#shipping-preview-container .srp-delivery-info > div,
+#shipping-preview-container .srp-pickup-info > label.srp-shipping-current-single,
 #shipping-preview-container #open-modal-ic,
 #shipping-preview-container #open-modal-il
 {
@@ -242,7 +252,7 @@
   transition: var(--transition-hover-receber-retirar);
 }
 
-#shipping-preview-container .srp-delivery-info > div:hover
+#shipping-preview-container .srp-delivery-info > div:hover,
 #shipping-preview-container .srp-pickup-info > div.instalar:hover > a {
   background-color: var(--azul-hover-receber-retirar);
 }
@@ -271,19 +281,19 @@
   color: var(--azul-receber-retirar);
 }
 
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-delivery-current-many__description .srp-delivery-current-many__price,
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__wrapper .srp-shipping-current-single__description .srp-shipping-current-single__price {
+#shipping-preview-container .srp-delivery-info .srp-delivery-current-many__description .srp-delivery-current-many__price,
+#shipping-preview-container .srp-pickup-info .srp-shipping-current-single__wrapper .srp-shipping-current-single__description .srp-shipping-current-single__price {
   color: var(--azul-receber-retirar);
   font-size: 16px;
   font-weight: 600;
 }
 
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-delivery-current-many__description .srp-delivery-current-many__text,
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__description .srp-shipping-current-single__text {
+#shipping-preview-container .srp-delivery-info .srp-delivery-current-many__description .srp-delivery-current-many__text,
+#shipping-preview-container .srp-pickup-info .srp-shipping-current-single__description .srp-shipping-current-single__text {
   border-right-color: var(--azul-receber-retirar);
 }
 
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__wrapper > div.srp-shipping-current-single__bullet {
+#shipping-preview-container .srp-pickup-info .srp-shipping-current-single__wrapper > div.srp-shipping-current-single__bullet {
   opacity: 0;
 }
 
