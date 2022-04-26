@@ -3586,9 +3586,6 @@ body.qd-product-unavailable .product-qd-v1-float-bar .product-qd-v1-buy-button {
     text-align: center;
     cursor: pointer;
 }
-.accessories-qd-v1-wrapper .accessories-qd-v1-item input[type="checkbox"] {
-    display: none;
-}
 .accessories-qd-v1-wrapper .accessories-qd-v1-item label {
     transition: all 0.2s ease-out;
     position: relative;
