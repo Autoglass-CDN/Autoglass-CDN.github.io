@@ -323,6 +323,7 @@ $(window).on('load', () => {
             if (hasInstall) {
                 $('body').addClass('hasInstall');
                 setTimeout(() => _buildDeliveryInfo(orderForm), 500);
+                $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
             }
 
             if (hasInstall && hasInstallButtom) {
@@ -352,7 +353,7 @@ $(window).on('load', () => {
                 $("span").remove(".instalar");
                 $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
                 $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
-                $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Entrega ou Retirada');
+                $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
             }
 
             View.createCepInfo(orderForm, hasInstall);
