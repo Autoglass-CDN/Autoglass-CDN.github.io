@@ -241,7 +241,7 @@
   transition: var(--transition-hover-receber-retirar);
 }
 
-#shipping-preview-container .srp-delivery-info > div:hover
+#shipping-preview-container .srp-delivery-info > div:hover,
 #shipping-preview-container .srp-pickup-info > div.instalar:hover > a {
   background-color: var(--azul-hover-receber-retirar);
 }
