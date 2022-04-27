@@ -1,0 +1,69 @@
+footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li p {
+  margin:0;
+  padding: 15px 10px 15px 0;
+  font-weight: 600;
+}
+
+footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li ul {
+  display: flex;
+  flex-direction: column;
+}
+
+footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li ul li {
+  min-height: 30px;
+}
+
+footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li ul li:last-of-type {
+  min-height: 50px;
+}
+
+footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li ul li a {
+  margin: 0;
+  padding: 5px 10px 5px 0px;
+  font-size: 14px;
+  font-weight: 400;
+  transition: all .2s ease-out;
+  position: absolute;
+}
+
+footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li ul li a:hover {
+  padding-left: 20px;
+  color: #FFF;
+}
+
+@media (min-width: 769px) {
+  footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li ul {
+    display: flex !important;
+  }
+}
+
+@media (max-width: 992px) and (min-width: 769px) {
+  footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li ul li {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 769px) {
+  footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li ul li a {
+    position: static;
+  }
+
+  footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li p {
+    width: 100%;
+  }
+
+  footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li p::after {
+    content: '\f107';
+    font-family: fontAwesome;
+    position: absolute;
+    right: 0;
+    font-size: 16px;
+  }
+}
