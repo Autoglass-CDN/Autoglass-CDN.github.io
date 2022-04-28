@@ -2,14 +2,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <!--<link rel="stylesheet" href="//cdn.quatrodigital.com/autoglass-arquivos/CSS.aut.far.qd-bootstrap-common.css" type="text/css" />-->
 
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/servicos/CSS.aut.far.qd-bootstrap-servicos.css"
-  type="text/css" onload="this.media='all'"/>
+<link rel="preload" href="https://autoglass-cdn.github.io/src/css/legacy/servicos/CSS.aut.far.qd-bootstrap-servicos.css"
+as="style" onload="this.rel='stylesheet'"/>
 
 <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/localization-modal.css"
 type="text/css" onload="this.media='all'"/>
 
 <link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" as="style" onload="this.rel='stylesheet'" crossorigin="anonymous" />
 
 <link href="/arquivos/locationFetcher.css" rel="stylesheet" type="text/css" onload="this.media='all'"/>
 <link href="https://autoglass-cdn.github.io/src/css/policies/header.css" type="text/css" onload="this.media='all'"/>
@@ -23,8 +23,8 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
 <!-- End of Segment Pixel -->
 
 <!-- footer: Passar para o subtemplate assim que o legacy-MZ-CBKY.js for excluído -->
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/footer.css" />
-    <script async="" src="https://autoglass-cdn.github.io/src/js/footer.js" type="text/javascript"></script>
+    <link  rel="preload" href="https://autoglass-cdn.github.io/src/css/footer.css"  as="style" onload="this.rel='stylesheet'"/>
+    <script defer="" src="https://autoglass-cdn.github.io/src/js/footer.js" type="text/javascript"></script>
 <!-- end of footer-->
 
 <!--
@@ -35,8 +35,17 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
 -->
 
 <!-- Start of autoglass8792 Zendesk Widget script -->
-<script defer="" id="ze-snippet"
-src="https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c"> </script>
+<script>
+    window.onload = function(){
+        setTimeout(function() {
+            var zendeskElement = document.createElement("script");
+            zendeskElement.id = "ze-snippet";
+            zendeskElement.src = "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c";
+            document.getElementsByTagName("head")[0].appendChild(zendeskElement);
+        }, 5000);
+    };
+</script>
+<!--<script defer="" language="JavaScript" id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c"> </script>-->
 <!-- End of autoglass8792 Zendesk Widget script -->
 
 <!--<script async="" src="https://www.googleoptimize.com/optimize.js?id=OPT-MTHHM4S"></script>-->
