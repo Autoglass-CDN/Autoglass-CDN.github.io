@@ -1,33 +1,3 @@
-#shipping-data .box-step button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery {
-  display: flex;
-  justify-content: center;
-  background: transparent;
-  color: transparent;
-  position: relative;
-  user-select: none;
-}
-#shipping-data .box-step button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery:hover {
-  background-color: transparent;
-}
-
-#shipping-data .box-step button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery:after {
-  content: "\f110";
-  font-family: 'FontAwesome';
-  position: absolute;
-  color: grey;
-  font-size: 20px;
-  animation: rotation 1s infinite linear;
-}
-
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
-
 #shipping-data > div .box-step > p:last-of-type button:not(.go-to-payment) {
   background: darkgray;
   pointer-events: none;
