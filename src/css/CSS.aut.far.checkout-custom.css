@@ -708,6 +708,22 @@ body.body-order-form #go-to-shipping, body.body-order-form #btn-go-to-payment, b
   width: 100%
 }
 
+@media (max-width: 490px) {
+  body#checkoutMainContainer.body-order-form #go-to-shipping, 
+  body#checkoutMainContainer.body-order-form #btn-go-to-payment, 
+  body#checkoutMainContainer.body-order-form #payment-data-submit {
+    bottom: 0;
+    left: 0;
+    position: fixed;
+    width: 100%;
+    z-index: 10000000000000 !important;
+  }
+  
+  iframe#launcher {
+    bottom:50px !important;
+  }
+}
+
 body.body-order-form #go-to-shipping:hover, body.body-order-form #btn-go-to-payment:hover, body.body-order-form #payment-data-submit:hover {
   text-decoration: none;
   outline: none
