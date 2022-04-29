@@ -352,13 +352,9 @@ body.hasInstall .shp-summary-package-time {
 
 
 /* Decrição Carrinho */
-.srp-description {
-  font-size: 0;
-}
 
-.srp-description::after {
-  font-size: 13px;
-  content: "Veja as opções de entrega, retirada ou instalação com prazos e valores.";
+.srp-content.onda-v1 h2 {
+  display:none;
 }
 
 /* Itens crossSelling */
