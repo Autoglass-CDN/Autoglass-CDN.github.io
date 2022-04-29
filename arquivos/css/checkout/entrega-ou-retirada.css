@@ -69,16 +69,6 @@
   width: min(120%, 100vw - 70px);
 }
 
-#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper .srp-toggle__delivery span.instalar {
-  font-size: 0;
-  display: flex;
-}
-
-#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper .srp-toggle__delivery span.instalar::after {
-  content:'Instalação móvel';
-  font-size: 16px;
-}
-
 #shipping-preview-container .srp-toggle__wrapper label input {
   display: initial;
 }
