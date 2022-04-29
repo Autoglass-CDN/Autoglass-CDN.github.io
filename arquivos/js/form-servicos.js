@@ -459,11 +459,9 @@ class Formulario {
   }
 }
 (function(){
-  window.onload = () => {
-      DetalhamentoDePeçaDanificada.init();
-      ValidacaoDeInput.init();
-      Select2.init();
-      FormSubmit.init();
-      Formulario.init();
-  }
+    DetalhamentoDePeçaDanificada.init();
+    ValidacaoDeInput.init();
+    Select2.init();
+    FormSubmit.init();
+    Formulario.init();
 })();
