@@ -709,8 +709,6 @@ body.body-order-form #go-to-shipping, body.body-order-form #btn-go-to-payment, b
 }
 
 @media (max-width: 490px) {
-  body#checkoutMainContainer.body-order-form #go-to-shipping, 
-  body#checkoutMainContainer.body-order-form #btn-go-to-payment, 
   body#checkoutMainContainer.body-order-form #payment-data-submit {
     bottom: 0;
     left: 0;
