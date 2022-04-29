@@ -716,11 +716,11 @@ body.body-order-form #go-to-shipping, body.body-order-form #btn-go-to-payment, b
     left: 0;
     position: fixed;
     width: 100%;
-    z-index: 10000000000000 !important;
+    z-index: 10 !important;
   }
   
   iframe#launcher {
-    bottom:50px !important;
+    bottom: 50px !important;
   }
 }
 
