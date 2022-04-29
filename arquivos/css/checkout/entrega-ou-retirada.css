@@ -1,0 +1,292 @@
+:root {
+  --green-receber-retirar: #43c450;
+  --gray-receber-retirar: #ccc;
+  --dark-gray-receber-retirar: #666;
+  --azul-receber-retirar: #003ca5;
+  --azul-hover-receber-retirar: #1a3779;
+  --transition-hover-receber-retirar: 0.2s;
+}
+
+.srp-description.mw5 {
+  opacity: 0;
+}
+
+#shipping-preview-container #shipping-calculate-link {
+  background-color: var(--azul-receber-retirar);
+  color: #eee;
+  font-size: 0;
+  font-weight: 600;
+  transition: background-color var(--transition-hover-receber-retirar);
+}
+
+#shipping-preview-container #shipping-calculate-link:hover {
+  background-color: var(--azul-hover-receber-retirar);
+}
+
+#shipping-preview-container #shipping-calculate-link:after {
+  content: "Insira seu CEP";
+  font-size: 14px;
+}
+
+#shipping-preview-container .srp-toggle__wrapper {
+  box-shadow: none;
+  flex-direction: row-reverse;
+}
+
+#shipping-preview-container .srp-toggle__wrapper > div {
+  display: none;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label {
+  text-transform: none;
+  width: 48%;
+  border: 1.5px solid var(--gray-receber-retirar);
+  border-radius: 5px;
+  margin-right: 5px;
+  font-weight: 600;
+  -webkit-box-shadow: 0px 0px 0px 0px var(--green-receber-retirar);
+  transition: -webkit-box-shadow var(--transition-hover-receber-retirar);
+}
+
+#shipping-preview-container .srp-toggle__wrapper label:hover {
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+#shipping-preview-container .srp-toggle:not(.instalacao) .srp-toggle__wrapper label,
+#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper label span.instalar{
+  font-size: 16px;
+  color: var(--dark-gray-receber-retirar);
+  margin: 0 7px;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label.blue {
+  color: var(--dark-gray-receber-retirar);
+  border-color: var(--green-receber-retirar);
+  -webkit-box-shadow: 0px 0px 8px 0px var(--green-receber-retirar);
+}
+
+#shipping-preview-container .srp-toggle.instalacao {
+  width: min(120%, 100vw - 70px);
+}
+
+#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper .srp-toggle__delivery span.instalar {
+  font-size: 0;
+  display: flex;
+}
+
+#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper .srp-toggle__delivery span.instalar::after {
+  content:'Instalação móvel';
+  font-size: 16px;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label input {
+  display: initial;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"] {
+  border-width: 1.5px;
+  border-style: solid;
+  border-color: var(--gray-receber-retirar);
+  border-radius: 3px;
+  display: inline-block;
+  height: 15px;
+  margin: 0 7px;
+  position: relative;
+  top: -2px;
+  width: 15px;
+  -webkit-appearance: none;
+}
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"] {
+  top: 0px;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:focus {
+  outline: none;
+}
+
+#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked::after {
+  content: "\f00c";
+  font-family: fontAwesome;
+  font-size: 16px;
+  color: var(--green-receber-retirar);
+  position: absolute;
+  top: -4px;
+  text-shadow: 2px 1px #fff, 1px -2px #fff;
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten {
+  align-items: flex-start;
+  margin-left: 5px;
+  margin-top: 25px;
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten::before{
+  content: "\f041";
+  font-family: fontAwesome;
+  position: absolute;
+  font-size: 16px;
+  color:var(--gray-receber-retirar);
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten::after {
+  content: "CEP";
+  position: absolute;
+  padding-left: 13px;
+  color:var(--gray-receber-retirar);
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten #cart-shipping-calculate {
+  margin-top: 20px;
+  text-shadow: none;
+  box-shadow: none;
+  transition: var(--transition-hover-receber-retirar);
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten #cart-shipping-calculate:hover {
+  background-color: var(--azul-hover-receber-retirar);
+  border-color: var(--azul-hover-receber-retirar);
+  color: #fff;
+
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-pc {
+  position: relative;
+}
+#shipping-preview-container .vtex-shipping-preview-0-x-pc::before,
+#shipping-preview-container .vtex-shipping-preview-0-x-pc::after {
+  content: "\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0 na sua casa ou \a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0 em uma das nossas lojas";
+  position: absolute;
+  top: -20px;
+  font-size: 15px;
+  width: 90%;
+  padding-left: 5px;
+  left: 0;
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-pc::after {
+  content: "Receba\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0\a0retire";
+  font-weight: 600;
+}
+
+#shipping-preview-container .vtex-shipping-preview-0-x-pc p.input > label:first-of-type{
+  opacity: 0;
+}
+
+#shipping-preview-container
+  .vtex-shipping-preview-0-x-postalCodeForgotten
+  input:focus {
+  -webkit-box-shadow: 0px 0px 8px 0px var(--green-receber-retirar);
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info {
+  color: var(--azul-receber-retirar);
+  display: flex;
+  flex-direction: initial;
+  height: 40px;
+  padding: 0;
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title {
+  white-space: nowrap;
+  color: var(--dark-gray-receber-retirar);
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title svg,
+#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title b,
+#shipping-preview-container .srp-pickup-info .cep-info.cep-info .cep-info__title svg {
+  color: var(--azul-receber-retirar);
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location {
+  display: contents;
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location span,
+#shipping-preview-container .srp-pickup-info .cep-info .cep-info__location span {
+  width: auto;
+}
+#shipping-preview-container .srp-pickup-info .cep-info .cep-info__location span {
+  white-space: initial;
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location .cep-info__location-street {
+  margin: 0;
+  margin-left: 5px;
+  color: var(--azul-receber-retirar);
+}
+#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location .cep-info__location-street::before {
+  content: "| ";
+}
+
+#shipping-preview-container .srp-delivery-header .cep-info #change-button,
+#shipping-preview-container .srp-pickup-info .cep-info #change-button {
+  position: absolute;
+  bottom: 2px;
+  left: 28px;
+  font-size: 12px;
+  font-style: italic;
+  color: #29abe2;
+  font-weight: normal;
+  right: auto;
+}
+
+#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) > div,
+#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) > label.srp-shipping-current-single,
+#shipping-preview-container #open-modal-ic,
+#shipping-preview-container #open-modal-il
+{
+  border-color: var(--azul-receber-retirar);
+  border-width: thin;
+  border-radius: 5px;
+  transition: var(--transition-hover-receber-retirar);
+}
+
+#shipping-preview-container .srp-delivery-info > div:hover,
+#shipping-preview-container .srp-pickup-info > div.instalar:hover > a {
+  background-color: var(--azul-hover-receber-retirar);
+}
+
+#shipping-preview-container .srp-delivery-info > div:not(.instalar):hover div,
+#shipping-preview-container .srp-delivery-info > div:not(.instalar):hover div svg g,
+#shipping-preview-container .srp-delivery-info > div.instalar:hover > a div,
+#shipping-preview-container .srp-pickup-info > div.instalar:hover > a div {
+  color: #fff;
+  border-color: #fff;
+  fill: white;
+}
+
+#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) > div.instalar:hover > a {
+  text-decoration: none;
+}
+
+#shipping-preview-container .srp-delivery-info > div.instalar > a,
+#shipping-preview-container .srp-pickup-info > div.instalar > a {
+  display: flex;
+  justify-content: center;
+  font-size: 14px;
+}
+#shipping-preview-container .srp-delivery-info > div.instalar > a .instalar_calendar,
+#shipping-preview-container .srp-pickup-info > div.instalar > a .instalar_calendar {
+  color: var(--azul-receber-retirar);
+}
+
+#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-delivery-current-many__description .srp-delivery-current-many__price,
+#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__wrapper .srp-shipping-current-single__description .srp-shipping-current-single__price {
+  color: var(--azul-receber-retirar);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-delivery-current-many__description .srp-delivery-current-many__text,
+#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__description .srp-shipping-current-single__text {
+  border-right-color: var(--azul-receber-retirar);
+}
+
+#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__wrapper > div.srp-shipping-current-single__bullet {
+  opacity: 0;
+}
+
+#shipping-preview-container .srp-pickup-info .cep-info #change-button {
+  position: initial;
+  padding-left: 23px;
+}
