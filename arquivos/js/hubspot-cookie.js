@@ -89,7 +89,7 @@
         orderFormId = getOrderFormId();
       }
 
-      /* await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
+      await fetch(`http://api-int.autoglass.com.br/integracao-b2c/api/master-datas/clientes/${email.trim()}`, {
         method: 'PUT',
         headers: new Headers({
           "Content-Type": "application/json",
@@ -99,7 +99,7 @@
           lastOrderFormId: orderFormId,
           lastOrderId: orderId,
         }),
-      }).then(() => {isDataSent = true}); */
+      }).then(() => {isDataSent = true});
 
     } catch (e) {
       console.warn('Falha ao enviar dados ao MasterData!');
