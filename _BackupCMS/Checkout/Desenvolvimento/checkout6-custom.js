@@ -50,42 +50,6 @@ const CONFIG = {
     }
 }
 
-let larguraTela = window.screen.width;
-
-if(larguraTela < 490) {
-  $(window).scroll(function() {
-    let botaoFinalizar = document.querySelector("body#checkoutMainContainer.body-order-form #payment-data-submit");
-    
-    if(document.body.contains(botaoFinalizar)) {
-      
-      let distanciaTopoContainer = document.querySelector("body#checkoutMainContainer.body-order-form .transactions-container").offsetTop;
-      
-      let topScroll = $(window).scrollTop();
-      let container = "body#checkoutMainContainer.body-order-form";
-      
-      if(topScroll > (distanciaTopoContainer - 520)) {
-        $(container + " #payment-data-submit").css({
-          'bottom'   : 'auto',
-          'position' : 'relative',
-          'width'    : '100%'
-        });
-        
-        $(container + " iframe#launcher").css('bottom','0');
-      
-      } else {
-        $(container + " #payment-data-submit").css({
-          'bottom'   : '0',
-          'position' : 'fixed',
-          'width'    : '85%'
-        });
-        
-        $(container + " iframe#launcher").css('bottom','50px');
-      }
-    }
-          
-  });
-}
-
 $(window).on('load', () => {
     const Controller = ControllerAPI();
     const Service = ServiceAPI();
@@ -779,6 +743,48 @@ $(window).on('load', () => {
             })
         }
     }
+
+    function ajustaBotaoFinalizarCompra() {
+        const larguraTela = window.screen.width;
+
+        if(larguraTela < 490) {
+          const container      = "body#checkoutMainContainer.body-order-form";
+          const botaoFinalizar = document.querySelector(container + " #payment-data-submit");
+          const distanciaTopoContainer = document.querySelector(container + " .transactions-container").offsetTop;
+          let mudou = false;
+
+          $(window).scroll(function() {
+            
+            if(document.body.contains(botaoFinalizar)) {
+             
+              let topScroll = $(window).scrollTop();
+              
+              if(topScroll > (distanciaTopoContainer - 500)) {
+                $(container + " #payment-data-submit").css({
+                  'bottom'   : 'auto',
+                  'position' : 'relative',
+                  'width'    : '100%'
+                });
+                
+                $(container + " iframe#launcher").css('bottom','0 !important');
+              
+              } else {
+                mudou = true;
+                $(container + " #payment-data-submit").css({
+                  'bottom'   : '0',
+                  'position' : 'fixed',
+                  'width'    : '85%'
+                });
+                
+                $(container + " iframe#launcher").css('bottom','50px !important');
+              }
+            }
+                  
+          });
+        }
+    }
+
+	ajustaBotaoFinalizarCompra();
 
     function ServiceAPI() {
         return {
