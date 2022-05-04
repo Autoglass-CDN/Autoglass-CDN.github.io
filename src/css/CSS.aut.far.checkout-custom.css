@@ -716,7 +716,7 @@ body.body-order-form #go-to-shipping, body.body-order-form #btn-go-to-payment, b
     z-index: 10 !important;
   }
   
-  iframe#launcher {
+  body#checkoutMainContainer.body-order-form iframe#launcher {
     bottom: 50px !important;
   }
 }
