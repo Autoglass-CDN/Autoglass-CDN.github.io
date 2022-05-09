@@ -303,7 +303,7 @@
     const changeButtonStyle = "change-button-style";
     const parentClassNameRemove = "undefined delivery-group-content";
     const changeButtonStyleText = "Veja os horários disponíveis";
-    const mutationObserver = new MutationObserver((mutations) => {
+    const mutationObserverShipping = new MutationObserver((mutations) => {
       mutations.forEach(mutation => {
         mutation.removedNodes.forEach(function(removed_node){
           if(removed_node.className == parentClassNameRemove) {
@@ -321,9 +321,62 @@
       });
   });
 
-  mutationObserver.observe(
+  mutationObserverShipping.observe(
     $('#shipping-data')[0],
     {subtree: true, childList: true}
   );
 
-  })();
+  function onlyProceedIfAdult() {
+
+    const profileId = "#client-profile-data";
+    const checkboxClass = "checkbox adulthood-label";
+    const checkboxId = "opt-in-adulthood";
+    const goToShippingButtonId = "#go-to-shipping";
+    const classBlockShipping = "blocked";
+    const classHighlightCheckbox = "highlight";
+
+    const adult = Object.create({
+      yes: () => {$(goToShippingButtonId).removeClass(classBlockShipping);
+                  $(`#${checkboxId}`).parent().removeClass(classHighlightCheckbox)},
+      no: () => {$(goToShippingButtonId).addClass(classBlockShipping);
+                  $(`#${checkboxId}`).parent().addClass(classHighlightCheckbox)}
+    });
+
+    const mutationObserverProfile = new MutationObserver((mutations) => {
+      mutations.forEach(mutation => {
+        mutation.addedNodes.forEach(function(added_node){
+          if(added_node.className == checkboxClass) {
+              const goToShippingButton = $(goToShippingButtonId);
+              goToShippingButton.addClass(classBlockShipping);
+              $(`#${checkboxId}`).change(function() {
+                updateAdulthood(this.checked)
+            })
+          }
+        })
+      });
+    });
+
+    mutationObserverProfile.observe(
+      $(profileId)[0],
+      {subtree: true, childList: true}
+    );
+
+    function updateAdulthood(isAdult) {
+      isAdult ? adult.yes() : adult.no();
+    }
+
+    if(window.location.hash.endsWith('profile'))
+      $('body').one('click', function() {
+        const isCheckboxChecked = document.getElementById(checkboxId).checked;
+        updateAdulthood(isCheckboxChecked)
+        window.removeEventListener()
+      });
+  }
+
+  window.addEventListener("popstate", function () {
+    let currentPage = location.href.split("/").pop();
+    if(currentPage == 'profile')
+      onlyProceedIfAdult();
+  });
+
+})();
