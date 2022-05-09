@@ -711,11 +711,18 @@ body.body-order-form #go-to-shipping, body.body-order-form #btn-go-to-payment, b
 @media (max-width: 490px) {
   body#checkoutMainContainer.body-order-form #payment-data-submit {
     bottom: 0;
+    margin-left: -1px;
     position: fixed;
-    width: 85%;
+    transition: 0s;
+    width: 83%;
     z-index: 10 !important;
   }
-  
+
+  body#checkoutMainContainer.body-order-form #payment-data-submit.cta-posicao-padrao {
+    position: relative;
+    width: 100%;
+  }
+
   body#checkoutMainContainer.body-order-form iframe#launcher {
     bottom: 50px !important;
   }
