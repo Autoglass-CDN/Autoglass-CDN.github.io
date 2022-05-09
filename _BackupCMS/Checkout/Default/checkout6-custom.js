@@ -739,39 +739,6 @@ $(window).on('load', () => {
         }
     }
 
-    function ajustaBotaoFinalizarCompra() {
-        const larguraTela    = window.screen.width;
-        const container      = "body#checkoutMainContainer.body-order-form";
-        const botaoFinalizar = document.querySelector(container + " #payment-data-submit");
-        
-        if(larguraTela < 490 && document.body.contains(botaoFinalizar)) {      
-          $(window).scroll(function() {
-            if(window.scrollY > 826) {
-             $(container + " #payment-data-submit").css({
-                    'bottom'   : 'auto',
-                    'position' : 'relative',
-                    'width'    : '100%'
-              });
-              
-              $("iframe#launcher").css('bottom','0 !important');
-              
-            } else {
-              
-              $(container + " #payment-data-submit").css({
-                    'bottom'   : '0',
-                    'position' : 'fixed',
-                    'width'    : '84%',
-                 'margin-left' : '-1px'
-              });
-              
-              $("iframe#launcher").css('bottom','50px !important');
-            }
-            });
-        }
-    }
-  
-    ajustaBotaoFinalizarCompra();
-
     function ServiceAPI() {
         return {
             sendGAEvent,

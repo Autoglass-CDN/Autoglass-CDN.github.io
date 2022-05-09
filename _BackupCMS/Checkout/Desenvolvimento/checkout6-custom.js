@@ -745,42 +745,21 @@ $(window).on('load', () => {
     }
 
     function ajustaBotaoFinalizarCompra() {
-        const larguraTela = window.screen.width;
-
-        if(larguraTela < 490) {
-          const container      = "body#checkoutMainContainer.body-order-form";
-          const botaoFinalizar = document.querySelector(container + " #payment-data-submit");
-          const distanciaTopoContainer = document.querySelector(container + " .transactions-container").offsetTop;
-          let mudou = false;
-
-          $(window).scroll(function() {
-            
-            if(document.body.contains(botaoFinalizar)) {
-             
-              let topScroll = $(window).scrollTop();
-              
-              if(topScroll > (distanciaTopoContainer - 500)) {
-                $(container + " #payment-data-submit").css({
-                  'bottom'   : 'auto',
-                  'position' : 'relative',
-                  'width'    : '100%'
-                });
-                
-                $(container + " iframe#launcher").css('bottom','0 !important');
-              
-              } else {
-                mudou = true;
-                $(container + " #payment-data-submit").css({
-                  'bottom'   : '0',
-                  'position' : 'fixed',
-                  'width'    : '85%'
-                });
-                
-                $(container + " iframe#launcher").css('bottom','50px !important');
-              }
-            }
-                  
-          });
+        const larguraTela      = window.screen.width;
+        const container        = "body#checkoutMainContainer.body-order-form";
+        const botaoFinalizar   = document.querySelectorAll(container + " #payment-data-submit");
+        const dispositivoMovel = larguraTela < 490;
+        const paginaPagamento  = document.body.contains(botaoFinalizar[0]);
+        const tamanhoBlocoPgto = 826;
+        
+        if(dispositivoMovel && paginaPagamento) {
+            $(window).scroll(function() {
+                if(window.scrollY > tamanhoBlocoPgto) {
+                    $(botaoFinalizar).removeClass('cta-posicao-padrao');
+                } else {
+                    $(botaoFinalizar).addClass('cta-posicao-padrao');
+                }
+            });
         }
     }
 
