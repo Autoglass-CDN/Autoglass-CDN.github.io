@@ -2387,3 +2387,14 @@ fieldset.payment-group div.required.payment-group-list-btn{
   display: block;
   width: 100%;
 }
+
+#client-profile-data button.blocked{
+  background: darkgray;
+  pointer-events: none;
+  border: none;
+}
+
+#client-profile-data label.highlight span:after{
+  content:" (Campo Obrigatório)";
+  color:#dd4b39;
+}
