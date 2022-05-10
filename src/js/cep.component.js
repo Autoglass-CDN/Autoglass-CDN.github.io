@@ -77,6 +77,12 @@
                     detail: orderForm,
                 })
             );
+
+            $('#shipping-preview-container').on('click', '.srp-delivery-info div', function(e) {
+              if( vtexjs?.checkout?.orderForm &&
+                  vtexjs.checkout.orderForm.shippingData.address.postalCode)
+              Controller.submitEvent(e, vtexjs.checkout.orderForm.shippingData.address.postalCode);
+            })
         }
 
         function getCurrentAddress(orderForm) {
@@ -115,7 +121,7 @@
 
             const mutationObserver = new MutationObserver((mutations) => {
                 const address = getCurrentAddress(orderForm);
-                
+
                 if(!address) {
                     mutations.forEach(mutation => {
                         if (mutation.attributeName === 'class') {
@@ -301,7 +307,7 @@
                 () => $(`${modalContent} .cep-new`).css("transform", "translateX(0)"),
                 100
             );
-            
+
             const inputSelector = `${modalContent} .cep-new__content-input`;
             const isMobile = _defineHowCepInputWillWork(inputSelector);
             const maxLength = !isMobile ? 9 : 8;
@@ -321,7 +327,7 @@
 
             $(inputSelector).keyup((e) => {
                 e.preventDefault();
-                if (e.target.value.replace("_", "").length === maxLength) {
+                if (e.target.value.replace("-", "").length === maxLength) {
                     const cep = $(inputSelector).val();
                     Controller.submitEvent(e, cep);
                 }
@@ -330,7 +336,7 @@
             $(`${modalContent} .cep-new__content-form`).on("submit", (e) => {
                 e.preventDefault();
                 if (
-                    $(inputSelector).val().replace("_", "").length === maxLength
+                    $(inputSelector).val().replace("-", "").length === maxLength
                 ) {
                     const cep = $(inputSelector).val();
                     Controller.submitEvent(e, cep);
@@ -394,4 +400,6 @@
             );
         }
     }
+
+
 });
