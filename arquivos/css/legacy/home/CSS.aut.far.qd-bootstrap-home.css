@@ -636,7 +636,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 }
 
 .footer-qd-v1-payment-stamps [class*="stamp"] {
-    background: url('//www.autoglassonline.com.br/arquivos/qd-payment-stamp-flat.png') no-repeat 0 0;
+    background: url('https://autoglass-cdn.github.io/arquivos/img/checkout/payment-stamp.png') no-repeat 0 0;
     width: 47px;
     height: 28px;
     margin-right: 10px;
@@ -658,6 +658,10 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 
 .footer-qd-v1-payment-stamps [class*="diners"] {
     background-position: -153px 0
+}
+
+.footer-qd-v1-payment-stamps [class*="pix"] {
+  background-position: -559px -33px
 }
 
 .footer-qd-v1-security-stamps {
