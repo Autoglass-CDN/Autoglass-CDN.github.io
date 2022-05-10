@@ -421,7 +421,7 @@
 
 @media (max-width: 580px) {
   .mz-modal-advantages {
-    height: 500px;
+    min-height: 500px;
     overflow-y: auto;
   }
 }

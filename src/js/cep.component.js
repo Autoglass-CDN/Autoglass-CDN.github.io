@@ -79,10 +79,12 @@
             );
 
             $('#shipping-preview-container').on('click', '.srp-delivery-info div', function(e) {
-              if( vtexjs?.checkout?.orderForm &&
-                  vtexjs.checkout.orderForm.shippingData.address.postalCode)
+              const calendarioRenderizado = (document.querySelector('.datas-disponiveis').style.display != 'none');
+              if(vtexjs?.checkout?.orderForm &&
+                  vtexjs.checkout.orderForm.shippingData.address.postalCode &&
+                  !calendarioRenderizado)
               Controller.submitEvent(e, vtexjs.checkout.orderForm.shippingData.address.postalCode);
-            })
+            });
         }
 
         function getCurrentAddress(orderForm) {
