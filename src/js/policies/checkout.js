@@ -329,37 +329,23 @@
   function onlyProceedIfAdult() {
 
     const profileId = "#client-profile-data";
-    const checkboxClass = "checkbox adulthood-label";
     const checkboxId = "opt-in-adulthood";
-    const goToShippingButtonId = "#go-to-shipping";
+    const goToShippingButton = $("#go-to-shipping");
     const classBlockShipping = "blocked";
     const classHighlightCheckbox = "highlight";
 
     const adult = Object.create({
-      yes: () => {$(goToShippingButtonId).removeClass(classBlockShipping);
+      yes: () => {goToShippingButton.removeClass(classBlockShipping);
                   $(`#${checkboxId}`).parent().removeClass(classHighlightCheckbox)},
-      no: () => {$(goToShippingButtonId).addClass(classBlockShipping);
+      no: () => {goToShippingButton.addClass(classBlockShipping);
                   $(`#${checkboxId}`).parent().addClass(classHighlightCheckbox)}
     });
 
-    const mutationObserverProfile = new MutationObserver((mutations) => {
-      mutations.forEach(mutation => {
-        mutation.addedNodes.forEach(function(added_node){
-          if(added_node.className == checkboxClass) {
-              const goToShippingButton = $(goToShippingButtonId);
-              goToShippingButton.addClass(classBlockShipping);
-              $(`#${checkboxId}`).change(function() {
-                updateAdulthood(this.checked)
-            })
-          }
-        })
-      });
-    });
+    goToShippingButton.addClass(classBlockShipping);
 
-    mutationObserverProfile.observe(
-      $(profileId)[0],
-      {subtree: true, childList: true}
-    );
+    $(profileId).on('change', `#${checkboxId}`, function() {
+      updateAdulthood(this.checked)
+    })
 
     function updateAdulthood(isAdult) {
       isAdult ? adult.yes() : adult.no();
