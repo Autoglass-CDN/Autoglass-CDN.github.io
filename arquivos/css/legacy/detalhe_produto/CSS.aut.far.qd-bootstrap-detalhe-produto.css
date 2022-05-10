@@ -520,8 +520,8 @@ body {
         display: flex;
         align-items: center;
     }
-    
-    
+
+
     #sugestoes .slick-slider button{
         background: #ccc;
         border: 0;
@@ -529,10 +529,10 @@ body {
         width: 100px;
         height: 30px;
     }
-    
+
     #sugestoes .slick-slider button:hover{
         background: rgb(161, 161, 161);
-        transform: scale(1.2); 
+        transform: scale(1.2);
     }
 }
 
@@ -1052,7 +1052,7 @@ body {
 }
 
 .footer-qd-v1-payment-stamps [class*="stamp"] {
-    background: url('//www.autoglassonline.com.br/arquivos/qd-payment-stamp-flat.png') no-repeat 0 0;
+    background: url('https://autoglass-cdn.github.io/arquivos/img/checkout/payment-stamp.png') no-repeat 0 0;
     width: 47px;
     height: 28px;
     margin-right: 10px;
@@ -1081,6 +1081,10 @@ body {
 
 .footer-qd-v1-payment-stamps [class*="diners"] {
     background-position: -153px 0
+}
+
+.footer-qd-v1-payment-stamps [class*="pix"] {
+  background-position: -559px -33px
 }
 
 .footer-qd-v1-security-stamps {
@@ -1496,7 +1500,7 @@ body.produto .carousel-qd-v1-shelf h2 {
     .carousel-qd-v1-shelf .prateleira {
         padding:0 10px
     }
-    
+
     #similars .prateleira {
         display: flex;
         align-items: center;
@@ -1509,10 +1513,10 @@ body.produto .carousel-qd-v1-shelf h2 {
         border: 0px;
         background-color: #DDD;
     }
-    
+
     #similars .prateleira button:hover{
         background-color: #AAA;
-        transform: scale(1.2); 
+        transform: scale(1.2);
     }
 }
 
