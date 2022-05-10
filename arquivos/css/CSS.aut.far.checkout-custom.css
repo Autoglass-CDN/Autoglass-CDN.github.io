@@ -127,7 +127,7 @@
 }
 
 .footer-qd-v1-payment-stamps [class*="stamp"] {
-  background: url('//devautoglass.vteximg.com.br/arquivos/qd-payment-stamp-flat.png') no-repeat 0 0;
+  background: url('https://autoglass-cdn.github.io/arquivos/img/checkout/payment-stamp.png') no-repeat 0 0;
   width: 47px;
   height: 28px;
   margin-right: 10px;
@@ -216,6 +216,10 @@
 
 .footer-qd-v1-payment-stamps [class*="banrisul"] {
   background-position: -508px -33px
+}
+
+.footer-qd-v1-payment-stamps [class*="pix"] {
+  background-position: -559px -33px
 }
 
 .footer-qd-v1-security-stamps {
