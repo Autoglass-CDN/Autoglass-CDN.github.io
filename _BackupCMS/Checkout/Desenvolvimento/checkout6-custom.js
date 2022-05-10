@@ -610,11 +610,12 @@ $(window).on('load', () => {
 
         function _createInfoDelivery(address) {
             const day = Service.getSelectedDaySM();
+            const botaoVerDiasDisponiveisExiste = !!$('#open-modal-ic').length;
 
             $('.vtex-omnishipping-1-x-shippingSectionTitle').html('Data de Instalação');
             $('.vtex-omnishipping-1-x-shippingSectionTitle.delivery-address-title').html('Endereço de Instalação');
 
-            if (!day) {
+            if (!day && !botaoVerDiasDisponiveisExiste) {
                 $('.srp-delivery-info .instalar-em-casa').html(`
                         <a id="open-modal-ic">
                             <div class="instalar_calendar"><i class="fa fa-calendar"></i></div>
@@ -649,13 +650,11 @@ $(window).on('load', () => {
 
             try {
 
-                setTimeout(() => {
-                    $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
-                        (selectedDate, details) => {
-                            _createConfirmButtonSM(selectedDate, details);
-                        });
-
-                }, 500);
+                $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
+                    (selectedDate, details) => {
+                        _createConfirmButtonSM(selectedDate, details);
+                    }
+                );
 
             } catch {
                 console.error('Falha ao criar onSelect no datepicker')
