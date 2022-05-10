@@ -30,7 +30,6 @@
 
 #shipping-preview-container .srp-toggle__wrapper {
   box-shadow: none;
-  flex-direction: row-reverse;
 }
 
 #shipping-preview-container .srp-toggle__wrapper > div {
