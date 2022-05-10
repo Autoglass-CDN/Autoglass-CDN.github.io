@@ -716,7 +716,7 @@ body.body-order-form #go-to-shipping, body.body-order-form #btn-go-to-payment, b
     width: 100%;
     z-index: 10 !important;
   }
-  
+
   iframe#launcher {
     bottom: 50px !important;
   }
@@ -2380,4 +2380,15 @@ fieldset.payment-group div.required.payment-group-list-btn{
 #shipping-data.change-button-style .box-step .undefined.delivery-group-content .pickup-packages div label .shp-option-text a {
   display: block;
   width: 100%;
+}
+
+#client-profile-data button.blocked{
+  background: darkgray;
+  pointer-events: none;
+  border: none;
+}
+
+#client-profile-data label.highlight span:after{
+  content:" (Campo Obrigatório)";
+  color:#dd4b39;
 }
