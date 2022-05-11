@@ -331,6 +331,14 @@ $(window).on('load', () => {
 
             if (hasInstall && hasInstallButtom) {
                 $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
+
+                $(".srp-toggle__pickup").append(
+                    "<span class='instalar'>Instalar na loja</span>"
+                );
+                $(".srp-toggle__delivery").append(
+                    "<span class='instalar'>Instalar em casa</span>"
+                );
+                
                 $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
             }
 
