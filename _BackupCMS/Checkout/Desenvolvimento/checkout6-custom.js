@@ -163,9 +163,11 @@ $(window).on('load', () => {
                 if (title.is('.accordion-toggle-active')) {
                     title.html('<i class="icon-home"></i> Instalar');
                 }
+                $('#shipping-data').addClass('altera-texto-abas-checkout');
                 View.addInstallTexts(orderForm);
             } else if (title.is('.accordion-toggle-active')) {
                 title.html('<i class="icon-home"></i> Receber ou Retirar');
+                $('#shipping-data').removeClass('altera-texto-abas-checkout');
             }
 
             View.createCepInfo(orderForm, hasInstall);
@@ -323,18 +325,12 @@ $(window).on('load', () => {
             if (hasInstall) {
                 $('body').addClass('hasInstall');
                 setTimeout(() => _buildDeliveryInfo(orderForm), 500);
+                $('#shipping-data').addClass('altera-texto-abas-checkout');
                 $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
             }
 
             if (hasInstall && hasInstallButtom) {
                 $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
-                $(".srp-toggle__pickup").append(
-                    "<span class='instalar'>Instalar na loja</span>"
-                );
-                $(".srp-toggle__delivery").append(
-                    "<span class='instalar'>Instalar em casa</span>"
-                );
-
                 $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
             }
 
@@ -353,6 +349,7 @@ $(window).on('load', () => {
                 $("span").remove(".instalar");
                 $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
                 $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
+                $('#shipping-data').removeClass('altera-texto-abas-checkout');
                 $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
             }
 
@@ -361,16 +358,6 @@ $(window).on('load', () => {
 
         function addInstallTexts(orderForm) {
             $('.accordion-inner').addClass('instalacao');
-
-            let pickupInPointBtn = $('#shipping-option-pickup-in-point .shp-method-option-text');
-            if (pickupInPointBtn.length && !pickupInPointBtn.html().includes("Instalar")) {
-                pickupInPointBtn.append('<span class="instalar">Instalar na Loja</span>');
-            }
-
-            let deliveryBtn = $('#shipping-option-delivery .shp-method-option-text');
-            if (deliveryBtn.length && !deliveryBtn.html().includes("Instalar")) {
-                deliveryBtn.append('<span class="instalar">Instalar em casa</span>');
-            }
 
             setTimeout(() => {
                 $('body').addClass('hasInstall');
