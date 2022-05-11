@@ -86,8 +86,9 @@
             const calendarioRenderizado = (document.querySelector('.datas-disponiveis').style.display != 'none');
             if(vtexjs?.checkout?.orderForm &&
                 vtexjs.checkout.orderForm.shippingData.address.postalCode &&
-                !calendarioRenderizado)
-            Controller.submitEvent(e, vtexjs.checkout.orderForm.shippingData.address.postalCode);
+                !calendarioRenderizado) {
+              Controller.submitEvent(e, vtexjs.checkout.orderForm.shippingData.address.postalCode);
+            }
           });
         }
 
