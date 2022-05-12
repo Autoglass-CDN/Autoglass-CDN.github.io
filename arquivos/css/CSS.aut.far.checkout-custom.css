@@ -2354,6 +2354,20 @@ fieldset.payment-group div.required.payment-group-list-btn{
   font-weight: 600;
 }
 
+#shipping-data.altera-texto-abas-checkout .shp-method-option:first-of-type::before {
+  content: 'Instalar em casa';
+  font-size: 16px;
+}
+
+#shipping-data.altera-texto-abas-checkout .shp-method-option:last-of-type::before {
+  content: 'Instalar na loja';
+  font-size: 16px;
+}
+
+#shipping-data.altera-texto-abas-checkout .shp-method-option {
+  font-size: 0;
+}
+
 #shipping-data.change-button-style div .box-step .undefined.delivery-group-content .pickup-packages div.vtex-omnishipping-1-x-leanShippingGroupList.shp-lean label {
   background: #FFF;
   border-radius: 5px;
