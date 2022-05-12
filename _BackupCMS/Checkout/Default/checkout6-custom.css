@@ -284,7 +284,6 @@ body.hasInstall .shp-summary-package-time {
 
 @media (max-width: 400px) {
     .mz-modal-advantages {
-        max-height: 500px;
         overflow: auto;
     }
 }
