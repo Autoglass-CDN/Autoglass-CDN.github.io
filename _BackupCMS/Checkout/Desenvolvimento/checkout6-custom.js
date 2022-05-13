@@ -73,6 +73,8 @@ $(window).on('load', () => {
 
             _createInstallButtonObserver();
 
+            View.windshieldVerification(orderForm);
+
             View.formatItemList(orderForm);
 
             _removePaymentPickupIfIsDelivery(orderForm);
@@ -108,7 +110,6 @@ $(window).on('load', () => {
                 });
             });
         }
-
 
         function _watchHashChangeAndOrderForm(_, orderForm) {
             orderForm && Service.sendGAEvent(orderForm);
@@ -297,6 +298,7 @@ $(window).on('load', () => {
         return {
             _init,
             formatItemList,
+            windshieldVerification,
             addInstallTexts,
             createCepInfo
         }
@@ -338,7 +340,7 @@ $(window).on('load', () => {
                 $(".srp-toggle__delivery").append(
                     "<span class='instalar'>Instalar em casa</span>"
                 );
-                
+
                 $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
             }
 
@@ -363,6 +365,26 @@ $(window).on('load', () => {
 
             View.createCepInfo(orderForm, hasInstall);
         }
+
+
+        function windshieldVerification(orderForm) {
+          const hasWindshield = orderForm.items.reduce(
+              (previousValue, item) =>
+                  previousValue || item.name.startsWith("Parabrisa"),
+              false
+          );
+          if(!hasWindshield) return;
+          const hasWindshieldVane = orderForm.items.reduce(
+              (previousValue, item) =>
+                  previousValue || item.name.startsWith("Palheta"),
+              false
+          );
+          if(hasWindshieldVane) return;
+
+          alert('TEM QUE TROCAR AS PALHETAS A CADA 6 MESES!')
+
+        }
+
 
         function addInstallTexts(orderForm) {
             $('.accordion-inner').addClass('instalacao');
@@ -745,7 +767,7 @@ $(window).on('load', () => {
         const dispositivoMovel = larguraTela < 490;
         const paginaPagamento  = document.body.contains(botaoFinalizar[0]);
         const tamanhoBlocoPgto = 826;
-        
+
         if(dispositivoMovel && paginaPagamento) {
             $(window).scroll(function() {
                 if(window.scrollY > tamanhoBlocoPgto) {
