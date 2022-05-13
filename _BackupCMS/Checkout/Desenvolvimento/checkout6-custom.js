@@ -13,7 +13,7 @@
     t.src = v; s = b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t, s)
 }(window, document, 'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
+  'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '674711539752032');
 fbq('track', 'PageView');
 
@@ -350,7 +350,7 @@ $(window).on('load', () => {
                 $(".srp-toggle__delivery").append(
                     "<span class='instalar'>Instalar em casa</span>"
                 );
-                
+
                 $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
             }
 
@@ -757,7 +757,7 @@ $(window).on('load', () => {
         const dispositivoMovel = larguraTela < 490;
         const paginaPagamento  = document.body.contains(botaoFinalizar[0]);
         const tamanhoBlocoPgto = 826;
-        
+
         if(dispositivoMovel && paginaPagamento) {
             $(window).scroll(function() {
                 if(window.scrollY > tamanhoBlocoPgto) {
@@ -769,7 +769,7 @@ $(window).on('load', () => {
         }
     }
 
-	ajustaBotaoFinalizarCompra();
+  ajustaBotaoFinalizarCompra();
 
     function ServiceAPI() {
         return {
