@@ -135,6 +135,18 @@ $(window).on('load', () => {
             }
 
           	if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
+
+                function removePropNewsletter() {
+                    $('#opt-in-newsletter').removeProp('disabled');
+                }
+
+              	$('.newsletter').show();
+                removePropNewsletter();
+
+                $('#opt-in-newsletter').on('click', function () {
+                    removePropNewsletter();
+                });
+
                 $('.newsletter').append(`
                   <label class="checkbox adulthood-label">
                       <input type="checkbox" id="opt-in-adulthood">
