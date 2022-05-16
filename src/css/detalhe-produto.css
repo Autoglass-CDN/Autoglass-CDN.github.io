@@ -1,3 +1,8 @@
+:root{
+  --altura-topo-tablet:161px;
+  --altura-topo-desktop:264px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -601,4 +606,14 @@ h4.group.Especificacoes {
 
 #duvidas li input[type="checkbox"]:checked+label+p {
   display: block;
+}
+
+article section.tab-content {
+  scroll-margin-top: var(--altura-topo-desktop);
+}
+
+@media (max-width: 1200px) {
+  article section.tab-content {
+    scroll-margin-top: var(--altura-topo-tablet);
+  }
 }
