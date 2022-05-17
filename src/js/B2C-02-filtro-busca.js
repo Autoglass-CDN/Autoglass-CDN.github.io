@@ -114,23 +114,4 @@ $(document).ready(() => {
 	});
 
 	mutation.observe(resultBlock, { childList: true, subtree: true });
-	
-	setTimeout(function() {
-		const elemento = '.shelf-qd-v1';
-		const blocos = document.querySelectorAll(elemento);
-		const quantidadeBlocos = blocos.length;
-		const mobile = 490;
-
-		if(window.innerWidth < mobile && quantidadeBlocos) {
-			let maior  = 0;
-
-			for(let i = 0; i < quantidadeBlocos; i++ ) {
-				let alturaElemento = blocos[i].clientHeight;
-				if(alturaElemento > maior) maior = alturaElemento;
-			}
-			
-			$(elemento).css('height', (maior) + 'px');
-		}
-	}, 0);
-
 });
