@@ -1393,3 +1393,18 @@ div.prateleira ul li > div:last-of-type{
 div.prateleira ul li div.shelf-qd-v1-price{
   height:auto;
 }
+
+
+div.prateleira ul li > div >div.row:last-of-type,
+div.prateleira ul li > div >div.row:last-of-type > div {
+  height: 100%;
+}
+
+div.prateleira ul li > div >div.row:last-of-type > div > div.row {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+div.prateleira ul li > div >div.row:last-of-type > div > div.row > div:last-of-type {
+  margin-top: auto;
+}
