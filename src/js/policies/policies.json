@@ -1,6 +1,6 @@
 {
   "pickupPointsPolicies": [
-    {"nome": "PE","Unidade": "RC01","Uf": "Pernambuco","salesChannel": 15},
+    {"nome": "PE","Unidade": "MG20","Uf": "Pernambuco","salesChannel": 15},
     {"nome": "PE","Unidade": "MG23","Uf": "Pernambuco","salesChannel": 16},
     {"nome": "PE","Unidade": "MG40","Uf": "Pernambuco","salesChannel": 17},
     {"nome": "PR","Unidade": "MG13","Uf": "Paraná","salesChannel": 19},
@@ -23,8 +23,8 @@
   ],
 
   "specialCasePolicies": [
-    {"nome": "PE","Unidade": "RC01","cMin": 50000000,"cMax": 53689999,"Uf": "Pernambuco","salesChannel": 15},
-    {"nome": "PE","Unidade": "RC01","cMin": 54000000,"cMax": 54599999,"Uf": "Pernambuco","salesChannel": 15},
+    {"nome": "PE","Unidade": "MG20","cMin": 50000000,"cMax": 53689999,"Uf": "Pernambuco","salesChannel": 15},
+    {"nome": "PE","Unidade": "MG20","cMin": 54000000,"cMax": 54599999,"Uf": "Pernambuco","salesChannel": 15},
     {"nome": "PE","Unidade": "MG40","cMin": 56300000,"cMax": 56354999,"Uf": "Pernambuco","salesChannel": 17},
     {"nome": "PR","Unidade": "MG13","cMin": 80000000,"cMax": 83189999,"Uf": "Paraná","salesChannel": 19},
     {"nome": "PR","Unidade": "MG13","cMin": 83300000,"cMax": 83349999,"Uf": "Paraná","salesChannel": 19},
