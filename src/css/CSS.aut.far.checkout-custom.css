@@ -2422,8 +2422,7 @@ fieldset.payment-group div.required.payment-group-list-btn{
 .vtex-pickup-points-modal-3-x-modalfullPage .vtex-pickup-points-modal-3-x-searchAloneSubtitle { font-size: 0 }
 
 .vtex-pickup-points-modal-3-x-modalfullPage .vtex-pickup-points-modal-3-x-searchAloneSubtitle::before {
-  color: #000;
+  color: #888;
   content: "Para localizar a loja mais próxima, insira o CEP do seu endereço abaixo:";
-  font-size: 16px;
-  font-weight: bold;
+  font-size: 18px;
 }
