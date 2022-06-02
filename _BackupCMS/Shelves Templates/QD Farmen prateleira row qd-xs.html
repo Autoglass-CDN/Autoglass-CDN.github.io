@@ -82,11 +82,11 @@
                                     const hour = today.getHours();
                                     const minutes = today.getMinutes();
                                     const day = today.getDay();
-                                
+
                                     const ehDomingo = (day === 0);
                                     const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
                                     const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour > 21);
-                                
+
                                     if (ehDomingo
                                         || ehSabadoForaDoExpediente
                                         || ehSemanaForaDoExpediente
@@ -96,7 +96,7 @@
                                     } else {
                                         zE('webWidget', 'chat:send', 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri');
                                     }
-                                
+
                                     zE('webWidget', 'open');
                                 ">
                                     Consulte agora
@@ -111,6 +111,8 @@
 					</div-->
                     #end
                 </div>
+
+                <div class="optionals loading"></div>
 
                 <div class="col-xs-12">
                     #if ($product.IsInStock)
