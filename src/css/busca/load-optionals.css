@@ -1,20 +1,24 @@
+ul .row .optionals {
+  margin-top: auto;
+}
+
 ul .row .optionals:not(.loading) {
-  max-height: 66px;
+  max-height: 60px;
   height: auto;
   overflow: hidden;
-  padding-bottom: 5px;
-  padding-left: 20px;
+  padding-bottom: 10px;
+  padding-left: 26px;
   padding-right: 10px;
   -webkit-mask-image: linear-gradient(to bottom, #000 83%, transparent 92%);
   position: relative;
 }
 
-ul .row .optionals h3 {
-  font-weight: 500;
-  padding-left: 5px;
+ul .row .optionals h4 {
+  font-weight: normal;
+  display: flex;
 }
 
-ul .row .optionals h3:before {
+ul .row .optionals h4:before {
   content: "\f00c";
   font-family: fontAwesome;
   color: #2d4f9e;
@@ -63,20 +67,24 @@ ul .row .optionals.loading:after {
   }
 }
 
+/* DESKTOP */
 @media screen and (min-width: 992px) {
+  ul .row .optionals h4 {
+    padding-left: 5px;
+  }
+
   ul:hover .shelf-qd-v1.qd-product-is-in-stock-true.more-than-two-optionals {
     position: absolute;
     height: auto;
-    min-height: 100%;
+    min-height: 99%;
     z-index: 6;
     box-shadow: 5px 6px 20px rgba(135, 135, 135, 0.5);
-    transition: position 0.5s linear;
+    transition: box-shadow 0.2s;
   }
-  ul:hover
-    .shelf-qd-v1.qd-product-is-in-stock-true:not(.more-than-two-optionals) {
+  ul:hover .shelf-qd-v1.qd-product-is-in-stock-true:not(.more-than-two-optionals) {
     z-index: 6;
     box-shadow: 5px 6px 20px rgba(135, 135, 135, 0.5);
-    transition: position 0.5s linear;
+    transition: box-shadow 0.2s;
   }
 
   ul:hover
@@ -84,50 +92,45 @@ ul .row .optionals.loading:after {
     .row
     .optionals:not(.loading) {
     max-height: 999px;
-    padding-bottom: 5px;
-    padding-left: 20px;
-    padding-right: 10px;
-    overflow: hidden;
     -webkit-mask-image: none;
-    transition: 0.5s;
+    transition: max-height 0.5s;
   }
 }
 
+/* MOBILE */
 @media screen and (max-width: 992px) {
-  ul .row .optionals {
+  ul .row .optionals:not(.loading) {
     padding-left: 0;
-  }
-  ul:hover .shelf-qd-v1.qd-product-is-in-stock-true .row .optionals {
-    padding: 0;
   }
 
   ul.expanded .shelf-qd-v1.qd-product-is-in-stock-true.more-than-two-optionals {
     position: absolute;
     height: auto;
+    min-height: 99%;
     z-index: 6;
     box-shadow: 5px 6px 20px rgba(135, 135, 135, 0.5);
-    transition: position 0.5s linear;
+    transition: box-shadow 0.2s;
   }
   ul.expanded
     .shelf-qd-v1.qd-product-is-in-stock-true:not(.more-than-two-optionals) {
     z-index: 6;
     box-shadow: 5px 6px 20px rgba(135, 135, 135, 0.5);
-    transition: position 0.5s linear;
+    transition: box-shadow 0.2s;
   }
 
-  ul.expanded .row .optionals {
+  ul.expanded .row .optionals:not(.loading) {
     max-height: 999px;
     padding: 0;
     overflow: hidden;
     -webkit-mask-image: none;
-    transition: 0.5s;
+    transition: max-height 0.5s;
   }
 
   ul.expanded .row .optionals :last-child {
     padding-bottom: 5px;
   }
 
-  ul:not(.expanded) .row .optionals h3:nth-of-type(3):after {
+  ul:not(.expanded) .row .optionals h4:nth-of-type(3):after {
     content: "+";
     color: #fff;
     font-weight: bolder;
