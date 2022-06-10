@@ -11,7 +11,7 @@
     try {
       const allOptionals = await $.get(urlToConsult);
       addAllOptionals(allOptionals);
-      configureExpandOnClick();
+      configureOnClickEvents();
     } catch (ex) {
       console.error("Falha ao renderizar opcionais. \n ", ex);
     }
@@ -22,8 +22,7 @@
           .toArray()
           .reduce((acc, current) => {
                   const url = current.value;
-                  const CodigoReferenciaSKU = getSkuFromUrl(url);
-                  acc.push(CodigoReferenciaSKU);
+                  acc.push(getSkuFromUrl(url));
                   return acc;
           }, [])
           .filter(o => o != null);
@@ -39,11 +38,12 @@
     $(document).on('click.ClickOutsideShelves', (event) => {
       if (event.srcElement.closest(".prateleira") == null) {
         removeAllExpanded();
+        removeDocumentClickBinding();
       }
     });
   }
 
-  function configureExpandOnClick() {
+  function configureOnClickEvents() {
     $(".optionals, .shelf-qd-v1-price").off('click').on("click", (e) => {
       const allChildren = e.currentTarget.closest(".prateleira").children;
       const currentElement = e.currentTarget.closest("ul");
@@ -80,6 +80,9 @@
   function removeAllExpanded() {
     const allChildren = $(".prateleira:last-child")[0].children;
     clearAllExpandedExceptCurrent(allChildren);
+  }
+
+  function removeDocumentClickBinding() { 
     $(document).off('click.ClickOutsideShelves');
   }
 
