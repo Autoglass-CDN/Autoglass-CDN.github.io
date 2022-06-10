@@ -48,9 +48,9 @@
       const allChildren = e.currentTarget.closest(".prateleira").children;
       const currentElement = e.currentTarget.closest("ul");
       clearAllExpandedExceptCurrent(allChildren, currentElement);
-      $(document).off('click.ClickOutsideShelves');
-      if (currentElement.classList.toggle("expanded"))
-        contractOnClickOutsideShelves()
+      currentElement.classList.toggle("expanded") ?
+        contractOnClickOutsideShelves() :
+        removeDocumentClickBinding();
     });
   }
 
