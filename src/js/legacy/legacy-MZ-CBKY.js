@@ -109,7 +109,7 @@ try {
 		},
 		windowOnload: function () {
 			Common.redirectAccount();
-			
+
 		},
 		qdOverlayClass: "qd-am-on qd-cart-show qd-sn-on",
 		qdOverlay: function () {
@@ -156,7 +156,9 @@ try {
 			}
 		},
 		vtexBindQuickViewDestroy: function () {
-			window.bindQuickView = function () { }
+      const bindQuickViewFunctionWasAltered = window.bindQuickView.toString().includes('loadOptionals');
+      if (!bindQuickViewFunctionWasAltered)
+			  window.bindQuickView = function () { }
 		},
 		accessoriesFix: function () {
 			if (!$(document.body).is(".produto"))
@@ -839,7 +841,7 @@ try {
 					$t.find("+ div").slideToggle(100, function () {
 						$t.toggleClass("qd-seach-active-menu");
 					})
-					if (currentFilterItems.length > maxFilterItemsQuantityToShow 
+					if (currentFilterItems.length > maxFilterItemsQuantityToShow
 						&& filterName == 'Ano' ){
 						yearFilter = $(".search-multiple-navigator fieldset[data-qd-class='ano'] div");
 						yearFilterHeight = yearFilter[0].scrollHeight;
@@ -1213,7 +1215,7 @@ try {
 						country: "BRA"
 					};
 					let vtexsc = readCookie('VTEXSC').replace('sc=', '');
-					
+
 					$.ajax({
 						url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
 						type: "POST",
@@ -1523,7 +1525,7 @@ try {
 	(function () {
 		const searchSelector = ".resultado-busca, .departamento, .categoria";
 		var body, ajaxStop, windowLoad;
-		
+
 		windowLoad = function () {
 			Common.windowOnload();
 			if (body.is(".home"))
@@ -3691,7 +3693,7 @@ $(window).load(function () {
 )();
 (function (x) {
 	var b = jQuery;
-	
+
 }
 )(jQuery);
 "function" !== typeof String.prototype.trim && (String.prototype.trim = function () {
