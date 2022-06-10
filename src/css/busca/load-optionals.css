@@ -118,6 +118,7 @@ ul .row .optionals.loading:after {
   ul.expanded .shelf-qd-v1.qd-product-is-in-stock-true .row .optionals:not(.loading) {
     max-height: 999px;
     padding-bottom: 5px;
+    padding-right: 0;
     -webkit-mask-image: none;
     transition: max-height var(--load-optionals-slow-transition);
   }
