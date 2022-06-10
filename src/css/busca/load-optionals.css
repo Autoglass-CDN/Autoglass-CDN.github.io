@@ -1,3 +1,8 @@
+:root {
+  --load-optionals-fast-transition: 0.2s;
+  --load-optionals-slow-transition: 0.5s;
+}
+
 ul .row .optionals {
   margin-top: auto;
 }
@@ -73,27 +78,22 @@ ul .row .optionals.loading:after {
     padding-left: 5px;
   }
 
+  ul:hover .shelf-qd-v1.qd-product-is-in-stock-true {
+    z-index: 6;
+    box-shadow: 5px 6px 20px #87878780;
+    transition: box-shadow var(--load-optionals-fast-transition);
+  }
+
   ul:hover .shelf-qd-v1.qd-product-is-in-stock-true.more-than-two-optionals {
     position: absolute;
     height: auto;
     min-height: 99%;
-    z-index: 6;
-    box-shadow: 5px 6px 20px rgba(135, 135, 135, 0.5);
-    transition: box-shadow 0.2s;
-  }
-  ul:hover .shelf-qd-v1.qd-product-is-in-stock-true:not(.more-than-two-optionals) {
-    z-index: 6;
-    box-shadow: 5px 6px 20px rgba(135, 135, 135, 0.5);
-    transition: box-shadow 0.2s;
   }
 
-  ul:hover
-    .shelf-qd-v1.qd-product-is-in-stock-true
-    .row
-    .optionals:not(.loading) {
+  ul:hover .shelf-qd-v1.qd-product-is-in-stock-true .row .optionals:not(.loading) {
     max-height: 999px;
     -webkit-mask-image: none;
-    transition: max-height 0.5s;
+    transition: max-height var(--load-optionals-slow-transition);
   }
 }
 
@@ -103,34 +103,26 @@ ul .row .optionals.loading:after {
     padding-left: 0;
   }
 
+  ul.expanded .shelf-qd-v1.qd-product-is-in-stock-true {
+    z-index: 6;
+    box-shadow: 5px 6px 20px #87878780;
+    transition: box-shadow var(--load-optionals-fast-transition);
+  }
+
   ul.expanded .shelf-qd-v1.qd-product-is-in-stock-true.more-than-two-optionals {
     position: absolute;
     height: auto;
     min-height: 99%;
-    z-index: 6;
-    box-shadow: 5px 6px 20px rgba(135, 135, 135, 0.5);
-    transition: box-shadow 0.2s;
-  }
-  ul.expanded
-    .shelf-qd-v1.qd-product-is-in-stock-true:not(.more-than-two-optionals) {
-    z-index: 6;
-    box-shadow: 5px 6px 20px rgba(135, 135, 135, 0.5);
-    transition: box-shadow 0.2s;
   }
 
-  ul.expanded .row .optionals:not(.loading) {
+  ul.expanded .shelf-qd-v1.qd-product-is-in-stock-true .row .optionals:not(.loading) {
     max-height: 999px;
-    padding: 0;
-    overflow: hidden;
-    -webkit-mask-image: none;
-    transition: max-height 0.5s;
-  }
-
-  ul.expanded .row .optionals :last-child {
     padding-bottom: 5px;
+    -webkit-mask-image: none;
+    transition: max-height var(--load-optionals-slow-transition);
   }
 
-  ul:not(.expanded) .row .optionals h4:nth-of-type(3):after {
+  ul .row .optionals h4:nth-of-type(3):after {
     content: "+";
     color: #fff;
     font-weight: bolder;
@@ -146,5 +138,9 @@ ul .row .optionals.loading:after {
     align-items: center;
     transform: scale(1.2);
     border: 3px solid;
+    transition: transform var(--load-optionals-fast-transition);
+  }
+  ul.expanded .row .optionals h4:nth-of-type(3):after {
+    transform: scale(0);
   }
 }
