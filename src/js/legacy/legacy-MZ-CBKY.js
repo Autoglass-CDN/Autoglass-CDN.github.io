@@ -156,9 +156,7 @@ try {
 			}
 		},
 		vtexBindQuickViewDestroy: function () {
-      const bindQuickViewFunctionWasAltered = window.bindQuickView.toString().includes('loadOptionals');
-      if (!bindQuickViewFunctionWasAltered)
-			  window.bindQuickView = function () { }
+			window.bindQuickView = function () { }
 		},
 		accessoriesFix: function () {
 			if (!$(document.body).is(".produto"))
