@@ -430,39 +430,33 @@ $(window).on("ready", async () => {
       ga('gaSSTracker.send', 'event', 'Social Share', `Compartilhar ${networkClicked}`, `Botão ${networkClicked}`);
     });
   }
-  
-  async function showWindshieldVanePopUpIfWindshield() {
+
+  async function enableWindshieldVanePopUp() {
     const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
     const isWindshield = currentProduct.name.startsWith('Parabrisa') ? true : false;
     if (!isWindshield) return;
 
     $('body').append(`
-      <div class="windshildVane-advertise">
+      <div id="windshildVane-advertise">
       </div>
     `)
 
     $('a[href*="/checkout/cart/add?sku="], .mz-accesories__button a')
-    .addClass('show-windshieldVane-advertise')
-    .on('click', async function (e) {
-      if(!afterTwelveHours())
-        return;
-      e.preventDefault();
+    .on('click', async function (element) {
+      element.preventDefault();
 
-      uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/' + vtxctx.skus;
+      const windshieldVaneItems = await whildshieldVaneInCrossSellingList();
 
-      items = await fetch(uriCrossSelling).then((response) => {
-        return response.json();
-      });
-
-      const windshieldVaneItems = items.filter(isWindshildVane);
-      const hasWindshieldVane = windshieldVaneItems.length > 0;
-
-      if(!hasWindshieldVane){
+      if(!windshieldVaneItems.length){
         const newUrl = this.href;
         return document.location.href = newUrl;
       }
-      novoBotao = e.srcElement.cloneNode();
-      $('.windshildVane-advertise').append(`
+
+      createWindshieldVanePopUp(element, windshieldVaneItems);
+    });
+
+    function createWindshieldVanePopUp(element, windshieldVaneItems) {
+      $('#windshildVane-advertise').append(`
         <div class="advertise">
           <h2 class="title">Recomendamos trocar as palhetas a cada <b>6 meses</b> ou na <b>troca de parabrisa.</b> </h2>
           <div class="exit-button">×</div>
@@ -478,64 +472,72 @@ $(window).on("ready", async () => {
           </div>
         </div>
       `)
-      $('.windshildVane-advertise').css('display', 'flex');
 
-      appendItemImage(windshieldVaneItems[0]);
-      appendItemButton(windshieldVaneItems[0], novoBotao);
-      $('.windshildVane-advertise .advertise').addClass('filled');
+      appendWindshieldVaneImage(windshieldVaneItems[0]);
+      const newButton = element.srcElement.cloneNode();
+      appendPopUpButtons(windshieldVaneItems[0], newButton);
+      $('#windshildVane-advertise .advertise').addClass('filled');
 
-      $('.windshildVane-advertise, .exit-button').click(function(e) {
-        $('.windshildVane-advertise .advertise').fadeOut(300);
+      $('#windshildVane-advertise, .exit-button').click(function(e) {
+        $('#windshildVane-advertise .advertise').fadeOut(300);
         $(this).fadeOut(300);
-        $('.windshildVane-advertise div').remove();
+        $('#windshildVane-advertise div').remove();
       });
 
-      $('.windshildVane-advertise .advertise').click(function(e) {
+      $('#windshildVane-advertise .advertise').click(function(e) {
         e.stopPropagation();
       })
 
+      $('#windshildVane-advertise').css('display', 'flex');
+    }
 
-      function isWindshildVane(item) {
-        return item.productName.startsWith("Palheta")
-      }
+    async function whildshieldVaneInCrossSellingList() {
+      const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/' + vtxctx.skus;
 
-      function appendItemImage(item) {
-        const urlBase = "https://autoglass.vteximg.com.br"
-          let urlImagem = item.items[0].images[0].imageTag
-          .replaceAll('~',urlBase)
-          .replaceAll('#width#','300')
-          .replaceAll('#height#','300');
+      const items = await fetch(uriCrossSelling).then((response) => {
+        return response.json();
+      });
 
-          $('.windshildVane-advertise div.image').append(urlImagem)
-      }
+      const windshieldVaneItems = items.filter(isWindshildVane);
+      return windshieldVaneItems;
+    }
 
-      function appendItemButton(item, botao) {
-        botao.innerText = 'Não, obrigado!';
-        $('.windshildVane-advertise div .buy-button .no').append(botao.cloneNode(true)).click(function(e){
-          let currentDate = Date.now();
-          localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
-        })
-        botao.innerText = 'Sim, adicionar!';
-        const newUrl = `${botao.href}&sku=${item.items[0].itemId}&qty=1&seller=1&redirect=true&sc=${jssalesChannel}`;
-        botao.href = newUrl;
-        $('.windshildVane-advertise div .buy-button .yes').append(botao.cloneNode(true))
-      }
-    });
+    function isWindshildVane(item) {
+      return item.productName.startsWith("Palheta")
+    }
+
+    function appendWindshieldVaneImage(item) {
+      const urlBase = "https://autoglass.vteximg.com.br"
+        let urlImagem = item.items[0].images[0].imageTag
+        .replaceAll('~',urlBase)
+        .replaceAll('#width#','300')
+        .replaceAll('#height#','300');
+
+        $('#windshildVane-advertise div.image').append(urlImagem)
+    }
+
+    function appendPopUpButtons(item, button) {
+      button.innerText = 'Não, obrigado!';
+      $('#windshildVane-advertise div .buy-button .no').append(button.cloneNode(true)).click(function(e){
+        let currentDate = Date.now();
+        localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
+      })
+      button.innerText = 'Sim, adicionar!';
+      const newUrl = `${button.href}&sku=${item.items[0].itemId}&qty=1&seller=1&redirect=true&sc=${jssalesChannel}`;
+      button.href = newUrl;
+      $('#windshildVane-advertise div .buy-button .yes').append(button.cloneNode(true))
+    }
   }
 
-  function afterTwelveHours() {
+  function shouldShowWindshieldVanePopUp() {
     if (localStorage.lastTimeWhildshieldVanePopUpWasShown === undefined)
       return true;
-    const twelveHoursAfterPopUpShown = Number(localStorage.lastTimeWhildshieldVanePopUpWasShown) + 20_000 //(12 * 60 * 60 * 1000) 12h em milisegundos
-    let currentDate =  Date.now()
-    return (twelveHoursAfterPopUpShown < currentDate)
+    const lastTimeClickedOnNo = Number(localStorage.lastTimeWhildshieldVanePopUpWasShown);
+    // const twelveHours = 12*60*60*1000;
+    const twelveHoursMiliseconds = 12*1000; //12 segundos para não demorar muito
+    return (Date.now() - lastTimeClickedOnNo > twelveHoursMiliseconds)
   }
-  
-  if(afterTwelveHours())
-    return showWindshieldVanePopUpIfWindshield();
-  document.getElementsByClassName('windshildVane-advertise')[0].style.display = 'none'
+
+  if(shouldShowWindshieldVanePopUp())
+    return enableWindshieldVanePopUp();
 });
-
-
-
-
