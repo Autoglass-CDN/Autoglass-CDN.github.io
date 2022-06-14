@@ -17,6 +17,22 @@
     }
   }
 
+  function configureObserverToLoadOptionals() {
+    var target = document.querySelector('.resultItemsWrapper > div.prateleira');
+
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type == 'childList') {
+          if(mutation.addedNodes.length>0) {
+            loadOptionals();
+          }
+        }
+      });
+    });
+    var config = {childList: true};
+    observer.observe(target, config);
+  }
+
   function getAllCurrentSkus() {
     return $(".qd_cpUri")
           .toArray()
@@ -67,7 +83,7 @@
 
       if (!!allOptionalsForCurrentElement)
         optionalsElement.innerHTML = allOptionalsForCurrentElement.join('');
-        
+
       element.classList.remove("more-than-two-optionals");
       if (allOptionalsForCurrentElement.length > 2) {
         element.classList.add("more-than-two-optionals");
@@ -82,7 +98,7 @@
     clearAllExpandedExceptCurrent(allChildren);
   }
 
-  function removeDocumentClickBinding() { 
+  function removeDocumentClickBinding() {
     $(document).off('click.ClickOutsideShelves');
   }
 
@@ -94,9 +110,6 @@
     }
   }
 
-  const functionExecutedAfterVtexLoadItems = window.bindQuickView = async function () {
-    await loadOptionals();
-  }
-
+  configureObserverToLoadOptionals();
   loadOptionals();
 })()
