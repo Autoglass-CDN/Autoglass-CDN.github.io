@@ -22,11 +22,8 @@
 
     var observer = new MutationObserver(function(mutations) {
       mutations.forEach(function(mutation) {
-        if (mutation.type == 'childList') {
-          if(mutation.addedNodes.length>0) {
-            loadOptionals();
-          }
-        }
+        if (mutation.type == 'childList' && mutation.addedNodes.length > 0)
+          loadOptionals();
       });
     });
     var config = {childList: true};
