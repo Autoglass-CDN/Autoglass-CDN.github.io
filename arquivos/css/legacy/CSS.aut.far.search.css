@@ -1404,6 +1404,3 @@ div.prateleira ul li h3.shelf-qd-v1-name {
     display: flex;
     flex-direction: column;
   }
-  div.prateleira ul li > div >div.row:last-of-type > div > div.row > div:last-of-type {
-    margin-top: auto;
-  }  
