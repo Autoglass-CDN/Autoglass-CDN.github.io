@@ -2,8 +2,7 @@
   async function loadOptionals() {
     const allSkuInThisPage = getAllCurrentSkus();
 
-    // const baseUrlApi = "https://api-hml.autoglass.com.br/";
-    const baseUrlApi = "https://api.autoglass.com.br/"; // OBS: está em prd apenas para realização do teste. Após isso, trocar para o link de hml.
+    const baseUrlApi = "https://api-hml.autoglass.com.br/";
     const baseUrlListaOpcionais = "integracao-b2c/api/web-app/produtos/opcionais-lista?codigosProdutos=";
 
     const urlToConsult = baseUrlApi + baseUrlListaOpcionais + allSkuInThisPage.join("&codigosProdutos=");
