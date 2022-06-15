@@ -466,7 +466,7 @@ i.arrow-icon::before {
     top: 85px;
     right: 0px;
     left: 0px;
-    z-index: 5;
+    z-index: 7;
     background: rgba(0, 0, 0, 0.65);
     transition: height 0.5s ease-in-out;
   }
