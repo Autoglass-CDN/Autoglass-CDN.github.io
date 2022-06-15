@@ -2623,7 +2623,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
     bottom: 50px;
     right: 0;
     left: 0;
-    z-index: 99;
+    z-index: 2;
     height: 50px;
     background: #c8c8c8;
 }
