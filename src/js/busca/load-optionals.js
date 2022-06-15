@@ -43,7 +43,10 @@
 
   function getSkuFromUrl(url) {
     const minCodeLength = 4;
-    const codigo = url.slice(0, -2).substring(url.lastIndexOf("-") + 1).replace(/\D/g, "");
+    if (url.includes('-copy')) {
+      url = url.split('-copy')[0];
+    }
+    const codigo = url.substring(url.lastIndexOf("-") + 1).replace(/\D/g, "");
     return codigo.length < minCodeLength ? null : codigo;
   }
 
