@@ -433,18 +433,19 @@ $(window).on("ready", async () => {
 
   async function enableWindshieldVanePopUp() {
     const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
-    const isWindshield = currentProduct.name.startsWith('Parabrisa') ? true : false;
-    if (!isWindshield) return;
+    const isWindshield = currentProduct.name.startsWith('Parabrisa') || 
+      currentProduct.name.startsWith('Vidro Traseiro')  ? true : false;
+    if (!isWindshield) return;  //mudar para isWindshieldOrBackglass
 
     $('body').append(`
       <div id="windshildVane-advertise">
       </div>
     `)
 
-    $('a[href*="/checkout/cart/add?sku="], .mz-accesories__button a')
+    $('a[href*="/checkout/cart/add?sku="], .mz-accesories__button a, .mz-advantages__button a, .mz-install__button a, .mz-shipping__button a, .mz-pickup__button a')
     .on('click', async function (element) {
       element.preventDefault();
-
+    
       const windshieldVaneItems = await whildshieldVaneInCrossSellingList();
 
       if(!windshieldVaneItems.length){
@@ -458,16 +459,16 @@ $(window).on("ready", async () => {
     function createWindshieldVanePopUp(element, windshieldVaneItems) {
       $('#windshildVane-advertise').append(`
         <div class="advertise">
-          <h2 class="title">Recomendamos trocar as palhetas a cada <b>6 meses</b> ou na <b>troca de parabrisa.</b> </h2>
+          <div class="image"></div>
           <div class="exit-button">×</div>
           <div class="container-smallheight">
-            <div class="image"></div>
-            <div class="addcart">
-              <h3>Deseja adicionar ao seu carrinho?</h3>
-              <div class="buy-button">
-                <div id="sim-modal-palheta" class="yes"></div>
-                <div id="nao-modal-palheta" class="no"></div>
-              </div>
+          <div class="text-popup">
+            <h2>Recomendamos trocar as palhetas a cada <b>6 meses</b> ou na <b>troca de parabrisa.</b></h2>
+            <h3>Deseja adicionar?</h3>
+          </div>
+            <div class="buy-button">
+              <div id="sim-modal-palheta" class="yes"></div>
+              <div id="nao-modal-palheta" class="no"></div>
             </div>
           </div>
         </div>
@@ -517,25 +518,28 @@ $(window).on("ready", async () => {
     }
 
     function appendPopUpButtons(item, button) {
+      var currentDate = Date.now();
+
       button.innerText = 'Não, obrigado!';
       $('#windshildVane-advertise div .buy-button .no').append(button.cloneNode(true)).click(function(e){
-        let currentDate = Date.now();
         localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
       })
       button.innerText = 'Sim, adicionar!';
       const newUrl = `${button.href}&sku=${item.items[0].itemId}&qty=1&seller=1&redirect=true&sc=${jssalesChannel}`;
       button.href = newUrl;
-      $('#windshildVane-advertise div .buy-button .yes').append(button.cloneNode(true))
+      $('#windshildVane-advertise div .buy-button .yes').append(button.cloneNode(true)).click(function(e){
+        localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
+      })
     }
   }
 
   function shouldShowWindshieldVanePopUp() {
     if (localStorage.lastTimeWhildshieldVanePopUpWasShown === undefined)
       return true;
-    const lastTimeClickedOnNo = Number(localStorage.lastTimeWhildshieldVanePopUpWasShown);
+    const lastTimeClickedOnYesOrNo = Number(localStorage.lastTimeWhildshieldVanePopUpWasShown);
     // const twelveHours = 12*60*60*1000;
     const twelveHoursMiliseconds = 12*1000; //12 segundos para não demorar muito
-    return (Date.now() - lastTimeClickedOnNo > twelveHoursMiliseconds)
+    return (Date.now() - lastTimeClickedOnYesOrNo > twelveHoursMiliseconds)
   }
 
   if(shouldShowWindshieldVanePopUp())
