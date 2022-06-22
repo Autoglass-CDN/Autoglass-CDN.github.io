@@ -1,6 +1,5 @@
 /* dev2autoglass */
 
-
 /* Botão Adicionar Instalação */
 
 .product-name button.btn-add-instalacao {
@@ -18,7 +17,7 @@
 }
 
 .cart ul.cart-items.unstyled.clearfix span.fn.product-name button.btn-add-instalacao {
-    display: none;
+	display: none;
 }
 
 .mini-cart .item .fn {
@@ -113,7 +112,7 @@ body.mz-il-on .mz-modal-installation {
     color: #757575;
     font-size: 26px;
     font-weight: 400;
-    margin: 0;
+  	margin: 0;
 }
 
 .mz-modal-advantages .mz-advantages__close,
@@ -159,17 +158,17 @@ body.hasInstall .srp-pickup-info label {
     display: none !important;
 }
 
-.instalar-em-casa>a,
-.instalar-na-loja>a {
-    display: flex;
-    position: relative;
-    border: 1px solid #c4c4c4;
-    border-radius: 10px;
-    padding: 10px;
-    font-size: 1rem;
-    margin-top: 15px;
-    cursor: pointer;
-    color: rgba(0, 0, 0, .7);
+.instalar-em-casa > a,
+.instalar-na-loja > a {
+	display: flex;
+	position: relative;
+	border: 1px solid #c4c4c4;
+	border-radius: 10px;
+	padding: 10px;
+  	font-size: 1rem;
+  	margin-top: 15px;
+  	cursor: pointer;
+    color: rgba(0,0,0,.7);
 }
 
 .instalar-em-casa .instalar_calendar,
@@ -236,16 +235,16 @@ body.hasInstall .shp-summary-package-time {
     padding-top: 10px;
 }
 
-#confirmacao-sm p {
+#confirmacao-sm p{
     text-align: center;
 }
 
-#confirmacao-sm p i {
-    color: green;
-    margin-right: 5px;
+#confirmacao-sm p i{
+    color:green;
+    margin-right:5px;
 }
 
-#confirmacao-sm strong {
+#confirmacao-sm strong{
     padding-top: 20px;
 }
 
@@ -302,9 +301,10 @@ body.hasInstall .shp-summary-package-time {
     min-height: 250px;
 }
 
-.srp-delivery-header>span,
-.srp-pickup-info>span {
-    display: none;
+
+.srp-delivery-header > span,
+.srp-pickup-info > span {
+   display: none;
 }
 
 .srp-delivery-header .cep-info,
@@ -312,6 +312,7 @@ body.hasInstall .shp-summary-package-time {
     position: relative;
     flex-direction: column;
     align-items: flex-start;
+
     font-size: 14px;
     width: 100%;
 }
@@ -323,7 +324,7 @@ body.hasInstall .shp-summary-package-time {
 }
 
 .srp-delivery-header .cep-info__title b {
-    margin-left: 5px;
+	margin-left: 5px;
 }
 
 .srp-delivery-header .cep-info__location-street,
@@ -352,48 +353,44 @@ body.hasInstall .shp-summary-package-time {
 /* Decrição Carrinho */
 
 .srp-content.onda-v1 h2 {
-    display: none;
+  display:none;
 }
 
-
 /* Itens crossSelling */
-
 .addCart {
-    background-color: #43C452;
-    display: block;
-    cursor: pointer;
-    color: #fff;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    padding: 15px 10px;
-    text-decoration: none;
+	background-color:#43C452;
+	display:block;
+	cursor:pointer;
+	color:#fff;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size:14px;
+	font-weight:600;
+	padding:15px 10px;
+	text-decoration:none;
     margin-top: 10px;
     border-radius: 3px;
     border-width: 2px;
-    text-align: center;
-    transition: none;
+    text-align:center;
+  	transition:none;
 }
-
 .splide__list .splide__slide .splide__slide__container .addCart:hover {
-    background-color: #33a140;
+	background-color:#33a140;
     text-decoration: none;
     color: #ffffff;
 }
-
 .addCart:active {
-    position: relative;
-    top: 1px;
+	position:relative;
+	top:1px;
 }
 
 .splide__slide {
-    padding: 50px;
-    padding-top: 0px;
+	padding: 50px;
+  	padding-top: 0px;
 }
 
 .splide__list .splide__slide .splide__slide__container .priceSplide {
-    font-size: 18px;
-    color: #000000;
+  	font-size: 18px;
+	color: #000000;
 }
 
 .splide__list .splide__slide .splide__slide__container .itemName {
@@ -403,17 +400,17 @@ body.hasInstall .shp-summary-package-time {
 }
 
 .addcartPosition {
-    margin-left: 70px;
+  	margin-left: 70px;
     margin-right: 70px;
 }
 
 .splide__slide img {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .compreJunto {
-    display: none;
+	display: none;
 }
 
 @media (max-width:991px) {
