@@ -625,7 +625,7 @@ article section.tab-content {
   position: fixed;
   background: rgba(0, 0, 0, 0.7);
   top: 0;
-  z-index: 10;
+  z-index: 9997;
   display: none;
   justify-content: center;
   align-items: center;
@@ -633,29 +633,28 @@ article section.tab-content {
 
 #windshildVane-advertise > div.advertise h2,
 #windshildVane-advertise > div.advertise h3 {
-  margin: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 21px;
+  font-size: 17px;
   font-weight: 600;
 }
 
 #windshildVane-advertise > div.advertise h3 {
-  font-size: 18px;
-  margin-bottom: 1px;
+  font-size: 17px;
+  margin-top: 12px;
 }
 
-#windshildVane-advertise h2.title:before {
+/* #windshildVane-advertise h2.title:before {
   content: "\f164";
   font-family: "FontAwesome";
   margin-right: 12px;
   font-size: 40px;
   margin-right: 15px;
-}
+} */
 
 #windshildVane-advertise > div.advertise {
-  width: 550px;
+  width: 400px;
   position: fixed;
   background: #fff;
   border-radius: 10px;
@@ -689,7 +688,6 @@ article section.tab-content {
 #windshildVane-advertise > div.advertise .image {
   display: flex;
   justify-content: center;
-  border: 1px solid #55555528;
   border-radius: 2px;
   width: auto;
   margin: 10px;
@@ -699,6 +697,8 @@ article section.tab-content {
   height: auto;
   min-width: 100px;
   min-height: 100px;
+  max-width: 200px;
+  max-height: 200px;
   width: min(100vh, 100%);
   object-fit: contain;
   display: block;
@@ -708,12 +708,12 @@ article section.tab-content {
   bottom: 0;
   display: flex;
   justify-content: space-around;
-  margin: 16px;
+  margin: 5%;
 }
 
 #windshildVane-advertise > div.advertise .buy-button div {
-  width: 100%;
-  display: flex;
+  /* width: 100%;
+  display: flex; */
   justify-content: center;
 }
 
@@ -725,7 +725,7 @@ article section.tab-content {
   text-align: center;
   width: auto;
   padding: 10px;
-  margin: 10px;
+  margin: 3px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -734,8 +734,8 @@ article section.tab-content {
 
 #windshildVane-advertise > div.advertise .buy-button div.no a {
   background-color: #ffffff;
-  color: #dd4b39;
-  border: 1px solid #dd4b39;
+  color: #999999;
+  border: 1px solid #999999;
 }
 
 #windshildVane-advertise > div.advertise .buy-button div.yes a:hover {
@@ -743,8 +743,9 @@ article section.tab-content {
 }
 
 #windshildVane-advertise > div.advertise .buy-button div.no a:hover {
-  background-color: #dd4b39;
+  background-color: #999999;
   color: #ffffff;
+  transition: 0.3s;
 }
 
 #windshildVane-advertise > div.advertise .container-smallheight {
@@ -752,19 +753,29 @@ article section.tab-content {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  margin: 28px;
-  margin-top: 0px;
+  margin: 0 10px;
 }
 
+#windshildVane-advertise > div.advertise .container-smallheight .text-popup {
+  text-align: center;
+  border: 2px solid #c0c0c079;
+  border-radius: 10px;
+  padding: 10px;
+  max-width: 94%;
+}
 @media only screen and (max-width: 998px) {
   #windshildVane-advertise > div.advertise {
-    width: auto;
+    max-width: 90%;  /*auto*/
     overflow: auto;
+    max-height: 98%;
   }
   #windshildVane-advertise > div.advertise h2 {
-    font-size: 16px;
+    font-size: 15px;
     margin-left: 30px;
     margin-right: 30px;
+  }
+  #windshildVane-advertise > div.advertise h3 {
+    font-size: 15px;
   }
   #windshildVane-advertise > div.advertise .buy-button div a {
     font-size: 12px;
@@ -773,9 +784,12 @@ article section.tab-content {
 
 @media only screen and (max-height: 998px) and (orientation: landscape) {
   #windshildVane-advertise > div.advertise .container-smallheight {
-    flex-wrap: inherit;
+    flex-wrap: wrap;
   }
-  #windshildVane-advertise > div.advertise .image img {
+  /* #windshildVane-advertise > div.advertise .image img {
     height: 50vh;
+  } */
+  #windshildVane-advertise > div.advertise .buy-button {
+    margin: 5%;
   }
 }
