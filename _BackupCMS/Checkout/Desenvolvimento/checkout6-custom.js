@@ -386,8 +386,11 @@ $(window).on('load', () => {
         }
 
         async function _implementsInstallButtom(item, accessory) {
-            const product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
+            let product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
 
+            if(product.salesChannel != vtexjs.checkout.orderForm.salesChannel || product.salesChannel == 1)
+              	product.salesChannel = vtexjs.checkout.orderForm.salesChannel;
+                
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
 
