@@ -433,8 +433,8 @@ $(window).on("ready", async () => {
 
   async function enableWindshieldVanePopUp() {
     const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
-    const isWindshield = currentProduct.name.startsWith('Parabrisa') || 
-      currentProduct.name.startsWith('Vidro Traseiro')  ? true : false;
+    const isWindshield = currentProduct.name.startsWith('Parabrisa') ? true : false;
+    // || currentProduct.name.startsWith('Vidro Traseiro');  
     if (!isWindshield) return;  //mudar para isWindshieldOrBackglass
 
     $('body').append(`
@@ -532,7 +532,7 @@ $(window).on("ready", async () => {
       })
     }
   }
-
+  
   function shouldShowWindshieldVanePopUp() {
     if (localStorage.lastTimeWhildshieldVanePopUpWasShown === undefined)
       return true;
