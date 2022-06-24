@@ -645,16 +645,9 @@ article section.tab-content {
   margin-top: 12px;
 }
 
-/* #windshildVane-advertise h2.title:before {
-  content: "\f164";
-  font-family: "FontAwesome";
-  margin-right: 12px;
-  font-size: 40px;
-  margin-right: 15px;
-} */
 
 #windshildVane-advertise > div.advertise {
-  width: 400px;
+  width: 500px;
   position: fixed;
   background: #fff;
   border-radius: 10px;
@@ -712,8 +705,6 @@ article section.tab-content {
 }
 
 #windshildVane-advertise > div.advertise .buy-button div {
-  /* width: 100%;
-  display: flex; */
   justify-content: center;
 }
 
@@ -765,7 +756,7 @@ article section.tab-content {
 }
 @media only screen and (max-width: 998px) {
   #windshildVane-advertise > div.advertise {
-    max-width: 90%;  /*auto*/
+    max-width: 90%;  
     overflow: auto;
     max-height: 98%;
   }
@@ -786,9 +777,7 @@ article section.tab-content {
   #windshildVane-advertise > div.advertise .container-smallheight {
     flex-wrap: wrap;
   }
-  /* #windshildVane-advertise > div.advertise .image img {
-    height: 50vh;
-  } */
+
   #windshildVane-advertise > div.advertise .buy-button {
     margin: 5%;
   }
