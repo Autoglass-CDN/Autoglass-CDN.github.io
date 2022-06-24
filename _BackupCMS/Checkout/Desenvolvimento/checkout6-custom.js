@@ -388,12 +388,15 @@ $(window).on('load', () => {
         async function _implementsInstallButtom(item, accessory) {
             let product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
 
-            if(product.salesChannel != vtexjs.checkout.orderForm.salesChannel || product.salesChannel == 1)
-              	product.salesChannel = vtexjs.checkout.orderForm.salesChannel;
-                
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
 
+            if(product.name == 'Insumos para instalação' && !product.available) {
+                preco     = 'R$ 60,00';
+                bestPrice = '6000';
+                available = true;
+            }
+                  
             if (!available) return;
 
             let btnInstall = _createInstallButton(
