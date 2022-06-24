@@ -355,9 +355,11 @@ $(function () {
               addressType: "search",
             })
             .then((order) => {
-              forceChangeShipping(order);
-              $(".mz-install__button--buy").unbind("click");
-            });
+              if (!shouldShowWindshieldVanePopUp){ 
+                forceChangeShipping(order);
+                $(".mz-install__button--buy").unbind("click");
+              }
+             });
         });
       })
       .fail(() =>
@@ -366,7 +368,8 @@ $(function () {
         $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
       }
       );
-
+      
+      shouldShowWindshieldVanePopUp();
     // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
     // 	$(this).parent().next().toggleClass("hidden");
     // });

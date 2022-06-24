@@ -370,7 +370,16 @@ $(function LojasMaisProximas() {
                 postalCode: cep,
                 country: 'BRA',
                 addressType: type
-            }).then(order => { forceChangeShipping(order); $('.mz-pickup__button--buy').unbind('click'); });
+            })
+            .then(order => { 
+                if (!shouldShowWindshieldVanePopUp){
+                    forceChangeShipping(order); 
+                    $('.mz-pickup__button--buy').unbind('click'); 
+                }
+            });
+
+            shouldShowWindshieldVanePopUp();
+            
         }
 
         function forceChangeShipping(orderForm) {
