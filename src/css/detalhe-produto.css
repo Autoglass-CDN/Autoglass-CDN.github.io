@@ -643,6 +643,7 @@ article section.tab-content {
 #windshildVane-advertise > div.advertise h3 {
   font-size: 17px;
   margin-top: 12px;
+  color: #234EB9;
 }
 
 
@@ -676,6 +677,7 @@ article section.tab-content {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  color: #234EB9;
 }
 
 #windshildVane-advertise > div.advertise .image {
