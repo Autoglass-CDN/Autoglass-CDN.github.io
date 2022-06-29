@@ -534,11 +534,9 @@ $(window).on("ready", async () => {
   }
   
   function shouldShowWindshieldVanePopUp() {
-    if (localStorage.lastTimeWhildshieldVanePopUpWasShown === undefined)
+    if (getLastTimeWhildshieldVanePopUpWasShown() === undefined)
       return true;
-    const lastTimeClickedOnYesOrNo = Number(localStorage.lastTimeWhildshieldVanePopUpWasShown);
-    const twelveHours = 12*60*60*1000;
-    return (Date.now() - lastTimeClickedOnYesOrNo > twelveHours)
+    return (Date.now() - getLastTimeWhildshieldVanePopUpWasShown() > calculatesTwelveHours())
   }
 
   if(shouldShowWindshieldVanePopUp())
