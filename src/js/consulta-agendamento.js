@@ -355,11 +355,17 @@ $(function () {
               addressType: "search",
             })
             .then((order) => {
-              if (!shouldShowWindshieldVanePopUp){ 
+              if (checkTimeShowPopUp()){
                 forceChangeShipping(order);
                 $(".mz-install__button--buy").unbind("click");
               }
-             });
+            });
+            
+            function checkTimeShowPopUp() {
+              const lastTimeClickedOnYesOrNo = Number(localStorage.lastTimeWhildshieldVanePopUpWasShown);
+              const twelveHours = 12*60*60*1000;
+              return ((Date.now() - lastTimeClickedOnYesOrNo) < twelveHours) ? true : false;
+            } 
         });
       })
       .fail(() =>
@@ -369,7 +375,6 @@ $(function () {
       }
       );
       
-      shouldShowWindshieldVanePopUp();
     // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
     // 	$(this).parent().next().toggleClass("hidden");
     // });
