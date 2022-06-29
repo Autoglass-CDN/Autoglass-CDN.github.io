@@ -372,14 +372,17 @@ $(function LojasMaisProximas() {
                 addressType: type
             })
             .then(order => { 
-                if (!shouldShowWindshieldVanePopUp){
+                if (checkTimeShowPopUp()){
                     forceChangeShipping(order); 
                     $('.mz-pickup__button--buy').unbind('click'); 
                 }
             });
-
-            shouldShowWindshieldVanePopUp();
             
+            function checkTimeShowPopUp() {
+                const lastTimeClickedOnYesOrNo = Number(localStorage.lastTimeWhildshieldVanePopUpWasShown);
+                const twelveHours = 12*60*60*1000;
+                return ((Date.now() - lastTimeClickedOnYesOrNo) < twelveHours) ? true : false;
+            }   
         }
 
         function forceChangeShipping(orderForm) {
