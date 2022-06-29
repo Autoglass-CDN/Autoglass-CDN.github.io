@@ -355,17 +355,11 @@ $(function () {
               addressType: "search",
             })
             .then((order) => {
-              if (checkTimeShowPopUp()){
+              if ((Date.now() - getLastTimeWhildshieldVanePopUpWasShown()) < calculatesTwelveHours()){
                 forceChangeShipping(order);
                 $(".mz-install__button--buy").unbind("click");
               }
             });
-            
-            function checkTimeShowPopUp() {
-              const lastTimeClickedOnYesOrNo = Number(localStorage.lastTimeWhildshieldVanePopUpWasShown);
-              const twelveHours = 12*60*60*1000;
-              return ((Date.now() - lastTimeClickedOnYesOrNo) < twelveHours) ? true : false;
-            } 
         });
       })
       .fail(() =>
