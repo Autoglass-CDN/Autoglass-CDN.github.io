@@ -370,9 +370,15 @@ $(function LojasMaisProximas() {
                 postalCode: cep,
                 country: 'BRA',
                 addressType: type
-            }).then(order => { forceChangeShipping(order); $('.mz-pickup__button--buy').unbind('click'); });
+            })
+            .then(order => { 
+                if ((Date.now() - getLastTimeWhildshieldVanePopUpWasShown()) < calculatesTwelveHours()){
+                    forceChangeShipping(order); 
+                    $('.mz-pickup__button--buy').unbind('click'); 
+                }
+            });
         }
-
+        
         function forceChangeShipping(orderForm) {
             const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
             const logistic = orderForm.shippingData.logisticsInfo[0];
