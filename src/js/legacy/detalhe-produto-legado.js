@@ -49,7 +49,7 @@ $(function () {
                     || ehSabadoForaDoExpediente
                     || ehSemanaForaDoExpediente) {
                   zE('webWidget', 'chat:addTags', 'fora-expediente');
-                  zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 07:30-22:00 h. No momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js Por ele você pode nos contar o que você precisa que, assim que nossos consultores chegarem, eles irão te responder. \nProduto de interesse: ${window.location.href}`);
+                  zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 07:30-22:00. No momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js Por ele você pode nos contar o que você precisa que, assim que nossos consultores chegarem, eles irão te responder. \nProduto de interesse: ${window.location.href}`);
                 } 
                 else {
                     zE('webWidget', 'chat:send', `Olá, tenho interesse neste produto, mas está indisponível no site: ${window.location.href}`);
