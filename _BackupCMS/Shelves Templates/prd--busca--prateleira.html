@@ -84,7 +84,7 @@
                                 
                                     const ehDomingo = (day === 0);
                                     const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
-                                    const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour > 21);
+                                    const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour >= 21);
                                 
                                     if (ehDomingo
                                         || ehSabadoForaDoExpediente
@@ -112,7 +112,7 @@
                 </div>
 
                 <div class="optionals loading"></div>
-                
+
                 <div class="col-xs-12">
                     #if ($product.IsInStock)
                     <div class="shelf-qd-v1-buy-button #if($product.IsInStock) qd_cpShow #else qd_cpHide #end">
