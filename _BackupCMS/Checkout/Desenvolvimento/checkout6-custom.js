@@ -857,5 +857,6 @@ $(window).on('load', () => {
         function getSelectedAppointment() {
             return JSON.parse(localStorage.getItem(CONFIG.STORAGE.APPOINTMENT));
         }
+
     }
 });
