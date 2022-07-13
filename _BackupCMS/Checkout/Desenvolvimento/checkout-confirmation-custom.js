@@ -208,7 +208,7 @@ setTimeout(() => {
       });
     }
   });
-}, 1000);
+}, 2000);
 
 
 function calculateAvailableAppointmentDate(data, installment_type) {
