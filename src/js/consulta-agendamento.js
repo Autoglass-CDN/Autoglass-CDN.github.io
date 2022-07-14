@@ -384,13 +384,29 @@ $(function () {
     $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide();
     $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show();
   }
-
+    
+  function temParabrisaCarrinho() {
+    let itensCarrinho = vtexjs.checkout.orderForm.items;
+    let temParabrisa = false;
+    itensCarrinho.forEach(function(item) {
+      if(item.name.includes('Parabrisa')) temParabrisa = true;
+    });
+    return temParabrisa;
+  }
+    
   function populateStore(pickupPoint) {
     const store = pickupPoint.store;
     const dadosEndereco = pickupPoint.DadosPickupPoint.address;
 
     if (!store) return null;
 
+    if(temParabrisaCarrinho()) {
+      let quantidadeDeHorarios = Number(store.Horarios.length);
+      ultimoHorario = (store.Horarios[quantidadeDeHorarios-1].HoraInicial).split('T');
+
+      if(ultimoHorario[1].startsWith('17') || ultimoHorario[1].startsWith('11')) store.Horarios.pop();
+    }
+    
     let { horariosDisponiveisLoja, timeStampList } = createTimestampList(
       store.Horarios,
       `${store.Nome} | ${store.Bairro}`,
