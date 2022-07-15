@@ -84,7 +84,7 @@ ul .row .optionals.loading:after {
     transition: box-shadow var(--load-optionals-fast-transition);
   }
 
-  ul:hover .shelf-qd-v1.qd-product-is-in-stock-true.more-than-two-optionals {
+  ul:hover .shelf-qd-v1.qd-product-is-in-stock-true.more-than-two-optionals:not(.only-one-sku) {
     position: absolute;
     height: auto;
     min-height: 99%;
@@ -109,7 +109,7 @@ ul .row .optionals.loading:after {
     transition: box-shadow var(--load-optionals-fast-transition);
   }
 
-  ul.expanded .shelf-qd-v1.qd-product-is-in-stock-true.more-than-two-optionals {
+  ul.expanded .shelf-qd-v1.qd-product-is-in-stock-true.more-than-two-optionals:not(.only-one-sku) {
     position: absolute;
     height: auto;
     min-height: 99%;

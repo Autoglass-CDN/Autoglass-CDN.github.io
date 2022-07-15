@@ -2,13 +2,16 @@
   async function loadOptionals() {
     const allSkuInThisPage = getAllCurrentSkus();
 
-    const baseUrlApi = "https://api-hml.autoglass.com.br/";
+    const baseUrlApi = "https://api.autoglass.com.br/";
     const baseUrlListaOpcionais = "integracao-b2c/api/web-app/produtos/opcionais-lista?codigosProdutos=";
 
     const urlToConsult = baseUrlApi + baseUrlListaOpcionais + allSkuInThisPage.join("&codigosProdutos=");
 
     try {
       const allOptionals = await $.get(urlToConsult);
+      const onlyOneSku = allSkuInThisPage.length == 1;
+      const productIsInStockTrue = $(".qd-product-is-in-stock-true")
+      onlyOneSku ? productIsInStockTrue.addClass("only-one-sku") : productIsInStockTrue.removeClass("only-one-sku");
       addAllOptionals(allOptionals);
       configureOnClickEvents();
     } catch (ex) {
