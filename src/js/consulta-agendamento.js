@@ -385,26 +385,33 @@ $(function () {
     $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show();
   }
     
-  function temParabrisaCarrinho() {
-    let itensCarrinho = vtexjs.checkout.orderForm.items;
+  async function instalacaoParabrisa() {
     let temParabrisa = false;
-    itensCarrinho.forEach(function(item) {
-      if(item.name.includes('Parabrisa')) temParabrisa = true;
-    });
+    if (window.location.href.includes("checkout")) {
+      let itensCarrinho = vtexjs.checkout.orderForm.items;
+      itensCarrinho.forEach(function(item) {
+        if(item.name.includes('Parabrisa')) temParabrisa = true;
+      });
+    } else {
+      const produtoDetalhes = await vtexjs.catalog.getCurrentProductWithVariations();
+      if(produtoDetalhes.name.includes('Parabrisa')) temParabrisa = true;
+    }
     return temParabrisa;
   }
     
   function populateStore(pickupPoint) {
     const store = pickupPoint.store;
     const dadosEndereco = pickupPoint.DadosPickupPoint.address;
+    const horarioLimiteTarde = 17;
+    const horarioLimiteManha = 11;
 
     if (!store) return null;
 
-    if(temParabrisaCarrinho()) {
+    if(instalacaoParabrisa()) {
       let quantidadeDeHorarios = Number(store.Horarios.length);
-      ultimoHorario = (store.Horarios[quantidadeDeHorarios-1].HoraInicial).split('T');
+      let ultimoHorario = (store.Horarios[quantidadeDeHorarios-1].HoraInicial).split('T');
 
-      if(ultimoHorario[1].startsWith('17') || ultimoHorario[1].startsWith('11')) store.Horarios.pop();
+      if(ultimoHorario[1].startsWith(horarioLimiteTarde) || ultimoHorario[1].startsWith(horarioLimiteManha)) store.Horarios.pop();
     }
     
     let { horariosDisponiveisLoja, timeStampList } = createTimestampList(
