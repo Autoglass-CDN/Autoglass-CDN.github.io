@@ -9,6 +9,9 @@
 
     try {
       const allOptionals = await $.get(urlToConsult);
+      const onlyOneSku = allSkuInThisPage.length == 1;
+      const productIsInStockTrue = $(".qd-product-is-in-stock-true");
+      onlyOneSku ? productIsInStockTrue.addClass("only-one-sku") : productIsInStockTrue.removeClass("only-one-sku");
       addAllOptionals(allOptionals);
       configureOnClickEvents();
     } catch (ex) {
