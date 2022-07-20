@@ -700,7 +700,12 @@ $(window).on('load', () => {
                 let [year, month, day] = selectedAppointment.date.split('-');
 
                 if (window.location.hash.includes('shipping')) {
-                    $('.shp-option-text-label-single span').html(`${day}/${month}/${year} às ${selectedAppointment.horario}`);
+                    $('.shp-option-text-label-single span').html(`
+                        ${day}/${month}/${year} às ${selectedAppointment.horario}<br>
+                        ${selectedAppointment.lojaBeauty}<br>
+                        ${selectedAppointment.enderecoLoja}
+                        ${selectedAppointment.cidadeLoja}
+                    `);
 
                     $('.shp-option-text-price').html('<a id="alterar-pickup-btn">Alterar</a>');
 
@@ -714,8 +719,11 @@ $(window).on('load', () => {
                         <a id="open-modal-il">
                             <div class="instalar_calendar"><i class="fa fa-calendar"></i></div>
                             <div class="instalar_content">
-                                <span>Data e horário selecionado:</span>
+                                <span>Informações do agendamento:</span>
                                 <b>${day}/${month}/${year} às ${selectedAppointment.horario}</b>
+                                <b>${selectedAppointment.lojaBeauty}</b>
+                                <b>${selectedAppointment.enderecoLoja}
+                                ${selectedAppointment.cidadeLoja}</b>
                             </div>
                         </a>
                     `);

@@ -314,6 +314,9 @@ $(function () {
           $(".mz-install__button--buy").click((e) => e.preventDefault());
 
           const loja = $(this).attr("data-store");
+          const codigoLoja = (loja.split(' '))[2];
+          const enderecoLoja = $('.store-list #' + codigoLoja + ' .pickup__info-address .address-location').text();
+          const cidadeLoja = $('.store-list #' + codigoLoja + ' .pickup__info-address .pickup__info-city').text();
           const cep = $(this).attr("data-cep");
           const lojaBeauty = $(this).attr("data-friendly-name");
           const horario = $(this).html();
@@ -330,9 +333,12 @@ $(function () {
             "AG_SelectedHour",
             JSON.stringify({
               loja,
+              lojaBeauty,
               horario,
               date,
               _createAt: Date.now(),
+              enderecoLoja,
+              cidadeLoja,
             })
           );
 
