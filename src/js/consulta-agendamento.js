@@ -363,12 +363,12 @@ $(function () {
         });
       })
       .fail(() =>
-      {
-        limpaModalInstaleLoja();
-        $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
-      }
+        {
+          limpaModalInstaleLoja();
+          $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
+        }
       );
-      
+
     // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
     // 	$(this).parent().next().toggleClass("hidden");
     // });
@@ -384,36 +384,48 @@ $(function () {
     $(".modal-instale-na-loja > .secao-agendamento > .selected-msg").hide();
     $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show();
   }
-    
-  async function instalacaoParabrisa() {
+
+  function contemParabrisa() {
     let temParabrisa = false;
     if (window.location.href.includes("checkout")) {
       let itensCarrinho = vtexjs.checkout.orderForm.items;
       itensCarrinho.forEach(function(item) {
-        if(item.name.includes('Parabrisa')) temParabrisa = true;
+        if (ehParabrisa(item)) temParabrisa = true;
       });
     } else {
-      const produtoDetalhes = await vtexjs.catalog.getCurrentProductWithVariations();
-      if(produtoDetalhes.name.includes('Parabrisa')) temParabrisa = true;
+      const produtoDetalhes = skuJson_0;
+      if (ehParabrisa(produtoDetalhes)) temParabrisa = true;
     }
     return temParabrisa;
   }
-    
+
+  function ehParabrisa(product) {
+    return product.name.startsWith("Parabrisa");
+  }
+
   function populateStore(pickupPoint) {
     const store = pickupPoint.store;
     const dadosEndereco = pickupPoint.DadosPickupPoint.address;
-    const horarioLimiteTarde = 17;
-    const horarioLimiteManha = 11;
 
     if (!store) return null;
 
-    if(instalacaoParabrisa()) {
-      let quantidadeDeHorarios = Number(store.Horarios.length);
-      let ultimoHorario = (store.Horarios[quantidadeDeHorarios-1].HoraInicial).split('T');
-
-      if(ultimoHorario[1].startsWith(horarioLimiteTarde) || ultimoHorario[1].startsWith(horarioLimiteManha)) store.Horarios.pop();
+    if(contemParabrisa()) {
+      removeUltimoHorario(store)
     }
-    
+
+    function removeUltimoHorario(store) {
+      const horarioLimiteTarde = 17;
+      const horarioLimiteManha = 11;
+      const quantidadeDeHorarios = Number(store.Horarios.length);
+      const ultimoHorario =
+        store.Horarios[quantidadeDeHorarios - 1].HoraInicial.split("T");
+      if (
+        ultimoHorario[1].startsWith(horarioLimiteTarde) ||
+        ultimoHorario[1].startsWith(horarioLimiteManha)
+      )
+        store.Horarios.pop();
+    }
+
     let { horariosDisponiveisLoja, timeStampList } = createTimestampList(
       store.Horarios,
       `${store.Nome} | ${store.Bairro}`,
@@ -441,16 +453,16 @@ $(function () {
 
 						</p>
 						<p class="pickup__info-city">${dadosEndereco.neighborhood
-      } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
+            } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
 					</div>
 				</div>
 				<div class="time">
 					${store
-        ? timeStampList.join("\n")
-        : [].concat(
-          '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
-        )
-      }
+            ? timeStampList.join("\n")
+            : [].concat(
+                '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
+              )
+          }
 				</div>
 			</div>
 
