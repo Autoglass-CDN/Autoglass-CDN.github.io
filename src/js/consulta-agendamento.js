@@ -417,12 +417,8 @@ $(function () {
       const horarioLimiteTarde = 17;
       const horarioLimiteManha = 11;
       const quantidadeDeHorarios = Number(store.Horarios.length);
-      const ultimoHorario =
-        store.Horarios[quantidadeDeHorarios - 1].HoraInicial.split("T");
-      if (
-        ultimoHorario[1].startsWith(horarioLimiteTarde) ||
-        ultimoHorario[1].startsWith(horarioLimiteManha)
-      )
+      const ultimoHorario = store.Horarios[quantidadeDeHorarios - 1].HoraInicial.split("T");
+      if(ultimoHorario[1].startsWith(horarioLimiteTarde) || ultimoHorario[1].startsWith(horarioLimiteManha))
         store.Horarios.pop();
     }
 
