@@ -2,18 +2,16 @@
 
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE. THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
+
 /*<!-- Facebook Pixel Code -->*/
-!function (f, b, e, v, n, t, s) {
-    if (f.fbq) return; n = f.fbq = function () {
-        n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-    };
-    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-    n.queue = []; t = b.createElement(e); t.async = !0;
-    t.src = v; s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s)
-}(window, document, 'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '674711539752032');
 fbq('track', 'PageView');
 
@@ -90,7 +88,7 @@ $(window).on('load', () => {
             const instalationSku = '10748';
             const itemsObserver = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
-                    if (mutation.removedNodes[0] instanceof HTMLElement) {
+                    if(mutation.removedNodes[0] instanceof HTMLElement) {
                         if (!!mutation.removedNodes[0].querySelector('.product-name')?.querySelector('.btn-add-instalacao') || (mutation.removedNodes[0].dataset.sku == instalationSku)) {
                             const orderForm = vtexjs.checkout.orderForm;
                             View.formatItemList(orderForm);
@@ -108,7 +106,6 @@ $(window).on('load', () => {
                 });
             });
         }
-
 
         function _watchHashChangeAndOrderForm(_, orderForm) {
             orderForm && Service.sendGAEvent(orderForm);
@@ -136,7 +133,7 @@ $(window).on('load', () => {
             _removePaymentPickupIfIsDelivery(orderForm);
 
             if (window.location.hash.includes('payment')) {
-                _formatLabelOnPayment(orderForm)
+                 _formatLabelOnPayment(orderForm)
             }
 
             if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
@@ -144,14 +141,14 @@ $(window).on('load', () => {
                 function removePropNewsletter() {
                     $('#opt-in-newsletter').removeProp('disabled');
                 }
-              
+
               	$('.newsletter').show();
                 removePropNewsletter();
 
                 $('#opt-in-newsletter').on('click', function () {
                     removePropNewsletter();
                 });
-                
+
                 $('.newsletter').append(`
                   <label class="checkbox adulthood-label">
                       <input type="checkbox" id="opt-in-adulthood">
@@ -160,20 +157,20 @@ $(window).on('load', () => {
                 `);
 
                 $('#opt-in-adulthood').on('click', () => {
-                    const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
+					const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
 
-                    cookie.adulthood = $('#opt-in-adulthood').is(':checked');
+					cookie.adulthood = $('#opt-in-adulthood').is(':checked');
 
-                    $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
-                })
+                  	$.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
+				})
             }
 
             let hasInstall = Service.checkIfHasInstall(orderForm.items);
-            let title = $('#shipping-data .accordion-toggle.collapsed');
+			let title = $('#shipping-data .accordion-toggle.collapsed');
 
             if (hasInstall) {
                 if (title.is('.accordion-toggle-active')) {
-                    title.html('<i class="icon-home"></i> Instalar');
+                  	title.html('<i class="icon-home"></i> Instalar');
                 }
                 $('#shipping-data').addClass('altera-texto-abas-checkout');
                 View.addInstallTexts(orderForm);
@@ -186,74 +183,75 @@ $(window).on('load', () => {
         }
 
         function _removePaymentPickupIfIsDelivery(orderForm) {
-            var maxLoopInteractions = 0;
+            var maxLoopInteractions=0;
             if (window.location.hash.includes("payment")
                 && orderForm
                     .shippingData
                     .logisticsInfo[0]
                     .selectedDeliveryChannel === "delivery"
             ) {
-                var checkPaymentOptionLoop = setInterval(function () {
-                    if (document.querySelector("fieldset.payment-group").style.display != 'none') {
-                        $("#payment-group-creditCardPaymentGroup").click();
-                        $(".pg-pagamento-na-loja.payment-group-item").css("display", "none");
-                        let tipoDePagamento = vtexjs.checkout.orderForm.paymentData.payments[0].paymentSystem;
-                        const pagamentoNaLoja = '201';
-                        if (tipoDePagamento != pagamentoNaLoja ||
-                            ++maxLoopInteractions > 50) {
-                            clearInterval(checkPaymentOptionLoop);
-                        }
+               var checkPaymentOptionLoop = setInterval(function(){
+                  if(document.querySelector("fieldset.payment-group").style.display!='none')
+                  {
+                    $("#payment-group-creditCardPaymentGroup").click();
+                    $(".pg-pagamento-na-loja.payment-group-item").css("display","none");
+                    let tipoDePagamento = vtexjs.checkout.orderForm.paymentData.payments[0].paymentSystem;
+                    const pagamentoNaLoja = '201';
+                    if(tipoDePagamento != pagamentoNaLoja ||
+                       ++maxLoopInteractions > 50){
+                      clearInterval(checkPaymentOptionLoop);
                     }
+                  }
                 }, 100, maxLoopInteractions);
             }
         }
 
-        function _formatLabelOnPayment(orderForm) {
-            let title = $('#shipping-data .accordion-toggle.collapsed');
-            let selectedDeliveryChannel = orderForm.shippingData
-                .logisticsInfo[0]
-                .selectedDeliveryChannel
-            let hasInstall = Service.checkIfHasInstall(orderForm.items);
+		function _formatLabelOnPayment(orderForm){
+				let title = $('#shipping-data .accordion-toggle.collapsed');
+              	let selectedDeliveryChannel = orderForm.shippingData
+                            .logisticsInfo[0]
+                            .selectedDeliveryChannel
+                let hasInstall = Service.checkIfHasInstall(orderForm.items);
 
-            let titleText = ' Receber';
+                let titleText = ' Receber';
 
-            if (hasInstall && (selectedDeliveryChannel === 'pickup-in-point')) {
-                titleText = 'Instalar na Loja';
-            }
-            else if (hasInstall && (selectedDeliveryChannel === 'delivery')) {
-                titleText = 'Instalar em Casa';
-            }
-            else if (!hasInstall && (selectedDeliveryChannel === 'pickup-in-point')) {
-                titleText = 'Retirar na Loja';
-            }
-            else if (!hasInstall && (selectedDeliveryChannel === 'delivery')) {
-                titleText = 'Receber em Casa';
-            }
+                if(hasInstall && (selectedDeliveryChannel === 'pickup-in-point')){
+                  titleText = 'Instalar na Loja';
+                }
+                else if(hasInstall && (selectedDeliveryChannel === 'delivery')){
+                  titleText = 'Instalar em Casa';
+                }
+                else if(!hasInstall && (selectedDeliveryChannel === 'pickup-in-point')){
+                  titleText = 'Retirar na Loja';
+                }
+                else if(!hasInstall && (selectedDeliveryChannel === 'delivery')){
+                  titleText = 'Receber em Casa';
+                }
 
-            let child1 = title[0].children[0];
-            let child2 = title[0].children[1];
-            title[0].innerHTML = '';
-            title[0].appendChild(child1);
-            title[0].append(' ' + titleText);
+          		let child1 = title[0].children[0];
+                let child2 = title[0].children[1];
+                title[0].innerHTML = '';
+                title[0].appendChild(child1);
+                title[0].append(' ' + titleText);
 
-            if (!title.is('.accordion-toggle-active')) {
-                title[0].appendChild(child2);
-            }
+          		if (!title.is('.accordion-toggle-active')) {
+                    title[0].appendChild(child2);
+                }
 
 
-            let secondLabel = document.querySelectorAll('.shp-summary-group-title.vtex-omnishipping-1-x-SummaryItemTitle')
-            if (secondLabel.length > 1) {
-                secondLabel[0].style.display = "none";
-            }
+                let secondLabel = document.querySelectorAll('.shp-summary-group-title.vtex-omnishipping-1-x-SummaryItemTitle')
+                if(secondLabel.length > 1){
+                    secondLabel[0].style.display = "none";
+                }
 
-            return;
+            	return;
         }
 
 
         async function loadScripts() {
 
             const addId = id => script => {
-                script.id = id;
+              script.id = id;
             }
 
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
@@ -343,7 +341,6 @@ $(window).on('load', () => {
 
             if (hasInstall && hasInstallButtom) {
                 $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
-
                 $(".srp-toggle__pickup").append(
                     "<span class='instalar'>Instalar na loja</span>"
                 );
@@ -396,7 +393,7 @@ $(window).on('load', () => {
                 bestPrice = '6000';
                 available = true;
             }
-                  
+                
             if (!available) return;
 
             let btnInstall = _createInstallButton(
@@ -562,7 +559,7 @@ $(window).on('load', () => {
                         try {
                             const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
                             $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
-                        } catch { console.log('Falha ao renderizar o Cep'); }
+                        } catch {console.log('Falha ao renderizar o Cep');}
                     }
 
                     selector = '.srp-pickup-info';
@@ -663,15 +660,17 @@ $(window).on('load', () => {
 
             try {
 
-                $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
+                setTimeout(() => {
+                   $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
                     (selectedDate, details) => {
-                        _createConfirmButtonSM(selectedDate, details);
-                    }
-                );
+                      _createConfirmButtonSM(selectedDate, details);
+                    });
 
-            } catch {
-                console.error('Falha ao criar onSelect no datepicker')
-            }
+                }, 500);
+
+              } catch {
+                   console.error('Falha ao criar onSelect no datepicker')
+              }
 
 
             $('#alterar-shipping-btn').click(() => {
@@ -783,7 +782,7 @@ $(window).on('load', () => {
         }
     }
 
-  ajustaBotaoFinalizarCompra();
+    ajustaBotaoFinalizarCompra();
 
     function ServiceAPI() {
         return {
@@ -865,7 +864,5 @@ $(window).on('load', () => {
         function getSelectedAppointment() {
             return JSON.parse(localStorage.getItem(CONFIG.STORAGE.APPOINTMENT));
         }
-
     }
 });
-
