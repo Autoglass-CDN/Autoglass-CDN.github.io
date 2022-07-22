@@ -150,7 +150,6 @@ const Installment = {
     $("#confirmacao-servico-movel").html('');
     $('#input-cep-btn').trigger('click');
 
-    //if (!$('#mostrar-datas-datepicker').datepicker("option", "onSelect")) {
     $('#mostrar-datas-datepicker').datepicker(
       "option",
       "onSelect",
@@ -163,7 +162,6 @@ const Installment = {
           .fadeIn(500);
       }
     )
-    //}
 
   }
 }
@@ -196,7 +194,8 @@ setTimeout(() => {
         const installment_type = data.shippingData.logisticsInfo[0].selectedDeliveryChannel;
         calculateAvailableAppointmentDate(data, installment_type);
 
-        const diaSelecionado = JSON.parse(localStorage.getItem(CONFIG_GLOBAL.STORAGE[installment_type.toUpperCase()]));
+        const opcao = installment_type.replaceAll('-','_').toUpperCase();
+        const diaSelecionado = JSON.parse(localStorage.getItem(CONFIG_GLOBAL.STORAGE[opcao]));
 
         if (diaSelecionado) {
           diaSelecionado._createAt = new Date(diaSelecionado._createAt);
@@ -329,11 +328,12 @@ function AgendamentoLojaService() {
 
   function solicitarAgendamentoNovo(selected) {
     const [year, month, day] = selected.date.split('-');
+    const dataDeInstalacao = `${day}/${month}/${year}`;
 
     let body = {
       CodigoPedidoVTEX: $("#order-id").text(),
       Unidade: selected.loja,
-      DataInstalacao: `${day}/${month}/${year}`,
+      DataInstalacao: dataDeInstalacao,
       HoraInstalacao: selected.horario,
       Cliente
     };
@@ -359,13 +359,11 @@ function AgendamentoLojaService() {
         .removeClass("hidden erro")
         .addClass("info")
         .html(
-          `<h3>Sua solicitação foi enviada!</h3><p>O agendamento de instalação em <strong>${$("#agendamento-loja")
-            .text().trim()
-          }</strong>, no dia <strong>${$("#agendamento-data")
-            .text().trim()
-          }</strong> às <strong>${$("#agendamento-hora")
-            .text().trim()
-          }</strong> foi solicitado.</p> <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
+          `<h3>Sua solicitação foi enviada!</h3>
+          <p>O agendamento de instalação em <strong>${(selected.lojaBeauty)}</strong>,
+          situada em ${(selected.enderecoLoja)}, no dia <strong>${dataDeInstalacao}</strong>
+           às <strong>${(selected.horario).trim()} </strong> foi solicitado.</p>
+           <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
         );
       $("#loader").addClass("hidden");
     }).fail(function (err) {
