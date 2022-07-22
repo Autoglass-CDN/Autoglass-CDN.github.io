@@ -153,18 +153,18 @@ const Installment = {
     $('#input-cep-btn').trigger('click');
 
     //if (!$('#mostrar-datas-datepicker').datepicker("option", "onSelect")) {
-      $('#mostrar-datas-datepicker').datepicker(
-        "option",
-        "onSelect",
-        (date) => {
-          $("#confirmacao-servico-movel").html('');
+    $('#mostrar-datas-datepicker').datepicker(
+      "option",
+      "onSelect",
+      (date) => {
+        $("#confirmacao-servico-movel").html('');
 
-          $("#confirmacao-servico-movel")
-            .append(agendamentoCasaService.textoConfirmacao(date))
-            .append(agendamentoCasaService.createConfirmationButton())
-            .fadeIn(500);
-        }
-      )
+        $("#confirmacao-servico-movel")
+          .append(agendamentoCasaService.textoConfirmacao(date))
+          .append(agendamentoCasaService.createConfirmationButton())
+          .fadeIn(500);
+      }
+    )
     //}
 
   }
@@ -491,11 +491,11 @@ function AgendamentoCasaService() {
         .addClass("info")
         .html(
           `<h3>Sua solicitação foi enviada!</h3>
-           <p>O agendamento de instalação, no dia <strong>${diaSelecionado}</strong>, foi
-           solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
-          </p>
-          <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
-        );
+          <p>O agendamento de instalação, no dia <strong>${diaSelecionado}</strong>, foi
+          solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
+         </p>
+         <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
+       );
       $("#loader").addClass("hidden");
     }).fail(function (err) {
       $(".msg-agendamento")
