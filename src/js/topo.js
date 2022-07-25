@@ -3,6 +3,11 @@ const device = {
   mobile: ".mobile"
 }
 
+const numeroWhatsAppAG = "5527992486816";
+const numeroWhatsAppFormatadoAG = "(27) 99248-6816";
+const urlWhatsAppApi = "https://api.whatsapp.com/send?phone=";
+const textoUrlGet = "&amp;text=Ol%C3%A1%2C%20estou%20navegando%20pelo%20e-commerce%2C%20pode%20me%20ajudar%3F";
+
 function getLastTimeWhildshieldVanePopUpWasShown() {
   return Number (localStorage.getItem('lastTimeWhildshieldVanePopUpWasShown'));
 }
