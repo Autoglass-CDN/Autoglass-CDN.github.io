@@ -1,3 +1,17 @@
+#whatsapp-icon-link {
+  bottom: 0px;
+  display: inherit;
+  margin: 10px 15px;
+  position: fixed;
+  left: 0px;
+  z-index: 8000;
+}
+
+#whatsapp-icon-link img {
+  height: auto;
+  width: 60px;
+}
+
 #launcher {
   min-width: 60px !important;
   height: 60px !important;
@@ -8,6 +22,10 @@
 }
 
 @media only screen and (min-width: 1200px) {
+  #whatsapp-icon-link {
+    margin-bottom: 10px !important;
+  }
+
   #launcher {
     margin-bottom: 10px !important;
     bottom: 0px !important;
