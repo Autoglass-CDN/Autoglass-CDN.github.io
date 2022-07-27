@@ -464,5 +464,4 @@ class Formulario {
     Select2.init();
     FormSubmit.init();
     Formulario.init();
-})
-();
+})();
