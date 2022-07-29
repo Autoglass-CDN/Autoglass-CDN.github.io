@@ -1,23 +1,24 @@
 (() => {
 
     const parametros = new URLSearchParams(window.location.search);
-    const email = parametros.get('e').trim();
+    const email = parametros.get('e');
     const baseUrlApi = window.location.href.includes("dev")
-    ? "http://localhost:5010"
-    : "https://api-hml.autoglass.com.br/integracao-b2c";
+    ? "https://api-int-hml.autoglass.com.br"
+    : "https://api-hml.autoglass.com.br";
 
     if(!emailValido(email)) {
+      $('.spinner').css({'display' : 'none'});
       $('.mensagem').html(`
         <p style="text-align:center;">Requisição inválida, por favor, tente novamente mais tarde!</p>
       `);
         return;
     }
 
-    sendDataToVtexMasterData(email);
+    sendDataToVtexMasterData(email.trim());
 
     async function sendDataToVtexMasterData(endereco) {
         try {
-          await fetch(`${baseUrlApi}/api/master-datas/clientes/${endereco}/carrinho-abandonado`, {
+          await fetch(`${baseUrlApi}/integracao-b2c/api/master-datas/clientes/${endereco}/carrinho-abandonado`, {
             method: 'PUT',
             headers: new Headers({
               "Content-Type": "application/json",
@@ -26,6 +27,7 @@
                 isAbandonedCartOptOut: true
             }),
           }).then(() => {
+            $('.spinner').css({'display' : 'none'});
             $('.mensagem').html(`
               <p>Seu pedido é uma ordem!</p>
               <p>
@@ -38,6 +40,7 @@
         });
 
         } catch (e) {
+          $('.spinner').css({'display' : 'none'});
           console.warn('Falha ao enviar dados ao MasterData! ' + e);
           $('.mensagem').html(`
             <p>
@@ -51,19 +54,21 @@
     }
 
     function emailValido(endereco) {
-        const usuario = endereco.substring(0, endereco.indexOf("@"));
-        const dominio = endereco.substring(endereco.indexOf("@")+ 1, endereco.length);
+      if(endereco == null) return false;
+      
+      const usuario = endereco.substring(0, endereco.indexOf("@"));
+      const dominio = endereco.substring(endereco.indexOf("@")+ 1, endereco.length);
 
-        return ((usuario.length >=1) &&
-            (dominio.length >=3) &&
-            (usuario.search("@")==-1) &&
-            (dominio.search("@")==-1) &&
-            (usuario.search(" ")==-1) &&
-            (dominio.search(" ")==-1) &&
-            (dominio.search(".")!=-1) &&
-            (dominio.indexOf(".") >=1)&&
-            (dominio.lastIndexOf(".") < dominio.length - 1))
-        ? true : false;
+      return ((usuario.length >=1) &&
+          (dominio.length >=3) &&
+          (usuario.search("@")==-1) &&
+          (dominio.search("@")==-1) &&
+          (usuario.search(" ")==-1) &&
+          (dominio.search(" ")==-1) &&
+          (dominio.search(".")!=-1) &&
+          (dominio.indexOf(".") >=1)&&
+          (dominio.lastIndexOf(".") < dominio.length - 1))
+      ? true : false;
     }
 
 })();
