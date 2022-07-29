@@ -6,12 +6,31 @@
         <title>Autoglass</title>
         <vtex:metaTags />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <style>
+          @keyframes spin {
+            to { transform: rotate(360deg);}
+          }
+          .spinners {
+            border: 8px solid rgba(0, 0, 0, 0.1);
+            border-left-color: #183884;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1.2s linear infinite;
+            margin: 0 auto;
+          }
+        </style>
     </head>
     <body style="display: block; margin: auto; max-width: 620px">
       <a href="https://www.autoglassonline.com.br" title="Visitar a Autoglass">
         <img class="banner__head" src="https://autoglass.vteximg.com.br/arquivos/email-top.png" alt=""
         style="height: auto; max-width: 100%" />
       </a>
+      
+      <div class="spinner" style="width: 100px; margin: 60px auto auto auto; text-align: center;">
+        <div class="spinners"></div>
+        <p>Enviando</p>
+      </div>
       <div class="mensagem" style="font-family: Open Sans, sans-serif; padding: 10px">
         
       </div>
