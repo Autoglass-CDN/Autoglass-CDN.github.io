@@ -2,17 +2,22 @@
 
     const parametros = new URLSearchParams(window.location.search);
     const email = parametros.get('e').trim();
-    
+    const baseUrlApi = window.location.href.includes("dev")
+    ? "http://localhost:5010"
+    : "https://api-hml.autoglass.com.br/integracao-b2c";
+
     if(!emailValido(email)) {
-        alert('Email inválido');
+      $('.mensagem').html(`
+        <p style="text-align:center;">Requisição inválida, por favor, tente novamente mais tarde!</p>
+      `);
         return;
     }
-    
+
     sendDataToVtexMasterData(email);
-    
+
     async function sendDataToVtexMasterData(endereco) {
         try {
-          await fetch(`http://localhost:5010/api/master-datas/clientes/${endereco}/carrinho`, {
+          await fetch(`${baseUrlApi}/api/master-datas/clientes/${endereco}/carrinho-abandonado`, {
             method: 'PUT',
             headers: new Headers({
               "Content-Type": "application/json",
@@ -21,19 +26,34 @@
                 isAbandonedCartOptOut: true
             }),
           }).then(() => {
-            let isDataSent = true
-            alert(isDataSent);
+            $('.mensagem').html(`
+              <p>Seu pedido é uma ordem!</p>
+              <p>
+                Respeitamos seu desejo e a partir de agora não enviaremos mais este tipo de mensagem para você.
+              </p>
+              <p>
+                Agradecemos sua visita e esperamos que volte.
+              </p>
+            `);
         });
 
         } catch (e) {
           console.warn('Falha ao enviar dados ao MasterData! ' + e);
+          $('.mensagem').html(`
+            <p>
+              Ocorreu um erro ao tentar enviar a solicitação, por favor, tente novamnete mais tarde.
+            </p>
+            <p>
+              Agradecemos sua compreensão.
+            </p>
+          `);
         }
     }
-    
+
     function emailValido(endereco) {
         const usuario = endereco.substring(0, endereco.indexOf("@"));
         const dominio = endereco.substring(endereco.indexOf("@")+ 1, endereco.length);
-        
+
         return ((usuario.length >=1) &&
             (dominio.length >=3) &&
             (usuario.search("@")==-1) &&
