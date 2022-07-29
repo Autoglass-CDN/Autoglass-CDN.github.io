@@ -1076,16 +1076,12 @@
         return "S10";
       case "TTS" === modelo:
         return "TT";
-      case (new RegExp(/^RANGE ROVER SPORT .*$/i).test(modelo)):
-        return "RANGE ROVER SPORT";
-      case (new RegExp(/^RANGE ROVER .*$/i).test(modelo)):
-        return "RANGE ROVER";
       case (new RegExp(/^[A-Z]-CLASS$/i).test(modelo)):
         return "Classe " + modelo.replace(/-CLASS/gi, "");
       default:
         const modeloSemMontadoraTermos = modelo.replace(
-          new RegExp(montadoraTermos.join('|'), "gi"), "").trim().split(" ");
-        return modeloSemMontadoraTermos[0];
+          new RegExp(montadoraTermos.join(' '), "gi"), "").trim();
+        return modeloSemMontadoraTermos;
     }
   }
 
