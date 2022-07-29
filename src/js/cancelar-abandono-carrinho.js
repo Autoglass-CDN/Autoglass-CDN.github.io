@@ -3,8 +3,8 @@
     const parametros = new URLSearchParams(window.location.search);
     const email = parametros.get('e').trim();
     const baseUrlApi = window.location.href.includes("dev")
-    ? "http://localhost:5010"
-    : "https://api-hml.autoglass.com.br/integracao-b2c";
+    ? "https://api-hml.autoglass.com.br/integracao-b2c"
+    : "https://api.autoglass.com.br/integracao-b2c";
 
     if(!emailValido(email)) {
       $('.mensagem').html(`
