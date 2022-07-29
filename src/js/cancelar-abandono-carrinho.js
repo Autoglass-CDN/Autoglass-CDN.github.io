@@ -41,7 +41,7 @@
           console.warn('Falha ao enviar dados ao MasterData! ' + e);
           $('.mensagem').html(`
             <p>
-              Ocorreu um erro ao tentar enviar a solicitação, por favor, tente novamnete mais tarde.
+              Ocorreu um erro ao tentar enviar a solicitação, por favor, tente novamente mais tarde.
             </p>
             <p>
               Agradecemos sua compreensão.
