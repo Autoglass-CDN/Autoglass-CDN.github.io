@@ -502,9 +502,9 @@
             ? values.sort((a, b) => b.name.localeCompare(a.name))
             : values.sort((a, b) => a.name.localeCompare(b.name));
 
-          nextSelect.title == "Veículo"
-            ? nextSelect.values = vehiclesWithoutBrand(values, optionSelected.name)
-            : nextSelect.values = values;
+          nextSelect.values = nextSelect.title == "Veículo"
+            ? vehiclesWithoutBrand(values, optionSelected.name)
+            : values;
         } else {
           nextSelect.values = optionSelected.children.sort((a, b) =>
             a.name.localeCompare(b.name)
