@@ -502,7 +502,9 @@
             ? values.sort((a, b) => b.name.localeCompare(a.name))
             : values.sort((a, b) => a.name.localeCompare(b.name));
 
-          nextSelect.values = values;
+          nextSelect.values = nextSelect.title == "Veículo"
+            ? vehiclesWithoutBrand(values, optionSelected.name)
+            : values;
         } else {
           nextSelect.values = optionSelected.children.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -515,6 +517,10 @@
       View.createNavigation(select.id, event.target.innerHTML);
 
       modalDeCarregamento.ocultarSpinner();
+    }
+
+    function vehiclesWithoutBrand(vehicles, brand){
+      return vehicles.filter(vehicle => !RegExp(`\\b${brand}\\b`, 'i').test(vehicle.name));
     }
 
     function getSelectedRouteByOption(optionSelected) {
