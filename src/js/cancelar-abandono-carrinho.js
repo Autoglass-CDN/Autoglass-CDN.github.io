@@ -3,8 +3,8 @@
     const parametros = new URLSearchParams(window.location.search);
     const email = parametros.get('e');
     const baseUrlApi = window.location.href.includes("dev")
-    ? "http://localhost:5010"
-    : "https://api-hml.autoglass.com.br";
+    ? "https://api-hml.autoglass.com.br"
+    : "https://api.autoglass.com.br";
 
     if(!emailValido(email)) {
       $('.spinner').css({'display' : 'none'});
@@ -18,7 +18,7 @@
 
     async function sendDataToVtexMasterData(endereco) {
         try {
-          await fetch(`${baseUrlApi}/integracao-b2c/api/web-app/master-datas/abandono-carrinho/${endereco}`, {
+          await fetch(`${baseUrlApi}/integracao-b2c/api/web-app/master-datas/abandonos-carrinhos/${endereco}`, {
             method: 'PUT',
             headers: new Headers({
               "Content-Type": "application/json",
