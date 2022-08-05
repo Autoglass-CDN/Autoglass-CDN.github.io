@@ -1,0 +1,33 @@
+#inform-chassi{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    position: relative;
+}
+
+#inform-chassi.invalido::after {
+    content: 'Digite os 8 dígitos alfanuméricos corretamente';
+    color: #dd4b39;
+}
+
+#inform-chassi.invalido input{
+    color: #dd4b39;
+    border: 1px solid #dd4b39;    
+}
+
+#inform-chassi.valido::after {
+    content: "\f00c";
+    font-family: 'FontAwesome';
+    color: #94CB82;
+    position: absolute;
+    left: 110px;
+    top: 21px;
+}
+
+#inform-chassi input{
+    width: 130px;
+}
+
+body .vtex-omnishipping-1-x-address {
+    margin-bottom: 0;
+}

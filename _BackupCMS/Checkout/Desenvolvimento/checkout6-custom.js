@@ -1,7 +1,6 @@
-// dev2autoglass
+// dev2autoglass 
 
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE. THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
-
 
 /*<!-- Facebook Pixel Code -->*/
 !function(f,b,e,v,n,t,s)
@@ -14,6 +13,7 @@ s.parentNode.insertBefore(t,s)}(window,document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
 fbq('init', '674711539752032');
 fbq('track', 'PageView');
+
 
 /**
 * Configurações de instalação
@@ -49,14 +49,17 @@ const CONFIG = {
 }
 
 $(window).on('load', () => {
+
     const Controller = ControllerAPI();
     const Service = ServiceAPI();
     const View = ViewAPI();
 
     View._init();
 
+
     Controller._init();
     Controller.loadScripts();
+
 
     function ControllerAPI() {
         return {
@@ -67,9 +70,12 @@ $(window).on('load', () => {
         async function _init() {
             $(window).on(CONFIG.EVENTS.HASH_CHANGE, _watchHashChange);
 
+
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
 
-            _createInstallButtonObserver();
+_createInstallButtonObserver();
+
+            View.windshieldVerification(orderForm);
 
             View.formatItemList(orderForm);
 
@@ -83,6 +89,7 @@ $(window).on('load', () => {
             )
 
         }
+
 
         function _createInstallButtonObserver() {
             const instalationSku = '10748';
@@ -106,6 +113,7 @@ $(window).on('load', () => {
                 });
             });
         }
+
 
         function _watchHashChangeAndOrderForm(_, orderForm) {
             orderForm && Service.sendGAEvent(orderForm);
@@ -133,7 +141,7 @@ $(window).on('load', () => {
             _removePaymentPickupIfIsDelivery(orderForm);
 
             if (window.location.hash.includes('payment')) {
-                 _formatLabelOnPayment(orderForm)
+                _formatLabelOnPayment(orderForm)
             }
 
             if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
@@ -174,10 +182,11 @@ $(window).on('load', () => {
                 }
                 $('#shipping-data').addClass('altera-texto-abas-checkout');
                 View.addInstallTexts(orderForm);
-            } else if (title.is('.accordion-toggle-active')) {
+            } else if (title.is('.accordion-toggle-active')){
                 title.html('<i class="icon-home"></i> Receber ou Retirar');
                 $('#shipping-data').removeClass('altera-texto-abas-checkout');
             }
+
 
             View.createCepInfo(orderForm, hasInstall);
         }
@@ -205,6 +214,7 @@ $(window).on('load', () => {
                 }, 100, maxLoopInteractions);
             }
         }
+
 
 		function _formatLabelOnPayment(orderForm){
 				let title = $('#shipping-data .accordion-toggle.collapsed');
@@ -260,14 +270,17 @@ $(window).on('load', () => {
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
             // await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
+            await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
+            
             await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
+
             loadScript('https://autoglass-cdn.github.io/src/js/checkout/jornada-do-cliente.js');
             loadScript('https://autoglass-cdn.github.io/src/js/checkout/automatizar-preenchimento-nota-fiscal.js');
-
+            loadScript('https://autoglass-cdn.github.io/src/js/checkout/habilitar-input-chassi.js');
             loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
-            // loadScript('https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127', addId('hi-chat-script'));
+            //loadScript('https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127', addId('hi-chat-script'));
 
             loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
@@ -301,12 +314,15 @@ $(window).on('load', () => {
                 document.getElementsByTagName("head")[0].appendChild(script);
             });
         }
+
+
     }
 
     function ViewAPI() {
         return {
             _init,
             formatItemList,
+            windshieldVerification,
             addInstallTexts,
             createCepInfo
         }
@@ -341,6 +357,7 @@ $(window).on('load', () => {
 
             if (hasInstall && hasInstallButtom) {
                 $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
+
                 $(".srp-toggle__pickup").append(
                     "<span class='instalar'>Instalar na loja</span>"
                 );
@@ -366,11 +383,32 @@ $(window).on('load', () => {
                 $("span").remove(".instalar");
                 $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
                 $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
+                // $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Entrega ou Retirada');
                 $('#shipping-data').removeClass('altera-texto-abas-checkout');
                 $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
+
+
             }
 
             View.createCepInfo(orderForm, hasInstall);
+        }
+
+        function windshieldVerification(orderForm) {
+          const hasWindshild = orderForm.items.reduce(
+              (previousValue, item) =>
+                  previousValue || item.name.startsWith("Parabrisa"),
+              false
+          );
+          console.log('hasWindshild? '+ hasWindshild);
+          if(!hasWindshild) return;
+          const hasWindshieldVane = orderForm.items.reduce(
+              (previousValue, item) =>
+                  previousValue || item.name.startsWith("Palheta"),
+              false
+          );
+          if(hasWindshieldVane) return;
+
+          //alert('TEM QUE TROCAR AS PALHETAS A CADA 6 MESES!')
         }
 
         function addInstallTexts(orderForm) {
@@ -389,11 +427,11 @@ $(window).on('load', () => {
                 .find(p => p.sku == accessory.items[0].itemId);
 
             if(product.name == 'Insumos para instalação' && !product.available) {
-                preco     = 'R$ 60,00';
-                bestPrice = '6000';
-                available = true;
+              preco = 'R$ 60,00';
+              bestPrice = '6000';
+              available = true;
             }
-                
+
             if (!available) return;
 
             let btnInstall = _createInstallButton(
@@ -557,8 +595,8 @@ $(window).on('load', () => {
 
                     if (cepBox.length === 0) {
                         try {
-                            const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
-                            $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
+                          const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
+                          $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
                         } catch {console.log('Falha ao renderizar o Cep');}
                     }
 
@@ -608,10 +646,10 @@ $(window).on('load', () => {
                 }
 
                 /*
-            selectedChannel === 'delivery'
-                ? $('#open-modal-ic')[0].click()
-                : $('#open-modal-il')[0].click();
-            */
+                selectedChannel === 'delivery'
+                    ? $('#open-modal-ic')[0].click()
+                    : $('#open-modal-il')[0].click();
+                */
                 selectedChannel === 'delivery'
                     ? $('body').addClass('mz-bo-on mz-as-on')
                     : $('#open-modal-il')[0].click();
@@ -658,15 +696,13 @@ $(window).on('load', () => {
                     `);
             }
 
-            try {
+              try {
 
-                setTimeout(() => {
-                   $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
+                $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
                     (selectedDate, details) => {
-                      _createConfirmButtonSM(selectedDate, details);
-                    });
-
-                }, 500);
+                        _createConfirmButtonSM(selectedDate, details);
+                    }
+                );
 
               } catch {
                    console.error('Falha ao criar onSelect no datepicker')
@@ -774,9 +810,9 @@ $(window).on('load', () => {
         if(dispositivoMovel && paginaPagamento) {
             $(window).scroll(function() {
                 if(window.scrollY > tamanhoBlocoPgto) {
-                    $(botaoFinalizar).removeClass('cta-posicao-padrao');
-                } else {
                     $(botaoFinalizar).addClass('cta-posicao-padrao');
+                } else {
+                    $(botaoFinalizar).removeClass('cta-posicao-padrao');
                 }
             });
         }
@@ -809,7 +845,9 @@ $(window).on('load', () => {
 
         async function sendGAEvent(orderForm) {
             const { logisticsInfo, address } = orderForm.shippingData;
-            const { slas } = logisticsInfo[0];
+            //const { slas } = logisticsInfo[0];  
+            const { slas=[] } = logisticsInfo[0]? logisticsInfo[0] : [];
+            //const slas = !!logisticsInfo.length? logisticsInfo[0] : [];
 
             const GaFreight = [];
 
@@ -865,4 +903,5 @@ $(window).on('load', () => {
             return JSON.parse(localStorage.getItem(CONFIG.STORAGE.APPOINTMENT));
         }
     }
+    
 });
