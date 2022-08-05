@@ -96,6 +96,8 @@ async function loadScripts(data) {
     "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
     script => script.id = "ze-snippet"
   );
+  //await loadScript("https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127", 
+  //script => script.id = "hi-chat-script");
 
   loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
 }
@@ -153,18 +155,18 @@ const Installment = {
     $('#input-cep-btn').trigger('click');
 
     //if (!$('#mostrar-datas-datepicker').datepicker("option", "onSelect")) {
-    $('#mostrar-datas-datepicker').datepicker(
-      "option",
-      "onSelect",
-      (date) => {
-        $("#confirmacao-servico-movel").html('');
+      $('#mostrar-datas-datepicker').datepicker(
+        "option",
+        "onSelect",
+        (date) => {
+          $("#confirmacao-servico-movel").html('');
 
-        $("#confirmacao-servico-movel")
-          .append(agendamentoCasaService.textoConfirmacao(date))
-          .append(agendamentoCasaService.createConfirmationButton())
-          .fadeIn(500);
-      }
-    )
+          $("#confirmacao-servico-movel")
+            .append(agendamentoCasaService.textoConfirmacao(date))
+            .append(agendamentoCasaService.createConfirmationButton())
+            .fadeIn(500);
+        }
+      )
     //}
 
   }
@@ -192,6 +194,7 @@ setTimeout(() => {
         Telefone: `${data.clientProfileData.phone}`,
         Endereco: `${data.shippingData.address.street}, ${data.shippingData.address.number}, ${data.shippingData.address.complement}, ${data.shippingData.address.neighborhood} - ${data.shippingData.address.city} - ${data.shippingData.address.state}`,
         CEP: `${data.shippingData.address.postalCode}`,
+        Chassi: `${localStorage.getItem('valorChassi') ? localStorage.getItem('valorChassi') : localStorage.getItem('valorChassiInvalido') + ' (Fora do padrão)'}`
       };
 
       loadScripts(data).then(() => {
@@ -491,11 +494,11 @@ function AgendamentoCasaService() {
         .addClass("info")
         .html(
           `<h3>Sua solicitação foi enviada!</h3>
-          <p>O agendamento de instalação, no dia <strong>${diaSelecionado}</strong>, foi
-          solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
-         </p>
-         <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
-       );
+           <p>O agendamento de instalação, no dia <strong>${diaSelecionado}</strong>, foi
+           solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
+          </p>
+          <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
+        );
       $("#loader").addClass("hidden");
     }).fail(function (err) {
       $(".msg-agendamento")
