@@ -292,7 +292,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -357,7 +357,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -408,7 +408,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -484,7 +484,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
