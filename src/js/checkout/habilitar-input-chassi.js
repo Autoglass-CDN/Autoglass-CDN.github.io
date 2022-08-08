@@ -28,7 +28,7 @@ function HabilitarChassi() {
         $('#inform-chassi').addClass(newClass);
         if (inputChassi.value == "") $('#inform-chassi').removeClass('invalido');
         updateValorChassi();
-        updateValorChassiInvalido()
+        updateValorChassiInvalido();
      })
 }
 
@@ -53,11 +53,11 @@ function ConfigureObserver() {
 }
 
 function updateValorChassi() {
-    localStorage.setItem("valorChassi", $('#inform-chassi.valido input')[0]? $('#inform-chassi.valido input')[0].value : '')
+    localStorage.setItem("valorChassi", $('#inform-chassi.valido input')[0]? $('#inform-chassi.valido input')[0].value : '');
 }
 
 function updateValorChassiInvalido() {
-    localStorage.setItem("valorChassiInvalido", $('#inform-chassi:not(.valido) input')[0]? $('#inform-chassi:not(.valido) input')[0].value : '')
+    localStorage.setItem("valorChassiInvalido", $('#inform-chassi:not(.valido) input')[0]? $('#inform-chassi:not(.valido) input')[0].value : '');
 }
 
 HabilitarChassi();
