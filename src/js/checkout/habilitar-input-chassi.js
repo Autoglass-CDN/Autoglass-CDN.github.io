@@ -13,9 +13,9 @@ function HabilitarChassi() {
     if(temInsumoInstalacao){
         if(temParabrisa || temVigia || temVidroPorta || temVidroJanela){
             $('.vtex-omnishipping-1-x-addressForm').append(` <div id="inform-chassi"></div> `)        
-            $('#inform-chassi').append(` <label for="chassi">Chassi (Opcional)</label> `)
+            $('#inform-chassi').append(` <label for="input-chassi">Chassi (Opcional)</label> `)
             $('#inform-chassi').append(` <input type="text" maxlength="8" id="input-chassi"
-            placeholder="8 últimos números" 
+            placeholder="8 últimos dígitos" 
             pattern="[A-Za-z0-9]{8}">`)
         }
     }

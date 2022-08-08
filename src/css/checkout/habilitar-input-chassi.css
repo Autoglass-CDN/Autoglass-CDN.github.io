@@ -6,8 +6,8 @@
 }
 
 #inform-chassi.invalido::after {
-    content: 'Digite os 8 últimos dígitos corretamente';
-    color: #dd4b39;
+    content: 'Digite os 8 últimos dígitos';
+    color: #808080;
 }
 
 #inform-chassi.invalido input{
