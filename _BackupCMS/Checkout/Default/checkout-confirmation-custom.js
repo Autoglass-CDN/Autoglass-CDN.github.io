@@ -188,6 +188,7 @@ setTimeout(() => {
         Telefone: `${data.clientProfileData.phone}`,
         Endereco: `${data.shippingData.address.street}, ${data.shippingData.address.number}, ${data.shippingData.address.complement}, ${data.shippingData.address.neighborhood} - ${data.shippingData.address.city} - ${data.shippingData.address.state}`,
         CEP: `${data.shippingData.address.postalCode}`,
+        Chassi: `${localStorage.getItem('valorChassi') ? localStorage.getItem('valorChassi') : localStorage.getItem('valorChassiInvalido') + ' (Fora do padrão)'}`
       };
 
       loadScripts(data).then(() => {
