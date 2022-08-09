@@ -4,7 +4,7 @@
     const email = parametros.get('e');
     const baseUrlApi = window.location.href.includes("dev")
     ? "https://api-hml.autoglass.com.br"
-    : "https://api.autoglass.com.br";
+    : "https://api-hml.autoglass.com.br";
 
     if(!emailValido(email)) {
       $('.spinner').css({'display' : 'none'});
