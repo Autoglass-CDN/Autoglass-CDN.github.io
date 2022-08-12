@@ -3333,6 +3333,12 @@ body.mz-as-on .mz-modal-advantages {
     pointer-events: none;
     opacity: 0.8;
 }
+body .mz-advantages__button .mz-advantages__button--buy.disabled {
+    pointer-events: none;
+    cursor: default;
+    background: #919191;
+    border: #919191 solid;
+}
 @media (min-width: 992px) {
     .mz-modal-advantages .mz-advantages__button .mz-advantages__button--buy {
         width: 50%;
