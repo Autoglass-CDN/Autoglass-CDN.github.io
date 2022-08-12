@@ -655,18 +655,22 @@ $(function () {
         "Autoglass Móvel".trim().toLocaleLowerCase()
     );
 
-    maxDate = new Date(
-      minDate.Data.getFullYear(),
-      minDate.Data.getMonth() + 2,
-      0
-    );
+    if(minDate) {
+      maxDate = new Date(
+        minDate.Data.getFullYear(),
+        minDate.Data.getMonth() + 2,
+        0
+      );
 
-    $("#mostrar-datas-datepicker").datepicker("option", "maxDate", maxDate);
-    $("#mostrar-datas-datepicker").datepicker(
-      "option",
-      "minDate",
-      minDate.Data
-    );
+      $("#mostrar-datas-datepicker").datepicker("option", "maxDate", maxDate);
+      $("#mostrar-datas-datepicker").datepicker(
+        "option",
+        "minDate",
+        minDate.Data
+      );
+    } else {
+      console.log("Falha ao setar data");
+    }
   }
 
   async function Carregar(cep) {
@@ -741,6 +745,7 @@ $(function () {
         }
       } catch (err) {
         let message;
+        $(".mz-advantages__button--buy").addClass('disabled');
 
         switch (err.status) {
           case 400:
