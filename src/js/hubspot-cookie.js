@@ -89,17 +89,17 @@
         orderFormId = getOrderFormId();
       }
 
-      await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
-        method: 'PUT',
-        headers: new Headers({
-          "Content-Type": "application/json",
-        }),
-        body: JSON.stringify({
-          hubspotutk,
-          lastOrderFormId: orderFormId,
-          lastOrderId: orderId,
-        }),
-      }).then(() => {isDataSent = true});
+      // await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
+      //   method: 'PUT',
+      //   headers: new Headers({
+      //     "Content-Type": "application/json",
+      //   }),
+      //   body: JSON.stringify({
+      //     hubspotutk,
+      //     lastOrderFormId: orderFormId,
+      //     lastOrderId: orderId,
+      //   }),
+      // }).then(() => {isDataSent = true});
 
     } catch (e) {
       console.warn('Falha ao enviar dados ao MasterData!');
