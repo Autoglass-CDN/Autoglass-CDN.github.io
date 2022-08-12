@@ -730,13 +730,14 @@ $(function () {
 							<a onclick="$zopim.livechat.window.show()"><b> clique aqui </b></a>
 							e fale com a gente pelo chat.
 						`);
+          $(".mz-advantages__button--buy").addClass('disabled');
         } else {
           $("#mostrar-datas-datepicker").datepicker("setDate", minDate);
           $("#mostrar-datas-datepicker").datepicker("refresh");
           $("a.ui-state-active").removeClass("ui-state-active");
           $("a.ui-state-hover").removeClass("ui-state-hover");
-
           $("#mostrar-datas-datepicker").css("height", "270px");
+          $(".mz-advantages__button--buy").removeClass('disabled');
         }
       } catch (err) {
         let message;
