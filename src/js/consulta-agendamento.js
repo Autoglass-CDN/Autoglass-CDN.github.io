@@ -575,9 +575,7 @@ $(function () {
 
 // Instale em Casa
 $(function () {
-  const baseUrlApi = window.location.href.includes("dev")
-    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/"
-    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/";
+  const baseUrlApi = "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/";
 
   let event = new Event("datepicker_carregado");
 
