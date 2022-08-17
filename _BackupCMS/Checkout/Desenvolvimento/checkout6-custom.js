@@ -73,7 +73,7 @@ $(window).on('load', () => {
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
 
-_createInstallButtonObserver();
+            _createInstallButtonObserver();
 
             View.windshieldVerification(orderForm);
 
@@ -270,12 +270,9 @@ _createInstallButtonObserver();
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
             // await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
-            await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
-            
             await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
-
             loadScript('https://autoglass-cdn.github.io/src/js/checkout/jornada-do-cliente.js');
             loadScript('https://autoglass-cdn.github.io/src/js/checkout/automatizar-preenchimento-nota-fiscal.js');
             loadScript('https://autoglass-cdn.github.io/src/js/checkout/habilitar-input-chassi.js');
@@ -698,11 +695,13 @@ _createInstallButtonObserver();
 
               try {
 
-                $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
+                setTimeout(() => {
+                   $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
                     (selectedDate, details) => {
-                        _createConfirmButtonSM(selectedDate, details);
-                    }
-                );
+                      _createConfirmButtonSM(selectedDate, details);
+                    });
+
+                }, 500);
 
               } catch {
                    console.error('Falha ao criar onSelect no datepicker')
@@ -810,9 +809,9 @@ _createInstallButtonObserver();
         if(dispositivoMovel && paginaPagamento) {
             $(window).scroll(function() {
                 if(window.scrollY > tamanhoBlocoPgto) {
-                    $(botaoFinalizar).addClass('cta-posicao-padrao');
-                } else {
                     $(botaoFinalizar).removeClass('cta-posicao-padrao');
+                } else {
+                    $(botaoFinalizar).addClass('cta-posicao-padrao');
                 }
             });
         }
@@ -845,9 +844,7 @@ _createInstallButtonObserver();
 
         async function sendGAEvent(orderForm) {
             const { logisticsInfo, address } = orderForm.shippingData;
-            //const { slas } = logisticsInfo[0];  
-            const { slas=[] } = logisticsInfo[0]? logisticsInfo[0] : [];
-            //const slas = !!logisticsInfo.length? logisticsInfo[0] : [];
+            const { slas } = logisticsInfo[0];
 
             const GaFreight = [];
 
