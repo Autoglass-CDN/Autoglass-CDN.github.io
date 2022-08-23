@@ -1053,7 +1053,6 @@
       const anoModelo = ano.toString();
 
       return { montadora, modelo, anoModelo };
-
     }
   }
 
