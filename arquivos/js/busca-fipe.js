@@ -1054,14 +1054,6 @@
 
       return { montadora, modelo, anoModelo };
 
-      // const response = await fetch(`http://api-int.autoglass.com.br/integracao-b2c/api/veiculos/${placa}/placa`);
-      // const veiculo = await response.json();
-
-      // montadora = veiculo.Marca;
-      // modelo = veiculo.Modelo[0].Nome;
-      // anoModelo = veiculo.AnoModelo.toString();
-      
-      // return { montadora, modelo, anoModelo };
     }
   }
 
