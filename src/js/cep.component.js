@@ -334,7 +334,7 @@
 
             $(inputSelector).keyup((e) => {
                 e.preventDefault();
-                if (e.target.value.replace("-", "").length === maxLength) {
+                if (e.target.value.replace("_", "").length === maxLength) {
                     const cep = $(inputSelector).val();
                     Controller.submitEvent(e, cep);
                 }

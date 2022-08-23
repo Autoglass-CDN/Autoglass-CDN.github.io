@@ -502,7 +502,9 @@
             ? values.sort((a, b) => b.name.localeCompare(a.name))
             : values.sort((a, b) => a.name.localeCompare(b.name));
 
-          nextSelect.values = values;
+          nextSelect.values = nextSelect.title == "Veículo"
+            ? vehiclesWithoutBrand(values, optionSelected.name)
+            : values;
         } else {
           nextSelect.values = optionSelected.children.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -515,6 +517,10 @@
       View.createNavigation(select.id, event.target.innerHTML);
 
       modalDeCarregamento.ocultarSpinner();
+    }
+
+    function vehiclesWithoutBrand(vehicles, brand){
+      return vehicles.filter(vehicle => !RegExp(`\\b${brand}\\b`, 'i').test(vehicle.name));
     }
 
     function getSelectedRouteByOption(optionSelected) {
@@ -1085,16 +1091,12 @@
         return "S10";
       case "TTS" === modelo:
         return "TT";
-      case (new RegExp(/^RANGE ROVER SPORT .*$/i).test(modelo)):
-        return "RANGE ROVER SPORT";
-      case (new RegExp(/^RANGE ROVER .*$/i).test(modelo)):
-        return "RANGE ROVER";
       case (new RegExp(/^[A-Z]-CLASS$/i).test(modelo)):
         return "Classe " + modelo.replace(/-CLASS/gi, "");
       default:
         const modeloSemMontadoraTermos = modelo.replace(
-          new RegExp(montadoraTermos.join('|'), "gi"), "").trim().split(" ");
-        return modeloSemMontadoraTermos[0];
+          new RegExp(montadoraTermos.join(' '), "gi"), "").trim();
+        return modeloSemMontadoraTermos;
     }
   }
 

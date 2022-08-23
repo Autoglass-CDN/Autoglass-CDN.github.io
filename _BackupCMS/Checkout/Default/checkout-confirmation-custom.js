@@ -150,7 +150,6 @@ const Installment = {
     $("#confirmacao-servico-movel").html('');
     $('#input-cep-btn').trigger('click');
 
-    //if (!$('#mostrar-datas-datepicker').datepicker("option", "onSelect")) {
     $('#mostrar-datas-datepicker').datepicker(
       "option",
       "onSelect",
@@ -163,7 +162,6 @@ const Installment = {
           .fadeIn(500);
       }
     )
-    //}
 
   }
 }
@@ -190,13 +188,15 @@ setTimeout(() => {
         Telefone: `${data.clientProfileData.phone}`,
         Endereco: `${data.shippingData.address.street}, ${data.shippingData.address.number}, ${data.shippingData.address.complement}, ${data.shippingData.address.neighborhood} - ${data.shippingData.address.city} - ${data.shippingData.address.state}`,
         CEP: `${data.shippingData.address.postalCode}`,
+        Chassi: `${localStorage.getItem('valorChassi') ? localStorage.getItem('valorChassi') : localStorage.getItem('valorChassiInvalido') + ' (Fora do padrão)'}`
       };
 
       loadScripts(data).then(() => {
         const installment_type = data.shippingData.logisticsInfo[0].selectedDeliveryChannel;
         calculateAvailableAppointmentDate(data, installment_type);
 
-        const diaSelecionado = JSON.parse(localStorage.getItem(CONFIG_GLOBAL.STORAGE[installment_type.toUpperCase()]));
+        const opcao = installment_type.replaceAll('-','_').toUpperCase();
+        const diaSelecionado = JSON.parse(localStorage.getItem(CONFIG_GLOBAL.STORAGE[opcao]));
 
         if (diaSelecionado) {
           diaSelecionado._createAt = new Date(diaSelecionado._createAt);
@@ -206,7 +206,7 @@ setTimeout(() => {
       });
     }
   });
-}, 1000);
+}, 2000);
 
 
 function calculateAvailableAppointmentDate(data, installment_type) {
@@ -329,11 +329,12 @@ function AgendamentoLojaService() {
 
   function solicitarAgendamentoNovo(selected) {
     const [year, month, day] = selected.date.split('-');
+    const dataDeInstalacao = `${day}/${month}/${year}`;
 
     let body = {
       CodigoPedidoVTEX: $("#order-id").text(),
       Unidade: selected.loja,
-      DataInstalacao: `${day}/${month}/${year}`,
+      DataInstalacao: dataDeInstalacao,
       HoraInstalacao: selected.horario,
       Cliente
     };
@@ -359,13 +360,11 @@ function AgendamentoLojaService() {
         .removeClass("hidden erro")
         .addClass("info")
         .html(
-          `<h3>Sua solicitação foi enviada!</h3><p>O agendamento de instalação em <strong>${$("#agendamento-loja")
-            .text().trim()
-          }</strong>, no dia <strong>${$("#agendamento-data")
-            .text().trim()
-          }</strong> às <strong>${$("#agendamento-hora")
-            .text().trim()
-          }</strong> foi solicitado.</p> <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
+          `<h3>Sua solicitação foi enviada!</h3>
+          <p>O agendamento de instalação em <strong>${(selected.lojaBeauty)}</strong>,
+          situada em ${(selected.enderecoLoja)}, no dia <strong>${dataDeInstalacao}</strong>
+           às <strong>${(selected.horario).trim()} </strong> foi solicitado.</p>
+           <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
         );
       $("#loader").addClass("hidden");
     }).fail(function (err) {
@@ -413,9 +412,8 @@ function AgendamentoCasaService() {
         .addClass("info")
         .html(
           `<h3>Sua solicitação foi enviada!</h3>
-          <p>O agendamento de instalação, no dia <strong>
-            ${$("#agendamento-data").text().trim()}
-          </strong>, foi solicitado.
+           <p>O agendamento de instalação, no dia <strong>${$("#agendamento-data").text().trim()}</strong>, foi
+           solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
           </p>
           <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
         );
@@ -490,12 +488,11 @@ function AgendamentoCasaService() {
         .addClass("info")
         .html(
           `<h3>Sua solicitação foi enviada!</h3>
-          <p>O agendamento de instalação, no dia <strong>
-            ${diaSelecionado}
-          </strong>, foi solicitado.
-          </p>
-          <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
-      );
+          <p>O agendamento de instalação, no dia <strong>${diaSelecionado}</strong>, foi
+          solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
+         </p>
+         <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
+       );
       $("#loader").addClass("hidden");
     }).fail(function (err) {
       $(".msg-agendamento")

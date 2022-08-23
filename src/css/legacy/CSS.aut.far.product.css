@@ -2623,7 +2623,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
     bottom: 50px;
     right: 0;
     left: 0;
-    z-index: 99;
+    z-index: 2;
     height: 50px;
     background: #c8c8c8;
 }
@@ -3332,6 +3332,12 @@ body.mz-as-on .mz-modal-advantages {
     cursor: default;
     pointer-events: none;
     opacity: 0.8;
+}
+body .mz-advantages__button .mz-advantages__button--buy.disabled {
+    pointer-events: none;
+    cursor: default;
+    background: #919191;
+    border: #919191 solid;
 }
 @media (min-width: 992px) {
     .mz-modal-advantages .mz-advantages__button .mz-advantages__button--buy {

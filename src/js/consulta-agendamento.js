@@ -314,6 +314,9 @@ $(function () {
           $(".mz-install__button--buy").click((e) => e.preventDefault());
 
           const loja = $(this).attr("data-store");
+          const codigoLoja = (loja.split(' '))[2];
+          const enderecoLoja = $('.store-list #' + codigoLoja + ' .pickup__info-address .address-location').text();
+          const cidadeLoja = $('.store-list #' + codigoLoja + ' .pickup__info-address .pickup__info-city').text();
           const cep = $(this).attr("data-cep");
           const lojaBeauty = $(this).attr("data-friendly-name");
           const horario = $(this).html();
@@ -330,9 +333,12 @@ $(function () {
             "AG_SelectedHour",
             JSON.stringify({
               loja,
+              lojaBeauty,
               horario,
               date,
               _createAt: Date.now(),
+              enderecoLoja,
+              cidadeLoja,
             })
           );
 
@@ -355,16 +361,18 @@ $(function () {
               addressType: "search",
             })
             .then((order) => {
-              forceChangeShipping(order);
-              $(".mz-install__button--buy").unbind("click");
+              if ((Date.now() - getLastTimeWhildshieldVanePopUpWasShown()) < calculatesTwelveHours()){
+                forceChangeShipping(order);
+                $(".mz-install__button--buy").unbind("click");
+              }
             });
         });
       })
       .fail(() =>
-      {
-        limpaModalInstaleLoja();
-        $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
-      }
+        {
+          limpaModalInstaleLoja();
+          $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
+        }
       );
 
     // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
@@ -383,11 +391,42 @@ $(function () {
     $(".modal-instale-na-loja > .secao-agendamento > .to-select-msg").show();
   }
 
+  function contemParabrisa() {
+    let temParabrisa = false;
+    if (window.location.href.includes("checkout")) {
+      let itensCarrinho = vtexjs.checkout.orderForm.items;
+      itensCarrinho.forEach(function(item) {
+        if (ehParabrisa(item)) temParabrisa = true;
+      });
+    } else {
+      const produtoDetalhes = skuJson_0;
+      if (ehParabrisa(produtoDetalhes)) temParabrisa = true;
+    }
+    return temParabrisa;
+  }
+
+  function ehParabrisa(product) {
+    return product.name.startsWith("Parabrisa");
+  }
+
   function populateStore(pickupPoint) {
     const store = pickupPoint.store;
     const dadosEndereco = pickupPoint.DadosPickupPoint.address;
 
     if (!store) return null;
+
+    if(contemParabrisa()) {
+      removeUltimoHorario(store)
+    }
+
+    function removeUltimoHorario(store) {
+      const horarioLimiteTarde = 17;
+      const horarioLimiteManha = 11;
+      const quantidadeDeHorarios = Number(store.Horarios.length);
+      const ultimoHorario = store.Horarios[quantidadeDeHorarios - 1].HoraInicial.split("T");
+      if(ultimoHorario[1].startsWith(horarioLimiteTarde) || ultimoHorario[1].startsWith(horarioLimiteManha))
+        store.Horarios.pop();
+    }
 
     let { horariosDisponiveisLoja, timeStampList } = createTimestampList(
       store.Horarios,
@@ -416,16 +455,16 @@ $(function () {
 
 						</p>
 						<p class="pickup__info-city">${dadosEndereco.neighborhood
-      } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
+            } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
 					</div>
 				</div>
 				<div class="time">
 					${store
-        ? timeStampList.join("\n")
-        : [].concat(
-          '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
-        )
-      }
+            ? timeStampList.join("\n")
+            : [].concat(
+                '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
+              )
+          }
 				</div>
 			</div>
 
@@ -536,9 +575,7 @@ $(function () {
 
 // Instale em Casa
 $(function () {
-  const baseUrlApi = window.location.href.includes("dev")
-    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/"
-    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/";
+  const baseUrlApi = "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/";
 
   let event = new Event("datepicker_carregado");
 
@@ -616,18 +653,22 @@ $(function () {
         "Autoglass Móvel".trim().toLocaleLowerCase()
     );
 
-    maxDate = new Date(
-      minDate.Data.getFullYear(),
-      minDate.Data.getMonth() + 2,
-      0
-    );
+    if(minDate) {
+      maxDate = new Date(
+        minDate.Data.getFullYear(),
+        minDate.Data.getMonth() + 2,
+        0
+      );
 
-    $("#mostrar-datas-datepicker").datepicker("option", "maxDate", maxDate);
-    $("#mostrar-datas-datepicker").datepicker(
-      "option",
-      "minDate",
-      minDate.Data
-    );
+      $("#mostrar-datas-datepicker").datepicker("option", "maxDate", maxDate);
+      $("#mostrar-datas-datepicker").datepicker(
+        "option",
+        "minDate",
+        minDate.Data
+      );
+    } else {
+      console.log("Falha ao setar data");
+    }
   }
 
   async function Carregar(cep) {
@@ -691,16 +732,18 @@ $(function () {
 							<a onclick="$zopim.livechat.window.show()"><b> clique aqui </b></a>
 							e fale com a gente pelo chat.
 						`);
+          $(".mz-advantages__button--buy").addClass('disabled');
         } else {
           $("#mostrar-datas-datepicker").datepicker("setDate", minDate);
           $("#mostrar-datas-datepicker").datepicker("refresh");
           $("a.ui-state-active").removeClass("ui-state-active");
           $("a.ui-state-hover").removeClass("ui-state-hover");
-
           $("#mostrar-datas-datepicker").css("height", "270px");
+          $(".mz-advantages__button--buy").removeClass('disabled');
         }
       } catch (err) {
         let message;
+        $(".mz-advantages__button--buy").addClass('disabled');
 
         switch (err.status) {
           case 400:

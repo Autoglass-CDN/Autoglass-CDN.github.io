@@ -96,6 +96,8 @@ async function loadScripts(data) {
     "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
     script => script.id = "ze-snippet"
   );
+  //await loadScript("https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127", 
+  //script => script.id = "hi-chat-script");
 
   loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
 }
@@ -192,13 +194,15 @@ setTimeout(() => {
         Telefone: `${data.clientProfileData.phone}`,
         Endereco: `${data.shippingData.address.street}, ${data.shippingData.address.number}, ${data.shippingData.address.complement}, ${data.shippingData.address.neighborhood} - ${data.shippingData.address.city} - ${data.shippingData.address.state}`,
         CEP: `${data.shippingData.address.postalCode}`,
+        Chassi: `${localStorage.getItem('valorChassi') ? localStorage.getItem('valorChassi') : localStorage.getItem('valorChassiInvalido') + ' (Fora do padrão)'}`
       };
 
       loadScripts(data).then(() => {
         const installment_type = data.shippingData.logisticsInfo[0].selectedDeliveryChannel;
         calculateAvailableAppointmentDate(data, installment_type);
 
-        const diaSelecionado = JSON.parse(localStorage.getItem(CONFIG_GLOBAL.STORAGE[installment_type.toUpperCase()]));
+        const opcao = installment_type.replaceAll('-','_').toUpperCase();
+        const diaSelecionado = JSON.parse(localStorage.getItem(CONFIG_GLOBAL.STORAGE[opcao]));
 
         if (diaSelecionado) {
           diaSelecionado._createAt = new Date(diaSelecionado._createAt);
@@ -208,7 +212,7 @@ setTimeout(() => {
       });
     }
   });
-}, 1000);
+}, 2000);
 
 
 function calculateAvailableAppointmentDate(data, installment_type) {
@@ -288,7 +292,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -331,11 +335,12 @@ function AgendamentoLojaService() {
 
   function solicitarAgendamentoNovo(selected) {
     const [year, month, day] = selected.date.split('-');
+    const dataDeInstalacao = `${day}/${month}/${year}`;
 
     let body = {
       CodigoPedidoVTEX: $("#order-id").text(),
       Unidade: selected.loja,
-      DataInstalacao: `${day}/${month}/${year}`,
+      DataInstalacao: dataDeInstalacao,
       HoraInstalacao: selected.horario,
       Cliente
     };
@@ -352,7 +357,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -361,13 +366,11 @@ function AgendamentoLojaService() {
         .removeClass("hidden erro")
         .addClass("info")
         .html(
-          `<h3>Sua solicitação foi enviada!</h3><p>O agendamento de instalação em <strong>${$("#agendamento-loja")
-            .text().trim()
-          }</strong>, no dia <strong>${$("#agendamento-data")
-            .text().trim()
-          }</strong> às <strong>${$("#agendamento-hora")
-            .text().trim()
-          }</strong> foi solicitado.</p> <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
+          `<h3>Sua solicitação foi enviada!</h3>
+          <p>O agendamento de instalação em <strong>${(selected.lojaBeauty)}</strong>,
+          situada em ${(selected.enderecoLoja)}, no dia <strong>${dataDeInstalacao}</strong>
+           às <strong>${(selected.horario).trim()} </strong> foi solicitado.</p>
+           <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
         );
       $("#loader").addClass("hidden");
     }).fail(function (err) {
@@ -405,7 +408,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -415,9 +418,8 @@ function AgendamentoCasaService() {
         .addClass("info")
         .html(
           `<h3>Sua solicitação foi enviada!</h3>
-          <p>O agendamento de instalação, no dia <strong>
-            ${$("#agendamento-data").text().trim()}
-          </strong>, foi solicitado.
+           <p>O agendamento de instalação, no dia <strong>${$("#agendamento-data").text().trim()}</strong>, foi
+           solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
           </p>
           <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
         );
@@ -482,7 +484,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -492,9 +494,8 @@ function AgendamentoCasaService() {
         .addClass("info")
         .html(
           `<h3>Sua solicitação foi enviada!</h3>
-          <p>O agendamento de instalação, no dia <strong>
-            ${diaSelecionado}
-          </strong>, foi solicitado.
+           <p>O agendamento de instalação, no dia <strong>${diaSelecionado}</strong>, foi
+           solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
           </p>
           <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
         );
