@@ -1037,7 +1037,7 @@
     }
 
     async function obterDadosDoVeiculoViaFraga(placa) {
-      const response = await fetch(`http://localhost:5010/integracao-b2c/api/veiculos/${placa}/placa`);
+      const response = await fetch(`http://api-int-hml.autoglass.com.br/integracao-b2c/api/veiculos/${placa}/placas`);
       const veiculo = await response.json();
 
       montadora = veiculo.Marca;
