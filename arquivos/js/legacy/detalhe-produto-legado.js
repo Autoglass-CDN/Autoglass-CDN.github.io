@@ -43,13 +43,13 @@ $(function () {
 
                 const ehDomingo = (day === 0);
                 const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
-                const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour > 21);
+                const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour >= 21);
 
                 if (ehDomingo
                     || ehSabadoForaDoExpediente
                     || ehSemanaForaDoExpediente) {
                   zE('webWidget', 'chat:addTags', 'fora-expediente');
-                  zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 08-18h, no momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js \nProduto de interesse: ${window.location.href}`);
+                  zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 7:30-21:00. No momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js \nPor ele você pode nos contar o que você precisa que, assim que nossos consultores chegarem, eles irão te responder. \nProduto de interesse: ${window.location.href}`);
                 } 
                 else {
                     zE('webWidget', 'chat:send', `Olá, tenho interesse neste produto, mas está indisponível no site: ${window.location.href}`);
@@ -370,9 +370,15 @@ $(function LojasMaisProximas() {
                 postalCode: cep,
                 country: 'BRA',
                 addressType: type
-            }).then(order => { forceChangeShipping(order); $('.mz-pickup__button--buy').unbind('click'); });
+            })
+            .then(order => { 
+                if ((Date.now() - getLastTimeWhildshieldVanePopUpWasShown()) < calculatesTwelveHours()){
+                    forceChangeShipping(order); 
+                    $('.mz-pickup__button--buy').unbind('click'); 
+                }
+            });
         }
-
+        
         function forceChangeShipping(orderForm) {
             const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
             const logistic = orderForm.shippingData.logisticsInfo[0];

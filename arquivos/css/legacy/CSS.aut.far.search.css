@@ -1368,3 +1368,39 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
         display: block;
     }
 }
+
+div.prateleira ul li h3.shelf-qd-v1-name {
+    height: auto ;
+  }
+  
+  div.prateleira.n1colunas {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  div.prateleira ul li {
+    height: 100%;
+  }
+  
+  div.prateleira ul li > div:last-of-type{
+    height: 99%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  div.prateleira ul li div.shelf-qd-v1-price{
+    height:auto;
+  }
+  
+  
+  div.prateleira ul li > div >div.row:last-of-type,
+  div.prateleira ul li > div >div.row:last-of-type > div {
+    height: 100%;
+  }
+  
+  div.prateleira ul li > div >div.row:last-of-type > div > div.row {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }

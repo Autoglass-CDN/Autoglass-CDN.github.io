@@ -310,7 +310,7 @@ class FormSubmit {
       }
 
       function sendOrcamentoWhatsapp(orcamento) {
-        const atgWhatsappNumber = '5527992486816';
+        const atgWhatsappNumber = numeroWhatsAppAG;
         const service = orcamento.Servico;
         const initialMessage = `Olá! Gostaria de fazer um orçamento de ${service}. Segue os meus dados:`
         const form = createWhatsappForm(orcamento);
@@ -464,5 +464,4 @@ class Formulario {
     Select2.init();
     FormSubmit.init();
     Formulario.init();
-})
-();
+})();

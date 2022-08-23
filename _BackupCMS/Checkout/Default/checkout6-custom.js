@@ -131,10 +131,10 @@ $(window).on('load', () => {
             _removePaymentPickupIfIsDelivery(orderForm);
 
             if (window.location.hash.includes('payment')) {
-              	_formatLabelOnPayment(orderForm)
+                 _formatLabelOnPayment(orderForm)
             }
 
-          	if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
+            if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
 
                 function removePropNewsletter() {
                     $('#opt-in-newsletter').removeProp('disabled');
@@ -154,7 +154,7 @@ $(window).on('load', () => {
                   </label>
                 `);
 
-              	$('#opt-in-adulthood').on('click', () => {
+                $('#opt-in-adulthood').on('click', () => {
 					const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
 
 					cookie.adulthood = $('#opt-in-adulthood').is(':checked');
@@ -172,9 +172,9 @@ $(window).on('load', () => {
                 }
                 $('#shipping-data').addClass('altera-texto-abas-checkout');
                 View.addInstallTexts(orderForm);
-            } else if (title.is('.accordion-toggle-active')){
-             	title.html('<i class="icon-home"></i> Receber ou Retirar');
-                 $('#shipping-data').removeClass('altera-texto-abas-checkout');
+            } else if (title.is('.accordion-toggle-active')) {
+                title.html('<i class="icon-home"></i> Receber ou Retirar');
+                $('#shipping-data').removeClass('altera-texto-abas-checkout');
             }
 
             View.createCepInfo(orderForm, hasInstall);
@@ -252,7 +252,7 @@ $(window).on('load', () => {
               script.id = id;
             }
 
-          	await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
+            await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             await loadScript("/scripts/jquery.ui.core.js");
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
@@ -262,9 +262,10 @@ $(window).on('load', () => {
             await loadScript('https://autoglass-cdn.github.io/arquivos/js/consulta-agendamento.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/jornada-do-cliente.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/automatizar-preenchimento-nota-fiscal.js');
+            loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/habilitar-input-chassi.js');
 
 
-          	loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+            loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
 
             loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/hubspot-cookie.js');
@@ -311,17 +312,17 @@ $(window).on('load', () => {
         function _init() {
             $('.mz-modal-overlay').click(() => {
                 $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
-          		localStorage.setItem('locationChanged', 0);
+                localStorage.setItem('locationChanged', 0);
             });
 
             $('.mz-modal-advantages .mz-advantages__close span').click(() => {
                 $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
-          		localStorage.setItem('locationChanged', 0);
+                localStorage.setItem('locationChanged', 0);
             });
 
             $('.mz-modal-installation .mz-install__close span').click(() => {
                 $('body').removeClass('mz-bo-on mz-as-on mz-il-on');
-          		localStorage.setItem('locationChanged', 0);
+                localStorage.setItem('locationChanged', 0);
             });
         }
 
@@ -380,11 +381,17 @@ $(window).on('load', () => {
         }
 
         async function _implementsInstallButtom(item, accessory) {
-            const product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
+            let product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
 
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
 
+            if(product.name == 'Insumos para instalação' && !product.available) {
+                preco     = 'R$ 60,00';
+                bestPrice = '6000';
+                available = true;
+            }
+                
             if (!available) return;
 
             let btnInstall = _createInstallButton(
@@ -509,10 +516,10 @@ $(window).on('load', () => {
 
                 const isDelivery = localStorage.getItem('activeDeliveryChannel') === 'delivery';
 
-              	if (!selectedAddresses) {
-              		console.error('Não há endereço selecionado!');
-              		return {};
-            	}
+                if (!selectedAddresses) {
+                    console.error('Não há endereço selecionado!');
+                    return {};
+                }
 
                 if (isDelivery) {
                     const groups = selectedAddresses.postalCode
@@ -547,10 +554,10 @@ $(window).on('load', () => {
                     const cepBox = $('.srp-result  .cep-info');
 
                     if (cepBox.length === 0) {
-              			try {
-                          const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
-                          $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
-            			} catch {console.log('Falha ao renderizar o Cep');}
+                        try {
+                            const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
+                            $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
+                        } catch {console.log('Falha ao renderizar o Cep');}
                     }
 
                     selector = '.srp-pickup-info';
@@ -598,24 +605,20 @@ $(window).on('load', () => {
                     return;
                 }
 
-              	/*
                 selectedChannel === 'delivery'
-                    ? $('#open-modal-ic')[0].click()
+                    ? $('body').addClass('mz-bo-on mz-as-on')
                     : $('#open-modal-il')[0].click();
-                */
-              	selectedChannel === 'delivery'
-              		? $('body').addClass('mz-bo-on mz-as-on')
-              		: $('#open-modal-il')[0].click();
             }
         }
 
         function _createInfoDelivery(address) {
             const day = Service.getSelectedDaySM();
+            const botaoVerDiasDisponiveisExiste = !!$('#open-modal-ic').length;
 
             $('.vtex-omnishipping-1-x-shippingSectionTitle').html('Data de Instalação');
             $('.vtex-omnishipping-1-x-shippingSectionTitle.delivery-address-title').html('Endereço de Instalação');
 
-            if (!day) {
+            if (!day && !botaoVerDiasDisponiveisExiste) {
                 $('.srp-delivery-info .instalar-em-casa').html(`
                         <a id="open-modal-ic">
                             <div class="instalar_calendar"><i class="fa fa-calendar"></i></div>
@@ -648,7 +651,7 @@ $(window).on('load', () => {
                     `);
             }
 
-              try {
+            try {
 
                 setTimeout(() => {
                    $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
@@ -689,7 +692,12 @@ $(window).on('load', () => {
                 let [year, month, day] = selectedAppointment.date.split('-');
 
                 if (window.location.hash.includes('shipping')) {
-                    $('.shp-option-text-label-single span').html(`${day}/${month}/${year} às ${selectedAppointment.horario}`);
+                    $('.shp-option-text-label-single span').html(`
+                        ${day}/${month}/${year} às ${selectedAppointment.horario}<br>
+                        ${selectedAppointment.lojaBeauty}<br>
+                        ${selectedAppointment.enderecoLoja}
+                        ${selectedAppointment.cidadeLoja}
+                    `);
 
                     $('.shp-option-text-price').html('<a id="alterar-pickup-btn">Alterar</a>');
 
@@ -703,8 +711,11 @@ $(window).on('load', () => {
                         <a id="open-modal-il">
                             <div class="instalar_calendar"><i class="fa fa-calendar"></i></div>
                             <div class="instalar_content">
-                                <span>Data e horário selecionado:</span>
+                                <span>Informações do agendamento:</span>
                                 <b>${day}/${month}/${year} às ${selectedAppointment.horario}</b>
+                                <b>${selectedAppointment.lojaBeauty}</b>
+                                <b>${selectedAppointment.enderecoLoja}
+                                ${selectedAppointment.cidadeLoja}</b>
                             </div>
                         </a>
                     `);
@@ -752,7 +763,7 @@ $(window).on('load', () => {
         const dispositivoMovel = larguraTela < 490;
         const paginaPagamento  = document.body.contains(botaoFinalizar[0]);
         const tamanhoBlocoPgto = 826;
-        
+
         if(dispositivoMovel && paginaPagamento) {
             $(window).scroll(function() {
                 if(window.scrollY > tamanhoBlocoPgto) {
@@ -764,8 +775,8 @@ $(window).on('load', () => {
         }
     }
 
-	ajustaBotaoFinalizarCompra();
-    
+    ajustaBotaoFinalizarCompra();
+
     function ServiceAPI() {
         return {
             sendGAEvent,
