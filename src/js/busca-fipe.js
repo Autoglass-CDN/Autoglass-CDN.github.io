@@ -1,8 +1,5 @@
 (function () {
-  const baseUrlApi = window.location.href.includes("dev")
-    ? "http://api-hml.autoglass.com.br/integracao-b2c/api/web-app"
-    : "https://api.autoglass.com.br/integracao-b2c/api/web-app";
-        
+
   let activeTab = '#busca-peca';
   selectRightSearchMethod();
 
@@ -1041,7 +1038,7 @@
     }
 
     async function obterDadosDoVeiculoViaFraga(placa) {
-      const response = await fetch(`${baseUrlApi}/veiculos/${placa}/placas`);
+      const response = await fetch(`http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
       const veiculo = await response.json();
 
       montadora = veiculo.Marca;

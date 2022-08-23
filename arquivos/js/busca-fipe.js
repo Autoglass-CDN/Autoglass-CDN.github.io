@@ -1019,39 +1019,13 @@
     }
 
     async function obterDadosDoVeiculoViaFraga(placa) {
-      const fragaAuthEndpoint = 'https://admin.catalogofraga.com.br/connect/token';
-      const fragaAuthResponse = await fetch(fragaAuthEndpoint, {
-        method: 'POST',
-        headers: new Headers({
-          "Content-Type": "application/x-www-form-urlencoded",
-        }),
-        body: (() => {
-          return 'grant_type=client_credentials&' +
-            'client_id=f5cf87e8-88b8-400e-b494-04707621cff5&' +
-            'client_secret=81a77f34df5cf48402b2a129c00405ae';
-        })(),
-      });
+      const response = await fetch(`http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
+      const veiculo = await response.json();
 
-      const { access_token } = await fragaAuthResponse.json();
-      const fragaApiEndpoint = 'https://api.catalogofraga.com.br/v1/veiculos?placa=';
-      const fragaApiResponse = await fetch(fragaApiEndpoint + placa, {
-        method: 'GET',
-        headers: new Headers({
-          "Authorization": "Bearer " + access_token,
-        }),
-      });
-
-      if(fragaApiResponse.status === 404) {
-        throw new VehicleNotFoundException(placa);
-      }
-
-      const {
-        marca:  montadora,
-        modelos: [{ modelo }],
-        anoModelo: ano
-      } = await fragaApiResponse.json();
-      const anoModelo = ano.toString();
-
+      montadora = veiculo.Marca;
+      modelo = veiculo.Modelo[0].Nome;
+      anoModelo = veiculo.AnoModelo.toString();
+      
       return { montadora, modelo, anoModelo };
     }
   }
