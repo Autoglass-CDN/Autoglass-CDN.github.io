@@ -2,7 +2,7 @@
   async function loadOptionals() {
     const allSkuInThisPage = getAllCurrentSkus();
 
-    const baseUrlApi = "https://api-hml.autoglass.com.br/";
+    const baseUrlApi = "https://api.autoglass.com.br/";
     const baseUrlListaOpcionais = "integracao-b2c/api/web-app/produtos/opcionais-lista?codigosProdutos=";
     const urlToConsult = baseUrlApi + baseUrlListaOpcionais + allSkuInThisPage.join("&codigosProdutos=");
 
@@ -21,7 +21,7 @@
   function removerDuplicados() {
     try {
       let getAllProductInThisPage = getAllProducts();
-      var array = groupBy(getAllProductInThisPage, x => x.titulo);
+      let array = groupBy(getAllProductInThisPage, x => x.titulo);
       array.forEach((itens) => {
         if (itens.length >= 2) {
           let caracteristicas = groupBy(itens, x => x.opcionais);
