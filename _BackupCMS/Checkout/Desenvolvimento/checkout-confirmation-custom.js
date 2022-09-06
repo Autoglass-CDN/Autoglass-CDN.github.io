@@ -51,6 +51,10 @@ const CONFIG_GLOBAL = {
   }
 }
 
+const baseUrlApi = window.location.href.includes("dev")
+    ? "https://api-hml.autoglass.com.br"
+    : "https://api.autoglass.com.br";
+
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE.
 // THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
@@ -292,7 +296,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
+      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos`,
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -357,7 +361,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
+      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos`,
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -408,7 +412,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
+      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos/servicos-moveis`,
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -484,7 +488,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
+      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos/servicos-moveis`,
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -648,7 +652,7 @@ function solicitarAgendamento() {
   return $.ajax({
     crossDomain: true,
     jsonp: false,
-    url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamento",
+    url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamento",
     contentType: "application/json",
     type: "POST",
     data: JSON.stringify(body),
