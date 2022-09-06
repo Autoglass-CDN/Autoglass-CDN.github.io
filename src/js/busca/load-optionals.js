@@ -1,10 +1,11 @@
 (function () {
   async function loadOptionals() {
     const allSkuInThisPage = getAllCurrentSkus();
-
-    const baseUrlApi = "https://api.autoglass.com.br/";
     const baseUrlListaOpcionais = "integracao-b2c/api/web-app/produtos/opcionais-lista?codigosProdutos=";
     const urlToConsult = baseUrlApi + baseUrlListaOpcionais + allSkuInThisPage.join("&codigosProdutos=");
+    const baseUrlApi = window.location.href.includes("dev")
+      ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app"
+      : "https://api.autoglass.com.br/integracao-b2c/api/web-app";
 
     try {
       const allOptionals = await $.get(urlToConsult);
