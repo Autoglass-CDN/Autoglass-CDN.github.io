@@ -28,12 +28,13 @@ var codCidades = {
   SP: { code: "9423", nome: "S\u00e3o Paulo" },
 };
 
+const baseUrlApi = window.location.href.includes("dev")
+    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
+    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
+    
 // Instale na Loja
 $(function () {
   const hmlCodServico = "17";
-  const baseUrlApi = window.location.href.includes("dev")
-    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
-    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
   let estado = codCidades[$.cookie("myuf")];
 
   let codCidade = null;
@@ -575,13 +576,9 @@ $(function () {
 
 // Instale em Casa
 $(function () {
-  const baseUrlApi = "https://api.autoglass.com.br/integracao-b2c/api/web-app/";
-
   let event = new Event("datepicker_carregado");
-
   let AvailableDays;
   let isLoading = false;
-
   let minDate = new Date();
   minDate.setDate(minDate.getDate() + 2);
   let maxDate = new Date();
@@ -772,7 +769,7 @@ $(function () {
         crossDomain: true,
         jsonp: false,
         type: "POST",
-        url: `${baseUrlApi}agendamentos/servicos-moveis/disponibilidades`,
+        url: `${baseUrlApi}/servicos-moveis/disponibilidades`,
         data: JSON.stringify(request),
         success: function (data) {
           resolve(data);
