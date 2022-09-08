@@ -198,29 +198,24 @@ $(function LojasMaisProximas() {
 		}
 
 		function _init() {
-			try {
-				const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
+			const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
 
-				if (address) {
-					simulateShipping(address);
-				} else {
-					// Evento lançado pelo componente de cep
-					$(window).on('cep-finish-load', e => {
-						const orderForm = e.originalEvent.detail;
-						simulateShipping(orderForm.shippingData.address);
-					});
-				}
-
+			if (address) {
+				simulateShipping(address);
+			} else {
 				// Evento lançado pelo componente de cep
-				$(window).on('cep-updated', e => {
+				$(window).on('cep-finish-load', e => {
 					const orderForm = e.originalEvent.detail;
-					console.log(orderForm.shippingData.address)
 					simulateShipping(orderForm.shippingData.address);
-				})
+				});
 			}
-			catch (e) {
-				console.error('Endereço ainda não definido => ' + e);
-			}
+
+			// Evento lançado pelo componente de cep
+			$(window).on('cep-updated', e => {
+				const orderForm = e.originalEvent.detail;
+				console.log(orderForm.shippingData.address)
+				simulateShipping(orderForm.shippingData.address);
+			})
 		}
 
 		async function simulateShipping(address) {
