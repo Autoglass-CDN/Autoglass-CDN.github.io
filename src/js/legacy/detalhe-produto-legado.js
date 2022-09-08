@@ -218,7 +218,7 @@ $(function LojasMaisProximas() {
 
                 let isCheckout = window.location.href.includes("/checkout");
                 let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
-
+                    
                 if (!isCheckout && ufDefinedByTop) {
                     View.noCepInformed()
                 }
