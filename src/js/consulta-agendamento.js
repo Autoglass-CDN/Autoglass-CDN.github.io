@@ -28,7 +28,7 @@ var codCidades = {
   SP: { code: "9423", nome: "S\u00e3o Paulo" },
 };
 
-const baseUrlApi = window.location.href.includes("dev")
+const baseUrlApiAgenda = window.location.href.includes("dev")
     ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
     
@@ -238,7 +238,7 @@ $(function () {
   function recuperarHorarios(slas) {
     $.ajax({
       method: "GET",
-      url: `${baseUrlApi}/horarios-lojas?Data=${$(".secao-agendamento .data input")
+      url: `${baseUrlApiAgenda}/horarios-lojas?Data=${$(".secao-agendamento .data input")
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]
@@ -769,7 +769,7 @@ $(function () {
         crossDomain: true,
         jsonp: false,
         type: "POST",
-        url: `${baseUrlApi}/servicos-moveis/disponibilidades`,
+        url: `${baseUrlApiAgenda}/servicos-moveis/disponibilidades`,
         data: JSON.stringify(request),
         success: function (data) {
           resolve(data);
