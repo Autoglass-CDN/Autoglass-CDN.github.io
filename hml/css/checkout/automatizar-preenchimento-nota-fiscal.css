@@ -1,0 +1,57 @@
+:root {
+  --delay-time: 4s;
+}
+
+#shipping-data .box-step button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery {
+  display: flex;
+  justify-content: center;
+  background: transparent;
+  color: transparent;
+  position: relative;
+  user-select: none;
+  animation: showButton 0.1s var(--delay-time) linear forwards;
+}
+#shipping-data .box-step button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery:hover {
+  background-color: transparent;
+}
+
+#shipping-data .box-step button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery:after {
+  content: "\f110";
+  font-family: 'FontAwesome';
+  position: absolute;
+  color: grey;
+  font-size: 20px;
+  animation: rotation 1s infinite linear, hidePseudoElement 0.1s var(--delay-time) linear forwards;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+@keyframes showButton {
+  to {
+    background-color: #368df7;
+    color: #fff;
+  }
+}
+@keyframes hidePseudoElement {
+  to {
+    color: transparent;
+  }
+}
+
+#shipping-data > div .box-step > p:last-of-type button:not(.go-to-payment) {
+  background: darkgray;
+  pointer-events: none;
+  border: none;
+}
+
+#shipping-data .box-step .input.ship-number.required.text:not(.go-to-payment) input {
+  border:1px solid #dd4b39;
+  background-image: none;
+}
