@@ -1,5 +1,5 @@
 const baseUrlApi =
-    window.location.href.includes("dev") || window.location.href.includes("mvp")
+    window.location.href.includes("dev") || window.location.href.includes("mvp") || window.location.href.includes("hml")
       ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app"
       : "https://api.autoglass.com.br/integracao-b2c/api/web-app";
 
