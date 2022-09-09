@@ -1,0 +1,146 @@
+/* vantagens */
+.vantagens {
+    background-color: white;  
+}
+
+.vantagens .titulo {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+}
+
+.vantagens .titulo__texto {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #F9A51A;
+}
+
+.vantagens .vantagens__container {
+    display: flex;  
+    align-items: center;
+}
+
+.vantagens .icones {
+    margin-right: 20px;
+}
+
+.vantagens .icones__vantagem {
+    display: flex;
+    align-items: center;
+}
+
+.vantagens .icones__vantagem:nth-child(1) {
+    fill: #F48120;
+    color: #F48120;
+}
+
+.vantagens .icones__vantagem:nth-child(2) {
+    margin-left: 2.5vw;
+    fill: #F9A51A;
+    color: #F9A51A;
+}
+
+.vantagens .icones__vantagem:nth-child(3) {
+    margin-left: 5vw;
+    fill: #FFCA05;
+    color: #FFCA05;
+}
+
+.vantagens .icones__vantagem__imagem {
+    margin: 1vw 0;
+    width: 5vw;
+}
+
+.vantagens .icones__vantagem__text {
+    width: 5vw;
+    font-size: 1.5vw;
+    font-weight: 800;
+    font-style: italic;
+    line-height: 1.5vw;
+}
+
+.vantagens .vantagens__imagem {
+    width: 100%;
+    height: 24vw;
+    background: url("https://autoglass-cdn.github.io/src/img/servicos/carro-pintura.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+
+/* Responsividade */
+@media screen and (min-width: 2000px) {
+    .vantagens .icones__vantagem__imagem {
+        margin: 20px 0;
+        width: 100px;
+    }
+
+    .vantagens .icones__vantagem__texto {
+        width: 100px;
+        font-size: 30px;
+        line-height: 30px;
+    }
+
+    .vantagens .vantagens__imagem {
+        height: 480px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .vantagens .vantagens__container {
+        display: block; 
+    }
+
+    .vantagens .icones {
+        display: flex;
+        justify-content: center;
+    }
+
+    .vantagens .icones__vantagem {
+        margin: 0px 4.125vw;
+        width: 11vw;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .vantagens .icones__vantagem__imagem {
+        margin: 1vw 0;
+        width: auto;
+    }
+
+    .vantagens .icones__vantagem__text {
+        width: auto;
+        font-size: 2.5vw;
+        line-height: 2.5vw;
+    }
+
+    .vantagens .vantagens__imagem {
+        margin: 2vw auto;
+        border-radius: 20px;
+        width: 75vw;
+        height: 44vw;
+        background-size: cover;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    .vantagens .titulo {
+        padding-top: 2.4rem;
+        padding-bottom: 0.8rem;
+    }
+
+    .vantagens .titulo__texto {
+        font-size: 2.0rem;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .vantagens .titulo {
+        padding-top: 1.5rem;
+        padding-bottom: 0.5rem;
+    }
+
+    .vantagens .titulo__texto {
+        font-size: 1.25rem;
+    }
+}

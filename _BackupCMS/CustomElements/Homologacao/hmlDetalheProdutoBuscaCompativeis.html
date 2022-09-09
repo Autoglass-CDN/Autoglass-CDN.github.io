@@ -1,0 +1,27 @@
+<strong class="veiculos-compativeis-search__title">QUER SABER SE ESSA PEÇA SERVE NO SEU VEÍCULO?</strong>
+  <div class="veiculos-compativeis-search__search-box">
+    <div class="veiculos-compativeis-search__search-input">
+      <input type="text" placeholder="Digite aqui o modelo de seu veículo..." />
+      <i class="search-icon"></i>
+    </div>
+    <div class="veiculos-compativeis-search__search-suggestions">
+    </div>
+    <small class="veiculos-compativeis-search__hint">
+       * Para melhores resultados, complete a sua busca de acordo com o modelo do seu veículo.
+    </small>
+  </div>
+
+<script>
+    try {
+        inputVeiculosCompativeis = document.querySelectorAll('.veiculos-compativeis-search__search-input input');
+
+        inputVeiculosCompativeis.forEach(function (input) {
+            input.addEventListener('focus', function () {
+              ga('send', 'event', 'detalhe-produto', 'clique', 'select car');
+            });
+        });
+    }
+    catch(e) {
+        console.log(e);
+    }
+</script>
