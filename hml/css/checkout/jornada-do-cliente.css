@@ -1,0 +1,113 @@
+:root {
+    --nao-preenchido: #a8a8a8;
+    --preenchido: #33a140;
+    --atual: #2d4f9e;
+}
+
+.container-jornada-do-cliente {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    max-width: 500px;
+    justify-content: space-between;
+    margin: 5px auto;
+    transition: 2s;
+    transform: scale(0.8);
+}
+.container-jornada-do-cliente * {
+    transition: 0.5s;
+}
+
+.container-jornada-do-cliente hr {
+    position: absolute;
+    width: 90%;
+    height: 3px;
+    background: var(--nao-preenchido);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    border: 0px;
+}
+.container-jornada-do-cliente hr.jornada-do-cliente-linha-progresso-verde {
+    background: var(--preenchido);
+    width: 0%;
+    left: 0%;
+    transform: translate(0%, -50%);
+}
+
+.container-jornada-do-cliente div {
+    z-index: 1;
+}
+
+.container-jornada-do-cliente a:hover,
+.container-jornada-do-cliente a:focus {
+    text-decoration: none;
+}
+
+.container-jornada-do-cliente a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: var(--nao-preenchido);
+    width: 50px;
+    height: 50px;
+}
+
+.container-jornada-do-cliente a::before {
+    font-size: large;
+    color: var(--nao-preenchido);
+    transition: 0.5s;
+}
+
+.container-jornada-do-cliente a.preenchido,
+.container-jornada-do-cliente a.anterior {
+    border-color: var(--preenchido);
+}
+
+.container-jornada-do-cliente a.anterior:before {
+    color: var(--preenchido);
+}
+
+.container-jornada-do-cliente a.pagina-atual:before {
+    color: var(--atual);
+}
+
+.container-jornada-do-cliente a.pagina-atual {
+    transform: scale(1.5);
+    border-color: var(--atual);
+}
+
+.container-jornada-do-cliente a.bloqueado{
+    pointer-events: none;
+}
+
+.container-jornada-do-cliente a.bloqueado::after{
+    opacity: 0;
+    content: "PREENCHA OS DADOS ANTERIORES";
+    position: absolute;
+    font-size: 0.8em;
+    font-weight: 600;
+    text-align: center;
+    top: 55px;
+    width: 126px;
+    color: #fff;
+    background: var(--nao-preenchido);
+    border-radius: 5px;
+    line-height: 15px;
+    font-family: 'Open Sans', sans-serif;
+    transition: 0.2s;
+}
+
+.container-jornada-do-cliente div:hover a.bloqueado::after { 
+    opacity:1; 
+}
+
+@media only screen and (hover: none) and (pointer: coarse){
+    .container-jornada-do-cliente a {
+        border-width: medium;
+    }
+}
