@@ -95,14 +95,21 @@
         .toArray()
         .reduce((acc, current) => {
           const url = current.value;
-          const titulo = document.querySelector(`.produto-prateleira.p${getSkuFromUrl(url)} .shelf-qd-v1-name`).textContent;
-          acc.push({
-            sku: getSkuFromUrl(url),
-            titulo: titulo.replace("\n                        ", "").split(" - ")[0],
-            precos: document.querySelector(`.produto-prateleira.p${getSkuFromUrl(url)} .shelf-qd-v1-price-best-price`).textContent,
-            opcionais: document.querySelector(`.produto-prateleira.p${getSkuFromUrl(url)} .optionals`).textContent,
-            objeto: document.querySelector(`.produto-prateleira.p${getSkuFromUrl(url)} .shelf-qd-v1-price-best-price`).closest("ul")
-          });
+          const NumeroSku = getSkuFromUrl(url);
+          const elemento = `.produto-prateleira.qd-product-is-in-stock-true.p${NumeroSku}`;
+          const temPreco = document.querySelector(`${elemento} .shelf-qd-v1-price-best-price`);
+
+          if(temPreco) {
+            const titulo = document.querySelector(`${elemento} .shelf-qd-v1-name`).textContent.trim();
+            acc.push({
+              sku: NumeroSku,
+              titulo: titulo.split(" - ")[0],
+              precos: document.querySelector(`${elemento} .shelf-qd-v1-price-best-price`).textContent,
+              opcionais: document.querySelector(`${elemento} .optionals`).textContent,
+              objeto: document.querySelector(`${elemento} .shelf-qd-v1-price-best-price`).closest("ul")
+            });
+          }
+
           return acc;
         }, [])
         .filter(o => o != null)
