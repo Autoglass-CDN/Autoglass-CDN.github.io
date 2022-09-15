@@ -6,19 +6,6 @@ const baseUrlApi =
 const sections = [...document.querySelectorAll("section.tab-content")];
 const getLinkById = (id) => document.querySelector(`a[href='#${id}'].tab-link`);
 
-try {
-  const metaTagOpenGraphType = document.querySelector('meta[content="og:product"]'); 
-  
-  corrigeValorMetaTagOpenGraph(metaTagOpenGraphType);
-  
-  function corrigeValorMetaTagOpenGraph(elemento) {
-    if(elemento) $(elemento).attr('content', 'product');
-  }
-  
-} catch (e) {
-  console.error(`Falha ao pegar meta tag og:type product => ${e}`);
-}
-
 // configura busca de veículos compatíveis
 var veiculosBuscaveis = [];
 const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');
