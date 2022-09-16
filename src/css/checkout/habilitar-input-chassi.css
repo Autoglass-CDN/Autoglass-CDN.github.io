@@ -22,20 +22,13 @@ div#inform-chassi{
   width: 130px;
 }
 .container-orientacao-chassi {
-    display: contents;
-    cursor: pointer;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    padding-left: 5px;
-  }
+  display: contents;
+}
 
- #onde-encontrar-chassi {
-    cursor: pointer;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    padding-right: 20px;
-    padding-left: 5px;
+#onde-encontrar-chassi,
+.container-orientacao-chassi {
+  cursor: pointer;
+  padding: 20px 20px 20px 5px;
 }
 
 .container-image-orientacao-chassi {
@@ -80,7 +73,6 @@ div#inform-chassi{
     margin-left: 0px;
   }
 }
-
 
 #image-orientacao-chassi {
   margin-top: -40px;
