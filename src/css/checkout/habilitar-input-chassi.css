@@ -1,6 +1,4 @@
-#inform-chassi{
-    display: flex;
-    flex-direction: column;
+div#inform-chassi{
     margin-bottom: 24px;
     position: relative;
 }
@@ -8,6 +6,7 @@
 #inform-chassi.invalido::after {
     content: 'Digite os 8 últimos dígitos';
     color: #808080;
+    display: flex;
 }
 
 #inform-chassi.valido::after {
@@ -19,10 +18,104 @@
     top: 21px;
 }
 
-#inform-chassi input{
-    width: 130px;
+#inform-chassi input {
+  width: 130px;
+}
+.container-orientacao-chassi {
+    display: contents;
+    cursor: pointer;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 5px;
+  }
+
+ #onde-encontrar-chassi {
+    cursor: pointer;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 20px;
+    padding-left: 5px;
+}
+
+.container-image-orientacao-chassi {
+  border: 3px dotted #08c;
+  margin: 0 auto;
+  position: absolute;
+  width: 250px;
+  padding: 1px;
+  z-index: 100;
+  bottom: -18px;
+  left: 298px;
+  cursor: pointer;
+  animation-duration: 2s;
+  animation-name: slidein;
+}
+
+.container-image-orientacao-chassi #image-orientacao-chassi {
+  position: relative;
+  z-index: 3;
+}
+
+.ponta {
+  background: #fff;
+  border: 3px dotted #08C;
+  border-top: none;
+  border-right: none;
+  height: 40px;
+  margin-left: -27px;
+  top: 123px;
+  position: relative;
+  transform: rotate(45deg);
+  width: 40px;
+  z-index: 2;
+}
+
+@keyframes slidein {
+  from {
+    margin-left: -100px;
+  }
+
+  to {
+    margin-left: 0px;
+  }
+}
+
+
+#image-orientacao-chassi {
+  margin-top: -40px;
 }
 
 body .vtex-omnishipping-1-x-address {
     margin-bottom: 0;
+}
+
+@media only screen and (max-width: 980px) {
+
+  .container-image-orientacao-chassi {
+    animation-name: slidein;
+    animation-duration: 1s;
+  }
+
+  @keyframes slidein {
+    from {
+      margin-bottom: -35px;
+    }
+
+    to {
+      margin-bottom: 0;
+    }
+  }
+
+  .container-image-orientacao-chassi {
+    width: 250px;
+    left: 50px;
+    bottom: 55px;
+  }
+
+  .ponta {
+    border-right: inherit;
+    margin-left: 120px;
+    top: 150px;
+  }
 }
