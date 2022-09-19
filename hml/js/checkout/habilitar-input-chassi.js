@@ -74,7 +74,7 @@ function showOrientacaoChassi() {
   let containerImgVisible = $('.container-image-orientacao-chassi:visible');
   let containerImgHidden = $('.container-image-orientacao-chassi:hidden');
   if(containerImgVisible.length === 0 && containerImgHidden.length === 0){
-    $(".container-orientacao-chassi").append("<div class='container-image-orientacao-chassi'> <div class='ponta'></div> <img id='image-orientacao-chassi' src='https://autoglass-cdn.github.io/src/img/checkout/orientacao-chassi.png'></div>")
+    $(".container-orientacao-chassi").append("<div class='container-image-orientacao-chassi'> <div class='ponta'></div> <img id='image-orientacao-chassi' src='https://autoglass-cdn.github.io/hml/img/checkout/orientacao-chassi.png'></div>")
     $(".container-image-orientacao-chassi").fadeIn(velocidadeTransicao);
   }
   else if(containerImgHidden.length === 1) {
