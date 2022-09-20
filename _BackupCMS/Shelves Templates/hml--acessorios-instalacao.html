@@ -1,0 +1,90 @@
+<!-- hml-acessorios-instalacao -->
+
+#set($id = $product.Id)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+
+<!-- QD Cores Prateleira Padrão -->
+<input type="hidden" class="qd_cpUri" value="$uri" />
+<input type="hidden" class="qd_cpProdId" value="$id" />
+<!-- QD Cores Prateleira Padrão -->
+
+<div class="mz-acessories acessories-qd-v1 #if($product.IsInStock) qd-product-is-in-stock-true #else qd-product-is-in-stock-false #end">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="row">
+                        <!-- Installation image -->
+                        <div class="col-xs-2">
+                            <div class="acessories-qd-v1-image">
+                                <a class="acessories-qd-v1-image-link img-responsive" href="$uri">
+                                    $product.GetImageTag(60, 60)
+                                </a>
+                            </div>
+                        </div>
+                        <!-- // Installation image -->
+
+                        <!-- // NEW - Installation Name -->
+                        <div class="col-xs-10">
+                            <div class="mz-accesories__name">
+                                <span style="display:none"  class="mz-accesories__name--text">
+                                    Compre com instalação
+                                </span>
+                        		<div class="installment-type-list">
+                        	        <div class="mz-accesories__advantages">
+                        	            <!--
+                            	            <input style="display:none" class="tipo-instalacao" id="instalar-em-loja-input" name="tipoInstalacao" type="radio" />
+                            				<label style="display:none" for="instalar-em-loja-input"></label>
+                        				-->
+                        				<div>
+                        					<span class="mz-accesories__name--text">INSTALAMOS NA SUA CASA</span>
+                        					<button class="mz-accesories__advantages--button gtm-instalar-em-casa-btn" id="instalar-em-casa-btn">Ver Agenda</button>
+                        				</div>
+                        			</div>
+                        			<div class="col"><div class="or"><span>ou</span></div></div>
+                        			<div class="mz-accesories__name">
+                        			    <!--
+                            		        <input style="display:none" checked class="tipo-instalacao" id="instalar-em-casa-input" name="tipoInstalacao" type="radio" />
+                            				<label style="display:none" for="instalar-em-casa-input"></label>
+                        				-->
+                        				<div>
+                        					<span class="mz-accesories__name--text">Instale na Loja</span>
+                        					<button class="mz-accesories__name--conditions gtm-instalar-na-loja-btn" id="instalar-na-loja-btn">Ver Agenda</button>
+                        				</div>
+                        			</div>
+                        		</div>
+                            </div>
+                        </div>
+                        <!-- // NEW - Installation Name -->
+
+                        <!-- Installation Infos -->
+                        <div class="col-xs-12">
+                            <div class="mz-acessories__infos">
+                                <span class="mz-acessories__infos--text">Preço com instalação nas lojas autoglass:</span>
+                            </div>
+                        </div>
+                        <!-- // Installation Infos -->
+
+                        <!-- Preco + Instalacao Somados -->
+                        <div class="col-xs-12 col-md-6">
+                            <div class="mz-acessories__prices">
+                                <span class="mz-acessories__prices--totalPrice">
+                                </span>
+                            </div>
+                        </div>
+                        <!-- // Preco + Instalacao Somados -->
+
+                        <!-- Installation Buy Button -->
+                        <div class="col-xs-12">
+                            <div class="mz-accesories__button">
+                                <a class="mz-accesories__button--buy lock-button gtm-produto-comprar-sem-instalacao-link">Comprar com instalação</a>
+                            </div>
+                        </div>
+                        <!-- // Installation Buy Button -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
