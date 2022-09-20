@@ -32,7 +32,7 @@ function HabilitarChassi() {
     if (inputChassi.value == "") $('#inform-chassi').removeClass('invalido');
     updateValorChassi();
     updateValorChassiInvalido();
-   });
+  });
 }
 
 function testarSeChassiValido (chassi) {
@@ -84,11 +84,3 @@ function showOrientacaoChassi() {
 
 HabilitarChassi();
 ConfigureObserver();
-
-
-
-
-
-
-
-
