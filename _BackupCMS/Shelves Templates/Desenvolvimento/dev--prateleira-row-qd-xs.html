@@ -1,4 +1,4 @@
-<!-- Shelf Template Id:	82ece3a5-14a4-4f40-97fb-5dcc47037fcb -->
+<!-- Shelf Template Id:	9e326ff9-a7e5-4855-bfa3-438511c9b57f -->
 #set($id = $product.Id)
 #set($uri = $product.Uri)
 #set($escapedName = $product.HtmlEscapedName)
@@ -72,7 +72,7 @@
                     <div class="shelf-qd-v1-no-stock #if($product.IsInStock) qd_cpHide #else qd_cpShow #end">
                         <a title="$escapedName" href="$uri">
                             <span class="shelf-qd-v1-no-stock-message">Consulte Disponibilidade</span>
-                            <p class="shelf-qd-v1-no-stock-info">Informe pelo chat o produto que está procurando.</p>
+                            <p class="shelf-qd-v1-no-stock-info">Informe ao vendedor o produto que está procurando.</p>
                             <div class="product-qd-v1-no-stock-button">
                                 <button type="button" onclick="
                                     event.preventDefault();
@@ -81,21 +81,21 @@
                                     const hour = today.getHours();
                                     const minutes = today.getMinutes();
                                     const day = today.getDay();
-                                
+
                                     const ehDomingo = (day === 0);
                                     const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
                                     const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour >= 21);
-                                
+
                                     if (ehDomingo
                                         || ehSabadoForaDoExpediente
                                         || ehSemanaForaDoExpediente
                                     ) {
-                                        zE('webWidget', 'chat:addTags', 'fora-expediente');
-                                        zE('webWidget', 'chat:send', 'Olá, nosso horário de atendimento é de Seg-Sex de 07:30-21:00. No momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js \nPor ele você pode nos contar o que você precisa que, assim que nossos consultores chegarem, eles irão te responder. \nProduto de interesse: $uri');
+                                        const mensagem = 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri';
+                                        window.location.href = urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem;
                                     } else {
                                         zE('webWidget', 'chat:send', 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri');
                                     }
-                                
+
                                     zE('webWidget', 'open');
                                 ">
                                     Consulte agora
@@ -103,11 +103,11 @@
                             </div>
                         </a>
                     </div>
-                    <!--div class="shelf-qd-v1-no-stock #if($product.IsInStock) qd_cpHide #else qd_cpShow #end">
+                    <!-- <div class="shelf-qd-v1-no-stock #if($product.IsInStock) qd_cpHide #else qd_cpShow #end">
 						<a title="$escapedName" href="$uri">
 							<span class="shelf-qd-v1-no-stock-message">Produto Indisponível</span>
 						</a>
-					</div-->
+					</div> -->
                     #end
                 </div>
 
