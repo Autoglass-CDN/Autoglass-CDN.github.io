@@ -8,7 +8,7 @@
 <input type="hidden" class="qd_cpProdId" value="$id" />
 <!-- QD Cores Prateleira Padrão -->
 
-<div class="shelf-qd-v1 #if($product.IsInStock) qd-product-is-in-stock-true #else qd-product-is-in-stock-false #end">
+<div class="shelf-qd-v1 produto-prateleira #if($product.IsInStock) qd-product-is-in-stock-true #else qd-product-is-in-stock-false #end" id="p$id">
     <div class="row">
         <div class="col-xs-12">
             <!-- Product image -->
@@ -106,7 +106,6 @@
                 </div>
 
                 <div class="optionals loading"></div>
-
                 <div class="col-xs-12">
                     #if ($product.IsInStock)
                     <div class="shelf-qd-v1-buy-button #if($product.IsInStock) qd_cpShow #else qd_cpHide #end">
@@ -121,3 +120,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    try {
+        const urlProduto = '$uri';
+        const skuProduto = urlProduto.substring(urlProduto.lastIndexOf("-") + 1).replace(/\D/g, "");
+        const elemento = document.querySelector('.produto-prateleira#p$id');
+        elemento.classList.add('p' + skuProduto);
+    }
+    catch (ex) {
+        console.log('Erro ao recuperar dados do produto: ' + ex.message);
+    }
+</script>
