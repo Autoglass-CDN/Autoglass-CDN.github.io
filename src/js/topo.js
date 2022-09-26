@@ -681,3 +681,27 @@ async function autocompleteInitMobile(searchInput) {
     }
   });
 }
+
+function defineScrollTop() {
+  $("html, body").animate({ top: "-=0" }, 10000000000000000000000);
+
+  $("body").on("click", ".page-number", function() {
+    $("html,body").scrollTop(0);
+    $(".page-number").removeClass("pgCurrent");
+    $(this).addClass("pgCurrent");
+  });
+
+  $("body").on("click", ".previous", function() {
+    $("html,body").scrollTop(0);
+    $(".page-number").removeClass("pgCurrent");
+    $(this).addClass("pgCurrent");
+  });
+
+  $("body").on("click", ".next", function() {
+    $("html,body").scrollTop(0);
+    $(".page-number").removeClass("pgCurrent");
+    $(this).addClass("pgCurrent");
+  });
+}
+
+defineScrollTop();
