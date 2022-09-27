@@ -681,3 +681,15 @@ async function autocompleteInitMobile(searchInput) {
     }
   });
 }
+
+function defineScrollTop() {
+  $("html, body").animate({ top: "-=0" }, 10000000000000000000000);
+
+  $("body").on("click", ".page-number, .previous, .next", function() {
+    $("html,body").scrollTop(400);
+    $(".page-number").removeClass("pgCurrent");
+    $(this).addClass("pgCurrent");
+  });
+}
+
+defineScrollTop();
