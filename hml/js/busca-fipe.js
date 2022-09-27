@@ -1038,13 +1038,17 @@
     }
 
     async function obterDadosDoVeiculoViaFraga(placa) {
-      const response = await fetch(`http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
+      const urlApi = window.location.href.includes("dev")
+        ? "https://api-hml.autoglass.com.br"
+        : "https://api.autoglass.com.br";
+
+      const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
       const veiculo = await response.json();
 
       montadora = veiculo.Marca;
       modelo = veiculo.Modelo[0].Nome;
       anoModelo = veiculo.AnoModelo.toString();
-      
+
       return { montadora, modelo, anoModelo };
     }
   }
