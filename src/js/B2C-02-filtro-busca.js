@@ -19,6 +19,9 @@ $(function () {
 		"cor",
 		"faixa",
 	];
+	
+	var elementoHtml = document.querySelector('.search-qd-v1-navigator fieldset.filtro_compatibilidade-montadora h5');
+	elementoHtml.innerHTML = elementoHtml.textContent.replace('Compatibilidade ', '');
 
 	dataQdClasses.forEach(function (dataQdClass) {
 		$(`fieldset[data-qd-class="${dataQdClass}"] > div`).prepend(
