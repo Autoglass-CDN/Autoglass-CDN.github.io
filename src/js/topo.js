@@ -19,10 +19,17 @@ function calculatesTwelveHours() {
 function centerArrow(min, max) {
   let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
   let arrow = document.querySelector('.arrow');
+  let painelCategorias = document.querySelector('.painel-categorias__categoria-conteudo');
   let arrowPositions = arrow.getBoundingClientRect();
   let positions = categoriaAtiva.getBoundingClientRect();
   let deslocate = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10)));
   arrow.style.left = valueBetweenRange(deslocate, min, max) + 'px';
+  var width = $(window).width();
+  if (width < 1400)
+    painelCategorias.style.left = valueBetweenRange(deslocate, min, 250) + 'px';
+  else if (width >1400)
+    painelCategorias.style.left = valueBetweenRange(deslocate, min, 450) + 'px';
+  // painelCategorias.style.left = valueBetweenRange(deslocate, min, 300) + 'px';
 }
 
 function valueBetweenRange (value, min, max) {

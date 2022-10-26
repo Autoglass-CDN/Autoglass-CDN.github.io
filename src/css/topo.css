@@ -1050,11 +1050,12 @@ i.arrow-icon::before {
   transform: scaleY(0) rotate(45deg);
   bottom:0px;
 }
-
+/*TRAVAR MENU AQUI*/
 .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
   transform: scaleY(0.2);
   top: -120px;
   z-index: 1;
+  transition-delay: 1.2s;
 }
 
 .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
@@ -1198,23 +1199,141 @@ i.arrow-icon::before {
   display: flex;
   border-radius: 0px 0px 4px 4px;
   background: #FFF;
-  width: 100%;
+  width: auto;
   overflow: hidden;
   box-shadow: 11px 13px 15px -4px rgb(0 0 0 / 35%);
   transition: 0.4s;
   top: 125px;
   z-index: 4;
 }
+.painel-categorias #higienizadores-e-filtros.painel-categorias__categoria-itens.ativo{
+  display: flex;
+  flex-direction: column;
+}
+.painel-categorias #higienizadores-e-filtros.painel-categorias__categoria-itens.ativo > ul > li > a {
+  margin-bottom: 0;
+  margin-top: 20px;
+}
+
+@media (min-width: 1400px) {
+  .painel-categorias .painel-categorias__categoria-itens:hover{
+    min-width: 45vw;
+  }
+
+  #farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a:hover:after {
+    left: 25vw;
+    top: 5vh;
+  }
+
+
+  /* .painel-categorias__categoria-conteudo #farois-lanternas-e-lampadas:hover {
+    min-width: 65vw;
+    max-width: 60%;
+  } */
+  .painel-categorias__categoria-conteudo #palhetas-e-borrachas:hover{
+    min-width: 50vw;
+  }
+
+  /* .painel-categorias__categoria-conteudo #higienizadores-e-filtros:hover{
+    min-width: 30vw;
+  } */
+
+  #menu:hover{
+    min-width: 0;
+  }
+
+  .painel-categorias__categoria-conteudo > #farois-lanternas-lampadas:hover {
+  min-width: 0;
+
+  }
+  .painel-categorias__categoria-conteudo #farois-lanternas-e-lampadas:hover {
+    left: 500px;
+  }
+}
+
+@media (max-width: 1399px){
+
+   .painel-categorias .painel-categorias__categoria-itens:hover {
+    min-width: 50vw;
+  }
+
+  /* .painel-categorias__categoria-conteudo #vidros:hover {
+    min-width: 50vw;
+  } */
+
+  .painel-categorias__categoria-conteudo #palhetas-e-borrachas:hover {
+    min-width: 70vw;
+  }
+
+  #farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a:hover:after {
+    left: 40vw;
+    top: 5vh;
+  }
+
+  /* .painel-categorias__categoria-conteudo #farois-lanternas-e-lampadas:hover {
+    min-width: 95vw;
+  } */
+
+  .painel-categorias__categoria-conteudo #palhetas-e-borrachas:hover {
+    min-width: 70vw;
+  }
+
+  /* .painel-categorias__categoria-conteudo #higienizadores-e-filtros:hover{
+    min-width: 95vw;
+  } */
+
+  .painel-categorias__categoria-conteudo #menu:hover {
+    min-width: 0;
+  }
+
+  .painel-categorias__categoria-conteudo #menu .painel-categorias__categoria-itens-lista #menu-higienizadores-filtros:hover {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .painel-categorias__categoria-conteudo .categorias__categoria-itens.ativo a#farois-lanternas-e-lampadas a:hover:after  {
+    left: 30vw;
+  }
+
+  #farois-lanternas-e-lampadas .painel-categorias__categoria-itens > .painel-categorias__categoria-itens-lista > ul > li > a:hover:after{
+    left: 30vw;
+  }
+}
+
+.painel-categorias__categoria-conteudo #direcao:hover{
+  min-width: 0vw;
+
+}
+
+/* #menu-farois-lanternas-lampadas:hover ~ #farois-lanternas-e-lampadas.painel-categorias__categoria-itens ul > a:hover {
+  left: 30vw;
+} */
+
+.painel-categorias__categoria-conteudo #farois-lanternas-e-lampadas {
+  height: 30vh;
+}
+
+/*Colocar e alterar nas responsividade  >>> verificar o desnecessario*/
+/* #farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a:hover:after {
+  left: 25vw;
+  top: 9vh;
+} */
+
+.painel-categorias__categoria ativo:first-child ~ .painel-categorias__categoria-itens ativo:hover .painel-categorias__categoria-conteudo #menu:hover {
+  min-width: 30px;
+}
+
+
 
 .painel-categorias .arrow {
   position: absolute;
-  background-color: var(--white);
+  background-color: #ffffff00;
   border: solid var(--gray-300);
   border-width: 0 2px 2px 0;
   display: inline-block;
   width: 15px;
   height: 15px;
-  transform: scaleY(1) rotate(45deg);
+  transform: scaleY(1) rotate(225deg);
   bottom: -9px;
   left: 75px;
   z-index: 5;
@@ -1230,7 +1349,7 @@ ul.menu-division {
 
 .painel-categorias .painel-categorias__categoria-itens {
   font-size: 0.8750rem;
-  padding: 32px 50px;
+  padding: 22px 50px;
   display: none;
   min-height: 250px;
 }
@@ -1239,12 +1358,17 @@ ul.menu-division {
   text-decoration: none;
   transition: all .1s ease-in;
 }
+.painel-categorias__categoria-itens.ativo a:hover {
+  width: auto;
+}
 
 .painel-categorias__categoria-itens.ativo a:hover:after {
   position: absolute;
   right: -30px;
   bottom: -20px;
   transform: scale(0.5);
+  /* margin: 80px 50px 10px -50px; */
+/*aquiiiii*/
 }
 
 /* #region PREVIEW - VIDROS */
@@ -1563,7 +1687,7 @@ ul.menu-division {
   color: var(--blue-500);
   font-weight: var(--bold);
   display: block;
-  margin-bottom: 25px;
+  margin-bottom: 10px;
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista>ul>li {
