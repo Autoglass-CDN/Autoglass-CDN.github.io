@@ -3,6 +3,21 @@ const device = {
   mobile: ".mobile"
 }
 
+let botaoBusca = document.querySelector('.search-box .search-icon');
+let inputBusca = document.querySelector('.search-box .fulltext-search-box');
+
+botaoBusca.onclick = function (event) {
+  event.preventDefault();
+  window.location.assign(`https://dev2autoglass.myvtex.com/${inputBusca.value}`)
+};
+
+let botaoBuscaMobile = document.querySelector('.search-box-mobile__form .search-box-mobile__form-group .search-icon');
+let inputBuscaMobile = document.querySelector('.search-box-mobile__form .search-box-mobile__form-group .fulltext-search-box');
+
+botaoBuscaMobile.onclick = function () {
+  window.location.assign(`https://dev2autoglass.myvtex.com/${inputBuscaMobile.value}`)
+};
+
 const numeroWhatsAppAG = "5527992486816";
 const numeroWhatsAppFormatadoAG = "(27) 99248-6816";
 const urlWhatsAppApi = "https://wa.me/";
