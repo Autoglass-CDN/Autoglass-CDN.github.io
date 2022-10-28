@@ -255,3 +255,12 @@
 p.ship-receiverName {
   clear: left;
 }
+
+p.ship-receiverName label {
+  visibility: hidden;
+}
+
+p.ship-receiverName label::before {
+  content: "Quem irá receber";
+  visibility: visible;
+}
