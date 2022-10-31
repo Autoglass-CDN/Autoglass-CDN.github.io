@@ -17,7 +17,7 @@ function calculatesTwelveHours() {
 }
 
 function buscaLivreLupaInput() {
-  let urlBusca = 'https://dev2autoglass.myvtex.com';
+  let urlBusca = 'https://hml.autoglassonline.com.br/';
   let nomeClasse = '';
 
   if(dispositivoMovel()) nomeClasse = '-mobile';
