@@ -21,6 +21,20 @@
   border: 4px solid #fff !important;
 }
 
+.search-icon {
+  cursor: pointer;
+}
+
+.search-box-mobile__form-group fieldset.busca+.search-icon::before {
+  margin-left: -30px;
+}
+
+.search-icon-mobile {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/search.svg');
+  position: absolute;
+  right: 10vw;
+}
+
 @media only screen and (min-width: 1200px) {
   #whatsapp-icon-link {
     margin-bottom: 10px !important;
