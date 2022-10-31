@@ -3,21 +3,6 @@ const device = {
   mobile: ".mobile"
 }
 
-let botaoBusca = document.querySelector('.search-box .search-icon');
-let inputBusca = document.querySelector('.search-box .fulltext-search-box');
-
-botaoBusca.onclick = function (event) {
-  event.preventDefault();
-  window.location.assign(`https://dev2autoglass.myvtex.com/${inputBusca.value}`)
-};
-
-let botaoBuscaMobile = document.querySelector('.search-box-mobile__form .search-box-mobile__form-group .search-icon');
-let inputBuscaMobile = document.querySelector('.search-box-mobile__form .search-box-mobile__form-group .fulltext-search-box');
-
-botaoBuscaMobile.onclick = function () {
-  window.location.assign(`https://dev2autoglass.myvtex.com/${inputBuscaMobile.value}`)
-};
-
 const numeroWhatsAppAG = "5527992486816";
 const numeroWhatsAppFormatadoAG = "(27) 99248-6816";
 const urlWhatsAppApi = "https://wa.me/";
@@ -29,6 +14,31 @@ function getLastTimeWhildshieldVanePopUpWasShown() {
 
 function calculatesTwelveHours() {
   return 12*60*60*1000;
+}
+
+function buscaLivreLupaInput() {
+  let urlBusca = 'https://dev2autoglass.myvtex.com';
+  let nomeClasse = '';
+  
+  if(dispositivoMovel()) nomeClasse = '-mobile';
+  
+  try {
+    let botaoBusca = document.querySelector(`.search-box${nomeClasse} .search-icon`);
+    let inputBusca = document.querySelector(`.search-box${nomeClasse} .fulltext-search-box`);
+
+    botaoBusca.onclick = function () {
+      window.location.assign(`${urlBusca}/${inputBusca.value}`)
+    };
+  } catch (e) {
+    console.log(e.message);
+  }
+}
+
+function dispositivoMovel() {
+  const windowWidth = window.innerWidth
+    || document.documentElement.clientWidth
+    || document.body.clientWidth;
+  return windowWidth < 1200;
 }
 
 function centerArrow(min, max) {
@@ -718,3 +728,4 @@ function pegaLargura(largura) {
 }
 
 defineScrollTop();
+buscaLivreLupaInput();
