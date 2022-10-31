@@ -16,31 +16,6 @@ function calculatesTwelveHours() {
   return 12*60*60*1000;
 }
 
-function buscaLivreLupaInput() {
-  let urlBusca = 'https://dev2autoglass.myvtex.com';
-  let nomeClasse = '';
-
-  if(dispositivoMovel()) nomeClasse = '-mobile';
-
-  try {
-    let botaoBusca = document.querySelector(`.search-box${nomeClasse} .search-icon`);
-    let inputBusca = document.querySelector(`.search-box${nomeClasse} .fulltext-search-box`);
-
-    botaoBusca.onclick = function () {
-      window.location.assign(`${urlBusca}/${inputBusca.value}`)
-    };
-  } catch (e) {
-    console.log(e.message);
-  }
-}
-
-function dispositivoMovel() {
-  const windowWidth = window.innerWidth
-    || document.documentElement.clientWidth
-    || document.body.clientWidth;
-  return windowWidth < 1200;
-}
-
 function centerArrow(min, max) {
   let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
   let arrow = document.querySelector('.arrow');
@@ -729,4 +704,3 @@ function pegaLargura(largura) {
 }
 
 defineScrollTop();
-buscaLivreLupaInput();

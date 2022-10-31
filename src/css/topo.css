@@ -454,10 +454,6 @@ i.arrow-icon::before {
   content: url('https://autoglass-cdn.github.io/src/img/search-blue.svg');
 }
 
-.search-icon {
-  cursor: pointer;
-}
-
 .search-box-mobile {
   display: none;
 }
@@ -511,10 +507,6 @@ i.arrow-icon::before {
   display: none;
 }
 
-.search-box-mobile__form-group fieldset.busca+.search-icon::before {
-  margin-left: -30px;
-}
-
 .search-mobile-autocomplete {
   position: absolute;
   top: 38px;
@@ -544,11 +536,6 @@ i.arrow-icon::before {
   border-top: 1px solid var(--gray-500)
 }
 
-.search-icon-mobile {
-  content: url('https://autoglass-cdn.github.io/src/img/search.svg');
-  position: absolute;
-  right: 10vw;
-}
 /* #endregion Box de Pesquisa */
 
 .container .search-box {
