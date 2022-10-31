@@ -804,6 +804,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
     padding: 25px 30px;
     border-top: 1px solid #d5d5d5;
 }
+.search-qd-v1-navigator fieldset.filtro_marca { display: none }
 .search-qd-v1-navigator h5:hover {
     color: #2d4f9e;
 }
@@ -1404,4 +1405,19 @@ div.prateleira ul li > div >div.row:last-of-type > div > div.row {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+.product-qd-v1-brand-name.mob{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.product-brand-link a {
+  text-decoration: underline;
+  font-style: italic;
+  padding-left: 2px;
+  color: #2d4f9e;
 }
