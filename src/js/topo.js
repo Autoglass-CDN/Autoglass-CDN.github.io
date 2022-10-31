@@ -19,9 +19,9 @@ function calculatesTwelveHours() {
 function buscaLivreLupaInput() {
   let urlBusca = 'https://dev2autoglass.myvtex.com';
   let nomeClasse = '';
-  
+
   if(dispositivoMovel()) nomeClasse = '-mobile';
-  
+
   try {
     let botaoBusca = document.querySelector(`.search-box${nomeClasse} .search-icon`);
     let inputBusca = document.querySelector(`.search-box${nomeClasse} .fulltext-search-box`);
@@ -723,6 +723,7 @@ function defineScrollTop() {
     $(this).addClass("pgCurrent");
   });
 }
+
 function pegaLargura(largura) {
   $("html,body").scrollTop(largura);
 }

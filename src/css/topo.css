@@ -514,6 +514,7 @@ i.arrow-icon::before {
 .search-box-mobile__form-group fieldset.busca+.search-icon::before {
   margin-left: -30px;
 }
+
 .search-mobile-autocomplete {
   position: absolute;
   top: 38px;
