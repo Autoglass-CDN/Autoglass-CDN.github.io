@@ -54,8 +54,7 @@ $(function () {
 	});
 	
 	const elementoHtml = document.querySelector('.search-qd-v1-navigator fieldset.filtro_compatibilidade-montadora h5');
-	if(elementoHtml.length)
-		elementoHtml.innerHTML = elementoHtml.textContent.replace('Compatibilidade ', '');
+	if(elementoHtml !== null) elementoHtml.innerHTML = elementoHtml.textContent.replace('Compatibilidade ', '');
 	
 	const classeElementoPai = '.search-qd-v1-navigator fieldset.refino';
 	const labelInputCheck = classeElementoPai + ' label';
