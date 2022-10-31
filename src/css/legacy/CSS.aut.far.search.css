@@ -1406,3 +1406,19 @@ div.prateleira ul li > div >div.row:last-of-type > div > div.row {
   display: flex;
   flex-direction: column;
 }
+
+.product-qd-v1-brand-name.mob{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.product-brand-link a {
+  text-decoration: underline;
+  font-style: italic;
+  padding-left: 2px;
+  color: #2d4f9e;
+}
+
