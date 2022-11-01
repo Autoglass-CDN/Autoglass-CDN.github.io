@@ -1413,6 +1413,7 @@ div.prateleira ul li > div >div.row:last-of-type > div > div.row {
   align-items: center;
   font-size: 12px;
   font-weight: 900;
+  pointer-events: none;
 }
 
 .product-brand-link a {
