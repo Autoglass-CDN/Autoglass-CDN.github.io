@@ -705,6 +705,7 @@ function defineScrollTop() {
     $(this).addClass("pgCurrent");
   });
 }
+
 function pegaLargura(largura) {
   $("html,body").scrollTop(largura);
 }

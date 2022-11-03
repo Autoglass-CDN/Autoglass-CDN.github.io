@@ -536,12 +536,6 @@ i.arrow-icon::before {
   border-top: 1px solid var(--gray-500)
 }
 
-.search-box-mobile__form:after{
-  content: url('https://autoglass-cdn.github.io/arquivos/img/search.svg');
-  position: absolute;
-  right: 20px;
-  top: 20px;
-}
 /* #endregion Box de Pesquisa */
 
 .container .search-box {

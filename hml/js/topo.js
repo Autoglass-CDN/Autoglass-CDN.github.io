@@ -16,6 +16,7 @@ function calculatesTwelveHours() {
   return 12*60*60*1000;
 }
 
+
 function centerArrow(min, max) {
   let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
   let arrow = document.querySelector('.arrow');

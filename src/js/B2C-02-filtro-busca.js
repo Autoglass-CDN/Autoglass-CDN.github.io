@@ -39,7 +39,7 @@ $(function () {
 			//aplica filtro ao digitar na caixa de texto
 			`fieldset[data-qd-class="${dataQdClass}"] > div > div.filtro > input.filtro-busca`
 		).on("input", function () {
-			var inputValue = this.value.toLowerCase();
+			let inputValue = this.value.toLowerCase();
 
 			$(`fieldset[data-qd-class="${dataQdClass}"] > div > label`).each(
 				function (index) {
@@ -51,7 +51,109 @@ $(function () {
 				}
 			);
 		});
-	}); ''
+	});
+	
+	const elementoHtml = document.querySelector('.search-qd-v1-navigator fieldset.filtro_compatibilidade-montadora h5');
+	if(elementoHtml !== null) elementoHtml.innerHTML = elementoHtml.textContent.replace('Compatibilidade ', '');
+	
+	const classeElementoPai = '.search-qd-v1-navigator fieldset.refino';
+	const labelInputCheck = classeElementoPai + ' label';
+	const elementosPai = document.querySelectorAll(classeElementoPai);
+	let arrayOpcoesFiltro = [];
+	let filtrosExistentes = [];
+	
+	function nomeItemMontadora(pai, remover) {
+		if(remover)
+			return (pai == 'compatibilidade-montadora') ? pai.replace('compatibilidade-','') : pai;
+		return (pai == 'montadora') ? 'compatibilidade-montadora' : pai;
+	}
+
+	// Cria array com os nomes dos filtros existentes
+	for (let i=0; i<elementosPai.length; i++) {
+		let nomeFiltro = nomeItemMontadora($(elementosPai[i]).attr('data-qd-class'), true);
+		arrayOpcoesFiltro[nomeFiltro] = [];
+		filtrosExistentes.push(nomeFiltro);
+		
+		// Existindo ano, necessariamente existe registro dos demais itens do menu
+		if(localStorage.getItem('ano')) {
+			arrayOpcoesFiltro[nomeFiltro] = JSON.parse(localStorage.getItem(nomeFiltro));
+			ativaAba(nomeFiltro);
+			adicionaClasseSelected(arrayOpcoesFiltro[nomeFiltro], nomeFiltro);
+			// console.log(nomeFiltro + ' valores : ' + JSON.parse(localStorage.getItem(nomeFiltro)));
+		}
+	}
+	
+	function ativaAba(elementoPai) {
+		elementoPai = nomeItemMontadora(elementoPai, false);
+		$(`${classeElementoPai}.filtro_${elementoPai} h5`).addClass('qd-seach-active-menu');
+	}
+	
+	function adicionaClasseSelected(listaDePreSelecionados, elementoPai) {
+		elementoPai = nomeItemMontadora(elementoPai, false);
+		listaDePreSelecionados.forEach(elemento => {
+			// console.log(elementoPai + ' => ' + elemento);
+			$(`${classeElementoPai}[data-qd-class="${elementoPai}"]`).addClass('qd-sr-filtered');
+			$(`${classeElementoPai}[data-qd-class="${elementoPai}"] h5+div`).css({'overflow' : 'hidden', 'display' : 'block'});
+			$(`${classeElementoPai}[data-qd-class="${elementoPai}"] label.${elemento}`).addClass('sr_selected');
+			$(`${classeElementoPai}[data-qd-class="${elementoPai}"] label.${elemento}>input`).addClass('qd_sr_selected');
+			insereIconeDeFiltro(elemento, elementoPai);
+		});
+	}
+	
+	function insereIconeDeFiltro(elemento, elementoPai) {
+		elementoPai = nomeItemMontadora(elementoPai, false);
+		let conteudo = $(`${classeElementoPai}[data-qd-class="${elementoPai}"] label.${elemento}`).text().trim();
+		let itemFiltered = $("<div class='block-iltered'><span class='filtered'>" + conteudo + "</span></div>");
+		itemFiltered.attr("data-name", conteudo);
+		$(".search-qd-v1-navigator-research-filtered").append(itemFiltered);
+	}
+	
+	salvaLocalStorage(filtrosExistentes, 'filtros');
+	
+	$(classeElementoPai + ' > div > label input').on('click', function () {
+		let paiElementoClicado = nomeItemMontadora($(this).closest('[data-qd-class]').data('qd-class'), true);
+		let classeItemClicado = $(this).closest('label').attr('class');
+		let classes = classeItemClicado.split(' ');
+		
+		// Se existir mais de uma classe, pega a primeira
+		classeItemClicado = (classes.length > 1) ? classes[0] : classeItemClicado;
+		
+		if(arrayOpcoesFiltro[paiElementoClicado].includes(classeItemClicado)) {
+			arrayOpcoesFiltro[paiElementoClicado] = removeItemClicado(arrayOpcoesFiltro[paiElementoClicado], classeItemClicado);
+		}
+		else
+		{
+			arrayOpcoesFiltro[paiElementoClicado] = adicionaItemClicado(arrayOpcoesFiltro[paiElementoClicado], classeItemClicado);
+		}
+		
+		preparaSalvarLocalStorage(arrayOpcoesFiltro);
+		// console.log(arrayOpcoesFiltro);
+		// console.log('localStorage Ano: ' + JSON.parse(localStorage.getItem('ano')));
+		// console.log('localStorage Veículo: ' + JSON.parse(localStorage.getItem('veiculo')));
+		// console.log('localStorage Montadora: ' + JSON.parse(localStorage.getItem('montadora')));
+	});
+	
+	function removeItemClicado(itens, itemClicado) {
+		return itens.filter(function(value) { 
+			return value != itemClicado;
+		});
+	}
+	
+	function adicionaItemClicado(itens, itemClicado) {
+		itens.push(itemClicado);
+		return itens;
+	}
+
+	function salvaLocalStorage(dados, nome) {
+		localStorage.setItem(nome, JSON.stringify(dados));
+	}
+	
+	function preparaSalvarLocalStorage(dados) {
+		for(cont=0; cont<filtrosExistentes.length; cont++) {
+			let nomeFiltro = filtrosExistentes[cont];
+			salvaLocalStorage(dados[nomeFiltro], nomeFiltro);
+		}
+	}
 });
 
 /**
