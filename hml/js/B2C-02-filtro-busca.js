@@ -39,7 +39,7 @@ $(function () {
 			//aplica filtro ao digitar na caixa de texto
 			`fieldset[data-qd-class="${dataQdClass}"] > div > div.filtro > input.filtro-busca`
 		).on("input", function () {
-			var inputValue = this.value.toLowerCase();
+			let inputValue = this.value.toLowerCase();
 
 			$(`fieldset[data-qd-class="${dataQdClass}"] > div > label`).each(
 				function (index) {
@@ -51,7 +51,10 @@ $(function () {
 				}
 			);
 		});
-	}); ''
+	});
+	
+	const elementoHtml = document.querySelector('.search-qd-v1-navigator fieldset.filtro_compatibilidade-montadora h5');
+	if(elementoHtml !== null) elementoHtml.innerHTML = elementoHtml.textContent.replace('Compatibilidade ', '');
 });
 
 /**

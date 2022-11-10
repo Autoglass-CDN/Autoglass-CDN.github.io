@@ -1223,7 +1223,7 @@ try {
 					}).done(function (data) {
 						var installmentsList = data.paymentData.installmentOptions[0].installments;
 						var config = Product.getNumberOfInstallments(data.items);
-						if (document.querySelector('.mz-prices__block') === null 
+						if (document.querySelector('.mz-prices__block') === null
 						|| document.querySelector('.mz-prices__block:empty'))
 						{
 							Product.renderDataInInstallements(installmentsList, config);
@@ -7269,6 +7269,7 @@ String.prototype.trim || (String.prototype.trim = function () {
 			isEmpty: false
 		};
 		$smartResearch.ajaxCallbackObj = ajaxCallbackObj;
+		let filtrosExistentes = [];
 		var getSearchUrl = function () {
 			var url, content, preg;
 			$("script:not([src])").each(function () {
@@ -7313,6 +7314,7 @@ String.prototype.trim || (String.prototype.trim = function () {
 		function exec() {
 			setFilterMenu();
 			fieldsetFormat();
+			recuperaLocalStorage();
 			$this.each(function () {
 				var _this = $(this);
 				var label = _this.parent();
@@ -7327,19 +7329,120 @@ String.prototype.trim || (String.prototype.trim = function () {
 				adjustText(_this);
 				label.append('<span class="sr_box"></span><span class="sr_box2"></span>');
 				_this.bind("change.qd_sr_change", function (event) {
+					if(!JSON.parse(localStorage.getItem('filtros')))
+						recuperaFiltrosExistentes();
 					if (options.initChangeCallback.call(this, event) === false)
 						return false;
 					inputAction.call(this);
-					if (_this.is(":checked"))
+					if (_this.is(":checked")) {
 						addFilter(_this);
-					else
+						salvaLocalStorage(_this);
+					}
+					else {
 						removeFilter(_this);
+						removeLocalStorage(_this);
+					}
 					ajaxCallbackObj.filters = $this.filter(":checked").length;
 					options.endChangeCallback.call(this, event)
 				})
 			});
 			if ("" !== urlFilters)
 				addFilter($empty, true)
+		}
+		function existeNoLocalStorage(elemento) {
+			let classe = recuperaClasseClicada(elemento);
+			let valor = validaClasseClicada(recuperaValorClasse(elemento));
+			let valores = JSON.parse(localStorage.getItem(classe));
+			
+			if(valores) return valores.find(element => element == valor);
+			return null;
+		}
+		function salvaLocalStorage(elemento) {
+			if(!existeNoLocalStorage(elemento)) {
+				let classe = recuperaClasseClicada(elemento);
+				let valor = $(elemento).closest('label').attr('class');
+				validaFiltroClicado(classe);
+				filtrosExistentes[classe].push(validaClasseClicada(valor));
+				localStorage.setItem(classe, JSON.stringify(filtrosExistentes[classe]));
+			}
+		}
+		function removeLocalStorage(elemento) {
+			let classe = recuperaClasseClicada(elemento);
+			let valor = $(elemento).closest('label').attr('class');
+			filtrosExistentes[classe] = removeItemDeLista(filtrosExistentes[classe], valor);
+			localStorage.setItem(classe, JSON.stringify(filtrosExistentes[classe]));
+		}
+		function validaFiltroClicado(filtro) {
+			if(!filtrosExistentes[filtro])
+				filtrosExistentes[filtro] = [];
+		}
+		function recuperaLocalStorage() {
+			try {
+				let filtros = JSON.parse(localStorage.getItem('filtros'));
+				for (const [key, value] of Object.entries(filtros)) {
+					let itens = JSON.parse(localStorage.getItem(value));
+					if(itens) filtrosExistentes[value] = itens;
+				}
+			} catch (e) {
+				console.log('Ainda não existem filtros selecionados' + e.message)
+			}
+		}
+		function validaClasseClicada(classe) {
+			let classes = classe.split(' ');
+			return (classes.length > 1) ? classes[0] : classe;
+		}
+		function recuperaFiltrosExistentes() {
+			try {
+				const elementosPai = document.querySelectorAll('.search-qd-v1-navigator fieldset.refino');
+				let filtrosLocalStorage = [];				
+				for (let i=0; i<elementosPai.length; i++) {
+					let nomeFiltro = nomeItemMontadora($(elementosPai[i]).attr('data-qd-class'), true);
+					filtrosLocalStorage.push(nomeFiltro);
+				}
+				localStorage.setItem('filtros', JSON.stringify(filtrosLocalStorage));
+			} catch (e) {
+				console.log('Falha ao recuperar elementos HTML' + e);
+			}
+		}
+		function recuperaClasseClicada(elemento) {
+			let classe = $(elemento).closest('[data-qd-class]').data('qd-class');
+			return (classe == 'compatibilidade-montadora') ? 'montadora' : classe;
+		}		
+		function filtraItensPartirLocalStorage() {
+			recuperaLocalStorage();
+			for (const [key, value] of Object.entries(filtrosExistentes)) {
+				if(Object.keys(value).length > 0) {
+					let nomeFiltro = nomeItemMontadora(key);
+					let htmlBase = 'fieldset.refino[data-qd-class="'+nomeFiltro+'"]';
+					let $el = $(htmlBase + ' > h5');
+					
+					$el.find("+ div").slideToggle(100, function () {
+						$el.toggleClass("qd-seach-active-menu");
+					});
+					
+					for (const [keyI, valueI] of Object.entries(value)) {
+						let input = 'label.' + valueI + ' input';
+						let texto = $(input).val();
+						let itemFiltrado = $("<div class='block-iltered'><span class='filtered'>" + texto + "</span></div>");
+						itemFiltrado.attr("data-name", texto);
+						$(".search-qd-v1-navigator-research-filtered").append(itemFiltrado);
+						$(input).trigger('click');
+					}
+				}
+			}
+		}
+		function nomeItemMontadora(pai, remover) {
+			if(remover)
+				return (pai == 'compatibilidade-montadora') ? 'montadora' : pai;
+			return (pai == 'montadora') ? 'compatibilidade-montadora' : pai;
+		}
+		function recuperaValorClasse(elemento) {
+			return $(elemento).closest('label').attr('class');
+		}
+		function removeItemDeLista(itens, itemClicado) {
+			return itens.filter(function(value) { 
+				return value != itemClicado;
+			});
 		}
 		function mergeMenuSmartCheckout() {
 			if (!options.mergeMenu)
@@ -7576,7 +7679,8 @@ String.prototype.trim || (String.prototype.trim = function () {
 		}
 		exec();
 		options.callback();
-		filtersMenuE.css("visibility", "visible")
+		filtersMenuE.css("visibility", "visible");
+		filtraItensPartirLocalStorage();
 	}
 }
 )(jQuery);
