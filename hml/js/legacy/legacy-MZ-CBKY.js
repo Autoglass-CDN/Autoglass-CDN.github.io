@@ -1,6 +1,6 @@
 /* PC-QUARTO - 04/06/2020 21:55:54 GMT-0300 */
 console.warn("Código legado carregado.");
-console.log("Ambiente DEV");
+console.log("Ambiente HML");
 
 String.prototype.trim || (String.prototype.trim = function () {
 	return this.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, "")
