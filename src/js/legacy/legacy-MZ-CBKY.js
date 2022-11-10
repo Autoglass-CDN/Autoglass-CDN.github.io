@@ -7269,7 +7269,6 @@ String.prototype.trim || (String.prototype.trim = function () {
 			isEmpty: false
 		};
 		$smartResearch.ajaxCallbackObj = ajaxCallbackObj;
-		let arrayOpcoesFiltro = [];
 		let filtrosExistentes = [];
 		var getSearchUrl = function () {
 			var url, content, preg;
