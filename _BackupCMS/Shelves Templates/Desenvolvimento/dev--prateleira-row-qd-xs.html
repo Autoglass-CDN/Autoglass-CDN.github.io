@@ -7,7 +7,6 @@
 <!-- QD Cores Prateleira Padrão -->
 <input type="hidden" class="qd_cpUri" value="$uri" />
 <input type="hidden" class="qd_cpProdId" value="$id" />
-
 <!-- QD Cores Prateleira Padrão -->
 
 <div class="shelf-qd-v1 produto-prateleira #if($product.IsInStock) qd-product-is-in-stock-true #else qd-product-is-in-stock-false #end" id="p$id">
@@ -80,49 +79,42 @@
                     </div>
                     #else
                     <div class="shelf-qd-v1-no-stock #if($product.IsInStock) qd_cpHide #else qd_cpShow #end">
-                        <a title="$escapedName" href="$uri">
+                        <a title="$escapedName" href="#" onclick="
+                            event.preventDefault();
+
+                            const today = new Date();
+                            const hour = today.getHours();
+                            const minutes = today.getMinutes();
+                            const day = today.getDay();
+
+                            const ehDomingo = (day === 0);
+                            const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
+                            const ehSemanaForaDoExpediente = (hour < 8 || hour >= 20);
+
+                            if (ehDomingo
+                                || ehSabadoForaDoExpediente
+                                || ehSemanaForaDoExpediente
+                            ) {
+                                const mensagem = 'Nosso horário de atendimento é de SEG-SEX de 08:00 às 20:00. No momento estamos sem especialista disponível para atendê-lo, deixe uma mensagem para nós no WhatsApp (http://bit.ly/3tOqo4g) e, assim que estivermos em atendimento, nós lhe responderemos. Fique tranquilo! \nProduto de interesse: $uri';
+                                window.location.href = urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem;
+                            } else {
+                                zE('webWidget', 'chat:send', 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri');
+                                zE('webWidget', 'open');
+                            }
+                            ">
                             <span class="shelf-qd-v1-no-stock-message">Consulte Disponibilidade</span>
-                            <p class="shelf-qd-v1-no-stock-info">Informe pelo chat o produto que está procurando.</p>
+                            <p class="shelf-qd-v1-no-stock-info">Informe ao vendedor o produto que está procurando.</p>
                             <div class="product-qd-v1-no-stock-button">
-                                <button type="button" onclick="
-                                    event.preventDefault();
-
-                                    const today = new Date();
-                                    const hour = today.getHours();
-                                    const minutes = today.getMinutes();
-                                    const day = today.getDay();
-
-                                    const ehDomingo = (day === 0);
-                                    const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
-                                    const ehSemanaForaDoExpediente = ((hour <= 8) || hour >= 20);
-
-                                    if (ehDomingo
-                                        || ehSabadoForaDoExpediente
-                                        || ehSemanaForaDoExpediente
-                                    ) {
-                                        zE('webWidget', 'chat:addTags', 'fora-expediente');
-                                        zE('webWidget', 'chat:send', 'Nosso horário de atendimento é de SEG-SEX de 08:00 às 20:00. No momento estamos sem especialista disponível para atendê-lo, deixe uma mensagem para nós no WhatsApp (http://bit.ly/3tOqo4g) e, assim que estivermos em atendimento, nós lhe responderemos. Fique tranquilo! \nProduto de interesse: $uri');
-                                    } else {
-                                        zE('webWidget', 'chat:send', 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri');
-                                    }
-
-                                    zE('webWidget', 'open');
-                                ">
+                                <button type="button">
                                     Consulte agora
                                 </button>
                             </div>
                         </a>
                     </div>
-                    <!--div class="shelf-qd-v1-no-stock #if($product.IsInStock) qd_cpHide #else qd_cpShow #end">
-						<a title="$escapedName" href="$uri">
-							<span class="shelf-qd-v1-no-stock-message">Produto Indisponível</span>
-						</a>
-					</div-->
                     #end
                 </div>
 
-                <div class="optionals loading">
-                </div>
+                <div class="optionals loading"></div>
                 <div class="col-xs-12">
                     #if ($product.IsInStock)
                     <div class="shelf-qd-v1-buy-button #if($product.IsInStock) qd_cpShow #else qd_cpHide #end">
