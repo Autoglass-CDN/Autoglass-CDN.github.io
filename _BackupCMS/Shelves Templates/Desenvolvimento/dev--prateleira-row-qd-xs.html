@@ -95,7 +95,7 @@
                                 || ehSabadoForaDoExpediente
                                 || ehSemanaForaDoExpediente
                             ) {
-                                const mensagem = 'Nosso horário de atendimento é de SEG-SEX de 08:00 às 20:00. No momento estamos sem especialista disponível para atendê-lo, deixe uma mensagem para nós no WhatsApp (http://bit.ly/3tOqo4g) e, assim que estivermos em atendimento, nós lhe responderemos. Fique tranquilo! \nProduto de interesse: $uri';
+                                const mensagem = 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri';
                                 window.location.href = urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem;
                             } else {
                                 zE('webWidget', 'chat:send', 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri');
