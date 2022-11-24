@@ -3,7 +3,8 @@ const device = {
   mobile: ".mobile"
 }
 
-const numeroWhatsAppAG = "5527992486816";
+const numeroWhatsAppAG = "5527992486816";  //Atenção! Lembrar que quando alterar o número do whatsapp, alterar também o link encurtado abaixo!
+const linkEncurtado = 'http://bit.ly/3tOqo4g';
 const numeroWhatsAppFormatadoAG = "(27) 99248-6816";
 const urlWhatsAppApi = "https://wa.me/";
 const textoUrlGet = "?text=Olá,%20estou%20navegando%20pelo%20e-commerce,%20pode%20me%20ajudar?";

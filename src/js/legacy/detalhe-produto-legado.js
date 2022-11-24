@@ -49,8 +49,7 @@ $(function () {
                     || ehSabadoForaDoExpediente
                     || ehSemanaForaDoExpediente) {
                   zE('webWidget', 'chat:addTags', 'fora-expediente');
-                  const mensagem = 'Olá,+gostaria+de+ser+atendido!+obrigado(a)'
-                  zE('webWidget', 'chat:send', `Nosso horário de atendimento é de SEG-SEX de 08:00 às 20:00. No momento estamos sem especialista disponível para atendê-lo, deixe uma mensagem para nós no WhatsApp (${urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem}) e, assim que estivermos em atendimento, nós lhe responderemos. Fique tranquilo!\nProduto de interesse: ${window.location.href}`);
+                  zE('webWidget', 'chat:send', `Nosso horário de atendimento é de SEG-SEX de 08:00 às 20:00. No momento estamos sem especialista disponível para atendê-lo, deixe uma mensagem para nós no WhatsApp (${linkEncurtado}) e, assim que estivermos em atendimento, nós lhe responderemos. Fique tranquilo!\nProduto de interesse: ${window.location.href}`);
                 }
                 else {
                     zE('webWidget', 'chat:send', `Olá, tenho interesse neste produto, mas está indisponível no site: ${window.location.href}`);
