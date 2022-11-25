@@ -43,14 +43,14 @@ $(function () {
 
                 const ehDomingo = (day === 0);
                 const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
-                const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour >= 21);
+                const ehSemanaForaDoExpediente = ((hour <= 8) || hour >= 20);
 
                 if (ehDomingo
                     || ehSabadoForaDoExpediente
                     || ehSemanaForaDoExpediente) {
                   zE('webWidget', 'chat:addTags', 'fora-expediente');
-                  zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 7:30-21:00. No momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js \nPor ele você pode nos contar o que você precisa que, assim que nossos consultores chegarem, eles irão te responder. \nProduto de interesse: ${window.location.href}`);
-                } 
+                  zE('webWidget', 'chat:send', `Nosso horário de atendimento é de SEG-SEX de 08:00 às 20:00. No momento estamos sem especialista disponível para atendê-lo, deixe uma mensagem para nós no WhatsApp (${linkEncurtado}) e, assim que estivermos em atendimento, nós lhe responderemos. Fique tranquilo!\nProduto de interesse: ${window.location.href}`);
+                }
                 else {
                     zE('webWidget', 'chat:send', `Olá, tenho interesse neste produto, mas está indisponível no site: ${window.location.href}`);
                 }
@@ -218,7 +218,7 @@ $(function LojasMaisProximas() {
 
                 let isCheckout = window.location.href.includes("/checkout");
                 let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
-                    
+
                 if (!isCheckout && ufDefinedByTop) {
                     View.noCepInformed()
                 }
@@ -344,7 +344,7 @@ $(function LojasMaisProximas() {
                 postalCode: address.postalCode,
                 country: CONFIG.SERVICE.COUNTRY
             };
-            
+
             let vtexsc = readCookie('VTEXSC').replace('sc=', '');
 
             return $.ajax({
@@ -371,14 +371,14 @@ $(function LojasMaisProximas() {
                 country: 'BRA',
                 addressType: type
             })
-            .then(order => { 
+            .then(order => {
                 if ((Date.now() - getLastTimeWhildshieldVanePopUpWasShown()) < calculatesTwelveHours()){
-                    forceChangeShipping(order); 
-                    $('.mz-pickup__button--buy').unbind('click'); 
+                    forceChangeShipping(order);
+                    $('.mz-pickup__button--buy').unbind('click');
                 }
             });
         }
-        
+
         function forceChangeShipping(orderForm) {
             const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
             const logistic = orderForm.shippingData.logisticsInfo[0];
@@ -464,7 +464,7 @@ $(function CalculeOFrete() {
 
                 let isCheckout = window.location.href.includes("/checkout");
                 let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
-                    
+
                 if (!isCheckout && ufDefinedByTop) {
                 }
                 else{
