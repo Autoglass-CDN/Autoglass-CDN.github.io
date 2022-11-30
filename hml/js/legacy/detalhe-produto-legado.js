@@ -43,7 +43,7 @@ $(function () {
 
                 const ehDomingo = (day === 0);
                 const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
-                const ehSemanaForaDoExpediente = ((hour <= 8) || hour >= 20);
+                const ehSemanaForaDoExpediente = (hour < 8 || hour > 20);
 
                 if (ehDomingo
                     || ehSabadoForaDoExpediente
