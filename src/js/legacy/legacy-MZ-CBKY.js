@@ -1450,9 +1450,9 @@ try {
 				data.logisticsInfo[0].slas.forEach(function (item) {
 					Product.renderDataInModal(item, addressData, watchLogistic, countAdress)
 				});
-				if (!watchLogistic.length) {
-					$(".product-qd-v1-installation").remove()
-				}
+				// if (!watchLogistic.length) {
+				// 	$(".product-qd-v1-installation").remove()
+				// }
 			})
 		},
 		renderDataInModal: function (logisticItem, storeData, wl, cd) {
