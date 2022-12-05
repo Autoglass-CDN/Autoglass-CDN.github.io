@@ -69,6 +69,8 @@ $(window).on('load', () => {
 
             _createInstallButtonObserver();
 
+            View.windshieldVerification(orderForm);
+
             View.formatItemList(orderForm);
 
             _removePaymentPickupIfIsDelivery(orderForm);
@@ -305,6 +307,7 @@ $(window).on('load', () => {
         return {
             _init,
             formatItemList,
+            windshieldVerification,
             addInstallTexts,
             createCepInfo
         }
@@ -371,6 +374,22 @@ $(window).on('load', () => {
             View.createCepInfo(orderForm, hasInstall);
         }
 
+        function windshieldVerification(orderForm) {
+            const hasWindshild = orderForm.items.reduce(
+                (previousValue, item) =>
+                    previousValue || item.name.startsWith("Parabrisa"),
+                false
+            );
+            console.log('hasWindshild? '+ hasWindshild);
+            if(!hasWindshild) return;
+            const hasWindshieldVane = orderForm.items.reduce(
+                (previousValue, item) =>
+                    previousValue || item.name.startsWith("Palheta"),
+                false
+            );
+            if(hasWindshieldVane) return;
+          }
+
         function addInstallTexts(orderForm) {
             $('.accordion-inner').addClass('instalacao');
 
@@ -381,6 +400,7 @@ $(window).on('load', () => {
         }
 
         async function _implementsInstallButtom(item, accessory) {
+            await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             let product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
 
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
@@ -389,6 +409,16 @@ $(window).on('load', () => {
             if(product.name == 'Insumos para instalação' && !product.available) {
                 preco     = 'R$ 60,00';
                 bestPrice = '6000';
+                available = true;
+            }
+            else if(product.name == 'Instalação Insumos' && !product.available) {
+                preco     = 'R$ 129,99';
+                bestPrice = '12999';
+                available = true;
+            }
+            else if(product.name == 'Instalação de Iluminação' && !product.available) {
+                preco     = 'R$ 5,26';
+                bestPrice = '526';
                 available = true;
             }
                 
@@ -403,6 +433,34 @@ $(window).on('load', () => {
             if ($(`[data-sku='${item.id}'].product-item .product-name .btn-add-instalacao`)
                 .length === 0) {
                 $(`[data-sku='${item.id}'] .product-name`).append(btnInstall);
+            }
+
+            function loadScript(src, callback) {
+                return new Promise((resolve, reject) => {
+                    let script = document.createElement("script");
+                    script.type = "text/javascript";
+
+                    if (script.readyState) {
+                        //IE
+                        script.onreadystatechange = function () {
+                            if (script.readyState == "loaded" || script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                resolve();
+                            } else {
+                                reject()
+                            }
+                        };
+                    } else {
+                        //Others
+                        script.onload = function () {
+                            resolve();
+                        };
+                    }
+
+                    script.src = src;
+                    callback && callback(script);
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                });
             }
         }
 
