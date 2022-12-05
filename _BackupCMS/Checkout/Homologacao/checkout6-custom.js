@@ -69,6 +69,8 @@ $(window).on('load', () => {
 
             _createInstallButtonObserver();
 
+            View.windshieldVerification(orderForm);
+
             View.formatItemList(orderForm);
 
             _removePaymentPickupIfIsDelivery(orderForm);
@@ -305,6 +307,7 @@ $(window).on('load', () => {
         return {
             _init,
             formatItemList,
+            windshieldVerification,
             addInstallTexts,
             createCepInfo
         }
@@ -370,6 +373,22 @@ $(window).on('load', () => {
 
             View.createCepInfo(orderForm, hasInstall);
         }
+
+        function windshieldVerification(orderForm) {
+            const hasWindshild = orderForm.items.reduce(
+                (previousValue, item) =>
+                    previousValue || item.name.startsWith("Parabrisa"),
+                false
+            );
+            console.log('hasWindshild? '+ hasWindshild);
+            if(!hasWindshild) return;
+            const hasWindshieldVane = orderForm.items.reduce(
+                (previousValue, item) =>
+                    previousValue || item.name.startsWith("Palheta"),
+                false
+            );
+            if(hasWindshieldVane) return;
+          }
 
         function addInstallTexts(orderForm) {
             $('.accordion-inner').addClass('instalacao');
