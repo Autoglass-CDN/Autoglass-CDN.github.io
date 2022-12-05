@@ -401,8 +401,8 @@ $(window).on('load', () => {
 
         async function _implementsInstallButtom(item, accessory) {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
-
             let product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
+
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
 
