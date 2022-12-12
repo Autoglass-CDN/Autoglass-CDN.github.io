@@ -618,6 +618,204 @@ article section.tab-content {
   }
 }
 
+#fadeModalInstalacao {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(5px);
+  top: 0;
+  z-index: 99999999999999999999999;
+  display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#modalCompra {
+  width: 900px;
+  height: 55vh;
+  position: fixed;
+  background: #FFF;
+  border-radius: 10px;
+  box-shadow: 0 5px 10px rgb(0 0 0);
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+}
+
+#modalCompra > h1 {
+  color: #183884;
+  font-weight: 800;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+#modalCompra .exit-button {
+  position: absolute;
+  top: 2%;
+  right: 1%;
+  font-size: 30px;
+  font-weight: bolder;
+  width: 25px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #aeaeae;
+}
+
+#containers {
+    display: flex;
+    justify-content: center;
+    height: 30vh;
+    width: 65vw;
+}
+
+.containersModalCompra {
+  display: grid;
+  justify-items: center;
+  align-content: space-evenly;
+  align-items: center;
+}
+
+#beneficios.containersModalCompra {
+  grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
+}
+
+#beneficios.containersModalCompra .logo {
+  width: 80px;
+  margin-bottom: 10px;
+}
+
+#beneficios.containersModalCompra h3 {
+  padding: 6px;
+  color: #aeaeae;
+}
+
+.primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,
+#primeirochecked, #segundochecked {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #aeaeae;
+}
+
+#container-Compra{
+  flex-direction: row;
+}
+
+#container-compraSemInstalacao, #container-compraComInstalacao {
+  border: 1px solid #234EB9;
+  border-radius: 20px;
+  width: 22%;
+  grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
+  min-height: 250px;
+  min-width: 200px;
+  margin-left: 30px;
+}
+
+#container-compraComInstalacao {
+  border: 1px solid #234EB9;
+  border-radius: 20px;
+  width: 22%;
+}
+
+#tabelaComInstalacao {
+  justify-content: space-evenly;
+}
+
+.block:before {
+  content: '\f057';
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-size: 28px;
+  color: #aeaeae;
+}
+
+#headerCompraComInstalacao {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 150px;
+}
+
+.inputLabelSemInstalacao, .inputLabelComInstalacao {
+  display: flex;
+}
+
+.inputLabelComInstalacao {
+  margin-top: 15px;
+}
+
+#inputComInstalacao, #inputSemInstalacao {
+  height: 20px;
+  width: 20px;
+}
+
+.inputLabelSemInstalacao label, .inputLabelComInstalacao label {
+  font-size: 15px;
+  font-weight: 800;
+  color: #234EB9;
+  margin-left: 6px;
+}
+
+.containersModalCompra #descricao {
+  margin-left: 30px;
+  color: #aeaeae;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 9px;
+  line-height: 10px;
+}
+
+.checked:before {
+  content: '\f058';
+  font-family: 'FontAwesome';
+  font-style: normal;
+  font-size: 28px;
+  color: #aeaeae;
+}
+
+#container-compraComInstalacao > h3 {
+  font-size: 14px;
+  color: #aeaeae;
+  font-weight: 600;
+}
+
+#precoComInstalacao {
+  color: #43c452
+}
+
+#valorComInstalacao {
+  color: #43c452;
+  font-size: 22px;
+  font-weight: 900;
+}
+
+#botaoContinuarCarrinho {
+  width: 200px;
+  height: 4vh;
+  border: 0;
+  border-radius: 6px;
+  background: #43c452;
+  color: #FFF;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+#containerButton {
+  margin-top: 30px;
+}
+
+.botaoContinuarCarrinho:hover {
+  background: #33a140;
+}
 
 #windshildVane-advertise {
   width: 100vw;
@@ -758,7 +956,7 @@ article section.tab-content {
 }
 @media only screen and (max-width: 998px) {
   #windshildVane-advertise > div.advertise {
-    max-width: 90%;  
+    max-width: 90%;
     overflow: auto;
     max-height: 98%;
   }

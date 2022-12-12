@@ -108,6 +108,7 @@ async function getProductRefIdByProductName() {
 async function loadOptionals() {
   const opcionaisContainer = $("#opcionais");
   const productRefId = await getProductRefIdByProductName();
+  const testeOpcionais = $(".teste-opcionais")
 
   try {
     const { Opcionais } = await $.get(
@@ -123,10 +124,21 @@ async function loadOptionals() {
           ).join("")}
         </div>
       `);
+      testeOpcionais.html(`
+            ${Opcionais.map(
+              (x) => `<h4 class="lista-opcionais">${x}</h4>`).join("")}
+            <div class="container-mais-especificacoes">
+              <a class="mais-especificacoes">Ver especificações completas</a>
+            </div>
+      `)
     }
   } catch (ex) {
     console.error("Falha ao renderizar opcionais. \n ", ex);
   }
+
+  $('.container-mais-especificacoes .mais-especificacoes').click(function() {
+    document.querySelector('#informacoes-gerais .info-box a').scrollIntoView();
+  });
 }
 
 window.addEventListener("load", insertBrandDescription);
@@ -276,6 +288,19 @@ $(window).on("ready", async () => {
     .on('input', function () {
       buscaCompativeis($(this).val())
     });
+
+function verTodosCompativeis() {
+  $("body").on("keypress", ".veiculos-compativeis-search__search-input", function(e){
+    var key = e.which;
+    if(key == '13')
+      document.getElementById('veiculos-compativeis').scrollIntoView();
+  })
+
+  $('.veiculos-compativeis-search__search-box .search-icon').click(function(){
+    document.getElementById('veiculos-compativeis').scrollIntoView();
+  });
+}
+  verTodosCompativeis();
 
   function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 0) {
@@ -427,114 +452,184 @@ $(window).on("ready", async () => {
     });
   }
 
-  async function enableWindshieldVanePopUp() {
-    const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
-    const isWindshield = currentProduct.name.startsWith('Parabrisa') ? true : false;
-    // || currentProduct.name.startsWith('Vidro Traseiro');  
-    if (!isWindshield) return;  //mudar para isWindshieldOrBackglass
 
-    $('body').append(`
-      <div id="windshildVane-advertise">
-      </div>
-    `)
-
-    $('a[href*="/checkout/cart/add?sku="], .mz-accesories__button a, .mz-advantages__button a, .mz-install__button a, .mz-shipping__button a, .mz-pickup__button a')
-    .on('click', async function (element) {
-      element.preventDefault();
-    
-      const windshieldVaneItems = await whildshieldVaneInCrossSellingList();
-
-      if(!windshieldVaneItems.length){
-        const newUrl = this.href;
-        return document.location.href = newUrl;
-      }
-
-      createWindshieldVanePopUp(element, windshieldVaneItems);
+    $( ".product-qd-v1-buy-button .buy-button").on( "click", function() {
+      modalCompraComOuSemInstalacao();
     });
 
-    function createWindshieldVanePopUp(element, windshieldVaneItems) {
-      $('#windshildVane-advertise').append(`
-        <div class="advertise">
-          <div class="image"></div>
+  function modalCompraComOuSemInstalacao() {
+
+    $('body').append(`
+    <div id="abrirModal">
+       </div>`);
+
+    $('#abrirModal').append(`
+      <div id="fadeModalInstalacao">
+        <div id="modalCompra">
           <div class="exit-button">×</div>
-          <div class="container-smallheight">
-          <div class="text-popup">
-            <h2>Recomendamos trocar as palhetas a cada <b>6 meses</b> ou na <b>troca de parabrisa.</b></h2>
-            <h3>Deseja adicionar?</h3>
-          </div>
-            <div class="buy-button">
-              <div id="sim-modal-palheta" class="yes"></div>
-              <div id="nao-modal-palheta" class="no"></div>
+          <h1> Instalação </h1>
+
+          <div id="containers">
+            <div id="beneficios" class="containersModalCompra">
+              <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+              <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
+              <h3 class="segundaLinha">Equipe Especializada</h3>
+              <h3>Segurança e comodidade</h3>
             </div>
+
+              <div class="containersModalCompra" id="container-compraSemInstalacao">
+                  <div class="inputLabelSemInstalacao">
+                    <input type="radio" id="inputSemInstalacao" name="inputRadioInstalacao" value="SemInstalacao">
+                    <label for="SemInstalacao">Sem Instalação</label>
+                  </div>
+                <i id="primeiroblock" class="block"></i>
+                <i id="segundablock"class="block"></i>
+                <i class="block"></i>
+              </div>
+
+              <div class="containersModalCompra" id="container-compraComInstalacao">
+                <div id="headerCompraComInstalacao">
+                  <div class="inputLabelComInstalacao">
+                      <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao">
+                      <label for="ComInstalacao">Com Instalação</label>
+                  </div>
+                  <span id="descricao"> Apenas em Lojas Autoglass ou em casa.</span>
+                </div>
+                <i id="primeirochecked" class="checked"></i>
+                <i id="segundochecked" class="checked"></i>
+                <i class="checked"></i>
+                <h3>Por apenas <span id="precoComInstalacao">R$<span id="valorComInstalacao">60</span>,00</span>  </h3>
+              </div>
+          </div>
+
+          <div class="containersModalCompra" id="containerButton">
+            <button id="botaoContinuarCarrinho">Confirmar</button>
           </div>
         </div>
+      </div>
       `)
 
-      appendWindshieldVaneImage(windshieldVaneItems[0]);
-      const newButton = element.srcElement.cloneNode();
-      appendPopUpButtons(windshieldVaneItems[0], newButton);
-      $('#windshildVane-advertise .advertise').addClass('filled');
+      $('#fadeModalInstalacao #modalCompra').addClass('filled');
+        $('#fadeModalInstalacao, .exit-button').click(function(e) {
+          $('#fadeModalInstalacao #modalCompra').fadeOut(300);
+          $(this).fadeOut();
+          $('#fadeModalInstalacao div').remove();
+        })
+        $('#fadeModalInstalacao #modalCompra').click(function(e) {
+          e.stopPropagation();
+        })
 
-      $('#windshildVane-advertise, .exit-button').click(function(e) {
-        $('#windshildVane-advertise .advertise').fadeOut(300);
-        $(this).fadeOut(300);
-        $('#windshildVane-advertise div').remove();
-      });
 
-      $('#windshildVane-advertise .advertise').click(function(e) {
-        e.stopPropagation();
-      })
+  };
 
-      $('#windshildVane-advertise').css('display', 'flex');
-    }
+  // async function enableWindshieldVanePopUp() {
+  //   const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
+  //   const isWindshield = currentProduct.name.startsWith('Parabrisa') ? true : false;
+  //   // || currentProduct.name.startsWith('Vidro Traseiro');
+  //   if (!isWindshield) return;  //mudar para isWindshieldOrBackglass
 
-    async function whildshieldVaneInCrossSellingList() {
-      const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/' + vtxctx.skus;
+  //   $('body').append(`
+  //     <div id="windshildVane-advertise">
+  //     </div>
+  //   `)
 
-      const items = await fetch(uriCrossSelling).then((response) => {
-        return response.json();
-      });
+  //   $('a[href*="/checkout/cart/add?sku="], .mz-accesories__button a, .mz-advantages__button a, .mz-install__button a, .mz-shipping__button a, .mz-pickup__button a')
+  //   .on('click', async function (element) {
+  //     element.preventDefault();
 
-      const windshieldVaneItems = items.filter(isWindshildVane);
-      return windshieldVaneItems;
-    }
+  //     const windshieldVaneItems = await whildshieldVaneInCrossSellingList();
 
-    function isWindshildVane(item) {
-      return item.productName.startsWith("Palheta")
-    }
+  //     if(!windshieldVaneItems.length){
+  //       const newUrl = this.href;
+  //       return document.location.href = newUrl;
+  //     }
 
-    function appendWindshieldVaneImage(item) {
-      const urlBase = "https://autoglass.vteximg.com.br"
-        let urlImagem = item.items[0].images[0].imageTag
-        .replaceAll('~',urlBase)
-        .replaceAll('#width#','300')
-        .replaceAll('#height#','300');
+  //     createWindshieldVanePopUp(element, windshieldVaneItems);
+  //   });
 
-        $('#windshildVane-advertise div.image').append(urlImagem)
-    }
+  //   function createWindshieldVanePopUp(element, windshieldVaneItems) {
+  //     $('#windshildVane-advertise').append(`
+  //       <div class="advertise">
+  //         <div class="image"></div>
+  //         <div class="exit-button">×</div>
+  //         <div class="container-smallheight">
+  //         <div class="text-popup">
+  //           <h2>Recomendamos trocar as palhetas a cada <b>6 meses</b> ou na <b>troca de parabrisa.</b></h2>
+  //           <h3>Deseja adicionar?</h3>
+  //         </div>
+  //           <div class="buy-button">
+  //             <div id="sim-modal-palheta" class="yes"></div>
+  //             <div id="nao-modal-palheta" class="no"></div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     `)
 
-    function appendPopUpButtons(item, button) {
-      var currentDate = Date.now();
+  //     appendWindshieldVaneImage(windshieldVaneItems[0]);
+  //     const newButton = element.srcElement.cloneNode();
+  //     appendPopUpButtons(windshieldVaneItems[0], newButton);
+  //     $('#windshildVane-advertise .advertise').addClass('filled');
 
-      button.innerText = 'Não, obrigado!';
-      $('#windshildVane-advertise div .buy-button .no').append(button.cloneNode(true)).click(function(e){
-        localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
-      })
-      button.innerText = 'Sim, adicionar!';
-      const newUrl = `${button.href}&sku=${item.items[0].itemId}&qty=1&seller=1&redirect=true&sc=${jssalesChannel}`;
-      button.href = newUrl;
-      $('#windshildVane-advertise div .buy-button .yes').append(button.cloneNode(true)).click(function(e){
-        localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
-      })
-    }
-  }
-  
-  function shouldShowWindshieldVanePopUp() {
-    if (getLastTimeWhildshieldVanePopUpWasShown() === undefined)
-      return true;
-    return (Date.now() - getLastTimeWhildshieldVanePopUpWasShown() > calculatesTwelveHours())
-  }
+  //     $('#windshildVane-advertise, .exit-button').click(function(e) {
+  //       $('#windshildVane-advertise .advertise').fadeOut(300);
+  //       $(this).fadeOut(300);
+  //       $('#windshildVane-advertise div').remove();
+  //     });
 
-  if(shouldShowWindshieldVanePopUp())
-    return enableWindshieldVanePopUp();
+  //     $('#windshildVane-advertise .advertise').click(function(e) {
+  //       e.stopPropagation();
+  //     })
+
+  //     $('#windshildVane-advertise').css('display', 'flex');
+  //   }
+
+  //   async function whildshieldVaneInCrossSellingList() {
+  //     const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/' + vtxctx.skus;
+
+  //     const items = await fetch(uriCrossSelling).then((response) => {
+  //       return response.json();
+  //     });
+
+  //     const windshieldVaneItems = items.filter(isWindshildVane);
+  //     return windshieldVaneItems;
+  //   }
+
+  //   function isWindshildVane(item) {
+  //     return item.productName.startsWith("Palheta")
+  //   }
+
+  //   function appendWindshieldVaneImage(item) {
+  //     const urlBase = "https://autoglass.vteximg.com.br"
+  //       let urlImagem = item.items[0].images[0].imageTag
+  //       .replaceAll('~',urlBase)
+  //       .replaceAll('#width#','300')
+  //       .replaceAll('#height#','300');
+
+  //       $('#windshildVane-advertise div.image').append(urlImagem)
+  //   }
+
+  //   function appendPopUpButtons(item, button) {
+  //     var currentDate = Date.now();
+
+  //     button.innerText = 'Não, obrigado!';
+  //     $('#windshildVane-advertise div .buy-button .no').append(button.cloneNode(true)).click(function(e){
+  //       localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
+  //     })
+  //     button.innerText = 'Sim, adicionar!';
+  //     const newUrl = `${button.href}&sku=${item.items[0].itemId}&qty=1&seller=1&redirect=true&sc=${jssalesChannel}`;
+  //     button.href = newUrl;
+  //     $('#windshildVane-advertise div .buy-button .yes').append(button.cloneNode(true)).click(function(e){
+  //       localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
+  //     })
+  //   }
+  // }
+
+  // function shouldShowWindshieldVanePopUp() {
+  //   if (getLastTimeWhildshieldVanePopUpWasShown() === undefined)
+  //     return true;
+  //   return (Date.now() - getLastTimeWhildshieldVanePopUpWasShown() > calculatesTwelveHours())
+  // }
+
+  // if(shouldShowWindshieldVanePopUp())
+  //   return enableWindshieldVanePopUp();
 });
