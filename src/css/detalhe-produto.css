@@ -633,7 +633,11 @@ article section.tab-content {
 
 #modalCompra {
   width: 900px;
-  height: 55vh;
+  max-width: 95%;
+  height: auto;
+  max-height: 95%;
+  min-height: 450px;
+  max-height: 100%;
   position: fixed;
   background: #FFF;
   border-radius: 10px;
@@ -660,7 +664,7 @@ article section.tab-content {
   font-size: 30px;
   font-weight: bolder;
   width: 25px;
-  height: 25px;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -671,8 +675,12 @@ article section.tab-content {
 #containers {
     display: flex;
     justify-content: center;
-    height: 30vh;
+    height: auto;
     width: 65vw;
+}
+
+#mobileBlocoUm {
+  display: flex;
 }
 
 .containersModalCompra {
@@ -684,6 +692,8 @@ article section.tab-content {
 
 #beneficios.containersModalCompra {
   grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
+  margin-bottom: 5px;
+  min-width: 250px;
 }
 
 #beneficios.containersModalCompra .logo {
@@ -694,6 +704,13 @@ article section.tab-content {
 #beneficios.containersModalCompra h3 {
   padding: 6px;
   color: #aeaeae;
+}
+
+fieldset#beneficios legend {
+  color: #3330;
+  width: auto;
+ border-bottom: 0;
+ margin-bottom: 0;
 }
 
 .primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,
@@ -735,7 +752,31 @@ article section.tab-content {
   font-family: 'FontAwesome';
   font-style: normal;
   font-size: 28px;
+  font-weight: 600;
+}
+#container-compraSemInstalacao legend{
+  position: relative;
+  margin-left: auto;
+  margin-right: 100%;
+  font-size: 15px;
+  color: #234eb900;
+  font-weight: 500;
+  padding-bottom: 3px;
+  width: auto;
+  border-bottom: 0;
+  margin-bottom: 0;
+}
+
+#container-compraSemInstalacao {
   color: #aeaeae;
+}
+
+#mobileBlocoDois {
+  display: flex;
+}
+
+#mobileBlocoDois #beneficios {
+  display: none;
 }
 
 #headerCompraComInstalacao {
@@ -779,6 +820,9 @@ article section.tab-content {
   font-family: 'FontAwesome';
   font-style: normal;
   font-size: 28px;
+  font-weight: 600;
+}
+#container-compraComInstalacao {
   color: #aeaeae;
 }
 
@@ -786,6 +830,18 @@ article section.tab-content {
   font-size: 14px;
   color: #aeaeae;
   font-weight: 600;
+}
+
+#container-compraComInstalacao > legend {
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 15px;
+  color: #43c452;
+  font-weight: 800;
+  width: auto;
+  border-bottom: 0;
+  margin-bottom: 0;
 }
 
 #precoComInstalacao {
@@ -800,21 +856,151 @@ article section.tab-content {
 
 #botaoContinuarCarrinho {
   width: 200px;
-  height: 4vh;
+  height: auto;
+  min-height: 35px;
   border: 0;
   border-radius: 6px;
   background: #43c452;
   color: #FFF;
   font-size: 18px;
   font-weight: 700;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
 
 #containerButton {
   margin-top: 30px;
 }
 
-.botaoContinuarCarrinho:hover {
-  background: #33a140;
+#botaoContinuarCarrinho:hover {
+  background:  #33a140;
+  border-color: #33a140;
+}
+
+@media screen and (max-width: 1040px) {
+  #modalCompra {
+    width: 800px;
+  }
+
+  #beneficios.containersModalCompra {
+    max-height: 300px;
+    width: 250px;
+  }
+
+  #inputComInstalacao, #inputSemInstalacao {
+    width: 15px;
+  }
+
+  .containersModalCompra i {
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  #container-compraComInstalacao > h3 {
+    font-size: 13px;
+  }
+
+  #valorComInstalacao {
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  #beneficios.containersModalCompra h3 {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  #beneficios.containersModalCompra {
+    min-width: 180px;
+    width: 190px;
+  }
+
+  #container-compraSemInstalacao, #container-compraComInstalacao {
+    margin-left: 15px;
+  }
+}
+
+@media only screen and (max-width: 680px) {
+  #container-compraSemInstalacao, #container-compraComInstalacao {
+    min-width: 160px;
+    margin-left: 5px;
+  }
+}
+
+@media only screen and (max-width: 570px) {
+  #modalCompra {
+    max-width: 90%;
+  }
+
+  #containers {
+    display: block;
+    width: 100%;
+  }
+
+  #mobileBlocoUm, #mobileBlocoDois {
+    margin-bottom: 30px;
+  }
+
+  #mobileBlocoDois #beneficios {
+    display: grid;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+  }
+
+  #modalCompra > h1 {
+    margin-bottom: 0;
+    margin-top: 20px;
+    font-size: 22px;
+  }
+
+  #beneficios.containersModalCompra {
+    min-width: 150px;
+    width: auto;
+  }
+
+  #beneficios.containersModalCompra h3 {
+    font-size: 11px;
+  }
+
+  #beneficios.containersModalCompra .logo {
+    width: 60px;
+  }
+
+  #container-compraSemInstalacao, #container-compraComInstalacao {
+    height: auto;
+    min-height: 200px;
+    width: auto;
+    min-width: 150px;
+  }
+
+  #inputComInstalacao, #inputSemInstalacao {
+    width: 10px;
+  }
+
+  #container-compraComInstalacao > h3 {
+    font-size: 10px;
+  }
+
+  .inputLabelSemInstalacao label, .inputLabelComInstalacao label {
+    font-size: 11px;
+  }
+
+  .containersModalCompra #descricao {
+    margin-left: 10px;
+  }
+
+  .block:before, .checked:before {
+    font-size: 22px;
+  }
+
+  #containerButton {
+    margin-top: 0;
+    margin-bottom: 20px;
+  }
 }
 
 #windshildVane-advertise {
@@ -937,6 +1123,10 @@ article section.tab-content {
   background-color: #999999;
   color: #ffffff;
   transition: 0.3s;
+}
+
+.buy-button.buy-button-tablet {
+  display: flex;
 }
 
 #windshildVane-advertise > div.advertise .container-smallheight {

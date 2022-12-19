@@ -26,10 +26,10 @@ $(function () {
     ga('create', 'UA-133498560-1', 'autoglassonline.com');
     if ($(".product-qd-v1-price").is(":empty")) {
         /*
-            Se o produto está indisponível, oculta boxes de preço e entrega
+            Se o produto está indisponível, oculta boxes de preço, entrega, forma de pagamento e botão de compre whatsapp
         */
         $(
-            ".product-qd-v1-standard.row .header, .product-qd-v1-sku-selection, .product-qd-v1-price, .product-qd-v1-shipping"
+            ".product-qd-v1-standard.row .header, .product-qd-v1-sku-selection, .product-qd-v1-price, .product-qd-v1-shipping, .formas-pagamento, .container-compre-whatsapp",
         ).hide();
 
         //Exibe o botão para o cliente conversar com o vendedor pelo Chat
@@ -43,7 +43,7 @@ $(function () {
 
                 const ehDomingo = (day === 0);
                 const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
-                const ehSemanaForaDoExpediente = ((hour <= 8) || hour >= 20);
+                const ehSemanaForaDoExpediente = (hour < 8 || hour > 20);
 
                 if (ehDomingo
                     || ehSabadoForaDoExpediente

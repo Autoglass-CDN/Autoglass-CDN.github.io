@@ -455,10 +455,11 @@ function verTodosCompativeis() {
 
     $( ".product-qd-v1-buy-button .buy-button").on( "click", function() {
       modalCompraComOuSemInstalacao();
+      $('#modalCompra #botaoContinuarCarrinho').focus();
     });
 
+  ////  MEUUUUU
   function modalCompraComOuSemInstalacao() {
-
     $('body').append(`
     <div id="abrirModal">
        </div>`);
@@ -470,28 +471,41 @@ function verTodosCompativeis() {
           <h1> Instalação </h1>
 
           <div id="containers">
-            <div id="beneficios" class="containersModalCompra">
-              <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
-              <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
-              <h3 class="segundaLinha">Equipe Especializada</h3>
-              <h3>Segurança e comodidade</h3>
-            </div>
+            <div id="mobileBlocoUm">
+              <fieldset id="beneficios" class="containersModalCompra">
+                <legend>-</legend>
+                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
+                <h3 class="segundaLinha">Equipe Especializada</h3>
+                <h3>Segurança e comodidade</h3>
+              </fieldset>
 
-              <div class="containersModalCompra" id="container-compraSemInstalacao">
-                  <div class="inputLabelSemInstalacao">
-                    <input type="radio" id="inputSemInstalacao" name="inputRadioInstalacao" value="SemInstalacao">
-                    <label for="SemInstalacao">Sem Instalação</label>
-                  </div>
+              <fieldset class="containersModalCompra" id="container-compraSemInstalacao">
+                <legend>-</legend>
+                <div class="inputLabelSemInstalacao">
+                  <input type="radio" id="inputSemInstalacao" name="inputRadioInstalacao" value="SemInstalacao">
+                  <label for="inputSemInstalacao">Sem Instalação</label>
+                </div>
                 <i id="primeiroblock" class="block"></i>
                 <i id="segundablock"class="block"></i>
                 <i class="block"></i>
-              </div>
+              </fieldset>
+            </div>
 
-              <div class="containersModalCompra" id="container-compraComInstalacao">
+            <div id="mobileBlocoDois">
+              <fieldset id="beneficios" class="containersModalCompra">
+                <legend>-</legend>
+                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
+                <h3 class="segundaLinha">Equipe Especializada</h3>
+                <h3>Segurança e comodidade</h3>
+              </fieldset>
+              <fieldset class="containersModalCompra" id="container-compraComInstalacao">
+              <legend>RECOMENDADO</legend>
                 <div id="headerCompraComInstalacao">
                   <div class="inputLabelComInstalacao">
-                      <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao">
-                      <label for="ComInstalacao">Com Instalação</label>
+                      <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
+                      <label for="inputComInstalacao">Com Instalação</label>
                   </div>
                   <span id="descricao"> Apenas em Lojas Autoglass ou em casa.</span>
                 </div>
@@ -499,15 +513,20 @@ function verTodosCompativeis() {
                 <i id="segundochecked" class="checked"></i>
                 <i class="checked"></i>
                 <h3>Por apenas <span id="precoComInstalacao">R$<span id="valorComInstalacao">60</span>,00</span>  </h3>
-              </div>
+              </fieldset>
+            </div>
           </div>
 
           <div class="containersModalCompra" id="containerButton">
-            <button id="botaoContinuarCarrinho">Confirmar</button>
+            <a id="botaoContinuarCarrinho" href="#">Continuar</a>
           </div>
-        </div>
+        <div class="clearfix"></div>
       </div>
       `)
+
+      if (window.screen.width < 570) {
+        $('#mobileBlocoDois #beneficiosMobile').css('display', 'block')
+      }
 
       $('#fadeModalInstalacao #modalCompra').addClass('filled');
         $('#fadeModalInstalacao, .exit-button').click(function(e) {
@@ -519,8 +538,40 @@ function verTodosCompativeis() {
           e.stopPropagation();
         })
 
+        let urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
+        let urlComInstalacao = urlSemInstalacao + "&sku=" + 10748 + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
+        $('#botaoContinuarCarrinho').attr('href', urlComInstalacao);
+        $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
+
+        $(document).ready(function() {
+          $('input:radio[name="inputRadioInstalacao"]').change(function() {
+            $('.containersModalCompra').css('color', '#aeaeae');
+            if ($('#inputComInstalacao').is(':checked')) {
+              $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
+              $('#botaoContinuarCarrinho').attr('href', urlComInstalacao)
+            } else if ($('#inputSemInstalacao').is(':checked')) {
+              $('.containersModalCompra#container-compraSemInstalacao').css('color', 'red');
+              $('#botaoContinuarCarrinho').attr('href', urlSemInstalacao)
+            }
+          });
+        });
+
+          // $(body).on("keypress", function(e){
+          //   if(e.key == 13){
+          //     return false;
+          //   }
+          // })
+
 
   };
+
+  $(document).ready(function(){
+    $('.botao-compre-whatsapp').click(function() {
+      const mensagem = `Olá, estou na página desse produto e gostaria de comprá-lo: ${window.location.href}`;
+      window.location.href = urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem;
+    });
+  });
+
 
   // async function enableWindshieldVanePopUp() {
   //   const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
