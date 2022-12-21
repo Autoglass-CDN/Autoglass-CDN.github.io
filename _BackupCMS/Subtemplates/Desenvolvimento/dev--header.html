@@ -12,11 +12,7 @@
 <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/localization-modal.css" />
 
 <script async="" src="https://autoglass-cdn.github.io/src/js/policies/header.js"></script>
-
-<div class="banner-topo">
-    <img loading="lazy" id="banner_topo_desktop" src="https://autoglass-cdn.github.io/src/img/banner-topo/banner-topo-desktop.png" alt="banner_topo_desktop"/>
-    <img loading="lazy" id="banner_topo_mobile" src="https://autoglass-cdn.github.io/src/img/banner-topo/banner-topo-mobile.png" alt="banner_topo_mobile"/>
-</div>
+<script async="" src="https://autoglass-cdn.github.io/src/js/topo.js"></script>
 
 <div class="topo">
     <div class="container">
@@ -49,7 +45,7 @@
                 class="logo" /></a>
         <div class="search-box">
             <vtex.cmc:fullTextSearchBox />
-            <i class="search-icon"></i>
+            <i class="search-icon" id="search-icon"></i>
             <ul id="autocomplete-search">
                 <li><a class="no-capitalize">Pesquise por peça, produto, montadora...</a></li>
             </ul>
@@ -198,6 +194,26 @@
                     </li>
                     <li class="painel-categorias__categoria">
                         <div class="painel-categorias__categoria-header">
+                            <a id="Categoria-ferramentas-topo" href="/ferramentas" title="Ferramentas"
+                                itemprop="url">
+                                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-ferramentas.png"
+                                    alt="Ferramentas" class="painel-categorias__categoria-imagem" />
+                                <h3>Ferramentas</h3>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                        <div class="painel-categorias__categoria-header">
+                            <a id="Categoria-colas-topo" href="/colas-e-adesivos" title="Colas e Adesivos"
+                                itemprop="url">
+                                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-ferramentas.png"
+                                    alt="Colas e Adesivos" class="painel-categorias__categoria-imagem" />
+                                <h3>Colas e Adesivos</h3>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                        <div class="painel-categorias__categoria-header">
                             <a id="Categoria-suspensao-topo" href="/suspensao/#1" title="Suspensão" itemprop="url">
                                 <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-suspensoes.png"
                                     alt="Suspensão" class="painel-categorias__categoria-imagem" />
@@ -246,6 +262,12 @@
                                 <li><a id="menu-higienizadores-filtros"
                                     href="/higienizadores-e-filtros" title="Higienizadores e Filtros"
                                         itemprop="url">Higienizadores e Filtros</a></li>
+                                <li><a id="menu-ferramentas"
+                                    href="/ferramentas" title="Ferramentas"
+                                        itemprop="url">Ferramentas</a></li>
+                                <li><a id="menu-colas-adesivos"
+                                    href="/colas-e-adesivos" title="Colas e Adesivos"
+                                        itemprop="url">Colas e Adesivos</a></li>
                                 <li><a id="menu-suspensao"
                                     href="/suspensao/#1" title="Suspensão"
                                         itemprop="url">Suspensão</a></li>
@@ -274,9 +296,6 @@
                                 <li><a id="quebra-vento" href="/vidros/vidros/quebra-vento" title="Quebra-Vento"
                                         itemprop="url">Quebra-Vento</a>
                                 </li>
-                                <!-- <li><a id="teto-solar" href="/vidros/vidros/teto-solar" title="Teto Solar"
-                                        itemprop="url">Teto Solar</a>
-                                </li> -->
                                 <li><a id="vidro-de-porta" href="/vidros/vidros/vidro-de-porta"
                                         title="Vidro de Porta" itemprop="url">Vidro de
                                         Porta</a></li>
@@ -402,24 +421,10 @@
 
                             <ul>
                                 <li>
-                                    <a id="lampada-lanterna"
-                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-lanterna"
-                                        title="Lâmpada Lanterna" itemprop="url">
-                                        Lâmpada Lanterna
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="lampada-lanterna-traseira"
-                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-lanterna-traseira"
-                                        title="Lâmpada Lanterna Traseira" itemprop="url">
-                                        Lâmpada Lanterna Traseira
-                                    </a>
-                                </li>
-                                <li>
-                                    <a id="lampada-painel"
-                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-painel"
-                                        title="Lâmpada Painel" itemprop="url">
-                                        Lâmpada Painel
+                                    <a id="lampada"
+                                        href="/farois-lanternas-e-lampadas/lampadas/lampada"
+                                        title="Lâmpada" itemprop="url">
+                                        Lâmpada
                                     </a>
                                 </li>
                             </ul>
@@ -597,6 +602,32 @@
                         </li>
                     </ul>
                 </div>
+                <div id="ferramentas" class="painel-categorias__categoria-itens">
+                    <ul>
+                        <li class="painel-categorias__categoria-itens-lista">
+                            <a href="/ferramentas" title="Ferramentas"
+                                itemprop="url">Ferramentas</a>
+                            <ul>
+                                <li><a id="ferramentas"
+                                    href="/ferramentas/ferramentas"
+                                    title="Ferramentas" itemprop="url">Ferramentas</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+                <div id="colas-e-adesivos" class="painel-categorias__categoria-itens">
+                    <ul>
+                        <li class="painel-categorias__categoria-itens-lista">
+                            <a href="/colas-e-adesivos" title="colas-e-adesivos"
+                                itemprop="url">Colas e Adesivos</a>
+                            <ul>
+                                <li><a id="colas-adesivos"
+                                    href="/colas-e-adesivos/colas-e-adesivos"
+                                    title="Colas e Adesivos" itemprop="url">Colas e Adesivos</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
                 <div id="suspensao" class="painel-categorias__categoria-itens">
                     <ul>
                         <li class="painel-categorias__categoria-itens-lista">
@@ -689,9 +720,6 @@
                                 <li>
                                     <a href="/vidros/vidros/quebra-vento" title="Quebra-Vento" itemprop="url">Quebra-Vento</a>
                                 </li>
-                                <!-- <li>
-                                    <a href="/vidros/vidros/teto-solar" title="Teto Solar" itemprop="url">Teto Solar</a>
-                                </li> -->
                                 <li>
                                     <a href="/vidros/vidros/vidro-de-porta" title="Vidro de Porta" itemprop="url">Vidro de Porta</a>
                                 </li>
@@ -829,20 +857,10 @@
                                                 Lâmpadas
                                             </a>
                                             <ul class="side-menu-categorias__categoria-sub-itens">
-                                                <li><a id="mobile-lampada-lanterna"
-                                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-lanterna"
-                                                        title="Lâmpada Lanterna" itemprop="url">
-                                                        Lâmpada Farol
-                                                    </a></li>
-                                                <li><a id="mobile-lampada-lanterna-traseira"
-                                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-lanterna-traseira"
-                                                        title="Lâmpada Lanterna Traseira" itemprop="url">
-                                                        Lâmpada Lanterna Traseira
-                                                    </a></li>
-                                                <li><a id="mobile-lampada-painel"
-                                                        href="/farois-lanternas-e-lampadas/lampadas/lampada-painel"
-                                                        title="Lâmpada Painel" itemprop="url">
-                                                        Lâmpada Painel
+                                                <li><a id="mobile-lampada"
+                                                        href="/farois-lanternas-e-lampadas/lampadas/lampada"
+                                                        title="Lâmpada" itemprop="url">
+                                                        Lâmpada
                                                     </a></li>
                                             </ul>
                                         </li>
@@ -1091,6 +1109,46 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
+                                <a title="Ferramentas" itemprop="url" onclick="toggleCategory(this)">
+                                    <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-ferramentas.png"
+                                        alt="Ferramentas" class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Ferramentas
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+                                <li><a id="mobile-ferramentas "
+                                        href="/ferramentas/ferramentas"
+                                        title="Ferramentas"
+                                        itemprop="url">Ferramentas
+                                    </a></li>
+
+                            </ul>
+                        </li>
+                        <li class="side-menu-categorias__categoria">
+                            <div class="side-menu-categorias__categoria-header">
+                                <a title="Colas e Adesivos" itemprop="url" onclick="toggleCategory(this)">
+                                    <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-ferramentas.png"
+                                        alt="Colas e Adesivos" class="side-menu-categorias__categoria-imagem" />
+                                    <h4>
+                                        Colas e Adesivos
+                                        <i class="arrow-down-icon-gray"></i>
+                                    </h4>
+                                </a>
+                            </div>
+                            <ul class="side-menu-categorias__categoria-itens">
+                                <li><a id="mobile-colas-adesivos "
+                                        href="/colar-e-adesivos/colar-e-adesivos"
+                                        title="Colas e Adesivos"
+                                        itemprop="url">Colas e Adesivos
+                                    </a></li>
+
+                            </ul>
+                        </li>
+                        <li class="side-menu-categorias__categoria">
+                            <div class="side-menu-categorias__categoria-header">
                                 <a title="Suspensão" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-suspensoes.png"
                                         alt="Suspensão" class="side-menu-categorias__categoria-imagem" />
@@ -1152,6 +1210,7 @@
     <form class="search-box-mobile__form">
         <div class="search-box-mobile__form-group">
             <vtex.cmc:fullTextSearchBox />
+            <i class="search-icon" id="search-icon"></i>
             <input id="search-mobile-input" class="search-box-mobile__form-input" type="text"
                 placeholder=" Pesquise por peça, produto, veículo..." />
             <ul class="search-mobile-autocomplete" style="display:none;"></ul>

@@ -1047,7 +1047,7 @@ i.arrow-icon::before {
 
 .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
   transform: scaleY(0.2);
-  top: -120px;
+  top: -160px;
   z-index: 1;
 }
 
