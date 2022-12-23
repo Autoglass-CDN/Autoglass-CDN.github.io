@@ -1002,7 +1002,11 @@ fieldset#beneficios legend {
     margin-bottom: 20px;
   }
 }
-
+@media only screen and (max-width: 350px) {
+  #modalCompra {
+    max-width: 100%;
+  }
+}
 #windshildVane-advertise {
   width: 100vw;
   height: 100vh;

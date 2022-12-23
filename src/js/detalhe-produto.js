@@ -452,13 +452,33 @@ function verTodosCompativeis() {
     });
   }
 
+  const produtosInsumoInstalacao = ['Vidro', 'Parabrisa'];
+  const produtosInstalacaoIluminacao = ['Farol', 'Lanterna'];
+  const nomeProduto = $('.product-qd-v1-sku-selection-wrapper .product-qd-v1-name').text();
+  const categoriaProduto = nomeProduto.split(' ')[0];
+  const produtosComInstalacao =  produtosInsumoInstalacao.concat(produtosInstalacaoIluminacao)
+  let skuInstalacao;
+  let valorInstalacao;
+  const produtosInstalacaoInsumos = ['303318', '1462819', '1098329', '303641', '1130689', '420840', '720586', '414141', '1872309', '1599559', '1912999', '1816699', '632259'];
+  const skuProduto = $('.product-qd-v1-sku-selection-box  .product-qd-v1-ref-code').text();
+  const precos = {
+    instalacao60: '60,00',
+    instalacao130: '129,99',
+    instalacao5: '5,26'
+  };
 
+  const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
+  if (produtosComInstalacao.includes(categoriaProduto)) {
     $( ".product-qd-v1-buy-button .buy-button").on( "click", function() {
       modalCompraComOuSemInstalacao();
       $('#modalCompra #botaoContinuarCarrinho').focus();
     });
+  } else {
+    $('.product-qd-v1-buy-button .buy-button ').click(function() {
+      window.location.href = urlSemInstalacao;
+    })
+  }
 
-  ////  MEUUUUU
   function modalCompraComOuSemInstalacao() {
     $('body').append(`
     <div id="abrirModal">
@@ -512,7 +532,7 @@ function verTodosCompativeis() {
                 <i id="primeirochecked" class="checked"></i>
                 <i id="segundochecked" class="checked"></i>
                 <i class="checked"></i>
-                <h3>Por apenas <span id="precoComInstalacao">R$<span id="valorComInstalacao">60</span>,00</span>  </h3>
+                <h3>Por apenas <span id="precoComInstalacao">R$ <span id="valorComInstalacao">60</span></span></h3>
               </fieldset>
             </div>
           </div>
@@ -524,8 +544,37 @@ function verTodosCompativeis() {
       </div>
       `)
 
+      if (produtosInstalacaoInsumos.includes(skuProduto)){
+        skuInstalacao = 27696;
+        document.getElementById("valorComInstalacao").innerHTML = precos.instalacao130;
+      }else if (produtosInsumoInstalacao.includes(categoriaProduto)) {
+        skuInstalacao = 10748;
+        document.getElementById("valorComInstalacao").innerHTML = precos.instalacao60;
+      } else if (produtosInstalacaoIluminacao.includes(categoriaProduto)) {
+        skuInstalacao = 23027;
+        document.getElementById("valorComInstalacao").innerHTML = precos.instalacao5;
+      }
+
+      var urlComInstalacao = urlSemInstalacao + "&sku=" + skuInstalacao + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
+
       if (window.screen.width < 570) {
         $('#mobileBlocoDois #beneficiosMobile').css('display', 'block')
+        $(document).ready(function(){
+          $('#container-compraSemInstalacao').click(function() {
+            $('.inputLabelComInstalacao input').removeAttr('checked');
+            $('#inputSemInstalacao').attr('checked', true);
+            $('.containersModalCompra').css('color', '#aeaeae');
+            $('.containersModalCompra#container-compraSemInstalacao').css('color', 'red');
+            $('#botaoContinuarCarrinho').attr('href', urlSemInstalacao)
+          });
+        })
+          $('#container-compraComInstalacao').click(function() {
+            $('#inputSemInstalacao').prop('checked', false);
+            $('#inputComInstalacao').attr('checked', true);
+            $('.containersModalCompra').css('color', '#aeaeae');
+            $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
+            $('#botaoContinuarCarrinho').attr('href', urlComInstalacao)
+          });
       }
 
       $('#fadeModalInstalacao #modalCompra').addClass('filled');
@@ -538,8 +587,7 @@ function verTodosCompativeis() {
           e.stopPropagation();
         })
 
-        let urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
-        let urlComInstalacao = urlSemInstalacao + "&sku=" + 10748 + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
+
         $('#botaoContinuarCarrinho').attr('href', urlComInstalacao);
         $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
 
@@ -555,14 +603,6 @@ function verTodosCompativeis() {
             }
           });
         });
-
-          // $(body).on("keypress", function(e){
-          //   if(e.key == 13){
-          //     return false;
-          //   }
-          // })
-
-
   };
 
   $(document).ready(function(){
