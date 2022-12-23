@@ -1180,6 +1180,7 @@ try {
 			$(".mz-accesories__button--buy").attr("href", urlCart);
 			$(".mz-install__button--buy").attr("href", urlCart);
 			$(".mz-advantages__button--buy").attr("href", urlCart)
+      
 		},
 		captureSkuSelectors: function (skuMain, skuInstall) {
 			var rxList = Product.regexList();
@@ -7353,7 +7354,7 @@ String.prototype.trim || (String.prototype.trim = function () {
 			let classe = recuperaClasseClicada(elemento);
 			let valor = validaClasseClicada(recuperaValorClasse(elemento));
 			let valores = JSON.parse(localStorage.getItem(classe));
-			
+
 			if(valores) return valores.find(element => element == valor);
 			return null;
 		}
@@ -7394,7 +7395,7 @@ String.prototype.trim || (String.prototype.trim = function () {
 		function recuperaFiltrosExistentes() {
 			try {
 				const elementosPai = document.querySelectorAll('.search-qd-v1-navigator fieldset.refino');
-				let filtrosLocalStorage = [];				
+				let filtrosLocalStorage = [];
 				for (let i=0; i<elementosPai.length; i++) {
 					let nomeFiltro = nomeItemMontadora($(elementosPai[i]).attr('data-qd-class'), true);
 					filtrosLocalStorage.push(nomeFiltro);
@@ -7407,7 +7408,7 @@ String.prototype.trim || (String.prototype.trim = function () {
 		function recuperaClasseClicada(elemento) {
 			let classe = $(elemento).closest('[data-qd-class]').data('qd-class');
 			return (classe == 'compatibilidade-montadora') ? 'montadora' : classe;
-		}		
+		}
 		function filtraItensPartirLocalStorage() {
 			recuperaLocalStorage();
 			for (const [key, value] of Object.entries(filtrosExistentes)) {
@@ -7415,11 +7416,11 @@ String.prototype.trim || (String.prototype.trim = function () {
 					let nomeFiltro = nomeItemMontadora(key);
 					let htmlBase = 'fieldset.refino[data-qd-class="'+nomeFiltro+'"]';
 					let $el = $(htmlBase + ' > h5');
-					
+
 					$el.find("+ div").slideToggle(100, function () {
 						$el.toggleClass("qd-seach-active-menu");
 					});
-					
+
 					for (const [keyI, valueI] of Object.entries(value)) {
 						let input = 'label.' + valueI + ' input';
 						let texto = $(input).val();
@@ -7440,7 +7441,7 @@ String.prototype.trim || (String.prototype.trim = function () {
 			return $(elemento).closest('label').attr('class');
 		}
 		function removeItemDeLista(itens, itemClicado) {
-			return itens.filter(function(value) { 
+			return itens.filter(function(value) {
 				return value != itemClicado;
 			});
 		}
