@@ -797,6 +797,7 @@ fieldset#beneficios legend {
 #inputComInstalacao, #inputSemInstalacao {
   height: 20px;
   width: 20px;
+  cursor: pointer;
 }
 
 .inputLabelSemInstalacao label, .inputLabelComInstalacao label {
@@ -804,6 +805,7 @@ fieldset#beneficios legend {
   font-weight: 800;
   color: #234EB9;
   margin-left: 6px;
+  cursor: pointer;
 }
 
 .containersModalCompra #descricao {
