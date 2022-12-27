@@ -108,7 +108,7 @@ async function getProductRefIdByProductName() {
 async function loadOptionals() {
   const opcionaisContainer = $("#opcionais");
   const productRefId = await getProductRefIdByProductName();
-  const testeOpcionais = $(".teste-opcionais")
+  const testeOpcionais = $(".teste-opcionais");
 
   try {
     const { Opcionais } = await $.get(

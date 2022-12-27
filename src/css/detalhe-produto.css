@@ -625,7 +625,7 @@ article section.tab-content {
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(5px);
   top: 0;
-  z-index: 99999999999999999999999;
+  z-index: 999999;
   display: flex;
     justify-content: center;
     align-items: center;
@@ -1004,11 +1004,13 @@ fieldset#beneficios legend {
     margin-bottom: 20px;
   }
 }
+
 @media only screen and (max-width: 350px) {
   #modalCompra {
     max-width: 100%;
   }
 }
+
 #windshildVane-advertise {
   width: 100vw;
   height: 100vh;
