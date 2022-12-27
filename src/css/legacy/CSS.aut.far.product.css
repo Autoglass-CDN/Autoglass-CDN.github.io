@@ -193,10 +193,6 @@
   padding-right: 5px;
 }
 
-.container-mais-especificacoes {
-
-}
-
 .mais-especificacoes {
   color: #2d4f9e;
   font-weight: bold;
@@ -1070,29 +1066,29 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
 }
 
 .container-compre-whatsapp .botao-compre-whatsapp::before {
-    content: "\f232";
-    display: inline-block;
-    font-size: 1em;
-    font-style: normal;
-    font-weight: normal;
-    height: 1em;
-    text-align: center;
-    text-decoration: inherit;
-    text-rendering: optimizelegibility;
-    width: 1em;
-    font-family: "FontAwesome";
-    font-size: 26px;
-    font-weight: 500;
-    margin-right: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  content: "\f232";
+  display: inline-block;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  height: 1em;
+  text-align: center;
+  text-decoration: inherit;
+  text-rendering: optimizelegibility;
+  width: 1em;
+  font-family: "FontAwesome";
+  font-size: 26px;
+  font-weight: 500;
+  margin-right: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-compre-whatsapp .botao-compre-whatsapp:after {
-    font-size: 16px;
-    content: "Compre via WhatsApp";
-    font-weight: bold;
+  font-size: 16px;
+  content: "Compre via WhatsApp";
+  font-weight: bold;
 }
 
 .product-qd-v1-buy-button .buy-button:after {

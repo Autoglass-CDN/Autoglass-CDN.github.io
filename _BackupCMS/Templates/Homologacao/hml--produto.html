@@ -14,13 +14,13 @@
   <vtex.cmc:productRichSnippets showFacebook="1"/>
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.product.css"
     type="text/css" onload="this.media='all'" />
-    
+
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" onload="this.media='all'"/>
   <script defer="" type="text/javascript" src="/scripts/jquery.maskedinput-1.2.2.js"></script>
   <script defer="" src="https://autoglass-cdn.github.io/hml/js/jquery-ui.datepicker.js" type="text/javascript"></script>
 
   <script defer="" src="https://autoglass-cdn.github.io/hml/js/legacy/detalhe-produto-legado.js" type="text/javascript"></script>
-  
+
   <script defer="" src="https://autoglass-cdn.github.io/hml/js/cep.component.js" type="text/javascript"></script>
 
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/B2C-02-detalhe-produto.css"
@@ -35,9 +35,9 @@
 </head>
 
 <body class="produto">
-  
+
   <vtex.cmc:productRichSnippets showGoogle="1" />
-  
+
   <!-- Header -->
   <vtex:template id="hml--header" />
   <!-- Header -->
@@ -118,7 +118,7 @@
                 <!-- Social Sharing -->
                 <vtex.cmc:prdSocialShare />
                 <!-- Social Sharing -->
-              
+
                 <!-- Selos de destaque -->
                 <div class="product-qd-v1-stamps">
                   <div class="product-qd-v1-stamps-highlight-discount">
@@ -134,7 +134,9 @@
                 <vtex.cmc:ProductImage zoom="on" />
               </div>
             </div>
-            <vtex:template id="hml--detalhe-produto--busca-compativeis-desktop" />
+            <div class="teste-opcionais">
+
+            </div>
           </div>
           <!-- Product image -->
 
@@ -170,6 +172,9 @@
                     </div>
                   </div>
                 </div>
+
+                <vtex:template id="hml--detalhe-produto--busca-compativeis-desktop" />
+                <vtex:template id="hml--detalhe-produto--busca-compativeis-mobile" />
 
                 <!-- ProdutoIndiponível - Outras Marcas  -->
                 <div class="product-qd-v1-unavailable other-brands" style="display: none;">
@@ -209,9 +214,8 @@
                 <div class="product-qd-v1-installation">
                   <div class="row">
                     <div class="col-xs-12">
-                      <div
-                        class="product-qd-v1-installation-content accessories-qd-v1-wrapper banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3">
-                        <vtex:contentPlaceHolder id="acessorios" />
+                      <div class="product-qd-v1-installation-content accessories-qd-v1-wrapper banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3">
+                        <vtex:contentPlaceHolder id="Acessorios"/>
                       </div>
                     </div>
                   </div>
@@ -220,33 +224,16 @@
 
                 <!-- Product price -->
                 <div class="product-qd-v1-standard row">
-                  <div class="header">
-                    <div class="col">
-                      <img src="https://autoglass-cdn.github.io/hml/img/receba-em-casa-compressed.jpg" alt="Icone Entrega"
-                        class="entrega" />
-                    </div>
-                    <div class="col">
-                      <div class="option">
-                        <span class="title">Receba em casa</span>
-                        <button id="receba-em-casa-btn" class="link cep gtm-receba-em-casa-btn">
-                          Consulte o frete
-                        </button>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="or">
-                        <span>ou</span>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="option">
-                        <span class="title">Retire na loja</span>
-                        <button id="retire-na-loja-btn" class="link lojas gtm-retire-na-loja-btn">
-                          Ver lojas próximas
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  <div class="formas-pagamento">
+                    <ul class="footer-qd-v1-payment-stamps">
+                        <li class="payment-stamp pull-left stamp-visa"></li>
+                        <li class="payment-stamp pull-left stamp-master"></li>
+                        <li class="payment-stamp pull-left stamp-diners"></li>
+                        <li class="payment-stamp pull-left stamp-elo"></li>
+                        <li class="payment-stamp pull-left stamp-pix"></li>
+                    </ul>
+                </div>
+
                   <div class="col-xs-12">
                     <div class="product-qd-v1-price">
                       <vtex.cmc:skuPrice />
@@ -278,8 +265,16 @@
                       <div class="product-qd-v1-smart-qtt">
                         <!-- Buy button -->
                         <div class="product-qd-v1-buy-button">
-                          <vtex.cmc:BuyButton />
+                          <!--<vtex.cmc:BuyButton />-->
+                          <button class="buy-button">
+                            <a href='#'></a>
+                        </button>
                         </div>
+                        <div class="container-compre-whatsapp">
+                          <button class="botao-compre-whatsapp">
+                              <a href='#'></a>
+                          </button>
+                      </div>
                         <!-- Buy button -->
                       </div>
                       <!-- Product quantity -->
@@ -308,14 +303,14 @@
 
               <!-- Compre junto -->
               <section>
-                  <div class="row">
-                      <div class="col-xs-12">
-                          <!--<div class="product-qd-v1-buy-together">
-                             <vtex.cmc:BuyTogether />
-                          </div>-->
-                          <vtex:template id="hml--detalhe-produto--busca-compativeis-mobile" />
-                      </div>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <!--<div class="product-qd-v1-buy-together">
+                     <vtex.cmc:BuyTogether />
+                    </div>-->
+
                   </div>
+                </div>
               </section>
               <!-- Compre junto -->
 
@@ -345,8 +340,8 @@
           </ul>
         </nav>
       </div>
-      <!--<vtex:template id="hml-detalhe-produto-descricao" />-->
       <vtex:template id="hml--detalhe-produto--descricao" />
+      <!--<vtex:template id="hml-detalhe-produto-descricao" />-->
       <!-- Descrição -->
 
       <article class="contents">
@@ -438,7 +433,10 @@
 
           <div class="col-xs-7">
             <div class="product-qd-v1-buy-button">
-              <vtex.cmc:BuyButton />
+              <!--<vtex.cmc:BuyButton />-->
+                <button class="buy-button buy-button-tablet">
+                  <a href='#'></a>
+                </button>
             </div>
           </div>
         </div>
@@ -722,6 +720,7 @@
   <!-- Footer -->
   <vtex:template id="hml--footer" />
   <!-- Footer -->
+  <!--<vtex.cmc:devGoogleMaps />-->
 </body>
 
 </html>
