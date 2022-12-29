@@ -136,6 +136,14 @@
   height: 20px;
 }
 
+.veiculos-compativeis-search__search-input .search-icon::before {
+  content: "\f002";
+  color: #fff;
+  font-family: "FontAwesome";
+  font-style: normal;
+  font-size: 18px;
+}
+
 .search-icon-blue::before {
   content: url('https://autoglass-cdn.github.io/src/img/search-blue.svg');
   height: 20px;
