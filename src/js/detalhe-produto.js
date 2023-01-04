@@ -128,7 +128,7 @@ async function loadOptionals() {
             ${Opcionais.map(
               (x) => `<h4 class="lista-opcionais">${x}</h4>`).join("")}
             <div class="container-mais-especificacoes">
-              <a class="mais-especificacoes">Ver especificações completas</a>
+              <a class="mais-especificacoes">Mais informações</a>
             </div>
       `)
     }
@@ -137,7 +137,7 @@ async function loadOptionals() {
   }
 
   $('.container-mais-especificacoes .mais-especificacoes').click(function() {
-    document.querySelector('#informacoes-gerais .info-box a').scrollIntoView();
+    document.querySelector('.container-descricao #informacoes-gerais').scrollIntoView();
   });
 }
 
@@ -288,19 +288,6 @@ $(window).on("ready", async () => {
     .on('input', function () {
       buscaCompativeis($(this).val())
     });
-
-function verTodosCompativeis() {
-  $("body").on("keypress", ".veiculos-compativeis-search__search-input", function(e){
-    var key = e.which;
-    if(key == '13')
-      document.getElementById('veiculos-compativeis').scrollIntoView();
-  })
-
-  $('.veiculos-compativeis-search__search-box .search-icon').click(function(){
-    document.getElementById('veiculos-compativeis').scrollIntoView();
-  });
-}
-  verTodosCompativeis();
 
   function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 0) {
@@ -453,22 +440,19 @@ function verTodosCompativeis() {
   }
 
   const produtosInsumoInstalacao = ['Vidro', 'Parabrisa'];
-  const produtosInstalacaoIluminacao = ['Farol', 'Lanterna'];
   const nomeProduto = $('.product-qd-v1-sku-selection-wrapper .product-qd-v1-name').text();
   const categoriaProduto = nomeProduto.split(' ')[0];
-  const produtosComInstalacao =  produtosInsumoInstalacao.concat(produtosInstalacaoIluminacao)
   let skuInstalacao;
-  let valorInstalacao;
   const produtosInstalacaoInsumos = ['303318', '1462819', '1098329', '303641', '1130689', '420840', '720586', '414141', '1872309', '1599559', '1912999', '1816699', '632259'];
   const skuProduto = $('.product-qd-v1-sku-selection-box  .product-qd-v1-ref-code').text();
   const precos = {
     instalacao60: '60,00',
-    instalacao130: '129,99',
-    instalacao5: '5,26'
+    instalacao130: '129,99'
   };
 
+  $(".product-qd-v1-buy-button .buy-button").attr("href", "#");
   const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
-  if (produtosComInstalacao.includes(categoriaProduto)) {
+  if (produtosInsumoInstalacao.includes(categoriaProduto)) {
     $( ".product-qd-v1-buy-button .buy-button").on( "click", function() {
       modalCompraComOuSemInstalacao();
       $('#modalCompra #botaoContinuarCarrinho').focus();
@@ -487,8 +471,12 @@ function verTodosCompativeis() {
     $('#abrirModal').append(`
       <div id="fadeModalInstalacao">
         <div id="modalCompra">
+          <div class = containerTituloInstalacao>
+            <div class="tituloInstalacao">
+              <h1> Instalação </h1>
+            </div>
+          </div>
           <div class="exit-button">×</div>
-          <h1> Instalação </h1>
 
           <div id="containers">
             <div id="mobileBlocoUm">
@@ -520,8 +508,9 @@ function verTodosCompativeis() {
                 <h3 class="segundaLinha">Equipe Especializada</h3>
                 <h3>Segurança e comodidade</h3>
               </fieldset>
+
               <fieldset class="containersModalCompra" id="container-compraComInstalacao">
-              <legend>RECOMENDADO</legend>
+                <legend>RECOMENDADO</legend>
                 <div id="headerCompraComInstalacao">
                   <div class="inputLabelComInstalacao">
                       <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
@@ -536,9 +525,11 @@ function verTodosCompativeis() {
               </fieldset>
             </div>
           </div>
-
-          <div class="containersModalCompra" id="containerButton">
-            <a id="botaoContinuarCarrinho" href="#">Continuar</a>
+          <div class="containerGridBotao">
+            <div class="alinhabotao"></div>
+            <div class="containersModalCompra" id="containerButton">
+              <a id="botaoContinuarCarrinho" href="#">Continuar</a>
+            </div>
           </div>
         <div class="clearfix"></div>
       </div>
@@ -550,9 +541,6 @@ function verTodosCompativeis() {
       }else if (produtosInsumoInstalacao.includes(categoriaProduto)) {
         skuInstalacao = 10748;
         document.getElementById("valorComInstalacao").innerHTML = precos.instalacao60;
-      } else if (produtosInstalacaoIluminacao.includes(categoriaProduto)) {
-        skuInstalacao = 23027;
-        document.getElementById("valorComInstalacao").innerHTML = precos.instalacao5;
       }
 
       var urlComInstalacao = urlSemInstalacao + "&sku=" + skuInstalacao + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
@@ -608,7 +596,7 @@ function verTodosCompativeis() {
   $(document).ready(function(){
     $('.botao-compre-whatsapp').click(function() {
       const mensagem = `Olá, estou na página desse produto e gostaria de comprá-lo: ${window.location.href}`;
-      window.location.href = urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem;
+      window.open(urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem, '_blank').focus();
     });
   });
 

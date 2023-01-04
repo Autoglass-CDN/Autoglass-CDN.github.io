@@ -975,7 +975,7 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
     width: 100%;
 }
 
-.product-qd-v1-buy-button .buy-button, .container-compre-whatsapp .botao-compre-whatsapp {
+.product-qd-v1-buy-button .buy-button, .container-buy-button .buy-button, .container-compre-whatsapp .botao-compre-whatsapp {
     border: #43c452 solid;
     border-width: 2px;
     transition: all 0.2s ease-out;
