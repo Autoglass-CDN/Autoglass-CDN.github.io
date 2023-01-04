@@ -960,7 +960,7 @@ fieldset#beneficios legend {
   .containerTituloInstalacao .tituloInstalacao > h1 {
     font-size: 30px;
   }
-  
+
   #container-compraSemInstalacao, #container-compraComInstalacao {
     min-width: 160px;
     margin-left: 5px;
@@ -1044,6 +1044,10 @@ fieldset#beneficios legend {
 
   .block:before, .checked:before {
     font-size: 22px;
+  }
+
+  .containerGridBotao {
+    grid-template-columns: 1fr;
   }
 
   #containerButton {
