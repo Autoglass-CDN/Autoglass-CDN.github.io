@@ -40,7 +40,7 @@
 .product-qd-v1-standard {
   display: block !important;
   background-color: #fff;
-  margin-top: 18px;
+  margin-top: 10px;
   padding: 12px;
 }
 
@@ -337,8 +337,8 @@ body.mz-pu-on .mz-modal-pickup {
   color: #fff;
 }
 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover, 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus, 
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover,
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus,
 .mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active,
 .mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:hover,
 .mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:focus,

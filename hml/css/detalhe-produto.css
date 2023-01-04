@@ -649,12 +649,25 @@ article section.tab-content {
 
 }
 
-#modalCompra > h1 {
+.containerTituloInstalacao {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+.tituloInstalacao {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.containerTituloInstalacao .tituloInstalacao > h1 {
   color: #183884;
   font-weight: 800;
   display: flex;
   justify-content: center;
   margin-bottom: 20px;
+  font-size: 35px;
 }
 
 #modalCompra .exit-button {
@@ -676,7 +689,6 @@ article section.tab-content {
     display: flex;
     justify-content: center;
     height: auto;
-    width: 65vw;
 }
 
 #mobileBlocoUm {
@@ -702,8 +714,8 @@ article section.tab-content {
 }
 
 #beneficios.containersModalCompra h3 {
-  padding: 6px;
-  color: #aeaeae;
+  padding: 8px;
+  color: #646363;
 }
 
 fieldset#beneficios legend {
@@ -720,7 +732,7 @@ fieldset#beneficios legend {
   display: flex;
   align-items: center;
   justify-content: center;
-  border-bottom: 1px solid #aeaeae;
+  border-bottom: 1px solid #646363;
 }
 
 #container-Compra{
@@ -741,6 +753,7 @@ fieldset#beneficios legend {
   border: 1px solid #234EB9;
   border-radius: 20px;
   width: 22%;
+  margin-right: 30px;
 }
 
 #tabelaComInstalacao {
@@ -754,6 +767,11 @@ fieldset#beneficios legend {
   font-size: 28px;
   font-weight: 600;
 }
+
+.ajusteContainerSemInstalacao, .ajusteContainerComInstalacao {
+  color: rgba(0, 0, 0, 0);
+}
+
 #container-compraSemInstalacao legend{
   position: relative;
   margin-left: auto;
@@ -803,14 +821,14 @@ fieldset#beneficios legend {
 .inputLabelSemInstalacao label, .inputLabelComInstalacao label {
   font-size: 15px;
   font-weight: 800;
-  color: #234EB9;
+  color: #183884;
   margin-left: 6px;
   cursor: pointer;
 }
 
 .containersModalCompra #descricao {
   margin-left: 30px;
-  color: #aeaeae;
+  color: #646363;
   font-style: italic;
   font-weight: 600;
   font-size: 9px;
@@ -829,8 +847,8 @@ fieldset#beneficios legend {
 }
 
 #container-compraComInstalacao > h3 {
-  font-size: 14px;
-  color: #aeaeae;
+  font-size: 12px;
+  color: #646363;
   font-weight: 600;
 }
 
@@ -852,8 +870,21 @@ fieldset#beneficios legend {
 
 #valorComInstalacao {
   color: #43c452;
-  font-size: 22px;
+  font-size: 19px;
   font-weight: 900;
+}
+
+.containerGridBotao {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+}
+
+#containerButton {
+  margin-top: 30px;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
 }
 
 #botaoContinuarCarrinho {
@@ -870,10 +901,6 @@ fieldset#beneficios legend {
   justify-content: center;
   align-content: center;
   flex-wrap: wrap;
-}
-
-#containerButton {
-  margin-top: 30px;
 }
 
 #botaoContinuarCarrinho:hover {
@@ -905,12 +932,12 @@ fieldset#beneficios legend {
   }
 
   #valorComInstalacao {
-    font-size: 20px;
+    font-size: 19px;
     font-weight: 700;
   }
 
   #beneficios.containersModalCompra h3 {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
@@ -920,12 +947,21 @@ fieldset#beneficios legend {
     width: 190px;
   }
 
+  #beneficios.containersModalCompra h3 {
+    font-size: 13px;
+    padding: 11px;
+  }
+
   #container-compraSemInstalacao, #container-compraComInstalacao {
     margin-left: 15px;
   }
 }
 
 @media only screen and (max-width: 680px) {
+  .containerTituloInstalacao .tituloInstalacao > h1 {
+    font-size: 30px;
+  }
+
   #container-compraSemInstalacao, #container-compraComInstalacao {
     min-width: 160px;
     margin-left: 5px;
@@ -937,6 +973,16 @@ fieldset#beneficios legend {
     max-width: 90%;
   }
 
+  .containerTituloInstalacao {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+
+  .containerTituloInstalacao .tituloInstalacao > h1 {
+    font-size: 30px;
+  }
+
   #containers {
     display: block;
     width: 100%;
@@ -944,6 +990,8 @@ fieldset#beneficios legend {
 
   #mobileBlocoUm, #mobileBlocoDois {
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
   }
 
   #mobileBlocoDois #beneficios {
@@ -999,10 +1047,21 @@ fieldset#beneficios legend {
     font-size: 22px;
   }
 
+  .containerGridBotao {
+    grid-template-columns: 1fr;
+  }
+
   #containerButton {
     margin-top: 0;
     margin-bottom: 20px;
   }
+}
+
+
+@media only screen and (max-width: 390px) {
+  #beneficios.containersModalCompra h3 {
+    font-size: 10px;
+}
 }
 
 @media only screen and (max-width: 350px) {
