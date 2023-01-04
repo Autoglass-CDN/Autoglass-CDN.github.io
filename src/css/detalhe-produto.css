@@ -873,6 +873,7 @@ fieldset#beneficios legend {
   font-size: 19px;
   font-weight: 900;
 }
+
 .containerGridBotao {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -901,7 +902,6 @@ fieldset#beneficios legend {
   align-content: center;
   flex-wrap: wrap;
 }
-
 
 #botaoContinuarCarrinho:hover {
   background:  #33a140;
@@ -946,6 +946,7 @@ fieldset#beneficios legend {
     min-width: 180px;
     width: 190px;
   }
+
   #beneficios.containersModalCompra h3 {
     font-size: 13px;
     padding: 11px;
@@ -991,7 +992,7 @@ fieldset#beneficios legend {
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
-}
+  }
 
   #mobileBlocoDois #beneficios {
     display: grid;
@@ -1062,6 +1063,7 @@ fieldset#beneficios legend {
     font-size: 10px;
 }
 }
+
 @media only screen and (max-width: 350px) {
   #modalCompra {
     max-width: 100%;
