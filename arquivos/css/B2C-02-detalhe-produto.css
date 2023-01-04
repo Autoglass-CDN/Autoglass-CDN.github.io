@@ -159,7 +159,6 @@
   background-color: #fff;
   border-radius: 4px;
   display: none;
-  overflow-x: hidden;
 }
 
 @media (min-width: 992px) {
@@ -327,18 +326,18 @@ body.mz-pu-on .mz-modal-pickup {
 .mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:hover,
 .mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:focus {
   color: #fff;
-  background: #33a140;
-  border-color: #33a140;
+  background: #43c452;
+  border-color: #43c452;
 }
 
 .mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active,
 .mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:active {
-  background: #33a140;
+  background: #43c452;
   color: #fff;
 }
 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover, 
-.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus, 
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:hover,
+.mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:focus,
 .mz-modal-pickup .mz-pickup__button .mz-pickup__button--buy:active,
 .mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:hover,
 .mz-modal-shipping .mz-shipping__button .mz-shipping__button--buy:focus,
