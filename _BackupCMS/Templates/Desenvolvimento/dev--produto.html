@@ -237,9 +237,9 @@
                 <div class="product-qd-v1-installation">
                   <div class="row">
                     <div class="col-xs-12">
-                      <div class="product-qd-v1-installation-content accessories-qd-v1-wrapper banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3">
-                        <vtex:contentPlaceHolder id="Acessorios"/>
-                      </div>
+                        <div class="product-qd-v1-installation-content accessories-qd-v1-wrapper banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3">
+                            <!--<vtex:contentPlaceHolder id="Acessorios"/>-->
+                        </div>
                     </div>
                   </div>
                 </div>
@@ -247,15 +247,15 @@
 
                 <!-- Product price -->
                 <div class="product-qd-v1-standard row">
-                  <div class="formas-pagamento">
-                    <ul class="footer-qd-v1-payment-stamps">
-                        <li class="payment-stamp pull-left stamp-visa" alt="bandeira-visa"></li>
-                        <li class="payment-stamp pull-left stamp-master" alt="bandeira-master"></li>
-                        <li class="payment-stamp pull-left stamp-diners" alt="bandeira-diners"></li>
-                        <li class="payment-stamp pull-left stamp-elo" alt="bandeira-elo"></li>
-                        <li class="payment-stamp pull-left stamp-pix" alt="pagamento-pix"></li>
-                    </ul>
-                </div>
+                    <div class="formas-pagamento">
+                        <ul class="footer-qd-v1-payment-stamps">
+                            <li class="payment-stamp pull-left stamp-visa" alt="bandeira-visa"></li>
+                            <li class="payment-stamp pull-left stamp-master" alt="bandeira-master"></li>
+                            <li class="payment-stamp pull-left stamp-diners" alt="bandeira-diners"></li>
+                            <li class="payment-stamp pull-left stamp-elo" alt="bandeira-elo"></li>
+                            <li class="payment-stamp pull-left stamp-pix" alt="pagamento-pix"></li>
+                        </ul>
+                    </div>
 
                   <div class="col-xs-12">
                     <div class="product-qd-v1-price">
@@ -288,14 +288,17 @@
                       <div class="product-qd-v1-smart-qtt">
                         <!-- Buy button -->
                         <div class="product-qd-v1-buy-button">
-                          <vtex.cmc:BuyButton />
+                           <vtex.cmc:BuyButton/>
+                          <!--<button class="buy-button">-->
+                          <!--  <a href='#'></a>-->
+                          <!--</button>-->
                         </div>
                         <div class="container-compre-whatsapp">
-                          <button class="botao-compre-whatsapp">
-                              <a href='#' target="_blank"></a>
-                              Compre via WhatsApp
-                          </button>
-                      </div>
+                            <button class="botao-compre-whatsapp">
+                                <a href='#' class="talk-on-whatsapp-ga" target="_blank"></a>
+                                Compre via WhatsApp
+                            </button>
+                        </div>
                         <!-- Buy button -->
                       </div>
                       <!-- Product quantity -->
@@ -456,7 +459,7 @@
             <div class="product-qd-v1-buy-button">
               <!--<vtex.cmc:BuyButton />-->
                 <button class="buy-button buy-button-tablet">
-                  <a href='#'></a>
+                    <a href='#' class="add-to-cart-ga"></a>
                 </button>
             </div>
           </div>
