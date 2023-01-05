@@ -6,6 +6,9 @@ const baseUrlApi =
 const sections = [...document.querySelectorAll("section.tab-content")];
 const getLinkById = (id) => document.querySelector(`a[href='#${id}'].tab-link`);
 
+//Adicona class para ga4 (templates da Vtex)
+$(".product-qd-v1-buy-button .buy-button.buy-button-ref").addClass("add-to-cart-ga");
+
 // configura busca de veículos compatíveis
 var veiculosBuscaveis = [];
 const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');
