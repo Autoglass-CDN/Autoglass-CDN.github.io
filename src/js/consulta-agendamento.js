@@ -31,7 +31,7 @@ var codCidades = {
 const baseUrlApiAgenda = window.location.href.includes("dev")
     ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
-    
+
 // Instale na Loja
 $(function () {
   const hmlCodServico = "17";
@@ -345,7 +345,7 @@ $(function () {
 
           $(".pickup-install .time .time-list button").removeClass("selected");
           $(e.srcElement).addClass("selected");
-
+          document.location.reload(true);
           $(
             ".modal-instale-na-loja > .secao-agendamento > .selected-msg b"
           ).text(lojaBeauty + " - " + date_formated + " - " + horario);
