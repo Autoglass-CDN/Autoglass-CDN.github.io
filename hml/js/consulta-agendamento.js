@@ -345,7 +345,7 @@ $(function () {
 
           $(".pickup-install .time .time-list button").removeClass("selected");
           $(e.srcElement).addClass("selected");
-          document.location.reload(true);
+
           $(
             ".modal-instale-na-loja > .secao-agendamento > .selected-msg b"
           ).text(lojaBeauty + " - " + date_formated + " - " + horario);
@@ -375,6 +375,14 @@ $(function () {
           $(".secao-agendamento > .store-list > ul").append(noTimeAvailable());
         }
       );
+
+      function getLastTimeWhildshieldVanePopUpWasShown() {
+        return Number (localStorage.getItem('lastTimeWhildshieldVanePopUpWasShown'));
+      }
+
+      function calculatesTwelveHours() {
+        return 12*60*60*1000;
+      }
 
     // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
     // 	$(this).parent().next().toggleClass("hidden");
