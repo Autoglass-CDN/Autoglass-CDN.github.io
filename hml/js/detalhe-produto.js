@@ -603,4 +603,295 @@ $(window).on("ready", async () => {
       window.open(urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem, '_blank').focus();
     });
   });
+
+  // async function enableWindshieldVanePopUp() {
+  //   const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
+  //   const isWindshield = currentProduct.name.startsWith('Parabrisa') ? true : false;
+  //   // || currentProduct.name.startsWith('Vidro Traseiro');
+  //   if (!isWindshield) return;  //mudar para isWindshieldOrBackglass
+
+  //   $('body').append(`
+  //     <div id="windshildVane-advertise">
+  //     </div>
+  //   `)
+
+  //   $('a[href*="/checkout/cart/add?sku="], .mz-accesories__button a, .mz-advantages__button a, .mz-install__button a, .mz-shipping__button a, .mz-pickup__button a')
+  //   .on('click', async function (element) {
+  //     element.preventDefault();
+
+  //     const windshieldVaneItems = await whildshieldVaneInCrossSellingList();
+
+  //     if(!windshieldVaneItems.length){
+  //       const newUrl = this.href;
+  //       return document.location.href = newUrl;
+  //     }
+
+  //     createWindshieldVanePopUp(element, windshieldVaneItems);
+  //   });
+
+  //   function createWindshieldVanePopUp(element, windshieldVaneItems) {
+  //     $('#windshildVane-advertise').append(`
+  //       <div class="advertise">
+  //         <div class="image"></div>
+  //         <div class="exit-button">×</div>
+  //         <div class="container-smallheight">
+  //         <div class="text-popup">
+  //           <h2>Recomendamos trocar as palhetas a cada <b>6 meses</b> ou na <b>troca de parabrisa.</b></h2>
+  //           <h3>Deseja adicionar?</h3>
+  //         </div>
+  //           <div class="buy-button">
+  //             <div id="sim-modal-palheta" class="yes"></div>
+  //             <div id="nao-modal-palheta" class="no"></div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     `)
+
+  //     appendWindshieldVaneImage(windshieldVaneItems[0]);
+  //     const newButton = element.srcElement.cloneNode();
+  //     appendPopUpButtons(windshieldVaneItems[0], newButton);
+  //     $('#windshildVane-advertise .advertise').addClass('filled');
+
+  //     $('#windshildVane-advertise, .exit-button').click(function(e) {
+  //       $('#windshildVane-advertise .advertise').fadeOut(300);
+  //       $(this).fadeOut(300);
+  //       $('#windshildVane-advertise div').remove();
+  //     });
+
+  //     $('#windshildVane-advertise .advertise').click(function(e) {
+  //       e.stopPropagation();
+  //     })
+
+  //     $('#windshildVane-advertise').css('display', 'flex');
+  //   }
+
+  //   async function whildshieldVaneInCrossSellingList() {
+  //     const uriCrossSelling = window.location.origin + '/api/catalog_system/pub/products/crossselling/suggestions/' + vtxctx.skus;
+
+  //     const items = await fetch(uriCrossSelling).then((response) => {
+  //       return response.json();
+  //     });
+
+  //     const windshieldVaneItems = items.filter(isWindshildVane);
+  //     return windshieldVaneItems;
+  //   }
+
+  //   function isWindshildVane(item) {
+  //     return item.productName.startsWith("Palheta")
+  //   }
+
+  //   function appendWindshieldVaneImage(item) {
+  //     const urlBase = "https://autoglass.vteximg.com.br"
+  //       let urlImagem = item.items[0].images[0].imageTag
+  //       .replaceAll('~',urlBase)
+  //       .replaceAll('#width#','300')
+  //       .replaceAll('#height#','300');
+
+  //       $('#windshildVane-advertise div.image').append(urlImagem)
+  //   }
+
+  //   function appendPopUpButtons(item, button) {
+  //     var currentDate = Date.now();
+
+  //     button.innerText = 'Não, obrigado!';
+  //     $('#windshildVane-advertise div .buy-button .no').append(button.cloneNode(true)).click(function(e){
+  //       localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
+  //     })
+  //     button.innerText = 'Sim, adicionar!';
+  //     const newUrl = `${button.href}&sku=${item.items[0].itemId}&qty=1&seller=1&redirect=true&sc=${jssalesChannel}`;
+  //     button.href = newUrl;
+  //     $('#windshildVane-advertise div .buy-button .yes').append(button.cloneNode(true)).click(function(e){
+  //       localStorage.setItem("lastTimeWhildshieldVanePopUpWasShown", currentDate)
+  //     })
+  //   }
+  // }
+
+  // function shouldShowWindshieldVanePopUp() {
+  //   if (getLastTimeWhildshieldVanePopUpWasShown() === undefined)
+  //     return true;
+  //   return (Date.now() - getLastTimeWhildshieldVanePopUpWasShown() > calculatesTwelveHours())
+  // }
+
+  // if(shouldShowWindshieldVanePopUp())
+  //   return enableWindshieldVanePopUp();
+
+
+async function buscarPecaProduto () {
+    // let baseUrlApi = window.location.href.includes("dev")
+    // ? "https://api-hml.autoglass.com.br"
+    // : "https://api-farm-int.autoglass.com.br";
+    let baseUrlApi = "http://localhost:5010/";
+    let codigoProduto = await getProductRefIdByProductName();
+    let produto = await $.get(`${baseUrlApi}api/int-itg/integracoes-produtos/${codigoProduto}`)
+
+    let classificaScript = await $.get(`${baseUrlApi}api/int-itg/integracoes-seguradoras/classificacoes-pecas?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&CodigoProduto=${codigoProduto}`);
+
+    let classificaScriptFormatado = formatarDadosMapeamento(classificaScript);
+
+    classificaScriptFormatado.sort(function(a, b) {
+      return b.ClassificacaoScript.length - a.ClassificacaoScript.length;
+    });
+
+    let categoryVtex = formatarDadosMapeamento(vtxctx.categoryName);
+    var codigoClassificaScript = classificaScriptFormatado.filter(item => item.ClassificacaoScript.includes(categoryVtex)).map(item => [item.CodigoClassificaScript]);
+
+
+    if(codigoClassificaScript.length !== 1) {
+      var url = window.location.href;
+      var novaUrl = url.replace(/https:\/\/dev2autoglass.myvtex.com\//g, "");
+      const urlSemHifen = novaUrl.replace(/-/g, " ");
+      const urlFormatada = tirarMasculinoFeminino(urlSemHifen);
+      const arrayUrlFormatada = urlFormatada.split(" ");
+
+      for (let i = 0; i < classificaScriptFormatado.length; i++) {
+        let words = classificaScriptFormatado[i].ClassificacaoScript.split(" ");
+        let match = true;
+        for (let j = 0; j < words.length; j++) {
+          if (!arrayUrlFormatada.includes(words[j])) {
+            match = false;
+            break;
+          }
+        }
+        if (match) {
+          codigoClassificaScript = [ classificaScriptFormatado[i].CodigoClassificaScript ];
+          break;
+        }
+      }
+    }
+
+    if(codigoClassificaScript.length !== 1) {
+      let descricaoProduto  = formatarDadosMapeamento(document.querySelector('#informacoes-gerais-descricao .productDescriptionShort').textContent);
+      let arrayDescricaoProduto = descricaoProduto.split(" ").filter(word => word.length > 3).slice(0, 8);
+
+      for (let i = 0; i < classificaScriptFormatado.length; i++) {
+        let words = classificaScriptFormatado[i].ClassificacaoScript.split(" ");
+        let match = true;
+        for (let j = 0; j < words.length; j++) {
+          if (!arrayDescricaoProduto.includes(words[j])) {
+            match = false;
+            break;
+          }
+        }
+        if (match) {
+          codigoClassificaScript = [classificaScriptFormatado[i].CodigoClassificaScript];
+          break;
+        }
+      }
+    }
+
+    // let anoInicio = produto.ObjAnoModeloInicio !== null ? parseInt(produto.ObjAnoModeloInicio.Descricao) : null;
+    // let anoFim = produto.ObjAnoModeloFim !== null ? parseInt(produto.ObjAnoModeloFim.Descricao) : null;
+    // anoInicio === null ? anoInicio = anoFim : anoFim === null ? anoFim = anoInicio : '';
+    // let anoAprox = Math.floor((anoInicio + anoFim) / 2);
+
+    let mapeamentoFipe = await $.get(`${baseUrlApi}api/int-itg/integracoes-seguradoras/mapeamentos-fipes/${codigoProduto}`);
+
+    let codigoMapeamentoFipe = mapeamentoFipe[0].CodigoMapeamentoFipe;
+
+    let imagemPeca = await $.get(`${baseUrlApi}api/int-itg/integracoes-seguradoras/imagens-pecas/script/${codigoClassificaScript[0]}/codigo-fipe/${codigoMapeamentoFipe}}`)
+
+    if(imagemPeca && imagemPeca.FotografiaTraseira == "") {
+      if(codigoClassificaScript.length == 1 && codigoMapeamentoFipe !== null) {
+        posicionarImagemReq(imagemPeca.FotografiaFrontal)
+      }
+    }
+}
+
+
+buscarPecaProduto();
+
+
+function tirarMasculinoFeminino(str) {
+  var words = str.split(" ");
+  var newWords = words.map(function(word) {
+    if (word.endsWith("a") || word.endsWith("o")) {
+      return word.slice(0, -1);
+    }
+    return word;
+  });
+  return newWords.join(" ");
+}
+
+function clickImagemMarcacaoPeca(imgReq) {
+  $(".apresentacao #image a.image-zoom").attr("href", imgReq);
+  $(".apresentacao #image a.image-zoom #image-main").attr("src", imgReq);
+  $(".apresentacao #image .zoomWindow .zoomWrapperImage img").attr("src", imgReq);
+  $("li a.ON").removeClass("ON");
+  $(".imagemMarcacaoPeca").addClass( "ON" );
+}
+    $("body").on("click", '.imagemMarcacaoPeca', function(){
+        clickImagemMarcacaoPeca($(this).find("img").attr("src"));
+      }
+    );
+
+async function posicionarImagemReq (imagemString) {
+  console.log(imagemString);
+  var image = new Image();
+  image.src = "data:image/png;base64," + imagemString;
+  image.title = await getProductRefIdByProductName();
+  image.alt = await getProductRefIdByProductName();
+  var li = document.createElement("li");
+  var ancora = document.createElement("a");
+  $( ancora ).addClass( "imagemMarcacaoPeca" )
+    .attr('id', 'botaoZoom')
+    .attr('href', 'javascript:void(0);')
+    .attr('title', 'Zoom')
+    .attr('id', 'botaoZoom');
+  li.appendChild(ancora);
+  ancora.appendChild(image);
+  var ul = document.querySelector(".thumbs.product-qd-v1-image-thumbs.QD-thumbs.img-responsive")
+  var li_target = ul.querySelector("li:nth-child(1)");
+  ul.insertBefore(li, li_target.nextSibling);
+}
+
+
+function formatarDadosMapeamento(input) {
+  if (!input) return "";
+
+  if (Array.isArray(input)) {
+    input.forEach(obj => {
+      Object.keys(obj).forEach(chave => {
+        if (typeof obj[chave] === 'string') {
+          obj[chave] = obj[chave].toLowerCase();
+          obj[chave] = obj[chave].split(" ")
+            .filter(palavra => palavra.length > 2)
+            .map(palavra => {
+              palavra = palavra.replace(/-/g, " ")
+              if (palavra.endsWith("s") || palavra.endsWith("es")) {
+                return palavra.slice(0, -2);
+              } else if (palavra.endsWith("s")) {
+                return palavra.slice(0, -1);
+              } else if (palavra.endsWith("a") || palavra.endsWith("o") ) {
+                return palavra.slice(0, -1);
+              }
+              else {
+                return palavra;
+              }
+            }).join(" ");
+        }
+      });
+    });
+    return input;
+  } else if (typeof input === 'string') {
+    input = input.toLowerCase();
+    const words = input.split(" ")
+        .filter(word => word.length > 2)
+        .map(word => {
+          word = word.replace(/-/g, " ")
+          if (word.endsWith("s") || word.endsWith("es")) {
+            return word.slice(0, -2);
+          } else if (word.endsWith("s")) {
+            return word.slice(0, -1);
+          } else if (word.endsWith("a") || word.endsWith("o") ) {
+            return word.slice(0, -1);
+          }
+          else {
+            return word;
+          }
+        });
+
+    return words.join(" ");
+    }
+}
+
 });
