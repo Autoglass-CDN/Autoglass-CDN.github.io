@@ -716,22 +716,22 @@ $(window).on("ready", async () => {
   //   return enableWindshieldVanePopUp();
 
   async function buscarPecaProduto () {
-      let baseUrlApi = window.location.href.includes("dev")
-      ? "https://api-hml.autoglass.com.br/"
-      : "https://api-farm-int.autoglass.com.br/";
+      let baseUrlApi = window.location.href.includes("dev") || window.location.href.includes("hml")
+      ? "https://api-hml.autoglass.com.br/integracao-b2c/"
+      : "https://api-farm-int.autoglass.com.br/integracao-b2c/";
 
       let codigoProduto = await getProductRefIdByProductName();
-      let produto = await $.get(`${baseUrlApi}api/integracoes-produtos/${codigoProduto}`)
+      let produto = await $.get(`${baseUrlApi}api/web-app/integracoes-produtos/${codigoProduto}`)
 
       let anoInicio = produto.AnoInicio !== null ? parseInt(produto.AnoInicio) : null;
       let anoFim = produto.AnoFim !== null ? parseInt(produto.AnoFim) : null;
       anoInicio === null ? anoInicio = anoFim : anoFim === null ? anoFim = anoInicio : '';
       let anoAproximado = Math.floor((anoInicio + anoFim) / 2);
 
-      let mapeamentoFipe = await $.get(`${baseUrlApi}api/integracoes-seguradoras/mapeamentos-fipes?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&AnoAproximado=${anoAproximado}`);
+      let mapeamentoFipe = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/mapeamentos-fipes?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&AnoAproximado=${anoAproximado}`);
       let codigoMapeamentoFipe = mapeamentoFipe[0].CodigoMapeamentoFipe;
 
-      let classificaScript = await $.get(`${baseUrlApi}api/integracoes-seguradoras/classificacoes-pecas?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`);
+      let classificaScript = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/classificacoes-pecas?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`);
 
       let classificaScriptFormatado = formatarDadosMapeamento(classificaScript);
 
@@ -787,7 +787,7 @@ $(window).on("ready", async () => {
 
       let codigoClassificaScriptFormatado = parseInt(codigoClassificaScript[0]);
 
-      let imagemPeca = await $.get(`${baseUrlApi}api/integracoes-seguradoras/imagens-pecas?CodigoClassificaScript=${codigoClassificaScriptFormatado}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`)
+      let imagemPeca = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/imagens-pecas?CodigoClassificaScript=${codigoClassificaScriptFormatado}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`)
 
       if(imagemPeca && imagemPeca.FotografiaTraseira == "") {
         if(codigoClassificaScript.length == 1 && codigoMapeamentoFipe !== null) {
