@@ -529,6 +529,11 @@ $(window).on("ready", async () => {
               </fieldset>
             </div>
           </div>
+          <div class="containerInfoInsumo">
+            <p id="alinhamentoInfoInsumo"></p>
+            <p></p>
+            <p id="infoInsumo"><span style="background-color: #fffe00a1;">*Valor referente aos insumos de instalação</span></p>
+          </div>
           <div class="containerGridBotao">
             <div class="alinhabotao"></div>
             <div class="containersModalCompra" id="containerButton">
