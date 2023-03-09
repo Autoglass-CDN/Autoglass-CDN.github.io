@@ -874,6 +874,17 @@ fieldset#beneficios legend {
   font-weight: 900;
 }
 
+.containerInfoInsumo{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+#infoInsumo{
+  margin-left: 15px;
+  font-size: 11px;
+  margin-top: 5px;
+}
+
 .containerGridBotao {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -885,6 +896,7 @@ fieldset#beneficios legend {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  margin: 20px;
 }
 
 #botaoContinuarCarrinho {
@@ -955,6 +967,11 @@ fieldset#beneficios legend {
   #container-compraSemInstalacao, #container-compraComInstalacao {
     margin-left: 15px;
   }
+
+  #infoInsumo {
+    margin-left: 0;
+    font-size: 10px;
+  }
 }
 
 @media only screen and (max-width: 680px) {
@@ -965,6 +982,10 @@ fieldset#beneficios legend {
   #container-compraSemInstalacao, #container-compraComInstalacao {
     min-width: 160px;
     margin-left: 5px;
+  }
+
+  #infoInsumo {
+    font-size: 8.5px;
   }
 }
 
@@ -992,6 +1013,10 @@ fieldset#beneficios legend {
     margin-bottom: 30px;
     display: flex;
     justify-content: center;
+  }
+
+  #mobileBlocoDois {
+    margin-bottom: 0;
   }
 
   #mobileBlocoDois #beneficios {
@@ -1047,6 +1072,18 @@ fieldset#beneficios legend {
     font-size: 22px;
   }
 
+  .containerInfoInsumo {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  #alinhamentoInfoInsumo {
+    display: none;
+  }
+
+  #infoInsumo {
+    margin-bottom: 4px;
+  }
+
   .containerGridBotao {
     grid-template-columns: 1fr;
   }
@@ -1061,7 +1098,11 @@ fieldset#beneficios legend {
 @media only screen and (max-width: 390px) {
   #beneficios.containersModalCompra h3 {
     font-size: 10px;
-}
+  }
+
+  #infoInsumo {
+    font-size: 7.5px;
+  }
 }
 
 @media only screen and (max-width: 350px) {
