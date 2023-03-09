@@ -450,8 +450,8 @@ $(window).on("ready", async () => {
   '1188449', '957209', '1670049', '632661', '1816699', '632259', '393903', '957019', '393927', '1008405'];
   const skuProduto = $('.product-qd-v1-sku-selection-box  .product-qd-v1-ref-code').text();
   const precos = {
-    instalacao60: '60,00',
-    instalacao130: '129,99'
+    instalacao60: '60,00*',
+    instalacao130: '129,99*'
   };
 
   $(".product-qd-v1-buy-button .buy-button").attr("href", "#");
@@ -532,7 +532,7 @@ $(window).on("ready", async () => {
           <div class="containerInfoInsumo">
             <p id="alinhamentoInfoInsumo"></p>
             <p></p>
-            <p id="infoInsumo"><span style="background-color: #fffe00a1;">*Valor referente aos insumos de instalação</span></p>
+            <p id="infoInsumo">*Valor referente aos insumos de instalação</p>
           </div>
           <div class="containerGridBotao">
             <div class="alinhabotao"></div>
