@@ -3,9 +3,9 @@ const device = {
   mobile: ".mobile"
 }
 
-const numeroWhatsAppAG = "5527992486816";
-const linkEncurtado = 'https://bit.ly/3Y7jWD3';
-const numeroWhatsAppFormatadoAG = "(27) 99248-6816";
+const numeroWhatsAppAG = "5527998260207";
+const linkEncurtado = 'https://bit.ly/3ZLPfUS';
+const numeroWhatsAppFormatadoAG = "(27) 99826-0207";
 const urlWhatsAppApi = "https://wa.me/";
 const textoUrlGet = "?text=Olá,%20estou%20navegando%20pelo%20e-commerce,%20pode%20me%20ajudar?";
 
