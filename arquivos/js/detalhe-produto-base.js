@@ -446,8 +446,7 @@ $(window).on("ready", async () => {
   const nomeProduto = $('.product-qd-v1-sku-selection-wrapper .product-qd-v1-name').text();
   const categoriaProduto = nomeProduto.split(' ')[0];
   let skuInstalacao;
-  const produtosInstalacaoInsumos = ['1810569', '2044569', '956999', '698738', '300755', '66849', '1826649', '1263639', '920359', '956959',
-  '1188449', '957209', '1670049', '632661', '1816699', '632259', '393903', '957019', '393927', '1008405'];
+  const produtosInstalacaoInsumos = [];
   const skuProduto = $('.product-qd-v1-sku-selection-box  .product-qd-v1-ref-code').text();
   const precos = {
     instalacao60: '60,00*',
