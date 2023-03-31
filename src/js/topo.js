@@ -706,3 +706,26 @@ function pegaLargura(largura) {
 }
 
 defineScrollTop();
+
+const inputBusca = document.querySelector('.busca .fulltext-search-box');
+const botaoBusca = document.querySelector('.search-box .search-icon');
+
+// Adiciona um evento de clique no botão de busca
+botaoBusca.addEventListener('click', function() {
+  const valorBusca = inputBusca.value;
+  dataLayer.push({
+    'event': 'search',
+    'search_term': valorBusca
+  });
+});
+
+// Adiciona um evento de pressionar tecla no input de busca
+inputBusca.addEventListener('keydown', function(event) {
+  if (event.keyCode === 13) { // Verifica se a tecla pressionada é Enter
+    const valorBusca = inputBusca.value;
+    dataLayer.push({
+      'event': 'search',
+      'search_term': valorBusca,
+    });
+  }
+});
