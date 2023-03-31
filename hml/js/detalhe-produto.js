@@ -9,6 +9,48 @@ const getLinkById = (id) => document.querySelector(`a[href='#${id}'].tab-link`);
 //Adicona class para ga4 (templates da Vtex)
 $(".product-qd-v1-buy-button .buy-button.buy-button-ref").addClass("add-to-cart-ga");
 
+function handleSocialClick(event, method) {
+  dataLayer.push({
+    'event': 'share',
+    'method': method,
+    'content_type': skuJson.skus[0].image,
+    'item_id': skuJson.skus[0].sku,
+  });
+}
+
+const socialMediaElements = {
+  'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
+  'twitter': '.product-qd-v1-social-share.desktop .twitter',
+  'mail': '.product-qd-v1-social-share.desktop .mail',
+  'facebook': '.product-qd-v1-social-share.desktop .facebook'
+};
+
+Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
+  const element = document.querySelector(selector);
+  element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
+});
+
+function ButtoWhatsappClick(event, position) {
+  dataLayer.push({
+    'event': 'whatsapp',
+    'position': position
+  });
+}
+
+const whatsappElements = {
+  '.link-whatsapp-texto.link-whatsapp-conteudo-sem-numero': 'topo',
+  '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
+  '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
+  '.link-whatsapp-texto.link-whatsapp': 'footer'
+};
+
+Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
+  const element = document.querySelector(selector);
+  if (element) {
+    element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
+  }
+});
+
 // configura busca de veículos compatíveis
 var veiculosBuscaveis = [];
 const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');

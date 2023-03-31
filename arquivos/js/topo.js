@@ -706,3 +706,24 @@ function pegaLargura(largura) {
 }
 
 defineScrollTop();
+
+const inputBusca = document.querySelector('.busca .fulltext-search-box');
+const botaoBusca = document.querySelector('.search-box .search-icon');
+
+botaoBusca.addEventListener('click', function() {
+  const valorBusca = inputBusca.value;
+  dataLayer.push({
+    'event': 'search',
+    'search_term': valorBusca
+  });
+});
+
+inputBusca.addEventListener('keydown', function(event) {
+  if (event.keyCode === 13) {
+    const valorBusca = inputBusca.value;
+    dataLayer.push({
+      'event': 'search',
+      'search_term': valorBusca,
+    });
+  }
+});
