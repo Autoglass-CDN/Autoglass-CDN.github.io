@@ -4,11 +4,59 @@
   xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
+<script>
+//Datalayer SocialShare
+function handleSocialClick(event, method) {
+  dataLayer.push({
+    'event': 'share',
+    'method': method,
+    'content_type': skuJson.skus[0].image,
+    'item_id': skuJson.skus[0].sku,
+  });
+}
+
+const socialMediaElements = {
+  'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
+  'twitter': '.product-qd-v1-social-share.desktop .twitter',
+  'mail': '.product-qd-v1-social-share.desktop .mail',
+  'facebook': '.product-qd-v1-social-share.desktop .facebook'
+};
+
+Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
+  const element = document.querySelector(selector);
+  element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
+});
+
+
+//Datalayer SocialShare
+function ButtoWhatsappClick(event, position) {
+  dataLayer.push({
+    'event': 'whatsapp',
+    'position': position
+  });
+}
+
+const whatsappElements = {
+  '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
+  '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
+  '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
+  '.link-whatsapp-texto.link-whatsapp': 'footer'
+};
+
+Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
+  const element = document.querySelector(selector);
+  if (element) {
+    element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
+  }
+});
+  </script>
+
   <vtex:contentPlaceHolder id="qd_head" />
   <meta charset="UTF-8" />
   <title>
     <vtex.cmc:productPageTitle />
   </title>
+
   <vtex:template id="dev--detalhe-produto--head-tags" />
   <vtex:metaTags />
   <vtex.cmc:productRichSnippets showFacebook="1"/>
@@ -294,8 +342,8 @@
                           <!--</button>-->
                         </div>
                         <div class="container-compre-whatsapp">
-                            <button class="botao-compre-whatsapp">
-                                <a href='#' class="talk-on-whatsapp-ga" target="_blank"></a>
+                            <button class="botao-compre-whatsapp link-whatsapp-texto">
+                                <a href='#' class="link-compre-whatsapp link-whatsapp-texto talk-on-whatsapp-ga" target="_blank"></a>
                                 Compre via WhatsApp
                             </button>
                         </div>
