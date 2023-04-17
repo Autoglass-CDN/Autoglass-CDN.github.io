@@ -5,7 +5,7 @@ const device = {
 
 const numeroWhatsAppAG = "5527992486816";
 const linkEncurtado = 'https://bit.ly/43BebAH';
-const numeroWhatsAppFormatadoAG = "(27) 9924-86816";
+const numeroWhatsAppFormatadoAG = "(27) 99248-6816";
 const urlWhatsAppApi = "https://wa.me/";
 const textoUrlGet = "?text=Olá,%20estou%20navegando%20pelo%20e-commerce,%20pode%20me%20ajudar?";
 
