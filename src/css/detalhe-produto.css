@@ -666,7 +666,6 @@ article section.tab-content {
   font-weight: 800;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
   font-size: 35px;
 }
 
@@ -753,7 +752,6 @@ fieldset#beneficios legend {
   border: 1px solid #234EB9;
   border-radius: 20px;
   width: 22%;
-  margin-right: 30px;
 }
 
 #tabelaComInstalacao {
@@ -1010,7 +1008,6 @@ fieldset#beneficios legend {
   }
 
   #mobileBlocoUm, #mobileBlocoDois {
-    margin-bottom: 30px;
     display: flex;
     justify-content: center;
   }
