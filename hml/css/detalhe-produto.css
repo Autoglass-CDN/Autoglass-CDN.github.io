@@ -724,14 +724,19 @@ fieldset#beneficios legend {
  margin-bottom: 0;
 }
 
-.primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,
-#primeirochecked, #segundochecked {
+.primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,#terceiroblock
+#primeirochecked, #segundochecked,#terceirochecked {
   width: 90%;
-  height: 100%;
+  min-height: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #646363;
+}
+
+.logoModal{
+    display: flex;
+    justify-content: center;
 }
 
 #container-Compra{
