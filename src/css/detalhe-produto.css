@@ -723,15 +723,21 @@ fieldset#beneficios legend {
  border-bottom: 0;
  margin-bottom: 0;
 }
-
-.primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,#terceiroblock,
-#primeirochecked, #segundochecked,#terceirochecked {
+.primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,
+#primeirochecked, #segundochecked {
   width: 90%;
   min-height: 15%;
   display: flex;
   align-items: center;
   justify-content: center;
   border-bottom: 1px solid #646363;
+}
+#terceiroblock,#terceirochecked {
+  width: 90%;
+  min-height: 15%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .logoModal{
