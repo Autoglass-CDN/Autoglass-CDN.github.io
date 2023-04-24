@@ -529,7 +529,9 @@ $(window).on("ready", async () => {
             <div id="mobileBlocoUm">
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
-                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                <div class="logoModal">
+                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                </div>
                 <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
                 <h3>Segurança e comodidade</h3>
@@ -543,14 +545,16 @@ $(window).on("ready", async () => {
                 </div>
                 <i id="primeiroblock" class="block"></i>
                 <i id="segundablock"class="block"></i>
-                <i class="block"></i>
+                <i id="terceiroblock" class="block"></i>
               </fieldset>
             </div>
 
             <div id="mobileBlocoDois">
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
-                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                <div class="logoModal">
+                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                </div>
                 <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
                 <h3>Segurança e comodidade</h3>
@@ -567,7 +571,7 @@ $(window).on("ready", async () => {
                 </div>
                 <i id="primeirochecked" class="checked"></i>
                 <i id="segundochecked" class="checked"></i>
-                <i class="checked"></i>
+                <i id="terceirochecked" class="checked"></i>
                 <h3>Por apenas <span id="precoComInstalacao">R$ <span id="valorComInstalacao">60</span></span></h3>
               </fieldset>
             </div>
