@@ -724,7 +724,7 @@ fieldset#beneficios legend {
  margin-bottom: 0;
 }
 
-.primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,#terceiroblock
+.primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,#terceiroblock,
 #primeirochecked, #segundochecked,#terceirochecked {
   width: 90%;
   min-height: 15%;
@@ -1019,6 +1019,7 @@ fieldset#beneficios legend {
 
   #mobileBlocoDois {
     margin-bottom: 0;
+    padding: 5px;
   }
 
   #mobileBlocoDois #beneficios {
@@ -1060,6 +1061,7 @@ fieldset#beneficios legend {
 
   #container-compraComInstalacao > h3 {
     font-size: 10px;
+    margin-left: 10px;
   }
 
   .inputLabelSemInstalacao label, .inputLabelComInstalacao label {
