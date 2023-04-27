@@ -29,7 +29,7 @@ var codCidades = {
 };
 
 const baseUrlApiAgenda = window.location.href.includes("dev")
-    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
+    ? "http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
 
 // Instale na Loja
@@ -214,7 +214,7 @@ $(function () {
     }
   }
 
-  //recuperarHorarios();
+  recuperarHorarios();
 
   function setMinDateDatepicker(datas) {
     let minDate;
@@ -234,15 +234,24 @@ $(function () {
       minDate
     );
   }
+ function listaProdutosCarrinhos(itemsVtex){
+   let itensCarrinho = "" ;
+    itemsVtex.forEach(item => {
+      itensCarrinho = `${itensCarrinho}&IdProdutos=${(parseInt(item.productRefId))}`;
+    });
+    return itensCarrinho;
+  }
 
   function recuperarHorarios(slas) {
+
+    let itensCarrinho = listaProdutosCarrinhos(vtexjs.checkout.orderForm.items);
     $.ajax({
       method: "GET",
       url: `${baseUrlApiAgenda}/horarios-lojas?Data=${$(".secao-agendamento .data input")
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]
-        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1`,
+        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1${itensCarrinho}`,
     })
       .done(function (data) {
         limpaModalInstaleLoja();
