@@ -29,7 +29,7 @@ var codCidades = {
 };
 
 const baseUrlApiAgenda = window.location.href.includes("dev")
-    ? "http://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
+    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
 
 // Instale na Loja
