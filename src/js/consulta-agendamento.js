@@ -214,7 +214,7 @@ $(function () {
     }
   }
 
-  //recuperarHorarios();
+  recuperarHorarios();
 
   function setMinDateDatepicker(datas) {
     let minDate;
@@ -235,14 +235,24 @@ $(function () {
     );
   }
 
+  function listaProdutosCarrinhos(itemsVtex){
+   let itensCarrinho = "" ;
+    itemsVtex.forEach(item => {
+      itensCarrinho = `${itensCarrinho}&IdProdutos=${(parseInt(item.productRefId))}`;
+    });
+    return itensCarrinho;
+  }
+
   function recuperarHorarios(slas) {
+
+    let itensCarrinho = listaProdutosCarrinhos(vtexjs.checkout.orderForm.items);
     $.ajax({
       method: "GET",
       url: `${baseUrlApiAgenda}/horarios-lojas?Data=${$(".secao-agendamento .data input")
           .datepicker("getDate")
           .toISOString()
           .split("T")[0]
-        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1`,
+        }&CodigoServico=${hmlCodServico}&CodigoCidade=${codCidade}&Qt=30&Pg=1${itensCarrinho}`,
     })
       .done(function (data) {
         limpaModalInstaleLoja();
@@ -383,7 +393,7 @@ $(function () {
       function calculatesTwelveHours() {
         return 12*60*60*1000;
       }
-      
+
     // $(".store-info .btn-ver-horarios:not(.danger)").click(function () {
     // 	$(this).parent().next().toggleClass("hidden");
     // });
