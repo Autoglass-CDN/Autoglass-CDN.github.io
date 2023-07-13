@@ -3,9 +3,9 @@ const device = {
   mobile: ".mobile"
 }
 
-const numeroWhatsAppAG = "5527998260207"; //Atenção! Lembrar que quando alterar o número do whatsapp, alterar também o link encurtado abaixo!
-const linkEncurtado = 'https://bit.ly/43BebAH'; //urlWhatsAppApi + numeroWhatsAppAG
-const numeroWhatsAppFormatadoAG = "(27) 99826-0207";
+const numeroWhatsAppAG = "552732032535"; //Atenção! Lembrar que quando alterar o número do whatsapp, alterar também o link encurtado abaixo!
+const linkEncurtado = 'https://bit.ly/43u3oa6'; //urlWhatsAppApi + numeroWhatsAppAG
+const numeroWhatsAppFormatadoAG = "(27) 3203-2535";
 const urlWhatsAppApi = "https://wa.me/";
 const textoUrlGet = "?text=Olá,%20estou%20navegando%20pelo%20e-commerce,%20pode%20me%20ajudar?";
 
@@ -16,7 +16,6 @@ function getLastTimeWhildshieldVanePopUpWasShown() {
 function calculatesTwelveHours() {
   return 12*60*60*1000;
 }
-
 
 function centerArrow(min, max) {
   let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
