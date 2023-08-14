@@ -4,6 +4,7 @@
     _init();
 
     function _init() {
+        $('#aceitar-cookie-link').prop('disabled', true);
         const beCheckoutConfirmation = location.pathname.includes('orderPlaced');
         const cookieString = $.cookie('hasAcceptedCookies')
         const cookie = cookieString ? JSON.parse(cookieString) : null;
@@ -45,29 +46,44 @@
                 <div id="c-left">
                     <p class="c-header">Protegemos seus dados pessoais</p>
                     <p class="c-message">
-                        Autoglass protege seus dados pessoais e utiliza cookies para personalizar anúncios e melhorar a sua experiência no site.
-                        Ao continuar navegando, você concorda com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade</a>
+                    O Grupo Autoglass, em respeito à privacidade dos seus dados pessoais e buscando a melhorar sua experiência de navegação no site,
+                    gostaria de obter o seu consentimento para coletar e utilizar cookies de navegação, que servirão para trazer conteúdos personalizados e mais relevantes para você.
+                    Ao clicar em "Aceitar", você estará concordando com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade</a>
                     </p>
                 </div>
                 <div id="c-right">
-                    <a id="aceitar-cookie-link" class="c-button">Aceitar e fechar</a>
+                  <label for="aceitar-cookies-checkbox">
+                    <input type="checkbox" id="aceitar-cookies-checkbox">
+                    Aceitar Cookies
+                  </label>
+                  <a id="aceitar-cookie-link" class="c-button">Concordar</a>
                 </div>
                 <div style="clear:both"></div>
             </div>
         `);
-
+        $('#aceitar-cookies-checkbox').on('change', handleCheckboxChange);
         $('#aceitar-cookie-link').click(acceptCookies)
     }
 
+    function handleCheckboxChange() {
+      const isChecked = $('#aceitar-cookies-checkbox').prop('checked');
+      $('#aceitar-cookie-link').prop('disabled', !isChecked);
+    }
+
     function acceptCookies() {
-        hideCookieBanner();
+      const isChecked = $('#aceitar-cookies-checkbox').prop('checked');
+      if (!isChecked) {
+        return;
+      }
 
-        const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
+      hideCookieBanner();
 
-        cookie.accepted = true;
-        cookie.acceptedAt = Date.now();
+      const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
 
-        $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
+      cookie.accepted = true;
+      cookie.acceptedAt = Date.now();
+
+      $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
     }
 
     function showCookieBanner() {
