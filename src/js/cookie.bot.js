@@ -4,7 +4,6 @@
     _init();
 
     function _init() {
-        $('#aceitar-cookie-link').prop('disabled', true);
         const beCheckoutConfirmation = location.pathname.includes('orderPlaced');
         const cookieString = $.cookie('hasAcceptedCookies')
         const cookie = cookieString ? JSON.parse(cookieString) : null;
