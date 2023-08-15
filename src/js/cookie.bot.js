@@ -4,6 +4,7 @@
     _init();
 
     function _init() {
+        $('#aceitar-cookie-link').prop('disabled', true);
         const beCheckoutConfirmation = location.pathname.includes('orderPlaced');
         const cookieString = $.cookie('hasAcceptedCookies')
         const cookie = cookieString ? JSON.parse(cookieString) : null;
@@ -40,6 +41,7 @@
     }
 
     function renderHtml() {
+        $('#cookiebanner').remove();
         $('body').append(`
             <div id="cookiebanner">
                 <div id="c-left">
@@ -55,6 +57,7 @@
                     <input type="checkbox" id="aceitar-cookies-checkbox">
                     Aceitar Cookies
                   </label>
+                  <a id="aceitar-cookie-link" class="c-button" disabled style="background-color: #999"; <Concordar</a>
                 </div>
                 <div style="clear:both"></div>
             </div>
