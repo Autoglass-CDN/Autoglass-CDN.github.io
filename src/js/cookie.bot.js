@@ -56,7 +56,7 @@
                     <input type="checkbox" id="aceitar-cookies-checkbox">
                     Aceitar Cookies
                   </label>
-                  <a id="aceitar-cookie-link" class="c-button">Concordar</a>
+                  <a id="aceitar-cookie-link" class="c-button" disabled style="background-color: #999;>Concordar</a>
                 </div>
                 <div style="clear:both"></div>
             </div>
@@ -67,7 +67,15 @@
 
     function handleCheckboxChange() {
       const isChecked = $('#aceitar-cookies-checkbox').prop('checked');
-      $('#aceitar-cookie-link').prop('disabled', !isChecked);
+      const aceitarCookieLink = $('#aceitar-cookie-link');
+
+      if (isChecked) {
+          aceitarCookieLink.prop('disabled', false);
+          aceitarCookieLink.css('background-color', '#2D4F9E');
+      } else {
+          aceitarCookieLink.prop('disabled', true);
+          aceitarCookieLink.css('background-color', '#ccc');
+      }
     }
 
     function acceptCookies() {
@@ -84,6 +92,8 @@
       cookie.acceptedAt = Date.now();
 
       $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
+
+      $('#aceitar-cookie-link').css('background-color', '#2D4F9E');
     }
 
     function showCookieBanner() {
