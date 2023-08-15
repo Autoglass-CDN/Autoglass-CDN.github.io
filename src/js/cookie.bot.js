@@ -56,7 +56,6 @@
                     <input type="checkbox" id="aceitar-cookies-checkbox">
                     Aceitar Cookies
                   </label>
-                  <a id="aceitar-cookie-link" class="c-button" disabled style="background-color: #999;>Concordar</a>
                 </div>
                 <div style="clear:both"></div>
             </div>
