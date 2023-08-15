@@ -47,21 +47,24 @@
                 <div id="c-left">
                     <p class="c-header">Protegemos seus dados pessoais</p>
                     <p class="c-message">
-                    O Grupo Autoglass, em respeito à privacidade dos seus dados pessoais e buscando a melhorar sua experiência de navegação no site,
-                    gostaria de obter o seu consentimento para coletar e utilizar cookies de navegação, que servirão para trazer conteúdos personalizados e mais relevantes para você.
-                    Ao clicar em "Aceitar", você estará concordando com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade</a>
+                      O Grupo Autoglass, em respeito à privacidade dos seus dados pessoais e buscando a melhorar sua experiência de navegação no site,
+                      gostaria de obter o seu consentimento para coletar e utilizar cookies de navegação, que servirão para trazer conteúdos personalizados e mais relevantes para você.
+                      Ao clicar em "Aceitar", você estará concordando com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade</a>
                     </p>
                 </div>
+
+                <label for="aceitar-cookies-checkbox">
+                  <input type="checkbox" id="aceitar-cookies-checkbox">
+                  Aceitar Cookies
+                </label>
+
                 <div id="c-right">
-                  <label for="aceitar-cookies-checkbox">
-                    <input type="checkbox" id="aceitar-cookies-checkbox">
-                    Aceitar Cookies
-                  </label>
-                  <a id="aceitar-cookie-link" class="c-button" disabled style="background-color: #999"; <Concordar</a>
+                    <a id="aceitar-cookie-link" class="c-button" disabled style="background-color: #999"; <Concordar</a>
                 </div>
                 <div style="clear:both"></div>
             </div>
         `);
+
         $('#aceitar-cookies-checkbox').on('change', handleCheckboxChange);
         $('#aceitar-cookie-link').click(acceptCookies)
     }
