@@ -1023,9 +1023,7 @@
         ? "https://api-hml.autoglass.com.br"
         : "https://api.autoglass.com.br";
 
-      var teste = `${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`
-
-      const response = await fetch(teste);
+      const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
       const veiculo = await response.json();
 
       montadora = veiculo.Marca;
