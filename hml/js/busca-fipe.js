@@ -1037,7 +1037,7 @@
     }
 
     async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
-      const urlApi = window.location.href.includes("dev")
+      const urlApi = window.location.href.includes("hml")
         ? "https://api-hml.autoglass.com.br"
         : "https://api.autoglass.com.br";
 
