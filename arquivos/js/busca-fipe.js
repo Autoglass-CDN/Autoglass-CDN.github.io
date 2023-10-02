@@ -887,7 +887,7 @@
         montadora,
         modelo,
         anoModelo,
-      } = await obterDadosDoVeiculoViaFraga(placaSemCaracteresEspeciais);
+      } = await obterDadosDoVeiculoViaOlhoNoCarro(placaSemCaracteresEspeciais);
 
       let [
         montadorasEncontradas,
@@ -1018,18 +1018,27 @@
       ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${pathGerado}`);
     }
 
-    async function obterDadosDoVeiculoViaFraga(placa) {
+    async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
       const urlApi = window.location.href.includes("dev")
         ? "https://api-hml.autoglass.com.br"
         : "https://api.autoglass.com.br";
-        
+
       const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
       const veiculo = await response.json();
 
-      montadora = veiculo.Marca;
-      modelo = veiculo.Modelo[0].Nome;
-      anoModelo = veiculo.AnoModelo.toString();
-      
+      montadora = veiculo.Body.Data.DadosBasicosDoVeiculo.Marca;
+      modelo = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].Modelo;
+      anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
+
+      var infoBuscaPLaca = JSON.parse(localStorage.getItem('infoBuscaPLaca')) || [];
+      infoBuscaPLaca = [{
+        montadora: montadora,
+        modelo: modelo,
+        anoModelo: anoModelo,
+        timestamp: new Date().toLocaleString()
+      }];
+      localStorage.setItem('infoBuscaPLaca', JSON.stringify(infoBuscaPLaca));
+
       return { montadora, modelo, anoModelo };
     }
   }
