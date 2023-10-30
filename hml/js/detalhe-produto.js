@@ -213,7 +213,7 @@ async function loadSimilars() {
 
 loadSimilars();
 
-$(window).on("ready", async () => {
+$(window).on("load", async () => {
   /*
    * Corrige problema com variação da altura na thumb de produto
    */
@@ -233,7 +233,6 @@ $(window).on("ready", async () => {
   const veiculosCompatíveisContainer = $("#veiculos-compativeis");
   const productRefId = await getProductRefIdByProductName();
 
-  try {
     const veiculosCompativeis = await $.get(
       `${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`
     );
@@ -317,10 +316,6 @@ $(window).on("ready", async () => {
       $('a[href="#veiculos-compativeis"]').parent().hide();
       veiculosCompatíveisContainer.hide();
     }
-  } catch (ex) {
-    $('a[href="#veiculos-compativeis"]').parent().hide();
-    console.error("Falha ao renderizar os veículos compativeis. \n ", ex);
-  }
 
   //Busca de Veículos Compatíveis
   let skuList = Product.captureSkuSelectors();
@@ -653,179 +648,4 @@ $(window).on("ready", async () => {
       window.open(urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem, '_blank').focus();
     });
   });
-
-  async function buscarPecaProduto () {
-      let baseUrlApi = window.location.href.includes("dev") || window.location.href.includes("hml")
-      ? "https://api-hml.autoglass.com.br/integracao-b2c/"
-      : "https://api-farm-int.autoglass.com.br/integracao-b2c/";
-
-      let codigoProduto = await getProductRefIdByProductName();
-      let produto = await $.get(`${baseUrlApi}api/web-app/integracoes-produtos/${codigoProduto}`)
-
-      let anoInicio = produto.AnoInicio !== null ? parseInt(produto.AnoInicio) : null;
-      let anoFim = produto.AnoFim !== null ? parseInt(produto.AnoFim) : null;
-      anoInicio === null ? anoInicio = anoFim : anoFim === null ? anoFim = anoInicio : '';
-      let anoAproximado = Math.floor((anoInicio + anoFim) / 2);
-
-      let mapeamentoFipe = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/mapeamentos-fipes?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&AnoAproximado=${anoAproximado}`);
-      let codigoMapeamentoFipe = mapeamentoFipe[0].CodigoMapeamentoFipe;
-
-      let classificaScript = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/classificacoes-pecas?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`);
-
-      let classificaScriptFormatado = formatarDadosMapeamento(classificaScript);
-
-      classificaScriptFormatado.sort(function(a, b) {
-        return b.ClassificacaoScript.length - a.ClassificacaoScript.length;
-      });
-
-      let categoryVtex = formatarDadosMapeamento(vtxctx.categoryName);
-      var codigoClassificaScript = classificaScriptFormatado.filter(item => item.ClassificacaoScript.includes(categoryVtex)).map(item => [item.CodigoClassificaScript]);
-
-      if(codigoClassificaScript.length !== 1) {
-        var url = window.location.href;
-        var novaUrl = url.replace(/https:\/\/dev2autoglass.myvtex.com\//g, "");
-        const urlSemHifen = novaUrl.replace(/-/g, " ");
-        const urlFormatada = tirarMasculinoFeminino(urlSemHifen);
-        const arrayUrlFormatada = urlFormatada.split(" ");
-
-        for (let i = 0; i < classificaScriptFormatado.length; i++) {
-          let words = classificaScriptFormatado[i].ClassificacaoScript.split(" ");
-          let match = true;
-          for (let j = 0; j < words.length; j++) {
-            if (!arrayUrlFormatada.includes(words[j])) {
-              match = false;
-              break;
-            }
-          }
-          if (match) {
-            codigoClassificaScript = [ classificaScriptFormatado[i].CodigoClassificaScript ];
-            break;
-          }
-        }
-      }
-
-      if(codigoClassificaScript.length !== 1) {
-        let descricaoProduto  = formatarDadosMapeamento(document.querySelector('#informacoes-gerais-descricao .productDescriptionShort').textContent);
-        let arrayDescricaoProduto = descricaoProduto.split(" ").filter(word => word.length > 3).slice(0, 8);
-
-        for (let i = 0; i < classificaScriptFormatado.length; i++) {
-          let words = classificaScriptFormatado[i].ClassificacaoScript.split(" ");
-          let match = true;
-          for (let j = 0; j < words.length; j++) {
-            if (!arrayDescricaoProduto.includes(words[j])) {
-              match = false;
-              break;
-            }
-          }
-          if (match) {
-            codigoClassificaScript = [classificaScriptFormatado[i].CodigoClassificaScript];
-            break;
-          }
-        }
-      }
-
-      let codigoClassificaScriptFormatado = parseInt(codigoClassificaScript[0]);
-
-      let imagemPeca = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/imagens-pecas?CodigoClassificaScript=${codigoClassificaScriptFormatado}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`)
-
-      if(imagemPeca && imagemPeca.FotografiaTraseira == "") {
-        if(codigoClassificaScript.length == 1 && codigoMapeamentoFipe !== null) {
-          posicionarImagemReq(imagemPeca.FotografiaFrontal)
-        }
-      }
-  }
-
-  buscarPecaProduto();
-
-  function tirarMasculinoFeminino(str) {
-    var words = str.split(" ");
-    var newWords = words.map(function(word) {
-      if (word.endsWith("a") || word.endsWith("o")) {
-        return word.slice(0, -1);
-      }
-      return word;
-    });
-    return newWords.join(" ");
-  }
-
-  function clickImagemMarcacaoPeca(imgReq) {
-    $(".apresentacao #image a.image-zoom").attr("href", imgReq);
-    $(".apresentacao #image a.image-zoom #image-main").attr("src", imgReq);
-    $(".apresentacao #image .zoomWindow .zoomWrapperImage img").attr("src", imgReq);
-    $("li a.ON").removeClass("ON");
-    $(".imagemMarcacaoPeca").addClass( "ON" );
-  }
-
-  $("body").on("click", '.imagemMarcacaoPeca', function(){
-      clickImagemMarcacaoPeca($(this).find("img").attr("src"));
-    }
-  );
-
-  async function posicionarImagemReq (imagemString) {
-    var image = new Image();
-    image.src = "data:image/png;base64," + imagemString;
-    image.title = await getProductRefIdByProductName();
-    image.alt = await getProductRefIdByProductName();
-    var li = document.createElement("li");
-    var ancora = document.createElement("a");
-    $( ancora ).addClass( "imagemMarcacaoPeca" )
-      .attr('id', 'botaoZoom')
-      .attr('href', 'javascript:void(0);')
-      .attr('title', 'Zoom')
-      .attr('id', 'botaoZoom');
-    li.appendChild(ancora);
-    ancora.appendChild(image);
-    var ul = document.querySelector(".thumbs.product-qd-v1-image-thumbs.QD-thumbs.img-responsive")
-    var li_target = ul.querySelector("li:nth-child(1)");
-    ul.insertBefore(li, li_target.nextSibling);
-  }
-
-  function formatarDadosMapeamento(input) {
-    if (!input) return "";
-
-    if (Array.isArray(input)) {
-      input.forEach(obj => {
-        Object.keys(obj).forEach(chave => {
-          if (typeof obj[chave] === 'string') {
-            obj[chave] = obj[chave].toLowerCase();
-            obj[chave] = obj[chave].split(" ")
-              .filter(palavra => palavra.length > 2)
-              .map(palavra => {
-                palavra = palavra.replace(/-/g, " ")
-                if (palavra.endsWith("s") || palavra.endsWith("es")) {
-                  return palavra.slice(0, -2);
-                } else if (palavra.endsWith("s")) {
-                  return palavra.slice(0, -1);
-                } else if (palavra.endsWith("a") || palavra.endsWith("o") ) {
-                  return palavra.slice(0, -1);
-                }
-                else {
-                  return palavra;
-                }
-              }).join(" ");
-          }
-        });
-      });
-      return input;
-    } else if (typeof input === 'string') {
-      input = input.toLowerCase();
-      const words = input.split(" ")
-          .filter(word => word.length > 2)
-          .map(word => {
-            word = word.replace(/-/g, " ")
-            if (word.endsWith("s") || word.endsWith("es")) {
-              return word.slice(0, -2);
-            } else if (word.endsWith("s")) {
-              return word.slice(0, -1);
-            } else if (word.endsWith("a") || word.endsWith("o") ) {
-              return word.slice(0, -1);
-            }
-            else {
-              return word;
-            }
-          });
-
-      return words.join(" ");
-      }
-  }
 });
