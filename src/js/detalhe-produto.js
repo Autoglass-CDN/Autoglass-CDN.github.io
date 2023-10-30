@@ -215,7 +215,7 @@ async function loadSimilars() {
 
 loadSimilars();
 
-$(window).on("ready", async () => {
+$(window).on("load", async () => {
   /*
    * Corrige problema com variação da altura na thumb de produto
    */
@@ -235,7 +235,6 @@ $(window).on("ready", async () => {
   const veiculosCompatíveisContainer = $("#veiculos-compativeis");
   const productRefId = await getProductRefIdByProductName();
 
-  try {
     const veiculosCompativeis = await $.get(
       `${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`
     );
@@ -319,10 +318,6 @@ $(window).on("ready", async () => {
       $('a[href="#veiculos-compativeis"]').parent().hide();
       veiculosCompatíveisContainer.hide();
     }
-  } catch (ex) {
-    $('a[href="#veiculos-compativeis"]').parent().hide();
-    console.error("Falha ao renderizar os veículos compativeis. \n ", ex);
-  }
 
   //Busca de Veículos Compatíveis
   let skuList = Product.captureSkuSelectors();
