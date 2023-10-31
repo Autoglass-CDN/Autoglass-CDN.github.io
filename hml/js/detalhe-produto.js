@@ -6,7 +6,6 @@ const baseUrlApi =
 const sections = [...document.querySelectorAll("section.tab-content")];
 const getLinkById = (id) => document.querySelector(`a[href='#${id}'].tab-link`);
 
-//Adicona class para ga4 (templates da Vtex)
 $(".product-qd-v1-buy-button .buy-button.buy-button-ref").addClass("add-to-cart-ga");
 
 function handleSocialClick(event, method) {
@@ -51,24 +50,19 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
   }
 });
 
-// configura busca de veículos compatíveis
 var veiculosBuscaveis = [];
 const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');
 $('.veiculos-compativeis-search').hide();
 
 const inView = (section, width) => {
   let top = section.offsetTop;
-  //offsetTop: Distance of the outer border of the current element relative to the inner border of the top of the offsetParent node.
   let height = section.offsetHeight;
-  //offsetHeight: height of an element, including vertical padding and borders, as an integer.
 
   while (section.offsetParent) {
-    //offsetParent: a reference to the element which is the closest (nearest in the containment hierarchy) positioned ancestor element.
     section = section.offsetParent;
     top += section.offsetTop;
   }
   if (width) {
-    //adiciona margem do topo no cálculo
     top -= width > 1200 ? 250 : 130;
   }
 
@@ -76,8 +70,6 @@ const inView = (section, width) => {
     top < window.pageYOffset + window.innerHeight &&
     top + height > window.pageYOffset
   );
-  //pageYOffset: the number of pixels the document is currently scrolled along the vertical axis (that is, up or down) with a value of 0.0, indicating that the top edge of the Document is currently aligned with the top edge of the window's content area.
-  //innerHeight: the interior height of the window in pixels, including the height of the horizontal scroll bar, if present.
 };
 
 window.onscroll = () => {
@@ -116,7 +108,6 @@ const sectionCollapseInit = () => {
 
 sectionCollapseInit();
 
-//Descrição da marca
 async function insertBrandDescription() {
   return fetch("/api/catalog_system/pub/brand/list")
     .then((response) => response.json())
@@ -214,9 +205,6 @@ async function loadSimilars() {
 loadSimilars();
 
 $(window).on("load", async () => {
-  /*
-   * Corrige problema com variação da altura na thumb de produto
-   */
   window.addEventListener("resize", adjustProductThumbHeight);
 
   function adjustProductThumbHeight() {
@@ -227,9 +215,6 @@ $(window).on("load", async () => {
 
   initializeSocialShareLinks();
 
-  /**
-   * Cria bloco de Veículos Compatíveis
-   */
   const veiculosCompatíveisContainer = $("#veiculos-compativeis");
   const productRefId = await getProductRefIdByProductName();
 
@@ -317,7 +302,6 @@ $(window).on("load", async () => {
       veiculosCompatíveisContainer.hide();
     }
 
-  //Busca de Veículos Compatíveis
   let skuList = Product.captureSkuSelectors();
   const urlAddCart = "/checkout/cart/add?sku=" +
     skuList[0] +
@@ -480,15 +464,8 @@ $(window).on("load", async () => {
   }
 
   const produtosInsumoInstalacao = ['Vidro', 'Parabrisa'];
-  const nomeProduto = $('.product-qd-v1-sku-selection-wrapper .product-qd-v1-name').text();
+  const nomeProduto = dataLayer[0].pageTitle;
   const categoriaProduto = nomeProduto.split(' ')[0];
-  let skuInstalacao;
-  const produtosInstalacaoInsumos = [];
-  const skuProduto = $('.product-qd-v1-sku-selection-box  .product-qd-v1-ref-code').text();
-  const precos = {
-    instalacao60: '60,00*',
-    instalacao130: '129,99*'
-  };
 
   $(".product-qd-v1-buy-button .buy-button").attr("href", "#");
   const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
@@ -584,15 +561,12 @@ $(window).on("load", async () => {
       </div>
       `)
 
-      if (produtosInstalacaoInsumos.includes(skuProduto)){
-        skuInstalacao = 27696;
-        document.getElementById("valorComInstalacao").innerHTML = precos.instalacao130;
-      }else if (produtosInsumoInstalacao.includes(categoriaProduto)) {
-        skuInstalacao = 10748;
-        document.getElementById("valorComInstalacao").innerHTML = precos.instalacao60;
-      }
+      var codigoSKU = $("#codigo-sku-acessorio-ag").text().trim();
+      var precoAcessorio = $("#preco-acessorios-ag").text().replace("R$ ", "").trim();
+      if (codigoSKU && precoAcessorio)
+        document.getElementById("valorComInstalacao").innerHTML = precoAcessorio;
+      var urlComInstalacao = urlSemInstalacao + "&sku=" + codigoSKU + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
 
-      var urlComInstalacao = urlSemInstalacao + "&sku=" + skuInstalacao + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
 
       if (window.screen.width < 570) {
         $('#mobileBlocoDois #beneficiosMobile').css('display', 'block')
