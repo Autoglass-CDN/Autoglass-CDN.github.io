@@ -16,6 +16,7 @@ fbq('track', 'PageView');
 /**
 * Configurações de instalação
 */
+$('p.ship-receiverName label').text('Quem irá receber');
 const CONFIG = {
     GA: {
         ID: 'UA-133498560-1',
@@ -401,27 +402,21 @@ $(window).on('load', () => {
 
         async function _implementsInstallButtom(item, accessory) {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
-            let product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
+            var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
 
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
 
-            if(product.name == 'Insumos para instalação' && !product.available) {
-                preco     = 'R$ 60,00';
-                bestPrice = '6000';
-                available = true;
+            let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price
+
+            if(accessory.items[0]) {
+              preco = 'R$ '+ precoAcessorio +',00';
+              bestPrice = precoAcessorio + '00';
+              available = true;
+
             }
-            else if(product.name == 'Instalação Insumos' && !product.available) {
-                preco     = 'R$ 129,99';
-                bestPrice = '12999';
-                available = true;
-            }
-            else if(product.name == 'Instalação de Iluminação' && !product.available) {
-                preco     = 'R$ 5,26';
-                bestPrice = '526';
-                available = true;
-            }
-                
+
+
             if (!available) return;
 
             let btnInstall = _createInstallButton(
@@ -436,32 +431,32 @@ $(window).on('load', () => {
             }
 
             function loadScript(src, callback) {
-                return new Promise((resolve, reject) => {
-                    let script = document.createElement("script");
-                    script.type = "text/javascript";
+              return new Promise((resolve, reject) => {
+                  let script = document.createElement("script");
+                  script.type = "text/javascript";
 
-                    if (script.readyState) {
-                        //IE
-                        script.onreadystatechange = function () {
-                            if (script.readyState == "loaded" || script.readyState == "complete") {
-                                script.onreadystatechange = null;
-                                resolve();
-                            } else {
-                                reject()
-                            }
-                        };
-                    } else {
-                        //Others
-                        script.onload = function () {
-                            resolve();
-                        };
-                    }
+                  if (script.readyState) {
+                      //IE
+                      script.onreadystatechange = function () {
+                          if (script.readyState == "loaded" || script.readyState == "complete") {
+                              script.onreadystatechange = null;
+                              resolve();
+                          } else {
+                              reject()
+                          }
+                      };
+                  } else {
+                      //Others
+                      script.onload = function () {
+                          resolve();
+                      };
+                  }
 
-                    script.src = src;
-                    callback && callback(script);
-                    document.getElementsByTagName("head")[0].appendChild(script);
-                });
-            }
+                  script.src = src;
+                  callback && callback(script);
+                  document.getElementsByTagName("head")[0].appendChild(script);
+              });
+        }
         }
 
         function _createInstallButton(sku, preco, free = false) {
@@ -689,15 +684,16 @@ $(window).on('load', () => {
                 $('.shp-option-text-label-single span').html('<a id="alterar-shipping-btn">Veja os dias disponíveis</a>');
                 $('.shp-option-text-price').html('');
             } else {
-                $('#mostrar-datas-datepicker').datepicker('setDate', day.selectedDay);
+                try {
+                    $('#mostrar-datas-datepicker').datepicker('setDate', day.selectedDay);
 
-                if (window.location.hash.includes('shipping')) {
-                    $('.shp-option-text-label-single span').html(day.selectedDay);
-                }
+                    if (window.location.hash.includes('shipping')) {
+                        $('.shp-option-text-label-single span').html(day.selectedDay);
+                    }
 
-                $('.shp-option-text-price').html('<a id="alterar-shipping-btn">Alterar</a>');
+                    $('.shp-option-text-price').html('<a id="alterar-shipping-btn">Alterar</a>');
 
-                $('.srp-delivery-info .instalar-em-casa').html(`
+                    $('.srp-delivery-info .instalar-em-casa').html(`
                         <a id="open-modal-ic">
                             <div class="instalar_calendar"><i class="fa fa-calendar"></i></div>
                             <div class="instalar_content">
@@ -707,9 +703,13 @@ $(window).on('load', () => {
                             </div>
                         </a>
                     `);
+                }
+                catch (e) {
+                    console.log('Não foi possível encontrar day.selectedDay (' + e.message + ')');
+                }
             }
 
-            try {
+              try {
 
                 setTimeout(() => {
                    $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
