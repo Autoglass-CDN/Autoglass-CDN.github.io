@@ -482,15 +482,8 @@ $(window).on("load", async () => {
   }
 
   const produtosInsumoInstalacao = ['Vidro', 'Parabrisa'];
-  const nomeProduto = $('.product-qd-v1-sku-selection-wrapper .product-qd-v1-name').text();
+  const nomeProduto = dataLayer[0].pageTitle;
   const categoriaProduto = nomeProduto.split(' ')[0];
-  let skuInstalacao;
-  const produtosInstalacaoInsumos = [];
-  const skuProduto = $('.product-qd-v1-sku-selection-box  .product-qd-v1-ref-code').text();
-  const precos = {
-    instalacao60: '60,00*',
-    instalacao130: '129,99*'
-  };
 
   $(".product-qd-v1-buy-button .buy-button").attr("href", "#");
   const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
@@ -586,15 +579,12 @@ $(window).on("load", async () => {
       </div>
       `)
 
-      if (produtosInstalacaoInsumos.includes(skuProduto)){
-        skuInstalacao = 27696;
-        document.getElementById("valorComInstalacao").innerHTML = precos.instalacao130;
-      }else if (produtosInsumoInstalacao.includes(categoriaProduto)) {
-        skuInstalacao = 10748;
-        document.getElementById("valorComInstalacao").innerHTML = precos.instalacao60;
-      }
+      var codigoSKU = $("#codigo-sku-acessorio-ag").text().trim();
+      var precoAcessorio = $("#preco-acessorios-ag").text().replace("R$ ", "").trim();
+      if (codigoSKU && precoAcessorio)
+        document.getElementById("valorComInstalacao").innerHTML = precoAcessorio;
+      var urlComInstalacao = urlSemInstalacao + "&sku=" + codigoSKU + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
 
-      var urlComInstalacao = urlSemInstalacao + "&sku=" + skuInstalacao + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
 
       if (window.screen.width < 570) {
         $('#mobileBlocoDois #beneficiosMobile').css('display', 'block')
@@ -762,178 +752,178 @@ $(window).on("load", async () => {
   // if(shouldShowWindshieldVanePopUp())
   //   return enableWindshieldVanePopUp();
 
-  async function buscarPecaProduto () {
-      let baseUrlApi = window.location.href.includes("dev") || window.location.href.includes("hml")
-      ? "https://api-hml.autoglass.com.br/integracao-b2c/"
-      : "https://api-farm-int.autoglass.com.br/integracao-b2c/";
+  // async function buscarPecaProduto () {
+  //     let baseUrlApi = window.location.href.includes("dev") || window.location.href.includes("hml")
+  //     ? "https://api-hml.autoglass.com.br/integracao-b2c/"
+  //     : "https://api-farm-int.autoglass.com.br/integracao-b2c/";
 
-      let codigoProduto = await getProductRefIdByProductName();
-      let produto = await $.get(`${baseUrlApi}api/web-app/integracoes-produtos/${codigoProduto}`)
+  //     let codigoProduto = await getProductRefIdByProductName();
+  //     let produto = await $.get(`${baseUrlApi}api/web-app/integracoes-produtos/${codigoProduto}`)
 
-      let anoInicio = produto.AnoInicio !== null ? parseInt(produto.AnoInicio) : null;
-      let anoFim = produto.AnoFim !== null ? parseInt(produto.AnoFim) : null;
-      anoInicio === null ? anoInicio = anoFim : anoFim === null ? anoFim = anoInicio : '';
-      let anoAproximado = Math.floor((anoInicio + anoFim) / 2);
+  //     let anoInicio = produto.AnoInicio !== null ? parseInt(produto.AnoInicio) : null;
+  //     let anoFim = produto.AnoFim !== null ? parseInt(produto.AnoFim) : null;
+  //     anoInicio === null ? anoInicio = anoFim : anoFim === null ? anoFim = anoInicio : '';
+  //     let anoAproximado = Math.floor((anoInicio + anoFim) / 2);
 
-      let mapeamentoFipe = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/mapeamentos-fipes?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&AnoAproximado=${anoAproximado}`);
-      let codigoMapeamentoFipe = mapeamentoFipe[0].CodigoMapeamentoFipe;
+  //     let mapeamentoFipe = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/mapeamentos-fipes?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&AnoAproximado=${anoAproximado}`);
+  //     let codigoMapeamentoFipe = mapeamentoFipe[0].CodigoMapeamentoFipe;
 
-      let classificaScript = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/classificacoes-pecas?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`);
+  //     let classificaScript = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/classificacoes-pecas?CodigoVeiculo=${produto.CodigoVeiculo}&CodigoMontadora=${produto.CodigoMontadora}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`);
 
-      let classificaScriptFormatado = formatarDadosMapeamento(classificaScript);
+  //     let classificaScriptFormatado = formatarDadosMapeamento(classificaScript);
 
-      classificaScriptFormatado.sort(function(a, b) {
-        return b.ClassificacaoScript.length - a.ClassificacaoScript.length;
-      });
+  //     classificaScriptFormatado.sort(function(a, b) {
+  //       return b.ClassificacaoScript.length - a.ClassificacaoScript.length;
+  //     });
 
-      let categoryVtex = formatarDadosMapeamento(vtxctx.categoryName);
-      var codigoClassificaScript = classificaScriptFormatado.filter(item => item.ClassificacaoScript.includes(categoryVtex)).map(item => [item.CodigoClassificaScript]);
+  //     let categoryVtex = formatarDadosMapeamento(vtxctx.categoryName);
+  //     var codigoClassificaScript = classificaScriptFormatado.filter(item => item.ClassificacaoScript.includes(categoryVtex)).map(item => [item.CodigoClassificaScript]);
 
-      if(codigoClassificaScript.length !== 1) {
-        var url = window.location.href;
-        var novaUrl = url.replace(/https:\/\/dev2autoglass.myvtex.com\//g, "");
-        const urlSemHifen = novaUrl.replace(/-/g, " ");
-        const urlFormatada = tirarMasculinoFeminino(urlSemHifen);
-        const arrayUrlFormatada = urlFormatada.split(" ");
+  //     if(codigoClassificaScript.length !== 1) {
+  //       var url = window.location.href;
+  //       var novaUrl = url.replace(/https:\/\/dev2autoglass.myvtex.com\//g, "");
+  //       const urlSemHifen = novaUrl.replace(/-/g, " ");
+  //       const urlFormatada = tirarMasculinoFeminino(urlSemHifen);
+  //       const arrayUrlFormatada = urlFormatada.split(" ");
 
-        for (let i = 0; i < classificaScriptFormatado.length; i++) {
-          let words = classificaScriptFormatado[i].ClassificacaoScript.split(" ");
-          let match = true;
-          for (let j = 0; j < words.length; j++) {
-            if (!arrayUrlFormatada.includes(words[j])) {
-              match = false;
-              break;
-            }
-          }
-          if (match) {
-            codigoClassificaScript = [ classificaScriptFormatado[i].CodigoClassificaScript ];
-            break;
-          }
-        }
-      }
+  //       for (let i = 0; i < classificaScriptFormatado.length; i++) {
+  //         let words = classificaScriptFormatado[i].ClassificacaoScript.split(" ");
+  //         let match = true;
+  //         for (let j = 0; j < words.length; j++) {
+  //           if (!arrayUrlFormatada.includes(words[j])) {
+  //             match = false;
+  //             break;
+  //           }
+  //         }
+  //         if (match) {
+  //           codigoClassificaScript = [ classificaScriptFormatado[i].CodigoClassificaScript ];
+  //           break;
+  //         }
+  //       }
+  //     }
 
-      if(codigoClassificaScript.length !== 1) {
-        let descricaoProduto  = formatarDadosMapeamento(document.querySelector('#informacoes-gerais-descricao .productDescriptionShort').textContent);
-        let arrayDescricaoProduto = descricaoProduto.split(" ").filter(word => word.length > 3).slice(0, 8);
+  //     if(codigoClassificaScript.length !== 1) {
+  //       let descricaoProduto  = formatarDadosMapeamento(document.querySelector('#informacoes-gerais-descricao .productDescriptionShort').textContent);
+  //       let arrayDescricaoProduto = descricaoProduto.split(" ").filter(word => word.length > 3).slice(0, 8);
 
-        for (let i = 0; i < classificaScriptFormatado.length; i++) {
-          let words = classificaScriptFormatado[i].ClassificacaoScript.split(" ");
-          let match = true;
-          for (let j = 0; j < words.length; j++) {
-            if (!arrayDescricaoProduto.includes(words[j])) {
-              match = false;
-              break;
-            }
-          }
-          if (match) {
-            codigoClassificaScript = [classificaScriptFormatado[i].CodigoClassificaScript];
-            break;
-          }
-        }
-      }
+  //       for (let i = 0; i < classificaScriptFormatado.length; i++) {
+  //         let words = classificaScriptFormatado[i].ClassificacaoScript.split(" ");
+  //         let match = true;
+  //         for (let j = 0; j < words.length; j++) {
+  //           if (!arrayDescricaoProduto.includes(words[j])) {
+  //             match = false;
+  //             break;
+  //           }
+  //         }
+  //         if (match) {
+  //           codigoClassificaScript = [classificaScriptFormatado[i].CodigoClassificaScript];
+  //           break;
+  //         }
+  //       }
+  //     }
 
-      let codigoClassificaScriptFormatado = parseInt(codigoClassificaScript[0]);
+  //     let codigoClassificaScriptFormatado = parseInt(codigoClassificaScript[0]);
 
-      let imagemPeca = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/imagens-pecas?CodigoClassificaScript=${codigoClassificaScriptFormatado}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`)
+  //     let imagemPeca = await $.get(`${baseUrlApi}api/web-app/integracoes-seguradoras/imagens-pecas?CodigoClassificaScript=${codigoClassificaScriptFormatado}&CodigoMapeamentoFipe=${codigoMapeamentoFipe}`)
 
-      if(imagemPeca && imagemPeca.FotografiaTraseira == "") {
-        if(codigoClassificaScript.length == 1 && codigoMapeamentoFipe !== null) {
-          posicionarImagemReq(imagemPeca.FotografiaFrontal)
-        }
-      }
-  }
+  //     if(imagemPeca && imagemPeca.FotografiaTraseira == "") {
+  //       if(codigoClassificaScript.length == 1 && codigoMapeamentoFipe !== null) {
+  //         posicionarImagemReq(imagemPeca.FotografiaFrontal)
+  //       }
+  //     }
+  // }
 
-  buscarPecaProduto();
+  // buscarPecaProduto();
 
-  function tirarMasculinoFeminino(str) {
-    var words = str.split(" ");
-    var newWords = words.map(function(word) {
-      if (word.endsWith("a") || word.endsWith("o")) {
-        return word.slice(0, -1);
-      }
-      return word;
-    });
-    return newWords.join(" ");
-  }
+  // function tirarMasculinoFeminino(str) {
+  //   var words = str.split(" ");
+  //   var newWords = words.map(function(word) {
+  //     if (word.endsWith("a") || word.endsWith("o")) {
+  //       return word.slice(0, -1);
+  //     }
+  //     return word;
+  //   });
+  //   return newWords.join(" ");
+  // }
 
-  function clickImagemMarcacaoPeca(imgReq) {
-    $(".apresentacao #image a.image-zoom").attr("href", imgReq);
-    $(".apresentacao #image a.image-zoom #image-main").attr("src", imgReq);
-    $(".apresentacao #image .zoomWindow .zoomWrapperImage img").attr("src", imgReq);
-    $("li a.ON").removeClass("ON");
-    $(".imagemMarcacaoPeca").addClass( "ON" );
-  }
+  // function clickImagemMarcacaoPeca(imgReq) {
+  //   $(".apresentacao #image a.image-zoom").attr("href", imgReq);
+  //   $(".apresentacao #image a.image-zoom #image-main").attr("src", imgReq);
+  //   $(".apresentacao #image .zoomWindow .zoomWrapperImage img").attr("src", imgReq);
+  //   $("li a.ON").removeClass("ON");
+  //   $(".imagemMarcacaoPeca").addClass( "ON" );
+  // }
 
-  $("body").on("click", '.imagemMarcacaoPeca', function(){
-      clickImagemMarcacaoPeca($(this).find("img").attr("src"));
-    }
-  );
+  // $("body").on("click", '.imagemMarcacaoPeca', function(){
+  //     clickImagemMarcacaoPeca($(this).find("img").attr("src"));
+  //   }
+  // );
 
-  async function posicionarImagemReq (imagemString) {
-    var image = new Image();
-    image.src = "data:image/png;base64," + imagemString;
-    image.title = await getProductRefIdByProductName();
-    image.alt = await getProductRefIdByProductName();
-    var li = document.createElement("li");
-    var ancora = document.createElement("a");
-    $( ancora ).addClass( "imagemMarcacaoPeca" )
-      .attr('id', 'botaoZoom')
-      .attr('href', 'javascript:void(0);')
-      .attr('title', 'Zoom')
-      .attr('id', 'botaoZoom');
-    li.appendChild(ancora);
-    ancora.appendChild(image);
-    var ul = document.querySelector(".thumbs.product-qd-v1-image-thumbs.QD-thumbs.img-responsive")
-    var li_target = ul.querySelector("li:nth-child(1)");
-    ul.insertBefore(li, li_target.nextSibling);
-  }
+  // async function posicionarImagemReq (imagemString) {
+  //   var image = new Image();
+  //   image.src = "data:image/png;base64," + imagemString;
+  //   image.title = await getProductRefIdByProductName();
+  //   image.alt = await getProductRefIdByProductName();
+  //   var li = document.createElement("li");
+  //   var ancora = document.createElement("a");
+  //   $( ancora ).addClass( "imagemMarcacaoPeca" )
+  //     .attr('id', 'botaoZoom')
+  //     .attr('href', 'javascript:void(0);')
+  //     .attr('title', 'Zoom')
+  //     .attr('id', 'botaoZoom');
+  //   li.appendChild(ancora);
+  //   ancora.appendChild(image);
+  //   var ul = document.querySelector(".thumbs.product-qd-v1-image-thumbs.QD-thumbs.img-responsive")
+  //   var li_target = ul.querySelector("li:nth-child(1)");
+  //   ul.insertBefore(li, li_target.nextSibling);
+  // }
 
-  function formatarDadosMapeamento(input) {
-    if (!input) return "";
+  // function formatarDadosMapeamento(input) {
+  //   if (!input) return "";
 
-    if (Array.isArray(input)) {
-      input.forEach(obj => {
-        Object.keys(obj).forEach(chave => {
-          if (typeof obj[chave] === 'string') {
-            obj[chave] = obj[chave].toLowerCase();
-            obj[chave] = obj[chave].split(" ")
-              .filter(palavra => palavra.length > 2)
-              .map(palavra => {
-                palavra = palavra.replace(/-/g, " ")
-                if (palavra.endsWith("s") || palavra.endsWith("es")) {
-                  return palavra.slice(0, -2);
-                } else if (palavra.endsWith("s")) {
-                  return palavra.slice(0, -1);
-                } else if (palavra.endsWith("a") || palavra.endsWith("o") ) {
-                  return palavra.slice(0, -1);
-                }
-                else {
-                  return palavra;
-                }
-              }).join(" ");
-          }
-        });
-      });
-      return input;
-    } else if (typeof input === 'string') {
-      input = input.toLowerCase();
-      const words = input.split(" ")
-          .filter(word => word.length > 2)
-          .map(word => {
-            word = word.replace(/-/g, " ")
-            if (word.endsWith("s") || word.endsWith("es")) {
-              return word.slice(0, -2);
-            } else if (word.endsWith("s")) {
-              return word.slice(0, -1);
-            } else if (word.endsWith("a") || word.endsWith("o") ) {
-              return word.slice(0, -1);
-            }
-            else {
-              return word;
-            }
-          });
+  //   if (Array.isArray(input)) {
+  //     input.forEach(obj => {
+  //       Object.keys(obj).forEach(chave => {
+  //         if (typeof obj[chave] === 'string') {
+  //           obj[chave] = obj[chave].toLowerCase();
+  //           obj[chave] = obj[chave].split(" ")
+  //             .filter(palavra => palavra.length > 2)
+  //             .map(palavra => {
+  //               palavra = palavra.replace(/-/g, " ")
+  //               if (palavra.endsWith("s") || palavra.endsWith("es")) {
+  //                 return palavra.slice(0, -2);
+  //               } else if (palavra.endsWith("s")) {
+  //                 return palavra.slice(0, -1);
+  //               } else if (palavra.endsWith("a") || palavra.endsWith("o") ) {
+  //                 return palavra.slice(0, -1);
+  //               }
+  //               else {
+  //                 return palavra;
+  //               }
+  //             }).join(" ");
+  //         }
+  //       });
+  //     });
+  //     return input;
+  //   } else if (typeof input === 'string') {
+  //     input = input.toLowerCase();
+  //     const words = input.split(" ")
+  //         .filter(word => word.length > 2)
+  //         .map(word => {
+  //           word = word.replace(/-/g, " ")
+  //           if (word.endsWith("s") || word.endsWith("es")) {
+  //             return word.slice(0, -2);
+  //           } else if (word.endsWith("s")) {
+  //             return word.slice(0, -1);
+  //           } else if (word.endsWith("a") || word.endsWith("o") ) {
+  //             return word.slice(0, -1);
+  //           }
+  //           else {
+  //             return word;
+  //           }
+  //         });
 
-      return words.join(" ");
-      }
-  }
+  //     return words.join(" ");
+  //     }
+  // }
 });
