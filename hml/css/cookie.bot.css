@@ -1,3 +1,8 @@
+#c-right{
+  margin-left: 10px;
+  display: grid;
+}
+
 @media screen and (max-width:1170px) {
     #cookiebanner {
         border-radius: 0 !important;
@@ -23,6 +28,9 @@
     #cookiebanner p.c-message {
         margin-bottom: 20px;
     }
+    #cookiebanner .aceitar-cookies-container {
+      margin-top: 10px;
+    }
 }
 @media screen and (min-width:720px) {
     #cookiebanner {
@@ -36,13 +44,15 @@
         /* float: right; */
     }
 }
-#cookiebanner #c-right {
+/* #cookiebanner #c-right {
     min-width: fit-content;
-}
+} */
+
 #cookiebanner #c-left * {
     margin-block-start: unset;
     margin-block-end: unset;
 }
+
 #cookiebanner {
     box-sizing: border-box;
     background-color: white;
@@ -60,30 +70,84 @@
     justify-content: space-between;
     transition: .2s;
 }
+
 #cookiebanner p {
     font-size: 14px;
     line-height: 1.4;
 }
+
 #cookiebanner .c-header {
     text-transform: uppercase;
     color: #1a3779;
     font-weight: bold;
     margin-bottom: 4px;
 }
+
 #cookiebanner p.c-message {
     font-size: 14px;
     color: #999;
+    margin: 5px;
 }
+
 #cookiebanner a {
     font-weight: bold;
     color: #999;
 }
+
 #cookiebanner a:hover {
     color: #1a3779;
 }
+
+#cookiebanner .aceitar-cookies-container{
+  display: flex;
+  align-items: center;
+}
+
+#cookiebanner #aceitar-cookies-checkbox {
+  background-color: #fff;
+  border: 2px solid #183884;
+  width: 18px;
+  height: 18px;
+  margin-right: 7px;
+  position: relative;
+  transition: background-color 0.3s;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+#cookiebanner #aceitar-cookies-checkbox::before {
+  content: '\2713';
+  display: block;
+  color: #fff;
+  font-size: 12px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  cursor: pointer;
+}
+
+#cookiebanner #aceitar-cookies-checkbox:checked {
+  background-color: #183884;
+}
+
+#cookiebanner #aceitar-cookies-checkbox:checked::before {
+  opacity: 1;
+}
+
+#cookiebanner label#aceitar-cookies-label{
+  display: contents;
+  font-weight: 600;
+  color: #183884;
+  cursor: pointer;
+}
+
 #cookiebanner a.c-button {
     border-radius: 4px;
-    background-color: #2D4F9E;
+    background-color: #929292;
     box-shadow: 0 2px 0 0 rgb(221, 221, 221);
     border: 1px solid rgb(221, 221, 221);
     padding: 12px 30px;
@@ -98,8 +162,29 @@
     -moz-transition: .2s;
     -webkit-transition: .2s;
     transition: .2s;
+    cursor: not-allowed;
 }
-#cookiebanner a.c-button:hover {
+
+#cookiebanner a.c-button:not(.c-button-disabled):hover {
+  background-color: #1f4cb6;
+  cursor: pointer;
+  box-shadow: 0 2px 0 0 rgb(221, 221, 221);
+  border: 1px solid rgb(221, 221, 221);
+  padding: 12px 30px;
+  text-decoration: none;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 10px;
+  color: white;
+  font-size: 16px;
+  -o-transition: .2s;
+  -ms-transition: .2s;
+  -moz-transition: .2s;
+  -webkit-transition: .2s;
+  transition: .2s;
+}
+
+/* #cookiebanner a.c-button:hover {
     box-shadow: none;
     background-color: #1a3779;
-}
+} */
