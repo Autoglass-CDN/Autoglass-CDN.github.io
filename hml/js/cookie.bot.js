@@ -45,30 +45,49 @@
                 <div id="c-left">
                     <p class="c-header">Protegemos seus dados pessoais</p>
                     <p class="c-message">
-                        Autoglass protege seus dados pessoais e utiliza cookies para personalizar anúncios e melhorar a sua experiência no site.
-                        Ao continuar navegando, você concorda com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade</a>
+                      O Grupo Autoglass, em respeito à privacidade dos seus dados pessoais e buscando a melhorar sua experiência de navegação no site,
+                      gostaria de obter o seu consentimento para coletar e utilizar cookies de navegação, que servirão para trazer conteúdos personalizados
+                      e mais relevantes para você. Ao clicar em "Aceitar", você estará concordando com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade.</a>
                     </p>
                 </div>
                 <div id="c-right">
-                    <a id="aceitar-cookie-link" class="c-button">Aceitar e fechar</a>
+                  <div class="aceitar-cookies-container">
+                    <input type="checkbox" id="aceitar-cookies-checkbox" />
+                    <label for="aceitar-cookies-checkbox" id="aceitar-cookies-label">Aceitar Cookies</label>
+                  </div>
+                    <a id="aceitar-cookie-link" class="c-button c-button-disabled">Concordar</a>
                 </div>
                 <div style="clear:both"></div>
             </div>
         `);
 
-        $('#aceitar-cookie-link').click(acceptCookies)
+        const aceitarCookiesCheckbox = $('#aceitar-cookies-checkbox');
+        const aceitarCookieLink = $('#aceitar-cookie-link');
+
+        aceitarCookiesCheckbox.change(function () {
+          let isChecked = this.checked;
+          aceitarCookieLink.toggleClass('c-button-disabled', !isChecked);
+          aceitarCookieLink.css('background-color', isChecked ? '#183884' : '#999');
+          aceitarCookieLink.css('cursor', isChecked ? 'pointer' : 'not-allowed');
+        });
+
+        aceitarCookieLink.click(acceptCookies);
     }
 
     function acceptCookies() {
-        hideCookieBanner();
+      aceitarCookiesCheckbox = $('#aceitar-cookies-checkbox');
+      aceitarCookieLink = $('#aceitar-cookie-link');
+      const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
 
-        const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
-
-        cookie.accepted = true;
-        cookie.acceptedAt = Date.now();
-
-        $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
-    }
+      if (aceitarCookiesCheckbox.prop('checked')) {
+          hideCookieBanner();
+          cookie.accepted = true;
+          cookie.acceptedAt = Date.now();
+          $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
+      } else {
+          return;
+      }
+  }
 
     function showCookieBanner() {
         const cookiebanner = document.getElementById("cookiebanner");
