@@ -33,20 +33,30 @@
       return inputElement;
   }
 
+  function isNumericInput(input) {
+    const inputValue = input.value.trim();
+    return /^[0-9]+$/.test(inputValue);
+  }
+
   function keepInputAlwaysFilled() {
     input = getInputElement();
     if(!input) return
+
     const isInputFilled = !!input.value.trim();
-    if (isInputFilled) {
+    const isNumeric = isNumericInput(input);
+
+
+    if (isInputFilled && isNumeric) {
       goToPaymentButton.enable();
     } else {
-      setNativeValue(input, " ");
+      setNativeValue(input, "");
+      goToPaymentButton.disable();
     }
     input = getInputElement();
     input.onkeydown = function (pressed) {
       const current = this.value;
       if (pressed.key == "Backspace" && current.length <= 1) {
-        setNativeValue(input, "  ");
+        setNativeValue(input, "");
         goToPaymentButton.disable();
       }
       input.dispatchEvent(new Event("input", { bubbles: true }));
@@ -55,7 +65,7 @@
     input.onkeyup = function () {
       const current = this.value;
       if (current.trim() == "") {
-        setNativeValue(input, " ");
+        setNativeValue(input, "");
         goToPaymentButton.disable();
       } else {
         setNativeValue(input, current.trim());
@@ -96,6 +106,8 @@
         if (initialButton.length)
           return initialButton[0].click();
         keepInputAlwaysFilled();
+        let buttonGoToPaymentWrapper = $('.btn-go-to-payment-wrapper');
+        buttonGoToPaymentWrapper.css("display", "block");
       });
     });
 
