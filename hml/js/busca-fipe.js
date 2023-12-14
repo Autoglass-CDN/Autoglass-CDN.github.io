@@ -1,4 +1,5 @@
 (function () {
+
   let activeTab = '#busca-peca';
   selectRightSearchMethod();
 
@@ -15,6 +16,7 @@
         ",specificationFilter_36", // MONTADORA
         ",specificationFilter_50", // VEICULO
         ",specificationFilter_48", // ANO
+        ",specificationFilter_76", // FIPE
       ],
       TREE_LEVEL: 2,
       LID_FILTER: "lid=bf120500-baab-4185-8b70-cc630f7d1c70",
@@ -74,6 +76,15 @@
       routeSelected: "",
       isAsyncSearch: true,
       asyncSearchTerm: ".Ano",
+      canBeClear: true,
+    },
+    {
+      title: "Fipe",
+      id: "fipe-select",
+      values: [],
+      routeSelected: "",
+      isAsyncSearch: true,
+      asyncSearchTerm: ".Fipe",
       canBeClear: true,
     },
   ];
@@ -875,6 +886,7 @@
       MONTADORA: 36,
       VEICULO: 50,
       ANO: 48,
+      FIPE: 76,
     };
 
     const modalDeCarregamento = new ModalDeCarregamento();
@@ -887,12 +899,14 @@
         montadora,
         modelo,
         anoModelo,
+        fipe,
       } = await obterDadosDoVeiculoViaOlhoNoCarro(placaSemCaracteresEspeciais);
 
       let [
         montadorasEncontradas,
         modelosEncontrados,
         anosEncontrados,
+        fipesEncontrados,
       ] = await Promise.all([
         encontrarDadosNoCadastroVtex({
           filtro: FILTROS_VTEX.MONTADORA,
@@ -906,14 +920,20 @@
 
         encontrarDadosNoCadastroVtex({
           filtro: FILTROS_VTEX.ANO,
-          regex: obterRegexAnos(anoModelo),
+          regex: obterRegexAnos(anoModelo, fipe),
+        }),
+
+        encontrarDadosNoCadastroVtex({
+          filtro: FILTROS_VTEX.FIPE,
+          regex: obterRegexFipes(fipe),
         }),
       ]);
 
       if (
         !anosEncontrados.length &&
         !montadorasEncontradas.length &&
-        !modelosEncontrados.length
+        !modelosEncontrados.length &&
+        !fipesEncontrados.length
       ) {
         throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
       }
@@ -938,7 +958,12 @@
 
       if (modelosEncontrados.length) {
         url += `/${modelosEncontrados[0].Value}`;
-        parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO},`;
+      }
+
+      if (fipesEncontrados.length) {
+        url += `/${fipesEncontrados[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.FIPE}`;
       }
 
       registerGaEvent(placaSemCaracteresEspeciais, url);
@@ -990,7 +1015,12 @@
     }
 
     function obterRegexAnos(anoModelo) {
-      return new RegExp(anoModelo.trim(), "gi")
+      return new RegExp(anoModelo.trim(), "gi");
+    }
+
+    function obterRegexFipes(fipe) {
+      const fipeFormatado = fipe.replace(/(\d+)(\d)$/, '0$1-$2');
+      return new RegExp(fipeFormatado, "i");
     }
 
     async function encontrarDadosNoCadastroVtex({ filtro, regex }) {
@@ -1023,17 +1053,18 @@
         `https://crawler-keplaca.herokuapp.com/placa/${placa}`
       );
 
-      const [montadora, modelo, anoModelo] = await response.json();
+      const [montadora, modelo, anoModelo, fipe] = await response.json();
 
       if (
         null === montadora &&
         null === modelo &&
-        null === anoModelo
+        null === anoModelo &&
+        null === fipe
       ) {
         throw new VehicleNotFoundException(placa);
       }
 
-      return { montadora, modelo, anoModelo };
+      return { montadora, modelo, anoModelo, fipe };
     }
 
     async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
@@ -1047,17 +1078,19 @@
       montadora = veiculo.Body.Data.DadosBasicosDoVeiculo.Marca;
       modelo = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].Modelo;
       anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
+      fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].FipeId;
 
       var infoBuscaPLaca = JSON.parse(localStorage.getItem('infoBuscaPLaca')) || [];
       infoBuscaPLaca = [{
         montadora: montadora,
         modelo: modelo,
         anoModelo: anoModelo,
+        fipe: fipe,
         timestamp: new Date().toLocaleString()
       }];
       localStorage.setItem('infoBuscaPLaca', JSON.stringify(infoBuscaPLaca));
 
-      return { montadora, modelo, anoModelo };
+      return { montadora, modelo, anoModelo, fipe };
     }
   }
 
