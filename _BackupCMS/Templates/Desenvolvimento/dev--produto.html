@@ -122,7 +122,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
             <div class="row">
               <div class="col-xs-3">
                 <span class="product-qd-v1-name">
-                  <vtex.cmc:productName />
+                  <vtex.cmc:productName/>
                 </span>
               </div>
               <div class="col-xs-3">
@@ -553,162 +553,6 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
   <!--<script src="https://autoglass-cdn.github.io/hml/consulta-agendamento.js" type="text/javascript"></script>-->
   <script src="https://autoglass-cdn.github.io/src/js/consulta-agendamento.js" type="text/javascript"></script>
 
-
-
-  <!-- Modal Instale na loja - B2C-1863 -->
-  <div class="mz-modal-installation modal-instale-na-loja">
-    <div class="mz-install__close">
-      <span class="mz-install__close--button"></span>
-    </div>
-
-    <div class="secao-agendamento">
-      <div class="mz-install__title">
-        <h2>Instalação na Loja</h2>
-      </div>
-      <span>Veja nossa agenda e selecione o dia e horário disponível para instalação:</span>
-      <div class="cep" data-render-cep=".secao-agendamento"></div>
-      <div class="filter">
-        <div class="data">
-          <label class="date" for="alterar-data-input">Data: </label>
-          <input type="text" name="data" id="alterar-data-input" class="gtm-instale-na-loja-data-input" />
-        </div>
-        <div class="qtd" style="display: none">
-          Lojas encontradas: 0
-        </div>
-      </div>
-      <div class="to-select-msg">
-        <h3> Selecione a loja mais próxima de você: </h3>
-      </div>
-      <div class="selected-msg" hidden="true"> <i class="fa fa-check" aria-hidden="true"
-          style="color: green; margin-right: 5px;"></i>
-        Selecionado:
-        <b></b>
-      </div>
-      <div class="store-list">
-        <ul>
-        </ul>
-      </div>
-      <div class="mz-title__bottomBorder"></div>
-    </div>
-
-    <div class="mz-install__button">
-      <a class="mz-install__button--buy lock-button gtm-instale-na-loja-comprar-btn">
-        Comprar com instalação
-      </a>
-    </div>
-  </div>
-  <!-- // Modal Instale na loja -->
-
-  <!-- Modal retire na loja -->
-  <div class="mz-modal-pickup">
-    <div class="mz-pickup__close">
-      <span class="mz-pickup__close--button"></span>
-    </div>
-    <div class="mz-pickup__title">
-      <h2>Retire na Loja</h2>
-      <span style="font-size: 14px">Confira e selecione abaixo a loja mais próxima do seu endereço:</span>
-    </div>
-    <div class="mz-content">
-      <div class="cep" data-render-cep=".mz-content"></div>
-      <div class="mz-pickup__stores">
-        <div class="mz-stores__title">
-          <h3 class="store">Selecione a loja mais próxima de você:</h3>
-          <h3 class="without-store">Não encontramos pontos de retirada próximos a você.</h3>
-        </div>
-        <div class="mz-pickup-stores__list">
-          <ul></ul>
-        </div>
-      </div>
-      <div class="mz-pickup__button">
-        <a class="mz-pickup__button--buy lock-button">Comprar</a>
-      </div>
-    </div>
-  </div>
-  <!-- // Modal retire na loja -->
-
-  <!-- Modal - Calcule o Frete -->
-  <div class="mz-modal-shipping">
-    <div class="mz-shipping__close">
-      <span class="mz-shipping__close--button"></span>
-    </div>
-    <div class="mz-shipping__title">
-      <h2>Formas de entrega</h2>
-      <span style="font-size: 14px">Confira abaixo as opções de entrega na sua região:</span>
-    </div>
-    <div class="mz-shipping-cep-content">
-      <div class="cep" data-render-cep=".mz-shipping-cep-content"></div>
-      <div class="mz-shipping__content">
-        <div class="mz-content__title">
-          <h3 class="mz-content__title--empty">
-            Não encontramos entrega para sua região
-            <br />
-            <span><a onclick="$zopim.livechat.window.show()">Clique aqui</a> e fale com a gente pelo
-              chat!</span>
-          </h3>
-        </div>
-        <div class="mz-shipping__list">
-          <ul></ul>
-        </div>
-        <div class="mz-shipping__button">
-          <a class="mz-shipping__button--buy lock-button">Comprar</a>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- // Modal - Calcule o Frete -->
-
-  <!-- Modal Instale em Casa -->
-  <div class="mz-modal-advantages">
-    <div class="mz-advantages__close">
-      <span class="mz-advantages__close--button"></span>
-    </div>
-    <div class="mz-advantages__title">
-      <h2>Instalação em Casa</h2>
-    </div>
-    <div class="mz-advantages__content">
-      <span>Veja nossa agenda e selecione o dia disponível para instalação:</span>
-      <div class="cep" data-render-cep=".mz-advantages__content"></div>
-      <div class="datas-disponiveis" style="display: none">
-        <div id="aviso-servico-movel" style="display: none"></div>
-        <div class="loading-dates">
-          <i class="fa fa-spinner fa-spin" aria-hidden="true"></i> Carregando...
-        </div>
-        <div id="mostrar-datas-datepicker"></div>
-      </div>
-      <div class="preview-data" style="display:none; text-align: center; padding: 15px">
-        <i class="fa fa-check" aria-hidden="true" style="color: green; margin-right: 5px;"></i>
-        Data escolhida:
-        <b></b>
-      </div>
-      <div class="preview-data" style="display:none; text-align: center">
-        <i class="fa fa-check" aria-hidden="true" style="color: green; margin-right: 5px;"></i>
-        Horário de atendimento: <b>08:00 às 18:00</b>
-      </div>
-
-      <div class="mz-install__info">
-        <div class="mz-info__list">
-          <ul>
-            <li>
-              Após aprovação do pagamento, nossos analistas entrarão
-              em contato com você para confirmar o horário de agendamento.
-            </li>
-            <li>
-              Será realizada uma análise pelo técnico e caso
-              haja necessidade de troca de borrachas ou sensores,
-              o valor será cobrado avulso.
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="mz-advantages__button">
-        <a class="mz-advantages__button--buy lock-button">
-          Comprar com instalação
-        </a>
-      </div>
-    </div>
-  </div>
-  <!-- // Modal Instale em Casa -->
-
   <style type="text/css">
     /* The Modal (background) */
     .modal {
@@ -788,7 +632,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
         <span class="close"></span>
       </div>
       <div class="modal-header">
-        <h2>Aguarde...</h2>
+        <p>Aguarde...</p>
       </div>
       <div class="modal-body">
         <p>Estamos selecionando as melhores opções para você! :)</p>
