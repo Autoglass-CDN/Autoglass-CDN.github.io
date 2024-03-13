@@ -993,6 +993,10 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
     border-radius: 3px;
 }
 
+.texto-botao-compre-whatsapp {
+  width: 100%;
+}
+
 /* .container-compre-whatsapp {
   overflow: hidden;
   margin-top: 10px;
