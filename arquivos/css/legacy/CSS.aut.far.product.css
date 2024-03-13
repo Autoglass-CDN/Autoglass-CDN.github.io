@@ -974,6 +974,10 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
     border-radius: 3px;
 }
 
+.texto-botao-compre-whatsapp {
+  width: 100%;
+}
+
 .container-compre-whatsapp .botao-compre-whatsapp {
     font-size: 0px;
     background: #fff;
