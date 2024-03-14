@@ -5,7 +5,7 @@
     let whatsappIconRodape = document.querySelector('#whatsapp-icon-rodape');
 
     const textoConteudoComNumero = "Whatsapp: " + numeroWhatsAppFormatadoAG;
-    const textoConteudoSemNumero = "Atendimento WhatsApp";
+    // const textoConteudoSemNumero = "Atendimento WhatsApp";
 
     $('.link-whatsapp').attr('href', urlWhatsAppApi + numeroWhatsAppAG);
     $('.link-whatsapp-texto').attr('href', urlWhatsAppApi + numeroWhatsAppAG + textoUrlGet);
