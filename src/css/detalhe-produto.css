@@ -305,10 +305,6 @@ h4.group.Especificacoes {
   max-width: 120px;
 }
 
-.group.Especificacoes tr:nth-last-child(1), .group.Especificacoes tr:nth-last-child(2) {
-  display: none;
-}
-
 .group.Especificacoes th, .group.Especificacoes td {
   border-bottom: 1px solid #dbdbdb;
 }
