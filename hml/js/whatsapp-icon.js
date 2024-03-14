@@ -10,7 +10,7 @@
     $('.link-whatsapp').attr('href', urlWhatsAppApi + numeroWhatsAppAG);
     $('.link-whatsapp-texto').attr('href', urlWhatsAppApi + numeroWhatsAppAG + textoUrlGet);
     $('.link-whatsapp-conteudo').text(textoConteudoComNumero);
-    $('.link-whatsapp-conteudo-sem-numero').text(textoConteudoSemNumero);
+    // $('.link-whatsapp-conteudo-sem-numero').text(textoConteudoSemNumero);
     //---------------------------------------------
     let whatsappIconFlutuante = document.querySelector('#whatsapp-icon-link');
 
