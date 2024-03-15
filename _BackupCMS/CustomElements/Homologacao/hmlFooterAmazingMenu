@@ -1,6 +1,6 @@
 <ul class="footer-qd-v1-menu-grid" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
     <li class="grid-area-autoglass">
-        <p class="qd_am_text">A Autoglass</p>
+        <h3 class="qd_am_text">A Autoglass</h3>
         <ul>
             <li><a href="" itemprop="url" title="Ajuda">Ajuda</a></li>
             <li><a href="/Institucional/quem-somos" itemprop="url" title="Quem somos">Quem somos</a></li>
@@ -14,7 +14,7 @@
         </ul>
     </li>
     <li class="grid-area-servicos">
-        <p class="qd_am_text">Serviços</p>
+        <h3 class="qd_am_text">Serviços</h3>
         <ul>
             <li><a href="/reparo-de-arranhoes-e-amassados" itemprop="url" title="Pintura Automotiva">Reparo de Arranhoes
                     e Amassados</a></li>
@@ -22,7 +22,7 @@
         </ul>
     </li>
     <li class="grid-area-suporte">
-        <p class="qd_am_text">Suporte</p>
+        <h3 class="qd_am_text">Suporte</h3>
         <ul>
             <li><a href="/institucional/entrega" itemprop="url" title="Política de Entrega">Política de Entrega</a></li>
             <li><a href="/institucional/pagamento" itemprop="url" title="Política de Pagamento">Política de

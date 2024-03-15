@@ -8,7 +8,7 @@
 <input type="hidden" class="qd_cpProdId" value="$id" />
 <!-- QD Cores Prateleira Padrão -->
 
-<div class="shelf-qd-v1 #if($product.IsInStock) qd-product-is-in-stock-true #else qd-product-is-in-stock-false #end">
+<div class="shelf-qd-v1 produto-prateleira #if($product.IsInStock) qd-product-is-in-stock-true #else qd-product-is-in-stock-false #end" id="p$id">
     <div class="row">
         <div class="col-xs-12">
             <!-- Product image -->
@@ -50,9 +50,9 @@
 
                 <div class="product-qd-v1-brand-name mob">
                     Marca:
-                      <h3 class="product-brand-link">
+                      <p class="product-brand-link">
                           <a href="$uri"> $product.BrandLink</a>
-                      </h3>
+                      </p>
                       <vtex.cmc:brandName/>
                 </div>
 
@@ -129,3 +129,15 @@
         </div>
     </div>
 </div>
+
+<script>
+    try {
+        const urlProduto = '$uri';
+        const skuProduto = urlProduto.substring(urlProduto.lastIndexOf("-") + 1).replace(/\D/g, "");
+        const elemento = document.querySelector('.produto-prateleira#p$id');
+        elemento.classList.add('p' + skuProduto);
+    }
+    catch (ex) {
+        console.log('Erro ao recuperar dados do produto: ' + ex.message);
+    }
+</script>
