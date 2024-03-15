@@ -996,7 +996,7 @@ i.arrow-icon::before {
   height: 40px;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-header h4 {
+.side-menu-categorias .side-menu-categorias__categoria-header h3 {
   width: 100%;
   font-size: 0.9rem;
   font-weight: normal;
@@ -1117,7 +1117,7 @@ i.arrow-icon::before {
   margin-left: 0;
 }
 
-.painel-categorias .painel-categorias__categoria h3{
+.painel-categorias .painel-categorias__categoria h2{
   transition: 0s ease-in-out .1s
 }
 
@@ -1184,7 +1184,7 @@ i.arrow-icon::before {
   font-weight: var(--semi-bold);
 }
 
-.painel-categorias .painel-categorias__categoria-header h3 {
+.painel-categorias .painel-categorias__categoria-header h2 {
   font-size: 0.8750rem;
   font-weight: unset;
 }

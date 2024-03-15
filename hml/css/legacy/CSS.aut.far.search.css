@@ -129,6 +129,17 @@
 .search-qd-v1-result .searchResultsTime:after {
     clear: both;
 }
+
+.col-xs-12 .container-titulo-lateral-prateleira {
+  max-width: 0px;
+  padding: 0px;
+  margin: 0px;
+}
+
+.col-xs-12 .container-titulo-lateral-prateleira .titulo-lateral-prateleira{
+  width: max-content;
+}
+
 @media (max-width: 1200px) {
     .search-qd-v1-result .searchResultsTime {
         margin-bottom: 30px;

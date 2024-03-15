@@ -6,8 +6,8 @@
 	<vtex:contentPlaceHolder id="qd_head_tag" />
 	<meta charset="UTF-8" />
 	<title>
-		<vtex.cmc:productPageTitle />
-	</title>
+        <vtex.cmc:titleDinamico />
+    </title>
     <vtex:template id="hml--busca--head-tags" />
 	<vtex:metaTags />
 
@@ -68,6 +68,9 @@
 					<div class="row">
 						<aside>
 							<div class="col-xs-12 col-lg-3">
+                                <div class='container-titulo-lateral-prateleira'>
+    							    <h3 class='titulo-lateral-prateleira'></h3>
+    							</div>
 								<div class="search-qd-v1-navigator">
 									<a class="search-qd-v1-navigator-trigger" href="#" role="button">Filtrar resultado</a>
 
@@ -97,6 +100,13 @@
 
 									</div>
 								</div>
+
+                                <script>
+                                    $(document).ready(function(){
+                                      var textoParaH1 = $(".search-qd-v1-navigator .search-qd-v1-navigator-list .search-single-navigator h3").text();
+                                      $(".titulo-lateral-prateleira").text(textoParaH1);
+                                    });
+                                </script>
 
 								<!-- Side banners -->
 								<div class="search-qd-v1-side-banners">

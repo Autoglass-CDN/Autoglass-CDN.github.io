@@ -212,6 +212,10 @@
   display: flex;
 }
 
+.benefit .benefit-wrapper h2 {
+  font-size: 14px;
+}
+
 .benefits-section svg {
   margin-right: 16px;
   min-width: 40px;
