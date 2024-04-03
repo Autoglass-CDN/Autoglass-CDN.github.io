@@ -600,6 +600,7 @@ body.departamento .search-qd-v1-seo-text {
     border-radius: 0;
     line-height: 21px;
     font-weight: 600;
+    max-width: 265px;
 }
 
 .search-qd-v1-navigator .search-qd-v1-navigator-title{

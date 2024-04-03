@@ -169,6 +169,11 @@
   color: #95989A;
 }
 
+.titulo-pagina-home {
+  text-align: center;
+  margin: 10px;
+}
+
 .benefits-section .benefits-dots-mobile-container {
   display:none;
 }
@@ -246,6 +251,9 @@
   .benefits-section .benefit-wrapper {
     justify-content: center;
   }
+  .titulo-pagina-home {
+    font-size: 19px;
+  }
 }
 
 @media (max-width: 600px) {
@@ -261,6 +269,9 @@
   }
   .benefits-section .benefit:last-child {
     padding-right: 20%;
+  }
+  .titulo-pagina-home {
+    font-size: 16px;
   }
   .benefits-section .benefits-dots-mobile-container{
     display: flex;
