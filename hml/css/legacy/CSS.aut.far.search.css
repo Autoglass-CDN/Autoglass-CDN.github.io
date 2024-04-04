@@ -578,23 +578,29 @@ body.departamento .search-qd-v1-seo-text {
 .search-qd-v1-navigator .menu-navegue {
     display: none;
 }
-.search-qd-v1-navigator .search-qd-v1-navigator-title {
-    display: block;
-    min-height: 25px;
-    min-width: 30px;
-    padding: 10px 10px 20px 30px;
-    color: #2d4f9e;
-    vertical-align: middle;
-    border-radius: 0;
-    line-height: 21px;
-    font-weight: 600;
-    font-size: 21px;
-    border-bottom: 1px solid #d5d5d5;
+.search-qd-v1-navigator .search-qd-v1-navigator-title, .col-xs-12 .container-titulo-lateral-prateleira .titulo-lateral-prateleira {
+  display: block;
+  min-height: 25px;
+  min-width: 30px;
+  padding: 10px 10px 20px 30px;
+  color: #2d4f9e;
+  vertical-align: middle;
+  border-radius: 0;
+  line-height: 21px;
+  font-weight: 600;
+  max-width: 265px;
 }
+
+.search-qd-v1-navigator .search-qd-v1-navigator-title{
+border-bottom: 1px solid #d5d5d5;
+font-size: 21px;
+}
+
 body.categoria .search-qd-v1-navigator .search-qd-v1-navigator-title,
 body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
     border: none;
 }
+
 .search-qd-v1-navigator .qd-viewMoreWrapper a {
     margin-bottom: 0;
     padding-left: 30px;

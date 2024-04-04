@@ -73,7 +73,7 @@
 						<aside>
 							<div class="col-xs-12 col-lg-3">
                                 <div class='container-titulo-lateral-prateleira'>
-							        <h3 class='titulo-lateral-prateleira'></h3>
+							        <h1 class='titulo-lateral-prateleira'></h1>
 							    </div>
 								<div class="search-qd-v1-navigator">
 									<a class="search-qd-v1-navigator-trigger" href="#" role="button">Filtrar
@@ -108,8 +108,9 @@
 
                                 <script>
                                     $(document).ready(function(){
-                                      var textoParaH1 = $(".search-qd-v1-navigator .search-qd-v1-navigator-list .search-single-navigator h3").text();
-                                      $(".titulo-lateral-prateleira").text(textoParaH1);
+                                      var textoParaH1 = $("title").text();
+                                      var textoFormatado = textoParaH1.replace(/\s+\|.*/, '');
+                                      $(".titulo-lateral-prateleira").text(textoFormatado);
                                     });
                                 </script>
 
