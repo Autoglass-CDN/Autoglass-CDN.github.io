@@ -63,7 +63,7 @@
         display: block !important;
     }
 }
-  
+
 @media (min-width: 768px) {
     .d-md-none {
         display: none !important;
@@ -72,7 +72,7 @@
         display: block !important;
     }
 }
-  
+
 @media (min-width: 992px) {
     .d-lg-none {
         display: none !important;
@@ -81,14 +81,14 @@
         display: block !important;
     }
 }
-  
+
 @media (min-width: 1200px) {
     .d-xl-none {
         display: none !important;
     }
     .d-xl-block {
         display: block !important;
-    }  
+    }
 }
 
 #svg-map { margin-top: 30px; }
@@ -107,7 +107,7 @@
 }
 
 #stateSelectorModal div.modal-content {
-    -webkit-box-shadow: 0px 2px 9px -5px #000000; 
+    -webkit-box-shadow: 0px 2px 9px -5px #000000;
     box-shadow: 0px 2px 9px -5px #000000;
 }
 
@@ -129,9 +129,10 @@
     margin: 0 auto 15px;
 }
 
-#stateSelectorModal.modal-confirmation h4.modal-title {
+#stateSelectorModal.modal-confirmation p.modal-title {
     text-align: left;
     font-size: 18pt;
+    font-weight: bold;
     margin-bottom: 10px;
 }
 
@@ -246,7 +247,7 @@
         white-space: nowrap;
         margin-bottom: 0px;
     }
-    
+
     #stateSelectorModal.modal-confirmation h4.modal-title, #stateSelectorModal.modal-confirmation p.modal-description {
         text-align: center;
     }

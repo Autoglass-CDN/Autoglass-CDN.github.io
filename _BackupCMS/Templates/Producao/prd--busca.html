@@ -68,6 +68,9 @@
 					<div class="row">
 						<aside>
 							<div class="col-xs-12 col-lg-3">
+                                <div class='container-titulo-lateral-prateleira'>
+							        <h1 class='titulo-lateral-prateleira'></h1>
+							    </div>
 								<div class="search-qd-v1-navigator">
 									<a class="search-qd-v1-navigator-trigger" href="#" role="button">Filtrar resultado</a>
 
@@ -97,6 +100,14 @@
 
 									</div>
 								</div>
+
+                                <script>
+                                    $(document).ready(function(){
+                                      var textoParaH1 = $("title").text();
+                                      var textoFormatado = textoParaH1.replace(/\s+\|.*/, '');
+                                      $(".titulo-lateral-prateleira").text(textoFormatado);
+                                    });
+                                </script>
 
 								<!-- Side banners -->
 								<div class="search-qd-v1-side-banners">

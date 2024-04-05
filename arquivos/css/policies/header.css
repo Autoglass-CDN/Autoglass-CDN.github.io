@@ -70,7 +70,6 @@
 }
 .modal-confirmation .modal-content p {
     font-size: 10px;
-    color: #757575;
     line-height: 14px;
     text-align: left;
 }
@@ -300,7 +299,7 @@ display: none !important;
         font-size: 14px;
     }
 
- 
+
     .use-default-stuff {
         width: 80% !important;
     }
