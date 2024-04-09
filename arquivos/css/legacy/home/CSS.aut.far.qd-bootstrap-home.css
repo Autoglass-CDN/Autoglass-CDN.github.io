@@ -501,7 +501,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
     font-weight: 600
 }
 
-.footer-qd-v1-content .footer-qd-v1-menu-list ul>li p {
+.footer-qd-v1-content .footer-qd-v1-menu-list ul>li h3 {
     font-size: 14px;
     margin-bottom: 20px
 }

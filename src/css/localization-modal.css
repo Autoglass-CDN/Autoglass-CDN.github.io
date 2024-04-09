@@ -248,7 +248,7 @@
         margin-bottom: 0px;
     }
 
-    #stateSelectorModal.modal-confirmation p.modal-title, #stateSelectorModal.modal-confirmation p.modal-description {
+    #stateSelectorModal.modal-confirmation h4.modal-title, #stateSelectorModal.modal-confirmation p.modal-description {
         text-align: center;
     }
 }
