@@ -946,14 +946,15 @@
         parametrosUrl += `c,c,`;
       }
 
+
+      if (fipesEncontrados.length) {
+        url += `/${fipesEncontrados[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.FIPE},`;
+      }
+
       if (anosEncontrados.length) {
         url += `/${anosEncontrados[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.ANO},`;
-      }
-
-      if (montadorasEncontradas.length) {
-        url += `/${montadorasEncontradas[0].Value}`;
-        parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA},`;
       }
 
       if (modelosEncontrados.length) {
@@ -961,10 +962,12 @@
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO},`;
       }
 
-      if (fipesEncontrados.length) {
-        url += `/${fipesEncontrados[0].Value}`;
-        parametrosUrl += `specificationFilter_${FILTROS_VTEX.FIPE}`;
+      if (montadorasEncontradas.length) {
+        url += `/${montadorasEncontradas[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
+
+
 
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
@@ -1069,14 +1072,14 @@
 
     async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
       const urlApi = window.location.href.includes("hml")
-        ? "https://api-hml.autoglass.com.br"
-        : "https://api.autoglass.com.br";
+        ? "http://localhost:5010"
+        : "http://localhost:5010";
 
       const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
       const veiculo = await response.json();
 
-      montadora = veiculo.Body.Data.DadosBasicosDoVeiculo.Marca;
-      modelo = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].Modelo;
+      montadora = veiculo.Body.Data.Marca;
+      modelo = veiculo.Body.Data.Modelo;
       anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
       fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].FipeId;
 
