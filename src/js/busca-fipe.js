@@ -1072,8 +1072,8 @@
 
     async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
       const urlApi = window.location.href.includes("dev")
-        ? "http://localhost:5010"
-        : "http://localhost:5010";
+        ? "https://api-hml.autoglass.com.br"
+        : "https://api.autoglass.com.br";
 
       const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
       const veiculo = await response.json();
