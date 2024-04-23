@@ -94,6 +94,7 @@
   async function _init() {
     const categoryTree = await Service.getCategoryTree();
     const childrenCategories = [];
+    const grandchildenCategories = [];
 
     categoryTree
       .filter((x) => x.hasChildren)
@@ -101,17 +102,21 @@
         childrenCategories.push(...x.children);
       });
 
+      childrenCategories.forEach((y) => {
+        grandchildenCategories.push(...y.children);
+      });
+
     _initBuscaPlaca(childrenCategories);
-    await _initBuscaPeca(childrenCategories);
+    await _initBuscaPeca(grandchildenCategories);
   }
 
   async function _initBuscaPeca(values) {
 
-    PECA_SELECTS[0].values = values;
+    PECA_SELECTS[1].values = values;
 
     await Controller.checkRouterParams();
 
-    View.buildList(PECA_SELECTS[0].values, PECA_SELECTS[0].id);
+    View.buildList(PECA_SELECTS[1].values, PECA_SELECTS[1].id);
 
     PECA_SELECTS.forEach(View._initSelect_);
 
@@ -627,7 +632,7 @@
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
 
-      if(firstRouteSelected.length === 0) {
+      if(firstRouteSelected.length === 1) {
         alert("Selecione pelo menos o primeiro campo!");
         return;
       }
