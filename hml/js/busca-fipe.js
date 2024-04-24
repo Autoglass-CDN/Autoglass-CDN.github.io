@@ -79,12 +79,12 @@
       canBeClear: true,
     },
     {
-      title: "Fipe",
-      id: "fipe-select",
+      title: "Versão",
+      id: "versao-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Fipe",
+      asyncSearchTerm: ".Versão",
       canBeClear: true,
     },
   ];
@@ -513,8 +513,8 @@
             nextSelect.asyncSearchTerm
           );
 
-          // Caso seja Ano (Ultimo campo) tem que ser decrescente
-          index + 1 === PECA_SELECTS.length - 1
+          // Caso seja Ano (Penultimo campo [-2]) altera para decrescente
+          index + 1 === PECA_SELECTS.length - 2
             ? values.sort((a, b) => b.name.localeCompare(a.name))
             : values.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -574,7 +574,7 @@
           ];
         }
 
-        for (let i = 0; i < params.length; i++) {
+        for (let i = 1; i < params.length; i++) {
           const select = PECA_SELECTS[i];
           const value = select.values.find((x) =>
             x.url ? x.url.includes(params[i]) : x.name.includes(params[i])
