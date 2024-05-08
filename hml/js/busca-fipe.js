@@ -16,7 +16,8 @@
         ",specificationFilter_36", // MONTADORA
         ",specificationFilter_50", // VEICULO
         ",specificationFilter_48", // ANO
-        ",specificationFilter_76", // FIPE
+        ",specificationFilter_79" //VERSAOFIPE
+        // ",specificationFilter_76", // FIPE
       ],
       TREE_LEVEL: 2,
       LID_FILTER: "lid=bf120500-baab-4185-8b70-cc630f7d1c70",
@@ -84,7 +85,7 @@
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Versão",
+      asyncSearchTerm: ".Versão.Fipe",
       canBeClear: true,
     },
   ];
