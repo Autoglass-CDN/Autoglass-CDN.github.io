@@ -875,6 +875,7 @@
       MONTADORA: 36,
       VEICULO: 50,
       ANO: 48,
+      FIPE: 76,
     };
 
     const modalDeCarregamento = new ModalDeCarregamento();
@@ -887,12 +888,14 @@
         montadora,
         modelo,
         anoModelo,
+        fipe,
       } = await obterDadosDoVeiculoViaOlhoNoCarro(placaSemCaracteresEspeciais);
 
       let [
         montadorasEncontradas,
         modelosEncontrados,
         anosEncontrados,
+        fipesEncontrados,
       ] = await Promise.all([
         encontrarDadosNoCadastroVtex({
           filtro: FILTROS_VTEX.MONTADORA,
@@ -906,14 +909,20 @@
 
         encontrarDadosNoCadastroVtex({
           filtro: FILTROS_VTEX.ANO,
-          regex: obterRegexAnos(anoModelo),
+          regex: obterRegexAnos(anoModelo, fipe),
+        }),
+
+        encontrarDadosNoCadastroVtex({
+          filtro: FILTROS_VTEX.FIPE,
+          regex: obterRegexFipes(fipe),
         }),
       ]);
 
       if (
         !anosEncontrados.length &&
         !montadorasEncontradas.length &&
-        !modelosEncontrados.length
+        !modelosEncontrados.length &&
+        !fipesEncontrados.length
       ) {
         throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
       }
@@ -926,20 +935,28 @@
         parametrosUrl += `c,c,`;
       }
 
+
+      if (fipesEncontrados.length) {
+        url += `/${fipesEncontrados[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.FIPE},`;
+      }
+
       if (anosEncontrados.length) {
         url += `/${anosEncontrados[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.ANO},`;
       }
 
-      if (montadorasEncontradas.length) {
-        url += `/${montadorasEncontradas[0].Value}`;
-        parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA},`;
-      }
-
       if (modelosEncontrados.length) {
         url += `/${modelosEncontrados[0].Value}`;
-        parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO},`;
       }
+
+      if (montadorasEncontradas.length) {
+        url += `/${montadorasEncontradas[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
+      }
+
+
 
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
@@ -990,7 +1007,12 @@
     }
 
     function obterRegexAnos(anoModelo) {
-      return new RegExp(anoModelo.trim(), "gi")
+      return new RegExp(anoModelo.trim(), "gi");
+    }
+
+    function obterRegexFipes(fipe) {
+      const fipeFormatado = fipe.replace(/(\d+)(\d)$/, '0$1-$2');
+      return new RegExp(fipeFormatado, "i");
     }
 
     async function encontrarDadosNoCadastroVtex({ filtro, regex }) {
@@ -1026,20 +1048,22 @@
       const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
       const veiculo = await response.json();
 
-      montadora = veiculo.Body.Data.DadosBasicosDoVeiculo.Marca;
-      modelo = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].Modelo;
+      montadora = veiculo.Body.Data.Marca;
+      modelo = veiculo.Body.Data.Modelo;
       anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
+      fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].FipeId;
 
       var infoBuscaPLaca = JSON.parse(localStorage.getItem('infoBuscaPLaca')) || [];
       infoBuscaPLaca = [{
         montadora: montadora,
         modelo: modelo,
         anoModelo: anoModelo,
+        fipe: fipe,
         timestamp: new Date().toLocaleString()
       }];
       localStorage.setItem('infoBuscaPLaca', JSON.stringify(infoBuscaPLaca));
 
-      return { montadora, modelo, anoModelo };
+      return { montadora, modelo, anoModelo, fipe };
     }
   }
 
