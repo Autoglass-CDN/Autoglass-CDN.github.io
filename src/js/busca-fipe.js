@@ -14,10 +14,8 @@
       MAP_PARAMS: [
         "PS=20&map=c,c,c", // DEFAULT
         ",specificationFilter_36", // MONTADORA
-        ",specificationFilter_50", // VEICULO
-        ",specificationFilter_48", // ANO
-        ",specificationFilter_79" //VERSAOFIPE
-        // ",specificationFilter_76", // FIPE
+        ",specificationFilter_79", //VERSAOFIPE
+        ",specificationFilter_48" // ANO
       ],
       TREE_LEVEL: 2,
       LID_FILTER: "lid=bf120500-baab-4185-8b70-cc630f7d1c70",
@@ -62,12 +60,12 @@
       canBeClear: true,
     },
     {
-      title: "Veículo",
-      id: "veiculo-select",
+      title: "Versão",
+      id: "versao-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Veículo",
+      asyncSearchTerm: ".Versão.Fipe",
       canBeClear: true,
     },
     {
@@ -78,16 +76,7 @@
       isAsyncSearch: true,
       asyncSearchTerm: ".Ano",
       canBeClear: true,
-    },
-    {
-      title: "Versão",
-      id: "versao-select",
-      values: [],
-      routeSelected: "",
-      isAsyncSearch: true,
-      asyncSearchTerm: ".Versão.Fipe",
-      canBeClear: true,
-    },
+    }
   ];
 
   _init();
