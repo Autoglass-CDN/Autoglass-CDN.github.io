@@ -42,7 +42,7 @@
       canBeClear: false,
     },
     {
-      title: "Peça",
+      title: "Produto",
       id: "pecas-select",
       values: [],
       routeSelected: "",
