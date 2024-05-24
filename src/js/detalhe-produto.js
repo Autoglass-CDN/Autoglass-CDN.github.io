@@ -102,9 +102,8 @@ const sectionCollapseInit = () => {
     header.onclick = () => {
       toggleSectionCollapse(header.closest(".tab-content"));
     };
-    if (header.textContent === 'Compre Junto' || header.textContent === 'Outras Marcas') {
+    if (header.textContent === 'Compre Junto' || header.textContent === 'Outras Marcas')
       setTimeout(() => toggleSectionCollapse(header.closest(".tab-content")), 5000);
-    }
   });
 };
 
