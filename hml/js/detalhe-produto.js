@@ -10,10 +10,10 @@ $(".product-qd-v1-buy-button .buy-button.buy-button-ref").addClass("add-to-cart-
 
 function handleSocialClick(event, method) {
   dataLayer.push({
-    'event': 'share',
-    'method': method,
-    'content_type': skuJson.skus[0].image,
-    'item_id': skuJson.skus[0].sku,
+    event: 'share',
+    method: method,
+    content_type: skuJson.skus[0].image,
+    item_id: skuJson.skus[0].sku,
   });
 }
 
@@ -31,8 +31,8 @@ Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
 
 function ButtoWhatsappClick(event, position) {
   dataLayer.push({
-    'event': 'whatsapp',
-    'position': position
+    event: 'whatsapp',
+    position: position
   });
 }
 
@@ -50,7 +50,8 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
   }
 });
 
-var veiculosBuscaveis = [];
+
+let veiculosBuscaveis = [];
 const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');
 $('.veiculos-compativeis-search').hide();
 
@@ -88,21 +89,18 @@ window.onscroll = () => {
 };
 
 const toggleSectionCollapse = (section) => {
-  if (section.classList.contains("ativo")) section.classList.remove("ativo");
-  else section.classList.add("ativo");
+  section.classList.toggle("ativo");
 };
 
 const sectionCollapseInit = () => {
   let headers = document.querySelectorAll(".contents .tab-content h2");
 
   headers.forEach((header) => {
-    header.onclick = (event) => {
+    header.onclick = () => {
       toggleSectionCollapse(header.closest(".tab-content"));
     };
     if (header.textContent === 'Compre Junto' || header.textContent === 'Outras Marcas')
-      setTimeout(
-        () => toggleSectionCollapse(header.closest(".tab-content"))
-        , 5000);
+      setTimeout(() => toggleSectionCollapse(header.closest(".tab-content")), 5000);
   });
 };
 
@@ -133,11 +131,7 @@ async function insertBrandDescription() {
 
 async function getProductRefIdByProductName() {
   const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
-
-  const [_, productRefId] = currentProduct.name.match(
-    /(\d+)(\s?\-?\s?[0-9]+)?$/
-  );
-
+  const [_, productRefId] = currentProduct.name.match(/(\d+)(\s?\-?\s?[0-9]+)?$/);
   return productRefId;
 }
 
@@ -147,29 +141,24 @@ async function loadOptionals() {
   const testeOpcionais = $(".teste-opcionais");
 
   try {
-    const { Opcionais } = await $.get(
-      `${baseUrlApi}/produtos/${productRefId}/opcionais`
-    );
+    const { Opcionais } = await $.get(`${baseUrlApi}/produtos/${productRefId}/opcionais`);
 
     if (Opcionais && Opcionais.length > 0) {
       opcionaisContainer.html(`
         <h3>Características</h3>
         <div class="caracteristicas__box">
-          ${Opcionais.map(
-            (x) => `<span class="caracteristicas__caracteristica">${x}</span>`
-          ).join("")}
+          ${Opcionais.map((x) => `<span class="caracteristicas__caracteristica">${x}</span>`).join("")}
         </div>
       `);
       testeOpcionais.html(`
-            ${Opcionais.map(
-              (x) => `<h4 class="lista-opcionais">${x}</h4>`).join("")}
-            <div class="container-mais-especificacoes">
-              <a class="mais-especificacoes">Mais informações</a>
-            </div>
+        ${Opcionais.map((x) => `<h4 class="lista-opcionais">${x}</h4>`).join("")}
+        <div class="container-mais-especificacoes">
+          <a class="mais-especificacoes">Mais informações</a>
+        </div>
       `)
     }
   } catch (ex) {
-    console.error("Falha ao renderizar opcionais. \n ", ex);
+    console.error("Falha ao renderizar opcionais. \n", ex);
   }
 
   $('.container-mais-especificacoes .mais-especificacoes').click(function() {
@@ -181,14 +170,12 @@ window.addEventListener("load", insertBrandDescription);
 window.addEventListener("load", loadOptionals);
 
 async function loadSimilars() {
-  const hideMenu = (id) =>
-  (document.querySelector(`a[href="#${id}"]`).parentElement.style.display =
-    "none");
+  const hideMenu = (id) => (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = "none");
   const isLoaded = (id) => document.querySelector(`#${id}`).innerHTML != "";
-  const showComponent = (id) =>
-    (document.querySelector(`#${id}`).style.display = "block") &&
-    (document.querySelector(`a[href="#${id}"]`).parentElement.style.display =
-      "unset");
+  const showComponent = (id) => {
+    document.querySelector(`#${id}`).style.display = "block";
+    document.querySelector(`a[href="#${id}"]`).parentElement.style.display = "unset";
+  };
 
   hideMenu("outras-marcas");
   hideMenu("compre-junto");
@@ -218,89 +205,74 @@ $(window).on("load", async () => {
   const veiculosCompatíveisContainer = $("#veiculos-compativeis");
   const productRefId = await getProductRefIdByProductName();
 
-    const veiculosCompativeis = await $.get(
-      `${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`
-    );
+  const veiculosCompativeis = await $.get(`${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`);
+  veiculosBuscaveis = veiculosCompativeis;
 
-    veiculosBuscaveis = veiculosCompativeis;
+  const possuiVeiculosCompativeis = veiculosCompativeis ? veiculosCompativeis.length > 0 : false;
 
-    const possuiVeiculosCompativeis = veiculosCompativeis? (veiculosCompativeis.length>0) : false;
-
-    if (possuiVeiculosCompativeis > 0) {
-      veiculosCompatíveisContainer.html(`
-        <h2>Veículos Compatíveis</h2>
-        <div class="veiculos-compativeis__box">
-          <div class="veiculos-compativeis__box-header">
-            <button id="group-prev" data-type="prev" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  if (possuiVeiculosCompativeis) {
+    veiculosCompatíveisContainer.html(`
+      <h2>Veículos Compatíveis</h2>
+      <div class="veiculos-compativeis__box">
+        <div class="veiculos-compativeis__box-header">
+          <button id="group-prev" data-type="prev" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" alt="Ícone de seta para a esquerda">
               <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
             </svg>
-            </button>
-            ${veiculosCompativeis.map(buildHeader).join("")}
-            <button id="group-next" data-type="next" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
-              </svg>
-            </button>
-          </div>
-          <div class="veiculos-compativeis__box-content">
-              ${veiculosCompativeis.map(buildContent).join("")}
-          </div>
+          </button>
+          ${veiculosCompativeis.map(buildHeader).join("")}
+          <button id="group-next" data-type="next" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" alt="Ícone de seta para a direita">
+              <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
+            </svg>
+          </button>
         </div>
-      `);
+        <div class="veiculos-compativeis__box-content">
+          ${veiculosCompativeis.map(buildContent).join("")}
+        </div>
+      </div>
+    `);
 
-      $(".veiculos-compativeis__header-option").first().addClass("active");
-      $(`.veiculos-compativeis__box-content div`).first().addClass("active");
+    $(".veiculos-compativeis__header-option").first().addClass("active");
+    $(`.veiculos-compativeis__box-content div`).first().addClass("active");
 
-      $(".veiculos-compativeis__header-option").click(function () {
-        $(".veiculos-compativeis__header-option").removeClass("active");
-        $(this).addClass("active");
+    $(".veiculos-compativeis__header-option").click(function () {
+      $(".veiculos-compativeis__header-option").removeClass("active");
+      $(this).addClass("active");
 
-        $(`.veiculos-compativeis__box-content div`).removeClass("active");
-        $(
-          `.veiculos-compativeis__box-content div[data-for="${$(this).attr(
-            "id"
-          )}"]`
-        ).addClass("active");
-      });
+      $(`.veiculos-compativeis__box-content div`).removeClass("active");
+      $(`.veiculos-compativeis__box-content div[data-for="${$(this).attr("id")}"]`).addClass("active");
+    });
 
-      $(
-        "#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button"
-      ).click(function () {
-        const type = $(this).attr("data-type");
-        const headerContainer = $(
-          "#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header"
-        );
+    $("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button").click(function () {
+      const type = $(this).attr("data-type");
+      const headerContainer = $("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header");
 
-        if (type === "next") {
-          headerContainer[0].scrollBy(200, 0);
-        } else {
-          headerContainer[0].scrollBy(-200, 0);
-        }
-      });
+      if (type === "next") {
+        headerContainer[0].scrollBy(200, 0);
+      } else {
+        headerContainer[0].scrollBy(-200, 0);
+      }
+    });
 
-      const headerContainer = $(
-        "#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header"
-      );
-      $("#veiculos-compativeis h2").click(() =>
-        toggleSectionCollapse(veiculosCompatíveisContainer[0])
-      );
+    const headerContainer = $("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header");
+    $("#veiculos-compativeis h2").click(() => toggleSectionCollapse(veiculosCompatíveisContainer[0]));
 
+    checkIfNeedButtons(headerContainer);
+
+    headerContainer.on("scroll", function () {
+      checkIfNeedButtons($(this));
+    });
+    $(window).on("resize", function () {
       checkIfNeedButtons(headerContainer);
+    });
 
-      headerContainer.on("scroll", function () {
-        checkIfNeedButtons($(this));
-      });
-      $(window).on("resize", function () {
-        checkIfNeedButtons(headerContainer);
-      });
+    $('.veiculos-compativeis-search').show();
 
-      $('.veiculos-compativeis-search').show();
-
-    } else {
-      $('a[href="#veiculos-compativeis"]').parent().hide();
-      veiculosCompatíveisContainer.hide();
-    }
+  } else {
+    $('a[href="#veiculos-compativeis"]').parent().hide();
+    veiculosCompatíveisContainer.hide();
+  }
 
   let skuList = Product.captureSkuSelectors();
   const urlAddCart = "/checkout/cart/add?sku=" +
@@ -308,33 +280,26 @@ $(window).on("load", async () => {
     "&qty=1&seller=1&redirect=true&" +
     readCookie("VTEXSC");
 
-  $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input')
-    .on('input', function () {
-      buscaCompativeis($(this).val())
-    });
+  $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input').on('input', function () {
+    buscaCompativeis($(this).val());
+  });
 
   function buscaCompativeis(texto) {
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 0) {
       const veiculosBuscaveisFiltrado = veiculosBuscaveis.map((a) =>
-          a.Veiculos.filter(b =>
-            new RegExp(texto.split(" ")
-              .map(str => `(?=.*${str})`).join(""), "i")
-              .test(b.Veiculo)))
-          .filter(a => a.length > 0);
+        a.Veiculos.filter(b =>
+          new RegExp(texto.split(" ").map(str => `(?=.*${str})`).join(""), "i").test(b.Veiculo))
+      ).filter(a => a.length > 0);
 
-      if(!!veiculosBuscaveisFiltrado.length) {
+      if (veiculosBuscaveisFiltrado.length) {
         sugestoesContainer.html(
-          veiculosBuscaveisFiltrado.flat()
-            .slice(0, 3)
-            .map(buildContentBusca)
-            .join("") + `<div class="veiculos-compativeis-search__link">
-                            <a href="#veiculos-compativeis">Ver todos</a>
-                          </div>`
+          veiculosBuscaveisFiltrado.flat().slice(0, 3).map(buildContentBusca).join("") +
+          `<div class="veiculos-compativeis-search__link">
+            <a href="#veiculos-compativeis">Ver todos</a>
+          </div>`
         );
 
-        document.querySelectorAll(
-          'a.veiculos-compativeis__content-compativel-link'
-        ).forEach((element) => element.addEventListener('click', sendGaClickEvent));
+        document.querySelectorAll('a.veiculos-compativeis__content-compativel-link').forEach((element) => element.addEventListener('click', sendGaClickEvent));
       } else {
         sugestoesContainer.html(`
           <div class="veiculos-compativeis-search__disclaimer">
@@ -351,23 +316,21 @@ $(window).on("load", async () => {
   }
 
   function buildContentBusca(veiculo, index) {
-    return `<a href="${urlAddCart}"
-               class="veiculos-compativeis__content-compativel-link">
+    return `<a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
               <p>${veiculo.Veiculo}</p>
-              <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>")}.</div>
+              <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join("")}.</div>
             </a>`;
   }
 
   function buildHeader(grupo, index) {
     return `
-          <div id="${grupo.Grupo + index
-      }" class="veiculos-compativeis__header-option">
-              <span>${grupo.Grupo}</span>
-          </div>
-      `;
+      <div id="${grupo.Grupo + index}" class="veiculos-compativeis__header-option">
+        <span>${grupo.Grupo}</span>
+      </div>
+    `;
   }
 
-  function sendGaClickEvent(event) {
+  function sendGaClickEvent() {
     ga('set', 'transport', 'beacon');
     ga('send', 'event', 'Link SelectCar', 'Clique', 'Add ao Carrinho');
   }
@@ -375,35 +338,27 @@ $(window).on("load", async () => {
   function buildContent(grupo, index) {
     return `
       <div data-for="${grupo.Grupo + index}">
-          ${grupo.Veiculos.map(
-            (veiculo) => `
-              <div class="veiculos-compativeis__content-compativel">
-                  <p>${veiculo.Veiculo}</p>
-                  <div>${veiculo.Anos.map(
-                    (x) => "<span>" + x + "</span>"
-                  )}.</div>
-              </div>
-          `
-          ).join("")}
+        ${grupo.Veiculos.map((veiculo) => `
+          <div class="veiculos-compativeis__content-compativel">
+            <p>${veiculo.Veiculo}</p>
+            <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join("")}.</div>
+          </div>
+        `).join("")}
       </div>
     `;
   }
 
   function checkIfNeedButtons(header) {
-    const buttons = $(
-      "#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button"
-    );
+    const buttons = $("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button");
 
     if (needButtons()) {
       const scroll = getScrollPercentage(header[0]);
 
       if (scroll === 0) {
         buttons.last().css("display", "flex");
-
         buttons.first().css("display", "none");
       } else if (scroll === 100) {
         buttons.first().css("display", "flex");
-
         buttons.last().css("display", "none");
       } else {
         buttons.css("display", "flex");
@@ -414,17 +369,11 @@ $(window).on("load", async () => {
   }
 
   function needButtons() {
-    return (
-      document.querySelector(".veiculos-compativeis__box-header").scrollWidth >
-      window.innerWidth
-    );
+    return document.querySelector(".veiculos-compativeis__box-header").scrollWidth > window.innerWidth;
   }
 
   function getScrollPercentage(container) {
-    return (
-      (100 * container.scrollLeft) /
-      (container.scrollWidth - container.clientWidth)
-    );
+    return (100 * container.scrollLeft) / (container.scrollWidth - container.clientWidth);
   }
 
   function initializeSocialShareLinks() {
@@ -444,8 +393,7 @@ $(window).on("load", async () => {
     $(`.product-qd-v1-social-share a.copy`).click((e) => {
       e.preventDefault();
       navigator.clipboard.writeText(location.href);
-      $(`.product-qd-v1-social-share a.copy`).children('i.far.fa-copy')
-        .fadeOut("fast").attr('class', 'fas fa-check').fadeIn("fast");
+      $(`.product-qd-v1-social-share a.copy`).children('i.far.fa-copy').fadeOut("fast").attr('class', 'fas fa-check').fadeIn("fast");
     });
     $('.product-qd-v1-social-share a:not(.popup-trigger)').click((e) => {
       const element = $(e.target).closest('a').attr('class');
@@ -470,12 +418,12 @@ $(window).on("load", async () => {
   $(".product-qd-v1-buy-button .buy-button").attr("href", "#");
   const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
   if (produtosInsumoInstalacao.includes(categoriaProduto)) {
-    $( ".product-qd-v1-buy-button .buy-button").on( "click", function() {
+    $(".product-qd-v1-buy-button .buy-button").on("click", function() {
       modalCompraComOuSemInstalacao();
       $('#modalCompra #botaoContinuarCarrinho').focus();
     });
   } else {
-    $('.product-qd-v1-buy-button .buy-button ').click(function() {
+    $('.product-qd-v1-buy-button .buy-button').click(function() {
       window.location.href = urlSemInstalacao;
     })
   }
@@ -483,12 +431,12 @@ $(window).on("load", async () => {
   function modalCompraComOuSemInstalacao() {
     $('body').append(`
     <div id="abrirModal">
-       </div>`);
+    </div>`);
 
     $('#abrirModal').append(`
       <div id="fadeModalInstalacao">
         <div id="modalCompra">
-          <div class = containerTituloInstalacao>
+          <div class="containerTituloInstalacao">
             <div class="tituloInstalacao">
               <h1> Instalação </h1>
             </div>
@@ -500,7 +448,7 @@ $(window).on("load", async () => {
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
                 <div class="logoModal">
-                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo Autoglass" class="logo">
                 </div>
                 <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
@@ -514,7 +462,7 @@ $(window).on("load", async () => {
                   <label for="inputSemInstalacao">Sem Instalação</label>
                 </div>
                 <i id="primeiroblock" class="block"></i>
-                <i id="segundablock"class="block"></i>
+                <i id="segundablock" class="block"></i>
                 <i id="terceiroblock" class="block"></i>
               </fieldset>
             </div>
@@ -523,7 +471,7 @@ $(window).on("load", async () => {
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
                 <div class="logoModal">
-                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo Autoglass" class="logo">
                 </div>
                 <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
@@ -534,8 +482,8 @@ $(window).on("load", async () => {
                 <legend>RECOMENDADO</legend>
                 <div id="headerCompraComInstalacao">
                   <div class="inputLabelComInstalacao">
-                      <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
-                      <label for="inputComInstalacao">Com Instalação</label>
+                    <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
+                    <label for="inputComInstalacao">Com Instalação</label>
                   </div>
                   <span id="descricao"> Apenas em Lojas Autoglass ou em casa.</span>
                 </div>
@@ -561,11 +509,11 @@ $(window).on("load", async () => {
       </div>
       `)
 
-      var codigoSKU = $("#codigo-sku-acessorio-ag").text().trim();
-      var precoAcessorio = $("#preco-acessorios-ag").text().replace("R$ ", "").trim();
+      const codigoSKU = $("#codigo-sku-acessorio-ag").text().trim();
+      const precoAcessorio = $("#preco-acessorios-ag").text().replace("R$ ", "").trim();
       if (codigoSKU && precoAcessorio)
         document.getElementById("valorComInstalacao").innerHTML = precoAcessorio;
-      var urlComInstalacao = urlSemInstalacao + "&sku=" + codigoSKU + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
+      const urlComInstalacao = urlSemInstalacao + "&sku=" + codigoSKU + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
 
 
       if (window.screen.width < 570) {
@@ -589,32 +537,31 @@ $(window).on("load", async () => {
       }
 
       $('#fadeModalInstalacao #modalCompra').addClass('filled');
-        $('#fadeModalInstalacao, .exit-button').click(function(e) {
-          $('#fadeModalInstalacao #modalCompra').fadeOut(300);
-          $(this).fadeOut();
-          $('#fadeModalInstalacao div').remove();
-        })
-        $('#fadeModalInstalacao #modalCompra').click(function(e) {
-          e.stopPropagation();
-        })
+      $('#fadeModalInstalacao, .exit-button').click(function() {
+        $('#fadeModalInstalacao #modalCompra').fadeOut(300);
+        $(this).fadeOut();
+        $('#fadeModalInstalacao div').remove();
+      })
+      $('#fadeModalInstalacao #modalCompra').click(function(e) {
+        e.stopPropagation();
+      })
 
+      $('#botaoContinuarCarrinho').attr('href', urlComInstalacao);
+      $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
 
-        $('#botaoContinuarCarrinho').attr('href', urlComInstalacao);
-        $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
-
-        $(document).ready(function() {
-          $('input:radio[name="inputRadioInstalacao"]').change(function() {
-            $('.containersModalCompra').css('color', '#aeaeae');
-            if ($('#inputComInstalacao').is(':checked')) {
-              $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
-              $('#botaoContinuarCarrinho').attr('href', urlComInstalacao)
-            } else if ($('#inputSemInstalacao').is(':checked')) {
-              $('.containersModalCompra#container-compraSemInstalacao').css('color', 'red');
-              $('#botaoContinuarCarrinho').attr('href', urlSemInstalacao)
-            }
-          });
+      $(document).ready(function() {
+        $('input:radio[name="inputRadioInstalacao"]').change(function() {
+          $('.containersModalCompra').css('color', '#aeaeae');
+          if ($('#inputComInstalacao').is(':checked')) {
+            $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
+            $('#botaoContinuarCarrinho').attr('href', urlComInstalacao)
+          } else if ($('#inputSemInstalacao').is(':checked')) {
+            $('.containersModalCompra#container-compraSemInstalacao').css('color', 'red');
+            $('#botaoContinuarCarrinho').attr('href', urlSemInstalacao)
+          }
         });
-  };
+      });
+  }
 
   $(document).ready(function(){
     $('.botao-compre-whatsapp').click(function() {
