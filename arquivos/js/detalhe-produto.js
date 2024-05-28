@@ -1,65 +1,64 @@
-const baseUrlApi=window.location.href.includes("dev")||window.location.href.includes("mvp")||window.location.href.includes("hml")?"https://api-hml.autoglass.com.br/integracao-b2c/api/web-app":"https://api.autoglass.com.br/integracao-b2c/api/web-app",sections=[...document.querySelectorAll("section.tab-content")],getLinkById=a=>document.querySelector(`a[href='#${a}'].tab-link`);function handleSocialClick(a,e){dataLayer.push({event:"share",method:e,content_type:skuJson.skus[0].image,item_id:skuJson.skus[0].sku})}$(".product-qd-v1-buy-button .buy-button.buy-button-ref").addClass("add-to-cart-ga");const socialMediaElements={whatsapp:".product-qd-v1-social-share.desktop .whatsapp",twitter:".product-qd-v1-social-share.desktop .twitter",mail:".product-qd-v1-social-share.desktop .mail",facebook:".product-qd-v1-social-share.desktop .facebook"};function ButtoWhatsappClick(a,e){dataLayer.push({event:"whatsapp",position:e})}Object.entries(socialMediaElements).forEach(([a,e])=>{let o=document.querySelector(e);o.addEventListener("click",e=>handleSocialClick(e,a))});const whatsappElements={".link-whatsapp-texto.link-whatsapp-conteudo-sem-numero":"topo",".link-whatsapp-texto.gtm-whatsapp-botao-rodape":"widget",".link-whatsapp-texto.botao-compre-whatsapp":"compre-whatsapp",".link-whatsapp-texto.link-whatsapp":"footer"};Object.entries(whatsappElements).forEach(([a,e])=>{let o=document.querySelector(a);o&&o.addEventListener("click",a=>ButtoWhatsappClick(a,e))});var veiculosBuscaveis=[];const sugestoesContainer=$(".veiculos-compativeis-search__search-suggestions");$(".veiculos-compativeis-search").hide();const inView=(a,e)=>{let o=a.offsetTop,t=a.offsetHeight;for(;a.offsetParent;)o+=(a=a.offsetParent).offsetTop;return e&&(o-=e>1200?250:130),o<window.pageYOffset+window.innerHeight&&o+t>window.pageYOffset};window.onscroll=()=>{let a=!1;sections.forEach(e=>{let o=getLinkById(e.id);inView(e,window.innerWidth)&&!a?(o.classList.add("tab--current"),a=!0):o&&o.classList.remove("tab--current")})};const toggleSectionCollapse=a=>{a.classList.contains("ativo")?a.classList.remove("ativo"):a.classList.add("ativo")},sectionCollapseInit=()=>{document.querySelectorAll(".contents .tab-content h2").forEach(a=>{a.onclick=e=>{toggleSectionCollapse(a.closest(".tab-content"))},("Compre Junto"===a.textContent||"Outras Marcas"===a.textContent)&&setTimeout(()=>toggleSectionCollapse(a.closest(".tab-content")),5e3)})};async function insertBrandDescription(){return fetch("/api/catalog_system/pub/brand/list").then(a=>a.json()).then(a=>{let e=document.querySelector(".brandName").classList.value.replace("brandName","").trim().replace("-"," ").split(" ")[0],o=a.find(a=>a.name.includes(e));if(o&&""!==o.metaTagDescription){let t=o.metaTagDescription,i=document.querySelector("#descricao-marca");i.textContent=t,i.parentElement.parentElement.style.display="block"}})}async function getProductRefIdByProductName(){let a=await vtexjs.catalog.getCurrentProductWithVariations(),[e,o]=a.name.match(/(\d+)(\s?\-?\s?[0-9]+)?$/);return o}async function loadOptionals(){let a=$("#opcionais"),e=await getProductRefIdByProductName(),o=$(".teste-opcionais");try{let{Opcionais:t}=await $.get(`${baseUrlApi}/produtos/${e}/opcionais`);t&&t.length>0&&(a.html(`
+const baseUrlApi=window.location.href.includes("dev")||window.location.href.includes("mvp")||window.location.href.includes("hml")?"https://api-hml.autoglass.com.br/integracao-b2c/api/web-app":"https://api.autoglass.com.br/integracao-b2c/api/web-app",sections=[...document.querySelectorAll("section.tab-content")],getLinkById=a=>document.querySelector(`a[href='#${a}'].tab-link`);function handleSocialClick(a,e){dataLayer.push({event:"share",method:e,content_type:skuJson.skus[0].image,item_id:skuJson.skus[0].sku})}$(".product-qd-v1-buy-button .buy-button.buy-button-ref").addClass("add-to-cart-ga");const socialMediaElements={whatsapp:".product-qd-v1-social-share.desktop .whatsapp",twitter:".product-qd-v1-social-share.desktop .twitter",mail:".product-qd-v1-social-share.desktop .mail",facebook:".product-qd-v1-social-share.desktop .facebook"};function ButtoWhatsappClick(a,e){dataLayer.push({event:"whatsapp",position:e})}Object.entries(socialMediaElements).forEach(([a,e])=>{let o=document.querySelector(e);o.addEventListener("click",e=>handleSocialClick(e,a))});const whatsappElements={".link-whatsapp-texto.link-whatsapp-conteudo-sem-numero":"topo",".link-whatsapp-texto.gtm-whatsapp-botao-rodape":"widget",".link-whatsapp-texto.botao-compre-whatsapp":"compre-whatsapp",".link-whatsapp-texto.link-whatsapp":"footer"};Object.entries(whatsappElements).forEach(([a,e])=>{let o=document.querySelector(a);o&&o.addEventListener("click",a=>ButtoWhatsappClick(a,e))});let veiculosBuscaveis=[];const sugestoesContainer=$(".veiculos-compativeis-search__search-suggestions");$(".veiculos-compativeis-search").hide();const inView=(a,e)=>{let o=a.offsetTop,t=a.offsetHeight;for(;a.offsetParent;)o+=(a=a.offsetParent).offsetTop;return e&&(o-=e>1200?250:130),o<window.pageYOffset+window.innerHeight&&o+t>window.pageYOffset};window.onscroll=()=>{let a=!1;sections.forEach(e=>{let o=getLinkById(e.id);inView(e,window.innerWidth)&&!a?(o.classList.add("tab--current"),a=!0):o&&o.classList.remove("tab--current")})};const toggleSectionCollapse=a=>{a.classList.toggle("ativo")},sectionCollapseInit=()=>{document.querySelectorAll(".contents .tab-content h2").forEach(a=>{a.onclick=()=>{toggleSectionCollapse(a.closest(".tab-content"))},("Compre Junto"===a.textContent||"Outras Marcas"===a.textContent)&&setTimeout(()=>toggleSectionCollapse(a.closest(".tab-content")),5e3)})};async function insertBrandDescription(){return fetch("/api/catalog_system/pub/brand/list").then(a=>a.json()).then(a=>{let e=document.querySelector(".brandName").classList.value.replace("brandName","").trim().replace("-"," ").split(" ")[0],o=a.find(a=>a.name.includes(e));if(o&&""!==o.metaTagDescription){let t=o.metaTagDescription,i=document.querySelector("#descricao-marca");i.textContent=t,i.parentElement.parentElement.style.display="block"}})}async function getProductRefIdByProductName(){let a=await vtexjs.catalog.getCurrentProductWithVariations(),[e,o]=a.name.match(/(\d+)(\s?\-?\s?[0-9]+)?$/);return o}async function loadOptionals(){let a=$("#opcionais"),e=await getProductRefIdByProductName(),o=$(".teste-opcionais");try{let{Opcionais:t}=await $.get(`${baseUrlApi}/produtos/${e}/opcionais`);t&&t.length>0&&(a.html(`
         <h3>Caracter\xedsticas</h3>
         <div class="caracteristicas__box">
           ${t.map(a=>`<span class="caracteristicas__caracteristica">${a}</span>`).join("")}
         </div>
       `),o.html(`
-            ${t.map(a=>`<h4 class="lista-opcionais">${a}</h4>`).join("")}
-            <div class="container-mais-especificacoes">
-              <a class="mais-especificacoes">Mais informa\xe7\xf5es</a>
-            </div>
-      `))}catch(i){console.error("Falha ao renderizar opcionais. \n ",i)}$(".container-mais-especificacoes .mais-especificacoes").click(function(){document.querySelector(".container-descricao #informacoes-gerais").scrollIntoView()})}async function loadSimilars(){var a,e;let o=a=>document.querySelector(`a[href="#${a}"]`).parentElement.style.display="none",t=a=>(document.querySelector(`#${a}`).style.display="block",document.querySelector(`a[href="#${a}"]`).parentElement.style.display="unset");o("outras-marcas"),o("compre-junto"),a="similars",""!=document.querySelector(`#${a}`).innerHTML&&t("outras-marcas"),e="sugestoes",""!=document.querySelector(`#${e}`).innerHTML&&t("compre-junto")}sectionCollapseInit(),window.addEventListener("load",insertBrandDescription),window.addEventListener("load",loadOptionals),loadSimilars(),$(window).on("load",async()=>{function a(){$(".product-qd-v1-image div#image").css("min-height",$(".product-qd-v1-image #image-main").width())}window.addEventListener("resize",a),a(),f();let e=$("#veiculos-compativeis"),o=await getProductRefIdByProductName(),t=await $.get(`${baseUrlApi}/produtos/${o}/veiculos-compativeis`);veiculosBuscaveis=t;let i=!!t&&t.length>0;if(i>0){e.html(`
-        <h2>Ve\xedculos Compat\xedveis</h2>
-        <div class="veiculos-compativeis__box">
-          <div class="veiculos-compativeis__box-header">
-            <button id="group-prev" data-type="prev" type="button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+        ${t.map(a=>`<h4 class="lista-opcionais">${a}</h4>`).join("")}
+        <div class="container-mais-especificacoes">
+          <a class="mais-especificacoes">Mais informa\xe7\xf5es</a>
+        </div>
+      `))}catch(i){console.error("Falha ao renderizar opcionais. \n",i)}$(".container-mais-especificacoes .mais-especificacoes").click(function(){document.querySelector(".container-descricao #informacoes-gerais").scrollIntoView()})}async function loadSimilars(){var a,e;let o=a=>document.querySelector(`a[href="#${a}"]`).parentElement.style.display="none",t=a=>{document.querySelector(`#${a}`).style.display="block",document.querySelector(`a[href="#${a}"]`).parentElement.style.display="unset"};o("outras-marcas"),o("compre-junto"),a="similars",""!=document.querySelector(`#${a}`).innerHTML&&t("outras-marcas"),e="sugestoes",""!=document.querySelector(`#${e}`).innerHTML&&t("compre-junto")}sectionCollapseInit(),window.addEventListener("load",insertBrandDescription),window.addEventListener("load",loadOptionals),loadSimilars(),$(window).on("load",async()=>{function a(){$(".product-qd-v1-image div#image").css("min-height",$(".product-qd-v1-image #image-main").width())}window.addEventListener("resize",a),a(),f();let e=$("#veiculos-compativeis"),o=await getProductRefIdByProductName(),t=await $.get(`${baseUrlApi}/produtos/${o}/veiculos-compativeis`);veiculosBuscaveis=t;let i=!!t&&t.length>0;if(i){e.html(`
+      <h2>Ve\xedculos Compat\xedveis</h2>
+      <div class="veiculos-compativeis__box">
+        <div class="veiculos-compativeis__box-header">
+          <button id="group-prev" data-type="prev" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" alt="\xcdcone de seta para a esquerda">
               <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
             </svg>
-            </button>
-            ${t.map(d).join("")}
-            <button id="group-next" data-type="next" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
-                <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
-              </svg>
-            </button>
-          </div>
-          <div class="veiculos-compativeis__box-content">
-              ${t.map(u).join("")}
-          </div>
+          </button>
+          ${t.map(d).join("")}
+          <button id="group-next" data-type="next" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" alt="\xcdcone de seta para a direita">
+              <path id="Icon_ionic-ios-arrow-dropleft-circle" data-name="Icon ionic-ios-arrow-dropleft-circle" d="M19.375,3.375a16,16,0,1,0,16,16A16,16,0,0,0,19.375,3.375Zm3.338,22.238a1.49,1.49,0,0,1,0,2.1,1.467,1.467,0,0,1-1.046.431,1.492,1.492,0,0,1-1.054-.438l-7.231-7.254a1.483,1.483,0,0,1,.046-2.046l7.338-7.362a1.485,1.485,0,0,1,2.1,2.1l-6.3,6.231Z" transform="translate(35.375 35.375) rotate(180)" opacity="0.42"/>
+            </svg>
+          </button>
         </div>
-      `),$(".veiculos-compativeis__header-option").first().addClass("active"),$(".veiculos-compativeis__box-content div").first().addClass("active"),$(".veiculos-compativeis__header-option").click(function(){$(".veiculos-compativeis__header-option").removeClass("active"),$(this).addClass("active"),$(".veiculos-compativeis__box-content div").removeClass("active"),$(`.veiculos-compativeis__box-content div[data-for="${$(this).attr("id")}"]`).addClass("active")}),$("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button").click(function(){let a=$(this).attr("data-type"),e=$("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header");"next"===a?e[0].scrollBy(200,0):e[0].scrollBy(-200,0)});let s=$("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header");$("#veiculos-compativeis h2").click(()=>toggleSectionCollapse(e[0])),m(s),s.on("scroll",function(){m($(this))}),$(window).on("resize",function(){m(s)}),$(".veiculos-compativeis-search").show()}else $('a[href="#veiculos-compativeis"]').parent().hide(),e.hide();let c=Product.captureSkuSelectors(),n="/checkout/cart/add?sku="+c[0]+"&qty=1&seller=1&redirect=true&"+readCookie("VTEXSC");function l(a){if(veiculosBuscaveis&&veiculosBuscaveis.length>0&&a.length>0){let e=veiculosBuscaveis.map(e=>e.Veiculos.filter(e=>RegExp(a.split(" ").map(a=>`(?=.*${a})`).join(""),"i").test(e.Veiculo))).filter(a=>a.length>0);e.length?(sugestoesContainer.html(e.flat().slice(0,3).map(r).join("")+`<div class="veiculos-compativeis-search__link">
-                            <a href="#veiculos-compativeis">Ver todos</a>
-                          </div>`),document.querySelectorAll("a.veiculos-compativeis__content-compativel-link").forEach(a=>a.addEventListener("click",p))):sugestoesContainer.html(`
+        <div class="veiculos-compativeis__box-content">
+          ${t.map(u).join("")}
+        </div>
+      </div>
+    `),$(".veiculos-compativeis__header-option").first().addClass("active"),$(".veiculos-compativeis__box-content div").first().addClass("active"),$(".veiculos-compativeis__header-option").click(function(){$(".veiculos-compativeis__header-option").removeClass("active"),$(this).addClass("active"),$(".veiculos-compativeis__box-content div").removeClass("active"),$(`.veiculos-compativeis__box-content div[data-for="${$(this).attr("id")}"]`).addClass("active")}),$("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button").click(function(){let a=$(this).attr("data-type"),e=$("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header");"next"===a?e[0].scrollBy(200,0):e[0].scrollBy(-200,0)});let s=$("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header");$("#veiculos-compativeis h2").click(()=>toggleSectionCollapse(e[0])),m(s),s.on("scroll",function(){m($(this))}),$(window).on("resize",function(){m(s)}),$(".veiculos-compativeis-search").show()}else $('a[href="#veiculos-compativeis"]').parent().hide(),e.hide();let c=Product.captureSkuSelectors(),n="/checkout/cart/add?sku="+c[0]+"&qty=1&seller=1&redirect=true&"+readCookie("VTEXSC");function l(a){if(veiculosBuscaveis&&veiculosBuscaveis.length>0&&a.length>0){let e=veiculosBuscaveis.map(e=>e.Veiculos.filter(e=>RegExp(a.split(" ").map(a=>`(?=.*${a})`).join(""),"i").test(e.Veiculo))).filter(a=>a.length>0);e.length?(sugestoesContainer.html(e.flat().slice(0,3).map(r).join("")+`<div class="veiculos-compativeis-search__link">
+            <a href="#veiculos-compativeis">Ver todos</a>
+          </div>`),document.querySelectorAll("a.veiculos-compativeis__content-compativel-link").forEach(a=>a.addEventListener("click",p))):sugestoesContainer.html(`
           <div class="veiculos-compativeis-search__disclaimer">
             Modelo de carro n\xe3o compat\xedvel :(
           </div>
           <div class="veiculos-compativeis-search__link">
             <a href="#veiculos-compativeis">Ver todos</a>
           </div>
-        `)}else sugestoesContainer.empty()}function r(a,e){return`<a href="${n}"
-               class="veiculos-compativeis__content-compativel-link">
+        `)}else sugestoesContainer.empty()}function r(a,e){return`<a href="${n}" class="veiculos-compativeis__content-compativel-link">
               <p>${a.Veiculo}</p>
-              <div>${a.Anos.map(a=>"<span>"+a+"</span>")}.</div>
+              <div>${a.Anos.map(a=>"<span>"+a+"</span>").join("")}.</div>
             </a>`}function d(a,e){return`
-          <div id="${a.Grupo+e}" class="veiculos-compativeis__header-option">
-              <span>${a.Grupo}</span>
-          </div>
-      `}function p(a){ga("set","transport","beacon"),ga("send","event","Link SelectCar","Clique","Add ao Carrinho")}function u(a,e){return`
+      <div id="${a.Grupo+e}" class="veiculos-compativeis__header-option">
+        <span>${a.Grupo}</span>
+      </div>
+    `}function p(){ga("set","transport","beacon"),ga("send","event","Link SelectCar","Clique","Add ao Carrinho")}function u(a,e){return`
       <div data-for="${a.Grupo+e}">
-          ${a.Veiculos.map(a=>`
-              <div class="veiculos-compativeis__content-compativel">
-                  <p>${a.Veiculo}</p>
-                  <div>${a.Anos.map(a=>"<span>"+a+"</span>")}.</div>
-              </div>
-          `).join("")}
+        ${a.Veiculos.map(a=>`
+          <div class="veiculos-compativeis__content-compativel">
+            <p>${a.Veiculo}</p>
+            <div>${a.Anos.map(a=>"<span>"+a+"</span>").join("")}.</div>
+          </div>
+        `).join("")}
       </div>
     `}function m(a){let e=$("#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button");if(v()){let o=h(a[0]);0===o?(e.last().css("display","flex"),e.first().css("display","none")):100===o?(e.first().css("display","flex"),e.last().css("display","none")):e.css("display","flex")}else e.css("display","none")}function v(){return document.querySelector(".veiculos-compativeis__box-header").scrollWidth>window.innerWidth}function h(a){return 100*a.scrollLeft/(a.scrollWidth-a.clientWidth)}function f(){let a=encodeURIComponent(location.href);$(".product-qd-v1-social-share a.whatsapp").attr("href",`https://api.whatsapp.com/send?text=${a}`),$(".product-qd-v1-social-share a.twitter").attr("href",`https://twitter.com/intent/tweet?text=${a}`),$(".product-qd-v1-social-share a.mail").attr("href",`mailto:?subject=Quero%20compartilhar%20um%20produto%20da%20Autoglass&body=Veja%20este%20produto%20na%20Autoglass:%0D%0A${a}`),$(".product-qd-v1-social-share a.messenger").attr("href",`fb-messenger://share?link=${a}`),$(".product-qd-v1-social-share a.facebook").attr("href",`https://www.facebook.com/sharer.php?u=${a}`),$(".product-qd-v1-social-share a.popup-trigger").click(a=>{a.preventDefault(),$("div.product-qd-v1-social-share-options-popup").fadeToggle(400,"swing",()=>{$(".product-qd-v1-social-share a.copy").children("i.fas.fa-check").attr("class","far fa-copy")})}),$(".product-qd-v1-social-share a.copy").click(a=>{a.preventDefault(),navigator.clipboard.writeText(location.href),$(".product-qd-v1-social-share a.copy").children("i.far.fa-copy").fadeOut("fast").attr("class","fas fa-check").fadeIn("fast")}),$(".product-qd-v1-social-share a:not(.popup-trigger)").click(a=>{let e=$(a.target).closest("a").attr("class"),o=e.replace("_","").split(" ");for(let t=0;t<o.length;t++)o[t]=o[t].charAt(0).toUpperCase()+o[t].slice(1);let i=o.join(" ");ga("create","UA-133498560-1","autoglassonline.com","gaSSTracker"),ga("gaSSTracker.set","transport","beacon"),ga("gaSSTracker.send","event","Social Share",`Compartilhar ${i}`,`Bot\xe3o ${i}`)})}$(".veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input").on("input",function(){l($(this).val())});let g=["Vidro","Parabrisa"],b=dataLayer[0].pageTitle,_=b.split(" ")[0];$(".product-qd-v1-buy-button .buy-button").attr("href","#");let C="/checkout/cart/add?sku="+c[0]+"&qty=1&seller=1&redirect=true&"+readCookie("VTEXSC");function k(){$("body").append(`
     <div id="abrirModal">
-       </div>`),$("#abrirModal").append(`
+    </div>`),$("#abrirModal").append(`
       <div id="fadeModalInstalacao">
         <div id="modalCompra">
-          <div class = containerTituloInstalacao>
+          <div class="containerTituloInstalacao">
             <div class="tituloInstalacao">
               <h1> Instala\xe7\xe3o </h1>
             </div>
@@ -71,7 +70,7 @@ const baseUrlApi=window.location.href.includes("dev")||window.location.href.incl
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
                 <div class="logoModal">
-                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo Autoglass" class="logo">
                 </div>
                 <h3 class="primeiraLinha">Garantia de at\xe9 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
@@ -85,7 +84,7 @@ const baseUrlApi=window.location.href.includes("dev")||window.location.href.incl
                   <label for="inputSemInstalacao">Sem Instala\xe7\xe3o</label>
                 </div>
                 <i id="primeiroblock" class="block"></i>
-                <i id="segundablock"class="block"></i>
+                <i id="segundablock" class="block"></i>
                 <i id="terceiroblock" class="block"></i>
               </fieldset>
             </div>
@@ -94,7 +93,7 @@ const baseUrlApi=window.location.href.includes("dev")||window.location.href.incl
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
                 <div class="logoModal">
-                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo Autoglass" class="logo">
                 </div>
                 <h3 class="primeiraLinha">Garantia de at\xe9 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
@@ -105,8 +104,8 @@ const baseUrlApi=window.location.href.includes("dev")||window.location.href.incl
                 <legend>RECOMENDADO</legend>
                 <div id="headerCompraComInstalacao">
                   <div class="inputLabelComInstalacao">
-                      <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
-                      <label for="inputComInstalacao">Com Instala\xe7\xe3o</label>
+                    <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
+                    <label for="inputComInstalacao">Com Instala\xe7\xe3o</label>
                   </div>
                   <span id="descricao"> Apenas em Lojas Autoglass ou em casa.</span>
                 </div>
@@ -130,4 +129,4 @@ const baseUrlApi=window.location.href.includes("dev")||window.location.href.incl
           </div>
         <div class="clearfix"></div>
       </div>
-      `);var a=$("#codigo-sku-acessorio-ag").text().trim(),e=$("#preco-acessorios-ag").text().replace("R$ ","").trim();a&&e&&(document.getElementById("valorComInstalacao").innerHTML=e);var o=C+"&sku="+a+"&qty=1&seller=1&redirect=true&"+readCookie("VTEXSC");window.screen.width<570&&($("#mobileBlocoDois #beneficiosMobile").css("display","block"),$(document).ready(function(){$("#container-compraSemInstalacao").click(function(){$(".inputLabelComInstalacao input").removeAttr("checked"),$("#inputSemInstalacao").attr("checked",!0),$(".containersModalCompra").css("color","#aeaeae"),$(".containersModalCompra#container-compraSemInstalacao").css("color","red"),$("#botaoContinuarCarrinho").attr("href",C)})}),$("#container-compraComInstalacao").click(function(){$("#inputSemInstalacao").prop("checked",!1),$("#inputComInstalacao").attr("checked",!0),$(".containersModalCompra").css("color","#aeaeae"),$(".containersModalCompra#container-compraComInstalacao").css("color","#43c452"),$("#botaoContinuarCarrinho").attr("href",o)})),$("#fadeModalInstalacao #modalCompra").addClass("filled"),$("#fadeModalInstalacao, .exit-button").click(function(a){$("#fadeModalInstalacao #modalCompra").fadeOut(300),$(this).fadeOut(),$("#fadeModalInstalacao div").remove()}),$("#fadeModalInstalacao #modalCompra").click(function(a){a.stopPropagation()}),$("#botaoContinuarCarrinho").attr("href",o),$(".containersModalCompra#container-compraComInstalacao").css("color","#43c452"),$(document).ready(function(){$('input:radio[name="inputRadioInstalacao"]').change(function(){$(".containersModalCompra").css("color","#aeaeae"),$("#inputComInstalacao").is(":checked")?($(".containersModalCompra#container-compraComInstalacao").css("color","#43c452"),$("#botaoContinuarCarrinho").attr("href",o)):$("#inputSemInstalacao").is(":checked")&&($(".containersModalCompra#container-compraSemInstalacao").css("color","red"),$("#botaoContinuarCarrinho").attr("href",C))})})}g.includes(_)?$(".product-qd-v1-buy-button .buy-button").on("click",function(){k(),$("#modalCompra #botaoContinuarCarrinho").focus()}):$(".product-qd-v1-buy-button .buy-button ").click(function(){window.location.href=C}),$(document).ready(function(){$(".botao-compre-whatsapp").click(function(){let a=`Ol\xe1, estou na p\xe1gina desse produto e gostaria de compr\xe1-lo: ${window.location.href}`;window.open(urlWhatsAppApi+numeroWhatsAppAG+"?text="+a,"_blank").focus()})})});
+      `);let a=$("#codigo-sku-acessorio-ag").text().trim(),e=$("#preco-acessorios-ag").text().replace("R$ ","").trim();a&&e&&(document.getElementById("valorComInstalacao").innerHTML=e);let o=C+"&sku="+a+"&qty=1&seller=1&redirect=true&"+readCookie("VTEXSC");window.screen.width<570&&($("#mobileBlocoDois #beneficiosMobile").css("display","block"),$(document).ready(function(){$("#container-compraSemInstalacao").click(function(){$(".inputLabelComInstalacao input").removeAttr("checked"),$("#inputSemInstalacao").attr("checked",!0),$(".containersModalCompra").css("color","#aeaeae"),$(".containersModalCompra#container-compraSemInstalacao").css("color","red"),$("#botaoContinuarCarrinho").attr("href",C)})}),$("#container-compraComInstalacao").click(function(){$("#inputSemInstalacao").prop("checked",!1),$("#inputComInstalacao").attr("checked",!0),$(".containersModalCompra").css("color","#aeaeae"),$(".containersModalCompra#container-compraComInstalacao").css("color","#43c452"),$("#botaoContinuarCarrinho").attr("href",o)})),$("#fadeModalInstalacao #modalCompra").addClass("filled"),$("#fadeModalInstalacao, .exit-button").click(function(){$("#fadeModalInstalacao #modalCompra").fadeOut(300),$(this).fadeOut(),$("#fadeModalInstalacao div").remove()}),$("#fadeModalInstalacao #modalCompra").click(function(a){a.stopPropagation()}),$("#botaoContinuarCarrinho").attr("href",o),$(".containersModalCompra#container-compraComInstalacao").css("color","#43c452"),$(document).ready(function(){$('input:radio[name="inputRadioInstalacao"]').change(function(){$(".containersModalCompra").css("color","#aeaeae"),$("#inputComInstalacao").is(":checked")?($(".containersModalCompra#container-compraComInstalacao").css("color","#43c452"),$("#botaoContinuarCarrinho").attr("href",o)):$("#inputSemInstalacao").is(":checked")&&($(".containersModalCompra#container-compraSemInstalacao").css("color","red"),$("#botaoContinuarCarrinho").attr("href",C))})})}g.includes(_)?$(".product-qd-v1-buy-button .buy-button").on("click",function(){k(),$("#modalCompra #botaoContinuarCarrinho").focus()}):$(".product-qd-v1-buy-button .buy-button").click(function(){window.location.href=C}),$(document).ready(function(){$(".botao-compre-whatsapp").click(function(){let a=`Ol\xe1, estou na p\xe1gina desse produto e gostaria de compr\xe1-lo: ${window.location.href}`;window.open(urlWhatsAppApi+numeroWhatsAppAG+"?text="+a,"_blank").focus()})})});
