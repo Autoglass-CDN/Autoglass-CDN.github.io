@@ -556,7 +556,7 @@
               divSelectVersaoFipe.show(); // mostra a div
           }
       }
-  }
+    }
 
     function filterVersaoFipe(values, vehicle){
       return values.filter(value => value.name.toLowerCase().includes(vehicle))
