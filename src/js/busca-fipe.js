@@ -8,6 +8,7 @@
   const View = ViewAPI();
   const Controller = ControllerAPI();
   let firstRouteSelected = "";
+  let vehicle = "";
 
   const CONFIG = {
     ASYNC: {
@@ -499,6 +500,11 @@
         firstRouteSelected = getSelectedRouteByOption(optionSelected);
       }
 
+      //Se o index for veículo, ele salva o nome do veículo selecionado.
+      if(index === 3){
+         vehicle = optionSelected.name.toLowerCase();
+      }
+
       if (nextSelect) {
         if (optionSelected && select.isAsyncSearch) {
           const response = await Service.getFilters(
@@ -506,11 +512,14 @@
             select,
             optionSelected
           );
-
           let values = View.virtualizedDOM(
             response,
             nextSelect.asyncSearchTerm
           );
+
+          index + 1 === PECA_SELECTS.length - 1
+            ? values = filterVersaoFipe(values, vehicle)
+            : values;
 
           // Caso seja Ano (Penultimo campo [-2]) altera para decrescente
           index + 1 === PECA_SELECTS.length - 2
@@ -520,6 +529,9 @@
           nextSelect.values = nextSelect.title == "Veículo"
             ? vehiclesWithoutBrand(values, optionSelected.name)
             : values;
+
+          hideDivVersaoFipe(values.length, nextSelect.title)
+
         } else {
           nextSelect.values = optionSelected.children.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -532,6 +544,22 @@
       View.createNavigation(select.id, event.target.innerHTML);
 
       modalDeCarregamento.ocultarSpinner();
+    }
+
+    function hideDivVersaoFipe(length, title) {
+      const divSelectVersaoFipe = $('#select-versao-fipe');
+
+      if (title === "Versão") {
+          if (length === 0) {
+              divSelectVersaoFipe.hide(); // oculta a div
+          } else {
+              divSelectVersaoFipe.show(); // mostra a div
+          }
+      }
+    }
+
+    function filterVersaoFipe(values, vehicle){
+      return values.filter(value => value.name.toLowerCase().includes(vehicle))
     }
 
     function vehiclesWithoutBrand(vehicles, brand){
