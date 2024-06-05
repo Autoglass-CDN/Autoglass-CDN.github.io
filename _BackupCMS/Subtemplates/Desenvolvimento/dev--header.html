@@ -674,6 +674,19 @@
     </div>
 </section>
 
+<script defer>
+    function toggleCategory(event) {
+        event.preventDefault(); // Previne o comportamento padrão do link
+        var targetId = event.currentTarget.getAttribute('data-target');
+        var target = document.getElementById(targetId);
+        if (target.style.display === 'none' || target.style.display === '') {
+            target.style.display = 'block';
+        } else {
+            target.style.display = 'none';
+        }
+    }
+</script>
+
 <div id="side-menu" class="side-menu">
     <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215;</a>
     <div id="main-menu">
@@ -703,7 +716,7 @@
                     <ul>
                         <li class="side-menu-categorias__categoria ativo">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Vidro" onclick="toggleCategory(this)">
+                                <a href="#vidros" data-target="categoria-vidros" title="Vidro" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-vidros.png" alt="Vidros"
                                         class="side-menu-categorias__categoria-imagem" />
                                     <h3>
@@ -736,7 +749,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Parachoques, Grades e Molduras" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#para-choques-grades-e-molduras" data-target="categoria-parachoques" title="Parachoques, Grades e Molduras" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-parachoques.png"
                                         alt="Parachoques, Grades e Molduras"
                                         class="side-menu-categorias__categoria-imagem" />
@@ -781,7 +794,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Retrovisores internos e externos" itemprop="url"
+                                <a href="#retrovisores-internos-e-externos" data-target="categoria-retrovisores" title="Retrovisores internos e externos" itemprop="url"
                                     onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-retrovisores.png"
                                         alt="Retrovisores internos e externos"
@@ -814,7 +827,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Faróis, Lanternas e Lâmpadas" onclick="toggleCategory(this)">
+                                <a href="#farois-lanternas-e-lampadas" data-target="categoria-farois" title="Faróis, Lanternas e Lâmpadas" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-farois.png"
                                         alt="Faróis, Lanternas e Lâmpadas"
                                         class="side-menu-categorias__categoria-imagem" />
@@ -897,7 +910,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Palhetas e Borrachas" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#borrachas-e-outros" data-target="categoria-palhetas" title="Palhetas e Borrachas" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-borrachas.png"
                                         alt="Palhetas e Borrachas" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
@@ -945,7 +958,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Radiadores e Condensadores" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#radiadores-e-condensadores" data-target="categoria-radiadores" title="Radiadores e Condensadores" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-radiadores.png"
                                         alt="Radiadores e Condensadores"
                                         class="side-menu-categorias__categoria-imagem" />
@@ -1019,7 +1032,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Paralamas e Capô" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#latarias" data-target="categoria-paralamas" title="Paralamas e Capô" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-latarias.png"
                                         alt="Paralamas e Capô" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
@@ -1053,7 +1066,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Higienizadores e Filtros" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#higienizadores-e-filtros" data-target="categoria-higienizadores" title="Higienizadores e Filtros" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-filtros-2.jpg"
                                         alt="Higienizadores e Filtros" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
@@ -1114,7 +1127,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Ferramentas" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#ferramentas" data-target="categoria-ferramentas" title="Ferramentas" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-ferramentas.png"
                                         alt="Ferramentas" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
@@ -1134,7 +1147,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Colas e Adesivos" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#colas-e-adesivos" data-target="categoria-colas" title="Colas e Adesivos" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-colas.png"
                                         alt="Colas e Adesivos" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
@@ -1154,7 +1167,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Suspensão" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#suspensao" data-target="categoria-suspensao" title="Suspensão" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-suspensoes.png"
                                         alt="Suspensão" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
@@ -1178,7 +1191,7 @@
                         </li>
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
-                                <a title="Direcao" itemprop="url" onclick="toggleCategory(this)">
+                                <a href="#direcao" data-target="categoria-direcao" title="Direcao" itemprop="url" onclick="toggleCategory(this)">
                                     <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-direcao.png"
                                         alt="Direcao" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
@@ -1592,7 +1605,7 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-6">
-                    <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" class="d-block d-md-none"></img>
+                    <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="d-block d-md-none"></img>
                     <p class="modal-title">Bem-vindo!</p>
                     <p class="modal-description">Por favor, confirme sua região para exibir melhores ofertas:</p>
                     <div class="row d-block d-md-none">
