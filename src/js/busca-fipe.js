@@ -2,13 +2,13 @@
 
   let activeTab = '#busca-peca';
   selectRightSearchMethod();
-
   /** BUSCA POR PEÇA DEV */
   const Service = ServiceAPI();
   const View = ViewAPI();
   const Controller = ControllerAPI();
   let firstRouteSelected = "";
   let vehicle = "";
+  window.buttonBuscarSelected = false;
 
   const CONFIG = {
     ASYNC: {
@@ -551,9 +551,9 @@
 
       if (title === "Versão") {
           if (length === 0) {
-              divSelectVersaoFipe.hide(); // oculta a div
+            divSelectVersaoFipe.hide();
           } else {
-              divSelectVersaoFipe.show(); // mostra a div
+            divSelectVersaoFipe.show();
           }
       }
     }
@@ -673,10 +673,16 @@
         url = getUrlForFirstSelect(firstRouteSelected, url);
       }
 
+      window.buttonBuscarSelected = true;
+      window.localStorage.setItem('buttonBuscarSelectd', window.buttonBuscarSelected  );
+
       saveSearchInLocalStorage(null, url);
+
 
       location.href = url;
     }
+
+
 
     function getUrlForFirstSelect(route, url) {
       const routeSelected = route.includes("/") ? route : `/${route}`;
