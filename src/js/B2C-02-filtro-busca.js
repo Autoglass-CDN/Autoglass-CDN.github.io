@@ -52,7 +52,7 @@ $(function () {
 			);
 		});
 	});
-	
+
 	const elementoHtml = document.querySelector('.search-qd-v1-navigator fieldset.filtro_compatibilidade-montadora h5');
 	if(elementoHtml !== null) elementoHtml.innerHTML = elementoHtml.textContent.replace('Compatibilidade ', '');
 });
@@ -108,6 +108,19 @@ $(document).ready(() => {
 			$(document).ready(b),
 			$(document).on("ajaxComplete", b)
 	}
+
+  const storedValue = window.localStorage.getItem('buttonBuscarSelected');
+  if (storedValue !== null) {
+    window.buttonBuscarSelected = JSON.parse(storedValue);
+  }
+
+  if(window.buttonBuscarSelected){
+    var divBusca = document.getElementById('div-busca');
+    if (window.innerWidth <= 1000) {
+        divBusca.style.display = "none";
+    }
+  }
+
 
 
 	const resultBlock = document.querySelector('.prateleira.row.qd-xs');
