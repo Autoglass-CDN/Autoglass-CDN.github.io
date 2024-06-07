@@ -17,6 +17,7 @@
         ",specificationFilter_36", // MONTADORA
         ",specificationFilter_50", // VEICULO
         ",specificationFilter_48", // ANO
+        ",specificationFilter_79" //VERSAOFIPE
       ],
       TREE_LEVEL: 2,
       LID_FILTER: "lid=bf120500-baab-4185-8b70-cc630f7d1c70",
