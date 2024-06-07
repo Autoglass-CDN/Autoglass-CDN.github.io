@@ -1005,7 +1005,8 @@
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
 
-
+      window.buttonBuscarSelected = true;
+      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
 
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
