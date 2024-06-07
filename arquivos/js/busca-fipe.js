@@ -95,6 +95,7 @@
   async function _init() {
     const categoryTree = await Service.getCategoryTree();
     const childrenCategories = [];
+    const grandchildenCategories = [];
 
     categoryTree
       .filter((x) => x.hasChildren)
@@ -102,17 +103,21 @@
         childrenCategories.push(...x.children);
       });
 
+      childrenCategories.forEach((y) => {
+        grandchildenCategories.push(...y.children);
+      });
+
     _initBuscaPlaca(childrenCategories);
-    await _initBuscaPeca(childrenCategories);
+    await _initBuscaPeca(grandchildenCategories);
   }
 
   async function _initBuscaPeca(values) {
 
-    PECA_SELECTS[0].values = values;
+    PECA_SELECTS[1].values = values;
 
     await Controller.checkRouterParams();
 
-    View.buildList(PECA_SELECTS[0].values, PECA_SELECTS[0].id);
+    View.buildList(PECA_SELECTS[1].values, PECA_SELECTS[1].id);
 
     PECA_SELECTS.forEach(View._initSelect_);
 
@@ -519,7 +524,7 @@
             : values;
 
           // Caso seja Ano (Ultimo campo) tem que ser decrescente
-          index + 1 === PECA_SELECTS.length - 1
+          index + 1 === PECA_SELECTS.length - 2
             ? values.sort((a, b) => b.name.localeCompare(a.name))
             : values.sort((a, b) => a.name.localeCompare(b.name));
 
@@ -597,7 +602,7 @@
           ];
         }
 
-        for (let i = 0; i < params.length; i++) {
+        for (let i = 1; i < params.length; i++) {
           const select = PECA_SELECTS[i];
           const value = select.values.find((x) =>
             x.url ? x.url.includes(params[i]) : x.name.includes(params[i])
@@ -655,7 +660,7 @@
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
 
-      if(firstRouteSelected.length === 0) {
+      if(firstRouteSelected.length === 1) {
         alert("Selecione pelo menos o primeiro campo!");
         return;
       }
@@ -998,7 +1003,8 @@
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
 
-
+      window.buttonBuscarSelected = true;
+      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
 
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
