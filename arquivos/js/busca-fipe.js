@@ -7,6 +7,8 @@
   const View = ViewAPI();
   const Controller = ControllerAPI();
   let firstRouteSelected = "";
+  let vehicle = "";
+  window.buttonBuscarSelected = false;
 
   const CONFIG = {
     ASYNC: {
@@ -41,7 +43,7 @@
       canBeClear: false,
     },
     {
-      title: "Peça",
+      title: "Produto",
       id: "pecas-select",
       values: [],
       routeSelected: "",
@@ -74,6 +76,15 @@
       routeSelected: "",
       isAsyncSearch: true,
       asyncSearchTerm: ".Ano",
+      canBeClear: true,
+    },
+    {
+      title: "Versão",
+      id: "versao-select",
+      values: [],
+      routeSelected: "",
+      isAsyncSearch: true,
+      asyncSearchTerm: ".Versão.Fipe",
       canBeClear: true,
     },
   ];
@@ -484,6 +495,11 @@
         firstRouteSelected = getSelectedRouteByOption(optionSelected);
       }
 
+      //Se o index for veículo, ele salva o nome do veículo selecionado.
+      if(index === 3){
+        vehicle = optionSelected.name.toLowerCase();
+      }
+
       if (nextSelect) {
         if (optionSelected && select.isAsyncSearch) {
           const response = await Service.getFilters(
@@ -497,6 +513,10 @@
             nextSelect.asyncSearchTerm
           );
 
+          index + 1 === PECA_SELECTS.length - 1
+            ? values = filterVersaoFipe(values, vehicle)
+            : values;
+
           // Caso seja Ano (Ultimo campo) tem que ser decrescente
           index + 1 === PECA_SELECTS.length - 1
             ? values.sort((a, b) => b.name.localeCompare(a.name))
@@ -505,6 +525,8 @@
           nextSelect.values = nextSelect.title == "Veículo"
             ? vehiclesWithoutBrand(values, optionSelected.name)
             : values;
+
+            hideDivVersaoFipe(values.length, nextSelect.title)
         } else {
           nextSelect.values = optionSelected.children.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -517,6 +539,22 @@
       View.createNavigation(select.id, event.target.innerHTML);
 
       modalDeCarregamento.ocultarSpinner();
+    }
+
+    function hideDivVersaoFipe(length, title) {
+      const divSelectVersaoFipe = $('#select-versao-fipe');
+
+      if (title === "Versão") {
+          if (length === 0) {
+            divSelectVersaoFipe.hide();
+          } else {
+            divSelectVersaoFipe.show();
+          }
+      }
+    }
+
+    function filterVersaoFipe(values, vehicle){
+      return values.filter(value => value.name.toLowerCase().includes(vehicle))
     }
 
     function vehiclesWithoutBrand(vehicles, brand){
@@ -629,6 +667,9 @@
       if(index < 1) {
         url = getUrlForFirstSelect(firstRouteSelected, url);
       }
+
+      window.buttonBuscarSelected = true;
+      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
 
       saveSearchInLocalStorage(null, url);
 
