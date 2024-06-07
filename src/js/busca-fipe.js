@@ -674,7 +674,7 @@
       }
 
       window.buttonBuscarSelected = true;
-      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected  );
+      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
 
       saveSearchInLocalStorage(null, url);
 
