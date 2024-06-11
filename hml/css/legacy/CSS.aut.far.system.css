@@ -137,6 +137,56 @@
     color: #2d4f9e;
     font-style: italic;
 }
+
+.system-error-qd-v1 .system-error-qd-v1-wrap .tip-box {
+  border: 2px solid #1c3162;
+  padding: 10px 15px;
+  width: 45%;
+  margin: 20px auto;
+  border-radius: 5px;
+}
+
+.system-error-qd-v1 .system-error-qd-v1-wrap .tip-title {
+  color: #1c3162;
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.system-error-qd-v1 .system-error-qd-v1-wrap .tip-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+.system-error-qd-v1 .system-error-qd-v1-wrap .tip-list li {
+  display: flex;
+  margin-bottom: 5px;
+}
+
+.system-error-qd-v1 .system-error-qd-v1-wrap .icon {
+  color: #1c3162;
+  margin-right: 8px;
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+}
+
+@media (max-width: 768px) {
+  .system-error-qd-v1 .system-error-qd-v1-wrap .tip-box {
+      width: 90%;
+  }
+}
+
+@media (max-width: 520px) {
+    .system-error-qd-v1 .system-error-qd-v1-wrap p {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 0 0 25px 0 !important;
+    }
+    .system-error-qd-v1 a {
+        margin-top: 25px;
+    }
+  }
+
 .system-error-qd-v1 .system-error-qd-v1-header-500 {
     padding: 60px 15px 15px;
     width: 100%;
@@ -208,6 +258,7 @@
     padding: 10px;
     border-radius: 3px;
     color: #fff;
+    margin-top: 15px;
 }
 .system-error-qd-v1 a:hover {
     text-decoration: none;
