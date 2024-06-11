@@ -1057,25 +1057,6 @@
       ga('gaBPTracker.send', 'event', 'Busca por placa', `Consultar placa (${placa})`, `Resultado: ${pathGerado}`);
     }
 
-    async function obterDadosDoVeiculoViaKeplaca(placa) {
-      const response = await fetch(
-        `https://crawler-keplaca.herokuapp.com/placa/${placa}`
-      );
-
-      const [montadora, modelo, anoModelo, fipe] = await response.json();
-
-      if (
-        null === montadora &&
-        null === modelo &&
-        null === anoModelo &&
-        null === fipe
-      ) {
-        throw new VehicleNotFoundException(placa);
-      }
-
-      return { montadora, modelo, anoModelo, fipe };
-    }
-
     async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
       const urlApi = window.location.href.includes("hml")
         ? "https://api-hml.autoglass.com.br"
