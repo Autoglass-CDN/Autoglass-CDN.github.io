@@ -418,18 +418,23 @@ $(window).on("load", async () => {
     });
   }
 
-  const produtosInsumoInstalacao = ['Vidro', 'Parabrisa'];
-  const nomeProduto = dataLayer[0].pageTitle;
-  const categoriaProduto = nomeProduto.split(' ')[0];
+  // const produtosInsumoInstalacao = ['Vidro', 'Parabrisa'];
+  // const nomeProduto = dataLayer[0].pageTitle;
+  // const categoriaProduto = nomeProduto.split(' ')[0];
+
+  const codigoSKU = $("#codigo-sku-acessorio-ag").text().trim();
+  const precoAcessorio = $("#preco-acessorios-ag").text().replace("R$ ", "").trim();
 
   $(".product-qd-v1-buy-button .buy-button").attr("href", "#");
+
   const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
-  if (produtosInsumoInstalacao.includes(categoriaProduto)) {
+
+  if (codigoSKU && precoAcessorio) {
     $(".product-qd-v1-buy-button .buy-button").on("click", function() {
       modalCompraComOuSemInstalacao();
       $('#modalCompra #botaoContinuarCarrinho').focus();
     });
-  } else {
+  }else {
     $('.product-qd-v1-buy-button .buy-button').click(function() {
       window.location.href = urlSemInstalacao;
     })
@@ -497,7 +502,7 @@ $(window).on("load", async () => {
                 <i id="primeirochecked" class="checked"></i>
                 <i id="segundochecked" class="checked"></i>
                 <i id="terceirochecked" class="checked"></i>
-                <h3>Por apenas <span id="precoComInstalacao">R$ <span id="valorComInstalacao">60</span></span></h3>
+                <h3 id="titulo-preco-modal">Por apenas <span id="precoComInstalacao">R$ <span id="valorComInstalacao">-</span></span></h3>
               </fieldset>
             </div>
           </div>
@@ -516,12 +521,18 @@ $(window).on("load", async () => {
       </div>
       `)
 
-      const codigoSKU = $("#codigo-sku-acessorio-ag").text().trim();
-      const precoAcessorio = $("#preco-acessorios-ag").text().replace("R$ ", "").trim();
-      if (codigoSKU && precoAcessorio)
-        document.getElementById("valorComInstalacao").innerHTML = precoAcessorio;
-      const urlComInstalacao = urlSemInstalacao + "&sku=" + codigoSKU + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
+      const precoPromocao = "0,01";
 
+      if (codigoSKU && precoAcessorio){
+        if (precoAcessorio === precoPromocao) {
+          document.getElementById("titulo-preco-modal").innerHTML = 'Grátis!';
+          document.getElementById("titulo-preco-modal").classList.add("promocaoGratis");
+        } else {
+          document.getElementById("valorComInstalacao").innerHTML = precoAcessorio;
+        }
+      }
+
+      const urlComInstalacao = urlSemInstalacao + "&sku=" + codigoSKU + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
 
       if (window.screen.width < 570) {
         $('#mobileBlocoDois #beneficiosMobile').css('display', 'block')
