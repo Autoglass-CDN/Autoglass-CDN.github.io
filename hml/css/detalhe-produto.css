@@ -870,6 +870,12 @@ fieldset#beneficios legend {
   margin-bottom: 0;
 }
 
+#titulo-preco-modal.promocaoGratis {
+  color: #43c452;
+  font-size: 19px;
+  font-weight: 900;
+}
+
 #precoComInstalacao {
   color: #43c452
 }
