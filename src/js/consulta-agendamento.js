@@ -234,8 +234,7 @@ $(function () {
       minDate
     );
   }
-
-  function listaProdutosCarrinhos(itemsVtex){
+ function listaProdutosCarrinhos(itemsVtex){
    let itensCarrinho = "" ;
     itemsVtex.forEach(item => {
       itensCarrinho = `${itensCarrinho}&IdProdutos=${(parseInt(item.productRefId))}`;
@@ -245,7 +244,21 @@ $(function () {
 
   function recuperarHorarios(slas) {
 
+    function formatarData(dataAmericana) {
+      const data = new Date(dataAmericana);
+      const dia = String(data.getDate()).padStart(2, '0');
+      const mes = String(data.getMonth() + 1).padStart(2, '0');
+      const ano = data.getFullYear();
+      return `${dia}/${mes}/${ano}`;
+    }
+
+    function converterParaData(dateStr) {
+      const [dia, mes, ano] = dateStr.split('/');
+      return new Date(`${ano}-${mes}-${dia}`);
+    }
+
     let itensCarrinho = listaProdutosCarrinhos(vtexjs.checkout.orderForm.items);
+
     $.ajax({
       method: "GET",
       url: `${baseUrlApiAgenda}/horarios-lojas?Data=${$(".secao-agendamento .data input")
@@ -269,6 +282,19 @@ $(function () {
                 finalStore = store;
               return finalStore;
             }, null);
+            return pickupPoint;
+          })
+          .map((pickupPoint) => {
+            let dataInput = $("#alterar-data-input").val();
+            let dataInputDate = converterParaData(dataInput);
+            let dataSlaDate = formatarData(pickupPoint.Data);
+            dataSlaDate = converterParaData(dataSlaDate);
+
+            if (dataSlaDate > dataInputDate) {
+              pickupPoint.infoDate = "Agendamento disponível a partir do dia: " + formatarData(pickupPoint.Data);
+            }else {
+              pickupPoint.infoDate = "";
+            }
             return pickupPoint;
           });
 
@@ -296,7 +322,8 @@ $(function () {
             storeList.join("\n")
           );
 
-          $(".secao-agendamento > .store-list > ul").append(
+        if ($('.mz-install__info').length === 0){
+          $(".secao-agendamento").append(
             `
             <div class="mz-install__info">
               <div class="mz-info__list">
@@ -310,12 +337,12 @@ $(function () {
                     haja necessidade de troca de borrachas ou sensores,
                     o valor será cobrado na loja.
                   </li>
-                </ul>
               </div>
             </div>
             `
           );
         }
+      }
 
         $(".timestamp").click(function (e) {
           if (window.location.href.includes("checkout")) {
@@ -454,9 +481,11 @@ $(function () {
       pickupPoint.DadosPickupPoint.friendlyName
     );
 
+
     return `
 			<div id="${dadosEndereco.addressId
       }" class="${horariosDisponiveisLoja ? "" : "card-horarios-indisponiveis"} pickup pickup-install">
+      ${pickupPoint.infoDate ? `<div class="pickup-install-availability"><p class="availability-text">${pickupPoint.infoDate}</p></div>` : ''}
 				<div class="pickup__info">
 					<div class="pickup__info-distance">
 						<svg class="pkpmodal-pickup-point-best-marker-image" width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -477,17 +506,14 @@ $(function () {
             } - ${dadosEndereco.city} - ${dadosEndereco.state}</p>
 					</div>
 				</div>
-				<div class="time">
-					${store
-            ? timeStampList.join("\n")
-            : [].concat(
-                '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'
-              )
-          }
-				</div>
+				${!pickupPoint.infoDate ? `
+          <div class="time">
+            ${store ? timeStampList.join("\n") : '<p class="texto-horarios-indisponiveis"> Horários indisponíveis para esta data <p>'}
+          </div>
+        ` : ''}
 			</div>
+      `;
 
-		`;
   }
 
   function createTimestampList(horarios, store, cep, friendlyName) {
@@ -968,3 +994,4 @@ function readCookie(name) {
   console.error("Não foi possível recuprar cookie VTEXSC'\n");
   return null;
 }
+

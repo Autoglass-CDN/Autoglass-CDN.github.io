@@ -40,11 +40,10 @@
 }
 
 .cep-info__location-street {
-  max-width: 300px;
+  max-width: 500px;
   margin: 0px 15px 0px 5px;
   text-decoration: underline;
   font-size: 16px;
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
 }
@@ -235,7 +234,7 @@
   }
 
   .cep-info__location-button {
-    align-self: flex-start;
+    align-self: flex-end;
     padding-top: 5px;
   }
 }
@@ -260,13 +259,13 @@ p.ship-receiverName label {
   visibility: hidden;
 }
 
-p.ship-receiverName label::before {
-  content: "Quem irá receber";
-  visibility: visible;
-}
-
 .box-step > p.vtex-omnishipping-1-x-shippingSectionTitle {
   font-size: 15px;
   font-weight: 700;
   color: #000000;
+}
+
+p.ship-receiverName label::before {
+  content: "Quem irá receber";
+  visibility: visible;
 }
