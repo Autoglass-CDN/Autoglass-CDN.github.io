@@ -591,9 +591,6 @@
 }
 
 @media (max-width: 500px) {
-  .pickup__info {
-    flex-direction: column;
-  }
   .pickup__estimate {
     padding: 12px;
   }
