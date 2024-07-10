@@ -1,5 +1,13 @@
 /* /files/checkout6-custom.css */
 
+.vtex-omnishipping-1-x-addressItemOption {
+	display: none !important;
+}
+
+.btn-go-to-payment-wrapper {
+  	display: none;
+}
+
 /* Botão Adicionar Instalação */
 
 .product-name button.btn-add-instalacao {
@@ -193,13 +201,6 @@ body.hasInstall .srp-pickup-info label {
     margin: 10px;
 }
 
-.mz-modal-installation .mz-install__info {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #BABABA;
-    border-radius: 6px;
-}
-
 .mz-modal-installation .mz-install__info .mz-info__list ul {
     list-style: none;
     margin: 0;
@@ -218,7 +219,7 @@ body.hasInstall .srp-pickup-info label {
     text-rendering: optimizelegibility;
     width: 1em;
     font-family: 'FontAwesome';
-    margin-right: 10px;
+    margin-right: 2px;
     font-size: 14px;
     color: #2D4F9E;
 }
@@ -288,6 +289,9 @@ body.hasInstall .shp-summary-package-time {
     }
 }
 
+.vtex-omnishipping-1-x-addressItemOption {
+  display: none;
+}
 
 /* CEP COMPONENT */
 

@@ -2,11 +2,11 @@
 .mz-modal-installation .mz-install__title span,
 .mz-install__info .mz-info__list ul li,
 .header-qd-v1-valid-prices.cep-modal {
-  font-size: 14px !important;
+  font-size: 10.5px !important;
 }
 
 .mz-modal-installation.modal-instale-na-loja {
-  max-height: 655px;
+  max-height: 650px;
   height: 95vh;
   box-sizing: border-box;
 }
@@ -261,6 +261,13 @@
   }
 }
 
+@media (max-width: 770px) {
+  .mz-modal-installation.modal-instale-na-loja {
+    max-height: 680px;
+  }
+
+}
+
 /* MOBILE */
 @media screen and (max-width: 530px) {
   .header-qd-v1-valid-prices.cep-modal {
@@ -307,10 +314,7 @@
 }
 
 .mz-install__info {
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #bababa;
-  border-radius: 6px;
+  padding: 0;
 }
 
 .mz-modal-advantages .mz-install__info {
@@ -334,7 +338,7 @@
   text-rendering: optimizelegibility;
   width: 1em;
   font-family: "FontAwesome";
-  margin-right: 10px;
+  margin-right: 2px;
   font-size: 14px;
   color: #2d4f9e;
 }
@@ -493,6 +497,13 @@
   cursor: default;
 }
 
+.pickup-install .availability-text {
+  display: flex;
+  margin-top: 5px;
+  margin-left: 34px;
+  color: red;
+}
+
 .card-horarios-indisponiveis {
   opacity: 50%;
 }
@@ -591,6 +602,24 @@
   }
   .pickup__estimate span + span {
     margin: 0px;
+  }
+  .pickup-install .availability-text {
+    font-size: 11px;
+    text-align: center;
+  }
+}
+
+@media (max-width: 550px) {
+  .pickup-install .availability-text {
+    margin-left: 0;
+    justify-content: center
+  }
+}
+
+@media (max-width: 400px) {
+  .pickup-install .availability-text {
+    font-size: 10px;
+    text-align: center;
   }
 }
 /* #endregion Modal - Retire na Loja */
