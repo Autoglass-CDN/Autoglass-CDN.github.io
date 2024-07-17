@@ -216,10 +216,21 @@ $(function () {
 
   recuperarHorarios();
 
+  function retornaMenorDataPickUpPoint(slas){
+    let pickupInPointDates = slas
+    .filter((sla) => sla.Tipo === "pickup-in-point")
+    .map((item) => new Date(item.Data))
+    .filter((date) => !isNaN(date));
+
+    let minimalDate = new Date(Math.min(...pickupInPointDates));
+
+    return minimalDate;
+  }
+
   function setMinDateDatepicker(datas) {
     let minDate;
 
-    minDate = datas && datas.length ? datas[0].Data : tomorrow;
+    minDate = datas && datas.length ? retornaMenorDataPickUpPoint(datas) : tomorrow;
 
     $(".secao-agendamento > .filter > .data input").datepicker(
       "option",
