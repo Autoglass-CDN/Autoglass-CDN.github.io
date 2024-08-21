@@ -529,7 +529,7 @@ $(window).on("ready", async () => {
             <div id="mobileBlocoUm">
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
-                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo da Autoglass" class="logo">
                 <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
                 <h3>Segurança e comodidade</h3>
@@ -550,7 +550,7 @@ $(window).on("ready", async () => {
             <div id="mobileBlocoDois">
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
-                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Autoglass" class="logo">
+                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo da Autoglass" class="logo">
                 <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
                 <h3>Segurança e comodidade</h3>
