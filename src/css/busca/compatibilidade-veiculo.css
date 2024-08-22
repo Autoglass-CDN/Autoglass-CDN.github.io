@@ -1,0 +1,19 @@
+.botao-compatibilidade{
+  border: #43C452 solid;
+    border-width: 2px;
+    transition: all .2s ease-out;
+    display: block;
+    border-radius: 6px;
+    background: #FFF;
+    color: #43C452;
+    padding: 15px 30px;
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    transition: none;
+    font-size: 0;
+    background: #43C452;
+    color: #FFF;
+    padding: 5px;
+    border-radius: 3px;
+}
