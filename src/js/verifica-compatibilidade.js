@@ -1,14 +1,30 @@
+window.addEventListener('load', () => {
+    function updatePageNumbers() {
+        const pageNumbers = document.querySelectorAll('.pages li.page-number');
+        pageNumbers.forEach((li) => {
+            li.setAttribute('href', `#${li.textContent.trim()}`);
+        });
+        console.log("Atributo href atualizado nos elementos de paginação.");
+    }
 
-  $(document).ready(function(){
-    // Cria o HTML do botão como string
-    var buttonHTML = '<button class="botao-compatibilidade">Clique aqui</button>';
+    function observePaginationChanges() {
+        const paginationContainer = document.querySelector('.pager.bottom');
 
-    // Adiciona o botão dentro da <div> com a classe 'container-titulo-lateral-prateleira'
-    $('.container-titulo-lateral-prateleira').append(buttonHTML);
+        if (paginationContainer) {
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.type === 'childList') {
+                        updatePageNumbers();
+                    }
+                });
+            });
 
-    // Adiciona um evento de clique ao botão usando jQuery
-    $('.botao-compatibilidade').on('click', function() {
-        alert('Funcionou!');
-    });
-  });
+            observer.observe(paginationContainer, { childList: true, subtree: true });
 
+            updatePageNumbers();
+        } else {
+            console.log("Container de paginação não encontrado.");
+        }
+    }
+    observePaginationChanges();
+});
