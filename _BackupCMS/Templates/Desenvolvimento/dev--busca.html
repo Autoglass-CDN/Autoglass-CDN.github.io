@@ -21,7 +21,6 @@
 		type="text/css" />
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/filtro-veiculos.css" type="text/css" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/busca/compatibilidade-veiculo.css" type="text/css" />
-
 </head>
 
 <body class="resultado-busca">
@@ -77,6 +76,31 @@
 							<div class="col-xs-12 col-lg-3">
                                 <div class='container-titulo-lateral-prateleira'>
 							        <h1 class='titulo-lateral-prateleira'></h1>
+							        <button class="botao-compatibilidade">Verificar Compatibilidade</button>
+                                    <form id="form-busca-placa-compatibilidade" action="#">
+                                        <div class="input-container" style="display: none;">
+                                            <div class="c-busca-compatibilidade__input">
+                                                <input
+                                                type="text"
+                                                name="placa-input-compatibilidade"
+                                                id="placa-input-compatibilidade"
+                                                placeholder="Digite a sua placa"
+                                                />
+                                            </div>
+                                            <div class="c-busca-compatibilidade__botao">
+                                                <button
+                                                    id="btn-busca-placa-compatibilidade"
+                                                    class="c-botao c-botao--primary"
+                                                    type="submit">
+                                                    BUSCAR
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <div class="tag" style="display: none;">
+                                        <span class="texto-placa"></span>
+                                        <button class="botao-placa" type="button">X</button>
+                                    </div>
 							    </div>
 								<div class="search-qd-v1-navigator">
 									<a class="search-qd-v1-navigator-trigger" href="#" role="button">Filtrar resultado</a>
@@ -112,7 +136,7 @@
                                     $(document).ready(function(){
                                       var textoParaH1 = $("title").text();
                                       var textoFormatado = textoParaH1.replace(/\s+\|.*/, '');
-                                      $(".titulo-lateral-prateleira").text(textoFormatado);
+                                      $(".titulo-lateral-prateleira").text("Compatível com: " + textoFormatado);
                                     });
                                 </script>
 
