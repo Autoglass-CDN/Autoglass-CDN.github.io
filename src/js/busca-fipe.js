@@ -1121,6 +1121,7 @@
     switch (true) {
       case "NEW CLASSIC" === modelo:
         return "CLASSIC";
+      case "UP" === modelo:
       case "CROSS UP!" === modelo:
         return "Up!";
       case "FH 520" === modelo:
