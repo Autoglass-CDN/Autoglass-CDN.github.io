@@ -1,8 +1,18 @@
+document.addEventListener("DOMContentLoaded", function () {
+  const mecanismosBusca = ["google.com", "bing.com", "yahoo.com", "duckduckgo.com", "baidu.com", "yandex.com"];
+  const referrer = document.referrer;
+  const mecanismoBuscaSelecionado = mecanismosBusca.some(engine => referrer.includes(engine));
+  if (mecanismoBuscaSelecionado) {
+    let url = window.location.href.split(".br")[1];
+        if (window.location.href.includes("https://hml.autoglassonline.com.br") || window.location.href.includes("https://loja.autoglassonline.com.br")) {
+            window.location.href = `https://autoglassonline.com.br${url}`;
+        }
+    }
+});
 const device = {
   desktop: ".desktop",
   mobile: ".mobile"
 }
-
 const numeroWhatsAppAG = "552732032535"; //Atenção! Lembrar que quando alterar o número do whatsapp, alterar também o link encurtado abaixo!
 const linkEncurtado = 'https://bit.ly/43u3oa6'; //urlWhatsAppApi + numeroWhatsAppAG
 const numeroWhatsAppFormatadoAG = "(27) 3203-2535";
