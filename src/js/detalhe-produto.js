@@ -524,7 +524,7 @@ $(window).on("load", async () => {
       const precoPromocao = "0,01";
 
       if (codigoSKU && precoAcessorio){
-        if (precoAcessorio === precoPromocao) {
+        if (precoAcessorio < precoPromocao) {
           document.getElementById("titulo-preco-modal").innerHTML = 'Grátis!';
           document.getElementById("titulo-preco-modal").classList.add("promocaoGratis");
         } else {
