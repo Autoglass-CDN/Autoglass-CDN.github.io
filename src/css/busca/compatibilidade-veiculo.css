@@ -1,29 +1,9 @@
-.botao-compatibilidade{
-  border: #1c3162 solid;
-    border-width: 2px;
-    transition: all .2s ease-out;
-    display: block;
-    border-radius: 6px;
-    background: #FFF;
-    color: #1c3162;
-    padding: 15px 30px;
-    font-size: 13px;
-    font-weight: 400;
-    text-align: center;
-    transition: none;
-    font-size: 100%;
-    background: #1c3162;
-    color: #FFF;
-    padding: 5px;
-    border-radius: 3px;
-    width: 100%;
-    height: 40px;
-}
-
 .input-container {
   position: relative;
   display: inline-block;
   width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 #placa-input-compatibilidade {
@@ -37,11 +17,6 @@
     transition: border 500ms;
 }
 
-.input-container {
-  display: flex;
-  align-items: center;
-}
-
 .c-busca-compatibilidade__input input {
   padding: 8px;
   font-size: 12px;
@@ -53,7 +28,7 @@
 
 .c-busca-compatibilidade__botao button {
   padding: 8px 4px;
-  font-size: 14px;
+  font-size: 10px;
   border: none;
   background-color: #003366; /* Ajuste conforme o estilo desejado */
   color: white;
@@ -100,4 +75,29 @@
 .tag button:hover {
   background-color: #ff6b6b;
   color: white;
+}
+
+.carro-compativel{
+  display: block;
+    min-height: 25px;
+    min-width: 30px;
+    padding-top: 10px;
+    color: #2d4f9e;
+    vertical-align: middle;
+    border-radius: 0;
+    line-height: 21px;
+    font-weight: 600;
+    max-width: 265px;
+}
+
+.texto-compatibilidade{
+  display: block;
+    min-height: 25px;
+    min-width: 30px;
+    color: #2d4f9e;
+    vertical-align: middle;
+    border-radius: 0;
+    line-height: 21px;
+    font-weight: 600;
+    max-width: 265px;
 }
