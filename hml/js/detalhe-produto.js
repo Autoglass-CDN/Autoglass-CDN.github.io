@@ -318,7 +318,7 @@ $(window).on("load", async () => {
   function buildContentBusca(veiculo, index) {
     return `<a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
               <p>${veiculo.Veiculo}</p>
-              <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join("")}.</div>
+              <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join(",&nbsp")}.</div>
             </a>`;
   }
 
@@ -341,7 +341,7 @@ $(window).on("load", async () => {
         ${grupo.Veiculos.map((veiculo) => `
           <div class="veiculos-compativeis__content-compativel">
             <p>${veiculo.Veiculo}</p>
-            <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join("")}.</div>
+            <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join(",&nbsp")}.</div>
           </div>
         `).join("")}
       </div>
