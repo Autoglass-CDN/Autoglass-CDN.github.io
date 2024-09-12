@@ -1,5 +1,28 @@
 (function () {
 
+  $(document).ready(function() {
+    const buscaPlaca = JSON.parse(localStorage.getItem('buscaPlaca'));
+
+    if(buscaPlaca){
+      const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+      const placa = searchHistory?.params?.plate;
+      const infoPlaca = JSON.parse(localStorage.getItem('infoBuscaPLaca'));
+      $('.tag').show();
+      $('.texto-compatibilidade').hide();
+      $('.input-container').hide();
+      $('.carro-compativel').text("Compatível com: " + infoPlaca[0].modelo + " " + infoPlaca[0].montadora);
+      $(".texto-placa").text(placa);
+    }
+
+    $('.botao-placa').on('click', function() {
+      $('.tag').hide();
+      $('.input-container').show();
+      $('.texto-compatibilidade').show();
+      $("#placa-input-compatibilidade").val("");
+      $('.carro-compativel').hide();
+    });
+  });
+
   let activeTab = '#busca-peca';
   selectRightSearchMethod();
 
@@ -8,6 +31,9 @@
   const View = ViewAPI();
   const Controller = ControllerAPI();
   let firstRouteSelected = "";
+  let vehicle = "";
+  window.buttonBuscarSelected = false;
+
 
   const CONFIG = {
     ASYNC: {
@@ -17,7 +43,6 @@
         ",specificationFilter_50", // VEICULO
         ",specificationFilter_48", // ANO
         ",specificationFilter_79" //VERSAOFIPE
-        // ",specificationFilter_76", // FIPE
       ],
       TREE_LEVEL: 2,
       LID_FILTER: "lid=bf120500-baab-4185-8b70-cc630f7d1c70",
@@ -44,7 +69,7 @@
       canBeClear: false,
     },
     {
-      title: "Peça",
+      title: "Produto",
       id: "pecas-select",
       values: [],
       routeSelected: "",
@@ -122,7 +147,7 @@
     PECA_SELECTS.forEach(View._initSelect_);
 
     // Create Button Function
-    $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() });
+    $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);});
   }
 
   function ViewAPI() {
@@ -501,6 +526,11 @@
         firstRouteSelected = getSelectedRouteByOption(optionSelected);
       }
 
+      //Se o index for veículo, ele salva o nome do veículo selecionado.
+      if(index === 3){
+        vehicle = optionSelected.name.toLowerCase();
+      }
+
       if (nextSelect) {
         if (optionSelected && select.isAsyncSearch) {
           const response = await Service.getFilters(
@@ -514,6 +544,10 @@
             nextSelect.asyncSearchTerm
           );
 
+          index + 1 === PECA_SELECTS.length - 1
+            ? values = filterVersaoFipe(values, vehicle)
+            : values;
+
           // Caso seja Ano (Penultimo campo [-2]) altera para decrescente
           index + 1 === PECA_SELECTS.length - 2
             ? values.sort((a, b) => b.name.localeCompare(a.name))
@@ -522,6 +556,8 @@
           nextSelect.values = nextSelect.title == "Veículo"
             ? vehiclesWithoutBrand(values, optionSelected.name)
             : values;
+
+            hideDivVersaoFipe(values.length, nextSelect.title)
         } else {
           nextSelect.values = optionSelected.children.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -534,6 +570,22 @@
       View.createNavigation(select.id, event.target.innerHTML);
 
       modalDeCarregamento.ocultarSpinner();
+    }
+
+    function hideDivVersaoFipe(length, title) {
+      const divSelectVersaoFipe = $('#select-versao-fipe');
+
+      if (title === "Versão") {
+          if (length === 0) {
+            divSelectVersaoFipe.hide();
+          } else {
+            divSelectVersaoFipe.show();
+          }
+      }
+    }
+
+    function filterVersaoFipe(values, vehicle){
+      return values.filter(value => value.name.toLowerCase().includes(vehicle))
     }
 
     function vehiclesWithoutBrand(vehicles, brand){
@@ -646,6 +698,9 @@
       if(index < 1) {
         url = getUrlForFirstSelect(firstRouteSelected, url);
       }
+
+      window.buttonBuscarSelected = true;
+      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
 
       saveSearchInLocalStorage(null, url);
 
@@ -778,9 +833,46 @@
           alert('Sua placa não segue um padrão válido!');
         } else {
           buscaPorPlaca(placa);
+          window.localStorage.setItem('buscaPlaca', true);
+          const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+          const placa = searchHistory?.params?.plate;
+          const infoPlaca = JSON.parse(localStorage.getItem('infoBuscaPLaca'));
+          $('.tag').show();
+          $('.texto-compatibilidade').hide();
+          $('.input-container').hide();
+          $('.carro-compativel').text("Compatível com: " + infoPlaca[0].modelo + " " + infoPlaca[0].montadora);
+          $(".texto-placa").text(placa);
         }
       }
     });
+
+    let formBuscaPlacaCompatibilidade = document.querySelector("#form-busca-placa-compatibilidade");
+    if (formBuscaPlacaCompatibilidade) {
+      formBuscaPlacaCompatibilidade.addEventListener('submit', (event) => {
+        event.preventDefault();
+
+        const [isUniversalProduct, redirectUrl] = checkIfUniversalProductSearch();
+
+        if (isUniversalProduct) {
+          const modalDeCarregamento = new ModalDeCarregamento();
+          modalDeCarregamento.mostarSpinner();
+          location.href = redirectUrl;
+        } else {
+          const placa = document.querySelector("#placa-input-compatibilidade").value;
+          const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+
+          if (placa.length === 0) {
+            alert('Você deve inserir a placa do seu veículo!');
+          } else if (!placa.trim().match(regexPlaca)) {
+            alert('Sua placa não segue um padrão válido!');
+          } else {
+            buscaPorPlaca(placa);
+          }
+        }
+      });
+    } else {
+      console.error("Formulário de compatibilidade não encontrado.");
+    }
   }
 
   function restoreBuscaPlaca() {
@@ -973,8 +1065,10 @@
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
 
-
-
+      window.buttonBuscarSelected = true;
+      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
+      window.localStorage.setItem('buscaPlaca', true);
+      $(".texto-placa").text(placaSemCaracteresEspeciais);
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
       url += parametrosUrl;

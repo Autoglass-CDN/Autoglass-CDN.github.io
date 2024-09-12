@@ -4,29 +4,28 @@
   width: 100%;
   display: flex;
   align-items: center;
+  margin-bottom: 15px;
 }
 
 #placa-input-compatibilidade {
-  outline: none;
+    outline: none;
     padding: 10px 15px;
     border: 1px solid;
     border-color: var(--gray-500);
     border-radius: 4px;
-    width: 100%;
     color: var(--gray-500);
     transition: border 500ms;
 }
 
-.c-busca-compatibilidade__input input {
+.input-container input {
   padding: 8px;
   font-size: 12px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-right: 30px; /* Espaço entre o input e o botão */
-  flex: 1; /* Para o campo de input ocupar o espaço disponível */
+  flex: 1;
 }
 
-.c-busca-compatibilidade__botao button {
+.input-container button {
   padding: 8px 4px;
   font-size: 10px;
   border: none;
@@ -78,7 +77,7 @@
 }
 
 .carro-compativel{
-  display: block;
+  display: ruby-text;
     min-height: 25px;
     min-width: 30px;
     padding-top: 10px;
@@ -91,7 +90,7 @@
 }
 
 .texto-compatibilidade{
-  display: block;
+  display: ruby-text;
     min-height: 25px;
     min-width: 30px;
     color: #2d4f9e;

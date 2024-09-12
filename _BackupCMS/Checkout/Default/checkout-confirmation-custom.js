@@ -80,7 +80,16 @@ function loadScript(src, callback) {
   });
 }
 
+function getCookieValue(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
+}
+
 async function loadScripts(data) {
+  const myUfCurrent = getCookieValue('myuf');
+
   await loadScript("/scripts/jquery.ui.core.js");
   await loadScript("/arquivos/jquery.cookie.js");
   await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
@@ -90,11 +99,17 @@ async function loadScripts(data) {
 
   await loadScript("/arquivos/jquery-ui.datepicker.js");
   await loadScript("https://autoglass-cdn.github.io/arquivos/js/consulta-agendamento.js");
-  await loadScript(
-    "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
-    script => script.id = "ze-snippet"
-  );
-
+  if (myUfCurrent === 'PI' || myUfCurrent === 'ES'){
+    await loadScript(
+      "https://static.zdassets.com/ekr/snippet.js?key=709fbd50-6674-4050-abd5-2b0abbea5df1",
+      script => script.id = "ze-snippet"
+    );
+  }else{
+    await loadScript(
+      "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
+      script => script.id = "ze-snippet"
+    );
+  }
   loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
 }
 
