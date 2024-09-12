@@ -833,15 +833,6 @@
           alert('Sua placa não segue um padrão válido!');
         } else {
           buscaPorPlaca(placa);
-          window.localStorage.setItem('buscaPlaca', true);
-          const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-          const placa = searchHistory?.params?.plate;
-          const infoPlaca = JSON.parse(localStorage.getItem('infoBuscaPLaca'));
-          $('.tag').show();
-          $('.texto-compatibilidade').hide();
-          $('.input-container').hide();
-          $('.carro-compativel').text("Compatível com: " + infoPlaca[0].modelo + " " + infoPlaca[0].montadora);
-          $(".texto-placa").text(placa);
         }
       }
     });
