@@ -31,10 +31,26 @@ integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQV
 <script>
     window.onload = function(){
         setTimeout(function() {
-            var zendeskElement = document.createElement("script");
-            zendeskElement.id = "ze-snippet";
-            zendeskElement.src = "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c";
-            document.getElementsByTagName("head")[0].appendChild(zendeskElement);
+            function getCookieValue(name) {
+                const value = `; ${document.cookie}`;
+                const parts = value.split(`; ${name}=`);
+                if (parts.length === 2) return parts.pop().split(';').shift();
+                return null;
+            }
+
+            const myUfCurrent = getCookieValue('myuf');
+            if (myUfCurrent === 'PI' || myUfCurrent === 'ES') {
+                var script = document.createElement('script');
+                script.id = 'ze-snippet';
+                script.src = 'https://static.zdassets.com/ekr/snippet.js?key=709fbd50-6674-4050-abd5-2b0abbea5df1';
+                document.getElementsByTagName("head")[0].appendChild(zendeskElement);
+            }
+            else{
+                var script = document.createElement('script');
+                script.id = 'ze-snippet';
+                script.src = 'https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c';
+                document.getElementsByTagName("head")[0].appendChild(zendeskElement);
+            }
         }, 5000);
     };
 </script>

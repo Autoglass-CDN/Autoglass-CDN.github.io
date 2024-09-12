@@ -247,9 +247,15 @@ $(window).on('load', () => {
             	return;
         }
 
+        function getCookieValue(name) {
+          const value = `; ${document.cookie}`;
+          const parts = value.split(`; ${name}=`);
+          if (parts.length === 2) return parts.pop().split(';').shift();
+          return null;
+        }
 
         async function loadScripts() {
-
+            const myUfCurrent = getCookieValue('myuf');
             const addId = id => script => {
               script.id = id;
             }
@@ -266,8 +272,11 @@ $(window).on('load', () => {
             loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/automatizar-preenchimento-nota-fiscal.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/habilitar-input-chassi.js');
 
-
-            loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+            if (myUfCurrent === 'PI' || myUfCurrent === 'ES'){
+              loadScript('https://static.zdassets.com/ekr/snippet.js?key=709fbd50-6674-4050-abd5-2b0abbea5df1', addId('ze-snippet'));
+            }else{
+              loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+            }
 
             loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/hubspot-cookie.js');
@@ -421,7 +430,7 @@ $(window).on('load', () => {
                 bestPrice = '526';
                 available = true;
             }
-                
+
             if (!available) return;
 
             let btnInstall = _createInstallButton(
