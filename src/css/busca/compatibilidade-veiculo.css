@@ -100,3 +100,21 @@
     font-weight: 600;
     max-width: 265px;
 }
+
+@media (max-width: 768px) {
+  .texto-compatibilidade {
+    padding-left: 21px;
+  }
+
+  .input-container{
+    padding-left: 20px;
+  }
+
+  .tag{
+    margin-left: 20px;
+  }
+
+  .carro-compativel{
+    margin-left: 20px;
+  }
+}
