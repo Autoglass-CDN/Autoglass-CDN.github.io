@@ -37,7 +37,7 @@
   height: 38px;
 }
 
-.c-busca-compatibilidade__botao button:hover {
+.input-container button:hover {
   background-color: #002244; /* Efeito de hover */
 }
 
