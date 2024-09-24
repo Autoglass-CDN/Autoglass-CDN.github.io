@@ -37,7 +37,7 @@ const CONFIG = {
     },
     CONTROLS: {
         ID_SELLER: 1,
-        BRAND_ID: 2000108
+        BRAND_ID: ""
     },
     CSS: {
         INSTALACAO: 'instalacao',
@@ -65,16 +65,21 @@ $(window).on('load', () => {
     function ControllerAPI() {
         return {
             _init,
-            loadScripts
+            loadScripts,
+  			recuperarInfoAcessorio
         }
 
         async function _init() {
             $(window).on(CONFIG.EVENTS.HASH_CHANGE, _watchHashChange);
 
-
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
+   			CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');
+			
+  			await recuperarInfoAcessorio(orderForm, 'brandId');
+  
+  			await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
 
-            _createInstallButtonObserver();
+            await _createInstallButtonObserver(orderForm);
 
             View.windshieldVerification(orderForm);
 
@@ -92,8 +97,20 @@ $(window).on('load', () => {
         }
 
 
-        function _createInstallButtonObserver() {
-            const instalationSku = '10748';
+		 async function recuperarInfoAcessorio(orderForm, property) {
+            for (const item of orderForm.items) {
+                const accessories = await Service.getAccessories(item);
+                const accessory = accessories.find(accessory => !!accessory);
+
+                if (accessory) {
+                    return accessory[property];
+                }
+            }
+        }
+	
+
+        async function _createInstallButtonObserver(orderForm) {
+            const instalationSku = await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
             const itemsObserver = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
                     if(mutation.removedNodes[0] instanceof HTMLElement) {
@@ -322,7 +339,8 @@ $(window).on('load', () => {
             formatItemList,
             windshieldVerification,
             addInstallTexts,
-            createCepInfo
+            createCepInfo,
+            _implementsInstallButtom
         }
 
         function _init() {
@@ -424,9 +442,10 @@ $(window).on('load', () => {
                 .find(p => p.sku == accessory.items[0].itemId);
 
             let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price
-
+            let precoAcessorioFormatado = precoAcessorio.toFixed(2).replace('.', ',');
+              
             if(accessory.items[0]) {
-              preco = 'R$ '+ precoAcessorio +',00';
+              preco = 'R$ '+ precoAcessorioFormatado;
               bestPrice = precoAcessorio + '00';
               available = true;
 
@@ -873,8 +892,9 @@ $(window).on('load', () => {
         }
 
         async function getAccessories(item) {
+            let salesChannel = vtexjs.checkout.orderForm.salesChannel;
             return await fetch(
-                `/api/catalog_system/pub/products/crossselling/accessories/${item.productId}`
+                `/api/catalog_system/pub/products/crossselling/accessories/${item.productId}?sc=${salesChannel}`
             ).then(data => data.json());
         }
 
