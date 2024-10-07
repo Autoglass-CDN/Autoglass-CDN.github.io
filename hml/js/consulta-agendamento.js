@@ -289,8 +289,16 @@ $(function () {
                 store.Nome.indexOf(
                   pickupPoint.DadosPickupPoint.address.addressId
                 ) > -1
-              )
-                finalStore = store;
+              ){
+                const hasAvailableTime = store.Horarios.some(
+                  (horario) => horario.Disponibilidade === "Sim"
+                  );
+      
+                if (hasAvailableTime) {
+                  
+                  finalStore = store;
+                }
+              }
               return finalStore;
             }, null);
             return pickupPoint;
