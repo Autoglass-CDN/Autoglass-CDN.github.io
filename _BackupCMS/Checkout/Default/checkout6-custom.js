@@ -16,6 +16,7 @@ fbq('track', 'PageView');
 /**
 * Configurações de instalação
 */
+
 const CONFIG = {
     GA: {
         ID: 'UA-133498560-1',
@@ -34,7 +35,7 @@ const CONFIG = {
     },
     CONTROLS: {
         ID_SELLER: 1,
-        BRAND_ID: 2000108
+        BRAND_ID: ""
     },
     CSS: {
         INSTALACAO: 'instalacao',
@@ -59,7 +60,8 @@ $(window).on('load', () => {
     function ControllerAPI() {
         return {
             _init,
-            loadScripts
+            loadScripts,
+            recuperarInfoAcessorio
         }
 
         async function _init() {
@@ -67,7 +69,13 @@ $(window).on('load', () => {
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
 
-            _createInstallButtonObserver();
+            CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');
+
+  			await recuperarInfoAcessorio(orderForm, 'brandId');
+
+  			await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
+
+            await _createInstallButtonObserver(orderForm);
 
             View.windshieldVerification(orderForm);
 
@@ -81,11 +89,22 @@ $(window).on('load', () => {
                 CONFIG.EVENTS.ORDER_FORM_UPDATE + ' ' + CONFIG.EVENTS.HASH_CHANGE,
                 _watchHashChangeAndOrderForm
             )
-
         }
 
-        function _createInstallButtonObserver() {
-            const instalationSku = '10748';
+        async function recuperarInfoAcessorio(orderForm, property) {
+            for (const item of orderForm.items) {
+                const accessories = await Service.getAccessories(item);
+                const accessory = accessories.find(accessory => !!accessory);
+
+                if (accessory) {
+                    return accessory[property];
+                }
+            }
+        }
+
+
+        async function _createInstallButtonObserver(orderForm) {
+            const instalationSku = await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
             const itemsObserver = new MutationObserver(function (mutations) {
                 mutations.forEach(function (mutation) {
                     if(mutation.removedNodes[0] instanceof HTMLElement) {
@@ -106,6 +125,7 @@ $(window).on('load', () => {
                 });
             });
         }
+
 
         function _watchHashChangeAndOrderForm(_, orderForm) {
             orderForm && Service.sendGAEvent(orderForm);
@@ -247,15 +267,7 @@ $(window).on('load', () => {
             	return;
         }
 
-        function getCookieValue(name) {
-          const value = `; ${document.cookie}`;
-          const parts = value.split(`; ${name}=`);
-          if (parts.length === 2) return parts.pop().split(';').shift();
-          return null;
-        }
-
         async function loadScripts() {
-            const myUfCurrent = getCookieValue('myuf');
             const addId = id => script => {
               script.id = id;
             }
@@ -272,11 +284,8 @@ $(window).on('load', () => {
             loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/automatizar-preenchimento-nota-fiscal.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/checkout/habilitar-input-chassi.js');
 
-            if (myUfCurrent === 'PI' || myUfCurrent === 'ES'){
-              loadScript('https://static.zdassets.com/ekr/snippet.js?key=709fbd50-6674-4050-abd5-2b0abbea5df1', addId('ze-snippet'));
-            }else{
-              loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
-            }
+
+             loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
 
             loadScript('https://autoglass-cdn.github.io/arquivos/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/arquivos/js/hubspot-cookie.js');
@@ -318,7 +327,8 @@ $(window).on('load', () => {
             formatItemList,
             windshieldVerification,
             addInstallTexts,
-            createCepInfo
+            createCepInfo,
+            _implementsInstallButtom
         }
 
         function _init() {
@@ -410,25 +420,18 @@ $(window).on('load', () => {
 
         async function _implementsInstallButtom(item, accessory) {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
-            let product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
+            var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
 
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
 
-            if(product.name == 'Insumos para instalação' && !product.available) {
-                preco     = 'R$ 60,00';
-                bestPrice = '6000';
-                available = true;
-            }
-            else if(product.name == 'Instalação Insumos' && !product.available) {
-                preco     = 'R$ 129,99';
-                bestPrice = '12999';
-                available = true;
-            }
-            else if(product.name == 'Instalação de Iluminação' && !product.available) {
-                preco     = 'R$ 5,26';
-                bestPrice = '526';
-                available = true;
+            let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price
+            let precoAcessorioFormatado = precoAcessorio.toFixed(2).replace('.', ',');
+
+            if(accessory.items[0]) {
+              preco = 'R$ '+ precoAcessorioFormatado;
+              bestPrice = precoAcessorio + '00';
+              available = true;
             }
 
             if (!available) return;
@@ -698,15 +701,16 @@ $(window).on('load', () => {
                 $('.shp-option-text-label-single span').html('<a id="alterar-shipping-btn">Veja os dias disponíveis</a>');
                 $('.shp-option-text-price').html('');
             } else {
-                $('#mostrar-datas-datepicker').datepicker('setDate', day.selectedDay);
+                try {
+                    $('#mostrar-datas-datepicker').datepicker('setDate', day.selectedDay);
 
-                if (window.location.hash.includes('shipping')) {
-                    $('.shp-option-text-label-single span').html(day.selectedDay);
-                }
+                    if (window.location.hash.includes('shipping')) {
+                        $('.shp-option-text-label-single span').html(day.selectedDay);
+                    }
 
-                $('.shp-option-text-price').html('<a id="alterar-shipping-btn">Alterar</a>');
+                    $('.shp-option-text-price').html('<a id="alterar-shipping-btn">Alterar</a>');
 
-                $('.srp-delivery-info .instalar-em-casa').html(`
+                    $('.srp-delivery-info .instalar-em-casa').html(`
                         <a id="open-modal-ic">
                             <div class="instalar_calendar"><i class="fa fa-calendar"></i></div>
                             <div class="instalar_content">
@@ -716,6 +720,10 @@ $(window).on('load', () => {
                             </div>
                         </a>
                     `);
+                }
+                catch (e) {
+                    console.log('Não foi possível encontrar day.selectedDay (' + e.message + ')');
+                }
             }
 
             try {
@@ -926,3 +934,4 @@ $(window).on('load', () => {
         }
     }
 });
+
