@@ -3,7 +3,7 @@
     function updatePageNumbers() {
         const pageNumbers = document.querySelectorAll('.pages li.page-number');
         pageNumbers.forEach((li) => {
-            li.setAttribute('href', `#${li.textContent.trim()}`);
+            li.setAttribute('href', `?${li.textContent.trim()}`);
         });
         console.log("Atributo href atualizado nos elementos de paginação.");
     }
