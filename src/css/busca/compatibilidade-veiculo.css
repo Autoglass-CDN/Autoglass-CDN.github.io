@@ -102,26 +102,25 @@
 }
 
 @media (max-width: 768px) {
-  .div-compatibilidade {
-    flex-direction: column; /* Alinhar os elementos em coluna no celular */
-    align-items: flex-start; /* Alinhar à esquerda */
-  }
-
   .texto-compatibilidade {
-    margin-right: 0;
-    margin-bottom: 5px;
+    display: ruby-text;
+    color: #2d4f9e;
+    border-radius: 0;
+    line-height: 21px;
+    font-weight: 600;
+    padding-left: 80px;
   }
 
-  .input-container {
+  .input-container{
+    padding-left: 100px;
     width: 100%;
-    justify-content: space-between; /* Espaçamento entre input e botão */
   }
 
-  #placa-input-compatibilidade {
-    width: calc(100% - 90px); /* Ajuste para input ocupar o máximo de espaço disponível */
+  .tag{
+    margin-left: 20px;
   }
 
-  .input-container button {
-    width: 80px; /* Ajuste a largura do botão em telas menores */
+  .carro-compativel{
+    margin-left: 20px;
   }
 }
