@@ -125,5 +125,14 @@
 
   .carro-compativel{
     margin-left: 20px;
+    color: #2d4f9e;
+    border-radius: 0;
+    font-weight: 600;
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1;
+    padding-left: 100px;
+    line-height: 15px;
+    padding-bottom: 5px;
   }
 }
