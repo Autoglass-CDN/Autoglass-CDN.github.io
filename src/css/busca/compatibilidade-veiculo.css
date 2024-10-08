@@ -127,8 +127,7 @@
     color: red;
     font-weight: 600;
     display: inline-flex;
-    flex-direction: column;
     line-height: 1;
-    padding-left: 100px;
+    padding-left: 20px;
   }
 }
