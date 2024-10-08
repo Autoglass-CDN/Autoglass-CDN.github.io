@@ -102,9 +102,6 @@
 }
 
 @media (max-width: 768px) {
-  .tag{
-    display: none;
-  }
   .texto-placa{
     display: none;
   }
@@ -125,22 +122,15 @@
     line-height: 15px;
     padding-bottom: 5px;
   }
-
   .input-container{
     padding-left: 100px;
     width: 100%;
   }
-
   .tag{
     margin-left: 20px;
+    display: none;
   }
-
   .carro-compativel{
     display: none;
-    color: #2d4f9e;
-    font-weight: 600;
-    display: inline-flex;
-    line-height: 1;
-    margin-left: 20px;
   }
 }
