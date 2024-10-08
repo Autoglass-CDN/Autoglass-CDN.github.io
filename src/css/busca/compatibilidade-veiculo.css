@@ -108,7 +108,6 @@
     font-weight: 600;
     display: inline-flex;
     flex-direction: column;
-    align-items: center; /* Centraliza verticalmente, se necessário */
     line-height: 1;
     padding-left: 100px;
   }
