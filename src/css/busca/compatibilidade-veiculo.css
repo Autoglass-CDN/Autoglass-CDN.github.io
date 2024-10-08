@@ -106,6 +106,7 @@
     color: #2d4f9e;
     border-radius: 0;
     font-weight: 600;
+    display: inline-block;
   }
 
   .input-container{
