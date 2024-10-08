@@ -103,11 +103,21 @@
 
 @media (max-width: 768px) {
   .texto-compatibilidade {
-    padding-left: 21px;
+    display: ruby-text;
+    min-height: 25px;
+    min-width: 30px;
+    color: #2d4f9e;
+    vertical-align: middle;
+    border-radius: 0;
+    line-height: 21px;
+    font-weight: 600;
+    max-width: 265px;
+    padding-left: 117px;
   }
 
   .input-container{
     padding-left: 100px;
+    width: 100%;
   }
 
   .tag{
