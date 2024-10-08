@@ -103,19 +103,14 @@
 
 @media (max-width: 768px) {
   .texto-compatibilidade {
-    color: red;
+    color: #2d4f9e;
     border-radius: 0;
     font-weight: 600;
     display: inline-flex;
     flex-direction: column;
     align-items: center; /* Centraliza verticalmente, se necessário */
     line-height: 1;
-  }
-
-  .texto-compatibilidade::before {
-    content: "Verificar\nCompatibilidade:"; /* Quebra de linha manual */
-    white-space: pre;
-    display: inline-block;
+    padding-left: 100px;
   }
 
   .input-container{
