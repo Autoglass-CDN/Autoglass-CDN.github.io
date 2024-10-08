@@ -103,7 +103,6 @@
 
 @media (max-width: 768px) {
   .texto-compatibilidade {
-    display: ruby-text;
     color: #2d4f9e;
     border-radius: 0;
     line-height: 21px;
