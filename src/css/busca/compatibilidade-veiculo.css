@@ -107,12 +107,11 @@
     min-height: 25px;
     min-width: 30px;
     color: #2d4f9e;
-    vertical-align: middle;
     border-radius: 0;
     line-height: 21px;
     font-weight: 600;
     max-width: 265px;
-    padding-left: 100px;
+    padding-left: 80px;
   }
 
   .input-container{
