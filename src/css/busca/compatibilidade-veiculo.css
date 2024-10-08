@@ -110,7 +110,8 @@
     flex-direction: column;
     line-height: 1;
     padding-left: 100px;
-    line-height: 21px;
+    line-height: 15px;
+    padding-bottom: 5px;
   }
 
   .input-container{
