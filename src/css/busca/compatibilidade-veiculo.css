@@ -102,6 +102,18 @@
 }
 
 @media (max-width: 768px) {
+  .tag{
+    display: none;
+  }
+  .texto-placa{
+    display: none;
+  }
+  .botao-placa{
+    display: none;
+  }
+  .div-compatibilidade{
+    display: none;
+  }
   .texto-compatibilidade {
     color: #2d4f9e;
     border-radius: 0;
@@ -124,6 +136,7 @@
   }
 
   .carro-compativel{
+    display: none;
     color: #2d4f9e;
     font-weight: 600;
     display: inline-flex;
