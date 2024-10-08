@@ -124,10 +124,10 @@
   }
 
   .carro-compativel{
-    color: red;
+    color: blue;
     font-weight: 600;
     display: inline-flex;
     line-height: 1;
-    padding-left: 20px;
+    margin-left: 20px;
   }
 }
