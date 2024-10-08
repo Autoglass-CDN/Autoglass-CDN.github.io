@@ -2,25 +2,26 @@
 
   $(document).ready(function() {
     const buscaPlaca = JSON.parse(localStorage.getItem('buscaPlaca'));
+    if(window.innerWidth > 768){
+      if(buscaPlaca){
+        const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+        const placa = searchHistory?.params?.plate;
+        const infoPlaca = JSON.parse(localStorage.getItem('infoBuscaPLaca'));
+        $('.tag').show();
+        $('.texto-compatibilidade').hide();
+        $('.input-container').hide();
+        $('.carro-compativel').text("Compatível com: " + infoPlaca[0].modelo + " " + infoPlaca[0].montadora);
+        $(".texto-placa").text(placa);
+      }
 
-    if(buscaPlaca){
-      const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-      const placa = searchHistory?.params?.plate;
-      const infoPlaca = JSON.parse(localStorage.getItem('infoBuscaPLaca'));
-      $('.tag').show();
-      $('.texto-compatibilidade').hide();
-      $('.input-container').hide();
-      $('.carro-compativel').text("Compatível com: " + infoPlaca[0].modelo + " " + infoPlaca[0].montadora);
-      $(".texto-placa").text(placa);
+      $('.botao-placa').on('click', function() {
+        $('.tag').hide();
+        $('.input-container').show();
+        $('.texto-compatibilidade').show();
+        $("#placa-input-compatibilidade").val("");
+        $('.carro-compativel').hide();
+      });
     }
-
-    $('.botao-placa').on('click', function() {
-      $('.tag').hide();
-      $('.input-container').show();
-      $('.texto-compatibilidade').show();
-      $("#placa-input-compatibilidade").val("");
-      $('.carro-compativel').hide();
-    });
   });
 
   let activeTab = '#busca-peca';
@@ -837,6 +838,7 @@
       }
     });
 
+
     let formBuscaPlacaCompatibilidade = document.querySelector("#form-busca-placa-compatibilidade");
     if (formBuscaPlacaCompatibilidade) {
       formBuscaPlacaCompatibilidade.addEventListener('submit', (event) => {
@@ -1055,11 +1057,12 @@
         url += `/${montadorasEncontradas[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
-
-      window.buttonBuscarSelected = true;
+      if(window.innerWidth > 768){
+        $(".texto-placa").text(placaSemCaracteresEspeciais);
+      }
       window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
       window.localStorage.setItem('buscaPlaca', true);
-      $(".texto-placa").text(placaSemCaracteresEspeciais);
+      window.buttonBuscarSelected = true;
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
       url += parametrosUrl;
