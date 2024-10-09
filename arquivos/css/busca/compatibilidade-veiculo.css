@@ -1,0 +1,136 @@
+.input-container {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+#placa-input-compatibilidade {
+    outline: none;
+    padding: 10px 15px;
+    border: 1px solid;
+    border-color: var(--gray-500);
+    border-radius: 4px;
+    color: var(--gray-500);
+    transition: border 500ms;
+}
+
+.input-container input {
+  padding: 8px;
+  font-size: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  flex: 1;
+}
+
+.input-container button {
+  padding: 8px 4px;
+  font-size: 10px;
+  border: none;
+  background-color: #003366; /* Ajuste conforme o estilo desejado */
+  color: white;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-left: 5px;
+  height: 38px;
+}
+
+.input-container button:hover {
+  background-color: #002244; /* Efeito de hover */
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  background-color: #0c66ff;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+}
+
+.tag span {
+  margin-right: 10px;
+}
+
+.tag button {
+  background-color: white;
+  border: none;
+  color: #0c66ff;
+  font-size: 10px;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.tag button:hover {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.carro-compativel{
+  display: ruby-text;
+    min-height: 25px;
+    min-width: 30px;
+    padding-top: 10px;
+    color: #2d4f9e;
+    vertical-align: middle;
+    border-radius: 0;
+    line-height: 21px;
+    font-weight: 600;
+    max-width: 265px;
+}
+
+.texto-compatibilidade{
+  display: ruby-text;
+    min-height: 25px;
+    min-width: 30px;
+    color: #2d4f9e;
+    vertical-align: middle;
+    border-radius: 0;
+    line-height: 21px;
+    font-weight: 600;
+    max-width: 265px;
+}
+
+@media (max-width: 768px) {
+  .texto-placa{
+    display: none;
+  }
+  .botao-placa{
+    display: none;
+  }
+  .div-compatibilidade{
+    display: none;
+  }
+  .texto-compatibilidade {
+    color: #2d4f9e;
+    border-radius: 0;
+    font-weight: 600;
+    display: inline-flex;
+    flex-direction: column;
+    line-height: 1;
+    padding-left: 100px;
+    line-height: 15px;
+    padding-bottom: 5px;
+  }
+  .input-container{
+    padding-left: 100px;
+    width: 100%;
+  }
+  .tag{
+    margin-left: 20px;
+    display: none;
+  }
+  .carro-compativel{
+    display: none;
+  }
+}

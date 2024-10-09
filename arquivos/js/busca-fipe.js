@@ -1,4 +1,28 @@
 (function () {
+
+  $(document).ready(function() {
+    const buscaPlaca = JSON.parse(localStorage.getItem('buscaPlaca'));
+    if(window.innerWidth > 768){
+      if(buscaPlaca){
+        const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
+        const placa = searchHistory?.params?.plate;
+        const infoPlaca = JSON.parse(localStorage.getItem('infoBuscaPLaca'));
+        $('.tag').show();
+        $('.texto-compatibilidade').hide();
+        $('.input-container').hide();
+        $('.carro-compativel').text("Compatível com: " + infoPlaca[0].modelo + " " + infoPlaca[0].montadora);
+        $(".texto-placa").text(placa);
+      }
+      $('.botao-placa').on('click', function() {
+        $('.tag').hide();
+        $('.input-container').show();
+        $('.texto-compatibilidade').show();
+        $("#placa-input-compatibilidade").val("");
+        $('.carro-compativel').hide();
+      });
+    }
+  });
+
   let activeTab = '#busca-peca';
   selectRightSearchMethod();
 
@@ -122,7 +146,7 @@
     PECA_SELECTS.forEach(View._initSelect_);
 
     // Create Button Function
-    $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() });
+    $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search(); window.localStorage.setItem('buscaPlaca', false); });
   }
 
   function ViewAPI() {
@@ -811,6 +835,31 @@
         }
       }
     });
+
+    let formBuscaPlacaCompatibilidade = document.querySelector("#form-busca-placa-compatibilidade");
+    if (formBuscaPlacaCompatibilidade) {
+      formBuscaPlacaCompatibilidade.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const [isUniversalProduct, redirectUrl] = checkIfUniversalProductSearch();
+        if (isUniversalProduct) {
+          const modalDeCarregamento = new ModalDeCarregamento();
+          modalDeCarregamento.mostarSpinner();
+          location.href = redirectUrl;
+        } else {
+          const placa = document.querySelector("#placa-input-compatibilidade").value;
+          const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+          if (placa.length === 0) {
+            alert('Você deve inserir a placa do seu veículo!');
+          } else if (!placa.trim().match(regexPlaca)) {
+            alert('Sua placa não segue um padrão válido!');
+          } else {
+            buscaPorPlaca(placa);
+          }
+        }
+      });
+    } else {
+      console.error("Formulário de compatibilidade não encontrado.");
+    }
   }
 
   function restoreBuscaPlaca() {
@@ -1003,8 +1052,12 @@
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
 
-      window.buttonBuscarSelected = true;
+      if(window.innerWidth > 768){
+        $(".texto-placa").text(placaSemCaracteresEspeciais);
+      }
       window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
+      window.localStorage.setItem('buscaPlaca', true);
+      window.buttonBuscarSelected = true;
 
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
