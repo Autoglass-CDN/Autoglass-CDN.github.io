@@ -4,7 +4,7 @@
     xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 <head>
     <vtex:contentPlaceHolder id="qd_head" />
-    <meta name="robots" content="noindex" />
+    <meta name="robots" content="noindex, nofollow" />
     <meta name="facebook-domain-verification" content="qt4yjekjl3va8p2ub6pgxub2jrggp9"/>
     <meta name="google-site-verification" content="jFSa3nOK7_eVPPm0zk3bZUd1vTYnUb_H2okvxMF7aP8" />
     <meta charset="UTF-8" />
@@ -20,7 +20,7 @@
 
     <link rel="preload" href="/arquivos/locationFetcher.css" type="text/css"/>
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/header.css" type="text/css"/>
-
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css" type="text/css"/>
     <vtex:metaTags />
     <link rel="alternate" hreflang="pt-br" href="https://dev2autoglass.myvtex.com"/>
 
@@ -86,7 +86,11 @@
     <!-- Header -->
     <vtex:template id="dev--header" />
     <!-- Header -->
-
+    <!-- Smart Select -->
+    <div style="padding-top: 110px;">
+        <vtex:template id="dev--busca-fipe" />
+    </div>
+    <!-- Smart Select -->
     <main>
         <section class="banners-section">
             <div class="banners">
@@ -143,10 +147,6 @@
                 <ul class="banners-bars"></ul>
             </div>
         </section>
-
-        <!-- Smart Select -->
-        <vtex:template id="dev--busca-fipe" />
-        <!-- Smart Select -->
 
         <section class="benefits-section">
             <h1 class="titulo-pagina-home">Autoglass Online - A maior loja virtual de vidros e autopeças da América Latina</h1>
