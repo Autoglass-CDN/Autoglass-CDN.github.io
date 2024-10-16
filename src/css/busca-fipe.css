@@ -110,10 +110,11 @@
   .c-busca .h-flex {
     flex-direction: row;
     align-items: center;
+    justify-content: center;
   }
 
   .c-busca .c-busca__tabs {
-    justify-content: space-between;
+    justify-content: center;
   }
 
   /* .c-busca .c-busca__tabs li {
@@ -170,6 +171,7 @@
 /* #region TAB CONTAINER */
 .c-busca .c-busca__tabs-content {
   color: white;
+  justify-content: center;
 }
 
 .c-busca .c-busca__tab-content {
