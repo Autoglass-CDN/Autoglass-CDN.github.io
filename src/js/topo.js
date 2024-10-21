@@ -40,30 +40,30 @@ function valueBetweenRange (value, min, max) {
   return value < min ? min : (value > max ? max : value);
 }
 
-function activateCategory(categoriaAtual, indexConteudoAtual) {
-  let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
-  let conteudoAtual = document
-    .querySelectorAll('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens')[indexConteudoAtual];
+// function activateCategory(categoriaAtual, indexConteudoAtual) {
+//   let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
+//   let conteudoAtual = document
+//     .querySelectorAll('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens')[indexConteudoAtual];
 
-  if (categoriaAnterior) {
-    categoriaAnterior
-      .querySelector('.painel-categorias__categoria-header.ativo')
-      ?.classList.remove('ativo');
-    categoriaAnterior.classList.remove('ativo');
-    document
-      .querySelector('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo')
-      ?.classList.remove('ativo');
+//   if (categoriaAnterior) {
+//     categoriaAnterior
+//       .querySelector('.painel-categorias__categoria-header.ativo')
+//       ?.classList.remove('ativo');
+//     categoriaAnterior.classList.remove('ativo');
+//     document
+//       .querySelector('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo')
+//       ?.classList.remove('ativo');
 
-    // event.target.style.transition = '0.8s';
-    // event.target.style.opacity = 0;
-  }
-  categoriaAtual
-    .querySelector('.painel-categorias__categoria-header')
-    ?.classList.add('ativo');
-  categoriaAtual?.classList.add('ativo');
-  conteudoAtual?.classList.add('ativo');
-  currentCategory = categoriaAtual;
-}
+//     // event.target.style.transition = '0.8s';
+//     // event.target.style.opacity = 0;
+//   }
+//   categoriaAtual
+//     .querySelector('.painel-categorias__categoria-header')
+//     ?.classList.add('ativo');
+//   categoriaAtual?.classList.add('ativo');
+//   conteudoAtual?.classList.add('ativo');
+//   currentCategory = categoriaAtual;
+// }
 
 function slideNext() {
   let categories = document.querySelectorAll('.painel-categorias__categoria');
@@ -129,7 +129,7 @@ function replaceBlankSpaces(text, newChar) {
 
 void function initializeCategoryPanelMenu() {
   let lastActiveCategory = null;
-  var painelCategoriasMenu = $('.painel-categorias__menu ul li:first-child.ativo');
+  var painelCategoriasMenu = $('.painel-categorias__categoria.ativo');
 
   $('.painel-categorias__categoria-itens-lista-menu li a').hover(
     function(){
@@ -158,6 +158,9 @@ void function initializeCategoryPanelMenu() {
     attributeFilter: ['class']
   });
 }();
+
+// Chame a função após o carregamento do DOM
+document.addEventListener('DOMContentLoaded', initializeCategoryPanelMenu);
 
 async function checkLogin() {
   var accountComponent = document.querySelector(".topo .usuario.desktop");

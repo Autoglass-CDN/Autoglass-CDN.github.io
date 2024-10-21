@@ -407,10 +407,6 @@
     width: 150px;
   }
 
-  .c-busca .c-busca__tab-content {
-    padding: 25px;
-  }
-
   .c-busca .c-busca__tab-content:first-child.is-active {
     border-top-right-radius: 0;
   }
