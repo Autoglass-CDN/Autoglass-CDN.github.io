@@ -5,13 +5,12 @@
 }
 
 .l-container {
-  max-width: 1110px;
   margin: 0 auto;
 }
 
 /* MOBILE */
 .c-busca {
-  --active-bg-color: #1c3162; /* #234eb9 */
+  --active-bg-color: #ffffff; /* #234eb9 */
   --primary: #43C452;
   --primary-darker: #33a140;
   margin: 10px;
@@ -19,7 +18,7 @@
 }
 
 /* #region TABS */
-.c-busca .c-busca__tabs {
+/* .c-busca .c-busca__tabs {
   display: flex;
   align-items: flex-start;
   flex: 1;
@@ -35,7 +34,7 @@
 
 .c-busca .c-busca__tabs li:hover {
   background-color: dimgray;
-} 
+}
 
 .c-busca .c-busca__tabs li:last-child {
   margin-left: 5px;
@@ -92,7 +91,7 @@
   color: inherit;
   font-weight: inherit;
   font-size: inherit;
-}
+} */
 
 @media screen and (max-width: 465px) {
   /* Ativar quando tiver busca por veículo ou adicionar mais uma aba */
@@ -110,13 +109,15 @@
 @media screen and (min-width: 1100px) {
   .c-busca .h-flex {
     flex-direction: row;
+    align-items: center;
+    justify-content: center;
   }
 
   .c-busca .c-busca__tabs {
-    justify-content: space-between;
+    justify-content: center;
   }
 
-  .c-busca .c-busca__tabs li {
+  /* .c-busca .c-busca__tabs li {
     color: white;
     list-style: none;
     flex: 1;
@@ -158,7 +159,7 @@
   .c-busca .c-busca__tabs li.active:not(:last-child) a:after {
     z-index: 3;
     right: -30px;
-  }
+  } */
 }
 
 .c-busca__tab-icon {
@@ -170,6 +171,7 @@
 /* #region TAB CONTAINER */
 .c-busca .c-busca__tabs-content {
   color: white;
+  justify-content: center;
 }
 
 .c-busca .c-busca__tab-content {
@@ -197,8 +199,7 @@
   margin: 8px;
   position: relative;
   display: block;
-  width: auto;
-  min-width: unset;
+  width: 25%;
 }
 
 .c-busca .c-busca__select span {
@@ -224,12 +225,14 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 100%;
   background-color: white;
   font-size: 14px;
   color: #868686;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
+  background-color: #eef2f8;
+  border-bottom: 2px solid #1c3162;
+  height: 40px;
 }
 
 .c-busca .c-busca__select div > div:first-child:hover,
@@ -239,27 +242,21 @@
 }
 
 .c-busca__tab-content .smart-select__main-results {
-  background: white;
+  background: #eef2f8;
   position: absolute;
-  max-width: 212px;
   padding: 0;
   border-radius: 4px;
   z-index: 9;
   left: 0;
   right: 0;
   top: 54px;
-  box-shadow: 0 2px 4px -1px #0003,
-    0 4px 5px #00000024,
-    0 1px 10px #0000001f;
   overflow: hidden;
+  width: 100%;
 }
 
 .c-busca__tab-content div.empty:hover::before {
   content: "Preencha os campos anteriores";
-  background-color: white;
-  box-shadow: 0 2px 4px -1px #0003,
-    0 4px 5px #00000024,
-    0 1px 10px #0000001f;
+  background-color: eef2f8;
   border-radius: 4px;
   bottom: -38px;
   color: #1c3162;
@@ -365,6 +362,7 @@
 
 .c-busca .smart-select__modal.loader-modal--show .smart-select__modal__spinner {
   animation: spinner 2s linear infinite;
+  color: #0b4583;
 }
 
 @keyframes spinner {
@@ -373,7 +371,7 @@
 }
 
 .c-busca .smart-select__modal .smart-select__modal__spinner {
-  border: 8px solid #f3f3f3c0;
+  border: 8px solid #183884;
   border-top: 8px solid var(--active-bg-color);
   border-radius: 50%;
   width: 60px;
@@ -391,13 +389,6 @@
   background-color: var(--primary-darker);
 }
 
-.c-busca .c-busca__descricao {
-  position: static;
-  font-size: 0.9em;
-  text-align: center;
-  margin: 6px;
-}
-
 @media screen and (min-width: 1100px) {
   .c-busca {
     margin: 10px 0;
@@ -405,7 +396,7 @@
 
   .c-busca .c-busca__input,
   .c-busca .c-busca__select {
-    width: 100%;
+    width: 15%;
   }
 
   .c-busca .c-busca__botao {
@@ -416,24 +407,73 @@
     width: 150px;
   }
 
-  .c-busca .c-busca__tab-content {
-    padding: 25px;
-  }
-
   .c-busca .c-busca__tab-content:first-child.is-active {
     border-top-right-radius: 0;
   }
-  
+
   .c-busca .c-busca__tab-content:last-child.is-active {
     border-top-left-radius: 0;
   }
-
-  .c-busca .c-busca__descricao {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    bottom: 4px;
-  }
+}
+/* #endregion TAB CONTAINER */
+#placa-input{
+  width: 300px;
+  padding: 10px;
+  font-size: 14px;
+  margin-right: 10px;
+  border: none;
+  border-bottom: 2px solid #ccc;
+  border-radius: 0;
+  transition: border-bottom 0.3s ease;
+  text-align: center;
 }
 
-/* #endregion TAB CONTAINER */
+#placa-input::placeholder{
+  color: #0b4583;
+}
+
+#placa-input:focus{
+  outline: none;
+  border-bottom: 2px solid #0b4583;
+}
+
+#categoria-select{
+  width: 100%;
+}
+
+.c-busca__botao .btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.c-busca__botao .btn-search {
+  background-color: #0b4583;
+  color: white;
+  border: none;
+}
+
+.c-busca__botao .btn-clear {
+  background-color: transparent;
+  color: #0b4583;
+  border: 1px solid #0b4583;
+}
+
+#btn-busca-placa{
+  border-radius: 40px;
+}
+
+#btn-busca-peca{
+  border-radius: 40px;
+}
+
+#btn-busca-limpar{
+  border-radius: 40px;
+  border: 2px solid #0b4583;
+}

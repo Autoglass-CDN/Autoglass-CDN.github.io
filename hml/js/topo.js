@@ -129,7 +129,7 @@ function replaceBlankSpaces(text, newChar) {
 
 void function initializeCategoryPanelMenu() {
   let lastActiveCategory = null;
-  var painelCategoriasMenu = $('.painel-categorias__menu ul li:first-child.ativo');
+  var painelCategoriasMenu = $('.painel-categorias__categoria.ativo');
 
   $('.painel-categorias__categoria-itens-lista-menu li a').hover(
     function(){
