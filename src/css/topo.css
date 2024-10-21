@@ -1195,16 +1195,13 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .painel-categorias__categoria-conteudo {
-  position: absolute;
   left: 0px;
   display: flex;
   border-radius: 0px 0px 4px 4px;
   background: #FFF;
   width: 100%;
   overflow: hidden;
-  box-shadow: 11px 13px 15px -4px rgb(0 0 0 / 35%);
   transition: 0.4s;
-  top: 125px;
   z-index: 4;
 }
 
