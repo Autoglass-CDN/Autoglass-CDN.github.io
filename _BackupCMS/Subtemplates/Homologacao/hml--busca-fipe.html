@@ -1,10 +1,7 @@
 <!-- hml- -busca-fipe -->
 <div class="l-container">
-    <section class="c-busca">
-        <ul class="c-busca__tabs">
-            <li class="tab-item no-click" style="padding-left: 130px;">
-                Encontre o que procura de maneira rápida e fácil
-            </li>
+    <section class="c-busca tab-container">
+        <ul class="c-busca__tabs tab-header">
             <li class="tab-item no-click" style="padding-left: 130px;">
                 Encontre o que procura de maneira rápida e fácil
             </li>
@@ -33,13 +30,13 @@
             </li>
         </ul>
         <div class="c-busca__tabs-content">
-            <div class="c-busca__tab-content is-active" id="busca-peca">
+            <div class="c-busca__tab-content" id="busca-peca">
                 <form id="form-busca-peca" action="#">
                     <div class="h-flex">
                         <div class="c-busca__select">
                             <div id="pecas-select">
                                 <div class="gtm-smart-peca-select">
-                                    <span>Produto</span>
+                                    <span>Tipo de peça</span>
                                     <i class="fa fa-caret-down"></i>
                                     <i class="fa fa-close" style="display: none"></i>
                                 </div>
@@ -75,7 +72,7 @@
                         <div class="c-busca__select">
                             <div id="veiculo-select" class="empty">
                                 <div class="gtm-smart-veiculo-select">
-                                    <span>Veículo</span>
+                                    <span>Modelo do veículo</span>
                                     <i class="fa fa-caret-down"></i>
                                     <i class="fa fa-close" style="display: none"></i>
                                 </div>
@@ -126,26 +123,32 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="c-busca__botao">
+                        <div class="c-busca__botao" style="display: flex;">
                             <button
-                                id="btn-busca-peca"
-                                class="c-botao c-botao--primary"
-                                type="submit"
-                                >
-                                BUSCAR
+                                id="btn-busca-peca-buscar"
+                                class="btn btn-search"
+                                type="submit">
+                                <i class="fas fa-search"></i> Buscar
+                            </button>
+                            <button
+                                id="btn-busca-peca-limpar"
+                                class="btn btn-clear"
+                                type="reset"
+                                value="Reset">
+                                <i class="fas fa-times"></i> Limpar
                             </button>
                         </div>
                     </div>
                 </form>
             </div>
-            <div class="c-busca__tab-content" id="busca-placa">
+            <div class="c-busca__tab-content is-active" id="busca-placa">
                 <form id="form-busca-placa" action="#">
                     <div class="h-flex">
                         <div class="info-box">
                             <i class="fas fa-info-circle"></i>
                             <span>Essa é a busca mais eficaz para garantir a<br>compatibilidade das peças com o seu veículo</br></span>
                         </div>
-                        <div class="c-busca__input" style="width: 10%;margin-left: 50px;margin-right: 150px;">
+                        <div class="c-busca__input">
                             <input
                             type="text"
                             name="placa-input"
@@ -173,13 +176,13 @@
                         </div>
                         <div class="c-busca__botao" style="display: flex;">
                             <button
-                                id="btn-busca-placa"
+                                id="btn-busca-placa-buscar"
                                 class="btn btn-search"
                                 type="submit">
                                 <i class="fas fa-search"></i> Buscar
                             </button>
                             <button
-                                id="btn-busca-limpar"
+                                id="btn-busca-placa-limpar"
                                 class="btn btn-clear"
                                 type="reset"
                                 value="Reset">
