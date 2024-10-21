@@ -151,6 +151,23 @@
     $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);});
   }
 
+  document.getElementById('btn-busca-peca-limpar').addEventListener('click', function() {
+    // Limpa o conteúdo do input
+    const input = document.getElementById('categoria-input');
+    input.value = ''; // Limpa o campo de texto
+
+    // Mostra o ícone de caret-down e esconde o ícone de close
+    const closeIcon = document.querySelector('.fa-close');
+    const caretIcon = document.querySelector('.fa-caret-down');
+
+    closeIcon.style.display = 'none';
+    caretIcon.style.display = 'inline';
+
+    // Opcional: Fechar a lista de resultados
+    const resultsDiv = document.querySelector('.smart-select__main-results');
+    resultsDiv.style.display = 'none';
+  });
+
   function ViewAPI() {
     return {
       _initSelect_,

@@ -9,7 +9,7 @@
   list-style: none;
   padding: 12px;
   margin-bottom: 0px;
-  background-color: #eef2f8;
+  background-color: #E7EAF4;
   border-radius: 8px;
   justify-content: center;
   gap: 50px; /* Adicionando espaçamento entre as abas */
@@ -23,13 +23,18 @@
   text-align: center;
 }
 
-.tab-item.active {
+.tab-item > a {
+ text-decoration: none;
+}
+
+.tab-item.is-active {
   padding: 10px 20px;
   cursor: pointer;
   font-weight: bold;
   color: #0b4583;
   text-align: center;
   border-bottom: 2px solid #0b4583;
+  margin-bottom: -10px;
 }
 
 .tab-item.font {
@@ -38,7 +43,6 @@
   font-weight: bold;
   color: #0b4583;
   text-align: center;
-
 }
 
 .tab-content {
@@ -61,7 +65,7 @@
   border-bottom: 2px solid #0b4583;
   border-radius: 0;
   min-width: 175px;
-  background-color: #eef2f8;
+  background-color: #E7EAF4;
   font-size: 14px;
   color: #0b4583;
 }

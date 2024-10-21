@@ -227,10 +227,10 @@
   align-items: center;
   background-color: white;
   font-size: 14px;
-  color: #868686;
+  color: #1c3162;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
-  background-color: #eef2f8;
+  background-color: #E7EAF4;
   border-bottom: 2px solid #1c3162;
   height: 40px;
 }
@@ -242,7 +242,7 @@
 }
 
 .c-busca__tab-content .smart-select__main-results {
-  background: #eef2f8;
+  background: #E7EAF4;
   position: absolute;
   padding: 0;
   border-radius: 4px;
@@ -465,15 +465,21 @@
   border: 1px solid #0b4583;
 }
 
-#btn-busca-placa{
+#btn-busca-placa-buscar{
   border-radius: 40px;
 }
 
-#btn-busca-peca{
+#btn-busca-peca-buscar{
   border-radius: 40px;
 }
 
-#btn-busca-limpar{
+#btn-busca-peca-limpar{
+  border-radius: 40px;
+  border: 2px solid #0b4583;
+}
+
+
+#btn-busca-placa-limpar{
   border-radius: 40px;
   border: 2px solid #0b4583;
 }
