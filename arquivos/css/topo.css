@@ -159,17 +159,16 @@
   filter: drop-shadow(5px 5px 2px rgba(0,0,0,0.4));
 }
 
-#prev-btn i:before,
-#next-btn i:before {
+#prev-btn i:before {
   content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
-  display: block;
+  display: inline-block;
   height: 32px;
-  width: 32px; 
-  transition: transform 0.2s; 
+  transform: rotateY(180deg);
 }
 
-#prev-btn i:before {
-  transform: rotateY(180deg);
+#next-btn i:before {
+  content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
+  height: 32px;
 }
 
 #next-btn i,
@@ -1041,8 +1040,6 @@ i.arrow-icon::before {
 
 .painel-categorias-section {
   background-color: #FFF;
-  padding-top: 60px;
-  padding-bottom: 30px;
 }
 
 @media (max-width: 1200px) {
@@ -1090,35 +1087,21 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .slider-handlers {
-  position: absolute;
-  top: 10px;
-  right: 20px;
-  /* height: 0px; */
+  width: 100%;
+  height: 0px;
   display: flex;
   justify-content: space-between;
-  /* align-items: center; */
+  align-items: center;
   padding: 0 20px;
-  gap: 10px;
-  z-index: 5;
-}
-
-.painel-categorias .slider-handlers {
-  position: absolute; /* Mantém as setas em relação ao contêiner pai */
-  top: -50px; /* Ajuste a posição vertical para cima */
-  right: 0px; /* Mantém a posição à direita */
-  display: flex;
-  gap: 10px;
-  z-index: 5; /* Certifique-se de que as setas fiquem acima do slider */
 }
 
 .painel-categorias .slider-handlers button {
   background: transparent;
-  /* position: relative; */
-  /* top: 72.5px; */
+  position: relative;
+  top: 72.5px;
   border: 0;
   outline: 0;
-  padding: 10px;
-  cursor: pointer;
+  z-index: 5;
 }
 
 .painel-categorias .slider-handlers button i {
@@ -1147,7 +1130,7 @@ i.arrow-icon::before {
   position: relative;
   overflow: hidden;
   background: #FFF;
-  height: auto;
+  height: 125px;
   white-space: nowrap;
   -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
   z-index: 4;
@@ -1266,45 +1249,6 @@ ul.menu-division {
   transform: scale(0.5);
 }
 
-.painel-categorias__categoria-header {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centraliza o conteúdo */
-  margin-right: 15px; /* Ajusta o espaço entre os círculos */
-  position: relative; /* Necessário para o círculo de fundo */
-}
-
-.painel-categorias__categoria-header:last-child {
-  margin-right: 0; /* Remove a margem do último item */
-}
-
-.painel-categorias__categoria-header img {
-  border-radius: 0; /* Remove o arredondamento da imagem */
-  border: 2px solid transparent; /* Borda transparente para manter o espaço */
-  background-color: rgba(255, 255, 255, 0.8); /* Fundo cinza claro */
-  padding: 20px; /* Aumenta o espaçamento entre a imagem e a borda */
-  object-fit: cover; /* Garante que a imagem preencha o espaço */
-  position: relative; /* Para manter o z-index */
-  z-index: 1; /* Coloca a imagem acima do círculo */
-  overflow: hidden;
-}
-
-.painel-categorias__categoria-header::before {
-  content: '';
-  display: block;
-  width: 110px; /* Largura do círculo */
-  height: 110px; /* Altura do círculo */
-  border-radius: 50%; /* Torna o fundo circular */
-  border: 2px solid var(--gray-300); /* Borda cinza */
-  background-color: rgba(255, 255, 255, 0.8); /* Fundo cinza claro */
-  position: absolute;
-  z-index: -1; /* Coloca o círculo atrás da imagem */
-}
-
-.painel-categorias__categoria-header h2 {
-  margin-top: 5px; /* Espaço acima do nome */
-  font-size: 0.875rem; /* Ajuste o tamanho da fonte conforme necessário */
-}
 /* #region PREVIEW - VIDROS */
 
 #vidros.painel-categorias__categoria-itens.ativo a#parabrisa:hover:after {
