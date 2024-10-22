@@ -24,7 +24,7 @@
     }
   });
 
-  let activeTab = '#busca-peca';
+  let activeTab = '#busca-placa';
   selectRightSearchMethod();
 
   /** BUSCA POR PEÇA DEV */
@@ -138,7 +138,6 @@
   }
 
   async function _initBuscaPeca(values) {
-
     PECA_SELECTS[1].values = values;
 
     await Controller.checkRouterParams();
@@ -150,23 +149,6 @@
     // Create Button Function
     $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);});
   }
-
-  document.getElementById('btn-busca-peca-limpar').addEventListener('click', function() {
-    // Limpa o conteúdo do input
-    const input = document.getElementById('categoria-input');
-    input.value = ''; // Limpa o campo de texto
-
-    // Mostra o ícone de caret-down e esconde o ícone de close
-    const closeIcon = document.querySelector('.fa-close');
-    const caretIcon = document.querySelector('.fa-caret-down');
-
-    closeIcon.style.display = 'none';
-    caretIcon.style.display = 'inline';
-
-    // Opcional: Fechar a lista de resultados
-    const resultsDiv = document.querySelector('.smart-select__main-results');
-    resultsDiv.style.display = 'none';
-  });
 
   function ViewAPI() {
     return {
@@ -388,6 +370,8 @@
               case '#busca-placa':
                 handleBuscaPlacaSelection(event, _id);
                 break;
+              case '#busca-categoria':
+                handleBuscaPlacaSelection(event, _id);
             }
           });
 
@@ -1291,6 +1275,7 @@
     if(isValidSearch && isProductsListPage) {
       activeTab = '#busca-placa';
 
+      document.querySelector("a[href='#busca-categoria']").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active");
       document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active");
