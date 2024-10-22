@@ -767,4 +767,304 @@
   .ratings-section {
     padding: 20px 0px;
   }
+
+  /* Painel de categorias */
+  
+
+  #prev-btn i:before,
+  #next-btn i:before {
+    content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
+    display: block;
+    height: 32px;
+    width: 32px; 
+    transition: transform 0.2s; 
+  }
+
+  #prev-btn i:before {
+    transform: rotateY(180deg);
+  }
+
+  #next-btn i,
+  #prev-btn i,
+  button {
+    transition: 0.2s;
+  }
+
+  #next-btn i:hover,
+  #prev-btn i:hover {
+    transform: scale(1.2);
+  }
+
+  i.categorias-icon::before {
+    content: url('https://autoglass-cdn.github.io/arquivos/img/categorias-icon.png');
+    height: 16px;
+    margin-right: 15px;
+  }
+
+  .painel-categorias-section {
+    background-color: #FFF;
+    padding-top: 60px;
+    padding-bottom: 30px;
+  }
+  
+  @media (max-width: 1200px) {
+    .painel-categorias-section {
+      display:none;
+    }
+  }
+  
+  .painel-categorias-desktop:not(:hover) .painel-categorias .arrow{
+    transform: scaleY(0) rotate(45deg);
+    bottom:0px;
+  }
+  
+  .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
+    transform: scaleY(0.2);
+    top: -160px;
+    z-index: 1;
+  }
+  
+  .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
+    box-shadow: 0px 0px 0px 0px #fff;
+  }
+  
+  .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo hr {
+    border-color: #FFF;
+  }
+  
+  .painel-categorias-desktop {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+  
+  .painel-categorias {
+    position: relative;
+    width: 100%;
+    left: 0;
+    padding: 0px 10px;
+    background-color: #fff;
+    font-size: 1.25rem;
+    transition: all .1s ease-in;
+  }
+  
+  .painel-categorias li {
+    list-style: none;
+  }
+  
+  .painel-categorias .slider-handlers {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    /* height: 0px; */
+    display: flex;
+    justify-content: space-between;
+    /* align-items: center; */
+    padding: 0 20px;
+    gap: 10px;
+    z-index: 5;
+  }
+  
+  .painel-categorias .slider-handlers {
+    position: absolute; /* Mantém as setas em relação ao contêiner pai */
+    top: -50px; /* Ajuste a posição vertical para cima */
+    right: 0px; /* Mantém a posição à direita */
+    display: flex;
+    gap: 10px;
+    z-index: 5; /* Certifique-se de que as setas fiquem acima do slider */
+  }
+  
+  .painel-categorias .slider-handlers button {
+    background: transparent;
+    /* position: relative; */
+    /* top: 72.5px; */
+    border: 0;
+    outline: 0;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .painel-categorias .slider-handlers button i {
+    display: flex;
+  }
+  
+  .painel-categorias .painel-categorias__categoria {
+    display: inline-block;
+    margin: 0 20px;
+  }
+  
+  .painel-categorias .painel-categorias__categoria:first-child {
+    margin-left: 0;
+  }
+  
+  .painel-categorias .painel-categorias__categoria h2{
+    transition: 0s ease-in-out .1s
+  }
+  
+  .painel-categorias .painel-categorias__categoria:hover h3{
+    color: var(--blue-500);
+    font-weight: var(--semi-bold);
+  }
+  
+  .painel-categorias .painel-categorias__menu {
+    position: relative;
+    overflow: hidden;
+    background: #FFF;
+    height: auto;
+    white-space: nowrap;
+    -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
+    z-index: 4;
+  }
+  
+  .painel-categorias .painel-categorias__menu>ul {
+    transition: 1s;
+  }
+  
+  .painel-categorias .painel-categorias__menu .painel-categorias__categoria-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 146px;
+    min-width: 92px;
+    height: 155px;
+    color: var(--gray-500);
+    font-weight: var(--light);
+    text-align: center;
+    white-space: normal;
+    transition: all .2s ease-in;
+  }
+  
+  .painel-categorias .painel-categorias__menu .painel-categorias__categoria-header:hover {
+    transform: scale(1.05);
+  }
+  
+  .painel-categorias .painel-categorias__categoria-header img {
+    margin-bottom: 10px;
+    transform: scale(0.8);
+  }
+  
+  .painel-categorias ul li:first-child .painel-categorias__categoria-header img {
+    transform: scale(0.64);
+    filter:  grayscale(100%);
+    transition: 0.2s;
+    opacity: 0.5;
+  }
+  
+  .painel-categorias-section .painel-categorias:hover ul li:first-child .painel-categorias__categoria-header.ativo img{
+    filter: drop-shadow(5px 5px 2px rgba(0,0,0,0));
+    opacity: 1;
+  }
+  
+  .painel-categorias-section .painel-categorias ul li:first-child:hover .painel-categorias__categoria-header.ativo img{
+    filter: drop-shadow(5px 5px 2px rgba(0,0,0,0.2));
+  }
+  
+  .painel-categorias-section .painel-categorias:hover .painel-categorias__menu .painel-categorias__categoria-header.ativo{
+    color: var(--blue-500);
+    font-weight: var(--semi-bold);
+  }
+  
+  .painel-categorias .painel-categorias__categoria-header h2 {
+    font-size: 0.8750rem;
+    font-weight: unset;
+  }
+  
+  .painel-categorias .painel-categorias__categoria-header a {
+    text-decoration: none;
+    color: unset;
+  }
+  
+  .painel-categorias .painel-categorias__categoria-conteudo {
+    position: absolute;
+    left: 0px;
+    display: flex;
+    border-radius: 0px 0px 4px 4px;
+    background: #FFF;
+    width: 100%;
+    overflow: hidden;
+    box-shadow: 11px 13px 15px -4px rgb(0 0 0 / 35%);
+    transition: 0.4s;
+    top: 125px;
+    z-index: 4;
+  }
+  
+  .painel-categorias .arrow {
+    position: absolute;
+    background-color: var(--white);
+    border: solid var(--gray-300);
+    border-width: 0 2px 2px 0;
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    transform: scaleY(1) rotate(45deg);
+    bottom: -9px;
+    left: 75px;
+    z-index: 5;
+    transition: 0.5s;
+  }
+  
+  ul.menu-division {
+    position: absolute;
+    height: 85%;
+    left: 400px;
+    border-left: 1px solid #eee;
+  }
+  
+  .painel-categorias .painel-categorias__categoria-itens {
+    font-size: 0.8750rem;
+    padding: 32px 50px;
+    display: none;
+    min-height: 250px;
+  }
+  
+  .painel-categorias .painel-categorias__categoria-itens a {
+    text-decoration: none;
+    transition: all .1s ease-in;
+  }
+  
+  .painel-categorias__categoria-itens.ativo a:hover:after {
+    position: absolute;
+    right: -30px;
+    bottom: -20px;
+    transform: scale(0.5);
+  }
+  
+  .painel-categorias__categoria-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centraliza o conteúdo */
+    margin-right: 15px; /* Ajusta o espaço entre os círculos */
+    position: relative; /* Necessário para o círculo de fundo */
+  }
+  
+  .painel-categorias__categoria-header:last-child {
+    margin-right: 0; /* Remove a margem do último item */
+  }
+  
+  .painel-categorias__categoria-header img {
+    border-radius: 0; /* Remove o arredondamento da imagem */
+    border: 2px solid transparent; /* Borda transparente para manter o espaço */
+    background-color: rgba(255, 255, 255, 0.8); /* Fundo cinza claro */
+    padding: 20px; /* Aumenta o espaçamento entre a imagem e a borda */
+    object-fit: cover; /* Garante que a imagem preencha o espaço */
+    position: relative; /* Para manter o z-index */
+    z-index: 0; /* Coloca a imagem acima do círculo */
+    overflow: hidden;
+  }
+  
+  .painel-categorias__categoria-header::before {
+    content: '';
+    display: block;
+    width: 110px; /* Largura do círculo */
+    height: 110px; /* Altura do círculo */
+    border-radius: 50%; /* Torna o fundo circular */
+    border: 2px solid var(--gray-300); /* Borda cinza */
+    background-color: transparent;
+    position: absolute;
+    z-index: 1; /* Coloca o círculo atrás da imagem */
+  }
+  
+  .painel-categorias__categoria-header h2 {
+    margin-top: 5px; /* Espaço acima do nome */
+    font-size: 0.875rem; /* Ajuste o tamanho da fonte conforme necessário */
+  }
 }
