@@ -344,6 +344,7 @@
     }
 
     function buildList(objects, _id) {
+      objects.sort((a, b) => a.name.localeCompare(b.name));
       let html = "";
 
       if (objects) {
