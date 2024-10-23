@@ -486,7 +486,7 @@
 
 /* #endregion TAB CONTAINER */
 #placa-input{
-  width: 300px;
+  width: 100%;
   padding: 10px;
   font-size: 14px;
   margin-right: 10px;
