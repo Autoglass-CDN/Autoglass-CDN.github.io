@@ -318,9 +318,10 @@
     }
 
     function buildList(objects, _id) {
-      objects.sort((a, b) => a.name.localeCompare(b.name));
       let html = "";
+
       if (objects) {
+        objects.sort((a, b) => a.name.localeCompare(b.name));
         objects.forEach(
           (x) => (html += `<li role="treeitem" id="${x.id}">${x.name}</li>`)
         );
