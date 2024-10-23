@@ -388,6 +388,7 @@ function getItemSize(banner){
 })();
 //#endregion Ratings
 
+//#region Painel de categorias
 function getScrollPercentage(element) {
 	return 100 * element.scrollLeft
 		/ (element.scrollWidth - element.clientWidth);
@@ -402,3 +403,189 @@ function scrollSmoothlyToRight(element, pixelsToScroll) {
 function scrollSmoothlyToLeft(element, pixelsToScroll) {
 	return scrollSmoothlyToRight(element, -pixelsToScroll)
 }
+
+function centerArrow(min, max) {
+	let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
+	let arrow = document.querySelector('.arrow');
+	let arrowPositions = arrow.getBoundingClientRect();
+	let positions = categoriaAtiva.getBoundingClientRect();
+	let deslocate = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10)));
+	arrow.style.left = valueBetweenRange(deslocate, min, max) + 'px';
+  }
+  
+function valueBetweenRange (value, min, max) {
+return value < min ? min : (value > max ? max : value);
+}
+
+function activateCategory(categoriaAtual, indexConteudoAtual) {
+let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
+let conteudoAtual = document
+	.querySelectorAll('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens')[indexConteudoAtual];
+
+if (categoriaAnterior) {
+	categoriaAnterior
+	.querySelector('.painel-categorias__categoria-header.ativo')
+	?.classList.remove('ativo');
+	categoriaAnterior.classList.remove('ativo');
+	document
+	.querySelector('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo')
+	?.classList.remove('ativo');
+}
+categoriaAtual
+	.querySelector('.painel-categorias__categoria-header')
+	?.classList.add('ativo');
+categoriaAtual?.classList.add('ativo');
+conteudoAtual?.classList.add('ativo');
+currentCategory = categoriaAtual;
+}
+
+function slideNext() {
+let categories = document.querySelectorAll('.painel-categorias__categoria');
+let slider = document.querySelector('.painel-categorias__menu > ul');
+
+if (getTranslateX(slider) < 0) return;
+
+let fullWidth = Array.from(categories)
+	.reduce((width, category) => width + (parseInt(getComputedStyle(category).width, 10) + parseInt(getComputedStyle(category).marginLeft, 10) + parseInt(getComputedStyle(category).marginRight, 10)), 0);
+
+let width = slider.clientWidth
+	+ parseInt(getComputedStyle(slider).marginRight, 10)
+	+ parseInt(getComputedStyle(slider).marginLeft, 10);
+
+slider.style.transform = `translateX(${width - fullWidth}px)`;
+
+slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
+}
+
+function toggleVisibility(id) {
+let element = document.getElementById(id);
+element.style.visibility = element.style.visibility === 'hidden' ? 'visible' : 'hidden';
+}
+
+function getTranslateX(element) {
+let transform = getComputedStyle(element).getPropertyValue('transform');
+let matrix = new WebKitCSSMatrix(transform);
+return matrix.m41;
+}
+
+function slidePrev() {
+let slider = document.querySelector('.painel-categorias__menu > ul');
+slider.style.transform = `translateX(0px)`;
+
+slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
+}
+
+function openCategorias() {
+let mainMenu = document.getElementById('main-menu');
+let categoryMenu = document.getElementById('category-menu');
+
+mainMenu.style.opacity = '0';
+setTimeout(() => {
+	mainMenu.style.display = 'none';
+	categoryMenu.style.display = 'unset';
+	categoryMenu.style.opacity = '1';
+}, 200);
+}
+
+function closeCategorias() {
+let mainMenu = document.getElementById('main-menu');
+let categoryMenu = document.getElementById('category-menu');
+
+categoryMenu.style.opacity = '0';
+setTimeout(() => {
+	categoryMenu.style.display = 'none';
+	mainMenu.style.display = 'flex';
+	mainMenu.style.opacity = '1';
+}, 300);
+}
+
+function toggleCategory(self) {
+console.log(self);
+return self.parentNode.classList.contains('ativo') ? self.parentNode.classList.remove('ativo') : self.parentNode.classList.add('ativo')
+}
+
+
+(() => {
+let slider = document.querySelector('.painel-categorias__menu > ul');
+let prevBtn = document.getElementById('prev-btn');
+let nextBtn = document.getElementById('next-btn');
+
+prevBtn.addEventListener('click', slidePrev);
+nextBtn.addEventListener('click', slideNext);
+
+let abortCategoryAction = null;
+
+const minArrowLeft = 10;
+const maxArrowRight = 1250;
+
+document
+	.querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
+	.forEach((categoria, index) => {
+	categoria.addEventListener('mouseenter', (event) => {
+		abortCategoryAction = delayedAction(() => {
+		if(!isActiveElement(categoria)){
+			activateCategory(categoria, index);
+			centerArrow(minArrowLeft, maxArrowRight);
+		}
+		}, abortCategoryAction);
+	})
+	});
+
+let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
+
+linksCategoria.addEventListener('mouseenter', (event) => {
+	if (abortCategoryAction)
+	abortCategoryAction.abort();
+});
+
+checkLogin();
+fixPlaceholderSearch();
+loadCart(device.desktop);
+
+$(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
+	let carrinho = document.querySelector('.desktop .menu-carrinho');
+
+	updateCartItemsCount(carrinho, orderForm);
+});
+
+$(document).ready(function () {
+	if (!document.querySelector('.shelf-qd-v1-buy-button'))
+	return;
+	var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener',
+	debounce((event) => cartItemAddedConfirmation(event))
+	);
+	skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
+});
+
+function debounce(func, timeout = 200){
+	let timer;
+	return (...args) => {
+	clearTimeout(timer);
+	timer = setTimeout(() => { func.apply(this, args); }, timeout);
+	};
+}
+
+let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
+
+let searchField = document.querySelector('.container.desktop .search-box .busca input.fulltext-search-box');
+
+searchField.addEventListener('focus', () => {
+	suggestions.style.visibility = 'visible';
+	suggestions.style.opacity = '1';
+});
+
+searchField.addEventListener('blur', () => {
+	suggestions.style.opacity = '0';
+	setTimeout(() => suggestions.style.visibility = 'hidden', 1000);
+});
+
+searchField.addEventListener('keydown', (event) => {
+	event = event || window.event;
+	console.log(event.keyCode)
+});
+
+autocompleteInit(searchField);
+}
+)();
+
+//#endregion Painel de categorias
