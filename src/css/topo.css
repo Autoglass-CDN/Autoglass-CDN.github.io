@@ -161,7 +161,7 @@
 
 #prev-btn i:before,
 #next-btn i:before {
-  content: url('https://autoglass-cdn.github.io/arquivos/img/categoria-arrow.svg');
+  content: url('https://autoglass-cdn.github.io/src/img/slide-arrow.svg');
   display: block;
   height: 32px;
   width: 32px; 
