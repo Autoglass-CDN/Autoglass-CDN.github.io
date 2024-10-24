@@ -20,7 +20,7 @@
                 </a>
             </li>
             <li class="tab-item painel-categorias__categoria ativo">
-                <div class="painel-categorias__categoria-header ativo">
+                <div class="ativo">
                     <a href="#busca-categoria">
                         <span class="c-busca__tab-text">
                             Pelas categorias
@@ -193,6 +193,11 @@
                 </form>
             </div>
             <div class="c-busca__tab-content" id="busca-categoria">
+                <button 
+                    class="btn-fechar-categoria"
+                    onClick="fecharAbaCategoria()">
+                    Fechar <i class="fas fa-times"></i> 
+                </button>
                 <ul class="painel-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
                     <li class="painel-categorias__categoria-conteudo">
                         <div id="menu" class="painel-categorias__categoria-itens ativo">
@@ -225,9 +230,9 @@
                                         <li class="categoria" data-target="ferramentas-automotivas"><a id="menu-ferramentas-automotivas"
                                             href="/ferramentas-automotivas" title="Ferramentas Automotivas"
                                                 itemprop="url">Ferramentas Automotivas</a></li>
-                                        <li class="categoria" data-target="suspensao"><a id="menu-suspensao"
-                                            href="/suspensao/#1" title="Suspensão"
-                                                itemprop="url">Suspensão</a></li>
+                                        <li class="categoria" data-target="suspensao-automotiva"><a id="menu-suspensao-automotiva"
+                                            href="/suspensao-automotiva" title="Suspensão Automotiva"
+                                                itemprop="url">Suspensão Automotiva</a></li>
                                         <li class="categoria" data-target="direcao"><a id="menu-direcao"
                                             href="/direcao" title="Direcao"
                                                 itemprop="url">Direção</a></li>
@@ -623,22 +628,62 @@
                             </ul>
                         </div>
 
-                        <div id="suspensao" class="painel-categorias__categoria-itens subcategoria">
+                        <div id="suspensao-automotiva" class="painel-categorias__categoria-itens subcategoria">
                             <ul>
                                 <li class="painel-categorias__categoria-itens-lista">
-                                    <a href="/suspensao/#1" title="Suspensão" itemprop="url">Suspensão</a>
-
+                                    <a href="/suspensao-automotiva/amortecedores" title="Amortecedores"
+                                        itemprop="url">Amortecedores</a>
                                     <ul>
-                                        <li><a id="amortecedor-suspensao" href="/suspensao/suspensao/amortecedor-suspensao"
-                                            title="Amortecedor Suspensão" itemprop="url">Amortecedor Suspensão</a></li>
-                                        <li><a id="bandeja-suspensao" href="/suspensao/suspensao/bandeja-suspensao"
-                                            title="Bandeja Suspensão" itemprop="url">Bandeja Suspensão</a></li>
-                                        <li><a id="bieleta-suspensao" href="/suspensao/suspensao/bieleta-suspensao"
-                                            title="Bieleta Suspensão" itemprop="url">Bieleta Suspensão</a></li>
-                                        <li><a id="kits-e-top-kits-suspensao" href="/suspensao/suspensao/kits-e-top-kits-suspensao"
-                                            title="Kits e Top Kits Suspensão" itemprop="url">Kits e Top Kits Suspensão</a></li>
-                                        <li><a id="pivo-suspensao" href="/suspensao/suspensao/pivo-suspensao"
-                                            title="Pivô Suspensão" itemprop="url">Pivô Suspensão</a></li>
+                                        <li><a id="amortecedores-dianteiros"
+                                            href="/suspensao-automotiva/amortecedores/amortecedores-dianteiros"
+                                            title="Amortecedores Dianteiros" itemprop="url">Amortecedores Dianteiros</a>
+                                        </li>
+                                        <li><a id="amortecedores-traseiros"
+                                            href="/suspensao-automotiva/amortecedores/amortecedores-traseiros"
+                                            title="Amortecedores Traseiros" itemprop="url">Amortecedores Traseiros</a>
+                                        </li>
+                                        <li><a id="kits-de-amortecedores"
+                                            href="/suspensao-automotiva/amortecedores/kits-de-amortecedores"
+                                            title="Kits de Amortecedores" itemprop="url">Kits de Amortecedores</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li class="painel-categorias__categoria-itens-lista">
+                                    <a href="/suspensao-automotiva/componentes-de-suspensao" title="Componentes de Suspensão"
+                                        itemprop="url">Componentes de Suspensão</a>
+                                    <ul>
+                                        <li><a id="bieletas"
+                                            href="/suspensao-automotiva/componentes-de-suspensao/bieletas"
+                                            title="Bieletas" itemprop="url">Bieletas</a>
+                                        </li>
+                                        <li><a id="pivos"
+                                            href="/suspensao-automotiva/componentes-de-suspensao/pivos"
+                                            title="Pivôs" itemprop="url">Pivôs</a>
+                                        </li>
+                                        <li><a id="bandejas"
+                                            href="/suspensao-automotiva/componentes-de-suspensao/bandejas"
+                                            title="Bandejas" itemprop="url">Bandejas</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+
+                            <ul>
+                                <li class="painel-categorias__categoria-itens-lista">
+                                    <a href="/suspensao-automotiva/kits-de-suspensao" title="Kits de Suspensão"
+                                        itemprop="url">Kits de Suspensão</a>
+                                    <ul>
+                                        <li><a id="kits-suspensao-completa"
+                                            href="/suspensao-automotiva/kits-de-suspensao/kits-de-suspensao-completa"
+                                            title="Kits de Suspensão Completa" itemprop="url">Kits de Suspensão Completa</a>
+                                        </li>
+                                        <li><a id="top-kits"
+                                            href="/suspensao-automotiva/kits-de-suspensao/top-kits"
+                                            title="Top Kits" itemprop="url">Top Kits</a>
+                                        </li>
                                     </ul>
                                 </li>
                             </ul>
