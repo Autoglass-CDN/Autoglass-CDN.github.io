@@ -407,36 +407,16 @@ function scrollSmoothlyToLeft(element, pixelsToScroll) {
 function centerArrow(min, max) {
 	let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
 	let arrow = document.querySelector('.arrow');
-	let arrowPositions = arrow.getBoundingClientRect();
-	let positions = categoriaAtiva.getBoundingClientRect();
-	let deslocate = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10)));
-	arrow.style.left = valueBetweenRange(deslocate, min, max) + 'px';
+	try{
+		let arrowPositions = arrow.getBoundingClientRect();
+		let positions = categoriaAtiva.getBoundingClientRect();
+		let deslocate = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10)));
+		arrow.style.left = valueBetweenRange(deslocate, min, max) + 'px';
+	} catch (erro) {}
   }
   
 function valueBetweenRange (value, min, max) {
 return value < min ? min : (value > max ? max : value);
-}
-
-function activateCategory(categoriaAtual, indexConteudoAtual) {
-let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
-let conteudoAtual = document
-	.querySelectorAll('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens')[indexConteudoAtual];
-
-if (categoriaAnterior) {
-	categoriaAnterior
-	.querySelector('.painel-categorias__categoria-header.ativo')
-	?.classList.remove('ativo');
-	categoriaAnterior.classList.remove('ativo');
-	document
-	.querySelector('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo')
-	?.classList.remove('ativo');
-}
-categoriaAtual
-	.querySelector('.painel-categorias__categoria-header')
-	?.classList.add('ativo');
-categoriaAtual?.classList.add('ativo');
-conteudoAtual?.classList.add('ativo');
-currentCategory = categoriaAtual;
 }
 
 function slideNext() {
@@ -475,36 +455,6 @@ slider.style.transform = `translateX(0px)`;
 slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
 }
 
-function openCategorias() {
-let mainMenu = document.getElementById('main-menu');
-let categoryMenu = document.getElementById('category-menu');
-
-mainMenu.style.opacity = '0';
-setTimeout(() => {
-	mainMenu.style.display = 'none';
-	categoryMenu.style.display = 'unset';
-	categoryMenu.style.opacity = '1';
-}, 200);
-}
-
-function closeCategorias() {
-let mainMenu = document.getElementById('main-menu');
-let categoryMenu = document.getElementById('category-menu');
-
-categoryMenu.style.opacity = '0';
-setTimeout(() => {
-	categoryMenu.style.display = 'none';
-	mainMenu.style.display = 'flex';
-	mainMenu.style.opacity = '1';
-}, 300);
-}
-
-function toggleCategory(self) {
-console.log(self);
-return self.parentNode.classList.contains('ativo') ? self.parentNode.classList.remove('ativo') : self.parentNode.classList.add('ativo')
-}
-
-
 (() => {
 let slider = document.querySelector('.painel-categorias__menu > ul');
 let prevBtn = document.getElementById('prev-btn');
@@ -524,7 +474,6 @@ document
 	categoria.addEventListener('mouseenter', (event) => {
 		abortCategoryAction = delayedAction(() => {
 		if(!isActiveElement(categoria)){
-			activateCategory(categoria, index);
 			centerArrow(minArrowLeft, maxArrowRight);
 		}
 		}, abortCategoryAction);
