@@ -1058,7 +1058,7 @@ i.arrow-icon::before {
 
 .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
   transform: scaleY(0.2);
-  top: -160px;
+  top: 0px;
   z-index: 1;
 }
 
@@ -1221,7 +1221,6 @@ i.arrow-icon::before {
   overflow: hidden;
   box-shadow: 11px 13px 15px -4px rgb(0 0 0 / 35%);
   transition: 0.4s;
-  top: 125px;
   z-index: 4;
 }
 

@@ -40,30 +40,56 @@ function valueBetweenRange (value, min, max) {
   return value < min ? min : (value > max ? max : value);
 }
 
-// function activateCategory(categoriaAtual, indexConteudoAtual) {
-//   let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
-//   let conteudoAtual = document
-//     .querySelectorAll('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens')[indexConteudoAtual];
+function fecharAbaCategoria() {
+  const divCategoria = document.getElementById('busca-categoria');
+  const divBuscaPlaca = document.getElementById('busca-placa');
+  const abaBuscaPlaca = document.getElementById('tab-busca-placa');
+  const abaBuscaCategoria = document.getElementById('tab-busca-categoria');
 
-//   if (categoriaAnterior) {
-//     categoriaAnterior
-//       .querySelector('.painel-categorias__categoria-header.ativo')
-//       ?.classList.remove('ativo');
-//     categoriaAnterior.classList.remove('ativo');
-//     document
-//       .querySelector('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo')
-//       ?.classList.remove('ativo');
+  // Função auxiliar para trocar classes
+  const toggleActiveClass = (element, add) => {
+    if (element) {
+      if (add) {
+        element.classList.add('is-active');
+      } else {
+        element.classList.remove('is-active');
+      }
+    }
+  };
 
-//     // event.target.style.transition = '0.8s';
-//     // event.target.style.opacity = 0;
-//   }
-//   categoriaAtual
-//     .querySelector('.painel-categorias__categoria-header')
-//     ?.classList.add('ativo');
-//   categoriaAtual?.classList.add('ativo');
-//   conteudoAtual?.classList.add('ativo');
-//   currentCategory = categoriaAtual;
-// }
+  // Remover is-active da aba de categoria
+  toggleActiveClass(divCategoria, false);
+  toggleActiveClass(abaBuscaCategoria, false);
+
+  // Adicionar is-active à aba de busca por placa
+  toggleActiveClass(divBuscaPlaca, true);
+  toggleActiveClass(abaBuscaPlaca, true);
+}
+
+function activateCategory(categoriaAtual, indexConteudoAtual) {
+  let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
+  let conteudoAtual = document
+    .querySelectorAll('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens')[indexConteudoAtual];
+
+  if (categoriaAnterior) {
+    categoriaAnterior
+      .querySelector('.painel-categorias__categoria-header.ativo')
+      ?.classList.remove('ativo');
+    categoriaAnterior.classList.remove('ativo');
+    document
+      .querySelector('.painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo')
+      ?.classList.remove('ativo');
+
+    // event.target.style.transition = '0.8s';
+    // event.target.style.opacity = 0;
+  }
+  categoriaAtual
+    .querySelector('.painel-categorias__categoria-header')
+    ?.classList.add('ativo');
+  categoriaAtual?.classList.add('ativo');
+  conteudoAtual?.classList.add('ativo');
+  currentCategory = categoriaAtual;
+}
 
 function slideNext() {
   let categories = document.querySelectorAll('.painel-categorias__categoria');
