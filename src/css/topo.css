@@ -1041,7 +1041,7 @@ i.arrow-icon::before {
 
 .painel-categorias-section {
   background-color: #FFF;
-  padding-top: 60px;
+  padding-top: 5px;
   padding-bottom: 30px;
 }
 
@@ -1689,7 +1689,7 @@ ul.menu-division {
     display: none;
   }
 
-  .painel-categorias__menu > ul {
+   .painel-categorias__menu > ul {
     scrollbar-width: none;
   }
 
