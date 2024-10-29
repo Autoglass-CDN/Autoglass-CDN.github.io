@@ -1331,23 +1331,23 @@ ul.menu-division {
 
 /* #region PREVIEW - FARÓIS */
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#aro-farol-auxiliar:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#aro-farol-auxiliar:hover:after {
   content: var(--aro-farol-auxiliar);
 }
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#farol-auxiliar:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#farol-auxiliar:hover:after {
   content: var(--farol-auxiliar);
 }
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#farol-diurno:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#farol-diurno:hover:after {
   content: var(--farol-diurno);
 }
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#farol-principal:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#farol-principal:hover:after {
   content: var(--farol-principal);
 }
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#moldura-farol-auxiliar:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#moldura-farol-auxiliar:hover:after {
   content: var(--moldura-farol-auxiliar);
 }
 
@@ -1355,19 +1355,19 @@ ul.menu-division {
 
 /* #region PREVIEW - LÂMPADAS */
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#lampada-farol-auxiliar:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#lampada-farol-auxiliar:hover:after {
   content: var(--lampada-farol-auxiliar);
 }
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#lampada-lanterna:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#lampada-lanterna:hover:after {
   content: var(--lampada-lanterna);
 }
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#lampada-lanterna-traseira:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#lampada-lanterna-traseira:hover:after {
   content: var(--lampada-lanterna-traseira);
 }
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#lampada-painel:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#lampada-painel:hover:after {
   content: var(--lampada-painel);
 }
 
@@ -1375,11 +1375,11 @@ ul.menu-division {
 
 /* #region PREVIEW - LANTERNAS */
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#lanterna:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#lanterna:hover:after {
   content: var(--lanterna);
 }
 
-#farois-lanternas-e-lampadas.painel-categorias__categoria-itens.ativo a#lanterna-para-choque:hover:after {
+#iluminacao-automotiva.painel-categorias__categoria-itens.ativo a#lanterna-para-choque:hover:after {
   content: var(--lanterna-parachoque);
 }
 
