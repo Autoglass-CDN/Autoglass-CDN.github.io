@@ -60,7 +60,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
 
   <vtex:template id="dev--detalhe-produto--head-tags" />
   <vtex:metaTags />
-  <vtex.cmc:productRichSnippets showFacebook="1"/>
+  <vtex.cmc:productRichSnippets showFacebook="1" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.product.css"
     type="text/css" onload="this.media='all'"/>
 
@@ -111,13 +111,13 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
   <vtex.cmc:productRichSnippets showGoogle="1" />
 
   <!-- Header -->
-  <vtex:template id="dev--header" />
+    <vtex:template id="dev--header" />
   <!-- Header -->
 
   <main>
-    <div class="common-qd-v1-structure">
+    <section class="common-qd-v1-structure">
       <!--FLOAT BAR PRODUCT_________________-->
-      <div class="col-xs-12">
+      <section class="col-xs-12">
         <div class="product-qd-v1-float-bar">
           <div class="container">
             <div class="row">
@@ -127,7 +127,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                 </span>
               </div>
               <div class="col-xs-3">
-                <a class="product-qd-v1-link-description" href="#">Descrição
+                <a class="product-qd-v1-link-description" href="#">Descrição 
                   Completa</a>
               </div>
               <div class="col-xs-3">
@@ -143,7 +143,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <!--_________________ FLOAT BAR PRODUCT-->
 
       <!-- Main Content -->
@@ -151,16 +151,16 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
         <!-- Informações principais do produto -->
         <section>
           <!-- Breadcrumb -->
-          <div class="breadcrumb-qd-v1">
+          <nav class="breadcrumb-qd-v1">
             <div class="row">
               <div class="col-xs-12">
                 <vtex.cmc:breadCrumb />
               </div>
             </div>
-          </div>
+          </nav>
           <!-- Breadcrumb -->
 
-          <div class="col-xs-12">
+          <section class="col-xs-12">
             <div class="product-qd-v1-block-above-image">
               <!-- Product name -->
               <span class="product-qd-v1-name mob">
@@ -181,11 +181,11 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                 <!-- Brand names -->
               </div>
             </div>
-          </div>
+          </section>
 
           <!-- Product image -->
-          <div class="col-xs-12 col-md-6 col-md-push-1">
-            <div class="product-qd-v1-image">
+          <section class="col-xs-12 col-md-6 col-md-push-1">
+            <figure class="product-qd-v1-image">
               <div class="product-qd-v1-image-wrapper">
                 <!-- Social Sharing -->
                 <vtex.cmc:devSocialShare />
@@ -205,21 +205,21 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
 
                 <vtex.cmc:ProductImage zoom="on" />
               </div>
-            </div>
+            </figure>
             <div class="teste-opcionais">
                 
             </div>
-          </div>
+          </section>
           <!-- Product image -->
 
           <!-- Product thumbs -->
-          <div class="col-xs-12 col-md-1 col-md-pull-6">
+          <aside class="col-xs-12 col-md-1 col-md-pull-6">
             <ul class="thumbs product-qd-v1-image-thumbs QD-thumbs img-responsive"></ul>
-          </div>
+          </aside>
           <!-- Product thumbs -->
 
           <!-- SKU selection box -->
-          <div class="product-qd-v1-sku-selection-wrapper col-xs-12 col-md-5">
+          <section class="product-qd-v1-sku-selection-wrapper col-xs-12 col-md-5">
             <div class="product-qd-v1-sku-selection-box">
               <div class="product-qd-v1-sku-selection-row">
                 <div class="row">
@@ -249,7 +249,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                 <vtex:template id="dev--detalhe-produto--busca-compativeis-mobile" />
                 
                 <!-- ProdutoIndiponível - Outras Marcas  -->
-                <div class="product-qd-v1-unavailable other-brands" style="display: none;">
+                <section class="product-qd-v1-unavailable other-brands" style="display: none;">
                   <div class="row">
                     <div class="col-xs-12">
                       <div class="product-qd-v1-standard row">
@@ -261,11 +261,11 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
                 <!-- ProdutoIndiponível - Outras Marcas  -->
 
                 <!-- Produto Indisponível - Fale com o Vendedor -->
-                <div class="product-qd-v1-unavailable talk-to-seller" style="display: none;">
+                <section class="product-qd-v1-unavailable talk-to-seller" style="display: none;">
                   <div class="row">
                     <div class="col-xs-12">
                       <div class="product-qd-v1-standard row">
@@ -279,11 +279,11 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </section>
                 <!-- Produto Indisponível - Fale com o Vendedor -->
 
                 <!-- Venda de Instalação (NOVA) -->
-                    <!--<div class="product-qd-v1-installation">-->
+                    <!--<section class="product-qd-v1-installation">-->
                     <!--  <div class="row">-->
                     <!--    <div class="col-xs-12">-->
                     <!--        <div class="product-qd-v1-installation-content accessories-qd-v1-wrapper banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3">-->
@@ -291,11 +291,11 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                     <!--        </div>-->
                     <!--    </div>-->
                     <!--  </div>-->
-                    <!--</div>-->
+                    <!--</section>-->
                 <!-- Venda de Instalação (NOVA) -->
                 
                 <!-- Product price -->
-                <div class="product-qd-v1-standard row">
+                <section class="product-qd-v1-standard row">
                     <div class="formas-pagamento">
                         <ul class="footer-qd-v1-payment-stamps">
                             <li class="payment-stamp pull-left stamp-visa" alt="bandeira-visa"></li>
@@ -304,17 +304,17 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                             <li class="payment-stamp pull-left stamp-elo" alt="bandeira-elo"></li>
                             <li class="payment-stamp pull-left stamp-pix" alt="pagamento-pix"></li>
                         </ul>
-                    </div> 
-                     
-                  <div class="col-xs-12">
-                    <div class="product-qd-v1-price">
-                      <vtex.cmc:skuPrice />
+                    </div>                  
+                    <div class="col-xs-12">
+                      <div class="product-qd-v1-price">
+                        <vtex.cmc:skuPrice />
+                      </div>
                     </div>
-                  </div>
+                </section>
                   <!-- Product price -->
 
                    <!--SKU Selection - variacao -->
-                  <div class="col-xs-12">
+                  <section class="col-xs-12">
                     <div class="row">
                       <div class="product-qd-v1-sku-selection-row">
                         <div class="product-qd-v1-sku-selection">
@@ -322,7 +322,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  </section>
                    <!--SKU Selection - variacao -->
 
                   <!-- Teste -->
@@ -337,8 +337,8 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                       <div class="product-qd-v1-smart-qtt">
                         <!-- Buy button -->
                         <div class="product-qd-v1-buy-button">
-                           <vtex.cmc:BuyButton/>
-                          <!--<button class="buy-button">-->
+                           <vtex.cmc:BuyButton />
+                           <!--<button class="buy-button">-->
                           <!--  <a href='#'></a>-->
                           <!--</button>-->
                         </div>
@@ -352,11 +352,13 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                       <!-- Product quantity -->
                     </div>
                   </div>
+
                 </div>
               </div>
+            </section>
 
               <!-- Shipping calculator -->
-              <div class="product-qd-v1-shipping">
+              <section class="product-qd-v1-shipping">
                 <div class="row">
                   <div class="col-xs-12">
                     <p class="product-qd-v1-shipping-title">
@@ -369,7 +371,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </section>
               <!-- Shipping calculator -->
             
               <!-- Compre junto -->
@@ -385,8 +387,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
               </section>
               <!-- Compre junto -->
 
-            </div>
-          </div>
+          </section>
           <!-- SKU selection box -->
         </section>
         <!-- Informações principais do produto -->
@@ -395,16 +396,16 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
         <!-- <vtex.cmc:devGaleriaVideo /> -->
         <!-- Product Test Video Galery -->
       </div>
-    </div>
+    </section>
     
    <!-- Info Acessorio -->
-        <div id="container-acessorios-ag" style="display: none;">
+        <aside id="container-acessorios-ag" style="display: none;">
             <vtex:contentPlaceHolder id="Acessorios" />
-        </div>
+        </aside>
     <!-- Info Acessorio -->
    
     <!-- Descrição -->
-    <div>
+    <section>
       <div class="nav-container">
         <nav class="tabs-descricao">
           <ul>
@@ -420,67 +421,68 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
       </div>
       <vtex:template id="dev--detalhe-produto--descricao" />
       <!--<vtex:template id="prd- -detalhe-produto- -descricao" />-->
+    </section>
       <!-- Descrição -->
 
-      <article class="contents">
-        <section id="outras-marcas" class="tab-content">
-          <div class="white-background">
-            <!-- Produtos Similares e Equivalentes -->
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="product-qd-v1-related">
-                  <div id="similars"
-                    class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+    <article class="contents">
+      <section id="outras-marcas" class="tab-content">
+        <div class="white-background">
+            <!-- Produtos Similares e Equivalentes -->          
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="product-qd-v1-related">
+                <div id="similars" 
+                class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
 
-                    <vtex:contentPlaceHolder id="similares" />
-                  </div>
+                  <vtex:contentPlaceHolder id="similares" />
                 </div>
               </div>
             </div>
           </div>
-        </section>
-
-        <section id="compre-junto" class="tab-content">
-          <div class="blue-background">
-            <!-- Sugestoes -->
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="product-qd-v1-related">
-                  <div id="sugestoes"
-                    class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
-                    <vtex:contentPlaceHolder id="sugestoes" />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <!-- Sugestoes -->
-          </div>
-        </section>
-      </article>
-      <div class="white-background">
-        <div class="container-descricao">
-          <article class="contents">
-            <section id="duvidas" class="tab-content ativo">
-              <h2>Dúvidas Frequentes</h2>
-              <vtex.cmc:devDetalheDuvidasCategoria />
-              <vtex.cmc:devDetalheDuvidasFixo />
-            </section>
-          </article>
         </div>
-      </div>
-    </div>
+      </section>
+
+      <section id="compre-junto" class="tab-content">
+        <div class="blue-background">
+          <!-- Sugestoes -->
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="product-qd-v1-related">
+                <div id="sugestoes" 
+                class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                  <vtex:contentPlaceHolder id="sugestoes" />
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Sugestoes -->
+        </div>
+      </section>
+  
+      <section id="duvidas" class="tab-content ativo">
+        <div class="white-background">
+          <div class="container-descricao">
+            <article class="contents">
+                  <h2>Dúvidas Frequentes</h2>
+                  <vtex.cmc:devDetalheDuvidasCategoria />
+                  <vtex.cmc:devDetalheDuvidasFixo />
+            </article>
+          </div>
+        </div>
+      </section>
+  </article>
 
     <script defer="" src="https://autoglass-cdn.github.io/src/js/detalhe-produto.js" type="text/javascript"></script>
-    
-    <div class="common-qd-v1-structure">
+
+    <section class="common-qd-v1-structure">
       <div class="container">
         <section>
           <!-- Quem viu, viu também -->
           <div class="row">
             <div class="col-xs-12">
               <div class="product-qd-v1-related">
-                <div
-                  class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                <div 
+                class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
                   <vtex:contentPlaceHolder id="quem_viu_viu_tambem" />
                 </div>
               </div>
@@ -491,8 +493,8 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
           <!-- Conteúdo acima do quem viu, viu também -->
           <div class="row">
             <div class="col-xs-12">
-              <div
-                class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+              <div 
+              class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
                 <vtex:contentPlaceHolder id="conteudo_acima_do_quem_viu_viu_tambem" />
               </div>
             </div>
@@ -503,7 +505,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
       <!-- // Main Content -->
 
       <!-- Fixed bar -->
-      <div class="product-qd-v1-fixed-bar">
+      <section class="product-qd-v1-fixed-bar">
         <div class="row">
           <div class="col-xs-5">
             <div class="product-qd-v1-price">
@@ -514,15 +516,15 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
           <div class="col-xs-7">
             <div class="product-qd-v1-buy-button">
               <!--<vtex.cmc:BuyButton />-->
-                <button class="buy-button buy-button-tablet">
-                    <a href='#' class="add-to-cart-ga"></a>
-                </button>
+              <button class="buy-button buy-button-tablet">
+                <a href='#' class="add-to-cart-ga"></a>
+              </button>
             </div>
           </div>
         </div>
-      </div>
+      </section>
       <!-- Fixed bar -->
-    </div>
+    </section>
   </main>
 
   <style type="text/css">
