@@ -1094,7 +1094,7 @@ i.arrow-icon::before {
 .painel-categorias .titulo-categorias {
   color: #183884;
   margin: 0;
-  margin-left: 35px;
+  margin-left: 30px;
   font-family: 'Roboto', sans-serif;
   font-size: 21px;
   font-weight: 700;
@@ -1144,6 +1144,7 @@ i.arrow-icon::before {
   white-space: nowrap;
   -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
   z-index: 4;
+  margin-left: 35px;
 }
 
 .painel-categorias .painel-categorias__menu>ul {
