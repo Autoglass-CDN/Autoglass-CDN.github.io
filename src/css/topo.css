@@ -1710,7 +1710,10 @@ ul.menu-division {
     margin: 0;
     font-size: 1.25rem;
   }
-  
+
+  .painel-categorias .painel-categorias__menu {
+    margin-left: -15px;
+  }
 }
 /* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
