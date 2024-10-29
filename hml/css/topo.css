@@ -1651,6 +1651,73 @@ ul.menu-division {
   color: var(--blue-500);
   font-weight: var(--bold);
 }
+
+@media (max-width: 768px) {
+  .painel-categorias-section {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 20px;
+  }
+
+  .painel-categorias {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    touch-action: pan-x;
+  }
+
+  .painel-categorias__categoria {
+    flex: 0 0 auto;
+    margin: 0 10px;
+    scroll-snap-align: start;
+  }
+
+  .slider-handlers {
+    display: block;
+    align-items: left;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px;
+    height: 50px;
+  }
+
+  .slider-handlers .titulo-categorias {
+    margin-left: -25px;
+    padding-left: 0;
+  }
+
+  .painel-categorias__menu > ul {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .painel-categorias__menu > ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .painel-categorias__menu > ul {
+    scrollbar-width: none;
+  }
+
+  .painel-categorias__categoria-header {
+    min-width: 80px;
+  }
+
+  .painel-categorias .titulo-categorias {
+    margin-bottom: 20px;
+  }
+
+  .painel-categorias .botoes {
+    display: none;
+  }
+
+  .titulo-categorias {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+  
+}
+
 /* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
 .topo .container:before, .nav .container:before, .topo .container:after, .nav .container:after {

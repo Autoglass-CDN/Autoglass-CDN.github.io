@@ -470,6 +470,23 @@ slider.style.transform = `translateX(0px)`;
 slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
 }
 
+function enableTouchScroll(slider) {
+    let startX;
+    let scrollLeft;
+	console.log("Quanto andou: ", slider.offsetLeft)
+    slider.addEventListener('touchstart', (e) => {
+        startX = e.touches[0].pageX - slider.offsetLeft;
+        scrollLeft = slider.scrollLeft;
+    });
+
+    slider.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        const x = e.touches[0].pageX - slider.offsetLeft;
+        const walk = (x - startX) * 2;
+        slider.scrollLeft = scrollLeft - walk;
+    });
+}
+
 (() => {
 let slider = document.querySelector('.painel-categorias__menu > ul');
 let prevBtn = document.getElementById('prev-btn');
@@ -477,6 +494,8 @@ let nextBtn = document.getElementById('next-btn');
 
 prevBtn.addEventListener('click', slidePrev);
 nextBtn.addEventListener('click', slideNext);
+
+enableTouchScroll(slider);
 
 let abortCategoryAction = null;
 
