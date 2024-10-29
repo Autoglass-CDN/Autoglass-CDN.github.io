@@ -1156,7 +1156,7 @@ i.arrow-icon::before {
   align-items: center;
   max-width: 146px;
   min-width: 92px;
-  height: 155px;
+  height: auto;
   color: var(--gray-500);
   font-weight: var(--light);
   text-align: center;
