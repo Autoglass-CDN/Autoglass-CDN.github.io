@@ -557,3 +557,37 @@ autocompleteInit(searchField);
 )();
 
 //#endregion Painel de categorias
+
+
+let preventAutoOpen = false;
+let widget;
+
+document.addEventListener('DOMContentLoaded', () => {
+	widget = document.getElementById('chatWidget');
+  
+	// Function to toggle chat visibility
+	window.toggleChat = function() {
+	  widget.classList.toggle('active');
+	};
+  
+	// Function to close chat and prevent auto-opening
+	window.closeChat = function() {
+	  preventAutoOpen = true;
+	  widget.classList.remove('active');
+	};
+  
+	// Function to handle auto-toggle
+	function startAutoToggle() {
+	  let isOpen = false;
+  
+	  setInterval(() => {
+		if (!preventAutoOpen) {
+		  isOpen = !isOpen;
+		  widget.classList.toggle('active', isOpen);
+		}
+	  }, 5000);
+	}
+  
+	// Start the auto toggle when page loads
+	startAutoToggle();
+  });
