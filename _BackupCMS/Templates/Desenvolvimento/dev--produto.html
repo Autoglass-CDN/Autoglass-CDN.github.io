@@ -4,51 +4,51 @@
   xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
-    <script>
-      //Datalayer SocialShare
-function handleSocialClick(event, method) {
-  dataLayer.push({
-    'event': 'share',
-    'method': method,
-    'content_type': skuJson.skus[0].image,
-    'item_id': skuJson.skus[0].sku,
-  });
-}
+  <script>
+    //Datalayer SocialShare
+    function handleSocialClick(event, method) {
+      dataLayer.push({
+        'event': 'share',
+        'method': method,
+        'content_type': skuJson.skus[0].image,
+        'item_id': skuJson.skus[0].sku,
+      });
+    }
 
-const socialMediaElements = {
-  'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
-  'twitter': '.product-qd-v1-social-share.desktop .twitter',
-  'mail': '.product-qd-v1-social-share.desktop .mail',
-  'facebook': '.product-qd-v1-social-share.desktop .facebook'
-};
+    const socialMediaElements = {
+      'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
+      'twitter': '.product-qd-v1-social-share.desktop .twitter',
+      'mail': '.product-qd-v1-social-share.desktop .mail',
+      'facebook': '.product-qd-v1-social-share.desktop .facebook'
+    };
 
-Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
-  const element = document.querySelector(selector);
-  element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
-});
+    Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
+      const element = document.querySelector(selector);
+      element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
+    });
 
 
-//Datalayer SocialShare
-function ButtoWhatsappClick(event, position) {
-  dataLayer.push({
-    'event': 'whatsapp',
-    'position': position
-  });
-}
+    //Datalayer SocialShare
+    function ButtoWhatsappClick(event, position) {
+      dataLayer.push({
+        'event': 'whatsapp',
+        'position': position
+      });
+    }
 
-const whatsappElements = {
-  '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
-  '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
-  '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
-  '.link-whatsapp-texto.link-whatsapp': 'footer'
-};
+    const whatsappElements = {
+      '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
+      '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
+      '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
+      '.link-whatsapp-texto.link-whatsapp': 'footer'
+    };
 
-Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
-  const element = document.querySelector(selector);
-  if (element) {
-    element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
-  }
-});
+    Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
+      const element = document.querySelector(selector);
+      if (element) {
+        element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
+      }
+    });
   </script>
 
   <vtex:contentPlaceHolder id="qd_head" />
@@ -61,26 +61,27 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
   <vtex:template id="dev--detalhe-produto--head-tags" />
   <vtex:metaTags />
   <vtex.cmc:productRichSnippets showFacebook="1" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.product.css"
-    type="text/css" onload="this.media='all'"/>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.product.css" type="text/css"
+    onload="this.media='all'" />
 
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" onload="this.media='all'"/>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" onload="this.media='all'" />
   <script defer="" type="text/javascript" src="/scripts/jquery.maskedinput-1.2.2.js"></script>
   <script defer="" src="https://autoglass-cdn.github.io/src/js/jquery-ui.datepicker.js" type="text/javascript"></script>
 
   <!--<script defer="" src="https://autoglass-cdn.github.io/src/js/legacy/detalhe-produto-legado.js" type="text/javascript"></script>-->
 
   <script defer="" src="https://autoglass-cdn.github.io/src/js/cep.component.js" type="text/javascript"></script>
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/B2C-02-detalhe-produto.css"
-  type="text/css" onload="this.media='all'"/>
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/cep.component.css" type="text/css" onload="this.media='all'"/>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/B2C-02-detalhe-produto.css" type="text/css"
+    onload="this.media='all'" />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/cep.component.css" type="text/css"
+    onload="this.media='all'" />
   <style type="text/css">
     .mz-acessories .mz-acessories__prices .mz-prices__block,
     .mz-acessories .mz-acessories__prices .mz-acessories__prices--byfor {
       display: block !important;
     }
   </style>
-   <!-- <script type="application/ld+json">
+  <!-- <script type="application/ld+json">
       {
           "@context": "https://schema.org/",
           "@type": "Product",
@@ -111,104 +112,101 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
   <vtex.cmc:productRichSnippets showGoogle="1" />
 
   <!-- Header -->
-    <vtex:template id="dev--header" />
+  <vtex:template id="dev--header" />
   <!-- Header -->
 
   <main>
     <section class="common-qd-v1-structure">
-      <!--FLOAT BAR PRODUCT_________________-->
+      <!-- FLOAT BAR PRODUCT -->
       <section class="col-xs-12">
-        <div class="product-qd-v1-float-bar">
-          <div class="container">
-            <div class="row">
-              <div class="col-xs-3">
+        <section class="product-qd-v1-float-bar">
+          <section class="container">
+            <section class="row">
+              <section class="col-xs-3">
                 <span class="product-qd-v1-name">
                   <vtex.cmc:productName />
                 </span>
-              </div>
-              <div class="col-xs-3">
-                <a class="product-qd-v1-link-description" href="#">Descrição 
-                  Completa</a>
-              </div>
-              <div class="col-xs-3">
-                <div class="product-qd-v1-price">
+              </section>
+              <section class="col-xs-3">
+                <a class="product-qd-v1-link-description" href="#">Descrição Completa</a>
+              </section>
+              <section class="col-xs-3">
+                <section class="product-qd-v1-price">
                   <vtex.cmc:skuPrice />
-                </div>
-              </div>
-              <div class="col-xs-3">
-                <div class="product-qd-v1-buy-button">
+                </section>
+              </section>
+              <section class="col-xs-3">
+                <section class="product-qd-v1-buy-button">
                   <vtex.cmc:BuyButton />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+                </section>
+              </section>
+            </section>
+          </section>
+        </section>
       </section>
-      <!--_________________ FLOAT BAR PRODUCT-->
+      <!-- FLOAT BAR PRODUCT -->
 
       <!-- Main Content -->
-      <div class="container">
+      <section class="container">
         <!-- Informações principais do produto -->
         <section>
           <!-- Breadcrumb -->
           <nav class="breadcrumb-qd-v1">
-            <div class="row">
-              <div class="col-xs-12">
+            <section class="row">
+              <section class="col-xs-12">
                 <vtex.cmc:breadCrumb />
-              </div>
-            </div>
+              </section>
+            </section>
           </nav>
           <!-- Breadcrumb -->
 
           <section class="col-xs-12">
-            <div class="product-qd-v1-block-above-image">
+            <section class="product-qd-v1-block-above-image">
               <!-- Product name -->
               <span class="product-qd-v1-name mob">
                 <vtex.cmc:productName />
               </span>
               <!-- Product name -->
-              <div class="product-qd-v1-block mob">
+              <section class="product-qd-v1-block mob">
                 <!-- Reference code -->
                 <span class="product-qd-v1-ref-code mob">
                   <vtex.cmc:productReference />
                 </span>
                 <!-- Reference code -->
                 <!-- Brand names -->
-                <div class="product-qd-v1-brand-name mob">
+                <section class="product-qd-v1-brand-name mob">
                   Marca:
                   <vtex.cmc:brandName />
-                </div>
+                </section>
                 <!-- Brand names -->
-              </div>
-            </div>
+              </section>
+            </section>
           </section>
 
           <!-- Product image -->
           <section class="col-xs-12 col-md-6 col-md-push-1">
             <figure class="product-qd-v1-image">
-              <div class="product-qd-v1-image-wrapper">
+              <section class="product-qd-v1-image-wrapper">
                 <!-- Social Sharing -->
                 <vtex.cmc:devSocialShare />
                 <!-- Social Sharing -->
 
                 <!-- Selos de destaque -->
-                <div class="product-qd-v1-stamps">
-                  <div class="product-qd-v1-stamps-highlight-discount">
+                <section class="product-qd-v1-stamps">
+                  <section class="product-qd-v1-stamps-highlight-discount">
                     <vtex.cmc:discountHightLight />
-                  </div>
+                  </section>
 
-                  <div class="product-qd-v1-stamps-highlight">
+                  <section class="product-qd-v1-stamps-highlight">
                     <vtex.cmc:hightLight />
-                  </div>
-                </div>
+                  </section>
+                </section>
                 <!-- Selos de destaque -->
 
                 <vtex.cmc:ProductImage zoom="on" />
-              </div>
+              </section>
             </figure>
-            <div class="teste-opcionais">
-                
-            </div>
+            <section class="teste-opcionais"></section>
           </section>
           <!-- Product image -->
 
@@ -220,312 +218,294 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
 
           <!-- SKU selection box -->
           <section class="product-qd-v1-sku-selection-wrapper col-xs-12 col-md-5">
-            <div class="product-qd-v1-sku-selection-box">
-              <div class="product-qd-v1-sku-selection-row">
-                <div class="row">
-                  <div class="col-xs-12">
+            <section class="product-qd-v1-sku-selection-box">
+              <section class="product-qd-v1-sku-selection-row">
+                <section class="row">
+                  <section class="col-xs-12">
                     <!-- Product name -->
                     <h1 class="product-qd-v1-name">
                       <vtex.cmc:productName />
                     </h1>
                     <!-- Product name -->
-                    <div class="product-qd-v1-block">
+                    <section class="product-qd-v1-block">
                       <!-- Reference code -->
                       <span class="product-qd-v1-ref-code">
                         <vtex.cmc:productReference />
                       </span>
                       <!-- Reference code -->
                       <!-- Brand names -->
-                      <div class="product-qd-v1-brand-name">
+                      <section class="product-qd-v1-brand-name">
                         Marca:
                         <vtex.cmc:brandName />
-                      </div>
+                      </section>
                       <!-- Brand names -->
-                    </div>
-                  </div>
-                </div>
+                    </section>
+                  </section>
+                </section>
 
                 <vtex:template id="dev--detalhe-produto--busca-compativeis-desktop" />
                 <vtex:template id="dev--detalhe-produto--busca-compativeis-mobile" />
-                
-                <!-- ProdutoIndiponível - Outras Marcas  -->
+
+                <!-- ProdutoIndiponível - Outras Marcas -->
                 <section class="product-qd-v1-unavailable other-brands" style="display: none;">
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <div class="product-qd-v1-standard row">
+                  <section class="row">
+                    <section class="col-xs-12">
+                      <section class="product-qd-v1-standard row">
                         <h3>OUTRAS MARCAS</h3>
                         <p>Produto indisponível, mas temos outras opções para seu veículo!</p>
-                        <div class="product-qd-v1-buy-button">
+                        <section class="product-qd-v1-buy-button">
                           <button type="button" class="buy-button outras-marcas-btn"></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                        </section>
+                      </section>
+                    </section>
+                  </section>
                 </section>
-                <!-- ProdutoIndiponível - Outras Marcas  -->
+                <!-- ProdutoIndiponível - Outras Marcas -->
 
                 <!-- Produto Indisponível - Fale com o Vendedor -->
                 <section class="product-qd-v1-unavailable talk-to-seller" style="display: none;">
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <div class="product-qd-v1-standard row">
+                  <section class="row">
+                    <section class="col-xs-12">
+                      <section class="product-qd-v1-standard row">
                         <h3>CONSULTE DISPONIBILIDADE</h3>
-                        <p>Produto indisponível no site, mas podemos ter em outro canal de
-                          vendas. Informe o que procura
+                        <p>Produto indisponível no site, mas podemos ter em outro canal de vendas. Informe o que procura
                           pelo chat! :)</p>
-                        <div class="product-qd-v1-buy-button">
+                        <section class="product-qd-v1-buy-button">
                           <button class="product-unavailable"></button>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                        </section>
+                      </section>
+                    </section>
+                  </section>
                 </section>
                 <!-- Produto Indisponível - Fale com o Vendedor -->
+                <!-- Venda de Instalação (NOVA) -->
+                <!--<section class="product-qd-v1-installation">-->
+                <!--  <div class="row">-->
+                <!--    <div class="col-xs-12">-->
+                <!--        <div class="product-qd-v1-installation-content accessories-qd-v1-wrapper banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3">-->
+                <!--<vtex:contentPlaceHolder id="Acessorios" />-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--  </div>-->
+                <!--</section>-->
+                <!-- Venda de Instalação (NOVA) -->
 
-                <!-- Venda de Instalação (NOVA) -->
-                    <!--<section class="product-qd-v1-installation">-->
-                    <!--  <div class="row">-->
-                    <!--    <div class="col-xs-12">-->
-                    <!--        <div class="product-qd-v1-installation-content accessories-qd-v1-wrapper banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-3">-->
-                                <!--<vtex:contentPlaceHolder id="Acessorios" />-->
-                    <!--        </div>-->
-                    <!--    </div>-->
-                    <!--  </div>-->
-                    <!--</section>-->
-                <!-- Venda de Instalação (NOVA) -->
-                
                 <!-- Product price -->
                 <section class="product-qd-v1-standard row">
-                    <div class="formas-pagamento">
-                        <ul class="footer-qd-v1-payment-stamps">
-                            <li class="payment-stamp pull-left stamp-visa" alt="bandeira-visa"></li>
-                            <li class="payment-stamp pull-left stamp-master" alt="bandeira-master"></li>
-                            <li class="payment-stamp pull-left stamp-diners" alt="bandeira-diners"></li>
-                            <li class="payment-stamp pull-left stamp-elo" alt="bandeira-elo"></li>
-                            <li class="payment-stamp pull-left stamp-pix" alt="pagamento-pix"></li>
-                        </ul>
-                    </div>                  
-                    <div class="col-xs-12">
-                      <div class="product-qd-v1-price">
-                        <vtex.cmc:skuPrice />
-                      </div>
-                    </div>
-                </section>
-                  <!-- Product price -->
-
-                   <!--SKU Selection - variacao -->
-                  <section class="col-xs-12">
-                    <div class="row">
-                      <div class="product-qd-v1-sku-selection-row">
-                        <div class="product-qd-v1-sku-selection">
-                          <vtex.cmc:skuSelection />
-                        </div>
-                      </div>
-                    </div>
+                  <section class="formas-pagamento">
+                    <ul class="footer-qd-v1-payment-stamps">
+                      <li class="payment-stamp pull-left stamp-visa" alt="bandeira-visa"></li>
+                      <li class="payment-stamp pull-left stamp-master" alt="bandeira-master"></li>
+                      <li class="payment-stamp pull-left stamp-diners" alt="bandeira-diners"></li>
+                      <li class="payment-stamp pull-left stamp-elo" alt="bandeira-elo"></li>
+                      <li class="payment-stamp pull-left stamp-pix" alt="pagamento-pix"></li>
+                    </ul>
                   </section>
-                   <!--SKU Selection - variacao -->
+                  <section class="col-xs-12">
+                    <section class="product-qd-v1-price">
+                      <vtex.cmc:skuPrice />
+                    </section>
+                  </section>
+                </section>
+                <!-- Product price -->
 
-                  <!-- Teste -->
-                  <!--<div style="display: none;">-->
-                  <!--  <vtex.cmc:stockKeepingUnitSelection />-->
-                  <!--</div>-->
-                  <!-- // Teste -->
+                <!-- SKU Selection - variacao -->
+                <section class="col-xs-12">
+                  <section class="row">
+                    <section class="product-qd-v1-sku-selection-row">
+                      <section class="product-qd-v1-sku-selection">
+                        <vtex.cmc:skuSelection />
+                      </section>
+                    </section>
+                  </section>
+                </section>
+                <!-- SKU Selection - variacao -->
 
-                  <div class="col-xs-12">
-                    <div class="product-qd-v1-buy-box">
-                      <!-- Product quantity -->
-                      <div class="product-qd-v1-smart-qtt">
-                        <!-- Buy button -->
-                        <div class="product-qd-v1-buy-button">
-                           <vtex.cmc:BuyButton />
-                           <!--<button class="buy-button">-->
-                          <!--  <a href='#'></a>-->
-                          <!--</button>-->
-                        </div>
-                        <div class="container-compre-whatsapp">
-                            <a href="https://wa.me/552732032535?text=Olá,%20estou%20navegando%20pelo%20e-commerce,%20pode%20me%20ajudar?" target="_blank" class="texto-botao-compre-whatsapp">
-                                <button class="botao-compre-whatsapp" aria-label="Comprar pelo WhatsApp"></button>
-                            </a>
-                        </div>
-                        <!-- Buy button -->
-                      </div>
-                      <!-- Product quantity -->
-                    </div>
-                  </div>
-
-                </div>
-              </div>
+                <!-- Product quantity and Buy button -->
+                <section class="col-xs-12">
+                  <section class="product-qd-v1-buy-box">
+                    <section class="product-qd-v1-smart-qtt">
+                      <section class="product-qd-v1-buy-button">
+                        <vtex.cmc:BuyButton />
+                      </section>
+                      <section class="container-compre-whatsapp">
+                        <a href="https://wa.me/552732032535?text=Olá,%20estou%20navegando%20pelo%20e-commerce,%20pode%20me%20ajudar?"
+                          target="_blank" class="texto-botao-compre-whatsapp">
+                          <button class="botao-compre-whatsapp" aria-label="Comprar pelo WhatsApp"></button>
+                        </a>
+                      </section>
+                    </section>
+                  </section>
+                </section>
+                <!-- Product quantity and Buy button -->
+              </section>
             </section>
-
-              <!-- Shipping calculator -->
-              <section class="product-qd-v1-shipping">
-                <div class="row">
-                  <div class="col-xs-12">
-                    <p class="product-qd-v1-shipping-title">
-                      Consulte o frete
-                    </p>
-                    <div class="product-qd-v1-shipping-freight">
-                      <div class="product-qd-v1-shipping-freight-result">
-                        <vtex.cmc:shippingValue />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </section>
-              <!-- Shipping calculator -->
-            
-              <!-- Compre junto -->
-              <section>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <!--<div class="product-qd-v1-buy-together">
-                      <vtex.cmc:BuyTogether />
-                    </div>-->
-                    
-                  </div>
-                </div>
-              </section>
-              <!-- Compre junto -->
-
           </section>
-          <!-- SKU selection box -->
-        </section>
-        <!-- Informações principais do produto -->
 
-        <!-- Product Test Video Galery -->
-        <!-- <vtex.cmc:devGaleriaVideo /> -->
-        <!-- Product Test Video Galery -->
-      </div>
-    </section>
-    
-   <!-- Info Acessorio -->
-        <aside id="container-acessorios-ag" style="display: none;">
-            <vtex:contentPlaceHolder id="Acessorios" />
-        </aside>
-    <!-- Info Acessorio -->
-   
-    <!-- Descrição -->
-    <section>
-      <div class="nav-container">
-        <nav class="tabs-descricao">
-          <ul>
-            <li><a href="#informacoes-gerais" class="tab-link">Informações Gerais</a></li>
-            <li><a href="#veiculos-compativeis" class="tab-link">Veículos Compatíveis</a></li>
-            <li><a href="#diferenciais" class="tab-link">Diferenciais Autoglass</a></li>
-            <li><a href="#avaliacoes" class="tab-link">Avaliações</a></li>
-            <li><a href="#outras-marcas" class="tab-link">Outras Marcas</a></li>
-            <li><a href="#compre-junto" class="tab-link">Compre Junto</a></li>
-            <li><a href="#duvidas" class="tab-link">Dúvidas</a></li>
-          </ul>
-        </nav>
-      </div>
-      <vtex:template id="dev--detalhe-produto--descricao" />
-      <!--<vtex:template id="prd- -detalhe-produto- -descricao" />-->
-    </section>
+          <!-- Shipping calculator -->
+          <section class="product-qd-v1-shipping">
+            <section class="row">
+              <section class="col-xs-12">
+                <p class="product-qd-v1-shipping-title">
+                  Consulte o frete
+                </p>
+                <section class="product-qd-v1-shipping-freight">
+                  <section class="product-qd-v1-shipping-freight-result">
+                    <vtex.cmc:shippingValue />
+                  </section>
+                </section>
+              </section>
+            </section>
+          </section>
+          <!-- Shipping calculator -->
+
+          <!-- Compre junto -->
+          <section>
+            <section class="row">
+              <section class="col-xs-12">
+                <!-- Compre junto -->
+                <section class="product-qd-v1-related">
+                  <section id="sugestoes"
+                    class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                    <vtex:contentPlaceHolder id="sugestoes" />
+                  </section>
+                </section>
+              </section>
+            </section>
+          </section>
+          <!-- Compre junto -->
+        </section>
+        <!-- SKU selection box -->
+      </section>
+      <!-- Informações principais do produto -->
+
+
+      <!-- Info Acessorio -->
+      <aside id="container-acessorios-ag" style="display: none;">
+        <vtex:contentPlaceHolder id="Acessorios" />
+      </aside>
+      <!-- Info Acessorio -->
+
+      <!-- Descrição -->
+      <section>
+        <section class="nav-container">
+          <nav class="tabs-descricao">
+            <ul>
+              <li><a href="#informacoes-gerais" class="tab-link">Informações Gerais</a></li>
+              <li><a href="#veiculos-compativeis" class="tab-link">Veículos Compatíveis</a></li>
+              <li><a href="#diferenciais" class="tab-link">Diferenciais Autoglass</a></li>
+              <li><a href="#avaliacoes" class="tab-link">Avaliações</a></li>
+              <li><a href="#outras-marcas" class="tab-link">Outras Marcas</a></li>
+              <li><a href="#compre-junto" class="tab-link">Compre Junto</a></li>
+              <li><a href="#duvidas" class="tab-link">Dúvidas</a></li>
+            </ul>
+          </nav>
+        </section>
+        <vtex:template id="dev--detalhe-produto--descricao" />
+        <!--<vtex:template id="prd- -detalhe-produto- -descricao" />-->
+      </section>
       <!-- Descrição -->
 
-    <article class="contents">
-      <section id="outras-marcas" class="tab-content">
-        <div class="white-background">
-            <!-- Produtos Similares e Equivalentes -->          
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="product-qd-v1-related">
-                <div id="similars" 
-                class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
-
-                  <vtex:contentPlaceHolder id="similares" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="compre-junto" class="tab-content">
-        <div class="blue-background">
-          <!-- Sugestoes -->
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="product-qd-v1-related">
-                <div id="sugestoes" 
-                class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
-                  <vtex:contentPlaceHolder id="sugestoes" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Sugestoes -->
-        </div>
-      </section>
-  
-      <section id="duvidas" class="tab-content ativo">
-        <div class="white-background">
-          <div class="container-descricao">
-            <article class="contents">
-                  <h2>Dúvidas Frequentes</h2>
-                  <vtex.cmc:devDetalheDuvidasCategoria />
-                  <vtex.cmc:devDetalheDuvidasFixo />
-            </article>
-          </div>
-        </div>
-      </section>
-  </article>
-
-    <script defer="" src="https://autoglass-cdn.github.io/src/js/detalhe-produto.js" type="text/javascript"></script>
-
-    <section class="common-qd-v1-structure">
-      <div class="container">
-        <section>
-          <!-- Quem viu, viu também -->
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="product-qd-v1-related">
-                <div 
-                class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
-                  <vtex:contentPlaceHolder id="quem_viu_viu_tambem" />
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- Quem viu, viu também -->
-
-          <!-- Conteúdo acima do quem viu, viu também -->
-          <div class="row">
-            <div class="col-xs-12">
-              <div 
-              class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
-                <vtex:contentPlaceHolder id="conteudo_acima_do_quem_viu_viu_tambem" />
-              </div>
-            </div>
-          </div>
-          <!-- Conteúdo acima do quem viu, viu também -->
+      <article class="contents">
+        <section id="outras-marcas" class="tab-content">
+          <section class="white-background">
+            <!-- Produtos Similares e Equivalentes -->
+            <section class="row">
+              <section class="col-xs-12">
+                <section class="product-qd-v1-related">
+                  <section id="similars"
+                    class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                    <vtex:contentPlaceHolder id="similares" />
+                  </section>
+                </section>
+              </section>
+            </section>
+          </section>
         </section>
-      </div>
-      <!-- // Main Content -->
 
+        <section id="compre-junto" class="tab-content">
+          <section class="blue-background">
+            <!-- Sugestoes -->
+            <section class="row">
+              <section class="col-xs-12">
+                <section class="product-qd-v1-related">
+                  <section id="sugestoes"
+                    class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                    <vtex:contentPlaceHolder id="sugestoes" />
+                  </section>
+                </section>
+              </section>
+            </section>
+            <!-- Sugestoes -->
+          </section>
+        </section>
+
+        <section id="duvidas" class="tab-content ativo">
+          <section class="white-background">
+            <section class="container-descricao">
+              <article class="contents">
+                <h2>Dúvidas Frequentes</h2>
+                <vtex.cmc:devDetalheDuvidasCategoria />
+                <vtex.cmc:devDetalheDuvidasFixo />
+              </article>
+            </section>
+          </section>
+        </section>
+      </article>
+
+      <script defer="" src="https://autoglass-cdn.github.io/src/js/detalhe-produto.js" type="text/javascript"></script>
+
+      <section class="common-qd-v1-structure">
+        <section class="container">
+          <section>
+            <!-- Quem viu, viu também -->
+            <section class="row">
+              <section class="col-xs-12">
+                <section class="product-qd-v1-related">
+                  <section
+                    class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-3">
+                    <vtex:contentPlaceHolder id="quem_viu_viu_tambem" />
+                  </section>
+                </section>
+              </section>
+            </section>
+            <!-- Quem viu, viu também -->
+
+            <!-- Conteúdo acima do quem viu, viu também -->
+            <section class="row">
+              <section class="col-xs-12">
+                <section
+                  class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+                  <vtex:contentPlaceHolder id="conteudo_acima_do_quem_viu_viu_tambem" />
+                </section>
+              </section>
+            </section>
+            <!-- Conteúdo acima do quem viu, viu também -->
+          </section>
+        </section>
+      </section>
       <!-- Fixed bar -->
       <section class="product-qd-v1-fixed-bar">
-        <div class="row">
-          <div class="col-xs-5">
-            <div class="product-qd-v1-price">
+        <section class="row">
+          <section class="col-xs-5">
+            <section class="product-qd-v1-price">
               <vtex.cmc:skuPrice />
-            </div>
-          </div>
+            </section>
+          </section>
 
-          <div class="col-xs-7">
-            <div class="product-qd-v1-buy-button">
-              <!--<vtex.cmc:BuyButton />-->
+          <section class="col-xs-7">
+            <section class="product-qd-v1-buy-button">
               <button class="buy-button buy-button-tablet">
                 <a href='#' class="add-to-cart-ga"></a>
               </button>
-            </div>
-          </div>
-        </div>
+            </section>
+          </section>
+        </section>
       </section>
       <!-- Fixed bar -->
     </section>
   </main>
+
 
   <style type="text/css">
     .cep-modal {
@@ -629,21 +609,21 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
 
   <div id="myModal" class="modal">
     <!-- Modal content -->
-    <div class="modal-content">
-      <div class="modal-close">
+    <section class="modal-content">
+      <header class="modal-close">
         <span class="close"></span>
-      </div>
-      <div class="modal-header">
+      </header>
+      <header class="modal-header">
         <p style="color: #333333; font-size: 26px; font-weight: 400;">Aguarde...</p>
-      </div>
-      <div class="modal-body">
+      </header>
+      <section class="modal-body">
         <p>Estamos selecionando as melhores opções para você! :)</p>
-      </div>
-    </div>
+      </section>
+    </section>
   </div>
 
   <!-- Modal Overlay -->
-  <div class="mz-modal-overlay"></div>
+  <section class="mz-modal-overlay"></section>
   <!-- // Modal Overlay -->
 
   <!-- Footer -->
