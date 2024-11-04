@@ -389,7 +389,7 @@
               const displayStyle = index >= 5 ? 'display: none;' : '';
               html += `<div class="busca-options" style="${displayStyle}">
                           <li role="treeitem" id="${x.id}">
-                            <input class="input-busca-options" type="radio" name="${x.name}" value="${x.id}"}>
+                            <input class="input-busca-options" type="radio" name="${x.name}" value="${x.id}">
                             ${x.name}
                           </li>
                       </div>`;
