@@ -379,12 +379,6 @@
         }
       });
     }
-    var tipoPecaSelected = null;
-
-    function onCheckTipoPeca(value){
-      tipoPecaSelected = value;
-      console.log(value, tipoPecaSelected);
-    }
 
     function buildList(objects, _id) {
       let html = "";
@@ -395,7 +389,7 @@
               const displayStyle = index >= 5 ? 'display: none;' : '';
               html += `<div class="busca-options" style="${displayStyle}">
                           <li role="treeitem" id="${x.id}">
-                            <input onClick="javascript:onCheckTipoPeca('${x.id}')" class="input-busca-options" type="radio" name="${x.name}" value="${x.id}" ${tipoPecaSelected == x.id ? "checked" : ""}>
+                            <input class="input-busca-options" type="radio" name="${x.name}" value="${x.id}"}>
                             ${x.name}
                           </li>
                       </div>`;
