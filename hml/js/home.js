@@ -388,21 +388,6 @@ function getItemSize(banner){
 })();
 //#endregion Ratings
 
-function getScrollPercentage(element) {
-	return 100 * element.scrollLeft
-		/ (element.scrollWidth - element.clientWidth);
-}
-function scrollSmoothlyToRight(element, pixelsToScroll) {
-	return element.scrollBy({
-		top: 0,
-		left: pixelsToScroll,
-		behavior : "smooth"
-	})
-}
-function scrollSmoothlyToLeft(element, pixelsToScroll) {
-	return scrollSmoothlyToRight(element, -pixelsToScroll)
-}
-
 //#region Painel de categorias
 function getScrollPercentage(element) {
 	return 100 * element.scrollLeft
@@ -435,19 +420,24 @@ return value < min ? min : (value > max ? max : value);
 }
 
 function slideNext() {
-let categories = document.querySelectorAll('.painel-categorias__categoria');
+const categories = Array.from(document.querySelectorAll('.painel-categorias__categoria'));
+
+const filteredCategories = categories.filter(category => {
+    return !category.id.includes('tab-busca-categoria');
+});
 let slider = document.querySelector('.painel-categorias__menu > ul');
 
 if (getTranslateX(slider) < 0) return;
 
-let fullWidth = Array.from(categories)
+let fullWidth = Array.from(filteredCategories)
 	.reduce((width, category) => width + (parseInt(getComputedStyle(category).width, 10) + parseInt(getComputedStyle(category).marginLeft, 10) + parseInt(getComputedStyle(category).marginRight, 10)), 0);
+
 
 let width = slider.clientWidth
 	+ parseInt(getComputedStyle(slider).marginRight, 10)
 	+ parseInt(getComputedStyle(slider).marginLeft, 10);
 
-slider.style.transform = `translateX(${width - fullWidth}px)`;
+slider.style.transform = `translateX(${width - (fullWidth < 1808 ? fullWidth + 69 : fullWidth)}px)`;
 
 slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
 }
@@ -470,10 +460,18 @@ slider.style.transform = `translateX(0px)`;
 slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
 }
 
+function updateSlider() {
+    let slider = document.querySelector('.painel-categorias__menu > ul');
+    slider.style.transform = `translateX(0px)`;
+    centerArrow(10, 1250);
+}
+
+window.addEventListener('resize', updateSlider);
+
 function enableTouchScroll(slider) {
     let startX;
     let scrollLeft;
-	console.log("Quanto andou: ", slider.offsetLeft)
+	
     slider.addEventListener('touchstart', (e) => {
         startX = e.touches[0].pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
@@ -564,7 +562,6 @@ searchField.addEventListener('blur', () => {
 
 searchField.addEventListener('keydown', (event) => {
 	event = event || window.event;
-	console.log(event.keyCode)
 });
 
 autocompleteInit(searchField);
