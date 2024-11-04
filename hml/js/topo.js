@@ -27,15 +27,6 @@ function calculatesTwelveHours() {
   return 12*60*60*1000;
 }
 
-function centerArrow(min, max) {
-  let categoriaAtiva = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
-  let arrow = document.querySelector('.arrow');
-  let arrowPositions = arrow.getBoundingClientRect();
-  let positions = categoriaAtiva.getBoundingClientRect();
-  let deslocate = ((positions.left + (categoriaAtiva.offsetWidth - arrow.offsetWidth) / 2) - (arrowPositions.left - parseInt(getComputedStyle(arrow).left, 10)));
-  arrow.style.left = valueBetweenRange(deslocate, min, max) + 'px';
-}
-
 function valueBetweenRange (value, min, max) {
   return value < min ? min : (value > max ? max : value);
 }
@@ -91,25 +82,6 @@ function activateCategory(categoriaAtual, indexConteudoAtual) {
   currentCategory = categoriaAtual;
 }
 
-function slideNext() {
-  let categories = document.querySelectorAll('.painel-categorias__categoria');
-  let slider = document.querySelector('.painel-categorias__menu > ul');
-
-  if (getTranslateX(slider) < 0) return;
-
-  let fullWidth = Array.from(categories)
-    .reduce((width, category) => width + (parseInt(getComputedStyle(category).width, 10) + parseInt(getComputedStyle(category).marginLeft, 10) + parseInt(getComputedStyle(category).marginRight, 10)), 0);
-
-  let width = slider.clientWidth
-    + parseInt(getComputedStyle(slider).marginRight, 10)
-    + parseInt(getComputedStyle(slider).marginLeft, 10);
-
-  slider.style.transform = `translateX(${width - fullWidth}px)`;
-
-  slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
-  toggleVisibility('next-btn');
-  toggleVisibility('prev-btn');
-}
 
 function toggleVisibility(id) {
   let element = document.getElementById(id);
@@ -122,14 +94,6 @@ function getTranslateX(element) {
   return matrix.m41;
 }
 
-function slidePrev() {
-  let slider = document.querySelector('.painel-categorias__menu > ul');
-  slider.style.transform = `translateX(0px)`;
-
-  slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
-  toggleVisibility('next-btn');
-  toggleVisibility('prev-btn');
-}
 
 let currentCategory = null;
 
