@@ -2,161 +2,161 @@
 <!DOCTYPE html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
 	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
 <head>
 	<meta charset="UTF-8" />
 	<meta name="robots" content="noindex, nofollow" />
-    <title>
-        <vtex.cmc:titleDinamico />
-    </title>
 	<title>
 		<vtex.cmc:productPageTitle />
 	</title>
 	<vtex:template id="dev--busca--head-tags" />
 	<vtex:metaTags />
-    <vtex.cmc:titleDinamico />
-	<script language="javascript" src="https://autoglass-cdn.github.io/src/js/B2C-02-filtro-busca.js" type="text/javascript"></script>
-	<script defer="" language="javascript" src="https://autoglass-cdn.github.io/src/js/busca/load-optionals.js" type="text/javascript"></script>
+
+	<script defer="" language="javascript" src="https://autoglass-cdn.github.io/src/js/B2C-02-filtro-busca.js"
+		type="text/javascript"></script>
+	<script defer="" language="javascript" src="https://autoglass-cdn.github.io/src/js/busca/load-optionals.js"
+		type="text/javascript"></script>
 	<script defer="" src="https://autoglass-cdn.github.io/src/js/busca-fipe.js" type="text/javascript"></script>
-    <script defer="" language="javascript" src="https://autoglass-cdn.github.io/src/js/verifica-compatibilidade.js" type="text/javascript"></script>
+	<script defer="" language="javascript" src="https://autoglass-cdn.github.io/src/js/verifica-compatibilidade.js"
+		type="text/javascript"></script>
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/busca/load-optionals.css" type="text/css" />
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.search.css"
 		type="text/css" />
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/filtro-veiculos.css" type="text/css" />
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/busca/compatibilidade-veiculo.css" type="text/css" />
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css" type="text/css"/>
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/busca/compatibilidade-veiculo.css"
+		type="text/css" />
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css" type="text/css" />
 </head>
 
 <body class="resultado-busca">
-<!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKHXR8L"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
+	<!-- Google Tag Manager (noscript) -->
+	<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WKHXR8L" height="0" width="0"
+			style="display:none;visibility:hidden"></iframe></noscript>
+	<!-- End Google Tag Manager (noscript) -->
 
 	<!-- Header -->
 	<vtex:template id="dev--header" />
 	<!-- Header -->
-    <!-- Smart Select -->
-    <div>
-        <vtex:template id="dev--busca-fipe" />
-    </div>
-    <!-- Smart Select -->
+
+	<!-- Smart Select -->
+	<section>
+		<vtex:template id="dev--busca-fipe" />
+	</section>
+	<!-- Smart Select -->
+
 	<!-- Main Content -->
 	<main>
-		<div class="common-qd-v1-structure">
-			<section>
-				<!-- Full banner -->
-				<div class="search-qd-v1-full-banner">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-xs-12">
-								<div
-									class="banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
-									<vtex:contentPlaceHolder id="banner_full_no_topo_da_pagina" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Full banner -->
-
-				<!-- Bredcrumb -->
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="breadcrumb-qd-v1">
-								<vtex.cmc:breadCrumb />
-							</div>
-						</div>
-					</div>
-				</div>
-				<!-- Bredcrumb -->
-
-				<div class="container">
-					<div class="row">
-						<aside>
-							<div class="col-xs-12 col-lg-3">
-                                <div class='container-titulo-lateral-prateleira'>
-                                    <h1 class='titulo-lateral-prateleira'></h1>
-							    </div>
-								<div class="search-qd-v1-navigator">
-									<a class="search-qd-v1-navigator-trigger" href="#" role="button">Filtrar resultado</a>
-
-									<div class="search-qd-v1-navigator-list">
-										<button class="search-qd-v1-navigator-exit">×</button>
-										<div class="search-qd-v1-navigator-title">Filtrar Resultados</div>
-
-										<!-- Filtered -->
-										<div class="search-qd-v1-navigator-research-filtered"></div>
-										<!-- // Filtered -->
-
-										<!-- Smart Research -->
-										<div class="search-qd-v1-navigator-research">
-											<!-- searchNavigator -->
-											<vtex.cmc:searchNavigator />
-											<!-- // searchNavigator -->
-										</div>
-										<!-- // Smart Research -->
-
-										<!-- Mobile Filter Button -->
-										<div class="wrapper-search-qd-v1-navigator-mobile-results">
-											<div class="search-qd-v1-navigator-mobile-results">
-												<button>Ver Resultados</button>
-											</div>
-										</div>
-										<!-- // Mobile Filter Button -->
-
-									</div>
-								</div>
-
-                                <script>
-                                    $(document).ready(function(){
-                                      var textoParaH1 = $("title").text();
-                                      var textoFormatado = textoParaH1.replace(/\s+\|.*/, '');
-                                      $(".titulo-lateral-prateleira").text(textoFormatado);
-                                    });
-                                </script>
-
-								<!-- Side banners -->
-								<div class="search-qd-v1-side-banners">
-									<div
-										class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
-										<vtex:contentPlaceHolder id="banners_do_menu_lateral" />
-									</div>
-								</div>
-								<!-- Side banners -->
-							</div>
-						</aside>
-
-						<div class="col-xs-12 col-lg-9">
-							<div class="row">
-								<div class="search-qd-v1-result qd-shelf-xs-6 qd-shelf-lg-4">
-									<!-- dev prateleira row qd xs -->
-									<vtex.cmc:searchResult layout="9e326ff9-a7e5-4855-bfa3-438511c9b57f" itemCount="24"	columnCount="1" />
-								</div>
-							</div>
-
-							<!-- SEO Text -->
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="search-qd-v1-seo-text">
-										<div class="h1 h2 h3 h4 h5 h6 p ul dl">
-											<vtex:contentPlaceHolder id="texto_SEO_para_melhor_indexacao" />
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- SEO Text -->
-						</div>
-					</div>
-				</div>
+		<section class="common-qd-v1-structure">
+			<!-- Full banner -->
+			<section class="search-qd-v1-full-banner">
+				<section class="container-fluid">
+					<section class="row">
+						<section class="col-xs-12">
+							<figure
+								class="banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+								<vtex:contentPlaceHolder id="banner_full_no_topo_da_pagina" />
+							</figure>
+						</section>
+					</section>
+				</section>
 			</section>
-		</div>
+			<!-- Full banner -->
+
+			<!-- Breadcrumb -->
+			<nav class="container">
+				<section class="row">
+					<section class="col-xs-12">
+						<nav class="breadcrumb-qd-v1">
+							<vtex.cmc:breadCrumb />
+						</nav>
+					</section>
+				</section>
+			</nav>
+			<!-- Breadcrumb -->
+
+			<section class="container">
+				<section class="row">
+					<aside class="col-xs-12 col-lg-3">
+						<header class='container-titulo-lateral-prateleira'>
+							<h1 class='titulo-lateral-prateleira'></h1>
+						</header>
+
+						<section class="search-qd-v1-navigator">
+							<a class="search-qd-v1-navigator-trigger" href="#" role="button">Filtrar resultado</a>
+
+							<section class="search-qd-v1-navigator-list">
+								<button class="search-qd-v1-navigator-exit">×</button>
+								<h2 class="search-qd-v1-navigator-title">Filtrar Resultados</h2>
+
+								<!-- Filtered -->
+								<section class="search-qd-v1-navigator-research-filtered"></section>
+								<!-- // Filtered -->
+
+								<!-- Smart Research -->
+								<section class="search-qd-v1-navigator-research">
+									<vtex.cmc:searchNavigator />
+								</section>
+								<!-- // Smart Research -->
+
+								<!-- Mobile Filter Button -->
+								<section class="wrapper-search-qd-v1-navigator-mobile-results">
+									<section class="search-qd-v1-navigator-mobile-results">
+										<button>Ver Resultados</button>
+									</section>
+								</section>
+								<!-- // Mobile Filter Button -->
+							</section>
+						</section>
+
+						<script>
+							$(document).ready(function () {
+								var textoParaH1 = $("title").text();
+								var textoFormatado = textoParaH1.replace(/\s+\|.*/, '');
+								$(".titulo-lateral-prateleira").text(textoFormatado);
+							});
+						</script>
+
+						<!-- Side banners -->
+						<aside class="search-qd-v1-side-banners">
+							<figure
+								class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+								<vtex:contentPlaceHolder id="banners_do_menu_lateral" />
+							</figure>
+						</aside>
+						<!-- Side banners -->
+					</aside>
+
+					<section class="col-xs-12 col-lg-9">
+						<section class="row">
+							<section class="search-qd-v1-result qd-shelf-xs-6 qd-shelf-lg-4">
+								<vtex.cmc:searchResult layout="9e326ff9-a7e5-4855-bfa3-438511c9b57f" itemCount="24"
+									columnCount="1" />
+							</section>
+						</section>
+
+						<!-- SEO Text -->
+						<article class="row">
+							<section class="col-xs-12">
+								<section class="search-qd-v1-seo-text">
+									<section class="h1 h2 h3 h4 h5 h6 p ul dl">
+										<vtex:contentPlaceHolder id="texto_SEO_para_melhor_indexacao" />
+									</section>
+								</section>
+							</section>
+						</article>
+						<!-- SEO Text -->
+					</section>
+				</section>
+			</section>
+		</section>
 	</main>
 	<!-- Main Content -->
 
 	<!-- Footer -->
-	<vtex:template id="dev--footer" />
-	<vtex.cmc:devGoogleMaps />
+	<footer>
+		<vtex:template id="dev--footer" />
+		<vtex.cmc:devGoogleMaps />
+	</footer>
 	<!-- Footer -->
 </body>
 

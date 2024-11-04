@@ -273,6 +273,65 @@
   z-index: 8;
 }
 
+@media screen and (min-width: 1600px) {
+  .c-busca__tab-content div.empty:hover::before {
+    content: "Preencha os campos anteriores";
+    background-color: eef2f8;
+    border-radius: 4px;
+    bottom: -30px;
+    color: #1c3162;
+    font-size: 13px;
+    font-weight: bold;
+    height: auto;
+    left: 50%;
+    position: absolute;
+    padding: 7px 10px;
+    text-align: center;
+    transform: translate(-50%, 0);
+    width: 230px;
+    z-index: 8;
+  }
+
+  .c-busca__tab-content div.empty:hover::after {
+    content: "";
+    background-color: white;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    z-index: 9;
+  }
+
+  .btn-fechar-categoria{
+    background-color: transparent;
+    color: #0b4583;
+    border: transparent;
+    padding-left: 96%;
+    font-size: 15px;
+  }
+}
+@media (max-width: 1550px) {
+  .c-busca__tab-content div.empty:hover::after {
+    content: "";
+    background-color: white;
+    position: absolute;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    z-index: 9;
+  }
+
+  .btn-fechar-categoria{
+    background-color: transparent;
+    color: #0b4583;
+    border: transparent;
+    padding-left: 94%;
+    font-size: 15px;
+  }
+}
 .c-busca__tab-content div.empty:hover::after {
   content: "";
   background-color: white;
@@ -503,4 +562,9 @@
 #btn-busca-placa-limpar{
   border-radius: 40px;
   border: 2px solid #0b4583;
+}
+
+.botao-fechar{
+  display: flex;
+  align-items: end;
 }

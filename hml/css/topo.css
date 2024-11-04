@@ -159,16 +159,17 @@
   filter: drop-shadow(5px 5px 2px rgba(0,0,0,0.4));
 }
 
-#prev-btn i:before {
-  content: url('https://autoglass-cdn.github.io/src/img/categoria-arrow.svg');
-  display: inline-block;
-  height: 32px;
-  transform: rotateY(180deg);
+#prev-btn i:before,
+#next-btn i:before {
+  content: url('https://autoglass-cdn.github.io/src/img/slide-arrow.svg');
+  display: block;
+  height: 23px;
+  width: 23px; 
+  transition: transform 0.2s; 
 }
 
-#next-btn i:before {
-  content: url('https://autoglass-cdn.github.io/src/img/categoria-arrow.svg');
-  height: 32px;
+#prev-btn i:before {
+  transform: rotateY(180deg);
 }
 
 #next-btn i,
@@ -1064,12 +1065,8 @@ i.arrow-icon::before {
 
 .painel-categorias-section {
   background-color: #FFF;
-}
-
-@media (max-width: 1200px) {
-  .painel-categorias-section {
-    display:none;
-  }
+  padding-top: 5px;
+  padding-bottom: 30px;
 }
 
 .painel-categorias-desktop:not(:hover) .painel-categorias .arrow{
@@ -1079,7 +1076,7 @@ i.arrow-icon::before {
 
 .painel-categorias-desktop:not(:hover) .painel-categorias .painel-categorias__categoria-conteudo {
   transform: scaleY(0.2);
-  top: -160px;
+  top: 0px;
   z-index: 1;
 }
 
@@ -1111,21 +1108,34 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .slider-handlers {
-  width: 100%;
-  height: 0px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: relative;
   padding: 0 20px;
+}
+
+.painel-categorias .titulo-categorias {
+  color: #183884;
+  margin: 0;
+  margin-left: 30px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: normal;
+}
+
+.painel-categorias .botoes {
+  display: flex;
+  gap: 10px;
 }
 
 .painel-categorias .slider-handlers button {
   background: transparent;
-  position: relative;
-  top: 72.5px;
   border: 0;
   outline: 0;
-  z-index: 5;
+  padding: 10px;
+  cursor: pointer;
 }
 
 .painel-categorias .slider-handlers button i {
@@ -1134,7 +1144,7 @@ i.arrow-icon::before {
 
 .painel-categorias .painel-categorias__categoria {
   display: inline-block;
-  margin: 0 20px;
+  margin: 0 5px;
 }
 
 .painel-categorias .painel-categorias__categoria:first-child {
@@ -1154,10 +1164,11 @@ i.arrow-icon::before {
   position: relative;
   overflow: hidden;
   background: #FFF;
-  height: 125px;
+  height: auto;
   white-space: nowrap;
   -webkit-mask-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 1) 1%, rgba(0, 0, 0, 1) 98%, rgba(0, 0, 0, 0));
   z-index: 4;
+  margin-left: 35px;
 }
 
 .painel-categorias .painel-categorias__menu>ul {
@@ -1170,7 +1181,7 @@ i.arrow-icon::before {
   align-items: center;
   max-width: 146px;
   min-width: 92px;
-  height: 155px;
+  height: auto;
   color: var(--gray-500);
   font-weight: var(--light);
   text-align: center;
@@ -1211,6 +1222,7 @@ i.arrow-icon::before {
 .painel-categorias .painel-categorias__categoria-header h2 {
   font-size: 0.8750rem;
   font-weight: unset;
+  word-wrap: break-word;
 }
 
 .painel-categorias .painel-categorias__categoria-header a {
@@ -1219,12 +1231,14 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .painel-categorias__categoria-conteudo {
+  position: absolute;
   left: 0px;
   display: flex;
   border-radius: 0px 0px 4px 4px;
   background: #FFF;
   width: 100%;
   overflow: hidden;
+  box-shadow: 11px 13px 15px -4px rgb(0 0 0 / 35%);
   transition: 0.4s;
   z-index: 4;
 }
@@ -1268,6 +1282,47 @@ ul.menu-division {
   right: -30px;
   bottom: -20px;
   transform: scale(0.5);
+}
+
+.painel-categorias__categoria-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 15px;
+  position: relative;
+}
+
+.painel-categorias__categoria-header:last-child {
+  margin-right: 0;
+}
+
+.painel-categorias__categoria-header img {
+  border-radius: 0;
+  border: 2px solid transparent;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  object-fit: cover;
+  position: relative;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.painel-categorias__categoria-header::before {
+  content: '';
+  display: block;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  border: 2px solid var(--gray-300);
+  background-color: transparent;
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.painel-categorias__categoria-header h2 {
+  margin-top: 5px;
+  font-size: 0.875rem;
 }
 
 /* #region PREVIEW - VIDROS */
@@ -1615,6 +1670,77 @@ ul.menu-division {
   color: var(--blue-500);
   font-weight: var(--bold);
 }
+
+@media (max-width: 768px) {
+  .painel-categorias-section {
+    display: block;
+    padding-top: 5px;
+    padding-bottom: 20px;
+  }
+
+  .painel-categorias {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    touch-action: pan-x;
+  }
+
+  .painel-categorias__categoria {
+    flex: 0 0 auto;
+    margin: 0 10px;
+    scroll-snap-align: start;
+  }
+
+  .slider-handlers {
+    display: block;
+    align-items: left;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    padding: 5px;
+    height: 50px;
+  }
+
+  .slider-handlers .titulo-categorias {
+    margin-left: -25px;
+    padding-left: 0;
+  }
+
+  .painel-categorias__menu > ul {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .painel-categorias__menu > ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  .painel-categorias__menu > ul {
+    scrollbar-width: none;
+  }
+
+  .painel-categorias__categoria-header {
+    min-width: 80px;
+  }
+
+  .painel-categorias .titulo-categorias {
+    margin-bottom: 20px;
+  }
+
+  .painel-categorias .botoes {
+    display: none;
+  }
+
+  .titulo-categorias {
+    margin: 0;
+    font-size: 1.25rem;
+  }
+
+  .painel-categorias .painel-categorias__menu {
+    margin-left: -15px;
+  }
+  
+}
+
 /* #region RESET MAEZTRA (╯°□°）╯︵ ┻━┻ */
 
 .topo .container:before, .nav .container:before, .topo .container:after, .nav .container:after {
