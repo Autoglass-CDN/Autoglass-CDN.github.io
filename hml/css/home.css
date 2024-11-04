@@ -5,10 +5,6 @@
   margin-top: -75px;
 }
 
-.l-container {
-  margin-top: -115px !important;
-}
-
 .home main {
   background: #FFF;
 }
@@ -22,6 +18,12 @@
   }
   .home main {
     background-color: var(--gray-100)
+  }
+}
+
+@media (max-width: 500px) {
+  .l-container{
+    display: none;
   }
 }
 

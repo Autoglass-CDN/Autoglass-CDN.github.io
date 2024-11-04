@@ -224,52 +224,6 @@ async function checkLogin() {
   }
 }
 
-async function checkLoginMobile() {
-  var accountComponent = document.querySelector(".side-menu .usuario");
-
-  let response = await fetch("/no-cache/profileSystem/getProfile");
-  let data = await response.json();
-
-  try {
-    if (data.IsUserDefined) {
-      var emailReceived = data.Email;
-      var nameUser = data.FirstName && data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
-      //var nameUser = data.FirstName.length ? data.FirstName : emailReceived.match(/([^{0-9}|.|@|-]+)/).pop();
-      accountComponent.innerHTML = `<hr/>
-      <div class="usuario-container-mobile">
-        <div class="usuario-mobile">
-          <i class="user-icon"></i>
-          <span class="destaque">
-          Olá, <b>${nameUser}</b>
-          </span>
-        </div>
-        <div id="logout-mobile">
-          <button onclick="document.querySelector('#saindo').style.display = 'block'">Sair</button>
-        </div>
-      </div>
-      <ul class="usuario__opcoes-mobile">
-        <li><a href="/_secure/account#/profile">Dados Pessoais</a></li>
-        <li><a href="/_secure/account#/addresses">Endereços</a></li>
-        <li><a href="/_secure/account#/cards">Cartões</a></li>
-        <li><a href="/_secure/account#/orders">Meus Pedidos</a></li>
-      </ul>`;
-      //<a id="logout" href="/no-cache/user/logout">Sair</a>
-    } else {
-      accountComponent.innerHTML = `<hr/>
-      <a id="login" href="#" class="destaque" style="opacity: 1;">
-        <i class="user-icon"></i>
-        Cadastrar ou Entrar
-      </a>`;
-      document.body.classList.add("not-logged-user");
-    }
-    document.querySelector('.side-menu #login')
-      .addEventListener('click', (e) => { closeNav(); });
-  } catch (e) {
-    if (typeof console !== "undefined" && typeof console.info === "function")
-      console.info("Ops, algo saiu errado com o login.", e.message)
-  }
-}
-
 async function fixPlaceholderSearch() {
   var idSearchFilterP = $('.search-box input[type="text"].fulltext-search-box');
   if (!idSearchFilterP.length)
@@ -547,7 +501,7 @@ function closeNav() {
 
 function openCategorias() {
   let mainMenu = document.getElementById('main-menu');
-  let categoryMenu = document.getElementById('category-menu');
+  let categoryMenu = document.getElementById('busca-categoria-mobile');
 
   mainMenu.style.opacity = '0';
   setTimeout(() => {
@@ -559,7 +513,7 @@ function openCategorias() {
 
 function closeCategorias() {
   let mainMenu = document.getElementById('main-menu');
-  let categoryMenu = document.getElementById('category-menu');
+  let categoryMenu = document.getElementById('busca-categoria-mobile');
 
   categoryMenu.style.opacity = '0';
   setTimeout(() => {
@@ -581,8 +535,6 @@ function toggleCategory(self) {
   let searchField = document.querySelector('.search-box-mobile .busca input.fulltext-search-box');
 
   autocompleteInitMobile(searchField);
-
-  checkLoginMobile();
 
   loadCart(device.mobile);
 
