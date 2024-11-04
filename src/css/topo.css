@@ -824,15 +824,14 @@ i.arrow-icon::before {
   position: fixed;
   z-index: 900000;
   top: 88px;
-  left: 0;
+  right: 0;
   bottom: 0;
   background-color: white;
-  /* overflow-x: hidden; */
+  overflow-x: hidden;
   transition: 0.5s;
   box-shadow: 0 0 1px black;
   display: none;
   font-size: 1rem;
-}
 
 .side-menu hr {
   width: 90%;

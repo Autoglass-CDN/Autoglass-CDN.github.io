@@ -21,6 +21,9 @@
         $("#placa-input-compatibilidade").val("");
         $('.carro-compativel').hide();
       });
+    }else{
+      var abaBuscaPlaca = document.getElementById('tab-busca-placa-mobile');
+      abaBuscaPlaca.querySelector('input[type="radio"]').checked = true;
     }
   });
 
@@ -137,6 +140,10 @@
     await _initBuscaPeca(grandchildenCategories);
   }
 
+  function verificaTelaMobile(){
+    return window.innerWidth < 700 ? true : false
+  }
+
   async function _initBuscaPeca(values) {
     PECA_SELECTS[1].values = values;
 
@@ -144,15 +151,22 @@
 
     View.buildList(PECA_SELECTS[1].values, PECA_SELECTS[1].id);
 
-    PECA_SELECTS.forEach(View._initSelect_);
+    if(verificaTelaMobile()){
+      PECA_SELECTS.forEach(View._initSelectMobile_);
+    }else{
+      PECA_SELECTS.forEach(View._initSelect_);
+    }
+
 
     // Create Button Function
-    $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);});
+    window.innerWidth> 700 ? $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);})
+                           : $("#form-busca-peca-mobile").submit((e) => { e.preventDefault(); Service.search();});
   }
 
   function ViewAPI() {
     return {
       _initSelect_,
+      _initSelectMobile_,
       buildList,
       selectOptionIfButtonHasValue,
       filterResults,
@@ -160,6 +174,29 @@
       virtualizedDOM,
       createNavigation,
     };
+
+    function _initSelectMobile_(select){
+      $(`.c-busca__tab-content-mobile #${select.id}`).click((e) => {
+        $(
+          `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
+        ).val("");
+
+        if (select.values) {
+          View.buildList(select.values, select.id);
+          View.selectOptionIfButtonHasValue(select.id);
+
+          if (select.values.length !== 0) {
+            $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`)
+              .slideToggle("fast")
+              .click((e) => e.stopPropagation());
+
+            $(
+              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
+            ).focus();
+          }
+        }
+      });
+    }
 
     function _initSelect_(select) {
       $(`.c-busca__tab-content #${select.id}`).click((e) => {
@@ -331,7 +368,6 @@
           )
             View.filterResults(e, select);
         });
-
       // Fecha todos os selects caso já tenha algum aberto.
       $(document).on("click", (e) => {
         var container = $(`.c-busca__tab-content #${select.id}`);
@@ -343,10 +379,60 @@
         }
       });
     }
+    var tipoPecaSelected = null;
+
+    function onCheckTipoPeca(value){
+      tipoPecaSelected = value;
+      console.log(value, tipoPecaSelected);
+    }
 
     function buildList(objects, _id) {
       let html = "";
+      if (window.innerWidth <= 500){
+        if (objects) {
+          objects.sort((a, b) => a.name.localeCompare(b.name));
+          objects.forEach((x, index) => {
+              const displayStyle = index >= 5 ? 'display: none;' : '';
+              html += `<div class="busca-options" style="${displayStyle}">
+                          <li role="treeitem" id="${x.id}">
+                            <input onClick="javascript:onCheckTipoPeca('${x.id}')" class="input-busca-options" type="radio" name="${x.name}" value="${x.id}" ${tipoPecaSelected == x.id ? "checked" : ""}>
+                            ${x.name}
+                          </li>
+                      </div>`;
+          });
+          $(`.c-busca__tab-content-mobile  #${_id} ul`).html(html);
 
+          $(`.c-busca__tab-content-mobile  #${_id} ul li`)
+              .hover((event) => {
+                  $(`.c-busca__tab-content-mobile  #${_id} ul li`).removeClass(
+                      CONFIG.CSS.HIGHLIGHT
+                  );
+
+                  $(event.target).addClass(CONFIG.CSS.HIGHLIGHT);
+              })
+              .click((event) => {
+                  switch (activeTab) {
+                      case '#busca-peca-mobile':
+                          Controller.addClick(event,_id);
+                          break;
+                      case '#busca-placa':
+                          handleBuscaPlacaSelection(event, _id);
+                          break;
+                      case '#busca-categoria':
+                          handleBuscaPlacaSelection(event, _id);
+                  }
+              });
+
+          $(`.c-busca__tab-content-mobile  #${_id} ul li`)
+              .first()
+              .addClass(CONFIG.CSS.HIGHLIGHT);
+          $(`.botao-ver-todas`).show();
+        } else {
+          $(`.c-busca__tab-content-mobile  #${_id} ul`).html(
+            `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
+          );
+        }
+      }else
       if (objects) {
         objects.sort((a, b) => a.name.localeCompare(b.name));
         objects.forEach(
@@ -512,6 +598,7 @@
     };
 
     async function addClick(event, _id) {
+      const listItems = document.querySelectorAll('.itens-lista li');
       const index = PECA_SELECTS.findIndex((x) => x.id === _id);
       const select = PECA_SELECTS[index];
       const nextSelect = PECA_SELECTS[index + 1];
@@ -570,9 +657,48 @@
         View.buildList(nextSelect.values, nextSelect.id);
       }
 
+      if(select.id === "pecas-select"){
+        selecionarInputPorIdBuscaPeca(listItems, event.target.id);
+      }else{
+        selecionarInputPorNomeBuscaPeca(event.target.innerText, select.id);
+      }
+
       View.createNavigation(select.id, event.target.innerHTML);
 
       modalDeCarregamento.ocultarSpinner();
+    }
+
+
+    function selecionarInputPorIdBuscaPeca(listItems, id) {
+      listItems.forEach(item => {
+        const radioInput = item.querySelector('input[type="radio"]');
+        if (radioInput) {
+          // Desmarca todos os inputs
+          radioInput.checked = false;
+
+          // Marca apenas o input com o ID especificado
+          if (item.id === id) {
+            radioInput.checked = true;
+          }
+        }
+      });
+    }
+
+    function selecionarInputPorNomeBuscaPeca(nome, nomeSelect) {
+      const secaoSelectDiv = document.getElementById(`${nomeSelect}`);
+      const listItems = secaoSelectDiv.querySelectorAll('.itens-lista li');
+      listItems.forEach(item => {
+        const radioInput = item.querySelector('input[type="radio"]');
+        if (radioInput) {
+          // Desmarca todos os inputs
+          radioInput.checked = false;
+
+          // Marca apenas o input com o nome especificado
+          if (item.textContent.trim() === nome) {
+            radioInput.checked = true;
+          }
+        }
+      });
     }
 
     function hideDivVersaoFipe(length, title) {
@@ -764,34 +890,59 @@
   };
 
   // Alterna as abas da busca
-  let tabs = document.querySelectorAll(".c-busca__tabs li");
+  if(window.innerWidth > 700){
+    let tabs = document.querySelectorAll(".c-busca__tabs li");
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", (event) => {
-      event.preventDefault();
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (event) => {
+        event.preventDefault();
 
-      tabs.forEach((t) => t.classList.remove("is-active"));
-      tab.classList.add("is-active");
+        tabs.forEach((t) => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+        activeTab = tab.querySelector('a').attributes.href.nodeValue;
 
-      activeTab = tab.querySelector('a').attributes.href.nodeValue;
+        let tabContentDivs = document.querySelectorAll(
+          ".c-busca__tab-content"
+        );
 
-      let tabContentDivs = document.querySelectorAll(
-        ".c-busca__tab-content"
-      );
+        tabContentDivs.forEach((div) => div.classList.remove("is-active"));
 
-      tabContentDivs.forEach((div) => div.classList.remove("is-active"));
-
-      let selectedSection = document.querySelector(
-        tab.querySelector("a").hash
-      );
-      selectedSection.classList.add("is-active");
+        let selectedSection = document.querySelector(
+          tab.querySelector("a").hash
+        );
+        selectedSection.classList.add("is-active");
+      });
     });
-  });
+  }else{
+    let tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (event) => {
+        event.preventDefault();
+
+        tabs.forEach((t) => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+        tab.querySelector('input[type="radio"]').checked = true;
+        activeTab = tab.querySelector('a').attributes.href.nodeValue;
+
+        let tabContentDivs = document.querySelectorAll(
+          ".c-busca__tab-content-mobile"
+        );
+
+        tabContentDivs.forEach((div) => div.classList.remove("is-active"));
+
+        let selectedSection = document.querySelector(
+          tab.querySelector("a").hash
+        );
+        selectedSection.classList.add("is-active");
+      });
+    });
+  }
+
 
   /** BUSCA POR PLACA */
   const PLACA_SELECTS = [
     {
-      title: "Produto",
+      title: "Tipo de Peça",
       id: "categoria-select",
       values: [],
       routeSelected: "",
@@ -807,11 +958,11 @@
 
     View.buildList(PLACA_SELECTS[0].values, PLACA_SELECTS[0].id);
 
-    View._initSelect_(PLACA_SELECTS[0]);
+    window.innerWidth > 700 ? View._initSelect_(PLACA_SELECTS[0]) : View._initSelectMobile_(PLACA_SELECTS[0]);
 
     restoreBuscaPlaca();
 
-    let formBuscaPlaca = document.querySelector("#form-busca-placa");
+    let formBuscaPlaca = window.innerWidth > 700 ? document.querySelector("#form-busca-placa") : document.querySelector("#form-busca-placa-mobile");
 
     formBuscaPlaca.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -827,7 +978,7 @@
 
         location.href = redirectUrl;
       } else {
-        const placa = document.querySelector("#placa-input").value;
+        const placa = window.innerWidth > 700 ? document.querySelector("#placa-input").value : document.querySelector("#placa-input-mobile").value;
         const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
 
         if(0 === placa.length) {
@@ -944,11 +1095,11 @@
   function handleBuscaPlacaSelection(event, _id) {
     const select = PLACA_SELECTS[0];
     const optionSelected = select.values.find((x) => x.id == event.target.id);
+    const listItems = document.querySelectorAll('.itens-lista li');
 
     select.routeSelected = optionSelected.url
         ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
         : '/' + optionSelected.name.toLowerCase();
-
     $(`.c-busca__tab-content  #${select.id} > div > span`).html(event.target.innerHTML);
     $(
       `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
@@ -970,6 +1121,20 @@
       });
 
     $('.c-busca__tab-content .c-busca__input #placa-input').click().focus();
+
+    selecionarInputPorId(listItems, event.target.id);
+
+  }
+
+  function selecionarInputPorId(listItems, id) {
+    listItems.forEach(item => {
+      const radioInput = item.querySelector('input[type="radio"]');
+      if (radioInput && item.id === id) {
+        radioInput.checked = true;
+      } else if (radioInput) {
+        radioInput.checked = false;
+      }
+    });
   }
 
   async function buscaPorPlaca(placaString) {
@@ -1281,6 +1446,61 @@
       document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active");
       document.querySelector("#form-busca-placa").parentNode.classList.add("is-active");
+      if(window.innerWidth > 700){
+        document.querySelector("a[href='#busca-categoria-mobile']").parentNode.classList.remove("is-active");
+        document.querySelector("a[href='#busca-peca-mobile']").parentNode.classList.remove("is-active");
+        document.querySelector("#form-busca-peca-mobile").parentNode.classList.remove("is-active");
+        document.querySelector("a[href='#busca-placa-mobile']").parentNode.classList.add("is-active");
+        document.querySelector("#form-busca-placa-mobile").parentNode.classList.add("is-active");
+      }
     }
   }
+
+  document.getElementById("toggleButton").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+
+  document.getElementById("toggleButton2").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+
+  document.getElementById("toggleButton3").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+
+  document.getElementById("toggleButton4").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+
+  document.getElementById("toggleButton5").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+
+  document.getElementById("toggleButton6").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
 })();

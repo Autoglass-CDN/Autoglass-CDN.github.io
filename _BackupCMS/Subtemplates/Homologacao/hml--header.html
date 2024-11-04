@@ -92,37 +92,241 @@
 </header>
 
 <div id="side-menu" class="side-menu">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215;</a>
     <div id="main-menu">
-        <div class="side-menu-header">
+        <div class="titulo-side-menu">
+            <span>Busca por</span>
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215;</a>
+        </div>
+        <ul class="c-busca__tabs-mobile tab-header search-options">
+            <li id="tab-busca-placa-mobile" class="tab-item is-active">
+                <a href="#busca-placa-mobile">
+                    <label><input type="radio" name="search" value="placa"> Placa <span class="novidade">Novidade</span></input></label>
+                </a>
+            </li>
+            <li id="tab-busca-peca-mobile" class="tab-item">
+                <a href="#busca-peca-mobile">
+                    <label><input type="radio" name="search" value="peca"> Peça e modelo</input></label>
+                </a>
+            </li>
+            <li id="tab-busca-categoria-mobile" class="tab-item painel-categorias__categoria">
+                <div class="ativo">
+                    <a href="#busca-categoria-mobile">
+                        <label><input type="radio" name="search" value="categoria"> Categorias</input></label>
+                    </a>
+                </div>
+            </li>
+        </ul>
+        <div class="c-busca__tabs-content-mobile">
+            <div class="c-busca__tab-content-mobile is-active" id="busca-placa-mobile">
+                <form id="form-busca-placa-mobile" action="#">
+                    <div class="h-flex">
+                        <div class="c-busca__input">
+                            <input
+                            type="text"
+                            name="placa-input"
+                            id="placa-input-mobile"
+                            placeholder="Placa do veículo"
+                            />
+                            <i class="fa fa-search"></i>
+                        </div>
+                        <div class="c-busca__select">
+                            <div id="categoria-select">
+                                <div class="gtm-smart-categoria-select">
+                                    <span>Tipo de peça</span>
+                                    <i class="fa fa-caret-down"></i>
+                                    <i class="fa fa-close" style="display: none"></i>
+                                </div>
+                                <div class="smart-select__main-results" style="display: none">
+                                    <div class="div-input-busca-mobile">
+                                        <input
+                                            id="categoria-input-mobile"
+                                            placeholder="Buscar"
+                                            type="text"
+                                            autocomplete="off"
+                                        />
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <ul class="itens-lista"></ul>
+                                    <div class="botao-ver-todas" style="display: none;">
+                                        <button type="button" id="toggleButton">Ver todas <span>&#9660;</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-menu-footer" style="margin-top: -90px;">
+                        <button
+                            id="btn-busca-placa-buscar"
+                            class="btn btn-search"
+                            type="submit">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                        <button
+                            id="btn-busca-placa-limpar"
+                            class="btn btn-clear"
+                            type="reset"
+                            value="Reset">
+                            <i class="fas fa-times"></i> Limpar
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="c-busca__tab-content-mobile" id="busca-peca-mobile">
+                <form id="form-busca-peca-mobile" action="#">
+                    <div class="h-flex">
+                        <div class="c-busca__select">
+                            <div id="pecas-select">
+                                <div class="gtm-smart-peca-select">
+                                    <span>Tipo de peça</span>
+                                    <i class="fa fa-caret-down"></i>
+                                    <i class="fa fa-close" style="display: none"></i>
+                                </div>
+                                <div class="smart-select__main-results" style="display: none">
+                                    <div class="div-input-busca-mobile">
+                                        <input
+                                        id="peca-input-mobile"
+                                        placeholder="Digite aqui:"
+                                        type="text"
+                                        autocomplete="off"
+                                        />
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <ul class="itens-lista"></ul>
+                                    <div class="botao-ver-todas" style="display: none;">
+                                        <button type="button" id="toggleButton2">Ver todas <span>&#9660;</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-busca__select">
+                            <div id="montadora-select" class="empty">
+                                <div class="gtm-smart-montadora-select">
+                                    <span>Montadora</span>
+                                    <i class="fa fa-caret-down"></i>
+                                    <i class="fa fa-close" style="display: none"></i>
+                                </div>
+                                <div class="smart-select__main-results" style="display: none">
+                                    <div class="div-input-busca-mobile">
+                                        <input
+                                        id="montadora-input-mobile"
+                                        placeholder="Digite aqui:"
+                                        type="text"
+                                        autocomplete="off"
+                                        />
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <ul class="itens-lista"></ul>
+                                    <div class="botao-ver-todas" style="display: none;">
+                                        <button type="button" id="toggleButton3">Ver todas <span>&#9660;</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-busca__select">
+                            <div id="veiculo-select" class="empty">
+                                <div class="gtm-smart-veiculo-select">
+                                    <span>Modelo do veículo</span>
+                                    <i class="fa fa-caret-down"></i>
+                                    <i class="fa fa-close" style="display: none"></i>
+                                </div>
+                                <div class="smart-select__main-results" style="display: none">
+                                    <div class="div-input-busca-mobile">
+                                        <input
+                                        id="veiculo-input-mobile"
+                                        placeholder="Digite aqui:"
+                                        type="text"
+                                        autocomplete="off"
+                                        />
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <ul class="itens-lista"></ul>
+                                    <div class="botao-ver-todas" style="display: none;">
+                                        <button type="button" id="toggleButton4">Ver todas <span>&#9660;</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="c-busca__select">
+                            <div id="ano-select" class="empty">
+                                <div class="gtm-smart-ano-select">
+                                    <span>Ano</span>
+                                    <i class="fa fa-caret-down"></i>
+                                    <i class="fa fa-close" style="display: none"></i>
+                                </div>
+                                <div class="smart-select__main-results" style="display: none">
+                                    <div class="div-input-busca-mobile">
+                                        <input
+                                        id="ano-input-mobile"
+                                        placeholder="Digite aqui:"
+                                        type="text"
+                                        autocomplete="off"
+                                        />
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <ul class="itens-lista"></ul>
+                                    <div class="botao-ver-todas" style="display: none;">
+                                        <button type="button" id="toggleButton5">Ver todas <span>&#9660;</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="select-versao-fipe" class="c-busca__select" style="display: none;">
+                            <div id="versao-select" class="empty">
+                                <div class="gtm-smart-versao-select">
+                                    <span>Versão</span>
+                                    <i class="fa fa-caret-down"></i>
+                                    <i class="fa fa-close" style="display: none"></i>
+                                </div>
+                                <div class="smart-select__main-results" style="display: none">
+                                    <div class="div-input-busca-mobile">
+                                        <input
+                                        id="versao-input-mobile"
+                                        placeholder="Digite aqui:"
+                                        type="text"
+                                        autocomplete="off"
+                                        />
+                                        <i class="fa fa-search"></i>
+                                    </div>
+                                    <ul class="itens-list"></ul>
+                                    <div class="botao-ver-todas" style="display: none;">
+                                        <button type="button" id="toggleButton6">Ver todas <span>&#9660;</span></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="side-menu-footer" style="margin-top: -90px;">
+                        <button
+                            id="btn-busca-placa-buscar"
+                            class="btn btn-search"
+                            type="submit">
+                            <i class="fas fa-search"></i> Buscar
+                        </button>
+                        <button
+                            id="btn-busca-placa-limpar"
+                            class="btn btn-clear"
+                            type="reset"
+                            value="Reset">
+                            <i class="fas fa-times"></i> Limpar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="side-menu-header" style="display: none;">
             <a href="javascript:openCategorias()" class="destaque"><i class="categorias-icon"></i> Compre por
                 Categorias</a>
             <hr />
         </div>
-        <div class="side-menu-content">
-            <a href="#" style="display: none;">Nossas Lojas</a>
-            <a href="#" style="display: none;">Blog</a>
-        </div>
-        <div class="side-menu-footer usuario">
-            <hr />
-            <a id="login-mobile" href="#" class="destaque"><i class="user-icon"></i> Cadastrar ou Entrar</a>
-        </div>
     </div>
-    <div id="category-menu">
-        <div class="side-menu-header">
-            <a href="javascript:closeCategorias()"><i class="arrow-icon"></i> Voltar ao Menu Principal</a>
-        </div>
-        <div class="side-menu-content">
-            <p style="color: #183884;margin-left: 15px;">Categorias</p>
+    <div id="busca-categoria-mobile">
+        <div class="side-menu-content" id="busca-peca-mobile">
             <ul class="side-menu-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-
                 <li class="side-menu-categorias__lista">
                     <ul>
                         <li class="side-menu-categorias__categoria ativo">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#vidros" data-target="categoria-vidros" title="Vidro" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-vidros.png" alt="Vidros"
-                                        class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Vidros
                                         <i class="arrow-down-icon-gray"></i>
@@ -154,9 +358,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#para-choques-grades-e-molduras" data-target="categoria-parachoques" title="Parachoques, Grades e Molduras" itemprop="url" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-parachoques.png"
-                                        alt="Parachoques, Grades e Molduras"
-                                        class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Parachoques, Grades e Molduras
                                         <i class="arrow-down-icon-gray"></i>
@@ -200,9 +401,6 @@
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#retrovisores-internos-e-externos" data-target="categoria-retrovisores" title="Retrovisores internos e externos" itemprop="url"
                                     onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-retrovisores.png"
-                                        alt="Retrovisores internos e externos"
-                                        class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Retrovisores internos e externos
                                         <i class="arrow-down-icon-gray"></i>
@@ -232,9 +430,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#farois-lanternas-e-lampadas" data-target="categoria-farois" title="Faróis, Lanternas e Lâmpadas" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-farois.png"
-                                        alt="Faróis, Lanternas e Lâmpadas"
-                                        class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Faróis, Lanternas e Lâmpadas
                                         <i class="arrow-down-icon-gray"></i>
@@ -315,8 +510,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#borrachas-e-outros" data-target="categoria-palhetas" title="Palhetas e Borrachas" itemprop="url" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-borrachas.png"
-                                        alt="Palhetas e Borrachas" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Palhetas e Borrachas
                                         <i class="arrow-down-icon-gray"></i>
@@ -363,9 +556,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#radiadores-e-condensadores" data-target="categoria-radiadores" title="Radiadores e Condensadores" itemprop="url" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-radiadores.png"
-                                        alt="Radiadores e Condensadores"
-                                        class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Radiadores e Condensadores
                                         <i class="arrow-down-icon-gray"></i>
@@ -437,8 +627,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#latarias" data-target="categoria-paralamas" title="Paralamas e Capô" itemprop="url" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-latarias.png"
-                                        alt="Paralamas e Capô" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Paralamas
                                         e
@@ -471,8 +659,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#higienizadores-e-filtros" data-target="categoria-higienizadores" title="Higienizadores e Filtros" itemprop="url" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-filtros-2.jpg"
-                                        alt="Higienizadores e Filtros" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Higienizadores
                                         e
@@ -532,8 +718,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#ferramentas-automotivas" data-target="categoria-ferramentas-automotivas" title="Ferramentas Automotivas" itemprop="url" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-ferramentas-automotivas.png"
-                                        alt="Ferramentas Automotivas" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Ferramentas Automotivas
                                         <i class="arrow-down-icon-gray"></i>
@@ -622,8 +806,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#suspensao-automotiva" data-target="categoria-suspensao-automotiva" title="Suspensão Automotiva" itemprop="url" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-suspensoes-automotivas.png"
-                                        alt="Suspensão Automotiva" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Suspensão Automotiva
                                         <i class="arrow-down-icon-gray"></i>
@@ -704,8 +886,6 @@
                         <li class="side-menu-categorias__categoria">
                             <div class="side-menu-categorias__categoria-header">
                                 <a href="#direcao" data-target="categoria-direcao" title="Direcao" itemprop="url" onclick="toggleCategory(this)">
-                                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/categoria-direcao.png"
-                                        alt="Direcao" class="side-menu-categorias__categoria-imagem" />
                                     <h3>
                                         Direção
                                         <i class="arrow-down-icon-gray"></i>
