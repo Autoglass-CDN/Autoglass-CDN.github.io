@@ -24,10 +24,16 @@
     }else{
       var abaBuscaPlaca = document.getElementById('tab-busca-placa-mobile');
       abaBuscaPlaca.querySelector('input[type="radio"]').checked = true;
+      sessionStorage.setItem('selectedOptionCategoria', null)
+      sessionStorage.setItem('selectedOptionTipoPeca', null);
+      sessionStorage.setItem('selectedOptionMontadora', null)
+      sessionStorage.setItem('selectedOptionVeiculo', null)
+      sessionStorage.setItem('selectedOptionAno', null)
+      sessionStorage.setItem('selectedOptionVersao', null)
     }
   });
 
-  let activeTab = '#busca-placa';
+  let activeTab = window.innerWidth > 700 ? '#busca-placa' : '#busca-placa-mobile';
   selectRightSearchMethod();
 
   /** BUSCA POR PEÇA DEV */
@@ -196,6 +202,166 @@
           }
         }
       });
+
+      $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`)
+        .on("keydown", (e) => {
+          if (e.key === "Tab" || e.key === "Enter") {
+            e.preventDefault();
+            $(
+              `.c-busca__tab-content-mobile #${select.id} ul li.${CONFIG.CSS.HIGHLIGHT}`
+            ).click();
+          }
+
+          if (e.key === "ArrowDown") {
+            let index = 0;
+
+            $(`.c-busca__tab-content-mobile #${select.id} ul li`).each(
+              (i, element) => {
+                if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
+                  index += i + 2;
+                  $(element).removeClass(CONFIG.CSS.HIGHLIGHT);
+                }
+              }
+            );
+
+            if (
+              index <= $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+            ) {
+              $(
+                `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+              ).addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(
+                `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
+              ).animate(
+                {
+                  scrollTop:
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].offsetTop -
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].scrollHeight -
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].scrollHeight /
+                      2,
+                },
+                100
+              );
+            } else {
+              $(
+                `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
+              ).addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(
+                `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
+              ).animate(
+                {
+                  scrollTop:
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
+                    )[0].offsetTop -
+                    ($(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
+                    )[0].scrollHeight +
+                      $(
+                        `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
+                      )[0].scrollHeight /
+                        2),
+                },
+                100
+              );
+            }
+          }
+
+          if (e.key === "ArrowUp") {
+            let index = 0;
+
+            $(`.c-busca__tab-content-mobile #${select.id} ul li`).each(
+              (i, element) => {
+                if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
+                  index = i;
+                  $(element).removeClass(CONFIG.CSS.HIGHLIGHT);
+                }
+              }
+            );
+
+            if (index !== 0) {
+              $(
+                `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+              ).addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(
+                `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
+              ).animate(
+                {
+                  scrollTop:
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].offsetTop -
+                    ($(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].scrollHeight +
+                      $(
+                        `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                      )[0].scrollHeight /
+                        2),
+                },
+                100
+              );
+            } else {
+              $(
+                `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${
+                  $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+                })`
+              ).addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(
+                `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
+              ).animate(
+                {
+                  scrollTop:
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${
+                        $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+                      })`
+                    )[0].offsetTop -
+                    ($(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${
+                        $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+                      })`
+                    )[0].scrollHeight +
+                      $(
+                        `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${
+                          $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+                        })`
+                      )[0].scrollHeight /
+                        2),
+                },
+                100
+              );
+            }
+          }
+        })
+        .on("keyup", (e) => {
+          console.log(`Filtrando`);
+          if (
+            !["Tab", "ArrowDown", "ArrowUp", "Enter"].find((x) => x === e.key)
+          )
+            View.filterResults(e, select);
+        });
+      // Fecha todos os selects caso já tenha algum aberto.
+      $(document).on("click", (e) => {
+        var container = $(`.c-busca__tab-content-mobile #${select.id}`);
+
+        if (!$(e.target).closest(container).length) {
+          $(
+            `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+          ).slideUp("fast");
+        }
+      });
+
     }
 
     function _initSelect_(select) {
@@ -380,16 +546,62 @@
       });
     }
 
+    function defineValorCheckbox(idTarget, _id){
+      switch (_id) {
+        case "categoria-select":
+          sessionStorage.setItem('selectedOptionCategoria', idTarget);
+          break;
+        case "pecas-select":
+          sessionStorage.setItem('selectedOptionTipoPeca', idTarget);
+          break;
+        case "montadora-select":
+          sessionStorage.setItem('selectedOptionMontadora', idTarget)
+          break;
+        case "veiculo-select":
+          sessionStorage.setItem('selectedOptionVeiculo', idTarget)
+          break;
+        case "ano-select":
+            sessionStorage.setItem('selectedOptionAno', idTarget)
+            break;
+        case "versao-select":
+            sessionStorage.setItem('selectedOptionVersao', idTarget)
+            break;
+        default:
+          break;
+      }
+    }
+
+    function verificaValorCheckBox(_id){
+      switch (_id) {
+        case "categoria-select":
+          return sessionStorage.getItem('selectedOptionCategoria');
+        case "pecas-select":
+          return sessionStorage.getItem('selectedOptionTipoPeca');
+        case "montadora-select":
+          return sessionStorage.getItem('selectedOptionMontadora');
+        case "veiculo-select":
+          return sessionStorage.getItem('selectedOptionVeiculo');
+        case "ano-select":
+            return sessionStorage.getItem('selectedOptionAno');
+        case "versao-select":
+            return sessionStorage.getItem('selectedOptionVersao');
+        default:
+          break;
+      }
+    }
+
     function buildList(objects, _id) {
       let html = "";
       if (window.innerWidth <= 500){
         if (objects) {
           objects.sort((a, b) => a.name.localeCompare(b.name));
+          const savedValue = verificaValorCheckBox(_id)
           objects.forEach((x, index) => {
-              const displayStyle = index >= 5 ? 'display: none;' : '';
+            const isChecked = savedValue == x.id ?'checked':'';
+            const displayStyle = index >= 5 ? 'display: none;' : '';
               html += `<div class="busca-options" style="${displayStyle}">
                           <li role="treeitem" id="${x.id}">
-                            <input class="input-busca-options" type="radio" name="${x.name}" value="${x.id}">
+                            <input class="input-busca-options" type="radio" name="${x.name}" value="${x.id}" ${isChecked}>
                             ${x.name}
                           </li>
                       </div>`;
@@ -407,13 +619,13 @@
               .click((event) => {
                   switch (activeTab) {
                       case '#busca-peca-mobile':
+                          defineValorCheckbox(event.target.id, _id)
                           Controller.addClick(event,_id);
                           break;
-                      case '#busca-placa':
+                      case '#busca-placa-mobile':
+                          defineValorCheckbox(event.target.id, _id)
                           handleBuscaPlacaSelection(event, _id);
                           break;
-                      case '#busca-categoria':
-                          handleBuscaPlacaSelection(event, _id);
                   }
               });
 
@@ -680,7 +892,7 @@
 
     function selecionarInputPorNomeBuscaPeca(nome, nomeSelect) {
       const secaoSelectDiv = document.getElementById(`${nomeSelect}`);
-      const listItems = secaoSelectDiv.querySelectorAll('.itens-lista li');
+      const listItems = nomeSelect != "versao-select" ? secaoSelectDiv.querySelectorAll('.itens-lista li') : secaoSelectDiv.querySelectorAll('.itens-list li');
       listItems.forEach(item => {
         const radioInput = item.querySelector('input[type="radio"]');
         if (radioInput) {
@@ -1116,8 +1328,11 @@
 
     $('.c-busca__tab-content .c-busca__input #placa-input').click().focus();
 
+    //Lógica para marcar e manter o input marcado.
     selecionarInputPorId(listItems, event.target.id);
-
+    const savedValue = verificaValorCheckBox(_id);
+    if(savedValue == event.target.id)
+      selecionarInputPorId(listItems, event.target.id);
   }
 
   function selecionarInputPorId(listItems, id) {
