@@ -437,7 +437,7 @@ function openNav() {
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = 'unset';
   setTimeout(() => {
-    sideMenu.style.width = "270px";
+    sideMenu.style.width = "328px";
     setTimeout(() =>
       sideMenu.querySelectorAll('a').forEach(a => a.style.opacity = "1")
       , 200)
