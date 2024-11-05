@@ -4,14 +4,14 @@
 /* #region IMAGENS DE CATEGORIA */
 
 .painel-categorias__categoria-itens.ativo {
-  /* #region VIDROS */
-  --parabrisa: url("/arquivos/img/preview/Vidro Parabrisa.jpg");
-  --cantoneira: url("/arquivos/img/preview/Cantoneira.jpg");
-  --janela: url("/arquivos/img/preview/Janela.jpg");
-  --quebra-vento: url("/arquivos/img/preview/Quebra-Vento.jpg");
+  /* #region VIDROS AUTOMOTIVOS */
+  --vidro-parabrisa: url("/arquivos/img/preview/Vidro Parabrisa.jpg");
+  --vidro-cantoneira: url("/arquivos/img/preview/Cantoneira.jpg");
+  --vidro-de-janela: url("/arquivos/img/preview/Janela.jpg");
+  --vidro-quebra-vento: url("/arquivos/img/preview/Quebra-Vento.jpg");
   --vidro-de-porta: url("/arquivos/img/preview/Vidro-de-Porta.jpg");
-  --vidro-traseiro: url("/arquivos/img/preview/Vidro-Traseiro.jpg");
-  /* #endregion VIDROS */
+  --vidro-vigia: url("/arquivos/img/preview/Vidro-Traseiro.jpg");
+  /* #endregion VIDROS AUTOMOTIVOS */
   /* #region FARÓIS */
   --aro-farol-auxiliar: url("/arquivos/img/preview/Arol-Farol-de-Milha.jpg");
   --farol-auxiliar: url("/arquivos/img/preview/Farol Auxiliar (Milha).jpg");
@@ -37,16 +37,16 @@
   --parachoque-dianteiro: url("/arquivos/img/preview/Parchoque Dianteiro.jpg");
   --parachoque-traseiro: url("/arquivos/img/preview/Parachoque-Traseiro.jpg");
   /* #endregion PARACHOQUES */
-  /* #region RETROVISORES */
-  --retrovisores: url("/arquivos/img/preview/Retrovisor.jpg");
-  --capa-de-retrovisores: url("/arquivos/img/preview/Capa-de-Retrovisor.jpg");
+  /* #region RETROVISORES AUTOMOTIVOS */
+  --retrovisor-externo-completo: url("/arquivos/img/preview/Retrovisor.jpg");
+  --capa-de-retrovisor: url("/arquivos/img/preview/Capa-de-Retrovisor.jpg");
   --espelho-retrovisor-externo: url("/arquivos/img/preview/Espelho-Retrov-Externo.jpg");
   --espelho-retrovisor-interno: url("/arquivos/img/preview/Espelho Retrov Interno.jpg");
   --lente-do-retrovisor: url("/arquivos/img/preview/Lente do Retrovisor.jpg");
-  --pisca-retrovisor: url("/arquivos/img/preview/Pisca-Retrovisor.jpg");
+  --pisca-do-retrovisor: url("/arquivos/img/preview/Pisca-Retrovisor.jpg");
   --retrovisor-externo: url("/arquivos/img/preview/Retrovisor-Externo.jpg");
   --retrovisor-interno: url("/arquivos/img/preview/Retrovisor-Interno.jpg");
-  /* #endregion RETROVISORES */
+  /* #endregion RETROVISORES AUTOMOTIVOS */
   /* #region SUSPENSÕES */
   --suspensoes: url("/arquivos/img/preview/Suspensao.jpg");
   --amortecedores: url("/arquivos/img/preview/Amortecedor.jpg");
@@ -96,10 +96,10 @@
   --palheta-vigia: url("/arquivos/img/preview/Palheta-Vidro-Traseiro.jpg");
   --reservatorio-de-agua-limpador: url("/arquivos/img/preview/Reservatorio-de-Agua-limpador.jpg");
   /* #endregion PALHETAS */
-  /* #region LATARIAS */
-  --latarias-capo: url("/arquivos/img/preview/Capo.jpg");
-  --latarias-paralama: url("/arquivos/img/preview/Paralama.jpg");
-  /* #endregion LATARIAS*/
+   /* #region LATARIAS E ACABAMENTOS */
+   --capo: url("/arquivos/img/preview/Capo.jpg");
+   --paralama: url("/arquivos/img/preview/Paralama.jpg");
+   /* #endregion LATARIAS E ACABAMENTOS */
 }
 
 /* #endregion IMAGENS DE CATEGORIA */
@@ -1249,33 +1249,33 @@ ul.menu-division {
   transform: scale(0.5);
 }
 
-/* #region PREVIEW - VIDROS */
+/* #region PREVIEW - VIDROS AUTOMOTIVOS */
 
-#vidros.painel-categorias__categoria-itens.ativo a#parabrisa:hover:after {
-  content: var(--parabrisa);
+#vidros-automotivos.painel-categorias__categoria-itens.ativo a#vidro-parabrisa:hover:after {
+  content: var(--vidro-parabrisa);
 }
 
-#vidros.painel-categorias__categoria-itens.ativo a#cantoneira:hover:after {
-  content: var(--cantoneira);
+#vidros-automotivos.painel-categorias__categoria-itens.ativo a#vidro-cantoneira:hover:after {
+  content: var(--vidro-cantoneira);
 }
 
-#vidros.painel-categorias__categoria-itens.ativo a#janela:hover:after {
-  content: var(--janela);
+#vidros-automotivos.painel-categorias__categoria-itens.ativo a#vidro-de-janela:hover:after {
+  content: var(--vidro-de-janela);
 }
 
-#vidros.painel-categorias__categoria-itens.ativo a#quebra-vento:hover:after {
-  content: var(--quebra-vento);
+#vidros-automotivos.painel-categorias__categoria-itens.ativo a#vidro-quebra-vento:hover:after {
+  content: var(--vidro-quebra-vento);
 }
 
-#vidros.painel-categorias__categoria-itens.ativo a#vidro-de-porta:hover:after {
+#vidros-automotivos.painel-categorias__categoria-itens.ativo a#vidro-de-porta:hover:after {
   content: var(--vidro-de-porta);
 }
 
-#vidros.painel-categorias__categoria-itens.ativo a#vigia:hover:after {
-  content: var(--vidro-traseiro);
+#vidros-automotivos.painel-categorias__categoria-itens.ativo a#vidro-vigia:hover:after {
+  content: var(--vidro-vigia);
 }
 
-/* #endregion PREVIEW - VIDROS */
+/* #endregion PREVIEW - VIDROS AUTOMOTIVOS */
 
 /* #region PREVIEW - FARÓIS */
 
@@ -1361,41 +1361,41 @@ ul.menu-division {
 
 /* #endregion PREVIEW - PARA-CHOQUES */
 
-/* #region PREVIEW - RETROVISORES */
+/* #region PREVIEW - RETROVISORES AUTOMOTIVOS */
 
-#retrovisores-internos-e-externos.painel-categorias__categoria-itens.ativo a#retrovisor:hover:after {
-  content: var(--retrovisores);
+#retrovisores-automotivos.painel-categorias__categoria-itens.ativo a#retrovisor-externo-completo:hover:after {
+  content: var(--retrovisor-externo-completo);
 }
 
-#retrovisores-internos-e-externos.painel-categorias__categoria-itens.ativo a#capa-retrovisor:hover:after {
-  content: var(--capa-de-retrovisores);
+#retrovisores-automotivos.painel-categorias__categoria-itens.ativo a#capa-de-retrovisor:hover:after {
+  content: var(--capa-de-retrovisor);
 }
 
-#retrovisores-internos-e-externos.painel-categorias__categoria-itens.ativo a#espelho-retrovisor-externo:hover:after {
+#retrovisores-automotivos.painel-categorias__categoria-itens.ativo a#espelho-retrovisor-externo:hover:after {
   content: var(--espelho-retrovisor-externo);
 }
 
-#retrovisores-internos-e-externos.painel-categorias__categoria-itens.ativo a#espelho-retrovisor-interno:hover:after {
+#retrovisores-automotivos.painel-categorias__categoria-itens.ativo a#espelho-retrovisor-interno:hover:after {
   content: var(--espelho-retrovisor-interno);
 }
 
-#retrovisores-internos-e-externos.painel-categorias__categoria-itens.ativo a#lente-do-retrovisor:hover:after {
+#retrovisores-automotivos.painel-categorias__categoria-itens.ativo a#lente-do-retrovisor:hover:after {
   content: var(--lente-do-retrovisor);
 }
 
-#retrovisores-internos-e-externos.painel-categorias__categoria-itens.ativo a#pisca-retrovisor:hover:after {
-  content: var(--pisca-retrovisor);
+#retrovisores-automotivos.painel-categorias__categoria-itens.ativo a#pisca-do-retrovisor:hover:after {
+  content: var(--pisca-do-retrovisor);
 }
 
-#retrovisores-internos-e-externos.painel-categorias__categoria-itens.ativo a#retrovisor-externo:hover:after {
+#retrovisores-automotivos.painel-categorias__categoria-itens.ativo a#retrovisor-externo:hover:after {
   content: var(--retrovisor-externo);
 }
 
-#retrovisores-internos-e-externos.painel-categorias__categoria-itens.ativo a#retrovisor-interno:hover:after {
+#retrovisores-automotivos.painel-categorias__categoria-itens.ativo a#retrovisor-interno:hover:after {
   content: var(--retrovisor-interno);
 }
 
-/* #endregion PREVIEW - RETROVISORES */
+/* #endregion PREVIEW - RETROVISORES AUTOMOTIVOS */
 
 /* #region PREVIEW - SUSPENSÕES */
 
@@ -1533,21 +1533,21 @@ ul.menu-division {
 
 /* #endregion PREVIEW - PALHETAS */
 
-/* #region PREVIRE - LATARIAS */
+/* #region PREVIRE - LATARIAS E ACABAMENTOS */
 
-#paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-capo:hover:after {
-  content: var(--latarias-capo);
+#latarias-e-acabamentos.painel-categorias__categoria-itens.ativo a#capo:hover:after {
+  content: var(--capo);
 }
 
-#paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-para-barro:hover:after {
-  content: var(--latarias-para-barro);
+#latarias-e-acabamentos.painel-categorias__categoria-itens.ativo a#parabarro:hover:after {
+  content: var(--parabarro);
 }
 
-#paralama-e-capo.painel-categorias__categoria-itens.ativo a#latarias-paralama:hover:after {
-  content: var(--latarias-paralama);
+#latarias-e-acabamentos.painel-categorias__categoria-itens.ativo a#paralama:hover:after {
+  content: var(--paralama);
 }
 
-/* #endregion REVIRE - LATARIAS */
+/* #endregion REVIRE - LATARIAS E ACABAMENTOS */
 
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   padding-left: 5px;
