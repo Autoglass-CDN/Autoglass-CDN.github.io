@@ -927,7 +927,8 @@ i.arrow-icon::before {
   padding: 10px; /* Ajuste conforme necessário */
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* Sombra opcional */
   z-index: 10;
-  padding-left: 20px;
+  padding-left: 42px;
+  gap: 11px;
 }
 
 .side-menu .side-menu-footer a {
