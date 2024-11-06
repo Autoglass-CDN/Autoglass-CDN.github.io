@@ -813,7 +813,6 @@
 
       const modalDeCarregamento = new ModalDeCarregamento();
       modalDeCarregamento.mostarSpinner();
-
       View.resetResults(index);
 
       if (index !== 0) {
@@ -870,7 +869,8 @@
       }
 
       View.createNavigation(select.id, event.target.innerHTML);
-
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "none";
       modalDeCarregamento.ocultarSpinner();
     }
 
@@ -1019,7 +1019,8 @@
       const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
-
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "block";
       if(firstRouteSelected.length === 1) {
         alert("Selecione pelo menos o primeiro campo!");
         return;
@@ -1035,7 +1036,7 @@
       }
 
       window.buttonBuscarSelected = true;
-      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
+      window.sessionStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
 
       saveSearchInLocalStorage(null, url);
 
@@ -1361,6 +1362,8 @@
 
     try {
       modalDeCarregamento.mostarSpinner();
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "block";
 
       const {
         montadora,
@@ -1436,7 +1439,7 @@
       if(window.innerWidth > 768){
         $(".texto-placa").text(placaSemCaracteresEspeciais);
       }
-      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
+      window.sessionStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
       window.localStorage.setItem('buscaPlaca', true);
       window.buttonBuscarSelected = true;
       registerGaEvent(placaSemCaracteresEspeciais, url);
@@ -1458,7 +1461,8 @@
           "ar no momento. Favor utilizar a busca por peça!"
         );
       }
-
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "none";
       modalDeCarregamento.ocultarSpinner();
       document.querySelector("a[href='#busca-peca']").click();
       registerGaEvent(placaSemCaracteresEspeciais, `não encontrado`);
