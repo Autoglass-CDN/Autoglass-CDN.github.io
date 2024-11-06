@@ -24,12 +24,13 @@
     }else{
       var abaBuscaPlaca = document.getElementById('tab-busca-placa-mobile');
       abaBuscaPlaca.querySelector('input[type="radio"]').checked = true;
-      sessionStorage.setItem('selectedOptionCategoria', null)
+      sessionStorage.setItem('selectedOptionCategoria', null);
       sessionStorage.setItem('selectedOptionTipoPeca', null);
-      sessionStorage.setItem('selectedOptionMontadora', null)
-      sessionStorage.setItem('selectedOptionVeiculo', null)
-      sessionStorage.setItem('selectedOptionAno', null)
-      sessionStorage.setItem('selectedOptionVersao', null)
+      sessionStorage.setItem('selectedOptionMontadora', null);
+      sessionStorage.setItem('selectedOptionVeiculo', null);
+      sessionStorage.setItem('selectedOptionAno', null);
+      sessionStorage.setItem('selectedOptionVersao', null);
+      sessionStorage.setItem('idAba', "inputPlaca");
     }
   });
 
@@ -609,13 +610,6 @@
           $(`.c-busca__tab-content-mobile  #${_id} ul`).html(html);
 
           $(`.c-busca__tab-content-mobile  #${_id} ul li`)
-              .hover((event) => {
-                  $(`.c-busca__tab-content-mobile  #${_id} ul li`).removeClass(
-                      CONFIG.CSS.HIGHLIGHT
-                  );
-
-                  $(event.target).addClass(CONFIG.CSS.HIGHLIGHT);
-              })
               .click((event) => {
                   switch (activeTab) {
                       case '#busca-peca-mobile':
@@ -1123,14 +1117,24 @@
       });
     });
   }else{
-    let tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
+    AlternaAbaBusca()
+  }
+
+
+  function AlternaAbaBusca(){
+    var tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
+    var inputs = document.querySelectorAll('.search-options li input');
     tabs.forEach((tab) => {
       tab.addEventListener("click", (event) => {
         event.preventDefault();
 
         tabs.forEach((t) => t.classList.remove("is-active"));
         tab.classList.add("is-active");
-        tab.querySelector('input[type="radio"]').checked = true;
+
+        abaSelected = tab.querySelector('input[type="radio"]');
+        abaSelected.checked;
+        sessionStorage.setItem('idAba', abaSelected.id);
+
         activeTab = tab.querySelector('a').attributes.href.nodeValue;
 
         let tabContentDivs = document.querySelectorAll(
@@ -1144,9 +1148,18 @@
         );
         selectedSection.classList.add("is-active");
       });
+      if(window.innerWidth < 700)
+        setInterval(verificaAba, 500)
     });
   }
 
+  function verificaAba(){
+    let idAba = sessionStorage.getItem('idAba');
+    if(idAba != null){
+      let abaSelected = document.getElementById(`${idAba}`);
+      abaSelected.checked = true;
+    }
+  }
 
   /** BUSCA POR PLACA */
   const PLACA_SELECTS = [

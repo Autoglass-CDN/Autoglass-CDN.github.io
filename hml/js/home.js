@@ -414,7 +414,7 @@ function centerArrow(min, max) {
 		arrow.style.left = valueBetweenRange(deslocate, min, max) + 'px';
 	} catch (erro) {}
   }
-  
+
 function valueBetweenRange (value, min, max) {
 return value < min ? min : (value > max ? max : value);
 }
@@ -471,7 +471,7 @@ window.addEventListener('resize', updateSlider);
 function enableTouchScroll(slider) {
     let startX;
     let scrollLeft;
-	
+
     slider.addEventListener('touchstart', (e) => {
         startX = e.touches[0].pageX - slider.offsetLeft;
         scrollLeft = slider.scrollLeft;
@@ -519,7 +519,7 @@ linksCategoria.addEventListener('mouseenter', (event) => {
 	abortCategoryAction.abort();
 });
 
-checkLogin();
+
 fixPlaceholderSearch();
 loadCart(device.desktop);
 
