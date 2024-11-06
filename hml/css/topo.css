@@ -473,7 +473,7 @@ i.arrow-icon::before {
 .menu-btn {
   display: flex;
   align-items: center;
-  padding: 6px 12px;
+  padding: 6px 16px;
   background-color: white;
   border: 2px solid #425db4;
   border-radius: 20px;
@@ -504,6 +504,7 @@ i.arrow-icon::before {
     z-index: 7;
     transition: height 0.5s ease-in-out;
     align-items: baseline;
+    background-color: white;
   }
 }
 
