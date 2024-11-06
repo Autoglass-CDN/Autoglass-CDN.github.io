@@ -904,7 +904,7 @@
     }
 
     function hideDivVersaoFipe(length, title) {
-      const div = document.getElementById('select-versao-fipe');
+      const div = window.innerWidth > 700 ? document.getElementById('select-versao-fipe') : document.getElementById('select-versao-fipe-mobile');
 
       if (title === "Versão") {
           if (length === 0) {
@@ -1123,7 +1123,6 @@
 
   function AlternaAbaBusca(){
     var tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
-    var inputs = document.querySelectorAll('.search-options li input');
     tabs.forEach((tab) => {
       tab.addEventListener("click", (event) => {
         event.preventDefault();
@@ -1155,7 +1154,7 @@
 
   function verificaAba(){
     let idAba = sessionStorage.getItem('idAba');
-    if(idAba != null){
+    if(idAba != ""){
       let abaSelected = document.getElementById(`${idAba}`);
       abaSelected.checked = true;
     }

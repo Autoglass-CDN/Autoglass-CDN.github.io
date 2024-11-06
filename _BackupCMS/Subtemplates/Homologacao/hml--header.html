@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/topo.css" />
 <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/modal-login.css" />
 <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/localization-modal.css" />
-
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css"></link>
 <script async="" src="https://autoglass-cdn.github.io/hml/js/policies/header.js"></script>
 
 <!-- Google Tag Manager (noscript) -->
@@ -65,10 +65,6 @@
 
     <!-- Mobile -->
     <div class="container mobile">
-        <button class="menu-btn" onclick="openNav()">
-            <i class="menu-icon"></i>
-            Menu
-        </button>
         <div class="logo">
             <a href="/">
                 <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png" alt="Logo da Autoglass"
@@ -93,6 +89,9 @@
 
 <div id="side-menu" class="side-menu">
     <div id="main-menu">
+        <div class="loading-overlay" style="display: none;">
+            <div class="spinner"></div>
+        </div>
         <div class="titulo-side-menu">
             <span>Busca por</span>
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215;</a>
@@ -100,18 +99,18 @@
         <ul class="c-busca__tabs-mobile tab-header search-options">
             <li id="tab-busca-placa-mobile" class="tab-item is-active">
                 <a href="#busca-placa-mobile">
-                    <label><input type="radio" name="search" value="placa"> Placa <span class="novidade">Novidade</span></input></label>
+                    <label><input type="radio" name="search" value="placa" id="inputPlaca"> Placa <span class="novidade">Novidade</span></input></label>
                 </a>
             </li>
             <li id="tab-busca-peca-mobile" class="tab-item">
                 <a href="#busca-peca-mobile">
-                    <label><input type="radio" name="search" value="peca"> Peça e modelo</input></label>
+                    <label><input type="radio" name="search" value="peca" id="inputBuscaPeca"> Peça e modelo</input></label>
                 </a>
             </li>
             <li id="tab-busca-categoria-mobile" class="tab-item painel-categorias__categoria">
                 <div class="ativo">
                     <a href="#busca-categoria-mobile">
-                        <label><input type="radio" name="search" value="categoria"> Categorias</input></label>
+                        <label><input type="radio" name="search" value="categoria" id="inputCategorias"> Categorias</input></label>
                     </a>
                 </div>
             </li>
@@ -168,7 +167,7 @@
                             value="Reset">
                             <i class="fas fa-times"></i> Limpar
                         </button>
-                    </div>    
+                    </div>
                 </form>
             </div>
             <div class="c-busca__tab-content-mobile" id="busca-peca-mobile">
@@ -270,7 +269,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div id="select-versao-fipe" class="c-busca__select" style="display: none;">
+                        <div id="select-versao-fipe-mobile" class="c-busca__select" style="display: none;">
                             <div id="versao-select" class="empty">
                                 <div class="gtm-smart-versao-select">
                                     <span>Versão</span>
@@ -290,7 +289,7 @@
                                     <ul class="itens-list"></ul>
                                     <div class="botao-ver-todas" style="display: none;">
                                         <button type="button" id="toggleButton6">Ver todas <span>&#9660;</span></button>
-                                    </div>    
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -309,7 +308,7 @@
                             value="Reset">
                             <i class="fas fa-times"></i> Limpar
                         </button>
-                    </div>    
+                    </div>
                 </form>
             </div>
             <div class="c-busca__tab-content-mobile" id="busca-categoria-mobile">
@@ -348,7 +347,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -367,7 +366,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -398,7 +397,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -664,7 +663,7 @@
                                                 <li><a id="mobile-farol-diurno"
                                                     href="/iluminacao-automotiva/farois/farol-diurno"
                                                     title="Farol Diurno" itemprop="url">Farol Diurno</a>
-                                                </li>                                          
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -699,7 +698,7 @@
                                                 <li><a id="mobile-lanterna-para-choque-dianteira"
                                                     href="/iluminacao-automotiva/lanternas/lanterna-para-choque-dianteira"
                                                     title="Lanterna Para-choque Dianteira" itemprop="url">Lanterna Para-choque Dianteira</a>
-                                                </li>                                            
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -734,7 +733,7 @@
                                                 <li><a id="mobile-lampadas-gerais"
                                                     href="/iluminacao-automotiva/lampadas/lampadas-gerais"
                                                     title="Lâmpadas Gerais" itemprop="url">Lâmpadas Gerais</a>
-                                                </li>                                            
+                                                </li>
                                             </ul>
                                         </li>
                                     </ul>
@@ -843,7 +842,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -861,7 +860,7 @@
                                                         <li><a id="mobile-gmv-condensador"
                                                                 href="/arrefecimento-e-climatizacao/condensadores/gmv-para-condensador"
                                                                 title="GMV para Condensador" itemprop="url">GMV para Condensador</a>
-                                                        </li>                                             
+                                                        </li>
                                                     </ul>
                                                 </li>
                                             </ul>
@@ -901,7 +900,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -1021,7 +1020,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -1048,7 +1047,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -1075,7 +1074,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                     </ul>
                                 </li>
                                 <li class="side-menu-categorias__categoria">
@@ -1111,7 +1110,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -1136,7 +1135,7 @@
                                                 </li>
                                             </ul>
                                         </li>
-        
+
                                         <!-- Categoria -->
                                         <li>
                                             <ul>
@@ -1200,13 +1199,17 @@
 <div class="search-box-mobile">
     <form class="search-box-mobile__form">
         <div class="search-box-mobile__form-group">
+            <i class="fa fa-search" id="search-icon" style="color: #0b4583; margin-right: 10px; font-size: larger;"></i>
             <vtex.cmc:fullTextSearchBox />
-            <i class="search-icon" id="search-icon"></i>
             <input id="search-mobile-input" class="search-box-mobile__form-input" type="text"
-                placeholder=" Pesquise por peça, produto, veículo..." />
+                placeholder="Pesquisar" />
             <ul class="search-mobile-autocomplete" style="display:none;"></ul>
         </div>
     </form>
+    <button class="menu-btn" onclick="openNav()">
+        <span>Buscar por</span>
+        <i class="menu-icon"></i>
+    </button>
 </div>
 
 <script async="" type="text/javascript" src="https://autoglass-cdn.github.io/hml/js/topo.js"></script>
