@@ -408,6 +408,10 @@ i.arrow-icon::before {
   border: 0;
 }
 
+.search-box-mobile button.menu-btn{
+  border: 0px;
+}
+
 .nav .container.mobile button.menu-btn {
   font-size: 0.875rem;
   min-width: 80px;
@@ -468,7 +472,7 @@ i.arrow-icon::before {
 
 @media (max-width: 1200px) {
   .search-box-mobile {
-    display:block;
+    display:flex;
     position: sticky;
     overflow: inherit;
     top: 85px;
