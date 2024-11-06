@@ -862,10 +862,12 @@
         View.buildList(nextSelect.values, nextSelect.id);
       }
 
-      if(select.id === "pecas-select"){
-        selecionarInputPorIdBuscaPeca(listItems, event.target.id);
-      }else{
-        selecionarInputPorNomeBuscaPeca(event.target.innerText, select.id);
+      if(window.innerWidth < 700){
+        if(select.id === "pecas-select"){
+          selecionarInputPorIdBuscaPeca(listItems, event.target.id);
+        }else{
+          selecionarInputPorNomeBuscaPeca(event.target.innerText, select.id);
+        }
       }
 
       View.createNavigation(select.id, event.target.innerHTML);
@@ -908,13 +910,13 @@
     }
 
     function hideDivVersaoFipe(length, title) {
-      const divSelectVersaoFipe = $('#select-versao-fipe');
+      const div = document.getElementById('select-versao-fipe');
 
       if (title === "Versão") {
           if (length === 0) {
-            divSelectVersaoFipe.hide();
+            div.style.display = 'none';
           } else {
-            divSelectVersaoFipe.show();
+            div.style.display = 'block';
           }
       }
     }
