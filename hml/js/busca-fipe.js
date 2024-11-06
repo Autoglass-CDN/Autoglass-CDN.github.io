@@ -807,7 +807,6 @@
 
       const modalDeCarregamento = new ModalDeCarregamento();
       modalDeCarregamento.mostarSpinner();
-
       View.resetResults(index);
 
       if (index !== 0) {
@@ -857,14 +856,17 @@
         View.buildList(nextSelect.values, nextSelect.id);
       }
 
-      if(select.id === "pecas-select"){
-        selecionarInputPorIdBuscaPeca(listItems, event.target.id);
-      }else{
-        selecionarInputPorNomeBuscaPeca(event.target.innerText, select.id);
+      if(window.innerWidth < 700){
+        if(select.id === "pecas-select"){
+          selecionarInputPorIdBuscaPeca(listItems, event.target.id);
+        }else{
+          selecionarInputPorNomeBuscaPeca(event.target.innerText, select.id);
+        }
       }
 
       View.createNavigation(select.id, event.target.innerHTML);
-
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "none";
       modalDeCarregamento.ocultarSpinner();
     }
 
@@ -902,13 +904,13 @@
     }
 
     function hideDivVersaoFipe(length, title) {
-      const divSelectVersaoFipe = $('#select-versao-fipe');
+      const div = document.getElementById('select-versao-fipe');
 
       if (title === "Versão") {
           if (length === 0) {
-            divSelectVersaoFipe.hide();
+            div.style.display = 'none';
           } else {
-            divSelectVersaoFipe.show();
+            div.style.display = 'block';
           }
       }
     }
@@ -1013,7 +1015,8 @@
       const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
-
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "block";
       if(firstRouteSelected.length === 1) {
         alert("Selecione pelo menos o primeiro campo!");
         return;
@@ -1029,7 +1032,7 @@
       }
 
       window.buttonBuscarSelected = true;
-      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
+      window.sessionStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
 
       saveSearchInLocalStorage(null, url);
 
@@ -1374,6 +1377,8 @@
 
     try {
       modalDeCarregamento.mostarSpinner();
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "block";
 
       const {
         montadora,
@@ -1449,7 +1454,7 @@
       if(window.innerWidth > 768){
         $(".texto-placa").text(placaSemCaracteresEspeciais);
       }
-      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
+      window.sessionStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
       window.localStorage.setItem('buscaPlaca', true);
       window.buttonBuscarSelected = true;
       registerGaEvent(placaSemCaracteresEspeciais, url);
@@ -1471,7 +1476,8 @@
           "ar no momento. Favor utilizar a busca por peça!"
         );
       }
-
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "none";
       modalDeCarregamento.ocultarSpinner();
       document.querySelector("a[href='#busca-peca']").click();
       registerGaEvent(placaSemCaracteresEspeciais, `não encontrado`);
