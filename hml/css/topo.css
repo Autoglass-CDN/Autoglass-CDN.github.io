@@ -474,7 +474,7 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   padding: 6px 16px;
-  background-color: white;
+  background-color: #f1f4f9;
   border: 2px solid #425db4;
   border-radius: 20px;
   color: #425db4;
@@ -504,7 +504,7 @@ i.arrow-icon::before {
     z-index: 7;
     transition: height 0.5s ease-in-out;
     align-items: baseline;
-    background-color: white;
+    background-color: #f1f4f9;
   }
 }
 
@@ -512,7 +512,7 @@ i.arrow-icon::before {
   width: 60%;
   padding: 10px 0 10px 20px;
   position: relative;
-  background-color: #ffffff;
+  background-color: #f1f4f9;
   margin-left: 10px;
 }
 
@@ -534,6 +534,7 @@ i.arrow-icon::before {
   padding: 10px;
   border-radius: 5px;
   border: 0px solid var(--gray-500);
+  background-color: #f1f4f9;
 }
 
 .search-box-mobile__form-input {
@@ -546,12 +547,14 @@ i.arrow-icon::before {
 
 .search-mobile-autocomplete {
   position: absolute;
-  top: 38px;
+  top: 50px;
   width: 100%;
   background: var(--white);
   border: 1px solid var(--gray-500);
   border-radius: 0px 0px 5px 5px;
   z-index: 1;
+  background-color: #f1f4f9;
+  color: #0b4583;
 }
 
 .search-mobile-autocomplete li {
