@@ -246,7 +246,7 @@ async function fixPlaceholderSearchMobile() {
   if (!idSearchFilterP.length)
     return;
   var idSearchFilter = idSearchFilterP.attr("id").replace("ftBox", "");
-  enableFullTextSearchBox("ftBox" + idSearchFilter, "ftDept" + idSearchFilter, "ftIdx" + idSearchFilter, "ftBtn" + idSearchFilter, "/SEARCHTERM?&utmi_p=_&utmi_pc=BuscaFullText&utmi_cp=SEARCHTERM", "Pesquise por peça, produto, montadora...");
+  enableFullTextSearchBox("ftBox" + idSearchFilter, "ftDept" + idSearchFilter, "ftIdx" + idSearchFilter, "ftBtn" + idSearchFilter, "/SEARCHTERM?&utmi_p=_&utmi_pc=BuscaFullText&utmi_cp=SEARCHTERM", "Pesquisar");
 
   setTimeout(() => {
     $('.search-box .btn-buscar').unbind().click(e => {
@@ -254,7 +254,7 @@ async function fixPlaceholderSearchMobile() {
       const input = $('.search-box input[type="text"].fulltext-search-box');
 
       const DEFAULT = {
-        Initial: 'Pesquise por peça, produto, montadora...',
+        Initial: 'Pesquisar',
         Invalid: 'Informe o produto que deseja procurar'
       };
 

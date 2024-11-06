@@ -130,6 +130,10 @@
   height: 20px;
 }
 
+.search-icon{
+  color: #0b4583;
+}
+
 .search-icon::before {
   content: url('https://autoglass-cdn.github.io/src/img/search.svg');
   height: 20px;
@@ -408,10 +412,6 @@ i.arrow-icon::before {
   border: 0;
 }
 
-.search-box-mobile button.menu-btn{
-  border: 0px;
-}
-
 .nav .container.mobile button.menu-btn {
   font-size: 0.875rem;
   min-width: 80px;
@@ -470,6 +470,29 @@ i.arrow-icon::before {
   display: none;
 }
 
+.menu-btn {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  background-color: white;
+  border: 2px solid #425db4;
+  border-radius: 20px;
+  color: #425db4;
+  font-size: 14px;
+  cursor: pointer;
+  width: 33%;
+  height: 37px;
+  margin-right: 19px;
+}
+
+.menu-btn span {
+  margin-right: 6px;
+}
+
+.menu-icon {
+  font-size: 20px;
+}
+
 @media (max-width: 1200px) {
   .search-box-mobile {
     display:flex;
@@ -479,16 +502,17 @@ i.arrow-icon::before {
     right: 0px;
     left: 0px;
     z-index: 7;
-    background: rgba(0, 0, 0, 0.65);
     transition: height 0.5s ease-in-out;
+    align-items: baseline;
   }
 }
 
 .search-box-mobile__form {
-  width: 100%;
-  background-color: var(--gray-100);
-  padding: 10px;
+  width: 60%;
+  padding: 10px 0 10px 20px;
   position: relative;
+  background-color: #ffffff;
+  margin-left: 10px;
 }
 
 .search-box-mobile__form-group {
@@ -503,12 +527,12 @@ i.arrow-icon::before {
 
 .search-box-mobile .busca input {
   outline: none;
-  width: 100%;
-  color: var(--gray-500);
+  width: 75%;
+  color: #425db4;
   transition: border 500ms;
   padding: 10px;
   border-radius: 5px;
-  border: 1px solid var(--gray-500);
+  border: 0px solid var(--gray-500);
 }
 
 .search-box-mobile__form-input {
