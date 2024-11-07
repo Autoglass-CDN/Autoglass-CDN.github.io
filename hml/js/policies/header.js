@@ -35,6 +35,10 @@ $(document).on('ready', function () {
         headerInitiated = true;
         initHeaderPolicy();
     }
+    if(window.location.href == 'https://hml.autoglassonline.com.br/_secure/account#/'){
+      document.querySelector('.search-box-mobile').style.display = 'none';
+    }
+
 });
 
 setTimeout(() => {
@@ -45,7 +49,7 @@ setTimeout(() => {
 }, 4000);
 
 async function initHeaderPolicy() {
-    
+
     let Uf = readCookie('myuf');
     let localizationModal = startLocalizationModal();
 
@@ -67,7 +71,7 @@ async function initHeaderPolicy() {
         const orderForm = event.originalEvent.detail;
         const newUf = orderForm.shippingData.address.state;
         const currentUf = readCookie('myuf');
-        
+
         if (currentUf != newUf) {
             saveModalsState();
 
@@ -75,7 +79,7 @@ async function initHeaderPolicy() {
             persistSalesChannel(newUf);
         } else {
             localStorage.setItem('locationChanged', 0);
-        } 
+        }
     });
 }
 
@@ -89,12 +93,12 @@ async function recuperarEstadoPelaIpInfo() {
     return ipInfo.region;
 }
 
-function persistSalesChannel(Uf) { 
+function persistSalesChannel(Uf) {
     const state = recuperarEstado(Uf);
-    
+
     let vtexsc = readCookie('VTEXSC');
     const policyOnSite = vtexsc ? +vtexsc.replace('sc=', '') : 0;
-    
+
     if (state.Sc !== policyOnSite || !readCookie('myuf')) {
         salvarUf(state);
     } else {
@@ -102,7 +106,7 @@ function persistSalesChannel(Uf) {
     }
 }
 
-function salvarUf(state) {  
+function salvarUf(state) {
     createCookie('myuf', state.Uf, 100);
 
     setVtexScOnCookies(state.Sc);
@@ -122,11 +126,11 @@ function initAutocomplete() {
     console.warn('Autocomplete desativado.');
 }
 
-function setVtexScOnCookies(salesChannel) {  
+function setVtexScOnCookies(salesChannel) {
 
     //houver cookie VTEXSC sem o ponto no início (no secure), apaga esse cookie.
     document.cookie = 'VTEXSC'+ `=; Max-Age=-99999999;  path=/`;
-    
+
     //setar o cookie para www.domain.com e domain.com, evita entrar em loop infinito.
     document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=www.autoglassonline.com.br; path=/; secure=true`;
     document.cookie = `VTEXSC=sc=${salesChannel}; expires=Sun, 1 Jan 2099 00:00:00 UTC;domain=autoglassonline.com.br; path=/; secure=true`;
@@ -139,14 +143,14 @@ function createCookie(name, value, days) {
         var expires = "; expires=" + date.toGMTString();
     }
     else var expires = "";
-    
+
     document.cookie = name + "=" + value + expires + `; path=/`;
 }
 
 
 function readCookie(name) {
     var ca = document.cookie.split(';');
-    
+
     for (var i = 0; i < ca.length; i++) {
         let c = ca[i];
 
@@ -168,7 +172,7 @@ function saveModalsState() {
 
     while(true) {
         resp = regex.exec(classes);
-        
+
         if(resp) {
             modalState.push(resp);
         } else {
@@ -184,7 +188,7 @@ function recoverModalsState() {
 
     if (string) {
         const classes = string.split(',')
-        classes.forEach(_class => $('body').addClass(_class));   
+        classes.forEach(_class => $('body').addClass(_class));
         localStorage.removeItem('modalState');
     }
 }
@@ -201,20 +205,20 @@ function startLocalizationModal() {
         $('#stateSelectorModal').modal({ backdrop: 'static', keyboard: false });
         setSelectedState(state.Uf);
     }
-    
+
     stateNameButtons.forEach(element => {
         element.addEventListener('click', event => {
             event.preventDefault();
-    
+
             const state = event.target.getAttribute('data-state');
             setSelectedState(state);
         });
-    
+
         element.addEventListener('mouseover', toggleHoverOnMapBtn);
         element.addEventListener('mouseout', toggleHoverOnMapBtn);
     });
-    
-    
+
+
     stateMapButtons.forEach(element => {
         element.addEventListener('click', event => {
             event.preventDefault();
@@ -222,12 +226,12 @@ function startLocalizationModal() {
             const state = event.target.closest('.state-map-btn').getAttribute('data-state');
             setSelectedState(state);
         });
-    
+
         element.addEventListener('mouseover', toggleHoverOnNameBtn);
         element.addEventListener('mouseout', toggleHoverOnNameBtn);
     });
-    
-    
+
+
     document.getElementById('stateConfirmationBtn')
             .addEventListener('click', closeModalAndPersistSc);
 
@@ -236,17 +240,17 @@ function startLocalizationModal() {
 
         setSelectedState(event.target.value);
     });
-    
+
     function toggleHoverOnNameBtn(event) {
         const state = event.target.closest('.state-map-btn').getAttribute('data-state');
         const element = document.getElementById(state + 'nameBtn');
-        
+
         toggleHoverOnElement(element);
     }
-    
+
     function toggleHoverOnElement(element) {
         const currentClasses = element.getAttribute('class');
-        
+
         element.setAttribute(
             'class',
             currentClasses.includes('hover')
@@ -254,14 +258,14 @@ function startLocalizationModal() {
                 : currentClasses + ' hover'
         );
     }
-    
+
     function toggleHoverOnMapBtn(event) {
         const state = event.target.getAttribute('data-state');
         const element = document.getElementById(state + 'mapBtn');
-        
+
         toggleHoverOnElement(element);
     }
-    
+
     function setSelectedState(state) {
         if(selectedState && state !== selectedState) {
             const previousSelectedMapBtn = document.getElementById(selectedState + 'mapBtn');
@@ -270,7 +274,7 @@ function startLocalizationModal() {
                 previousSelectedMapBtn.getAttribute('class')
                                       .replaceAll(' selected', '')
             );
-    
+
             const previousSelectedNameBtn = document.getElementById(selectedState + 'nameBtn');
             previousSelectedNameBtn.setAttribute(
                 'class',
@@ -283,17 +287,17 @@ function startLocalizationModal() {
         if (mobileStateSelector.val() !== state) {
             mobileStateSelector.val(state);
         }
-    
+
         const selectedMapBtn = document.getElementById(state + 'mapBtn');
         selectedMapBtn.setAttribute('class', selectedMapBtn.getAttribute('class') + ' selected');
-    
+
         const selectedNameBtn = document.getElementById(state + 'nameBtn');
-        selectedNameBtn.setAttribute('class', selectedNameBtn.getAttribute('class') + ' selected'); 
-    
+        selectedNameBtn.setAttribute('class', selectedNameBtn.getAttribute('class') + ' selected');
+
         selectedState = state;
         enableConfirmationBtn();
     }
-    
+
     function enableConfirmationBtn() {
         document.getElementById('stateConfirmationBtn').removeAttribute('disabled');
     }

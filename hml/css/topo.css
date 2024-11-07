@@ -761,10 +761,6 @@ i.arrow-icon::before {
   text-decoration: none;
 }
 
-#login {
-  text-decoration: none;
-}
-
 .container .menu-carrinho:hover {
   transform: scale(1.05);
 }
@@ -888,6 +884,21 @@ i.arrow-icon::before {
   background-color: rgba(0, 0, 0, 0.4);
   z-index: 8;
   transition: .5s;
+}
+
+#side-menu-login{
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 900000;
+  right:0 ;
+  bottom: 0;
+  background-color: white;
+  overflow-x: hidden;
+  transition: 0.5s;
+  box-shadow: 0 0 1px black;
+  display: none;
+  font-size: 1rem;
 }
 
 .side-menu {
@@ -1043,7 +1054,7 @@ i.arrow-icon::before {
   text-transform: uppercase;
 }
 
-.side-menu .side-menu-footer.usuario .usuario__opcoes-mobile a {
+.side-menu .usuario__opcoes-mobile a {
   padding-top: 12px;
 }
 
