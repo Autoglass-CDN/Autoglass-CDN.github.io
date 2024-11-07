@@ -492,6 +492,92 @@ function toggleCategory(self) {
   return self.parentNode.classList.contains('ativo') ? self.parentNode.classList.remove('ativo') : self.parentNode.classList.add('ativo')
 }
 
+(() => {
+  let slider = document.querySelector('.painel-categorias__menu > ul');
+  let prevBtn = document.getElementById('prev-btn');
+  let nextBtn = document.getElementById('next-btn');
+
+  prevBtn.addEventListener('click', slidePrev);
+  nextBtn.addEventListener('click', slideNext);
+
+  if (getTranslateX(slider) < 0) nextBtn.style.visibility = 'hidden';
+  else prevBtn.style.visibility = 'hidden';
+
+  let abortCategoryAction = null;
+
+  const minArrowLeft = 10;
+  const maxArrowRight = 1250;
+
+  document
+    .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
+    .forEach((categoria, index) => {
+      categoria.addEventListener('mouseenter', (event) => {
+        abortCategoryAction = delayedAction(() => {
+          if(!isActiveElement(categoria)){
+            activateCategory(categoria, index);
+            centerArrow(minArrowLeft, maxArrowRight);
+          }
+        }, abortCategoryAction);
+      })
+    });
+
+  let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
+
+  linksCategoria.addEventListener('mouseenter', (event) => {
+    if (abortCategoryAction)
+      abortCategoryAction.abort();
+  });
+
+  checkLogin();
+  fixPlaceholderSearch();
+  loadCart(device.desktop);
+
+  $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
+    let carrinho = document.querySelector('.desktop .menu-carrinho');
+
+    updateCartItemsCount(carrinho, orderForm);
+  });
+
+  $(document).ready(function () {
+    if (!document.querySelector('.shelf-qd-v1-buy-button'))
+      return;
+    var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener',
+      debounce((event) => cartItemAddedConfirmation(event))
+    );
+    skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
+  });
+
+  function debounce(func, timeout = 200){
+    let timer;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    };
+  }
+
+  let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
+
+  let searchField = document.querySelector('.container.desktop .search-box .busca input.fulltext-search-box');
+
+  searchField.addEventListener('focus', () => {
+    suggestions.style.visibility = 'visible';
+    suggestions.style.opacity = '1';
+  });
+
+  searchField.addEventListener('blur', () => {
+    suggestions.style.opacity = '0';
+    setTimeout(() => suggestions.style.visibility = 'hidden', 1000);
+  });
+
+  searchField.addEventListener('keydown', (event) => {
+    event = event || window.event;
+    console.log(event.keyCode)
+  });
+
+  autocompleteInit(searchField);
+}
+)();
+
 //MOBILE
 
 (() => {

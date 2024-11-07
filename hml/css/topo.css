@@ -438,13 +438,17 @@ i.arrow-icon::before {
   height: 34px;
   text-align: center;
   padding-top: 5px;
-  margin-right: 20px;
+  margin-right: 10px;
   /* box-shadow: 5px 5px 10px -2px rgb(0 0 0 / 50%); */
 }
 
 .nav .container.mobile a.fa-whatsapp:hover,
 .nav .container.mobile a.fa-whatsapp:focus{
   text-decoration: none;
+}
+
+.menu-carrinho{
+  padding-right: 10px;
 }
 
 .nav .container.mobile .menu-carrinho {
@@ -458,6 +462,7 @@ i.arrow-icon::before {
 .nav .container.mobile .menu-carrinho.loaded>.badge {
   top: -10px;
   right: -15px;
+  padding-right: 10px;
 }
 
 /* #region Box de Pesquisa */
