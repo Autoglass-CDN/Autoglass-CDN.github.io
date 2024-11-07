@@ -188,6 +188,18 @@ async function checkLogin() {
   }
 }
 
+async function checkLoginMobile() {
+  let response = await fetch("/no-cache/profileSystem/getProfile");
+  let data = await response.json();
+
+  if (data.IsUserDefined) {
+    document.querySelector('#div-login-mobile')
+    .addEventListener('click', () => {
+      window.location.href = "https://hml.autoglassonline.com.br/_secure/account#/";
+    });
+  }
+}
+
 async function fixPlaceholderSearch() {
   var idSearchFilterP = $('.search-box input[type="text"].fulltext-search-box');
   if (!idSearchFilterP.length)
@@ -585,6 +597,8 @@ function toggleCategory(self) {
   let searchField = document.querySelector('.search-box-mobile .busca input.fulltext-search-box');
 
   autocompleteInitMobile(searchField);
+
+  checkLoginMobile();
 
   loadCart(device.mobile);
 

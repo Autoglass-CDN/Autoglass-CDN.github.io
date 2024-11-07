@@ -859,10 +859,11 @@
   align-items: center;
   gap: 10px;
   font-weight: 500;
+  text-decoration: none;
 }
 
 #toggleButton2:hover {
-  text-decoration: underline;
+  text-decoration: none;
   outline: none;
 }
 
@@ -884,10 +885,11 @@
   align-items: center;
   gap: 10px;
   font-weight: 500;
+  text-decoration: none;
 }
 
 #toggleButton3:hover {
-  text-decoration: underline;
+  text-decoration: none;
   outline: none;
 }
 
@@ -909,10 +911,11 @@
   align-items: center;
   gap: 10px;
   font-weight: 500;
+  text-decoration: none;
 }
 
 #toggleButton4:hover {
-  text-decoration: underline;
+  text-decoration: none;
   outline: none;
 }
 
@@ -934,10 +937,11 @@
   align-items: center;
   gap: 10px;
   font-weight: 500;
+  text-decoration: none;
 }
 
 #toggleButton5:hover {
-  text-decoration: underline;
+  text-decoration: none;
   outline: none;
 }
 
@@ -959,10 +963,11 @@
   align-items: center;
   gap: 10px;
   font-weight: 500;
+  text-decoration: none;
 }
 
 #toggleButton6:hover {
-  text-decoration: underline;
+  text-decoration: none;
   outline: none;
 }
 
