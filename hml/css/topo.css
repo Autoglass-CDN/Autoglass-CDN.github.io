@@ -447,10 +447,6 @@ i.arrow-icon::before {
   text-decoration: none;
 }
 
-.menu-carrinho{
-  padding-right: 10px;
-}
-
 .nav .container.mobile .menu-carrinho {
   position: relative;
 }
@@ -761,6 +757,7 @@ i.arrow-icon::before {
 
 .nav .container.mobile .menu-carrinho {
   min-width: unset;
+  padding-right: 10px;
 }
 
 .container .menu-carrinho:hover {
