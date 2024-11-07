@@ -22,8 +22,6 @@
         $('.carro-compativel').hide();
       });
     }else{
-      var container = document.querySelector('.l-container');
-      container.style.display = 'none';
       var abaBuscaPlaca = document.getElementById('tab-busca-placa-mobile');
       abaBuscaPlaca.querySelector('input[type="radio"]').checked = true;
       sessionStorage.setItem('selectedOptionCategoria', null);
