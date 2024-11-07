@@ -496,7 +496,24 @@ i.arrow-icon::before {
     color: #425db4;
     font-size: 14px;
     cursor: pointer;
-    width: 35%;
+    width: 37%;
+    height: 37px;
+    margin-right: 19px;
+  }
+}
+
+@media screen and (max-width: 372px){
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    background-color: #f1f4f9;
+    border: 2px solid #425db4;
+    border-radius: 20px;
+    color: #425db4;
+    font-size: 14px;
+    cursor: pointer;
+    width: 37%;
     height: 37px;
     margin-right: 19px;
   }
