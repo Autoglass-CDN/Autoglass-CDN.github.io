@@ -758,6 +758,11 @@ i.arrow-icon::before {
 .nav .container.mobile .menu-carrinho {
   min-width: unset;
   padding-right: 10px;
+  text-decoration: none;
+}
+
+#login {
+  text-decoration: none;
 }
 
 .container .menu-carrinho:hover {
