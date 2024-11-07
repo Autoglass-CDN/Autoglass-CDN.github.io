@@ -17,8 +17,6 @@
   position: relative;
 }
 
-
-
 @media screen and (max-width: 465px) {
   /* Ativar quando tiver busca por veículo ou adicionar mais uma aba */
 }
@@ -261,6 +259,37 @@
     z-index: 8;
   }
 }
+
+  .c-busca__tab-content-mobile div.empty:hover::before {
+    content: "Preencha os campos anteriores";
+    background-color: white;
+    box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+    border-radius: 4px;
+    color: #1c3162;
+    font-size: 13px;
+    font-weight: bold;
+    height: auto;
+    position: absolute;
+    text-align: center;
+    transform: translate(-50%, 0);
+    width: 230px;
+    z-index: 8;
+    margin-left: 43%;
+    margin-top: 10%;
+  }
+
+  .c-busca__tab-content-mobile div.empty:hover::after {
+    content: "";
+    background-color: white;
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    width: 8px;
+    height: 8px;
+    transform: rotate(45deg);
+    z-index: 1;
+  }
+
 
 @media screen and (min-width: 1600px) {
   .c-busca__tab-content div.empty:hover::before {
