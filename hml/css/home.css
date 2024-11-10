@@ -71,7 +71,10 @@
 }
 
 .banners-section .banners button[id="banner-next"] {
-  right: 0;
+  right: 0 !important;
+}
+.banners-section .banners button[id="banner-prev"] {
+  left: 0 !important;
 }
 
 .banners-section .banners-content {

@@ -195,6 +195,8 @@ async function checkLoginMobile() {
   if (data.IsUserDefined) {
     document.querySelector('#div-login-mobile')
     .addEventListener('click', () => {
+      var spinner = document.querySelector("#side-menu .loading-overlay");
+      spinner.style.display = 'block';
       window.location.href = "https://hml.autoglassonline.com.br/_secure/account#/";
     });
   }
