@@ -486,7 +486,7 @@ i.arrow-icon::before {
   margin-right: 19px;
 }
 
-@media screen and (max-width: 381){
+@media screen and (max-width: 375px){
   .menu-btn {
     display: flex;
     align-items: center;
@@ -503,21 +503,8 @@ i.arrow-icon::before {
   }
 }
 
-@media screen and (max-width: 372px){
-  .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f4f9;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 37%;
-    height: 37px;
-    margin-right: 19px;
-  }
+.side-menu-categorias li::marker {
+  content: none; /* Remove o conteúdo do marcador */
 }
 
 .menu-btn span {
