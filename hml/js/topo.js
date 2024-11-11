@@ -516,9 +516,6 @@ function toggleCategory(self) {
   prevBtn.addEventListener('click', slidePrev);
   nextBtn.addEventListener('click', slideNext);
 
-  if (getTranslateX(slider) < 0) nextBtn.style.visibility = 'hidden';
-  else prevBtn.style.visibility = 'hidden';
-
   let abortCategoryAction = null;
 
   const minArrowLeft = 10;
