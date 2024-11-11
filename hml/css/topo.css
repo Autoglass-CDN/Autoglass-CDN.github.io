@@ -105,6 +105,11 @@
 
 /* #region ÍCONES */
 
+
+ul{
+    list-style-type: none;
+}
+
 .menu-icon::before {
   content: url('https://autoglass-cdn.github.io/src/img/menu-icon.png');
   height: 22px;
@@ -1079,7 +1084,7 @@ i.arrow-icon::before {
 
 .side-menu-categorias .side-menu-categorias__categoria-header {
   display: flex;
-
+  content: none;
 }
 
 .side-menu-categorias .side-menu-categorias__categoria-header.ativo {
