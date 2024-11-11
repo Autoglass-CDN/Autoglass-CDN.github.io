@@ -503,10 +503,6 @@ i.arrow-icon::before {
   }
 }
 
-.side-menu-categorias li::marker {
-  content: none; /* Remove o conteúdo do marcador */
-}
-
 .menu-btn span {
   margin-right: 6px;
 }
@@ -1071,6 +1067,10 @@ i.arrow-icon::before {
   margin-top: 5px;
   overflow-y: scroll;
   height: calc(100% - 88px);
+}
+
+.side-menu-categorias li::marker {
+  content: none; /* Remove o conteúdo do marcador */
 }
 
 .side-menu-categorias .side-menu-categorias__categoria-header {
