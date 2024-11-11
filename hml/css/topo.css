@@ -1073,10 +1073,13 @@ i.arrow-icon::before {
   content: none;
 }
 
-
+.side-menu-categorias__categoria{
+  content: none;
+}
 
 .side-menu-categorias .side-menu-categorias__categoria-header {
   display: flex;
+
 }
 
 .side-menu-categorias .side-menu-categorias__categoria-header.ativo {
@@ -1090,9 +1093,6 @@ i.arrow-icon::before {
   box-shadow: inset 0 0 5px #80808059;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-header img {
-  height: 40px;
-}
 
 .side-menu-categorias .side-menu-categorias__categoria-header h3 {
   width: 100%;
