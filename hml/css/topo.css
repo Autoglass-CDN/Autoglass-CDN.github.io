@@ -1070,8 +1070,10 @@ i.arrow-icon::before {
 }
 
 .side-menu-categorias li::marker {
-  content: none; /* Remove o conteúdo do marcador */
+  content: none;
 }
+
+
 
 .side-menu-categorias .side-menu-categorias__categoria-header {
   display: flex;
@@ -1132,6 +1134,7 @@ i.arrow-icon::before {
 
 .side-menu-categorias .side-menu-categorias__categoria-itens .side-menu-categorias__categoria-sub-itens>li>a {
   padding-left: 60px !important;
+  font-weight: 100;
 }
 
 .painel-categorias-section {
