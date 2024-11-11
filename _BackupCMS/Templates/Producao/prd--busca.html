@@ -11,9 +11,10 @@
     <vtex:template id="prd--busca--head-tags" />
 	<vtex:metaTags />
 
-	<script defer="" language="javascript" src="https://autoglass-cdn.github.io/arquivos/js/B2C-02-filtro-busca.js" type="text/javascript"></script>
-	<script defer="" language="javascript" src="https://autoglass-cdn.github.io/arquivos/js/verifica-compatibilidade.js" type="text/javascript"></script>
-	<script defer="" language="javascript" src="https://autoglass-cdn.github.io/arquivos/js/busca/load-optionals.js" type="text/javascript"></script>
+    <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/B2C-02-detalhe-produto.js" type="text/javascript"></script>
+	<script defer="" src="https://autoglass-cdn.github.io/arquivos/js/B2C-02-filtro-busca.js" type="text/javascript"></script>
+	<script defer="" src="https://autoglass-cdn.github.io/arquivos/js/verifica-compatibilidade.js" type="text/javascript"></script>
+	<script defer="" src="https://autoglass-cdn.github.io/arquivos/js/busca/load-optionals.js" type="text/javascript"></script>
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/busca/load-optionals.css" type="text/css" />
 
     <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
@@ -31,154 +32,150 @@
 
 	<!-- Main Content -->
 	<main>
-		<div class="common-qd-v1-structure">
+		<section class="common-qd-v1-structure">
 			<section>
 				<!-- Full banner -->
-				<div class="search-qd-v1-full-banner">
-					<div class="container-fluid">
-						<div class="row">
-							<div class="col-xs-12">
-								<div
+				<section class="search-qd-v1-full-banner">
+					<section class="container-fluid">
+						<section class="row">
+							<section class="col-xs-12">
+								<figure
 									class="banner-qd-v1-responsive img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
 									<vtex:contentPlaceHolder id="banner_full_no_topo_da_pagina" />
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+								</figure>
+							</section>
+						</section>
+					</section>
+				</section>
 				<!-- Full banner -->
 
 				<!-- Smart Select -->
-				<div id="div-busca" style="margin-top: 45px;">
+				<nav id="div-busca" style="margin-top: 45px;">
 				    <vtex:template id="prd--busca-fipe" />
-				</div>
+				</nav>
                 <!-- Smart Select -->
 
 				<!-- Bredcrumb -->
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12">
-							<div class="breadcrumb-qd-v1">
+				<section class="container">
+					<section class="row">
+						<section class="col-xs-12">
+							<nav class="breadcrumb-qd-v1">
 								<vtex.cmc:breadCrumb />
-							</div>
-						</div>
-					</div>
-				</div>
+							</nav>
+						</section>
+					</section>
+				</section>
 				<!-- Bredcrumb -->
 
-				<div class="container">
+				<section class="container">
 					<div class="row">
 						<aside>
-							<div class="col-xs-12 col-lg-3">
-                                <div class='container-titulo-lateral-prateleira'>
-							        <h1 class='titulo-lateral-prateleira'></h1>
-                                    <div class="div-compatibilidade">
-                                        <span class="texto-compatibilidade">Verificar Compatibilidade:</span>
-                                        <form id="form-busca-placa-compatibilidade" action="#">
-                                            <div class="input-container">
-                                              <input
-                                                type="text"
-                                                name="placa-input"
-                                                id="placa-input-compatibilidade"
-                                                placeholder="Digite a sua placa"
-                                              />
-                                              <button
-                                                id="btn-busca-placa-compatibilidade"
-                                                class="c-botao c-botao--primary"
-                                                type="submit">
-                                                BUSCAR
-                                              </button>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="tag" style="display: none;">
-                                        <span class="texto-placa"></span>
-                                        <button class="botao-placa" type="button">X</button>
-                                    </div>
-                                    <div>
-                                        <span class="carro-compativel"></span>
-                                    </div>
-							    </div>
-								<div class="search-qd-v1-navigator">
+							<section class="col-xs-12 col-lg-3">
+								<section class='container-titulo-lateral-prateleira'>
+									<h1 class='titulo-lateral-prateleira'></h1>
+									<section class="div-compatibilidade">
+										<span class="texto-compatibilidade">Verificar Compatibilidade:</span>
+										<form id="form-busca-placa-compatibilidade" action="#">
+											<div class="input-container">
+												<input
+													type="text"
+													name="placa-input"
+													id="placa-input-compatibilidade"
+													placeholder="Digite a sua placa"
+												/>
+												<button
+													id="btn-busca-placa-compatibilidade"
+													class="c-botao c-botao--primary"
+													type="submit">
+													BUSCAR
+												</button>
+											</div>
+										</form>
+									</section>
+									<section class="tag" style="display: none;">
+										<span class="texto-placa"></span>
+										<button class="botao-placa" type="button">X</button>
+									</section>
+									<section>
+										<span class="carro-compativel"></span>
+									</section>
+								</section>
+								<nav class="search-qd-v1-navigator">
 									<a class="search-qd-v1-navigator-trigger" href="#" role="button">Filtrar resultado</a>
-
 									<div class="search-qd-v1-navigator-list">
 										<button class="search-qd-v1-navigator-exit">×</button>
-										<div class="search-qd-v1-navigator-title">Filtrar Resultados</div>
-
+										<h2 class="search-qd-v1-navigator-title">Filtrar Resultados</h2>
+				
 										<!-- Filtered -->
-										<div class="search-qd-v1-navigator-research-filtered"></div>
+										<section class="search-qd-v1-navigator-research-filtered"></section>
 										<!-- // Filtered -->
-
+				
 										<!-- Smart Research -->
-										<div class="search-qd-v1-navigator-research">
-    											<!-- searchNavigator -->
-    											<vtex.cmc:searchNavigator />
-    											<!-- // searchNavigator -->
-										</div>
+										<section class="search-qd-v1-navigator-research">
+											<!-- searchNavigator -->
+											<vtex.cmc:searchNavigator />
+											<!-- // searchNavigator -->
+										</section>
 										<!-- // Smart Research -->
-
+				
 										<!-- Mobile Filter Button -->
-										<div class="wrapper-search-qd-v1-navigator-mobile-results">
+										<section class="wrapper-search-qd-v1-navigator-mobile-results">
 											<div class="search-qd-v1-navigator-mobile-results">
 												<button>Ver Resultados</button>
 											</div>
-										</div>
+										</section>
 										<!-- // Mobile Filter Button -->
-
 									</div>
-								</div>
-
-                                <script>
-                                    $(document).ready(function(){
-                                      var textoParaH1 = $(".search-qd-v1-navigator .search-qd-v1-navigator-list .search-single-navigator h3").text();
-                                      $(".titulo-lateral-prateleira").text(textoParaH1);
-                                    });
-                                </script>
-
-                                <script>
-                                    $(document).ready(function(){
-                                      var textoParaH1 = $("title").text();
-                                      $(".titulo-lateral-prateleira").text(textoParaH1);
-                                    });
-                                </script>
-
+								</nav>
+				
+								<script>
+									$(document).ready(function(){
+									  var textoParaH1 = $(".search-qd-v1-navigator .search-qd-v1-navigator-list .search-single-navigator h3").text();
+									  $(".titulo-lateral-prateleira").text(textoParaH1);
+									});
+								</script>
+				
+								<script>
+									$(document).ready(function(){
+									  var textoParaH1 = $("title").text();
+									  $(".titulo-lateral-prateleira").text(textoParaH1);
+									});
+								</script>
+				
 								<!-- Side banners -->
-								<div class="search-qd-v1-side-banners">
-									<div
-										class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
+								<section class="search-qd-v1-side-banners">
+									<nav class="banner-qd-v1-responsive carousel-qd-v1-shelf img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-sm-4">
 										<vtex:contentPlaceHolder id="banners_do_menu_lateral" />
-									</div>
-								</div>
+									</nav>
+								</section>
 								<!-- Side banners -->
-							</div>
+							</section>
 						</aside>
-
-						<div class="col-xs-12 col-lg-9">
-							<div class="row">
-								<div
-									class="search-qd-v1-result qd-shelf-xs-6 qd-shelf-lg-4">
-									<vtex.cmc:searchResult layout="82ece3a5-14a4-4f40-97fb-5dcc47037fcb" itemCount="24"
-										columnCount="1" />  <!-- prd- -busca- -prateleira -->
-								</div>
-							</div>
-
+				
+						<section class="col-xs-12 col-lg-9">
+							<section class="row">
+								<section class="search-qd-v1-result qd-shelf-xs-6 qd-shelf-lg-4">
+									<vtex.cmc:searchResult layout="82ece3a5-14a4-4f40-97fb-5dcc47037fcb" itemCount="24" columnCount="1" />
+									<!-- prd- -busca- -prateleira -->
+								</section>
+							</section>
+				
 							<!-- SEO Text -->
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="search-qd-v1-seo-text">
+							<section class="row">
+								<section class="col-xs-12">
+									<article class="search-qd-v1-seo-text">
 										<div class="h1 h2 h3 h4 h5 h6 p ul dl">
 											<vtex:contentPlaceHolder id="texto_SEO_para_melhor_indexacao" />
 										</div>
-									</div>
-								</div>
-							</div>
+									</article>
+								</section>
+							</section>
 							<!-- SEO Text -->
-						</div>
+						</section>
 					</div>
-				</div>
+				</section>
 			</section>
-		</div>
+		</section>
 	</main>
 	<!-- Main Content -->
 
