@@ -19,7 +19,7 @@
 
     <link rel="stylesheet" href="/arquivos/locationFetcher.css" type="text/css" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/policies/header.css" type="text/css" />
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/policies/secao-pesquisa.css" type="text/css"/>
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css" type="text/css"/>
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/topo.css" type="text/css"/>
     <vtex:metaTags />
 
@@ -83,6 +83,9 @@
 </head>
 
 <body class="home">
+    <div id="loading-spinner" style="display: none;">
+      <div class="spinner"></div>
+    </div>
   <!-- Header -->
   <vtex:template id="hml--header" />
   <!-- Header -->
@@ -92,7 +95,7 @@
   <main>
     <section class="banners-section">
       <div class="banners">
-        <button tabindex="-1" id="banner-prev" data-type="prev" type="button">
+        <button tabindex="-1" id="banner-prev" data-type="prev" type="button" style="left: 0;">
           <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
             <path id="chevron-left"
               d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z"
@@ -105,7 +108,7 @@
         <div class="banners-content mobile">
           <vtex:contentPlaceHolder id="slider_full_para_mobile" />
         </div>
-        <button tabindex="-1" id="banner-next" data-type="next" type="button">
+        <button tabindex="-1" id="banner-next" data-type="next" type="button" style="right: 0;">
           <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
             <path id="chevron-right"
               d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z"
@@ -526,7 +529,7 @@
     </section>
 
     <script src="https://autoglass-cdn.github.io/hml/js/home.js"></script>
-    
+
     <!--Start of Tawk.to Script-->
     <script type="text/javascript">
         var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
