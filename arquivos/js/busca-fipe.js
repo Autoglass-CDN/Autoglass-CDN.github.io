@@ -20,10 +20,20 @@
         $("#placa-input-compatibilidade").val("");
         $('.carro-compativel').hide();
       });
+    }else{
+      var abaBuscaPlaca = document.getElementById('tab-busca-placa-mobile');
+      abaBuscaPlaca.querySelector('input[type="radio"]').checked = true;
+      sessionStorage.setItem('selectedOptionCategoria', null);
+      sessionStorage.setItem('selectedOptionTipoPeca', null);
+      sessionStorage.setItem('selectedOptionMontadora', null);
+      sessionStorage.setItem('selectedOptionVeiculo', null);
+      sessionStorage.setItem('selectedOptionAno', null);
+      sessionStorage.setItem('selectedOptionVersao', null);
+      sessionStorage.setItem('idAba', "inputPlaca");
     }
   });
 
-  let activeTab = '#busca-peca';
+  let activeTab = window.innerWidth > 700 ? '#busca-placa' : '#busca-placa-mobile';
   selectRightSearchMethod();
 
   /** BUSCA POR PEÇA */
@@ -135,6 +145,10 @@
     await _initBuscaPeca(grandchildenCategories);
   }
 
+  function verificaTelaMobile(){
+    return window.innerWidth < 700 ? true : false
+  }
+
   async function _initBuscaPeca(values) {
 
     PECA_SELECTS[1].values = values;
@@ -146,7 +160,8 @@
     PECA_SELECTS.forEach(View._initSelect_);
 
     // Create Button Function
-    $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search(); window.localStorage.setItem('buscaPlaca', false); });
+    window.innerWidth> 700 ? $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);})
+                           : $("#form-busca-peca-mobile").submit((e) => { e.preventDefault(); Service.search();});
   }
 
   function ViewAPI() {
@@ -159,6 +174,173 @@
       virtualizedDOM,
       createNavigation,
     };
+
+    function _initSelectMobile_(select){
+      $(`.c-busca__tab-content-mobile #${select.id}`).click((e) => {
+        $(
+          `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
+        ).val("");
+        if (select.values) {
+          View.buildList(select.values, select.id);
+          View.selectOptionIfButtonHasValue(select.id);
+          if (select.values.length !== 0) {
+            $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`)
+              .slideToggle("fast")
+              .click((e) => e.stopPropagation());
+            $(
+              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
+            ).focus();
+          }
+        }
+      });
+      $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`)
+        .on("keydown", (e) => {
+          if (e.key === "Tab" || e.key === "Enter") {
+            e.preventDefault();
+            $(
+              `.c-busca__tab-content-mobile #${select.id} ul li.${CONFIG.CSS.HIGHLIGHT}`
+            ).click();
+          }
+          if (e.key === "ArrowDown") {
+            let index = 0;
+            $(`.c-busca__tab-content-mobile #${select.id} ul li`).each(
+              (i, element) => {
+                if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
+                  index += i + 2;
+                  $(element).removeClass(CONFIG.CSS.HIGHLIGHT);
+                }
+              }
+            );
+            if (
+              index <= $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+            ) {
+              $(
+                `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+              ).addClass(CONFIG.CSS.HIGHLIGHT);
+              $(
+                `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
+              ).animate(
+                {
+                  scrollTop:
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].offsetTop -
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].scrollHeight -
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].scrollHeight /
+                      2,
+                },
+                100
+              );
+            } else {
+              $(
+                `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
+              ).addClass(CONFIG.CSS.HIGHLIGHT);
+              $(
+                `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
+              ).animate(
+                {
+                  scrollTop:
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
+                    )[0].offsetTop -
+                    ($(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
+                    )[0].scrollHeight +
+                      $(
+                        `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
+                      )[0].scrollHeight /
+                        2),
+                },
+                100
+              );
+            }
+          }
+          if (e.key === "ArrowUp") {
+            let index = 0;
+            $(`.c-busca__tab-content-mobile #${select.id} ul li`).each(
+              (i, element) => {
+                if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
+                  index = i;
+                  $(element).removeClass(CONFIG.CSS.HIGHLIGHT);
+                }
+              }
+            );
+            if (index !== 0) {
+              $(
+                `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+              ).addClass(CONFIG.CSS.HIGHLIGHT);
+              $(
+                `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
+              ).animate(
+                {
+                  scrollTop:
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].offsetTop -
+                    ($(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                    )[0].scrollHeight +
+                      $(
+                        `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
+                      )[0].scrollHeight /
+                        2),
+                },
+                100
+              );
+            } else {
+              $(
+                `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${
+                  $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+                })`
+              ).addClass(CONFIG.CSS.HIGHLIGHT);
+              $(
+                `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
+              ).animate(
+                {
+                  scrollTop:
+                    $(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${
+                        $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+                      })`
+                    )[0].offsetTop -
+                    ($(
+                      `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${
+                        $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+                      })`
+                    )[0].scrollHeight +
+                      $(
+                        `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${
+                          $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
+                        })`
+                      )[0].scrollHeight /
+                        2),
+                },
+                100
+              );
+            }
+          }
+        })
+        .on("keyup", (e) => {
+          console.log(`Filtrando`);
+          if (
+            !["Tab", "ArrowDown", "ArrowUp", "Enter"].find((x) => x === e.key)
+          )
+            View.filterResults(e, select);
+        });
+      // Fecha todos os selects caso já tenha algum aberto.
+      $(document).on("click", (e) => {
+        var container = $(`.c-busca__tab-content-mobile #${select.id}`);
+        if (!$(e.target).closest(container).length) {
+          $(
+            `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+          ).slideUp("fast");
+        }
+      });
+    }
 
     function _initSelect_(select) {
       $(`.c-busca__tab-content #${select.id}`).click((e) => {
@@ -343,10 +525,89 @@
       });
     }
 
+    function defineValorCheckbox(idTarget, _id){
+      switch (_id) {
+        case "categoria-select":
+          sessionStorage.setItem('selectedOptionCategoria', idTarget);
+          break;
+        case "pecas-select":
+          sessionStorage.setItem('selectedOptionTipoPeca', idTarget);
+          break;
+        case "montadora-select":
+          sessionStorage.setItem('selectedOptionMontadora', idTarget)
+          break;
+        case "veiculo-select":
+          sessionStorage.setItem('selectedOptionVeiculo', idTarget)
+          break;
+        case "ano-select":
+            sessionStorage.setItem('selectedOptionAno', idTarget)
+            break;
+        case "versao-select":
+            sessionStorage.setItem('selectedOptionVersao', idTarget)
+            break;
+        default:
+          break;
+      }
+    }
+    function verificaValorCheckBox(_id){
+      switch (_id) {
+        case "categoria-select":
+          return sessionStorage.getItem('selectedOptionCategoria');
+        case "pecas-select":
+          return sessionStorage.getItem('selectedOptionTipoPeca');
+        case "montadora-select":
+          return sessionStorage.getItem('selectedOptionMontadora');
+        case "veiculo-select":
+          return sessionStorage.getItem('selectedOptionVeiculo');
+        case "ano-select":
+            return sessionStorage.getItem('selectedOptionAno');
+        case "versao-select":
+            return sessionStorage.getItem('selectedOptionVersao');
+        default:
+          break;
+      }
+    }
+
     function buildList(objects, _id) {
       let html = "";
-
-      if (objects) {
+      if (window.innerWidth <= 500){
+        if (objects) {
+          objects.sort((a, b) => a.name.localeCompare(b.name));
+          const savedValue = verificaValorCheckBox(_id)
+          objects.forEach((x, index) => {
+            const isChecked = savedValue == x.id ?'checked':'';
+            const displayStyle = index >= 5 ? 'display: none;' : '';
+              html += `<div class="busca-options" style="${displayStyle}">
+                          <li role="treeitem" id="${x.id}">
+                            <input id="${x.id}" class="input-busca-options" type="radio" name="${x.name}" value="${x.id}" ${isChecked}>
+                            ${x.name}
+                          </li>
+                      </div>`;
+          });
+          $(`.c-busca__tab-content-mobile  #${_id} ul`).html(html);
+          $(`.c-busca__tab-content-mobile  #${_id} ul li`)
+              .click((event) => {
+                  switch (activeTab) {
+                      case '#busca-peca-mobile':
+                          defineValorCheckbox(event.target.id, _id)
+                          Controller.addClick(event,_id);
+                          break;
+                      case '#busca-placa-mobile':
+                          defineValorCheckbox(event.target.id, _id)
+                          handleBuscaPlacaSelection(event, _id);
+                          break;
+                  }
+              });
+          $(`.c-busca__tab-content-mobile  #${_id} ul li`)
+              .first()
+              .addClass(CONFIG.CSS.HIGHLIGHT);
+          $(`.botao-ver-todas`).show();
+        } else {
+          $(`.c-busca__tab-content-mobile  #${_id} ul`).html(
+            `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
+          );
+        }
+      }else if (objects) {
         objects.sort((a, b) => a.name.localeCompare(b.name));
         objects.forEach(
           (x) => (html += `<li role="treeitem" id="${x.id}">${x.name}</li>`)
@@ -370,6 +631,8 @@
               case '#busca-placa':
                 handleBuscaPlacaSelection(event, _id);
                 break;
+              case '#busca-categoria':
+                handleBuscaPlacaSelection(event, _id);
             }
           });
 
@@ -384,13 +647,23 @@
     }
 
     function selectOptionIfButtonHasValue(type) {
-      $(`.c-busca__tab-content > .${type} ul li`).each((_, element) => {
-        if (
-          element.innerHTML ===
-          $(`.c-busca__tab-content > .${type} div > span`).html()
-        )
-          $(element).addClass(CONFIG.CSS.SELECTED);
-      });
+      if(window.innerWidth > 700){
+        $(`.c-busca__tab-content > .${type} ul li`).each((_, element) => {
+          if (
+            element.innerHTML ===
+            $(`.c-busca__tab-content > .${type} div > span`).html()
+          )
+            $(element).addClass(CONFIG.CSS.SELECTED);
+        });
+      }else{
+        $(`.c-busca__tab-content-mobile > .${type} ul li`).each((_, element) => {
+          if (
+            element.innerHTML ===
+            $(`.c-busca__tab-content-mobile > .${type} div > span`).html()
+          )
+            $(element).addClass(CONFIG.CSS.SELECTED);
+        });
+      }
     }
 
     function filterResults(event, select) {
@@ -411,27 +684,28 @@
       for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
         const select = PECA_SELECTS[i];
         const nextSelect = PECA_SELECTS[i + 1];
-
-        $(`.c-busca__tab-content  #${select.id} > div > span`).html(
-          select.title
-        );
-        select.routeSelected = "";
-
-        if (nextSelect && nextSelect.canBeClear) {
-          $(`.c-busca__tab-content #${nextSelect.id}`).addClass(
-            CONFIG.CSS.EMPTY
+        if(window.innerWidth > 700){
+          $(`.c-busca__tab-content  #${select.id} > div > span`).html(
+            select.title
           );
+          select.routeSelected = "";
 
-          nextSelect.values = [];
-          nextSelect.routeSelected = "";
+          if (nextSelect && nextSelect.canBeClear) {
+            $(`.c-busca__tab-content #${nextSelect.id}`).addClass(
+              CONFIG.CSS.EMPTY
+            );
+
+            nextSelect.values = [];
+            nextSelect.routeSelected = "";
+          }
+
+          $(
+            `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
+          ).show();
+          $(
+            `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`
+          ).hide();
         }
-
-        $(
-          `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
-        ).show();
-        $(
-          `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`
-        ).hide();
       }
     }
 
@@ -439,26 +713,40 @@
       const index = PECA_SELECTS.findIndex((x) => x.id === _class);
       const select = PECA_SELECTS[index];
       const nextSelect = PECA_SELECTS[index + 1];
+      if(window.innerWidth > 700){
+        $(`.c-busca__tab-content  #${select.id} > div > span`).html(new_title);
+        $(
+          `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
+        ).hide();
+        $(`.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`)
+          .show()
+          .on("click", () => resetResults(index));
 
-      $(`.c-busca__tab-content  #${select.id} > div > span`).html(new_title);
-      $(
-        `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
-      ).hide();
-      $(`.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`)
-        .show()
-        .on("click", () => resetResults(index));
+        if (nextSelect) {
+          $(`.c-busca__tab-content #${nextSelect.id}`).removeClass(
+            CONFIG.CSS.EMPTY
+          );
 
-      if (nextSelect) {
-        $(`.c-busca__tab-content #${nextSelect.id}`).removeClass(
-          CONFIG.CSS.EMPTY
-        );
-
-        if (!CONFIG.CANT_OPEN) {
-          $(`.c-busca__tab-content #${nextSelect.id}`).click();
+          if (!CONFIG.CANT_OPEN) {
+            $(`.c-busca__tab-content #${nextSelect.id}`).click();
+          }
+        } else {
+          if (!CONFIG.CANT_OPEN) {
+            $(`.c-busca__tab-content  #${select.id}`).click().focus();
+          }
         }
-      } else {
-        if (!CONFIG.CANT_OPEN) {
-          $(`.c-busca__tab-content  #${select.id}`).click().focus();
+      }else{
+        if (nextSelect) {
+          $(`.c-busca__tab-content-mobile #${nextSelect.id}`).removeClass(
+            CONFIG.CSS.EMPTY
+          );
+          if (!CONFIG.CANT_OPEN) {
+            $(`.c-busca__tab-content-mobile #${nextSelect.id}`).click();
+          }
+        } else {
+          if (!CONFIG.CANT_OPEN) {
+            $(`.c-busca__tab-content-mobile  #${select.id}`).click().focus();
+          }
         }
       }
     }
@@ -509,6 +797,7 @@
     };
 
     async function addClick(event, _id) {
+      const listItems = document.querySelectorAll('.itens-lista li');
       const index = PECA_SELECTS.findIndex((x) => x.id === _id);
       const select = PECA_SELECTS[index];
       const nextSelect = PECA_SELECTS[index + 1];
@@ -567,20 +856,59 @@
         View.buildList(nextSelect.values, nextSelect.id);
       }
 
-      View.createNavigation(select.id, event.target.innerHTML);
+      if(window.innerWidth < 700){
+        if(select.id === "pecas-select"){
+          selecionarInputPorIdBuscaPeca(listItems, event.target.id);
+        }else{
+          selecionarInputPorNomeBuscaPeca(event.target.innerText, select.id);
+        }
+      }
 
+      View.createNavigation(select.id, event.target.innerHTML);
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "none";
       modalDeCarregamento.ocultarSpinner();
     }
 
+    function selecionarInputPorIdBuscaPeca(listItems, id) {
+      listItems.forEach(item => {
+        const radioInput = item.querySelector('input[type="radio"]');
+        if (radioInput) {
+          // Desmarca todos os inputs
+          radioInput.checked = false;
+          // Marca apenas o input com o ID especificado
+          if (item.id === id) {
+            radioInput.checked = true;
+          }
+        }
+      });
+    }
+
+    function selecionarInputPorNomeBuscaPeca(nome, nomeSelect) {
+      const secaoSelectDiv = document.getElementById(`${nomeSelect}`);
+      const listItems = nomeSelect != "versao-select" ? secaoSelectDiv.querySelectorAll('.itens-lista li') : secaoSelectDiv.querySelectorAll('.itens-list li');
+      listItems.forEach(item => {
+        const radioInput = item.querySelector('input[type="radio"]');
+        if (radioInput) {
+          // Desmarca todos os inputs
+          radioInput.checked = false;
+          // Marca apenas o input com o nome especificado
+          if (item.textContent.trim() === nome) {
+            radioInput.checked = true;
+          }
+        }
+      });
+    }
+
     function hideDivVersaoFipe(length, title) {
-      const divSelectVersaoFipe = $('#select-versao-fipe');
+      const div = window.innerWidth > 700 ? document.getElementById('select-versao-fipe') : document.getElementById('select-versao-fipe-mobile');
 
       if (title === "Versão") {
-          if (length === 0) {
-            divSelectVersaoFipe.hide();
-          } else {
-            divSelectVersaoFipe.show();
-          }
+        if (length === 0) {
+          div.style.display = 'none';
+        } else {
+          div.style.display = 'block';
+        }
       }
     }
 
@@ -684,6 +1012,8 @@
       const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "block";
 
       if(firstRouteSelected.length === 1) {
         alert("Selecione pelo menos o primeiro campo!");
@@ -761,34 +1091,70 @@
   };
 
   // Alterna as abas da busca
-  let tabs = document.querySelectorAll(".c-busca__tabs li");
+  if(window.innerWidth > 700){
+    let tabs = document.querySelectorAll(".c-busca__tabs li");
 
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", (event) => {
-      event.preventDefault();
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (event) => {
+        event.preventDefault();
 
-      tabs.forEach((t) => t.classList.remove("is-active"));
-      tab.classList.add("is-active");
+        tabs.forEach((t) => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
 
-      activeTab = tab.querySelector('a').attributes.href.nodeValue;
+        activeTab = tab.querySelector('a').attributes.href.nodeValue;
 
-      let tabContentDivs = document.querySelectorAll(
-        ".c-busca__tab-content"
-      );
+        let tabContentDivs = document.querySelectorAll(
+          ".c-busca__tab-content"
+        );
 
-      tabContentDivs.forEach((div) => div.classList.remove("is-active"));
+        tabContentDivs.forEach((div) => div.classList.remove("is-active"));
 
-      let selectedSection = document.querySelector(
-        tab.querySelector("a").hash
-      );
-      selectedSection.classList.add("is-active");
+        let selectedSection = document.querySelector(
+          tab.querySelector("a").hash
+        );
+        selectedSection.classList.add("is-active");
+      });
     });
-  });
+  }else{
+    AlternaAbaBusca()
+  }
+
+  function AlternaAbaBusca(){
+    var tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", (event) => {
+        event.preventDefault();
+        tabs.forEach((t) => t.classList.remove("is-active"));
+        tab.classList.add("is-active");
+        abaSelected = tab.querySelector('input[type="radio"]');
+        abaSelected.checked;
+        sessionStorage.setItem('idAba', abaSelected.id);
+        activeTab = tab.querySelector('a').attributes.href.nodeValue;
+        let tabContentDivs = document.querySelectorAll(
+          ".c-busca__tab-content-mobile"
+        );
+        tabContentDivs.forEach((div) => div.classList.remove("is-active"));
+        let selectedSection = document.querySelector(
+          tab.querySelector("a").hash
+        );
+        selectedSection.classList.add("is-active");
+      });
+      // if(window.innerWidth < 700)
+      //   setInterval(verificaAba, 500)
+    });
+  }
+  function verificaAba(){
+    let idAba = sessionStorage.getItem('idAba');
+    if(idAba != ""){
+      let abaSelected = document.getElementById(`${idAba}`);
+      abaSelected.checked = true;
+    }
+  }
 
   /** BUSCA POR PLACA */
   const PLACA_SELECTS = [
     {
-      title: "Produto",
+      title: "Tipo de Peça",
       id: "categoria-select",
       values: [],
       routeSelected: "",
@@ -804,11 +1170,11 @@
 
     View.buildList(PLACA_SELECTS[0].values, PLACA_SELECTS[0].id);
 
-    View._initSelect_(PLACA_SELECTS[0]);
+    window.innerWidth > 700 ? View._initSelect_(PLACA_SELECTS[0]) : View._initSelectMobile_(PLACA_SELECTS[0]);
 
     restoreBuscaPlaca();
 
-    let formBuscaPlaca = document.querySelector("#form-busca-placa");
+    let formBuscaPlaca = window.innerWidth > 700 ? document.querySelector("#form-busca-placa") : document.querySelector("#form-busca-placa-mobile");
 
     formBuscaPlaca.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -824,7 +1190,7 @@
 
         location.href = redirectUrl;
       } else {
-        const placa = document.querySelector("#placa-input").value;
+        const placa = window.innerWidth > 700 ? document.querySelector("#placa-input").value : document.querySelector("#placa-input-mobile").value;
         const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
 
         if(0 === placa.length) {
@@ -937,6 +1303,7 @@
   function handleBuscaPlacaSelection(event, _id) {
     const select = PLACA_SELECTS[0];
     const optionSelected = select.values.find((x) => x.id == event.target.id);
+    const listItems = document.querySelectorAll('.itens-lista li');
 
     select.routeSelected = optionSelected.url
         ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
@@ -963,6 +1330,24 @@
       });
 
     $('.c-busca__tab-content .c-busca__input #placa-input').click().focus();
+    //Lógica para marcar e manter o input marcado.
+    if(window.innerWidth < 500){
+      selecionarInputPorId(listItems, event.target.id);
+      const savedValue = verificaValorCheckBox(_id);
+      if(savedValue == event.target.id)
+        selecionarInputPorId(listItems, event.target.id);
+    }
+  }
+
+  function selecionarInputPorId(listItems, id) {
+    listItems.forEach(item => {
+      const radioInput = item.querySelector('input[type="radio"]');
+      if (radioInput && item.id === id) {
+        radioInput.checked = true;
+      } else if (radioInput) {
+        radioInput.checked = false;
+      }
+    });
   }
 
   async function buscaPorPlaca(placaString) {
@@ -980,6 +1365,8 @@
 
     try {
       modalDeCarregamento.mostarSpinner();
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "block";
 
       const {
         montadora,
@@ -1079,6 +1466,8 @@
           "ar no momento. Favor utilizar a busca por peça!"
         );
       }
+      if(window.innerWidth < 700)
+        document.querySelector("#side-menu .loading-overlay").style.display = "none";
 
       modalDeCarregamento.ocultarSpinner();
       document.querySelector("a[href='#busca-peca']").click();
@@ -1267,14 +1656,96 @@
     const smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
     const isValidSearch = smartSelectHistory !== null && smartSelectHistory.type == "#busca-placa";
     const isProductsListPage = search && search.includes('?PS=24&map=');
-
     if(isValidSearch && isProductsListPage) {
       activeTab = '#busca-placa';
-
+      document.querySelector("a[href='#busca-categoria']").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active");
       document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active");
       document.querySelector("#form-busca-placa").parentNode.classList.add("is-active");
+      if(window.innerWidth > 700){
+        document.querySelector("a[href='#busca-categoria-mobile']").parentNode.classList.remove("is-active");
+        document.querySelector("a[href='#busca-peca-mobile']").parentNode.classList.remove("is-active");
+        document.querySelector("#form-busca-peca-mobile").parentNode.classList.remove("is-active");
+        document.querySelector("a[href='#busca-placa-mobile']").parentNode.classList.add("is-active");
+        document.querySelector("#form-busca-placa-mobile").parentNode.classList.add("is-active");
+      }
     }
+  }
+  document.getElementById("toggleButton").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+  document.getElementById("toggleButton2").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+  document.getElementById("toggleButton3").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+  document.getElementById("toggleButton4").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+  document.getElementById("toggleButton5").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+  document.getElementById("toggleButton6").addEventListener("click", function() {
+    document.querySelectorAll(".busca-options").forEach(function(element) {
+      element.style.display = "block";
+      var divBotao = document.querySelector('.botao-ver-todas')
+      divBotao.style.display = "none"
+    });
+  });
+  var botaoLimparBuscaPeca = document.querySelector('#btn-busca-peca-limpar');
+  botaoLimparBuscaPeca.addEventListener("click", () => {
+    resetSelects(1);
+  });
+  var botaoLimparBuscaPlaca = document.querySelector('#btn-busca-placa-limpar');
+  botaoLimparBuscaPlaca.addEventListener("click", () => {
+    resetSelect();
+  });
+  function resetSelects(_index){
+    for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
+      const select = PECA_SELECTS[i];
+      const nextSelect = PECA_SELECTS[i + 1];
+      $(`.c-busca__tab-content  #${select.id} > div > span`).html(
+        select.title
+      );
+      select.routeSelected = "";
+      if (nextSelect && nextSelect.canBeClear) {
+        $(`.c-busca__tab-content #${nextSelect.id}`).addClass(
+          CONFIG.CSS.EMPTY
+        );
+        nextSelect.values = [];
+        nextSelect.routeSelected = "";
+      }
+    }
+  }
+  function resetSelect(){
+    const select = PLACA_SELECTS[0];
+    var inputPlaca = document.querySelector('#placa-input');
+    $(`.c-busca__tab-content  #${select.id} > div > span`).html(
+      select.title
+    );
+    select.routeSelected = "";
+    inputPlaca.value = "";
   }
 })();
