@@ -13,6 +13,7 @@
         $('.carro-compativel').text("Compatível com: " + infoPlaca[0].modelo + " " + infoPlaca[0].montadora);
         $(".texto-placa").text(placa);
       }
+
       $('.botao-placa').on('click', function() {
         $('.tag').hide();
         $('.input-container').show();
@@ -43,6 +44,7 @@
   let firstRouteSelected = "";
   let vehicle = "";
   window.buttonBuscarSelected = false;
+
 
   const CONFIG = {
     ASYNC: {
@@ -150,14 +152,18 @@
   }
 
   async function _initBuscaPeca(values) {
-
     PECA_SELECTS[1].values = values;
 
     await Controller.checkRouterParams();
 
     View.buildList(PECA_SELECTS[1].values, PECA_SELECTS[1].id);
 
-    PECA_SELECTS.forEach(View._initSelect_);
+    if(verificaTelaMobile()){
+      PECA_SELECTS.forEach(View._initSelectMobile_);
+    }else{
+      PECA_SELECTS.forEach(View._initSelect_);
+    }
+
 
     // Create Button Function
     window.innerWidth> 700 ? $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);})
@@ -167,6 +173,7 @@
   function ViewAPI() {
     return {
       _initSelect_,
+      _initSelectMobile_,
       buildList,
       selectOptionIfButtonHasValue,
       filterResults,
@@ -180,19 +187,23 @@
         $(
           `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
         ).val("");
+
         if (select.values) {
           View.buildList(select.values, select.id);
           View.selectOptionIfButtonHasValue(select.id);
+
           if (select.values.length !== 0) {
             $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`)
               .slideToggle("fast")
               .click((e) => e.stopPropagation());
+
             $(
               `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
             ).focus();
           }
         }
       });
+
       $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`)
         .on("keydown", (e) => {
           if (e.key === "Tab" || e.key === "Enter") {
@@ -201,8 +212,10 @@
               `.c-busca__tab-content-mobile #${select.id} ul li.${CONFIG.CSS.HIGHLIGHT}`
             ).click();
           }
+
           if (e.key === "ArrowDown") {
             let index = 0;
+
             $(`.c-busca__tab-content-mobile #${select.id} ul li`).each(
               (i, element) => {
                 if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
@@ -211,12 +224,14 @@
                 }
               }
             );
+
             if (
               index <= $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
             ) {
               $(
                 `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
               ).addClass(CONFIG.CSS.HIGHLIGHT);
+
               $(
                 `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
               ).animate(
@@ -239,6 +254,7 @@
               $(
                 `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(1)`
               ).addClass(CONFIG.CSS.HIGHLIGHT);
+
               $(
                 `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
               ).animate(
@@ -259,8 +275,10 @@
               );
             }
           }
+
           if (e.key === "ArrowUp") {
             let index = 0;
+
             $(`.c-busca__tab-content-mobile #${select.id} ul li`).each(
               (i, element) => {
                 if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
@@ -269,10 +287,12 @@
                 }
               }
             );
+
             if (index !== 0) {
               $(
                 `.c-busca__tab-content-mobile #${select.id} ul li:nth-child(${index})`
               ).addClass(CONFIG.CSS.HIGHLIGHT);
+
               $(
                 `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
               ).animate(
@@ -297,6 +317,7 @@
                   $(`.c-busca__tab-content-mobile #${select.id} ul li`).length
                 })`
               ).addClass(CONFIG.CSS.HIGHLIGHT);
+
               $(
                 `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results ul`
               ).animate(
@@ -334,12 +355,14 @@
       // Fecha todos os selects caso já tenha algum aberto.
       $(document).on("click", (e) => {
         var container = $(`.c-busca__tab-content-mobile #${select.id}`);
+
         if (!$(e.target).closest(container).length) {
           $(
             `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
           ).slideUp("fast");
         }
       });
+
     }
 
     function _initSelect_(select) {
@@ -512,7 +535,6 @@
           )
             View.filterResults(e, select);
         });
-
       // Fecha todos os selects caso já tenha algum aberto.
       $(document).on("click", (e) => {
         var container = $(`.c-busca__tab-content #${select.id}`);
@@ -549,6 +571,7 @@
           break;
       }
     }
+
     function verificaValorCheckBox(_id){
       switch (_id) {
         case "categoria-select":
@@ -585,6 +608,7 @@
                       </div>`;
           });
           $(`.c-busca__tab-content-mobile  #${_id} ul`).html(html);
+
           $(`.c-busca__tab-content-mobile  #${_id} ul li`)
               .click((event) => {
                   switch (activeTab) {
@@ -598,6 +622,7 @@
                           break;
                   }
               });
+
           $(`.c-busca__tab-content-mobile  #${_id} ul li`)
               .first()
               .addClass(CONFIG.CSS.HIGHLIGHT);
@@ -607,7 +632,8 @@
             `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
           );
         }
-      }else if (objects) {
+      }else
+      if (objects) {
         objects.sort((a, b) => a.name.localeCompare(b.name));
         objects.forEach(
           (x) => (html += `<li role="treeitem" id="${x.id}">${x.name}</li>`)
@@ -664,6 +690,7 @@
             $(element).addClass(CONFIG.CSS.SELECTED);
         });
       }
+
     }
 
     function filterResults(event, select) {
@@ -740,6 +767,7 @@
           $(`.c-busca__tab-content-mobile #${nextSelect.id}`).removeClass(
             CONFIG.CSS.EMPTY
           );
+
           if (!CONFIG.CANT_OPEN) {
             $(`.c-busca__tab-content-mobile #${nextSelect.id}`).click();
           }
@@ -749,6 +777,7 @@
           }
         }
       }
+
     }
 
     function virtualizedDOM(elements, tagReturn) {
@@ -806,7 +835,6 @@
 
       const modalDeCarregamento = new ModalDeCarregamento();
       modalDeCarregamento.mostarSpinner();
-
       View.resetResults(index);
 
       if (index !== 0) {
@@ -837,7 +865,7 @@
             ? values = filterVersaoFipe(values, vehicle)
             : values;
 
-          // Caso seja Ano (Ultimo campo) tem que ser decrescente
+          // Caso seja Ano (Penultimo campo [-2]) altera para decrescente
           index + 1 === PECA_SELECTS.length - 2
             ? values.sort((a, b) => b.name.localeCompare(a.name))
             : values.sort((a, b) => a.name.localeCompare(b.name));
@@ -870,12 +898,14 @@
       modalDeCarregamento.ocultarSpinner();
     }
 
+
     function selecionarInputPorIdBuscaPeca(listItems, id) {
       listItems.forEach(item => {
         const radioInput = item.querySelector('input[type="radio"]');
         if (radioInput) {
           // Desmarca todos os inputs
           radioInput.checked = false;
+
           // Marca apenas o input com o ID especificado
           if (item.id === id) {
             radioInput.checked = true;
@@ -892,6 +922,7 @@
         if (radioInput) {
           // Desmarca todos os inputs
           radioInput.checked = false;
+
           // Marca apenas o input com o nome especificado
           if (item.textContent.trim() === nome) {
             radioInput.checked = true;
@@ -1014,7 +1045,6 @@
       let url = CONFIG.ORIGIN;
       if(window.innerWidth < 700)
         document.querySelector("#side-menu .loading-overlay").style.display = "block";
-
       if(firstRouteSelected.length === 1) {
         alert("Selecione pelo menos o primeiro campo!");
         return;
@@ -1030,7 +1060,7 @@
       }
 
       window.buttonBuscarSelected = true;
-      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
+      window.sessionStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
 
       saveSearchInLocalStorage(null, url);
 
@@ -1100,7 +1130,6 @@
 
         tabs.forEach((t) => t.classList.remove("is-active"));
         tab.classList.add("is-active");
-
         activeTab = tab.querySelector('a').attributes.href.nodeValue;
 
         let tabContentDivs = document.querySelectorAll(
@@ -1119,30 +1148,38 @@
     AlternaAbaBusca()
   }
 
+
   function AlternaAbaBusca(){
     var tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
     tabs.forEach((tab) => {
       tab.addEventListener("click", (event) => {
         event.preventDefault();
+
         tabs.forEach((t) => t.classList.remove("is-active"));
         tab.classList.add("is-active");
+
         abaSelected = tab.querySelector('input[type="radio"]');
         abaSelected.checked;
         sessionStorage.setItem('idAba', abaSelected.id);
+
         activeTab = tab.querySelector('a').attributes.href.nodeValue;
+
         let tabContentDivs = document.querySelectorAll(
           ".c-busca__tab-content-mobile"
         );
+
         tabContentDivs.forEach((div) => div.classList.remove("is-active"));
+
         let selectedSection = document.querySelector(
           tab.querySelector("a").hash
         );
         selectedSection.classList.add("is-active");
       });
-      // if(window.innerWidth < 700)
-      //   setInterval(verificaAba, 500)
+      if(window.innerWidth < 700)
+        setInterval(verificaAba, 500)
     });
   }
+
   function verificaAba(){
     let idAba = sessionStorage.getItem('idAba');
     if(idAba != ""){
@@ -1203,11 +1240,14 @@
       }
     });
 
+
     let formBuscaPlacaCompatibilidade = document.querySelector("#form-busca-placa-compatibilidade");
     if (formBuscaPlacaCompatibilidade) {
       formBuscaPlacaCompatibilidade.addEventListener('submit', (event) => {
         event.preventDefault();
+
         const [isUniversalProduct, redirectUrl] = checkIfUniversalProductSearch();
+
         if (isUniversalProduct) {
           const modalDeCarregamento = new ModalDeCarregamento();
           modalDeCarregamento.mostarSpinner();
@@ -1215,6 +1255,7 @@
         } else {
           const placa = document.querySelector("#placa-input-compatibilidade").value;
           const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+
           if (placa.length === 0) {
             alert('Você deve inserir a placa do seu veículo!');
           } else if (!placa.trim().match(regexPlaca)) {
@@ -1308,7 +1349,6 @@
     select.routeSelected = optionSelected.url
         ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
         : '/' + optionSelected.name.toLowerCase();
-
     $(`.c-busca__tab-content  #${select.id} > div > span`).html(event.target.innerHTML);
     $(
       `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
@@ -1330,6 +1370,7 @@
       });
 
     $('.c-busca__tab-content .c-busca__input #placa-input').click().focus();
+
     //Lógica para marcar e manter o input marcado.
     if(window.innerWidth < 500){
       selecionarInputPorId(listItems, event.target.id);
@@ -1439,14 +1480,12 @@
         url += `/${montadorasEncontradas[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
-
       if(window.innerWidth > 768){
         $(".texto-placa").text(placaSemCaracteresEspeciais);
       }
-      window.localStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
+      window.sessionStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
       window.localStorage.setItem('buscaPlaca', true);
       window.buttonBuscarSelected = true;
-
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
       url += parametrosUrl;
@@ -1468,7 +1507,6 @@
       }
       if(window.innerWidth < 700)
         document.querySelector("#side-menu .loading-overlay").style.display = "none";
-
       modalDeCarregamento.ocultarSpinner();
       document.querySelector("a[href='#busca-peca']").click();
       registerGaEvent(placaSemCaracteresEspeciais, `não encontrado`);
@@ -1656,8 +1694,10 @@
     const smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
     const isValidSearch = smartSelectHistory !== null && smartSelectHistory.type == "#busca-placa";
     const isProductsListPage = search && search.includes('?PS=24&map=');
+
     if(isValidSearch && isProductsListPage) {
       activeTab = '#busca-placa';
+
       document.querySelector("a[href='#busca-categoria']").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active");
       document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
@@ -1672,6 +1712,7 @@
       }
     }
   }
+
   document.getElementById("toggleButton").addEventListener("click", function() {
     document.querySelectorAll(".busca-options").forEach(function(element) {
       element.style.display = "block";
@@ -1679,6 +1720,7 @@
       divBotao.style.display = "none"
     });
   });
+
   document.getElementById("toggleButton2").addEventListener("click", function() {
     document.querySelectorAll(".busca-options").forEach(function(element) {
       element.style.display = "block";
@@ -1686,6 +1728,7 @@
       divBotao.style.display = "none"
     });
   });
+
   document.getElementById("toggleButton3").addEventListener("click", function() {
     document.querySelectorAll(".busca-options").forEach(function(element) {
       element.style.display = "block";
@@ -1693,6 +1736,7 @@
       divBotao.style.display = "none"
     });
   });
+
   document.getElementById("toggleButton4").addEventListener("click", function() {
     document.querySelectorAll(".busca-options").forEach(function(element) {
       element.style.display = "block";
@@ -1700,6 +1744,7 @@
       divBotao.style.display = "none"
     });
   });
+
   document.getElementById("toggleButton5").addEventListener("click", function() {
     document.querySelectorAll(".busca-options").forEach(function(element) {
       element.style.display = "block";
@@ -1707,6 +1752,7 @@
       divBotao.style.display = "none"
     });
   });
+
   document.getElementById("toggleButton6").addEventListener("click", function() {
     document.querySelectorAll(".busca-options").forEach(function(element) {
       element.style.display = "block";
@@ -1714,31 +1760,38 @@
       divBotao.style.display = "none"
     });
   });
+
   var botaoLimparBuscaPeca = document.querySelector('#btn-busca-peca-limpar');
   botaoLimparBuscaPeca.addEventListener("click", () => {
     resetSelects(1);
   });
+
   var botaoLimparBuscaPlaca = document.querySelector('#btn-busca-placa-limpar');
   botaoLimparBuscaPlaca.addEventListener("click", () => {
     resetSelect();
   });
+
   function resetSelects(_index){
     for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
       const select = PECA_SELECTS[i];
       const nextSelect = PECA_SELECTS[i + 1];
+
       $(`.c-busca__tab-content  #${select.id} > div > span`).html(
         select.title
       );
       select.routeSelected = "";
+
       if (nextSelect && nextSelect.canBeClear) {
         $(`.c-busca__tab-content #${nextSelect.id}`).addClass(
           CONFIG.CSS.EMPTY
         );
+
         nextSelect.values = [];
         nextSelect.routeSelected = "";
       }
     }
   }
+
   function resetSelect(){
     const select = PLACA_SELECTS[0];
     var inputPlaca = document.querySelector('#placa-input');
@@ -1748,4 +1801,5 @@
     select.routeSelected = "";
     inputPlaca.value = "";
   }
+
 })();

@@ -1175,8 +1175,8 @@
         );
         selectedSection.classList.add("is-active");
       });
-      // if(window.innerWidth < 700)
-      //   setInterval(verificaAba, 500)
+      if(window.innerWidth < 700)
+        setInterval(verificaAba, 500)
     });
   }
 

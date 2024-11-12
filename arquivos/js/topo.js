@@ -193,7 +193,7 @@ async function checkLoginMobile() {
     .addEventListener('click', () => {
       document.getElementById('loading-spinner').style.display = 'flex';
       setTimeout(() => {
-        window.location.href = "https://hml.autoglassonline.com.br/_secure/account#/";
+        window.location.href = "https://autoglassonline.com.br/_secure/account#/";
       }, 500);
     });
   }
