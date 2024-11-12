@@ -117,38 +117,6 @@ function replaceBlankSpaces(text, newChar) {
   return text.replace(/\s/g, newChar);
 }
 
-void function initializeCategoryPanelMenu() {
-  let lastActiveCategory = null;
-  var painelCategoriasMenu = $('.painel-categorias__categoria.ativo');
-
-  $('.painel-categorias__categoria-itens-lista-menu li a').hover(
-    function(){
-      if(lastActiveCategory != this){
-        $(`#${getMenuIdName(lastActiveCategory)}`).removeClass('ativo');
-      }
-      let currentCategory = $(`#${getMenuIdName(this)}`);
-      if(!isActiveElement(currentCategory)) {
-        currentCategory.addClass('ativo')
-      }
-      lastActiveCategory = this;
-    },
-  )
-
-  var observer = new MutationObserver(function(mutations) {
-    if(!isActiveElement(mutations[0].target)){
-      if(lastActiveCategory &&
-        currentCategory.innerText != lastActiveCategory.innerText){
-        $(`#${getMenuIdName(lastActiveCategory)}`).removeClass('ativo')
-      }
-    }
-  });
-
-  observer.observe(painelCategoriasMenu[0], {
-    attributes: true,
-    attributeFilter: ['class']
-  });
-}();
-
 async function checkLogin() {
   var accountComponent = document.querySelector(".topo .usuario.desktop");
 
@@ -507,89 +475,6 @@ function toggleCategory(self) {
   console.log(self);
   return self.parentNode.classList.contains('ativo') ? self.parentNode.classList.remove('ativo') : self.parentNode.classList.add('ativo')
 }
-
-(() => {
-  let slider = document.querySelector('.painel-categorias__menu > ul');
-  let prevBtn = document.getElementById('prev-btn');
-  let nextBtn = document.getElementById('next-btn');
-
-  prevBtn.addEventListener('click', slidePrev);
-  nextBtn.addEventListener('click', slideNext);
-
-  let abortCategoryAction = null;
-
-  const minArrowLeft = 10;
-  const maxArrowRight = 1250;
-
-  document
-    .querySelectorAll('.painel-categorias__menu .painel-categorias__categoria')
-    .forEach((categoria, index) => {
-      categoria.addEventListener('mouseenter', (event) => {
-        abortCategoryAction = delayedAction(() => {
-          if(!isActiveElement(categoria)){
-            activateCategory(categoria, index);
-            centerArrow(minArrowLeft, maxArrowRight);
-          }
-        }, abortCategoryAction);
-      })
-    });
-
-  let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
-
-  linksCategoria.addEventListener('mouseenter', (event) => {
-    if (abortCategoryAction)
-      abortCategoryAction.abort();
-  });
-
-  checkLogin();
-  fixPlaceholderSearch();
-  loadCart(device.desktop);
-
-  $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
-    let carrinho = document.querySelector('.desktop .menu-carrinho');
-
-    updateCartItemsCount(carrinho, orderForm);
-  });
-
-  $(document).ready(function () {
-    if (!document.querySelector('.shelf-qd-v1-buy-button'))
-      return;
-    var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener',
-      debounce((event) => cartItemAddedConfirmation(event))
-    );
-    skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
-  });
-
-  function debounce(func, timeout = 200){
-    let timer;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => { func.apply(this, args); }, timeout);
-    };
-  }
-
-  let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
-
-  let searchField = document.querySelector('.container.desktop .search-box .busca input.fulltext-search-box');
-
-  searchField.addEventListener('focus', () => {
-    suggestions.style.visibility = 'visible';
-    suggestions.style.opacity = '1';
-  });
-
-  searchField.addEventListener('blur', () => {
-    suggestions.style.opacity = '0';
-    setTimeout(() => suggestions.style.visibility = 'hidden', 1000);
-  });
-
-  searchField.addEventListener('keydown', (event) => {
-    event = event || window.event;
-    console.log(event.keyCode)
-  });
-
-  autocompleteInit(searchField);
-}
-)();
 
 //MOBILE
 
