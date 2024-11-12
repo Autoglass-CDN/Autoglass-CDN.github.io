@@ -807,6 +807,13 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
     border-bottom-right-radius: 40px;
     border-bottom-left-radius: 40px
 }
+
+@media screen and (max-width: 500px) {
+  .ui-autocomplete {
+      display: none;
+  }
+}
+
 /* 07-04 - Migrando do CDN quatro digital para CDN no git */
 
 /* PC-QUARTO - 04/06/2020 19:17:14 GMT-0300 */

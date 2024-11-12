@@ -9956,6 +9956,12 @@ body.qd-cart-show .components-qd-v1-overlay {
     }
 }
 
+@media screen and (max-width: 500px) {
+  .ui-autocomplete {
+      display: none;
+  }
+}
+
 .ui-autocomplete a {
     transition: all .2s ease-out;
     position: relative;
