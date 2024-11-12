@@ -47,40 +47,5 @@
     }
 
     setTimeout(addBorderZDButton, 5000);
-
-    function buscaLivreLupaInput() {
-      let urlBusca = 'https://dev2autoglass.myvtex.com';
-      let nomeClasse = '';
-      const preTexto = {
-        textoUm: "Pesquise por peça, produto, montadora...",
-        textoDois: "O que você quer encontrar?"
-      }
-
-      if(dispositivoMovel()) nomeClasse = '-mobile';
-
-      try {
-        let botaoBusca = document.querySelector(`.search-box${nomeClasse} .search-icon`);
-        let inputBusca = document.querySelector(`.search-box${nomeClasse} .fulltext-search-box`);
-
-          botaoBusca.onclick = function () {
-            if(inputBusca.value != preTexto.textoUm && inputBusca.value != preTexto.textoDois) {
-              window.location.assign(`${urlBusca}/${inputBusca.value}`)
-            } else {
-              inputBusca.focus();
-            }
-          };
-      } catch (e) {
-        console.log(e.message);
-      }
-    }
-
-    function dispositivoMovel() {
-      const windowWidth = window.innerWidth
-        || document.documentElement.clientWidth
-        || document.body.clientWidth;
-      return windowWidth < 1200;
-    }
-
-    buscaLivreLupaInput()
 })();
 
