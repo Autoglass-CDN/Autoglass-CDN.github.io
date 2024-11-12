@@ -35,7 +35,7 @@ $(document).on('ready', function () {
         headerInitiated = true;
         initHeaderPolicy();
     }
-    if(window.location.href == 'https://hml.autoglassonline.com.br/_secure/account#/'){
+    if(window.location.href == 'https://www.autoglassonline.com.br/_secure/account#/'){
       document.querySelector('.search-box-mobile').style.display = 'none';
     }
 });
