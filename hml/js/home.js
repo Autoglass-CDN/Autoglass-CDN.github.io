@@ -511,55 +511,6 @@ document
 		}, abortCategoryAction);
 	})
 	});
-
-let linksCategoria = document.querySelector('.painel-categorias__categoria-conteudo');
-
-linksCategoria.addEventListener('mouseenter', (event) => {
-	if (abortCategoryAction)
-	abortCategoryAction.abort();
-});
-
-$(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
-	let carrinho = document.querySelector('.desktop .menu-carrinho');
-
-	updateCartItemsCount(carrinho, orderForm);
-});
-
-$(document).ready(function () {
-	if (!document.querySelector('.shelf-qd-v1-buy-button'))
-	return;
-	var batchBuyListener = new Vtex.JSEvents.Listener('batchBuyListener',
-	debounce((event) => cartItemAddedConfirmation(event))
-	);
-	skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
-});
-
-function debounce(func, timeout = 200){
-	let timer;
-	return (...args) => {
-	clearTimeout(timer);
-	timer = setTimeout(() => { func.apply(this, args); }, timeout);
-	};
-}
-
-let suggestions = document.querySelector('.container.desktop .search-box #autocomplete-search');
-
-let searchField = document.querySelector('.container.desktop .search-box .busca input.fulltext-search-box');
-
-searchField.addEventListener('focus', () => {
-	suggestions.style.visibility = 'visible';
-	suggestions.style.opacity = '1';
-});
-
-searchField.addEventListener('blur', () => {
-	suggestions.style.opacity = '0';
-	setTimeout(() => suggestions.style.visibility = 'hidden', 1000);
-});
-
-searchField.addEventListener('keydown', (event) => {
-	event = event || window.event;
-});
-
 }
 )();
 
