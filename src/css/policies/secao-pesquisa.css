@@ -60,13 +60,6 @@
 }
 
 
-.tab-content {
-  padding: 20px;
-  background-color: #ffffff;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-}
-
 .filter-group {
   display: flex;
   justify-content: center;
@@ -129,7 +122,7 @@
 }
 
 @media screen and (max-width: 1550px){
-  .info-box{
+  .caixa-informacao{
     background-color: #FFFAF0;
     padding: 10px;
     border: 1px solid #8A6D3B;
@@ -145,7 +138,7 @@
 }
 
 @media screen and (min-width: 1600px) {
-  .info-box {
+  .caixa-informacao {
     background-color: #FFFAF0;
     padding: 10px;
     border: 1px solid #8A6D3B;

@@ -33,19 +33,19 @@
         }, {passive: true});
     }
 
-    const addBorderZDButton = () => { //ZENDESK -- Remover caso deixe de usar
-        let iframe = document.querySelector('#launcher');
-        zdFrame = document.querySelector('#launcher').contentDocument
+    // const addBorderZDButton = () => { //ZENDESK -- Remover caso deixe de usar
+    //     let iframe = document.querySelector('#launcher');
+    //     zdFrame = document.querySelector('#launcher').contentDocument
 
-        if(!zdFrame) {
-            return;
-        }
+    //     if(!zdFrame) {
+    //         return;
+    //     }
 
-        iframe.style.margin = '5px 20px';
-        zdFrame.querySelector('.u-userLauncherColor').style = 'border: 4px solid #FFF !important';
-    }
+    //     iframe.style.margin = '5px 20px';
+    //     zdFrame.querySelector('.u-userLauncherColor').style = 'border: 4px solid #FFF !important';
+    // }
 
-    setTimeout(addBorderZDButton, 5000);
+    // setTimeout(addBorderZDButton, 5000);
 
     function dispositivoMovel() {
       const windowWidth = window.innerWidth
