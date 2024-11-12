@@ -110,6 +110,9 @@ ul{
     list-style-type: none;
 }
 
+.ui-autocomplete .ui-menu .ui-widget .ui-widget-content .ui-corner-all{
+  display: none !important;
+}
 .menu-icon::before {
   content: url('https://autoglass-cdn.github.io/src/img/menu-icon.png');
   height: 22px;
