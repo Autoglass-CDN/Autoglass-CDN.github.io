@@ -1511,6 +1511,13 @@ body {
   }
 }
 
+@media screen and (max-width: 500px) {
+  .ui-autocomplete {
+      display: none;
+  }
+}
+
+
 .servicos__container__alinhamento .chat__botao:hover {
   background-color: var(--gray-300);
   text-decoration: none;
