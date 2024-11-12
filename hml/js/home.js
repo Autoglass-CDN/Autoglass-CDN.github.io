@@ -519,10 +519,6 @@ linksCategoria.addEventListener('mouseenter', (event) => {
 	abortCategoryAction.abort();
 });
 
-
-fixPlaceholderSearch();
-loadCart(device.desktop);
-
 $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
 	let carrinho = document.querySelector('.desktop .menu-carrinho');
 
@@ -564,7 +560,6 @@ searchField.addEventListener('keydown', (event) => {
 	event = event || window.event;
 });
 
-autocompleteInit(searchField);
 }
 )();
 
