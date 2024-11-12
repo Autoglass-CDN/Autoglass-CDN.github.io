@@ -80,5 +80,5 @@
       return windowWidth < 1200;
     }
 
-    buscaLivreLupaInput()
+    // buscaLivreLupaInput()
 })();
