@@ -194,7 +194,7 @@
     font-weight: 600;
     text-align: center;
     vertical-align: middle;
-    background: #2d4f9e;
+    background: #000000;
     border-radius: 3px;
     line-height: 21px;
 }
@@ -253,7 +253,7 @@
     color: #757575;
     font-size: 12px;
     background-color: #fff;
-    border-color: #2d4f9e;
+    border-color: #000000;
     cursor: pointer;
     border-radius: 3px;
 }
@@ -347,11 +347,11 @@
     margin-left: 10px;
 }
 .search-qd-v1-result .pager.bottom .pgCurrent {
-    background: #2d4f9e !important;
+    background: #000000 !important;
     color: #fff;
 }
 .search-qd-v1-result .pager.bottom .pgCurrent:hover {
-    border: 1px solid #2d4f9e;
+    border: 1px solid #000000;
 }
 .search-qd-v1-result .pager.bottom .pgEmpty {
     opacity: 0.4;
@@ -483,7 +483,7 @@ body.departamento .search-qd-v1-seo-text {
     font-size: 16px;
 }
 .search-qd-v1-seo-text h2 {
-    color: #2d4f9e;
+    color: #000000;
     font-size: 21px;
     font-weight: 700;
 }
@@ -583,7 +583,7 @@ body.departamento .search-qd-v1-seo-text {
   min-height: 25px;
   min-width: 30px;
   padding: 10px 10px 20px 30px;
-  color: #2d4f9e;
+  color: #000000;
   vertical-align: middle;
   border-radius: 0;
   line-height: 21px;
