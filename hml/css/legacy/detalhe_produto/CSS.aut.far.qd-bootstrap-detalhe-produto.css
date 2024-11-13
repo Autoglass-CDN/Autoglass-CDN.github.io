@@ -697,7 +697,7 @@ body {
     line-height: 35px;
     outline: none;
     text-align: center;
-    background-color: #223B76;
+    background-color: #000000;
     border-radius: 50%;
     margin-left: 13px
 }
@@ -1465,7 +1465,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
 
 .carousel-qd-v1-shelf h2 {
     margin-bottom: 25px;
-    color: #2D4F9E;
+    color: #000000;
     font-size: 26px;
     text-align: center;
     font-weight: 800;

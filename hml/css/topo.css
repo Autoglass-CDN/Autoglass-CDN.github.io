@@ -258,7 +258,7 @@ i.arrow-icon::before {
   top: 0;
   display: flex;
   justify-content: center;
-  background-color: var(--primary);
+  background-color: #000000;
 }
 
 .topo * {
@@ -1202,7 +1202,7 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .titulo-categorias {
-  color: #183884;
+  color: #000000;
   margin: 0;
   margin-left: 30px;
   font-family: 'Roboto', sans-serif;
@@ -1724,7 +1724,7 @@ ul.menu-division {
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista>a {
-  color: var(--blue-500);
+  color: #000000;
   font-weight: var(--bold);
   display: block;
   margin-bottom: 25px;
@@ -1753,7 +1753,7 @@ ul.menu-division {
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista .painel-categorias__categoria-itens-lista-menu>li>a:hover{
-  color: var(--blue-500);
+  color: #000000;
   font-weight: var(--bold);
 }
 

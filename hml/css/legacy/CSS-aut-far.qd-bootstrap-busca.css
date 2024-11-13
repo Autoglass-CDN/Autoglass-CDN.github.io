@@ -808,13 +808,13 @@ body {
     line-height: 35px;
     outline: none;
     text-align: center;
-    background-color: #223B76;
+    background-color: #000000;
     border-radius: 50%;
     margin-left: 13px
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks ul>li>a:hover {
-    background-color: #17274e;
+    background-color: #000000;
     transform: translateY(-3px)
 }
 

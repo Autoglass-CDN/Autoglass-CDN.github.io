@@ -96,12 +96,12 @@ html {
   height: 2px;
   margin-top: 13px;
   border-radius: 2px;
-  background: #183884/*var(--primary)*/;
+  background: #000000/*var(--primary)*/;
   transition: width 200ms ease-in-out;
 }
 
 .tab-link.tab--current {
-  color: #183884;
+  color: #000000;
   font-weight: bold;
 }
 
@@ -146,7 +146,7 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
 
 .tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #duvidas.tab-content h2 {
   font-weight: var(--extra-bold);
-  color: var(--blue-700);
+  color: #000000;
   text-align: center;
   font-size: 32px;
   margin: 20px;
@@ -466,7 +466,7 @@ h4.group.Especificacoes {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  color: #183884;
+  color: #000000;
   overflow: hidden;
 }
 
@@ -509,7 +509,7 @@ h4.group.Especificacoes {
 }
 
 #veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div.active {
-  border-bottom: 4px solid #183884;
+  border-bottom: 4px solid #000000;
 }
 
 #veiculos-compativeis .veiculos-compativeis__box-content>div {
@@ -537,7 +537,7 @@ h4.group.Especificacoes {
 }
 
 #veiculos-compativeis .veiculos-compativeis__box-content>div>div>p {
-  color: #183884;
+  color: #000000;
   word-wrap: break-word;
   word-break: keep-all;
   font-weight: bold;
@@ -565,7 +565,7 @@ h4.group.Especificacoes {
   padding: 15px 30px;
   font-size: 14px;
   font-weight: bold;
-  color: #183884;
+  color: #000000;
   cursor: pointer;
   position: relative;
   width: 100%;
@@ -593,7 +593,7 @@ h4.group.Especificacoes {
 
 #duvidas li input[type="checkbox"]:checked+label {
   background-color: #f8f8f8;
-  border-left: 4px solid #183884;
+  border-left: 4px solid #000000;
 }
 
 #duvidas li input[type="checkbox"]:checked+label::after {
