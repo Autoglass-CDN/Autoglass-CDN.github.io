@@ -54,7 +54,7 @@
     padding: 10px 20px;
     cursor: pointer;
     font-weight: bold;
-    color: #0b4583;
+    color: #000000;
     text-align: center;
   }
 }
@@ -75,7 +75,7 @@
   min-width: 175px;
   background-color: #E7EAF4;
   font-size: 14px;
-  color: #0b4583;
+  color: #000000;
 }
 
 .filter-select:focus {
@@ -96,15 +96,15 @@
 }
 
 .btn-search {
-  background-color: #0b4583;
+  background-color: #000000;
   color: white;
   border: none;
 }
 
 .btn-clear {
   background-color: transparent;
-  color: #0b4583;
-  border: 1px solid #0b4583;
+  color: #000000;
+  border: 1px solid #000000;
 }
 
 .filter-group .btn-search, .btn-clear {
