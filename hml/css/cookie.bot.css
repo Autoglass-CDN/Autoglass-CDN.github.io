@@ -78,7 +78,7 @@
 
 #cookiebanner .c-header {
     text-transform: uppercase;
-    color: #1a3779;
+    color: #000000;
     font-weight: bold;
     margin-bottom: 4px;
 }
@@ -105,7 +105,7 @@
 
 #cookiebanner #aceitar-cookies-checkbox {
   background-color: #fff;
-  border: 2px solid #183884;
+  border: 2px solid #000000;
   width: 18px;
   height: 18px;
   margin-right: 7px;
@@ -131,7 +131,7 @@
 }
 
 #cookiebanner #aceitar-cookies-checkbox:checked {
-  background-color: #183884;
+  background-color: #000000;
 }
 
 #cookiebanner #aceitar-cookies-checkbox:checked::before {
@@ -141,7 +141,7 @@
 #cookiebanner label#aceitar-cookies-label{
   display: contents;
   font-weight: 600;
-  color: #183884;
+  color: #000000;
   cursor: pointer;
 }
 
