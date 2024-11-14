@@ -147,14 +147,13 @@ ul{
 }
 
 .search-icon::before {
-  color: #000000sss;
   content: url('https://autoglass-cdn.github.io/src/img/search.svg');
   height: 20px;
 }
 
 .veiculos-compativeis-search__search-input .search-icon::before {
   content: "\f11c";
-  color: #F1F1F1;
+  color: #000000;
   font-family: "FontAwesome";
   font-style: normal;
   font-size: 22px;
@@ -555,6 +554,10 @@ i.arrow-icon::before {
 
 .search-box-mobile .busca {
   width: 100%;
+}
+
+.search-box-mobile .fa-search::before {
+  color:#000000;
 }
 
 .search-box-mobile .busca input {
