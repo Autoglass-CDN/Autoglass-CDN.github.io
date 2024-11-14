@@ -224,7 +224,7 @@ a[data-toggle=collapse]:hover  {
 }
 
 a[data-toggle=collapse]:not(.collapsed) h3 {
-  color: #183884;
+  color: #000000;
 }
 
 a[data-toggle=collapse]::after {

@@ -160,7 +160,7 @@
   color: #000000;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
-  background-color: #E7EAF4;
+  background-color: #F1F1F1;
   border-bottom: 2px solid #000000;
   height: 40px;
 }
@@ -173,7 +173,7 @@
 
 @media screen and (min-width: 600px) {
   .c-busca__tab-content .smart-select__main-results {
-    background: #E7EAF4;
+    background: #F1F1F1;
     position: absolute;
     padding: 0;
     border-radius: 4px;
@@ -376,7 +376,7 @@
   .c-busca__tab-content .smart-select__main-results ul li {
     font-size: 14px;
     padding: 10px 15px;
-    color: #707070;
+    color: #000000;
     cursor: pointer;
     width: inherit;
   }
@@ -763,7 +763,7 @@
 }
 
 #placa-input::placeholder{
-  color: #0b4583;
+  color: #000000;
   padding: 10px 0px 10px -10px;
 }
 
