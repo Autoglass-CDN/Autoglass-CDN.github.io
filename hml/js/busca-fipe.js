@@ -143,7 +143,7 @@
         grandchildenCategories.push(...y.children);
       });
 
-    _initBuscaPlaca(childrenCategories);
+    _initBuscaPlaca(grandchildenCategories);
     await _initBuscaPeca(grandchildenCategories);
   }
 
@@ -1277,7 +1277,7 @@
     const isHistoryValid = searchHistory && searchHistory.type == '#busca-placa';
 
     if (search && search.includes('?PS=24&map=')) {
-      if(search.includes('c,c,')) {
+      if(search.includes('c,c,c,')) {
         const arrayPaths = decodeURI(pathname)
           .split("/")
           .filter((x) => x);
@@ -1321,7 +1321,7 @@
         .split("/")
         .filter((x) => x);
 
-      let params = query.includes('c,c,') ? paths.slice(2, paths.length) : paths;
+      let params = query.includes('c,c,c,') ? paths.slice(2, paths.length) : paths;
 
       if(params.length === 3)
         params.splice(1, 1);
@@ -1457,7 +1457,7 @@
 
       if(select.routeSelected.length) {
         url += select.routeSelected;
-        parametrosUrl += `c,c,`;
+        parametrosUrl += `c,c,c,`;
       }
 
 
@@ -1493,6 +1493,7 @@
       saveSearchInLocalStorage(placaSemCaracteresEspeciais, url);
 
       location.href = url;
+
     } catch (error) {
       if (error instanceof VehicleNotFoundException) {
         alert(
