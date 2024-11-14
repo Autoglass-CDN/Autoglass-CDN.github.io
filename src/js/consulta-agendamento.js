@@ -377,6 +377,7 @@ $(function () {
           const cep = $(this).attr("data-cep");
           const lojaBeauty = $(this).attr("data-friendly-name");
           const horario = $(this).html();
+          const orderFormId = vtexjs.checkout.orderForm.orderFormId;
           const date = $(".secao-agendamento .data input")
             .datepicker("getDate")
             .toISOString()
@@ -386,18 +387,28 @@ $(function () {
             .toLocaleDateString();
           // .split("T")[0];
 
-          localStorage.setItem(
-            "AG_SelectedHour",
-            JSON.stringify({
-              loja,
-              lojaBeauty,
-              horario,
-              date,
-              _createAt: Date.now(),
-              enderecoLoja,
-              cidadeLoja,
-            })
-          );
+          const agendamentoData = {
+            loja: loja,
+            lojaBeauty: lojaBeauty,
+            horario: horario,
+            date: date,
+            cepLoja: cep,
+            orderFormId: orderFormId,
+            _createAt: Date.now(),
+            enderecoLoja: enderecoLoja,
+            cidadeLoja: cidadeLoja
+          };
+          
+          localStorage.setItem("AG_SelectedHour", JSON.stringify(agendamentoData));
+          
+          fetch(`${baseUrlApiAgenda}/lojas`, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify(agendamentoData)
+          })
+          .catch(error => console.error("Erro ao enviar agendamento:", error));
 
           $(".pickup-install .time .time-list button").removeClass("selected");
           $(e.srcElement).addClass("selected");
