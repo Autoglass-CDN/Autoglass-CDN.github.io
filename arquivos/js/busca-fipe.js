@@ -143,7 +143,7 @@
         grandchildenCategories.push(...y.children);
       });
 
-    _initBuscaPlaca(childrenCategories);
+    _initBuscaPlaca(grandchildenCategories);
     await _initBuscaPeca(grandchildenCategories);
   }
 
