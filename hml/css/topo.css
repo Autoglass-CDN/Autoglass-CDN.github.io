@@ -143,17 +143,18 @@ ul{
 }
 
 .search-icon{
-  color: #0b4583;
+  color: #000000;
 }
 
 .search-icon::before {
+  color: #000000sss;
   content: url('https://autoglass-cdn.github.io/src/img/search.svg');
   height: 20px;
 }
 
 .veiculos-compativeis-search__search-input .search-icon::before {
   content: "\f11c";
-  color: #a8a8a8;
+  color: #F1F1F1;
   font-family: "FontAwesome";
   font-style: normal;
   font-size: 22px;
@@ -165,7 +166,7 @@ ul{
 }
 
 .cart-icon::before {
-  content: url('https://autoglass-cdn.github.io/src/img/cart-arrow-down.svg');
+  content: url('https://autoglass-cdn.github.io/hml/img/carrinhopreto-blackfriday.svg');
   height: 20px;
   transition: 0.5s;
 }
@@ -419,7 +420,7 @@ i.arrow-icon::before {
   text-transform: uppercase;
   font-size: 1.1667rem;
   /*14pt*/
-  color: var(--blue-700);
+  color: #000000;
   background: transparent;
   border: 0;
 }
@@ -487,10 +488,10 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   padding: 6px 16px;
-  background-color: #f1f4f9;
-  border: 2px solid #425db4;
+  background-color: #F1F1F1;
+  border: 2px solid #000000;
   border-radius: 20px;
-  color: #425db4;
+  color: #000000;
   font-size: 14px;
   cursor: pointer;
   width: 33%;
@@ -503,10 +504,10 @@ i.arrow-icon::before {
     display: flex;
     align-items: center;
     padding: 6px 16px;
-    background-color: #f1f4f9;
-    border: 2px solid #425db4;
+    background-color: #F1F1F1;
+    border: 2px solid #000000;
     border-radius: 20px;
-    color: #425db4;
+    color: #000000;
     font-size: 14px;
     cursor: pointer;
     width: 37%;
@@ -534,7 +535,7 @@ i.arrow-icon::before {
     z-index: 7;
     transition: height 0.5s ease-in-out;
     align-items: baseline;
-    background-color: #f1f4f9;
+    background-color: #F1F1F1;
   }
 }
 
@@ -542,7 +543,7 @@ i.arrow-icon::before {
   width: 60%;
   padding: 10px 0 10px 20px;
   position: relative;
-  background-color: #f1f4f9;
+  background-color: #F1F1F1;
   margin-left: 10px;
 }
 
@@ -559,12 +560,12 @@ i.arrow-icon::before {
 .search-box-mobile .busca input {
   outline: none;
   width: 75%;
-  color: #425db4;
+  color: #000000;
   transition: border 500ms;
   padding: 10px;
   border-radius: 5px;
   border: 0px solid var(--gray-500);
-  background-color: #f1f4f9;
+  background-color: #F1F1F1;
 }
 
 .search-box-mobile__form-input {
@@ -583,8 +584,8 @@ i.arrow-icon::before {
   border: 1px solid var(--gray-500);
   border-radius: 0px 0px 5px 5px;
   z-index: 1;
-  background-color: #f1f4f9;
-  color: #0b4583;
+  background-color: #F1F1F1;
+  color: #000000;
 }
 
 .search-mobile-autocomplete li {
@@ -952,7 +953,7 @@ i.arrow-icon::before {
 
   .side-menu a.destaque {
     font-weight: bold;
-    color: #183884;
+    color: #000000;
     padding: 25px 8px 25px 15px;
     display: flex;
   }
@@ -1058,7 +1059,7 @@ i.arrow-icon::before {
 }
 
 .side-menu #busca-categoria-mobile h2 {
-  color: #183884;
+  color: #000000;
 }
 
 .side-menu-header>a {

@@ -193,7 +193,7 @@
   }
 
   .smart-select__main-results i {
-    color: #0b4583;
+    color: #000000;
     font-size: smaller;
     padding-top: 2%;
   }
@@ -402,7 +402,7 @@
     padding-right: 0px;
     font-size: 15px;
     border: none;
-    border-bottom: 2px solid #7A91B7;
+    border-bottom: 2px solid #000000;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
@@ -516,7 +516,7 @@
 
 .c-busca .smart-select__modal.loader-modal--show .smart-select__modal__spinner {
   animation: spinner 2s linear infinite;
-  color: #0b4583;
+  color: #000000;
 }
 
 @keyframes spinner {
@@ -619,7 +619,7 @@
     padding-right: 0px;
     font-size: 15px;
     border: none;
-    border-bottom: 2px solid #7A91B7;
+    border-bottom: 2px solid #000000;
     text-align: left;
     margin-left: 6%;
     margin-top: 23px;
@@ -634,20 +634,20 @@
 
   .c-busca__input i {
     margin-left: -20px;
-    color: #0b4583;;
+    color: #000000;
   }
 
   #categoria-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
 
   #categoria-input-mobile:focus{
     outline: none;
-    border-bottom: 2px solid #7A91B7;
+    border-bottom: 2px solid #000000;
   }
 
   #peca-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
 
   #peca-input-mobile:focus{
@@ -656,7 +656,7 @@
   }
 
   #montadora-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
 
   #montadora-input-mobile:focus{
@@ -665,7 +665,7 @@
   }
 
   #veiculo-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
 
   #veiculo-input-mobile:focus{
@@ -674,7 +674,7 @@
   }
 
   #ano-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
 
   #ano-input-mobile:focus{
@@ -683,7 +683,7 @@
   }
 
   #versao-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
 
   #versao-input-mobile:focus{
@@ -749,7 +749,7 @@
   }
 
   #placa-input-mobile:placeholder{
-    color: #0b4583;
+    color: #000000;
     padding: 10px 0px 10px -10px;
   }
 
@@ -757,7 +757,7 @@
     outline: none;
     box-shadow: none;
     border: none;
-    border-bottom: 2px solid #0b4583;
+    border-bottom: 2px solid #000000;
   }
 
 }
@@ -827,7 +827,7 @@
 #toggleButton {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -852,7 +852,7 @@
 #toggleButton2 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -878,7 +878,7 @@
 #toggleButton3 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -904,7 +904,7 @@
 #toggleButton4 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -930,7 +930,7 @@
 #toggleButton5 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -956,7 +956,7 @@
 #toggleButton6 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
