@@ -67,7 +67,7 @@
         aceitarCookiesCheckbox.change(function () {
           let isChecked = this.checked;
           aceitarCookieLink.toggleClass('c-button-disabled', !isChecked);
-          aceitarCookieLink.css('background-color', isChecked ? '#183884' : '#999');
+          aceitarCookieLink.css('background-color', isChecked ? '#000000' : '#999');
           aceitarCookieLink.css('cursor', isChecked ? 'pointer' : 'not-allowed');
         });
 
