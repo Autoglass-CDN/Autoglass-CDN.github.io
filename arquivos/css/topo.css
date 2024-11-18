@@ -1990,3 +1990,7 @@ body div#ajaxBusy {
 .beon-slider .tns-nav button[data-nav].tns-nav-active{
   background-color: #000000 !important;
 }
+
+#konfidency-storeReview-carousel .name {
+  color: #000000 !important;
+}
