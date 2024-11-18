@@ -1599,7 +1599,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     color: #FFF;
     font-size: 12px;
     text-decoration: none;
-    background-color: #2D4F9E;
+    background-color: #000000;
     font-weight: 600;
     position: relative;
     line-height: 9px;
@@ -1608,7 +1608,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     height: 23px;
     width: fit-content;
     border-radius: 23px;
-    background: #2D4F9E;
+    background: #000000;
     margin: 0;
     margin-bottom: 5px
 }
