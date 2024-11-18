@@ -157,7 +157,7 @@ ul{
 }
 
 .cart-icon::before {
-  content: url('https://autoglass-cdn.github.io/arquivos/img/cart-arrow-down.svg');
+  content: url('https://autoglass-cdn.github.io/arquivos/img/carrinhopreto-blackfriday.svg');
   height: 20px;
   transition: 0.5s;
 }
@@ -250,7 +250,7 @@ i.arrow-icon::before {
   top: 0;
   display: flex;
   justify-content: center;
-  background-color: var(--primary);
+  background-color: #000000;
 }
 
 .topo * {
@@ -411,7 +411,7 @@ i.arrow-icon::before {
   text-transform: uppercase;
   font-size: 1.1667rem;
   /*14pt*/
-  color: var(--blue-700);
+  color: #000000;
   background: transparent;
   border: 0;
 }
@@ -479,10 +479,10 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   padding: 6px 16px;
-  background-color: #f1f4f9;
-  border: 2px solid #425db4;
+  background-color: #F1F1F1;
+  border: 2px solid #000000;
   border-radius: 20px;
-  color: #425db4;
+  color: #000000;
   font-size: 14px;
   cursor: pointer;
   width: 33%;
@@ -494,10 +494,10 @@ i.arrow-icon::before {
     display: flex;
     align-items: center;
     padding: 6px 16px;
-    background-color: #f1f4f9;
-    border: 2px solid #425db4;
+    background-color: #F1F1F1;
+    border: 2px solid #000000;
     border-radius: 20px;
-    color: #425db4;
+    color: #000000;
     font-size: 14px;
     cursor: pointer;
     width: 37%;
@@ -523,7 +523,7 @@ i.arrow-icon::before {
     z-index: 7;
     transition: height 0.5s ease-in-out;
     align-items: baseline;
-    background-color: #f1f4f9;
+    background-color: #F1F1F1;
   }
 }
 
@@ -531,7 +531,7 @@ i.arrow-icon::before {
   width: 60%;
   padding: 10px 0 10px 20px;
   position: relative;
-  background-color: #f1f4f9;
+  background-color: #F1F1F1;
   margin-left: 10px;
 }
 
@@ -548,12 +548,12 @@ i.arrow-icon::before {
 .search-box-mobile .busca input {
   outline: none;
   width: 75%;
-  color: #425db4;
+  color: #000000;
   transition: border 500ms;
   padding: 10px;
   border-radius: 5px;
   border: 0px solid var(--gray-500);
-  background-color: #f1f4f9;
+  background-color: #F1F1F1;
 }
 
 .search-box-mobile__form-input {
@@ -572,8 +572,8 @@ i.arrow-icon::before {
   border: 1px solid var(--gray-500);
   border-radius: 0px 0px 5px 5px;
   z-index: 1;
-  background-color: #f1f4f9;
-  color: #0b4583;
+  background-color: #F1F1F1;
+  color: #000000;
 }
 
 .search-mobile-autocomplete li {
@@ -937,7 +937,7 @@ i.arrow-icon::before {
   }
   .side-menu a.destaque {
     font-weight: bold;
-    color: #183884;
+    color: #000000;
     padding: 25px 8px 25px 15px;
     display: flex;
   }
@@ -1052,7 +1052,7 @@ i.arrow-icon::before {
 }
 
 .side-menu #busca-categoria-mobile h2 {
-  color: #183884;
+  color: #000000;
 }
 
 .side-menu-header>a {
@@ -1200,7 +1200,7 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .titulo-categorias {
-  color: #183884;
+  color: #000000;
   margin: 0;
   margin-left: 30px;
   font-family: 'Roboto', sans-serif;
@@ -1717,7 +1717,7 @@ ul.menu-division {
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista>a {
-  color: var(--blue-500);
+  color: #000000;
   font-weight: var(--bold);
   display: block;
   margin-bottom: 25px;
@@ -1746,7 +1746,7 @@ ul.menu-division {
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista .painel-categorias__categoria-itens-lista-menu>li>a:hover{
-  color: var(--blue-500);
+  color: #000000;
   font-weight: var(--bold);
 }
 

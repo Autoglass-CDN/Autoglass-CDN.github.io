@@ -808,13 +808,13 @@ body {
     line-height: 35px;
     outline: none;
     text-align: center;
-    background-color: #223B76;
+    background-color: #000000;
     border-radius: 50%;
     margin-left: 13px
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks ul>li>a:hover {
-    background-color: #17274e;
+    background-color: #000000;
     transform: translateY(-3px)
 }
 
@@ -972,7 +972,7 @@ body {
     padding-left: 20px;
     text-decoration: none;
     color: #FFF;
-    background-color: #2D4F9E
+    background-color: #000000
 }
 
 .footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-dropdown>li a {
@@ -1599,7 +1599,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     color: #FFF;
     font-size: 12px;
     text-decoration: none;
-    background-color: #2D4F9E;
+    background-color: #000000;
     font-weight: 600;
     position: relative;
     line-height: 9px;
@@ -1608,7 +1608,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     height: 23px;
     width: fit-content;
     border-radius: 23px;
-    background: #2D4F9E;
+    background: #000000;
     margin: 0;
     margin-bottom: 5px
 }
