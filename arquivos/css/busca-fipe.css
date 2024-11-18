@@ -134,21 +134,21 @@
   align-items: center;
   background-color: white;
   font-size: 14px;
-  color: #1c3162;
+  color: #000000;
   cursor: pointer;
   transition: color 0.2s ease-in-out;
-  background-color: #E7EAF4;
-  border-bottom: 2px solid #1c3162;
+  background-color: #F1F1F1;
+  border-bottom: 2px solid #000000;
   height: 40px;
 }
 .c-busca .c-busca__select div > div:first-child:hover,
 .c-busca .c-busca__select div > div:focus {
-  color: #1c3162;
+  color: #000000;
   font-weight:600;
 }
 @media screen and (min-width: 600px) {
   .c-busca__tab-content .smart-select__main-results {
-    background: #E7EAF4;
+    background: #F1F1F1;
     position: absolute;
     padding: 0;
     border-radius: 4px;
@@ -166,7 +166,7 @@
     overflow-y: auto !important;
   }
   .smart-select__main-results i {
-    color: #0b4583;
+    color: #000000;
     font-size: smaller;
     padding-top: 2%;
   }
@@ -282,7 +282,7 @@
   }
   .btn-fechar-categoria{
     background-color: transparent;
-    color: #0b4583;
+    color: #000000;
     border: transparent;
     padding-left: 96%;
     font-size: 15px;
@@ -301,7 +301,7 @@
   }
   .btn-fechar-categoria{
     background-color: transparent;
-    color: #0b4583;
+    color: #000000;
     border: transparent;
     padding-left: 94%;
     font-size: 15px;
@@ -328,12 +328,12 @@
   .c-busca__tab-content .smart-select__main-results ul li {
     font-size: 14px;
     padding: 10px 15px;
-    color: #707070;
+    color: #000000;
     cursor: pointer;
     width: inherit;
   }
   .c-busca__tab-content .smart-select__main-results ul li.highlight {
-    background-color: #234eb9;
+    background-color: #000000;
     color: white;
   }
 }
@@ -350,7 +350,7 @@
     padding-right: 0px;
     font-size: 15px;
     border: none;
-    border-bottom: 2px solid #7A91B7;
+    border-bottom: 2px solid #000000;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
@@ -454,7 +454,7 @@
 }
 .c-busca .smart-select__modal.loader-modal--show .smart-select__modal__spinner {
   animation: spinner 2s linear infinite;
-  color: #0b4583;
+  color: #000000;
 }
 @keyframes spinner {
   0% {transform: rotate(0deg)}
@@ -491,7 +491,7 @@
   .c-busca .c-busca__botao {
     font-size:14px;
     color: #FFF;
-      font-weight: 600;
+    font-weight: 600;
     min-width: 150px;
     width: 150px;
   }
@@ -509,7 +509,7 @@
   .c-busca .c-busca__botao {
     font-size:14px;
     color: #FFF;
-      font-weight: 600;
+    font-weight: 600;
     min-width: 150px;
     width: 150px;
   }
@@ -522,7 +522,7 @@
     font-size: 14px;
     margin-right: 10px;
     border: none;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 2px solid #000000;
     border-radius: 0;
     transition: border-bottom 0.3s ease;
     text-align: center;
@@ -540,7 +540,7 @@
     padding-right: 0px;
     font-size: 15px;
     border: none;
-    border-bottom: 2px solid #7A91B7;
+    border-bottom: 2px solid #000000;
     text-align: left;
     margin-left: 6%;
     margin-top: 23px;
@@ -553,45 +553,45 @@
   }
   .c-busca__input i {
     margin-left: -20px;
-    color: #0b4583;;
+    color: #000000;;
   }
   #categoria-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
   #categoria-input-mobile:focus{
     outline: none;
-    border-bottom: 2px solid #7A91B7;
+    border-bottom: 2px solid #000000;
   }
   #peca-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
   #peca-input-mobile:focus{
     outline: none;
     border-bottom: 2px solid #7A91B7;
   }
   #montadora-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
   #montadora-input-mobile:focus{
     outline: none;
     border-bottom: 2px solid #7A91B7;
   }
   #veiculo-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
   #veiculo-input-mobile:focus{
     outline: none;
     border-bottom: 2px solid #7A91B7;
   }
   #ano-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
   #ano-input-mobile:focus{
     outline: none;
     border-bottom: 2px solid #7A91B7;
   }
   #versao-input-mobile::placeholder{
-    color: #0b4583;
+    color: #000000;
   }
   #versao-input-mobile:focus{
     outline: none;
@@ -647,18 +647,18 @@
     align-items: center;
   }
   #placa-input-mobile:placeholder{
-    color: #0b4583;
+    color: #000000;
     padding: 10px 0px 10px -10px;
   }
   #placa-input-mobile:focus{
     outline: none;
     box-shadow: none;
     border: none;
-    border-bottom: 2px solid #0b4583;
+    border-bottom: 2px solid #000000;
   }
 }
 #placa-input::placeholder{
-  color: #0b4583;
+  color: #000000;
   padding: 10px 0px 10px -10px;
 }
 #placa-input:focus{
@@ -680,14 +680,14 @@
   gap: 10px;
 }
 .c-busca__botao .btn-search {
-  background-color: #0b4583;
+  background-color: #000000;
   color: white;
   border: none;
 }
 .c-busca__botao .btn-clear {
   background-color: transparent;
-  color: #0b4583;
-  border: 1px solid #0b4583;
+  color: #000000;
+  border: 1px solid #000000;
 }
 #btn-busca-placa-buscar{
   border-radius: 40px;
@@ -697,11 +697,11 @@
 }
 #btn-busca-peca-limpar{
   border-radius: 40px;
-  border: 2px solid #0b4583;
+  border: 2px solid #000000;
 }
 #btn-busca-placa-limpar{
   border-radius: 40px;
-  border: 2px solid #0b4583;
+  border: 2px solid #000000;
 }
 .botao-fechar{
   display: flex;
@@ -710,7 +710,7 @@
 #toggleButton {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -731,7 +731,7 @@
 #toggleButton2 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -753,7 +753,7 @@
 #toggleButton3 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -775,7 +775,7 @@
 #toggleButton4 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -797,7 +797,7 @@
 #toggleButton5 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -819,7 +819,7 @@
 #toggleButton6 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: #000000;
   cursor: pointer;
   font-size: 16px;
   display: flex;

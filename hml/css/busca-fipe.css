@@ -742,7 +742,7 @@
 
   .busca-options li{
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 500;
     display: flex;
     cursor: pointer;
     align-items: center;
