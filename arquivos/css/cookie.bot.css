@@ -79,8 +79,13 @@
     color: #999;
 }
 #cookiebanner a:hover {
-    color: #1a3779;
+    color: #000000;
 }
+
+#cookiebanner #aceitar-cookies-checkbox:checked {
+    background-color: #000000;
+  }
+
 #cookiebanner a.c-button {
     border-radius: 4px;
     background-color: #000000;
@@ -101,5 +106,5 @@
 }
 #cookiebanner a.c-button:hover {
     box-shadow: none;
-    background-color: #1a3779;
+    background-color: #000000;
 }

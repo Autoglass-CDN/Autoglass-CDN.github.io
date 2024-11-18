@@ -189,19 +189,19 @@
 .lista-opcionais::before {
   content: "\f00c";
   font-family: fontAwesome;
-  color: #2d4f9e;
+  color: #000000;
   padding-right: 5px;
 }
 
 .mais-especificacoes {
-  color: #2d4f9e;
+  color: #000000;
   font-weight: bold;
 }
 
 .mais-especificacoes::after {
   content: "\f107";
   font-family: fontAwesome;
-  color: #2d4f9e;
+  color: #000000;
   padding-left: 5px;
 }
 
@@ -1821,7 +1821,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
 .product-qd-v1-shipping
     .product-qd-v1-shipping-freight-result
     .freight-zip-box {
-    border: #2d4f9e solid;
+    border: #000000 solid;
     border-width: 1px;
     transition: all 0.2s ease-out;
     width: 100%;
@@ -1867,7 +1867,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
     outline: none;
     text-align: center;
     text-transform: uppercase;
-    background-color: #2d4f9e;
+    background-color: #000000;
     border: none;
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;

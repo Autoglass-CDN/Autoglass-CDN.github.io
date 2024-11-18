@@ -1974,3 +1974,19 @@ body div#ajaxBusy {
 .search-options .search-options-input{
   padding-left: 10%;
 }
+
+.beon-showcase--carousel .beon-showcase__head .beon-showcase__title  {
+  color: #000000;
+}
+
+#konfidency-questions-container .details .no-questions button  {
+  color: #000000  !important;
+}
+#konfidency-reviews-container .content .details .reviews .fetch-button button  {
+  border: 1px solid #000000  !important;
+  color: #000000 !important;
+}
+
+.beon-slider .tns-nav button[data-nav].tns-nav-active{
+  background-color: #000000 !important;
+}

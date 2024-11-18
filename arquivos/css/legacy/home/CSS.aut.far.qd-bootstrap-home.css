@@ -415,7 +415,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
     line-height: 35px;
     outline: none;
     text-align: center;
-    background-color: #223B76;
+    background-color: #000000;
     border-radius: 50%;
     margin-left: 13px
 }
@@ -958,7 +958,7 @@ a:focus {
     padding-left: 20px;
     text-decoration: none;
     color: #FFF;
-    background-color: #2D4F9E
+    background-color: #000000
 }
 
 @media (max-width: 767px) {
