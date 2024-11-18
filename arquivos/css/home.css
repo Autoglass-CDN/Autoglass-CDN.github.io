@@ -38,7 +38,7 @@
   font-size: 32px;
   font-weight: var(--extra-bold);
   font-family: 'Open Sans', sans-serif;
-  color: var(--primary);
+  color: #000000;
   text-align: center;
   text-transform: uppercase;
 }
@@ -159,7 +159,7 @@
 }
 
 .banners-section .banners-bars li.active {
-  background-color: var(--primary);
+  background-color: #000000;
 }
 
 @media (min-width: 1920px) {
@@ -406,7 +406,7 @@
 
 .ratings-section .ratings__rating .ratings__rating-content h3 {
   font-family: 'Open Sans', sans-serif;
-  color: var(--primary);
+  color: #000000;
   font-size: 16px;
   font-weight: var(--bold);
   margin: 16px 0;
@@ -454,7 +454,7 @@
 }
 
 .ratings-section .rating-bars li.active {
-  background-color: var(--primary);
+  background-color: #000000;
 }
 
 @media (max-width: 1050px) {
@@ -542,7 +542,7 @@
 }
 
 .whys-section .why__content-title {
-  color: var(--primary);
+  color: #000000;
   font-size: 24px;
   font-weight: var(--bold);
   text-align: center;
@@ -556,14 +556,14 @@
 }
 
 .whys-section .why__content-link {
-  color: var(--primary);
+  color: #000000;
   font-size: 16px;
   font-weight: var(--semi-bold);
   text-decoration: underline;
 }
 
 .whys-section .whys__link {
-  background-color: var(--primary);
+  background-color: #000000;
   color: var(--white);
   border-radius: 4px;
   padding: 12px;
@@ -596,7 +596,7 @@
 /* #region Chat */
 
 .chat-section {
-  background-color: #333697;
+  background-color: #000000;
 }
 
 .chat-section .chat__content {
@@ -619,7 +619,7 @@
 
 .chat-section .chat__content-link {
   background-color: var(--white);
-  color: var(--primary);
+  color: #000000;
   font-size: 16px;
   font-weight: var(--bold);
   border-radius: 40px;
