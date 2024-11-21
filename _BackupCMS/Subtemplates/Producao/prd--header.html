@@ -7,6 +7,25 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
 
 <script async="" src="https://autoglass-cdn.github.io/arquivos/js/policies/header.js"></script>
+
+<script>
+    // Identificar a URL atual ou gerar a partir do href do link
+    const currentUrl = window.location.href;
+
+    // Remover barra final da URL, se existir
+    const canonicalUrl = currentUrl.endsWith('/')
+        ? currentUrl.slice(0, -1)
+        : currentUrl;
+
+    // Criar a tag <link rel="canonical">
+    const canonicalLink = document.createElement('link');
+    canonicalLink.rel = 'canonical';
+    canonicalLink.href = canonicalUrl;
+
+    // Adicionar a tag no <head>
+    document.head.appendChild(canonicalLink);
+</script>
+
 <div class="topo">
     <div class="container">
         <div class="geo-picker">
@@ -27,7 +46,7 @@
             <span id="login"><b>Entrar ou Cadastrar</b> <i class="arrow-down-icon-white"></i></span>
             <div style="display:none">
                 <vtex.cmc:welcomeMessage />
-            </div>
+            </:div>
         </div>
     </div>
 </div>

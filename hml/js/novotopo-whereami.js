@@ -106,7 +106,7 @@ $(document).ready(function () {
 
                         // window.location.href = "https://cbykautoglass.myvtex.com/?sc=2"
                         console.log("localização ainda nao mapeada")
-                        // window.location.href = "https://www.autoglassonline.com.br/"
+                        // window.location.href = "https://www.autoglassonline.com.br"
                         window.location.href = `https://novotopo.myvtex.com${window.location.pathname}`
 
                 }
