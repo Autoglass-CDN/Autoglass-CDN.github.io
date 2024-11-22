@@ -290,7 +290,7 @@ $(window).on("load", async () => {
     if(texto.trim().match(regexPlaca)) {
 
       sugestoesContainer.html(`
-        <div class="spinner">Carregando...</div>
+        <div class="spinner-compatibilidade"></div>
       `);
       const {
         modelo,
@@ -632,16 +632,6 @@ async function buscaPorPlaca(placaString) {
     modelo = veiculo.Body.Data.Modelo;
     anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
     fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].FipeId;
-
-    var infoBuscaPLaca = JSON.parse(localStorage.getItem('infoBuscaPLaca')) || [];
-    infoBuscaPLaca = [{
-      montadora: montadora,
-      modelo: modelo,
-      anoModelo: anoModelo,
-      fipe: fipe,
-      timestamp: new Date().toLocaleString()
-    }];
-    localStorage.setItem('infoBuscaPLaca', JSON.stringify(infoBuscaPLaca));
 
     return { montadora, modelo, anoModelo, fipe };
   }
