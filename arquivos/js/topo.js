@@ -600,6 +600,7 @@ inputBusca.addEventListener('keydown', function(event) {
     if (abortCategoryAction)
     abortCategoryAction.abort();
   });
+  checkLogin();
   fixPlaceholderSearch();
   loadCart(device.desktop);
   $(window).on('orderFormUpdated.vtex', function (evt, orderForm) {
