@@ -628,12 +628,9 @@ article section.tab-content {
 }
 
 #modalCompra {
-  width: 900px;
+  width: 20%;
   max-width: 95%;
-  height: auto;
-  max-height: 95%;
-  min-height: 450px;
-  max-height: 100%;
+  height: 100%;
   position: fixed;
   background: #FFF;
   border-radius: 10px;
@@ -642,34 +639,26 @@ article section.tab-content {
   justify-content: center;
   align-items: center;
   align-content: center;
-
-}
-
-.containerTituloInstalacao {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  right: 1%;
 }
 
 .tituloInstalacao {
-  align-items: center;
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
 }
 
 .containerTituloInstalacao .tituloInstalacao > h1 {
-  color: #183884;
-  font-weight: 800;
+  color: black;
+  font-weight: 600;
   display: flex;
   justify-content: center;
-  font-size: 35px;
+  font-size: 16px;
 }
 
 #modalCompra .exit-button {
-  position: absolute;
-  top: 2%;
-  right: 1%;
-  font-size: 30px;
+  font-size: 29px;
   font-weight: bolder;
   width: 25px;
   height: auto;
@@ -678,12 +667,11 @@ article section.tab-content {
   justify-content: center;
   cursor: pointer;
   color: #aeaeae;
+  margin-left: 5%;
 }
 
 #containers {
-    display: flex;
-    justify-content: center;
-    height: auto;
+  display: block;
 }
 
 #mobileBlocoUm {
@@ -695,6 +683,7 @@ article section.tab-content {
   justify-items: center;
   align-content: space-evenly;
   align-items: center;
+  height: 230px;
 }
 
 #beneficios.containersModalCompra {
@@ -750,10 +739,9 @@ fieldset#beneficios legend {
   border: 1px solid #234EB9;
   border-radius: 20px;
   width: 22%;
-  grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
   min-height: 250px;
   min-width: 200px;
-  margin-left: 30px;
+  margin-left: 20px;
 }
 
 #container-compraComInstalacao {
@@ -793,6 +781,7 @@ fieldset#beneficios legend {
 
 #container-compraSemInstalacao {
   color: #aeaeae;
+  width: 90%;
 }
 
 #mobileBlocoDois {
@@ -810,35 +799,55 @@ fieldset#beneficios legend {
   max-width: 150px;
 }
 
-.inputLabelSemInstalacao, .inputLabelComInstalacao {
+.inputLabelSemInstalacao {
   display: flex;
+  margin-left: -50%;
+  margin-top: 1%;
 }
 
 .inputLabelComInstalacao {
-  margin-top: 15px;
+  display: flex;
+  margin-left: -2%;
+  margin-top: 1%;
 }
 
-#inputComInstalacao, #inputSemInstalacao {
+#inputComInstalacao {
+  height: 20px;
+    width: 20px;
+    cursor: pointer;
+    margin-left: 140px;
+}
+
+#inputSemInstalacao{
   height: 20px;
   width: 20px;
   cursor: pointer;
 }
 
-.inputLabelSemInstalacao label, .inputLabelComInstalacao label {
+.inputLabelSemInstalacao label{
   font-size: 15px;
   font-weight: 800;
   color: #183884;
   margin-left: 6px;
   cursor: pointer;
+  width: 139px;
+}
+
+.inputLabelComInstalacao label{
+  font-size: 16px;
+    font-weight: 600;
+    color: black;
+    margin-left: 6px;
+    cursor: pointer;
+    width: 139px;
 }
 
 .containersModalCompra #descricao {
-  margin-left: 30px;
   color: #646363;
-  font-style: italic;
-  font-weight: 600;
-  font-size: 9px;
-  line-height: 10px;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 10px;
+    margin-left: -130%;
 }
 
 .checked:before {
@@ -850,12 +859,14 @@ fieldset#beneficios legend {
 }
 #container-compraComInstalacao {
   color: #aeaeae;
+  width: 90%;
 }
 
 #container-compraComInstalacao > h3 {
   font-size: 12px;
   color: #646363;
   font-weight: 600;
+  display: contents;
 }
 
 #container-compraComInstalacao > legend {
@@ -877,18 +888,19 @@ fieldset#beneficios legend {
 }
 
 #precoComInstalacao {
-  color: #43c452
+  color: #183884
 }
 
 #valorComInstalacao {
-  color: #43c452;
+  color: #183884;
   font-size: 19px;
   font-weight: 900;
 }
 
 .containerInfoInsumo{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 5fr 1fr 1fr;
+    margin-left: 2%;
 }
 
 #infoInsumo{
@@ -1294,3 +1306,49 @@ fieldset#beneficios legend {
     margin: 5%;
   }
 }
+
+.lista-beneficios{
+  margin-left: -37%;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.secao-itens{
+  display: flex;
+  align-items: center;
+  margin-left: 30%;
+}
+
+#titulo-preco-modal{
+  display: grid;
+  margin-left: -7%;
+  border-left: 1px solid #e6e6e6;
+  padding-left: 3%;
+  color: black;
+  font-weight: 400;
+  margin-top: 7%;
+}
+
+.lista-beneficios > li {
+  color: black;
+}
+
+
+.lista-beneficios > li > span{
+  padding-right: 3%;
+  color: #183884;
+}
+
+.recomendado{
+  margin-left: -57%;
+    margin-top: 6%;
+    display: inline-block;
+    padding: 6px 11px;
+    background-color: #d4f5d2;
+    font-size: 12px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 8px;
+    color: #36a63b;
+}
+
