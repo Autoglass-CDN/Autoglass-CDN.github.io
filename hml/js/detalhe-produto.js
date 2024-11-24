@@ -475,14 +475,18 @@ $(window).on("load", async () => {
             </div>
             <div id="mobileBlocoUm">
               <fieldset class="containersModalCompra" id="container-compraSemInstalacao">
-                <legend>-</legend>
                 <div class="inputLabelSemInstalacao">
                   <label for="inputSemInstalacao">Sem Instalação</label>
                   <input type="radio" id="inputSemInstalacao" name="inputRadioInstalacao" value="SemInstalacao">
                 </div>
-                <i id="primeiroblock" class="block"></i>
-                <i id="segundablock" class="block"></i>
-                <i id="terceiroblock" class="block"></i>
+                <span id="descricao-sem-instalacao">Retire ou receba</span>
+                <div class="secao-itens-sem-instalacao">
+                  <ul class="lista-beneficios-sem-instalacao">
+                    <li><span>✔</span>Garantia de até 3 meses</li>
+                    <li><span>✔</span>Lojas em todo o Brasil</li>
+                    <li><span>✔</span>Qualidade Autoglass</li>
+                  </ul>
+                </div>
               </fieldset>
             </div>
 
@@ -491,7 +495,9 @@ $(window).on("load", async () => {
             <p id="infoInsumo">*Valor referente aos insumos de instalação</p>
           </div>
           <div class="containerGridBotao">
-            <div class="alinhabotao"></div>
+            <div class="containersModalCompra" >
+              <a id="botaoVoltarCarrinho" href="#">Voltar</a>
+            </div>
             <div class="containersModalCompra" id="containerButton">
               <a id="botaoContinuarCarrinho" href="#">Continuar</a>
             </div>
@@ -542,7 +548,11 @@ $(window).on("load", async () => {
       $('#fadeModalInstalacao #modalCompra').click(function(e) {
         e.stopPropagation();
       })
-
+      $('#fadeModalInstalacao, #botaoVoltarCarrinho').click(function() {
+        $('#fadeModalInstalacao #modalCompra').fadeOut(300);
+        $(this).fadeOut();
+        $('#fadeModalInstalacao div').remove();
+      })
       $('#botaoContinuarCarrinho').attr('href', urlComInstalacao);
 
       $(document).ready(function() {
