@@ -461,69 +461,63 @@ $(window).on("load", async () => {
         <div id="modalCompra">
           <div class="containerTituloInstalacao">
             <div class="tituloInstalacao">
-              <h1> Instalação </h1>
+              <h1> Deseja incluir a instalação do produto? </h1>
+              <div class="exit-button">×</div>
             </div>
           </div>
-          <div class="exit-button">×</div>
-
           <div id="containers">
-            <div id="mobileBlocoUm">
-              <fieldset id="beneficios" class="containersModalCompra">
-                <legend>-</legend>
-                <div class="logoModal">
-                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo Autoglass" class="logo">
-                </div>
-                <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
-                <h3 class="segundaLinha">Equipe Especializada</h3>
-                <h3>Segurança e comodidade</h3>
-              </fieldset>
-
-              <fieldset class="containersModalCompra" id="container-compraSemInstalacao">
-                <legend>-</legend>
-                <div class="inputLabelSemInstalacao">
-                  <input type="radio" id="inputSemInstalacao" name="inputRadioInstalacao" value="SemInstalacao">
-                  <label for="inputSemInstalacao">Sem Instalação</label>
-                </div>
-                <i id="primeiroblock" class="block"></i>
-                <i id="segundablock" class="block"></i>
-                <i id="terceiroblock" class="block"></i>
-              </fieldset>
-            </div>
-
             <div id="mobileBlocoDois">
-              <fieldset id="beneficios" class="containersModalCompra">
-                <legend>-</legend>
-                <div class="logoModal">
-                  <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo Autoglass" class="logo">
-                </div>
-                <h3 class="primeiraLinha">Garantia de até 1 ano</h3>
-                <h3 class="segundaLinha">Equipe Especializada</h3>
-                <h3>Segurança e comodidade</h3>
-              </fieldset>
-
               <fieldset class="containersModalCompra" id="container-compraComInstalacao">
-                <legend>RECOMENDADO</legend>
                 <div id="headerCompraComInstalacao">
                   <div class="inputLabelComInstalacao">
-                    <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
                     <label for="inputComInstalacao">Com Instalação</label>
+                    <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
                   </div>
-                  <span id="descricao"> Apenas em Lojas Autoglass ou em casa.</span>
+                  <span id="descricao"> Na loja ou em casa</span>
                 </div>
-                <i id="primeirochecked" class="checked"></i>
-                <i id="segundochecked" class="checked"></i>
-                <i id="terceirochecked" class="checked"></i>
-                <h3 id="titulo-preco-modal">Por apenas <span id="precoComInstalacao">R$ <span id="valorComInstalacao">-</span></span></h3>
+                <div class="secao-itens">
+                  <ul class="lista-beneficios">
+                    <li><span>✔</span>Garantia de até 1 ano</li>
+                    <li><span>✔</span>Lojas em todo o Brasil</li>
+                    <li><span>✔</span>Equipe especializada</li>
+                    <li><span>✔</span>Praticidade e comodidade</li>
+                  </ul>
+                  <h3 id="titulo-preco-modal">Apenas
+                    <span id="precoComInstalacao">R$
+                      <span id="valorComInstalacao">-</span>
+                    </span>
+                  </h3>
+                </div>
+                <div class="recomendado">
+                    Recomendado
+                </div>
               </fieldset>
             </div>
+            <div id="mobileBlocoUm">
+              <fieldset class="containersModalCompra" id="container-compraSemInstalacao">
+                <div class="inputLabelSemInstalacao">
+                  <label for="inputSemInstalacao">Sem Instalação</label>
+                  <input type="radio" id="inputSemInstalacao" name="inputRadioInstalacao" value="SemInstalacao">
+                </div>
+                <span id="descricao-sem-instalacao">Retire ou receba</span>
+                <div class="secao-itens-sem-instalacao">
+                  <ul class="lista-beneficios-sem-instalacao">
+                    <li><span>✔</span>Garantia de até 3 meses</li>
+                    <li><span>✔</span>Lojas em todo o Brasil</li>
+                    <li><span>✔</span>Qualidade Autoglass</li>
+                  </ul>
+                </div>
+              </fieldset>
+            </div>
+
           </div>
           <div class="containerInfoInsumo">
-            <p id="alinhamentoInfoInsumo"></p>
-            <p></p>
             <p id="infoInsumo">*Valor referente aos insumos de instalação</p>
           </div>
           <div class="containerGridBotao">
-            <div class="alinhabotao"></div>
+            <div class="containersModalCompra" >
+              <a id="botaoVoltarCarrinho" href="#">Voltar</a>
+            </div>
             <div class="containersModalCompra" id="containerButton">
               <a id="botaoContinuarCarrinho" href="#">Continuar</a>
             </div>
@@ -574,15 +568,17 @@ $(window).on("load", async () => {
       $('#fadeModalInstalacao #modalCompra').click(function(e) {
         e.stopPropagation();
       })
-
+      $('#fadeModalInstalacao, #botaoVoltarCarrinho').click(function() {
+        $('#fadeModalInstalacao #modalCompra').fadeOut(300);
+        $(this).fadeOut();
+        $('#fadeModalInstalacao div').remove();
+      })
       $('#botaoContinuarCarrinho').attr('href', urlComInstalacao);
-      $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
 
       $(document).ready(function() {
         $('input:radio[name="inputRadioInstalacao"]').change(function() {
           $('.containersModalCompra').css('color', '#aeaeae');
           if ($('#inputComInstalacao').is(':checked')) {
-            $('.containersModalCompra#container-compraComInstalacao').css('color', '#43c452');
             $('#botaoContinuarCarrinho').attr('href', urlComInstalacao)
           } else if ($('#inputSemInstalacao').is(':checked')) {
             $('.containersModalCompra#container-compraSemInstalacao').css('color', 'red');

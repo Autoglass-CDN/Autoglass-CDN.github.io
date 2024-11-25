@@ -628,12 +628,9 @@ article section.tab-content {
 }
 
 #modalCompra {
-  width: 900px;
+  width: 20%;
   max-width: 95%;
-  height: auto;
-  max-height: 95%;
-  min-height: 450px;
-  max-height: 100%;
+  height: 100%;
   position: fixed;
   background: #FFF;
   border-radius: 10px;
@@ -642,34 +639,32 @@ article section.tab-content {
   justify-content: center;
   align-items: center;
   align-content: center;
-
-}
-
-.containerTituloInstalacao {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  right: 1%;
+  align-content: baseline;
+  padding-top: 2%;
 }
 
 .tituloInstalacao {
-  align-items: center;
   display: flex;
-  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
+.containerTituloInstalacao{
+  width: 104%;
 }
 
 .containerTituloInstalacao .tituloInstalacao > h1 {
-  color: #183884;
-  font-weight: 800;
+  color: black;
+  font-weight: 600;
   display: flex;
   justify-content: center;
-  font-size: 35px;
+  font-size: 16px;
 }
 
 #modalCompra .exit-button {
-  position: absolute;
-  top: 2%;
-  right: 1%;
-  font-size: 30px;
+  font-size: 29px;
   font-weight: bolder;
   width: 25px;
   height: auto;
@@ -678,12 +673,11 @@ article section.tab-content {
   justify-content: center;
   cursor: pointer;
   color: #aeaeae;
+  margin-left: 5%;
 }
 
 #containers {
-    display: flex;
-    justify-content: center;
-    height: auto;
+  display: block;
 }
 
 #mobileBlocoUm {
@@ -746,14 +740,20 @@ fieldset#beneficios legend {
   flex-direction: row;
 }
 
-#container-compraSemInstalacao, #container-compraComInstalacao {
+#container-compraComInstalacao {
   border: 1px solid #234EB9;
   border-radius: 20px;
   width: 22%;
-  grid-template-rows: 2fr 1fr 1fr 1fr 1fr;
-  min-height: 250px;
   min-width: 200px;
-  margin-left: 30px;
+  height: 205px;
+}
+
+#container-compraSemInstalacao{
+  border: 1px solid #234EB9;
+  border-radius: 20px;
+  width: 22%;
+  min-width: 200px;
+  height: 140px;
 }
 
 #container-compraComInstalacao {
@@ -793,10 +793,13 @@ fieldset#beneficios legend {
 
 #container-compraSemInstalacao {
   color: #aeaeae;
+  width: 90%;
+  margin-left: 5%;
 }
 
 #mobileBlocoDois {
   display: flex;
+  margin-bottom: 4%;
 }
 
 #mobileBlocoDois #beneficios {
@@ -810,35 +813,63 @@ fieldset#beneficios legend {
   max-width: 150px;
 }
 
-.inputLabelSemInstalacao, .inputLabelComInstalacao {
+.inputLabelSemInstalacao {
   display: flex;
+  margin-top: 2%;
 }
 
 .inputLabelComInstalacao {
-  margin-top: 15px;
+  display: flex;
+  margin-left: -3%;
+  margin-top: 1%;
 }
 
-#inputComInstalacao, #inputSemInstalacao {
+#inputComInstalacao {
   height: 20px;
   width: 20px;
   cursor: pointer;
+  margin-left: 160px;
 }
 
-.inputLabelSemInstalacao label, .inputLabelComInstalacao label {
-  font-size: 15px;
-  font-weight: 800;
-  color: #183884;
-  margin-left: 6px;
+#inputSemInstalacao{
+  height: 20px;
+  width: 20px;
   cursor: pointer;
+  margin-left: 155px;
+}
+
+.inputLabelSemInstalacao label{
+  cursor: pointer;
+  width: 139px;
+  font-size: 16px;
+  font-weight: 600;
+  color: black;
+}
+
+.inputLabelComInstalacao label{
+  font-size: 16px;
+    font-weight: 600;
+    color: black;
+    margin-left: 6px;
+    cursor: pointer;
+    width: 139px;
 }
 
 .containersModalCompra #descricao {
-  margin-left: 30px;
   color: #646363;
-  font-style: italic;
+    font-weight: 600;
+    font-size: 11px;
+    line-height: 10px;
+    margin-left: -142%;
+}
+
+.containersModalCompra #descricao-sem-instalacao {
+  color: #646363;
   font-weight: 600;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 10px;
+  margin-left: -65%;
+  margin-top: -3%;
 }
 
 .checked:before {
@@ -850,12 +881,15 @@ fieldset#beneficios legend {
 }
 #container-compraComInstalacao {
   color: #aeaeae;
+  width: 90%;
+  margin-left: 5%;
 }
 
 #container-compraComInstalacao > h3 {
   font-size: 12px;
   color: #646363;
   font-weight: 600;
+  display: contents;
 }
 
 #container-compraComInstalacao > legend {
@@ -877,29 +911,33 @@ fieldset#beneficios legend {
 }
 
 #precoComInstalacao {
-  color: #43c452
+  color: #183884
 }
 
 #valorComInstalacao {
-  color: #43c452;
+  color: #183884;
   font-size: 19px;
   font-weight: 900;
 }
 
 .containerInfoInsumo{
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 5fr 1fr 1fr;
+  margin-left: -4%;
+  margin-top: 3%;
 }
 
 #infoInsumo{
   margin-left: 15px;
   font-size: 11px;
   margin-top: 5px;
+  margin-left: 12%;
 }
 
 .containerGridBotao {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 2fr;
+  align-items: baseline;
 }
 
 #containerButton {
@@ -912,24 +950,41 @@ fieldset#beneficios legend {
 }
 
 #botaoContinuarCarrinho {
-  width: 200px;
-  height: auto;
-  min-height: 35px;
-  border: 0;
-  border-radius: 6px;
-  background: #43c452;
-  color: #FFF;
-  font-size: 18px;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  flex-wrap: wrap;
+  width: 160px;
+    height: auto;
+    min-height: 35px;
+    border: 0;
+    border-radius: 6px;
+    background: #0056b3;
+    color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
 }
 
 #botaoContinuarCarrinho:hover {
-  background:  #33a140;
-  border-color: #33a140;
+  background-color: #004494;
+  transform: scale(1.03);
+}
+
+#botaoVoltarCarrinho{
+  width: 160px;
+    height: auto;
+    min-height: 35px;
+    border: 0;
+    border-radius: 6px;
+    background: #f1f3f5;
+    color: #0056b3;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-wrap: wrap;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+    margin-left: 10%;
 }
 
 @media screen and (max-width: 1040px) {
@@ -993,7 +1048,7 @@ fieldset#beneficios legend {
 
   #container-compraSemInstalacao, #container-compraComInstalacao {
     min-width: 160px;
-    margin-left: 5px;
+    margin-left: -2%;
   }
 
   #infoInsumo {
@@ -1003,17 +1058,55 @@ fieldset#beneficios legend {
 
 @media only screen and (max-width: 570px) {
   #modalCompra {
-    max-width: 90%;
+    max-width: 100%;
+    height: 61%;
+    bottom: 0;
+    right: 0;
   }
 
   .containerTituloInstalacao {
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    width: 100%;
   }
 
   .containerTituloInstalacao .tituloInstalacao > h1 {
-    font-size: 30px;
+    font-size: 16px;
+  }
+
+  .tituloInstalacao{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+    width: 100%;
+    margin-left: -1%;
+  }
+
+  #modalCompra .exit-button{
+    font-size: 25px;
+    font-weight: bolder;
+    width: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #aeaeae;
+    margin-left: 60px;
+  }
+
+  .inputLabelComInstalacao{
+    display: flex;
+    margin-left: -2%;
+    margin-top: 1%;
+  }
+
+  .inputLabelSemInstalacao{
+    display: flex;
+    margin-left: 1%;
+    margin-top: 1%;
   }
 
   #containers {
@@ -1021,14 +1114,23 @@ fieldset#beneficios legend {
     width: 100%;
   }
 
-  #mobileBlocoUm, #mobileBlocoDois {
-    display: flex;
-    justify-content: center;
+  #containers-sem-instalacao{
+    display: block;
+    width: 100%;
   }
 
   #mobileBlocoDois {
-    margin-bottom: 0;
+    display: flex;
+    justify-content: center;
     padding: 5px;
+    width: 100%;
+  }
+
+  #mobileBlocoUm{
+    display: flex;
+    justify-content: center;
+    padding: 5px;
+    width: 100%;
   }
 
   #mobileBlocoDois #beneficios {
@@ -1059,27 +1161,54 @@ fieldset#beneficios legend {
   }
 
   #container-compraSemInstalacao, #container-compraComInstalacao {
-    height: auto;
-    min-height: 200px;
     width: auto;
     min-width: 150px;
+    width: 95%;
+  }
+
+  .containersModalCompra #descricao{
+    color: #646363;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+    margin-left: -150%;
+  }
+
+  .containersModalCompra #descricao-sem-instalacao{
+    color: #646363;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+    margin-left: -66%;
+    margin-top: -3%;
   }
 
   #inputComInstalacao, #inputSemInstalacao {
-    width: 10px;
+    width: 18px;
+    margin-left: 175px;
   }
 
   #container-compraComInstalacao > h3 {
-    font-size: 10px;
-    margin-left: 10px;
+    font-size: 16px;
+    margin-right: 15px;
   }
 
   .inputLabelSemInstalacao label, .inputLabelComInstalacao label {
-    font-size: 11px;
+    font-size: 16px;
+    margin-right: 10px;
   }
 
-  .containersModalCompra #descricao {
-    margin-left: 10px;
+  .lista-beneficios-sem-instalacao{
+    margin-left: -11%;
+    margin-top: 10px;
+    width: 100%;
+  }
+
+  #inputSemInstalacao{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    margin-left: 175px;
   }
 
   .block:before, .checked:before {
@@ -1087,7 +1216,9 @@ fieldset#beneficios legend {
   }
 
   .containerInfoInsumo {
-    grid-template-columns: 1fr 1fr;
+    margin-left: 1%;
+    margin-top: 0px;
+    width: 100%;
   }
 
   #alinhamentoInfoInsumo {
@@ -1096,10 +1227,13 @@ fieldset#beneficios legend {
 
   #infoInsumo {
     margin-bottom: 4px;
+    font-size: 13px;
+    margin-left: 3%;
   }
 
   .containerGridBotao {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 4%;
   }
 
   #containerButton {
@@ -1294,3 +1428,74 @@ fieldset#beneficios legend {
     margin: 5%;
   }
 }
+
+.lista-beneficios{
+  margin-left: -37%;
+  margin-top: 20px;
+  width: 100%;
+}
+
+@media only screen and (min-width: 768px) {
+  .lista-beneficios-sem-instalacao{
+    margin-left: -10%;
+    margin-top: 7px;
+    width: 100%;
+  }
+}
+
+
+.secao-itens{
+  display: flex;
+  align-items: center;
+  margin-left: 30%;
+  margin-top: -10px;
+}
+
+.secao-itens-sem-instalacao{
+  display: flex;
+  align-items: center;
+  margin-left: 30%;
+  width: 100%;
+}
+
+#titulo-preco-modal{
+  display: grid;
+  margin-left: -7%;
+  border-left: 1px solid #e6e6e6;
+  padding-left: 3%;
+  color: black;
+  font-weight: 400;
+  margin-top: 7%;
+}
+
+.lista-beneficios > li {
+  color: black;
+}
+
+.lista-beneficios-sem-instalacao > li {
+  color: black;
+}
+
+
+.lista-beneficios > li > span{
+  padding-right: 3%;
+  color: #183884;
+}
+
+.lista-beneficios-sem-instalacao > li > span{
+  padding-right: 3%;
+  color: #183884;
+}
+
+.recomendado{
+  margin-left: -57%;
+  display: inline-block;
+  padding: 6px 11px;
+  background-color: #d4f5d2;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+  color: #36a63b;
+}
+
