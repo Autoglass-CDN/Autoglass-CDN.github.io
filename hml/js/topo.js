@@ -625,7 +625,7 @@ inputBusca.addEventListener('keydown', function(event) {
     abortCategoryAction.abort();
   });
 
-
+  checkLogin();
   fixPlaceholderSearch();
   loadCart(device.desktop);
 
