@@ -1140,7 +1140,7 @@ fieldset#beneficios legend {
 @media only screen and (min-width: 376px) and (max-width: 570px){
   #modalCompra {
     max-width: 100%;
-    height: 65%;
+    height: 90%;
     bottom: 0;
     right: 0;
   }
