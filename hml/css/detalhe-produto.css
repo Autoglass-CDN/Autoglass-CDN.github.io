@@ -987,6 +987,87 @@ fieldset#beneficios legend {
     margin-left: 10%;
 }
 
+@media screen and (max-width: 1280px){
+  #modalCompra{
+    width: 30%;
+    max-width: 95%;
+    height: 100%;
+    position: fixed;
+    background: #FFF;
+    border-radius: 10px;
+    box-shadow: 0 5px 10px rgb(0 0 0);
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    right: 1%;
+    align-content: baseline;
+    padding-top: 2%;
+  }
+}
+
+@media only screen and (max-width: 375px){
+  #modalCompra{
+    max-width: 100%;
+    height: 80%;
+    bottom: 0;
+    right: 0;
+  }
+
+  .inputLabelComInstalacao {
+    display: flex;
+    margin-left: -3%;
+    margin-top: 1%;
+  }
+
+  #inputComInstalacao, #inputSemInstalacao {
+    width: 18px !important;
+    margin-left: 150px;
+  }
+
+  .containersModalCompra #descricao {
+    color: #646363;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+    margin-left: -137%;
+  }
+
+  #inputSemInstalacao {
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    margin-left: 153px;
+  }
+
+  .inputLabelSemInstalacao {
+    display: flex;
+    margin-top: 1%;
+  }
+
+  #modalCompra .exit-button {
+    font-size: 25px;
+    font-weight: bolder;
+    width: 0;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #aeaeae;
+    margin-left: 40px;
+  }
+
+  .tituloInstalacao {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3%;
+    width: 100%;
+    margin-left: -4%;
+  }
+}
+
 @media screen and (max-width: 1040px) {
   #modalCompra {
     width: 800px;
@@ -1056,23 +1137,44 @@ fieldset#beneficios legend {
   }
 }
 
-@media only screen and (max-width: 570px) {
+@media only screen and (min-width: 376px) and (max-width: 570px){
   #modalCompra {
     max-width: 100%;
-    height: 61%;
+    height: 65%;
     bottom: 0;
     right: 0;
   }
 
-  .containerTituloInstalacao {
+  .inputLabelComInstalacao{
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    width: 100%;
+    margin-left: -2%;
+    margin-top: 1%;
   }
 
-  .containerTituloInstalacao .tituloInstalacao > h1 {
-    font-size: 16px;
+  .inputLabelSemInstalacao{
+    display: flex;
+    margin-left: 1%;
+    margin-top: 1%;
+  }
+
+  #inputComInstalacao, #inputSemInstalacao {
+    width: 18px;
+    margin-left: 175px;
+  }
+
+  .containersModalCompra #descricao{
+    color: #646363;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 10px;
+    margin-left: -150%;
+  }
+
+  #inputSemInstalacao{
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+    margin-left: 175px;
   }
 
   .tituloInstalacao{
@@ -1096,17 +1198,18 @@ fieldset#beneficios legend {
     color: #aeaeae;
     margin-left: 60px;
   }
+}
 
-  .inputLabelComInstalacao{
+@media only screen and (max-width: 570px) {
+  .containerTituloInstalacao {
     display: flex;
-    margin-left: -2%;
-    margin-top: 1%;
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
   }
 
-  .inputLabelSemInstalacao{
-    display: flex;
-    margin-left: 1%;
-    margin-top: 1%;
+  .containerTituloInstalacao .tituloInstalacao > h1 {
+    font-size: 16px;
   }
 
   #containers {
@@ -1166,14 +1269,6 @@ fieldset#beneficios legend {
     width: 95%;
   }
 
-  .containersModalCompra #descricao{
-    color: #646363;
-    font-weight: 600;
-    font-size: 12px;
-    line-height: 10px;
-    margin-left: -150%;
-  }
-
   .containersModalCompra #descricao-sem-instalacao{
     color: #646363;
     font-weight: 600;
@@ -1181,11 +1276,6 @@ fieldset#beneficios legend {
     line-height: 10px;
     margin-left: -66%;
     margin-top: -3%;
-  }
-
-  #inputComInstalacao, #inputSemInstalacao {
-    width: 18px;
-    margin-left: 175px;
   }
 
   #container-compraComInstalacao > h3 {
@@ -1202,13 +1292,6 @@ fieldset#beneficios legend {
     margin-left: -11%;
     margin-top: 10px;
     width: 100%;
-  }
-
-  #inputSemInstalacao{
-    height: 20px;
-    width: 20px;
-    cursor: pointer;
-    margin-left: 175px;
   }
 
   .block:before, .checked:before {
