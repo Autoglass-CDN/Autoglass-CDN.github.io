@@ -1157,9 +1157,9 @@ fieldset#beneficios legend {
     margin-top: 1%;
   }
 
-  #inputComInstalacao, #inputSemInstalacao {
-    width: 18px;
-    margin-left: 175px;
+  #inputComInstalacao{
+    width: 20px;
+    margin-left: 170px;
   }
 
   .containersModalCompra #descricao{
@@ -1174,7 +1174,7 @@ fieldset#beneficios legend {
     height: 20px;
     width: 20px;
     cursor: pointer;
-    margin-left: 175px;
+    margin-left: 168px;
   }
 
   .tituloInstalacao{
