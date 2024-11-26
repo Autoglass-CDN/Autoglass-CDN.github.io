@@ -6,10 +6,8 @@ const baseUrlApi =
 const sections = [...document.querySelectorAll("section.tab-content")];
 const getLinkById = (id) => document.querySelector(`a[href='#${id}'].tab-link`);
 
-// Adiciona classe para GA4 (templates da Vtex)
 $(".product-qd-v1-buy-button .buy-button.buy-button-ref").addClass("add-to-cart-ga");
 
-// DataLayer SocialShare
 function handleSocialClick(event, method) {
   dataLayer.push({
     event: 'share',
@@ -31,7 +29,6 @@ Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
   element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
 });
 
-// DataLayer ButtonWhatsApp
 function ButtoWhatsappClick(event, position) {
   dataLayer.push({
     event: 'whatsapp',
@@ -53,7 +50,7 @@ Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
   }
 });
 
-// Configura busca de veículos compatíveis
+
 let veiculosBuscaveis = [];
 const sugestoesContainer = $('.veiculos-compativeis-search__search-suggestions');
 $('.veiculos-compativeis-search').hide();
@@ -109,7 +106,6 @@ const sectionCollapseInit = () => {
 
 sectionCollapseInit();
 
-// Descrição da marca
 async function insertBrandDescription() {
   return fetch("/api/catalog_system/pub/brand/list")
     .then((response) => response.json())
@@ -196,7 +192,6 @@ async function loadSimilars() {
 loadSimilars();
 
 $(window).on("load", async () => {
-  // Corrige problema com variação da altura na thumb de produto
   window.addEventListener("resize", adjustProductThumbHeight);
 
   function adjustProductThumbHeight() {
@@ -207,7 +202,6 @@ $(window).on("load", async () => {
 
   initializeSocialShareLinks();
 
-  // Cria bloco de Veículos Compatíveis
   const veiculosCompatíveisContainer = $("#veiculos-compativeis");
   const productRefId = await getProductRefIdByProductName();
 
@@ -280,24 +274,41 @@ $(window).on("load", async () => {
     veiculosCompatíveisContainer.hide();
   }
 
-  // Busca de Veículos Compatíveis
   let skuList = Product.captureSkuSelectors();
   const urlAddCart = "/checkout/cart/add?sku=" +
     skuList[0] +
     "&qty=1&seller=1&redirect=true&" +
     readCookie("VTEXSC");
 
-  $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input').on('input', function () {
-    buscaCompativeis($(this).val());
+  $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input').on('input', async function () {
+    await buscaCompativeis($(this).val());
   });
 
-  function buscaCompativeis(texto) {
+  async function buscaCompativeis(texto) {
+    const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+    let ano = undefined;
+    if(texto.trim().match(regexPlaca)) {
+
+      sugestoesContainer.html(`
+        <div class="spinner-compatibilidade"></div>
+      `);
+      const {
+        modelo,
+        anoModelo
+      } = await buscaPorPlaca(texto.trim())
+      
+      texto = modelo;
+      ano = parseInt(anoModelo, 10);;
+      sugestoesContainer.empty();
+    }
+
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 0) {
       const veiculosBuscaveisFiltrado = veiculosBuscaveis.map((a) =>
         a.Veiculos.filter(b =>
-          new RegExp(texto.split(" ").map(str => `(?=.*${str})`).join(""), "i").test(b.Veiculo))
+          new RegExp(texto.split(" ").map(str => `(?=.*${str})`).join(""), "i").test(b.Veiculo) &&
+          (ano == undefined || b.Anos.includes(ano)))
       ).filter(a => a.length > 0);
-
+      
       if (veiculosBuscaveisFiltrado.length) {
         sugestoesContainer.html(
           veiculosBuscaveisFiltrado.flat().slice(0, 3).map(buildContentBusca).join("") +
@@ -320,12 +331,14 @@ $(window).on("load", async () => {
     } else {
       sugestoesContainer.empty();
     }
+    
   }
+    
 
   function buildContentBusca(veiculo, index) {
     return `<a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
               <p>${veiculo.Veiculo}</p>
-              <div>${veiculo.Anos.map((x) => "<span>" + x + "</span> ").join(",&nbsp")}</div>
+              <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join(",&nbsp")}.</div>
             </a>`;
   }
 
@@ -348,7 +361,7 @@ $(window).on("load", async () => {
         ${grupo.Veiculos.map((veiculo) => `
           <div class="veiculos-compativeis__content-compativel">
             <p>${veiculo.Veiculo}</p>
-            <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join(",&nbsp")}</div>
+            <div>${veiculo.Anos.map((x) => "<span>" + x + "</span>").join(",&nbsp")}.</div>
           </div>
         `).join("")}
       </div>
@@ -426,9 +439,7 @@ $(window).on("load", async () => {
   const precoAcessorio = $("#preco-acessorios-ag").text().replace("R$ ", "").trim();
 
   $(".product-qd-v1-buy-button .buy-button").attr("href", "#");
-
   const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
-
   if (codigoSKU && precoAcessorio) {
     $(".product-qd-v1-buy-button .buy-button").on("click", function() {
       modalCompraComOuSemInstalacao();
@@ -588,3 +599,40 @@ $(window).on("load", async () => {
     });
   });
 });
+
+async function buscaPorPlaca(placaString) {
+  let placaSemCaracteresEspeciais = sanitizePlate(placaString);
+
+  try {
+    if(window.innerWidth < 700)
+      document.querySelector("#side-menu .loading-overlay").style.display = "block";
+
+    const {
+      montadora,
+      modelo,
+      anoModelo,
+      fipe,
+    } = await obterDadosDoVeiculoViaOlhoNoCarro(placaSemCaracteresEspeciais);
+    return {montadora, modelo, anoModelo, fipe};
+  } catch (error) { }
+
+  function sanitizePlate(plate) {
+    return plate.trim().replace(/[\W_]+/g, "").toUpperCase();
+  }
+
+  async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
+    const urlApi = window.location.href.includes("hml")
+      ? "https://api-hml.autoglass.com.br"
+      : "https://api.autoglass.com.br";
+
+    const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
+    const veiculo = await response.json();
+    
+    montadora = veiculo.Body.Data.Marca;
+    modelo = veiculo.Body.Data.Modelo;
+    anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
+    fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].FipeId;
+
+    return { montadora, modelo, anoModelo, fipe };
+  }
+}
