@@ -280,17 +280,35 @@ $(window).on("load", async () => {
     "&qty=1&seller=1&redirect=true&" +
     readCookie("VTEXSC");
 
-  $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input').on('input', function () {
-    buscaCompativeis($(this).val());
+  $('.veiculos-compativeis-search__search-box .veiculos-compativeis-search__search-input input').on('input', async function () {
+    await buscaCompativeis($(this).val());
   });
 
-  function buscaCompativeis(texto) {
+  async function buscaCompativeis(texto) {
+    const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+    let ano = undefined;
+    if(texto.trim().match(regexPlaca)) {
+
+      sugestoesContainer.html(`
+        <div class="spinner-compatibilidade"></div>
+      `);
+      const {
+        modelo,
+        anoModelo
+      } = await buscaPorPlaca(texto.trim())
+      
+      texto = modelo;
+      ano = parseInt(anoModelo, 10);;
+      sugestoesContainer.empty();
+    }
+
     if (veiculosBuscaveis && veiculosBuscaveis.length > 0 && texto.length > 0) {
       const veiculosBuscaveisFiltrado = veiculosBuscaveis.map((a) =>
         a.Veiculos.filter(b =>
-          new RegExp(texto.split(" ").map(str => `(?=.*${str})`).join(""), "i").test(b.Veiculo))
+          new RegExp(texto.split(" ").map(str => `(?=.*${str})`).join(""), "i").test(b.Veiculo) &&
+          (ano == undefined || b.Anos.includes(ano)))
       ).filter(a => a.length > 0);
-
+      
       if (veiculosBuscaveisFiltrado.length) {
         sugestoesContainer.html(
           veiculosBuscaveisFiltrado.flat().slice(0, 3).map(buildContentBusca).join("") +
@@ -313,7 +331,9 @@ $(window).on("load", async () => {
     } else {
       sugestoesContainer.empty();
     }
+    
   }
+    
 
   function buildContentBusca(veiculo, index) {
     return `<a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
@@ -575,3 +595,40 @@ $(window).on("load", async () => {
     });
   });
 });
+
+async function buscaPorPlaca(placaString) {
+  let placaSemCaracteresEspeciais = sanitizePlate(placaString);
+
+  try {
+    if(window.innerWidth < 700)
+      document.querySelector("#side-menu .loading-overlay").style.display = "block";
+
+    const {
+      montadora,
+      modelo,
+      anoModelo,
+      fipe,
+    } = await obterDadosDoVeiculoViaOlhoNoCarro(placaSemCaracteresEspeciais);
+    return {montadora, modelo, anoModelo, fipe};
+  } catch (error) { }
+
+  function sanitizePlate(plate) {
+    return plate.trim().replace(/[\W_]+/g, "").toUpperCase();
+  }
+
+  async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
+    const urlApi = window.location.href.includes("hml")
+      ? "https://api-hml.autoglass.com.br"
+      : "https://api.autoglass.com.br";
+
+    const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
+    const veiculo = await response.json();
+    
+    montadora = veiculo.Body.Data.Marca;
+    modelo = veiculo.Body.Data.Modelo;
+    anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
+    fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].FipeId;
+
+    return { montadora, modelo, anoModelo, fipe };
+  }
+}
