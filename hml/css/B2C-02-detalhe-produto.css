@@ -495,6 +495,7 @@ body.mz-pu-on .mz-modal-pickup {
 .product-qd-v1-float-bar {
   z-index: 2;
   top: 150px;
+  height: 100px;
 }
 
 p.descricao-rollout {

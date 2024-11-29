@@ -64,7 +64,7 @@ html {
   width: 100%;
   background: #f8f8f8;
   position: sticky;
-  top: 205px;
+  top: 220px;
   z-index: 2;
 }
 
@@ -1582,3 +1582,31 @@ fieldset#beneficios legend {
   color: #36a63b;
 }
 
+.skuBestPrice {
+  display: none;
+}
+
+.pix-discount {
+  display: inline-block;
+  margin-left: 4px;
+  font-size: 18px;
+  color: #2d4f9e;
+  font-weight: bold;
+}
+
+.percent-box {
+  display: inline-block;
+  margin-left: 10px;
+  width: 37px;
+  height: 30px;
+  border: 1px solid green;
+  color: green;
+  font-size: 14px;
+  text-align: center;
+  vertical-align: middle;
+  line-height: 25px;
+  border-radius: 5px;
+  font-weight: bold;
+  position: relative;
+  top: -10px;
+}
