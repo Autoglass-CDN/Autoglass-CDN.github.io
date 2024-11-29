@@ -617,11 +617,8 @@ async function buscaPorPlaca(placaString) {
   }
 
   async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
-    const urlApi = window.location.href.includes("hml")
-      ? "https://api-hml.autoglass.com.br"
-      : "https://api.autoglass.com.br";
 
-    const response = await fetch(`${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`);
+    const response = await fetch(`${baseUrlApi}/veiculos/${placa}/placas`);
     const veiculo = await response.json();
     
     montadora = veiculo.Body.Data.Marca;
@@ -631,4 +628,68 @@ async function buscaPorPlaca(placaString) {
 
     return { montadora, modelo, anoModelo, fipe };
   }
+}
+
+buscarPromocoes();
+async function buscarPromocoes() {
+  try {
+    const response = await fetch(`${baseUrlApi}/promocoes?nome=pix`);
+    const data = await response.json();
+  
+    const pixPromotionActive = data.find(promotion => promotion.isActive);
+  
+    if (pixPromotionActive) {
+      aplicarDesconto(pixPromotionActive.percentualDiscountValue);
+    } else {
+      const precos = document.querySelectorAll('.skuBestPrice');
+  
+      precos.forEach(preco => {
+        preco.display = none;
+      })
+    }
+  } catch(ex) {
+    const precos = document.querySelectorAll('.skuBestPrice');
+
+    precos.forEach(preco => {
+      preco.display = none;
+    })
+  }
+}
+
+function aplicarDesconto(percentualDesconto) {
+  const precoBaseSelector = document.querySelectorAll('.skuListPrice')[1];
+  let precoBaseOriginal = precoBaseSelector.innerHTML.trim().replace('R$', '').trim().replace('.', '').replace(',', '.');
+  let precoBaseNumerico = parseFloat(precoBaseOriginal);
+  
+  const precos = document.querySelectorAll('.skuBestPrice');
+  
+  precos.forEach(precoElemento => {
+    let precoOriginal = precoElemento.textContent.trim();
+    precoOriginal = precoOriginal.replace('R$', '').trim();
+    precoOriginal = precoOriginal.replace('.', '').replace(',', '.');
+
+    let precoNumerico = parseFloat(precoOriginal);
+    
+    if (!isNaN(precoNumerico)) {
+      const precoComDesconto = Math.round((precoNumerico * (1 - (percentualDesconto / 100.00))) * 100) / 100;
+      
+      precoElemento.textContent = precoComDesconto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+
+      precoElemento.style.fontSize = '25px';
+
+      const divPix = document.createElement('div');
+      divPix.classList.add('pix-discount');
+      divPix.textContent = 'no Pix';
+
+      const porcentagemDesconto = ((precoBaseNumerico - precoComDesconto) / precoBaseNumerico) * 100;
+      const divPercent = document.createElement('div');
+      divPercent.classList.add('percent-box');
+      divPercent.textContent = `-${Math.round(porcentagemDesconto)}%`;
+
+      precoElemento.parentElement.appendChild(divPix);
+      precoElemento.parentElement.appendChild(divPercent);
+
+      precoElemento.style.display = 'inline-block';
+    }
+  });
 }
