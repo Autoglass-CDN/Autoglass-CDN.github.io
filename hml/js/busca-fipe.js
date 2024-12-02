@@ -2,7 +2,7 @@
 
   $(document).ready(function() {
     const buscaPlaca = JSON.parse(localStorage.getItem('buscaPlaca'));
-    if(window.innerWidth > 768){
+    if(window.innerWidth > 1024){
       if(buscaPlaca){
         const searchHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
         const placa = searchHistory?.params?.plate;
@@ -34,7 +34,7 @@
     }
   });
 
-  let activeTab = window.innerWidth > 700 ? '#busca-placa' : '#busca-placa-mobile';
+  let activeTab = window.innerWidth > 1024 ? '#busca-placa' : '#busca-placa-mobile';
   selectRightSearchMethod();
 
   /** BUSCA POR PEÇA DEV */
@@ -148,7 +148,7 @@
   }
 
   function verificaTelaMobile(){
-    return window.innerWidth < 700 ? true : false
+    return window.innerWidth < 1024 ? true : false
   }
 
   async function _initBuscaPeca(values) {
@@ -166,7 +166,7 @@
 
 
     // Create Button Function
-    window.innerWidth> 700 ? $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);})
+    window.innerWidth> 1024 ? $("#form-busca-peca").submit((e) => { e.preventDefault(); Service.search() ; window.localStorage.setItem('buscaPlaca', false);})
                            : $("#form-busca-peca-mobile").submit((e) => { e.preventDefault(); Service.search();});
   }
 
@@ -593,7 +593,7 @@
 
     function buildList(objects, _id) {
       let html = "";
-      if (window.innerWidth <= 500){
+      if (window.innerWidth <= 1024){
         if (objects) {
           objects.sort((a, b) => a.name.localeCompare(b.name));
           const savedValue = verificaValorCheckBox(_id)
@@ -673,7 +673,7 @@
     }
 
     function selectOptionIfButtonHasValue(type) {
-      if(window.innerWidth > 700){
+      if(window.innerWidth > 1024){
         $(`.c-busca__tab-content > .${type} ul li`).each((_, element) => {
           if (
             element.innerHTML ===
@@ -711,7 +711,7 @@
       for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
         const select = PECA_SELECTS[i];
         const nextSelect = PECA_SELECTS[i + 1];
-        if(window.innerWidth > 700){
+        if(window.innerWidth > 1024){
           $(`.c-busca__tab-content  #${select.id} > div > span`).html(
             select.title
           );
@@ -740,7 +740,7 @@
       const index = PECA_SELECTS.findIndex((x) => x.id === _class);
       const select = PECA_SELECTS[index];
       const nextSelect = PECA_SELECTS[index + 1];
-      if(window.innerWidth > 700){
+      if(window.innerWidth > 1024){
         $(`.c-busca__tab-content  #${select.id} > div > span`).html(new_title);
         $(
           `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
@@ -884,7 +884,7 @@
         View.buildList(nextSelect.values, nextSelect.id);
       }
 
-      if(window.innerWidth < 700){
+      if(window.innerWidth < 1024){
         if(select.id === "pecas-select"){
           selecionarInputPorIdBuscaPeca(listItems, event.target.id);
         }else{
@@ -893,7 +893,7 @@
       }
 
       View.createNavigation(select.id, event.target.innerHTML);
-      if(window.innerWidth < 700)
+      if(window.innerWidth < 1024)
         document.querySelector("#side-menu .loading-overlay").style.display = "none";
       modalDeCarregamento.ocultarSpinner();
     }
@@ -932,7 +932,7 @@
     }
 
     function hideDivVersaoFipe(length, title) {
-      const div = window.innerWidth > 700 ? document.getElementById('select-versao-fipe') : document.getElementById('select-versao-fipe-mobile');
+      const div = window.innerWidth > 1024 ? document.getElementById('select-versao-fipe') : document.getElementById('select-versao-fipe-mobile');
 
       if (title === "Versão") {
           if (length === 0) {
@@ -1043,7 +1043,7 @@
       const index = PECA_SELECTS.filter((x) => x.routeSelected).length;
       const paths = getPaths();
       let url = CONFIG.ORIGIN;
-      if(window.innerWidth < 700)
+      if(window.innerWidth < 1024)
         document.querySelector("#side-menu .loading-overlay").style.display = "block";
       if(firstRouteSelected.length === 1) {
         alert("Selecione pelo menos o primeiro campo!");
@@ -1121,7 +1121,7 @@
   };
 
   // Alterna as abas da busca
-  if(window.innerWidth > 700){
+  if(window.innerWidth > 1024){
     let tabs = document.querySelectorAll(".c-busca__tabs li");
 
     tabs.forEach((tab) => {
@@ -1175,7 +1175,7 @@
         );
         selectedSection.classList.add("is-active");
       });
-      if(window.innerWidth < 700)
+      if(window.innerWidth < 1024)
         setInterval(verificaAba, 500)
     });
   }
@@ -1207,11 +1207,11 @@
 
     View.buildList(PLACA_SELECTS[0].values, PLACA_SELECTS[0].id);
 
-    window.innerWidth > 700 ? View._initSelect_(PLACA_SELECTS[0]) : View._initSelectMobile_(PLACA_SELECTS[0]);
+    window.innerWidth > 1024 ? View._initSelect_(PLACA_SELECTS[0]) : View._initSelectMobile_(PLACA_SELECTS[0]);
 
     restoreBuscaPlaca();
 
-    let formBuscaPlaca = window.innerWidth > 700 ? document.querySelector("#form-busca-placa") : document.querySelector("#form-busca-placa-mobile");
+    let formBuscaPlaca = window.innerWidth > 1024 ? document.querySelector("#form-busca-placa") : document.querySelector("#form-busca-placa-mobile");
 
     formBuscaPlaca.addEventListener('submit', (event) => {
       event.preventDefault();
@@ -1227,7 +1227,7 @@
 
         location.href = redirectUrl;
       } else {
-        const placa = window.innerWidth > 700 ? document.querySelector("#placa-input").value : document.querySelector("#placa-input-mobile").value;
+        const placa = window.innerWidth > 1024 ? document.querySelector("#placa-input").value : document.querySelector("#placa-input-mobile").value;
         const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
 
         if(0 === placa.length) {
@@ -1372,7 +1372,7 @@
     $('.c-busca__tab-content .c-busca__input #placa-input').click().focus();
 
     //Lógica para marcar e manter o input marcado.
-    if(window.innerWidth < 500){
+    if(window.innerWidth < 1024){
       selecionarInputPorId(listItems, event.target.id);
       const savedValue = verificaValorCheckBox(_id);
       if(savedValue == event.target.id)
@@ -1406,7 +1406,7 @@
 
     try {
       modalDeCarregamento.mostarSpinner();
-      if(window.innerWidth < 700)
+      if(window.innerWidth < 1024)
         document.querySelector("#side-menu .loading-overlay").style.display = "block";
 
       const {
@@ -1480,7 +1480,7 @@
         url += `/${montadorasEncontradas[0].Value}`;
         parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
-      if(window.innerWidth > 768){
+      if(window.innerWidth > 1024){
         $(".texto-placa").text(placaSemCaracteresEspeciais);
       }
       window.sessionStorage.setItem('buttonBuscarSelected', window.buttonBuscarSelected);
@@ -1506,7 +1506,7 @@
           "ar no momento. Favor utilizar a busca por peça!"
         );
       }
-      if(window.innerWidth < 700)
+      if(window.innerWidth < 1024)
         document.querySelector("#side-menu .loading-overlay").style.display = "none";
       modalDeCarregamento.ocultarSpinner();
       document.querySelector("a[href='#busca-peca']").click();
@@ -1704,7 +1704,7 @@
       document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active");
       document.querySelector("#form-busca-placa").parentNode.classList.add("is-active");
-      if(window.innerWidth > 700){
+      if(window.innerWidth > 1024){
         document.querySelector("a[href='#busca-categoria-mobile']").parentNode.classList.remove("is-active");
         document.querySelector("a[href='#busca-peca-mobile']").parentNode.classList.remove("is-active");
         document.querySelector("#form-busca-peca-mobile").parentNode.classList.remove("is-active");
