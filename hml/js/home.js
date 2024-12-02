@@ -6,7 +6,7 @@
 	const containers = $('.banners-section .banners-content');
 	let bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
 	let bannerImages = bannerContainer.children();
-
+  localStorage.setItem('buscaPlaca', null);
 	buildBars();
 	calculateMarginOfBtns();
 
