@@ -619,7 +619,6 @@ article section.tab-content {
   height: 100vh;
   position: fixed;
   background: rgba(0,0,0,0.5);
-  backdrop-filter: blur(5px);
   top: 0;
   z-index: 999999;
   display: flex;

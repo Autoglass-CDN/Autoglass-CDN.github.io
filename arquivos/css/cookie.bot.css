@@ -66,7 +66,7 @@
 }
 #cookiebanner .c-header {
     text-transform: uppercase;
-    color: #000000;
+    color: #1a3779;
     font-weight: bold;
     margin-bottom: 4px;
 }
@@ -79,11 +79,11 @@
     color: #999;
 }
 #cookiebanner a:hover {
-    color: #000000;
+    color: #1a3779;
 }
 
 #cookiebanner #aceitar-cookies-checkbox:checked {
-    background-color: #000000;
+    background-color: #2D4F9E;
   }
 
 #cookiebanner a.c-button {
@@ -106,5 +106,5 @@
 }
 #cookiebanner a.c-button:hover {
     box-shadow: none;
-    background-color: #000000;
+    background-color: #1a3779;
 }
