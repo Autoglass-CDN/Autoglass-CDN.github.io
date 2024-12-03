@@ -157,7 +157,7 @@ ul{
 }
 
 .cart-icon::before {
-  content: url('https://autoglass-cdn.github.io/arquivos/img/carrinhopreto-blackfriday.svg');
+  content: url('https://autoglass-cdn.github.io/arquivos/img/cart-arrow-down.svg');
   height: 20px;
   transition: 0.5s;
 }
@@ -250,7 +250,7 @@ i.arrow-icon::before {
   top: 0;
   display: flex;
   justify-content: center;
-  background-color: #000000;
+  background-color: var(--primary);
 }
 
 .topo * {
@@ -411,7 +411,7 @@ i.arrow-icon::before {
   text-transform: uppercase;
   font-size: 1.1667rem;
   /*14pt*/
-  color: #000000;
+  color: var(--blue-700);
   background: transparent;
   border: 0;
 }
@@ -479,10 +479,10 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   padding: 6px 16px;
-  background-color: #F1F1F1;
-  border: 2px solid #000000;
+  background-color: #f1f4f9;
+  border: 2px solid #425db4;
   border-radius: 20px;
-  color: #000000;
+  color: #425db4;
   font-size: 14px;
   cursor: pointer;
   width: 33%;
@@ -494,10 +494,10 @@ i.arrow-icon::before {
     display: flex;
     align-items: center;
     padding: 6px 16px;
-    background-color: #F1F1F1;
-    border: 2px solid #000000;
+    background-color: #f1f4f9;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 37%;
@@ -523,7 +523,7 @@ i.arrow-icon::before {
     z-index: 7;
     transition: height 0.5s ease-in-out;
     align-items: baseline;
-    background-color: #F1F1F1;
+    background-color: #f1f4f9;
   }
 }
 
@@ -531,7 +531,7 @@ i.arrow-icon::before {
   width: 60%;
   padding: 10px 0 10px 20px;
   position: relative;
-  background-color: #F1F1F1;
+  background-color: #f1f4f9;
   margin-left: 10px;
 }
 
@@ -548,12 +548,12 @@ i.arrow-icon::before {
 .search-box-mobile .busca input {
   outline: none;
   width: 75%;
-  color: #000000;
+  color: #425db4;
   transition: border 500ms;
   padding: 10px;
   border-radius: 5px;
   border: 0px solid var(--gray-500);
-  background-color: #F1F1F1;
+  background-color: #f1f4f9;
 }
 
 .search-box-mobile__form-input {
@@ -572,8 +572,8 @@ i.arrow-icon::before {
   border: 1px solid var(--gray-500);
   border-radius: 0px 0px 5px 5px;
   z-index: 1;
-  background-color: #F1F1F1;
-  color: #000000;
+  background-color: #f1f4f9;
+  color: #0b4583;
 }
 
 .search-mobile-autocomplete li {
@@ -937,7 +937,7 @@ i.arrow-icon::before {
   }
   .side-menu a.destaque {
     font-weight: bold;
-    color: #000000;
+    color: #183884;
     padding: 25px 8px 25px 15px;
     display: flex;
   }
@@ -1052,7 +1052,7 @@ i.arrow-icon::before {
 }
 
 .side-menu #busca-categoria-mobile h2 {
-  color: #000000;
+  color: #183884;
 }
 
 .side-menu-header>a {
@@ -1200,7 +1200,7 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .titulo-categorias {
-  color: #000000;
+  color: #183884;
   margin: 0;
   margin-left: 30px;
   font-family: 'Roboto', sans-serif;
@@ -1717,7 +1717,7 @@ ul.menu-division {
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista>a {
-  color: #000000;
+  color: var(--blue-500);
   font-weight: var(--bold);
   display: block;
   margin-bottom: 25px;
@@ -1746,7 +1746,7 @@ ul.menu-division {
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista .painel-categorias__categoria-itens-lista-menu>li>a:hover{
-  color: #000000;
+  color: var(--blue-500);
   font-weight: var(--bold);
 }
 
@@ -1973,28 +1973,4 @@ body div#ajaxBusy {
 
 .search-options .search-options-input{
   padding-left: 10%;
-}
-
-.beon-showcase--carousel .beon-showcase__head .beon-showcase__title  {
-  color: #000000;
-}
-
-#konfidency-questions-container .details .no-questions button  {
-  color: #000000  !important;
-}
-#konfidency-reviews-container .content .details .reviews .fetch-button button  {
-  border: 1px solid #000000  !important;
-  color: #000000 !important;
-}
-
-.beon-slider .tns-nav button[data-nav].tns-nav-active{
-  background-color: #000000 !important;
-}
-
-#konfidency-storeReview-carousel .name {
-  color: #000000 !important;
-}
-
-.bn-menu--marcas font {
-  color: #000000;
 }
