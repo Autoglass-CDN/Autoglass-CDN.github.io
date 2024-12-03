@@ -40,7 +40,7 @@
 .product-qd-v1-standard {
   display: block !important;
   background-color: #fff;
-  margin-top: 18px;
+  margin-top: 10px;
   padding: 12px;
 }
 
@@ -494,6 +494,7 @@ body.mz-pu-on .mz-modal-pickup {
 .product-qd-v1-float-bar {
   z-index: 2;
   top: 150px;
+  height: 130px;
 }
 
 p.descricao-rollout {
