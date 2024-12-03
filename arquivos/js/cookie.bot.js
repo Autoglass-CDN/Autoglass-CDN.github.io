@@ -17,4 +17,4 @@
         </div>
         <div style="clear:both"></div>
     </div>
-`);let a=$("#aceitar-cookies-checkbox"),c=$("#aceitar-cookie-link");a.change(function(){let e=this.checked;c.toggleClass("c-button-disabled",!e),c.css("background-color",e?"#000000":"#999"),c.css("cursor",e?"pointer":"not-allowed")}),c.click(o)}(),function o(){let a=document.getElementById("cookiebanner"),c=parseInt(a.offsetHeight);a.style.bottom=e-c+"px",(e+=4)<c?setTimeout(function(){o()},1):(e=0,a.style.bottom="10px")}())}()}();
+`);let a=$("#aceitar-cookies-checkbox"),c=$("#aceitar-cookie-link");a.change(function(){let e=this.checked;c.toggleClass("c-button-disabled",!e),c.css("background-color",e?"#2D4F9E":"#999"),c.css("cursor",e?"pointer":"not-allowed")}),c.click(o)}(),function o(){let a=document.getElementById("cookiebanner"),c=parseInt(a.offsetHeight);a.style.bottom=e-c+"px",(e+=4)<c?setTimeout(function(){o()},1):(e=0,a.style.bottom="10px")}())}()}();
