@@ -699,7 +699,7 @@ body.qd-product-unavailable
 }
 .product-qd-v1-sku-selection-box .product-qd-v1-price .price-installments {
     color: #333333;
-    font-size: 18px;
+    font-size: 16px;
 }
 .product-qd-v1-sku-selection-box
     .product-qd-v1-price
@@ -3496,7 +3496,7 @@ body.mz-bo-on .mz-modal-overlay {
     color: #2d4f9e;
 }
 .product-qd-v1-float-bar .product-qd-v1-price .price-installments {
-    font-size: 20px;
+    font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 25px;
