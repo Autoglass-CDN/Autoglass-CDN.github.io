@@ -64,7 +64,7 @@ html {
   width: 100%;
   background: #f8f8f8;
   position: sticky;
-  top: 220px;
+  top: 250px;
   z-index: 2;
 }
 
@@ -1591,6 +1591,7 @@ fieldset#beneficios legend {
   font-size: 18px;
   color: #2d4f9e;
   font-weight: bold;
+  font-style: normal;
 }
 
 .percent-box {
@@ -1599,7 +1600,7 @@ fieldset#beneficios legend {
   width: 37px;
   height: 30px;
   border: 1px solid green;
-  color: green;
+  color: #06c544;
   font-size: 14px;
   text-align: center;
   vertical-align: middle;
@@ -1608,4 +1609,15 @@ fieldset#beneficios legend {
   font-weight: bold;
   position: relative;
   top: -10px;
+  font-style: normal;
+}
+
+.span-sem-juros {
+  font-weight: normal;
+}
+
+@media only screen and (max-width: 767px) {
+  .product-qd-v1-price {
+    padding-top: 12px !important;
+  }
 }

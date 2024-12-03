@@ -644,14 +644,15 @@ async function buscarPromocoes() {
       const precos = document.querySelectorAll('.skuBestPrice');
   
       precos.forEach(preco => {
-        preco.display = none;
+        preco.style.display = 'inline-block';
       })
     }
   } catch(ex) {
+    console.log(ex)
     const precos = document.querySelectorAll('.skuBestPrice');
 
     precos.forEach(preco => {
-      preco.display = none;
+      preco.style.display = 'inline-block';
     })
   }
 }
@@ -663,7 +664,7 @@ function aplicarDesconto(percentualDesconto) {
   
   const precos = document.querySelectorAll('.skuBestPrice');
   
-  precos.forEach(precoElemento => {
+  precos.forEach((precoElemento, index)=> {
     let precoOriginal = precoElemento.textContent.trim();
     precoOriginal = precoOriginal.replace('R$', '').trim();
     precoOriginal = precoOriginal.replace('.', '').replace(',', '.');
@@ -677,19 +678,87 @@ function aplicarDesconto(percentualDesconto) {
 
       precoElemento.style.fontSize = '25px';
 
-      const divPix = document.createElement('div');
-      divPix.classList.add('pix-discount');
-      divPix.textContent = 'no Pix';
-
-      const porcentagemDesconto = ((precoBaseNumerico - precoComDesconto) / precoBaseNumerico) * 100;
-      const divPercent = document.createElement('div');
-      divPercent.classList.add('percent-box');
-      divPercent.textContent = `-${Math.round(porcentagemDesconto)}%`;
-
-      precoElemento.parentElement.appendChild(divPix);
-      precoElemento.parentElement.appendChild(divPercent);
+      if (index !== precos.length - 1) {
+        const divPix = document.createElement('div');
+        divPix.classList.add('pix-discount');
+        divPix.textContent = 'no Pix';
+  
+        const porcentagemDesconto = ((precoBaseNumerico - precoComDesconto) / precoBaseNumerico) * 100;
+        const divPercent = document.createElement('div');
+        divPercent.classList.add('percent-box');
+        divPercent.textContent = `-${Math.round(porcentagemDesconto)}%`;
+  
+        precoElemento.parentElement.appendChild(divPix);
+        precoElemento.parentElement.appendChild(divPercent);
+      } else {
+        precoElemento.classList.add('.preco-bottom-mobile')
+      }
 
       precoElemento.style.display = 'inline-block';
+
+      ajustarTextoValorParcelado(precoNumerico);
+    }
+  });
+}
+
+function ajustarTextoValorParcelado(precoNumerico) {
+  let divs = document.querySelectorAll('.valor-dividido.price-installments');
+  
+
+  divs.forEach(function(div, index) {
+    if (!div.classList.contains('modificada')) {
+      
+      div.classList.add('modificada');
+
+      let labelNumero = div.querySelector('.skuBestInstallmentNumber');
+      // labelNumero.classList.remove('skuBestInstallmentNumber');
+
+      let novaLabel = document.createElement('label');
+      novaLabel.textContent = precoNumerico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });;  // O texto que você deseja adicionar
+      novaLabel.classList.add('skuBestInstallmentNumber');
+      
+      if (labelNumero) {
+        console.log("DIVS: ", divs)
+        labelNumero.parentNode.insertBefore(novaLabel, labelNumero);
+
+        let spanConectiva = document.createElement('span');
+        spanConectiva.textContent = ' em ';
+        novaLabel.parentNode.insertBefore(spanConectiva, labelNumero);
+  
+        let novoSpan = document.createElement('span');
+        novoSpan.textContent = ' sem juros';
+        novoSpan.classList.add('span-sem-juros')
+  
+        let strongTag = div.querySelector('strong');
+  
+        if (strongTag) {
+          strongTag.appendChild(novoSpan);
+        }
+
+        if (index !== divs.length - 1) {
+          if (div.style.display === 'none' || getComputedStyle(div).display === 'none') {
+            let descricaoPrecoDiv = div.closest('.descricao-preco');
+        
+            if (descricaoPrecoDiv) {
+              let containerDiv = document.createElement('div');
+              containerDiv.classList.add('valor-dividido', 'price-installments', 'modificada');
+              
+              let spanConectivaOu = document.createElement('span');
+              spanConectivaOu.textContent = 'ou ';
+              containerDiv.appendChild(spanConectivaOu);
+              
+              tipoTag = index == 0 ? 'label' : 'span';
+              
+              let strongTagNova = document.createElement(tipoTag);
+              strongTagNova.textContent = novaLabel.textContent;
+              strongTagNova.classList.add('skuBestInstallmentNumber');
+              containerDiv.appendChild(strongTagNova);
+        
+              descricaoPrecoDiv.appendChild(containerDiv);
+            }
+          }
+        }
+      }
     }
   });
 }
