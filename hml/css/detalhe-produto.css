@@ -1582,6 +1582,7 @@ fieldset#beneficios legend {
 }
 
 .skuBestPrice {
+  font-weight: 700 !important;
   display: none;
 }
 
@@ -1590,7 +1591,7 @@ fieldset#beneficios legend {
   margin-left: 4px;
   font-size: 18px;
   color: #2d4f9e;
-  font-weight: bold;
+  font-weight: 700;
   font-style: normal;
 }
 
@@ -1598,21 +1599,22 @@ fieldset#beneficios legend {
   display: inline-block;
   margin-left: 10px;
   width: 37px;
-  height: 30px;
-  border: 1px solid green;
+  height: 28px;
+  border: 1px solid #06c544;
   color: #06c544;
   font-size: 14px;
   text-align: center;
   vertical-align: middle;
   line-height: 25px;
   border-radius: 5px;
-  font-weight: bold;
+  font-weight: 700;
   position: relative;
   top: -10px;
   font-style: normal;
 }
 
 .span-sem-juros {
+  font-size: 16px;
   font-weight: normal;
 }
 
@@ -1620,4 +1622,23 @@ fieldset#beneficios legend {
   .product-qd-v1-price {
     padding-top: 12px !important;
   }
+}
+
+.skuBestInstallmentNumber {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.skuBestInstallmentValue {
+  font-size: 16px !important;
+  font-weight: 600 !important;
+}
+
+.palavras-conectivas {
+  font-size: 16px !important;
+  font-weight: normal !important;
+} 
+
+.x {
+  text-transform: lowercase;
 }

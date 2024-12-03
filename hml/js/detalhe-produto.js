@@ -648,7 +648,6 @@ async function buscarPromocoes() {
       })
     }
   } catch(ex) {
-    console.log(ex)
     const precos = document.querySelectorAll('.skuBestPrice');
 
     precos.forEach(preco => {
@@ -672,18 +671,18 @@ function aplicarDesconto(percentualDesconto) {
     let precoNumerico = parseFloat(precoOriginal);
     
     if (!isNaN(precoNumerico)) {
-      const precoComDesconto = Math.round((precoNumerico * (1 - (percentualDesconto / 100.00))) * 100) / 100;
-      
-      precoElemento.textContent = precoComDesconto.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+      const precoComDesconto = Math.round((precoNumerico * (1 - (percentualDesconto / 100.00))) * 1000) / 1000;
+      const precoComDescontoFinal = Math.round(precoComDesconto * 100) / 100;
+      precoElemento.textContent = precoComDescontoFinal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 
-      precoElemento.style.fontSize = '25px';
+      precoElemento.style.fontSize = '18px';
 
       if (index !== precos.length - 1) {
         const divPix = document.createElement('div');
         divPix.classList.add('pix-discount');
         divPix.textContent = 'no Pix';
   
-        const porcentagemDesconto = ((precoBaseNumerico - precoComDesconto) / precoBaseNumerico) * 100;
+        const porcentagemDesconto = ((precoBaseNumerico - precoComDescontoFinal) / precoBaseNumerico) * 100;
         const divPercent = document.createElement('div');
         divPercent.classList.add('percent-box');
         divPercent.textContent = `-${Math.round(porcentagemDesconto)}%`;
@@ -711,18 +710,19 @@ function ajustarTextoValorParcelado(precoNumerico) {
       div.classList.add('modificada');
 
       let labelNumero = div.querySelector('.skuBestInstallmentNumber');
-      // labelNumero.classList.remove('skuBestInstallmentNumber');
 
       let novaLabel = document.createElement('label');
       novaLabel.textContent = precoNumerico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });;  // O texto que você deseja adicionar
       novaLabel.classList.add('skuBestInstallmentNumber');
       
       if (labelNumero) {
-        console.log("DIVS: ", divs)
         labelNumero.parentNode.insertBefore(novaLabel, labelNumero);
+
+        
 
         let spanConectiva = document.createElement('span');
         spanConectiva.textContent = ' em ';
+        spanConectiva.classList.add('palavras-conectivas');
         novaLabel.parentNode.insertBefore(spanConectiva, labelNumero);
   
         let novoSpan = document.createElement('span');
