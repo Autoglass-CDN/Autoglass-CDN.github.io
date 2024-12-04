@@ -1281,13 +1281,6 @@ i.arrow-icon::before {
   transform: scale(0.8);
 }
 
-.painel-categorias ul li:first-child .painel-categorias__categoria-header img {
-  transform: scale(0.64);
-  filter:  grayscale(100%);
-  transition: 0.2s;
-  opacity: 0.5;
-}
-
 .painel-categorias-section .painel-categorias:hover ul li:first-child .painel-categorias__categoria-header.ativo img{
   filter: drop-shadow(5px 5px 2px rgba(0,0,0,0));
   opacity: 1;
