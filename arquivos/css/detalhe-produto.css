@@ -638,7 +638,7 @@ article section.tab-content {
   justify-content: center;
   align-items: center;
   align-content: center;
-  right: 1%;
+  right: 0%;
   align-content: baseline;
   padding-top: 2%;
 }
@@ -937,6 +937,7 @@ fieldset#beneficios legend {
   display: grid;
   grid-template-columns: 2fr 2fr;
   align-items: baseline;
+  margin-left: 15px;
 }
 
 #containerButton {
@@ -1637,7 +1638,7 @@ fieldset#beneficios legend {
 .palavras-conectivas {
   font-size: 16px !important;
   font-weight: normal !important;
-} 
+}
 
 .x {
   text-transform: lowercase;

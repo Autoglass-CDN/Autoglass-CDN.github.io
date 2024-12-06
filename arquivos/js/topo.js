@@ -53,6 +53,18 @@ function fecharAbaCategoria() {
   toggleActiveClass(divBuscaPlaca, true);
   toggleActiveClass(abaBuscaPlaca, true);
 }
+if(window.innerWidth > 1200){
+  document.addEventListener('click', cliqueForaDaAba);
+  function cliqueForaDaAba(event) {
+    const aba = document.getElementById('busca-categoria');
+    const tabs = document.querySelector('.c-busca__tabs.tab-header');
+
+    // Ignorar cliques na aba e nas <li> dentro da <ul>
+    if (!aba.contains(event.target) && !event.target.closest('.c-busca__tabs.tab-header')) {
+        fecharAbaCategoria();
+    }
+  }
+}
 
 function activateCategory(categoriaAtual, indexConteudoAtual) {
   let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
