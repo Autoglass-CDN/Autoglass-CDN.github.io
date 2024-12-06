@@ -465,7 +465,7 @@ function openNav() {
   let backdrop = document.querySelector('.side-menu-backdrop');
   backdrop.style.display = 'unset';
   backdrop.style.opacity = '1';
-
+  document.body.style.overflowY= 'hidden';
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = 'unset';
   setTimeout(() => {
@@ -481,6 +481,7 @@ function openNav() {
 function closeNav() {
   let backdrop = document.querySelector('.side-menu-backdrop');
   let sideMenu = document.getElementById("side-menu");
+  document.body.style.overflowY= 'auto';
   sideMenu.querySelectorAll('a').forEach(a => a.style.opacity = '0');
   backdrop.style.opacity = '1';
   setTimeout(() => {
