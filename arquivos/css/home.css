@@ -57,7 +57,7 @@
 
 .banners-section .banners button {
   position: absolute;
-  top: 25%;
+  top: 42%;
   background-color: transparent;
   border: none;
   padding: 20px;
@@ -148,14 +148,16 @@
   bottom: 125px;
   list-style: none;
   display: flex;
+  top: 95%;
 }
 
 .banners-section .banners-bars li {
-  width: 30px;
-  height: 4px;
+  width: 9px;
+  height: 9px;
   background-color: var(--gray-500);
   margin: 0 5px;
   cursor: pointer;
+  border-radius: 50%;
 }
 
 .banners-section .banners-bars li.active {

@@ -1384,6 +1384,11 @@ i.arrow-icon::before {
   padding-top: 5px;
   padding-bottom: 30px;
 }
+@media (max-width: 1200px) {
+  .painel-categorias-section {
+    display:none;
+  }
+}
 
 .painel-categorias-desktop:not(:hover) .painel-categorias .arrow{
   transform: scaleY(0) rotate(45deg);

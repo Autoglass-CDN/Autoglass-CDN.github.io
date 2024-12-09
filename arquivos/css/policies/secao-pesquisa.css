@@ -15,6 +15,17 @@
     gap: 5px;
   }
 }
+@media screen and (min-width: 600px) and (max-width: 1024px) {
+  .tab-header {
+    list-style: none;
+    margin-bottom: 0px;
+  }
+  .tab-header li label{
+    font-weight: 500 !important;
+    display: flex;
+    gap: 5px;
+  }
+}
 
 @media screen and (min-width: 1000px) {
   .tab-header {
