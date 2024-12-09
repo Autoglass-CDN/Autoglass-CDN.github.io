@@ -33,8 +33,8 @@ function valueBetweenRange (value, min, max) {
 
 function fecharAbaCategoria() {
   const divCategoria = document.getElementById('busca-categoria');
-  const divBuscaPlaca = document.getElementById('busca-placa');
-  const abaBuscaPlaca = document.getElementById('tab-busca-placa');
+  const divBuscaPeca = document.getElementById('busca-peca');
+  const abaBuscaPeca = document.getElementById('tab-busca-peca');
   const abaBuscaCategoria = document.getElementById('tab-busca-categoria');
 
   // Função auxiliar para trocar classes
@@ -53,8 +53,8 @@ function fecharAbaCategoria() {
   toggleActiveClass(abaBuscaCategoria, false);
 
   // Adicionar is-active à aba de busca por placa
-  toggleActiveClass(divBuscaPlaca, true);
-  toggleActiveClass(abaBuscaPlaca, true);
+  toggleActiveClass(divBuscaPeca, true);
+  toggleActiveClass(abaBuscaPeca, true);
 }
 
 if(window.innerWidth > 1200){
@@ -465,7 +465,7 @@ function openNav() {
   let backdrop = document.querySelector('.side-menu-backdrop');
   backdrop.style.display = 'unset';
   backdrop.style.opacity = '1';
-
+  document.body.style.overflowY= 'hidden';
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = 'unset';
   setTimeout(() => {
@@ -481,6 +481,7 @@ function openNav() {
 function closeNav() {
   let backdrop = document.querySelector('.side-menu-backdrop');
   let sideMenu = document.getElementById("side-menu");
+  document.body.style.overflowY= 'auto';
   sideMenu.querySelectorAll('a').forEach(a => a.style.opacity = '0');
   backdrop.style.opacity = '1';
   setTimeout(() => {

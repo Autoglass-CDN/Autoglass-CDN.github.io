@@ -858,8 +858,8 @@
   }
 
   .smart-select__main-results ul {
-    max-height: 430px;
-    overflow-y: auto;
+    overflow: auto;
+    height: 170px;
   }
 
   .busca-options{
@@ -1303,6 +1303,7 @@
 .botao-ver-todas{
   padding-top: 20px;
   padding-bottom: 10px;
+  margin-top: -10%;
 }
 
 .selectable-item {

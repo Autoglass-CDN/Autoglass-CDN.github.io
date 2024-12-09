@@ -1196,7 +1196,7 @@ i.arrow-icon::before {
 .side-menu #main-menu {
   display: flex;
   flex-direction: column;
-  height: 112%;
+  height: 100%;
 }
 
 #main-menu hr{
@@ -2150,7 +2150,7 @@ body div#ajaxBusy {
 .titulo-side-menu{
   display: flex;
   border-bottom: 1px solid #dddddd;
-  padding-top: 50px;
+  padding-top: 5%;
 }
 
 .titulo-side-menu > span{
