@@ -498,24 +498,6 @@ i.arrow-icon::before {
   margin-right: 19px;
 }
 
-@media screen and (max-width: 375px){
-  .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #F1F1F1;
-    border: 2px solid #000000;
-    border-radius: 20px;
-    color: #000000;
-    font-size: 14px;
-    cursor: pointer;
-    width: 37%;
-    height: 37px;
-    margin-right: 19px;
-  }
-
-}
-
 @media screen and (max-width: 770px){
   .menu-btn {
     display: flex;
@@ -710,6 +692,24 @@ i.arrow-icon::before {
     height: 37px;
     margin-left: 20%;
   }
+}
+
+@media screen and (max-width: 376px){
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    background-color: #F1F1F1;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    color: #000000;
+    font-size: 14px;
+    cursor: pointer;
+    width: 53%;
+    height: 37px;
+    margin-right: 19px;
+  }
+
 }
 
 .menu-btn span {
