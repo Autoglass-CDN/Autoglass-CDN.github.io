@@ -33,9 +33,10 @@ function valueBetweenRange (value, min, max) {
 
 function fecharAbaCategoria() {
   const divCategoria = document.getElementById('busca-categoria');
-  const divBuscaPlaca = document.getElementById('busca-placa');
-  const abaBuscaPlaca = document.getElementById('tab-busca-placa');
+  const divBuscaPeca = document.getElementById('busca-peca');
+  const abaBuscaPeca = document.getElementById('tab-busca-peca');
   const abaBuscaCategoria = document.getElementById('tab-busca-categoria');
+
   // Função auxiliar para trocar classes
   const toggleActiveClass = (element, add) => {
     if (element) {
@@ -46,13 +47,16 @@ function fecharAbaCategoria() {
       }
     }
   };
+
   // Remover is-active da aba de categoria
   toggleActiveClass(divCategoria, false);
   toggleActiveClass(abaBuscaCategoria, false);
+
   // Adicionar is-active à aba de busca por placa
-  toggleActiveClass(divBuscaPlaca, true);
-  toggleActiveClass(abaBuscaPlaca, true);
+  toggleActiveClass(divBuscaPeca, true);
+  toggleActiveClass(abaBuscaPeca, true);
 }
+
 if(window.innerWidth > 1200){
   document.addEventListener('click', cliqueForaDaAba);
   function cliqueForaDaAba(event) {
@@ -65,6 +69,7 @@ if(window.innerWidth > 1200){
     }
   }
 }
+
 
 function activateCategory(categoriaAtual, indexConteudoAtual) {
   let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
@@ -91,6 +96,7 @@ function activateCategory(categoriaAtual, indexConteudoAtual) {
   currentCategory = categoriaAtual;
 }
 
+
 function toggleVisibility(id) {
   let element = document.getElementById(id);
   element.style.visibility = element.style.visibility === 'hidden' ? 'visible' : 'hidden';
@@ -101,6 +107,7 @@ function getTranslateX(element) {
   let matrix = new WebKitCSSMatrix(transform);
   return matrix.m41;
 }
+
 
 let currentCategory = null;
 
@@ -200,10 +207,12 @@ async function checkLogin() {
 async function checkLoginMobile() {
   let response = await fetch("/no-cache/profileSystem/getProfile");
   let data = await response.json();
+
   if (data.IsUserDefined) {
     document.querySelector('#div-login-mobile')
     .addEventListener('click', () => {
       document.getElementById('loading-spinner').style.display = 'flex';
+
       setTimeout(() => {
         window.location.href = "https://autoglassonline.com.br/_secure/account#/";
       }, 500);
@@ -447,7 +456,7 @@ function openNav() {
   let backdrop = document.querySelector('.side-menu-backdrop');
   backdrop.style.display = 'unset';
   backdrop.style.opacity = '1';
-
+  document.body.style.overflowY= 'hidden';
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = 'unset';
   setTimeout(() => {
@@ -463,6 +472,7 @@ function openNav() {
 function closeNav() {
   let backdrop = document.querySelector('.side-menu-backdrop');
   let sideMenu = document.getElementById("side-menu");
+  document.body.style.overflowY= 'auto';
   sideMenu.querySelectorAll('a').forEach(a => a.style.opacity = '0');
   backdrop.style.opacity = '1';
   setTimeout(() => {

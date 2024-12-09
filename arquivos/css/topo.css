@@ -489,22 +489,7 @@ i.arrow-icon::before {
   height: 37px;
   margin-right: 19px;
 }
-@media screen and (max-width: 375px){
-  .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f4f9;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 37%;
-    height: 37px;
-    margin-right: 19px;
-  }
-}
+
 @media screen and (max-width: 770px){
   .menu-btn {
     display: flex;
@@ -699,6 +684,23 @@ i.arrow-icon::before {
     height: 37px;
     margin-left: 20%;
   }
+}
+@media screen and (max-width: 376px){
+  .menu-btn {
+    display: flex;
+    align-items: center;
+    padding: 6px 16px;
+    background-color: #F1F1F1;
+    border: 2px solid #000000;
+    border-radius: 20px;
+    color: #000000;
+    font-size: 14px;
+    cursor: pointer;
+    width: 53%;
+    height: 37px;
+    margin-right: 19px;
+  }
+
 }
 .menu-btn span {
   margin-right: 6px;
@@ -1244,15 +1246,6 @@ i.arrow-icon::before {
 }
 
 .side-menu #busca-categoria-mobile h2, .side-menu #busca-categoria-mobile a {
-  padding-left: 15px;
-}
-
-
-.side-menu-categorias__categoria-itens-titulo .categorias-mobile {
-  font-weight: 700;
-}
-
-.side-menu #category-menu h2, .side-menu #category-menu a {
   padding-left: 15px;
 }
 

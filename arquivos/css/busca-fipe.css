@@ -779,8 +779,8 @@
   }
 
   .smart-select__main-results ul {
-    max-height: 430px;
-    overflow-y: auto;
+    overflow: auto;
+    height: 170px;
   }
 
   .busca-options{

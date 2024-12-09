@@ -205,7 +205,7 @@
             $(
               `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
             ).focus();
-          }
+        }
           switch (select.id) {
             case "categoria-select":
               const ulCategoriaSelect = document.querySelector('#categoria-select .smart-select__main-results > ul');
@@ -391,6 +391,7 @@
           ).slideUp("fast");
         }
       });
+
     }
 
     function _initSelect_(select) {
@@ -1405,7 +1406,7 @@
     //Lógica para marcar e manter o input marcado.
     if(window.innerWidth < 1024){
       selecionarInputPorId(listItems, event.target.id);
-      var savedValue = verificaValorCheckBox(_id);
+      const savedValue = verificaValorCheckBox(_id);
       if(savedValue == event.target.id)
         selecionarInputPorId(listItems, event.target.id);
     }

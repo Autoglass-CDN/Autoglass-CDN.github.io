@@ -8,6 +8,16 @@
 
 <script async="" src="https://autoglass-cdn.github.io/arquivos/js/policies/header.js"></script>
 
+
+<script src="https://cdn.jsdelivr.net/npm/@opentelemetry/api@1.9.0/build/esm/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@opentelemetry/sdk-trace-base@1.28.0/build/esm/index.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@opentelemetry/sdk-trace-web@1.28.0/build/esm/index.js"></script>
+<script src="https://autoglass-cdn.github.io/arquivos/js/monitoramento.js"></script>
+
+<script>
+  console.log("window.opentelemetry:", window.opentelemetry);
+</script>
+
 <script>
     const currentUrl = window.location.href;
 
@@ -112,26 +122,26 @@
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215;</a>
       </div>
       <ul class="c-busca__tabs-mobile tab-header search-options">
-          <li id="tab-busca-placa-mobile" class="tab-item is-active">
-              <a href="#busca-placa-mobile">
-                  <label><input type="radio" name="search" value="placa" id="inputPlaca"> Placa <span class="novidade">Novidade</span></input></label>
-              </a>
-          </li>
-          <li id="tab-busca-peca-mobile" class="tab-item">
-              <a href="#busca-peca-mobile">
-                  <label><input type="radio" name="search" value="peca" id="inputBuscaPeca"> Peça e modelo</input></label>
-              </a>
-          </li>
-          <li id="tab-busca-categoria-mobile" class="tab-item painel-categorias__categoria">
-              <div class="ativo">
-                  <a href="#busca-categoria-mobile">
-                      <label><input type="radio" name="search" value="categoria" id="inputCategorias"> Categorias</input></label>
-                  </a>
-              </div>
-          </li>
-      </ul>
+        <li id="tab-busca-peca-mobile" class="tab-item is-active">
+            <a href="#busca-peca-mobile">
+                <label><input type="radio" name="search" value="peca" id="inputBuscaPeca"> Peça e modelo</input></label>
+            </a>
+        </li>
+        <li id="tab-busca-placa-mobile" class="tab-item">
+            <a href="#busca-placa-mobile">
+                <label><input type="radio" name="search" value="placa" id="inputPlaca"> Placa <span class="novidade">Novidade</span></input></label>
+            </a>
+        </li>
+        <li id="tab-busca-categoria-mobile" class="tab-item painel-categorias__categoria">
+            <div class="ativo">
+                <a href="#busca-categoria-mobile">
+                    <label><input type="radio" name="search" value="categoria" id="inputCategorias"> Categorias</input></label>
+                </a>
+            </div>
+        </li>
+    </ul>
       <div class="c-busca__tabs-content-mobile">
-          <div class="c-busca__tab-content-mobile is-active" id="busca-placa-mobile">
+        <div class="c-busca__tab-content-mobile" id="busca-placa-mobile">
               <form id="form-busca-placa-mobile" action="#">
                   <div class="h-flex">
                       <div class="c-busca__input">
@@ -185,7 +195,7 @@
                   </div>
               </form>
           </div>
-          <div class="c-busca__tab-content-mobile" id="busca-peca-mobile">
+          <div class="c-busca__tab-content-mobile is-active" id="busca-peca-mobile">
               <form id="form-busca-peca-mobile" action="#">
                   <div class="h-flex">
                       <div class="c-busca__select">
@@ -772,7 +782,7 @@
                                                     title="Refil da Palheta Vidro Vigia" itemprop="url">Refil da Palheta Vidro Vigia</a>
                                             </li>
                                         </ul>
-                                        
+
                                     </li>
                                 </ul>
                             </li>
@@ -987,7 +997,7 @@
                                                     <li><a id="mobile-limpeza-automotiva"
                                                             href="/higienizadores-e-filtros-automotivos/higienizacao-automotiva/limpeza-automotiva"
                                                             title="Limpeza Automotiva" itemprop="url">Limpeza Automotiva</a>
-                                                    </li>                                                    
+                                                    </li>
                                                 </ul>
                                             </li>
                                         </ul>
@@ -1206,7 +1216,7 @@
                                                 </ul>
                                             </li>
                                         </ul>
-                                    </li>                          
+                                    </li>
                                 </ul>
                             </li>
                           </ul>
