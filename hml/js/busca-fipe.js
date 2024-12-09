@@ -34,7 +34,7 @@
     }
   });
 
-  let activeTab = window.innerWidth > 1024 ? '#busca-placa' : '#busca-placa-mobile';
+  let activeTab = window.innerWidth > 1024 ? '#busca-peca' : '#busca-peca-mobile';
   selectRightSearchMethod();
 
   /** BUSCA POR PEÇA DEV */
@@ -1399,7 +1399,7 @@
     //Lógica para marcar e manter o input marcado.
     if(window.innerWidth < 1024){
       selecionarInputPorId(listItems, event.target.id);
-      const savedValue = verificaValorCheckBox(_id);
+      var savedValue = verificaValorCheckBox(_id);
       if(savedValue == event.target.id)
         selecionarInputPorId(listItems, event.target.id);
     }
