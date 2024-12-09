@@ -210,15 +210,14 @@
             case "ano-select":
               const ulAnoSelect = document.querySelector('#ano-select .smart-select__main-results > ul');
               var sideMenu = document.querySelector('#side-menu');
-              ulAnoSelect.style.height = '167px';
-              sideMenu.style.height = '128%';
+              window.innerWidth <= 375 ? sideMenu.style.height = '132%' : sideMenu.style.height = '128%';
               break
             case "versao-select":
               if(select.values.length){
                 const ulVersaoSelect = document.querySelector('#versao-select .smart-select__main-results > ul');
                 var sideMenu = document.querySelector('#side-menu');
+                window.innerWidth <= 375 ? sideMenu.style.height = '155%' : sideMenu.style.height = '150%'
                 ulVersaoSelect.style.height = '225px';
-                sideMenu.style.height = '150%';
               }
             default:
               break;
