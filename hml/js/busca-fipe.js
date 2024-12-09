@@ -30,7 +30,7 @@
       sessionStorage.setItem('selectedOptionVeiculo', null);
       sessionStorage.setItem('selectedOptionAno', null);
       sessionStorage.setItem('selectedOptionVersao', null);
-      sessionStorage.setItem('idAba', "inputPlaca");
+      sessionStorage.setItem('idAba', "inputBuscaPeca");
     }
   });
 
@@ -1727,14 +1727,14 @@
       document.querySelector("a[href='#busca-categoria']").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active");
       document.querySelector("#form-busca-peca").parentNode.classList.remove("is-active");
-      document.querySelector("a[href='#busca-placa']").parentNode.classList.add("is-active");
-      document.querySelector("#form-busca-placa").parentNode.classList.add("is-active");
-      if(window.innerWidth > 1024){
+      document.querySelector("a[href='#busca-peca']").parentNode.classList.add("is-active");
+      document.querySelector("#form-busca-peca").parentNode.classList.add("is-active");
+      if(window.innerWidth < 1024){
         document.querySelector("a[href='#busca-categoria-mobile']").parentNode.classList.remove("is-active");
         document.querySelector("a[href='#busca-peca-mobile']").parentNode.classList.remove("is-active");
         document.querySelector("#form-busca-peca-mobile").parentNode.classList.remove("is-active");
-        document.querySelector("a[href='#busca-placa-mobile']").parentNode.classList.add("is-active");
-        document.querySelector("#form-busca-placa-mobile").parentNode.classList.add("is-active");
+        document.querySelector("a[href='#busca-peca-mobile']").parentNode.classList.add("is-active");
+        document.querySelector("#form-busca-peca-mobile").parentNode.classList.add("is-active");
       }
     }
   }
