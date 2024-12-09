@@ -190,12 +190,18 @@
         if (select.values) {
           View.buildList(select.values, select.id);
           View.selectOptionIfButtonHasValue(select.id);
+          const sideMenu = document.querySelector('#side-menu');
 
           if (select.values.length !== 0) {
             $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`)
-              .slideToggle("fast")
-              .click((e) => e.stopPropagation());
-
+              .slideToggle("fast", function () {
+                if (select.id === "versao-select" && !$(this).is(':visible')) {
+                  sideMenu.style.height = '105%';
+                }
+              })
+              .click((e) => {
+                  e.stopPropagation();
+              });
             $(
               `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
             ).focus();
@@ -203,21 +209,22 @@
           switch (select.id) {
             case "categoria-select":
               const ulCategoriaSelect = document.querySelector('#categoria-select .smart-select__main-results > ul');
-              var sideMenu = document.querySelector('#side-menu');
               ulCategoriaSelect.style.height = '175px';
               sideMenu.style.height = '100%';
               break;
             case "ano-select":
-              const ulAnoSelect = document.querySelector('#ano-select .smart-select__main-results > ul');
-              var sideMenu = document.querySelector('#side-menu');
-              window.innerWidth <= 375 ? sideMenu.style.height = '132%' : sideMenu.style.height = '128%';
+              const divAnoSelect = document.querySelector('#ano-select');
+              if(!divAnoSelect.classList.contains('empty')){
+                window.innerWidth <= 375 ? sideMenu.style.height = '132%' : sideMenu.style.height = '128%';
+              }
               break
             case "versao-select":
               if(select.values.length){
                 const ulVersaoSelect = document.querySelector('#versao-select .smart-select__main-results > ul');
-                var sideMenu = document.querySelector('#side-menu');
                 window.innerWidth <= 375 ? sideMenu.style.height = '155%' : sideMenu.style.height = '150%'
                 ulVersaoSelect.style.height = '225px';
+              }else{
+                sideMenu.style.height = '105%';
               }
             default:
               break;
