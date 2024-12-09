@@ -45,7 +45,6 @@
   let vehicle = "";
   window.buttonBuscarSelected = false;
 
-
   const CONFIG = {
     ASYNC: {
       MAP_PARAMS: [
@@ -639,6 +638,8 @@
                           defineValorCheckbox(event.target.id, _id)
                           Controller.addClick(event,_id);
                           showButtonVerTodas();
+                          if(_id === "versao-select")
+                            ajustaLayoutAposOpcoesSelecionadas();
                           break;
                       case '#busca-placa-mobile':
                           defineValorCheckbox(event.target.id, _id)
@@ -1717,11 +1718,11 @@
   function selectRightSearchMethod() {
     const { search } = location;
     const smartSelectHistory = JSON.parse(localStorage.getItem('smartSelectHistory'));
-    const isValidSearch = smartSelectHistory !== null && smartSelectHistory.type == "#busca-placa";
+    const isValidSearch = smartSelectHistory !== null && smartSelectHistory.type == "#busca-peca";
     const isProductsListPage = search && search.includes('?PS=24&map=');
 
     if(isValidSearch && isProductsListPage) {
-      activeTab = '#busca-placa';
+      activeTab = '#busca-peca';
 
       document.querySelector("a[href='#busca-categoria']").parentNode.classList.remove("is-active");
       document.querySelector("a[href='#busca-peca']").parentNode.classList.remove("is-active");
@@ -1831,8 +1832,19 @@
   botaoVerTodasCategoria.addEventListener('click', () => {
     const ulCategoriaSelect = document.querySelector('#categoria-select .smart-select__main-results > ul');
     const sideMenu = document.querySelector('#side-menu');
-    ulCategoriaSelect.style.height = '240px';
-    sideMenu.style.height = '107%';
+    if(window.innerWidth <= 360){
+      ulCategoriaSelect.style.height = '292px';
+      sideMenu.style.height = '107%';
+    }else if(window.innerWidth <= 390){
+      ulCategoriaSelect.style.height = '236px';
+      sideMenu.style.height = '107%';
+    }else if(window.innerWidth <= 414){
+      ulCategoriaSelect.style.height = '307px';
+      sideMenu.style.height = '107%';
+    }else{
+      ulCategoriaSelect.style.height = '240px';
+      sideMenu.style.height = '107%';
+    }
   });
 
   const botaoVerTodasPecas = document.querySelector('#toggleButton2');
@@ -1871,6 +1883,11 @@
     botaoVerTodasVeiculos.style.display = 'block';
     botaoVerTodosAnos.style.display = 'block';
     botaoVerTodasVersoes.style.display = 'block';
+  }
+
+  function ajustaLayoutAposOpcoesSelecionadas(){
+    const sideMenu = document.querySelector('#side-menu');
+    sideMenu.style.height = '104%';
   }
 
 })();
