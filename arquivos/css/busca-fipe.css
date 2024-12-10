@@ -1167,6 +1167,7 @@
 .botao-ver-todas{
   padding-top: 20px;
   padding-bottom: 10px;
+  margin-top: -10%;
 }
 .selectable-item {
   cursor: pointer;
