@@ -720,7 +720,7 @@ i.arrow-icon::before {
   font-size: 20px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1160px) {
   .search-box-mobile {
     display:flex;
     position: sticky;
