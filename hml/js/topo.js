@@ -74,6 +74,12 @@ if(window.innerWidth > 1200){
   }
 }
 
+if(window.innerWidth > 1200){
+  const inputPesquisa = document.querySelector('.fulltext-search-box');
+  inputPesquisa.addEventListener('click', () => {
+    localStorage.setItem('buscaPlaca', null);
+  })
+}
 
 function activateCategory(categoriaAtual, indexConteudoAtual) {
   let categoriaAnterior = document.querySelector('.painel-categorias__menu .painel-categorias__categoria.ativo');
