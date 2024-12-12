@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 });
+
 const device = {
   desktop: ".desktop",
   mobile: ".mobile"
@@ -62,12 +63,22 @@ if(window.innerWidth > 1200){
   function cliqueForaDaAba(event) {
     const aba = document.getElementById('busca-categoria');
     const tabs = document.querySelector('.c-busca__tabs.tab-header');
+    const isClickInsideTabs = tabs.contains(event.target);
+    const abaBuscaPlaca = document.getElementById('tab-busca-placa');
 
-    // Ignorar cliques na aba e nas <li> dentro da <ul>
-    if (!aba.contains(event.target) && !event.target.closest('.c-busca__tabs.tab-header')) {
+    if(!abaBuscaPlaca.classList.contains('is-active')){
+      if (!aba.contains(event.target) && !isClickInsideTabs) {
         fecharAbaCategoria();
+      }
     }
   }
+}
+
+if(window.innerWidth > 1200){
+  const inputPesquisa = document.querySelector('.fulltext-search-box');
+  inputPesquisa.addEventListener('click', () => {
+    localStorage.setItem('buscaPlaca', null);
+  })
 }
 
 
