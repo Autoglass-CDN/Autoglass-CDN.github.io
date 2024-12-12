@@ -469,8 +469,7 @@ i.arrow-icon::before {
 
 .nav .container.mobile .menu-carrinho.loaded>.badge {
   top: -10px;
-  right: -15px;
-  padding-right: 10px;
+  right: -3px;
 }
 
 /* #region Box de Pesquisa */
