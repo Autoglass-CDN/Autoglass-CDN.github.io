@@ -84,25 +84,31 @@
   async function sendDataToVtexMasterData(email, orderFormId = null, orderId = null) {
     try {
       const hubspotutk = getHubspotutk();
-
-      if(null === orderFormId) {
-        orderFormId = getOrderFormId();
+      const normalizedEmail = email.trim();
+      const normalizedOrderFormId = orderFormId || getOrderFormId();
+  
+      const apiUrl = `https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/master-datas/clientes/${normalizedEmail}`;
+      const requestBody = {
+        Hubspotutk: hubspotutk,
+        LastOrderFormId: normalizedOrderFormId,
+        LastOrderId: orderId,
+      };
+  
+      const response = await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+  
+      if (response.ok) {
+        console.log('Dados enviados com sucesso ao MasterData.');
+      } else {
+        console.error('Erro ao enviar dados ao MasterData:', response.status, response.statusText);
       }
-
-      // await fetch(`http://localhost:5010/api/master-datas/clientes/${email.trim()}`, {
-      //   method: 'PUT',
-      //   headers: new Headers({
-      //     "Content-Type": "application/json",
-      //   }),
-      //   body: JSON.stringify({
-      //     hubspotutk,
-      //     lastOrderFormId: orderFormId,
-      //     lastOrderId: orderId,
-      //   }),
-      // }).then(() => {isDataSent = true});
-
-    } catch (e) {
-      console.warn('Falha ao enviar dados ao MasterData!');
+    } catch (error) {
+      console.error('Erro ao enviar dados ao MasterData:', error);
     }
   }
 
