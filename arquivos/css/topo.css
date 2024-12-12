@@ -708,7 +708,7 @@ i.arrow-icon::before {
   font-size: 20px;
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1160px) {
   .search-box-mobile {
     display:flex;
     position: sticky;
@@ -1530,7 +1530,7 @@ i.arrow-icon::before {
   overflow: hidden;
   box-shadow: 11px 13px 15px -4px rgb(0 0 0 / 35%);
   transition: 0.4s;
-  z-index: 4;
+  z-index: 1000;
 }
 
 .painel-categorias .arrow {
