@@ -87,7 +87,7 @@ $(function () {
                     .replace(
                         $("#similars .qd-product-is-in-stock-true a.shelf-qd-v1-stamps")[0]
                             .href +
-                        '?utm_source=produtodisponivel&utm_medium=redirecionamento&utm_campaign=' +
+                        '#redirecionamento=produtoindisponivel&produto=' +
                         product.productId);
             });
         }
