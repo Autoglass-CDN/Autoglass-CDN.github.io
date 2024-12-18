@@ -87,19 +87,20 @@ $(function () {
             var item_name = productDetails[0].trim();
             var item_id = productDetails[1] ? productDetails[1].trim() : '';
 
-            window.dataLayer.push({
-                'event': 'sem_estoque_redirecionamento',
-                'ecommerce': { 
-                    'items': [
-                    {
-                        'item_id': item_id,
-                        'item_name': item_name
-                    }
-                    ]
-                }
-                });
-
+            
             vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
+                window.dataLayer.push({
+                    'event': 'sem_estoque_redirecionamento',
+                    'ecommerce': { 
+                        'items': [
+                        {
+                            'item_id': item_id,
+                            'item_name': item_name
+                        }
+                        ]
+                    }
+                    });
+                    
                 window
                     .location
                     .replace(
