@@ -80,27 +80,12 @@ $(function () {
             let modal = document.querySelector('#myModal');
 
             modal.style.display = 'block';
-
-            var productToRedirect = $("#similars .qd-product-is-in-stock-true h3.shelf-qd-v1-name a")[0].innerHTML;
-
-            var productDetails = productToRedirect.split('-');
-            var item_name = productDetails[0].trim();
-            var item_id = productDetails[1] ? productDetails[1].trim() : '';
-
             
             vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
                 window.dataLayer.push({
-                    'event': 'sem_estoque_redirecionamento',
-                    'ecommerce': { 
-                        'items': [
-                        {
-                            'item_id': item_id,
-                            'item_name': item_name
-                        }
-                        ]
-                    }
+                    'event': 'sem_estoque_redirecionamento'
                     });
-                    
+
                 window
                     .location
                     .replace(
