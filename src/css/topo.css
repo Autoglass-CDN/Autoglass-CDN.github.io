@@ -157,7 +157,7 @@ ul {
 }
 
 .cart-icon::before {
-  content: url("https://autoglass-cdn.github.io/src/img/carrinhopreto-blackfriday.svg");
+  content: url("https://autoglass-cdn.github.io/src/img/cart-arrow-down.svg");
   height: 20px;
   transition: 0.5s;
 }
