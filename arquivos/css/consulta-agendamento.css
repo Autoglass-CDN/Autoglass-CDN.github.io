@@ -66,9 +66,8 @@
 }
 
 .modal-instale-na-loja > .secao-agendamento > .to-select-msg,
-.modal-instale-na-loja > .secao-agendamento > .selected-msg
-{
-  margin-bottom: 10px;;
+.modal-instale-na-loja > .secao-agendamento > .selected-msg {
+  margin-bottom: 10px;
 }
 
 .modal-instale-na-loja > .secao-agendamento > .store-list > ul {
@@ -265,7 +264,6 @@
   .mz-modal-installation.modal-instale-na-loja {
     max-height: 680px;
   }
-
 }
 
 /* MOBILE */
@@ -609,7 +607,7 @@
 @media (max-width: 550px) {
   .pickup-install .availability-text {
     margin-left: 0;
-    justify-content: center
+    justify-content: center;
   }
 }
 

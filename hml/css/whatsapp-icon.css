@@ -25,12 +25,12 @@
   cursor: pointer;
 }
 
-.search-box-mobile__form-group fieldset.busca+.search-icon::before {
+.search-box-mobile__form-group fieldset.busca + .search-icon::before {
   margin-left: -30px;
 }
 
 .search-icon-mobile {
-  content: url('https://autoglass-cdn.github.io/src/img/search.svg');
+  content: url("https://autoglass-cdn.github.io/hml/img/search.svg");
   position: absolute;
   right: 10vw;
 }

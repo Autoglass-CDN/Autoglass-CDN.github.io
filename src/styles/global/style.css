@@ -1,148 +1,149 @@
 /* Possível padrão de layout */
 :root {
-    --color-blue: #003DA5;
-    --color-green: #43C452;
-    --color-green-hover: #33a140;
-    --color-silver: #b4b4b4;
+  --color-blue: #003da5;
+  --color-green: #43c452;
+  --color-green-hover: #33a140;
+  --color-silver: #b4b4b4;
 }
 
 .input,
 input {
-    margin: 6px 0;
+  margin: 6px 0;
 }
 
 input {
-    outline: none;
-    border-radius: 0.3rem;
-    border: 0.03rem var(--color-silver) solid;
-    padding: 0.2rem 0.6rem;
+  outline: none;
+  border-radius: 0.3rem;
+  border: 0.03rem var(--color-silver) solid;
+  padding: 0.2rem 0.6rem;
 }
 
 .input-line {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: baseline;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .input-line > input {
-    flex-grow: 1;
+  flex-grow: 1;
 }
 
 .input-column {
-    display: flex;
-    flex-direction: column;
-    text-align: start;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
 }
 
 .button {
-    border-radius: 0.3rem;
-    border: none;
-    padding: 0.5rem 1.88rem;
-    letter-spacing: 1px;
-    cursor: pointer;
+  border-radius: 0.3rem;
+  border: none;
+  padding: 0.5rem 1.88rem;
+  letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .btn-confirm {
-    font-size:14px;
-	color: #FFF;
-	font-weight: 600;
-    background-color: var(--color-green);
+  font-size: 14px;
+  color: #fff;
+  font-weight: 600;
+  background-color: var(--color-green);
 }
 
 .btn-confirm:hover {
-    background-color: var(--color-green-hover);
+  background-color: var(--color-green-hover);
 }
 
 .select {
-    outline: none;
-    border-radius: 0.3rem;
-    border: 0.03rem var(--color-silver) solid;
-    padding: 0.3rem 0.2rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background: url("https://autoglass-cdn.github.io/src/img/servicos/angle-down-solid.svg") 90% / 15% no-repeat transparent;
+  outline: none;
+  border-radius: 0.3rem;
+  border: 0.03rem var(--color-silver) solid;
+  padding: 0.3rem 0.2rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: url("https://autoglass-cdn.github.io/src/img/servicos/angle-down-solid.svg")
+    90% / 15% no-repeat transparent;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .button-radio {
-    margin: 0 0.3rem;
-    border-radius: 0.3rem;
-    border: 0.03rem var(--color-silver) solid;
-    padding: 0.3rem 1.3rem;
+  margin: 0 0.3rem;
+  border-radius: 0.3rem;
+  border: 0.03rem var(--color-silver) solid;
+  padding: 0.3rem 1.3rem;
 }
 
 .button-radio input {
-    border-radius: 0.3rem;
-    padding: 0.3rem 1.3rem;
-    display: none;
+  border-radius: 0.3rem;
+  padding: 0.3rem 1.3rem;
+  display: none;
 }
 
 .button-radio-checked {
-    color: white;
-    background-color: var(--color-blue);
+  color: white;
+  background-color: var(--color-blue);
 }
 
 @media only screen and (max-width: 992px) {
-    input {
-        border-radius: 0.24rem;
-        border: 0.024rem var(--color-silver) solid;
-        padding: 0.16rem 0.5rem;
-    }
+  input {
+    border-radius: 0.24rem;
+    border: 0.024rem var(--color-silver) solid;
+    padding: 0.16rem 0.5rem;
+  }
 
-    .button {
-        border-radius: 0.24rem;
-        padding: 0.4rem 1.53rem;
-    }
+  .button {
+    border-radius: 0.24rem;
+    padding: 0.4rem 1.53rem;
+  }
 
-    .select {
-        border-radius: 0.24rem;
-        border: 0.024rem var(--color-silver) solid;
-        padding: 0.24rem 0.16rem;
-    }
+  .select {
+    border-radius: 0.24rem;
+    border: 0.024rem var(--color-silver) solid;
+    padding: 0.24rem 0.16rem;
+  }
 
-    .button-radio {
-        margin: 0 0.24rem;
-        border-radius: 0.24rem;
-        border: 0.024rem var(--color-silver) solid;
-        padding: 0.24rem 1.1rem;
-    }
-    
-    .button-radio input {
-        border-radius: 0.24rem;
-        padding: 0.24rem 1.1rem;
-    }
+  .button-radio {
+    margin: 0 0.24rem;
+    border-radius: 0.24rem;
+    border: 0.024rem var(--color-silver) solid;
+    padding: 0.24rem 1.1rem;
+  }
+
+  .button-radio input {
+    border-radius: 0.24rem;
+    padding: 0.24rem 1.1rem;
+  }
 }
 
 @media only screen and (max-width: 576px) {
-    input {
-        border-radius: 0.15rem;
-        border: 0.015rem var(--color-silver) solid;
-        padding: 0.1rem 0.3rem;
-    }
+  input {
+    border-radius: 0.15rem;
+    border: 0.015rem var(--color-silver) solid;
+    padding: 0.1rem 0.3rem;
+  }
 
-    .button {
-        border-radius: 0.15rem;
-        padding: 0.25rem 0.94rem;
-    }
+  .button {
+    border-radius: 0.15rem;
+    padding: 0.25rem 0.94rem;
+  }
 
-    .select {
-        border-radius: 0.15rem;
-        border: 0.015rem var(--color-silver) solid;
-        padding: 0.15rem 0.1rem;
-    }
+  .select {
+    border-radius: 0.15rem;
+    border: 0.015rem var(--color-silver) solid;
+    padding: 0.15rem 0.1rem;
+  }
 
-    .button-radio {
-        margin: 0 0.15rem;
-        border-radius: 0.15rem;
-        border: 0.015rem var(--color-silver) solid;
-        padding: 0.15rem 0.65rem;
-    }
-    
-    .button-radio input {
-        border-radius: 0.15rem;
-        padding: 0.15rem 0.65rem;
-    }
+  .button-radio {
+    margin: 0 0.15rem;
+    border-radius: 0.15rem;
+    border: 0.015rem var(--color-silver) solid;
+    padding: 0.15rem 0.65rem;
+  }
+
+  .button-radio input {
+    border-radius: 0.15rem;
+    padding: 0.15rem 0.65rem;
+  }
 }

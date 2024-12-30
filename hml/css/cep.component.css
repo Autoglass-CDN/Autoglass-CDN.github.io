@@ -1,8 +1,14 @@
 .ghost-loading {
   height: 32px;
   animation: GhostAnimation 10s forwards infinite linear;
-  background: #F6F7F8;
-  background-image: linear-gradient(to right, #F6F7F8 0%, #EDEEF1 20%, #F6F7F8 40%, #F6F7F8 100%);
+  background: #f6f7f8;
+  background-image: linear-gradient(
+    to right,
+    #f6f7f8 0%,
+    #edeef1 20%,
+    #f6f7f8 40%,
+    #f6f7f8 100%
+  );
 }
 
 @keyframes GhostAnimation {
@@ -70,7 +76,7 @@
   justify-content: center;
   align-items: center;
   padding: 10px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 
   transform: translateX(-105%);
   transition: transform 1s ease-in-out;
@@ -97,7 +103,7 @@
   left: -1px;
   top: -5px;
   bottom: -5px;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
   font-size: 50px;
   z-index: 1;
 }
@@ -114,7 +120,7 @@
   height: 50px;
   margin: 0 auto;
   overflow-y: hidden;
-  color: #A8A8A8;
+  color: #a8a8a8;
 }
 
 .cep-new__content--loading svg {
@@ -129,7 +135,7 @@
 .cep-new__content-title {
   display: block;
   margin-bottom: 10px;
-  color: #A8A8A8;
+  color: #a8a8a8;
   font-weight: 600;
 }
 
@@ -138,12 +144,12 @@
   align-items: center;
   position: relative;
 
-  border: 1px solid #DBDBDB;
+  border: 1px solid #dbdbdb;
   border-radius: 4px;
 
   padding: 10px 10px 10px 20px;
 
-  transition: border .3s ease-in-out;
+  transition: border 0.3s ease-in-out;
 }
 
 .cep-new__content-form:focus-within {
@@ -154,12 +160,12 @@
   border: 0;
   outline: 0;
   font-size: 14px;
-  color: #A8A8A8;
-  max-width:120px;
+  color: #a8a8a8;
+  max-width: 120px;
 }
 
 .cep-new__content-input::placeholder {
-  color: #A8A8A8;
+  color: #a8a8a8;
 }
 
 .cep-new__content-button {
@@ -167,16 +173,15 @@
   background: transparent;
   border: none;
   font-size: 20px;
-  color: #A8A8A8;
+  color: #a8a8a8;
   cursor: pointer;
   outline: none;
 }
 
 .cep-new__content-button:hover,
 .cep-new__content-button:focus {
-  color:#424242;
+  color: #424242;
 }
-
 
 .cep-new__content-form--error,
 .cep-new__content-form--error:focus-within {
@@ -195,19 +200,19 @@
 }
 
 .cep-new__footer-back-button {
-  border: 1px solid #DBDBDB;
+  border: 1px solid #dbdbdb;
   padding: 10px 60px;
   background: transparent;
   font-size: 14px;
   font-weight: 600;
-  color: #A8A8A8;
+  color: #a8a8a8;
   cursor: pointer;
   border-radius: 4px;
 }
 
 .cep-new__footer-back-button:hover,
 .cep-new__footer-back-button:focus {
-  color:#424242;
+  color: #424242;
   border-color: #424242;
 }
 

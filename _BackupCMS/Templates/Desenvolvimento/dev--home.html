@@ -1,585 +1,421 @@
 <!-- dev- -home -->
 <!DOCTYPE html>
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
-    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+  xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+
 <head>
-    <vtex:contentPlaceHolder id="qd_head" />
-    <meta name="robots" content="noindex, nofollow" />
-    <meta name="facebook-domain-verification" content="qt4yjekjl3va8p2ub6pgxub2jrggp9"/>
-    <meta name="google-site-verification" content="jFSa3nOK7_eVPPm0zk3bZUd1vTYnUb_H2okvxMF7aP8" />
-    <meta charset="UTF-8" />
-    
-    <title>
-        <vtex.cmc:productPageTitle />
-    </title>
-    <!--<script async="" type="text/javascript" src="https://autoglass-cdn.github.io/src/js/topo.js"></script>-->
-    <link rel="stylesheet"
-        href="https://autoglass-cdn.github.io/src/css/legacy/home/CSS.aut.far.qd-bootstrap-home.css" type="text/css"/>
+  <script defer="" src="https://autoglass-cdn.github.io/src/js/google-tag-manager.js" type="text/javascript"></script>
+  <vtex:contentPlaceHolder id="qd_head" />
+  <meta name="facebook-domain-verification" content="qt4yjekjl3va8p2ub6pgxub2jrggp9" />
+  <meta name="google-site-verification" content="jFSa3nOK7_eVPPm0zk3bZUd1vTYnUb_H2okvxMF7aP8" />
+  <meta name="google-site-verification" content="FTLVuCMNoXnVgIi7xtz5xqygHlUWYKTkGhQ1w4XamtU" />
+  <meta charset="UTF-8" />
+  <title>
+    <vtex.cmc:productPageTitle />
+  </title>
+  <link rel="shortcut icon" href="/src/autoglass-favicon.ico" />
+  <link rel="stylesheet"
+    href="https://autoglass-cdn.github.io/src/css/legacy/home/CSS.aut.far.qd-bootstrap-home.css" type="text/css" />
 
-    <vtex:template id="dev--home--head-tags" />
-    
-    <link rel="preload" href="/arquivos/locationFetcher.css" type="text/css"/>
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/header.css" type="text/css"/>
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css" type="text/css"/>
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/topo.css" type="text/css"/>
-    <vtex:metaTags />
-    <link rel="alternate" hreflang="pt-br" href="https://dev2autoglass.myvtex.com"/>
+  <vtex:template id="dev--home--head-tags" />
 
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/home.css" type="text/css"/>
+  <link rel="stylesheet" href="/src/locationFetcher.css" type="text/css" />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/header.css" type="text/css" />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css"
+    type="text/css" />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/topo.css" type="text/css" />
 
-    <style>
-        .col-xs-9.col-xs-offset-3 {
-            margin-bottom: 15px;
-        }
 
-        .header-qd-v1 .header-qd-v1-valid-prices p,
-        .col-xs-9.col-xs-offset-3 p {
-            margin-block-start: 1em;
-            margin-block-end: 1em;
-        }
+  <vtex:metaTags />
 
-        .header-qd-v1 .header-qd-v1-valid-prices #btn-alterar-open-modal {
-            padding: 1px 6px;
-        }
-    </style>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "Corporation",
-            "name": "Autoglass",
-            "alternateName": "Auto Glass",
-            "url": "https://www.autoglassonline.com.br",
-            "logo": "https://autoglass-cdn.github.io/src/img/logo-autoglass.png",
-            "contactPoint": [
-                {
-                    "@type": "ContactPoint",
-                    "telephone": "27 992486816",
-                    "contactType": "customer service",
-                    "areaServed": "BR",
-                    "availableLanguage": "Portuguese"
-                },
-                {
-                    "@type": "ContactPoint",
-                    "telephone": "0800 707 7670",
-                    "contactType": "customer service",
-                    "contactOption": "TollFree",
-                    "areaServed": "BR",
-                    "availableLanguage": "Portuguese"
-                }
-            ],
-            "sameAs": [
-                "https://api.whatsapp.com/send?phone=552799248-6816",
-                "https://www.facebook.com/autoglass.com.br",
-                "https://www.instagram.com/autoglassoficial",
-                "https://www.youtube.com/channel/UCtBOuGjbL_smZKy4sOZPm3A",
-                "https://br.linkedin.com/company/autoglass---brasil"
-            ]
-        }
-    </script>
+  <link rel="alternate" hreflang="pt-br" href="https://autoglassonline.com.br" />
+
+  <!--  <link rel="preload"
+    href="https://autoglass-cdn.github.io/src/css/legacy/home/CSS.aut.far.qd-bootstrap-common.css"
+    type="text/css" /> -->
+
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/home.css" type="text/css" />
+
+  <style>
+    .col-xs-9.col-xs-offset-3 {
+      margin-bottom: 15px;
+    }
+
+    .header-qd-v1 .header-qd-v1-valid-prices p,
+    .col-xs-9.col-xs-offset-3 p {
+      margin-block-start: 1em;
+      margin-block-end: 1em;
+    }
+
+    .header-qd-v1 .header-qd-v1-valid-prices #btn-alterar-open-modal {
+      padding: 1px 6px;
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Corporation",
+        "name": "Autoglass",
+        "alternateName": "Auto Glass",
+        "url": "https://www.autoglassonline.com.br",
+        "logo": "https://autoglass-cdn.github.io/src/img/logo-autoglass.png",
+        "contactPoint": [
+            {
+                "@type": "ContactPoint",
+                "telephone": "27 992486816",
+                "contactType": "customer service",
+                "areaServed": "BR",
+                "availableLanguage": "Portuguese"
+            },
+            {
+                "@type": "ContactPoint",
+                "telephone": "0800 707 7670",
+                "contactType": "customer service",
+                "contactOption": "TollFree",
+                "areaServed": "BR",
+                "availableLanguage": "Portuguese"
+            }
+        ],
+        "sameAs": [
+            "https://api.whatsapp.com/send?phone=552799248-6816",
+            "https://www.facebook.com/autoglass.com.br",
+            "https://www.instagram.com/autoglassoficial",
+            "https://www.youtube.com/channel/UCtBOuGjbL_smZKy4sOZPm3A",
+            "https://br.linkedin.com/company/autoglass---brasil"
+        ]
+    }
+</script>
 </head>
 
 <body class="home">
-    <!-- Google Tag Manager (noscript) -->
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVLJKFR"
-        height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
-    
-    <!-- Header -->
-    <vtex:template id="dev--header" />
-    <!-- Header -->
-    <!-- Smart Select -->
-    <div style="padding-top: 110px;">
-        <vtex:template id="dev--busca-fipe" />
-    </div>
-    <!-- Smart Select -->
-    <main>
-        <section class="banners-section">
-            <div class="banners">
-                <button
-                    tabindex="-1"
-                    id="banner-prev"
-                    data-type="prev"
-                    type="button"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="17.233"
-                        height="32"
-                        viewBox="0 0 17.233 32"
-                    >
-                        <path
-                            id="chevron-left"
-                            d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z"
-                            transform="translate(-4.499 -1.499)"
-                            fill="#95989a"
-                            fill-rule="evenodd"
-                        />
-                    </svg>
-                </button>
-                <div class="banners-content desktop">
-                    <vtex:contentPlaceHolder id="Slider full para desktop"/>
-                    <vtex:contentPlaceHolder id="slider_full_para_desktop"/>
-                </div>
-                <div class="banners-content mobile">
-                    <vtex:contentPlaceHolder id="Slider full para mobile" />
-                    <vtex:contentPlaceHolder id="slider_full_para_mobile" />
-                </div>
-                <button
-                    tabindex="-1"
-                    id="banner-next"
-                    data-type="next"
-                    type="button"
-                >
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="17.233"
-                        height="32"
-                        viewBox="0 0 17.233 32"
-                    >
-                        <path
-                            id="chevron-right"
-                            d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z"
-                            transform="translate(-4.499 -1.499)"
-                            fill="#95989a"
-                            fill-rule="evenodd"
-                        />
-                    </svg>
-                </button>
-                <ul class="banners-bars"></ul>
-            </div>
-        </section>
+  <!-- Google Tag Manager (noscript) -->
+  <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVLJKFR"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <!-- End Google Tag Manager (noscript) -->
+  <section id="loading-spinner" style="display: none;">
+    <span class="spinner"></span>
+  </section>
+  <!-- Header -->
+  <vtex:template id="dev--header" />
+  <!-- Header -->
+  <!-- Smart Select -->
+  <vtex:template id="dev--busca-fipe" />
+  <!-- Smart Select -->
 
-        <section class="painel-categorias-section">
-            <div class="painel-categorias-desktop">
-                <ul class="painel-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-                    <div class="slider-handlers">
-                        <span class="titulo-categorias">Procure por categoria</span>
-                        <div class="botoes">
-                            <button id="prev-btn">
-                                <i></i>
-                            </button>
-                            <button id="next-btn">
-                                <i></i>
-                            </button>
-                        </div>
-                    </div>
-                    <li class="painel-categorias__menu">
-                        <ul>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-vidros-automotivos-topo" href="/vidros-automotivos" title="Vidros Automotivos" itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-vidros-automotivos.png" alt="Vidros Automotivos"
-                                            class="painel-categorias__categoria-imagem" />
-                                        <h2>Vidros Automotivos</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-para-choques-grades-molduras-topo" href="/para-choques-grades-e-molduras" title="Para-choques, Grades e Molduras"
-                                        itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-para-choques-grades-e-molduras.png"
-                                            alt="Para-choques, Grades e Molduras" class="painel-categorias__categoria-imagem" />
-                                        <h2>Para-choques, Grades e Molduras</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-retrovisores-automotivos-topo" href="/retrovisores-automotivos" title="Retrovisores Automotivos" itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-retrovisores-automotivos.png" alt="Retrovisores Automotivos"
-                                            class="painel-categorias__categoria-imagem" />
-                                        <h2>Retrovisores Automotivos</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-iluminacao-automotiva-topo" href="/iluminacao-automotiva" title="Iluminação Automotiva">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-iluminacao-automotiva.png"
-                                            alt="Iluminação Automotiva" class="painel-categorias__categoria-imagem" />
-                                        <h2>Iluminação Automotiva</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-palhetas-topo" href="/borrachas-e-outros" title="Palhetas e Borrachas" itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-borrachas.png"
-                                            alt="Palhetas e Borrachas" class="painel-categorias__categoria-imagem" />
-                                        <h2>Palhetas e Borrachas</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-arrefecimento-climatizacao-topo" href="/arrefecimento-e-climatizacao" title="Arrefecimento e Climatização"
-                                        itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-arrefecimento-e-climatizacao.png"
-                                            alt="Arrefecimento e Climatização" class="painel-categorias__categoria-imagem" />
-                                        <h2>Arrefecimento e Climatização</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-latarias-e-acabamentos-topo" href="/latarias-e-acabamentos" title="Latarias e Acabamentos" itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-latarias-e-acabamentos.png"
-                                            alt="Latarias e Acabamentos" class="painel-categorias__categoria-imagem" />
-                                        <h2>Latarias e Acabamentos</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-higienizadores-topo" href="/higienizadores-e-filtros" title="Higienizadores e Filtros"
-                                        itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-filtros-2.jpg"
-                                            alt="Higienizadores e Filtros" class="painel-categorias__categoria-imagem" />
-                                        <h2>Higienizadores e Filtros</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-ferramentas-automotivas-topo" href="/ferramentas-automotivas" title="Ferramentas Automotivas"
-                                        itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/arquivos/img/categoria-ferramentas-automotivas.png"
-                                            alt="Ferramentas Automotivas" class="painel-categorias__categoria-imagem" />
-                                        <h2>Ferramentas Automotivas</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-colas-topo" href="/colas-e-adesivos" title="Colas e Adesivos"
-                                        itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-colas.png"
-                                            alt="Colas e Adesivos" class="painel-categorias__categoria-imagem" />
-                                        <h2>Colas e Adesivos</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-suspensao-topo" href="/suspensao-automotiva" title="Suspensão Automotiva" itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-suspensoes-automotivas.png"
-                                            alt="Suspensão Automotiva" class="painel-categorias__categoria-imagem" />
-                                        <h2>Suspensão Automotiva</h2>
-                                    </a>
-                                </div>
-                            </li>
-                            <li class="painel-categorias__categoria">
-                                <div class="painel-categorias__categoria-header">
-                                    <a id="Categoria-direcao" href="/direcao" title="Direcao" itemprop="url">
-                                        <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-direcao.png"
-                                            alt="Direcao" class="painel-categorias__categoria-imagem" />
-                                        <h2>Direção</h2>
-                                    </a>
-                                </div>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </div>
+  <main>
+    <section class="banners-section">
+      <article class="banners">
+        <button tabindex="-1" id="banner-prev" data-type="prev" type="button" style="left: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
+            <path id="chevron-left"
+              d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z"
+              transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
+          </svg>
+        </button>
+        <section class="banners-content desktop">
+          <vtex:contentPlaceHolder id="slider_full_para_desktop" />
         </section>
+        <section class="banners-content mobile">
+          <vtex:contentPlaceHolder id="slider_full_para_mobile" />
+        </section>
+        <button tabindex="-1" id="banner-next" data-type="next" type="button" style="right: 0;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
+            <path id="chevron-right"
+              d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z"
+              transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
+          </svg>
+        </button>
+        <ul class="banners-bars"></ul>
+      </article>
+    </section>
 
-        <section class="benefits-section">
-            <h1 class="titulo-pagina-home">Autoglass Online - A maior loja virtual de vidros e autopeças da América Latina</h1>
-            <div class="container">
-                <div class="benefit focus">
-                    <div class="benefit-wrapper">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="40.193"
-                            height="40"
-                            viewBox="0 0 40.193 40"
-                        >
-                            <path
-                                id="box-seam"
-                                d="M20.564,2.68a1.256,1.256,0,0,0-.934,0l-14.992,6,6.039,2.414L26.136,4.908,20.564,2.68Zm8.953,3.582L14.058,12.444,20.1,14.858,35.556,8.676Zm8.164,4.271L21.353,17.064v19.9l16.328-6.531v-19.9ZM18.841,36.967V17.061L2.512,10.533v19.9l16.328,6.531ZM18.7.346a3.768,3.768,0,0,1,2.8,0L39.4,7.511a1.256,1.256,0,0,1,.789,1.166v21.76a2.512,2.512,0,0,1-1.58,2.331l-18.049,7.22a1.256,1.256,0,0,1-.934,0L1.583,32.767A2.512,2.512,0,0,1,0,30.436V8.676A1.256,1.256,0,0,1,.789,7.511Z"
-                                transform="translate(0 -0.077)"
-                                fill="#95989a"
-                                fill-rule="evenodd"
-                            />
-                        </svg>
-                        <p>
-                            <div class='container-beneficios-autoglass'>
-                                <h2>Maior estoque do Brasil</h2>
-                                <p>Referência em vidros</p>
-                            </div>
-                        </p>
-                    </div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-wrapper">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="49.594"
-                            height="37.209"
-                            viewBox="0 0 49.594 37.209"
-                        >
-                            <path
-                                id="truck"
-                                d="M0,6.649A4.649,4.649,0,0,1,4.649,2h27.9A4.649,4.649,0,0,1,37.2,6.649V11.3h3.162a4.649,4.649,0,0,1,3.627,1.745l4.591,5.734a4.649,4.649,0,0,1,1.02,2.907v6.661A4.649,4.649,0,0,1,44.945,33h-1.55A6.2,6.2,0,0,1,31,33H15.5a6.2,6.2,0,1,1-12.392-.263A4.649,4.649,0,0,1,0,28.347ZM4.011,29.76a6.2,6.2,0,0,1,10.657.136h17.16A6.23,6.23,0,0,1,34.1,27.628V6.649a1.55,1.55,0,0,0-1.55-1.55H4.649A1.55,1.55,0,0,0,3.1,6.649v21.7a1.55,1.55,0,0,0,.911,1.413ZM37.2,26.8a6.2,6.2,0,0,1,5.368,3.1h2.381a1.55,1.55,0,0,0,1.55-1.55V21.683a1.55,1.55,0,0,0-.341-.967l-4.587-5.734a1.55,1.55,0,0,0-1.209-.583H37.2ZM9.3,29.9A3.1,3.1,0,1,0,12.4,33,3.1,3.1,0,0,0,9.3,29.9Zm27.9,0A3.1,3.1,0,1,0,40.3,33,3.1,3.1,0,0,0,37.2,29.9Z"
-                                transform="translate(0 -2)"
-                                fill="#95989a"
-                                fill-rule="evenodd"
-                            />
-                        </svg>
-                        <p>
-                            <div class='container-beneficios-autoglass'>
-                                <h2>Entrega e Instalação</h2>
-                                <p>Mais de 70 lojas no Brasil</p>
-                            </div>
-                        </p>
-                    </div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-wrapper">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="49.594"
-                            height="37.195"
-                            viewBox="0 0 49.594 37.195"
-                        >
-                            <path
-                                id="Caminho_639"
-                                data-name="Caminho 639"
-                                d="M43.395,5.1H6.2A3.1,3.1,0,0,0,3.1,8.2V33a3.1,3.1,0,0,0,3.1,3.1h37.2a3.1,3.1,0,0,0,3.1-3.1V8.2A3.1,3.1,0,0,0,43.395,5.1ZM6.2,2A6.2,6.2,0,0,0,0,8.2V33a6.2,6.2,0,0,0,6.2,6.2h37.2a6.2,6.2,0,0,0,6.2-6.2V8.2a6.2,6.2,0,0,0-6.2-6.2Z"
-                                transform="translate(0 -2)"
-                                fill="#95989a"
-                                fill-rule="evenodd"
-                            />
-                            <path
-                                id="Caminho_640"
-                                data-name="Caminho 640"
-                                d="M32,6.55A1.55,1.55,0,0,1,33.546,5h6.2A1.55,1.55,0,0,1,41.3,6.55v3.1a1.55,1.55,0,0,1-1.55,1.55h-6.2A1.55,1.55,0,0,1,32,9.649ZM1,17.4H44.395v6.2H1Z"
-                                transform="translate(2.1 4.299)"
-                                fill="#95989a"
-                            />
-                        </svg>
-                        <p>
-                            <div class='container-beneficios-autoglass'>
-                                <h2>Pagamento Facilitado</h2>
-                                <p>Em até 5x nos cartões</p>
-                            </div>
-                        </p>
-                    </div>
-                </div>
-                <div class="benefit">
-                    <div class="benefit-wrapper">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="28.589"
-                            height="40.082"
-                            viewBox="0 0 28.589 40.082"
-                        >
-                            <g
-                                id="Grupo_2703"
-                                data-name="Grupo 2703"
-                                transform="translate(-922 -619.918)"
-                            >
-                                <text
-                                    id="_1"
-                                    data-name="1"
-                                    transform="translate(935.812 640)"
-                                    fill="#95989a"
-                                    font-size="14"
-                                    font-family="OpenSans-Bold, Open Sans"
-                                    font-weight="700"
-                                >
-                                    <tspan x="-3.996" y="0">1</tspan>
-                                </text>
-                                <g
-                                    id="award"
-                                    transform="translate(919.706 619.918)"
-                                >
-                                    <path
-                                        id="Caminho_313"
-                                        data-name="Caminho 313"
-                                        d="M20.769,2.164,16.588,0,12.407,2.164l-4.655.706L5.643,7.079,2.294,10.386l.767,4.645-.767,4.645,3.349,3.307,2.109,4.209,4.655.706,4.181,2.164L20.769,27.9l4.655-.706,2.109-4.209,3.349-3.307-.767-4.645.767-4.645L27.533,7.079,25.424,2.871Zm3,2.989-3.783-.574L16.588,2.821,13.194,4.579l-3.783.574L7.7,8.573,4.977,11.258,5.6,15.031,4.974,18.8,7.7,21.489l1.714,3.419,3.783.574,3.394,1.759,3.4-1.759,3.78-.574,1.714-3.419L28.2,18.8l-.621-3.773.621-3.773L25.479,8.573Z"
-                                        fill="#95989a"
-                                        fill-rule="evenodd"
-                                    />
-                                    <path
-                                        id="Caminho_314"
-                                        data-name="Caminho 314"
-                                        d="M4,11.794V22.331l10.021-2.505,10.021,2.505V11.794l-5.055.767-4.965,2.57-4.965-2.57Z"
-                                        transform="translate(2.568 17.751)"
-                                        fill="#95989a"
-                                    />
-                                </g>
-                            </g>
-                        </svg>
-                        <p>
-                            <div class='container-beneficios-autoglass'>
-                                <h2>Garantia de até 1 ano</h2>
-                                <p>em todas as peças</p>
-                            </div>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <div class="benefits-dots-mobile-container">
-                <div class="dot focus"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-            </div>
-        </section>
+    <section class="painel-categorias-section">
+      <section class="painel-categorias-desktop">
+        <nav class="painel-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+          <header class="slider-handlers">
+            <span class="titulo-categorias">Procure por categoria</span>
+            <section class="botoes">
+              <button id="prev-btn">
+                <i></i>
+              </button>
+              <button id="next-btn">
+                <i></i>
+              </button>
+            </section>
+          </header>
+          <ul>
+            <li class="painel-categorias__menu">
+              <ul>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-vidros-automotivos-topo" href="/vidros-automotivos" title="Vidros Automotivos"
+                      itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-vidros-automotivos.png"
+                        alt="Vidros Automotivos" class="painel-categorias__categoria-imagem" />
+                      <h2>Vidros Automotivos</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-para-choques-grades-molduras-topo" href="/para-choques-grades-e-molduras"
+                      title="Para-choques, Grades e Molduras" itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-para-choques-grades-e-molduras.png"
+                        alt="Para-choques, Grades e Molduras" class="painel-categorias__categoria-imagem" />
+                      <h2>Para-choques, Grades e Molduras</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-retrovisores-automotivos-topo" href="/retrovisores-automotivos"
+                      title="Retrovisores Automotivos" itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-retrovisores-automotivos.png"
+                        alt="Retrovisores Automotivos" class="painel-categorias__categoria-imagem" />
+                      <h2>Retrovisores Automotivos</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-iluminacao-automotiva-topo" href="/iluminacao-automotiva"
+                      title="Iluminação Automotiva">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-iluminacao-automotiva.png"
+                        alt="Iluminação Automotiva" class="painel-categorias__categoria-imagem" />
+                      <h2>Iluminação Automotiva</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-palhetas-borrachas-e-reservatorios-topo" href="/palhetas-borrachas-e-reservatorios"
+                      title="Palhetas, Borrachas e Reservatórios" itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-palhetas-borrachas-e-reservatorios.png"
+                        alt="Palhetas, Borrachas e Reservatórios" class="painel-categorias__categoria-imagem" />
+                      <h2>Palhetas, Borrachas e Reservatórios</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-arrefecimento-climatizacao-topo" href="/arrefecimento-e-climatizacao"
+                      title="Arrefecimento e Climatização" itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-arrefecimento-e-climatizacao.png"
+                        alt="Arrefecimento e Climatização" class="painel-categorias__categoria-imagem" />
+                      <h2>Arrefecimento e Climatização</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-latarias-e-acabamentos-topo" href="/latarias-e-acabamentos"
+                      title="Latarias e Acabamentos" itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-latarias-e-acabamentos.png"
+                        alt="Latarias e Acabamentos" class="painel-categorias__categoria-imagem" />
+                      <h2>Latarias e Acabamentos</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-higienizadores-topo" href="/higienizadores-e-filtros-automotivos"
+                      title="Higienizadores e Filtros Automotivos" itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-higienizadores-e-filtros-automotivos.jpg"
+                        alt="Higienizadores e Filtros Automotivos" class="painel-categorias__categoria-imagem" />
+                      <h2>Higienizadores e Filtros Automotivos</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-ferramentas-automotivas-topo" href="/ferramentas-automotivas"
+                      title="Ferramentas Automotivas" itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-ferramentas-automotivas.png"
+                        alt="Ferramentas Automotivas" class="painel-categorias__categoria-imagem" />
+                      <h2>Ferramentas Automotivas</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-colas-topo" href="/colas-e-adesivos" title="Colas e Adesivos" itemprop="url">
+                      <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/categoria-colas.png"
+                        alt="Colas e Adesivos" class="painel-categorias__categoria-imagem" />
+                      <h2>Colas e Adesivos</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-suspensao-topo" href="/suspensao-automotiva" title="Suspensão Automotiva"
+                      itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-suspensoes-automotivas.png"
+                        alt="Suspensão Automotiva" class="painel-categorias__categoria-imagem" />
+                      <h2>Suspensão Automotiva</h2>
+                    </a>
+                  </article>
+                </li>
+                <li class="painel-categorias__categoria">
+                  <article class="painel-categorias__categoria-header">
+                    <a id="Categoria-componentes-de-direcao" href="/componentes-de-direcao"
+                      title="Componentes de Direcao" itemprop="url">
+                      <img loading="lazy"
+                        src="https://autoglass-cdn.github.io/src/img/categoria-componentes-de-direcao.png"
+                        alt="Componentes de Direcao" class="painel-categorias__categoria-imagem" />
+                      <h2>Componentes de Direção</h2>
+                    </a>
+                  </article>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </section>
+    </section>
 
-        <section class="banners-promocionais-section">
-            <button tabindex="-1" id="promocoes-prev" data-type="prev" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
-                    <path d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z" transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd"/>
-                </svg>
-            </button>
-            <div class="banners-promocionais-itens">
-                <vtex:contentPlaceHolder id="slider_promocoes"/>
+    <section class="benefits-section">
+      <h1 class="titulo-pagina-home">Autoglass Online - A maior loja virtual de vidros e autopeças da América Latina
+      </h1>
+      <ul class="container">
+        <li class="benefit focus">
+          <article class="benefit-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="40.193" height="40" viewBox="0 0 40.193 40">
+              <path id="box-seam"
+                d="M20.564,2.68a1.256,1.256,0,0,0-.934,0l-14.992,6,6.039,2.414L26.136,4.908,20.564,2.68Zm8.953,3.582L14.058,12.444,20.1,14.858,35.556,8.676Zm8.164,4.271L21.353,17.064v19.9l16.328-6.531v-19.9ZM18.841,36.967V17.061L2.512,10.533v19.9l16.328,6.531ZM18.7.346a3.768,3.768,0,0,1,2.8,0L39.4,7.511a1.256,1.256,0,0,1,.789,1.166v21.76a2.512,2.512,0,0,1-1.58,2.331l-18.049,7.22a1.256,1.256,0,0,1-.934,0L1.583,32.767A2.512,2.512,0,0,1,0,30.436V8.676A1.256,1.256,0,0,1,.789,7.511Z"
+                transform="translate(0 -0.077)" fill="#95989a" fill-rule="evenodd" />
+            </svg>
+            <section class='container-beneficios-autoglass'>
+              <h2>Maior estoque do Brasil</h2>
+              <p>Referência em vidros</p>
+            </section>
+          </article>
+        </li>
+        <section class="benefit">
+          <article class="benefit-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="49.594" height="37.209" viewBox="0 0 49.594 37.209">
+              <path id="truck"
+                d="M0,6.649A4.649,4.649,0,0,1,4.649,2h27.9A4.649,4.649,0,0,1,37.2,6.649V11.3h3.162a4.649,4.649,0,0,1,3.627,1.745l4.591,5.734a4.649,4.649,0,0,1,1.02,2.907v6.661A4.649,4.649,0,0,1,44.945,33h-1.55A6.2,6.2,0,0,1,31,33H15.5a6.2,6.2,0,1,1-12.392-.263A4.649,4.649,0,0,1,0,28.347ZM4.011,29.76a6.2,6.2,0,0,1,10.657.136h17.16A6.23,6.23,0,0,1,34.1,27.628V6.649a1.55,1.55,0,0,0-1.55-1.55H4.649A1.55,1.55,0,0,0,3.1,6.649v21.7a1.55,1.55,0,0,0,.911,1.413ZM37.2,26.8a6.2,6.2,0,0,1,5.368,3.1h2.381a1.55,1.55,0,0,0,1.55-1.55V21.683a1.55,1.55,0,0,0-.341-.967l-4.587-5.734a1.55,1.55,0,0,0-1.209-.583H37.2ZM9.3,29.9A3.1,3.1,0,1,0,12.4,33,3.1,3.1,0,0,0,9.3,29.9Zm27.9,0A3.1,3.1,0,1,0,40.3,33,3.1,3.1,0,0,0,37.2,29.9Z"
+                transform="translate(0 -2)" fill="#95989a" fill-rule="evenodd" />
+            </svg>
+            <p>
+            <div class='container-beneficios-autoglass'>
+              <h2>Entrega e Instalação</h2>
+              <p>Mais de 80 lojas no Brasil</p>
             </div>
-            <button tabindex="-1" id="promocoes-next" data-type="next" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
-                    <path d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z" transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd"/>
-                </svg>
-            </button>
+            </p>
+          </article>
         </section>
-        <div class="section-title nossos-servicos">
-            <vtex:contentPlaceHolder id="title_nossos_servicos"/>
-        </div>
-        <section class="nossos-servicos-section">
-            <button tabindex="-1" id="nossos-servicos-prev" data-type="prev" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
-                    <path d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z" transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd"/>
-                </svg>
-            </button>
-            <div class="banners-nossos-servicos">
-                <vtex:contentPlaceHolder id="slider_nossos_servicos"/>
+        <section class="benefit">
+          <article class="benefit-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="49.594" height="37.195" viewBox="0 0 49.594 37.195">
+              <path id="Caminho_639" data-name="Caminho 639"
+                d="M43.395,5.1H6.2A3.1,3.1,0,0,0,3.1,8.2V33a3.1,3.1,0,0,0,3.1,3.1h37.2a3.1,3.1,0,0,0,3.1-3.1V8.2A3.1,3.1,0,0,0,43.395,5.1ZM6.2,2A6.2,6.2,0,0,0,0,8.2V33a6.2,6.2,0,0,0,6.2,6.2h37.2a6.2,6.2,0,0,0,6.2-6.2V8.2a6.2,6.2,0,0,0-6.2-6.2Z"
+                transform="translate(0 -2)" fill="#95989a" fill-rule="evenodd" />
+              <path id="Caminho_640" data-name="Caminho 640"
+                d="M32,6.55A1.55,1.55,0,0,1,33.546,5h6.2A1.55,1.55,0,0,1,41.3,6.55v3.1a1.55,1.55,0,0,1-1.55,1.55h-6.2A1.55,1.55,0,0,1,32,9.649ZM1,17.4H44.395v6.2H1Z"
+                transform="translate(2.1 4.299)" fill="#95989a" />
+            </svg>
+            <p>
+            <div class='container-beneficios-autoglass'>
+              <h2>Pagamento Facilitado</h2>
+              <p>Em até 10x nos cartões sem juros</p>
             </div>
-            <button tabindex="-1" id="nossos-servicos-next" data-type="next" type="button">
-                <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
-                    <path d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z" transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd"/>
-                </svg>
-            </button>
+            </p>
+          </article>
         </section>
+        <section class="benefit">
+          <article class="benefit-wrapper">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28.589" height="40.082" viewBox="0 0 28.589 40.082">
+              <g id="Grupo_2703" data-name="Grupo 2703" transform="translate(-922 -619.918)">
+                <text id="_1" data-name="1" transform="translate(935.812 640)" fill="#95989a" font-size="14"
+                  font-family="OpenSans-Bold, Open Sans" font-weight="700">
+                  <tspan x="-3.996" y="0">1</tspan>
+                </text>
+                <g id="award" transform="translate(919.706 619.918)">
+                  <path id="Caminho_313" data-name="Caminho 313"
+                    d="M20.769,2.164,16.588,0,12.407,2.164l-4.655.706L5.643,7.079,2.294,10.386l.767,4.645-.767,4.645,3.349,3.307,2.109,4.209,4.655.706,4.181,2.164L20.769,27.9l4.655-.706,2.109-4.209,3.349-3.307-.767-4.645.767-4.645L27.533,7.079,25.424,2.871Zm3,2.989-3.783-.574L16.588,2.821,13.194,4.579l-3.783.574L7.7,8.573,4.977,11.258,5.6,15.031,4.974,18.8,7.7,21.489l1.714,3.419,3.783.574,3.394,1.759,3.4-1.759,3.78-.574,1.714-3.419L28.2,18.8l-.621-3.773.621-3.773L25.479,8.573Z"
+                    fill="#95989a" fill-rule="evenodd" />
+                  <path id="Caminho_314" data-name="Caminho 314"
+                    d="M4,11.794V22.331l10.021-2.505,10.021,2.505V11.794l-5.055.767-4.965,2.57-4.965-2.57Z"
+                    transform="translate(2.568 17.751)" fill="#95989a" />
+                </g>
+              </g>
+            </svg>
+            <p>
+            <div class='container-beneficios-autoglass'>
+              <h2>Garantia de até 1 ano</h2>
+              <p>Em produtos comprados e instalados na Autoglass</p>
+            </div>
+            </p>
+          </article>
+        </section>
+      </ul>
+      <section class="benefits-dots-mobile-container">
+        <div class="dot focus"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </section>
+    </section>
 
-        <section class="ratings-section">
-            <h3 class="section-title">Avaliação dos Consumidores</h3>
-            <div class="container ratings">
-                <div class="ratings__slider">
-                    <button
-                        tabindex="-1"
-                        id="rating-prev"
-                        data-type="prev"
-                        type="button"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="17.233"
-                            height="32"
-                            viewBox="0 0 17.233 32"
-                        >
-                            <path
-                                id="chevron-left"
-                                d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z"
-                                transform="translate(-4.499 -1.499)"
-                                fill="#95989a"
-                                fill-rule="evenodd"
-                            />
-                        </svg>
-                    </button>
-                    <div class="ratings__slider-content">
-                        <div class="ratings__rating">
-                            <div class="ratings__rating-image">
-                                <img
-                                    src="https://autoglass-cdn.github.io/src/img/home/icone_usuario.png"
-                                    alt="Gisele Henrique"
-                                />
-                            </div>
-                            <div class="ratings__rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="ratings__rating-content">
-                                <p>
-                                    "Foi tudo bem, muito bem atendida...
-                                    agradeço o feedback, esse detalhe faz
-                                    toda a diferença."
-                                </p>
-                            </div>
-                        </div>
-                        <div class="ratings__rating highlight">
-                            <div class="ratings__rating-image">
-                                <img
-                                    src="https://autoglass-cdn.github.io/src/img/home/icone_usuario.png"
-                                    alt="Fernando Gomes de Souza"
-                                />
-                            </div>
-                            <div class="ratings__rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="ratings__rating-content">
-                                <p>
-                                    "Excelente o serviço, top de linha, 5
-                                    estrelas pra vocês!"
-                                </p>
-                            </div>
-                        </div>
-                        <div class="ratings__rating">
-                            <div class="ratings__rating-image">
-                                <img
-                                    src="https://autoglass-cdn.github.io/src/img/home/icone_usuario.png"
-                                    alt="José Miguel Oliveira"
-                                />
-                            </div>
-                            <div class="ratings__rating-stars">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="ratings__rating-content">
-                                <p>
-                                    "Fui bem atendido, comprei três peças em
-                                    outro lugar e tive que devolver, com
-                                    vocês tive toda assistência."
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <button
-                        tabindex="-1"
-                        id="rating-next"
-                        data-type="next"
-                        type="button"
-                    >
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="17.233"
-                            height="32"
-                            viewBox="0 0 17.233 32"
-                        >
-                            <path
-                                id="chevron-right"
-                                d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z"
-                                transform="translate(-4.499 -1.499)"
-                                fill="#95989a"
-                                fill-rule="evenodd"
-                            />
-                        </svg>
-                    </button>
-                    <ul class="rating-bars"></ul>
-                </div>
-            </div>
-        </section>
+    <section class="banners-promocionais-section">
+      <button tabindex="-1" id="promocoes-prev" data-type="prev" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
+          <path
+            d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z"
+            transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
+        </svg>
+      </button>
+      <article class="banners-promocionais-itens">
+        <vtex:contentPlaceHolder id="slider_promocoes" />
+      </article>
+      <button tabindex="-1" id="promocoes-next" data-type="next" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
+          <path
+            d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z"
+            transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
+        </svg>
+      </button>
+    </section>
+
+    <section class="section-title nossos-servicos">
+      <vtex:contentPlaceHolder id="title_nossos_servicos" />
+    </section>
+
+    <section class="nossos-servicos-section">
+      <button tabindex="-1" id="nossos-servicos-prev" data-type="prev" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
+          <path
+            d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z"
+            transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
+        </svg>
+      </button>
+      <article class="banners-nossos-servicos">
+        <vtex:contentPlaceHolder id="slider_nossos_servicos" />
+      </article>
+      <button tabindex="-1" id="nossos-servicos-next" data-type="next" type="button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
+          <path
+            d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z"
+            transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
+        </svg>
+      </button>
+    </section>
+
+    <section class="ratings-section">
+      <h2 class="section-title">Avaliação dos Consumidores</h2>
+      <div class="konfidency-storeReviewCarousel"></div>
+    </section>
 
         <section class="whys-section">
             <h2 class="section-title">
@@ -676,34 +512,38 @@
             </a>
         </section>
 
-        <section class="chat-section">
-            <div class="container">
-                <div class="chat__content">
-                    <p class="chat__content-menssage">
-                        <h4 class="chat__content-title">
-                            Ficou Com Dúvidas?
-                        </h4>
-                        <span class="chat__content-text">
-                            Converse conosco pelo nosso atendimento.
-                        </span>
-                    </p>
-                    <a
-                        class="chat__content-link gtm-home-abrir-chat-link"
-                        onclick="$zopim.livechat.window.show()"
-                    >
-                        Abrir Chat
-                    </a>
-                </div>
-            </div>
+    <section class="chat-section">
+      <section class="container">
+        <section class="chat__content">
+          <p class="chat__content-menssage">
+          <h4 class="chat__content-title">
+            Ficou Com Dúvidas?
+          </h4>
+          <span class="chat__content-text">
+            Converse conosco pelo nosso atendimento.
+          </span>
+          </p>
+          <a class="chat__content-link gtm-home-abrir-chat-link" onclick="$zopim.livechat.window.show()">
+            Abrir Chat
+          </a>
         </section>
+      </section>
+    </section>
 
-        <script src="https://autoglass-cdn.github.io/src/js/home.js"></script>
-    </main>
+    <script src="https://autoglass-cdn.github.io/src/js/home.js"></script>
 
-    <!-- Footer -->
-    <vtex:template id="dev--footer" />
-    <!--<vtex.cmc:devGoogleMaps /> -->
-    <!--<vtex:template id="dev- -home- -footer" />-->
-    <!-- Footer -->
+  </main>
+
+
+  <!-- Footer -->
+  <vtex:template id="dev--footer" />
+  <vtex.cmc:prdGoogleMaps />
+  <!--<vtex:template id="prd-
+  -home-
+  -footer" />-->
+  <!-- Footer -->
+
+
 </body>
+
 </html>

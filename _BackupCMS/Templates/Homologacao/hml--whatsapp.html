@@ -1,18 +1,41 @@
 <!-- hml- -whatsapp -->
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
-    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce" lang="en-us">
+<html
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
+    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce"
+    lang="pt-br"
+>
     <head>
-        <title>Whatsapp - Autoglass</title>
+        <meta charset="UTF-8" />
+        <link rel="shortcut icon" href="/hml/autoglass-favicon.ico" />
+        <title>Autoglass - Atendimento Humanizado via WhatsApp</title>
+        <meta
+            name="description"
+            content="Autoglass - Peças automotivas quebradas? Clique e fale com um especialista agora e tenha tudo o que você precisa!"
+        />
         <vtex:metaTags />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+        <script>
+            function redirecionarParaWhatsApp() {
+                const phoneNumber = "552732032535";
+                const whatsappUrl = `https://api.whatsapp.com/send/?phone=${phoneNumber}`;
+                window.location.href = whatsappUrl;
+            }
+        </script>
     </head>
     <body>
-        <script type="text/javascript" language="javascript" src="https://autoglass-cdn.github.io/hml/js/topo.js"></script>
+        <script
+            type="text/javascript"
+            language="javascript"
+            src="https://autoglass-cdn.github.io/hml/js/topo.js"
+        ></script>
         <script type="text/javascript" language="javascript">
-            ga('create', 'UA-133498560-1', 'autoglassonline.com.br');
-            ga('send', 'event', 'WhasApp', 'WhasApp', 'WhasApp');
-            window.location.href = urlWhatsAppApi + numeroWhatsAppAG;
+            window.location.href =
+                urlWhatsAppApi +
+                numeroWhatsAppAG +
+                "?text=Olá,%20venho%20através%20do%20Google%20e%20desejo%20falar%20com%20um%20especialista";
         </script>
     </body>
 </html>

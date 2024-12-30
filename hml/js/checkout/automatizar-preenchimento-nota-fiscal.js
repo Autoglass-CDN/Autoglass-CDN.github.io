@@ -1,17 +1,24 @@
 (function () {
   const shippingDiv = document.querySelectorAll("#shipping-data");
-  const preencherEnderecoNFButtonQuery = "button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery";
+  const preencherEnderecoNFButtonQuery =
+    "button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery";
   const goToPaymentButton = Object.create({
     query: "#shipping-data > div .box-step > p:last-of-type button.submit",
-    enable: () => {enableDisableGoToPaymentButton(true)},
-    disable: () => {enableDisableGoToPaymentButton(false)}
+    enable: () => {
+      enableDisableGoToPaymentButton(true);
+    },
+    disable: () => {
+      enableDisableGoToPaymentButton(false);
+    },
   });
   checkIfHasInitialButton(); // Retirar
   checkIfHasInputElement(); //  Receber / Voltou / apertou em "preencher Endereço na NF"
   createShippingObserver(); //  Observer para o elemento inteiro
 
   function checkIfHasInitialButton() {
-    const preencherEnderecoNFButton = shippingDiv[0].querySelector(preencherEnderecoNFButtonQuery);
+    const preencherEnderecoNFButton = shippingDiv[0].querySelector(
+      preencherEnderecoNFButtonQuery
+    );
     if (preencherEnderecoNFButton) {
       preencherEnderecoNFButton.click();
       keepInputAlwaysFilled();
@@ -19,18 +26,21 @@
   }
 
   function checkIfHasInputElement() {
-    if (getInputElement())
-      keepInputAlwaysFilled();
+    if (getInputElement()) keepInputAlwaysFilled();
   }
 
   function getInputElement() {
-    const isReceiveShipping = $('.box-step #postalCode-finished-loading .shipping-method-toggle-delivery').length;
-    const inputElement = document.querySelector("#shipping-data .box-step > div:last-of-type .ship-number input");
+    const isReceiveShipping = $(
+      ".box-step #postalCode-finished-loading .shipping-method-toggle-delivery"
+    ).length;
+    const inputElement = document.querySelector(
+      "#shipping-data .box-step > div:last-of-type .ship-number input"
+    );
     if (isReceiveShipping || !inputElement) {
       goToPaymentButton.enable();
       return null;
     }
-      return inputElement;
+    return inputElement;
   }
 
   function isNumericInput(input) {
@@ -40,11 +50,10 @@
 
   function keepInputAlwaysFilled() {
     input = getInputElement();
-    if(!input) return
+    if (!input) return;
 
     const isInputFilled = !!input.value.trim();
     const isNumeric = isNumericInput(input);
-
 
     if (isInputFilled && isNumeric) {
       goToPaymentButton.enable();
@@ -78,7 +87,10 @@
   function setNativeValue(element, value) {
     const valueSetter = Object.getOwnPropertyDescriptor(element, "value").set;
     const prototype = Object.getPrototypeOf(element);
-    const prototypeValueSetter = Object.getOwnPropertyDescriptor(prototype,"value").set;
+    const prototypeValueSetter = Object.getOwnPropertyDescriptor(
+      prototype,
+      "value"
+    ).set;
 
     if (valueSetter && valueSetter !== prototypeValueSetter) {
       prototypeValueSetter.call(element, value);
@@ -91,7 +103,11 @@
 
   function enableDisableGoToPaymentButton(option) {
     addRemoveClass($(goToPaymentButton.query), option, "go-to-payment");
-    addRemoveClass($(".input.ship-number.required.text"), option, "go-to-payment");
+    addRemoveClass(
+      $(".input.ship-number.required.text"),
+      option,
+      "go-to-payment"
+    );
   }
 
   function addRemoveClass(input, operation, classe) {
@@ -101,12 +117,12 @@
   function createShippingObserver() {
     const itemsObserver = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
-        const initialButton =
-          mutation?.target?.querySelectorAll(preencherEnderecoNFButtonQuery);
-        if (initialButton.length)
-          return initialButton[0].click();
+        const initialButton = mutation?.target?.querySelectorAll(
+          preencherEnderecoNFButtonQuery
+        );
+        if (initialButton.length) return initialButton[0].click();
         keepInputAlwaysFilled();
-        let buttonGoToPaymentWrapper = $('.btn-go-to-payment-wrapper');
+        let buttonGoToPaymentWrapper = $(".btn-go-to-payment-wrapper");
         buttonGoToPaymentWrapper.css("display", "block");
       });
     });

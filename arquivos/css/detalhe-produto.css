@@ -1,6 +1,6 @@
-:root{
-  --altura-topo-tablet:161px;
-  --altura-topo-desktop:264px;
+:root {
+  --altura-topo-tablet: 161px;
+  --altura-topo-desktop: 264px;
 }
 
 html {
@@ -23,19 +23,22 @@ html {
 
 /* FIM RESET RATINGS COMPONENT */
 
-#outras-marcas.tab-content, .white-background {
+#outras-marcas.tab-content,
+.white-background {
   background: white;
 }
 
-#outras-marcas .white-background, #compre-junto .blue-background {
+#outras-marcas .white-background,
+#compre-junto .blue-background {
   padding: 30px;
 }
 
-#compre-junto .blue-background > .row > div{
+#compre-junto .blue-background > .row > div {
   z-index: 1;
 }
 
-#compre-junto.tab-content, .blue-background {
+#compre-junto.tab-content,
+.blue-background {
   background: #234eb9;
 }
 
@@ -96,7 +99,7 @@ html {
   height: 2px;
   margin-top: 13px;
   border-radius: 2px;
-  background: #183884/*var(--primary)*/;
+  background: #183884 /*var(--primary)*/;
   transition: width 200ms ease-in-out;
 }
 
@@ -105,7 +108,8 @@ html {
   font-weight: bold;
 }
 
-.tab-link.tab--current::after, .tab-link:hover::after {
+.tab-link.tab--current::after,
+.tab-link:hover::after {
   width: 100%;
 }
 
@@ -113,11 +117,13 @@ section.tab-content {
   padding: 0 5px;
 }
 
-section#outras-marcas.tab-content, section#compre-junto.tab-content {
+section#outras-marcas.tab-content,
+section#compre-junto.tab-content {
   display: none;
 }
 
-section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content .slick-track {
+section#outras-marcas.tab-content .slick-track,
+section#compre-junto.tab-content .slick-track {
   width: 90%;
   margin: 0 auto;
 }
@@ -130,21 +136,22 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
 
   .shelf-qd-v1 .shelf-qd-v1-price,
   .shelf-qd-v1 .shelf-qd-v1-name,
-  .shelf-qd-v1 .shelf-qd-v1-image
-   {
+  .shelf-qd-v1 .shelf-qd-v1-image {
     padding: 0 25px !important;
   }
 
-  body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button{
+  body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
     margin-left: 25px;
     margin-right: 25px;
   }
 }
 
-
 /* adiciona offset de scrolling para as seções */
 
-.tab-content h1, #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #duvidas.tab-content h2 {
+.tab-content h1,
+#avaliacoes.tab-content h2,
+#diferenciais.tab-content h2,
+#duvidas.tab-content h2 {
   font-weight: var(--extra-bold);
   color: var(--blue-700);
   text-align: center;
@@ -161,15 +168,17 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
   margin: 32px 0;
 }
 
-#diferenciais.tab-content ul, #duvidas.tab-content ul:last-child {
+#diferenciais.tab-content ul,
+#duvidas.tab-content ul:last-child {
   margin-left: 15px;
 }
 
-.tab-content ul>li {
+.tab-content ul > li {
   padding-bottom: 10px;
 }
 
-#diferenciais.tab-content ul>li, #duvidas.tab-content ul:last-child>li {
+#diferenciais.tab-content ul > li,
+#duvidas.tab-content ul:last-child > li {
   list-style: "-   ";
 }
 
@@ -188,13 +197,14 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
   position: relative;
   height: 0;
   padding-top: 56.25%;
-  width:100%;
+  width: 100%;
 }
 
 .side-video div iframe {
   border: none;
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   border: 0;
   width: 100%;
   height: 100%;
@@ -208,7 +218,7 @@ section#outras-marcas.tab-content .slick-track, section#compre-junto.tab-content
   margin-bottom: 10px;
 }
 
-a[data-toggle=collapse] {
+a[data-toggle="collapse"] {
   position: relative;
   padding: 15px;
   display: block;
@@ -219,15 +229,15 @@ a[data-toggle=collapse] {
   transition: all 0.2s ease-in-out;
 }
 
-a[data-toggle=collapse]:hover  {
+a[data-toggle="collapse"]:hover {
   background-color: #dfdfdf;
 }
 
-a[data-toggle=collapse]:not(.collapsed) h3 {
+a[data-toggle="collapse"]:not(.collapsed) h3 {
   color: #183884;
 }
 
-a[data-toggle=collapse]::after {
+a[data-toggle="collapse"]::after {
   position: absolute;
   content: url("https://autoglass-cdn.github.io/src/img/arrow-down-blue.svg");
   transform: translateY(-50%) rotate(180deg);
@@ -236,11 +246,11 @@ a[data-toggle=collapse]::after {
   top: 50%;
 }
 
-a[data-toggle=collapse].collapsed::after {
+a[data-toggle="collapse"].collapsed::after {
   transform: translateY(-50%) rotate(0deg);
 }
 
-a[data-toggle=collapse] + div > *:first-child {
+a[data-toggle="collapse"] + div > *:first-child {
   margin-top: 15px;
 }
 
@@ -256,7 +266,7 @@ a[data-toggle=collapse] + div > *:first-child {
   position: relative;
   height: 0;
   overflow: hidden;
-  transition: height .35s ease;
+  transition: height 0.35s ease;
 }
 
 .caracteristicas__caracteristica {
@@ -305,7 +315,8 @@ h4.group.Especificacoes {
   max-width: 120px;
 }
 
-.group.Especificacoes th, .group.Especificacoes td {
+.group.Especificacoes th,
+.group.Especificacoes td {
   border-bottom: 1px solid #dbdbdb;
 }
 
@@ -330,11 +341,11 @@ h4.group.Especificacoes {
   padding-right: 0;
 }
 
-.cards .card>img {
+.cards .card > img {
   margin-right: 30px;
 }
 
-.cards .card>.card__text h4 {
+.cards .card > .card__text h4 {
   margin-bottom: 10px;
 }
 
@@ -379,11 +390,15 @@ h4.group.Especificacoes {
   .contents .tab-content {
     padding: 24px 20px 0;
   }
-  #outras-marcas .white-background, #compre-junto .blue-background {
+  #outras-marcas .white-background,
+  #compre-junto .blue-background {
     padding: 0;
   }
-  #avaliacoes.tab-content, #outras-marcas.tab-content, #compre-junto.tab-content,
-  #outras-marcas .white-background, #compre-junto .blue-background {
+  #avaliacoes.tab-content,
+  #outras-marcas.tab-content,
+  #compre-junto.tab-content,
+  #outras-marcas .white-background,
+  #compre-junto .blue-background {
     background-color: white;
   }
   .contents .tab-content::after {
@@ -398,7 +413,7 @@ h4.group.Especificacoes {
     padding-right: 0;
   }
   .contents .tab-content h2 {
-    color: #183884  !important;
+    color: #183884 !important;
     display: flex;
     justify-content: space-between;
     line-height: 30px;
@@ -413,23 +428,32 @@ h4.group.Especificacoes {
     content: "\002B";
     display: unset;
   }
-  .contents .tab-content.ativo>*:not(h2):not(.blue-background):not(.white-background) {
+  .contents
+    .tab-content.ativo
+    > *:not(h2):not(.blue-background):not(.white-background) {
     display: none !important;
   }
-  .contents .tab-content.ativo #similars>*:not(h2), .contents .tab-content.ativo #sugestoes>*:not(h2) {
+  .contents .tab-content.ativo #similars > *:not(h2),
+  .contents .tab-content.ativo #sugestoes > *:not(h2) {
     display: none;
   }
   .table-zebra tr td {
     padding-left: 0 !important;
   }
-  .group.Especificacoes th, .group.Especificacoes td {
+  .group.Especificacoes th,
+  .group.Especificacoes td {
     padding-left: 5px;
     padding-bottom: 5px !important;
   }
-  .group.Especificacoes th::before, .group.Especificacoes td::before {
+  .group.Especificacoes th::before,
+  .group.Especificacoes td::before {
     margin-left: 0;
   }
-  #avaliacoes.tab-content h2, #diferenciais.tab-content h2, #outras-marcas.tab-content h2, #compre-junto.tab-content h2, #duvidas.tab-content h2 {
+  #avaliacoes.tab-content h2,
+  #diferenciais.tab-content h2,
+  #outras-marcas.tab-content h2,
+  #compre-junto.tab-content h2,
+  #duvidas.tab-content h2 {
     font-weight: var(--bold);
     font-size: 19px;
     text-align: unset;
@@ -448,7 +472,7 @@ h4.group.Especificacoes {
   .cards .card:nth-child(even) {
     flex-direction: row-reverse;
   }
-  .cards .card:nth-child(even)>img {
+  .cards .card:nth-child(even) > img {
     margin: 0 0 0 30px;
   }
   .cards .card {
@@ -459,7 +483,9 @@ h4.group.Especificacoes {
 }
 
 /* Veículos Compatíveis */
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header {
   display: flex;
   position: relative;
   width: 100%;
@@ -470,7 +496,10 @@ h4.group.Especificacoes {
   overflow: hidden;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  div {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -482,7 +511,10 @@ h4.group.Especificacoes {
   transition: border-bottom 0.2s ease-in-out;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  button {
   display: none;
   align-items: center;
   justify-content: center;
@@ -497,22 +529,31 @@ h4.group.Especificacoes {
   outline: none;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header button:last-child {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  button:last-child {
   transform: rotate(0deg);
   right: 0;
   left: unset;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div:hover {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  div:hover {
   background: linear-gradient(to right, #f0f0f0, #f7f7f7, #f0f0f0);
   transition: background 0.3s ease-in-out;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box .veiculos-compativeis__box-header div.active {
+#veiculos-compativeis
+  .veiculos-compativeis__box
+  .veiculos-compativeis__box-header
+  div.active {
   border-bottom: 4px solid #183884;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div {
+#veiculos-compativeis .veiculos-compativeis__box-content > div {
   display: none;
   overflow: hidden;
   height: 305px;
@@ -525,34 +566,34 @@ h4.group.Especificacoes {
   padding: 25px 40px;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div.active {
+#veiculos-compativeis .veiculos-compativeis__box-content > div.active {
   display: flex;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div>div {
+#veiculos-compativeis .veiculos-compativeis__box-content > div > div {
   font-size: 14px;
   color: #707070;
   padding: 20px 30px 20px 0px;
   max-width: 300px;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div>div>p {
+#veiculos-compativeis .veiculos-compativeis__box-content > div > div > p {
   color: #183884;
   word-wrap: break-word;
   word-break: keep-all;
   font-weight: bold;
 }
 
-#veiculos-compativeis .veiculos-compativeis__box-content>div>div>div {
+#veiculos-compativeis .veiculos-compativeis__box-content > div > div > div {
   display: flex;
   flex-wrap: wrap;
 }
 
-#duvidas h2+ul {
+#duvidas h2 + ul {
   margin-top: 30px;
 }
 
-#duvidas h2+ul li {
+#duvidas h2 + ul li {
   list-style: none;
 }
 
@@ -582,7 +623,7 @@ h4.group.Especificacoes {
   display: none;
 }
 
-#duvidas li input[type="checkbox"]+label::after {
+#duvidas li input[type="checkbox"] + label::after {
   content: url("https://autoglass-cdn.github.io/src/img/arrow-down-blue.svg");
   position: absolute;
   right: 10px;
@@ -591,16 +632,16 @@ h4.group.Especificacoes {
   top: 50%;
 }
 
-#duvidas li input[type="checkbox"]:checked+label {
+#duvidas li input[type="checkbox"]:checked + label {
   background-color: #f8f8f8;
   border-left: 4px solid #183884;
 }
 
-#duvidas li input[type="checkbox"]:checked+label::after {
+#duvidas li input[type="checkbox"]:checked + label::after {
   transform: translateY(-50%) scale(1.5) rotate(180deg);
 }
 
-#duvidas li input[type="checkbox"]:checked+label+p {
+#duvidas li input[type="checkbox"]:checked + label + p {
   display: block;
 }
 
@@ -618,12 +659,12 @@ article section.tab-content {
   width: 100vw;
   height: 100vh;
   position: fixed;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   top: 0;
   z-index: 999999;
   display: flex;
-    justify-content: center;
-    align-items: center;
+  justify-content: center;
+  align-items: center;
 }
 
 #modalCompra {
@@ -631,7 +672,7 @@ article section.tab-content {
   max-width: 95%;
   height: 100%;
   position: fixed;
-  background: #FFF;
+  background: #fff;
   border-radius: 10px;
   box-shadow: 0 5px 10px rgb(0 0 0);
   display: grid;
@@ -650,7 +691,7 @@ article section.tab-content {
   margin-bottom: 3%;
 }
 
-.containerTituloInstalacao{
+.containerTituloInstalacao {
   width: 104%;
 }
 
@@ -709,12 +750,16 @@ article section.tab-content {
 fieldset#beneficios legend {
   color: #3330;
   width: auto;
- border-bottom: 0;
- margin-bottom: 0;
+  border-bottom: 0;
+  margin-bottom: 0;
 }
 
-.primeiraLinha, .segundaLinha, #primeiroblock, #segundablock,
-#primeirochecked, #segundochecked {
+.primeiraLinha,
+.segundaLinha,
+#primeiroblock,
+#segundablock,
+#primeirochecked,
+#segundochecked {
   width: 90%;
   min-height: 15%;
   display: flex;
@@ -722,7 +767,8 @@ fieldset#beneficios legend {
   justify-content: center;
   border-bottom: 1px solid #646363;
 }
-#terceiroblock,#terceirochecked {
+#terceiroblock,
+#terceirochecked {
   width: 90%;
   min-height: 15%;
   display: flex;
@@ -730,25 +776,25 @@ fieldset#beneficios legend {
   justify-content: center;
 }
 
-.logoModal{
-    display: flex;
-    justify-content: center;
+.logoModal {
+  display: flex;
+  justify-content: center;
 }
 
-#container-Compra{
+#container-Compra {
   flex-direction: row;
 }
 
 #container-compraComInstalacao {
-  border: 1px solid #234EB9;
+  border: 1px solid #234eb9;
   border-radius: 20px;
   width: 22%;
   min-width: 200px;
   height: 205px;
 }
 
-#container-compraSemInstalacao{
-  border: 1px solid #234EB9;
+#container-compraSemInstalacao {
+  border: 1px solid #234eb9;
   border-radius: 20px;
   width: 22%;
   min-width: 200px;
@@ -756,7 +802,7 @@ fieldset#beneficios legend {
 }
 
 #container-compraComInstalacao {
-  border: 1px solid #234EB9;
+  border: 1px solid #234eb9;
   border-radius: 20px;
   width: 22%;
 }
@@ -766,18 +812,19 @@ fieldset#beneficios legend {
 }
 
 .block:before {
-  content: '\f057';
-  font-family: 'FontAwesome';
+  content: "\f057";
+  font-family: "FontAwesome";
   font-style: normal;
   font-size: 28px;
   font-weight: 600;
 }
 
-.ajusteContainerSemInstalacao, .ajusteContainerComInstalacao {
+.ajusteContainerSemInstalacao,
+.ajusteContainerComInstalacao {
   color: rgba(0, 0, 0, 0);
 }
 
-#container-compraSemInstalacao legend{
+#container-compraSemInstalacao legend {
   position: relative;
   margin-left: auto;
   margin-right: 100%;
@@ -830,14 +877,14 @@ fieldset#beneficios legend {
   margin-left: 160px;
 }
 
-#inputSemInstalacao{
+#inputSemInstalacao {
   height: 20px;
   width: 20px;
   cursor: pointer;
   margin-left: 155px;
 }
 
-.inputLabelSemInstalacao label{
+.inputLabelSemInstalacao label {
   cursor: pointer;
   width: 139px;
   font-size: 16px;
@@ -845,21 +892,21 @@ fieldset#beneficios legend {
   color: black;
 }
 
-.inputLabelComInstalacao label{
+.inputLabelComInstalacao label {
   font-size: 16px;
-    font-weight: 600;
-    color: black;
-    margin-left: 6px;
-    cursor: pointer;
-    width: 139px;
+  font-weight: 600;
+  color: black;
+  margin-left: 6px;
+  cursor: pointer;
+  width: 139px;
 }
 
 .containersModalCompra #descricao {
   color: #646363;
-    font-weight: 600;
-    font-size: 11px;
-    line-height: 10px;
-    margin-left: -142%;
+  font-weight: 600;
+  font-size: 11px;
+  line-height: 10px;
+  margin-left: -142%;
 }
 
 .containersModalCompra #descricao-sem-instalacao {
@@ -872,8 +919,8 @@ fieldset#beneficios legend {
 }
 
 .checked:before {
-  content: '\f058';
-  font-family: 'FontAwesome';
+  content: "\f058";
+  font-family: "FontAwesome";
   font-style: normal;
   font-size: 28px;
   font-weight: 600;
@@ -910,7 +957,7 @@ fieldset#beneficios legend {
 }
 
 #precoComInstalacao {
-  color: #183884
+  color: #183884;
 }
 
 #valorComInstalacao {
@@ -919,14 +966,14 @@ fieldset#beneficios legend {
   font-weight: 900;
 }
 
-.containerInfoInsumo{
+.containerInfoInsumo {
   display: grid;
   grid-template-columns: 5fr 1fr 1fr;
   margin-left: -4%;
   margin-top: 3%;
 }
 
-#infoInsumo{
+#infoInsumo {
   margin-left: 15px;
   font-size: 11px;
   margin-top: 5px;
@@ -951,18 +998,18 @@ fieldset#beneficios legend {
 
 #botaoContinuarCarrinho {
   width: 160px;
-    height: auto;
-    min-height: 35px;
-    border: 0;
-    border-radius: 6px;
-    background: #0056b3;
-    color: #FFF;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-    font-size: 16px;
-    font-family: 'Arial', sans-serif;
+  height: auto;
+  min-height: 35px;
+  border: 0;
+  border-radius: 6px;
+  background: #0056b3;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-family: "Arial", sans-serif;
 }
 
 #botaoContinuarCarrinho:hover {
@@ -970,30 +1017,30 @@ fieldset#beneficios legend {
   transform: scale(1.03);
 }
 
-#botaoVoltarCarrinho{
+#botaoVoltarCarrinho {
   width: 160px;
-    height: auto;
-    min-height: 35px;
-    border: 0;
-    border-radius: 6px;
-    background: #f1f3f5;
-    color: #0056b3;
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    flex-wrap: wrap;
-    font-size: 16px;
-    font-family: 'Arial', sans-serif;
-    margin-left: 10%;
+  height: auto;
+  min-height: 35px;
+  border: 0;
+  border-radius: 6px;
+  background: #f1f3f5;
+  color: #0056b3;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+  font-size: 16px;
+  font-family: "Arial", sans-serif;
+  margin-left: 10%;
 }
 
-@media screen and (max-width: 1280px){
-  #modalCompra{
+@media screen and (max-width: 1280px) {
+  #modalCompra {
     width: 30%;
     max-width: 95%;
     height: 100%;
     position: fixed;
-    background: #FFF;
+    background: #fff;
     border-radius: 10px;
     box-shadow: 0 5px 10px rgb(0 0 0);
     display: grid;
@@ -1006,8 +1053,8 @@ fieldset#beneficios legend {
   }
 }
 
-@media only screen and (max-width: 375px){
-  #modalCompra{
+@media only screen and (max-width: 375px) {
+  #modalCompra {
     max-width: 100%;
     height: 80%;
     bottom: 0;
@@ -1020,7 +1067,8 @@ fieldset#beneficios legend {
     margin-top: 1%;
   }
 
-  #inputComInstalacao, #inputSemInstalacao {
+  #inputComInstalacao,
+  #inputSemInstalacao {
     width: 18px !important;
     margin-left: 150px;
   }
@@ -1078,7 +1126,8 @@ fieldset#beneficios legend {
     width: 250px;
   }
 
-  #inputComInstalacao, #inputSemInstalacao {
+  #inputComInstalacao,
+  #inputSemInstalacao {
     width: 15px;
   }
 
@@ -1112,7 +1161,8 @@ fieldset#beneficios legend {
     padding: 11px;
   }
 
-  #container-compraSemInstalacao, #container-compraComInstalacao {
+  #container-compraSemInstalacao,
+  #container-compraComInstalacao {
     margin-left: 15px;
   }
 
@@ -1127,7 +1177,8 @@ fieldset#beneficios legend {
     font-size: 30px;
   }
 
-  #container-compraSemInstalacao, #container-compraComInstalacao {
+  #container-compraSemInstalacao,
+  #container-compraComInstalacao {
     min-width: 160px;
     margin-left: -2%;
   }
@@ -1137,7 +1188,7 @@ fieldset#beneficios legend {
   }
 }
 
-@media only screen and (min-width: 376px) and (max-width: 570px){
+@media only screen and (min-width: 376px) and (max-width: 570px) {
   #modalCompra {
     max-width: 100%;
     height: 85%;
@@ -1145,24 +1196,24 @@ fieldset#beneficios legend {
     right: 0;
   }
 
-  .inputLabelComInstalacao{
+  .inputLabelComInstalacao {
     display: flex;
     margin-left: -2%;
     margin-top: 1%;
   }
 
-  .inputLabelSemInstalacao{
+  .inputLabelSemInstalacao {
     display: flex;
     margin-left: 1%;
     margin-top: 1%;
   }
 
-  #inputComInstalacao{
+  #inputComInstalacao {
     width: 20px;
     margin-left: 170px;
   }
 
-  .containersModalCompra #descricao{
+  .containersModalCompra #descricao {
     color: #646363;
     font-weight: 600;
     font-size: 12px;
@@ -1170,14 +1221,14 @@ fieldset#beneficios legend {
     margin-left: -150%;
   }
 
-  #inputSemInstalacao{
+  #inputSemInstalacao {
     height: 20px;
     width: 20px;
     cursor: pointer;
     margin-left: 168px;
   }
 
-  .tituloInstalacao{
+  .tituloInstalacao {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1186,7 +1237,7 @@ fieldset#beneficios legend {
     margin-left: -1%;
   }
 
-  #modalCompra .exit-button{
+  #modalCompra .exit-button {
     font-size: 25px;
     font-weight: bolder;
     width: 0;
@@ -1217,7 +1268,7 @@ fieldset#beneficios legend {
     width: 100%;
   }
 
-  #containers-sem-instalacao{
+  #containers-sem-instalacao {
     display: block;
     width: 100%;
   }
@@ -1229,7 +1280,7 @@ fieldset#beneficios legend {
     width: 100%;
   }
 
-  #mobileBlocoUm{
+  #mobileBlocoUm {
     display: flex;
     justify-content: center;
     padding: 5px;
@@ -1263,13 +1314,14 @@ fieldset#beneficios legend {
     height: 50px;
   }
 
-  #container-compraSemInstalacao, #container-compraComInstalacao {
+  #container-compraSemInstalacao,
+  #container-compraComInstalacao {
     width: auto;
     min-width: 150px;
     width: 95%;
   }
 
-  .containersModalCompra #descricao-sem-instalacao{
+  .containersModalCompra #descricao-sem-instalacao {
     color: #646363;
     font-weight: 600;
     font-size: 12px;
@@ -1283,18 +1335,20 @@ fieldset#beneficios legend {
     margin-right: 15px;
   }
 
-  .inputLabelSemInstalacao label, .inputLabelComInstalacao label {
+  .inputLabelSemInstalacao label,
+  .inputLabelComInstalacao label {
     font-size: 16px;
     margin-right: 10px;
   }
 
-  .lista-beneficios-sem-instalacao{
+  .lista-beneficios-sem-instalacao {
     margin-left: -11%;
     margin-top: 10px;
     width: 100%;
   }
 
-  .block:before, .checked:before {
+  .block:before,
+  .checked:before {
     font-size: 22px;
   }
 
@@ -1324,7 +1378,6 @@ fieldset#beneficios legend {
     margin-bottom: 20px;
   }
 }
-
 
 @media only screen and (max-width: 390px) {
   #beneficios.containersModalCompra h3 {
@@ -1366,9 +1419,8 @@ fieldset#beneficios legend {
 #windshildVane-advertise > div.advertise h3 {
   font-size: 17px;
   margin-top: 12px;
-  color: #234EB9;
+  color: #234eb9;
 }
-
 
 #windshildVane-advertise > div.advertise {
   width: 500px;
@@ -1400,7 +1452,7 @@ fieldset#beneficios legend {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  color: #234EB9;
+  color: #234eb9;
 }
 
 #windshildVane-advertise > div.advertise .image {
@@ -1512,36 +1564,35 @@ fieldset#beneficios legend {
   }
 }
 
-.lista-beneficios{
+.lista-beneficios {
   margin-left: -37%;
   margin-top: 20px;
   width: 100%;
 }
 
 @media only screen and (min-width: 768px) {
-  .lista-beneficios-sem-instalacao{
+  .lista-beneficios-sem-instalacao {
     margin-left: -10%;
     margin-top: 7px;
     width: 100%;
   }
 }
 
-
-.secao-itens{
+.secao-itens {
   display: flex;
   align-items: center;
   margin-left: 30%;
   margin-top: -10px;
 }
 
-.secao-itens-sem-instalacao{
+.secao-itens-sem-instalacao {
   display: flex;
   align-items: center;
   margin-left: 30%;
   width: 100%;
 }
 
-#titulo-preco-modal{
+#titulo-preco-modal {
   display: grid;
   margin-left: -7%;
   border-left: 1px solid #e6e6e6;
@@ -1559,18 +1610,17 @@ fieldset#beneficios legend {
   color: black;
 }
 
-
-.lista-beneficios > li > span{
+.lista-beneficios > li > span {
   padding-right: 3%;
   color: #183884;
 }
 
-.lista-beneficios-sem-instalacao > li > span{
+.lista-beneficios-sem-instalacao > li > span {
   padding-right: 3%;
   color: #183884;
 }
 
-.recomendado{
+.recomendado {
   margin-left: -57%;
   display: inline-block;
   padding: 6px 11px;

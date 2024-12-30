@@ -48,11 +48,18 @@
 }
 
 #shipping-preview-container .srp-toggle__wrapper label:hover {
-  -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+  -webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.5);
 }
 
-#shipping-preview-container .srp-toggle:not(.instalacao) .srp-toggle__wrapper label,
-#shipping-preview-container .srp-toggle.instalacao .srp-toggle__wrapper label span.instalar{
+#shipping-preview-container
+  .srp-toggle:not(.instalacao)
+  .srp-toggle__wrapper
+  label,
+#shipping-preview-container
+  .srp-toggle.instalacao
+  .srp-toggle__wrapper
+  label
+  span.instalar {
   font-size: 16px;
   color: var(--dark-gray-receber-retirar);
   margin: 0 7px;
@@ -89,11 +96,17 @@
   top: 0px;
 }
 
-#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:focus {
+#shipping-preview-container
+  .srp-toggle__wrapper
+  label
+  input[type="radio"]:focus {
   outline: none;
 }
 
-#shipping-preview-container .srp-toggle__wrapper label input[type="radio"]:checked::after {
+#shipping-preview-container
+  .srp-toggle__wrapper
+  label
+  input[type="radio"]:checked::after {
   content: "\f00c";
   font-family: fontAwesome;
   font-size: 16px;
@@ -109,33 +122,38 @@
   margin-top: 25px;
 }
 
-#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten::before{
+#shipping-preview-container
+  .vtex-shipping-preview-0-x-postalCodeForgotten::before {
   content: "\f041";
   font-family: fontAwesome;
   position: absolute;
   font-size: 16px;
-  color:var(--gray-receber-retirar);
+  color: var(--gray-receber-retirar);
 }
 
-#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten::after {
+#shipping-preview-container
+  .vtex-shipping-preview-0-x-postalCodeForgotten::after {
   content: "CEP";
   position: absolute;
   padding-left: 13px;
-  color:var(--gray-receber-retirar);
+  color: var(--gray-receber-retirar);
 }
 
-#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten #cart-shipping-calculate {
+#shipping-preview-container
+  .vtex-shipping-preview-0-x-postalCodeForgotten
+  #cart-shipping-calculate {
   margin-top: 20px;
   text-shadow: none;
   box-shadow: none;
   transition: var(--transition-hover-receber-retirar);
 }
 
-#shipping-preview-container .vtex-shipping-preview-0-x-postalCodeForgotten #cart-shipping-calculate:hover {
+#shipping-preview-container
+  .vtex-shipping-preview-0-x-postalCodeForgotten
+  #cart-shipping-calculate:hover {
   background-color: var(--azul-hover-receber-retirar);
   border-color: var(--azul-hover-receber-retirar);
   color: #fff;
-
 }
 
 #shipping-preview-container .vtex-shipping-preview-0-x-pc {
@@ -157,7 +175,10 @@
   font-weight: 600;
 }
 
-#shipping-preview-container .vtex-shipping-preview-0-x-pc p.input > label:first-of-type{
+#shipping-preview-container
+  .vtex-shipping-preview-0-x-pc
+  p.input
+  > label:first-of-type {
   opacity: 0;
 }
 
@@ -175,14 +196,29 @@
   padding: 0;
 }
 
-#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title {
+#shipping-preview-container
+  .srp-delivery-header
+  .cep-info.cep-info
+  .cep-info__title {
   white-space: nowrap;
   color: var(--dark-gray-receber-retirar);
 }
 
-#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title svg,
-#shipping-preview-container .srp-delivery-header .cep-info.cep-info .cep-info__title b,
-#shipping-preview-container .srp-pickup-info .cep-info.cep-info .cep-info__title svg {
+#shipping-preview-container
+  .srp-delivery-header
+  .cep-info.cep-info
+  .cep-info__title
+  svg,
+#shipping-preview-container
+  .srp-delivery-header
+  .cep-info.cep-info
+  .cep-info__title
+  b,
+#shipping-preview-container
+  .srp-pickup-info
+  .cep-info.cep-info
+  .cep-info__title
+  svg {
   color: var(--azul-receber-retirar);
 }
 
@@ -190,20 +226,40 @@
   display: contents;
 }
 
-#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location span,
-#shipping-preview-container .srp-pickup-info .cep-info .cep-info__location span {
+#shipping-preview-container
+  .srp-delivery-header
+  .cep-info
+  .cep-info__location
+  span,
+#shipping-preview-container
+  .srp-pickup-info
+  .cep-info
+  .cep-info__location
+  span {
   width: auto;
 }
-#shipping-preview-container .srp-pickup-info .cep-info .cep-info__location span {
+#shipping-preview-container
+  .srp-pickup-info
+  .cep-info
+  .cep-info__location
+  span {
   white-space: initial;
 }
 
-#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location .cep-info__location-street {
+#shipping-preview-container
+  .srp-delivery-header
+  .cep-info
+  .cep-info__location
+  .cep-info__location-street {
   margin: 0;
   margin-left: 5px;
   color: var(--azul-receber-retirar);
 }
-#shipping-preview-container .srp-delivery-header .cep-info .cep-info__location .cep-info__location-street::before {
+#shipping-preview-container
+  .srp-delivery-header
+  .cep-info
+  .cep-info__location
+  .cep-info__location-street::before {
   content: "| ";
 }
 
@@ -220,10 +276,11 @@
 }
 
 #shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) > div,
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) > label.srp-shipping-current-single,
+#shipping-preview-container
+  div:is(.srp-delivery-info, .srp-pickup-info)
+  > label.srp-shipping-current-single,
 #shipping-preview-container #open-modal-ic,
-#shipping-preview-container #open-modal-il
-{
+#shipping-preview-container #open-modal-il {
   border-color: var(--azul-receber-retirar);
   border-width: thin;
   border-radius: 5px;
@@ -236,7 +293,12 @@
 }
 
 #shipping-preview-container .srp-delivery-info > div:not(.instalar):hover div,
-#shipping-preview-container .srp-delivery-info > div:not(.instalar):hover div svg g,
+#shipping-preview-container
+  .srp-delivery-info
+  > div:not(.instalar):hover
+  div
+  svg
+  g,
 #shipping-preview-container .srp-delivery-info > div.instalar:hover > a div,
 #shipping-preview-container .srp-pickup-info > div.instalar:hover > a div {
   color: #fff;
@@ -244,7 +306,10 @@
   fill: white;
 }
 
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) > div.instalar:hover > a {
+#shipping-preview-container
+  div:is(.srp-delivery-info, .srp-pickup-info)
+  > div.instalar:hover
+  > a {
   text-decoration: none;
 }
 
@@ -254,24 +319,48 @@
   justify-content: center;
   font-size: 14px;
 }
-#shipping-preview-container .srp-delivery-info > div.instalar > a .instalar_calendar,
-#shipping-preview-container .srp-pickup-info > div.instalar > a .instalar_calendar {
+#shipping-preview-container
+  .srp-delivery-info
+  > div.instalar
+  > a
+  .instalar_calendar,
+#shipping-preview-container
+  .srp-pickup-info
+  > div.instalar
+  > a
+  .instalar_calendar {
   color: var(--azul-receber-retirar);
 }
 
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-delivery-current-many__description .srp-delivery-current-many__price,
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__wrapper .srp-shipping-current-single__description .srp-shipping-current-single__price {
+#shipping-preview-container
+  div:is(.srp-delivery-info, .srp-pickup-info)
+  .srp-delivery-current-many__description
+  .srp-delivery-current-many__price,
+#shipping-preview-container
+  div:is(.srp-delivery-info, .srp-pickup-info)
+  .srp-shipping-current-single__wrapper
+  .srp-shipping-current-single__description
+  .srp-shipping-current-single__price {
   color: var(--azul-receber-retirar);
   font-size: 16px;
   font-weight: 600;
 }
 
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-delivery-current-many__description .srp-delivery-current-many__text,
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__description .srp-shipping-current-single__text {
+#shipping-preview-container
+  div:is(.srp-delivery-info, .srp-pickup-info)
+  .srp-delivery-current-many__description
+  .srp-delivery-current-many__text,
+#shipping-preview-container
+  div:is(.srp-delivery-info, .srp-pickup-info)
+  .srp-shipping-current-single__description
+  .srp-shipping-current-single__text {
   border-right-color: var(--azul-receber-retirar);
 }
 
-#shipping-preview-container div:is(.srp-delivery-info, .srp-pickup-info) .srp-shipping-current-single__wrapper > div.srp-shipping-current-single__bullet {
+#shipping-preview-container
+  div:is(.srp-delivery-info, .srp-pickup-info)
+  .srp-shipping-current-single__wrapper
+  > div.srp-shipping-current-single__bullet {
   opacity: 0;
 }
 

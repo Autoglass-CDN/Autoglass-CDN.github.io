@@ -8,13 +8,13 @@
 }
 
 #placa-input-compatibilidade {
-    outline: none;
-    padding: 10px 15px;
-    border: 1px solid;
-    border-color: var(--gray-500);
-    border-radius: 4px;
-    color: var(--gray-500);
-    transition: border 500ms;
+  outline: none;
+  padding: 10px 15px;
+  border: 1px solid;
+  border-color: var(--gray-500);
+  border-radius: 4px;
+  color: var(--gray-500);
+  transition: border 500ms;
 }
 
 .input-container input {
@@ -29,7 +29,7 @@
   padding: 8px 4px;
   font-size: 10px;
   border: none;
-  background-color: #000000; /* Ajuste conforme o estilo desejado */
+  background-color: #003366; /* Ajuste conforme o estilo desejado */
   color: white;
   border-radius: 4px;
   cursor: pointer;
@@ -44,7 +44,7 @@
 .tag {
   display: inline-flex;
   align-items: center;
-  background-color: #000000;
+  background-color: #0c66ff;
   color: white;
   padding: 5px 10px;
   border-radius: 15px;
@@ -59,7 +59,7 @@
 .tag button {
   background-color: white;
   border: none;
-  color: #000000;
+  color: #0c66ff;
   font-size: 10px;
   cursor: pointer;
   border-radius: 50%;
@@ -76,43 +76,43 @@
   color: white;
 }
 
-.carro-compativel{
+.carro-compativel {
   display: ruby-text;
-    min-height: 25px;
-    min-width: 30px;
-    padding-top: 10px;
-    color: #000000;
-    vertical-align: middle;
-    border-radius: 0;
-    line-height: 21px;
-    font-weight: 600;
-    max-width: 265px;
+  min-height: 25px;
+  min-width: 30px;
+  padding-top: 10px;
+  color: #2d4f9e;
+  vertical-align: middle;
+  border-radius: 0;
+  line-height: 21px;
+  font-weight: 600;
+  max-width: 265px;
 }
 
-.texto-compatibilidade{
+.texto-compatibilidade {
   display: ruby-text;
-    min-height: 25px;
-    min-width: 30px;
-    color: #000000;
-    vertical-align: middle;
-    border-radius: 0;
-    line-height: 21px;
-    font-weight: 600;
-    max-width: 265px;
+  min-height: 25px;
+  min-width: 30px;
+  color: #2d4f9e;
+  vertical-align: middle;
+  border-radius: 0;
+  line-height: 21px;
+  font-weight: 600;
+  max-width: 265px;
 }
 
 @media (max-width: 768px) {
-  .texto-placa{
+  .texto-placa {
     display: none;
   }
-  .botao-placa{
+  .botao-placa {
     display: none;
   }
-  .div-compatibilidade{
+  .div-compatibilidade {
     display: none;
   }
   .texto-compatibilidade {
-    color: #000000;
+    color: #2d4f9e;
     border-radius: 0;
     font-weight: 600;
     display: inline-flex;
@@ -122,15 +122,15 @@
     line-height: 15px;
     padding-bottom: 5px;
   }
-  .input-container{
+  .input-container {
     padding-left: 100px;
     width: 100%;
   }
-  .tag{
+  .tag {
     margin-left: 20px;
     display: none;
   }
-  .carro-compativel{
+  .carro-compativel {
     display: none;
   }
 }

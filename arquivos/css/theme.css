@@ -1,8 +1,8 @@
 /* FONTES */
 @font-face {
-  font-family: 'Open Sans';
+  font-family: "Open Sans";
   src: local("Open Sans"),
-    url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap');
+    url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap");
 }
 
 :root {
@@ -18,7 +18,7 @@
   --blue-700: #183884;
   --blue-500: #234eb9;
   --blue-300: #368df7;
-  --blue-100: #60C3FF;
+  --blue-100: #60c3ff;
 
   /* CORES SEMÂNTICAS */
   --green-300: #33a140;
@@ -58,9 +58,8 @@ body {
 body,
 input,
 button {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
 }
-
 
 button {
   cursor: pointer;
