@@ -1243,7 +1243,8 @@ body {
 }
 
 .footer-qd-v1-payment-stamps [class*="stamp"] {
-  background: url('https://autoglass-cdn.github.io/src/img/checkout/payment-stamp.png') no-repeat 0 0;
+  background: url("https://autoglass-cdn.github.io/hml/img/checkout/payment-stamp.png")
+    no-repeat 0 0;
   width: 47px;
   height: 28px;
   margin-right: 10px;
@@ -1275,7 +1276,7 @@ body {
 }
 
 .footer-qd-v1-payment-stamps [class*="pix"] {
-  background-position: -559px -33px
+  background-position: -559px -33px;
 }
 
 .footer-qd-v1-security-stamps {
@@ -1510,13 +1511,6 @@ body {
     max-width: calc(100% - 30px) !important;
   }
 }
-
-@media screen and (max-width: 500px) {
-  .ui-autocomplete {
-      display: none;
-  }
-}
-
 
 .servicos__container__alinhamento .chat__botao:hover {
   background-color: var(--gray-300);

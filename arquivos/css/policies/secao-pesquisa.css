@@ -1,26 +1,27 @@
 .tab-container {
   position: relative;
   margin: 20px;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
 }
 
-@media screen and (max-width:500px) {
+@media screen and (max-width: 500px) {
   .tab-header {
     list-style: none;
     margin-bottom: 0px;
   }
-  .tab-header li label{
+  .tab-header li label {
     font-weight: 500 !important;
     display: flex;
     gap: 5px;
   }
 }
+
 @media screen and (min-width: 600px) and (max-width: 1024px) {
   .tab-header {
     list-style: none;
     margin-bottom: 0px;
   }
-  .tab-header li label{
+  .tab-header li label {
     font-weight: 500 !important;
     display: flex;
     gap: 5px;
@@ -33,7 +34,7 @@
     list-style: none;
     padding: 12px;
     margin-bottom: 0px;
-    background-color: #E7EAF4;
+    background-color: #e7eaf4;
     border-radius: 8px;
     justify-content: center;
     gap: 50px; /* Adicionando espaçamento entre as abas */
@@ -48,7 +49,7 @@
   }
 
   .tab-item > a {
-   text-decoration: none;
+    text-decoration: none;
   }
 
   .tab-item.is-active {
@@ -70,7 +71,6 @@
   }
 }
 
-
 .filter-group {
   display: flex;
   justify-content: center;
@@ -84,7 +84,7 @@
   border-bottom: 2px solid #0b4583;
   border-radius: 0;
   min-width: 175px;
-  background-color: #E7EAF4;
+  background-color: #e7eaf4;
   font-size: 14px;
   color: #0b4583;
 }
@@ -118,7 +118,8 @@
   border: 1px solid #0b4583;
 }
 
-.filter-group .btn-search, .btn-clear {
+.filter-group .btn-search,
+.btn-clear {
   margin-left: 10px;
 }
 
@@ -132,17 +133,17 @@
   padding-left: 10%;
 }
 
-@media screen and (max-width: 1550px){
-  .caixa-informacao{
-    background-color: #FFFAF0;
+@media screen and (max-width: 1550px) {
+  .caixa-informacao {
+    background-color: #fffaf0;
     padding: 10px;
-    border: 1px solid #8A6D3B;
+    border: 1px solid #8a6d3b;
     border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 14px;
-    color: #8A6D3B;
+    color: #8a6d3b;
     width: 29%;
     margin-right: 25px;
   }
@@ -150,19 +151,18 @@
 
 @media screen and (min-width: 1600px) {
   .caixa-informacao {
-    background-color: #FFFAF0;
+    background-color: #fffaf0;
     padding: 10px;
-    border: 1px solid #8A6D3B;
+    border: 1px solid #8a6d3b;
     border-radius: 10px;
     display: flex;
     align-items: center;
     gap: 10px;
     font-size: 14px;
-    color: #8A6D3B;
-    width: 20%;
+    color: #8a6d3b;
+    width: 18%;
   }
 }
-
 
 .input-placa {
   width: 300px;
@@ -179,7 +179,6 @@
   outline: none;
   border-bottom: 2px solid #0b4583;
 }
-
 
 .input-group {
   display: flex;

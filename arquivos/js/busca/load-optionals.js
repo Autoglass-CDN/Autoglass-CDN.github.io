@@ -1,17 +1,25 @@
-$(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button-asynchronous").addClass("add-to-cart-ga");
+$(
+  ".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button-asynchronous"
+).addClass("add-to-cart-ga");
 
 (function () {
   async function loadOptionals() {
     const allSkuInThisPage = getAllCurrentSkus();
-    const baseUrlListaOpcionais = "integracao-b2c/api/web-app/produtos/opcionais-lista?codigosProdutos=";
+    const baseUrlListaOpcionais =
+      "integracao-b2c/api/web-app/produtos/opcionais-lista?codigosProdutos=";
     const baseUrlApi = "https://api.autoglass.com.br/";
-    const urlToConsult = baseUrlApi + baseUrlListaOpcionais + allSkuInThisPage.join("&codigosProdutos=");
+    const urlToConsult =
+      baseUrlApi +
+      baseUrlListaOpcionais +
+      allSkuInThisPage.join("&codigosProdutos=");
 
     try {
       const allOptionals = await $.get(urlToConsult);
       const onlyOneSku = allSkuInThisPage.length == 1;
       const productIsInStockTrue = $(".qd-product-is-in-stock-true");
-      onlyOneSku ? productIsInStockTrue.addClass("only-one-sku") : productIsInStockTrue.removeClass("only-one-sku");
+      onlyOneSku
+        ? productIsInStockTrue.addClass("only-one-sku")
+        : productIsInStockTrue.removeClass("only-one-sku");
       addAllOptionals(allOptionals);
       configureOnClickEvents();
     } catch (ex) {
@@ -22,20 +30,22 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
   function removerDuplicados() {
     try {
       let getAllProductInThisPage = getAllProducts();
-      let array = groupBy(getAllProductInThisPage, x => x.titulo);
+      let array = groupBy(getAllProductInThisPage, (x) => x.titulo);
       array.forEach((itens) => {
         if (itens.length >= 2) {
-          let caracteristicas = groupBy(itens, x => x.opcionais);
+          let caracteristicas = groupBy(itens, (x) => x.opcionais);
           caracteristicas.forEach((elements) => {
             if (elements.length >= 2) {
-              let opcionais = elements.filter(x => x.sku != buscarItemMenorValor(elements).sku);
+              let opcionais = elements.filter(
+                (x) => x.sku != buscarItemMenorValor(elements).sku
+              );
               opcionais.forEach((opcional) => {
                 $(opcional.objeto).hide();
               });
             }
-          })
+          });
         }
-      })
+      });
 
       function groupBy(list, keyGetter) {
         const map = new Map();
@@ -52,31 +62,38 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
       }
 
       function buscarItemMenorValor(arr) {
-        var len = arr.length, min = Infinity, resultado = {};
+        var len = arr.length,
+          min = Infinity,
+          resultado = {};
         while (len--) {
-          if (Number(arr[len].precos.replace(/[^0-9.-]+/g, "").replace(",", ".")) < min) {
-            min = Number(arr[len].precos.replace(/[^0-9.-]+/g, "").replace(",", "."));
+          if (
+            Number(
+              arr[len].precos.replace(/[^0-9.-]+/g, "").replace(",", ".")
+            ) < min
+          ) {
+            min = Number(
+              arr[len].precos.replace(/[^0-9.-]+/g, "").replace(",", ".")
+            );
             resultado = arr[len];
           }
         }
         return resultado;
       }
-    }
-    catch (ex) {
-      console.error("Erro ao remover duplicados.", ex)
+    } catch (ex) {
+      console.error("Erro ao remover duplicados.", ex);
     }
   }
 
   function configureObserverToLoadOptionals() {
-    var target = document.querySelector('.resultItemsWrapper > div.prateleira');
+    var target = document.querySelector(".resultItemsWrapper > div.prateleira");
 
     var observer = new MutationObserver(function (mutations) {
       mutations.forEach(function (mutation) {
-        if (mutation.type == 'childList' && mutation.addedNodes.length > 0)
+        if (mutation.type == "childList" && mutation.addedNodes.length > 0)
           loadOptionals();
       });
     });
-    var config = {childList: true };
+    var config = { childList: true };
     observer.observe(target, config);
   }
 
@@ -88,7 +105,7 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
         acc.push(getSkuFromUrl(url));
         return acc;
       }, [])
-      .filter(o => o != null);
+      .filter((o) => o != null);
   }
 
   function getAllProducts() {
@@ -99,38 +116,46 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
           const url = current.value;
           const NumeroSku = getSkuFromUrl(url);
           const elemento = `.produto-prateleira.qd-product-is-in-stock-true.p${NumeroSku}`;
-          const temPreco = document.querySelector(`${elemento} .shelf-qd-v1-price-best-price`);
+          const temPreco = document.querySelector(
+            `${elemento} .shelf-qd-v1-price-best-price`
+          );
 
-          if(temPreco) {
-            const titulo = document.querySelector(`${elemento} .shelf-qd-v1-name`).textContent.trim();
+          if (temPreco) {
+            const titulo = document
+              .querySelector(`${elemento} .shelf-qd-v1-name`)
+              .textContent.trim();
             acc.push({
               sku: NumeroSku,
               titulo: titulo.split(" - ")[0],
-              precos: document.querySelector(`${elemento} .shelf-qd-v1-price-best-price`).textContent,
-              opcionais: document.querySelector(`${elemento} .optionals`).textContent,
-              objeto: document.querySelector(`${elemento} .shelf-qd-v1-price-best-price`).closest("ul")
+              precos: document.querySelector(
+                `${elemento} .shelf-qd-v1-price-best-price`
+              ).textContent,
+              opcionais: document.querySelector(`${elemento} .optionals`)
+                .textContent,
+              objeto: document
+                .querySelector(`${elemento} .shelf-qd-v1-price-best-price`)
+                .closest("ul"),
             });
           }
           return acc;
         }, [])
-        .filter(o => o != null)
-    }
-    catch (ex) {
-        console.error("Falha ao pegar produtos. \n ", ex);
+        .filter((o) => o != null);
+    } catch (ex) {
+      console.error("Falha ao pegar produtos. \n ", ex);
     }
   }
 
   function getSkuFromUrl(url) {
     const minCodeLength = 4;
-    if (url.includes('-copy')) {
-      url = url.split('-copy')[0];
+    if (url.includes("-copy")) {
+      url = url.split("-copy")[0];
     }
     const codigo = url.substring(url.lastIndexOf("-") + 1).replace(/\D/g, "");
     return codigo.length < minCodeLength ? null : codigo;
   }
 
   function contractOnClickOutsideShelves() {
-    $(document).on('click.ClickOutsideShelves', (event) => {
+    $(document).on("click.ClickOutsideShelves", (event) => {
       if (event.srcElement.closest(".prateleira") == null) {
         removeAllExpanded();
         removeDocumentClickBinding();
@@ -139,14 +164,16 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
   }
 
   function configureOnClickEvents() {
-    $(".optionals, .shelf-qd-v1-price").off('click').on("click", (e) => {
-      const allChildren = e.currentTarget.closest(".prateleira").children;
-      const currentElement = e.currentTarget.closest("ul");
-      clearAllExpandedExceptCurrent(allChildren, currentElement);
-      currentElement.classList.toggle("expanded") ?
-        contractOnClickOutsideShelves() :
-        removeDocumentClickBinding();
-    });
+    $(".optionals, .shelf-qd-v1-price")
+      .off("click")
+      .on("click", (e) => {
+        const allChildren = e.currentTarget.closest(".prateleira").children;
+        const currentElement = e.currentTarget.closest("ul");
+        clearAllExpandedExceptCurrent(allChildren, currentElement);
+        currentElement.classList.toggle("expanded")
+          ? contractOnClickOutsideShelves()
+          : removeDocumentClickBinding();
+      });
   }
 
   function addAllOptionals(allOptionals) {
@@ -162,7 +189,7 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
           }, []);
 
         if (!!allOptionalsForCurrentElement)
-          optionalsElement.innerHTML = allOptionalsForCurrentElement.join('');
+          optionalsElement.innerHTML = allOptionalsForCurrentElement.join("");
 
         element.classList.remove("more-than-two-optionals");
         if (allOptionalsForCurrentElement.length > 2) {
@@ -172,9 +199,8 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
         optionalsElement.classList.remove("loading");
       });
       removerDuplicados();
-    }
-    catch (ex) {
-      console.error("Erro ao adicionar opcionais", ex)
+    } catch (ex) {
+      console.error("Erro ao adicionar opcionais", ex);
     }
   }
 
@@ -184,7 +210,7 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
   }
 
   function removeDocumentClickBinding() {
-    $(document).off('click.ClickOutsideShelves');
+    $(document).off("click.ClickOutsideShelves");
   }
 
   function clearAllExpandedExceptCurrent(allChildren, currentElement) {
@@ -197,5 +223,4 @@ $(".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button
 
   configureObserverToLoadOptionals();
   loadOptionals();
-
-})()
+})();

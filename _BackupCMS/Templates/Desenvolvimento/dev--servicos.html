@@ -1,4 +1,4 @@
-<!-- dev- -servicos - 01 -->
+<!-- dev- -servicos -->
 <!DOCTYPE html>
 
 <html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
@@ -6,9 +6,10 @@
 
 <head>
     <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="/src/autoglass-favicon.ico" />
     <vtex:contentPlaceHolder id="SEO_link_alternate" />
-
-    <!-- Substituição do <vtex:metaTags /> -->
+    
+    <!---->
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"></meta>
     <vtex:contentPlaceHolder id="page_metaTag_description" />
     <meta name="Abstract" content="Autoglass - O Maior Estoque de Vidros Automotivos da America Latina"></meta>
@@ -17,7 +18,7 @@
     <meta name="vtex-version" content="1.5.47.2456"></meta>
     <meta http-equiv="pragma" content="no-cache"></meta>
     <!---->
-
+    
     <vtex:contentPlaceHolder id="page_title" />
     <vtex:template id="dev--head-tags-servicos" />
 
@@ -39,9 +40,9 @@
         }
     </style>
 
-    <link rel="preload" as="style" onload="this.rel='stylesheet'" href="https://autoglass-cdn.github.io/src/css/servicos/servicos.css" type="text/css"></link>
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/servicos/servicos.css" type="text/css"></link>
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/styles/global/style.css" type="text/css"></link>
-
+    
     <script>
         const url = "<vtex:contentPlaceHolder id="url_API"/>";
     </script>
@@ -101,14 +102,14 @@
 
         <section class="avaliacoes-consumidores">
             <div class="servicos__container">
-                <article class="contents">
+                <section class="contents">
                     <section id="avaliacoes">
                         <h2 class="avaliacoes__titulo">
                             <vtex:contentPlaceHolder id="avaliacoes_de_quem_ja_contratou" />
                         </h2>
-                        <vtex.cmc:devRatingsComponent />
+                        <vtex.cmc:prdRatingsComponent />
                     </section>
-                </article>
+                </section>
 
             </div>
         </section>

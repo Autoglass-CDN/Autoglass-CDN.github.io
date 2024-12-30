@@ -1,119 +1,106 @@
-(function () {
-    let position = 1;
-    const btnPrev = $('.ratings-section .ratings__slider button[data-type="prev"]');
-    const btnNext = $('.ratings-section .ratings__slider button[data-type="next"]');
-    const ratingContainer = $('.ratings-section .ratings__slider-content');
-    const ratingBoxs = ratingContainer.children();
-
-    const CONFIG = {
-        CSS: {
-            HIGHLIGHT: 'highlight',
-        },
-        WINDOW: {
-            BREAK_POINT: 1050
-        }
-    }
-
-    const interval = setInterval(() => {
-        if (position === (ratingBoxs.length - 1)) {
-            position = 0;
-        } else {
-            position++;
-        }
-
-        changeHighlight(position);
-        changeBarActive(position);
-    }, 10000)
-
-    //Reset
-    buildBars();
-    showOnlyRatingAroundHighlight();
-
-    btnPrev.click(() => {
-        if (position === 0) {
-            position = (ratingBoxs.length - 1);
-        } else {
-            position--;
-        }
-
-        clearInterval(interval);
-        changeHighlight(position);
-        changeBarActive(position);
-    });
-
-    btnNext.click(() => {
-        if (position === (ratingBoxs.length - 1)) {
-            position = 0;
-        } else {
-            position++;
-        }
-
-        clearInterval(interval);
-        changeHighlight(position);
-        changeBarActive(position);
-    });
-
-    ratingBoxs.click(e => {
-        const i = ratingBoxs.index(e.currentTarget);
-        position = i;
-
-        clearInterval(interval);
-        changeHighlight(position);
-        changeBarActive(position);
-    });
-
-    function showOnlyRatingAroundHighlight() {
-        let next = position + 1;
-        let prev = position - 1;
-
-        if (position === 0) {
-            prev = 0;
-            next = 2;
-        }
-
-        if (position === (ratingBoxs.length - 1)) {
-            prev = position - 2;
-            next = (ratingBoxs.length - 1);
-        }
-
-        ratingBoxs.each((index, element) => {
-            $(element).hide();
-
-            if (!(index < prev || index > next)) {
-                $(element).css("display", "flex").fadeIn('slow');
+!(function (t) {
+  var e = {};
+  function n(r) {
+    if (e[r]) return e[r].exports;
+    var i = (e[r] = { i: r, l: !1, exports: {} });
+    return t[r].call(i.exports, i, i.exports, n), (i.l = !0), i.exports;
+  }
+  (n.m = t),
+    (n.c = e),
+    (n.d = function (t, e, r) {
+      n.o(t, e) || Object.defineProperty(t, e, { enumerable: !0, get: r });
+    }),
+    (n.r = function (t) {
+      "undefined" != typeof Symbol &&
+        Symbol.toStringTag &&
+        Object.defineProperty(t, Symbol.toStringTag, { value: "Module" }),
+        Object.defineProperty(t, "__esModule", { value: !0 });
+    }),
+    (n.t = function (t, e) {
+      if ((1 & e && (t = n(t)), 8 & e)) return t;
+      if (4 & e && "object" == typeof t && t && t.__esModule) return t;
+      var r = Object.create(null);
+      if (
+        (n.r(r),
+        Object.defineProperty(r, "default", { enumerable: !0, value: t }),
+        2 & e && "string" != typeof t)
+      )
+        for (var i in t)
+          n.d(
+            r,
+            i,
+            function (e) {
+              return t[e];
+            }.bind(null, i)
+          );
+      return r;
+    }),
+    (n.n = function (t) {
+      var e =
+        t && t.__esModule
+          ? function () {
+              return t.default;
             }
+          : function () {
+              return t;
+            };
+      return n.d(e, "a", e), e;
+    }),
+    (n.o = function (t, e) {
+      return Object.prototype.hasOwnProperty.call(t, e);
+    }),
+    (n.p = ""),
+    n((n.s = 0));
+})([
+  function (t, e) {
+    !(function () {
+      let t = 1;
+      const e = $('.ratings-section .ratings__slider button[data-type="prev"]'),
+        n = $('.ratings-section .ratings__slider button[data-type="next"]'),
+        r = $(".ratings-section .ratings__slider-content").children(),
+        i = { HIGHLIGHT: "highlight" },
+        a = setInterval(() => {
+          t === r.length - 1 ? (t = 0) : t++, o(t), c(t);
+        }, 1e4);
+      function l() {
+        let e = t + 1,
+          n = t - 1;
+        0 === t && ((n = 0), (e = 2)),
+          t === r.length - 1 && ((n = t - 2), (e = r.length - 1)),
+          r.each((t, r) => {
+            $(r).hide(),
+              t < n || t > e || $(r).css("display", "flex").fadeIn("slow");
+          });
+      }
+      function o(t) {
+        r.removeClass(i.HIGHLIGHT), $(r[t]).addClass(i.HIGHLIGHT), l();
+      }
+      function c(t) {
+        t > -1 &&
+          t < r.length &&
+          ($(".ratings-section .rating-bars li").removeClass("active"),
+          $($(".ratings-section .rating-bars li")[t]).addClass("active"));
+      }
+      r.each((t, e) => {
+        $(".ratings-section .rating-bars").append(`<li id="${t}"></li>`);
+      }),
+        $(".ratings-section .rating-bars li").click((e) => {
+          (t = +e.target.id), o(t), c(t);
+        }),
+        $(".ratings-section .rating-bars li")
+          .filter((e) => e === t)
+          .addClass("active"),
+        l(),
+        e.click(() => {
+          0 === t ? (t = r.length - 1) : t--, clearInterval(a), o(t), c(t);
+        }),
+        n.click(() => {
+          t === r.length - 1 ? (t = 0) : t++, clearInterval(a), o(t), c(t);
+        }),
+        r.click((e) => {
+          const n = r.index(e.currentTarget);
+          (t = n), clearInterval(a), o(t), c(t);
         });
-    }
-
-    function changeHighlight(index) {
-        ratingBoxs.removeClass(CONFIG.CSS.HIGHLIGHT);
-
-        $(ratingBoxs[index]).addClass(CONFIG.CSS.HIGHLIGHT);
-
-        showOnlyRatingAroundHighlight();
-    }
-
-    function buildBars() {
-        ratingBoxs.each((index, element) => {
-            $('.ratings-section .rating-bars').append(`<li id="${index}"></li>`);
-        });
-
-        $('.ratings-section .rating-bars li').click((e) => {
-            position = +e.target.id;
-            changeHighlight(position);
-            changeBarActive(position);
-        });
-
-        $('.ratings-section .rating-bars li')
-            .filter((i) => i === position)
-            .addClass('active');
-    }
-
-    function changeBarActive(index) {
-        if (index > -1 && index < ratingBoxs.length) {
-            $('.ratings-section .rating-bars li').removeClass('active');
-
-            $($('.ratings-section .rating-bars li')[index]).addClass('active');
-        }
-    }
-})();
+    })();
+  },
+]);

@@ -1,282 +1,340 @@
 $(function () {
-    let acessorio = document.querySelector(".mz-accesories__button--buy");
+  let acessorio = document.querySelector(".mz-accesories__button--buy");
 
-    if (acessorio) {
-        $(".product-qd-v1-standard .buy-button").addClass("secondary");
-    }
+  if (acessorio) {
+    $(".product-qd-v1-standard .buy-button").addClass("secondary");
+  }
 
-    let skuList = Product.captureSkuSelectors();
-    var urlCart =
-        "/checkout/cart/add?sku=" +
-        skuList[0] +
-        "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
-    $(".mz-pickup__button--buy").attr("href", urlCart);
-    $(".mz-pickup__button--buy").removeClass("lock-button"); //lock-button
+  let skuList = Product.captureSkuSelectors();
+  var urlCart =
+    "/checkout/cart/add?sku=" +
+    skuList[0] +
+    "&qty=1&seller=1&redirect=true&" +
+    readCookie("VTEXSC");
+  $(".mz-pickup__button--buy").attr("href", urlCart);
+  $(".mz-pickup__button--buy").removeClass("lock-button"); //lock-button
 
-    $(".link.lojas").click(function (e) {
-        e.preventDefault();
-        $(document.body).addClass("mz-pu-on");
-        $(document.body).addClass("mz-bo-on");
-    });
-    $(".mz-pickup__close--button,.mz-modal-overlay").click(function () {
-        $(document.body).removeClass("mz-in-on mz-as-on mz-bo-on mz-pu-on");
-        localStorage.setItem('locationChanged', 0);
-    });
+  $(".link.lojas").click(function (e) {
+    e.preventDefault();
+    $(document.body).addClass("mz-pu-on");
+    $(document.body).addClass("mz-bo-on");
+  });
+  $(".mz-pickup__close--button,.mz-modal-overlay").click(function () {
+    $(document.body).removeClass("mz-in-on mz-as-on mz-bo-on mz-pu-on");
+    localStorage.setItem("locationChanged", 0);
+  });
 
-    ga('create', 'UA-133498560-1', 'autoglassonline.com');
-    if ($(".product-qd-v1-price").is(":empty")) {
-        /*
+  ga("create", "UA-133498560-1", "autoglassonline.com");
+  if ($(".product-qd-v1-price").is(":empty")) {
+    /*
             Se o produto está indisponível, oculta boxes de preço e entrega
         */
-        $(
-            ".product-qd-v1-standard.row .header, .product-qd-v1-sku-selection, .product-qd-v1-price, .product-qd-v1-shipping"
-        ).hide();
+    $(
+      ".product-qd-v1-standard.row .header, .product-qd-v1-sku-selection, .product-qd-v1-price, .product-qd-v1-shipping"
+    ).hide();
 
-        //Exibe o botão para o cliente conversar com o vendedor pelo Chat
-        $('.product-unavailable')
-            .on('click', (e) => {
-                e.preventDefault();
+    //Exibe o botão para o cliente conversar com o vendedor pelo Chat
+    $(".product-unavailable").on("click", (e) => {
+      e.preventDefault();
 
-                const today = new Date();
-                const hour = today.getHours();
-                const day = today.getDay();
+      const today = new Date();
+      const hour = today.getHours();
+      const day = today.getDay();
 
-                const ehDomingo = (day === 0);
-                const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
-                const ehSemanaForaDoExpediente = (hour < 8 || hour > 19);
+      const ehDomingo = day === 0;
+      const ehSabadoForaDoExpediente = day === 6 && (hour < 8 || hour >= 12);
+      const ehSemanaForaDoExpediente = hour < 8 || hour > 19;
 
-                if (ehDomingo
-                    || ehSabadoForaDoExpediente
-                    || ehSemanaForaDoExpediente) {
-                  zE('webWidget', 'chat:addTags', 'fora-expediente');
-                  zE('webWidget', 'chat:send', `Não estamos online no momento. Deixe uma mensagem para nós no WhatsApp pelo link: (${linkEncurtado}) e, assim que estivermos em atendimento, nós lhe responderemos. Até mais!\nProduto de interesse: ${window.location.href}`);
-                }
-                else {
-                    zE('webWidget', 'chat:send', `Olá, tenho interesse neste produto, mas está indisponível no site: ${window.location.href}`);
-                }
+      if (ehDomingo || ehSabadoForaDoExpediente || ehSemanaForaDoExpediente) {
+        zE("webWidget", "chat:addTags", "fora-expediente");
+        zE(
+          "webWidget",
+          "chat:send",
+          `Não estamos online no momento. Deixe uma mensagem para nós no WhatsApp pelo link: (${linkEncurtado}) e, assim que estivermos em atendimento, nós lhe responderemos. Até mais!\nProduto de interesse: ${window.location.href}`
+        );
+      } else {
+        zE(
+          "webWidget",
+          "chat:send",
+          `Olá, tenho interesse neste produto, mas está indisponível no site: ${window.location.href}`
+        );
+      }
 
-                zE('webWidget', 'open');
-            });
-
-        $('.talk-to-seller').show();
-
-        if (!$("#similars").is(":empty")) {
-            $(".other-brands").show();
-            $(".other-brands button").click(e => {
-                e.preventDefault();
-                if ($(window).width() > 900) {
-                    $("html, body").stop().animate({
-                        scrollTop: $("#similars").offset().top - 300
-                    }, 900, "swing")
-                } else {
-                    $("html, body").stop().animate({
-                        scrollTop: $("#similars").offset().top - 170
-                    }, 900, "swing")
-                }
-            });
-
-            $(".product-unavailable").addClass("buy-button other-brands secondary");
-
-            let modal = document.querySelector('#myModal');
-
-            modal.style.display = 'block';
-            
-            vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
-                window.dataLayer.push({
-                    'event': 'sem_estoque_redirecionamento'
-                    });
-
-                window
-                    .location
-                    .replace(
-                        $("#similars .qd-product-is-in-stock-true a.shelf-qd-v1-stamps")[0]
-                            .href +
-                        '#redirecionamento=produtoindisponivel&produto=' +
-                        product.productId);
-            });
-        }
-
-        ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
-    } else {
-        ga("send", "event", "estoque", "detalhe-produto", "disponivel");
-    }
-
-    $('#instalar-na-loja-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'pickup-in-point'));
-    $('#retire-na-loja-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'pickup-in-point'));
-
-    $('#instalar-em-casa-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'delivery'));
-    $('#receba-em-casa-btn').click(e => localStorage.setItem('AG_SeletedChannel', 'delivery'));
-
-    setTimeout(function () {
-        $("#txtCep").after('<span class="ttp"></span>');
-    }, 500);
-
-    $('#similars h2').after(`<p class="descricao-rollout">Confira opções de <strong>${vtxctx.categoryName.toLowerCase()
-        }</strong> para este mesmo veículo ${$('.value-field.Compatibilidade-Modelo').length ? `(<strong>${$('.value-field.Compatibilidade-Modelo').html()
-            }</strong>)` : $('.value-field.Veiculo').length ? `(<strong>${$('.value-field.Veiculo').html()
-                }</strong>)` : ``}</p>`);
-
-    $('#sugestoes h2').after(
-        `<p class="descricao-rollout">
-			Aproveite e confira outros produtos
-			${$('.value-field.Compatibilidade-Modelo').length
-            ? ` para <strong>${$('.value-field.Compatibilidade-Modelo').html()}</strong>`
-            : $('.value-field.Veiculo').length
-                ? ` para <strong>${$('.value-field.Veiculo').html()}</strong>`
-                : ``
-        }
-		</p>`
-    );
-
-    $(window).load(() => {
-        const shippingsDiv = document.querySelector('.freight-values');
-        const observerShippingsDiv = new MutationObserver(() => {
-            const textCepInput = document.querySelector('#txtCep');
-
-            const gaFreight = [];
-
-            const freights = [...shippingsDiv.querySelectorAll('td')]
-                .filter(x => !(x.innerText.includes('Frete Grátis') || x.innerText == "" || x.innerText.startsWith('R$')))
-                .map(x => x.innerText);
-
-            freights.forEach(x => {
-                const freight = x.split(',')[0];
-
-                if (freight.startsWith('Frete Retirada') && !gaFreight.includes('Retirada em Loja'))
-                    gaFreight.push('Retirada em Loja');
-
-                if (freight.startsWith('Frete Autoglass Express'))
-                    gaFreight.push('Autoglass Express');
-
-                if (freight.startsWith('Frete PAC'))
-                    gaFreight.push('PAC');
-
-                if (freight.startsWith('Frete Sedex'))
-                    gaFreight.push('Sedex');
-
-                if (freight.startsWith('Frete Transportadora'))
-                    gaFreight.push('Transportadora');
-
-                if (freight.startsWith('Frete Normal'))
-                    gaFreight.push('Normal');
-            });
-
-            gaFreight.length > 0
-                ? ga('send', 'event', 'busca-ceps', 'encontrado', textCepInput.value + ',' + gaFreight.join(','))
-                : ga('send', 'event', 'busca-ceps', 'nao-encontrado', textCepInput.value);
-
-        });
-
-        shippingsDiv && observerShippingsDiv.observe(shippingsDiv, { attributes: true, childList: true, subtree: true });
+      zE("webWidget", "open");
     });
 
-    try {
-        setTimeout(() => {
-            if (document.querySelector('.mz-prices__block') === null || document.querySelector('.mz-prices__block:empty'))
-                Product.bringInstallementTreatsData();
-        }, 10000);
-    } catch {
-        console.log('Falha ao criar o parcelamento.');
+    $(".talk-to-seller").show();
+
+    if (!$("#similars").is(":empty")) {
+      $(".other-brands").show();
+      $(".other-brands button").click((e) => {
+        e.preventDefault();
+        if ($(window).width() > 900) {
+          $("html, body")
+            .stop()
+            .animate(
+              {
+                scrollTop: $("#similars").offset().top - 300,
+              },
+              900,
+              "swing"
+            );
+        } else {
+          $("html, body")
+            .stop()
+            .animate(
+              {
+                scrollTop: $("#similars").offset().top - 170,
+              },
+              900,
+              "swing"
+            );
+        }
+      });
+
+      $(".product-unavailable").addClass("buy-button other-brands secondary");
+
+      let modal = document.querySelector("#myModal");
+
+      modal.style.display = "block";
+
+      vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
+        window.dataLayer.push({
+          event: "sem_estoque_redirecionamento",
+        });
+
+        window.location.replace(
+          $("#similars .qd-product-is-in-stock-true a.shelf-qd-v1-stamps")[0]
+            .href +
+            "#redirecionamento=produtoindisponivel&produto=" +
+            product.productId
+        );
+      });
     }
 
-    // Atualiza a localização do cliente
-    $('.header-qd-v1-valid-prices-local b').html(localStorage.ufsaver);
+    ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
+  } else {
+    ga("send", "event", "estoque", "detalhe-produto", "disponivel");
+  }
+
+  $("#instalar-na-loja-btn").click((e) =>
+    localStorage.setItem("AG_SeletedChannel", "pickup-in-point")
+  );
+  $("#retire-na-loja-btn").click((e) =>
+    localStorage.setItem("AG_SeletedChannel", "pickup-in-point")
+  );
+
+  $("#instalar-em-casa-btn").click((e) =>
+    localStorage.setItem("AG_SeletedChannel", "delivery")
+  );
+  $("#receba-em-casa-btn").click((e) =>
+    localStorage.setItem("AG_SeletedChannel", "delivery")
+  );
+
+  setTimeout(function () {
+    $("#txtCep").after('<span class="ttp"></span>');
+  }, 500);
+
+  $("#similars h2").after(
+    `<p class="descricao-rollout">Confira opções de <strong>${vtxctx.categoryName.toLowerCase()}</strong> para este mesmo veículo ${
+      $(".value-field.Compatibilidade-Modelo").length
+        ? `(<strong>${$(
+            ".value-field.Compatibilidade-Modelo"
+          ).html()}</strong>)`
+        : $(".value-field.Veiculo").length
+        ? `(<strong>${$(".value-field.Veiculo").html()}</strong>)`
+        : ``
+    }</p>`
+  );
+
+  $("#sugestoes h2").after(
+    `<p class="descricao-rollout">
+			Aproveite e confira outros produtos
+			${
+        $(".value-field.Compatibilidade-Modelo").length
+          ? ` para <strong>${$(
+              ".value-field.Compatibilidade-Modelo"
+            ).html()}</strong>`
+          : $(".value-field.Veiculo").length
+          ? ` para <strong>${$(".value-field.Veiculo").html()}</strong>`
+          : ``
+      }
+		</p>`
+  );
+
+  $(window).load(() => {
+    const shippingsDiv = document.querySelector(".freight-values");
+    const observerShippingsDiv = new MutationObserver(() => {
+      const textCepInput = document.querySelector("#txtCep");
+
+      const gaFreight = [];
+
+      const freights = [...shippingsDiv.querySelectorAll("td")]
+        .filter(
+          (x) =>
+            !(
+              x.innerText.includes("Frete Grátis") ||
+              x.innerText == "" ||
+              x.innerText.startsWith("R$")
+            )
+        )
+        .map((x) => x.innerText);
+
+      freights.forEach((x) => {
+        const freight = x.split(",")[0];
+
+        if (
+          freight.startsWith("Frete Retirada") &&
+          !gaFreight.includes("Retirada em Loja")
+        )
+          gaFreight.push("Retirada em Loja");
+
+        if (freight.startsWith("Frete Autoglass Express"))
+          gaFreight.push("Autoglass Express");
+
+        if (freight.startsWith("Frete PAC")) gaFreight.push("PAC");
+
+        if (freight.startsWith("Frete Sedex")) gaFreight.push("Sedex");
+
+        if (freight.startsWith("Frete Transportadora"))
+          gaFreight.push("Transportadora");
+
+        if (freight.startsWith("Frete Normal")) gaFreight.push("Normal");
+      });
+
+      gaFreight.length > 0
+        ? ga(
+            "send",
+            "event",
+            "busca-ceps",
+            "encontrado",
+            textCepInput.value + "," + gaFreight.join(",")
+          )
+        : ga(
+            "send",
+            "event",
+            "busca-ceps",
+            "nao-encontrado",
+            textCepInput.value
+          );
+    });
+
+    shippingsDiv &&
+      observerShippingsDiv.observe(shippingsDiv, {
+        attributes: true,
+        childList: true,
+        subtree: true,
+      });
+  });
+
+  try {
+    setTimeout(() => {
+      if (
+        document.querySelector(".mz-prices__block") === null ||
+        document.querySelector(".mz-prices__block:empty")
+      )
+        Product.bringInstallementTreatsData();
+    }, 10000);
+  } catch {
+    console.log("Falha ao criar o parcelamento.");
+  }
+
+  // Atualiza a localização do cliente
+  $(".header-qd-v1-valid-prices-local b").html(localStorage.ufsaver);
 });
 
 function consulteFrete() {
-    let txtCep = document.getElementById("txtCep");
-    txtCep.scrollIntoView({ behavior: "smooth", block: "center" });
-    txtCep.focus();
+  let txtCep = document.getElementById("txtCep");
+  txtCep.scrollIntoView({ behavior: "smooth", block: "center" });
+  txtCep.focus();
 }
 
 $(function LojasMaisProximas() {
-    let SLA = [];
+  let SLA = [];
 
-    const CONFIG = {
-        SERVICE: {
-            COUNTRY: 'BRA',
-            SKU_ID: vtxctx.skus
-        },
-        CSS: {
-            BASE: '.mz-modal-pickup',
-            MODAL_LIST: '.mz-pickup-stores__list ul'
+  const CONFIG = {
+    SERVICE: {
+      COUNTRY: "BRA",
+      SKU_ID: vtxctx.skus,
+    },
+    CSS: {
+      BASE: ".mz-modal-pickup",
+      MODAL_LIST: ".mz-pickup-stores__list ul",
+    },
+  };
+
+  const View = ViewAPI();
+  const Service = ServiceAPI();
+  const Controller = ControllerAPI();
+
+  Controller._init();
+
+  function ControllerAPI() {
+    return {
+      _init,
+      simulateShipping,
+    };
+
+    function _init() {
+      const address = JSON.parse(localStorage.getItem("AG_AddressSelected"));
+
+      if (address) {
+        let isCheckout = window.location.href.includes("/checkout");
+        let ufDefinedByTop = +localStorage.getItem("ufDefinedByTop");
+
+        if (!isCheckout && ufDefinedByTop) {
+          View.noCepInformed();
+        } else {
+          simulateShipping(address);
         }
+      } else {
+        // Evento lançado pelo componente de cep
+        $(window).on("cep-finish-load", (e) => {
+          const orderForm = e.originalEvent.detail;
+          simulateShipping(orderForm.shippingData?.address);
+        });
+      }
+
+      // Evento lançado pelo componente de cep
+      $(window).on("cep-updated", (e) => {
+        const orderForm = e.originalEvent.detail;
+        simulateShipping(orderForm.shippingData?.address);
+      });
     }
 
-    const View = ViewAPI();
-    const Service = ServiceAPI();
-    const Controller = ControllerAPI();
+    async function simulateShipping(address) {
+      if (address) {
+        $(".mz-pickup__stores").show();
 
-    Controller._init();
+        let shippingData = await Service.simulateShipping(address);
 
-    function ControllerAPI() {
-        return {
-            _init,
-            simulateShipping
-        }
+        SLA = shippingData.logisticsInfo[0].slas.filter(
+          (x) => x.deliveryChannel === "pickup-in-point"
+        );
 
-        function _init() {
-            const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
-
-            if (address) {
-
-                let isCheckout = window.location.href.includes("/checkout");
-                let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
-
-                if (!isCheckout && ufDefinedByTop) {
-                    View.noCepInformed()
-                }
-                else{
-                    simulateShipping(address);
-                }
-            } else {
-                // Evento lançado pelo componente de cep
-                $(window).on('cep-finish-load', e => {
-                    const orderForm = e.originalEvent.detail;
-                    simulateShipping(orderForm.shippingData?.address);
-                });
-            }
-
-            // Evento lançado pelo componente de cep
-            $(window).on('cep-updated', e => {
-                const orderForm = e.originalEvent.detail;
-                simulateShipping(orderForm.shippingData?.address);
-            })
-        }
-
-        async function simulateShipping(address) {
-            if (address) {
-                $('.mz-pickup__stores').show();
-
-                let shippingData = await Service.simulateShipping(address);
-
-                SLA = shippingData
-                    .logisticsInfo[0]
-                    .slas
-                    .filter(x => x.deliveryChannel === 'pickup-in-point');
-
-                View.buildListStore(SLA);
-                View.addClicks();
-            } else {
-                $('.mz-pickup__stores').hide();
-            }
-        }
+        View.buildListStore(SLA);
+        View.addClicks();
+      } else {
+        $(".mz-pickup__stores").hide();
+      }
     }
+  }
 
-    function ViewAPI() {
-        return {
-            buildListStore,
-            addClicks,
-            noCepInformed
-        }
+  function ViewAPI() {
+    return {
+      buildListStore,
+      addClicks,
+      noCepInformed,
+    };
 
-        function buildListStore(pickups) {
-            let html = '';
+    function buildListStore(pickups) {
+      let html = "";
 
-            if (pickups.length) {
-                $('.without-store').hide();
-                pickups.forEach(({ id, shippingEstimate, pickupDistance, pickupStoreInfo }) => {
-                    html += `
+      if (pickups.length) {
+        $(".without-store").hide();
+        pickups.forEach(
+          ({ id, shippingEstimate, pickupDistance, pickupStoreInfo }) => {
+            html += `
 						<li id="${id}" class="pickup">
 							<div class="pickup__info">
 								<div class="pickup__info-distance">
@@ -291,7 +349,9 @@ $(function LojasMaisProximas() {
 										${pickupStoreInfo.address.street} ${pickupStoreInfo.address.number},
 										${pickupStoreInfo.address.complement}
 									</p>
-									<p class="pickup__info-city">${pickupStoreInfo.address.neighborhood} - ${pickupStoreInfo.address.city} - ${pickupStoreInfo.address.state}</p>
+									<p class="pickup__info-city">${pickupStoreInfo.address.neighborhood} - ${
+              pickupStoreInfo.address.city
+            } - ${pickupStoreInfo.address.state}</p>
 								</div>
 							</div>
 							<div class="pickup__estimate">
@@ -300,262 +360,287 @@ $(function LojasMaisProximas() {
 							</div>
 						</li>
 						`;
-                })
-            } else {
-                $('.without-store').show();
-                html += '<span><a onclick="$zopim.livechat.window.show()"><b>Clique aqui</b></a> e fale com a gente pelo chat!</span>';
-            }
+          }
+        );
+      } else {
+        $(".without-store").show();
+        html +=
+          '<span><a onclick="$zopim.livechat.window.show()"><b>Clique aqui</b></a> e fale com a gente pelo chat!</span>';
+      }
 
-            $(CONFIG.CSS.MODAL_LIST).html(html)
-        }
-
-        function noCepInformed(){
-            let html = '<p>Por favor, informe um CEP para visualizar as lojas mais próximas</p>';
-            $(CONFIG.CSS.MODAL_LIST).html(html)
-        }
-
-        function addClicks() {
-            $('.pickup').click(function () {
-                $('.pickup').removeClass('selected');
-                $(this).addClass('selected');
-
-                Service.saveSelectedPickupPoint($(this).attr('id'));
-            });
-        }
+      $(CONFIG.CSS.MODAL_LIST).html(html);
     }
 
-    function ServiceAPI() {
-        return {
-            simulateShipping,
-            calculateTimeEstimate,
-            saveSelectedPickupPoint,
-            sendCalculateShipping
-        }
-
-        function calculateTimeEstimate(estimate) {
-            const days = +estimate[0];
-
-            return days + (days > 0 ? ' dias úteis' : ' dia útil');
-        }
-
-        async function simulateShipping(address) {
-            const request = {
-                items: [{
-                    id: CONFIG.SERVICE.SKU_ID,
-                    quantity: 1,
-                    seller: 1
-                }],
-                postalCode: address.postalCode,
-                country: CONFIG.SERVICE.COUNTRY
-            };
-
-            let vtexsc = readCookie('VTEXSC').replace('sc=', '');
-
-            return $.ajax({
-                url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
-                type: "POST",
-                dataType: "JSON",
-                contentType: "application/json",
-                data: JSON.stringify(request)
-            });
-        }
-
-        function saveSelectedPickupPoint(id) {
-            const sla = SLA.find(x => x.id === id);
-
-            localStorage.setItem('AG_SeletedPickupPoint', JSON.stringify(sla));
-            sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, 'search');
-        }
-
-        function sendCalculateShipping(cep, type) {
-            $('.mz-pickup__button--buy').click(e => e.preventDefault());
-
-            vtexjs.checkout.calculateShipping({
-                postalCode: cep,
-                country: 'BRA',
-                addressType: type
-            })
-            .then(order => {
-                if ((Date.now() - getLastTimeWhildshieldVanePopUpWasShown()) < calculatesTwelveHours()){
-                    forceChangeShipping(order);
-                    $('.mz-pickup__button--buy').unbind('click');
-                }
-            });
-        }
-
-        function forceChangeShipping(orderForm) {
-            const newSelectedAddresses = [orderForm.shippingData.availableAddresses[orderForm.shippingData.availableAddresses.length - 1]];
-            const logistic = orderForm.shippingData.logisticsInfo[0];
-
-            if (logistic) {
-                const slas = logistic.slas.filter(x => x.deliveryChannel === 'pickup-in-point');
-                const logisticsInfo = orderForm.shippingData.logisticsInfo.map(x => {
-                    return {
-                        addressId: newSelectedAddresses[0].addressId,
-                        itemIndex: x.itemIndex,
-                        selectedDeliveryChannel: 'pickup-in-point',
-                        selectedSla: slas[0].id
-                    }
-                });
-
-                fetch(`/api/checkout/pub/orderForm/${orderForm.orderFormId}/attachments/shippingData`, {
-                    method: 'post',
-                    body: JSON.stringify({
-                        clearAddressIfPostalCodeNotFound: false,
-                        expectedOrderFormSections: ['shippingData'],
-                        selectedAddresses: newSelectedAddresses,
-                        logisticsInfo
-                    })
-                }).then(res => res.json()).then(x => {
-                    vtexjs.checkout.sendAttachment('shippingData', {
-                        selectedAddresses: newSelectedAddresses,
-                        logisticsInfo
-                    });
-                });
-            }
-        }
+    function noCepInformed() {
+      let html =
+        "<p>Por favor, informe um CEP para visualizar as lojas mais próximas</p>";
+      $(CONFIG.CSS.MODAL_LIST).html(html);
     }
+
+    function addClicks() {
+      $(".pickup").click(function () {
+        $(".pickup").removeClass("selected");
+        $(this).addClass("selected");
+
+        Service.saveSelectedPickupPoint($(this).attr("id"));
+      });
+    }
+  }
+
+  function ServiceAPI() {
+    return {
+      simulateShipping,
+      calculateTimeEstimate,
+      saveSelectedPickupPoint,
+      sendCalculateShipping,
+    };
+
+    function calculateTimeEstimate(estimate) {
+      const days = +estimate[0];
+
+      return days + (days > 0 ? " dias úteis" : " dia útil");
+    }
+
+    async function simulateShipping(address) {
+      const request = {
+        items: [
+          {
+            id: CONFIG.SERVICE.SKU_ID,
+            quantity: 1,
+            seller: 1,
+          },
+        ],
+        postalCode: address.postalCode,
+        country: CONFIG.SERVICE.COUNTRY,
+      };
+
+      let vtexsc = readCookie("VTEXSC").replace("sc=", "");
+
+      return $.ajax({
+        url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
+        type: "POST",
+        dataType: "JSON",
+        contentType: "application/json",
+        data: JSON.stringify(request),
+      });
+    }
+
+    function saveSelectedPickupPoint(id) {
+      const sla = SLA.find((x) => x.id === id);
+
+      localStorage.setItem("AG_SeletedPickupPoint", JSON.stringify(sla));
+      sendCalculateShipping(sla.pickupStoreInfo.address.postalCode, "search");
+    }
+
+    function sendCalculateShipping(cep, type) {
+      $(".mz-pickup__button--buy").click((e) => e.preventDefault());
+
+      vtexjs.checkout
+        .calculateShipping({
+          postalCode: cep,
+          country: "BRA",
+          addressType: type,
+        })
+        .then((order) => {
+          if (
+            Date.now() - getLastTimeWhildshieldVanePopUpWasShown() <
+            calculatesTwelveHours()
+          ) {
+            forceChangeShipping(order);
+            $(".mz-pickup__button--buy").unbind("click");
+          }
+        });
+    }
+
+    function forceChangeShipping(orderForm) {
+      const newSelectedAddresses = [
+        orderForm.shippingData.availableAddresses[
+          orderForm.shippingData.availableAddresses.length - 1
+        ],
+      ];
+      const logistic = orderForm.shippingData.logisticsInfo[0];
+
+      if (logistic) {
+        const slas = logistic.slas.filter(
+          (x) => x.deliveryChannel === "pickup-in-point"
+        );
+        const logisticsInfo = orderForm.shippingData.logisticsInfo.map((x) => {
+          return {
+            addressId: newSelectedAddresses[0].addressId,
+            itemIndex: x.itemIndex,
+            selectedDeliveryChannel: "pickup-in-point",
+            selectedSla: slas[0].id,
+          };
+        });
+
+        fetch(
+          `/api/checkout/pub/orderForm/${orderForm.orderFormId}/attachments/shippingData`,
+          {
+            method: "post",
+            body: JSON.stringify({
+              clearAddressIfPostalCodeNotFound: false,
+              expectedOrderFormSections: ["shippingData"],
+              selectedAddresses: newSelectedAddresses,
+              logisticsInfo,
+            }),
+          }
+        )
+          .then((res) => res.json())
+          .then((x) => {
+            vtexjs.checkout.sendAttachment("shippingData", {
+              selectedAddresses: newSelectedAddresses,
+              logisticsInfo,
+            });
+          });
+      }
+    }
+  }
 });
 
 $(function CalculeOFrete() {
-    let SLA = [];
+  let SLA = [];
 
-    const CONFIG = {
-        SERVICE: {
-            COUNTRY: 'BRA',
-            SKU_ID: vtxctx.skus
+  const CONFIG = {
+    SERVICE: {
+      COUNTRY: "BRA",
+      SKU_ID: vtxctx.skus,
+    },
+    CONTROLS: {
+      IGNORE_DELIVERY: "Autoglass Móvel",
+      SELECTED: "selected",
+    },
+    CSS: {
+      OPEN: ".link.cep",
+      MODAL: {
+        BASE: "mz-modal-shipping",
+        BODY: "mz-bo-on mz-sf-on",
+        OVERLAY: ".mz-modal-overlay",
+        CLOSE: ".mz-shipping__close--button",
+        BUTTON: ".mz-shipping__button--buy",
+        TITLE: {
+          ENABLE: ".mz-content__title--enable",
+          EMPTY: ".mz-content__title--empty",
         },
-        CONTROLS: {
-            IGNORE_DELIVERY: 'Autoglass Móvel',
-            SELECTED: 'selected',
-        },
-        CSS: {
-            OPEN: '.link.cep',
-            MODAL: {
-                BASE: 'mz-modal-shipping',
-                BODY: 'mz-bo-on mz-sf-on',
-                OVERLAY: '.mz-modal-overlay',
-                CLOSE: '.mz-shipping__close--button',
-                BUTTON: '.mz-shipping__button--buy',
-                TITLE: {
-                    ENABLE: '.mz-content__title--enable',
-                    EMPTY: '.mz-content__title--empty',
-                },
-                CONTENT: '.mz-shipping__content',
-                LIST: '.mz-shipping__list ul',
-            }
+        CONTENT: ".mz-shipping__content",
+        LIST: ".mz-shipping__list ul",
+      },
+    },
+  };
+
+  const View = ViewAPI();
+  const Controller = ControllerAPI();
+  const Service = ServiceAPI();
+
+  Controller._init();
+
+  function ControllerAPI() {
+    return {
+      _init,
+      searchDeliverys,
+    };
+
+    function _init() {
+      View._init();
+
+      const address = JSON.parse(localStorage.getItem("AG_AddressSelected"));
+
+      if (address) {
+        let isCheckout = window.location.href.includes("/checkout");
+        let ufDefinedByTop = +localStorage.getItem("ufDefinedByTop");
+
+        if (!isCheckout && ufDefinedByTop) {
+        } else {
+          searchDeliverys(address.postalCode);
         }
+      } else {
+        // Evento lançado pelo componente de cep
+        $(window).on("cep-finish-load", (e) => {
+          const orderForm = e.originalEvent.detail;
+          searchDeliverys(orderForm.shippingData.address.postalCode);
+        });
+      }
+
+      // Evento lançado pelo componente de cep
+      $(window).on("cep-updated", (e) => {
+        const orderForm = e.originalEvent.detail;
+        searchDeliverys(orderForm.shippingData.address.postalCode);
+      });
     }
 
-    const View = ViewAPI();
-    const Controller = ControllerAPI();
-    const Service = ServiceAPI();
+    async function searchDeliverys(address) {
+      const { logisticsInfo } = await Service.simulateShipping({
+        postalCode: address,
+      });
 
-    Controller._init();
+      SLA = logisticsInfo[0].slas.filter(
+        (x) => x.deliveryChannel === "delivery"
+      );
 
-    function ControllerAPI() {
-        return {
-            _init,
-            searchDeliverys
-        }
+      const [cheapestOption, fastestOption] = SLA;
 
-        function _init() {
-            View._init();
+      let cEstimate, fEstimate;
 
-            const address = JSON.parse(localStorage.getItem('AG_AddressSelected'));
+      if (fastestOption) {
+        cEstimate = Service.getEstimateDays(cheapestOption.shippingEstimate);
+        fEstimate = Service.getEstimateDays(fastestOption.shippingEstimate);
+      }
 
-            if (address) {
+      if (fastestOption && fEstimate < cEstimate) {
+        fastestOption.name = "Mais rápida";
+        cheapestOption.name = "Mais econômica";
 
-                let isCheckout = window.location.href.includes("/checkout");
-                let ufDefinedByTop = +localStorage.getItem('ufDefinedByTop');
+        View.buildListDelivery([cheapestOption, fastestOption]);
+      } else if (cheapestOption) {
+        cheapestOption.name = "Melhor opção";
+        View.buildListDelivery([cheapestOption]);
+      } else {
+        View.buildListDelivery([]);
+      }
+    }
+  }
 
-                if (!isCheckout && ufDefinedByTop) {
-                }
-                else{
-                    searchDeliverys(address.postalCode);
-                }
-            } else {
-                // Evento lançado pelo componente de cep
-                $(window).on('cep-finish-load', e => {
-                    const orderForm = e.originalEvent.detail;
-                    searchDeliverys(orderForm.shippingData.address.postalCode);
-                });
-            }
+  function ViewAPI() {
+    return {
+      _init,
+      buildListDelivery,
+    };
 
-            // Evento lançado pelo componente de cep
-            $(window).on('cep-updated', e => {
-                const orderForm = e.originalEvent.detail;
-                searchDeliverys(orderForm.shippingData.address.postalCode);
-            })
-        }
-
-        async function searchDeliverys(address) {
-            const { logisticsInfo } = await Service.simulateShipping({ postalCode: address });
-
-            SLA = logisticsInfo[0].slas
-                .filter(x => x.deliveryChannel === 'delivery');
-
-            const [cheapestOption, fastestOption] = SLA;
-
-            let cEstimate, fEstimate;
-
-            if (fastestOption) {
-                cEstimate = Service.getEstimateDays(cheapestOption.shippingEstimate);
-                fEstimate = Service.getEstimateDays(fastestOption.shippingEstimate);
-            }
-
-            if (fastestOption && (fEstimate < cEstimate)) {
-                fastestOption.name = 'Mais rápida';
-                cheapestOption.name = 'Mais econômica';
-
-                View.buildListDelivery([cheapestOption, fastestOption]);
-            } else if (cheapestOption) {
-                cheapestOption.name = 'Melhor opção';
-                View.buildListDelivery([cheapestOption]);
-            } else {
-                View.buildListDelivery([]);
-            }
-        }
+    function _init() {
+      $(CONFIG.CSS.MODAL.CONTENT).hide();
+      addClicks();
     }
 
-    function ViewAPI() {
-        return {
-            _init,
-            buildListDelivery
-        }
+    function addClicks() {
+      $(CONFIG.CSS.OPEN).click(() => {
+        $(document.body).addClass(CONFIG.CSS.MODAL.BODY);
+      });
 
-        function _init() {
-            $(CONFIG.CSS.MODAL.CONTENT).hide();
-            addClicks();
-        }
+      $(CONFIG.CSS.MODAL.CLOSE).click(() => {
+        $(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
+        localStorage.setItem("locationChanged", 0);
+      });
 
-        function addClicks() {
-            $(CONFIG.CSS.OPEN).click(() => {
-                $(document.body).addClass(CONFIG.CSS.MODAL.BODY);
-            });
+      $(CONFIG.CSS.MODAL.OVERLAY).click(() => {
+        $(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
+        localStorage.setItem("locationChanged", 0);
+      });
 
-            $(CONFIG.CSS.MODAL.CLOSE).click(() => {
-                $(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
-                localStorage.setItem('locationChanged', 0);
-            });
+      $(CONFIG.CSS.MODAL.BUTTON).click(() => {
+        var urlCart =
+          "/checkout/cart/add?sku=" +
+          vtxctx.skus +
+          "&qty=1&seller=1&redirect=true&" +
+          readCookie("VTEXSC");
+        $(CONFIG.CSS.MODAL.BUTTON).attr("href", urlCart);
+      });
+    }
 
-            $(CONFIG.CSS.MODAL.OVERLAY).click(() => {
-                $(document.body).removeClass(CONFIG.CSS.MODAL.BODY);
-                localStorage.setItem('locationChanged', 0);
-            });
+    function buildListDelivery(deliverys) {
+      let html = "";
 
-            $(CONFIG.CSS.MODAL.BUTTON).click(() => {
-                var urlCart = "/checkout/cart/add?sku=" + vtxctx.skus + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
-                $(CONFIG.CSS.MODAL.BUTTON).attr("href", urlCart);
-            });
-        }
-
-        function buildListDelivery(deliverys) {
-            let html = '';
-
-            if (deliverys.length) {
-                deliverys.forEach(({ id, name, price, shippingEstimate }) => {
-                    html += `
+      if (deliverys.length) {
+        deliverys.forEach(({ id, name, price, shippingEstimate }) => {
+          html += `
 						<li id="${id}" class="shipping">
 							<div class="shipping__name">
 								<b>${name}</b>
@@ -568,99 +653,99 @@ $(function CalculeOFrete() {
 							</div>
 						</li>
 					`;
-                });
+        });
 
-                $(CONFIG.CSS.MODAL.TITLE.ENABLE).show();
-                $(CONFIG.CSS.MODAL.TITLE.EMPTY).hide();
-            } else {
-                $(CONFIG.CSS.MODAL.TITLE.ENABLE).hide();
-                $(CONFIG.CSS.MODAL.TITLE.EMPTY).show();
-            }
+        $(CONFIG.CSS.MODAL.TITLE.ENABLE).show();
+        $(CONFIG.CSS.MODAL.TITLE.EMPTY).hide();
+      } else {
+        $(CONFIG.CSS.MODAL.TITLE.ENABLE).hide();
+        $(CONFIG.CSS.MODAL.TITLE.EMPTY).show();
+      }
 
-            if (deliverys.length > 1) {
-                html += `
+      if (deliverys.length > 1) {
+        html += `
 					<div style="text-align: center;margin-top: 20px;">
 						<b>Selecione a opção desejada no carrinho.</b>
 					</div>
 				`;
-            }
+      }
 
-            $(CONFIG.CSS.MODAL.LIST).html(html);
-            $(CONFIG.CSS.MODAL.CONTENT).show();
-        }
+      $(CONFIG.CSS.MODAL.LIST).html(html);
+      $(CONFIG.CSS.MODAL.CONTENT).show();
+    }
+  }
+
+  function ServiceAPI() {
+    return {
+      simulateShipping,
+      formatPrice,
+      formatEstimate,
+      saveSelectedDelivery,
+      getEstimateDays,
+    };
+
+    function formatPrice(price) {
+      let value = "R$ ";
+
+      if (price === 0) return "Grátis";
+
+      price = price + "";
+      const [decimal] = price.match(/\w{2}$/);
+
+      value += price.slice(0, price.length - 2);
+      value += ",";
+      value += decimal;
+
+      return value;
     }
 
-    function ServiceAPI() {
-        return {
-            simulateShipping,
-            formatPrice,
-            formatEstimate,
-            saveSelectedDelivery,
-            getEstimateDays
-        }
+    function getEstimateDays(estimate) {
+      if (estimate) {
+        const match = estimate.match(/\d+/);
 
-        function formatPrice(price) {
-            let value = 'R$ ';
-
-            if (price === 0) return 'Grátis';
-
-            price = price + "";
-            const [decimal] = price.match(/\w{2}$/);
-
-            value += price.slice(0, price.length - 2);
-            value += ',';
-            value += decimal;
-
-            return value;
-        }
-
-        function getEstimateDays(estimate) {
-            if (estimate) {
-                const match = estimate.match(/\d+/);
-
-                return +match[0];
-            }
-        }
-
-        function formatEstimate(estimate) {
-            const [days] = estimate.match(/\d+/);
-
-            let res = days;
-
-            if (days > 1)
-                res += ' dias úteis'
-            else
-                res += ' dia útil'
-
-            return res;
-        }
-
-        function saveSelectedDelivery(id) {
-            const selectedSLA = SLA.find(x => x.id === id);
-
-            localStorage.setItem('AG_SeletedDelivery', JSON.stringify(selectedSLA));
-        }
-
-        async function simulateShipping(address) {
-            const request = {
-                items: [{
-                    id: CONFIG.SERVICE.SKU_ID,
-                    quantity: 1,
-                    seller: 1
-                }],
-                postalCode: address.postalCode,
-                country: CONFIG.SERVICE.COUNTRY
-            };
-
-            let vtexsc = readCookie('VTEXSC').replace('sc=', '');
-
-            return $.ajax({
-                url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
-                type: "POST",
-                dataType: "JSON",
-                contentType: "application/json",
-                data: JSON.stringify(request)
-            });
-        }
+        return +match[0];
+      }
     }
+
+    function formatEstimate(estimate) {
+      const [days] = estimate.match(/\d+/);
+
+      let res = days;
+
+      if (days > 1) res += " dias úteis";
+      else res += " dia útil";
+
+      return res;
+    }
+
+    function saveSelectedDelivery(id) {
+      const selectedSLA = SLA.find((x) => x.id === id);
+
+      localStorage.setItem("AG_SeletedDelivery", JSON.stringify(selectedSLA));
+    }
+
+    async function simulateShipping(address) {
+      const request = {
+        items: [
+          {
+            id: CONFIG.SERVICE.SKU_ID,
+            quantity: 1,
+            seller: 1,
+          },
+        ],
+        postalCode: address.postalCode,
+        country: CONFIG.SERVICE.COUNTRY,
+      };
+
+      let vtexsc = readCookie("VTEXSC").replace("sc=", "");
+
+      return $.ajax({
+        url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
+        type: "POST",
+        dataType: "JSON",
+        contentType: "application/json",
+        data: JSON.stringify(request),
+      });
+    }
+  }
 });

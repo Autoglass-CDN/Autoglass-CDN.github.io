@@ -1,183 +1,185 @@
 .form-servico {
-    border-radius: 0.3rem;
-    padding: 0.6rem 1.6rem;
-    display: flex;
-    flex-direction: column;
-    font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  border-radius: 0.3rem;
+  padding: 0.6rem 1.6rem;
+  display: flex;
+  flex-direction: column;
+  font-family: "Open Sans", Arial, Helvetica, sans-serif;
 }
 
 .form-servico label {
-    font-weight: normal;
+  font-weight: normal;
 }
 
 .form-servico p {
-    margin-top: 8px;
-    margin-bottom: 3px;
-    font-weight: bold;
+  margin-top: 8px;
+  margin-bottom: 3px;
+  font-weight: bold;
 }
 
 .form-servico .title {
-    margin-bottom: 12px;
-    text-align: center;
-    font-size: 23px;
-    font-weight: 800;
-    color: var(--color-blue);
+  margin-bottom: 12px;
+  text-align: center;
+  font-size: 23px;
+  font-weight: 800;
+  color: var(--color-blue);
 }
 
 .form-servico .form-data {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .form-servico .form-data > label {
-    padding-right: 10px;
-    width: 61px;
-    display: inline-table;
-    text-align: end;
+  padding-right: 10px;
+  width: 61px;
+  display: inline-table;
+  text-align: end;
 }
 
 .form-servico .form-data > input {
-    width: 100%;
+  width: 100%;
 }
 
-
 .form-servico .input-line {
-    align-items: center;
+  align-items: center;
 }
 
 .form-servico .form-servico__cidade-estado {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .form-servico__cidade-estado select {
-    margin-left: 0.3rem;
-    width: 6.3rem;
+  margin-left: 0.3rem;
+  width: 6.3rem;
 }
 
 .form-servico__content-submit {
-    margin: 8px 0 8px 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 8px 0 8px 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .container-de-opcoes {
-    padding-left: 15%;
-    font-style: italic;
+  padding-left: 15%;
+  font-style: italic;
 }
 
 .container-de-opcoes label {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .titulo-estado-da-peca,
 .titulo-tipo-da-cor {
-    font-style: normal;
-    font-size: 16px;
+  font-style: normal;
+  font-size: 16px;
 }
 
 .mais-opcoes-da-peca {
-    padding-top: 1.3rem;
-    padding-left: 1.6rem;
+  padding-top: 1.3rem;
+  padding-left: 1.6rem;
 }
 
 .esconder {
-    display: none !important;
+  display: none !important;
 }
 
 /* Subcrisção do componente multiseleção */
 .select2-container {
-    width: 100% !important;
-    display: inline !important;
+  width: 100% !important;
+  display: inline !important;
 }
 
-.form-servico .select2-container--default .select2-selection--multiple .select2-selection__choice {
-    float: unset;
-    width: fit-content;
-    display: block;
+.form-servico
+  .select2-container--default
+  .select2-selection--multiple
+  .select2-selection__choice {
+  float: unset;
+  width: fit-content;
+  display: block;
 }
 
-.form-servico .select2-selection.select2-selection--multiple{
-    margin: 4px 0;
+.form-servico .select2-selection.select2-selection--multiple {
+  margin: 4px 0;
 }
 
-.form-servico .select2-container--default.select2-container--focus .select2-selection--multiple {
-    border: 0.03rem var(--color-silver) solid;
+.form-servico
+  .select2-container--default.select2-container--focus
+  .select2-selection--multiple {
+  border: 0.03rem var(--color-silver) solid;
 }
 
-.form-servico .titulo-estado-da-peca{
-    margin-bottom: 10px;
-    font-weight: bold;
+.form-servico .titulo-estado-da-peca {
+  margin-bottom: 10px;
+  font-weight: bold;
 }
 
 .form-servico .titulo-estado-da-peca::before {
-    content: var(--texto-pergunta-estado-da-peca);
+  content: var(--texto-pergunta-estado-da-peca);
 }
 
 .form-servico .mais-opcoes-da-peca {
-    padding-top: 11px;
-    padding-left: 11px;
+  padding-top: 11px;
+  padding-left: 11px;
 }
 
 .form-servico .mais-opcoes-da-peca label,
-.form-servico .tipos-de-cor label
-{
-    font-weight: normal;
-    margin-right: 15px;
-    margin-left: 15px;
-
+.form-servico .tipos-de-cor label {
+  font-weight: normal;
+  margin-right: 15px;
+  margin-left: 15px;
 }
 
 .form-servico .titulo-tipo-da-cor {
-    margin-top: 6px;
+  margin-top: 6px;
 }
 
 #anchor-form {
-    z-index: 10;
-    position: fixed;
-    bottom: 80px;
-    left: 10px;
-    border: none;
-    border-radius: 5px;
-    padding: 3px;
-    width: 85px;
-    display: block;
-    color: white;
-    background-color: var(--color-green);
+  z-index: 10;
+  position: fixed;
+  bottom: 80px;
+  left: 10px;
+  border: none;
+  border-radius: 5px;
+  padding: 3px;
+  width: 85px;
+  display: block;
+  color: white;
+  background-color: var(--color-green);
 }
 
 @media only screen and (max-width: 992px) {
-    .form-servico {
-        border-radius: 0.24rem;
-        padding: 0.49rem 1.3rem;
-    }
+  .form-servico {
+    border-radius: 0.24rem;
+    padding: 0.49rem 1.3rem;
+  }
 
-    .form-servico .form-servico__cidade-estado {
-        flex-direction: column;
-    }
+  .form-servico .form-servico__cidade-estado {
+    flex-direction: column;
+  }
 
-    .form-servico .form-servico__cidade-estado select {
-        margin-left: 0;
-        width: 100%;
-        max-width: 140px;
-    }
+  .form-servico .form-servico__cidade-estado select {
+    margin-left: 0;
+    width: 100%;
+    max-width: 140px;
+  }
 
-    .form-servico__content-submit {
-        margin: 20px 0;
-        font-size: 20px;
-        letter-spacing: 1px;
-    }
+  .form-servico__content-submit {
+    margin: 20px 0;
+    font-size: 20px;
+    letter-spacing: 1px;
+  }
 
-    .form-servico__content-submit button {
-      font-size:14px;
-      padding: 10px 20px;
-      display:flex;
-      align-items:center;
-    }
+  .form-servico__content-submit button {
+    font-size: 14px;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+  }
 
-    /* .form-servico__content-submit button:before {
+  /* .form-servico__content-submit button:before {
       font-family: "FontAwesome";
       content: "\f232";
       color: #FFF;
@@ -187,16 +189,18 @@
       font-weight: initial;
     } */
 
-    .mais-opcoes-da-peca {
-        padding-top: 1.1rem;
-        padding-left: 1.3rem;
-    }
+  .mais-opcoes-da-peca {
+    padding-top: 1.1rem;
+    padding-left: 1.3rem;
+  }
 
-    .form-servico .select2-container--default.select2-container--focus .select2-selection--multiple {
-        border: 0.024rem var(--color-silver) solid;
-    }
+  .form-servico
+    .select2-container--default.select2-container--focus
+    .select2-selection--multiple {
+    border: 0.024rem var(--color-silver) solid;
+  }
 
-    .container-de-opcoes {
-      padding-left: 0;
-    }
+  .container-de-opcoes {
+    padding-left: 0;
+  }
 }

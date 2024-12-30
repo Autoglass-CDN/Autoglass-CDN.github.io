@@ -1,14 +1,15 @@
-<!-- Shelf Template Id:	82ece3a5-14a4-4f40-97fb-5dcc47037fcb -->
-#set($id = $product.Id)
-#set($uri = $product.Uri)
-#set($escapedName = $product.HtmlEscapedName)
+#set($id = $product.Id) #set($uri = $product.Uri) #set($escapedName =
+$product.HtmlEscapedName)
 
 <!-- QD Cores Prateleira Padrão -->
 <input type="hidden" class="qd_cpUri" value="$uri" />
 <input type="hidden" class="qd_cpProdId" value="$id" />
 <!-- QD Cores Prateleira Padrão -->
 
-<div class="shelf-qd-v1 #if($product.IsInStock) qd-product-is-in-stock-true #else qd-product-is-in-stock-false #end">
+<div
+    class="shelf-qd-v1 produto-prateleira #if($product.IsInStock) qd-product-is-in-stock-true #else qd-product-is-in-stock-false #end"
+    id="p$id"
+>
     <div class="row">
         <div class="col-xs-12">
             <!-- Product image -->
@@ -16,11 +17,14 @@
             <div class="row">
                 <a class="shelf-qd-v1-stamps" href="$uri">
                     <div
-                        class="shelf-qd-v1-highlight-discount-percentage flag qdAuto$product.ListPriceMinusBestPriceInPercent">
+                        class="shelf-qd-v1-highlight-discount-percentage flag qdAuto$product.ListPriceMinusBestPriceInPercent"
+                    >
                         <span>-</span> $product.ListPriceMinusBestPriceInPercent
                     </div>
                     <div class="shelf-qd-v1-highlight">$product.HightLight</div>
-                    <div class="shelf-qd-v1-highlight-discount">$product.DiscountHightLight</div>
+                    <div class="shelf-qd-v1-highlight-discount">
+                        $product.DiscountHightLight
+                    </div>
                 </a>
             </div>
             <!-- Flags -->
@@ -28,7 +32,10 @@
             <div class="row">
                 <div class="col-xs-12">
                     <div class="shelf-qd-v1-image">
-                        <a class="shelf-qd-v1-image-link img-responsive" href="$uri">
+                        <a
+                            class="shelf-qd-v1-image-link img-responsive"
+                            href="$uri"
+                        >
                             $product.GetImageTag(230, 230)
                         </a>
                     </div>
@@ -48,6 +55,16 @@
                     </h3>
                 </div>
 
+                <div class="konfidency-reviews-multi" data-sku="$id"></div>
+
+                <div class="product-qd-v1-brand-name mob">
+                    Marca:
+                    <h3 class="product-brand-link">
+                        <a href="$uri"> $product.BrandLink</a>
+                    </h3>
+                    <vtex.cmc:brandName />
+                </div>
+
                 <div class="col-xs-12">
                     #if ($product.IsInStock)
                     <div class="shelf-qd-v1-price">
@@ -57,66 +74,84 @@
                         </p>
                         #end
 
-                        <p class="shelf-qd-v1-price-best-price">$product.BestPrice</p>
+                        <p class="shelf-qd-v1-price-best-price">
+                            $product.BestPrice
+                        </p>
 
                         #if ($product.NumbersOfInstallment > 1)
                         <p
-                            class="shelf-qd-v1-price-instalment #if($product.NumbersOfInstallment>1) qd_cpShow #else qd_cpHide #end">
-                            ou <span
-                                class="shelf-qd-v1-price-instalment-multiplier">${product.NumbersOfInstallment}x</span>
-                            de <span class="shelf-qd-v1-price-instalment-value">$product.InstallmentValue</span>
+                            class="shelf-qd-v1-price-instalment #if($product.NumbersOfInstallment>1) qd_cpShow #else qd_cpHide #end"
+                        >
+                            ou
+                            <span
+                                class="shelf-qd-v1-price-instalment-multiplier"
+                                >${product.NumbersOfInstallment}x</span
+                            >
+                            de
+                            <span class="shelf-qd-v1-price-instalment-value"
+                                >$product.InstallmentValue</span
+                            >
                         </p>
                         #end
                     </div>
                     #else
-                    <div class="shelf-qd-v1-no-stock #if($product.IsInStock) qd_cpHide #else qd_cpShow #end">
-                        <a title="$escapedName" href="$uri">
-                            <span class="shelf-qd-v1-no-stock-message">Consulte Disponibilidade</span>
-                            <p class="shelf-qd-v1-no-stock-info">Informe pelo chat o produto que está procurando.</p>
-                            <div class="product-qd-v1-no-stock-button">
-                                <button type="button" onclick="
-                                    event.preventDefault();
+                    <div
+                        class="shelf-qd-v1-no-stock #if($product.IsInStock) qd_cpHide #else qd_cpShow #end"
+                    >
+                        <a
+                            title="$escapedName"
+                            href="#"
+                            onclick="
+                            event.preventDefault();
 
-                                    const today = new Date();
-                                    const hour = today.getHours();
-                                    const minutes = today.getMinutes();
-                                    const day = today.getDay();
-                                
-                                    const ehDomingo = (day === 0);
-                                    const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
-                                    const ehSemanaForaDoExpediente = ((hour <= 7 && minutes < 30) || hour >= 20);
-                                
-                                    if (ehDomingo
-                                        || ehSabadoForaDoExpediente
-                                        || ehSemanaForaDoExpediente
-                                    ) {
-                                        zE('webWidget', 'chat:addTags', 'fora-expediente');
-                                        zE('webWidget', 'chat:send', 'Olá, nosso horário de atendimento é de Seg-Sex de 07:30-21:00. No momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js \nPor ele você pode nos contar o que você precisa que, assim que nossos consultores chegarem, eles irão te responder. \nProduto de interesse: $uri');
-                                    } else {
-                                        zE('webWidget', 'chat:send', 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri');
-                                    }
-                                
-                                    zE('webWidget', 'open');
-                                ">
-                                    Consulte agora
-                                </button>
+                            const today = new Date();
+                            const hour = today.getHours();
+                            const minutes = today.getMinutes();
+                            const day = today.getDay();
+
+                            const ehDomingo = (day === 0);
+                            const ehSabadoForaDoExpediente = (day === 6 && (hour < 8 || hour >= 12));
+                            const ehSemanaForaDoExpediente = (hour < 8 || hour >= 20);
+
+                            if (ehDomingo
+                                || ehSabadoForaDoExpediente
+                                || ehSemanaForaDoExpediente
+                            ) {
+                                const mensagem = 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri';
+                                window.location.href = urlWhatsAppApi + numeroWhatsAppAG + '?text=' + mensagem;
+                            } else {
+                                zE('webWidget', 'chat:send', 'Olá, tenho interesse neste produto, mas está indisponível no site: $uri');
+                                zE('webWidget', 'open');
+                            }
+                            "
+                        >
+                            <span class="shelf-qd-v1-no-stock-message"
+                                >Consulte Disponibilidade</span
+                            >
+                            <p class="shelf-qd-v1-no-stock-info">
+                                Informe ao vendedor o produto que está
+                                procurando.
+                            </p>
+                            <div class="product-qd-v1-no-stock-button">
+                                <button type="button">Consulte agora</button>
                             </div>
                         </a>
                     </div>
-                    <!--div class="shelf-qd-v1-no-stock #if($product.IsInStock) qd_cpHide #else qd_cpShow #end">
-						<a title="$escapedName" href="$uri">
-							<span class="shelf-qd-v1-no-stock-message">Produto Indisponível</span>
-						</a>
-					</div-->
                     #end
                 </div>
 
                 <div class="optionals loading"></div>
-
                 <div class="col-xs-12">
                     #if ($product.IsInStock)
-                    <div class="shelf-qd-v1-buy-button #if($product.IsInStock) qd_cpShow #else qd_cpHide #end">
-                        <div class="shelf-qd-v1-item-aumont" style="display:none">$product.AmountInCart</div>
+                    <div
+                        class="shelf-qd-v1-buy-button #if($product.IsInStock) qd_cpShow #else qd_cpHide #end"
+                    >
+                        <div
+                            class="shelf-qd-v1-item-aumont"
+                            style="display: none"
+                        >
+                            $product.AmountInCart
+                        </div>
 
                         $product.ButtonBuyModal(false,true)
                     </div>
@@ -127,3 +162,16 @@
         </div>
     </div>
 </div>
+
+<script>
+    try {
+        const urlProduto = "$uri";
+        const skuProduto = urlProduto
+            .substring(urlProduto.lastIndexOf("-") + 1)
+            .replace(/\D/g, "");
+        const elemento = document.querySelector(".produto-prateleira#p$id");
+        elemento.classList.add("p" + skuProduto);
+    } catch (ex) {
+        console.log("Erro ao recuperar dados do produto: " + ex.message);
+    }
+</script>

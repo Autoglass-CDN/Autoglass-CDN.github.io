@@ -1,26 +1,27 @@
-div#inform-chassi{
-    margin-bottom: 24px;
-    position: relative;
+div#inform-chassi {
+  margin-bottom: 24px;
+  position: relative;
 }
 
 #inform-chassi.invalido::after {
-    content: 'Digite os 8 últimos dígitos';
-    color: #808080;
-    display: flex;
+  content: "Digite os 8 últimos dígitos";
+  color: #808080;
+  display: flex;
 }
 
 #inform-chassi.valido::after {
-    content: "\f00c";
-    font-family: 'FontAwesome';
-    color: #94CB82;
-    position: absolute;
-    left: 110px;
-    top: 21px;
+  content: "\f00c";
+  font-family: "FontAwesome";
+  color: #94cb82;
+  position: absolute;
+  left: 110px;
+  top: 21px;
 }
 
 #inform-chassi input {
   width: 130px;
 }
+
 .container-orientacao-chassi {
   display: contents;
 }
@@ -52,7 +53,7 @@ div#inform-chassi{
 
 .ponta {
   background: #fff;
-  border: 3px dotted #08C;
+  border: 3px dotted #08c;
   border-top: none;
   border-right: none;
   height: 40px;
@@ -79,11 +80,10 @@ div#inform-chassi{
 }
 
 body .vtex-omnishipping-1-x-address {
-    margin-bottom: 0;
+  margin-bottom: 0;
 }
 
 @media only screen and (max-width: 980px) {
-
   .container-image-orientacao-chassi {
     animation-name: slidein;
     animation-duration: 1s;

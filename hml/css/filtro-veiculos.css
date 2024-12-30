@@ -12,7 +12,7 @@ fieldset[data-qd-class="ano"] > div > div.filtro {
 fieldset > div > div.filtro::after {
   content: "\f002";
   font-family: "FontAwesome";
-  color: #000000;
+  color: #223b76;
   font-size: 12px;
   width: 51px;
   padding: 6px 0;

@@ -17,7 +17,8 @@
   margin-top: unset;
 }
 
-.product-qd-v1-sku-selection-box .product-qd-v1-ref-code, .product-qd-v1-brand-name {
+.product-qd-v1-sku-selection-box .product-qd-v1-ref-code,
+.product-qd-v1-brand-name {
   margin-bottom: unset !important;
 }
 
@@ -26,7 +27,8 @@
   color: #43c452 !important;
 }
 
-.product-qd-v1-buy-button .buy-button.secondary:hover, .product-qd-v1-buy-button .buy-button.secondary:focus {
+.product-qd-v1-buy-button .buy-button.secondary:hover,
+.product-qd-v1-buy-button .buy-button.secondary:focus {
   color: #39b547;
   background: gainsboro;
   border-color: gainsboro;
@@ -106,18 +108,19 @@
 
 /* #region TOOLTIP DO CEP */
 
-#txtCep+.ttp {
+#txtCep + .ttp {
   position: relative;
 }
 
-#txtCep+.ttp::after, #txtCep+.ttp::before {
+#txtCep + .ttp::after,
+#txtCep + .ttp::before {
   position: absolute;
   left: 50%;
   opacity: 0;
   transition: all ease 0.5s;
 }
 
-#txtCep+.ttp::before {
+#txtCep + .ttp::before {
   content: "";
   border-width: 0 8px 10px 8px;
   border-style: solid;
@@ -126,7 +129,7 @@
   bottom: -10px;
 }
 
-#txtCep+.ttp::after {
+#txtCep + .ttp::after {
   content: "Informe seu CEP";
   background-color: #223b76;
   margin-left: 0;
@@ -139,7 +142,10 @@
   transform: translateY(100%);
 }
 
-#txtCep:hover+.ttp::after, #txtCep:hover+.ttp::before, #txtCep:focus+.ttp::after, #txtCep:focus+.ttp::before {
+#txtCep:hover + .ttp::after,
+#txtCep:hover + .ttp::before,
+#txtCep:focus + .ttp::after,
+#txtCep:focus + .ttp::before {
   opacity: 1;
 }
 
@@ -277,14 +283,20 @@ body.mz-pu-on .mz-modal-pickup {
   width: 6px;
 }
 
-.mz-modal-pickup .mz-pickup__stores .mz-stores__list ul::-webkit-scrollbar-track {
+.mz-modal-pickup
+  .mz-pickup__stores
+  .mz-stores__list
+  ul::-webkit-scrollbar-track {
   opacity: 0.3;
   background-color: #e0e0e0;
   border: 4px solid transparent;
   background-clip: content-box;
 }
 
-.mz-modal-pickup .mz-pickup__stores .mz-stores__list ul::-webkit-scrollbar-thumb {
+.mz-modal-pickup
+  .mz-pickup__stores
+  .mz-stores__list
+  ul::-webkit-scrollbar-thumb {
   background-color: #8a8a8a;
   border-radius: 4px;
 }
@@ -294,7 +306,12 @@ body.mz-pu-on .mz-modal-pickup {
   margin-bottom: 10px;
 }
 
-.mz-modal-pickup .mz-pickup__stores .mz-stores__list ul li .mz-stores__list--adress {
+.mz-modal-pickup
+  .mz-pickup__stores
+  .mz-stores__list
+  ul
+  li
+  .mz-stores__list--adress {
   color: #2d4f9e;
 }
 
@@ -394,7 +411,8 @@ body.mz-pu-on .mz-modal-pickup {
   border-radius: 3px;
 }
 
-.product-qd-v1-buy-button .product-unavailable:hover, .product-qd-v1-buy-button .product-unavailable:focus {
+.product-qd-v1-buy-button .product-unavailable:hover,
+.product-qd-v1-buy-button .product-unavailable:focus {
   color: #fff;
   background: #39b547;
   border-color: #39b547;
@@ -420,7 +438,8 @@ body.mz-pu-on .mz-modal-pickup {
   display: inline-block;
   position: relative;
   top: 3px;
-  background: url("https://autoglass.vteximg.com.br/arquivos/icon-chat.png") no-repeat;
+  background: url("https://autoglass.vteximg.com.br/arquivos/icon-chat.png")
+    no-repeat;
   background-size: 100% 100%;
   background-position: 0px 0px;
   width: 28px;
@@ -462,14 +481,14 @@ body.mz-pu-on .mz-modal-pickup {
 /* #region Produto Indisponível - Outras Marcas */
 
 .other-brands .product-qd-v1-buy-button button.secondary {
-  background: #43C452 !important;
-  color: #FFF !important;
+  background: #43c452 !important;
+  color: #fff !important;
 }
 
 .other-brands .product-qd-v1-buy-button button::before {
   content: "\f103";
   display: inline-block;
-  font-family: 'FontAwesome';
+  font-family: "FontAwesome";
   height: 20px;
   margin-right: 14px;
   top: 3px;
@@ -485,7 +504,8 @@ body.mz-pu-on .mz-modal-pickup {
 }
 
 .other-brands.secondary:before {
-  background: url("https://autoglass.vteximg.com.br/arquivos/icon-chat-secondary.png") no-repeat;
+  background: url("https://autoglass.vteximg.com.br/arquivos/icon-chat-secondary.png")
+    no-repeat;
   background-size: 100% 100%;
 }
 
@@ -505,7 +525,6 @@ p.descricao-rollout {
   font-weight: 600;
   padding: 0 10px;
 }
-
 
 /* #region Opções de Entrega */
 .installment-type-list {
@@ -534,8 +553,8 @@ p.descricao-rollout {
 }
 
 .installment-type-list div.col div.or {
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   font-size: 12px;
   font-weight: bold;
   border: 1px solid gray;
@@ -566,7 +585,7 @@ input.tipo-instalacao + label::before {
 }
 
 input.tipo-instalacao:checked + label::before {
-  content: '';
+  content: "";
   visibility: visible;
   position: absolute;
   top: 2px;
@@ -574,16 +593,18 @@ input.tipo-instalacao:checked + label::before {
   width: 14px;
   height: 14px;
   border-radius: 50%;
-  background-color: #223B76;
+  background-color: #223b76;
 }
 
-.mz-acessories .mz-accesories__advantages .mz-accesories__advantages--button:hover {
+.mz-acessories
+  .mz-accesories__advantages
+  .mz-accesories__advantages--button:hover {
   text-decoration: underline;
 }
 
 @media (max-width: 510px) {
   .installment-type-list {
-    flex-wrap:wrap;
+    flex-wrap: wrap;
   }
 
   .installment-type-list > div {
@@ -619,11 +640,11 @@ input.tipo-instalacao:checked + label::before {
 }
 
 .pickup.selected {
-  border: 1px solid #223B76;
+  border: 1px solid #223b76;
 }
 
 .pickup.selected .pickup__estimate {
-  border-top: 1px solid #223B76;
+  border-top: 1px solid #223b76;
 }
 
 .pickup + .pickup {
@@ -641,12 +662,12 @@ input.tipo-instalacao:checked + label::before {
 }
 
 .pickup__info-distance svg {
-   transform: translateY(-5px);
-   transition: transform;
+  transform: translateY(-5px);
+  transition: transform;
 }
 
 .pickup:hover .pickup__info-distance svg {
-   animation: hoverDistanceAnimation 1s infinite;
+  animation: hoverDistanceAnimation 1s infinite;
 }
 
 .pickup.selected .pickup__info-distance svg {
@@ -712,7 +733,6 @@ input.tipo-instalacao:checked + label::before {
 }
 /* #endregion Modal - Retire na Loja */
 
-
 /* #region Modal - Calcule o Frete */
 
 .mz-modal-shipping {
@@ -736,7 +756,7 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 .mz-modal-shipping .mz-content__title .mz-content__title--empty a {
-  color: #223B76;
+  color: #223b76;
   font-weight: bold;
 }
 
@@ -760,13 +780,15 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 .shipping .shipping__name b:before {
-  content: '';
+  content: "";
   padding: 0px;
-  transition: padding 1s ease, background-position 1s ease,  margin-right 1s ease, height 1s ease;
+  transition: padding 1s ease, background-position 1s ease, margin-right 1s ease,
+    height 1s ease;
   height: 0px;
-  background: url('//devautoglass.vteximg.com.br/arquivos/icon-truck.png') no-repeat;
+  background: url("//devautoglass.vteximg.com.br/arquivos/icon-truck.png")
+    no-repeat;
   background-position: -50px;
-  filter: grayscale(1) opacity(.2);
+  filter: grayscale(1) opacity(0.2);
 }
 
 .shipping:hover .shipping__name b:before,
@@ -782,7 +804,7 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 .shipping.selected {
-  border: 1px solid #223B76;
+  border: 1px solid #223b76;
 }
 
 .shipping.selected .shipping__name b:before {
@@ -797,7 +819,6 @@ body.mz-sf-on .mz-modal-shipping {
   margin-left: auto;
 }
 
-
 @media (max-width: 660px) {
   .shipping {
     flex-direction: column;
@@ -805,7 +826,7 @@ body.mz-sf-on .mz-modal-shipping {
   }
 
   .shipping div.shipping__price {
-     margin: 0;
+    margin: 0;
   }
 
   .shipping .shipping__name {
@@ -816,16 +837,17 @@ body.mz-sf-on .mz-modal-shipping {
 @media (max-width: 400px) {
   .mz-modal-shipping,
   .mz-modal-pickup,
-  .mz-modal-advantages  {
+  .mz-modal-advantages {
     height: 500px;
-    overflow: auto
+    overflow: auto;
   }
 
   .mz-pickup-stores__list ul {
     height: auto !important;
   }
 
-  .pickup__info-address p, .pickup__info-distance p {
+  .pickup__info-address p,
+  .pickup__info-distance p {
     font-size: 12px;
   }
   .pickup__estimate {
@@ -847,23 +869,23 @@ body.mz-sf-on .mz-modal-shipping {
 /* #region VIDEO RESPONSIVO */
 
 .responsive-video {
-    position: relative;
-    width: 100%;
-    max-width: 854px;
-    overflow: hidden;
-    padding-top: 56.25%;
-    margin: 0 auto;
+  position: relative;
+  width: 100%;
+  max-width: 854px;
+  overflow: hidden;
+  padding-top: 56.25%;
+  margin: 0 auto;
 }
 
 .responsive-video iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 100%;
-    max-height: 480px;
-    border: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 100%;
+  max-height: 480px;
+  border: none;
 }
 /* #endregion VIDEO RESPONSIVO */
 
