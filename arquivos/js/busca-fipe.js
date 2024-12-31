@@ -1519,16 +1519,15 @@
           filtro: FILTROS_VTEX.VEICULO,
           regex: obterRegexModelos(montadora, modelo),
         }),
-
         encontrarDadosNoCadastroVtex({
           filtro: FILTROS_VTEX.ANO,
           regex: obterRegexAnos(anoModelo, fipe),
         }),
 
-        encontrarDadosNoCadastroVtex({
+        fipe ? encontrarDadosNoCadastroVtex({
           filtro: FILTROS_VTEX.FIPE,
           regex: obterRegexFipes(fipe),
-        }),
+        }) : [],
       ]);
 
       if (
@@ -1691,7 +1690,7 @@
       montadora = veiculo.Body.Data.Marca;
       modelo = veiculo.Body.Data.Modelo;
       anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
-      fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].FipeId;
+      fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0]?.FipeId;
 
       var infoBuscaPLaca =
         JSON.parse(localStorage.getItem("infoBuscaPLaca")) || [];
