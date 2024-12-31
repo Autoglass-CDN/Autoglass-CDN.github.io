@@ -8044,15 +8044,6 @@ body.account
   }
 }
 
-@media (max-width: 768px) {
-  .footer-qd-v1-content
-    .footer-qd-v1-menu-list
-    ul
-    .qd-am-dropdown.qd-am-level-1 {
-    display: none;
-  }
-}
-
 .footer-qd-v1-content .footer-qd-v1-menu-list ul > li b {
   padding-bottom: 25px;
   display: inline-block;
