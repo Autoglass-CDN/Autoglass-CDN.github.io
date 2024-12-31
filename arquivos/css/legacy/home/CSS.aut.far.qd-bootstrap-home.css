@@ -1154,15 +1154,6 @@ a:focus {
   }
 }
 
-@media (max-width: 768px) {
-  .footer-qd-v1-content
-    .footer-qd-v1-menu-list
-    ul
-    .qd-am-dropdown.qd-am-level-1 {
-    display: none;
-  }
-}
-
 @media (max-width: 767px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list ul > li > p,
   .footer-qd-v1-content .footer-qd-v1-menu-list ul > li > a {
