@@ -1081,14 +1081,14 @@ a:focus {
 
 @font-face {
   font-family: "icomoon";
-  src: url("//www.autoglassonline.com.br/arquivos/icomoon.eot.jpg?vo3bh6");
-  src: url("//www.autoglassonline.com.br/arquivos/icomoon.eot.jpg?vo3bh6#iefix")
+  src: url("//www.autoglassonline.com.br/arquivos/icomoon.eot.txt?vo3bh6");
+  src: url("//www.autoglassonline.com.br/arquivos/icomoon.eot.txt?vo3bh6#iefix")
       format("embedded-opentype"),
-    url("//www.autoglassonline.com.br/arquivos/icomoon.ttf.jpg?vo3bh6")
+    url("//www.autoglassonline.com.br/arquivos/icomoon.ttf.txt?vo3bh6")
       format("truetype"),
-    url("//www.autoglassonline.com.br/arquivos/icomoon.woff.jpg?vo3bh6")
+    url("//www.autoglassonline.com.br/arquivos/icomoon.woff.txt?vo3bh6")
       format("woff"),
-    url("//www.autoglassonline.com.br/arquivos/icomoon.svg.jpg?vo3bh6#icomoon")
+    url("//www.autoglassonline.com.br/arquivos/icomoon.svg.txt?vo3bh6#icomoon")
       format("svg");
   font-weight: normal;
   font-style: normal;
