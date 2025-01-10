@@ -1,44 +1,496 @@
-function consulteFrete(){let e=document.getElementById("txtCep");e.scrollIntoView({behavior:"smooth",block:"center"}),e.focus(),console.log(e)}$(function(){document.querySelector(".mz-accesories__button--buy")&&$(".product-qd-v1-standard .buy-button").addClass("secondary");var e="/checkout/cart/add?sku="+Product.captureSkuSelectors()[0]+"&qty=1&seller=1&redirect=true&sc=1";($(".mz-pickup__button--buy").attr("href",e),$(".mz-pickup__button--buy").removeClass("lock-button"),$(".link.lojas").click(function(e){e.preventDefault(),$(document.body).addClass("mz-pu-on"),$(document.body).addClass("mz-bo-on")}),$(".mz-pickup__close--button,.mz-modal-overlay").click(function(){$(document.body).removeClass("mz-in-on mz-as-on mz-bo-on mz-pu-on")}),ga("create","UA-133498560-1","autoglassonline.com"),$(".product-qd-v1-price").is(":empty"))?($(".product-qd-v1-standard.row .header, .product-qd-v1-sku-selection, .product-qd-v1-price, .product-qd-v1-shipping").hide(),$(".product-unavailable").on("click",e=>{e.preventDefault();let t=new Date,i=t.getHours(),s=t.getDay();0===s||6===s||i<8||i>=18?(zE("webWidget","chat:addTags","fora-expediente"),zE("webWidget","chat:send",`Ol\xe1, nosso hor\xe1rio de atendimento \xe9 de Seg-Sex de 08-18h, no momento estamos sem consultor dispon\xedvel. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js 
-  Produto de interesse: ${window.location.href}`)):zE("webWidget","chat:send",`Ol\xe1, tenho interesse neste produto, mas est\xe1 indispon\xedvel no site: ${window.location.href}`),zE("webWidget","open")}),$(".talk-to-seller").show(),$("#similars").is(":empty")||($(".other-brands").show(),$(".other-brands button").click(e=>{e.preventDefault(),$(window).width()>900?$("html, body").stop().animate({scrollTop:$("#similars").offset().top-300},900,"swing"):$("html, body").stop().animate({scrollTop:$("#similars").offset().top-170},900,"swing")}),$(".product-unavailable").addClass("buy-button other-brands secondary"),document.querySelector("#myModal").style.display="block",vtexjs.catalog.getCurrentProductWithVariations().done(function(e){window.dataLayer.push({event:"sem_estoque_redirecionamento"}),window.location.replace($("#similars .qd-product-is-in-stock-true a.shelf-qd-v1-stamps")[0].href+"#redirecionamento=produtoindisponivel&produto="+e.productId)})),ga("send","event","estoque","detalhe-produto","indisponivel")):ga("send","event","estoque","detalhe-produto","disponivel"),$("#instalar-na-loja-btn").click(e=>localStorage.setItem("AG_SeletedChannel","pickup-in-point")),$("#retire-na-loja-btn").click(e=>localStorage.setItem("AG_SeletedChannel","pickup-in-point")),$("#instalar-em-casa-btn").click(e=>localStorage.setItem("AG_SeletedChannel","delivery")),$("#receba-em-casa-btn").click(e=>localStorage.setItem("AG_SeletedChannel","delivery")),setTimeout(function(){$("#txtCep").after('<span class="ttp"></span>')},500),$("#similars h2").after(`<p class="descricao-rollout">Confira op\xe7\xf5es de <strong>${vtxctx.categoryName.toLowerCase()}</strong> para este mesmo ve\xedculo ${$(".value-field.Compatibilidade-Modelo").length?`(<strong>${$(".value-field.Compatibilidade-Modelo").html()}</strong>)`:$(".value-field.Veiculo").length?`(<strong>${$(".value-field.Veiculo").html()}</strong>)`:""}</p>`),$("#sugestoes h2").after(`<p class="descricao-rollout">
-        Aproveite e confira outros produtos
-        ${$(".value-field.Compatibilidade-Modelo").length?` para <strong>${$(".value-field.Compatibilidade-Modelo").html()}</strong>`:$(".value-field.Veiculo").length?` para <strong>${$(".value-field.Veiculo").html()}</strong>`:""}
-      </p>`),$(window).load(()=>{let e=document.querySelector(".freight-values"),t=new MutationObserver(()=>{let t=document.querySelector("#txtCep"),i=[];[...e.querySelectorAll("td")].filter(e=>!(e.innerText.includes("Frete Gr\xe1tis")||""==e.innerText||e.innerText.startsWith("R$"))).map(e=>e.innerText).forEach(e=>{let t=e.split(",")[0];t.startsWith("Frete Retirada")&&!i.includes("Retirada em Loja")&&i.push("Retirada em Loja"),t.startsWith("Frete Autoglass Express")&&i.push("Autoglass Express"),t.startsWith("Frete PAC")&&i.push("PAC"),t.startsWith("Frete Sedex")&&i.push("Sedex"),t.startsWith("Frete Transportadora")&&i.push("Transportadora"),t.startsWith("Frete Normal")&&i.push("Normal")}),i.length>0?ga("send","event","busca-ceps","encontrado",t.value+","+i.join(",")):ga("send","event","busca-ceps","nao-encontrado",t.value)});e&&t.observe(e,{attributes:!0,childList:!0,subtree:!0})})}),$(function e(){let t=[],i={SERVICE:{COUNTRY:"BRA",SKU_ID:vtxctx.skus},CSS:{BASE:".mz-modal-pickup",MODAL_LIST:".mz-pickup-stores__list ul"}},s={buildListStore:function e(t){let s="";t.length?($(".without-store").hide(),t.forEach(({id:e,shippingEstimate:t,pickupDistance:i,pickupStoreInfo:o})=>{s+=`
-              <li id="${e}" class="pickup">
-                <div class="pickup__info">
-                  <div class="pickup__info-distance">
-                    <svg class="pkpmodal-pickup-point-best-marker-image" width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.4917 22.3169L19.4918 22.3169L19.4967 22.3096C19.5843 22.1782 19.6709 22.0485 19.7564 21.9204C22.0478 18.4883 23.5645 16.2165 23.5645 12.5323C23.5645 6.16317 18.4013 1 12.0323 1C5.66317 1 0.5 6.16317 0.5 12.5323C0.5 16.5417 3.05396 20.5158 5.20313 23.2599C6.56216 24.9952 9.21424 28.1986 11.703 30.3763L12.0323 30.6644L12.3615 30.3763C14.8402 28.2075 16.7075 26.3386 19.4917 22.3169Z" fill="#2D78F6" stroke="white"></path><path d="M18.6968 9.73418L14.6509 9.14642L12.8407 5.48019C12.5239 4.83994 11.4759 4.83994 11.159 5.48019L9.3498 9.14642L5.30298 9.73418C4.53711 9.84573 4.22682 10.7906 4.78365 11.3344L7.71213 14.1878L7.02126 18.2178C6.89096 18.9808 7.69338 19.5667 8.38145 19.2058L11.9999 17.3038L15.6192 19.2068C16.3017 19.5639 17.1107 18.9874 16.9794 18.2187L16.2885 14.1888L19.217 11.3353C19.7729 10.7906 19.4626 9.84573 18.6968 9.73418Z" fill="white"></path></svg>
-                    <p>${i.toFixed(1)} km</p>
-                  </div>
-                  <div class="pickup__info-address">
-                    <div class="address-title">
-                      <b>${o.friendlyName}</b>
-                    </div>
-                    <p class="address-location">
-                      ${o.address.street} ${o.address.number},
-                      ${o.address.complement}
-                    </p>
-                    <p class="pickup__info-city">${o.address.neighborhood} - ${o.address.city} - ${o.address.state}</p>
-                  </div>
-                </div>
-                <div class="pickup__estimate">
-                  <span>Gr\xe1tis</span>
-                  <span>Pronto em at\xe9 ${a.calculateTimeEstimate(t)}</span>
-                </div>
-              </li>
-              `})):($(".without-store").show(),s+='<span><a onclick="$zopim.livechat.window.show()">Clique aqui</a> e fale com a gente pelo chat!</span>'),$(i.CSS.MODAL_LIST).html(s)},addClicks:function e(){$(".pickup").click(function(){$(".pickup").removeClass("selected"),$(this).addClass("selected"),a.saveSelectedPickupPoint($(this).attr("id"))})}},a=function e(){return{simulateShipping:s,calculateTimeEstimate:function e(t){let i=+t.match(/\d+/)[0];return i+(i>0?" dias \xfateis":" dia \xfatil")},saveSelectedPickupPoint:function e(i){let s=t.find(e=>e.id===i);localStorage.setItem("AG_SeletedPickupPoint",JSON.stringify(s)),a(s.pickupStoreInfo.address.postalCode,"search")},sendCalculateShipping:a};async function s(e){let t={items:[{id:i.SERVICE.SKU_ID,quantity:1,seller:1}],postalCode:e.postalCode,country:i.SERVICE.COUNTRY};return $.ajax({url:"/api/checkout/pub/orderForms/simulation",type:"POST",dataType:"JSON",contentType:"application/json",data:JSON.stringify(t)})}function a(e,t){$(".mz-pickup__button--buy").click(e=>e.preventDefault()),vtexjs.checkout.calculateShipping({postalCode:e,country:"BRA",addressType:t}).then(e=>{(function e(t){let i=[t.shippingData.availableAddresses[t.shippingData.availableAddresses.length-1],],s=t.shippingData.logisticsInfo[0];if(s){let a=s.slas.filter(e=>"pickup-in-point"===e.deliveryChannel),o=t.shippingData.logisticsInfo.map(e=>({addressId:i[0].addressId,itemIndex:e.itemIndex,selectedDeliveryChannel:"pickup-in-point",selectedSla:a[0].id}));fetch(`/api/checkout/pub/orderForm/${t.orderFormId}/attachments/shippingData`,{method:"post",body:JSON.stringify({clearAddressIfPostalCodeNotFound:!1,expectedOrderFormSections:["shippingData"],selectedAddresses:i,logisticsInfo:o})}).then(e=>e.json()).then(e=>{vtexjs.checkout.sendAttachment("shippingData",{selectedAddresses:i,logisticsInfo:o})})}})(e),$(".mz-pickup__button--buy").unbind("click")})}}();(function e(){return{_init:function e(){let t=JSON.parse(localStorage.getItem("AG_AddressSelected"));t?i(t):$(window).on("cep-finish-load",e=>{i(e.originalEvent.detail.shippingData.address)}),$(window).on("cep-updated",e=>{let t=e.originalEvent.detail;console.log(t.shippingData.address),i(t.shippingData.address)})},simulateShipping:i};async function i(e){e&&(t=(await a.simulateShipping(e)).logisticsInfo[0].slas.filter(e=>"pickup-in-point"===e.deliveryChannel),s.buildListStore(t),s.addClicks())}})()._init()}),$(function e(){let t=[],i={SERVICE:{COUNTRY:"BRA",SKU_ID:vtxctx.skus},CONTROLS:{IGNORE_DELIVERY:"Autoglass M\xf3vel",SELECTED:"selected"},CSS:{OPEN:".link.cep",MODAL:{BASE:"mz-modal-shipping",BODY:"mz-bo-on mz-sf-on",OVERLAY:".mz-modal-overlay",CLOSE:".mz-shipping__close--button",BUTTON:".mz-shipping__button--buy",TITLE:{ENABLE:".mz-content__title--enable",EMPTY:".mz-content__title--empty"},CONTENT:".mz-shipping__content",LIST:".mz-shipping__list ul"}}},s={_init:function e(){$(i.CSS.MODAL.CONTENT).hide(),$(i.CSS.OPEN).click(()=>{$(document.body).addClass(i.CSS.MODAL.BODY)}),$(i.CSS.MODAL.CLOSE).click(()=>{$(document.body).removeClass(i.CSS.MODAL.BODY)}),$(i.CSS.MODAL.OVERLAY).click(()=>{$(document.body).removeClass(i.CSS.MODAL.BODY)}),$(i.CSS.MODAL.BUTTON).click(()=>{var e="/checkout/cart/add?sku="+vtxctx.skus+"&qty=1&seller=1&redirect=true&sc=1";$(i.CSS.MODAL.BUTTON).attr("href",e)})},buildListDelivery:function e(t){let s="";t.length?(t.forEach(({id:e,name:t,price:i,shippingEstimate:a})=>{s+=`
-              <li id="${e}" class="shipping">
-                <div class="shipping__name">
-                  <b>${t}</b>
-                </div>
-                <div class="shipping__estimate">
-                  <p>Entregue em at\xe9 ${o.formatEstimate(a)}</p>
-                </div>
-                <div class="shipping__price">
-                  <p><b>${o.formatPrice(i)}</b></p>
-                </div>
-              </li>
-            `}),$(i.CSS.MODAL.TITLE.ENABLE).show(),$(i.CSS.MODAL.TITLE.EMPTY).hide()):($(i.CSS.MODAL.TITLE.ENABLE).hide(),$(i.CSS.MODAL.TITLE.EMPTY).show()),t.length>1&&(s+=`
-            <div style="text-align: center;margin-top: 20px;">
-              <b>Selecione a op\xe7\xe3o desejada no carrinho.</b>
-            </div>
-          `),$(i.CSS.MODAL.LIST).html(s),$(i.CSS.MODAL.CONTENT).show()}},a=function e(){return{_init:function e(){s._init();let t=JSON.parse(localStorage.getItem("AG_AddressSelected"));t?i(t.postalCode):$(window).on("cep-finish-load",e=>{i(e.originalEvent.detail.shippingData.address.postalCode)}),$(window).on("cep-updated",e=>{i(e.originalEvent.detail.shippingData.address.postalCode)})},searchDeliverys:i};async function i(e){let{logisticsInfo:i}=await o.simulateShipping({postalCode:e}),[a,n]=t=i[0].slas.filter(e=>"delivery"===e.deliveryChannel),l,d;n&&(l=o.getEstimateDays(a.shippingEstimate),d=o.getEstimateDays(n.shippingEstimate)),n&&d<l?(n.name="Mais r\xe1pida",a.name="Mais econ\xf4mica",s.buildListDelivery([a,n])):a?(a.name="Melhor op\xe7\xe3o",s.buildListDelivery([a])):s.buildListDelivery([])}}(),o=function e(){return{simulateShipping:s,formatPrice:function e(t){let i="R$ ";if(0===t)return"Gr\xe1tis";let[s]=(t+="").match(/\w{2}$/);return i+=t.slice(0,t.length-2),i+=",",i+=s},formatEstimate:function e(t){let[i]=t.match(/\d+/),s=i;return i>1?s+=" dias \xfateis":s+=" dia \xfatil",s},saveSelectedDelivery:function e(i){let s=t.find(e=>e.id===i);localStorage.setItem("AG_SeletedDelivery",JSON.stringify(s))},getEstimateDays:function e(t){if(t)return+t.match(/\d+/)[0]}};async function s(e){let t={items:[{id:i.SERVICE.SKU_ID,quantity:1,seller:1}],postalCode:e.postalCode,country:i.SERVICE.COUNTRY};return $.ajax({url:"/api/checkout/pub/orderForms/simulation",type:"POST",dataType:"JSON",contentType:"application/json",data:JSON.stringify(t)})}}();a._init()});
+function consulteFrete() {
+  let e = document.getElementById("txtCep");
+  e.scrollIntoView({ behavior: "smooth", block: "center" }),
+    e.focus(),
+    console.log(e);
+}
+$(function () {
+  document.querySelector(".mz-accesories__button--buy") &&
+    $(".product-qd-v1-standard .buy-button").addClass("secondary");
+  var e =
+    "/checkout/cart/add?sku=" +
+    Product.captureSkuSelectors()[0] +
+    "&qty=1&seller=1&redirect=true&sc=1";
+  if (
+    ($(".mz-pickup__button--buy").attr("href", e),
+    $(".mz-pickup__button--buy").removeClass("lock-button"),
+    $(".link.lojas").click(function (e) {
+      e.preventDefault(),
+        $(document.body).addClass("mz-pu-on"),
+        $(document.body).addClass("mz-bo-on");
+    }),
+    $(".mz-pickup__close--button,.mz-modal-overlay").click(function () {
+      $(document.body).removeClass("mz-in-on mz-as-on mz-bo-on mz-pu-on");
+    }),
+    ga("create", "UA-133498560-1", "autoglassonline.com"),
+    $(".product-qd-v1-price").is(":empty"))
+  ) {
+    if (
+      ($(
+        ".product-qd-v1-standard.row .header, .product-qd-v1-sku-selection, .product-qd-v1-price, .product-qd-v1-shipping"
+      ).hide(),
+      $(".product-unavailable").on("click", (e) => {
+        e.preventDefault();
+        let t = new Date(),
+          i = t.getHours(),
+          s = t.getDay();
+        0 === s || 6 === s || i < 8 || i >= 18
+          ? (zE("webWidget", "chat:addTags", "fora-expediente"),
+            zE(
+              "webWidget",
+              "chat:send",
+              `Ol\xe1, nosso hor\xe1rio de atendimento \xe9 de Seg-Sex de 08-18h, no momento estamos sem consultor dispon\xedvel. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js 
+Produto de interesse: ${window.location.href}`
+            ))
+          : zE(
+              "webWidget",
+              "chat:send",
+              `Ol\xe1, tenho interesse neste produto, mas est\xe1 indispon\xedvel no site: ${window.location.href}`
+            ),
+          zE("webWidget", "open");
+      }),
+      $(".talk-to-seller").show(),
+      !$("#similars").is(":empty"))
+    ) {
+      $(".other-brands").show(),
+        $(".other-brands button").click((e) => {
+          e.preventDefault(),
+            $(window).width() > 900
+              ? $("html, body")
+                  .stop()
+                  .animate(
+                    { scrollTop: $("#similars").offset().top - 300 },
+                    900,
+                    "swing"
+                  )
+              : $("html, body")
+                  .stop()
+                  .animate(
+                    { scrollTop: $("#similars").offset().top - 170 },
+                    900,
+                    "swing"
+                  );
+        }),
+        $(".product-unavailable").addClass("buy-button other-brands secondary");
+      (document.querySelector("#myModal").style.display = "block"),
+        vtexjs.catalog.getCurrentProductWithVariations().done(function (e) {
+          window.dataLayer.push({ event: "sem_estoque_redirecionamento" }),
+            window.location.replace(
+              $(
+                "#similars .qd-product-is-in-stock-true a.shelf-qd-v1-stamps"
+              )[0].href +
+                "#redirecionamento=produtoindisponivel&produto=" +
+                e.productId
+            );
+        });
+    }
+    ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
+  } else ga("send", "event", "estoque", "detalhe-produto", "disponivel");
+  $("#instalar-na-loja-btn").click((e) =>
+    localStorage.setItem("AG_SeletedChannel", "pickup-in-point")
+  ),
+    $("#retire-na-loja-btn").click((e) =>
+      localStorage.setItem("AG_SeletedChannel", "pickup-in-point")
+    ),
+    $("#instalar-em-casa-btn").click((e) =>
+      localStorage.setItem("AG_SeletedChannel", "delivery")
+    ),
+    $("#receba-em-casa-btn").click((e) =>
+      localStorage.setItem("AG_SeletedChannel", "delivery")
+    ),
+    setTimeout(function () {
+      $("#txtCep").after('<span class="ttp"></span>');
+    }, 500),
+    $("#similars h2").after(
+      `<p class="descricao-rollout">Confira op\xe7\xf5es de <strong>${vtxctx.categoryName.toLowerCase()}</strong> para este mesmo ve\xedculo ${
+        $(".value-field.Compatibilidade-Modelo").length
+          ? `(<strong>${$(
+              ".value-field.Compatibilidade-Modelo"
+            ).html()}</strong>)`
+          : $(".value-field.Veiculo").length
+          ? `(<strong>${$(".value-field.Veiculo").html()}</strong>)`
+          : ""
+      }</p>`
+    ),
+    $("#sugestoes h2").after(`<p class="descricao-rollout">
+			Aproveite e confira outros produtos
+			${
+        $(".value-field.Compatibilidade-Modelo").length
+          ? ` para <strong>${$(
+              ".value-field.Compatibilidade-Modelo"
+            ).html()}</strong>`
+          : $(".value-field.Veiculo").length
+          ? ` para <strong>${$(".value-field.Veiculo").html()}</strong>`
+          : ""
+      }
+		</p>`),
+    $(window).load(() => {
+      let e = document.querySelector(".freight-values"),
+        t = new MutationObserver(() => {
+          let t = document.querySelector("#txtCep"),
+            i = [],
+            s = [...e.querySelectorAll("td")]
+              .filter(
+                (e) =>
+                  !(
+                    e.innerText.includes("Frete Gr\xe1tis") ||
+                    "" == e.innerText ||
+                    e.innerText.startsWith("R$")
+                  )
+              )
+              .map((e) => e.innerText);
+          s.forEach((e) => {
+            let t = e.split(",")[0];
+            t.startsWith("Frete Retirada") &&
+              !i.includes("Retirada em Loja") &&
+              i.push("Retirada em Loja"),
+              t.startsWith("Frete Autoglass Express") &&
+                i.push("Autoglass Express"),
+              t.startsWith("Frete PAC") && i.push("PAC"),
+              t.startsWith("Frete Sedex") && i.push("Sedex"),
+              t.startsWith("Frete Transportadora") && i.push("Transportadora"),
+              t.startsWith("Frete Normal") && i.push("Normal");
+          }),
+            i.length > 0
+              ? ga(
+                  "send",
+                  "event",
+                  "busca-ceps",
+                  "encontrado",
+                  t.value + "," + i.join(",")
+                )
+              : ga("send", "event", "busca-ceps", "nao-encontrado", t.value);
+        });
+      e && t.observe(e, { attributes: !0, childList: !0, subtree: !0 });
+    });
+}),
+  $(function e() {
+    let t = [],
+      i = {
+        SERVICE: { COUNTRY: "BRA", SKU_ID: vtxctx.skus },
+        CSS: {
+          BASE: ".mz-modal-pickup",
+          MODAL_LIST: ".mz-pickup-stores__list ul",
+        },
+      },
+      s = {
+        buildListStore: function e(t) {
+          let s = "";
+          t.length
+            ? ($(".without-store").hide(),
+              t.forEach(
+                ({
+                  id: e,
+                  shippingEstimate: t,
+                  pickupDistance: i,
+                  pickupStoreInfo: o,
+                }) => {
+                  s += `
+						<li id="${e}" class="pickup">
+							<div class="pickup__info">
+								<div class="pickup__info-distance">
+									<svg class="pkpmodal-pickup-point-best-marker-image" width="25" height="32" viewBox="0 0 25 32" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19.4917 22.3169L19.4918 22.3169L19.4967 22.3096C19.5843 22.1782 19.6709 22.0485 19.7564 21.9204C22.0478 18.4883 23.5645 16.2165 23.5645 12.5323C23.5645 6.16317 18.4013 1 12.0323 1C5.66317 1 0.5 6.16317 0.5 12.5323C0.5 16.5417 3.05396 20.5158 5.20313 23.2599C6.56216 24.9952 9.21424 28.1986 11.703 30.3763L12.0323 30.6644L12.3615 30.3763C14.8402 28.2075 16.7075 26.3386 19.4917 22.3169Z" fill="#2D78F6" stroke="white"></path><path d="M18.6968 9.73418L14.6509 9.14642L12.8407 5.48019C12.5239 4.83994 11.4759 4.83994 11.159 5.48019L9.3498 9.14642L5.30298 9.73418C4.53711 9.84573 4.22682 10.7906 4.78365 11.3344L7.71213 14.1878L7.02126 18.2178C6.89096 18.9808 7.69338 19.5667 8.38145 19.2058L11.9999 17.3038L15.6192 19.2068C16.3017 19.5639 17.1107 18.9874 16.9794 18.2187L16.2885 14.1888L19.217 11.3353C19.7729 10.7906 19.4626 9.84573 18.6968 9.73418Z" fill="white"></path></svg>
+									<p>${i.toFixed(1)} km</p>
+								</div>
+								<div class="pickup__info-address">
+									<div class="address-title">
+										<b>${o.friendlyName}</b>
+									</div>
+									<p class="address-location">
+										${o.address.street} ${o.address.number},
+										${o.address.complement}
+									</p>
+									<p class="pickup__info-city">${o.address.neighborhood} - ${o.address.city} - ${
+                    o.address.state
+                  }</p>
+								</div>
+							</div>
+							<div class="pickup__estimate">
+								<span>Gr\xe1tis</span>
+								<span>Pronto em at\xe9 ${a.calculateTimeEstimate(t)}</span>
+							</div>
+						</li>
+						`;
+                }
+              ))
+            : ($(".without-store").show(),
+              (s +=
+                '<span><a onclick="$zopim.livechat.window.show()">Clique aqui</a> e fale com a gente pelo chat!</span>')),
+            $(i.CSS.MODAL_LIST).html(s);
+        },
+        addClicks: function e() {
+          $(".pickup").click(function () {
+            $(".pickup").removeClass("selected"),
+              $(this).addClass("selected"),
+              a.saveSelectedPickupPoint($(this).attr("id"));
+          });
+        },
+      },
+      a = (function e() {
+        return {
+          simulateShipping: s,
+          calculateTimeEstimate: function e(t) {
+            let i = t.match(/\d+/),
+              s = +i[0];
+            return s + (s > 0 ? " dias \xfateis" : " dia \xfatil");
+          },
+          saveSelectedPickupPoint: function e(i) {
+            let s = t.find((e) => e.id === i);
+            localStorage.setItem("AG_SeletedPickupPoint", JSON.stringify(s)),
+              a(s.pickupStoreInfo.address.postalCode, "search");
+          },
+          sendCalculateShipping: a,
+        };
+        async function s(e) {
+          let t = {
+            items: [{ id: i.SERVICE.SKU_ID, quantity: 1, seller: 1 }],
+            postalCode: e.postalCode,
+            country: i.SERVICE.COUNTRY,
+          };
+          return $.ajax({
+            url: "/api/checkout/pub/orderForms/simulation",
+            type: "POST",
+            dataType: "JSON",
+            contentType: "application/json",
+            data: JSON.stringify(t),
+          });
+        }
+        function a(e, t) {
+          $(".mz-pickup__button--buy").click((e) => e.preventDefault()),
+            vtexjs.checkout
+              .calculateShipping({
+                postalCode: e,
+                country: "BRA",
+                addressType: t,
+              })
+              .then((e) => {
+                (function e(t) {
+                  let i = [
+                      t.shippingData.availableAddresses[
+                        t.shippingData.availableAddresses.length - 1
+                      ],
+                    ],
+                    s = t.shippingData.logisticsInfo[0];
+                  if (s) {
+                    let a = s.slas.filter(
+                        (e) => "pickup-in-point" === e.deliveryChannel
+                      ),
+                      o = t.shippingData.logisticsInfo.map((e) => ({
+                        addressId: i[0].addressId,
+                        itemIndex: e.itemIndex,
+                        selectedDeliveryChannel: "pickup-in-point",
+                        selectedSla: a[0].id,
+                      }));
+                    fetch(
+                      `/api/checkout/pub/orderForm/${t.orderFormId}/attachments/shippingData`,
+                      {
+                        method: "post",
+                        body: JSON.stringify({
+                          clearAddressIfPostalCodeNotFound: !1,
+                          expectedOrderFormSections: ["shippingData"],
+                          selectedAddresses: i,
+                          logisticsInfo: o,
+                        }),
+                      }
+                    )
+                      .then((e) => e.json())
+                      .then((e) => {
+                        vtexjs.checkout.sendAttachment("shippingData", {
+                          selectedAddresses: i,
+                          logisticsInfo: o,
+                        });
+                      });
+                  }
+                })(e),
+                  $(".mz-pickup__button--buy").unbind("click");
+              });
+        }
+      })(),
+      o = (function e() {
+        return {
+          _init: function e() {
+            let t = JSON.parse(localStorage.getItem("AG_AddressSelected"));
+            t
+              ? i(t)
+              : $(window).on("cep-finish-load", (e) => {
+                  let t = e.originalEvent.detail;
+                  i(t.shippingData.address);
+                }),
+              $(window).on("cep-updated", (e) => {
+                let t = e.originalEvent.detail;
+                console.log(t.shippingData.address), i(t.shippingData.address);
+              });
+          },
+          simulateShipping: i,
+        };
+        async function i(e) {
+          e &&
+            ((t = (await a.simulateShipping(e)).logisticsInfo[0].slas.filter(
+              (e) => "pickup-in-point" === e.deliveryChannel
+            )),
+            s.buildListStore(t),
+            s.addClicks());
+        }
+      })();
+    o._init();
+  }),
+  $(function e() {
+    let t = [],
+      i = {
+        SERVICE: { COUNTRY: "BRA", SKU_ID: vtxctx.skus },
+        CONTROLS: {
+          IGNORE_DELIVERY: "Autoglass M\xf3vel",
+          SELECTED: "selected",
+        },
+        CSS: {
+          OPEN: ".link.cep",
+          MODAL: {
+            BASE: "mz-modal-shipping",
+            BODY: "mz-bo-on mz-sf-on",
+            OVERLAY: ".mz-modal-overlay",
+            CLOSE: ".mz-shipping__close--button",
+            BUTTON: ".mz-shipping__button--buy",
+            TITLE: {
+              ENABLE: ".mz-content__title--enable",
+              EMPTY: ".mz-content__title--empty",
+            },
+            CONTENT: ".mz-shipping__content",
+            LIST: ".mz-shipping__list ul",
+          },
+        },
+      },
+      s = {
+        _init: function e() {
+          $(i.CSS.MODAL.CONTENT).hide(),
+            $(i.CSS.OPEN).click(() => {
+              $(document.body).addClass(i.CSS.MODAL.BODY);
+            }),
+            $(i.CSS.MODAL.CLOSE).click(() => {
+              $(document.body).removeClass(i.CSS.MODAL.BODY);
+            }),
+            $(i.CSS.MODAL.OVERLAY).click(() => {
+              $(document.body).removeClass(i.CSS.MODAL.BODY);
+            }),
+            $(i.CSS.MODAL.BUTTON).click(() => {
+              var e =
+                "/checkout/cart/add?sku=" +
+                vtxctx.skus +
+                "&qty=1&seller=1&redirect=true&sc=1";
+              $(i.CSS.MODAL.BUTTON).attr("href", e);
+            });
+        },
+        buildListDelivery: function e(t) {
+          let s = "";
+          t.length
+            ? (t.forEach(
+                ({ id: e, name: t, price: i, shippingEstimate: a }) => {
+                  s += `
+						<li id="${e}" class="shipping">
+							<div class="shipping__name">
+								<b>${t}</b>
+							</div>
+							<div class="shipping__estimate">
+								<p>Entregue em at\xe9 ${o.formatEstimate(a)}</p>
+							</div>
+							<div class="shipping__price">
+								<p><b>${o.formatPrice(i)}</b></p>
+							</div>
+						</li>
+					`;
+                }
+              ),
+              $(i.CSS.MODAL.TITLE.ENABLE).show(),
+              $(i.CSS.MODAL.TITLE.EMPTY).hide())
+            : ($(i.CSS.MODAL.TITLE.ENABLE).hide(),
+              $(i.CSS.MODAL.TITLE.EMPTY).show()),
+            t.length > 1 &&
+              (s += `
+					<div style="text-align: center;margin-top: 20px;">
+						<b>Selecione a op\xe7\xe3o desejada no carrinho.</b>
+					</div>
+				`),
+            $(i.CSS.MODAL.LIST).html(s),
+            $(i.CSS.MODAL.CONTENT).show();
+        },
+      },
+      a = (function e() {
+        return {
+          _init: function e() {
+            s._init();
+            let t = JSON.parse(localStorage.getItem("AG_AddressSelected"));
+            t
+              ? i(t.postalCode)
+              : $(window).on("cep-finish-load", (e) => {
+                  let t = e.originalEvent.detail;
+                  i(t.shippingData.address.postalCode);
+                }),
+              $(window).on("cep-updated", (e) => {
+                let t = e.originalEvent.detail;
+                i(t.shippingData.address.postalCode);
+              });
+          },
+          searchDeliverys: i,
+        };
+        async function i(e) {
+          let { logisticsInfo: i } = await o.simulateShipping({
+            postalCode: e,
+          });
+          t = i[0].slas.filter((e) => "delivery" === e.deliveryChannel);
+          let [a, n] = t,
+            l,
+            d;
+          n &&
+            ((l = o.getEstimateDays(a.shippingEstimate)),
+            (d = o.getEstimateDays(n.shippingEstimate))),
+            n && d < l
+              ? ((n.name = "Mais r\xe1pida"),
+                (a.name = "Mais econ\xf4mica"),
+                s.buildListDelivery([a, n]))
+              : a
+              ? ((a.name = "Melhor op\xe7\xe3o"), s.buildListDelivery([a]))
+              : s.buildListDelivery([]);
+        }
+      })(),
+      o = (function e() {
+        return {
+          simulateShipping: s,
+          formatPrice: function e(t) {
+            let i = "R$ ";
+            if (0 === t) return "Gr\xe1tis";
+            t += "";
+            let [s] = t.match(/\w{2}$/);
+            return (i += t.slice(0, t.length - 2)), (i += ","), (i += s);
+          },
+          formatEstimate: function e(t) {
+            let [i] = t.match(/\d+/),
+              s = i;
+            return i > 1 ? (s += " dias \xfateis") : (s += " dia \xfatil"), s;
+          },
+          saveSelectedDelivery: function e(i) {
+            let s = t.find((e) => e.id === i);
+            localStorage.setItem("AG_SeletedDelivery", JSON.stringify(s));
+          },
+          getEstimateDays: function e(t) {
+            if (t) {
+              let i = t.match(/\d+/);
+              return +i[0];
+            }
+          },
+        };
+        async function s(e) {
+          let t = {
+            items: [{ id: i.SERVICE.SKU_ID, quantity: 1, seller: 1 }],
+            postalCode: e.postalCode,
+            country: i.SERVICE.COUNTRY,
+          };
+          return $.ajax({
+            url: "/api/checkout/pub/orderForms/simulation",
+            type: "POST",
+            dataType: "JSON",
+            contentType: "application/json",
+            data: JSON.stringify(t),
+          });
+        }
+      })();
+    a._init();
+  });
