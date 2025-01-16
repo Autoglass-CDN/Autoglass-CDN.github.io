@@ -70,7 +70,7 @@ const baseUrlApi=window.location.href.includes("dev")||window.location.href.incl
             <div id="mobileBlocoUm">
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
-                <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png" alt="Logo da Autoglass" class="logo">
+                <img loading="lazy" src="https://autoglass-cdn.github.io/arquivos/img/logo-autoglass.png" alt="Logo da Autoglass" class="logo">
                 <h3 class="primeiraLinha">Garantia de at\xe9 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
                 <h3>Seguran\xe7a e comodidade</h3>
@@ -91,7 +91,7 @@ const baseUrlApi=window.location.href.includes("dev")||window.location.href.incl
             <div id="mobileBlocoDois">
               <fieldset id="beneficios" class="containersModalCompra">
                 <legend>-</legend>
-                <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png" alt="Logo da Autoglass" class="logo">
+                <img loading="lazy" src="https://autoglass-cdn.github.io/arquivos/img/logo-autoglass.png" alt="Logo da Autoglass" class="logo">
                 <h3 class="primeiraLinha">Garantia de at\xe9 1 ano</h3>
                 <h3 class="segundaLinha">Equipe Especializada</h3>
                 <h3>Seguran\xe7a e comodidade</h3>
