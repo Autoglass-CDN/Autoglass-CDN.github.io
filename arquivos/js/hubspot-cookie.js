@@ -30,23 +30,7 @@
               return null;
             }
           })(),
-        i = `https://api.autoglass.com.br/integracao-b2c/api/web-app/master-datas/clientes/${o}`,
-        l = await fetch(i, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            Hubspotutk: r,
-            LastOrderFormId: n,
-            LastOrderId: a,
-          }),
-        });
-      l.ok
-        ? console.log("Dados enviados com sucesso ao MasterData.")
-        : console.error(
-            "Erro ao enviar dados ao MasterData:",
-            l.status,
-            l.statusText
-          );
+        i = `https://api.autoglass.com.br/integracao-b2c/api/web-app/master-datas/clientes/${o}`
     } catch (c) {
       console.error("Erro ao enviar dados ao MasterData:", c);
     }
