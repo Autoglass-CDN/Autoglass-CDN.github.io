@@ -1,1 +1,795 @@
-:root{--deslocate-create-account:350px}.clearfix:after,.clearfix:before,.modal-footer:after,.modal-footer:before,.modal-header:after,.modal-header:before{content:"";display:table}.clearfix:after,.modal-footer:after,.modal-header:after{clear:both}#vtexIdContainer{background-color:rgba(0,0,0,.8);position:fixed;z-index:1000}#changePswdBtn,#confirmLoginAccessKeyBtn,#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success{font-size:14px;color:#fff;font-weight:600;border:solid #43c452;border-radius:7px;background-color:#43c452;background-image:none;margin:0 auto;width:180px;text-shadow:none;box-shadow:none;display:flex;align-items:center;justify-content:center}#changePswdBtn:hover,#confirmLoginAccessKeyBtn:hover,#vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success:hover{border:solid #33a140;background-color:#33a140}#vtexIdContainer .vtexIdUI .alert{bottom:-10px;text-align:center;border:none}#vtexIdContainer .modal-body,#vtexIdContainer .vtexIdUI .alert span{position:relative}#vtexIdContainer .vtexIdUI .alert span:after{content:"*";position:absolute;left:-8px;top:0}#vtexIdContainer .vtexIdUI-back-link{text-decoration:none;outline:0;margin-right:6px}#vtexIdContainer .vtexIdUI-back-link:hover{opacity:.4}#vtexIdContainer .vtexIdUI-close{margin-right:10px}#vtexIdContainer .vtexIdUI .vtexIdUI-user{margin-bottom:0;display:none}#vtexIdContainer .vtexIdUI h4{margin:0}#vtexIdContainer .vtexIdUI .info-why{text-align:center;margin-bottom:16px}#vtexIdContainer .vtexIdUI .info-why span{font-size:14px}#vtexIdContainer .vtexid-password-requirements-description{font-weight:400}#vtexIdContainer .vtexid-password-requirements-list{margin-left:0}#vtexIdContainer .vtexIdUI .ng-binding{line-height:20px;font-weight:600}#vtexIdContainer div#vtexIdUI-change-pswd .modal-header{padding:50px 15px 0}#vtexIdContainer #vtexIdUI-confirm-access-code .alert{position:relative;padding:5px 0}#vtexIdContainer #vtexIdUI-classic-login .modal-body .alert-info span,#vtexIdContainer .modal-body .alert-warning span{font-size:11px}#vtexIdContainer #vtexIdUI-classic-login .modal-footer{position:absolute;width:100%;top:315px}#vtexIdContainer .modal-header{text-align:center;background:#fff;color:#fff}#vtexIdContainer .modal-header .close{background:0 0;font-size:0;border-radius:0;padding:0;line-height:1;position:absolute;top:4px;left:auto;right:-3px}#saindo .modal-content .modal-body button{font-size:14px;color:#fff;font-weight:600}#saindo .modal-content .modal-body button:first-child{background-color:#234eb9}#saindo .modal-content .modal-body button:first-child:hover,#vtexIdContainer #loginWithAccessKeyBtn:hover,#vtexIdContainer #vtexIdUI-change-pswd .btn-success:hover,#vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn:hover{background-color:#223b76}#saindo .modal-content .modal-body button#sair:hover{background-color:#c11515}#vtexIdContainer .vtexIdUI-heading{color:grey;font-family:"Open Sans","Droid Sans",Tahoma,Arial,sans-serif;text-transform:uppercase;font-size:18px!important;font-weight:400}#vtexIdContainer a.dead-link.pull-right{color:#234eb9;margin:-3px 0 0}#vtexIdContainer .vtexIdUI .modal-header .close,#vtexIdContainer div#vtexIdUI-change-pswd .close{border-radius:50%;border:2px solid #fff;width:36px;height:36px;font-size:26px;color:#6f6f6f;background-color:#d3d3d3;opacity:.7}#vtexIdContainer .vtexIdUI .modal-header .close:hover,#vtexIdContainer div#vtexIdUI-change-pswd .close:hover{opacity:1}#vtexIdContainer #loginWithAccessKeyBtn,#vtexIdContainer #vtexIdUI-change-pswd .btn-success,#vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn{background:#234eb9;color:#fff;border-radius:5px;font-size:14px;width:100%;height:50px;box-shadow:none}#vtexIdContainer #vtexIdUI-change-pswd .btn-success{margin-top:20px;width:250px}#vtexIdContainer .vtexIdUI-confirm-email .btn-success{background-color:#fff;text-shadow:none;border-radius:7px}#vtexIdContainer .vtexIdUI-back-link{border-radius:50%;border:2px solid #dbdbdb;width:34px;height:34px;right:2px;top:-8px;color:#bbb;position:absolute;display:flex;align-items:center;justify-content:center}#vtexIdContainer #vtexIdUI-google-plus i.vtexid-icon-google-plus,#vtexIdContainer .vtexIdUI-back-link span{display:none}#vtexIdContainer .vtexIdUI #vtexIdUI-google-plus{box-shadow:none;border-radius:5px;border:none;color:#6d6d6d;font-weight:400;font-size:14px;height:50px}#vtexIdContainer .vtexIdUI #vtexIdUI-google-plus:hover{background:silver}#vtexIdContainer #vtexIdUI-google-plus:before{font-family:"Font Awesome 5 Brands";content:"\f1a0";background:conic-gradient(from -45deg,#ea4335 110deg,#4285f4 90deg 180deg,#34a853 180deg 270deg,#fbbc05 270deg) 73% 55%/150% 150% no-repeat;background-clip:text;-webkit-background-clip:text;width:25px;color:transparent;transform:scale(2.3);font-size:16px;margin:0 30px;position:relative;transition:.2s}#vtexIdContainer .vtexIdUI .modal-footer{display:flex;justify-content:center}#vtexIdContainer #vtexIdUI-confirm-access-code{background:#fff;height:100%}@media (min-width:998px){#vtexIdContainer ul.vtexIdUI-providers-list li:nth-child(2)>button{margin-top:25px}#vtexIdContainer ul.vtexIdUI-providers-list{display:flex;justify-content:center;flex-wrap:wrap;height:304px}#vtexIdContainer ul.vtexIdUI-providers-list li{width:100%}#vtexIdContainer #loginWithAccessKeyBtn{margin:0}#vtexIdContainer .vtexIdUI #vtexIdUI-google-plus{top:0;display:flex;align-items:center}#vtexIdContainer ul.vtexIdUI-providers-list li:first-child{order:3;position:absolute;bottom:10px}#vtexIdContainer input#access-code{border-width:0 0 1px;box-shadow:none}#vtexIdContainer input#appendedInputButton{border-width:0 0 1px;box-shadow:none;margin:50px 0 0}#vtexIdContainer div#vtexIdUI-classic-login{width:340px;margin-left:30px}#vtexIdContainer .vtexIdUI .vtexIdUI-confirm-email form{width:350px;margin:0 auto}#vtexIdContainer .vtexIdUI-classic-login,#vtexIdContainer .vtexIdUI-close{display:block}#vtexIdContainer #vtexIdUI-auth-selector div,#vtexIdContainer .vtexIdUI .modal-footer,#vtexIdContainer .vtexIdUI .modal-header{background:0 0}#vtexIdContainer .vtexIdUI .modal-header .close{right:-40px}#vtexIdContainer div#vtexIdUI-change-pswd .close{right:-5px}#vtexIdContainer .vtexIdUI-auth-code .modal-body{margin-top:30px}#vtexIdContainer div#vtexIdUI-auth-selector{width:340px;left:400px}#vtexIdContainer #loginWithAccessKeyBtn i,#vtexIdContainer #loginWithUserAndPasswordBtn,#vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-back-link,#vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,#vtexIdContainer .vtexIdUI .vtexid-icon-lock.bottom-icon,#vtexIdContainer .vtexIdUI-heading span{display:none}#vtexIdContainer div#vtexIdUI-auth-selector .vtexIdUI-heading:after{content:"ACESSE COM SUA REDE SOCIAL"}#vtexIdContainer .vtexIdUI .modal-footer,#vtexIdContainer .vtexIdUI .modal-header{border:none}#vtexIdContainer .vtexIdUI .modal-header .close:active,#vtexIdContainer div#vtexIdUI-change-pswd .close:active{outline:0}#vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-close{right:-30px}#vtexIdContainer #vtexIdUI-change-pswd{background-color:#fff}#vtexIdContainer #vtexIdUI-change-pswd .modal-body *{color:#999}#vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-heading{position:relative;top:-20px}#vtexIdContainer #vtexIdUI-change-pswd .modal-body{top:-10px;width:60%;margin:0 auto}#vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements{height:180px;padding:10px 0}#vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements ul li{margin:2px 0;width:50%;float:left}#vtexIdContainer #vtexIdUI-change-pswd .modal-footer{position:relative;bottom:130px;display:flex;justify-content:center}#vtexIdContainer #vtexIdUI-change-pswd input{border-width:0 0 1px;box-shadow:none;border-radius:0}#vtexIdContainer #vtexIdUI-change-pswd input:focus{border-bottom:1px solid #234eb9}#vtexIdContainer #vtexIdUI-form-classic-login *{background:0 0;overflow-y:inherit;font-size:12px}#vtexIdContainer a.dead-link.pull-right{color:#234eb9}#vtexIdContainer #vtexIdUI-form-classic-login .modal-header .vtexIdUI-heading{width:100%;float:left;margin:5px 0 0;padding-bottom:20px}#vtexIdContainer .vtexIdUI{box-shadow:none;position:fixed;top:150px;height:400px;width:780px;background:#fff;left:0;right:0;margin-left:auto;margin-right:auto}#vtexIdContainer #vtexIdUI-form-classic-login input{border-bottom:1px solid grey!important;border-radius:0;box-shadow:none;border:none;padding:0 10px}#vtexIdContainer #vtexIdUI-form-classic-login input:focus{border-bottom:1px solid #234eb9!important}#vtexIdContainer #vtexIdUI-email-confirmation{background-color:#fff;height:100%}#vtexIdContainer .vtexIdUI label{color:grey}#vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field{border-radius:7px;padding:7px 5px 2px;color:#333}#vtexIdContainer .vtexIdUI-confirm-email .modal-header{color:#333}#vtexIdContainer .vtexIdUI .modal-header{padding:50px 15px 0}}@media (max-width:998px){#vtexIdContainer>div.vtexIdUI{overflow-y:auto}#vtexIdContainer .vtexIdUI-show-app{z-index:9}#vtexIdContainer .vtexIdUI-classic-login{display:block;top:173px}#vtexIdContainer #vtexIdUI-auth-selector div,#vtexIdContainer .vtexIdUI .modal-footer,#vtexIdContainer .vtexIdUI .modal-header{background:0 0}#vtexIdContainer .vtexIdUI-heading span{font-size:0;height:0}#vtexIdContainer #vtexIdUI-form-classic-login{position:absolute;width:100%;top:-130px}#vtexIdContainer .vtexIdUI .modal-header{border:none}#vtexIdContainer #loginWithAccessKeyBtn i,#vtexIdContainer #loginWithUserAndPasswordBtn,#vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link,#vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,#vtexIdContainer .vtexIdUI .vtexid-icon-lock.bottom-icon,#vtexIdUI-main-content #vtexIdUI-auth-selector .modal-header .vtexIdUI-heading{display:none}#vtexIdContainer #vtexIdUI-form-classic-login *{background:0 0;overflow-y:inherit}#vtexIdContainer #vtexIdUI-form-classic-login .modal-header .vtexIdUI-heading{font-family:"Open Sans","Droid Sans",Tahoma,Arial,sans-serif;font-size:16px;width:100%;padding-bottom:20px}#vtexIdContainer .vtexIdUI .modal-footer{box-shadow:none;border:none}#vtexIdContainer #vtexIdUI-change-pswd{background-color:#fff;height:100%}#vtexIdContainer #vtexIdUI-change-pswd .modal-body *{color:#999}#vtexIdContainer #vtexIdUI-confirm-access-code,#vtexIdContainer #vtexIdUI-email-confirmation{background-color:#fff;height:100%;top:43px}#vtexIdContainer .vtexIdUI-close{z-index:10}#vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field{border:none;border-radius:7px;padding:7px 5px 2px;color:#333}#vtexIdContainer .vtexIdUI-confirm-email .modal-header{color:#333}#vtexIdContainer .vtexIdUI{position:fixed;top:0;height:100%!important;width:100%;margin-left:0;left:0;border:0}#vtexIdContainer .vtexIdUI .account-list,#vtexIdContainer .vtexIdUI .vtexIdUI-providers-list{display:flex;justify-content:center;flex-wrap:wrap}#vtexIdContainer #vtexIdUI-google-plus{display:flex;align-items:center;justify-content:center;height:50px;border:none;box-shadow:none;background-image:linear-gradient(to bottom,#fff,#e6e6e6);width:100%}#vtexIdContainer #vtexIdUI-google-plus:before{transform:scale(2);left:-18px;top:initial;margin:0}#vtexIdContainer ul.vtexIdUI-providers-list li{width:100%}#vtexIdContainer ul.vtexIdUI-providers-list li:first-child{flex:1 0 100%;text-align:center;margin-bottom:20px}#vtexIdContainer #vtexIdUI-form-classic-login h4 span{color:transparent}#vtexIdContainer #vtexIdUI-form-classic-login h4 span:before{content:"ENTRAR COM EMAIL E SENHA";color:grey;position:absolute;left:0;right:0}#vtexIdContainer #vtexIdUI-auth-selector{top:var(--deslocate-create-account)}#vtexIdContainer .vtexIdUI-back-link{top:-50px}#vtexIdContainer #vtexIdUI-classic-login .modal-footer{top:initial}#vtexIdContainer .vtexIdUI .modal-header .close{top:calc(8px - var(--deslocate-create-account))}#vtexIdContainer div#vtexIdUI-change-pswd .close{top:8px}#vtexIdContainer #vtexIdUI-main-content div:nth-child(2) .modal-header{padding:0}#vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning.alert-wrong-pswd{position:absolute;bottom:-37px}#vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning,#vtexIdContainer .alert.alert-info{position:absolute;background:#fff}#vtexIdContainer .alert.alert-info{bottom:-300px}#vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning{bottom:-280px}@media (max-height:330px){#launcher,.gtm-whatsapp-botao-rodape{display:none}}}
+:root {
+    --deslocate-create-account: 350px;
+  }
+  
+  .clearfix:before,
+  .clearfix:after,
+  .modal-header:before,
+  .modal-header:after,
+  .modal-footer:before,
+  .modal-footer:after {
+    content: "";
+    display: table;
+  }
+  
+  .clearfix:after,
+  .modal-header:after,
+  .modal-footer:after {
+    clear: both;
+  }
+  
+  #vtexIdContainer {
+    background-color: rgba(0, 0, 0, 0.8);
+    position: fixed;
+    z-index: 1000;
+  }
+  
+  #vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success,
+  #confirmLoginAccessKeyBtn,
+  #changePswdBtn {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+    border: #43c452 solid;
+    border-radius: 7px;
+    background-color: #43c452;
+    background-image: none;
+    margin: 0 auto;
+    width: 180px;
+    text-shadow: none;
+    box-shadow: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #vtexIdContainer .vtexIdUI-confirm-email .modal-footer .btn-success:hover,
+  #confirmLoginAccessKeyBtn:hover,
+  #changePswdBtn:hover {
+    border: #33a140 solid;
+    background-color: #33a140;
+  }
+  
+  #vtexIdContainer .vtexIdUI .alert {
+    bottom: -10px;
+    text-align: center;
+    border: none;
+  }
+  
+  #vtexIdContainer .vtexIdUI .alert span {
+    position: relative;
+  }
+  
+  #vtexIdContainer .vtexIdUI .alert span:after {
+    content: "*";
+    position: absolute;
+    left: -8px;
+    top: 0;
+  }
+  
+  #vtexIdContainer .vtexIdUI-back-link {
+    text-decoration: none;
+    outline: none;
+    margin-right: 6px;
+  }
+  
+  #vtexIdContainer .vtexIdUI-back-link:hover {
+    opacity: 0.4;
+  }
+  
+  #vtexIdContainer .vtexIdUI-close {
+    margin-right: 10px;
+  }
+  
+  #vtexIdContainer .vtexIdUI .vtexIdUI-user {
+    margin-bottom: 0;
+    display: none;
+  }
+  
+  #vtexIdContainer .vtexIdUI h4 {
+    margin: 0;
+  }
+  
+  #vtexIdContainer .vtexIdUI .info-why {
+    text-align: center;
+    margin-bottom: 16px;
+  }
+  
+  #vtexIdContainer .vtexIdUI .info-why span {
+    font-size: 14px;
+  }
+  
+  #vtexIdContainer .vtexid-password-requirements-description {
+    font-weight: normal;
+  }
+  
+  #vtexIdContainer .vtexid-password-requirements-list {
+    margin-left: 0;
+  }
+  
+  #vtexIdContainer .vtexIdUI .ng-binding {
+    line-height: 20px;
+    font-weight: 600;
+  }
+  
+  #vtexIdContainer div#vtexIdUI-change-pswd .modal-header {
+    padding: 50px 15px 0;
+  }
+  
+  #vtexIdContainer #vtexIdUI-confirm-access-code .alert {
+    position: relative;
+    padding: 5px 0;
+  }
+  
+  #vtexIdContainer #vtexIdUI-classic-login .modal-body .alert-info span,
+  #vtexIdContainer .modal-body .alert-warning span {
+    font-size: 11px;
+  }
+  
+  #vtexIdContainer #vtexIdUI-classic-login .modal-footer {
+    position: absolute;
+    width: 100%;
+    top: 315px;
+  }
+  
+  #vtexIdContainer .modal-header {
+    text-align: center;
+    background: #fff;
+    color: #fff;
+  }
+  
+  #vtexIdContainer .modal-header .close {
+    background: transparent;
+    font-size: 0;
+    border-radius: 0;
+    padding: 0;
+    line-height: 1;
+    position: absolute;
+    top: 4px;
+    left: auto;
+    right: -3px;
+  }
+  
+  #vtexIdContainer .modal-body {
+    position: relative;
+  }
+  
+  #saindo .modal-content .modal-body button {
+    font-size: 14px;
+    color: #fff;
+    font-weight: 600;
+  }
+  
+  #saindo .modal-content .modal-body button:first-child {
+    background-color: #234eb9;
+  }
+  
+  #saindo .modal-content .modal-body button:first-child:hover {
+    background-color: #223b76;
+  }
+  
+  #saindo .modal-content .modal-body button#sair:hover {
+    background-color: #c11515;
+  }
+  
+  /* CONFIGURAÇÕES EM COMUM */
+  #vtexIdContainer .vtexIdUI-heading {
+    color: #808080;
+    font-family: "Open Sans", "Droid Sans", Tahoma, Arial, sans-serif;
+    text-transform: uppercase;
+    font-size: 18px !important;
+    font-weight: normal;
+  }
+  
+  #vtexIdContainer a.dead-link.pull-right {
+    color: #234eb9;
+  }
+  
+  #vtexIdContainer a.dead-link.pull-right {
+    margin: -3px 0 0 0;
+  }
+  
+  #vtexIdContainer .vtexIdUI .modal-header .close,
+  #vtexIdContainer div#vtexIdUI-change-pswd .close {
+    border-radius: 50%;
+    border: 2px solid #fff;
+    width: 36px;
+    height: 36px;
+    font-size: 26px;
+    color: #6f6f6f;
+    background-color: #d3d3d3;
+    opacity: 0.7;
+  }
+  
+  #vtexIdContainer .vtexIdUI .modal-header .close:hover,
+  #vtexIdContainer div#vtexIdUI-change-pswd .close:hover {
+    opacity: 1;
+  }
+  
+  #vtexIdContainer #loginWithAccessKeyBtn,
+  #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn,
+  #vtexIdContainer #vtexIdUI-change-pswd .btn-success {
+    background: #234eb9;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 14px;
+    width: 100%;
+    height: 50px;
+    box-shadow: none;
+  }
+  
+  #vtexIdContainer #vtexIdUI-change-pswd .btn-success {
+    margin-top: 20px;
+    width: 250px;
+  }
+  
+  #vtexIdContainer #loginWithAccessKeyBtn:hover,
+  #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn:hover,
+  #vtexIdContainer #vtexIdUI-change-pswd .btn-success:hover {
+    background-color: #223b76;
+  }
+  
+  #vtexIdContainer .vtexIdUI-confirm-email .btn-success {
+    background-color: #fff;
+    text-shadow: none;
+    border-radius: 7px;
+  }
+  
+  #vtexIdContainer .vtexIdUI-back-link {
+    border-radius: 50%;
+    border: 2px solid #dbdbdb;
+    width: 34px;
+    height: 34px;
+    right: 2px;
+    top: -8px;
+    color: #bbbbbb;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #vtexIdContainer .vtexIdUI-back-link span {
+    display: none;
+  }
+  
+  #vtexIdContainer .vtexIdUI #vtexIdUI-google-plus {
+    box-shadow: none;
+    border-radius: 5px;
+    border: none;
+    color: #6d6d6d;
+    font-weight: normal;
+    font-size: 14px;
+    height: 50px;
+  }
+  
+  #vtexIdContainer .vtexIdUI #vtexIdUI-google-plus:hover {
+    background: #c0c0c0;
+  }
+  
+  #vtexIdContainer #vtexIdUI-google-plus:before {
+    font-family: "Font Awesome 5 Brands";
+    content: "\f1a0";
+    color: #234eb9;
+    background: conic-gradient(
+        from -45deg,
+        #ea4335 110deg,
+        #4285f4 90deg 180deg,
+        #34a853 180deg 270deg,
+        #fbbc05 270deg
+      )
+      73% 55%/150% 150% no-repeat;
+    background-clip: text;
+    -webkit-background-clip: text;
+    width: 25px;
+    color: transparent;
+    transform: scale(2.3);
+    font-size: 16px;
+    margin: 0px 30px;
+    position: relative;
+    transition: 0.2s;
+  }
+  
+  #vtexIdContainer #vtexIdUI-google-plus i.vtexid-icon-google-plus {
+    display: none;
+  }
+  
+  #vtexIdContainer .vtexIdUI .modal-footer {
+    display: flex;
+    justify-content: center;
+  }
+  
+  #vtexIdContainer #vtexIdUI-confirm-access-code {
+    background: #fff;
+    height: 100%;
+  }
+  
+  /* DESKTOP */
+  @media (min-width: 998px) {
+    #vtexIdContainer ul.vtexIdUI-providers-list li:nth-child(2) > button {
+      margin-top: 25px;
+    }
+  
+    #vtexIdContainer ul.vtexIdUI-providers-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      height: 304px;
+    }
+  
+    #vtexIdContainer ul.vtexIdUI-providers-list li {
+      width: 100%;
+    }
+  
+    #vtexIdContainer #loginWithAccessKeyBtn {
+      margin: 0;
+    }
+  
+    #vtexIdContainer .vtexIdUI #vtexIdUI-google-plus {
+      top: 0;
+      display: flex;
+      align-items: center;
+    }
+  
+    #vtexIdContainer ul.vtexIdUI-providers-list li:first-child {
+      order: 3;
+      position: absolute;
+      bottom: 10px;
+    }
+  
+    #vtexIdContainer input#access-code {
+      border-width: 0px 0px 1px 0;
+      box-shadow: none;
+    }
+  
+    #vtexIdContainer input#appendedInputButton {
+      border-width: 0px 0px 1px 0;
+      box-shadow: none;
+      margin: 50px 0 0 0;
+    }
+  
+    #vtexIdContainer div#vtexIdUI-classic-login {
+      width: 340px;
+      margin-left: 30px;
+    }
+  
+    #vtexIdContainer .vtexIdUI .vtexIdUI-confirm-email form {
+      width: 350px;
+      margin: 0 auto;
+    }
+  
+    #vtexIdContainer .vtexIdUI-classic-login {
+      display: block;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-header,
+    #vtexIdContainer .vtexIdUI .modal-footer {
+      background: none;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-header .close {
+      right: -40px;
+    }
+  
+    #vtexIdContainer div#vtexIdUI-change-pswd .close {
+      right: -5px;
+    }
+  
+    #vtexIdContainer .vtexIdUI-auth-code .modal-body {
+      margin-top: 30px;
+    }
+  
+    #vtexIdContainer div#vtexIdUI-auth-selector {
+      width: 340px;
+      left: 400px;
+    }
+  
+    #vtexIdContainer .vtexIdUI-heading span {
+      display: none;
+    }
+  
+    #vtexIdContainer div#vtexIdUI-auth-selector .vtexIdUI-heading:after {
+      content: "ACESSE COM SUA REDE SOCIAL";
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-header {
+      border: none;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-header .close:active,
+    #vtexIdContainer div#vtexIdUI-change-pswd .close:active {
+      outline: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-back-link {
+      display: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-close {
+      right: -30px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd {
+      background-color: #fff;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-body * {
+      color: #999;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexIdUI-heading {
+      position: relative;
+      top: -20px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-body {
+      top: -10px;
+      width: 60%;
+      margin: 0 auto;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements {
+      height: 180px;
+      padding: 10px 0;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .vtexid-password-requirements ul li {
+      margin: 2px 0 2px 0;
+      width: 50%;
+      float: left;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-footer {
+      position: relative;
+      bottom: 130px;
+      display: flex;
+      justify-content: center;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd input {
+      border-width: 0px 0px 1px 0;
+      box-shadow: none;
+      border-radius: 0;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd input:focus {
+      border-bottom: 1px solid #234eb9;
+    }
+  
+    #vtexIdContainer #loginWithAccessKeyBtn i {
+      display: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-auth-selector div {
+      background: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login * {
+      background: none;
+      overflow-y: inherit;
+    }
+  
+    #vtexIdContainer a.dead-link.pull-right {
+      color: #234eb9;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,
+    #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link {
+      display: none;
+    }
+  
+    #vtexIdContainer
+      #vtexIdUI-form-classic-login
+      .modal-header
+      .vtexIdUI-heading {
+      width: 100%;
+      float: left;
+      margin: 5px 0 0 0;
+      padding-bottom: 20px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login * {
+      font-size: 12px;
+    }
+  
+    #vtexIdContainer .vtexIdUI {
+      box-shadow: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login input {
+      border-bottom: 1px solid #808080 !important;
+      border-radius: 0;
+      box-shadow: none;
+      border: none;
+      padding: 0 10px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login input:focus {
+      border-bottom: 1px solid #234eb9 !important;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-footer {
+      border: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-email-confirmation {
+      background-color: #fff;
+      height: 100%;
+    }
+  
+    #vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close {
+      display: none;
+    }
+  
+    #vtexIdContainer #loginWithUserAndPasswordBtn {
+      display: none;
+    }
+  
+    #vtexIdContainer .vtexIdUI label {
+      color: #808080;
+    }
+  
+    #vtexIdContainer .vtexIdUI-close {
+      display: block;
+    }
+  
+    #vtexIdContainer .vtexIdUI .vtexid-icon-lock.bottom-icon {
+      display: none;
+    }
+  
+    #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
+      border-radius: 7px;
+      padding: 7px 5px 2px 5px;
+      color: #333;
+    }
+  
+    #vtexIdContainer .vtexIdUI-confirm-email .modal-header {
+      color: #333;
+    }
+  
+    #vtexIdContainer .vtexIdUI {
+      position: fixed;
+      top: 150px;
+      height: 400px;
+      width: 780px;
+      background: #fff;
+      left: 0;
+      right: 0;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-header {
+      padding: 50px 15px 0;
+    }
+  }
+  
+  /* MOBILE */
+  @media (max-width: 998px) {
+    #vtexIdContainer > div.vtexIdUI {
+      overflow-y: auto;
+    }
+  
+    #vtexIdContainer .vtexIdUI-show-app {
+      z-index: 9;
+    }
+  
+    #vtexIdContainer .vtexIdUI-classic-login {
+      display: block;
+      top: 173px;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-header,
+    #vtexIdContainer .vtexIdUI .modal-footer {
+      background: none;
+    }
+  
+    #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
+      border: none;
+    }
+  
+    #vtexIdContainer .vtexIdUI-heading span {
+      font-size: 0;
+      height: 0;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login {
+      position: absolute;
+      width: 100%;
+      top: -130px;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-header {
+      border: none;
+    }
+  
+    #vtexIdContainer #loginWithAccessKeyBtn i,
+    #vtexIdUI-main-content
+      #vtexIdUI-auth-selector
+      .modal-header
+      .vtexIdUI-heading {
+      display: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-auth-selector div {
+      background: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login * {
+      background: none;
+      overflow-y: inherit;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-close,
+    #vtexIdContainer #vtexIdUI-form-classic-login .vtexIdUI-back-link {
+      display: none;
+    }
+  
+    #vtexIdContainer
+      #vtexIdUI-form-classic-login
+      .modal-header
+      .vtexIdUI-heading {
+      font-family: "Open Sans", "Droid Sans", Tahoma, Arial, sans-serif;
+      font-size: 16px;
+      width: 100%;
+      padding-bottom: 20px;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-footer {
+      box-shadow: none;
+      border: none;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd {
+      background-color: #fff;
+      height: 100%;
+    }
+  
+    #vtexIdContainer #vtexIdUI-change-pswd .modal-body * {
+      color: #999;
+    }
+  
+    #vtexIdContainer #vtexIdUI-email-confirmation,
+    #vtexIdContainer #vtexIdUI-confirm-access-code {
+      background-color: #fff;
+      height: 100%;
+      top: 43px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-email-confirmation .vtexIdUI-close {
+      display: none;
+    }
+  
+    #vtexIdContainer #loginWithUserAndPasswordBtn {
+      display: none;
+    }
+  
+    #vtexIdContainer .vtexIdUI-close {
+      z-index: 10;
+    }
+  
+    #vtexIdContainer .vtexIdUI .vtexid-icon-lock.bottom-icon {
+      display: none;
+    }
+  
+    #vtexIdContainer .vtexIdUI-confirm-email .vtexIdUI-email-field {
+      border-radius: 7px;
+      padding: 7px 5px 2px 5px;
+      color: #333;
+    }
+  
+    #vtexIdContainer .vtexIdUI-confirm-email .modal-header {
+      color: #333;
+    }
+  
+    #vtexIdContainer .vtexIdUI {
+      position: fixed;
+      top: 0;
+      height: 100% !important;
+      width: 100%;
+      margin-left: 0;
+      left: 0;
+      border: 0;
+    }
+  
+    #vtexIdContainer .vtexIdUI .vtexIdUI-providers-list,
+    #vtexIdContainer .vtexIdUI .account-list {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+  
+    #vtexIdContainer #vtexIdUI-google-plus {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 50px;
+      width: 50px;
+      border: none;
+      box-shadow: none;
+      background-image: linear-gradient(to bottom, #ffffff, #e6e6e6);
+      width: 100%;
+    }
+  
+    #vtexIdContainer #vtexIdUI-google-plus:before {
+      transform: scale(2);
+      left: -18px;
+      top: initial;
+      margin: 0;
+    }
+  
+    #vtexIdContainer ul.vtexIdUI-providers-list li {
+      width: 100%;
+    }
+  
+    #vtexIdContainer ul.vtexIdUI-providers-list li:first-child {
+      flex: 1 0 100%;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login h4 span {
+      color: transparent;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login h4 span:before {
+      content: "ENTRAR COM EMAIL E SENHA";
+      color: #808080;
+      position: absolute;
+      left: 0px;
+      right: 0;
+    }
+  
+    #vtexIdContainer #vtexIdUI-auth-selector {
+      top: var(--deslocate-create-account);
+    }
+  
+    #vtexIdContainer .vtexIdUI-back-link {
+      top: -50px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-classic-login .modal-footer {
+      top: initial;
+    }
+  
+    #vtexIdContainer .vtexIdUI .modal-header .close {
+      top: calc(8px - var(--deslocate-create-account));
+    }
+  
+    #vtexIdContainer div#vtexIdUI-change-pswd .close {
+      top: 8px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-main-content div:nth-child(2) .modal-header {
+      padding: 0;
+    }
+  
+    #vtexIdContainer
+      #vtexIdUI-form-classic-login
+      .alert.alert-warning.alert-wrong-pswd {
+      position: absolute;
+      bottom: -37px;
+    }
+  
+    #vtexIdContainer .alert.alert-info,
+    #vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning {
+      position: absolute;
+      background: #fff;
+    }
+  
+    #vtexIdContainer .alert.alert-info {
+      bottom: -300px;
+    }
+  
+    #vtexIdContainer #vtexIdUI-form-classic-login .alert.alert-warning {
+      bottom: -280px;
+    }
+  
+    @media (max-height: 330px) {
+      .gtm-whatsapp-botao-rodape,
+      #launcher {
+        display: none;
+      }
+    }
+  }
+  
