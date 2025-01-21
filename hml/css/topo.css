@@ -2306,3 +2306,7 @@ body div#ajaxBusy {
 .search-options .search-options-input {
   padding-left: 10%;
 }
+
+#beon-search {
+  display: none;
+}
