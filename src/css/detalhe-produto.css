@@ -684,6 +684,12 @@ article section.tab-content {
   padding-top: 2%;
 }
 
+@media (min-width: 1281px) and (max-width: 1366px) {
+  #modalCompra{
+    width: 27%;
+  }
+}
+
 .tituloInstalacao {
   display: flex;
   justify-content: center;
