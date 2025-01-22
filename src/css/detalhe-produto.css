@@ -684,7 +684,7 @@ article section.tab-content {
   padding-top: 2%;
 }
 
-@media (min-width: 1281px) and (max-width: 1366px) {
+@media (min-width: 1281px) and (max-width: 1720px) {
   #modalCompra{
     width: 27%;
   }
