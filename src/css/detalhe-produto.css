@@ -1707,7 +1707,7 @@ fieldset#beneficios legend {
   border-radius: 8px;
   background-color: #eef7ff;
   padding: 16px 16px 16px 5px;
-  margin: 20px auto;
+  margin: 5px auto;
 }
 
 .card-left-instalacao {
@@ -1781,7 +1781,9 @@ fieldset#beneficios legend {
   .card-left-instalacao {
     padding-right: 10px;
   }
-
+  .product-qd-v1-price {
+    padding-top: 0px !important;
+  }
 }
 
 @media (min-width: 1281px) and (max-width: 1366px) {

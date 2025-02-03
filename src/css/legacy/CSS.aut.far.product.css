@@ -659,7 +659,7 @@ body.qd-product-unavailable
   }
 }
 .product-qd-v1-sku-selection-box .product-qd-v1-price {
-  padding-bottom: 20px;
+  padding-bottom: 0px;
 }
 body.qd-product-unavailable
   .product-qd-v1-sku-selection-box
