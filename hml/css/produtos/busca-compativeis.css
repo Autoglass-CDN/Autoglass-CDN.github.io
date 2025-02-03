@@ -1,5 +1,5 @@
 .veiculos-compativeis-search {
-    margin: 15px 0 auto;
+    margin: 0 0 auto;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -7,7 +7,7 @@
     max-width: 360px;
     padding-top: 10px;
   }
-  
+
   .veiculos-compativeis-search__title {
     font-size: 12px;
     color: white;
@@ -19,16 +19,16 @@
     align-items: center;
     justify-content: center;
   }
-  
+
   .veiculos-compativeis-search__search-box {
     margin: 10px 0;
   }
-  
+
   .veiculos-compativeis-search .veiculos-compativeis-search__search-input {
     display: flex;
     align-items: center;
   }
-  
+
   .veiculos-compativeis-search .veiculos-compativeis-search__search-input input {
     outline: none;
     padding: 10px 15px;
@@ -40,18 +40,18 @@
     transition: border 500ms;
     min-height: 55px;
   }
-  
+
   .veiculos-compativeis-search
     .veiculos-compativeis-search__search-input
     .search-icon {
     line-height: 1;
     margin-left: -44px;
   }
-  
+
   .veiculos-compativeis-search__search-suggestions {
     margin-top: 5px;
   }
-  
+
   .veiculos-compativeis-search__search-suggestions
     .veiculos-compativeis__content-compativel-link {
     display: flex;
@@ -61,7 +61,7 @@
     padding: 10px 0 10px 0;
     text-decoration: underline;
   }
-  
+
   .veiculos-compativeis-search__search-suggestions
     .veiculos-compativeis__content-compativel-link
     > p {
@@ -70,7 +70,7 @@
     word-break: keep-all;
     font-weight: bold;
   }
-  
+
   .veiculos-compativeis-search__search-suggestions
     .veiculos-compativeis__content-compativel-link
     > div {
@@ -78,43 +78,43 @@
     flex-wrap: wrap;
     justify-content: end;
   }
-  
+
   .veiculos-compativeis-search__search-suggestions
     .veiculos-compativeis-search__link {
     text-align: end;
     padding: 5px;
   }
-  
+
   .veiculos-compativeis-search__search-suggestions
     .veiculos-compativeis-search__link
     a {
     text-decoration: underline !important;
   }
-  
+
   .veiculos-compativeis-search__search-suggestions
     .veiculos-compativeis-search__disclaimer {
     padding: 5px;
     font-weight: 600;
     color: var(--danger);
   }
-  
+
   @media (min-width: 1200px) {
     .veiculos-compativeis-search {
       max-width: 420px;
     }
   }
-  
+
   @media (max-width: 992px) {
     .veiculos-compativeis-search.desktop {
       display: none !important;
     }
-  
+
     .veiculos-compativeis-search.mobile {
       padding: 20px;
       margin: 0 auto;
     }
   }
-  
+
   @media (min-width: 992px) {
     .veiculos-compativeis-search.desktop {
       display: flex;
@@ -123,24 +123,24 @@
       display: none;
     }
   }
-  
+
   .veiculos-compativeis-search.desktop {
     position: relative;
     z-index: 1;
   }
-  
+
   /* .veiculos-compativeis-search.mobile {
     padding: 20px;
     margin: 0 auto;
   } */
-  
+
   @media (max-width: 600px) {
     .veiculos-compativeis-search.mobile {
       max-width: 100%;
       width: 100%;
     }
   }
-  
+
   .spinner-compatibilidade {
     width: 40px;
     height: 40px;
@@ -150,7 +150,7 @@
     animation: spin 1s linear infinite;
     margin: 20px auto;
   }
-  
+
   @keyframes spin {
     0% {
       transform: rotate(0deg);
@@ -159,4 +159,3 @@
       transform: rotate(360deg);
     }
   }
-  
