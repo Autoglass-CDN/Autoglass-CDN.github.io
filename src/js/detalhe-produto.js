@@ -569,10 +569,12 @@ sectionCollapseInit(),
 
     $(".card-right-instalacao, .card-content-instalacao").click(toggleInstallOption);
       $(".product-qd-v1-buy-button .buy-button").click(function () {
-        if(document.getElementById("install-option").checked == false)
-          window.location.href = _;
+        document.getElementById("install-option").checked == false
+          ? window.location.href = _
+          : window.location.href = urlComInstalacao;
       }),
       $(document).ready(function () {
+        document.getElementById("install-option").checked = true;
         $(".botao-compre-whatsapp").click(function () {
           let a = `Ol\xe1, estou na p\xe1gina desse produto e gostaria de compr\xe1-lo: ${window.location.href}`;
           window
