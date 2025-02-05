@@ -545,7 +545,7 @@ sectionCollapseInit(),
       c[0] +
       "&qty=1&seller=1&redirect=true&" +
       readCookie("VTEXSC");
-    let urlComInstalacao =
+      let urlComInstalacao =
         _ +
         "&sku=" +
         b +
@@ -554,10 +554,12 @@ sectionCollapseInit(),
         if(y && b){
           if(y < "0,01"){
             $(".valorComInstalacao").hide();
+            document.getElementById("install-option").checked = true;
             $(".titulo-instalacao-gratis").show();
             $(".titulo-valor-instalacao").hide();
           }else{
             document.getElementById("valorComInstalacao").innerHTML = y
+            document.getElementById("install-option").checked = true;
           }
         }else{
           $(".card-instalacao").hide();
@@ -581,7 +583,6 @@ sectionCollapseInit(),
               window.location.href = _;
           }),
       $(document).ready(function () {
-        document.getElementById("install-option").checked = true;
         $(".botao-compre-whatsapp").click(function () {
           let a = `Ol\xe1, estou na p\xe1gina desse produto e gostaria de compr\xe1-lo: ${window.location.href}`;
           window
