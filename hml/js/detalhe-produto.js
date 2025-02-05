@@ -546,33 +546,40 @@ sectionCollapseInit(),
       "&qty=1&seller=1&redirect=true&" +
       readCookie("VTEXSC");
     let urlComInstalacao =
-    _ +
-    "&sku=" +
-    b +
-    "&qty=1&seller=1&redirect=true&" +
-    readCookie("VTEXSC");
-    if(y < "0,01"){
-      document.getElementById("titulo-preco-modal").innerHTML ="Gr\xe1tis!";
-      document.getElementById("titulo-preco-modal").classList.add("promocaoGratis");
-    }else{
-      document.getElementById("valorComInstalacao").innerHTML = y
-    }
-    function toggleInstallOption() {
-      const installOption = document.getElementById("install-option");
-      const buyButton = $(".product-qd-v1-buy-button .buy-button");
+        _ +
+        "&sku=" +
+        b +
+        "&qty=1&seller=1&redirect=true&" +
+        readCookie("VTEXSC");
+        if(y && b){
+          if(y < "0,01"){
+            $(".valorComInstalacao").hide();
+            $(".titulo-instalacao-gratis").show();
+            $(".titulo-valor-instalacao").hide();
+          }else{
+            document.getElementById("valorComInstalacao").innerHTML = y
+          }
+        }else{
+          $(".card-instalacao").hide();
+          document.getElementById("install-option").checked == false;
+        }
+        function toggleInstallOption() {
+          const installOption = document.getElementById("install-option");
+          const buyButton = $(".product-qd-v1-buy-button .buy-button");
 
-      installOption.checked = !installOption.checked;
+          installOption.checked = !installOption.checked;
 
-      const hrefValue = installOption.checked ? urlComInstalacao : _;
-      buyButton.attr("href", hrefValue);
-    }
+          const hrefValue = installOption.checked ? urlComInstalacao : _;
+          buyButton.attr("href", hrefValue);
+        }
 
-    $(".card-right-instalacao, .card-content-instalacao").click(toggleInstallOption);
-      $(".product-qd-v1-buy-button .buy-button").click(function () {
-        document.getElementById("install-option").checked == false
-          ? window.location.href = _
-          : window.location.href = urlComInstalacao;
-      }),
+        $(".card-right-instalacao, .card-content-instalacao").click(toggleInstallOption);
+          $(".product-qd-v1-buy-button .buy-button").click(function () {
+            if(document.getElementById("install-option").checked == true)
+              window.location.href = urlComInstalacao;
+            else
+              window.location.href = _;
+          }),
       $(document).ready(function () {
         document.getElementById("install-option").checked = true;
         $(".botao-compre-whatsapp").click(function () {
