@@ -26,7 +26,7 @@ const device = {
   desktop: ".desktop",
   mobile: ".mobile",
 };
-const numeroWhatsAppAG = "552732032535";
+const numeroWhatsAppAG = "552732032540";
 const linkEncurtado = "https://bit.ly/43u3oa6";
 const numeroWhatsAppFormatadoAG = "(27) 3203-2535";
 const urlWhatsAppApi = "https://wa.me/";
