@@ -10905,7 +10905,7 @@ String.prototype.trim ||
   };
 })(jQuery);
 document.addEventListener("DOMContentLoaded", function () {
-  const duplicateLink = document.querySelector('link[href="https://dev2autoglass.myvtex.com/institucional"]');
+  const duplicateLink = document.querySelector('link[href="https://hml.autoglassonline.com.br/institucional"]');
 
   if (duplicateLink) {
       duplicateLink.remove();
