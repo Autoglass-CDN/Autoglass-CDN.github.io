@@ -8,20 +8,6 @@
 
 <script async="" src="https://autoglass-cdn.github.io/hml/js/policies/header.js"></script>
 
-<script>
-    const currentUrl = window.location.href;
-
-    const canonicalUrl = currentUrl.endsWith('/')
-        ? currentUrl.slice(0, -1)
-        : currentUrl;
-
-    const canonicalLink = document.createElement('link');
-    canonicalLink.rel = 'canonical';
-    canonicalLink.href = canonicalUrl;
-
-    document.head.appendChild(canonicalLink);
-</script>
-
 <div class="topo">
     <div class="container">
         <div class="geo-picker">
