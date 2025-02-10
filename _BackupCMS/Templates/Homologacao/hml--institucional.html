@@ -9,6 +9,19 @@
     <head>
         <vtex:contentPlaceHolder id="qd_head" />
         <vtex:metaTags />
+        <script>
+            const currentUrl = window.location.href;
+        
+            const canonicalUrl = currentUrl.endsWith('/')
+                ? currentUrl.slice(0, -1)
+                : currentUrl;
+        
+            const canonicalLink = document.createElement('link');
+            canonicalLink.rel = 'canonical';
+            canonicalLink.href = canonicalUrl;
+        
+            document.head.appendChild(canonicalLink);
+        </script>
         <vtex:contentPlaceHolder id="SEO_link_alternate" />
         <link rel="shortcut icon" href="/hml/autoglass-favicon.ico" />
         <title><vtex.cmc:productPageTitle /></title>
