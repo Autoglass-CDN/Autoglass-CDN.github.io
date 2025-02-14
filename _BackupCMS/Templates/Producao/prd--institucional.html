@@ -9,6 +9,19 @@
     <head>
         <vtex:contentPlaceHolder id="qd_head" />
         <vtex:metaTags />
+        <script>
+            const currentUrl = window.location.href;
+        
+            const canonicalUrl = currentUrl.endsWith('/')
+                ? currentUrl.slice(0, -1)
+                : currentUrl;
+        
+            const canonicalLink = document.createElement('link');
+            canonicalLink.rel = 'canonical';
+            canonicalLink.href = canonicalUrl;
+        
+            document.head.appendChild(canonicalLink);
+        </script>
         <vtex:contentPlaceHolder id="SEO_link_alternate" />
         <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
         <title><vtex.cmc:productPageTitle /></title>
@@ -39,15 +52,15 @@
                     </div>
                 </div>
 
-                <div class="row">
+                <main class="row">
                     <!-- Sidebar -->
-                    <div
+                    <aside
                         class="col-xs-12 col-sm-4 col-md-3 institucional-qd-v1-side-menu-wrap"
                     >
                         <div class="institucional-qd-v1-navigator">
                             <vtex.cmc:prdInstitucionalMenuLateral />
                         </div>
-                    </div>
+                    </aside>
                     <!-- Sidebar -->
 
                     <div class="institucional-qd-v1-side-menu-wrap-close"></div>
@@ -97,7 +110,7 @@
                         </div>
                     </div>
                     <!-- Institutional content -->
-                </div>
+                </main>
             </div>
 
             <!-- Footer -->
