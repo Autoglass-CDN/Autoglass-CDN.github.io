@@ -10904,3 +10904,10 @@ String.prototype.trim ||
     filtraItensPartirLocalStorage();
   };
 })(jQuery);
+document.addEventListener("DOMContentLoaded", function () {
+  const duplicateLink = document.querySelector('link[href="https://hml.autoglassonline.com.br/institucional"]');
+
+  if (duplicateLink) {
+      duplicateLink.remove();
+  }
+});

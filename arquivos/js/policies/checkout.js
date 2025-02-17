@@ -367,7 +367,7 @@
 
   async function loadPolicies() {
     return fetch(
-      "https://autoglass-cdn.github.io/src/js/policies/policies.json"
+      "https://autoglass-cdn.github.io/arquivos/js/policies/policies.json"
     )
       .then((response) => response.json())
       .catch((error) => console.log(error));

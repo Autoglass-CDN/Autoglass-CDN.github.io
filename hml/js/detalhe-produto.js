@@ -545,153 +545,43 @@ sectionCollapseInit(),
       c[0] +
       "&qty=1&seller=1&redirect=true&" +
       readCookie("VTEXSC");
-    function C() {
-      $("body").append(`
-  <div id="abrirModal">
-  </div>`),
-        $("#abrirModal").append(`
-    <div id="fadeModalInstalacao">
-      <div id="modalCompra">
-        <div class="containerTituloInstalacao">
-          <div class="tituloInstalacao">
-            <h1> Deseja incluir a instala\xe7\xe3o do produto? </h1>
-            <div class="exit-button">\xd7</div>
-          </div>
-        </div>
-        <div id="containers">
-          <div id="mobileBlocoDois">
-            <fieldset class="containersModalCompra" id="container-compraComInstalacao">
-              <div id="headerCompraComInstalacao">
-                <div class="inputLabelComInstalacao">
-                  <label for="inputComInstalacao">Com Instala\xe7\xe3o</label>
-                  <input type="radio" id="inputComInstalacao" name="inputRadioInstalacao" value="ComInstalacao" checked>
-                </div>
-                <span id="descricao"> Na loja ou em casa</span>
-              </div>
-              <div class="secao-itens">
-                <ul class="lista-beneficios">
-                  <li><span>✔</span>Garantia de at\xe9 1 ano</li>
-                  <li><span>✔</span>Lojas em todo o Brasil</li>
-                  <li><span>✔</span>Equipe especializada</li>
-                  <li><span>✔</span>Praticidade e comodidade</li>
-                </ul>
-                <h3 id="titulo-preco-modal">Apenas
-                  <span id="precoComInstalacao">R$
-                    <span id="valorComInstalacao">-</span>
-                  </span>
-                </h3>
-              </div>
-              <div class="recomendado">
-                  Recomendado
-              </div>
-            </fieldset>
-          </div>
-          <div id="mobileBlocoUm">
-            <fieldset class="containersModalCompra" id="container-compraSemInstalacao">
-              <div class="inputLabelSemInstalacao">
-                <label for="inputSemInstalacao">Sem Instala\xe7\xe3o</label>
-                <input type="radio" id="inputSemInstalacao" name="inputRadioInstalacao" value="SemInstalacao">
-              </div>
-              <span id="descricao-sem-instalacao">Retire ou receba</span>
-              <div class="secao-itens-sem-instalacao">
-                <ul class="lista-beneficios-sem-instalacao">
-                  <li><span>✔</span>Garantia de at\xe9 3 meses</li>
-                  <li><span>✔</span>Lojas em todo o Brasil</li>
-                  <li><span>✔</span>Qualidade Autoglass</li>
-                </ul>
-              </div>
-            </fieldset>
-          </div>
-
-        </div>
-        <div class="containerInfoInsumo">
-          <p id="infoInsumo">*Valor referente aos insumos de instala\xe7\xe3o</p>
-        </div>
-        <div class="containerGridBotao">
-          <div class="containersModalCompra" >
-            <a id="botaoVoltarCarrinho" href="#">Voltar</a>
-          </div>
-          <div class="containersModalCompra" id="containerButton">
-            <a id="botaoContinuarCarrinho" href="#">Continuar</a>
-          </div>
-        </div>
-      <div class="clearfix"></div>
-    </div>
-       `),
-        b &&
-          y &&
-          (y < "0,01"
-            ? ((document.getElementById("titulo-preco-modal").innerHTML =
-                "Gr\xe1tis!"),
-              document
-                .getElementById("titulo-preco-modal")
-                .classList.add("promocaoGratis"))
-            : (document.getElementById("valorComInstalacao").innerHTML = y));
-      let a =
+      let urlComInstalacao =
         _ +
         "&sku=" +
         b +
         "&qty=1&seller=1&redirect=true&" +
         readCookie("VTEXSC");
-      window.screen.width < 570 &&
-        ($("#mobileBlocoDois #beneficiosMobile").css("display", "block"),
-        $(document).ready(function () {
-          $("#container-compraSemInstalacao").click(function () {
-            $(".inputLabelComInstalacao input").removeAttr("checked"),
-              $("#inputSemInstalacao").attr("checked", !0),
-              $(".containersModalCompra").css("color", "#aeaeae"),
-              $(".containersModalCompra#container-compraSemInstalacao").css(
-                "color",
-                "red"
-              ),
-              $("#botaoContinuarCarrinho").attr("href", _);
-          });
-        }),
-        $("#container-compraComInstalacao").click(function () {
-          $("#inputSemInstalacao").prop("checked", !1),
-            $("#inputComInstalacao").attr("checked", !0),
-            $(".containersModalCompra").css("color", "#aeaeae"),
-            $(".containersModalCompra#container-compraComInstalacao").css(
-              "color",
-              "#43c452"
-            ),
-            $("#botaoContinuarCarrinho").attr("href", a);
-        })),
-        $("#fadeModalInstalacao #modalCompra").addClass("filled"),
-        $("#fadeModalInstalacao, .exit-button").click(function () {
-          $("#fadeModalInstalacao #modalCompra").fadeOut(300),
-            $(this).fadeOut(),
-            $("#fadeModalInstalacao div").remove();
-        }),
-        $("#fadeModalInstalacao #modalCompra").click(function (a) {
-          a.stopPropagation();
-        }),
-        $("#fadeModalInstalacao, #botaoVoltarCarrinho").click(function () {
-          $("#fadeModalInstalacao #modalCompra").fadeOut(300),
-            $(this).fadeOut(),
-            $("#fadeModalInstalacao div").remove();
-        }),
-        $("#botaoContinuarCarrinho").attr("href", a),
-        $(document).ready(function () {
-          $('input:radio[name="inputRadioInstalacao"]').change(function () {
-            $(".containersModalCompra").css("color", "#aeaeae"),
-              $("#inputComInstalacao").is(":checked")
-                ? $("#botaoContinuarCarrinho").attr("href", a)
-                : $("#inputSemInstalacao").is(":checked") &&
-                  ($(
-                    ".containersModalCompra#container-compraSemInstalacao"
-                  ).css("color", "red"),
-                  $("#botaoContinuarCarrinho").attr("href", _));
-          });
-        });
-    }
-    b && y
-      ? $(".product-qd-v1-buy-button .buy-button").on("click", function () {
-          C(), $("#modalCompra #botaoContinuarCarrinho").focus();
-        })
-      : $(".product-qd-v1-buy-button .buy-button").click(function () {
-          window.location.href = _;
-        }),
+        if(y && b){
+          if(y < "0,01"){
+            $(".valorComInstalacao").hide();
+            document.getElementById("install-option").checked = true;
+            $(".titulo-instalacao-gratis").show();
+            $(".titulo-valor-instalacao").hide();
+          }else{
+            document.getElementById("valorComInstalacao").innerHTML = y
+            document.getElementById("install-option").checked = true;
+          }
+        }else{
+          $(".card-instalacao").hide();
+          document.getElementById("install-option").checked == false;
+        }
+        function toggleInstallOption() {
+          const installOption = document.getElementById("install-option");
+          const buyButton = $(".product-qd-v1-buy-button .buy-button");
+
+          installOption.checked = !installOption.checked;
+
+          const hrefValue = installOption.checked ? urlComInstalacao : _;
+          buyButton.attr("href", hrefValue);
+        }
+
+        $(".card-right-instalacao, .card-content-instalacao").click(toggleInstallOption);
+          $(".product-qd-v1-buy-button .buy-button").click(function () {
+            if(document.getElementById("install-option").checked == true)
+              window.location.href = urlComInstalacao;
+            else
+              window.location.href = _;
+          }),
       $(document).ready(function () {
         $(".botao-compre-whatsapp").click(function () {
           let a = `Ol\xe1, estou na p\xe1gina desse produto e gostaria de compr\xe1-lo: ${window.location.href}`;

@@ -2,6 +2,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const metaDescription = document.querySelector('meta[name="description"]');
+  
+      if (metaDescription) {
+              metaDescription.setAttribute("content", "Sistema ADAS: entenda como essa tecnologia inteligente otimiza a segurança no trânsito e garanta a calibração perfeita com a Autoglass. Saiba mais!");
+          }
+      });
+</script>
+
 <link
     rel="stylesheet"
     href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.qd-bootstrap-common.css"
@@ -53,6 +63,16 @@
     defer=""
     src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"
 ></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const metaLanguage = document.querySelector('meta[name="language"]');
+  
+      if (metaLanguage) {
+          metaLanguage.remove();
+      }
+     });
+</script>
 
 <!-- Segment Pixel - RT - Autoglass - DO NOT MODIFY -->
 <script

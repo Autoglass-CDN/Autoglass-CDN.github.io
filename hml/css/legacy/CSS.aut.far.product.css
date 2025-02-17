@@ -175,36 +175,36 @@
     margin: 0 auto;
     min-height: unset;
   }
-  
+
   .teste-opcionais {
     margin: 3% 14%;
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
-  
+
   .lista-opcionais {
     font-weight: normal;
   }
-  
+
   .lista-opcionais::before {
     content: "\f00c";
     font-family: fontAwesome;
     color: #2d4f9e;
     padding-right: 5px;
   }
-  
+
   .mais-especificacoes {
     color: #2d4f9e;
     font-weight: bold;
   }
-  
+
   .mais-especificacoes::after {
     content: "\f107";
     font-family: fontAwesome;
     color: #2d4f9e;
     padding-left: 5px;
   }
-  
+
   @media screen and (max-width: 1199px) {
     .product-qd-v1-image {
       max-width: calc(430px + 40px);
@@ -659,7 +659,7 @@
     }
   }
   .product-qd-v1-sku-selection-box .product-qd-v1-price {
-    padding-bottom: 20px;
+    padding-bottom: 0px;
   }
   body.qd-product-unavailable
     .product-qd-v1-sku-selection-box
@@ -975,7 +975,7 @@
   .qd-product-unavailable .product-qd-v1-buy-button {
     width: 100%;
   }
-  
+
   .product-qd-v1-buy-button .buy-button,
   .container-buy-button .buy-button,
   .container-compre-whatsapp .botao-compre-whatsapp {
@@ -995,16 +995,16 @@
     float: right;
     border-radius: 3px;
   }
-  
+
   .texto-botao-compre-whatsapp {
     width: 100%;
   }
-  
+
   /* .container-compre-whatsapp {
     overflow: hidden;
     margin-top: 10px;
   } */
-  
+
   .container-compre-whatsapp .botao-compre-whatsapp {
     /* border: #43c452 solid;
     border-width: 2px;
@@ -1028,7 +1028,7 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .product-qd-v1-buy-button .buy-button:hover,
   .product-qd-v1-buy-button .buy-button:focus,
   .container-compre-whatsapp .botao-compre-whatsapp:hover,
@@ -1036,12 +1036,12 @@
     background: #33a140;
     border-color: #33a140;
   }
-  
+
   .container-compre-whatsapp .botao-compre-whatsapp:hover,
   .container-compre-whatsapp .botao-compre-whatsapp:focus {
     color: #fff;
   }
-  
+
   .product-qd-v1-buy-button .buy-button:active {
     background: #33a140;
     color: #fff;
@@ -1071,7 +1071,7 @@
     font-size: 16px;
     margin-right: 20px;
   }
-  
+
   .container-compre-whatsapp .botao-compre-whatsapp::before {
     content: "\f232";
     display: inline-block;
@@ -1091,18 +1091,18 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .container-compre-whatsapp .botao-compre-whatsapp:after {
     font-size: 16px;
     content: "Compre via WhatsApp";
     font-weight: bold;
   }
-  
+
   .product-qd-v1-buy-button .buy-button:after {
     font-size: 16px;
     content: "Comprar";
   }
-  
+
   .product-qd-v1-buy-button.buy-button .buy-button {
     border: #43c452 solid;
     border-width: 2px;
@@ -2824,17 +2824,17 @@
     content: "Comprar";
     padding-left: 10px;
   }
-  
+
   .product-qd-v1-block-above-image .product-qd-v1-name {
     font-size: 21px;
     color: #333333;
   }
-  
+
   .product-qd-v1-float-bar span.product-qd-v1-name,
   .product-qd-v1-block-above-image span.product-qd-v1-name {
     font-weight: 600;
   }
-  
+
   .product-qd-v1-block-above-image .product-qd-v1-ref-code {
     font-size: 12px;
     color: #757575;
@@ -3818,7 +3818,7 @@
   }
   @media (min-width: 768px) {
   }
-  
+
   .product-qd-v1-installation .accessories-qd-v1-item ul {
     margin-block-start: 0;
     margin-block-end: 0;
@@ -3904,4 +3904,3 @@
   .product-qd-v1-installation .mz-button__installation:active {
     color: #fff;
   }
-  
