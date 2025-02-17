@@ -1,1 +1,573 @@
-!function(e){var s={};function t(l){if(s[l])return s[l].exports;var a=s[l]={i:l,l:!1,exports:{}};return e[l].call(a.exports,a,a.exports,t),a.l=!0,a.exports}t.m=e,t.c=s,t.d=function(e,s,l){t.o(e,s)||Object.defineProperty(e,s,{enumerable:!0,get:l})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,s){if(1&s&&(e=t(e)),8&s)return e;if(4&s&&"object"==typeof e&&e&&e.__esModule)return e;var l=Object.create(null);if(t.r(l),Object.defineProperty(l,"default",{enumerable:!0,value:e}),2&s&&"string"!=typeof e)for(var a in e)t.d(l,a,function(s){return e[s]}.bind(null,a));return l},t.n=function(e){var s=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(s,"a",s),s},t.o=function(e,s){return Object.prototype.hasOwnProperty.call(e,s)},t.p="",t(t.s=0)}([function(e,s){!function(){const e=function(){return{buildMapFilters:t,buildURL:function(e,a,c){const i=s();let n="";if(a.asyncSearchTerm)n+=location.origin,n+=i;else{let e=new URL(c.url);n+=e.href.replace(e.origin,"")}return n+=`?${l.ASYNC.LID_FILTER}&${t(--e)}`,n},getCategoryTree:async function(){return await $.get(`${location.origin}/api/catalog_system/pub/category/tree/${l.ASYNC.TREE_LEVEL}`)},getFilters:async function(s,t,l){const a=e.buildURL(s,t,l);return await $.get(a)},search:async function(){const e=a.filter(e=>e.routeSelected).length,l=s();let c=location.origin;l&&(c+=l,c+="?"+t(e-1));location.href=c}};function s(){return a.filter(e=>e.routeSelected).map(e=>e.routeSelected.includes("/")?e.routeSelected:"/"+e.routeSelected).join("")}function t(e){let s="";for(let t=0;t<=e;t++)s+=l.ASYNC.MAP_PARAMS[t];return s}}(),s=function(){return{_initSelect_:function(e){$(".smart-select__main > ."+e.class).click(t=>{$(`.smart-select__main > .${e.class} .smart-select__main-results input`).val(""),e.values&&(s.buildList(e.values,e.class),s.selectOptionIfButtonHasValue(e.class),0!==e.values.length&&($(`.smart-select__main > .${e.class} .smart-select__main-results`).slideToggle("fast").click(e=>e.stopPropagation()),$(`.smart-select__main > .${e.class} .smart-select__main-results input`).focus()))}),$(`.smart-select__main > .${e.class} > div:first-child`).focus(()=>{$(`.smart-select__main > .${e.class} > div:first-child`).on("keyup",t=>{if("Delete"===t.key||"Backspace"===t.key){const t=a.findIndex(s=>s.class===e.class);s.resetResults(t),$(".smart-select__main > ."+e.class).click()}"Enter"===t.key&&$(".smart-select__main > ."+e.class).click()})}).blur(()=>{$(`.smart-select__main > .${e.class} > div:first-child`).unbind("keyup")}),$(`.smart-select__main > .${e.class} .smart-select__main-results input`).on("keydown",s=>{if("Tab"!==s.key&&"Enter"!==s.key||(s.preventDefault(),$(`.smart-select__main > .${e.class} ul li.${l.CSS.HIGHLIGHT}`).click()),"ArrowDown"===s.key){let s=0;$(`.smart-select__main > .${e.class} ul li`).each((e,t)=>{t.classList.contains(l.CSS.HIGHLIGHT)&&(s+=e+2,$(t).removeClass(l.CSS.HIGHLIGHT))}),s<=$(`.smart-select__main > .${e.class} ul li`).length?($(`.smart-select__main > .${e.class} ul li:nth-child(${s})`).addClass(l.CSS.HIGHLIGHT),$(`.smart-select__main > .${e.class} .smart-select__main-results ul`).animate({scrollTop:$(`.smart-select__main > .${e.class} ul li:nth-child(${s})`)[0].offsetTop-$(`.smart-select__main > .${e.class} ul li:nth-child(${s})`)[0].scrollHeight-$(`.smart-select__main > .${e.class} ul li:nth-child(${s})`)[0].scrollHeight/2},100)):($(`.smart-select__main > .${e.class} ul li:nth-child(1)`).addClass(l.CSS.HIGHLIGHT),$(`.smart-select__main > .${e.class} .smart-select__main-results ul`).animate({scrollTop:$(`.smart-select__main > .${e.class} ul li:nth-child(1)`)[0].offsetTop-($(`.smart-select__main > .${e.class} ul li:nth-child(1)`)[0].scrollHeight+$(`.smart-select__main > .${e.class} ul li:nth-child(1)`)[0].scrollHeight/2)},100))}if("ArrowUp"===s.key){let s=0;$(`.smart-select__main > .${e.class} ul li`).each((e,t)=>{t.classList.contains(l.CSS.HIGHLIGHT)&&(s=e,$(t).removeClass(l.CSS.HIGHLIGHT))}),0!==s?($(`.smart-select__main > .${e.class} ul li:nth-child(${s})`).addClass(l.CSS.HIGHLIGHT),$(`.smart-select__main > .${e.class} .smart-select__main-results ul`).animate({scrollTop:$(`.smart-select__main > .${e.class} ul li:nth-child(${s})`)[0].offsetTop-($(`.smart-select__main > .${e.class} ul li:nth-child(${s})`)[0].scrollHeight+$(`.smart-select__main > .${e.class} ul li:nth-child(${s})`)[0].scrollHeight/2)},100)):($(`.smart-select__main > .${e.class} ul li:nth-child(${$(`.smart-select__main > .${e.class} ul li`).length})`).addClass(l.CSS.HIGHLIGHT),$(`.smart-select__main > .${e.class} .smart-select__main-results ul`).animate({scrollTop:$(`.smart-select__main > .${e.class} ul li:nth-child(${$(`.smart-select__main > .${e.class} ul li`).length})`)[0].offsetTop-($(`.smart-select__main > .${e.class} ul li:nth-child(${$(`.smart-select__main > .${e.class} ul li`).length})`)[0].scrollHeight+$(`.smart-select__main > .${e.class} ul li:nth-child(${$(`.smart-select__main > .${e.class} ul li`).length})`)[0].scrollHeight/2)},100))}}).on("keyup",t=>{["Tab","ArrowDown","ArrowUp","Enter"].find(e=>e===t.key)||s.filterResults(t,e)}),$(document).on("click",s=>{var t=$(".smart-select__main > ."+e.class);$(s.target).closest(t).length||$(`.smart-select__main > .${e.class} .smart-select__main-results`).slideUp("fast")})},buildList:e,selectOptionIfButtonHasValue:function(e){$(`.smart-select__main > .${e} ul li`).each((s,t)=>{t.innerHTML===$(`.smart-select__main > .${e} div > span`).html()&&$(t).addClass(l.CSS.SELECTED)})},filterResults:function(s,t){if(s.target.value){e(t.values.filter(e=>i(e.name.toUpperCase()).includes(i(s.target.value.toUpperCase()))),t.class)}else e(t.values,t.class)},resetResults:c,virtualizedDOM:function(e,s){const t=document.createElement("div");return t.innerHTML=e,[...t.querySelectorAll(s+" > li > a")].map(e=>({id:e.href,name:e.innerHTML.replace(/\s\(\d+\)/,""),pathname:e.pathname,search:e.search}))},createNavigation:function(e,s){const t=a.findIndex(s=>s.class===e),i=a[t],n=a[t+1];$(`.smart-select__main > .${i.class} > div > span`).html(s),$(`.smart-select__main > .${i.class} > div > .${l.CSS.ARROW_DOWN}`).hide(),$(`.smart-select__main > .${i.class} > div > .${l.CSS.CLOSE}`).show().on("click",()=>c(t)),n?($(".smart-select__main > ."+n.class).removeClass(l.CSS.EMPTY),l.CANT_OPEN||$(".smart-select__main > ."+n.class).click()):l.CANT_OPEN||$(".smart-select__main > ."+i.class).click().focus()}};function e(e,s){let a="";e?(e.forEach(e=>a+=`<li role="treeitem" id="${e.id}">${e.name}</li>`),$(`.smart-select__main > .${s} ul`).html(a),$(`.smart-select__main > .${s} ul li`).hover(e=>{$(`.smart-select__main > .${s} ul li`).removeClass(l.CSS.HIGHLIGHT),$(e.target).addClass(l.CSS.HIGHLIGHT)}).click(e=>t.addClick(e,s)),$(`.smart-select__main > .${s} ul li`).first().addClass(l.CSS.HIGHLIGHT)):$(`.smart-select__main > .${s} ul`).html('<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>')}function c(e){for(let s=e;s<=a.length-1;s++){const e=a[s],t=a[s+1];$(`.smart-select__main > .${e.class} > div > span`).html(e.title),e.routeSelected="",t&&t.canBeClear&&($(".smart-select__main > ."+t.class).addClass(l.CSS.EMPTY),t.values=[],t.routeSelected=""),$(`.smart-select__main > .${e.class} > div > .${l.CSS.ARROW_DOWN}`).show(),$(`.smart-select__main > .${e.class} > div > .${l.CSS.CLOSE}`).hide()}}function i(e){return[{char:"A",base:/[\300-\306]/g},{char:"a",base:/[\340-\346]/g},{char:"E",base:/[\310-\313]/g},{char:"e",base:/[\350-\353]/g},{char:"I",base:/[\314-\317]/g},{char:"i",base:/[\354-\357]/g},{char:"O",base:/[\322-\330]/g},{char:"o",base:/[\362-\370]/g},{char:"U",base:/[\331-\334]/g},{char:"u",base:/[\371-\374]/g},{char:"N",base:/[\321]/g},{char:"n",base:/[\361]/g},{char:"C",base:/[\307]/g},{char:"c",base:/[\347]/g}].forEach((function(s){e=e.replace(s.base,s.char)})),e}}(),t={addClick:async function(t,l){const i=a.findIndex(e=>e.class===l),n=a[i],r=a[i+1],o=n.values.find(e=>e.id==t.target.id),m=new c;if(m.mostarSpinner(),s.resetResults(i),0!==i&&(n.routeSelected=o.url?o.url.replace(new URL(o.url).origin,""):o.name),r){if(o&&n.isAsyncSearch){const t=await e.getFilters(i,n,o);let l=s.virtualizedDOM(t,r.asyncSearchTerm);i+1===a.length-1?l.sort((e,s)=>s.name.localeCompare(e.name)):l.sort((e,s)=>e.name.localeCompare(s.name)),r.values=l}else r.values=o.children.sort((e,s)=>e.name.localeCompare(s.name));s.buildList(r.values,r.class)}s.createNavigation(n.class,t.target.innerHTML),m.ocultarSpinner()},checkRouterParams:async function(){let{pathname:e,search:s}=location;if(s&&s.includes(l.ASYNC.MAP_PARAMS[0])){l.CANT_OPEN=!0;const s=decodeURI(e).split("/").filter(e=>e),{input:c,...i}=s.slice(0,3).join("/").match(/(\w+\/\w+)/),n=[i[0],c,...s.slice(3,s.length)];for(let e=0;e<n.length;e++){const s=a[e],l=s.values.find(s=>s.url?s.url.includes(n[e]):s.name.includes(n[e]));await t.addClick({target:{id:l.id,innerHTML:l.name}},s.class)}}l.CANT_OPEN=!1}},l={ASYNC:{MAP_PARAMS:["PS=20&map=c,c,c",",specificationFilter_36",",specificationFilter_50",",specificationFilter_48"],TREE_LEVEL:2,LID_FILTER:"lid=bf120500-baab-4185-8b70-cc630f7d1c70"},CSS:{HIGHLIGHT:"highlight",EMPTY:"empty",ARROW_DOWN:"fa-caret-down",CLOSE:"fa-close",SELECTED:"selected"},CANT_OPEN:!1},a=[{title:"Produto",class:"produtos",values:[],routeSelected:"",isAsyncSearch:!1,asyncSearchTerm:"",canBeClear:!1},{title:"Peça",class:"peca",values:[],routeSelected:"",isAsyncSearch:!0,asyncSearchTerm:"",canBeClear:!0},{title:"Montadora",class:"montadora",values:[],routeSelected:"",isAsyncSearch:!0,asyncSearchTerm:".Compatibilidade.Montadora",canBeClear:!0},{title:"Veículo",class:"veiculo",values:[],routeSelected:"",isAsyncSearch:!0,asyncSearchTerm:".Veículo",canBeClear:!0},{title:"Ano",class:"ano",values:[],routeSelected:"",isAsyncSearch:!0,asyncSearchTerm:".Ano",canBeClear:!0}];!async function(){(await e.getCategoryTree()).filter(e=>e.hasChildren).forEach(e=>{a[0].values.push(...e.children)}),await t.checkRouterParams(),s.buildList(a[0].values,a[0].class),a.forEach(s._initSelect_),$("#smart-select-btn").click(e.search)}(),window.onload=()=>{if(window.matchMedia("(max-width: 1100px)").matches){var e=$(".system-error-qd-v1");if(!e.length&&!(e=$(".search-qd-v1-result")).length)return;aimElementTopOffset=e.offset().top,offsets=$("header.nav").height()+$("div.topo").height(),pixelsToScroll=aimElementTopOffset-offsets,$("html, body").animate({scrollTop:pixelsToScroll},"slow")}};class c{constructor(){const e=document.querySelectorAll(".smart-select__main-results"),s=document.querySelector(".smart-select__main .smart-select__modal"),t=document.querySelector(".smart-select__header");this.elementos=[...e,s,t]}mostarSpinner(){this.elementos.forEach(e=>e.classList.add("loader-modal--show"))}ocultarSpinner(){this.elementos.forEach(e=>e.classList.remove("loader-modal--show"))}}}()}]);
+// Cenários 2, 3 faltam ser realizados.
+
+(function () {
+  const Service = ServiceAPI();
+  const View = ViewAPI();
+  const Controller = ControllerAPI();
+
+  const CONFIG = {
+    ASYNC: {
+      MAP_PARAMS: [
+        'PS=20&map=c,c,c', // DEFAULT
+        ',specificationFilter_36', // MONTADORA
+        ',specificationFilter_50', // VEICULO
+        ',specificationFilter_48' // ANO
+      ],
+      TREE_LEVEL: 2,
+      LID_FILTER: 'lid=bf120500-baab-4185-8b70-cc630f7d1c70',
+    },
+    CSS: {
+      HIGHLIGHT: 'highlight',
+      EMPTY: 'empty',
+      ARROW_DOWN: 'fa-caret-down',
+      CLOSE: 'fa-close',
+      SELECTED: 'selected',
+    },
+    CANT_OPEN: false,
+  }
+
+  const SELECTS = [
+    {
+      title: 'Produto',
+      class: 'produtos',
+      values: [],
+      routeSelected: '',
+      isAsyncSearch: false,
+      asyncSearchTerm: '',
+      canBeClear: false,
+    },
+    {
+      title: 'Peça',
+      class: 'peca',
+      values: [],
+      routeSelected: '',
+      isAsyncSearch: true,
+      asyncSearchTerm: '',
+      canBeClear: true,
+    },
+    {
+      title: 'Montadora',
+      class: 'montadora',
+      values: [],
+      routeSelected: '',
+      isAsyncSearch: true,
+      asyncSearchTerm: '.Compatibilidade.Montadora',
+      canBeClear: true,
+    },
+    {
+      title: 'Veículo',
+      class: 'veiculo',
+      values: [],
+      routeSelected: '',
+      isAsyncSearch: true,
+      asyncSearchTerm: '.Veículo',
+      canBeClear: true,
+    },
+    {
+      title: 'Ano',
+      class: 'ano',
+      values: [],
+      routeSelected: '',
+      isAsyncSearch: true,
+      asyncSearchTerm: '.Ano',
+      canBeClear: true,
+    },
+  ];
+
+  _init();
+
+  async function _init() {
+    let categoryTree = await Service.getCategoryTree();
+
+    categoryTree
+      .filter(x => x.hasChildren)
+      .forEach(x => {
+        SELECTS[0].values.push(...x.children);
+      });
+
+    await Controller.checkRouterParams();
+
+    View.buildList(SELECTS[0].values, SELECTS[0].class);
+
+    SELECTS.forEach(View._initSelect_);
+
+    // Create Button Function
+    $('#smart-select-btn').click(Service.search);
+
+  }
+
+  function ViewAPI() {
+    return {
+      _initSelect_,
+      buildList,
+      selectOptionIfButtonHasValue,
+      filterResults,
+      resetResults,
+      virtualizedDOM,
+      createNavigation
+    }
+
+    function _initSelect_(select) {
+      $(`.smart-select__main > .${select.class}`).click((e) => {
+        $(`.smart-select__main > .${select.class} .smart-select__main-results input`)
+          .val('');
+
+        if (select.values) {
+          View.buildList(select.values, select.class);
+          View.selectOptionIfButtonHasValue(select.class);
+
+          if (select.values.length !== 0) {
+            $(`.smart-select__main > .${select.class} .smart-select__main-results`)
+              .slideToggle('fast')
+              .click(e => e.stopPropagation());
+
+            $(`.smart-select__main > .${select.class} .smart-select__main-results input`)
+              .focus();
+          }
+        }
+      });
+
+      $(`.smart-select__main > .${select.class} > div:first-child`)
+        .focus(() => {
+          $(`.smart-select__main > .${select.class} > div:first-child`)
+            .on('keyup', event => {
+              if (event.key === 'Delete' || event.key === 'Backspace') {
+                const index = SELECTS.findIndex(x => x.class === select.class);
+                View.resetResults(index);
+                $(`.smart-select__main > .${select.class}`).click();
+              }
+
+              if (event.key === 'Enter')
+                $(`.smart-select__main > .${select.class}`).click();
+            })
+        })
+        .blur(() => {
+          $(`.smart-select__main > .${select.class} > div:first-child`).unbind('keyup');
+        });
+
+      $(`.smart-select__main > .${select.class} .smart-select__main-results input`)
+        .on('keydown', e => {
+          if (e.key === 'Tab' || e.key === 'Enter') {
+            e.preventDefault();
+            $(`.smart-select__main > .${select.class} ul li.${CONFIG.CSS.HIGHLIGHT}`).click();
+          }
+
+          if (e.key === 'ArrowDown') {
+            let index = 0;
+
+            $(`.smart-select__main > .${select.class} ul li`)
+              .each((i, element) => {
+                if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
+                  index += i + 2;
+                  $(element).removeClass(CONFIG.CSS.HIGHLIGHT);
+                }
+              });
+
+            if (index <= $(`.smart-select__main > .${select.class} ul li`).length) {
+              $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)
+                .addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(`.smart-select__main > .${select.class} .smart-select__main-results ul`)
+                .animate({
+                  scrollTop: $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].offsetTop
+                    - $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].scrollHeight
+                    - $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].scrollHeight / 2
+                }, 100);
+            }
+            else {
+              $(`.smart-select__main > .${select.class} ul li:nth-child(1)`)
+                .addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(`.smart-select__main > .${select.class} .smart-select__main-results ul`)
+                .animate({
+                  scrollTop: $(`.smart-select__main > .${select.class} ul li:nth-child(1)`)[0].offsetTop
+                    - ($(`.smart-select__main > .${select.class} ul li:nth-child(1)`)[0].scrollHeight
+                      + $(`.smart-select__main > .${select.class} ul li:nth-child(1)`)[0].scrollHeight / 2)
+                }, 100);
+            }
+          }
+
+          if (e.key === 'ArrowUp') {
+            let index = 0;
+
+            $(`.smart-select__main > .${select.class} ul li`)
+              .each((i, element) => {
+                if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
+                  index = i;
+                  $(element).removeClass(CONFIG.CSS.HIGHLIGHT);
+                }
+              });
+
+            if (index !== 0) {
+              $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)
+                .addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(`.smart-select__main > .${select.class} .smart-select__main-results ul`)
+                .animate({
+                  scrollTop: $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].offsetTop
+                    - ($(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].scrollHeight
+                      + $(`.smart-select__main > .${select.class} ul li:nth-child(${index})`)[0].scrollHeight / 2)
+                }, 100);
+            }
+            else {
+              $(`.smart-select__main > .${select.class} ul li:nth-child(${$(`.smart-select__main > .${select.class} ul li`).length})`)
+                .addClass(CONFIG.CSS.HIGHLIGHT);
+
+              $(`.smart-select__main > .${select.class} .smart-select__main-results ul`)
+                .animate({
+                  scrollTop: $(`.smart-select__main > .${select.class} ul li:nth-child(${$(`.smart-select__main > .${select.class} ul li`).length})`)[0].offsetTop
+                    - ($(`.smart-select__main > .${select.class} ul li:nth-child(${$(`.smart-select__main > .${select.class} ul li`).length})`)[0].scrollHeight
+                      + $(`.smart-select__main > .${select.class} ul li:nth-child(${$(`.smart-select__main > .${select.class} ul li`).length})`)[0].scrollHeight / 2)
+                }, 100);
+            }
+          }
+        })
+        .on('keyup', e => {
+          if (!['Tab', 'ArrowDown', 'ArrowUp', 'Enter'].find(x => x === e.key))
+            View.filterResults(e, select);
+        });
+
+      // Fecha todos os selects caso já tenha algum aberto.
+      $(document).on("click", (e) => {
+        var container = $(`.smart-select__main > .${select.class}`);
+
+        if (!$(e.target).closest(container).length) {
+          $(`.smart-select__main > .${select.class} .smart-select__main-results`)
+            .slideUp('fast');
+        }
+      });
+    }
+
+    function buildList(objects, _class) {
+      let html = '';
+
+      if (objects) {
+        objects.forEach(x => html += `<li role="treeitem" id="${x.id}">${x.name}</li>`);
+
+        $(`.smart-select__main > .${_class} ul`).html(html);
+
+        $(`.smart-select__main > .${_class} ul li`)
+          .hover(event => {
+            $(`.smart-select__main > .${_class} ul li`)
+              .removeClass(CONFIG.CSS.HIGHLIGHT);
+
+            $(event.target).addClass(CONFIG.CSS.HIGHLIGHT);
+          })
+          .click(event => Controller.addClick(event, _class));
+
+        $(`.smart-select__main > .${_class} ul li`).first().addClass(CONFIG.CSS.HIGHLIGHT);
+      } else {
+        $(`.smart-select__main > .${_class} ul`)
+          .html(`<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`);
+      }
+    }
+
+    function selectOptionIfButtonHasValue(type) {
+      $(`.smart-select__main > .${type} ul li`)
+        .each((_, element) => {
+          if (element.innerHTML === $(`.smart-select__main > .${type} div > span`).html())
+            $(element).addClass(CONFIG.CSS.SELECTED)
+        });
+    };
+
+    function filterResults(event, select) {
+      if (event.target.value) {
+        const filtered = select.values.filter(y =>
+          replaceDiacritics(y.name.toUpperCase())
+            .includes(
+              replaceDiacritics(event.target.value.toUpperCase())
+            )
+        );
+
+        buildList(filtered, select.class)
+      }
+      else {
+        buildList(select.values, select.class);
+      }
+    };
+
+    function resetResults(_index) {
+      for (let i = _index; i <= (SELECTS.length - 1); i++) {
+        const select = SELECTS[i];
+        const nextSelect = SELECTS[i + 1];
+
+        $(`.smart-select__main > .${select.class} > div > span`).html(select.title);
+        select.routeSelected = '';
+
+        if (nextSelect && nextSelect.canBeClear) {
+          $(`.smart-select__main > .${nextSelect.class}`).addClass(CONFIG.CSS.EMPTY);
+
+          nextSelect.values = [];
+          nextSelect.routeSelected = '';
+        }
+
+        $(`.smart-select__main > .${select.class} > div > .${CONFIG.CSS.ARROW_DOWN}`).show();
+        $(`.smart-select__main > .${select.class} > div > .${CONFIG.CSS.CLOSE}`).hide();
+      }
+    }
+
+    function createNavigation(_class, new_title) {
+      const index = SELECTS.findIndex(x => x.class === _class);
+      const select = SELECTS[index];
+      const nextSelect = SELECTS[index + 1];
+
+      $(`.smart-select__main > .${select.class} > div > span`).html(new_title);
+      $(`.smart-select__main > .${select.class} > div > .${CONFIG.CSS.ARROW_DOWN}`).hide();
+      $(`.smart-select__main > .${select.class} > div > .${CONFIG.CSS.CLOSE}`)
+        .show()
+        .on('click', () => resetResults(index));
+
+      if (nextSelect) {
+        $(`.smart-select__main > .${nextSelect.class}`)
+          .removeClass(CONFIG.CSS.EMPTY);
+
+        if (!CONFIG.CANT_OPEN) {
+          $(`.smart-select__main > .${nextSelect.class}`)
+            .click();
+        }
+      } else {
+        if (!CONFIG.CANT_OPEN) {
+          $(`.smart-select__main > .${select.class}`).click().focus();
+        }
+      }
+    }
+
+    function virtualizedDOM(elements, tagReturn) {
+      const DOM = document.createElement('div');
+
+      DOM.innerHTML = elements;
+
+      return [...DOM.querySelectorAll(`${tagReturn} > li > a`)]
+        .map(x => ({
+          id: x.href,
+          name: x.innerHTML.replace(/\s\(\d+\)/, ''),
+          pathname: x.pathname,
+          search: x.search
+        }));
+    }
+
+    function replaceDiacritics(str) {
+      const diacritics = [
+        { char: 'A', base: /[\300-\306]/g },
+        { char: 'a', base: /[\340-\346]/g },
+        { char: 'E', base: /[\310-\313]/g },
+        { char: 'e', base: /[\350-\353]/g },
+        { char: 'I', base: /[\314-\317]/g },
+        { char: 'i', base: /[\354-\357]/g },
+        { char: 'O', base: /[\322-\330]/g },
+        { char: 'o', base: /[\362-\370]/g },
+        { char: 'U', base: /[\331-\334]/g },
+        { char: 'u', base: /[\371-\374]/g },
+        { char: 'N', base: /[\321]/g },
+        { char: 'n', base: /[\361]/g },
+        { char: 'C', base: /[\307]/g },
+        { char: 'c', base: /[\347]/g }
+      ]
+
+      diacritics.forEach(function (letter) {
+        str = str.replace(letter.base, letter.char);
+      });
+
+      return str;
+    };
+  }
+
+  function ControllerAPI() {
+    return {
+      addClick,
+      checkRouterParams
+    };
+
+    async function addClick(event, _class) {
+      const index = SELECTS.findIndex(x => x.class === _class);
+      const select = SELECTS[index];
+      const nextSelect = SELECTS[index + 1];
+      // Não pode ser === Pq um pode ser INT e outro STRING, mas o valores são iguais;
+      const optionSelected = select.values.find(x => x.id == event.target.id);
+
+      const modalDeCarregamento = new ModalDeCarregamento();
+      modalDeCarregamento.mostarSpinner();
+
+      View.resetResults(index);
+
+      if (index !== 0) {
+        select.routeSelected = optionSelected.url
+          ? optionSelected.url.replace(new URL(optionSelected.url).origin, '')
+          : optionSelected.name;
+      }
+
+      if (nextSelect) {
+        if (optionSelected && select.isAsyncSearch) {
+          const response = await Service.getFilters(index, select, optionSelected);
+
+          let values = View.virtualizedDOM(response, nextSelect.asyncSearchTerm);
+
+          // Caso seja Ano (Ultimo campo) tem que ser decrescente
+          (index + 1) === (SELECTS.length - 1)
+            ? values.sort((a, b) => b.name.localeCompare(a.name))
+            : values.sort((a, b) => a.name.localeCompare(b.name))
+
+          nextSelect.values = values;
+        } else {
+          nextSelect.values = optionSelected.children
+            .sort((a, b) => a.name.localeCompare(b.name));
+        }
+
+        View.buildList(nextSelect.values, nextSelect.class);
+      }
+
+      View.createNavigation(select.class, event.target.innerHTML);
+
+      modalDeCarregamento.ocultarSpinner();
+    }
+
+    async function checkRouterParams() {
+      let { pathname, search } = location;
+
+      if (search && search.includes(CONFIG.ASYNC.MAP_PARAMS[0])) {
+        CONFIG.CANT_OPEN = true;
+        const arrayPaths = decodeURI(pathname).split('/').filter(x => x);
+
+        const { input, ...rest } = arrayPaths
+          .slice(0, 3)
+          .join('/')
+          .match(/(\w+\/\w+)/);
+
+        const params = [
+          rest[0],
+          input,
+          ...arrayPaths.slice(3, arrayPaths.length)
+        ];
+
+        for (let i = 0; i < params.length; i++) {
+          const select = SELECTS[i];
+          const value = select.values.find(x =>
+            x.url
+              ? x.url.includes(params[i])
+              : x.name.includes(params[i])
+          );
+
+          await Controller.addClick(
+            {
+              target: {
+                id: value.id,
+                innerHTML: value.name
+              }
+            },
+            select.class
+          );
+        }
+      }
+
+      CONFIG.CANT_OPEN = false;
+    }
+  }
+
+  function ServiceAPI() {
+    return {
+      buildMapFilters,
+      buildURL,
+      getCategoryTree,
+      getFilters,
+      search
+    };
+
+    async function getCategoryTree() {
+      return await $.get(`${location.origin}/api/catalog_system/pub/category/tree/${CONFIG.ASYNC.TREE_LEVEL}`);
+    }
+
+    async function getFilters(index, select, optionSelected) {
+      const url = Service.buildURL(index, select, optionSelected);
+
+      return await $.get(url);
+    }
+
+    function getPaths() {
+      return SELECTS
+        .filter(x => x.routeSelected)
+        .map(x => x.routeSelected.includes('/')
+          ? x.routeSelected
+          : `/${x.routeSelected}`)
+        .join('');
+    }
+
+    async function search() {
+      const index = SELECTS.filter(x => x.routeSelected).length;
+      const paths = getPaths();
+      let url = location.origin;
+
+      if (paths) {
+        url += paths;
+        url += `?${buildMapFilters(index - 1)}`;
+      }
+
+      location.href = url;
+    }
+
+    function buildMapFilters(step) {
+      let params = '';
+
+      for (let i = 0; i <= step; i++) {
+        params += CONFIG.ASYNC.MAP_PARAMS[i];
+      }
+
+      return params;
+    }
+
+    function buildURL(index, select, optionSelected) {
+      const paths = getPaths();
+      let url = '';
+
+      if (select.asyncSearchTerm) {
+        url += location.origin;
+        url += paths;
+      } else {
+        let absolutePath = new URL(optionSelected.url);
+        url += absolutePath.href.replace(absolutePath.origin, '');
+      }
+
+      url += `?${CONFIG.ASYNC.LID_FILTER}&${buildMapFilters(--index)}`;
+
+      return url;
+    }
+  }
+
+  /**
+   * Em despositivos mobile e tablet, rola a tela diretamente para resultado das buscas
+   */
+  window.onload = () => {
+
+    if (window.matchMedia('(max-width: 1100px)').matches) {
+
+      var aimElement = $('.system-error-qd-v1') //busca com resultado
+      if (!aimElement.length) {
+        aimElement = $('.search-qd-v1-result') //busca vazia
+        if (!aimElement.length) return //não é pagina de busca
+      }
+
+      aimElementTopOffset = aimElement.offset().top;
+      offsets = $('header.nav').height() + $('div.topo').height();
+      pixelsToScroll = aimElementTopOffset - offsets;
+      $("html, body").animate({ scrollTop: pixelsToScroll }, "slow");
+
+    }
+  }
+
+  class ModalDeCarregamento {
+    constructor() {
+      const listasDeResultados = document.querySelectorAll('.smart-select__main-results');
+      const modal = document.querySelector('.smart-select__main .smart-select__modal');
+      const cabecalho = document.querySelector('.smart-select__header');
+
+      this.elementos = [...listasDeResultados, modal, cabecalho];
+    }
+
+    mostarSpinner() {
+      this.elementos.forEach(elemento => elemento.classList.add('loader-modal--show'));
+    }
+
+    ocultarSpinner() {
+      this.elementos.forEach(elemento => elemento.classList.remove('loader-modal--show'));
+    }
+  }
+})();
