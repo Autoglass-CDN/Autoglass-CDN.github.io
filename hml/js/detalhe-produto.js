@@ -23,6 +23,17 @@ const socialMediaElements = {
   mail: ".product-qd-v1-social-share.desktop .mail",
   facebook: ".product-qd-v1-social-share.desktop .facebook",
 };
+function exibeNumeroVendas(){
+  let sectionNumeroVendas;
+  let numeroVendas = recuperarNumeroVendas();
+  if(numeroVendas == null)
+    return;
+  numeroVendas.then(function(result){
+    window.innerWidth < 400 ? sectionNumeroVendas = document.querySelector(".numero-vendas-mobile") : sectionNumeroVendas = document.querySelector(".numero-vendas");
+    if(result > 10)
+      sectionNumeroVendas.innerHTML = `<i class="fa fa-shopping-bag"></i><p class="texto-numero-vendas">${result} vendidos</p>`;
+  });
+}
 function ButtoWhatsappClick(a, e) {
   dataLayer.push({ event: "whatsapp", position: e });
 }
@@ -103,6 +114,7 @@ async function getProductRefIdByProductName() {
     [e, t] = a.name.match(/(\d+)(\s?\-?\s?[0-9]+)?$/);
   return t;
 }
+
 async function loadOptionals() {
   let a = $("#opcionais"),
     e = await getProductRefIdByProductName(),
@@ -179,6 +191,11 @@ async function buscaPorPlaca(a) {
       { montadora, modelo, anoModelo, fipe }
     );
   }
+}
+async function recuperarNumeroVendas(){
+  let codigoProduto = await getProductRefIdByProductName();
+  let numeroVendas = await $.get(`${baseUrlApi}/vendas/vendas/${codigoProduto}`);
+  return numeroVendas;
 }
 async function buscarPromocoes() {
   try {
@@ -591,4 +608,8 @@ sectionCollapseInit(),
         });
       });
   }),
+
+  document.addEventListener("DOMContentLoaded", function() {
+    exibeNumeroVendas();
+  });
   buscarPromocoes();

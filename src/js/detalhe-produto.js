@@ -23,6 +23,17 @@ const socialMediaElements = {
   mail: ".product-qd-v1-social-share.desktop .mail",
   facebook: ".product-qd-v1-social-share.desktop .facebook",
 };
+function exibeNumeroVendas(){
+  let sectionNumeroVendas;
+  let numeroVendas = recuperarNumeroVendas();
+  if(numeroVendas == null)
+    return;
+  numeroVendas.then(function(result){
+    window.innerWidth < 400 ? sectionNumeroVendas = document.querySelector(".numero-vendas-mobile") : sectionNumeroVendas = document.querySelector(".numero-vendas");
+    if(result > 10)
+      sectionNumeroVendas.innerHTML = `<i class="fa fa-shopping-bag"></i><p class="texto-numero-vendas">${result} vendidos</p>`;
+  });
+}
 function ButtoWhatsappClick(a, e) {
   dataLayer.push({ event: "whatsapp", position: e });
 }
@@ -103,6 +114,7 @@ async function getProductRefIdByProductName() {
     [e, t] = a.name.match(/(\d+)(\s?\-?\s?[0-9]+)?$/);
   return t;
 }
+
 async function loadOptionals() {
   let a = $("#opcionais"),
     e = await getProductRefIdByProductName(),
@@ -179,6 +191,11 @@ async function buscaPorPlaca(a) {
       { montadora, modelo, anoModelo, fipe }
     );
   }
+}
+async function recuperarNumeroVendas(){
+  let codigoProduto = await getProductRefIdByProductName();
+  let numeroVendas = await $.get(`http://localhost:5010/integracao-b2c/api/vendas/vendas/${codigoProduto}`);
+  return numeroVendas;
 }
 async function buscarPromocoes() {
   try {
@@ -545,7 +562,7 @@ sectionCollapseInit(),
       c[0] +
       "&qty=1&seller=1&redirect=true&" +
       readCookie("VTEXSC");
-    let urlComInstalacao =
+      let urlComInstalacao =
         _ +
         "&sku=" +
         b +
@@ -554,10 +571,12 @@ sectionCollapseInit(),
         if(y && b){
           if(y < "0,01"){
             $(".valorComInstalacao").hide();
+            document.getElementById("install-option").checked = true;
             $(".titulo-instalacao-gratis").show();
             $(".titulo-valor-instalacao").hide();
           }else{
             document.getElementById("valorComInstalacao").innerHTML = y
+            document.getElementById("install-option").checked = true;
           }
         }else{
           $(".card-instalacao").hide();
@@ -581,7 +600,6 @@ sectionCollapseInit(),
               window.location.href = _;
           }),
       $(document).ready(function () {
-        document.getElementById("install-option").checked = true;
         $(".botao-compre-whatsapp").click(function () {
           let a = `Ol\xe1, estou na p\xe1gina desse produto e gostaria de compr\xe1-lo: ${window.location.href}`;
           window
@@ -590,4 +608,8 @@ sectionCollapseInit(),
         });
       });
   }),
+
+  document.addEventListener("DOMContentLoaded", function() {
+    exibeNumeroVendas();
+  });
   buscarPromocoes();
