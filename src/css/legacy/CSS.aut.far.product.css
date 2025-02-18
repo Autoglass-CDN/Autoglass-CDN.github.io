@@ -2905,7 +2905,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     font-weight: 600;
     font-size: 12px;
     margin-bottom: 25px;
-    padding-left: 15px;
+    padding-left: 0px;
     font-weight: 700;
     color: #000000;
     font-style: normal;
@@ -2918,7 +2918,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     text-decoration: underline;
     color: #2d4f9e;
     font-style: italic;
-    padding-left: 5px;
+    padding-left: 0px;
     font-weight: 600;
   }
 }
@@ -3903,4 +3903,32 @@ body.qd-product-unavailable .product-qd-v1-installation {
 .product-qd-v1-installation .mz-button__installation:focus,
 .product-qd-v1-installation .mz-button__installation:active {
   color: #fff;
+}
+
+@media (max-width: 1440px), (max-width: 1280px) {
+  .product-qd-v1-brand-name {
+    display: block;
+  }
+
+  .product-qd-v1-brand-name a {
+    padding-left: 0;
+  }
+
+  .product-qd-v1-sku-selection-box .product-qd-v1-ref-code .productReference {
+    display: grid;
+  }
+}
+
+@media (max-width: 1280px) {
+  .numero-vendas {
+    width: auto; /* Corrigido o erro de "0%2" */
+  }
+
+  .numero-vendas i {
+    margin-top: 10px;
+  }
+
+  .numero-vendas p {
+    margin-left: 7%;
+  }
 }
