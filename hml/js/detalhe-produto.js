@@ -193,9 +193,9 @@ async function buscaPorPlaca(a) {
   }
 }
 async function recuperarNumeroVendas(){
-  const urlApiHml = "https://api-hml.autoglass.com.br/integracao-b2c/api";
   let codigoProduto = await getProductRefIdByProductName();
-  let numeroVendas = await $.get(`${urlApiHml}/vendas/vendas/${codigoProduto}`);
+  console.log(`${baseUrlApi}/vendas/vendas/${parseInt(codigoProduto)}`);
+  let numeroVendas = await $.get(`${baseUrlApi}/vendas/vendas/${parseInt(codigoProduto)}`);
   return numeroVendas;
 }
 async function buscarPromocoes() {
