@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
       window.location.href = `https://autoglassonline.com.br${url}`;
     }
   }
+  verificaUrlInstitucional();
 });
 
 const device = {
@@ -43,6 +44,15 @@ function calculatesTwelveHours() {
 
 function valueBetweenRange(value, min, max) {
   return value < min ? min : value > max ? max : value;
+}
+
+function verificaUrlInstitucional() {
+  const url = window.location.href.toLowerCase();
+  const regex = /institucional|pintura-automotiva|reparo-de-arranhoes-e-amassados/;
+
+  if (regex.test(url)) {
+      $(".search-box-mobile").hide();
+  }
 }
 
 function fecharAbaCategoria() {
