@@ -69,10 +69,10 @@ $(window).on('load', () => {
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
 
-            CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');			
-  
+            CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');
+
   			await recuperarInfoAcessorio(orderForm, 'brandId');
-  
+
   			await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
 
             await _createInstallButtonObserver(orderForm);
@@ -88,9 +88,9 @@ $(window).on('load', () => {
             $(window).on(
                 CONFIG.EVENTS.ORDER_FORM_UPDATE + ' ' + CONFIG.EVENTS.HASH_CHANGE,
                 _watchHashChangeAndOrderForm
-            )            
+            )
         }
-		
+
         async function recuperarInfoAcessorio(orderForm, property) {
             for (const item of orderForm.items) {
                 const accessories = await Service.getAccessories(item);
@@ -101,7 +101,7 @@ $(window).on('load', () => {
                 }
             }
         }
-	
+
 
         async function _createInstallButtonObserver(orderForm) {
             const instalationSku = await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
@@ -266,7 +266,7 @@ $(window).on('load', () => {
 
             	return;
         }
-          
+
         async function loadScripts() {
             const addId = id => script => {
               script.id = id;
@@ -349,49 +349,53 @@ $(window).on('load', () => {
         }
 
         function formatItemList(orderForm) {
-            let hasInstall = Service.checkIfHasInstall(orderForm.items);
-            let hasInstallButtom = _checkIfHasInstallButtom();
+          let hasInstall = Service.checkIfHasInstall(orderForm.items);
+          let hasInstallButtom = _checkIfHasInstallButtom();
 
-            if (hasInstall) {
-                $('body').addClass('hasInstall');
-                setTimeout(() => _buildDeliveryInfo(orderForm), 500);
-                $('#shipping-data').addClass('altera-texto-abas-checkout');
-                $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
-            }
+          if (hasInstall) {
+              $('body').addClass('hasInstall');
+              setTimeout(() => _buildDeliveryInfo(orderForm), 500);
+              $('#shipping-data').addClass('altera-texto-abas-checkout');
+              $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
+          }
 
-            if (hasInstall && hasInstallButtom) {
-                $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
-                $(".srp-toggle__pickup").append(
-                    "<span class='instalar'>Instalar na loja</span>"
-                );
-                $(".srp-toggle__delivery").append(
-                    "<span class='instalar'>Instalar em casa</span>"
-                );
+          if (hasInstall && hasInstallButtom) {
+              $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
+              $(".srp-toggle__pickup").append(
+                  "<span class='instalar'>Instalar na loja</span>"
+              );
+              $(".srp-toggle__delivery").append(
+                  "<span class='instalar'>Instalar em casa</span>"
+              );
 
-                $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
-            }
+              $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
+          }
 
-            if (!hasInstall) {
-                orderForm.items.forEach(item => {
-                    Service.getAccessories(item).then(accessories => {
-                        accessories.forEach(accessory => {
-                            if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && !hasInstall) {
-                                _implementsInstallButtom(item, accessory);
-                            }
-                        });
-                    });
+          orderForm.items.forEach(item => {
+            Service.getAccessories(item).then(accessories => {
+                accessories.forEach(accessory => {
+                    if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && verificaInsumoCarrinho(orderForm, accessory.productReference)){
+                        _implementsInstallButtom(item, accessory);
+                    }
                 });
+            });
+          });
 
-                $('body').removeClass('hasInstall');
-                $("span").remove(".instalar");
-                $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
-                $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
-                $('#shipping-data').removeClass('altera-texto-abas-checkout');
-                $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
-            }
-
-            View.createCepInfo(orderForm, hasInstall);
+          function verificaInsumoCarrinho(orderForm, refIdProduct) {
+            return orderForm.items.find(item => item.refId === refIdProduct) ? false : true;
         }
+
+          if (!hasInstall) {
+              $('body').removeClass('hasInstall');
+              $("span").remove(".instalar");
+              $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
+              $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
+              $('#shipping-data').removeClass('altera-texto-abas-checkout');
+              $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
+          }
+
+          View.createCepInfo(orderForm, hasInstall);
+      }
 
         function windshieldVerification(orderForm) {
             const hasWindshild = orderForm.items.reduce(
@@ -427,7 +431,7 @@ $(window).on('load', () => {
 
             let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price
             let precoAcessorioFormatado = precoAcessorio.toFixed(2).replace('.', ',');
-              
+
             if(accessory.items[0]) {
               preco = 'R$ '+ precoAcessorioFormatado;
               bestPrice = precoAcessorio + '00';
@@ -446,7 +450,7 @@ $(window).on('load', () => {
                 .length === 0) {
                 $(`[data-sku='${item.id}'] .product-name`).append(btnInstall);
             }
-              
+
             function loadScript(src, callback) {
                 return new Promise((resolve, reject) => {
                     let script = document.createElement("script");
@@ -850,7 +854,7 @@ $(window).on('load', () => {
         }
     }
 
-    ajustaBotaoFinalizarCompra();	
+    ajustaBotaoFinalizarCompra();
 
     function ServiceAPI() {
         return {
@@ -870,10 +874,18 @@ $(window).on('load', () => {
         }
 
         async function getAccessories(item) {
-            let salesChannel = vtexjs.checkout.orderForm.salesChannel;
-            return await fetch(
-                `/api/catalog_system/pub/products/crossselling/accessories/${item.productId}?sc=${salesChannel}`
-            ).then(data => data.json());
+          let salesChannel = vtexjs.checkout.orderForm.salesChannel;
+          let response = await fetch(
+              `/api/catalog_system/pub/products/crossselling/accessories/${item.productId}?sc=${salesChannel}`
+          );
+
+          let data = await response.json();
+
+          data.forEach(product => {
+              product.refIdProduct = item.refId;
+          });
+
+          return data;
         }
 
         async function sendGAEvent(orderForm) {
@@ -932,7 +944,7 @@ $(window).on('load', () => {
 
         function getSelectedAppointment() {
             return JSON.parse(localStorage.getItem(CONFIG.STORAGE.APPOINTMENT));
-        }                      
+        }
     }
 });
 

@@ -69,10 +69,10 @@ $(window).on('load', () => {
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
 
-            CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');			
-  
+            CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');
+
   			await recuperarInfoAcessorio(orderForm, 'brandId');
-  
+
   			await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
 
             await _createInstallButtonObserver(orderForm);
@@ -95,7 +95,7 @@ $(window).on('load', () => {
                 for (const item of orderForm.items) {
                     const accessories = await Service.getAccessories(item);
                     const accessory = accessories.find(accessory => !!accessory);
-    
+
                     if (accessory) {
                         return accessory[property];
                     }
@@ -373,17 +373,21 @@ $(window).on('load', () => {
                 $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
             }
 
-            if (!hasInstall) {
-                orderForm.items.forEach(item => {
-                    Service.getAccessories(item).then(accessories => {
-                        accessories.forEach(accessory => {
-                            if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && !hasInstall) {
-                                _implementsInstallButtom(item, accessory);
-                            }
-                        });
-                    });
-                });
+            orderForm.items.forEach(item => {
+              Service.getAccessories(item).then(accessories => {
+                  accessories.forEach(accessory => {
+                      if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && verificaInsumoCarrinho(orderForm, accessory.productReference)){
+                          _implementsInstallButtom(item, accessory);
+                      }
+                  });
+              });
+            });
 
+            function verificaInsumoCarrinho(orderForm, refIdProduct) {
+              return orderForm.items.find(item => item.refId === refIdProduct) ? false : true;
+            }
+
+            if (!hasInstall) {
                 $('body').removeClass('hasInstall');
                 $("span").remove(".instalar");
                 $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
@@ -443,7 +447,7 @@ $(window).on('load', () => {
             let btnInstall = _createInstallButton(
                 accessory.items[0].itemId,
                 preco,
-                bestPrice === 0
+                bestPrice === 0,
             );
 
             if ($(`[data-sku='${item.id}'].product-item .product-name .btn-add-instalacao`)
@@ -874,10 +878,18 @@ $(window).on('load', () => {
         }
 
         async function getAccessories(item) {
-            let salesChannel = vtexjs.checkout.orderForm.salesChannel;
-            return await fetch(
-                `/api/catalog_system/pub/products/crossselling/accessories/${item.productId}?sc=${salesChannel}`
-            ).then(data => data.json());
+          let salesChannel = vtexjs.checkout.orderForm.salesChannel;
+          let response = await fetch(
+              `/api/catalog_system/pub/products/crossselling/accessories/${item.productId}?sc=${salesChannel}`
+          );
+
+          let data = await response.json();
+
+          data.forEach(product => {
+              product.refIdProduct = item.refId;
+          });
+
+          return data;
         }
 
         async function sendGAEvent(orderForm) {
