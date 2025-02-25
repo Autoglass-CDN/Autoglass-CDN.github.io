@@ -872,6 +872,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-contact-information, 
 .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-sac .titulo-contact-information {
   margin-bottom: 20px;
+  padding-top: 0;
 }
 
 .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid li p {
@@ -1244,6 +1245,11 @@ a:focus {
   }
   .footer-qd-v1 .footer-qd-v1-content .row {
     max-width: 100%;
+  }
+  .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-contact-information, 
+  .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-sac .titulo-contact-information {
+    margin-bottom: 0;
+    padding-top: 0;
   }
 }
 
