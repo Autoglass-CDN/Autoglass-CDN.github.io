@@ -1845,6 +1845,7 @@ fieldset#beneficios legend {
 
 .numero-vendas i {
   margin-left: 13px;
+  padding-right: 2px;
 }
 
 .texto-numero-vendas{
