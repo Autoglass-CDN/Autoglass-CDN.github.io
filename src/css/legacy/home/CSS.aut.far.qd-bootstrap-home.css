@@ -454,7 +454,7 @@ label {
    display: block !important;
   }
   .hidden-lg {
-   display: none;
+   display: none !important;
   }
 }
 
@@ -665,7 +665,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
     display: grid;
     grid-template: "autoglass suporte" "servicos  suporte";
-  }  
+  }
   .footer-qd-v1-content
     .footer-qd-v1-menu-list
     ul.footer-qd-v1-menu-grid
@@ -810,6 +810,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   float: right;
   margin-top: 25px;
 }
+
 @media (min-width: 769px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
     display: none;
@@ -1277,8 +1278,6 @@ a:focus {
   color: #fff;
   background-color: #2d4f9e;
 }
-
-
 
 .footer-qd-v1-content
   .footer-qd-v1-menu-list
