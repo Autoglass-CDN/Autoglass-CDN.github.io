@@ -1849,7 +1849,6 @@ fieldset#beneficios legend {
 
 .texto-numero-vendas{
   font-size: 12px !important;
-  margin-left: 2px;
 }
 
 @media screen and (max-width: 390px) {

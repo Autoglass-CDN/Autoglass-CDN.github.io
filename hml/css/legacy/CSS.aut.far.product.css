@@ -3921,7 +3921,7 @@
 
   @media (max-width: 1280px) {
     .numero-vendas {
-      width: auto; /* Corrigido o erro de "0%2" */
+      width: auto; 
     }
 
     .numero-vendas i {
