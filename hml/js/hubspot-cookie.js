@@ -1,104 +1,114 @@
-!(function() {
-    async function e() {
-        let e = location.href;
-        if (e.includes("checkout/orderPlaced")) {
-            let a = $("#order-id").text().trim(),
-                r = await fetch(`/api/checkout/pub/orders/${a}`, {
-                    headers: new Headers({
-                        "Content-Type": "application/json"
-                    }),
-                }).then((e) => e.json()),
-                o = r.clientProfileData.email;
-            o && t(o, null, a);
-        }
-    }
-    async function t(e, t = null, a = null) {
-        try {
-            let r = (function e() {
-                    try {
-                        return $.cookie("hubspotutk");
-                    } catch (t) {
-                        return null;
-                    }
-                })(),
-                o = e.trim(),
-                n =
-                t ||
-                (function e() {
-                    try {
-                        let t = vtexjs.checkout.orderForm;
-                        return t.orderFormId;
-                    } catch (a) {
-                        return null;
-                    }
-                })(),
-                i = `https://api.autoglass.com.br/integracao-b2c/api/web-app/master-datas/clientes/${o}`,
-                l = await fetch(i, {
-                    method: "PUT",
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify({
-                        Hubspotutk: r,
-                        LastOrderFormId: n,
-                        LastOrderId: a,
-                    }),
-                });
-            l.ok ?
-                console.log("Dados enviados com sucesso ao MasterData.") :
-                console.error(
-                    "Erro ao enviar dados ao MasterData:",
-                    l.status,
-                    l.statusText
-                );
-        } catch (c) {
-            console.error("Erro ao enviar dados ao MasterData:", c);
-        }
-    }
-    $(window).on("rendered.vtexid", function e(a) {
-            let r = document.querySelector("#vtexIdUI-form-classic-login #inputEmail"),
-                o = document.getElementById("vtexIdUI-form-classic-login");
-            o.addEventListener("submit", (e) => {
-                let a = r.value;
-                a && t(a);
-            });
+(function () {
+  let isDataSent = false;
+  $(window).on('rendered.vtexid', getEmailFromLoginFormAndSendDataToMasterData);
+  $(window).on('checkoutRequestEnd.vtex', getEmailFromOrderFormAndSendDataToMasterData);
+  $(window).on('load', sendOrderIdToMasterData);
+  async function sendOrderIdToMasterData() {
+    const locationHref = location.href;
+    if(locationHref.includes('checkout/orderPlaced')) {
+      const orderId = $("#order-id").text().trim();
+      const order = await fetch(`/api/checkout/pub/orders/${orderId}`, {
+        headers: new Headers({
+          "Content-Type": "application/json",
         }),
-        $(window).on("checkoutRequestEnd.vtex", function e(a, r) {
-            try {
-                let o = vtexjs.checkout.orderForm,
-                    n = "",
-                    i = null;
-                if (
-                    (r && r.clientProfileData ?
-                        ((n = r.clientProfileData.email), (i = r.orderFormId)) :
-                        o.clientProfileData &&
-                        o.clientProfileData.email &&
-                        ((n = o.clientProfileData.email), (i = o.orderFormId)),
-                        !n)
-                ) {
-                    (function e() {
-                        let a = location.href;
-                        if (a.includes("checkout/#/email")) {
-                            let r = document.querySelector(
-                                    "#client-profile-data form.client-pre-email"
-                                ),
-                                o = document.querySelector(
-                                    "form.client-pre-email input#client-pre-email"
-                                );
-                            r.addEventListener("submit", (e) => {
-                                let a = o.value;
-                                a && t(a);
-                            });
-                        }
-                    })();
-                    return;
-                }
-                t(n, i);
-            } catch (l) {
-                console.warn(
-                    "Falha ao obter e-mail para enviar o Hubspotutk ao MasterData!"
-                );
-            }
-        }),
-        $(window).on("load", e);
-  })();
+      }).then(resp => resp.json());
+      const email = order.clientProfileData.email;
+      email && sendDataToVtexMasterData(email, null, orderId);
+    }
+  }
+
+  function getEmailFromLoginFormAndSendDataToMasterData(event) {
+    if(isDataSent)
+      return;
+    const emailInput = document.querySelector('#vtexIdUI-form-classic-login #inputEmail');
+    const loginForm = document.getElementById('vtexIdUI-form-classic-login');
+    loginForm.addEventListener('submit', (e) => {
+      const email = emailInput.value;
+      email && sendDataToVtexMasterData(email);
+    });
+  }
+
+  function getEmailFromOrderFormAndSendDataToMasterData(event, orderForm) {
+    try {
+      if(isDataSent)
+        return;
+      const vtexJsOrderForm = vtexjs.checkout.orderForm;
+      let email = "";
+      let orderFormId = null;
+      if(orderForm && orderForm.clientProfileData) {
+        email = orderForm.clientProfileData.email;
+        orderFormId = orderForm.orderFormId;
+      } else if(vtexJsOrderForm.clientProfileData && vtexJsOrderForm.clientProfileData.email) {
+        email = vtexJsOrderForm.clientProfileData.email;
+        orderFormId = vtexJsOrderForm.orderFormId;
+      }
+      if(!email) {
+        getEmailFromPreEmailFormAndSendDataToMasterData();
+        return;
+      }
+      sendDataToVtexMasterData(email, orderFormId);
+    } catch (e) {
+      console.warn('Falha ao obter e-mail para enviar o Hubspotutk ao MasterData!');
+    }
+  }
+
+  function getEmailFromPreEmailFormAndSendDataToMasterData() {
+    const locationHref = location.href;
+    if(locationHref.includes('checkout/#/email')) {
+      const preEmailForm = document.querySelector('#client-profile-data form.client-pre-email');
+      const preEmailInput = document.querySelector('form.client-pre-email input#client-pre-email');
+      preEmailForm.addEventListener('submit', (e) => {
+        const email = preEmailInput.value;
+        email && sendDataToVtexMasterData(email);
+      });
+    }
+  }
+
+  async function sendDataToVtexMasterData(email, orderFormId = null, orderId = null) {
+    try {
+      const hubspotutk = getHubspotutk();
+      const normalizedEmail = email.trim();
+      const normalizedOrderFormId = orderFormId || getOrderFormId();
+  
+      const apiUrl = `https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/master-datas/clientes/${normalizedEmail}`;
+      const requestBody = {
+        Hubspotutk: hubspotutk,
+        LastOrderFormId: normalizedOrderFormId,
+        LastOrderId: orderId,
+      };
+  
+      const response = await fetch(apiUrl, {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(requestBody),
+      });
+  
+      if (response.ok) {
+        console.log('Dados enviados com sucesso ao MasterData.');
+      } else {
+        console.error('Erro ao enviar dados ao MasterData:', response.status, response.statusText);
+      }
+    } catch (error) {
+      console.error('Erro ao enviar dados ao MasterData:', error);
+    }
+  }
+
+  function getOrderFormId() {
+    try {
+      const orderForm = vtexjs.checkout.orderForm;
+      return orderForm.orderFormId;
+    } catch (e) {
+      return null;
+    }
+  }
+  
+  function getHubspotutk() {
+    try {
+      return $.cookie('hubspotutk');
+    } catch (e) {
+      return null;
+    }
+  }
+})();

@@ -3904,3 +3904,31 @@
   .product-qd-v1-installation .mz-button__installation:active {
     color: #fff;
   }
+
+   @media (max-width: 1440px), (max-width: 1280px) {
+    .product-qd-v1-brand-name {
+      display: block;
+    }
+
+    .product-qd-v1-brand-name a {
+      padding-left: 0;
+    }
+
+    .product-qd-v1-sku-selection-box .product-qd-v1-ref-code .productReference {
+      display: grid;
+    }
+  }
+
+  @media (max-width: 1280px) {
+    .numero-vendas {
+      width: auto; 
+    }
+
+    .numero-vendas i {
+      margin-top: 10px;
+    }
+
+    .numero-vendas p {
+      margin-left: 7%;
+    }
+  }

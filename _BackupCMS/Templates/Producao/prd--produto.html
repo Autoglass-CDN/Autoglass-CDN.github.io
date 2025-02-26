@@ -51,21 +51,6 @@
         }
         });
 </script>
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "$product.Name",
-  "image": "https://www.autoglassonline.com.br/imagem-produto.jpg",
-  "offers": {
-    "@type": "Offer",
-    "price": "0.00",
-    "priceCurrency": "BRL",
-    "availability": "https://schema.org/OutOfStock",
-    "priceValidUntil": "2025-12-31"
-  }
-}
-</script>
   <vtex:contentPlaceHolder id="qd_head" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -102,7 +87,29 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
   <vtex.cmc:productRichSnippets showGoogle="1" />
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const offerDiv = document.querySelector('div[itemtype="http://schema.org/Offer"]');
 
+        if (offerDiv) {
+            let priceCurrencyMeta = offerDiv.querySelector('meta[itemprop="priceCurrency"]');
+            if (!priceCurrencyMeta) {
+                priceCurrencyMeta = document.createElement("meta");
+                priceCurrencyMeta.setAttribute("itemprop", "priceCurrency");
+                priceCurrencyMeta.setAttribute("content", "BRL");
+                offerDiv.appendChild(priceCurrencyMeta);
+            }
+
+            let priceMeta = offerDiv.querySelector('meta[itemprop="price"]');
+            if (!priceMeta) {
+                priceMeta = document.createElement("meta");
+                priceMeta.setAttribute("itemprop", "price");
+                priceMeta.setAttribute("content", "0.00");
+                offerDiv.appendChild(priceMeta);
+            }
+        }
+        });
+    </script>
   <!-- Header -->
   <vtex:template id="prd--header" />
   <!-- Header -->
@@ -173,6 +180,7 @@
                   Marca:
                   <vtex.cmc:brandName />
                 </section>
+                <section class="numero-vendas-mobile"></section>
                 <!-- Brand names -->
                 <section class="konfidency-reviews-summary mobile"></section>
               </section>
@@ -236,6 +244,7 @@
                         Marca:
                         <vtex.cmc:brandName />
                       </section>
+                      <section class="numero-vendas"></section>
                       <section class="konfidency-reviews-summary desktop"></section>
                       <!-- Brand names -->
                     </section>
@@ -281,7 +290,7 @@
 
                 <!-- Product price -->
                 <section class="product-qd-v1-standard row">
-                    <section class="card-instalacao">
+                   <section class="card-instalacao">
                         <div class="card-left-instalacao">
                           <input type="checkbox" id="install-option" />
                           <div class="card-content-instalacao">

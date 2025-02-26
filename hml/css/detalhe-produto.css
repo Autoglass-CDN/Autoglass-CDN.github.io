@@ -1838,3 +1838,32 @@ fieldset#beneficios legend {
     font-size: 15px;
   }
 }
+
+.numero-vendas {
+  display: flex;
+}
+
+.numero-vendas i {
+  margin-left: 13px;
+  padding-right: 2px;
+}
+
+.texto-numero-vendas{
+  font-size: 12px !important;
+}
+
+@media screen and (max-width: 390px) {
+  .numero-vendas-mobile {
+    align-items: anchor-center;
+    display: flex;
+  }
+  .konfidency-reviews-summary.mobile{
+    width: 50%;
+  }
+  .product-qd-v1-ref-code.mob{
+    padding-right: 5%;
+  }
+  .texto-numero-vendas{
+    margin-left: 7px;
+  }
+}

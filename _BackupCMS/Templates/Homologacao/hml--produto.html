@@ -86,7 +86,32 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVLJKFR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <vtex.cmc:productRichSnippets showGoogle="1" />
+  <vtex.cmc:productRichSnippets showGoogle="1" showPriceWithoutStock="1"/>
+  <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const offerDiv = document.querySelector('div[itemtype="http://schema.org/Offer"]');
+
+        if (offerDiv) {
+            let priceCurrencyMeta = offerDiv.querySelector('meta[itemprop="priceCurrency"]');
+            if (!priceCurrencyMeta) {
+                priceCurrencyMeta = document.createElement("meta");
+                priceCurrencyMeta.setAttribute("itemprop", "priceCurrency");
+                priceCurrencyMeta.setAttribute("content", "BRL");
+                offerDiv.appendChild(priceCurrencyMeta);
+            }
+
+            let priceMeta = offerDiv.querySelector('meta[itemprop="price"]');
+            if (!priceMeta) {
+                priceMeta = document.createElement("meta");
+                priceMeta.setAttribute("itemprop", "price");
+                priceMeta.setAttribute("content", "0.00");
+                offerDiv.appendChild(priceMeta);
+            }
+        }
+        });
+    </script>
+  <!-- hmlCustomContent -->
+  <vtex.cmc:hmlCustomContent />
   <!-- Header -->
   <vtex:template id="hml--header" />
   <!-- Header -->
@@ -157,6 +182,7 @@
                   Marca:
                   <vtex.cmc:brandName />
                 </section>
+                <section class="numero-vendas-mobile"></section>
                 <!-- Brand names -->
                 <section class="konfidency-reviews-summary mobile"></section>
               </section>
@@ -220,6 +246,7 @@
                         Marca:
                         <vtex.cmc:brandName />
                       </section>
+                      <section class="numero-vendas"></section>
                       <section class="konfidency-reviews-summary desktop"></section>
                       <!-- Brand names -->
                     </section>
