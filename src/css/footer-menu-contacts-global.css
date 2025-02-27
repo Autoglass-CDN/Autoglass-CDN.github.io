@@ -1,4 +1,4 @@
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
     .col-md-1,
     .col-md-2,
     .col-md-3,
@@ -42,11 +42,30 @@
     }
   }
 
+  @media (min-width: 768px) {
+    .container {
+      width: 90%;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .container {
+      width: 90%;
+    }
+  }
+
   @media (min-width: 1024px) {
     .container {
       width: 90%;
-      max-width: 1014px;
-      min-width: 993px;
+    }
+    .footer-qd-v1 .footer-qd-v1-content .row {
+      max-width: 70%;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .footer-qd-v1 .footer-qd-v1-content .row {
+      max-width: 70%;
     }
   }
 
@@ -195,7 +214,6 @@
   
   .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-contact-information, 
   .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-sac .titulo-contact-information {
-    margin-bottom: 20px;
     padding-top: 0;
   }
   
@@ -215,12 +233,6 @@
   @media (max-width: 992px) {
     .footer-qd-v1-content .footer-qd-v1-social-networks ul {
       text-align: center;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .footer-qd-v1 .footer-qd-v1-content .row {
-      max-width: 70%;
     }
   }
 

@@ -156,19 +156,13 @@ img {
 
 @media (min-width: 768px) {
   .container {
-    width: 720px;
+    width: 90%;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 940px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1140px;
+    width: 90%;
   }
 }
 
@@ -257,7 +251,7 @@ img {
   width: 100%;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .col-md-1,
   .col-md-2,
   .col-md-3,
@@ -511,16 +505,9 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 @media (min-width: 1024px) {
   .container {
     width: 90%;
-    max-width: 1014px;
-    min-width: 993px;
   }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 90%;
-    max-width: 1326px;
-    min-width: 1170px;
+  .footer-qd-v1 .footer-qd-v1-content .row {
+    max-width: 70%;
   }
 }
 
@@ -872,7 +859,6 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 
 .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-contact-information, 
 .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-sac .titulo-contact-information {
-  margin-bottom: 20px;
   padding-top: 0;
 }
 
@@ -982,12 +968,6 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   color: #333333;
   font-size: 12px;
   font-family: "Montserrat", sans-serif;
-}
-
-@media (min-width: 1200px) {
-  .footer-qd-v1-extra-info p {
-    font-size: 10px;
-  }
 }
 
 .modal-qd-v1-search {
