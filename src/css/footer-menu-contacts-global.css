@@ -74,12 +74,12 @@
   }
 
   .footer-qd-v1-content .footer-qd-v1-social-networks p {
-    color: #fff;
     text-align: left;
     margin: 0 0 15px;
     font-size: 14px !important;
     font-weight: 400 !important;
     padding: 10px;
+    color: #333333;
   }
 
   .footer-qd-v1-content .footer-qd-v1-social-networks ul {
@@ -88,6 +88,11 @@
     list-style: none;
     text-align: left;
     margin-bottom: 50px;
+  }
+
+  .footer-qd-v1-content .footer-qd-v1-menu-grid .footer-qd-v1-social-networks ul > li > a {
+    padding: 0 !important;
+    color: #fff
   }
 
   .titulo-contact-information {
@@ -117,7 +122,7 @@
   @media (min-width: 770px) {
     .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
       display: grid;
-      grid-template: "autoglass suporte" "servicos  suporte";
+      grid-template: "autoglass suporte" "redes .";
     }  
     .footer-qd-v1-content
       .footer-qd-v1-menu-list
@@ -128,8 +133,9 @@
     .footer-qd-v1-content
       .footer-qd-v1-menu-list
       ul.footer-qd-v1-menu-grid
-      .grid-area-servicos {
-      grid-area: servicos;
+      .grid-area-redes {
+      grid-area: redes;
+      grid-column: span 2;
     }
     .footer-qd-v1-content
       .footer-qd-v1-menu-list
@@ -139,7 +145,7 @@
     }
     .footer-qd-v1-content .footer-qd-v2-menu-grid {
       display: grid;
-      grid-template: "vendedor sac" "horario-ven horario-sac" ". redes";
+      grid-template: "vendedor sac" "horario-ven horario-sac";
     }
     .footer-qd-v1-content
       ul.footer-qd-v2-menu-grid
@@ -168,12 +174,6 @@
         padding-left: 15px;
         border-left: 1px solid #adadad;
         margin-top: 0;
-    }
-    .footer-qd-v1-content
-      ul.footer-qd-v2-menu-grid
-      .grid-area-redes {
-      grid-area: redes;
-      grid-column-start: 2;
     }
     .footer-qd-v1-content
       .footer-qd-v1-menu-list
@@ -234,17 +234,20 @@
   }
 
   @media (max-width: 992px) {
+    .footer-qd-v1-content .footer-qd-v1-menu-list {
+      text-align: center;
+    }
     .footer-qd-v1-content .footer-qd-v1-social-networks ul {
       text-align: center;
+    }
+    .footer-qd-v1-content .footer-qd-v1-social-networks ul > li {
+      padding-left: 20px;
     }
   }
 
   @media (max-width: 768px) {
     .footer-qd-v1-content .footer-qd-v1-menu-list {
       text-align: left;
-    }
-    .footer-qd-v1-content .footer-qd-v1-social-networks p {
-      color: black;
     }
     .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-social-networks ul > li {
       text-align: center;
