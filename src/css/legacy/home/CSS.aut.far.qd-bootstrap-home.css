@@ -698,7 +698,10 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
     ul.footer-qd-v2-menu-grid
     .grid-area-horario-sac {
     grid-area: horario-sac;
+    padding-top: 20px;
     padding-left: 15px;
+    border-left: 1px solid #adadad;
+    margin-top: 0;
   }
   .footer-qd-v1-content
     ul.footer-qd-v2-menu-grid
