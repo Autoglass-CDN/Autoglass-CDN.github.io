@@ -73,12 +73,16 @@
     background-color: #f1f1f1;
   }
 
+  .footer-qd-v1-content .footer-qd-v1-social-networks .link-whatsapp {
+    margin-left: 0;
+  }
+
   .footer-qd-v1-content .footer-qd-v1-social-networks p {
     text-align: left;
-    margin: 0 0 15px;
-    font-size: 14px !important;
+    font-size: 20px !important;
     font-weight: 400 !important;
-    padding: 10px;
+    padding: 0 0 10px;
+    margin: 0;
     color: #333333;
   }
 
