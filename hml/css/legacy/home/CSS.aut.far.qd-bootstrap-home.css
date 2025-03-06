@@ -538,12 +538,11 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks p {
-  color: #fff;
   text-align: left;
-  margin: 0 0 15px;
-  font-size: 14px !important;
+  font-size: 20px !important;
   font-weight: 400 !important;
-  padding: 10px;
+  padding: 0 0 10px;
+  margin: 0;
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks ul {
@@ -579,6 +578,10 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   margin-left: 13px;
 }
 
+.footer-qd-v1-content .footer-qd-v1-social-networks .link-whatsapp {
+  margin-left: 0;
+}
+
 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a > i {
   margin: 7.5px;
 }
@@ -610,6 +613,11 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   margin-left: 9px;
 }
 
+.footer-qd-v1-content .footer-qd-v1-menu-grid .footer-qd-v1-social-networks ul > li > a {
+  padding: 0 !important;
+  color: #fff
+}
+
 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a > i.fa-youtube {
   margin-left: 6px;
 }
@@ -632,6 +640,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   margin-top: 30px;
   color: #333333;
 }
+
 .footer-qd-v1-content .footer-qd-v1-contact-information {
   margin-top: 0px;
   color: #333333;
@@ -651,7 +660,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 @media (min-width: 770px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
     display: grid;
-    grid-template: "autoglass suporte" "servicos  suporte";
+    grid-template: "autoglass suporte" "redes .";
   }
   .footer-qd-v1-content
     .footer-qd-v1-menu-list
@@ -660,10 +669,11 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
     grid-area: autoglass;
   }
   .footer-qd-v1-content
-    .footer-qd-v1-menu-list
-    ul.footer-qd-v1-menu-grid
-    .grid-area-servicos {
-    grid-area: servicos;
+   .footer-qd-v1-menu-list
+   ul.footer-qd-v1-menu-grid
+   .grid-area-redes {
+   grid-area: redes;
+   grid-column: span 2;
   }
   .footer-qd-v1-content
     .footer-qd-v1-menu-list
@@ -673,7 +683,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   }
   .footer-qd-v1-content .footer-qd-v2-menu-grid {
     display: grid;
-    grid-template: "vendedor sac" "horario-ven horario-sac" ". redes";
+    grid-template: "vendedor sac" "horario-ven horario-sac";
   }
   .footer-qd-v1-content
     ul.footer-qd-v2-menu-grid
@@ -697,17 +707,11 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   .footer-qd-v1-content
     ul.footer-qd-v2-menu-grid
     .grid-area-horario-sac {
-      grid-area: horario-sac;
-      padding-top: 20px;
-      padding-left: 15px;
-      border-left: 1px solid #adadad;
-      margin-top: 0;
-  }
-  .footer-qd-v1-content
-    ul.footer-qd-v2-menu-grid
-    .grid-area-redes {
-    grid-area: redes;
-    grid-column-start: 2;
+    grid-area: horario-sac;
+    padding-top: 20px;
+    padding-left: 15px;
+    border-left: 1px solid #adadad;
+    margin-top: 0;
   }
   .footer-qd-v1-content
     .footer-qd-v1-menu-list
@@ -1170,8 +1174,14 @@ a:focus {
 }
 
 @media (max-width: 992px) {
+  .footer-qd-v1-content .footer-qd-v1-menu-list {
+    text-align: center;
+  }
   .footer-qd-v1-content .footer-qd-v1-social-networks ul {
     text-align: center;
+  }
+  .footer-qd-v1-content .footer-qd-v1-social-networks ul > li {
+    padding-left: 20px;
   }
 }
 
@@ -1181,21 +1191,9 @@ a:focus {
   }
 }
 
-@media (max-width: 992px) {
-  .footer-qd-v1-content .footer-qd-v1-social-networks ul > li {
-    padding-left: 20px;
-  }
-}
-
 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a:hover {
   background-color: #17274e;
   transform: translateY(-3px);
-}
-
-@media (max-width: 992px) {
-  .footer-qd-v1-content .footer-qd-v1-menu-list {
-    text-align: center;
-  }
 }
 
 @media (max-width: 1024px) {
@@ -1213,9 +1211,6 @@ a:focus {
   }
   .footer-qd-v1-content .footer-qd-v1-menu-list {
     text-align: left;
-  }
-  .footer-qd-v1-content .footer-qd-v1-social-networks p {
-    color: black;
   }
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-social-networks ul > li {
     text-align: center;
