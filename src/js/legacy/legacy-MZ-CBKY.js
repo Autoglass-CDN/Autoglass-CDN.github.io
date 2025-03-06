@@ -84,6 +84,7 @@ try {
       Common.newsFlagToTop();
       Common.saveAmountFix();
       Common.applyInstitutionalMenuMobile();
+      Common.applyContactMenuMobile();
       Common.applySmartCart();
       Common.fixPlaceholderSearch();
       Common.applyTipBarCarousel();
@@ -442,6 +443,22 @@ try {
           var $t = $(this);
           $t.toggleClass("MZf-setUp");
           $t.parent().next().slideToggle();
+        }
+      );
+    },
+    applyContactMenuMobile: function () {
+      $(".contact-information").each(function () {
+        var $t = $(this);
+        var blockArrow = $(
+          '<div class="footer-qd-v2-menu-arrowBlock"><div></div></div>'
+        );
+        $t.find("div").append(blockArrow);
+      });
+      $(".contact-information .footer-qd-v2-menu-arrowBlock div").click(
+        function () {
+          var $t = $(this);
+          $t.toggleClass("MZf-setUp");
+          $t.parent().parent().next().slideToggle();
         }
       );
     },
