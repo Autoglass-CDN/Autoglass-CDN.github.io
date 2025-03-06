@@ -143,8 +143,12 @@ async function insertBrandDescription() {
 
 async function getProductRefIdByProductName() {
   const currentProduct = await vtexjs.catalog.getCurrentProductWithVariations();
-  const [_, productRefId] = currentProduct.name.match(/(\d+)(\s?\-?\s?[0-9]+)?$/);
-  return productRefId;
+  try{
+    const [_, productRefId] = currentProduct.name.match(/(\d+)(\s?\-?\s?[0-9]+)?$/);
+    return productRefId;
+  } catch(ex){
+    return 0;
+  }
 }
 
 async function loadOptionals() {
@@ -217,7 +221,14 @@ $(window).on("load", async () => {
   const veiculosCompatíveisContainer = $("#veiculos-compativeis");
   const productRefId = await getProductRefIdByProductName();
 
-  const veiculosCompativeis = await $.get(`${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`);
+  let veiculosCompativeis;
+  
+  try{
+    veiculosCompativeis = await $.get(`${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`);
+  } catch(ex){
+    veiculosCompativeis = [];
+  }
+  
   veiculosBuscaveis = veiculosCompativeis;
 
   const possuiVeiculosCompativeis = veiculosCompativeis ? veiculosCompativeis.length > 0 : false;
