@@ -69,6 +69,10 @@
     }
   }
 
+  .footer-qd-v1  {
+    font-family: 'Roboto', sans-serif;
+  }
+
   .footer-qd-v1-content {
     background-color: #f1f1f1;
   }
@@ -96,7 +100,8 @@
 
   .footer-qd-v1-content .footer-qd-v1-menu-grid .footer-qd-v1-social-networks ul > li > a {
     padding: 0 !important;
-    color: #fff
+    color: #fff;
+    background-color: #2d4f9e;
   }
 
   .titulo-contact-information {

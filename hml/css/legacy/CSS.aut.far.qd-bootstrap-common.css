@@ -9187,7 +9187,7 @@ body.account
   div {
   width: 10px;
   height: 6px;
-  background-image: url("//www.autoglassonline.com.br/arquivos/setDown.png");
+  background-image: url("//www.autoglassonline.com.br/arquivos/setUp.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 12px 7px;
@@ -9197,7 +9197,7 @@ body.account
   .footer-qd-v1-menu-list
   .footer-qd-v1-menu-arrowBlock
   .MZf-setUp {
-  background-image: url("//www.autoglassonline.com.br/arquivos/setUp.png");
+  background-image: url("//www.autoglassonline.com.br/arquivos/setDown.png");
 }
 
 .footer-qd-v1-content .footer-qd-v1-contact-information {
@@ -9218,8 +9218,6 @@ body.account
 }
 
 .footer-qd-v1-content .footer-qd-v1-contact-information p {
-  margin: 0 0 15px;
-  padding-top: 5px;
   color: #333333;
   font-size: 16px;
   font-weight: 600;
