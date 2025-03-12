@@ -156,19 +156,13 @@ img {
 
 @media (min-width: 768px) {
   .container {
-    width: 720px;
+    width: 90%;
   }
 }
 
 @media (min-width: 992px) {
   .container {
-    width: 940px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1140px;
+    width: 90%;
   }
 }
 
@@ -257,7 +251,7 @@ img {
   width: 100%;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 1024px) {
   .col-md-1,
   .col-md-2,
   .col-md-3,
@@ -274,7 +268,7 @@ img {
   }
   .qd-shelf-md-8 [class*="colunas"] > ul,
   .col-md-8 {
-    width: 66.66666667%;
+    width: 50%;
   }
   .qd-shelf-md-6 [class*="colunas"] > ul,
   .col-md-6 {
@@ -282,13 +276,13 @@ img {
   }
   .qd-shelf-md-4 [class*="colunas"] > ul,
   .col-md-4 {
-    width: 33.33333333%;
+    width: 50%;
   }
   .col-md-pull-4 {
-    right: 33.33333333%;
+    right: 50%;
   }
   .col-md-push-8 {
-    left: 66.66666667%;
+    left: 50%;
   }
 }
 
@@ -449,15 +443,12 @@ label {
   display: none !important;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 769px) {
   .visible-lg {
-    display: block !important;
+   display: block !important;
   }
-}
-
-@media (min-width: 1200px) {
   .hidden-lg {
-    display: none !important;
+   display: none !important;
   }
 }
 
@@ -511,11 +502,12 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   cursor: pointer;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 1024px) {
   .container {
     width: 90%;
-    max-width: 1326px;
-    min-width: 1170px;
+  }
+  .footer-qd-v1 .footer-qd-v1-content .row {
+    max-width: 70%;
   }
 }
 
@@ -542,23 +534,23 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 }
 
 .footer-qd-v1-content {
-  padding-bottom: 45px;
   background-color: #f1f1f1;
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks p {
-  color: #fff;
-  text-align: right;
-  margin: 0 0 5px;
-  font-size: 14px !important;
+  text-align: left;
+  font-size: 20px !important;
   font-weight: 400 !important;
+  padding: 0 0 10px;
+  margin: 0;
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks ul {
   margin-bottom: 0;
   padding-left: 0;
   list-style: none;
-  text-align: right;
+  text-align: left;
+  margin-bottom: 50px;
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li {
@@ -584,6 +576,10 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   background-color: #2d4f9e;
   border-radius: 50%;
   margin-left: 13px;
+}
+
+.footer-qd-v1-content .footer-qd-v1-social-networks .link-whatsapp {
+  margin-left: 0;
 }
 
 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a > i {
@@ -617,8 +613,20 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   margin-left: 9px;
 }
 
+.footer-qd-v1-content .footer-qd-v1-menu-grid .footer-qd-v1-social-networks ul > li > a {
+  padding: 0 !important;
+  color: #fff
+}
+
 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a > i.fa-youtube {
   margin-left: 6px;
+}
+
+.titulo-contact-information {
+  font-size: 20px;
+  font-weight: 600;
+  padding-top: 45px;
+  margin-bottom: 15px;
 }
 
 @media (min-width: 1200px) {
@@ -628,16 +636,20 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   }
 }
 
-.footer-qd-v1-content .footer-qd-v1-menu-list,
+.footer-qd-v1-content .footer-qd-v1-menu-list {
+  margin-top: 30px;
+  color: #333333;
+}
+
 .footer-qd-v1-content .footer-qd-v1-contact-information {
-  margin-top: 40px;
+  margin-top: 0px;
   color: #333333;
 }
 
 @media (max-width: 992px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list,
   .footer-qd-v1-content .footer-qd-v1-contact-information {
-    margin-top: 30px;
+    margin-top: 20px;
   }
 }
 
@@ -648,13 +660,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 @media (min-width: 770px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
     display: grid;
-    grid-template: "autoglass suporte" "servicos  suporte";
-  }
-  .footer-qd-v1-content
-    .footer-qd-v1-menu-list
-    ul.footer-qd-v1-menu-grid
-    li.qd-am-has-ul {
-    width: auto;
+    grid-template: "autoglass suporte" "redes .";
   }
   .footer-qd-v1-content
     .footer-qd-v1-menu-list
@@ -663,16 +669,56 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
     grid-area: autoglass;
   }
   .footer-qd-v1-content
-    .footer-qd-v1-menu-list
-    ul.footer-qd-v1-menu-grid
-    .grid-area-servicos {
-    grid-area: servicos;
+   .footer-qd-v1-menu-list
+   ul.footer-qd-v1-menu-grid
+   .grid-area-redes {
+   grid-area: redes;
+   grid-column: span 2;
   }
   .footer-qd-v1-content
     .footer-qd-v1-menu-list
     ul.footer-qd-v1-menu-grid
     .grid-area-suporte {
     grid-area: suporte;
+  }
+  .footer-qd-v1-content .footer-qd-v2-menu-grid {
+    display: grid;
+    grid-template: "vendedor sac" "horario-ven horario-sac";
+  }
+  .footer-qd-v1-content
+    ul.footer-qd-v2-menu-grid
+    .grid-area-vendedor {
+    grid-area: vendedor;
+    padding-right: 20px;
+  }
+  .footer-qd-v1-content
+    ul.footer-qd-v2-menu-grid
+    .grid-area-sac {
+    grid-area: sac;
+    margin-top: 0;
+    padding-left: 20px;
+    border-left: 1px solid #adadad;
+  }
+  .footer-qd-v1-content
+    ul.footer-qd-v2-menu-grid
+    .grid-area-horario-ven {
+    grid-area: horario-ven;
+  }
+  .footer-qd-v1-content
+    ul.footer-qd-v2-menu-grid
+    .grid-area-horario-sac {
+    grid-area: horario-sac;
+    padding-top: 20px;
+    padding-left: 15px;
+    border-left: 1px solid #adadad;
+    margin-top: 0;
+  }
+  .footer-qd-v1-content
+    .footer-qd-v1-menu-list
+    ul.footer-qd-v1-menu-grid
+    li.qd-am-has-ul,
+    ul.footer-qd-v2-menu-grid {
+    width: auto;
   }
 }
 
@@ -696,7 +742,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   margin-bottom: 30px;
   padding: 15px 10px 15px 0;
   color: #333333;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: 600;
 }
 
@@ -759,7 +805,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   margin-top: 25px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
     display: none;
   }
@@ -770,8 +816,6 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 }
 
 .footer-qd-v1-content .footer-qd-v1-contact-information p {
-  margin: 0 0 15px;
-  padding-top: 5px;
   color: #333333;
   font-size: 16px;
   font-weight: 600;
@@ -814,6 +858,21 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 
 .footer-qd-v1-content .footer-qd-v1-info-content {
   margin-top: 25px;
+}
+
+.footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid {
+  text-align: left;
+}
+
+.footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-contact-information, 
+.footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-sac .titulo-contact-information {
+  padding-top: 0;
+}
+
+.footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid li p {
+  display: block;
+  font-size: 14px;
+  font-weight: 300;
 }
 
 .footer-qd-v1-stamps {
@@ -918,12 +977,6 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   font-family: "Montserrat", sans-serif;
 }
 
-@media (min-width: 1200px) {
-  .footer-qd-v1-extra-info p {
-    font-size: 10px;
-  }
-}
-
 .modal-qd-v1-search {
   position: fixed;
   top: 0;
@@ -1014,6 +1067,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   border-bottom-right-radius: 40px;
   border-bottom-left-radius: 40px;
 }
+
 /* 07-04 - Migrando do CDN quatro digital para CDN no git */
 
 /* PC-QUARTO - 04/06/2020 19:17:14 GMT-0300 */
@@ -1101,7 +1155,7 @@ a:focus {
 
 @media (max-width: 992px) {
   .footer-qd-v1-content {
-    padding-bottom: 40px;
+    padding-bottom: 20px;
   }
 }
 
@@ -1120,8 +1174,14 @@ a:focus {
 }
 
 @media (max-width: 992px) {
+  .footer-qd-v1-content .footer-qd-v1-menu-list {
+    text-align: center;
+  }
   .footer-qd-v1-content .footer-qd-v1-social-networks ul {
     text-align: center;
+  }
+  .footer-qd-v1-content .footer-qd-v1-social-networks ul > li {
+    padding-left: 20px;
   }
 }
 
@@ -1131,26 +1191,73 @@ a:focus {
   }
 }
 
-@media (max-width: 992px) {
-  .footer-qd-v1-content .footer-qd-v1-social-networks ul > li {
-    padding-left: 20px;
-  }
-}
-
 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a:hover {
   background-color: #17274e;
   transform: translateY(-3px);
 }
 
-@media (max-width: 992px) {
-  .footer-qd-v1-content .footer-qd-v1-menu-list {
-    text-align: center;
+@media (max-width: 1024px) {
+  .footer-qd-v1 .footer-qd-v1-content .row {
+    max-width: 70%;
   }
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
+  .col-md-push-8 .titulo-contact-information {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 15px 0 0 0;
+    margin: 0;
+  }
   .footer-qd-v1-content .footer-qd-v1-menu-list {
     text-align: left;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-social-networks ul > li {
+    text-align: center;
+    float: none;
+  }
+  .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a > i {
+    color: white;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list ul > li > a {
+    padding: 0;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-3-li .qd-am-has-ul {
+    width: 100%;
+  }
+  .footer-qd-v1-content .contact-information div {
+    display: flex;
+    justify-content: space-between;
+  }
+  .footer-qd-v1-content .contact-information .footer-qd-v2-menu-arrowBlock {
+    float: right;
+    margin-top: 25px;
+  }
+  .footer-qd-v1-content .contact-information .footer-qd-v2-menu-arrowBlock div {
+    width: 10px;
+    height: 6px;
+    background-image: url(//www.autoglassonline.com.br/arquivos/setUp.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 12px 7px;
+  }
+  .footer-qd-v1-content
+  .footer-qd-v1-menu-list
+  .footer-qd-v1-menu-arrowBlock
+  .MZf-setUp,
+  .footer-qd-v1-content .contact-information .footer-qd-v2-menu-arrowBlock .MZf-setUp {
+  background-image: url("//www.autoglassonline.com.br/arquivos/setDown.png");
+  }
+  .footer-qd-v1-content .footer-qd-v1-social-networks .footer-qd-v1-menu-arrowBlock {
+    display: none !important;
+  }
+  .footer-qd-v1 .footer-qd-v1-content .row {
+    max-width: 100%;
+  }
+  .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-horario-atendimento, 
+  .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-sac .titulo-horario-atendimento {
+    margin-bottom: 5px;
+    padding-top: 0;
   }
 }
 
@@ -1179,19 +1286,13 @@ a:focus {
   background-color: #2d4f9e;
 }
 
-@media (max-width: 767px) {
-  .footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-3-li .qd-am-has-ul {
-    width: 100%;
-  }
-}
-
 .footer-qd-v1-content
   .footer-qd-v1-menu-list
   .footer-qd-v1-menu-arrowBlock
   div {
   width: 10px;
   height: 6px;
-  background-image: url("//www.autoglassonline.com.br/arquivos/setDown.png");
+  background-image: url("//www.autoglassonline.com.br/arquivos/setUp.png");
   background-position: center center;
   background-repeat: no-repeat;
   background-size: 12px 7px;
