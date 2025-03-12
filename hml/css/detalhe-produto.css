@@ -1699,146 +1699,6 @@ fieldset#beneficios legend {
   text-transform: lowercase;
 }
 
-.card-instalacao {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 1px solid #d3d3d3;
-  border-radius: 8px;
-  background-color: #eef7ff;
-  padding: 16px 16px 16px 5px;
-  margin: 5px auto;
-}
-
-.card-left-instalacao {
-  display: flex;
-  align-items: flex-start;
-  border-right: 1px solid #0070c0;
-  padding-right: 12px;
-}
-
-.card-left-instalacao input[type="checkbox"] {
-  width: 15px;
-  height: 15px;
-  margin-right: 8px;
-}
-
-.card-content-instalacao {
-  font-size: 16px;
-}
-
-.card-content-instalacao h3 {
-  margin: 0;
-  font-size: 14px !important;
-  font-weight: 600 !important;
-}
-
-.card-content-instalacao span {
-  color: #0070c0;
-  font-weight: bold;
-}
-
-.card-content-instalacao p {
-  color: #0070c0 !important;
-  font-weight: bold;
-}
-
-.card-right-instalacao {
-  display: flex;
-  flex-direction: column;
-}
-
-.card-right-instalacao span {
-  display: flex;
-  align-items: center;
-  font-size: 13px;
-  color: #0070c0 !important;
-}
-
-.card-right-instalacao ul li span div{
-  margin-right: 5px;
-}
-
-.icon {
-  width: 16px;
-  height: 16px;
-  margin-right: 8px;
-  background-color: #0070c0;
-  border-radius: 50%;
-}
-
-.card-content-instalacao > p {
-  font-size: 10px !important;
-}
-
-@media (min-width: 1367px) and (max-width: 1720px) {
-  .card-content-instalacao h3 {
-    font-size: 14px !important;
-  }
-  .card-right-instalacao span {
-    font-size: 13px;
-  }
-  .card-left-instalacao {
-    padding-right: 10px;
-  }
-  .product-qd-v1-price {
-    padding-top: 0px !important;
-  }
-}
-
-@media (min-width: 1281px) and (max-width: 1366px) {
-  .card-content-instalacao h3 {
-    font-size: 13px !important;
-  }
-  .card-right-instalacao span {
-    font-size: 11px;
-  }
-  .card-left-instalacao {
-    padding-right: 10px;
-  }
-}
-
-@media (max-width: 1280px) {
-  .card-content-instalacao h3 {
-    font-size: 12px !important;
-  }
-  .card-right-instalacao span {
-    font-size: 11px;
-  }
-  .card-left-instalacao {
-    padding-right: 10px;
-  }
-}
-
-@media (max-width: 414px){
-  .card-instalacao {
-    display: block;
-  }
-  .card-right-instalacao span {
-    font-size: 15px;
-  }
-  .card-content-instalacao h3 {
-    font-size: 16px !important;
-  }
-  .card-left-instalacao {
-    display: flex;
-    align-items: flex-start;
-    border-bottom: 1px solid #0070c0;
-    border-right: none;
-    padding-right: 12px;
-    padding-left: 9px;
-  }
-  .card-right-instalacao {
-    padding-left: 10px;
-    padding-top: 10px;
-  }
-  #valorComInstalacao {
-    color: #0070c0;
-    font-weight: bold;
-    font-size: 15px;
-  }
-}
-
 .numero-vendas {
   display: flex;
 }
@@ -1866,4 +1726,81 @@ fieldset#beneficios legend {
   .texto-numero-vendas{
     margin-left: 7px;
   }
+}
+
+.card-instalacao {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #d3d3d3;
+  border-radius: 8px;
+  background-color: #eef7ff;
+  padding: 16px 16px 16px 16px;
+  margin: 5px auto;
+  width: 100%;
+}
+
+.card-left-instalacao {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.icon-instalacao {
+  font-size: 22px;
+  color: #1d4f91;
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.icon-instalacao i {
+  margin-right: 4px;
+}
+
+.icon-instalacao .fa-cog {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 12px;
+}
+
+.icon-instalacao i {
+  margin-right: 4px;
+}
+
+.card-content-instalacao {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.titulo-instalacao {
+  font-size: 18px;
+  color: #000;
+  font-weight: bold;
+  margin: 0;
+  text-transform: lowercase !important;
+}
+
+.titulo-instalacao::first-letter {
+  text-transform: uppercase;
+}
+
+.descricao-instalacao {
+  font-size: 14px;
+  color: #0070c0;
+  margin-top: 4px;
+}
+
+.card-left-instalacao .fa-car {
+  font-size: 54px;
+}
+
+.card-left-instalacao .fa-cog {
+  font-size: 26px;
+  background-color: #f0f7ff;
+  border-radius: 50%;
+  padding: 3px;
 }

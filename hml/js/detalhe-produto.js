@@ -465,38 +465,16 @@ $(window).on("load", async () => {
   const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
 
   let urlComInstalacao = urlSemInstalacao + "&sku=" + codigoSKU + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
-
-  if(precoAcessorio && codigoSKU){
-    if(precoAcessorio < "0,01"){
-      $(".valorComInstalacao").hide();
-      document.getElementById("install-option").checked = true;
-      $(".titulo-instalacao-gratis").show();
-      $(".titulo-valor-instalacao").hide();
-    }else{
-      document.getElementById("valorComInstalacao").innerHTML = precoAcessorio
-      document.getElementById("install-option").checked = true;
-    }
-  }else{
+  if(!precoAcessorio || !codigoSKU){
     $(".card-instalacao").hide();
-    document.getElementById("install-option").checked == false;
   }
-  function toggleInstallOption() {
-    const installOption = document.getElementById("install-option");
-    const buyButton = $(".product-qd-v1-buy-button .buy-button");
-
-    installOption.checked = !installOption.checked;
-
-    const hrefValue = installOption.checked ? urlComInstalacao : urlSemInstalacao;
-    buyButton.attr("href", hrefValue);
-  }
-
-  $(".card-right-instalacao, .card-content-instalacao").click(toggleInstallOption);
-          $(".product-qd-v1-buy-button .buy-button").click(function () {
-            if(document.getElementById("install-option").checked == true)
-              window.location.href = urlComInstalacao;
-            else
-              window.location.href = urlSemInstalacao;
-          }),
+  
+  $(".product-qd-v1-buy-button .buy-button").click(function () {
+    if(precoAcessorio && codigoSKU)
+      window.location.href = urlComInstalacao;
+    else
+      window.location.href = urlSemInstalacao;
+  }),
 
   $(document).ready(function(){
     $('.botao-compre-whatsapp').click(function() {
