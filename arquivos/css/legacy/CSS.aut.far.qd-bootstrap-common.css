@@ -439,7 +439,24 @@ hr {
   margin-left: auto;
   padding-left: 0;
   padding-right: 0;
-  width: 90%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 940px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1140px;
+  }
 }
 
 .container-fluid {
@@ -3712,6 +3729,14 @@ body .box-banner a[href] {
 body .box-banner a[href="#"] {
   cursor: initial;
   pointer-events: none;
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 90%;
+    max-width: 1326px;
+    min-width: 1170px;
+  }
 }
 
 .modal-backdrop.in {

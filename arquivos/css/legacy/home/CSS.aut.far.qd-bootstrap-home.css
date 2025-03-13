@@ -152,7 +152,18 @@ img {
   margin-left: auto;
   padding-left: 0;
   padding-right: 0;
-  width: 90%;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 90%;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 90%;
+  }
 }
 
 .row {
@@ -272,14 +283,6 @@ img {
   }
   .col-md-push-8 {
     left: 50%;
-  }
-  .col-md-push-8.visible-lg {
-   width: 100%; 
-  }
-  .col-md-pull-4.visible-lg {
-   right: 63%;
-   width: 35%;
-   position: absolute;
   }
 }
 
@@ -500,6 +503,9 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 }
 
 @media (min-width: 1024px) {
+  .container {
+    width: 90%;
+  }
   .footer-qd-v1 .footer-qd-v1-content .row {
     max-width: 70%;
   }
