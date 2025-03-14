@@ -27,8 +27,10 @@ requestIdleCallback(() => {
                           adulthood: false
                       }), { path: '/' });
       
-                      renderHtml();
-                      showCookieBanner();
+                      setTimeout(() => {
+                        renderHtml();
+                        showCookieBanner();
+                    }, 5000);
                   }
               } else {
                   fetch(baseUrlApi, {
@@ -121,4 +123,3 @@ requestIdleCallback(() => {
         }  
     })();
 });
-    

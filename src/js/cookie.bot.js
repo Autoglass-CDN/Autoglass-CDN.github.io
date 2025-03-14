@@ -1,9 +1,9 @@
 requestIdleCallback(() => {
     (function () {
         let cookieBannerSliderPos = 0;
-      
+    
         _init();
-      
+    
         function loadScript(url, callback) {
           const script = document.createElement('script');
           script.src = url;
@@ -27,8 +27,10 @@ requestIdleCallback(() => {
                           adulthood: false
                       }), { path: '/' });
       
-                      renderHtml();
-                      showCookieBanner();
+                      setTimeout(() => {
+                        renderHtml();
+                        showCookieBanner();
+                    }, 5000);
                   }
               } else {
                   fetch(baseUrlApi, {
@@ -47,7 +49,7 @@ requestIdleCallback(() => {
               }
           });
       }
-      
+    
         function renderHtml() {
             $('body').append(`
                 <div id="cookiebanner">
@@ -69,25 +71,25 @@ requestIdleCallback(() => {
                     <div style="clear:both"></div>
                 </div>
             `);
-      
+    
             const aceitarCookiesCheckbox = $('#aceitar-cookies-checkbox');
             const aceitarCookieLink = $('#aceitar-cookie-link');
-      
+    
             aceitarCookiesCheckbox.change(function () {
               let isChecked = this.checked;
               aceitarCookieLink.toggleClass('c-button-disabled', !isChecked);
               aceitarCookieLink.css('background-color', isChecked ? '#000000' : '#999');
               aceitarCookieLink.css('cursor', isChecked ? 'pointer' : 'not-allowed');
             });
-      
+    
             aceitarCookieLink.click(acceptCookies);
         }
-      
+    
         function acceptCookies() {
           aceitarCookiesCheckbox = $('#aceitar-cookies-checkbox');
           aceitarCookieLink = $('#aceitar-cookie-link');
           const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
-      
+    
           if (aceitarCookiesCheckbox.prop('checked')) {
               hideCookieBanner();
               cookie.accepted = true;
@@ -97,14 +99,14 @@ requestIdleCallback(() => {
               return;
           }
       }
-      
+    
         function showCookieBanner() {
             const cookiebanner = document.getElementById("cookiebanner");
             const dialogHeight = parseInt(cookiebanner.offsetHeight);
-      
+    
             cookiebanner.style.bottom = (cookieBannerSliderPos - dialogHeight) + "px";
             cookieBannerSliderPos += 4;
-      
+    
             if (cookieBannerSliderPos < dialogHeight) {
                 setTimeout(function () {
                     showCookieBanner();
@@ -114,10 +116,10 @@ requestIdleCallback(() => {
                 cookiebanner.style.bottom = "10px";
             }
         }
-      
+    
         function hideCookieBanner() {
             const cookiebanner = document.getElementById("cookiebanner");
             cookiebanner.style.cssText = "display:none !important";
         }  
-      })();
+    })();
 });
