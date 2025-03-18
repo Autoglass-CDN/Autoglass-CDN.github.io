@@ -1020,12 +1020,6 @@ body {
   border-bottom: 1px solid #bdbdbd;
 }
 
-@media (min-width: 769px) {
-  .footer-qd-v1-content .footer-qd-v1-menu-list > ul > li {
-    border: none;
-  }
-}
-
 .footer-qd-v1-content .footer-qd-v1-menu-list > ul ul li:last-child {
   padding-bottom: 20px;
 }
@@ -1084,6 +1078,12 @@ body {
 @media (min-width: 769px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
     display: none;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list > ul > li {
+    border: none;
+  }
+  .col-md-push-8.visible-lg {
+    width: auto !important;
   }
 }
 
@@ -1242,6 +1242,7 @@ body {
   padding-top: 30px;
   padding-bottom: 30px;
   background: #fff;
+  text-align: center;
 }
 
 @media (max-width: 767px) {
