@@ -273,14 +273,6 @@ img {
   .col-md-push-8 {
     left: 50%;
   }
-  .col-md-push-8.visible-lg {
-   width: 100%; 
-  }
-  .col-md-pull-4.visible-lg {
-   right: 63%;
-   width: 35%;
-   position: absolute;
-  }
 }
 
 table {
@@ -447,6 +439,40 @@ label {
   .hidden-lg {
    display: none !important;
   }
+  .footer-qd-v1 .footer-qd-v1-content .row {
+   max-width: 70%;
+   margin-bottom: 40px;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
+    display: none;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list > ul > li {
+    border: none;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1280px) {
+  .col-md-push-8.visible-lg {
+    width: auto;
+    left: 60%;
+  }
+  .col-md-pull-4.visible-lg {
+    width: auto;
+    right: 60%;
+    position: absolute;
+  }
+}
+
+@media (min-width: 1281px) {
+  .col-md-push-8.visible-lg {
+    width: auto;
+    left: 60%;
+   }
+   .col-md-pull-4.visible-lg {
+    width: auto;
+    right: 58%;
+    position: absolute;
+   }
 }
 
 h1,
@@ -497,12 +523,6 @@ body .box-banner a[href] {
 
 body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   cursor: pointer;
-}
-
-@media (min-width: 1024px) {
-  .footer-qd-v1 .footer-qd-v1-content .row {
-    max-width: 70%;
-  }
 }
 
 .modal-backdrop.in {
@@ -749,12 +769,6 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   border-bottom: 1px solid #bdbdbd;
 }
 
-@media (min-width: 768px) {
-  .footer-qd-v1-content .footer-qd-v1-menu-list > ul > li {
-    border: none;
-  }
-}
-
 .footer-qd-v1-content .footer-qd-v1-menu-list > ul ul li:last-child {
   padding-bottom: 20px;
 }
@@ -797,12 +811,6 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   display: inline-block;
   float: right;
   margin-top: 25px;
-}
-
-@media (min-width: 769px) {
-  .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
-    display: none;
-  }
 }
 
 .footer-qd-v1-content .footer-qd-v1-contact-information {
@@ -873,6 +881,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   padding-top: 30px;
   padding-bottom: 30px;
   background: #fff;
+  text-align: center;
 }
 
 .footer-qd-v1-stamps .footer-qd-v1-stamps-title {
@@ -1188,12 +1197,6 @@ a:focus {
 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a:hover {
   background-color: #17274e;
   transform: translateY(-3px);
-}
-
-@media (max-width: 1024px) {
-  .footer-qd-v1 .footer-qd-v1-content .row {
-    max-width: 70%;
-  }
 }
 
 @media (max-width: 768px) {
