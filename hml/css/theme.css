@@ -3,6 +3,7 @@
   font-family: "Open Sans";
   src: local("Open Sans"),
     url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;800&display=swap");
+  font-display: swap;
 }
 
 :root {
@@ -59,6 +60,7 @@ body,
 input,
 button {
   font-family: "Open Sans", sans-serif;
+  font-display: swap;
 }
 
 button {
