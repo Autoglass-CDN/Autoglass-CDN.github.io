@@ -37,6 +37,13 @@
     width: 90%;
   }
 
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1326px;
+      min-width: 1170px
+    }
+  }
+
   .footer-qd-v1  {
     font-family: 'Roboto', sans-serif;
   }
@@ -323,9 +330,19 @@
       padding-top: 0;
     }
   }
+
   .footer-qd-v1-stamps {
     text-align: center;
   }
 
+  .footer-qd-v1-stamps .col-xs-12.col-md-6 .footer-qd-v1-stamps-title {
+    text-align: left;
+    position: relative;
+    left: 29%;
+  }
 
-
+  .footer-qd-v1-stamps .col-xs-12.col-md-6:last-of-type h4 {
+    text-align: left;
+    position: relative;
+    left: 27%;
+  }
