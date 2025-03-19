@@ -1334,7 +1334,6 @@ body {
 
 @media (max-width: 767px) {
   .footer-qd-v1-security-stamps li {
-    width: auto;
     max-width: 100px;
   }
 }

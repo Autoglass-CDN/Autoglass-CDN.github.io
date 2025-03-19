@@ -63,6 +63,12 @@ button {
   font-display: swap;
 }
 
+@media (min-width: 769px) {
+  html, body {
+    overflow-x: hidden;
+  }
+}
+
 button {
   cursor: pointer;
 }

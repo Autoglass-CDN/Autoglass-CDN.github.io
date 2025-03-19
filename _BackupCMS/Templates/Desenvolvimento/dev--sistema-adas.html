@@ -5,6 +5,7 @@
 
 <head>
 	<vtex:contentPlaceHolder id="qd_head"/>
+	<vtex:template id="hml--sistema-adas-head-tags"/>
 	<vtex:metaTags />
 	<script>
     const currentUrl = window.location.href;
@@ -19,14 +20,7 @@
 
     document.head.appendChild(canonicalLink);
     </script>
-    <vtex:contentPlaceHolder id="SEO_link_alternate"/>
     <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
-	<title>
-		<vtex.cmc:productPageTitle/>
-	</title>
-	<vtex:template id="dev--sistema-adas-head-tags"/>
-	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.atendimento.css"
-		type="text/css"/>
 </head>
 
 <body class="institucional" data-qd-scroll-limit="200">
@@ -58,9 +52,6 @@
 					<div class="attendance-qd-v1-contact">
 						<div class="row">
 							<div class="col-xs-12">
-								<div class="attendance-qd-v1-contact-title">
-									<vtex:contentPlaceHolder id="titulo_institucional"/>
-								</div>
 								<vtex:contentPlaceHolder id="descricao_institucional"/>
 							</div>
 						</div>
