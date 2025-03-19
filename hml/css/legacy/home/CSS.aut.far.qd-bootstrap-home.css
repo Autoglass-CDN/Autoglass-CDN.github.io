@@ -152,7 +152,6 @@ img {
   margin-left: auto;
   padding-left: 0;
   padding-right: 0;
-  width: 90%;
 }
 
 .row {
@@ -1422,7 +1421,6 @@ a:focus {
 
 @media (max-width: 767px) {
   .footer-qd-v1-security-stamps li {
-    width: auto;
     max-width: 100px;
   }
 }
