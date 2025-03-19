@@ -386,6 +386,12 @@ i.arrow-icon::before {
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
 }
 
+@media (min-width: 768px) and (max-width: 1280px) {
+  .topo .container, .nav .container {
+    width: 100% !important;
+  }
+}
+
 .nav .container {
   justify-content: space-between;
 }

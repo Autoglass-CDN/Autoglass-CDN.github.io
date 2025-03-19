@@ -239,7 +239,13 @@ hr {
   width: 70% !important;
 }
 
-@media (max-width: 1023px) {
+@media (max-width: 767px) {
+  .container {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
   .container {
     width: 90% !important;
   }
@@ -1254,7 +1260,6 @@ body {
   .footer-qd-v1-stamps {
     padding-right: 15px;
     padding-bottom: 20px;
-    padding-left: 15px;
     padding-top: 40px;
   }
 }
