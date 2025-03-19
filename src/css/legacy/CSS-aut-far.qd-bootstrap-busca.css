@@ -236,7 +236,13 @@ hr {
   margin-left: auto;
   padding-left: 0;
   padding-right: 0;
-  width: 90%;
+  width: 70% !important;
+}
+
+@media (max-width: 1023px) {
+  .container {
+    width: 90% !important;
+  }
 }
 
 .container-fluid {
@@ -1250,6 +1256,19 @@ body {
     padding-bottom: 20px;
     padding-left: 15px;
     padding-top: 40px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .footer-qd-v1-stamps .container {
+    width: 90% !important;
+    right: 0 !important;
+  }
+}
+
+@media (min-width: 1281px) {
+    .footer-qd-v1-stamps .container {
+    width: 58% !important;
   }
 }
 
