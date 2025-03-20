@@ -386,6 +386,12 @@ i.arrow-icon::before {
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
 }
 
+@media (min-width: 768px) and (max-width: 1280px) {
+  .topo .container, .nav .container {
+    width: 100% !important;
+  }
+}
+
 .nav .container {
   justify-content: space-between;
 }
@@ -497,9 +503,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 17%;
@@ -527,9 +533,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 17%;
@@ -557,9 +563,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 18%;
@@ -574,9 +580,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 19%;
@@ -591,9 +597,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 20%;
@@ -608,9 +614,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 21%;
@@ -625,9 +631,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 22%;
@@ -642,9 +648,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 23%;
@@ -659,9 +665,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 48%;
@@ -676,9 +682,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 55%;
@@ -692,9 +698,9 @@ i.arrow-icon::before {
     align-items: center;
     padding: 6px 16px;
     background-color: #f1f1f1;
-    border: 2px solid #000000;
+    border: 2px solid #425db4;
     border-radius: 20px;
-    color: #000000;
+    color: #425db4;
     font-size: 14px;
     cursor: pointer;
     width: 53%;

@@ -169,7 +169,19 @@ img {
   margin-left: auto;
   padding-left: 0;
   padding-right: 0;
-  width: 90%;
+  width: 70% !important;
+}
+
+@media (max-width: 767px) {
+  .container {
+    width: 100% !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+  .container {
+    width: 90% !important;
+  }
 }
 
 .row {
@@ -1070,8 +1082,18 @@ body {
   .footer-qd-v1-stamps {
     padding-right: 15px;
     padding-bottom: 20px;
-    padding-left: 15px;
     padding-top: 40px;
+  }
+}
+
+.footer-qd-v1-stamps .container {
+  width: 58% !important;
+}
+
+@media (max-width: 1280px) {
+  .footer-qd-v1-stamps .container {
+    width: 90% !important;
+    right: 0 !important;
   }
 }
 
