@@ -173,7 +173,7 @@ body.institucional.quem-somos
     transition: all 0.2s ease-out;
     position: fixed !important;
     top: 77px;
-    left: -85%;
+    left: -100%;
     bottom: 0;
     max-width: 400px;
     width: 85%;
@@ -371,4 +371,16 @@ body[data-qd-scroll-0="1"]
   margin-right: 0;
   color: #fff;
   font-size: 20px;
+}
+
+@media (max-width: 767px) {
+  .col-xs-12 {
+    width: 100% !important;
+  }
+}
+
+@media (max-width: 767px) {
+  .footer-qd-v1-stamps {
+    padding-left: 0px;
+  }
 }
