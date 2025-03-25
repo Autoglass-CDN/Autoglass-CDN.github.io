@@ -8,7 +8,7 @@
   padding: 20px;
   background-color: #fff;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .attendance-qd-v1-contact {
     padding: 15px;
   }
@@ -55,7 +55,7 @@
   text-align: center;
   font-weight: 600;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .attendance-qd-v1-contact .attendance-qd-v1-contact-title {
     font-size: 21px;
   }
@@ -88,7 +88,7 @@ body.institucional.quem-somos
   display: flex;
   justify-content: center;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .attendance-qd-v1-contact .attendance-qd-v1-contact-phone,
   .attendance-qd-v1-contact .attendance-qd-v1-contact-mail {
     margin-bottom: 15px;
@@ -157,7 +157,7 @@ body.institucional.quem-somos
 .attendance-qd-v1-contact p {
   color: #757575;
 }
-@media (min-width: 768px) and (max-width: 992px) {
+@media (min-width: 769px) and (max-width: 992px) {
   .attendance-qd-v1-contact .row.qd-mb-row {
     display: grid;
   }
@@ -168,7 +168,7 @@ body.institucional.quem-somos
 .attendance-qd-v1-contact .attendance-qd-v1-working-time p {
   margin: 0;
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .institucional-qd-v1-side-menu-wrap {
     transition: all 0.2s ease-out;
     position: fixed !important;
@@ -183,7 +183,7 @@ body.institucional.quem-somos
     border-top: 1px solid #2d4f9e;
   }
 }
-@media (max-width: 767px) and (max-width: 767px) {
+@media (max-width: 768px) {
   body.qd-sn-on .institucional-qd-v1-side-menu-wrap {
     left: 0;
     top: 77px;
@@ -210,7 +210,7 @@ body.institucional.quem-somos
   margin-bottom: 20px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .institucional-qd-v1-navigator {
     margin-top: 10px;
     padding: 0 15px 15px;
@@ -234,7 +234,7 @@ body.institucional.quem-somos
     padding: 15px;
   }
 }
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .institucional-qd-v1-navigator:before {
     text-align: center;
   }
@@ -373,13 +373,21 @@ body[data-qd-scroll-0="1"]
   font-size: 20px;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .col-xs-12 {
     width: 100% !important;
   }
-}
-
-@media (max-width: 767px) {
+  .visible-xs {
+    display: block !important;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-2-li .qd-am-has-ul {
+    width: 100% !important;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
+    display: inline-block !important;
+    float: right;
+    margin-top: 25px;
+  }
   .footer-qd-v1-stamps {
     padding-left: 0px;
   }
