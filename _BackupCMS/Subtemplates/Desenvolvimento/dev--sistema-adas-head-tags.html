@@ -2,11 +2,7 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.qd-bootstrap-common.css"
-  type="text/css" onload="this.media='all'"/>
-
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/localization-modal.css"
-  type="text/css" onload="this.media='all'"/>
+<!-- <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/localization-modal.css" type="text/css"/> -->
   
 <!--<link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0"
   as="font" type="font/woff2" crossorigin="anonymous" />-->
@@ -14,16 +10,17 @@
 <!-- <link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
   integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" /> -->
 
-<link href="/arquivos/locationFetcher.css" rel="stylesheet" type="text/css" onload="this.media='all'"/>
-<link href="https://autoglass-cdn.github.io/src/css/policies/header.css" type="text/css" onload="this.media='all'"/>
+<link rel="stylesheet" href="/arquivos/locationFetcher.css" media="print" onload="this.media='all'"/>
 
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/>
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/header.css"/>
 
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.atendimento.css" type="text/css"/>
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"/> -->
+
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.atendimento.css"/>
 
 <!-- <script defer="" src="https://kit.fontawesome.com/792c7753b8.js" crossorigin="anonymous"></script> -->
 
-<script defer="" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+<script async="" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
 <!-- Segment Pixel - RT - Autoglass - DO NOT MODIFY -->
 <script async="" src="https://secure.adnxs.com/seg?add=26997748&amp;t=1" type="text/javascript"></script>
@@ -32,21 +29,24 @@
 <script defer="" src="https://autoglass-cdn.github.io/src/js/legacy/legacy-MZ-CBKY.js"></script>
 
 <!-- Start of autoglass8792 Zendesk Widget script -->
-<script defer="" id="ze-snippet"
+<script async="" id="ze-snippet"
   src="https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c"> </script>
 <!-- End of autoglass8792 Zendesk Widget script -->
 
 <!--<script async="" src="https://www.googleoptimize.com/optimize.js?id=OPT-MTHHM4S"></script>-->
 
 <script type="text/javascript">
-  $(window).load(function () {
-    $("#launcher").css("bottom", "0px");
+  document.addEventListener("DOMContentLoaded", function () {
+    $(window).on("load", function () {
+      $("#launcher").css("bottom", "0px");
+    });
   });
 </script>
 
 <!-- Facebook Pixel Code -->
-<script defer="">
-  !function (f, b, e, v, n, t, s) {
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    !function (f, b, e, v, n, t, s) {
     if (f.fbq) return; n = f.fbq = function () {
       n.callMethod ?
         n.callMethod.apply(n, arguments) : n.queue.push(arguments)
@@ -59,6 +59,7 @@
     'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '674711539752032');
   fbq('track', 'PageView');
+  });
 </script>
 <noscript>
   <img height="1" width="1" src="https://www.facebook.com/tr?id=674711539752032&amp;ev=PageView&amp;noscript=1" />
@@ -69,18 +70,35 @@
   document.addEventListener("DOMContentLoaded", function () {
     const metaDescription = document.querySelector('meta[name="description"]');
 
-    if (metaDescription) {
-            metaDescription.setAttribute("content", "Sistema ADAS: entenda como essa tecnologia inteligente otimiza a segurança no trânsito e garanta a calibração perfeita com a Autoglass. Saiba mais!");
-        }
-    });
+      if (metaDescription) {
+        metaDescription.setAttribute("content", "Sistema ADAS: entenda como essa tecnologia inteligente otimiza a segurança no trânsito e garanta a calibração perfeita com a Autoglass. Saiba mais!");
+      }
+  });
 </script>
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-  const metaLanguage = document.querySelector('meta[name="language"]');
+    const metaLanguage = document.querySelector('meta[name="language"]');
   
-  if (metaLanguage) {
-      metaLanguage.remove();
-  }
-});
+      if (metaLanguage) {
+        metaLanguage.remove();
+      };
+  });
+</script>
+
+<script>
+  // <![CDATA[
+  document.addEventListener("DOMContentLoaded", function () {
+    const observer = new MutationObserver(() => {
+      document.querySelectorAll("title").forEach(titleTag => {
+        if (titleTag.innerText.trim() === "Institucional – Desenvolvimento") {
+            titleTag.remove();
+            observer.disconnect();
+        };
+      });
+    });
+
+    observer.observe(document, { childList: true, subtree: true });
+  });
+  // ]]>
 </script>
