@@ -1,15 +1,17 @@
 //#region Banners
-(function () {
+(async function () {
 	let position = 0;
 	const btnPrev = $('.banners-section .banners button[data-type="prev"]');
 	const btnNext = $('.banners-section .banners button[data-type="next"]');
+  const tipoBanner = window.innerWidth <= 768 ? 2 : 1;
+  const urlBanners = `http://localhost:5010/api/banners-vtex/exibicao/${tipoBanner}`;
+  await buscaImagensBanner(urlBanners);
 	const containers = $('.banners-section .banners-content');
 	let bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
 	let bannerImages = bannerContainer.children();
+  buildBars();
   localStorage.setItem('buscaPlaca', null);
-	buildBars();
 	calculateMarginOfBtns();
-
 	window.addEventListener('resize', e => {
 		bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
 		bannerImages = bannerContainer.children();
@@ -18,6 +20,45 @@
 		buildBars();
 		calculateMarginOfBtns();
 	});
+
+  async function buscaImagensBanner(urlBanners) {
+    try {
+        const response = await fetch(urlBanners, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error(`Erro: ${response.status}`);
+        }
+
+        const data = await response.json();
+        const bannersContainer = window.innerWidth <= 768
+            ? document.querySelector(".banners-content.mobile")
+            : document.querySelector(".banners-content.desktop");
+
+        data.sort((a, b) => a.PosicaoBanner - b.PosicaoBanner);
+
+        data.forEach(banner => {
+            const bannerHtml = `
+                <div class="box-banner">
+                    <a href="${banner.UrlDestino}" tabindex="-1">
+                        <img class="imagem-banner"
+                            id="i${banner.ImagemBanner}"
+                            alt="${banner.Nome}"
+                            src="${banner.ImagemBanner}"
+                            complete="complete">
+                    </a>
+                </div>
+            `;
+            bannersContainer.innerHTML += bannerHtml;
+        });
+    } catch (error) {
+        console.error("Erro na requisição:", error);
+    }
+  }
 
 	$('.banners-section .banners-content a').attr('tabindex', '-1');
 
