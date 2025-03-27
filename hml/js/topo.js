@@ -546,9 +546,19 @@ function delayedAction(action, abortController) {
 
 function openNav() {
   let backdrop = document.querySelector(".side-menu-backdrop");
+  let zenDeskIcon = document.querySelector("#launcher");
+  let whatsAppIcon =  document.querySelector("#whatsapp-icon-link");
   backdrop.style.display = "unset";
   backdrop.style.opacity = "1";
   document.body.style.overflowY = "hidden";
+  zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
+  zenDeskIcon.style.opacity = "0";
+  setTimeout(() => {
+    zenDeskIcon.style.visibility = "hidden";
+  }, 500);
+  zenDeskIcon.style.pointerEvents = "none";
+  whatsAppIcon.style.transition = "opacity 0.3s ease";
+  whatsAppIcon.style.opacity = "0.5";
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = "unset";
   setTimeout(() => {
@@ -566,7 +576,17 @@ function openNav() {
 function closeNav() {
   let backdrop = document.querySelector(".side-menu-backdrop");
   let sideMenu = document.getElementById("side-menu");
+  let zenDeskIcon = document.querySelector("#launcher");
+  let whatsAppIcon =  document.querySelector("#whatsapp-icon-link");
   document.body.style.overflowY = "auto";
+  zenDeskIcon.style.visibility = "visible";
+  zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
+  setTimeout(() => {
+   zenDeskIcon.style.opacity = "1";
+  }, 500);
+  zenDeskIcon.style.pointerEvents = "auto"; 
+  whatsAppIcon.style.transition = "opacity 0.3s ease";
+  whatsAppIcon.style.opacity = "1";
   sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "0"));
   backdrop.style.opacity = "1";
   setTimeout(() => {
