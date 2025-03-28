@@ -1,4 +1,9 @@
 /* FONTES */
+@import url("//fonts.googleapis.com/css?family=Montserrat:300,400,400i,600,700i,800&display=swap");
+@import url("//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800&display=swap");
+@import url("//fonts.googleapis.com/css?family=Poppins:300,400,500,600,700&display=swap");
+@import url("//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css");
+
 @font-face {
   font-family: "Open Sans";
   src: local("Open Sans"),
@@ -59,6 +64,7 @@ body,
 input,
 button {
   font-family: "Open Sans", sans-serif;
+  font-display: swap;
 }
 
 button {
