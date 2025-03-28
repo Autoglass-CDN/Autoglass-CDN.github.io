@@ -7,6 +7,7 @@
 	<vtex:contentPlaceHolder id="qd_head"/>
 	<vtex:metaTags />
 	<script>
+	document.addEventListener("DOMContentLoaded", function () {
     const currentUrl = window.location.href;
 
     const canonicalUrl = currentUrl.endsWith('/')
@@ -18,15 +19,11 @@
     canonicalLink.href = canonicalUrl;
 
     document.head.appendChild(canonicalLink);
+	});
     </script>
-    <vtex:contentPlaceHolder id="SEO_link_alternate"/>
-    <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
-	<title>
-		<vtex.cmc:productPageTitle/>
-	</title>
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.qd-bootstrap-common.css"/>
 	<vtex:template id="prd--sistema-adas-head-tags"/>
-	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.atendimento.css"
-		type="text/css"/>
+    <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
 </head>
 
 <body class="institucional" data-qd-scroll-limit="200">
@@ -58,35 +55,14 @@
 					<div class="attendance-qd-v1-contact">
 						<div class="row">
 							<div class="col-xs-12">
-								<div class="attendance-qd-v1-contact-title">
-									<vtex:contentPlaceHolder id="titulo_institucional"/>
-								</div>
 								<vtex:contentPlaceHolder id="descricao_institucional"/>
 							</div>
 						</div>
-						<div class="row">
-							<div class="col-xs-12">
-								<div class="vtx-placeholder vtx-banners-wrap qd-banner-responsive img-responsive"
-									data-qd-help="5" data-qd-help-id="Conteúdo abaixo do hr de atendimento">
-									<vtex:contentPlaceHolder id="conteudo_abaixo_do_hr_de_atendimento"/>
-								</div>
-							</div>
-						</div>
-
-						<!-- mosaico de banners -->
-						<div class="container">
-							<div class="row">
-								<div class="banner-qd-v1-responsive carousel-qd-v1-shelf mosaic-qd-v1-wrapper img-responsive qd-shelf-xs-12 qd-shelf-sm-6 qd-shelf-md-2">
-									<vtex:contentPlaceHolder id="mosaico_de_banners"/>
-								</div>
-							</div>
-						</div>
-						<!-- mosaico de banners  -->
 					</div>
 				</div>
 				<!-- Institutional content -->
 			</main>
-            
+			<script defer="" type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
 		</div>
 
 		<!-- Footer -->
