@@ -269,8 +269,8 @@ i.arrow-icon::before {
   align-items: center;
   /*margin: 0 15px;*/
   padding: 0 10px;
-  width: 100%;
-  max-width: 1280px;
+  width: 100% !important;
+  max-width: 1440px;
   position: relative;
 }
 
@@ -384,12 +384,6 @@ i.arrow-icon::before {
   justify-content: center;
   background: var(--white);
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
-}
-
-@media (min-width: 768px) and (max-width: 1280px) {
-  .topo .container, .nav .container {
-    width: 100% !important;
-  }
 }
 
 .nav .container {

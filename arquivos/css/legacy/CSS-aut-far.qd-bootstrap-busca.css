@@ -231,31 +231,6 @@ hr {
   cursor: pointer;
 }
 
-.container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-left: 0;
-  padding-right: 0;
-}
-
-@media (min-width: 768px) {
-  .container {
-    width: 720px;
-  }
-}
-
-@media (min-width: 992px) {
-  .container {
-    width: 940px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .container {
-    width: 1140px;
-  }
-}
-
 .container-fluid {
   margin-right: auto;
   margin-left: auto;
@@ -597,12 +572,6 @@ input[type="search"] {
   display: none !important;
 }
 
-@media (min-width: 1200px) {
-  .visible-lg {
-    display: block !important;
-  }
-}
-
 @media (max-width: 767px) {
   .hidden-xs {
     display: none !important;
@@ -709,14 +678,6 @@ body {
   }
 }
 
-@media (min-width: 1200px) {
-  .container {
-    width: 90%;
-    max-width: 1326px;
-    min-width: 1170px;
-  }
-}
-
 .modal-backdrop.in {
   opacity: 0.75;
   filter: alpha(opacity=75);
@@ -812,11 +773,6 @@ body {
   padding: 20px 30px 30px 30px;
   border-bottom-left-radius: 3px;
   border-bottom-right-radius: 3px;
-}
-
-.footer-qd-v1-content {
-  padding-bottom: 45px;
-  background-color: #f1f1f1;
 }
 
 @media (max-width: 992px) {
@@ -1056,12 +1012,6 @@ body {
   border-bottom: 1px solid #bdbdbd;
 }
 
-@media (min-width: 768px) {
-  .footer-qd-v1-content .footer-qd-v1-menu-list > ul > li {
-    border: none;
-  }
-}
-
 .footer-qd-v1-content .footer-qd-v1-menu-list > ul ul li:last-child {
   padding-bottom: 20px;
 }
@@ -1117,9 +1067,15 @@ body {
   margin-top: 25px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 769px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
     display: none;
+  }
+  .footer-qd-v1-content .footer-qd-v1-menu-list > ul > li {
+    border: none;
+  }
+  .col-md-push-8.visible-lg {
+    width: auto !important;
   }
 }
 
@@ -1280,15 +1236,6 @@ body {
   background: #fff;
 }
 
-@media (max-width: 767px) {
-  .footer-qd-v1-stamps {
-    padding-right: 15px;
-    padding-bottom: 20px;
-    padding-left: 15px;
-    padding-top: 40px;
-  }
-}
-
 .footer-qd-v1-stamps .footer-qd-v1-stamps-title {
   margin-top: 0;
   margin-bottom: 30px;
@@ -1370,7 +1317,6 @@ body {
 
 @media (max-width: 767px) {
   .footer-qd-v1-security-stamps li {
-    width: auto;
     max-width: 100px;
   }
 }
