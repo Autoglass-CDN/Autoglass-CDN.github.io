@@ -203,7 +203,28 @@ $(document).on("ready", function () {
   ) {
     document.querySelector(".search-box-mobile").style.display = "none";
   }
+  const inputPesquisa = $('.search-box-mobile .busca .fulltext-search-box');
+  const btnMaisBuscas = $('.menu-btn');
+  inputPesquisa.click(function () {
+    $('.menu-btn span').hide();
+    btnMaisBuscas.width(20);
+    $('.search-box-mobile__form').css('width', '80%');
+  });
+  $(document).click(function(event) {
+    if (!$(event.target).closest('.search-box-mobile .busca .fulltext-search-box').length) {
+      if(window.innerWidth <= 428) {
+        $('.menu-btn span').show();
+        $('.menu-btn').css('width', '43%');
+        $('.search-box-mobile__form').css('width', '60%');
+      }else if(window.innerWidth < 375) {
+        $('.menu-btn span').show();
+        $('.menu-btn').css('width', '45%');
+        $('.search-box-mobile__form').css('width', '60%');
+      }
+    }
+  });
 });
+
 
 setTimeout(() => {
   if (!headerInitiated) {

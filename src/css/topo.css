@@ -658,15 +658,15 @@ i.arrow-icon::before {
     display: flex;
     align-items: center;
     padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
+    background-color: #F39200;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
-    width: 48%;
-    height: 37px;
-    margin-left: 20%;
+    width: 43%;
+    height: 46px;
+    margin-left: 0px;
   }
 }
 
@@ -691,19 +691,22 @@ i.arrow-icon::before {
     display: flex;
     align-items: center;
     padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
+    background-color: #F39200;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
-    width: 53%;
-    height: 37px;
-    margin-right: 19px;
+    width: 48%;
+    height: 46px;
+    margin-left: 0px;
   }
 }
 .menu-btn span {
-  margin-right: 6px;
+  margin-left: 10px;
+}
+.menu-btn i {
+  margin-left: 3px;
 }
 .menu-icon {
   font-size: 20px;
