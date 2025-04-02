@@ -665,7 +665,7 @@ i.arrow-icon::before {
     font-size: 16px;
     cursor: pointer;
     width: 43%;
-    height: 46px;
+    height: 44px;
     margin-left: 0px;
   }
 }
@@ -697,7 +697,7 @@ i.arrow-icon::before {
     color: white;
     font-size: 16px;
     cursor: pointer;
-    width: 48%;
+    width: 50%;
     height: 46px;
     margin-left: 0px;
   }
@@ -729,7 +729,7 @@ i.arrow-icon::before {
 
 .search-box-mobile__form {
   width: 60%;
-  padding: 10px 0 10px 20px;
+  padding: 10px 0 10px 10px;
   position: relative;
   background-color: #f1f4f9;
   margin-left: 10px;
@@ -739,6 +739,9 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   position: relative;
+  border: 1px solid #425db4;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
 .search-box-mobile .busca {
