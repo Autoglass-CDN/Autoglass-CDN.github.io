@@ -22,7 +22,7 @@
 @media (max-width: 850px) {
   .l-container {
     display: none;
-    
+
 /* #region TABS */
 /* .c-busca .c-busca__tabs {
 display: flex;
@@ -1098,17 +1098,17 @@ font-size: inherit;
   border: 1px solid #0b4583;
 }
 #btn-busca-placa-buscar {
-  border-radius: 40px;
+  border-radius: 8px;
 }
 #btn-busca-peca-buscar {
-  border-radius: 40px;
+  border-radius: 8px;
 }
 #btn-busca-peca-limpar {
-  border-radius: 40px;
+  border-radius: 8px;
   border: 2px solid #0b4583;
 }
 #btn-busca-placa-limpar {
-  border-radius: 40px;
+  border-radius: 8px;
   border: 2px solid #0b4583;
 }
 .botao-fechar {
