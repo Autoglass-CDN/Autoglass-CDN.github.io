@@ -212,13 +212,17 @@ $(document).on("ready", function () {
   });
   $(document).click(function(event) {
     if (!$(event.target).closest('.search-box-mobile .busca .fulltext-search-box').length) {
-      if(window.innerWidth <= 428) {
+      if(window.innerWidth <= 360) {
         $('.menu-btn span').show();
-        $('.menu-btn').css('width', '43%');
+        $('.menu-btn').css('width', '51%');
         $('.search-box-mobile__form').css('width', '60%');
       }else if(window.innerWidth < 375) {
         $('.menu-btn span').show();
         $('.menu-btn').css('width', '45%');
+        $('.search-box-mobile__form').css('width', '60%');
+      }else if(window.innerWidth <= 428) {
+        $('.menu-btn span').show();
+        $('.menu-btn').css('width', '43%');
         $('.search-box-mobile__form').css('width', '60%');
       }
     }
