@@ -138,7 +138,6 @@
     const categoryTree = await Service.getCategoryTree();
     const childrenCategories = [];
     const grandchildenCategories = [];
-
     categoryTree
       .filter((x) => x.hasChildren)
       .forEach((x) => {
@@ -417,16 +416,18 @@
           )
             View.filterResults(e, select);
         });
-      // Fecha todos os selects caso já tenha algum aberto.
-      $(document).on("click", (e) => {
-        var container = $(`.c-busca__tab-content-mobile #${select.id}`);
+      //Fecha todos os selects caso já tenha algum aberto.
+      if(window.innerWidth > 1024){
+        $(document).on("click", (e) => {
+          var container = $(`.c-busca__tab-content-mobile #${select.id}`);
+          if (!$(e.target).closest(container).length) {
+            $(
+              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+            ).slideUp("fast");
+          }
+        });
+      }
 
-        if (!$(e.target).closest(container).length) {
-          $(
-            `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
-          ).slideUp("fast");
-        }
-      });
     }
 
     function _initSelect_(select) {
@@ -897,11 +898,10 @@
       const nextSelect = PECA_SELECTS[index + 1];
       // Não pode ser === Pq um pode ser INT e outro STRING, mas o valores são iguais;
       const optionSelected = select.values.find((x) => x.id == event.target.id);
-
+      const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
       const modalDeCarregamento = new ModalDeCarregamento();
       modalDeCarregamento.mostarSpinner();
       View.resetResults(index);
-
       if (index !== 0) {
         select.routeSelected = getSelectedRouteByOption(optionSelected);
       } else {
@@ -958,6 +958,11 @@
         }
       }
 
+      textoOpcaoSelecionada.textContent = `• ${optionSelected.name}`;
+      if(window.innerWidth < 1024) {
+        $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+        ).slideUp("fast");
+      }
       View.createNavigation(select.id, event.target.innerHTML);
       if (window.innerWidth < 1024)
         document.querySelector("#side-menu .loading-overlay").style.display =
