@@ -1099,6 +1099,7 @@ font-size: inherit;
 }
 #btn-busca-placa-buscar {
   border-radius: 8px;
+  margin-right: 10px;
 }
 #btn-busca-peca-buscar {
   border-radius: 8px;
