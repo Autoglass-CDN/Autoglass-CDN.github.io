@@ -427,7 +427,6 @@
           }
         });
       }
-
     }
 
     function _initSelect_(select) {
@@ -1928,6 +1927,16 @@
     resetSelect();
   });
 
+  var botaoLimparBuscaPlacaMobile = document.querySelector("#btn-busca-placa-limpar-mobile ");
+  botaoLimparBuscaPlacaMobile.addEventListener("click", () => {
+    resetSelectMobile();
+  });
+
+  var botaoLimparBuscaPecaMobile = document.querySelector("#btn-busca-peca-limpar-mobile ");
+  botaoLimparBuscaPecaMobile.addEventListener("click", () => {
+    resetSelectsMobile(1);
+  });
+
   function resetSelects(_index) {
     for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
       const select = PECA_SELECTS[i];
@@ -1947,10 +1956,47 @@
 
   function resetSelect() {
     const select = PLACA_SELECTS[0];
-    var inputPlaca = document.querySelector("#placa-input");
-    $(`.c-busca__tab-content  #${select.id} > div > span`).html(select.title);
+    if(select == "categoria-select"){
+      var inputPlaca = document.querySelector("#placa-input");
+      $(`.c-busca__tab-content  #${select.id} > div > span`).html(select.title);
+      select.routeSelected = "";
+      inputPlaca.value = "";
+    }
+  }
+
+  function resetSelectMobile(){
+    const select = PLACA_SELECTS[0];
     select.routeSelected = "";
-    inputPlaca.value = "";
+    const checkedInput = document.querySelector('.itens-lista li input:checked');
+    if (checkedInput) {
+      checkedInput.checked = false;
+      sessionStorage.setItem("selectedOptionCategoria", null);
+    }
+  }
+
+  function resetSelectsMobile(_index){
+    sessionStorage.setItem("selectedOptionTipoPeca", null);
+    sessionStorage.setItem("selectedOptionMontadora", null);
+    sessionStorage.setItem("selectedOptionVeiculo", null);
+    sessionStorage.setItem("selectedOptionAno", null);
+    sessionStorage.setItem("selectedOptionVersao", null);
+    for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
+      const select = PECA_SELECTS[i];
+      const nextSelect = PECA_SELECTS[i + 1];
+      select.routeSelected = "";
+      document.querySelector(`#opcao-selecionada-${select.id}`).innerHTML = "";
+      if(nextSelect){
+        $(`.c-busca__tab-content-mobile #${nextSelect.id}`).addClass(CONFIG.CSS.EMPTY);
+        nextSelect.values = [];
+        if(nextSelect.routeSelected)
+          nextSelect.routeSelected = "";
+      }
+      $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+      ).slideUp("fast");
+    }
+    document.querySelector('#pecas-select .itens-lista li input:checked').checked = false;
+    $(`.c-busca__tab-content-mobile #pecas-select .smart-select__main-results`
+    ).slideDown("fast");
   }
 
   const botaoVerTodasCategoria = document.querySelector("#toggleButton");
