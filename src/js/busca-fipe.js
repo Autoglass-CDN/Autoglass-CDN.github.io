@@ -138,7 +138,6 @@
     const categoryTree = await Service.getCategoryTree();
     const childrenCategories = [];
     const grandchildenCategories = [];
-
     categoryTree
       .filter((x) => x.hasChildren)
       .forEach((x) => {
@@ -417,16 +416,17 @@
           )
             View.filterResults(e, select);
         });
-      // Fecha todos os selects caso já tenha algum aberto.
-      $(document).on("click", (e) => {
-        var container = $(`.c-busca__tab-content-mobile #${select.id}`);
-
-        if (!$(e.target).closest(container).length) {
-          $(
-            `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
-          ).slideUp("fast");
-        }
-      });
+      //Fecha todos os selects caso já tenha algum aberto.
+      if(window.innerWidth > 1024){
+        $(document).on("click", (e) => {
+          var container = $(`.c-busca__tab-content-mobile #${select.id}`);
+          if (!$(e.target).closest(container).length) {
+            $(
+              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+            ).slideUp("fast");
+          }
+        });
+      }
     }
 
     function _initSelect_(select) {
@@ -897,11 +897,10 @@
       const nextSelect = PECA_SELECTS[index + 1];
       // Não pode ser === Pq um pode ser INT e outro STRING, mas o valores são iguais;
       const optionSelected = select.values.find((x) => x.id == event.target.id);
-
+      const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
       const modalDeCarregamento = new ModalDeCarregamento();
       modalDeCarregamento.mostarSpinner();
       View.resetResults(index);
-
       if (index !== 0) {
         select.routeSelected = getSelectedRouteByOption(optionSelected);
       } else {
@@ -958,6 +957,11 @@
         }
       }
 
+      textoOpcaoSelecionada.textContent = `• ${optionSelected.name}`;
+      if(window.innerWidth < 1024) {
+        $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+        ).slideUp("fast");
+      }
       View.createNavigation(select.id, event.target.innerHTML);
       if (window.innerWidth < 1024)
         document.querySelector("#side-menu .loading-overlay").style.display =
@@ -1923,6 +1927,16 @@
     resetSelect();
   });
 
+  var botaoLimparBuscaPlacaMobile = document.querySelector("#btn-busca-placa-limpar-mobile ");
+  botaoLimparBuscaPlacaMobile.addEventListener("click", () => {
+    resetSelectMobile();
+  });
+
+  var botaoLimparBuscaPecaMobile = document.querySelector("#btn-busca-peca-limpar-mobile ");
+  botaoLimparBuscaPecaMobile.addEventListener("click", () => {
+    resetSelectsMobile(1);
+  });
+
   function resetSelects(_index) {
     for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
       const select = PECA_SELECTS[i];
@@ -1942,10 +1956,47 @@
 
   function resetSelect() {
     const select = PLACA_SELECTS[0];
-    var inputPlaca = document.querySelector("#placa-input");
-    $(`.c-busca__tab-content  #${select.id} > div > span`).html(select.title);
+    if(select == "categoria-select"){
+      var inputPlaca = document.querySelector("#placa-input");
+      $(`.c-busca__tab-content  #${select.id} > div > span`).html(select.title);
+      select.routeSelected = "";
+      inputPlaca.value = "";
+    }
+  }
+
+  function resetSelectMobile(){
+    const select = PLACA_SELECTS[0];
     select.routeSelected = "";
-    inputPlaca.value = "";
+    const checkedInput = document.querySelector('.itens-lista li input:checked');
+    if (checkedInput) {
+      checkedInput.checked = false;
+      sessionStorage.setItem("selectedOptionCategoria", null);
+    }
+  }
+
+  function resetSelectsMobile(_index){
+    sessionStorage.setItem("selectedOptionTipoPeca", null);
+    sessionStorage.setItem("selectedOptionMontadora", null);
+    sessionStorage.setItem("selectedOptionVeiculo", null);
+    sessionStorage.setItem("selectedOptionAno", null);
+    sessionStorage.setItem("selectedOptionVersao", null);
+    for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
+      const select = PECA_SELECTS[i];
+      const nextSelect = PECA_SELECTS[i + 1];
+      select.routeSelected = "";
+      document.querySelector(`#opcao-selecionada-${select.id}`).innerHTML = "";
+      if(nextSelect){
+        $(`.c-busca__tab-content-mobile #${nextSelect.id}`).addClass(CONFIG.CSS.EMPTY);
+        nextSelect.values = [];
+        if(nextSelect.routeSelected)
+          nextSelect.routeSelected = "";
+      }
+      $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+      ).slideUp("fast");
+    }
+    document.querySelector('#pecas-select .itens-lista li input:checked').checked = false;
+    $(`.c-busca__tab-content-mobile #pecas-select .smart-select__main-results`
+    ).slideDown("fast");
   }
 
   const botaoVerTodasCategoria = document.querySelector("#toggleButton");
