@@ -174,7 +174,7 @@ font-size: inherit;
 .c-busca .c-busca__tab-content:last-child.is-active {
   border-top-right-radius: 0;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1024px) {
   .c-busca__select {
     padding-top: 30px;
     padding-left: 19px;
@@ -182,7 +182,7 @@ font-size: inherit;
     font-size: larger;
     border-bottom: 1px solid #ccc;
   }
-  .c-busca__select .empty {
+  .c-busca__select div.empty {
     display: none;
   }
   .gtm-smart-categoria-select i {

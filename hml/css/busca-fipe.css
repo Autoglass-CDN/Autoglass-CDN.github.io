@@ -182,7 +182,7 @@
       font-size: larger;
       border-bottom: 1px solid #ccc;
     }
-    .c-busca__select .empty {
+    .c-busca__select div.empty {
       display: none;
     }
     .gtm-smart-categoria-select i {
