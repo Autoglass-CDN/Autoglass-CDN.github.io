@@ -174,7 +174,7 @@
   .c-busca .c-busca__tab-content:last-child.is-active {
     border-top-right-radius: 0;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 1024px) {
     .c-busca__select {
       padding-top: 30px;
       padding-left: 19px;
@@ -182,18 +182,8 @@
       font-size: larger;
       border-bottom: 1px solid #ccc;
     }
-    .gtm-smart-categoria-select i {
-      padding-left: 150px;
-    }
-  }
-  @media screen and (min-width: 600px) and (max-width: 1024px) {
-    .c-busca__select {
-      padding-top: 30px;
-      padding-left: 19px;
-      font-weight: 700;
-      font-size: larger;
-      border-bottom: 1px solid #ccc;
-      padding-bottom: 5px;
+    .c-busca__select .empty {
+      display: none;
     }
     .gtm-smart-categoria-select i {
       padding-left: 150px;
