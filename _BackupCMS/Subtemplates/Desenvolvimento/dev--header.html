@@ -134,7 +134,7 @@
                               <div class="gtm-smart-categoria-select">
                                   <span>Tipo de peça</span>
                                   <i class="fa fa-caret-down"></i>
-                                  <i class="fa fa-close" style="display: none"></i>
+                                  <i class="fa fa-close" style="display: block"></i>
                               </div>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
@@ -156,17 +156,17 @@
                   </div>
                   <div class="side-menu-footer" style="margin-top: -90px;">
                       <button
+                          id="btn-busca-placa-buscar-mobile"
+                          class="btn btn-search"
+                          type="submit">
+                          <i class="fas fa-search"></i> Buscar
+                      </button>
+                      <button
                           id="btn-busca-placa-limpar-mobile"
                           class="btn btn-clear"
                           type="reset"
                           value="Reset">
                           <i class="fas fa-times"></i> Limpar
-                      </button>
-                      <button
-                          id="btn-busca-placa-buscar-mobile"
-                          class="btn btn-search"
-                          type="submit">
-                          <i class="fas fa-search"></i> Buscar
                       </button>
                   </div>
               </form>
@@ -180,8 +180,9 @@
                                   <span>Tipo de peça</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-pecas-select" class="opcao-selecionada"></span>
                               </div>
-                              <div class="smart-select__main-results" style="display: none">
+                              <div class="smart-select__main-results" style="display: block">
                                   <div class="div-input-busca-mobile">
                                       <input
                                       id="peca-input-mobile"
@@ -204,6 +205,7 @@
                                   <span>Montadora</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-montadora-select" class="opcao-selecionada"></span>
                               </div>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
@@ -228,6 +230,7 @@
                                   <span>Modelo do veículo</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-veiculo-select" class="opcao-selecionada"></span>
                               </div>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
@@ -252,6 +255,7 @@
                                   <span>Ano</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-ano-select" class="opcao-selecionada"></span>
                               </div>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
@@ -276,6 +280,7 @@
                                   <span>Versão</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-versao-select" class="opcao-selecionada"></span>
                               </div>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
@@ -297,17 +302,17 @@
                   </div>
                   <div class="side-menu-footer" style="margin-top: -90px;">
                       <button
-                          id="btn-busca-placa-limpar-mobile"
+                          id="btn-busca-peca-buscar-mobile"
+                          class="btn btn-search"
+                          type="submit">
+                          <i class="fas fa-search"></i> Buscar
+                      </button>
+                      <button
+                          id="btn-busca-peca-limpar-mobile"
                           class="btn btn-clear"
                           type="reset"
                           value="Reset">
                           <i class="fas fa-times"></i> Limpar
-                      </button>
-                      <button
-                          id="btn-busca-placa-buscar-mobile"
-                          class="btn btn-search"
-                          type="submit">
-                          <i class="fas fa-search"></i> Buscar
                       </button>
                   </div>
               </form>
@@ -922,6 +927,9 @@
                                                       <li><a id="mobile-paralama"
                                                               href="/latarias-e-acabamentos/latarias/paralama"
                                                               title="Para-lama" itemprop="url">Para-lama</a></li>
+                                                      <li><a id="tampa-de-cacamba"
+                                                              href="/latarias-e-acabamentos/latarias/tampa-de-cacamba"
+                                                              title="Tampa de Caçamba" itemprop="url">Tampa de Caçamba</a></li>
                                                   </ul>
                                               </li>
                                           </ul>
@@ -1001,9 +1009,9 @@
                             </li>
                               <li class="side-menu-categorias__categoria">
                                   <div class="side-menu-categorias__categoria-header">
-                                      <a href="#ferramentas-automotivas" data-target="categoria-ferramentas-automotivas" title="Ferramentas Automotivas" itemprop="url" onclick="toggleCategory(this)">
+                                      <a href="#acessorios-e-ferramentas-automotivas" data-target="categoria-acessorios-e-ferramentas-automotivas" title="Acessórios e Ferramentas Automotivas" itemprop="url" onclick="toggleCategory(this)">
                                           <h3>
-                                              Ferramentas Automotivas
+                                              Acessórios e Ferramentas Automotivas
                                               <i class="arrow-down-icon-gray"></i>
                                           </h3>
                                       </a>
@@ -1013,18 +1021,18 @@
                                       <li>
                                           <ul>
                                               <li class="side-menu-categorias__categoria-itens-titulo"><a
-                                                      href="/ferramentas-automotivas/ferramentas-para-manutencao" title="Ferramentas para Manutenção"
+                                                      href="/acessorios-e-ferramentas-automotivas/ferramentas-para-manutencao" title="Ferramentas para Manutenção"
                                                       itemprop="url">
                                                       Ferramentas para Manutenção
                                                   </a>
                                                   <!-- Sub-Categorias-->
                                                   <ul class="side-menu-categorias__categoria-sub-itens">
                                                       <li><a id="mobile-ferramentas-manuais"
-                                                              href="/ferramentas-automotivas/ferramentas-para-manutencao/ferramentas-manuais"
+                                                              href="/acessorios-e-ferramentas-automotivas/ferramentas-para-manutencao/ferramentas-manuais"
                                                               title="Ferramentas Manuais" itemprop="url">Ferramentas Manuais</a>
                                                       </li>
                                                       <li><a id="mobile-ferramentas-eletricas"
-                                                              href="/ferramentas-automotivas/ferramentas-para-manutencao/ferramentas-eletricas"
+                                                              href="/acessorios-e-ferramentas-automotivas/ferramentas-para-manutencao/ferramentas-eletricas"
                                                               title="Ferramentas Elétricas" itemprop="url">Ferramentas Elétricas</a></li>
                                                   </ul>
                                               </li>
@@ -1034,22 +1042,22 @@
                                       <li>
                                           <ul>
                                               <li class="side-menu-categorias__categoria-itens-titulo"><a
-                                                      href="/ferramentas-automotivas/ferramentas-para-reparo" title="Ferramentas para Reparo"
+                                                      href="/acessorios-e-ferramentas-automotivas/ferramentas-para-reparo" title="Ferramentas para Reparo"
                                                       itemprop="url">
                                                       Ferramentas para Reparo
                                                   </a>
                                                   <!-- Sub-Categorias-->
                                                   <ul class="side-menu-categorias__categoria-sub-itens">
                                                       <li><a id="mobile-reparo-parabrisa"
-                                                              href="/ferramentas-automotivas/ferramentas-para-reparo/reparo-parabrisa"
+                                                              href="/acessorios-e-ferramentas-automotivas/ferramentas-para-reparo/reparo-parabrisa"
                                                               title="Reparo Parabrisa" itemprop="url">Reparo Parabrisa</a>
                                                       </li>
                                                       <li><a id="mobile-reparo-lataria"
-                                                              href="/ferramentas-automotivas/ferramentas-para-reparo/reparo-lataria"
+                                                              href="/acessorios-e-ferramentas-automotivas/ferramentas-para-reparo/reparo-lataria"
                                                               title="Reparo Lataria" itemprop="url">Reparo Lataria</a>
                                                       </li>
                                                       <li><a id="mobile-reparo-mecanico"
-                                                          href="/ferramentas-automotivas/ferramentas-para-reparo/reparo-mecanico"
+                                                          href="/acessorios-e-ferramentas-automotivas/ferramentas-para-reparo/reparo-mecanico"
                                                           title="Reparo Mecânico" itemprop="url">Reparo Mecânico</a>
                                                       </li>
                                                   </ul>
@@ -1060,24 +1068,28 @@
                                       <li>
                                           <ul>
                                               <li class="side-menu-categorias__categoria-itens-titulo"><a
-                                                      href="/ferramentas-automotivas/colas-e-acessorios" title="Colas e Acessórios"
+                                                      href="/acessorios-e-ferramentas-automotivas/colas-e-acessorios" title="Colas e Acessórios"
                                                       itemprop="url">
                                                       Colas e Acessórios
                                                   </a>
                                                   <!-- Sub-Categorias-->
                                                   <ul class="side-menu-categorias__categoria-sub-itens">
                                                       <li><a id="mobile-cola-bisnaga"
-                                                              href="/ferramentas-automotivas/colas-e-acessorios/cola-bisnaga"
+                                                              href="/acessorios-e-ferramentas-automotivas/colas-e-acessorios/cola-bisnaga"
                                                               title="Cola Bisnaga" itemprop="url">Cola Bisnaga</a>
                                                       </li>
                                                       <li><a id="mobile-cola-retrovisor"
-                                                              href="/ferramentas-automotivas/colas-e-acessorios/cola-retrovisor"
+                                                              href="/acessorios-e-ferramentas-automotivas/colas-e-acessorios/cola-retrovisor"
                                                               title="Cola Retrovisor" itemprop="url">Cola Retrovisor</a>
                                                       </li>
                                                       <li><a id="mobile-acessorios"
-                                                          href="/ferramentas-automotivas/colas-e-acessorios/acessorios"
+                                                          href="/acessorios-e-ferramentas-automotivas/colas-e-acessorios/acessorios"
                                                           title="Acessórios" itemprop="url">Acessórios</a>
                                                       </li>
+                                                       <li><a id="mobile-pelicula-automotiva"
+                                                           href="/acessorios-e-ferramentas-automotivas/colas-e-acessorios/pelicula-automotiva"
+                                                           title="Película Automotiva" itemprop="url">Película Automotiva</a>
+                                                       </li>
                                                   </ul>
                                               </li>
                                           </ul>
@@ -1208,16 +1220,16 @@
 <div class="search-box-mobile">
     <form class="search-box-mobile__form">
         <div class="search-box-mobile__form-group">
+            <i class="fa fa-search" id="search-icon" style="color: #0b4583; margin-right: 10px; font-size: larger;"></i>
             <vtex.cmc:fullTextSearchBox />
             <input id="search-mobile-input" class="search-box-mobile__form-input" type="text"
                 placeholder="Pesquisar" />
-            <i class="fa fa-search" id="search-icon" style="color: #0b4583; margin-right: 10px; font-size: larger;"></i>
             <ul class="search-mobile-autocomplete" style="display:none;"></ul>
         </div>
     </form>
     <button class="menu-btn" onclick="openNav()">
-      <i class="fa fa-plus"></i>
-      <span>Mais buscas</span>
+      <span>Buscar por</span>
+      <i class="fa fa-bars"></i>
     </button>
 </div>
 
