@@ -273,7 +273,6 @@
               break;
           }
         }
-        // showButtonVerTodas();
       });
 
       $(
@@ -683,7 +682,7 @@
           const savedValue = verificaValorCheckBox(_id);
           objects.forEach((x, index) => {
             const isChecked = savedValue == x.id ? "checked" : "";
-            const displayStyle = index /*>= 5 ? "display: none;" : ""*/;
+            const displayStyle = index;
             html += `<div class="busca-options" style="${displayStyle}">
                           <li role="treeitem" id="${x.id}">
                             <input id="${x.id}" class="input-busca-options" type="radio" name="${x.name}" value="${x.id}" ${isChecked}>
@@ -698,7 +697,6 @@
               case "#busca-peca-mobile":
                 defineValorCheckbox(event.target.id, _id);
                 Controller.addClick(event, _id);
-                // showButtonVerTodas();
                 if (_id === "versao-select")
                   ajustaLayoutAposOpcoesSelecionadas();
                 break;
@@ -712,7 +710,6 @@
           $(`.c-busca__tab-content-mobile  #${_id} ul li`)
             .first()
             .addClass(CONFIG.CSS.HIGHLIGHT);
-          // $(`.botao-ver-todas`).show();
         } else {
           $(`.c-busca__tab-content-mobile  #${_id} ul`).html(
             `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
@@ -1878,67 +1875,6 @@
     }
   }
 
-  // document
-  //   .getElementById("toggleButton")
-  //   .addEventListener("click", function () {
-  //     document.querySelectorAll(".busca-options").forEach(function (element) {
-  //       element.style.display = "block";
-  //       var divBotao = document.querySelector(".botao-ver-todas");
-  //       divBotao.style.display = "none";
-  //     });
-  //   });
-
-  // document
-  //   .getElementById("toggleButton2")
-  //   .addEventListener("click", function () {
-  //     document.querySelectorAll(".busca-options").forEach(function (element) {
-  //       element.style.display = "block";
-  //       var botaoVerTodasPecas = document.getElementById("toggleButton2");
-  //       botaoVerTodasPecas.style.display = "none";
-  //     });
-  //   });
-
-  // document
-  //   .getElementById("toggleButton3")
-  //   .addEventListener("click", function () {
-  //     document.querySelectorAll(".busca-options").forEach(function (element) {
-  //       element.style.display = "block";
-  //       var botaoVerTodasMontadoras = document.getElementById("toggleButton3");
-  //       botaoVerTodasMontadoras.style.display = "none";
-  //     });
-  //   });
-
-  // document
-  //   .getElementById("toggleButton4")
-  //   .addEventListener("click", function () {
-  //     document.querySelectorAll(".busca-options").forEach(function (element) {
-  //       element.style.display = "block";
-  //       var botaoVerTodosVeiculos = document.getElementById("toggleButton4");
-  //       botaoVerTodosVeiculos.style.display = "none";
-  //     });
-  //   });
-
-  // document
-  //   .getElementById("toggleButton5")
-  //   .addEventListener("click", function () {
-  //     document.querySelectorAll(".busca-options").forEach(function (element) {
-  //       element.style.display = "block";
-  //       var botaoVerTodosAnos = document.getElementById("toggleButton5");
-  //       botaoVerTodosAnos.style.display = "none";
-  //     });
-  //   });
-
-  // document
-  //   .getElementById("toggleButton6")
-  //   .addEventListener("click", function () {
-  //     document.querySelectorAll(".busca-options").forEach(function (element) {
-  //       element.style.display = "block";
-  //       var botaoVerTodasVersoesFipes =
-  //         document.getElementById("toggleButton6");
-  //       botaoVerTodasVersoesFipes.style.display = "none";
-  //     });
-  //   });
-
   var botaoLimparBuscaPeca = document.querySelector("#btn-busca-peca-limpar");
   botaoLimparBuscaPeca.addEventListener("click", () => {
     resetSelects(1);
@@ -2022,75 +1958,6 @@
     $(`.c-busca__tab-content-mobile #pecas-select .smart-select__main-results`
     ).slideDown("fast");
   }
-
-  // const botaoVerTodasCategoria = document.querySelector("#toggleButton");
-  // botaoVerTodasCategoria.addEventListener("click", () => {
-  //   const ulCategoriaSelect = document.querySelector(
-  //     "#categoria-select .smart-select__main-results > ul"
-  //   );
-  //   const sideMenu = document.querySelector("#side-menu");
-  //   if (window.innerWidth <= 360) {
-  //     ulCategoriaSelect.style.height = "292px";
-  //     sideMenu.style.height = "107%";
-  //   } else if (window.innerWidth <= 390) {
-  //     ulCategoriaSelect.style.height = "236px";
-  //     sideMenu.style.height = "107%";
-  //   } else if (window.innerWidth <= 414) {
-  //     ulCategoriaSelect.style.height = "307px";
-  //     sideMenu.style.height = "107%";
-  //   } else {
-  //     ulCategoriaSelect.style.height = "240px";
-  //     sideMenu.style.height = "107%";
-  //   }
-  // });
-
-  // const botaoVerTodasPecas = document.querySelector("#toggleButton2");
-  // botaoVerTodasPecas.addEventListener("click", () => {
-  //   const ulCategoriaSelect = document.querySelector(
-  //     "#pecas-select .smart-select__main-results > ul"
-  //   );
-  //   ulCategoriaSelect.style.height = "176px";
-  // });
-
-  // const botaoVerTodasMontadoras = document.querySelector("#toggleButton3");
-  // botaoVerTodasMontadoras.addEventListener("click", () => {
-  //   const ulCategoriaSelect = document.querySelector(
-  //     "#montadora-select .smart-select__main-results > ul"
-  //   );
-  //   ulCategoriaSelect.style.height = "176px";
-  // });
-
-  // const botaoVerTodasVeiculos = document.querySelector("#toggleButton4");
-  // botaoVerTodasVeiculos.addEventListener("click", () => {
-  //   const ulCategoriaSelect = document.querySelector(
-  //     "#veiculo-select .smart-select__main-results > ul"
-  //   );
-  //   ulCategoriaSelect.style.height = "177px";
-  // });
-
-  // const botaoVerTodosAnos = document.querySelector("#toggleButton5");
-  // botaoVerTodosAnos.addEventListener("click", () => {
-  //   const ulCategoriaSelect = document.querySelector(
-  //     "#ano-select .smart-select__main-results > ul"
-  //   );
-  //   ulCategoriaSelect.style.height = "190px";
-  // });
-
-  // const botaoVerTodasVersoes = document.querySelector("#toggleButton6");
-  // botaoVerTodasVersoes.addEventListener("click", () => {
-  //   const ulCategoriaSelect = document.querySelector(
-  //     "#versao-select .smart-select__main-results > ul"
-  //   );
-  //   ulCategoriaSelect.style.height = "250px";
-  // });
-
-  // function showButtonVerTodas() {
-  //   botaoVerTodasPecas.style.display = "block";
-  //   botaoVerTodasMontadoras.style.display = "block";
-  //   botaoVerTodasVeiculos.style.display = "block";
-  //   botaoVerTodosAnos.style.display = "block";
-  //   botaoVerTodasVersoes.style.display = "block";
-  // }
 
   function ajustaLayoutAposOpcoesSelecionadas() {
     const sideMenu = document.querySelector("#side-menu");
