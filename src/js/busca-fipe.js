@@ -961,6 +961,8 @@
       if(window.innerWidth < 1024) {
         $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
         ).slideUp("fast");
+        if(nextSelect)
+          $(`#${nextSelect.id}`).closest('.c-busca__select').show();
       }
       View.createNavigation(select.id, event.target.innerHTML);
       if (window.innerWidth < 1024)
@@ -1993,6 +1995,8 @@
       }
       $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
       ).slideUp("fast");
+      if(select.id != "pecas-select")
+        $(`#${select.id}`).closest('.c-busca__select').hide();
     }
     document.querySelector('#pecas-select .itens-lista li input:checked').checked = false;
     $(`.c-busca__tab-content-mobile #pecas-select .smart-select__main-results`
