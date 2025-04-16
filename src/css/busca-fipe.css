@@ -858,14 +858,15 @@ font-size: inherit;
   .smart-select__main-results ul::-webkit-scrollbar {
     width: 10px;
   }
-  
+
   .smart-select__main-results ul::-webkit-scrollbar-thumb {
     background-color: #aaa;
     border-radius: 4px;
   }
-  
+
   .smart-select__main-results ul::-webkit-scrollbar-track {
-    background-color: #f0f0f0;  }
+    background-color: #f0f0f0;
+  }
 
   .busca-options {
     display: flex;
@@ -1098,17 +1099,19 @@ font-size: inherit;
   border: 1px solid #0b4583;
 }
 #btn-busca-placa-buscar {
-  border-radius: 40px;
+  border-radius: 8px;
+  margin-right: 10px;
 }
 #btn-busca-peca-buscar {
-  border-radius: 40px;
+  border-radius: 8px;
+  margin-right: 10px;
 }
 #btn-busca-peca-limpar {
-  border-radius: 40px;
+  border-radius: 8px;
   border: 2px solid #0b4583;
 }
 #btn-busca-placa-limpar {
-  border-radius: 40px;
+  border-radius: 8px;
   border: 2px solid #0b4583;
 }
 .botao-fechar {
@@ -1285,9 +1288,7 @@ font-size: inherit;
 .opcao-selecionada{
   font-size: 15px;
   font-weight: 500;
-  background: #d6eaff;
-  border-radius: 8%;
-  margin-left: 20px;
+  border-radius: 27%;
 }
 .opcao-selecionada::before {
   color: black;

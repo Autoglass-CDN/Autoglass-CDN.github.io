@@ -208,10 +208,10 @@
               `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
             );
             const ul = wrapper?.querySelector("ul");
-          
+
             if (wrapper) wrapper.scrollTop = 0;
             if (ul) ul.scrollTop = 0;
-          
+
             const container = document.querySelector(`#${select.id}`);
             if (container) {
               container.scrollIntoView({
@@ -974,7 +974,7 @@
         }
       }
 
-      textoOpcaoSelecionada.textContent = `• ${optionSelected.name}`;
+      textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
       if(window.innerWidth < 1024) {
         $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
         ).slideUp("fast");

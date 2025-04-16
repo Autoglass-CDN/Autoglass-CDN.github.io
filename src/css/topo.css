@@ -750,7 +750,7 @@ i.arrow-icon::before {
 
 .search-box-mobile .busca input {
   outline: none;
-  width: 75%;
+  width: 100%;
   color: #425db4;
   transition: border 500ms;
   padding: 10px;
