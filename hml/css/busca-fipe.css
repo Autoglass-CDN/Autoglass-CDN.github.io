@@ -845,6 +845,7 @@ font-size: inherit;
   }
 
   .smart-select__main-results ul::-webkit-scrollbar {
+    -webkit-appearance: none;
     width: 10px;
   }
 
@@ -855,6 +856,10 @@ font-size: inherit;
 
   .smart-select__main-results ul::-webkit-scrollbar-track {
     background-color: #f0f0f0;
+  }
+
+  .smart-select__main-results::-webkit-scrollbar:vertical {
+    display: block;
   }
 
   .busca-options {
@@ -1006,6 +1011,7 @@ font-size: inherit;
     max-height: 100vh;
   }
   .smart-select__main-results ul::-webkit-scrollbar {
+    -webkit-appearance: none;
     width: 10px;
   }
   .smart-select__main-results ul::-webkit-scrollbar-thumb {
@@ -1014,6 +1020,9 @@ font-size: inherit;
   }
   .smart-select__main-results ul::-webkit-scrollbar-track {
     background-color: #f0f0f0;
+  }
+  .smart-select__main-results::-webkit-scrollbar:vertical {
+    display: block;
   }
   .busca-options {
     display: flex;
