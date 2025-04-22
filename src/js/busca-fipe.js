@@ -1460,6 +1460,7 @@
     const select = PLACA_SELECTS[0];
     const optionSelected = select.values.find((x) => x.id == event.target.id);
     const listItems = document.querySelectorAll(".itens-lista li");
+    const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
 
     select.routeSelected = optionSelected.url
       ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
@@ -1488,13 +1489,11 @@
 
     $(".c-busca__tab-content .c-busca__input #placa-input").click().focus();
 
+    textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
+
     //Lógica para marcar e manter o input marcado.
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 1024)
       selecionarInputPorId(listItems, event.target.id);
-      const savedValue = verificaValorCheckBox(_id);
-      if (savedValue == event.target.id)
-        selecionarInputPorId(listItems, event.target.id);
-    }
   }
 
   function selecionarInputPorId(listItems, id) {
@@ -1928,6 +1927,7 @@
   function resetSelectMobile(){
     const select = PLACA_SELECTS[0];
     select.routeSelected = "";
+    document.querySelector(`#opcao-selecionada-${select.id}`).innerHTML = "";
     const checkedInput = document.querySelector('.itens-lista li input:checked');
     if (checkedInput) {
       checkedInput.checked = false;
