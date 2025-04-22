@@ -69,6 +69,14 @@
     color: #0b4583;
     text-align: center;
   }
+
+  #tab-busca-categoria {
+    border-bottom: none;
+  }
+
+  #tab-busca-categoria .c-busca__tab-text {
+    font-weight: bold;
+  }
 }
 
 .filter-group {

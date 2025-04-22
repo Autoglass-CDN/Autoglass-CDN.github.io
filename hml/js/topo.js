@@ -104,7 +104,6 @@ if(window.innerWidth > 1200){
   })
 }
 
-
 function activateCategory(categoriaAtual, indexConteudoAtual) {
   let categoriaAnterior = document.querySelector(
     ".painel-categorias__menu .painel-categorias__categoria.ativo"
@@ -788,4 +787,41 @@ inputBusca.addEventListener("keydown", function (event) {
     event = event || window.event;
   });
   autocompleteInit(searchField);
+
+if (window.innerWidth > 1024) {
+  (function initializeCategoryPanelMenu() {
+    const tab = document.querySelector("#tab-busca-categoria");
+
+    if (tab) {
+      tab.addEventListener("click", (event) => {
+        event.preventDefault();
+      
+        setTimeout (() => {
+        const content = document.querySelector("#busca-categoria");
+  
+        if (tab && content) {
+          tab.classList.add("is-active");
+          content.classList.add("is-active");
+        }
+      }, 10);
+      });
+    }
+
+    let lastActiveSubmenuId = null;
+    $(".painel-categorias__categoria-itens-lista li.categoria").on("mouseenter", function () {
+      const submenuId = $(this).data("target");
+    
+      if (lastActiveSubmenuId && lastActiveSubmenuId !== submenuId) {
+        $(`#${lastActiveSubmenuId}`).removeClass("ativo");
+      }
+    
+      const $currentSubmenu = $(`#${submenuId}`);
+      if (!$currentSubmenu.hasClass("ativo")) {
+        $currentSubmenu.addClass("ativo");
+      }
+    
+      lastActiveSubmenuId = submenuId;
+    });
+    })();
+}
 })();
