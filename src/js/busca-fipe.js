@@ -1228,6 +1228,9 @@
     let tabs = document.querySelectorAll(".c-busca__tabs li");
 
     tabs.forEach((tab) => {
+
+      if (tab.id === "tab-busca-categoria") return;
+
       tab.addEventListener("click", (event) => {
         event.preventDefault();
 
