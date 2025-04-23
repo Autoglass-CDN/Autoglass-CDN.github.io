@@ -72,7 +72,7 @@
       SELECTED: "selected",
     },
     CANT_OPEN: false,
-    ORIGIN: "https://hml.autoglassonline.com.br", // location.origin,
+    ORIGIN: "https://dev2autoglass.myvtex.com", // location.origin,
   };
 
   const PECA_SELECTS = [
