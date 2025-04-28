@@ -406,6 +406,26 @@ async function loadCart(device) {
   await updateCartItemsCount(carrinho, orderForm);
 }
 
+let botoesAdicionarAoCarrinho = document.querySelectorAll('.shelf-qd-v1-buy-button');
+
+botoesAdicionarAoCarrinho.forEach(botao => {
+  botao.addEventListener('click', async function(event) {
+    let carrinho = document.querySelector('.menu-carrinho');
+
+    let orderFormInicial = await vtexjs.checkout.getOrderForm();
+    let quantidadeInicial = orderFormInicial.items.length;
+
+    let intervalo = setInterval(async () => {
+      let orderFormAtualizado = await vtexjs.checkout.getOrderForm();
+
+      if (orderFormAtualizado.items.length > quantidadeInicial) {
+        clearInterval(intervalo);
+        updateBadge(carrinho, orderFormAtualizado.items.length);
+      }
+    }, 100);
+  });
+});
+
 async function updateCartItemsCount(carrinho, orderForm) {
   if (!orderForm) {
     return updateBadge(carrinho);
@@ -583,7 +603,7 @@ function closeNav() {
   setTimeout(() => {
    zenDeskIcon.style.opacity = "1";
   }, 500);
-  zenDeskIcon.style.pointerEvents = "auto"; 
+  zenDeskIcon.style.pointerEvents = "auto";
   whatsAppIcon.style.transition = "opacity 0.3s ease";
   whatsAppIcon.style.opacity = "1";
   sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "0"));
