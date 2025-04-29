@@ -1250,6 +1250,7 @@
     });
   } else {
     AlternaAbaBusca();
+    window.addEventListener('DOMContentLoaded', menuCategoriasMobile);
   }
 
   function AlternaAbaBusca() {
@@ -1288,6 +1289,17 @@
       let abaSelected = document.getElementById(`${idAba}`);
       abaSelected.checked = true;
     }
+  }
+
+  function menuCategoriasMobile () {
+    let iconeLista = document.querySelector("#tab-busca-categoria-mobile .icone-lista");
+    let categoriaListaMobile = document.querySelector("#busca-categoria-mobile");
+  
+    iconeLista.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      categoriaListaMobile.classList.add("is-active");
+    });
   }
 
   /** BUSCA POR PLACA */

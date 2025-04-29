@@ -245,7 +245,7 @@ i.arrow-icon::before {
   height: 40px;
   width: 100%;
   position: sticky;
-  z-index: 10;
+  z-index: 9;
   top: 0;
   display: flex;
   justify-content: center;
@@ -464,6 +464,15 @@ i.arrow-icon::before {
 .nav .container.mobile .menu-carrinho.loaded > .badge {
   top: -10px;
   right: -3px;
+}
+
+.nav .container.mobile .painel-categorias__categoria {
+  padding-left: 15px;
+}
+
+.nav .container.mobile .painel-categorias__categoria .icone-lista,
+.nav .container.mobile .painel-categorias__categoria .fa.fa-list-ul {
+  font-size: 30px;
 }
 
 /* #region Box de Pesquisa */
@@ -1112,6 +1121,32 @@ i.arrow-icon::before {
   font-size: 1rem;
 }
 
+#busca-categoria-mobile {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 338px;
+  z-index: 900000;
+  background-color: white;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+  pointer-events: none;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.6s ease;
+  will-change: transform, opacity;
+}
+
+#busca-categoria-mobile.is-active {
+  transform: translateX(0%);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
 .side-menu-header hr {
   width: 90%;
   margin: 0 auto;
@@ -1122,12 +1157,14 @@ i.arrow-icon::before {
   margin: 0;
 }
 
-.side-menu > a {
+.side-menu > a,
+#busca-categoria-mobile > a {
   padding: 0 !important;
 }
 
 @media screen and (min-width: 1000px) {
-  .side-menu a {
+  .side-menu a,
+  #busca-categoria-mobile a {
     opacity: 0;
     padding: 25px 8px 0px 50px;
     text-decoration: none;
@@ -1136,19 +1173,23 @@ i.arrow-icon::before {
     display: block;
     transition: background 0.8s, 0.3s;
   }
-  .side-menu a:hover {
+  .side-menu a:hover,
+  #busca-categoria-mobile a:hover {
     background: white radial-gradient(circle, transparent 1%, white 1%)
       center/15000%;
   }
-  .side-menu a:active {
+  .side-menu a:active,
+  #busca-categoria-mobile a:active {
     background-color: var(--gray-300);
     background-size: 100%;
     transition: background 0s;
   }
-  .side-menu a + a {
+  .side-menu a + a,
+  #busca-categoria-mobile a + a {
     padding: 12px 8px 12px 50px;
   }
-  .side-menu a.destaque {
+  .side-menu a.destaque,
+  #busca-categoria-mobile a.destaque {
     font-weight: bold;
     color: #183884;
     padding: 25px 8px 25px 15px;
@@ -1157,7 +1198,8 @@ i.arrow-icon::before {
 }
 
 @media screen and (max-width: 500px) {
-  .side-menu a {
+  .side-menu a,
+  #busca-categoria-mobile a {
     text-decoration: none;
     font-weight: 600;
     color: black;
@@ -1167,7 +1209,8 @@ i.arrow-icon::before {
 }
 
 @media screen and (min-width: 600px) and (max-width: 1024px) {
-  .side-menu a {
+  .side-menu a,
+  #busca-categoria-mobile a {
     text-decoration: none;
     font-weight: 600;
     color: black;
@@ -1176,32 +1219,35 @@ i.arrow-icon::before {
   }
 }
 
-.side-menu .closebtn {
+.side-menu-header > a {
+  padding: 15px 8px 15px 15px;
+  font-size: 0.9rem;
+}
+
+.side-menu .closebtn,
+#whatsapp-icon-link-mobile .closebtn {
   position: static;
   right: 9px;
   font-size: 30px;
   z-index: 1;
   color: #040e3f;
   background: transparent !important;
-  padding-left: 163px;
-}
-
-.side-menu #main-menu,
-.side-menu #busca-categoria-mobile {
-  overflow-x: hidden;
+  padding-left: 173px;
 }
 
 .side-menu #main-menu {
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow-x: hidden;
 }
 #main-menu hr {
   border-top: 0px solid #eee;
   margin-top: -13px;
 }
 
-.side-menu .side-menu-content {
+.side-menu .side-menu-content,
+#busca-categoria-mobile .side-menu-content {
   height: 100%;
 }
 
@@ -1266,59 +1312,43 @@ i.arrow-icon::before {
   padding-top: 12px;
 }
 
-.side-menu #busca-categoria-mobile h2,
-.side-menu #busca-categoria-mobile a {
-  padding-left: 15px;
-}
-
-.side-menu #busca-categoria-mobile h2 {
-  color: #183884;
-}
-
-.side-menu-header > a {
-  padding: 15px 8px 15px 15px;
-  font-size: 0.9rem;
-}
-
-.side-menu #busca-categoria-mobile .side-menu-header > a {
-  display: flex;
-  align-items: center;
-}
-
-.side-menu #busca-categoria-mobile .side-menu-header > a i {
-  margin-right: 15px;
-}
-
-.side-menu-categorias {
+.side-menu-categorias
+#busca-categoria-mobile .side-menu-categorias {
   margin-top: 5px;
   overflow-y: scroll;
   height: calc(100% - 88px);
 }
 
-.side-menu-categorias li::marker {
+.side-menu-categorias li::marker,
+#busca-categoria-mobile .side-menu-categorias li::marker {
   content: none;
 }
-.side-menu-categorias__categoria {
+.side-menu-categorias__categoria,
+#busca-categoria-mobile .side-menu-categorias__categoria {
   content: none;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-header {
+.side-menu-categorias .side-menu-categorias__categoria-header,
+#busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header {
   display: flex;
   content: none;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-header.ativo {
+.side-menu-categorias .side-menu-categorias__categoria-header.ativo,
+#busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header.ativo {
   position: sticky;
   /* box-shadow: 0 0 1px grey; */
   top: 0;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-header.ativo a {
+.side-menu-categorias .side-menu-categorias__categoria-header.ativo a,
+#busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header.ativo a {
   background: white;
   box-shadow: inset 0 0 5px #80808059;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-header h3 {
+.side-menu-categorias .side-menu-categorias__categoria-header h3,
+#busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header h3 {
   width: 100%;
   font-size: 0.9rem;
   font-weight: normal;
@@ -1327,8 +1357,10 @@ i.arrow-icon::before {
   justify-content: space-between;
   margin-left: 15px;
 }
+
 @media screen and (min-width: 600px) and (max-width: 1024px) {
-  .side-menu-categorias .side-menu-categorias__categoria-header h3 {
+  .side-menu-categorias .side-menu-categorias__categoria-header h3,
+  #busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header h3 {
     width: 100%;
     font-size: 1.1rem;
     font-weight: normal;
@@ -1339,7 +1371,8 @@ i.arrow-icon::before {
   }
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-header a {
+.side-menu-categorias .side-menu-categorias__categoria-header a,
+#busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header a {
   display: flex;
   align-items: center;
   width: 100%;
@@ -1347,11 +1380,13 @@ i.arrow-icon::before {
   padding: 15px;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-header a i {
+.side-menu-categorias .side-menu-categorias__categoria-header a i,
+#busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header a i {
   margin-left: 5px;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-itens {
+.side-menu-categorias .side-menu-categorias__categoria-itens,
+#busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-itens {
   height: 0;
   overflow: hidden;
   transition: 0.5s;
@@ -1359,23 +1394,33 @@ i.arrow-icon::before {
 
 .side-menu-categorias
   .side-menu-categorias__categoria-header.ativo
+  + .side-menu-categorias__categoria-itens,
+  #busca-categoria-mobile .side-menu-categorias
+  .side-menu-categorias__categoria-header.ativo
   + .side-menu-categorias__categoria-itens {
   height: fit-content;
   height: -moz-fit-content;
 }
 
-.side-menu-categorias .side-menu-categorias__categoria-itens a {
+.side-menu-categorias .side-menu-categorias__categoria-itens a,
+#busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-itens a {
   padding: 12px 8px 12px 50px !important;
   font-size: 0.9rem;
 }
 @media screen and (min-width: 600px) and (max-width: 1024px) {
-  .side-menu-categorias .side-menu-categorias__categoria-itens a {
+  .side-menu-categorias .side-menu-categorias__categoria-itens a,
+  #busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-itens a {
     padding: 12px 8px 12px 50px !important;
     font-size: 1.2rem;
   }
 }
 
 .side-menu-categorias
+  .side-menu-categorias__categoria-itens
+  .side-menu-categorias__categoria-sub-itens
+  > li
+  > a,
+  #busca-categoria-mobile .side-menu-categorias
   .side-menu-categorias__categoria-itens
   .side-menu-categorias__categoria-sub-itens
   > li
@@ -1580,8 +1625,8 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .painel-categorias__categoria-conteudo {
-  position: absolute;
-  top: -185px;
+  position: fixed;
+  top: 100px;
   left: 22%;
   display: flex;
   border: 0.5px solid #d6d6d6;

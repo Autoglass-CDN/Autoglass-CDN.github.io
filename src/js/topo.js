@@ -561,7 +561,7 @@ function openNav() {
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = "unset";
   setTimeout(() => {
-    sideMenu.style.width = "328px";
+    sideMenu.style.width = "338px";
     setTimeout(
       () =>
         sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "1")),
@@ -569,6 +569,43 @@ function openNav() {
     );
   }, 300);
   //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+  removeFunctions();
+}
+
+function openNavCategory() {
+  const backdrop = document.querySelector(".side-menu-backdrop");
+  const zenDeskIcon = document.querySelector("#launcher");
+  const whatsAppIcon = document.querySelector("#whatsapp-icon-link");
+  const buscaCategoria = document.getElementById("busca-categoria-mobile");
+
+  backdrop.style.display = "unset";
+  backdrop.style.opacity = "1";
+  document.body.style.overflowY = "hidden";
+
+  zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
+  zenDeskIcon.style.opacity = "0";
+  setTimeout(() => {
+    zenDeskIcon.style.visibility = "hidden";
+  }, 500);
+  zenDeskIcon.style.pointerEvents = "none";
+
+  whatsAppIcon.style.transition = "opacity 0.3s ease";
+  whatsAppIcon.style.opacity = "0.5";
+
+  buscaCategoria.style.display = "unset";
+  buscaCategoria.style.opacity = "1";
+  buscaCategoria.classList.remove("is-active");
+
+  void buscaCategoria.offsetHeight;
+
+  buscaCategoria.classList.add("is-active");
+
+  setTimeout(() => {
+    buscaCategoria.querySelectorAll("a").forEach((a) => {
+      a.style.opacity = "1";
+    });
+  }, 400);
+
   removeFunctions();
 }
 
@@ -597,6 +634,31 @@ function closeNav() {
   }, 300);
 
   document.querySelector(".side-menu-backdrop").style.display = "none";
+}
+
+function closeNavCategory() {
+  const backdrop = document.querySelector(".side-menu-backdrop");
+  const buscaCategoria = document.getElementById("busca-categoria-mobile");
+  const zenDeskIcon = document.querySelector("#launcher");
+  const whatsAppIcon = document.querySelector("#whatsapp-icon-link");
+
+  buscaCategoria.classList.remove("is-active");
+
+  document.body.style.overflowY = "auto";
+
+  zenDeskIcon.style.visibility = "visible";
+  zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
+  setTimeout(() => {
+    zenDeskIcon.style.opacity = "1";
+  }, 500);
+  zenDeskIcon.style.pointerEvents = "auto";
+
+  whatsAppIcon.style.transition = "opacity 0.3s ease";
+  whatsAppIcon.style.opacity = "1";
+
+  setTimeout(() => {
+    backdrop.style.display = "none";
+  }, 400);
 }
 
 function openCategorias() {
@@ -640,14 +702,19 @@ function toggleCategory(self) {
 
   loadCart(device.mobile);
 
-  document.onload = function () {
+  document.addEventListener("DOMContentLoaded", () => {
     document
       .querySelector(".side-menu-backdrop")
-      .addEventListener("click", (e) => closeNav());
-  };
+      .addEventListener("click", () => closeNav())
+      .addEventListener("click", () => closeNavCategory());
+  });
 
   $(".usuario__opcoes-mobile a").click(() => {
     closeNav();
+  });
+
+  $(".usuario__opcoes-mobile a").click(() => {
+    closeNavCategory();
   });
 
   $(window).on("orderFormUpdated.vtex", function (evt, orderForm) {
