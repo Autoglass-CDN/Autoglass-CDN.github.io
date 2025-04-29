@@ -658,15 +658,15 @@ i.arrow-icon::before {
     display: flex;
     align-items: center;
     padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
+    background-color: #F39200;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
-    width: 48%;
-    height: 37px;
-    margin-left: 20%;
+    width: 43%;
+    height: 44px;
+    margin-left: 0px;
   }
 }
 
@@ -691,19 +691,22 @@ i.arrow-icon::before {
     display: flex;
     align-items: center;
     padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
+    background-color: #F39200;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
     cursor: pointer;
-    width: 53%;
-    height: 37px;
-    margin-right: 19px;
+    width: 50%;
+    height: 46px;
+    margin-left: 0px;
   }
 }
 .menu-btn span {
-  margin-right: 6px;
+  margin-left: 10px;
+}
+.menu-btn i {
+  margin-left: 3px;
 }
 .menu-icon {
   font-size: 20px;
@@ -726,7 +729,7 @@ i.arrow-icon::before {
 
 .search-box-mobile__form {
   width: 60%;
-  padding: 10px 0 10px 20px;
+  padding: 10px 0 10px 10px;
   position: relative;
   background-color: #f1f4f9;
   margin-left: 10px;
@@ -736,6 +739,9 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   position: relative;
+  border: 1px solid #425db4;
+  border-radius: 5px;
+  margin-right: 10px;
 }
 
 .search-box-mobile .busca {
@@ -744,7 +750,7 @@ i.arrow-icon::before {
 
 .search-box-mobile .busca input {
   outline: none;
-  width: 75%;
+  width: 100%;
   color: #425db4;
   transition: border 500ms;
   padding: 10px;
@@ -1575,14 +1581,15 @@ i.arrow-icon::before {
 
 .painel-categorias .painel-categorias__categoria-conteudo {
   position: absolute;
-  left: 0px;
+  top: -185px;
+  left: 22%;
   display: flex;
-  border-radius: 0px 0px 4px 4px;
+  border: 0.5px solid #d6d6d6;
   background: #fff;
-  width: 100%;
-  overflow: hidden;
+  width: 290px;
+  overflow: visible !important;
   box-shadow: 11px 13px 15px -4px rgb(0 0 0 / 35%);
-  transition: 0.4s;
+  border-radius: 0px 0px 4px 4px;
   z-index: 1000;
 }
 
@@ -1610,7 +1617,7 @@ ul.menu-division {
 
 .painel-categorias .painel-categorias__categoria-itens {
   font-size: 0.875rem;
-  padding: 32px 50px;
+  padding: 10px 20px;
   display: none;
   min-height: 250px;
 }
@@ -1664,365 +1671,32 @@ ul.menu-division {
   font-size: 0.875rem;
 }
 
-/* #region PREVIEW - VIDROS AUTOMOTIVOS */
-
-#vidros-automotivos.painel-categorias__categoria-itens.ativo
-  a#vidro-parabrisa:hover:after {
-  content: var(--vidro-parabrisa);
+.categoria {
+  position: relative;
 }
 
-#vidros-automotivos.painel-categorias__categoria-itens.ativo
-  a#vidro-cantoneira:hover:after {
-  content: var(--vidro-cantoneira);
+.categoria .painel-categorias__categoria-itens {
+  position: absolute;
+  top: -30%;
+  left: 107%;
+  z-index: 1000;
+  background: #fff;
+  display: none;
+  min-width: 220px;
+  padding: 10px;border: 0.5px solid #d6d6d6;
+  box-shadow: 11px 13px 15px 10px rgb(0 0 0 / 35%);
+  border-radius: 0px 0px 4px 4px;
 }
 
-#vidros-automotivos.painel-categorias__categoria-itens.ativo
-  a#vidro-de-janela:hover:after {
-  content: var(--vidro-de-janela);
+.categoria:hover > .painel-categorias__categoria-itens,
+.painel-categorias__categoria-itens:hover {
+  display: block;
 }
 
-#vidros-automotivos.painel-categorias__categoria-itens.ativo
-  a#vidro-quebra-vento:hover:after {
-  content: var(--vidro-quebra-vento);
+.painel-categorias__categoria-itens.ativo {
+  display: block;
 }
 
-#vidros-automotivos.painel-categorias__categoria-itens.ativo
-  a#vidro-de-porta:hover:after {
-  content: var(--vidro-de-porta);
-}
-
-#vidros-automotivos.painel-categorias__categoria-itens.ativo
-  a#vidro-vigia:hover:after {
-  content: var(--vidro-vigia);
-}
-
-/* #endregion PREVIEW - VIDROS AUTOMOTIVOS */
-
-/* #region PREVIEW - FARÓIS */
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#aro-farol-auxiliar:hover:after {
-  content: var(--aro-farol-auxiliar);
-}
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#farol-auxiliar:hover:after {
-  content: var(--farol-auxiliar);
-}
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#farol-diurno:hover:after {
-  content: var(--farol-diurno);
-}
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#farol-principal:hover:after {
-  content: var(--farol-principal);
-}
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#moldura-farol-auxiliar:hover:after {
-  content: var(--moldura-farol-auxiliar);
-}
-
-/* #endregion PREVIEW - FARÓIS */
-
-/* #region PREVIEW - LÂMPADAS */
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#lampada-farol-auxiliar:hover:after {
-  content: var(--lampada-farol-auxiliar);
-}
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#lampada-lanterna:hover:after {
-  content: var(--lampada-lanterna);
-}
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#lampada-lanterna-traseira:hover:after {
-  content: var(--lampada-lanterna-traseira);
-}
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#lampada-painel:hover:after {
-  content: var(--lampada-painel);
-}
-
-/* #endregion PREVIEW - LÂMPADAS */
-
-/* #region PREVIEW - LANTERNAS */
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#lanterna:hover:after {
-  content: var(--lanterna);
-}
-
-#iluminacao-automotiva.painel-categorias__categoria-itens.ativo
-  a#lanterna-para-choque:hover:after {
-  content: var(--lanterna-parachoque);
-}
-
-/* #endregion PREVIEW - LANTERNAS */
-
-/* #region PREVIEW - PARA-CHOQUES */
-
-#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo
-  a#grade-para-choque:hover:after {
-  content: var(--grade-parachoques);
-}
-
-#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo
-  a#guia-para-choque:hover:after {
-  content: var(--guia-parachoques);
-}
-
-#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo
-  a#moldura-para-choque:hover:after {
-  content: var(--moldura-parachoques);
-}
-
-#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo
-  a#moldura-paralama:hover:after {
-  content: var(--moldura-paralama);
-}
-
-#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo
-  a#para-choque-dianteiro:hover:after {
-  content: var(--parachoque-dianteiro);
-}
-
-#parachoques-grades-e-molduras.painel-categorias__categoria-itens.ativo
-  a#para-choque-traseiro:hover:after {
-  content: var(--parachoque-traseiro);
-}
-
-/* #endregion PREVIEW - PARA-CHOQUES */
-
-/* #region PREVIEW - RETROVISORES AUTOMOTIVOS */
-
-#retrovisores-automotivos.painel-categorias__categoria-itens.ativo
-  a#retrovisor-externo-completo:hover:after {
-  content: var(--retrovisor-externo-completo);
-}
-
-#retrovisores-automotivos.painel-categorias__categoria-itens.ativo
-  a#capa-de-retrovisor:hover:after {
-  content: var(--capa-de-retrovisor);
-}
-
-#retrovisores-automotivos.painel-categorias__categoria-itens.ativo
-  a#espelho-retrovisor-externo:hover:after {
-  content: var(--espelho-retrovisor-externo);
-}
-
-#retrovisores-automotivos.painel-categorias__categoria-itens.ativo
-  a#espelho-retrovisor-interno:hover:after {
-  content: var(--espelho-retrovisor-interno);
-}
-
-#retrovisores-automotivos.painel-categorias__categoria-itens.ativo
-  a#lente-do-retrovisor:hover:after {
-  content: var(--lente-do-retrovisor);
-}
-
-#retrovisores-automotivos.painel-categorias__categoria-itens.ativo
-  a#pisca-do-retrovisor:hover:after {
-  content: var(--pisca-do-retrovisor);
-}
-
-#retrovisores-automotivos.painel-categorias__categoria-itens.ativo
-  a#retrovisor-externo:hover:after {
-  content: var(--retrovisor-externo);
-}
-
-#retrovisores-automotivos.painel-categorias__categoria-itens.ativo
-  a#retrovisor-interno:hover:after {
-  content: var(--retrovisor-interno);
-}
-
-/* #endregion PREVIEW - RETROVISORES AUTOMOTIVOS */
-
-/* #region PREVIEW - SUSPENSÕES */
-
-#suspensao.painel-categorias__categoria-itens.ativo
-  a#amortecedor-suspensao:hover:after {
-  content: var(--amortecedor-suspensao);
-}
-
-#suspensao.painel-categorias__categoria-itens.ativo
-  a#bandeja-de-suspensao:hover:after {
-  content: var(--bandeja-suspensao);
-}
-
-#suspensao.painel-categorias__categoria-itens.ativo
-  a#bieleta-de-suspensao:hover:after {
-  content: var(--bieleta-suspensao);
-}
-
-#suspensao.painel-categorias__categoria-itens.ativo
-  a#pivo-de-suspensao:hover:after {
-  content: var(--pivo-suspensao);
-}
-
-/* #endregion PREVIEW - SUSPENSÕES */
-
-/* #region PREVIEW - RADIADORES */
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#aditivo-radiador:hover:after {
-  content: var(--aditivo-radiador);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#defletor-radiador:hover:after {
-  content: var(--defletor-radiador);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#eletroventilador-radiador:hover:after {
-  content: var(--eletroventilador-radiador);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#gmv-radiador:hover:after {
-  content: var(--gmv-radiador);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#grade-do-radiador:hover:after {
-  content: var(--grade-do-radiador);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#grade-do-radiador:hover:after {
-  content: var(--grade-do-radiador);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#moldura-grade-radiador:hover:after {
-  content: var(--moldura-grade-radiador);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#radiador:hover:after {
-  content: var(--radiador);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#reservatorio-de-agua-radiador:hover:after {
-  content: var(--reservatorio-de-agua-radiador);
-}
-
-/* #endregion PREVIEW - RADIADORES */
-
-/* #region PREVIEW - CONDENSADORES */
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#condensador-ar-condicionado:hover:after {
-  content: var(--condensador-ar-condicionado);
-}
-
-#radiadores-e-condensadores.painel-categorias__categoria-itens.ativo
-  a#gmv-condensador:hover:after {
-  content: var(--gmv-condensador);
-}
-
-/* #endregion PREVIEW - CONDENSADORES */
-
-/* #region PREVIEW - AROMATIZANTES */
-
-#higienizadores-e-filtros.painel-categorias__categoria-itens.ativo
-  a#aromatizante:hover:after {
-  content: var(--aromatizante-aromatizante);
-}
-
-/* #endregion PREVIEW - AROMATIZANTES */
-
-/* #region PREVIEW - HIGIENIZADORES */
-
-#higienizadores-e-filtros.painel-categorias__categoria-itens.ativo
-  a#higienizador-ar-condicionado:hover:after {
-  content: var(--higienizador-de-ar-condicionado);
-}
-
-/* #endregion PREVIEW - HIGIENIZADORES */
-
-/* #region PREVIEW - FILTROS */
-
-#higienizadores-e-filtros.painel-categorias__categoria-itens.ativo
-  a#filtro-ar-condicionado:hover:after {
-  content: var(--filtro-ar-condicionado);
-}
-
-/* #endregion PREVIEW - FILTROS */
-
-/* #region PREVIEW - BORRACHAS */
-
-#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo
-  a#borracha-janela:hover:after {
-  content: var(--borracha-janela);
-}
-
-#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo
-  a#borracha-universal-parabrisa:hover:after {
-  content: var(--borracha-universal-parabrisa);
-}
-
-#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo
-  a#borracha-universal-vigia:hover:after {
-  content: var(--borracha-universal-vigia);
-}
-
-#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo
-  a#borracha-vigia:hover:after {
-  content: var(--borracha-vigia);
-}
-
-#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo
-  a#borracha-parabrisa:hover:after {
-  content: var(--borracha-parabrisa);
-}
-
-/* #endregion PREVIEW - BORRACHAS */
-
-/* #region PREVIEW - PALHETAS */
-
-#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo
-  a#palheta-para-brisa:hover:after {
-  content: var(--palheta-para-brisa);
-}
-
-#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo
-  a#palheta-vigia:hover:after {
-  content: var(--palheta-vigia);
-}
-
-#palhetas-e-borrachas.painel-categorias__categoria-itens.ativo
-  a#reservatorio-de-agua-limpador:hover:after {
-  content: var(--reservatorio-de-agua-limpador);
-}
-
-/* #endregion PREVIEW - PALHETAS */
-
-/* #region PREVIRE - LATARIAS E ACABAMENTOS */
-
-#latarias-e-acabamentos.painel-categorias__categoria-itens.ativo
-  a#capo:hover:after {
-  content: var(--capo);
-}
-
-#latarias-e-acabamentos.painel-categorias__categoria-itens.ativo
-  a#parabarro:hover:after {
-  content: var(--parabarro);
-}
-
-#latarias-e-acabamentos.painel-categorias__categoria-itens.ativo
-  a#paralama:hover:after {
-  content: var(--paralama);
-}
-
-/* #endregion REVIRE - LATARIAS E ACABAMENTOS */
 
 .painel-categorias .painel-categorias__categoria-itens a:hover {
   padding-left: 5px;
@@ -2030,23 +1704,37 @@ ul.menu-division {
 
 .painel-categorias .painel-categorias__categoria-itens.ativo {
   display: flex;
+  flex-direction: column;
 }
 
-.painel-categorias .painel-categorias__categoria-itens.ativo > ul {
-  margin-right: 70px;
+.painel-categorias__categoria-itens-lista {
+  position: relative;
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista > a {
   color: var(--blue-500);
   font-weight: var(--bold);
   display: block;
-  margin-bottom: 25px;
+}
+
+.painel-categorias__categoria-itens-lista > ul.ativo {
+  display: block;
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista > ul > li {
   color: var(--gray-700);
   min-width: 220px;
   min-height: 34px;
+  position: relative;
+}
+
+.painel-categorias .painel-categorias__categoria-itens-lista .categoria .painel-categorias__categoria-itens > ul {
+  padding-bottom: 20px;
+}
+
+.painel-categorias .painel-categorias__categoria-itens-lista .painel-categorias__categoria-itens-lista-menu {
+  display: block;
+  position: relative;
 }
 
 .painel-categorias
@@ -2058,10 +1746,18 @@ ul.menu-division {
 
 .painel-categorias .painel-categorias__categoria-itens-lista > ul > li > a {
   color: var(--gray-700);
-  display: block;
+  display: flex;
+  justify-content: space-between;
   height: 100%;
   padding: 7px 0;
   border-radius: 4px;
+}
+
+.painel-categorias .painel-categorias__categoria-itens-lista > ul > li > a svg {
+  width: 10px;
+  height: 15px;
+  padding-top: 5px;
+  color: #252525;
 }
 
 .painel-categorias

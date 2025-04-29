@@ -37,6 +37,18 @@
     <div class="container desktop">
         <a href="/"><img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png" alt="Logo da Autoglass"
                 class="logo" /></a>
+        <ul>
+            <li id="tab-busca-categoria" class="tab-item painel-categorias__categoria ativo">
+                <div class="ativo">
+                    <a href="#busca-categoria" style="text-decoration: none">
+                        <i class="fa fa-list-ul" aria-hidden="true" style="color: #0b4583;"></i>
+                        <span class="c-busca__tab-text">
+                            Categorias
+                        </span>
+                    </a>
+                </div>
+            </li>
+        </ul>
         <div class="search-box">
             <vtex.cmc:fullTextSearchBox />
             <i class="search-icon" id="search-icon"></i>
@@ -135,6 +147,7 @@
                                   <span>Tipo de peça</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-categoria-select" class="opcao-selecionada"></span>
                               </div>
                               <div class="smart-select__main-results" style="display: block">
                                   <div class="div-input-busca-mobile">
@@ -156,17 +169,17 @@
                   </div>
                   <div class="side-menu-footer" style="margin-top: -90px;">
                       <button
-                          id="btn-busca-placa-buscar-mobile"
-                          class="btn btn-search"
-                          type="submit">
-                          <i class="fas fa-search"></i> Buscar
-                      </button>
-                      <button
                           id="btn-busca-placa-limpar-mobile"
                           class="btn btn-clear"
                           type="reset"
                           value="Reset">
                           <i class="fas fa-times"></i> Limpar
+                      </button>
+                      <button
+                          id="btn-busca-placa-buscar-mobile"
+                          class="btn btn-search"
+                          type="submit">
+                          <i class="fas fa-search"></i> Buscar
                       </button>
                   </div>
               </form>
@@ -192,14 +205,14 @@
                                       />
                                       <i class="fa fa-search"></i>
                                   </div>
-                                  <ul class="itens-lista"></ul>
-                                  <div class="botao-ver-todas" style="display: none;">
+                                    <ul class="itens-lista"></ul>
+                                </div>
+                                <div class="botao-ver-todas" style="display: none;">
                                       <button type="button" id="toggleButton2">Ver todas <span>&#9660;</span></button>
-                                  </div>
-                              </div>
+                                </div>
                           </div>
                       </div>
-                      <div class="c-busca__select">
+                      <div class="c-busca__select" style="display: none;">
                           <div id="montadora-select" class="empty">
                               <div class="gtm-smart-montadora-select">
                                   <span>Montadora</span>
@@ -224,7 +237,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="c-busca__select">
+                      <div class="c-busca__select" style="display: none;">
                           <div id="veiculo-select" class="empty">
                               <div class="gtm-smart-veiculo-select">
                                   <span>Modelo do veículo</span>
@@ -249,7 +262,7 @@
                               </div>
                           </div>
                       </div>
-                      <div class="c-busca__select">
+                      <div class="c-busca__select" style="display: none;">
                           <div id="ano-select" class="empty">
                               <div class="gtm-smart-ano-select">
                                   <span>Ano</span>
@@ -302,17 +315,17 @@
                   </div>
                   <div class="side-menu-footer" style="margin-top: -90px;">
                       <button
-                          id="btn-busca-peca-buscar-mobile"
-                          class="btn btn-search"
-                          type="submit">
-                          <i class="fas fa-search"></i> Buscar
-                      </button>
-                      <button
                           id="btn-busca-peca-limpar-mobile"
                           class="btn btn-clear"
                           type="reset"
                           value="Reset">
                           <i class="fas fa-times"></i> Limpar
+                      </button>
+                      <button
+                          id="btn-busca-peca-buscar-mobile"
+                          class="btn btn-search"
+                          type="submit">
+                          <i class="fas fa-search"></i> Buscar
                       </button>
                   </div>
               </form>
@@ -1220,16 +1233,16 @@
 <div class="search-box-mobile">
     <form class="search-box-mobile__form">
         <div class="search-box-mobile__form-group">
-            <i class="fa fa-search" id="search-icon" style="color: #0b4583; margin-right: 10px; font-size: larger;"></i>
             <vtex.cmc:fullTextSearchBox />
             <input id="search-mobile-input" class="search-box-mobile__form-input" type="text"
                 placeholder="Pesquisar" />
+            <i class="fa fa-search" id="search-icon" style="color: #0b4583; margin-right: 10px; font-size: larger;"></i>
             <ul class="search-mobile-autocomplete" style="display:none;"></ul>
         </div>
     </form>
     <button class="menu-btn" onclick="openNav()">
-      <span>Buscar por</span>
-      <i class="fa fa-bars"></i>
+      <i class="fa fa-plus"></i>
+      <span>Mais buscas</span>
     </button>
 </div>
 

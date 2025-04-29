@@ -58,46 +58,28 @@ requestIdleCallback(() => {
                         <p class="c-message">
                           O Grupo Autoglass, em respeito à privacidade dos seus dados pessoais e buscando a melhorar sua experiência de navegação no site,
                           gostaria de obter o seu consentimento para coletar e utilizar cookies de navegação, que servirão para trazer conteúdos personalizados
-                          e mais relevantes para você. Ao clicar em "Aceitar", você estará concordando com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade.</a>
+                          e mais relevantes para você. Ao clicar em "Concordar", você estará concordando com a nossa <a href="/Institucional/privacidade" target="_blank">Política de Privacidade.</a>
                         </p>
                     </div>
                     <div id="c-right">
-                      <div class="aceitar-cookies-container">
-                        <input type="checkbox" id="aceitar-cookies-checkbox" />
-                        <label for="aceitar-cookies-checkbox" id="aceitar-cookies-label">Aceitar Cookies</label>
-                      </div>
-                        <a id="aceitar-cookie-link" class="c-button c-button-disabled">Concordar</a>
+                        <a id="aceitar-cookie-link" class="c-button c-button-disabled">Concordar e fechar</a>
                     </div>
                     <div style="clear:both"></div>
                 </div>
             `);
     
-            const aceitarCookiesCheckbox = $('#aceitar-cookies-checkbox');
             const aceitarCookieLink = $('#aceitar-cookie-link');
-    
-            aceitarCookiesCheckbox.change(function () {
-              let isChecked = this.checked;
-              aceitarCookieLink.toggleClass('c-button-disabled', !isChecked);
-              aceitarCookieLink.css('background-color', isChecked ? '#000000' : '#999');
-              aceitarCookieLink.css('cursor', isChecked ? 'pointer' : 'not-allowed');
-            });
     
             aceitarCookieLink.click(acceptCookies);
         }
     
         function acceptCookies() {
-          aceitarCookiesCheckbox = $('#aceitar-cookies-checkbox');
           aceitarCookieLink = $('#aceitar-cookie-link');
           const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
-    
-          if (aceitarCookiesCheckbox.prop('checked')) {
-              hideCookieBanner();
-              cookie.accepted = true;
-              cookie.acceptedAt = Date.now();
-              $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
-          } else {
-              return;
-          }
+          hideCookieBanner();
+          cookie.accepted = true;
+          cookie.acceptedAt = Date.now();
+          $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
       }
     
         function showCookieBanner() {

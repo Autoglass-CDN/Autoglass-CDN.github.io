@@ -182,9 +182,7 @@ font-size: inherit;
     font-size: larger;
     border-bottom: 1px solid #ccc;
   }
-  .c-busca__select div.empty {
-    display: none;
-  }
+
   .gtm-smart-categoria-select i {
     padding-left: 150px;
   }
@@ -248,12 +246,6 @@ font-size: inherit;
   }
 }
 @media screen and (max-width: 500px) {
-  .c-busca__tab-content-mobile .smart-select__main-results {
-    max-height: calc(
-      100vh - 200px
-    ); /* Ajuste o valor para o tamanho desejado */
-    overflow-y: auto !important;
-  }
   .smart-select__main-results i {
     color: #0b4583;
     font-size: smaller;
@@ -294,13 +286,6 @@ font-size: inherit;
   }
 }
 @media screen and (min-width: 600px) and (max-width: 1024px) {
-  .c-busca__tab-content-mobile .smart-select__main-results {
-    max-height: calc(
-      100vh - 200px
-    ); /* Ajuste o valor para o tamanho desejado */
-    overflow-y: auto !important;
-  }
-
   .smart-select__main-results i {
     color: #000000;
     font-size: smaller;
@@ -853,8 +838,29 @@ font-size: inherit;
   }
 
   .smart-select__main-results ul {
-    overflow: auto;
-    height: 170px;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: 15px;
+    height: auto;
+    max-height: 100vh;
+  }
+
+  .smart-select__main-results ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+
+  .smart-select__main-results ul::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 4px;
+  }
+
+  .smart-select__main-results ul::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+
+  .smart-select__main-results::-webkit-scrollbar:vertical {
+    display: block;
   }
 
   .busca-options {
@@ -999,8 +1005,25 @@ font-size: inherit;
     margin-top: 5%;
   }
   .smart-select__main-results ul {
-    max-height: 430px;
-    overflow-y: auto;
+    overflow-y: scroll !important;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: 15px;
+    height: auto;
+    max-height: 100vh;
+  }
+  .smart-select__main-results ul::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 10px;
+  }
+  .smart-select__main-results ul::-webkit-scrollbar-thumb {
+    background-color: #aaa;
+    border-radius: 4px;
+  }
+  .smart-select__main-results ul::-webkit-scrollbar-track {
+    background-color: #f0f0f0;
+  }
+  .smart-select__main-results::-webkit-scrollbar:vertical {
+    display: block;
   }
   .busca-options {
     display: flex;
@@ -1273,4 +1296,13 @@ font-size: inherit;
   100% {
     transform: rotate(360deg);
   }
+}
+.opcao-selecionada{
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 27%;
+}
+.opcao-selecionada::before {
+  color: black;
+  font-size: 25px;
 }

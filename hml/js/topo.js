@@ -104,7 +104,6 @@ if(window.innerWidth > 1200){
   })
 }
 
-
 function activateCategory(categoriaAtual, indexConteudoAtual) {
   let categoriaAnterior = document.querySelector(
     ".painel-categorias__menu .painel-categorias__categoria.ativo"
@@ -407,6 +406,26 @@ async function loadCart(device) {
   await updateCartItemsCount(carrinho, orderForm);
 }
 
+let botoesAdicionarAoCarrinho = document.querySelectorAll('.shelf-qd-v1-buy-button');
+
+botoesAdicionarAoCarrinho.forEach(botao => {
+  botao.addEventListener('click', async function(event) {
+    let carrinho = document.querySelector('.menu-carrinho');
+
+    let orderFormInicial = await vtexjs.checkout.getOrderForm();
+    let quantidadeInicial = orderFormInicial.items.length;
+
+    let intervalo = setInterval(async () => {
+      let orderFormAtualizado = await vtexjs.checkout.getOrderForm();
+
+      if (orderFormAtualizado.items.length > quantidadeInicial) {
+        clearInterval(intervalo);
+        updateBadge(carrinho, orderFormAtualizado.items.length);
+      }
+    }, 100);
+  });
+});
+
 async function updateCartItemsCount(carrinho, orderForm) {
   if (!orderForm) {
     return updateBadge(carrinho);
@@ -584,7 +603,7 @@ function closeNav() {
   setTimeout(() => {
    zenDeskIcon.style.opacity = "1";
   }, 500);
-  zenDeskIcon.style.pointerEvents = "auto"; 
+  zenDeskIcon.style.pointerEvents = "auto";
   whatsAppIcon.style.transition = "opacity 0.3s ease";
   whatsAppIcon.style.opacity = "1";
   sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "0"));
@@ -788,4 +807,41 @@ inputBusca.addEventListener("keydown", function (event) {
     event = event || window.event;
   });
   autocompleteInit(searchField);
+
+if (window.innerWidth > 1024) {
+  (function initializeCategoryPanelMenu() {
+    const tab = document.querySelector("#tab-busca-categoria");
+
+    if (tab) {
+      tab.addEventListener("click", (event) => {
+        event.preventDefault();
+      
+        setTimeout (() => {
+        const content = document.querySelector("#busca-categoria");
+  
+        if (tab && content) {
+          tab.classList.add("is-active");
+          content.classList.add("is-active");
+        }
+      }, 10);
+      });
+    }
+
+    let lastActiveSubmenuId = null;
+    $(".painel-categorias__categoria-itens-lista li.categoria").on("mouseenter", function () {
+      const submenuId = $(this).data("target");
+    
+      if (lastActiveSubmenuId && lastActiveSubmenuId !== submenuId) {
+        $(`#${lastActiveSubmenuId}`).removeClass("ativo");
+      }
+    
+      const $currentSubmenu = $(`#${submenuId}`);
+      if (!$currentSubmenu.hasClass("ativo")) {
+        $currentSubmenu.addClass("ativo");
+      }
+    
+      lastActiveSubmenuId = submenuId;
+    });
+    })();
+}
 })();

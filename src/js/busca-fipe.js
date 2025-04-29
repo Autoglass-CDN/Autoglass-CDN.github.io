@@ -72,7 +72,7 @@
       SELECTED: "selected",
     },
     CANT_OPEN: false,
-    ORIGIN: "https://hml.autoglassonline.com.br", // location.origin,
+    ORIGIN: "https://dev2autoglass.myvtex.com", // location.origin,
   };
 
   const PECA_SELECTS = [
@@ -202,7 +202,27 @@
 
         if (select.values) {
           View.buildList(select.values, select.id);
+
+          setTimeout(() => {
+            const wrapper = document.querySelector(
+              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
+            );
+            const ul = wrapper?.querySelector("ul");
+
+            if (wrapper) wrapper.scrollTop = 0;
+            if (ul) ul.scrollTop = 0;
+
+            const container = document.querySelector(`#${select.id}`);
+            if (container) {
+              container.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+              });
+            }
+          }, 0);
+
           View.selectOptionIfButtonHasValue(select.id);
+
           const sideMenu = document.querySelector("#side-menu");
 
           if (select.values.length !== 0) {
@@ -253,7 +273,6 @@
               break;
           }
         }
-        showButtonVerTodas();
       });
 
       $(
@@ -663,7 +682,7 @@
           const savedValue = verificaValorCheckBox(_id);
           objects.forEach((x, index) => {
             const isChecked = savedValue == x.id ? "checked" : "";
-            const displayStyle = index >= 5 ? "display: none;" : "";
+            const displayStyle = index;
             html += `<div class="busca-options" style="${displayStyle}">
                           <li role="treeitem" id="${x.id}">
                             <input id="${x.id}" class="input-busca-options" type="radio" name="${x.name}" value="${x.id}" ${isChecked}>
@@ -678,7 +697,6 @@
               case "#busca-peca-mobile":
                 defineValorCheckbox(event.target.id, _id);
                 Controller.addClick(event, _id);
-                showButtonVerTodas();
                 if (_id === "versao-select")
                   ajustaLayoutAposOpcoesSelecionadas();
                 break;
@@ -692,7 +710,6 @@
           $(`.c-busca__tab-content-mobile  #${_id} ul li`)
             .first()
             .addClass(CONFIG.CSS.HIGHLIGHT);
-          $(`.botao-ver-todas`).show();
         } else {
           $(`.c-busca__tab-content-mobile  #${_id} ul`).html(
             `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
@@ -957,7 +974,7 @@
         }
       }
 
-      textoOpcaoSelecionada.textContent = `• ${optionSelected.name}`;
+      textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
       if(window.innerWidth < 1024) {
         $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
         ).slideUp("fast");
@@ -1211,6 +1228,9 @@
     let tabs = document.querySelectorAll(".c-busca__tabs li");
 
     tabs.forEach((tab) => {
+
+      if (tab.id === "tab-busca-categoria") return;
+
       tab.addEventListener("click", (event) => {
         event.preventDefault();
 
@@ -1440,6 +1460,7 @@
     const select = PLACA_SELECTS[0];
     const optionSelected = select.values.find((x) => x.id == event.target.id);
     const listItems = document.querySelectorAll(".itens-lista li");
+    const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
 
     select.routeSelected = optionSelected.url
       ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
@@ -1468,13 +1489,11 @@
 
     $(".c-busca__tab-content .c-busca__input #placa-input").click().focus();
 
+    textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
+
     //Lógica para marcar e manter o input marcado.
-    if (window.innerWidth < 1024) {
+    if (window.innerWidth < 1024)
       selecionarInputPorId(listItems, event.target.id);
-      const savedValue = verificaValorCheckBox(_id);
-      if (savedValue == event.target.id)
-        selecionarInputPorId(listItems, event.target.id);
-    }
   }
 
   function selecionarInputPorId(listItems, id) {
@@ -1858,67 +1877,6 @@
     }
   }
 
-  document
-    .getElementById("toggleButton")
-    .addEventListener("click", function () {
-      document.querySelectorAll(".busca-options").forEach(function (element) {
-        element.style.display = "block";
-        var divBotao = document.querySelector(".botao-ver-todas");
-        divBotao.style.display = "none";
-      });
-    });
-
-  document
-    .getElementById("toggleButton2")
-    .addEventListener("click", function () {
-      document.querySelectorAll(".busca-options").forEach(function (element) {
-        element.style.display = "block";
-        var botaoVerTodasPecas = document.getElementById("toggleButton2");
-        botaoVerTodasPecas.style.display = "none";
-      });
-    });
-
-  document
-    .getElementById("toggleButton3")
-    .addEventListener("click", function () {
-      document.querySelectorAll(".busca-options").forEach(function (element) {
-        element.style.display = "block";
-        var botaoVerTodasMontadoras = document.getElementById("toggleButton3");
-        botaoVerTodasMontadoras.style.display = "none";
-      });
-    });
-
-  document
-    .getElementById("toggleButton4")
-    .addEventListener("click", function () {
-      document.querySelectorAll(".busca-options").forEach(function (element) {
-        element.style.display = "block";
-        var botaoVerTodosVeiculos = document.getElementById("toggleButton4");
-        botaoVerTodosVeiculos.style.display = "none";
-      });
-    });
-
-  document
-    .getElementById("toggleButton5")
-    .addEventListener("click", function () {
-      document.querySelectorAll(".busca-options").forEach(function (element) {
-        element.style.display = "block";
-        var botaoVerTodosAnos = document.getElementById("toggleButton5");
-        botaoVerTodosAnos.style.display = "none";
-      });
-    });
-
-  document
-    .getElementById("toggleButton6")
-    .addEventListener("click", function () {
-      document.querySelectorAll(".busca-options").forEach(function (element) {
-        element.style.display = "block";
-        var botaoVerTodasVersoesFipes =
-          document.getElementById("toggleButton6");
-        botaoVerTodasVersoesFipes.style.display = "none";
-      });
-    });
-
   var botaoLimparBuscaPeca = document.querySelector("#btn-busca-peca-limpar");
   botaoLimparBuscaPeca.addEventListener("click", () => {
     resetSelects(1);
@@ -1969,6 +1927,7 @@
   function resetSelectMobile(){
     const select = PLACA_SELECTS[0];
     select.routeSelected = "";
+    document.querySelector(`#opcao-selecionada-${select.id}`).innerHTML = "";
     const checkedInput = document.querySelector('.itens-lista li input:checked');
     if (checkedInput) {
       checkedInput.checked = false;
@@ -2001,75 +1960,6 @@
     document.querySelector('#pecas-select .itens-lista li input:checked').checked = false;
     $(`.c-busca__tab-content-mobile #pecas-select .smart-select__main-results`
     ).slideDown("fast");
-  }
-
-  const botaoVerTodasCategoria = document.querySelector("#toggleButton");
-  botaoVerTodasCategoria.addEventListener("click", () => {
-    const ulCategoriaSelect = document.querySelector(
-      "#categoria-select .smart-select__main-results > ul"
-    );
-    const sideMenu = document.querySelector("#side-menu");
-    if (window.innerWidth <= 360) {
-      ulCategoriaSelect.style.height = "292px";
-      sideMenu.style.height = "107%";
-    } else if (window.innerWidth <= 390) {
-      ulCategoriaSelect.style.height = "236px";
-      sideMenu.style.height = "107%";
-    } else if (window.innerWidth <= 414) {
-      ulCategoriaSelect.style.height = "307px";
-      sideMenu.style.height = "107%";
-    } else {
-      ulCategoriaSelect.style.height = "240px";
-      sideMenu.style.height = "107%";
-    }
-  });
-
-  const botaoVerTodasPecas = document.querySelector("#toggleButton2");
-  botaoVerTodasPecas.addEventListener("click", () => {
-    const ulCategoriaSelect = document.querySelector(
-      "#pecas-select .smart-select__main-results > ul"
-    );
-    ulCategoriaSelect.style.height = "176px";
-  });
-
-  const botaoVerTodasMontadoras = document.querySelector("#toggleButton3");
-  botaoVerTodasMontadoras.addEventListener("click", () => {
-    const ulCategoriaSelect = document.querySelector(
-      "#montadora-select .smart-select__main-results > ul"
-    );
-    ulCategoriaSelect.style.height = "176px";
-  });
-
-  const botaoVerTodasVeiculos = document.querySelector("#toggleButton4");
-  botaoVerTodasVeiculos.addEventListener("click", () => {
-    const ulCategoriaSelect = document.querySelector(
-      "#veiculo-select .smart-select__main-results > ul"
-    );
-    ulCategoriaSelect.style.height = "177px";
-  });
-
-  const botaoVerTodosAnos = document.querySelector("#toggleButton5");
-  botaoVerTodosAnos.addEventListener("click", () => {
-    const ulCategoriaSelect = document.querySelector(
-      "#ano-select .smart-select__main-results > ul"
-    );
-    ulCategoriaSelect.style.height = "190px";
-  });
-
-  const botaoVerTodasVersoes = document.querySelector("#toggleButton6");
-  botaoVerTodasVersoes.addEventListener("click", () => {
-    const ulCategoriaSelect = document.querySelector(
-      "#versao-select .smart-select__main-results > ul"
-    );
-    ulCategoriaSelect.style.height = "250px";
-  });
-
-  function showButtonVerTodas() {
-    botaoVerTodasPecas.style.display = "block";
-    botaoVerTodasMontadoras.style.display = "block";
-    botaoVerTodasVeiculos.style.display = "block";
-    botaoVerTodosAnos.style.display = "block";
-    botaoVerTodasVersoes.style.display = "block";
   }
 
   function ajustaLayoutAposOpcoesSelecionadas() {
