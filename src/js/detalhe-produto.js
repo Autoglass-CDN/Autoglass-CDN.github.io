@@ -458,8 +458,17 @@ $(window).on("load", async () => {
   // const nomeProduto = dataLayer[0].pageTitle;
   // const categoriaProduto = nomeProduto.split(' ')[0];
 
-  const codigoSKU = $("#codigo-sku-acessorio-ag").text().trim();
-  const precoAcessorio = $("#preco-acessorios-ag").text().replace("R$ ", "").trim();
+  let codigoSKU = null;
+  let precoAcessorio = null;
+  const acessorios = document.querySelectorAll('.info-acessorios-ag');
+  acessorios.forEach(acessorio => {
+    const nome = acessorio.querySelector('#nome-produto-acessorio-ag')?.textContent?.toUpperCase();
+
+    if (nome?.includes('INSUMO DE INSTALAÇÃO')) {
+      codigoSKU = acessorio.querySelector('#codigo-sku-acessorio-ag')?.textContent?.trim();
+      precoAcessorio = acessorio.querySelector('#preco-acessorios-ag')?.textContent?.replace('R$', '')?.trim();
+    }
+  });
 
   $(".product-qd-v1-buy-button .buy-button").attr("href", "#");
   const urlSemInstalacao = "/checkout/cart/add?sku=" + skuList[0] + "&qty=1&seller=1&redirect=true&" + readCookie("VTEXSC");
