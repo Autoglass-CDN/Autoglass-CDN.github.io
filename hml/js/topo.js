@@ -803,15 +803,20 @@ function pegaLargura(largura) {
 
 defineScrollTop();
 
-const inputBusca = document.querySelector(".busca .fulltext-search-box");
-const botaoBusca = document.querySelector(".search-box .search-icon");
+const inputBusca = window.innerWidth > 1024 ? document.querySelector(".busca .fulltext-search-box") : document.querySelector(".search-box-mobile .fulltext-search-box");
+const botaoBusca = window.innerWidth > 1024 ? document.querySelector(".search-box .search-icon") : document.querySelector(".search-box-mobile #search-icon");
 
 botaoBusca.addEventListener("click", function () {
-  const valorBusca = inputBusca.value;
-  dataLayer.push({
-    event: "search",
-    search_term: valorBusca,
-  });
+  const valorBusca = inputBusca.value.trim();
+
+  if (valorBusca !== "") {
+    dataLayer.push({
+      event: "search",
+      search_term: valorBusca,
+    });
+
+    window.location.href = `/${encodeURIComponent(valorBusca)}`;
+  }
 });
 
 inputBusca.addEventListener("keydown", function (event) {
