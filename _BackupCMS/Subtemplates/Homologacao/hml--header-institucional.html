@@ -1,12 +1,12 @@
-<!-- dev- -header -->
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/topo.css"/>
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/modal-login.css"/>
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/localization-modal.css"/>
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css"/>
+<!-- hml- -header-institucional -->
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/topo.css"/>
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/modal-login.css"/>
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/localization-modal.css"/>
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/policies/secao-pesquisa.css"/>
 
 <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.rel='stylesheet'"/>
 
-<script defer="" src="https://autoglass-cdn.github.io/src/js/policies/header.js"></script>
+<script defer="" src="https://autoglass-cdn.github.io/hml/js/policies/header.js"></script>
 
 <div class="topo">
     <div class="container">
@@ -35,20 +35,8 @@
 <header class="nav">
     <!-- Desktop -->
     <div class="container desktop">
-        <a href="/"><img src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo da Autoglass"
+        <a href="/"><img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png" alt="Logo da Autoglass"
                 class="logo" /></a>
-        <ul>
-            <li id="tab-busca-categoria" class="tab-item painel-categorias__categoria ativo">
-                <div class="ativo">
-                    <a href="#busca-categoria" style="text-decoration: none">
-                        <i class="fa fa-list-ul" aria-hidden="true" style="color: #0b4583;"></i>
-                        <span class="c-busca__tab-text">
-                            Categorias
-                        </span>
-                    </a>
-                </div>
-            </li>
-        </ul>
         <div class="search-box">
             <vtex.cmc:fullTextSearchBox />
             <i class="search-icon" id="search-icon"></i>
@@ -77,7 +65,7 @@
     <div class="container mobile">
         <div class="logo">
             <a href="/">
-                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="Logo da Autoglass"
+                <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png" alt="Logo da Autoglass"
                     class="logo" />
             </a>
         </div>
@@ -1046,8 +1034,8 @@
                                   <span>Tipo de peça</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-categoria-select" class="opcao-selecionada"></span>
                               </div>
-                              <span id="opcao-selecionada-categoria-select" class="opcao-selecionada"></span>
                               <div class="smart-select__main-results" style="display: block">
                                   <div class="div-input-busca-mobile">
                                       <input
@@ -1092,8 +1080,8 @@
                                   <span>Tipo de peça</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-pecas-select" class="opcao-selecionada"></span>
                               </div>
-                              <span id="opcao-selecionada-pecas-select" class="opcao-selecionada"></span>
                               <div class="smart-select__main-results" style="display: block">
                                   <div class="div-input-busca-mobile">
                                       <input
@@ -1117,8 +1105,8 @@
                                   <span>Montadora</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-montadora-select" class="opcao-selecionada"></span>
                               </div>
-                              <span id="opcao-selecionada-montadora-select" class="opcao-selecionada"></span>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
                                       <input
@@ -1142,8 +1130,8 @@
                                   <span>Modelo do veículo</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-veiculo-select" class="opcao-selecionada"></span>
                               </div>
-                              <span id="opcao-selecionada-veiculo-select" class="opcao-selecionada"></span>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
                                       <input
@@ -1167,8 +1155,8 @@
                                   <span>Ano</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-ano-select" class="opcao-selecionada"></span>
                               </div>
-                              <span id="opcao-selecionada-ano-select" class="opcao-selecionada"></span>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
                                       <input
@@ -1192,8 +1180,8 @@
                                   <span>Versão</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
+                                  <span id="opcao-selecionada-versao-select" class="opcao-selecionada"></span>
                               </div>
-                              <span id="opcao-selecionada-versao-select" class="opcao-selecionada"></span>
                               <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
                                       <input
@@ -1250,9 +1238,9 @@
     </button>
 </div>
 
-<script defer="" type="text/javascript" src="https://autoglass-cdn.github.io/src/js/topo.js"></script>
+<script defer="" type="text/javascript" src="https://autoglass-cdn.github.io/hml/js/topo.js"></script>
 
-<vtex.cmc:devGoogleMaps />
+<vtex.cmc:hmlGoogleMaps />
 
 <style type="text/css">
     .modal .titulo {
@@ -1471,7 +1459,7 @@
         <div class="modal-body">
             <div class="row">
                 <div class="col-md-6">
-                    <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png" alt="logo da Autoglass" class="d-block d-md-none"></img>
+                    <img loading="lazy" src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png" alt="logo da Autoglass" class="d-block d-md-none"></img>
                     <p class="modal-title">Bem-vindo!</p>
                     <p class="modal-description">Por favor, confirme sua região para exibir melhores ofertas:</p>
                     <div class="row d-block d-md-none">
