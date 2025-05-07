@@ -242,13 +242,6 @@
             ).focus();
           }
           switch (select.id) {
-            case "categoria-select":
-              const ulCategoriaSelect = document.querySelector(
-                "#categoria-select .smart-select__main-results > ul"
-              );
-              ulCategoriaSelect.style.height = "175px";
-              sideMenu.style.height = "100%";
-              break;
             case "ano-select":
               const divAnoSelect = document.querySelector("#ano-select");
               if (!divAnoSelect.classList.contains("empty")) {
@@ -908,7 +901,7 @@
     };
 
     async function addClick(event, _id) {
-      const listItems = document.querySelectorAll(".itens-lista li");
+      const listItems = document.querySelectorAll("#busca-peca-mobile .itens-lista li");
       const index = PECA_SELECTS.findIndex((x) => x.id === _id);
       const select = PECA_SELECTS[index];
       const nextSelect = PECA_SELECTS[index + 1];
@@ -1925,11 +1918,9 @@
     const select = PLACA_SELECTS[0];
     select.routeSelected = "";
     document.querySelector(`#opcao-selecionada-${select.id}`).innerHTML = "";
-    const checkedInput = document.querySelector('.itens-lista li input:checked');
-    if (checkedInput) {
-      checkedInput.checked = false;
-      sessionStorage.setItem("selectedOptionCategoria", null);
-    }
+    retiraCheckedOpcaosSelecionadas();
+    $(`.c-busca__tab-content-mobile #categoria-select .smart-select__main-results`
+    ).slideDown("fast");
   }
 
   function resetSelectsMobile(_index){
@@ -1954,9 +1945,26 @@
       if(select.id != "pecas-select")
         $(`#${select.id}`).closest('.c-busca__select').hide();
     }
-    document.querySelector('#pecas-select .itens-lista li input:checked').checked = false;
+    retiraCheckedOpcaosSelecionadas();
     $(`.c-busca__tab-content-mobile #pecas-select .smart-select__main-results`
     ).slideDown("fast");
+  }
+
+  function retiraCheckedOpcaosSelecionadas() {
+    const checkedInputPecas = document.querySelector('#pecas-select .itens-lista li input:checked');
+    const checkedInputCategoria = document.querySelector('#categoria-select .itens-lista li input:checked');
+
+    if(checkedInputPecas){
+      checkedInputPecas.removeAttribute("checked");
+      checkedInputPecas.checked = false;
+      $(checkedInputPecas).trigger("change");
+    }
+
+    if(checkedInputCategoria){
+      checkedInputCategoria.removeAttribute("checked");
+      checkedInputPecas.checked = false;
+      $(checkedInputCategoria).trigger("change");
+    }
   }
 
   function ajustaLayoutAposOpcoesSelecionadas() {
