@@ -247,7 +247,7 @@
               if (!divAnoSelect.classList.contains("empty")) {
                 window.innerWidth <= 375
                   ? (sideMenu.style.height = "132%")
-                  : (sideMenu.style.height = "128%");
+                  : (sideMenu.style.height = "118%");
               }
               break;
             case "versao-select":
@@ -258,9 +258,9 @@
                 window.innerWidth <= 375
                   ? (sideMenu.style.height = "155%")
                   : (sideMenu.style.height = "150%");
-                ulVersaoSelect.style.height = "225px";
+                ulVersaoSelect.style.height = "400px";
               } else {
-                sideMenu.style.height = "105%";
+                sideMenu.style.height = "100%";
               }
             default:
               break;
