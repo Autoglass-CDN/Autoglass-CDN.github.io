@@ -180,7 +180,7 @@ font-size: inherit;
   }
   
   .c-busca__select {
-    padding-top: 30px;
+    padding-top: 25px;
     padding-left: 19px;
     font-weight: 700;
     font-size: larger;
@@ -188,7 +188,7 @@ font-size: inherit;
   }
 
   #busca-peca-mobile .c-busca__select {
-    padding-bottom: 30px;
+    padding-bottom: 25px;
   }
 
   .gtm-smart-categoria-select i {
@@ -810,11 +810,10 @@ font-size: inherit;
   }
 
   .smart-select__main-results ul {
-    overflow-y: scroll !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: 15px;
     height: auto;
-    max-height: 100vh;
+    max-height: 100%;
   }
 
   .smart-select__main-results ul::-webkit-scrollbar {
@@ -977,7 +976,6 @@ font-size: inherit;
     margin-top: 5%;
   }
   .smart-select__main-results ul {
-    overflow-y: scroll !important;
     -webkit-overflow-scrolling: touch;
     scrollbar-width: 15px;
     height: auto;
