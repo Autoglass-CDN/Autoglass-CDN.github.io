@@ -100,7 +100,7 @@
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Compatibilidade.Montadora",
+      asyncSearchTerm: ".Marca.Veículo",
       canBeClear: true,
     },
     {
@@ -109,7 +109,7 @@
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Veículo",
+      asyncSearchTerm: ".Modelo.Veículo",
       canBeClear: true,
     },
     {
@@ -127,7 +127,7 @@
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Versão.Fipe",
+      asyncSearchTerm: ".Versão.Fipe.Veículo",
       canBeClear: true,
     },
   ];
@@ -202,7 +202,7 @@
 
         if (select.values) {
           View.buildList(select.values, select.id);
-   
+
           const mainMenu = document.querySelector("#main-menu");
 
           if ($(this).is(":visible")) {
