@@ -182,7 +182,7 @@ font-size: inherit;
   .c-busca__tabs-content-mobile .smart-select__main-results {
     padding-top: 30px;
   }
-  
+
   .c-busca__select {
     padding-top: 25px;
     padding-left: 19px;
@@ -269,7 +269,7 @@ font-size: inherit;
   }
 
   .gtm-smart-montadora-select i {
-    padding-left: 166px;
+    padding-left: 114px;
   }
 
   .gtm-smart-veiculo-select i {
@@ -281,7 +281,7 @@ font-size: inherit;
   }
 
   .gtm-smart-versao-select i {
-    padding-left: 206px;
+    padding-left: 62px;
   }
 }
 @media screen and (min-width: 600px) and (max-width: 1024px) {
