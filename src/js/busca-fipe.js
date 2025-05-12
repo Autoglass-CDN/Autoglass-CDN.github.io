@@ -86,7 +86,7 @@
       canBeClear: false,
     },
     {
-      title: "Tipo de peça",
+      title: "Tipo de Peça",
       id: "pecas-select",
       values: [],
       routeSelected: "",
