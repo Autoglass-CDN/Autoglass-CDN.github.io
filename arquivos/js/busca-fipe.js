@@ -86,7 +86,7 @@
       canBeClear: false,
     },
     {
-      title: "Produto",
+      title: "Tipo de Peça",
       id: "pecas-select",
       values: [],
       routeSelected: "",
@@ -95,7 +95,7 @@
       canBeClear: true,
     },
     {
-      title: "Montadora",
+      title: "Marca do Veículo",
       id: "montadora-select",
       values: [],
       routeSelected: "",
@@ -104,7 +104,7 @@
       canBeClear: true,
     },
     {
-      title: "Veículo",
+      title: "Modelo do Veículo",
       id: "veiculo-select",
       values: [],
       routeSelected: "",
@@ -122,7 +122,7 @@
       canBeClear: true,
     },
     {
-      title: "Versão",
+      title: "Versão Fipe do Veículo",
       id: "versao-select",
       values: [],
       routeSelected: "",
@@ -949,7 +949,7 @@
               ? vehiclesWithoutBrand(values, optionSelected.name)
               : values;
 
-          hideDivVersaoFipe(values.length, nextSelect.title);
+          hideDivVersaoFipe(values.length, nextSelect.id);
         } else {
           nextSelect.values = optionSelected.children.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -1016,13 +1016,13 @@
       });
     }
 
-    function hideDivVersaoFipe(length, title) {
+    function hideDivVersaoFipe(length, id) {
       const div =
         window.innerWidth > 1024
           ? document.getElementById("select-versao-fipe")
           : document.getElementById("select-versao-fipe-mobile");
 
-      if (title === "Versão") {
+      if (id === "versao-select") {
         if (length === 0) {
           div.style.display = "none";
         } else {
