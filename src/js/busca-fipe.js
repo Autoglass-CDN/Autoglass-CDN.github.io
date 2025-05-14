@@ -86,7 +86,7 @@
       canBeClear: false,
     },
     {
-      title: "Produto",
+      title: "Tipo de Peça",
       id: "pecas-select",
       values: [],
       routeSelected: "",
@@ -95,21 +95,21 @@
       canBeClear: true,
     },
     {
-      title: "Montadora",
+      title: "Marca do Veículo",
       id: "montadora-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Compatibilidade.Montadora",
+      asyncSearchTerm: ".Marca.Veículo",
       canBeClear: true,
     },
     {
-      title: "Veículo",
+      title: "Modelo do Veículo",
       id: "veiculo-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Veículo",
+      asyncSearchTerm: ".Modelo.Veículo",
       canBeClear: true,
     },
     {
@@ -122,12 +122,12 @@
       canBeClear: true,
     },
     {
-      title: "Versão",
+      title: "Versão Fipe do Veículo",
       id: "versao-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
-      asyncSearchTerm: ".Versão.Fipe",
+      asyncSearchTerm: ".Versão.Fipe.Veículo",
       canBeClear: true,
     },
   ];
@@ -203,23 +203,15 @@
         if (select.values) {
           View.buildList(select.values, select.id);
 
-          setTimeout(() => {
-            const wrapper = document.querySelector(
-              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
-            );
-            const ul = wrapper?.querySelector("ul");
+          const mainMenu = document.querySelector("#main-menu");
 
-            if (wrapper) wrapper.scrollTop = 0;
-            if (ul) ul.scrollTop = 0;
-
-            const container = document.querySelector(`#${select.id}`);
-            if (container) {
-              container.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-              });
-            }
-          }, 0);
+          if ($(this).is(":visible")) {
+            setTimeout(() => {
+              if (mainMenu) {
+                mainMenu.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }, 50);
+          }
 
           View.selectOptionIfButtonHasValue(select.id);
 
@@ -231,7 +223,7 @@
             )
               .slideToggle("fast", function () {
                 if (select.id === "versao-select" && !$(this).is(":visible")) {
-                  sideMenu.style.height = "105%";
+                  sideMenu.style.height = "100%";
                 }
               })
               .click((e) => {
@@ -240,30 +232,6 @@
             $(
               `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
             ).focus();
-          }
-          switch (select.id) {
-            case "ano-select":
-              const divAnoSelect = document.querySelector("#ano-select");
-              if (!divAnoSelect.classList.contains("empty")) {
-                window.innerWidth <= 375
-                  ? (sideMenu.style.height = "132%")
-                  : (sideMenu.style.height = "118%");
-              }
-              break;
-            case "versao-select":
-              if (select.values.length) {
-                const ulVersaoSelect = document.querySelector(
-                  "#versao-select .smart-select__main-results > ul"
-                );
-                window.innerWidth <= 375
-                  ? (sideMenu.style.height = "155%")
-                  : (sideMenu.style.height = "150%");
-                ulVersaoSelect.style.height = "400px";
-              } else {
-                sideMenu.style.height = "100%";
-              }
-            default:
-              break;
           }
         }
       });
@@ -949,7 +917,7 @@
               ? vehiclesWithoutBrand(values, optionSelected.name)
               : values;
 
-          hideDivVersaoFipe(values.length, nextSelect.title);
+          hideDivVersaoFipe(values.length, nextSelect.id);
         } else {
           nextSelect.values = optionSelected.children.sort((a, b) =>
             a.name.localeCompare(b.name)
@@ -1016,13 +984,13 @@
       });
     }
 
-    function hideDivVersaoFipe(length, title) {
+    function hideDivVersaoFipe(length, id) {
       const div =
         window.innerWidth > 1024
           ? document.getElementById("select-versao-fipe")
           : document.getElementById("select-versao-fipe-mobile");
 
-      if (title === "Versão") {
+      if (id === "versao-select") {
         if (length === 0) {
           div.style.display = "none";
         } else {
@@ -1984,6 +1952,6 @@
 
   function ajustaLayoutAposOpcoesSelecionadas() {
     const sideMenu = document.querySelector("#side-menu");
-    sideMenu.style.height = "104%";
+    sideMenu.style.height = "100%";
   }
 })();
