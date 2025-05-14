@@ -203,23 +203,15 @@
         if (select.values) {
           View.buildList(select.values, select.id);
 
-          setTimeout(() => {
-            const wrapper = document.querySelector(
-              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
-            );
-            const ul = wrapper?.querySelector("ul");
+          const mainMenu = document.querySelector("#main-menu");
 
-            if (wrapper) wrapper.scrollTop = 0;
-            if (ul) ul.scrollTop = 0;
-
-            const container = document.querySelector(`#${select.id}`);
-            if (container) {
-              container.scrollIntoView({
-                behavior: "smooth",
-                block: "start"
-              });
-            }
-          }, 0);
+          if ($(this).is(":visible")) {
+            setTimeout(() => {
+              if (mainMenu) {
+                mainMenu.scrollTo({ top: 0, behavior: "smooth" });
+              }
+            }, 50);
+          }
 
           View.selectOptionIfButtonHasValue(select.id);
 
@@ -231,7 +223,7 @@
             )
               .slideToggle("fast", function () {
                 if (select.id === "versao-select" && !$(this).is(":visible")) {
-                  sideMenu.style.height = "105%";
+                  sideMenu.style.height = "100%";
                 }
               })
               .click((e) => {
@@ -240,30 +232,6 @@
             $(
               `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
             ).focus();
-          }
-          switch (select.id) {
-            case "ano-select":
-              const divAnoSelect = document.querySelector("#ano-select");
-              if (!divAnoSelect.classList.contains("empty")) {
-                window.innerWidth <= 375
-                  ? (sideMenu.style.height = "132%")
-                  : (sideMenu.style.height = "128%");
-              }
-              break;
-            case "versao-select":
-              if (select.values.length) {
-                const ulVersaoSelect = document.querySelector(
-                  "#versao-select .smart-select__main-results > ul"
-                );
-                window.innerWidth <= 375
-                  ? (sideMenu.style.height = "155%")
-                  : (sideMenu.style.height = "150%");
-                ulVersaoSelect.style.height = "225px";
-              } else {
-                sideMenu.style.height = "105%";
-              }
-            default:
-              break;
           }
         }
       });
@@ -1221,6 +1189,9 @@
     let tabs = document.querySelectorAll(".c-busca__tabs li");
 
     tabs.forEach((tab) => {
+
+      if (tab.id === "tab-busca-categoria") return;
+
       tab.addEventListener("click", (event) => {
         event.preventDefault();
 
@@ -1240,6 +1211,7 @@
     });
   } else {
     AlternaAbaBusca();
+    window.addEventListener('DOMContentLoaded', menuCategoriasMobile);
   }
 
   function AlternaAbaBusca() {
@@ -1278,6 +1250,17 @@
       let abaSelected = document.getElementById(`${idAba}`);
       abaSelected.checked = true;
     }
+  }
+
+  function menuCategoriasMobile () {
+    let iconeLista = document.querySelector("#tab-busca-categoria-mobile .icone-lista");
+    let categoriaListaMobile = document.querySelector("#busca-categoria-mobile");
+
+    iconeLista.addEventListener('click', (event) => {
+      event.preventDefault();
+
+      categoriaListaMobile.classList.add("is-active");
+    });
   }
 
   /** BUSCA POR PLACA */
@@ -1969,6 +1952,6 @@
 
   function ajustaLayoutAposOpcoesSelecionadas() {
     const sideMenu = document.querySelector("#side-menu");
-    sideMenu.style.height = "104%";
+    sideMenu.style.height = "100%";
   }
 })();
