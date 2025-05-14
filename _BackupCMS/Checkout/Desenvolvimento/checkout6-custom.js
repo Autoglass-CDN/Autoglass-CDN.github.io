@@ -74,9 +74,9 @@ $(window).on('load', () => {
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
    			CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');
-
+			
   			await recuperarInfoAcessorio(orderForm, 'brandId');
-
+  
   			await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
 
             await _createInstallButtonObserver(orderForm);
@@ -107,7 +107,7 @@ $(window).on('load', () => {
                 }
             }
         }
-
+	
 
         async function _createInstallButtonObserver(orderForm) {
             const instalationSku = await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
@@ -340,7 +340,8 @@ $(window).on('load', () => {
             windshieldVerification,
             addInstallTexts,
             createCepInfo,
-            _implementsInstallButtom
+            _implementsInstallButtom,
+            _implementsServicoCalibracaoButton
         }
 
         function _init() {
@@ -361,33 +362,39 @@ $(window).on('load', () => {
         }
 
         function formatItemList(orderForm) {
-          let hasInstall = Service.checkIfHasInstall(orderForm.items);
-          let hasInstallButtom = _checkIfHasInstallButtom();
+            let hasInstall = Service.checkIfHasInstall(orderForm.items);
+            let hasInstallButtom = _checkIfHasInstallButtom();
 
-          if (hasInstall) {
-              $('body').addClass('hasInstall');
-              setTimeout(() => _buildDeliveryInfo(orderForm), 500);
-              $('#shipping-data').addClass('altera-texto-abas-checkout');
-              $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
-          }
+            if (hasInstall) {
+                $('body').addClass('hasInstall');
+                setTimeout(() => _buildDeliveryInfo(orderForm), 500);
+                $('#shipping-data').addClass('altera-texto-abas-checkout');
+                $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
+            }
 
-          if (hasInstall && hasInstallButtom) {
-              $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
-              $(".srp-toggle__pickup").append(
-                  "<span class='instalar'>Instalar na loja</span>"
-              );
-              $(".srp-toggle__delivery").append(
-                  "<span class='instalar'>Instalar em casa</span>"
-              );
+            if (hasInstall && hasInstallButtom) {
+                $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
 
-              $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
-          }
+                $(".srp-toggle__pickup").append(
+                    "<span class='instalar'>Instalar na loja</span>"
+                );
+                $(".srp-toggle__delivery").append(
+                    "<span class='instalar'>Instalar em casa</span>"
+                );
 
-          orderForm.items.forEach(item => {
+                $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
+            }
+            
+            
+            orderForm.items.forEach(item => {
             Service.getAccessories(item).then(accessories => {
                 accessories.forEach(accessory => {
                     if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && verificaInsumoCarrinho(orderForm, accessory.productReference)){
-                        _implementsInstallButtom(item, accessory);
+              			if (accessory.productName.toUpperCase().includes("INSTALAÇÃO")) {
+                            _implementsInstallButtom(item, accessory);
+                        } else if (accessory.productName.toUpperCase().includes("ADAS")) {
+                            _implementsServicoCalibracaoButton(item, accessory);
+                        }
                     }
                 });
             });
@@ -397,17 +404,20 @@ $(window).on('load', () => {
             return orderForm.items.find(item => item.refId === refIdProduct) ? false : true;
           }
 
-          if (!hasInstall) {
-              $('body').removeClass('hasInstall');
-              $("span").remove(".instalar");
-              $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
-              $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
-              $('#shipping-data').removeClass('altera-texto-abas-checkout');
-              $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
-          }
+            if (!hasInstall) {
+                $('body').removeClass('hasInstall');
+                $("span").remove(".instalar");
+                $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
+                $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
+                // $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Entrega ou Retirada');
+                $('#shipping-data').removeClass('altera-texto-abas-checkout');
+                $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
 
-          View.createCepInfo(orderForm, hasInstall);
-      }
+
+            }
+
+            View.createCepInfo(orderForm, hasInstall);
+        }
 
         function windshieldVerification(orderForm) {
           const hasWindshild = orderForm.items.reduce(
@@ -437,13 +447,13 @@ $(window).on('load', () => {
         async function _implementsInstallButtom(item, accessory) {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
-
+			
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
 
             let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price
             let precoAcessorioFormatado = precoAcessorio.toFixed(2).replace('.', ',');
-
+              
             if(accessory.items[0]) {
               preco = 'R$ '+ precoAcessorioFormatado;
               bestPrice = precoAcessorio + '00';
@@ -512,6 +522,81 @@ $(window).on('load', () => {
             });
 
             return btn;
+        }
+              
+        async function _implementsServicoCalibracaoButton(item, accessory) {
+            await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
+            var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
+        
+            let { bestPriceFormated: preco, bestPrice, available } = product.skus
+                .find(p => p.sku == accessory.items[0].itemId);
+        
+            let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price;
+            let precoAcessorioFormatado = precoAcessorio.toFixed(2).replace('.', ',');
+        
+            if (accessory.items[0]) {
+                preco = 'R$ ' + precoAcessorioFormatado;
+                bestPrice = precoAcessorio + '00';
+                available = true;
+            }
+        
+            if (!available) return;
+        
+            const $target = $(`[data-sku='${item.id}'] .product-name`);
+        
+            // Só adiciona se ainda não existir
+            if ($target.find('.btn-add-servico-calibracao-adas').length === 0) {
+                const btnCalibracao = _createServicoCalibracaoButton(
+                    accessory.items[0].itemId,
+                    preco
+                );
+                $target.append(btnCalibracao);
+            }
+        
+            function loadScript(src, callback) {
+                return new Promise((resolve, reject) => {
+                    let script = document.createElement("script");
+                    script.type = "text/javascript";
+        
+                    if (script.readyState) {
+                        // IE
+                        script.onreadystatechange = function () {
+                            if (script.readyState == "loaded" || script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                resolve();
+                            } else {
+                                reject();
+                            }
+                        };
+                    } else {
+                        // Outros navegadores
+                        script.onload = function () {
+                            resolve();
+                        };
+                    }
+        
+                    script.src = src;
+                    callback && callback(script);
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                });
+            }
+        }
+
+        function _createServicoCalibracaoButton(sku, preco) {
+            let qty = 1;
+
+            let btnServicoCalibracao = document.createElement('button');
+
+            btnServicoCalibracao.innerText = `+ Adicionar calibração ADAS por apenas ${preco}`;
+
+            btnServicoCalibracao.classList.add('btn-add-servico-calibracao-adas');
+            $(btnServicoCalibracao).on('click', () => {
+                window.location.assign(
+                    `/checkout/cart/add?sc=${vtexjs.checkout.orderForm.salesChannel}&sku=${sku}&qty=${qty}&seller=${CONFIG.CONTROLS.ID_SELLER}`
+                );
+            });
+
+            return btnServicoCalibracao;
         }
 
         function _checkIfHasInstallButtom() {
@@ -892,18 +977,10 @@ $(window).on('load', () => {
         }
 
         async function getAccessories(item) {
-          let salesChannel = vtexjs.checkout.orderForm.salesChannel;
-          let response = await fetch(
-              `/api/catalog_system/pub/products/crossselling/accessories/${item.productId}?sc=${salesChannel}`
-          );
-
-          let data = await response.json();
-
-          data.forEach(product => {
-              product.refIdProduct = item.refId;
-          });
-
-          return data;
+            let salesChannel = vtexjs.checkout.orderForm.salesChannel;
+            return await fetch(
+                `/api/catalog_system/pub/products/crossselling/accessories/${item.productId}?							 sc=${salesChannel}`
+            ).then(data => data.json());
         }
 
         async function sendGAEvent(orderForm) {

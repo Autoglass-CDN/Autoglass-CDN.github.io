@@ -1,0 +1,17 @@
+#set($id = $product.Id)
+#set($idSku = $product.productVariantId)
+#set($uri = $product.Uri)
+#set($escapedName = $product.HtmlEscapedName)
+    
+<div class="info-acessorios-ag">
+    <div id="codigo-sku-acessorio-ag">
+        $product.productVariantId
+    </div>   
+    
+    <div id="preco-acessorios-ag">
+        $product.BestPrice
+    </div>
+    <div id="nome-produto-acessorio-ag">
+        $escapedName
+    </div>
+</div>
