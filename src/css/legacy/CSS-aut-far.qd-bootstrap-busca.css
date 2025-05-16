@@ -669,7 +669,7 @@ div#ajaxBusy p {
 
 body {
   padding-top: 154px;
-  background: #ffffff;
+  background: #f9f9f9;
 }
 
 @media (max-width: 991px) {
