@@ -330,7 +330,8 @@ $(window).on('load', () => {
             windshieldVerification,
             addInstallTexts,
             createCepInfo,
-            _implementsInstallButtom
+            _implementsInstallButtom,
+            _implementsServicoCalibracaoButton
         }
 
         function _init() {
@@ -374,18 +375,22 @@ $(window).on('load', () => {
             }
 
             orderForm.items.forEach(item => {
-              Service.getAccessories(item).then(accessories => {
-                  accessories.forEach(accessory => {
-                      if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && verificaInsumoCarrinho(orderForm, accessory.productReference)){
-                          _implementsInstallButtom(item, accessory);
-                      }
-                  });
-              });
+            Service.getAccessories(item).then(accessories => {
+                accessories.forEach(accessory => {
+                    if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && verificaInsumoCarrinho(orderForm, accessory.productReference)){
+              			if (accessory.productName.toUpperCase().includes("INSTALAÇÃO")) {
+                            _implementsInstallButtom(item, accessory);
+                        } else if (accessory.productName.toUpperCase().includes("ADAS")) {
+                            _implementsServicoCalibracaoButton(item, accessory);
+                        }
+                    }
+                });
             });
+          });
 
             function verificaInsumoCarrinho(orderForm, refIdProduct) {
               return orderForm.items.find(item => item.refId === refIdProduct) ? false : true;
-            }
+          }
 
             if (!hasInstall) {
                 $('body').removeClass('hasInstall');
@@ -507,6 +512,81 @@ $(window).on('load', () => {
 
         function _checkIfHasInstallButtom() {
             return $(".srp-toggle__pickup span.instalar").length === 0;
+        }
+              
+        async function _implementsServicoCalibracaoButton(item, accessory) {
+            await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
+            var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
+        
+            let { bestPriceFormated: preco, bestPrice, available } = product.skus
+                .find(p => p.sku == accessory.items[0].itemId);
+        
+            let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price;
+            let precoAcessorioFormatado = precoAcessorio.toFixed(2).replace('.', ',');
+        
+            if (accessory.items[0]) {
+                preco = 'R$ ' + precoAcessorioFormatado;
+                bestPrice = precoAcessorio + '00';
+                available = true;
+            }
+        
+            if (!available) return;
+        
+            const $target = $(`[data-sku='${item.id}'] .product-name`);
+        
+            // Só adiciona se ainda não existir
+            if ($target.find('.btn-add-servico-calibracao-adas').length === 0) {
+                const btnCalibracao = _createServicoCalibracaoButton(
+                    accessory.items[0].itemId,
+                    preco
+                );
+                $target.append(btnCalibracao);
+            }
+        
+            function loadScript(src, callback) {
+                return new Promise((resolve, reject) => {
+                    let script = document.createElement("script");
+                    script.type = "text/javascript";
+        
+                    if (script.readyState) {
+                        // IE
+                        script.onreadystatechange = function () {
+                            if (script.readyState == "loaded" || script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                resolve();
+                            } else {
+                                reject();
+                            }
+                        };
+                    } else {
+                        // Outros navegadores
+                        script.onload = function () {
+                            resolve();
+                        };
+                    }
+        
+                    script.src = src;
+                    callback && callback(script);
+                    document.getElementsByTagName("head")[0].appendChild(script);
+                });
+            }
+        }
+
+        function _createServicoCalibracaoButton(sku, preco) {
+            let qty = 1;
+
+            let btnServicoCalibracao = document.createElement('button');
+
+            btnServicoCalibracao.innerText = `+ Adicionar calibração ADAS por apenas ${preco}`;
+
+            btnServicoCalibracao.classList.add('btn-add-servico-calibracao-adas');
+            $(btnServicoCalibracao).on('click', () => {
+                window.location.assign(
+                    `/checkout/cart/add?sc=${vtexjs.checkout.orderForm.salesChannel}&sku=${sku}&qty=${qty}&seller=${CONFIG.CONTROLS.ID_SELLER}`
+                );
+            });
+
+            return btnServicoCalibracao;
         }
 
         function _buildDeliveryInfo(orderForm) {

@@ -3,7 +3,7 @@
 .vtex-omnishipping-1-x-addressItemOption {
 	display: none !important;
 }
-
+ 
 .btn-go-to-payment-wrapper {
   	display: none;
 }
@@ -26,6 +26,25 @@
 
 .cart ul.cart-items.unstyled.clearfix span.fn.product-name button.btn-add-instalacao {
 	display: none;
+}
+
+.product-name button.btn-add-servico-calibracao-adas {
+    display: block;
+    padding: 5px 15px;
+    font-size: 12px;
+    border: none;
+    border-radius: 3px;
+    color: #fff;
+    background-color: #5059b1;
+  	margin-top: 8px;
+}
+
+.product-name button.btn-add-servico-calibracao-adas:hover {
+    background-color: #223B76;
+}
+
+.cart ul.cart-items.unstyled.clearfix span.fn.product-name button.btn-add-servico-calibracao-adas {
+    display: none;
 }
 
 .mini-cart .item .fn {
