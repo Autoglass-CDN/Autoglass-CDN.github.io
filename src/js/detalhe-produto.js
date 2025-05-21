@@ -35,7 +35,7 @@ function exibeNumeroVendas(){
   if(numeroVendas == null)
     return;
   numeroVendas.then(function(result){
-    window.innerWidth < 400 ? sectionNumeroVendas = document.querySelector(".numero-vendas-mobile") : sectionNumeroVendas = document.querySelector(".numero-vendas");
+    window.innerWidth < 900 ? sectionNumeroVendas = document.querySelector(".numero-vendas-mobile") : sectionNumeroVendas = document.querySelector(".numero-vendas");
     if(result > 10)
       sectionNumeroVendas.innerHTML = `<i class="fa fa-shopping-bag"></i><p class="texto-numero-vendas">${result} vendidos</p>`;
   });
