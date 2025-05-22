@@ -2851,6 +2851,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 }
 .product-qd-v1-block-above-image .product-qd-v1-block {
   display: flex;
+  max-width: 65%;
 }
 .product-qd-v1-block-above-image .product-qd-v1-name,
 .product-qd-v1-block-above-image .product-qd-v1-ref-code,
@@ -2905,7 +2906,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     font-weight: 600;
     font-size: 12px;
     margin-bottom: 25px;
-    padding-left: 0px;
+    padding-left: 15px;
     font-weight: 700;
     color: #000000;
     font-style: normal;
