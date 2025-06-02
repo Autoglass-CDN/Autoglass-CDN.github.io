@@ -104,6 +104,10 @@
                 <span class="product-qd-v1-name">
                   <vtex.cmc:productName />
                 </span>
+                <div class="product-qd-v1-brand-name marca-barra-do-topo">
+                    Marca:
+                    <vtex.cmc:brandName />
+                </div>
               </div>
               <section class="col-xs-3">
                 <a class="product-qd-v1-link-description" href="#">Descrição
@@ -141,6 +145,11 @@
 
           <section class="col-xs-12">
             <section class="product-qd-v1-block-above-image">
+              <!-- Brand names -->
+              <section class="product-qd-v1-brand-name mob">
+                Marca:
+                <vtex.cmc:brandName />
+              </section>
               <!-- Product name -->
               <span class="product-qd-v1-name mob">
                 <vtex.cmc:productName />
@@ -152,11 +161,6 @@
                   <vtex.cmc:productReference />
                 </span>
                 <!-- Reference code -->
-                <!-- Brand names -->
-                <section class="product-qd-v1-brand-name mob">
-                  Marca:
-                  <vtex.cmc:brandName />
-                </section>
                 <section class="numero-vendas-mobile"></section>
                 <!-- Brand names -->
                 <section class="konfidency-reviews-summary mobile"></section>
@@ -205,6 +209,10 @@
               <section class="product-qd-v1-sku-selection-row">
                 <div class="row">
                   <div class="col-xs-12">
+                    <section class="product-qd-v1-brand-name">
+                        Marca:
+                        <vtex.cmc:brandName />
+                    </section>
                     <!-- Product name -->
                     <h1 class="product-qd-v1-name">
                       <vtex.cmc:productName />
@@ -217,10 +225,6 @@
                       </span>
                       <!-- Reference code -->
                       <!-- Brand names -->
-                      <section class="product-qd-v1-brand-name">
-                        Marca:
-                        <vtex.cmc:brandName />
-                      </section>
                       <section class="numero-vendas"></section>
                       <section class="konfidency-reviews-summary desktop"></section>
                       <!-- Brand names -->
@@ -267,24 +271,7 @@
 
                 <!-- Product price -->
                 <section class="product-qd-v1-standard row">
-                    <section class="card-instalacao">
-                        <div class="card-left-instalacao">
-                          <input type="checkbox" id="install-option" />
-                          <div class="card-content-instalacao">
-                            <h3 class="titulo-instalacao-gratis" style="display:none;">Instalação Autoglass <span class="instalacao-gratis">GRÁTIS</span></h3>
-                            <h3 class="titulo-valor-instalacao">Instalação Autoglass <span>R$<span id="valorComInstalacao"></span></span></h3>
-                            <p>Feita na sua casa ou em lojas Autoglass</p>
-                          </div>
-                        </div>
 
-                        <aside class="card-right-instalacao">
-                          <ul>
-                            <li><span><div class="fa fa-check" aria-hidden="true"></div>Garantia de 1 ano</span></li>
-                            <li><span><div class="fa fa-users" aria-hidden="true"></div>Equipe especializada</span></li>
-                            <li><span><div class="fa fa-home" aria-hidden="true"></div>Segurança e comodidade</span></li>
-                          </ul>
-                        </aside>
-                    </section>
                   <section class="col-xs-12">
                     <section class="product-qd-v1-price">
                       <vtex.cmc:skuPrice />
@@ -329,6 +316,17 @@
                       <!-- Product quantity -->
                     </section>
                   </div>
+                  <section class="card-instalacao nova-versao">
+                    <div class="card-left-instalacao">
+                        <div class="icon-instalacao">
+                            <i class="fa fa-car"></i> <i class="fa fa-cog"></i>
+                        </div>
+                        <div class="card-content-instalacao">
+                            <h3 class="titulo-instalacao">Instalamos para você!</h3>
+                            <p class="descricao-instalacao">Consulte o preço ao adicionar ao carrinho</p>
+                        </div>
+                    </div>
+                  </section>
                 </section>
               </section>
 
