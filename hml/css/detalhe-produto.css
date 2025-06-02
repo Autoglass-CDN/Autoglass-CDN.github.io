@@ -1712,7 +1712,7 @@ fieldset#beneficios legend {
   font-size: 12px !important;
 }
 
-@media screen and (max-width: 390px) {
+@media screen and (max-width: 900px) {
   .numero-vendas-mobile {
     align-items: anchor-center;
     display: flex;
