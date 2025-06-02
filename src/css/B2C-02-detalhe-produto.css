@@ -20,6 +20,7 @@
 .product-qd-v1-sku-selection-box .product-qd-v1-ref-code,
 .product-qd-v1-brand-name {
   margin-bottom: unset !important;
+  display: flex;
 }
 
 .product-qd-v1-buy-button .buy-button.secondary {

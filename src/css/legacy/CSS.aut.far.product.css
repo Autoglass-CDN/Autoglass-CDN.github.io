@@ -2882,9 +2882,8 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 .product-qd-v1-brand-name {
   display: flex;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 15px;
   margin-bottom: 25px;
-  padding-left: 15px;
   font-weight: 700;
   color: #000000;
 }
@@ -2904,9 +2903,9 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     justify-content: start;
     flex-direction: row;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 25px;
-    padding-left: 15px;
+    padding-left: 21px;
     font-weight: 700;
     color: #000000;
     font-style: normal;
@@ -3912,7 +3911,7 @@ body.qd-product-unavailable .product-qd-v1-installation {
   }
 
   .product-qd-v1-brand-name a {
-    padding-left: 0;
+    padding-left: 10%;
   }
 
   .product-qd-v1-sku-selection-box .product-qd-v1-ref-code .productReference {
