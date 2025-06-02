@@ -1805,3 +1805,9 @@ fieldset#beneficios legend {
   border-radius: 50%;
   padding: 3px;
 }
+
+.marca-barra-do-topo {
+  padding-left: 0px !important;;
+  padding-top: 5px !important;;
+  display: flex;
+}
