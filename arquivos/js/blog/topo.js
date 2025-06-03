@@ -196,7 +196,7 @@ async function fixPlaceholderSearch() {
     "ftIdx" + idSearchFilter,
     "ftBtn" + idSearchFilter,
     "/SEARCHTERM?&utmi_p=_&utmi_pc=BuscaFullText&utmi_cp=SEARCHTERM",
-    "Pesquise por peça, produto, montadora..."
+    "Pesquise por peça, produto, marca do veículo..."
   );
 
   setTimeout(() => {
@@ -207,7 +207,7 @@ async function fixPlaceholderSearch() {
         const input = $('.search-box input[type="text"].fulltext-search-box');
 
         const DEFAULT = {
-          Initial: "Pesquise por peça, produto, montadora...",
+          Initial: "Pesquise por peça, produto, marca do veículo...",
           Invalid: "Informe o produto que deseja procurar",
         };
 
@@ -266,7 +266,7 @@ async function fixPlaceholderSearchMobile() {
     "ftIdx" + idSearchFilter,
     "ftBtn" + idSearchFilter,
     "/SEARCHTERM?&utmi_p=_&utmi_pc=BuscaFullText&utmi_cp=SEARCHTERM",
-    "Pesquise por peça, produto, montadora..."
+    "Pesquise por peça, produto, marca do veículo..."
   );
 
   setTimeout(() => {
@@ -277,7 +277,7 @@ async function fixPlaceholderSearchMobile() {
         const input = $('.search-box input[type="text"].fulltext-search-box');
 
         const DEFAULT = {
-          Initial: "Pesquise por peça, produto, montadora...",
+          Initial: "Pesquise por peça, produto, marca do veículo...",
           Invalid: "Informe o produto que deseja procurar",
         };
 
