@@ -35,7 +35,7 @@
   function i() {
     let e = "",
       t = {
-        textoUm: "Pesquise por pe\xe7a, produto, montadora...",
+        textoUm: "Pesquise por pe\xe7a, produto, marca do veículo...",
         textoDois: "O que voc\xea quer encontrar?",
       };
     s() && (e = "-mobile");
