@@ -1441,6 +1441,15 @@ div.prateleira ul li > div > div.row:last-of-type > div > div.row {
   flex-direction: column;
 }
 
+.compatible-product-message {
+  display: flex;
+  padding-top: 5px;
+  font-size: smaller;
+  color: #465f98;
+  justify-content: center;
+  align-items: center;
+}
+
 .product-qd-v1-brand-name.mob {
   display: flex;
   justify-content: center;
@@ -1448,6 +1457,7 @@ div.prateleira ul li > div > div.row:last-of-type > div > div.row {
   font-size: 12px;
   font-weight: 900;
   pointer-events: none;
+  margin-top: 5px;
 }
 
 .product-brand-link {
