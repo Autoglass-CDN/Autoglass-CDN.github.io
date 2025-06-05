@@ -1551,7 +1551,7 @@ body {
 
 .shelf-qd-v1 .shelf-qd-v1-name a {
   transition: all 0.2s ease-out;
-  color: inherit;
+  color: #000000;
   text-decoration: none;
 }
 
