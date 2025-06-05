@@ -2849,10 +2849,18 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
   margin-right: 3px;
   content: "Ref:";
 }
+
+@media (max-width: 1023px) {
+  .product-qd-v1-block {
+    max-width: 100% !important;
+  }
+}
+
 .product-qd-v1-block-above-image .product-qd-v1-block {
   display: flex;
   max-width: 65%;
 }
+
 .product-qd-v1-block-above-image .product-qd-v1-name,
 .product-qd-v1-block-above-image .product-qd-v1-ref-code,
 .product-qd-v1-block-above-image .product-qd-v1-brand-name {
