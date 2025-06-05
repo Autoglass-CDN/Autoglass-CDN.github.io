@@ -23,6 +23,19 @@
   display: flex;
 }
 
+@media (max-width: 1023px) {
+  .product-qd-v1-ref-code:not(.mob) {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .product-qd-v1-ref-code.mob > div:first-of-type {
+    display: flex !important;
+  }
+}
+
+
 .product-qd-v1-buy-button .buy-button.secondary {
   background: #fff !important;
   color: #43c452 !important;
@@ -900,3 +913,215 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 /* #endregion GALERIA ITEM VIDEO */
+
+.compat-box {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  font-family: Arial, sans-serif;
+  width: 99%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  position: relative;
+}
+
+.compat-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.compat-title {
+  font-weight: bold;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.check-icon {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.arrow-icon {
+  color: #003087;
+  font-weight: bold;
+}
+
+.compat-content {
+  margin-top: 12px;
+  font-size: 13px;
+  color: #444;
+  display: none;
+}
+
+.compat-description {
+  font-family: 'Inter', sans-serif !important;
+  margin-bottom: 13px;
+}
+
+.compat-input {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.compat-input input {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.compat-input button {
+  background-color: #003087;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.spinner {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #003087;
+  font-weight: bold;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.card-compatibilidade {
+  border: 2px solid #00b050;
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+  font-family: Arial, sans-serif;
+  color: #1e4620;
+  background: #f6fffa;
+}
+
+.card-compatibilidade .header {
+  display: flex;
+  align-items: center;
+  font-weight: bold;
+  color: #00b050;
+  font-size: 14px;
+}
+
+.card-compatibilidade .icone-sucesso {
+  font-size: 18px;
+  margin-right: 8px;
+}
+
+.card-compatibilidade .descricao {
+  font-size: 13px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.card-compatibilidade .footer {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.card-compatibilidade input {
+  padding: 8px;
+  border: 1px solid #00b050;
+  border-radius: 6px;
+  flex: 1;
+  background: #fff;
+  color: #1e4620;
+}
+
+.card-compatibilidade .nova-consulta {
+  color: #003087;
+  font-weight: bold;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.title-text{
+  font-family: 'Inter', sans-serif !important;
+  padding-left: 10px;
+  color: #5A6272;
+  font-weight: 700;
+}
+
+.icon-arrow-down {
+  font-size: 15px;
+  color: #003087;
+}
+.icon-arrow-up{
+  font-size: 17px;
+  color: #003087;
+}
+
+#botaoVerificarCompatibilidade{
+  font-family: 'Inter', sans-serif !important;
+  background-color: #e7eaf4 ;
+  color: #003087;
+  font-weight: bold;
+}
+
+.compat-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  pointer-events: all;
+}
+
+.compat-spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #2d4f9e; /* verde do botão de sucesso */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#icon-question{
+  padding-left: 10px;
+}
+
+.tooltip-question {
+  position: absolute;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  font-size: 12px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  max-width: 250px;
+  z-index: 1000;
+  top: 36px;
+  left: 40px;
+  font-family: 'Inter', sans-serif !important;
+}
+
+@media screen and (max-width: 768px) {
+  .compat-box {
+    width: 100%;
+    padding: 12px;
+  }
+}
