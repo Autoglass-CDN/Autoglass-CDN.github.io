@@ -51,7 +51,6 @@ window.addEventListener("load", () => {
     }
 
   }
-
 });
 
 const CONFIG = {
