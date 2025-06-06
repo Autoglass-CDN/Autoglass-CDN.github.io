@@ -37,7 +37,13 @@ function exibeNumeroVendas(){
   numeroVendas.then(function(result){
     window.innerWidth < 900 ? sectionNumeroVendas = document.querySelector(".numero-vendas-mobile") : sectionNumeroVendas = document.querySelector(".numero-vendas");
     if(result > 10)
-      sectionNumeroVendas.innerHTML = `<i class="fa fa-shopping-bag"></i><p class="texto-numero-vendas">${result} vendidos</p>`;
+      sectionNumeroVendas.innerHTML = `
+                                      <div class="vendas-wrapper">
+                                        <i class="fa fa-shopping-bag"></i>
+                                        <span class="texto-numero-vendas">${result}</span>
+                                        <span class="texto-vendidos">vendidos</span>
+                                      </div>
+                                      `;
   });
 }
 
@@ -222,13 +228,13 @@ $(window).on("load", async () => {
   const productRefId = await getProductRefIdByProductName();
 
   let veiculosCompativeis;
-  
+
   try{
     veiculosCompativeis = await $.get(`${baseUrlApi}/produtos/${productRefId}/veiculos-compativeis`);
   } catch(ex){
     veiculosCompativeis = [];
   }
-  
+
   veiculosBuscaveis = veiculosCompativeis;
 
   const possuiVeiculosCompativeis = veiculosCompativeis ? veiculosCompativeis.length > 0 : false;
@@ -319,7 +325,7 @@ $(window).on("load", async () => {
         modelo,
         anoModelo
       } = await buscaPorPlaca(texto.trim())
-      
+
       texto = modelo;
       ano = parseInt(anoModelo, 10);;
       sugestoesContainer.empty();
@@ -331,7 +337,7 @@ $(window).on("load", async () => {
           new RegExp(texto.split(" ").map(str => `(?=.*${str})`).join(""), "i").test(b.Veiculo) &&
           (ano == undefined || b.Anos.includes(ano)))
       ).filter(a => a.length > 0);
-      
+
       if (veiculosBuscaveisFiltrado.length) {
         sugestoesContainer.html(
           veiculosBuscaveisFiltrado.flat().slice(0, 3).map(buildContentBusca).join("") +
@@ -354,9 +360,9 @@ $(window).on("load", async () => {
     } else {
       sugestoesContainer.empty();
     }
-    
+
   }
-    
+
 
   function buildContentBusca(veiculo, index) {
     return `<a href="${urlAddCart}" class="veiculos-compativeis__content-compativel-link">
@@ -477,7 +483,7 @@ $(window).on("load", async () => {
   if(!precoAcessorio || !codigoSKU){
     $(".card-instalacao").hide();
   }
-  
+
   $(".product-qd-v1-buy-button .buy-button").click(function () {
     if(precoAcessorio && codigoSKU)
       window.location.href = urlComInstalacao;
@@ -517,7 +523,7 @@ async function buscaPorPlaca(placaString) {
 
     const response = await fetch(`${baseUrlApi}/veiculos/${placa}/placas`);
     const veiculo = await response.json();
-    
+
     montadora = veiculo.Body.Data.Marca;
     modelo = veiculo.Body.Data.Modelo;
     anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
@@ -542,14 +548,14 @@ async function buscarPromocoes() {
   try {
     const response = await fetch(`${baseUrlApi}/promocoes?nome=pix`);
     const data = await response.json();
-  
+
     const pixPromotionActive = data.find(promotion => promotion.isActive);
-  
+
     if (pixPromotionActive) {
       aplicarDesconto(pixPromotionActive.percentualDiscountValue);
     } else {
       const precos = document.querySelectorAll('.skuBestPrice');
-  
+
       precos.forEach(preco => {
         preco.style.display = 'inline-block';
       })
@@ -567,16 +573,16 @@ function aplicarDesconto(percentualDesconto) {
   const precoBaseSelector = document.querySelectorAll('.skuListPrice')[1];
   let precoBaseOriginal = precoBaseSelector.innerHTML.trim().replace('R$', '').trim().replace('.', '').replace(',', '.');
   let precoBaseNumerico = parseFloat(precoBaseOriginal);
-  
+
   const precos = document.querySelectorAll('.skuBestPrice');
-  
+
   precos.forEach((precoElemento, index)=> {
     let precoOriginal = precoElemento.textContent.trim();
     precoOriginal = precoOriginal.replace('R$', '').trim();
     precoOriginal = precoOriginal.replace('.', '').replace(',', '.');
 
     let precoNumerico = parseFloat(precoOriginal);
-    
+
     if (!isNaN(precoNumerico)) {
       const precoComDesconto = Math.round((precoNumerico * (1 - (percentualDesconto / 100.00))) * 1000) / 1000;
       const precoComDescontoFinal = Math.round(precoComDesconto * 100) / 100;
@@ -588,12 +594,12 @@ function aplicarDesconto(percentualDesconto) {
         const divPix = document.createElement('div');
         divPix.classList.add('pix-discount');
         divPix.textContent = 'no Pix';
-  
+
         const porcentagemDesconto = ((precoBaseNumerico - precoComDescontoFinal) / precoBaseNumerico) * 100;
         const divPercent = document.createElement('div');
         divPercent.classList.add('percent-box');
         divPercent.textContent = `-${Math.round(porcentagemDesconto)}%`;
-  
+
         precoElemento.parentElement.appendChild(divPix);
         precoElemento.parentElement.appendChild(divPercent);
       } else {
@@ -609,11 +615,11 @@ function aplicarDesconto(percentualDesconto) {
 
 function ajustarTextoValorParcelado(precoNumerico) {
   let divs = document.querySelectorAll('.valor-dividido.price-installments');
-  
+
 
   divs.forEach(function(div, index) {
     if (!div.classList.contains('modificada')) {
-      
+
       div.classList.add('modificada');
 
       let labelNumero = div.querySelector('.skuBestInstallmentNumber');
@@ -621,23 +627,23 @@ function ajustarTextoValorParcelado(precoNumerico) {
       let novaLabel = document.createElement('label');
       novaLabel.textContent = precoNumerico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });;  // O texto que você deseja adicionar
       novaLabel.classList.add('skuBestInstallmentNumber');
-      
+
       if (labelNumero) {
         labelNumero.parentNode.insertBefore(novaLabel, labelNumero);
 
-        
+
 
         let spanConectiva = document.createElement('span');
         spanConectiva.textContent = ' em ';
         spanConectiva.classList.add('palavras-conectivas');
         novaLabel.parentNode.insertBefore(spanConectiva, labelNumero);
-  
+
         let novoSpan = document.createElement('span');
         novoSpan.textContent = ' sem juros';
         novoSpan.classList.add('span-sem-juros')
-  
+
         let strongTag = div.querySelector('strong');
-  
+
         if (strongTag) {
           strongTag.appendChild(novoSpan);
         }
@@ -645,22 +651,22 @@ function ajustarTextoValorParcelado(precoNumerico) {
         if (index !== divs.length - 1) {
           if (div.style.display === 'none' || getComputedStyle(div).display === 'none') {
             let descricaoPrecoDiv = div.closest('.descricao-preco');
-        
+
             if (descricaoPrecoDiv) {
               let containerDiv = document.createElement('div');
               containerDiv.classList.add('valor-dividido', 'price-installments', 'modificada');
-              
+
               let spanConectivaOu = document.createElement('span');
               spanConectivaOu.textContent = 'ou ';
               containerDiv.appendChild(spanConectivaOu);
-              
+
               tipoTag = index == 0 ? 'label' : 'span';
-              
+
               let strongTagNova = document.createElement(tipoTag);
               strongTagNova.textContent = novaLabel.textContent;
               strongTagNova.classList.add('skuBestInstallmentNumber');
               containerDiv.appendChild(strongTagNova);
-        
+
               descricaoPrecoDiv.appendChild(containerDiv);
             }
           }

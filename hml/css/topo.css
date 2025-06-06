@@ -2051,3 +2051,7 @@ body div#ajaxBusy {
 #beon-search {
   display: none;
 }
+
+.whatsapp-hide-mobile {
+  display: none !important;
+}

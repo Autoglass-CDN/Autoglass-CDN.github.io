@@ -1710,6 +1710,7 @@ fieldset#beneficios legend {
 
 .texto-numero-vendas{
   font-size: 12px !important;
+  margin-left: 2px;
 }
 
 @media screen and (max-width: 900px) {
@@ -1723,10 +1724,24 @@ fieldset#beneficios legend {
   .product-qd-v1-ref-code.mob{
     padding-right: 5%;
   }
-  .texto-numero-vendas{
-    margin-left: 7px;
+  .vendas-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+  }
+
+  .vendas-wrapper i {
+    font-size: 16px;
+  }
+
+  .texto-numero-vendas,
+  .texto-vendidos {
+    margin: 0;
+    display: inline;
   }
 }
+
 
 .card-instalacao {
   display: flex;
@@ -1803,4 +1818,10 @@ fieldset#beneficios legend {
   background-color: #f0f7ff;
   border-radius: 50%;
   padding: 3px;
+}
+
+.marca-barra-do-topo {
+  padding-left: 0px !important;;
+  padding-top: 5px !important;;
+  display: flex;
 }
