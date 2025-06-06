@@ -2887,7 +2887,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 .product-qd-v1-brand-name {
   display: flex;
   font-weight: 600;
-  font-size: 12px;
+  font-size: 14px;
   margin-bottom: 25px;
   font-weight: 700;
   color: #000000;
@@ -2908,9 +2908,9 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     justify-content: start;
     flex-direction: row;
     font-weight: 600;
-    font-size: 12px;
+    font-size: 13px;
     margin-bottom: 25px;
-    padding-left: 15px;
+    padding-left: 20px;
     font-weight: 700;
     color: #000000;
     font-style: normal;
