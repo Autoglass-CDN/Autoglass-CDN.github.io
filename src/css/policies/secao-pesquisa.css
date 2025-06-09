@@ -28,47 +28,97 @@
   }
 }
 
-@media screen and (min-width: 1000px) {
-  .tab-header {
+@media screen and (min-width: 768px) {
+  .menu-secao-pesquisa {
+    position: absolute;
+    z-index: 999999;
+    color: #0b4583;
+    font-weight: bold;
+    font-size: 16px;
+    padding: 6% 0px 0px 10%;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .tab-header, .c-busca__tabs-content .tab-header {
     display: flex;
     list-style: none;
-    padding: 12px;
     margin-bottom: 0px;
-    background-color: #e7eaf4;
-    border-radius: 8px;
     justify-content: center;
+  }
+
+  .tab-header {
+    padding: 12px;
+    background-color: #e7eaf4;  
+    border-radius: 8px;
     gap: 50px; /* Adicionando espaçamento entre as abas */
+  }
+
+  .c-busca__tabs-content .tab-header{
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px;
+    border-bottom: 0px;
+    background-color: #ffffff;
+    border-radius: 0px;
+    gap: 5px; /* Adicionando espaçamento entre as abas */
+  }
+
+  .tab-item, .c-busca__tabs-content .tab-item {
+    cursor: pointer;
+    font-weight: normal;
+    text-align: center;
   }
 
   .tab-item {
     padding: 10px 20px;
-    cursor: pointer;
-    font-weight: normal;
     color: #0b4583;
-    text-align: center;
+  }
+
+  .c-busca__tabs-content .tab-item {
+    padding: 0px;
+    color: #000000;
   }
 
   .tab-item > a {
     text-decoration: none;
   }
 
+  .tab-item.is-active, .c-busca__tabs-content .tab-item.is-active {
+    cursor: pointer;
+    text-align: center;
+  }
+
   .tab-item.is-active {
     padding: 10px 20px;
-    cursor: pointer;
     font-weight: bold;
     color: #0b4583;
-    text-align: center;
     border-bottom: 2px solid #0b4583;
     margin-bottom: -10px;
   }
 
-  .tab-item.font {
+  .c-busca__tabs-content .tab-item.is-active {
+    padding: 0px;
+    font-weight: normal;
+    color: #000000;
+    border-bottom: 0px;
+    margin-bottom: 0px;
+  }
+
+  .c-busca__tabs-content .tab-item label {
+    display: flex;
+    margin-bottom: 0px;
+    font-weight: normal;
+    gap: 5px;
+  }
+
+  /* .tab-item.font {
     padding: 10px 20px;
     cursor: pointer;
     font-weight: bold;
     color: #0b4583;
     text-align: center;
-  }
+  } */
 
   #tab-busca-categoria {
     border-bottom: none;

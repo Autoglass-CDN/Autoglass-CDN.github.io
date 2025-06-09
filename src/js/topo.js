@@ -55,47 +55,47 @@ function verificaUrlInstitucional() {
   }
 }
 
-function fecharAbaCategoria() {
-  const divCategoria = document.getElementById("busca-categoria");
-  const divBuscaPeca = document.getElementById("busca-peca");
-  const abaBuscaPeca = document.getElementById("tab-busca-peca");
-  const abaBuscaCategoria = document.getElementById("tab-busca-categoria");
+// function fecharAbaCategoria() {
+//   const divCategoria = document.getElementById("busca-categoria");
+//   const divBuscaPeca = document.getElementById("busca-peca");
+//   const abaBuscaPeca = document.getElementById("tab-busca-peca");
+//   const abaBuscaCategoria = document.getElementById("tab-busca-categoria");
 
-  // Função auxiliar para trocar classes
-  const toggleActiveClass = (element, add) => {
-    if (element) {
-      if (add) {
-        element.classList.add("is-active");
-      } else {
-        element.classList.remove("is-active");
-      }
-    }
-  };
+//   // Função auxiliar para trocar classes
+//   const toggleActiveClass = (element, add) => {
+//     if (element) {
+//       if (add) {
+//         element.classList.add("is-active");
+//       } else {
+//         element.classList.remove("is-active");
+//       }
+//     }
+//   };
 
-  // Remover is-active da aba de categoria
-  toggleActiveClass(divCategoria, false);
-  toggleActiveClass(abaBuscaCategoria, false);
+//   // Remover is-active da aba de categoria
+//   toggleActiveClass(divCategoria, false);
+//   toggleActiveClass(abaBuscaCategoria, false);
 
-  // Adicionar is-active à aba de busca por placa
-  toggleActiveClass(divBuscaPeca, true);
-  toggleActiveClass(abaBuscaPeca, true);
-}
+//   // Adicionar is-active à aba de busca por placa
+//   toggleActiveClass(divBuscaPeca, true);
+//   toggleActiveClass(abaBuscaPeca, true);
+// }
 
-if (window.innerWidth > 1200) {
-  document.addEventListener("click", cliqueForaDaAba);
-  function cliqueForaDaAba(event) {
-    const aba = document.getElementById('busca-categoria');
-    const tabs = document.querySelector('.c-busca__tabs.tab-header');
-    const isClickInsideTabs = tabs.contains(event.target);
-    const abaBuscaPlaca = document.getElementById('tab-busca-placa');
+// if (window.innerWidth > 1200) {
+//   document.addEventListener("click", cliqueForaDaAba);
+//   function cliqueForaDaAba(event) {
+//     const aba = document.getElementById('busca-categoria');
+//     const tabs = document.querySelector('.c-busca__tabs.tab-header');
+//     const isClickInsideTabs = tabs.contains(event.target);
+//     const abaBuscaPlaca = document.getElementById('tab-busca-placa');
 
-    if(!abaBuscaPlaca.classList.contains('is-active')){
-      if (!aba.contains(event.target) && !isClickInsideTabs) {
-        fecharAbaCategoria();
-      }
-    }
-  }
-}
+//     if(!abaBuscaPlaca.classList.contains('is-active')){
+//       if (!aba.contains(event.target) && !isClickInsideTabs) {
+//         fecharAbaCategoria();
+//       }
+//     }
+//   }
+// }
 
 if(window.innerWidth > 1200){
   const inputPesquisa = document.querySelector('.fulltext-search-box');
@@ -888,22 +888,22 @@ inputBusca.addEventListener("keydown", function (event) {
 
 if (window.innerWidth > 1024) {
   (function initializeCategoryPanelMenu() {
-    const tab = document.querySelector("#tab-busca-categoria");
+    // const tab = document.querySelector("#tab-busca-categoria");
 
-    if (tab) {
-      tab.addEventListener("click", (event) => {
-        event.preventDefault();
+    // if (tab) {
+    //   tab.addEventListener("click", (event) => {
+    //     event.preventDefault();
 
-        setTimeout (() => {
-        const content = document.querySelector("#busca-categoria");
+    //     setTimeout (() => {
+    //     const content = document.querySelector("#busca-categoria");
 
-        if (tab && content) {
-          tab.classList.add("is-active");
-          content.classList.add("is-active");
-        }
-      }, 10);
-      });
-    }
+    //     if (tab && content) {
+    //       tab.classList.add("is-active");
+    //       content.classList.add("is-active");
+    //     }
+    //   }, 10);
+    //   });
+    // }
 
     let lastActiveSubmenuId = null;
     $(".painel-categorias__categoria-itens-lista li.categoria").on("mouseenter", function () {
@@ -923,3 +923,62 @@ if (window.innerWidth > 1024) {
     })();
 }
 })();
+
+if (window.innerWidth > 1200) {
+  const tabCategoria = document.getElementById("tab-busca-categoria");
+  const divCategoria = document.getElementById("busca-categoria");
+
+  const divPecasSelect = document.querySelector(".c-busca__select.tipo-peca #pecas-select");
+  const divBuscaPeca = divPecasSelect?.querySelector(".smart-select__main-results");
+
+  // Clique na aba de categoria
+  tabCategoria?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Fecha lista de peças se estiver aberta
+    if (divBuscaPeca && $(divBuscaPeca).is(":visible")) {
+      $(divBuscaPeca).slideUp("fast");
+    }
+
+    // Toggle do menu de categoria
+    if ($(divCategoria).is(":visible")) {
+      $(divCategoria).slideUp("fast");
+    } else {
+      $(divCategoria).slideDown("fast", function () {
+        this.style.display = "block"; // Força exibição
+      });
+    }
+  });
+
+  // Clique no campo de seleção de peças
+  divPecasSelect?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    // Fecha menu de categoria se estiver aberto
+    if ($(divCategoria).is(":visible")) {
+      $(divCategoria).slideUp("fast");
+    }
+
+    // Toggle da lista de peças
+    if ($(divBuscaPeca).is(":visible")) {
+      $(divBuscaPeca).slideUp("fast");
+    } else {
+      $(divBuscaPeca).slideDown("fast", function () {
+        this.style.display = "block"; // Corrige conflito com jQuery 1.8.3
+      });
+    }
+  });
+
+  // Clique fora dos menus — fecha ambos
+  document.addEventListener("click", (e) => {
+    const isClickInsideCategoria = divCategoria?.contains(e.target);
+    const isClickInsidePecas = divPecasSelect?.contains(e.target);
+
+    if (!isClickInsideCategoria && !isClickInsidePecas) {
+      $(divCategoria).slideUp("fast");
+      $(divBuscaPeca).slideUp("fast");
+    }
+  });
+}

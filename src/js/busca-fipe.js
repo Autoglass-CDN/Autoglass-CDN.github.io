@@ -41,7 +41,7 @@
   });
 
   let activeTab =
-    window.innerWidth > 1024 ? "#busca-peca" : "#busca-peca-mobile";
+    window.innerWidth > 1024 ? "#busca-placa" : "#busca-placa-mobile";
   selectRightSearchMethod();
 
   /** BUSCA POR PEÇA DEV */
@@ -51,6 +51,8 @@
   let firstRouteSelected = "";
   let vehicle = "";
   window.buttonBuscarSelected = false;
+
+  window._initSelect_ = View._initSelect_;
 
   const CONFIG = {
     ASYNC: {
@@ -131,6 +133,8 @@
       canBeClear: true,
     },
   ];
+
+  window.PECA_SELECTS = PECA_SELECTS;
 
   _init();
 
@@ -410,9 +414,9 @@
     }
 
     function _initSelect_(select) {
-      $(`.c-busca__tab-content #${select.id}`).click((e) => {
+      $(`#${select.id}`).click((e) => {
         $(
-          `.c-busca__tab-content #${select.id} .smart-select__main-results input`
+          `#${select.id} .smart-select__main-results input`
         ).val("");
 
         if (select.values) {
@@ -420,30 +424,31 @@
           View.selectOptionIfButtonHasValue(select.id);
 
           if (select.values.length !== 0) {
-            $(`.c-busca__tab-content #${select.id} .smart-select__main-results`)
+            $(`#${select.id} .smart-select__main-results`)
               .slideToggle("fast")
               .click((e) => e.stopPropagation());
 
             $(
-              `.c-busca__tab-content #${select.id} .smart-select__main-results input`
+              `#${select.id} .smart-select__main-results input`
             ).focus();
           }
         }
       });
 
-      $(`.c-busca__tab-content #${select.id} .smart-select__main-results input`)
+
+      $(`#${select.id} .smart-select__main-results input`)
         .on("keydown", (e) => {
           if (e.key === "Tab" || e.key === "Enter") {
             e.preventDefault();
             $(
-              `.c-busca__tab-content #${select.id} ul li.${CONFIG.CSS.HIGHLIGHT}`
+              `#${select.id} ul li.${CONFIG.CSS.HIGHLIGHT}`
             ).click();
           }
 
           if (e.key === "ArrowDown") {
             let index = 0;
 
-            $(`.c-busca__tab-content #${select.id} ul li`).each(
+            $(`#${select.id} ul li`).each(
               (i, element) => {
                 if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
                   index += i + 2;
@@ -453,25 +458,25 @@
             );
 
             if (
-              index <= $(`.c-busca__tab-content #${select.id} ul li`).length
+              index <= $(`#${select.id} ul li`).length
             ) {
               $(
-                `.c-busca__tab-content #${select.id} ul li:nth-child(${index})`
+                `#${select.id} ul li:nth-child(${index})`
               ).addClass(CONFIG.CSS.HIGHLIGHT);
 
               $(
-                `.c-busca__tab-content #${select.id} .smart-select__main-results ul`
+                `#${select.id} .smart-select__main-results ul`
               ).animate(
                 {
                   scrollTop:
                     $(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(${index})`
+                      `#${select.id} ul li:nth-child(${index})`
                     )[0].offsetTop -
                     $(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(${index})`
+                      `#${select.id} ul li:nth-child(${index})`
                     )[0].scrollHeight -
                     $(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(${index})`
+                      `#${select.id} ul li:nth-child(${index})`
                     )[0].scrollHeight /
                       2,
                 },
@@ -479,22 +484,22 @@
               );
             } else {
               $(
-                `.c-busca__tab-content #${select.id} ul li:nth-child(1)`
+                `#${select.id} ul li:nth-child(1)`
               ).addClass(CONFIG.CSS.HIGHLIGHT);
 
               $(
-                `.c-busca__tab-content #${select.id} .smart-select__main-results ul`
+                `#${select.id} .smart-select__main-results ul`
               ).animate(
                 {
                   scrollTop:
                     $(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(1)`
+                      `#${select.id} ul li:nth-child(1)`
                     )[0].offsetTop -
                     ($(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(1)`
+                      `#${select.id} ul li:nth-child(1)`
                     )[0].scrollHeight +
                       $(
-                        `.c-busca__tab-content #${select.id} ul li:nth-child(1)`
+                        `#${select.id} ul li:nth-child(1)`
                       )[0].scrollHeight /
                         2),
                 },
@@ -506,7 +511,7 @@
           if (e.key === "ArrowUp") {
             let index = 0;
 
-            $(`.c-busca__tab-content #${select.id} ul li`).each(
+            $(`#${select.id} ul li`).each(
               (i, element) => {
                 if (element.classList.contains(CONFIG.CSS.HIGHLIGHT)) {
                   index = i;
@@ -517,22 +522,22 @@
 
             if (index !== 0) {
               $(
-                `.c-busca__tab-content #${select.id} ul li:nth-child(${index})`
+                `#${select.id} ul li:nth-child(${index})`
               ).addClass(CONFIG.CSS.HIGHLIGHT);
 
               $(
-                `.c-busca__tab-content #${select.id} .smart-select__main-results ul`
+                `#${select.id} .smart-select__main-results ul`
               ).animate(
                 {
                   scrollTop:
                     $(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(${index})`
+                      `#${select.id} ul li:nth-child(${index})`
                     )[0].offsetTop -
                     ($(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(${index})`
+                      `#${select.id} ul li:nth-child(${index})`
                     )[0].scrollHeight +
                       $(
-                        `.c-busca__tab-content #${select.id} ul li:nth-child(${index})`
+                        `#${select.id} ul li:nth-child(${index})`
                       )[0].scrollHeight /
                         2),
                 },
@@ -540,29 +545,29 @@
               );
             } else {
               $(
-                `.c-busca__tab-content #${select.id} ul li:nth-child(${
-                  $(`.c-busca__tab-content #${select.id} ul li`).length
+                `#${select.id} ul li:nth-child(${
+                  $(`#${select.id} ul li`).length
                 })`
               ).addClass(CONFIG.CSS.HIGHLIGHT);
 
               $(
-                `.c-busca__tab-content #${select.id} .smart-select__main-results ul`
+                `#${select.id} .smart-select__main-results ul`
               ).animate(
                 {
                   scrollTop:
                     $(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(${
-                        $(`.c-busca__tab-content #${select.id} ul li`).length
+                      `#${select.id} ul li:nth-child(${
+                        $(`#${select.id} ul li`).length
                       })`
                     )[0].offsetTop -
                     ($(
-                      `.c-busca__tab-content #${select.id} ul li:nth-child(${
-                        $(`.c-busca__tab-content #${select.id} ul li`).length
+                      `#${select.id} ul li:nth-child(${
+                        $(`#${select.id} ul li`).length
                       })`
                     )[0].scrollHeight +
                       $(
-                        `.c-busca__tab-content #${select.id} ul li:nth-child(${
-                          $(`.c-busca__tab-content #${select.id} ul li`).length
+                        `#${select.id} ul li:nth-child(${
+                          $(`#${select.id} ul li`).length
                         })`
                       )[0].scrollHeight /
                         2),
@@ -581,11 +586,11 @@
         });
       // Fecha todos os selects caso já tenha algum aberto.
       $(document).on("click", (e) => {
-        var container = $(`.c-busca__tab-content #${select.id}`);
+        var container = $(`#${select.id}`);
 
         if (!$(e.target).closest(container).length) {
           $(
-            `.c-busca__tab-content #${select.id} .smart-select__main-results`
+            `#${select.id} .smart-select__main-results`
           ).slideUp("fast");
         }
       });
@@ -682,11 +687,11 @@
           (x) => (html += `<li role="treeitem" id="${x.id}">${x.name}</li>`)
         );
 
-        $(`.c-busca__tab-content  #${_id} ul`).html(html);
+        $(` #${_id} ul`).html(html);
 
-        $(`.c-busca__tab-content  #${_id} ul li`)
+        $(` #${_id} ul li`)
           .hover((event) => {
-            $(`.c-busca__tab-content  #${_id} ul li`).removeClass(
+            $(` #${_id} ul li`).removeClass(
               CONFIG.CSS.HIGHLIGHT
             );
 
@@ -704,12 +709,11 @@
                 handleBuscaPlacaSelection(event, _id);
             }
           });
-
-        $(`.c-busca__tab-content  #${_id} ul li`)
+        $(` #${_id} ul li`)
           .first()
           .addClass(CONFIG.CSS.HIGHLIGHT);
       } else {
-        $(`.c-busca__tab-content  #${_id} ul`).html(
+        $(` #${_id} ul`).html(
           `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
         );
       }
@@ -756,13 +760,13 @@
         const select = PECA_SELECTS[i];
         const nextSelect = PECA_SELECTS[i + 1];
         if (window.innerWidth > 1024) {
-          $(`.c-busca__tab-content  #${select.id} > div > span`).html(
+          $(` #${select.id} > div > span`).html(
             select.title
           );
           select.routeSelected = "";
 
           if (nextSelect && nextSelect.canBeClear) {
-            $(`.c-busca__tab-content #${nextSelect.id}`).addClass(
+            $(`#${nextSelect.id}`).addClass(
               CONFIG.CSS.EMPTY
             );
 
@@ -771,10 +775,10 @@
           }
 
           $(
-            `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
+            ` #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
           ).show();
           $(
-            `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`
+            ` #${select.id} > div > .${CONFIG.CSS.CLOSE}`
           ).hide();
         }
       }
@@ -785,25 +789,25 @@
       const select = PECA_SELECTS[index];
       const nextSelect = PECA_SELECTS[index + 1];
       if (window.innerWidth > 1024) {
-        $(`.c-busca__tab-content  #${select.id} > div > span`).html(new_title);
+        $(` #${select.id} > div > span`).html(new_title);
         $(
-          `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
+          ` #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
         ).hide();
-        $(`.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`)
+        $(` #${select.id} > div > .${CONFIG.CSS.CLOSE}`)
           .show()
           .on("click", () => resetResults(index));
 
         if (nextSelect) {
-          $(`.c-busca__tab-content #${nextSelect.id}`).removeClass(
+          $(`#${nextSelect.id}`).removeClass(
             CONFIG.CSS.EMPTY
           );
 
           if (!CONFIG.CANT_OPEN) {
-            $(`.c-busca__tab-content #${nextSelect.id}`).click();
+            $(`#${nextSelect.id}`).click();
           }
         } else {
           if (!CONFIG.CANT_OPEN) {
-            $(`.c-busca__tab-content  #${select.id}`).click().focus();
+            $(` #${select.id}`).click().focus();
           }
         }
       } else {
@@ -820,6 +824,13 @@
             $(`.c-busca__tab-content-mobile  #${select.id}`).click().focus();
           }
         }
+      }
+
+      if ($('#tab-nao-sei-placa-desktop').hasClass('is-active')) {
+        $('#busca-peca').addClass('is-active');
+        $('#busca-placa').removeClass('is-active');
+      } else {
+        $('#busca-peca').removeClass('is-active');
       }
     }
 
@@ -861,6 +872,8 @@
       return str;
     }
   }
+
+  window.View = ViewAPI();
 
   function ControllerAPI() {
     return {
@@ -1186,33 +1199,71 @@
 
   // Alterna as abas da busca
   if (window.innerWidth > 1024) {
-    let tabs = document.querySelectorAll(".c-busca__tabs li");
+  const inputBuscaPlaca = document.getElementById('input-busca-placa-desktop');
+  const inputNaoSeiPlaca = document.getElementById('input-nao-sei-placa');
 
-    tabs.forEach((tab) => {
+  const divBuscaPlaca = document.getElementById('busca-placa');
+  const divBuscaPeca = document.getElementById('busca-peca');
 
-      if (tab.id === "tab-busca-categoria") return;
+  const tabBuscaPlaca = document.getElementById('tab-busca-placa-desktop');
+  const tabNaoSeiPlaca = document.getElementById('tab-nao-sei-placa-desktop');
 
-      tab.addEventListener("click", (event) => {
-        event.preventDefault();
+  function ativarBuscaPlaca() {
+    inputBuscaPlaca.checked = true;
 
-        tabs.forEach((t) => t.classList.remove("is-active"));
-        tab.classList.add("is-active");
-        activeTab = tab.querySelector("a").attributes.href.nodeValue;
+    tabBuscaPlaca.classList.add('is-active');
+    tabNaoSeiPlaca.classList.remove('is-active');
 
-        let tabContentDivs = document.querySelectorAll(".c-busca__tab-content");
-
-        tabContentDivs.forEach((div) => div.classList.remove("is-active"));
-
-        let selectedSection = document.querySelector(
-          tab.querySelector("a").hash
-        );
-        selectedSection.classList.add("is-active");
-      });
-    });
-  } else {
-    AlternaAbaBusca();
-    window.addEventListener('DOMContentLoaded', menuCategoriasMobile);
+    divBuscaPlaca.classList.add('is-active');
+    divBuscaPeca.classList.remove('is-active');
   }
+
+  function ativarBuscaPeca() {
+  inputNaoSeiPlaca.checked = true;
+
+  tabNaoSeiPlaca.classList.add("is-active");
+  tabBuscaPlaca.classList.remove("is-active");
+
+  divBuscaPlaca.classList.remove("is-active");
+  divBuscaPeca.classList.add("is-active");
+
+  sessionStorage.setItem("idAba", "inputBuscaPeca");
+
+  activeTab = "#busca-peca";
+}
+
+
+  inputBuscaPlaca.checked = true;
+  ativarBuscaPlaca();
+
+  if (inputBuscaPlaca.checked) ativarBuscaPlaca();
+  if (inputNaoSeiPlaca.checked) ativarBuscaPeca();
+
+  inputBuscaPlaca.addEventListener('change', ativarBuscaPlaca);
+  inputNaoSeiPlaca.addEventListener('change', ativarBuscaPeca);
+
+} else {
+  AlternaAbaBusca();
+  window.addEventListener('DOMContentLoaded', menuCategoriasMobile);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.getElementById('placa-input');
+  const placeholder = document.getElementById('fakePlaceHolder');
+
+  function esconderPlaceholder() {
+    placeholder.style.opacity = '0';
+  }
+
+  function mostrarPlaceholder() {
+    if (!input.value) {
+      placeholder.style.opacity = '0.8';
+    }
+  }
+
+  input.addEventListener('focus', esconderPlaceholder);
+  input.addEventListener('blur', mostrarPlaceholder);
+});
 
   function AlternaAbaBusca() {
     var tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
@@ -1315,6 +1366,15 @@
           alert("Sua placa não segue um padrão válido!");
         } else {
           buscaPorPlaca(placa);
+
+          // const spanTexto = document.querySelector("#pecas-select .gtm-smart-peca-select span");
+          // const textoSelecionado = spanTexto?.textContent?.trim();
+
+          // if (!textoSelecionado || textoSelecionado === "Tipo de Peça") {
+          //   alert("Você deve selecionar um tipo de peça antes de buscar pela placa.");
+          // } else {
+            
+          // }
         }
       }
     });
@@ -1438,29 +1498,29 @@
     select.routeSelected = optionSelected.url
       ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
       : "/" + optionSelected.name.toLowerCase();
-    $(`.c-busca__tab-content  #${select.id} > div > span`).html(
+    $(` #${select.id} > div > span`).html(
       event.target.innerHTML
     );
     $(
-      `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
+      ` #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
     ).hide();
-    $(`.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`)
+    $(` #${select.id} > div > .${CONFIG.CSS.CLOSE}`)
       .show()
       .on("click", () => {
-        $(`.c-busca__tab-content  #${select.id} > div > span`).html(
+        $(` #${select.id} > div > span`).html(
           select.title
         );
         select.routeSelected = "";
 
         $(
-          `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
+          ` #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
         ).show();
         $(
-          `.c-busca__tab-content  #${select.id} > div > .${CONFIG.CSS.CLOSE}`
+          ` #${select.id} > div > .${CONFIG.CSS.CLOSE}`
         ).hide();
       });
 
-    $(".c-busca__tab-content .c-busca__input #placa-input").click().focus();
+    $(".c-busca__input #placa-input").click().focus();
 
     textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
 
@@ -1818,15 +1878,15 @@
       document
         .querySelector("a[href='#busca-categoria']")
         .parentNode.classList.remove("is-active");
-      document
-        .querySelector("a[href='#busca-peca']")
-        .parentNode.classList.remove("is-active");
+      // document
+      //   .querySelector("a[href='#busca-peca']")
+      //   .parentNode.classList.remove("is-active");
       document
         .querySelector("#form-busca-peca")
         .parentNode.classList.remove("is-active");
-      document
-        .querySelector("a[href='#busca-peca']")
-        .parentNode.classList.add("is-active");
+      // document
+      //   .querySelector("a[href='#busca-peca']")
+      //   .parentNode.classList.add("is-active");
       document
         .querySelector("#form-busca-peca")
         .parentNode.classList.add("is-active");
@@ -1850,15 +1910,15 @@
     }
   }
 
-  var botaoLimparBuscaPeca = document.querySelector("#btn-busca-peca-limpar");
-  botaoLimparBuscaPeca.addEventListener("click", () => {
-    resetSelects(1);
-  });
+  // var botaoLimparBuscaPeca = document.querySelector("#btn-busca-peca-limpar");
+  // botaoLimparBuscaPeca.addEventListener("click", () => {
+  //   resetSelects(1);
+  // });
 
-  var botaoLimparBuscaPlaca = document.querySelector("#btn-busca-placa-limpar");
-  botaoLimparBuscaPlaca.addEventListener("click", () => {
-    resetSelect();
-  });
+  // var botaoLimparBuscaPlaca = document.querySelector("#btn-busca-placa-limpar");
+  // botaoLimparBuscaPlaca.addEventListener("click", () => {
+  //   resetSelect();
+  // });
 
   var botaoLimparBuscaPlacaMobile = document.querySelector("#btn-busca-placa-limpar-mobile ");
   botaoLimparBuscaPlacaMobile.addEventListener("click", () => {
@@ -1875,11 +1935,11 @@
       const select = PECA_SELECTS[i];
       const nextSelect = PECA_SELECTS[i + 1];
 
-      $(`.c-busca__tab-content  #${select.id} > div > span`).html(select.title);
+      $(` #${select.id} > div > span`).html(select.title);
       select.routeSelected = "";
 
       if (nextSelect && nextSelect.canBeClear) {
-        $(`.c-busca__tab-content #${nextSelect.id}`).addClass(CONFIG.CSS.EMPTY);
+        $(`#${nextSelect.id}`).addClass(CONFIG.CSS.EMPTY);
 
         nextSelect.values = [];
         nextSelect.routeSelected = "";
@@ -1891,7 +1951,7 @@
     const select = PLACA_SELECTS[0];
     if(select == "categoria-select"){
       var inputPlaca = document.querySelector("#placa-input");
-      $(`.c-busca__tab-content  #${select.id} > div > span`).html(select.title);
+      $(` #${select.id} > div > span`).html(select.title);
       select.routeSelected = "";
       inputPlaca.value = "";
     }
