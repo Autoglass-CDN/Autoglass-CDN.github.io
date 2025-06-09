@@ -721,7 +721,7 @@ i.arrow-icon::before {
   font-size: 20px;
 }
 
-@media (max-width: 1160px) {
+@media (max-width: 991px) {
   .search-box-mobile {
     display: flex;
     position: sticky;
@@ -1906,13 +1906,13 @@ body.home {
   padding-bottom: 0;
 }
 
-.topo {
-  /* z-index: 900001; */
+/* .topo {
+  z-index: 900001;
 }
 
 .nav {
-  /* z-index: 900000; */
-}
+  z-index: 900000;
+} */
 
 body[data-qd-scroll-0="1"] {
   padding-top: 0;

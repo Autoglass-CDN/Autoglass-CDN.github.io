@@ -4,12 +4,12 @@
 	const btnPrev = $('.banners-section .banners button[data-type="prev"]');
 	const btnNext = $('.banners-section .banners button[data-type="next"]');
   const tipoBanner = window.innerWidth <= 768 ? 2 : 1;
-  const urlBanners = `http://localhost:5010/api/banners-vtex/exibicao/${tipoBanner}`;
-  await buscaImagensBanner(urlBanners);
-	const containers = $('.banners-section .banners-content');
-	let bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
-	let bannerImages = bannerContainer.children();
-  buildBars();
+//   const urlBanners = `http://localhost:5010/api/banners-vtex/exibicao/${tipoBanner}`;
+//   await buscaImagensBanner(urlBanners);
+// 	const containers = $('.banners-section .banners-content');
+// 	let bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
+// 	let bannerImages = bannerContainer.children();
+//   buildBars();
   localStorage.setItem('buscaPlaca', null);
 	calculateMarginOfBtns();
 	window.addEventListener('resize', e => {
@@ -17,7 +17,7 @@
 		bannerImages = bannerContainer.children();
 
 		$('.banners-bars').html('');
-		buildBars();
+		// buildBars();
 		calculateMarginOfBtns();
 	});
 
@@ -336,7 +336,7 @@ function getItemSize(banner){
 	}, 10000)
 
 	//Reset
-	buildBars();
+	// buildBars();
 	showOnlyRatingAroundHighlight();
 
 	btnPrev.click(() => {

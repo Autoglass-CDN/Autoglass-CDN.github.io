@@ -1,47 +1,42 @@
 <!-- dev- -busca-fipe -->
 <div class="l-container">
     <section class="c-busca tab-container">
-        <ul class="c-busca__tabs tab-header">
-            <li class="tab-item no-click">
-                Busque a peça compatível com seu veículo
-            </li>
-            <li id="tab-busca-peca" class="tab-item is-active">
-                <a href="#busca-peca">
-                    <span class="c-busca__tab-text">
-                        Por peça e modelo
-                    </span>
-                </a>
-            </li>
-            <li id="tab-busca-placa" class="tab-item ">
-                <a href="#busca-placa">
-                    <span class="c-busca__tab-text">
-                        Pela placa do veículo
-                    </span>
-                </a>
-            </li>
-        </ul>
         <div class="c-busca__tabs-content">
+            <div class="c-busca__select tipo-peca">
+                <div id="pecas-select">
+                    <div class="gtm-smart-peca-select">
+                        <span>Tipo de Peça</span>
+                        <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-close" style="display: none"></i>
+                    </div>
+                    <div class="smart-select__main-results" style="display: none;">
+                        <input
+                        id="peca-input"
+                        placeholder="Digite aqui:"
+                        type="text"
+                        autocomplete="off"
+                        />
+                        <ul></ul>
+                    </div>
+                </div>
+            </div>
+            <ul class="c-busca__tabs tab-header search-options">
+                <li id="tab-busca-placa-desktop" class="tab-item is-active">
+                    <label>
+                        <input type="radio" name="search" value="busca-placa" id="input-busca-placa-desktop"></input> 
+                        Buscar com placa 
+                    </label>
+                </li>
+                <li id="tab-nao-sei-placa-desktop" class="tab-item ">
+                    <label>
+                        <input type="radio" name="search" value="sem-placa" id="input-nao-sei-placa"></input> 
+                        Não sei minha placa 
+                    </label>
+                </li>
+            </ul>
             <div class="c-busca__tab-content is-active" id="busca-peca">
                 <form id="form-busca-peca" action="#">
                     <div class="h-flex">
-                        <div class="c-busca__select">
-                            <div id="pecas-select">
-                                <div class="gtm-smart-peca-select">
-                                    <span>Tipo de Peça</span>
-                                    <i class="fa fa-caret-down"></i>
-                                    <i class="fa fa-close" style="display: none"></i>
-                                </div>
-                                <div class="smart-select__main-results" style="display: none;">
-                                    <input
-                                    id="peca-input"
-                                    placeholder="Digite aqui:"
-                                    type="text"
-                                    autocomplete="off"
-                                    />
-                                    <ul></ul>
-                                </div>
-                            </div>
-                        </div>
                         <div class="c-busca__select">
                             <div id="montadora-select" class="empty">
                                 <div class="gtm-smart-montadora-select">
@@ -121,12 +116,12 @@
                                 type="submit">
                                 <i class="fas fa-search"></i> Buscar
                             </button>
-                            <button
+                            <!-- <button
                                 id="btn-busca-peca-limpar"
                                 class="btn btn-clear"
                                 type="button">
                                 <i class="fas fa-times"></i> Limpar
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </form>
@@ -134,19 +129,23 @@
             <div class="c-busca__tab-content" id="busca-placa">
                 <form id="form-busca-placa" action="#">
                     <div class="h-flex">
-                        <div class="caixa-informacao">
+                        <!-- <div class="caixa-informacao">
                             <i class="fas fa-info-circle"></i>
                             <span>Essa é a busca mais eficaz para garantir a<br>compatibilidade das peças com o seu veículo</br></span>
-                        </div>
+                        </div> -->
                         <div class="c-busca__input">
                             <input
                             type="text"
                             name="placa-input"
                             id="placa-input"
-                            placeholder="Digite a placa do veículo"
                             />
+                            <div class="fake-placeholder" id="fakePlaceHolder">
+                                <img src="https://autoglass-cdn.github.io/src/img/busca-placa.png" alt="placa-veiculo"></img>
+                                <span>Busque pela placa...</span>
+                                <img src="https://autoglass-cdn.github.io/src/img/search.svg" alt="icone-lupa"></img>
+                            </div>
                         </div>
-                        <div class="c-busca__select">
+                        <!-- <div class="c-busca__select">
                             <div id="categoria-select">
                                 <div class="gtm-smart-categoria-select">
                                     <span>Produto</span>
@@ -163,7 +162,7 @@
                                     <ul></ul>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="c-busca__botao" style="display: flex;">
                             <button
                                 id="btn-busca-placa-buscar"
@@ -171,12 +170,12 @@
                                 type="submit">
                                 <i class="fas fa-search"></i> Buscar
                             </button>
-                            <button
+                            <!-- <button
                                 id="btn-busca-placa-limpar"
                                 class="btn btn-clear"
                                 type="button">
                                 <i class="fas fa-times"></i> Limpar
-                            </button>
+                            </button> -->
                         </div>
                     </div>
                 </form>
@@ -637,6 +636,19 @@
                                                         </ul>
                                                     </li>
                                                 </ul>
+                                                <ul>
+                                                    <li class="painel-categorias__categoria-itens-lista">
+                                                        <a href="/arrefecimento-e-climatizacao/compressores" title="Compressores"
+                                                            itemprop="url">Compressores</a>
+                                                        <ul>
+                                                            <li>
+                                                                <a id="compressor-ar-condicionado"
+                                                                href="/arrefecimento-e-climatizacao/compressores/compressor-ar-condicionado"
+                                                                title="Compenssador de Ar-condicionado" itemprop="url">Compressor de Ar-condicionado</a>
+                                                            </li>
+                                                        </ul>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </li>
                                         <li class="categoria" data-target="latarias-e-acabamentos">
@@ -674,6 +686,10 @@
                                                             <li><a id="friso"
                                                                 href="/latarias-e-acabamentos/acabamentos/friso"
                                                                 title="Friso" itemprop="url">Friso</a>
+                                                            </li>
+                                                            <li><a id="alma-parachoque"
+                                                                href="/latarias-e-acabamentos/latarias/alma-para-choque"
+                                                                title="Alma de Para-choque" itemprop="url">Alma de Para-choque</a>
                                                             </li>
                                                         </ul>
                                                     </li>
