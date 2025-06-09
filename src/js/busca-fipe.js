@@ -689,12 +689,10 @@
 
         $(` #${_id} ul`).html(html);
 
-        $(` #${_id} ul li`)
-          .hover((event) => {
-            $(` #${_id} ul li`).removeClass(
-              CONFIG.CSS.HIGHLIGHT
-            );
 
+        $(`#${_id} ul li`)
+          .hover((event) => {
+            $(`#${_id} ul li`).removeClass(CONFIG.CSS.HIGHLIGHT);
             $(event.target).addClass(CONFIG.CSS.HIGHLIGHT);
           })
           .click((event) => {
@@ -703,12 +701,12 @@
                 Controller.addClick(event, _id);
                 break;
               case "#busca-placa":
-                handleBuscaPlacaSelection(event, _id);
-                break;
               case "#busca-categoria":
                 handleBuscaPlacaSelection(event, _id);
+                break;
             }
           });
+
         $(` #${_id} ul li`)
           .first()
           .addClass(CONFIG.CSS.HIGHLIGHT);
@@ -1314,27 +1312,27 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /** BUSCA POR PLACA */
-  const PLACA_SELECTS = [
-    {
-      title: "Tipo de Peça",
-      id: "categoria-select",
-      values: [],
-      routeSelected: "",
-      isAsyncSearch: false,
-      asyncSearchTerm: "",
-      canBeClear: false,
-    },
-  ];
+  // /** BUSCA POR PLACA */
+  // const PLACA_SELECTS = [
+  //   {
+  //     title: "Tipo de Peça",
+  //     id: "pecas-select",
+  //     values: [],
+  //     routeSelected: "",
+  //     isAsyncSearch: false,
+  //     asyncSearchTerm: "",
+  //     canBeClear: false,
+  //   },
+  // ];
 
   function _initBuscaPlaca(values) {
-    PLACA_SELECTS[0].values = values;
+    PECA_SELECTS[1].values = values;
 
-    View.buildList(PLACA_SELECTS[0].values, PLACA_SELECTS[0].id);
+    View.buildList(PECA_SELECTS[1].values, PECA_SELECTS[1].id);
 
     window.innerWidth > 1024
-      ? View._initSelect_(PLACA_SELECTS[0])
-      : View._initSelectMobile_(PLACA_SELECTS[0]);
+      ? View._initSelect_(PECA_SELECTS[1])
+      : View._initSelectMobile_(PECA_SELECTS[1]);
 
     restoreBuscaPlaca();
 
@@ -1373,7 +1371,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // if (!textoSelecionado || textoSelecionado === "Tipo de Peça") {
           //   alert("Você deve selecionar um tipo de peça antes de buscar pela placa.");
           // } else {
-            
+
           // }
         }
       }
@@ -1430,7 +1428,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const param = arrayPaths.slice(0, 2).join("/");
 
-        const select = PLACA_SELECTS[0];
+        const select = PECA_SELECTS[1];
         const value = select.values.find((x) =>
           x.url ? x.url.includes(param) : x.name.includes(param)
         );
@@ -1490,7 +1488,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleBuscaPlacaSelection(event, _id) {
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
     const optionSelected = select.values.find((x) => x.id == event.target.id);
     const listItems = document.querySelectorAll(".itens-lista li");
     const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
@@ -1541,7 +1539,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function buscaPorPlaca(placaString) {
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
 
     const FILTROS_VTEX = {
       MONTADORA: 36,
@@ -1819,7 +1817,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function checkIfUniversalProductSearch() {
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
 
     if (select.routeSelected.length) {
       const selectedRoute = select.routeSelected;
@@ -1948,7 +1946,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetSelect() {
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
     if(select == "categoria-select"){
       var inputPlaca = document.querySelector("#placa-input");
       $(` #${select.id} > div > span`).html(select.title);
@@ -1958,7 +1956,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetSelectMobile(){
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
     select.routeSelected = "";
     document.querySelector(`#opcao-selecionada-${select.id}`).innerHTML = "";
     retiraCheckedOpcaosSelecionadas();
