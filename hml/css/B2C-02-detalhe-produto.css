@@ -1070,6 +1070,12 @@ body.mz-sf-on .mz-modal-shipping {
   font-weight: bold;
 }
 
+#botaoVerificarCompatibilidade:hover{
+  background-color: #003087;
+  color: #e7eaf4;
+}
+
+
 .compat-overlay {
   position: absolute;
   top: 0;

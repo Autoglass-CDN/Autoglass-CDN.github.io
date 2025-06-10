@@ -148,7 +148,6 @@ async function verificarProdutoComPlaca(placa) {
     console.error("Erro ao verificar compatibilidade:", error);
 
     if (error.message.includes("Placa não encontrada")) {
-      alert(error.message);
       EstilizarCardCompatibilidade();
     } else {
       alert("Erro ao verificar compatibilidade. Tente novamente.");
@@ -177,9 +176,6 @@ function resetarEstilosCompatibilidade() {
 
   const botao = document.querySelector('#botaoVerificarCompatibilidade');
   botao.textContent = "Nova Consulta";
-  botao.style.backgroundColor = "#e7eaf4";
-  botao.style.color = "#003087";
-  botao.style.fontWeight = "bold";
 }
 
 function aplicarEstadoCompatibilidade(estado) {
@@ -242,13 +238,14 @@ async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
     : "https://api.autoglass.com.br";
 
   const response = await fetch(
-    `http://localhost:5010/integracao-b2c/api/web-app/veiculos/${placa}/placas`
+    `${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas`
   );
 
   const veiculo = await response.json();
 
-  if (veiculo?.Message) {
-    throw new Error(veiculo.Message);
+  if (veiculo?.Message?.includes("Placa é obrigatório")) {
+    EstilizarCardCompatibilidade();
+    throw new Error("Placa não encontrada");
   }
 
   const montadora = veiculo.Body.Data.Marca;
