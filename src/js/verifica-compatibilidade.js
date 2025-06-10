@@ -176,9 +176,6 @@ function resetarEstilosCompatibilidade() {
 
   const botao = document.querySelector('#botaoVerificarCompatibilidade');
   botao.textContent = "Nova Consulta";
-  botao.style.backgroundColor = "#e7eaf4";
-  botao.style.color = "#003087";
-  botao.style.fontWeight = "bold";
 }
 
 function aplicarEstadoCompatibilidade(estado) {
@@ -246,7 +243,7 @@ async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
 
   const veiculo = await response.json();
 
-  if (veiculo?.Message.includes("Placa é obrigatório")) {
+  if (veiculo?.Message?.includes("Placa é obrigatório")) {
     EstilizarCardCompatibilidade();
     throw new Error("Placa não encontrada");
   }
