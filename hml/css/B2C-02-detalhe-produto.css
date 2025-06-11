@@ -915,7 +915,7 @@ body.mz-sf-on .mz-modal-shipping {
 /* #endregion GALERIA ITEM VIDEO */
 
 .compat-box {
-  border: 1px solid #ddd;
+  border: 1px solid #003087;
   border-radius: 8px;
   padding: 16px;
   font-family: Arial, sans-serif;
@@ -938,6 +938,7 @@ body.mz-sf-on .mz-modal-shipping {
   display: flex;
   align-items: center;
   position: relative;
+  color: #003087;
 }
 
 .check-icon {
@@ -972,7 +973,7 @@ body.mz-sf-on .mz-modal-shipping {
   flex: 1;
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid #003087;
 }
 
 .compat-input button {
@@ -1050,7 +1051,7 @@ body.mz-sf-on .mz-modal-shipping {
 .title-text{
   font-family: 'Inter', sans-serif !important;
   padding-left: 10px;
-  color: #5A6272;
+  color: #003087;
   font-weight: 700;
 }
 
@@ -1074,7 +1075,6 @@ body.mz-sf-on .mz-modal-shipping {
   background-color: #003087;
   color: #e7eaf4;
 }
-
 
 .compat-overlay {
   position: absolute;
