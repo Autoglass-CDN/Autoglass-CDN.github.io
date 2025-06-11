@@ -666,11 +666,7 @@ body.qd-product-unavailable
   .product-qd-v1-price {
   display: none;
 }
-@media (max-width: 992px) {
-  .product-qd-v1-sku-selection-box .product-qd-v1-price {
-    margin-top: 35px;
-  }
-}
+
 .product-qd-v1-sku-selection-box .product-qd-v1-price p {
   margin: 0;
 }
