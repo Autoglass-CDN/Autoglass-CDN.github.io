@@ -63,16 +63,17 @@
   <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.product.css"
     type="text/css" onload="this.media='all'" />
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" onload="this.media='all'"/>
   <script defer="" type="text/javascript" src="/scripts/jquery.maskedinput-1.2.2.js"></script>
   <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/jquery-ui.datepicker.js" type="text/javascript"></script>
   <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/B2C-02-detalhe-produto.js" type="text/javascript"></script>
   <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/cep.component.js" type="text/javascript"></script>
-
+  <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/verifica-compatibilidade.js" type="text/javascript"></script>
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/B2C-02-detalhe-produto.css"
     type="text/css" onload="this.media='all'"/>
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/cep.component.css" type="text/css" onload="this.media='all'"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;display=swap" rel="stylesheet"/>
   <style type="text/css">
     .mz-acessories .mz-acessories__prices .mz-prices__block,
     .mz-acessories .mz-acessories__prices .mz-acessories__prices--byfor {
@@ -255,8 +256,41 @@
                   </div>
                 </div>
 
-                <vtex:template id="prd--detalhe-produto--busca-compativeis-desktop" />
-                <vtex:template id="prd--detalhe-produto--busca-compativeis-mobile" />
+                <div class="compat-box">
+                  <div class="compat-header">
+                    <div class="compat-title">
+                      <i id="icon-verificar-compatibilidade-check" class="fa-regular fa-circle-check" style="font-size: 24px; color: #003087;"></i>
+                      <i id="icon-verificar-compatibilidade-xmark" class="fa-regular fa-circle-xmark" style="font-size: 24px; color: #d93025; display: none;"></i>
+                      <span class="title-text">Verificar compatibilidade</span>
+                      <i id="icon-question" class="fa fa-question-circle" style="font-size: 15px; color: #999; display: none;" aria-hidden="true"></i>
+                      <div id="tooltip-question" class="tooltip-question hidden">
+                        <strong>Motivos:</strong><br />
+                        - Placa digitada está incorreta;<br />
+                        - Campo da placa não foi preenchido;<br />
+                        - Não foram encontrados dados para a placa digitada;
+                       </div>
+                    </div>
+                    <div>
+                      <i class="fa-solid fa-chevron-down icon-arrow-down"></i>
+                      <i class="fa-solid fa-angle-up icon-arrow-up" style="display: none;"></i>
+                    </div>
+                  </div>
+                  <div class="compat-content" id="compatContent">
+                    <div class="compat-description">
+                      A placa do seu veículo é a forma mais eficaz de garantir a compatibilidade com esse produto.
+                    </div>
+                    <div class="compat-input">
+                      <input id="placaInput" type="text" placeholder="Placa do veículo" />
+                      <button id="botaoVerificarCompatibilidade">
+                         Verificar
+                      </button>
+                    </div>
+                    <!-- ?? Overlay de bloqueio e carregamento -->
+                    <div id="overlayCompat" class="compat-overlay hidden">
+                      <div class="compat-spinner"></div>
+                    </div>
+                  </div>
+                </div>
 
                 <!-- ProdutoIndiponível - Outras Marcas  -->
                 <section class="product-qd-v1-unavailable other-brands" style="display: none;">
