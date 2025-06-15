@@ -1131,3 +1131,31 @@ body.mz-sf-on .mz-modal-shipping {
     padding: 12px;
   }
 }
+
+.imagem-principal, .video-principal {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.lista-thumbs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  padding: 0;
+}
+
+.lista-thumbs img {
+  width: 60px;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  transition: transform 0.2s;
+}
+
+.lista-thumbs img:hover {
+  transform: scale(1.1);
+}
