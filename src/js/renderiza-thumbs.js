@@ -1,6 +1,3 @@
-/* -------------------------------------------------------------
- * 1. Carregamento inicial
- * ----------------------------------------------------------- */
 document.addEventListener("DOMContentLoaded", async () => {
   const refId = extrairRefIdDoNome(skuJson?.name);
   const skuId = skuJson?.skus?.[0]?.sku;
@@ -14,9 +11,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderGaleria([...imagens, ...videos]);
 });
 
-/* -------------------------------------------------------------
- * 2. Helpers
- * ----------------------------------------------------------- */
 function extrairRefIdDoNome(skuName) {
   if (!skuName) return null;
   const ult = skuName.split("-").pop().trim();
@@ -51,9 +45,6 @@ async function buscarVideosDoSku(refId) {
   }
 }
 
-/* -------------------------------------------------------------
- * 3. Render da galeria
- * ----------------------------------------------------------- */
 function renderGaleria(midias) {
   const thumbs = document.getElementById("thumbsContainer");
   const main   = document.getElementById("mainMediaContainer");
@@ -80,9 +71,6 @@ function renderGaleria(midias) {
   });
 }
 
-/* -------------------------------------------------------------
- * 4. Exibir mídia principal
- * ----------------------------------------------------------- */
 function exibirMidia(url) {
   const main = document.getElementById("mainMediaContainer");
   const isVideo = /youtube|\.mp4$|\.webm$/i.test(url);
@@ -96,15 +84,11 @@ function exibirMidia(url) {
   if (!isVideo) inicializarZoom(main.querySelector(".zoom-wrapper"));
 }
 
-/* -------------------------------------------------------------
- * 5. Lupa-zoom (seguindo cursor)
- * ----------------------------------------------------------- */
 function inicializarZoom(wrapper) {
   if (!wrapper) return;
 
   const zoomFactor = 1.5;
 
-  // Reset antes de interagir
   wrapper.style.backgroundSize = "100%";
   wrapper.style.backgroundPosition = "center";
 

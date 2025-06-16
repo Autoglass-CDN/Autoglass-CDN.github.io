@@ -1138,14 +1138,12 @@ body.mz-sf-on .mz-modal-shipping {
   align-items: flex-start;
 }
 
-/* ---------- BASE ---------- */
 .galeria-bloco-produto {
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
 }
 
-/* miniatura – regras comuns */
 .thumb-item {
   display: flex;
   align-items: center;
@@ -1165,10 +1163,9 @@ body.mz-sf-on .mz-modal-shipping {
   display: block;
 }
 
-/* estado ativo (selecionado) */
 .thumb-item.active {
   opacity: 1;
-  border: 2px solid #003087; /* cor de destaque */
+  border: 2px solid #003087;
   padding: 4px;
 }
 
@@ -1177,7 +1174,6 @@ body.mz-sf-on .mz-modal-shipping {
   border: 2px solid transparent;
 }
 
-/* ---------- DESKTOP (≥ 768 px) ---------- */
 @media (min-width: 768px) {
   .galeria-principal {
     display: flex;
@@ -1185,12 +1181,12 @@ body.mz-sf-on .mz-modal-shipping {
     gap: 16px;
     align-items: flex-start;
   }
-  /* thumbs na vertical */
+
   #thumbsContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    flex: 0 0 90px; /* largura fixa da coluna de thumbs */
+    flex: 0 0 90px;
   }
 
   .thumb-item {
@@ -1198,7 +1194,6 @@ body.mz-sf-on .mz-modal-shipping {
     height: 70px;
   }
 
-  /* imagem/vídeo principal */
   #mainMediaContainer {
     flex: 1;
     max-width: 500px;
