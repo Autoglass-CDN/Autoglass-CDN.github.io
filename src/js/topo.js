@@ -928,50 +928,43 @@ if (window.innerWidth > 1200) {
   const tabCategoria = document.getElementById("tab-busca-categoria");
   const divCategoria = document.getElementById("busca-categoria");
 
-  const divPecasSelect = document.querySelector(".c-busca__select.tipo-peca #pecas-select");
+  const divPecasSelect = document.querySelector(".c-busca__select.tipo-peca #pecas-select-desktop");
   const divBuscaPeca = divPecasSelect?.querySelector(".smart-select__main-results");
 
-  // Clique na aba de categoria
   tabCategoria?.addEventListener("click", (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    // Fecha lista de peças se estiver aberta
     if (divBuscaPeca && $(divBuscaPeca).is(":visible")) {
       $(divBuscaPeca).slideUp("fast");
     }
 
-    // Toggle do menu de categoria
     if ($(divCategoria).is(":visible")) {
       $(divCategoria).slideUp("fast");
     } else {
       $(divCategoria).slideDown("fast", function () {
-        this.style.display = "block"; // Força exibição
+        this.style.display = "block";
       });
     }
   });
 
-  // Clique no campo de seleção de peças
-  divPecasSelect?.addEventListener("click", (e) => {
+  $('#pecas-select-desktop').off('click');
+
+  $('#pecas-select-desktop').on('click', function (e) {
     e.preventDefault();
-    e.stopPropagation();
+    e.stopImmediatePropagation();
 
-    // Fecha menu de categoria se estiver aberto
-    if ($(divCategoria).is(":visible")) {
-      $(divCategoria).slideUp("fast");
+    const $dropdown = $('#pecas-select-desktop .smart-select__main-results');
+
+    if ($(e.target).is('li')) return;
+
+    if ($('#busca-categoria').is(':visible')) {
+      $('#busca-categoria').slideUp('fast');
     }
 
-    // Toggle da lista de peças
-    if ($(divBuscaPeca).is(":visible")) {
-      $(divBuscaPeca).slideUp("fast");
-    } else {
-      $(divBuscaPeca).slideDown("fast", function () {
-        this.style.display = "block"; // Corrige conflito com jQuery 1.8.3
-      });
-    }
+    $dropdown.slideToggle('fast');
   });
 
-  // Clique fora dos menus — fecha ambos
   document.addEventListener("click", (e) => {
     const isClickInsideCategoria = divCategoria?.contains(e.target);
     const isClickInsidePecas = divPecasSelect?.contains(e.target);
