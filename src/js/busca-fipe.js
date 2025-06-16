@@ -38,6 +38,74 @@
       sessionStorage.setItem("selectedOptionVersao", null);
       sessionStorage.setItem("idAba", "inputBuscaPeca");
     }
+
+   if (window.innerWidth > 1024) {
+    const $todosCampos = $('.c-busca__tabs-content')
+      .find('#montadora-select-desktop, #veiculo-select-desktop, #ano-select-desktop, #select-versao-fipe-desktop')
+      .closest('.c-busca__select');
+
+    const aplicarEstadoInicial = () => {
+      const isNaoSeiPlaca = $('#input-nao-sei-placa').is(':checked');
+
+      if (isNaoSeiPlaca) {
+        $todosCampos.each(function () {
+          this.style.display = 'none';
+        });
+      } else {
+        $todosCampos.each(function () {
+          this.style.display = 'block';
+        });
+      }
+    };
+
+    aplicarEstadoInicial();
+
+    $('#input-nao-sei-placa, #input-busca-placa-desktop').on('change', aplicarEstadoInicial);
+
+    const exibirCampo = (selector) => {
+      const $el = $('.c-busca__tabs-content').find(selector).closest('.c-busca__select');
+      if ($el.length > 0) {
+        $el[0].style.setProperty('display', 'block', 'important'); // força visibilidade
+      }
+    };
+
+    const encadearCampo = (origemId, destinoId) => {
+      $(`.c-busca__tabs-content #${origemId} li`).on('click', function () {
+        if (!$('#input-nao-sei-placa').is(':checked')) return;
+        exibirCampo(`#${destinoId}`);
+      });
+    };
+
+    encadearCampo('pecas-select-desktop', 'montadora-select-desktop');
+    encadearCampo('montadora-select-desktop', 'veiculo-select-desktop');
+    encadearCampo('veiculo-select-desktop', 'ano-select-desktop');
+    encadearCampo('ano-select-desktop', 'select-versao-fipe-desktop');
+  }
+
+    if (window.innerWidth > 1024) {
+      $('#input-nao-sei-placa, #input-busca-placa-desktop').on('change', function () {
+        if ($(this).is(':checked')) {
+
+          $('#pecas-select-desktop .gtm-smart-peca-select span').html('Tipo de Peça');
+
+          $('#pecas-select-desktop .fa-caret-down').show();
+          $('#pecas-select-desktop .fa-close').hide();
+
+          $('#pecas-select-desktop .smart-select__main-results').slideUp('fast');
+        }
+      });
+
+      $('#btn-busca-peca-buscar').on('click', function (e) {
+        const isNaoSeiPlaca = $('#input-nao-sei-placa').is(':checked');
+        const tipoPecaSelecionado = $('#pecas-select-desktop span').text().trim();
+
+        if (isNaoSeiPlaca && (tipoPecaSelecionado === 'Tipo de Peça' || !tipoPecaSelecionado)) {
+          e.preventDefault();
+          alert('Favor escolher um tipo de peça!');
+          return false;
+        }
+      });
+    }
   });
 
   let activeTab =
@@ -89,7 +157,7 @@
     },
     {
       title: "Tipo de Peça",
-      id: "pecas-select",
+      id: window.innerWidth > 1024 ? "pecas-select-desktop" : "pecas-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
@@ -98,7 +166,7 @@
     },
     {
       title: "Marca do Veículo",
-      id: "montadora-select",
+      id: window.innerWidth > 1024 ? "montadora-select-desktop" : "montadora-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
@@ -107,7 +175,7 @@
     },
     {
       title: "Modelo do Veículo",
-      id: "veiculo-select",
+      id: window.innerWidth > 1024 ? "veiculo-select-desktop" : "veiculo-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
@@ -116,7 +184,7 @@
     },
     {
       title: "Ano",
-      id: "ano-select",
+      id: window.innerWidth > 1024 ? "ano-select-desktop" : "ano-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
@@ -125,7 +193,7 @@
     },
     {
       title: "Versão Fipe do Veículo",
-      id: "versao-select",
+      id: window.innerWidth > 1024 ? "versao-select-desktop" : "versao-select",
       values: [],
       routeSelected: "",
       isAsyncSearch: true,
@@ -400,8 +468,8 @@
           )
             View.filterResults(e, select);
         });
-      //Fecha todos os selects caso já tenha algum aberto.
-      if(window.innerWidth > 1024){
+
+      if(window.innerWidth < 1024){
         $(document).on("click", (e) => {
           var container = $(`.c-busca__tab-content-mobile #${select.id}`);
           if (!$(e.target).closest(container).length) {
@@ -584,19 +652,23 @@
           )
             View.filterResults(e, select);
         });
-      // Fecha todos os selects caso já tenha algum aberto.
-      $(document).on("click", (e) => {
-        var container = $(`#${select.id}`);
 
-        if (!$(e.target).closest(container).length) {
-          $(
-            `#${select.id} .smart-select__main-results`
-          ).slideUp("fast");
-        }
-      });
-    }
+      if (window.innerWidth > 1024) {
+        $(document).on("click", (e) => {
+          var container = $(`#${select.id}`);
+
+          if (!$(e.target).closest(container).length) {
+            $(
+              `#${select.id} .smart-select__main-results`
+            ).slideUp("fast");
+          }
+        });
+      }
+  }
 
     function defineValorCheckbox(idTarget, _id) {
+      if (window.innerWidth > 1024) _id = _id.replace("select", "select-desktop");
+
       switch (_id) {
         case "categoria-select":
           sessionStorage.setItem("selectedOptionCategoria", idTarget);
@@ -622,6 +694,8 @@
     }
 
     function verificaValorCheckBox(_id) {
+      if (window.innerWidth > 1024) _id = _id.replace("select", "select-desktop");
+
       switch (_id) {
         case "categoria-select":
           return sessionStorage.getItem("selectedOptionCategoria");
@@ -689,12 +763,10 @@
 
         $(` #${_id} ul`).html(html);
 
-        $(` #${_id} ul li`)
-          .hover((event) => {
-            $(` #${_id} ul li`).removeClass(
-              CONFIG.CSS.HIGHLIGHT
-            );
 
+        $(`#${_id} ul li`)
+          .hover((event) => {
+            $(`#${_id} ul li`).removeClass(CONFIG.CSS.HIGHLIGHT);
             $(event.target).addClass(CONFIG.CSS.HIGHLIGHT);
           })
           .click((event) => {
@@ -703,12 +775,12 @@
                 Controller.addClick(event, _id);
                 break;
               case "#busca-placa":
-                handleBuscaPlacaSelection(event, _id);
-                break;
               case "#busca-categoria":
                 handleBuscaPlacaSelection(event, _id);
+                break;
             }
           });
+
         $(` #${_id} ul li`)
           .first()
           .addClass(CONFIG.CSS.HIGHLIGHT);
@@ -891,6 +963,18 @@
       const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
       const modalDeCarregamento = new ModalDeCarregamento();
       modalDeCarregamento.mostarSpinner();
+
+      window._naoSeiPlacaAtivo = document.getElementById('input-nao-sei-placa')?.checked || false;
+
+      if (textoOpcaoSelecionada) {
+        textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
+      }
+
+      if (window.innerWidth > 1024 && select.id === 'pecas-select-desktop') {
+        document.querySelector('#montadora-select-desktop')?.closest('.c-busca__select')
+          ?.style.setProperty('display', 'block', 'important');
+      }
+
       View.resetResults(index);
       if (index !== 0) {
         select.routeSelected = getSelectedRouteByOption(optionSelected);
@@ -938,6 +1022,11 @@
         }
 
         View.buildList(nextSelect.values, nextSelect.id);
+
+       const $wrapper = $(`#${nextSelect.id}`).closest('.c-busca__tabs-content .c-busca__select');
+        if ($wrapper.length) {
+          $wrapper.css('display', 'block');
+        }
       }
 
       if (window.innerWidth < 1024) {
@@ -948,7 +1037,6 @@
         }
       }
 
-      textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
       if(window.innerWidth < 1024) {
         $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
         ).slideUp("fast");
@@ -980,7 +1068,7 @@
     function selecionarInputPorNomeBuscaPeca(nome, nomeSelect) {
       const secaoSelectDiv = document.getElementById(`${nomeSelect}`);
       const listItems =
-        nomeSelect != "versao-select"
+        nomeSelect !== "versao-select" && nomeSelect !== "versao-select-desktop"
           ? secaoSelectDiv.querySelectorAll(".itens-lista li")
           : secaoSelectDiv.querySelectorAll(".itens-list li");
       listItems.forEach((item) => {
@@ -1003,11 +1091,13 @@
           ? document.getElementById("select-versao-fipe")
           : document.getElementById("select-versao-fipe-mobile");
 
+      const isNaoSeiPlaca = document.getElementById('input-nao-sei-placa').checked;
+
       if (id === "versao-select") {
-        if (length === 0) {
+        if (isNaoSeiPlaca) {
           div.style.display = "none";
         } else {
-          div.style.display = "block";
+          div.style.display = length === 0 ? "none" : "block";
         }
       }
     }
@@ -1315,26 +1405,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /** BUSCA POR PLACA */
-  const PLACA_SELECTS = [
-    {
-      title: "Tipo de Peça",
-      id: "categoria-select",
-      values: [],
-      routeSelected: "",
-      isAsyncSearch: false,
-      asyncSearchTerm: "",
-      canBeClear: false,
-    },
-  ];
+
+  // const PLACA_SELECTS = [
+  //   {
+  //     title: "Tipo de Peça",
+  //     id: window.innerWidth > 1024 ? "pecas-select-desktop" : "pecas-select",
+  //     values: [],
+  //     routeSelected: "",
+  //     isAsyncSearch: false,
+  //     asyncSearchTerm: "",
+  //     canBeClear: false,
+  //   },
+  // ];
 
   function _initBuscaPlaca(values) {
-    PLACA_SELECTS[0].values = values;
+    PECA_SELECTS[1].values = values;
 
-    View.buildList(PLACA_SELECTS[0].values, PLACA_SELECTS[0].id);
+    View.buildList(PECA_SELECTS[1].values, PECA_SELECTS[1].id);
 
     window.innerWidth > 1024
-      ? View._initSelect_(PLACA_SELECTS[0])
-      : View._initSelectMobile_(PLACA_SELECTS[0]);
+      ? View._initSelect_(PECA_SELECTS[1])
+      : View._initSelectMobile_(PECA_SELECTS[1]);
 
     restoreBuscaPlaca();
 
@@ -1373,7 +1464,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // if (!textoSelecionado || textoSelecionado === "Tipo de Peça") {
           //   alert("Você deve selecionar um tipo de peça antes de buscar pela placa.");
           // } else {
-            
+
           // }
         }
       }
@@ -1430,7 +1521,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const param = arrayPaths.slice(0, 2).join("/");
 
-        const select = PLACA_SELECTS[0];
+        const select = PECA_SELECTS[1];
         const value = select.values.find((x) =>
           x.url ? x.url.includes(param) : x.name.includes(param)
         );
@@ -1490,7 +1581,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function handleBuscaPlacaSelection(event, _id) {
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
     const optionSelected = select.values.find((x) => x.id == event.target.id);
     const listItems = document.querySelectorAll(".itens-lista li");
     const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
@@ -1541,7 +1632,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function buscaPorPlaca(placaString) {
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
 
     const FILTROS_VTEX = {
       MONTADORA: 36,
@@ -1819,7 +1910,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function checkIfUniversalProductSearch() {
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
 
     if (select.routeSelected.length) {
       const selectedRoute = select.routeSelected;
@@ -1948,7 +2039,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetSelect() {
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
     if(select == "categoria-select"){
       var inputPlaca = document.querySelector("#placa-input");
       $(` #${select.id} > div > span`).html(select.title);
@@ -1958,7 +2049,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function resetSelectMobile(){
-    const select = PLACA_SELECTS[0];
+    const select = PECA_SELECTS[1];
     select.routeSelected = "";
     document.querySelector(`#opcao-selecionada-${select.id}`).innerHTML = "";
     retiraCheckedOpcaosSelecionadas();
@@ -1994,7 +2085,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   function retiraCheckedOpcaosSelecionadas() {
-    const checkedInputPecas = document.querySelector('#pecas-select .itens-lista li input:checked');
+    const checkedInputPecas = document.querySelector(window.innerWidth > 1024 ? '#pecas-select-desktop .itens-lista li input:checked' : '#pecas-select .itens-lista li input:checked');
     const checkedInputCategoria = document.querySelector('#categoria-select .itens-lista li input:checked');
 
     if(checkedInputPecas){

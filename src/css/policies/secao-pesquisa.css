@@ -35,7 +35,7 @@
     color: #0b4583;
     font-weight: bold;
     font-size: 16px;
-    padding: 6% 0px 0px 10%;
+    padding: 6% 0px 0px 35%;
   }
 }
 
@@ -54,12 +54,15 @@
     gap: 50px; /* Adicionando espaçamento entre as abas */
   }
 
+  .c-busca__tabs-content .tab-header {
+    background-color: inherit;
+  }
+
   .c-busca__tabs-content .tab-header{
     flex-direction: column;
     align-items: flex-start;
     padding: 0px;
     border-bottom: 0px;
-    background-color: #ffffff;
     border-radius: 0px;
     gap: 5px; /* Adicionando espaçamento entre as abas */
   }
