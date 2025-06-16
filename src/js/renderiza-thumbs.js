@@ -1,93 +1,110 @@
-document.addEventListener('DOMContentLoaded', () => {
-  const sku = window?.skuJson?.skus?.[0];
-  if (!sku) return;
+document.addEventListener("DOMContentLoaded", async () => {
+  const refId = extrairRefIdDoNome(skuJson?.name);
+  const skuId = skuJson?.skus?.[0]?.sku;
+  if (!refId || !skuId) return console.warn("RefId ou SKU ID ausente.");
 
-  const midiaContainer  = document.getElementById('midia-container');
-  const thumbsContainer = document.getElementById('thumbnails');
-  if (!midiaContainer || !thumbsContainer) return;
+  const [imagens, videos] = await Promise.all([
+    buscarImagensDoSku(skuId),
+    buscarVideosDoSku(refId)
+  ]);
 
-  function renderPrincipal(html) {
-    midiaContainer.innerHTML = html;
-  }
-
-  function criaThumb(src, alt, onClick) {
-    const li    = document.createElement('li');
-    const thumb = document.createElement('img');
-    thumb.src   = src;
-    thumb.alt   = alt;
-    thumb.addEventListener('click', onClick);
-    li.appendChild(thumb);
-    thumbsContainer.appendChild(li);
-  }
-
-  if (sku.images?.length) {
-    renderPrincipal(
-      `<img class="imagem-principal" src="${sku.images[0].imageUrl}" alt="Imagem do Produto" />`
-    );
-
-    sku.images.forEach((img, idx) => {
-      criaThumb(
-        img.imageUrl,
-        `Imagem ${idx + 1}`,
-        () => renderPrincipal(
-          `<img class="imagem-principal" src="${img.imageUrl}" alt="Imagem do Produto" />`
-        )
-      );
-    });
-  }
-
-  if (sku.videos?.length) {
-    sku.videos.forEach((url, vidIdx) => {
-      const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/))([\w\-]+)/);
-      if (ytMatch) {
-        const ytId     = ytMatch[1];
-        const thumbUrl = `https://img.youtube.com/vi/${ytId}/default.jpg`;
-        criaThumb(
-          thumbUrl,
-          `Vídeo ${vidIdx + 1}`,
-          () => renderPrincipal(`
-            <iframe class="video-principal" width="100%" height="315"
-              src="https://www.youtube.com/embed/${ytId}?autoplay=1"
-              frameborder="0"
-              allow="autoplay; encrypted-media"
-              allowfullscreen>
-            </iframe>
-          `)
-        );
-        return;
-      }
-
-      if (url.match(/\.gif(\?.*)?$/i)) {
-        criaThumb(
-          url,
-          `GIF ${vidIdx + 1}`,
-          () => renderPrincipal(
-            `<img class="imagem-principal" src="${url}" alt="GIF do Produto" />`
-          )
-        );
-        return;
-      }
-
-      if (url.match(/\.(mp4|webm|ogg)(\?.*)?$/i)) {
-        const thumbTemporal = `${url}#t=0.1`;
-        criaThumb(
-          thumbTemporal,
-          `Vídeo ${vidIdx + 1}`,
-          () => renderPrincipal(`
-            <video class="video-principal" width="100%" controls autoplay>
-              <source src="${url}" type="video/${RegExp.$1}">
-              Seu navegador não suporta o elemento <code>video</code>.
-            </video>
-          `)
-        );
-        return;
-      }
-
-      criaThumb(
-        '/arquivos/play-icon.svg',
-        `Vídeo ${vidIdx + 1}`,
-        () => window.open(url, '_blank')
-      );
-    });
-  }
+  renderGaleria([...imagens, ...videos]);
 });
+
+function extrairRefIdDoNome(skuName) {
+  if (!skuName) return null;
+  const ult = skuName.split("-").pop().trim();
+  return /^\d+$/.test(ult) ? ult : null;
+}
+
+async function buscarImagensDoSku(skuId) {
+  const endpoint = `http://localhost:5010/integracao-b2c/api/int-app/sincronismos/sku/imagens/${skuId}`;
+  try {
+    const data = await (await fetch(endpoint)).json();
+    return Array.isArray(data)
+      ? data.map(img => img.Url
+          ?? (img.FileLocation
+              ? `https://autoglass.vteximg.com.br/${img.FileLocation.replace(/^.*?arquivos/, "arquivos")}`
+              : null)
+        ).filter(Boolean)
+      : [];
+  } catch (e) {
+    console.error("Erro ao buscar imagens:", e);
+    return [];
+  }
+}
+
+async function buscarVideosDoSku(refId) {
+  const endpoint = `http://localhost:5010/integracao-b2c/api/int-app/sincronismos/sku/${refId}`;
+  try {
+    const data = await (await fetch(endpoint)).json();
+    return data.videoList || data.Videos || [];
+  } catch (e) {
+    console.error("Erro ao buscar vídeos:", e);
+    return [];
+  }
+}
+
+function renderGaleria(midias) {
+  const thumbs = document.getElementById("thumbsContainer");
+  const main   = document.getElementById("mainMediaContainer");
+  if (!thumbs || !main) return;
+
+  thumbs.innerHTML = main.innerHTML = "";
+
+  midias.forEach((url, i) => {
+    const isVideo = /youtube|\.mp4$|\.webm$/i.test(url);
+    const li = document.createElement("li");
+    li.className = "thumb-item";
+    li.innerHTML = isVideo
+      ? `<div class="thumb-video"><video src="${url}" muted playsinline preload="metadata"></video></div>`
+      : `<img src="${url}" alt="Miniatura ${i + 1}" loading="lazy">`;
+
+    li.addEventListener("click", () => {
+      document.querySelectorAll(".thumb-item").forEach(el => el.classList.remove("active"));
+      li.classList.add("active");
+      exibirMidia(url);
+    });
+
+    thumbs.appendChild(li);
+    if (i === 0) { li.classList.add("active"); exibirMidia(url); }
+  });
+}
+
+function exibirMidia(url) {
+  const main = document.getElementById("mainMediaContainer");
+  const isVideo = /youtube|\.mp4$|\.webm$/i.test(url);
+
+  main.innerHTML = isVideo
+    ? (url.includes("youtube")
+        ? `<iframe src="${url.replace("watch?v=","embed/")}" frameborder="0" allowfullscreen></iframe>`
+        : `<video src="${url}" controls autoplay></video>`)
+    : `<div class="zoom-wrapper" data-zoom-image="${url}" style="background-image:url('${url}')"></div>`;
+
+  if (!isVideo) inicializarZoom(main.querySelector(".zoom-wrapper"));
+}
+
+function inicializarZoom(wrapper) {
+  if (!wrapper) return;
+
+  const zoomFactor = 1.5;
+
+  wrapper.style.backgroundSize = "100%";
+  wrapper.style.backgroundPosition = "center";
+
+  wrapper.addEventListener("mouseenter", () => {
+    wrapper.style.backgroundSize = `${zoomFactor * 100}%`;
+  });
+
+  wrapper.addEventListener("mousemove", (e) => {
+    const r = wrapper.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    wrapper.style.backgroundPosition = `${x}% ${y}%`;
+  });
+
+  wrapper.addEventListener("mouseleave", () => {
+    wrapper.style.backgroundSize = "100%";
+    wrapper.style.backgroundPosition = "center";
+  });
+}
