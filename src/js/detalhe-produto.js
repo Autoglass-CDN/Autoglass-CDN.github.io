@@ -134,7 +134,6 @@ async function insertBrandDescription() {
         .trim()
         .replace("-", " ")
         .split(" ")[0];
-
       const brand = brandList.find((brand) => brand.name.includes(brandName));
 
       if (brand && brand.metaTagDescription !== '') {
