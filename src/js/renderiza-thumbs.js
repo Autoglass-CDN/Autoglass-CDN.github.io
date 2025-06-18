@@ -17,6 +17,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   modal.addEventListener("click", e => { if (e.target.id === "modalZoom") modal.style.display = "none"; });
 });
 
+const urlApi = window.location.href.includes("hml") || window.location.href.includes("dev")
+    ? "https://api-int-hml.autoglass.com.br"
+    : "https://api.autoglass.com.br";
+
 function extrairRefIdDoNome(nome) {
   if (!nome) return null;
   const ult = nome.split("-").pop().trim();
@@ -24,7 +28,7 @@ function extrairRefIdDoNome(nome) {
 }
 
 async function buscarImagensDoSku(skuId) {
-  const endpoint = `http://localhost:5010/integracao-b2c/api/int-app/sincronismos/sku/imagens/${skuId}`;
+  const endpoint = `${urlApi}/integracao-b2c/api/int-app/sincronismos/sku/imagens/${skuId}`;
   try {
     const data = await (await fetch(endpoint)).json();
     return Array.isArray(data)
@@ -42,7 +46,7 @@ async function buscarImagensDoSku(skuId) {
 }
 
 async function buscarVideosDoSku(refId) {
-  const endpoint = `http://localhost:5010/integracao-b2c/api/int-app/sincronismos/sku/${refId}`;
+  const endpoint = `${urlApi}/integracao-b2c/api/int-app/sincronismos/sku/${refId}`;
   try {
     const data = await (await fetch(endpoint)).json();
     return data.videoList || data.Videos || [];
