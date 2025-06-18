@@ -6,7 +6,7 @@
 @media (max-width: 767px) {
   .breadcrumb-qd-v1 {
     width: 80%;
-    margin: 20px;
+    margin: 20px 20px 0px 20px;
   }
 }
 .breadcrumb-qd-v1 .bread-crumb {
@@ -2906,7 +2906,8 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     font-weight: 600;
     font-size: 13px;
     margin-bottom: 25px;
-    padding-left: 20px;
+    margin-top: 10px;
+    padding-left: 21px;
     font-weight: 700;
     color: #000000;
     font-style: normal;
