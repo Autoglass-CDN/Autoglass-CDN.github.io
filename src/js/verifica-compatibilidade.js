@@ -53,19 +53,30 @@ window.addEventListener("load", () => {
   }
 });
 
+const FILTROS_VTEX = {
+  MONTADORA: 36,
+  VEICULO:   50,
+  ANO:       48,
+  FIPE:      76,
+};
+
 const CONFIG = {
   ORIGIN: "https://dev2autoglass.myvtex.com",
+  ASYNC:{
+    TREE_LEVEL: 2,
+  }
 }
 const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
 const questionIcon = document.getElementById("icon-question");
 const tooltip = document.getElementById("tooltip-question");
+const botaoProdutosCompativeis = document.querySelector('#botaoProdutosCompativeis');
 
 
 window.addEventListener('DOMContentLoaded', function () {
   const botaoVerificarCompatibilidade = document.querySelector('#botaoVerificarCompatibilidade');
   if (botaoVerificarCompatibilidade) {
     botaoVerificarCompatibilidade.addEventListener('click', function () {
-      verificarProdutoComPlaca(document.getElementById('placaInput').value);
+      tratarCompatibilidadeProduto(document.getElementById('placaInput').value, "verificarCompatibilidade");
     });
   }
 })
@@ -87,20 +98,37 @@ function verificaPlacaValida(placa) {
   return true;
 }
 
-async function verificarProdutoComPlaca(placa) {
+function montarUrlComFiltros(baseCategoria, filtrosOrdenados = []) {
+  let url = "";
+  let map = [];
+
+  if (baseCategoria) {
+    if (!baseCategoria.startsWith("/")) baseCategoria = "/" + baseCategoria;
+    if (baseCategoria.endsWith("/"))   baseCategoria = baseCategoria.slice(0, -1);
+
+    const segmentosCategoria = baseCategoria.split("/").filter(Boolean);
+    url += "/" + segmentosCategoria.map(encodeURIComponent).join("/");
+    map.push(...segmentosCategoria.map(() => "c"));
+  }
+
+  filtrosOrdenados.forEach(f => {
+    if (f?.value && f?.codigo) {
+      url += `/${encodeURIComponent(f.value)}`;
+      map.push(`specificationFilter_${f.codigo}`);
+    }
+  });
+
+  const mapParam = map.join(",");
+  return `${url}?PS=24&map=${mapParam}`;
+}
+
+async function tratarCompatibilidadeProduto(placa, modo, urlProdutoCompativel = "") {
   if (!verificaPlacaValida(placa)) return;
 
-  const spinner = document.getElementById('overlayCompat');
-  spinner.classList.remove('hidden');
+  const spinner = document.getElementById("overlayCompat");
+  spinner.classList.remove("hidden");
 
   try {
-    const FILTROS_VTEX = {
-      MONTADORA: 36,
-      VEICULO: 50,
-      ANO: 48,
-      FIPE: 76,
-    };
-
     const placaSanitizada = placa.trim().replace(/[\W_]+/g, "").toUpperCase();
     const { montadora, modelo, anoModelo, fipe } = await obterDadosDoVeiculoViaOlhoNoCarro(placaSanitizada);
 
@@ -111,49 +139,37 @@ async function verificarProdutoComPlaca(placa) {
       fipe ? encontrarDadosNoCadastroVtex({ filtro: FILTROS_VTEX.FIPE, regex: obterRegexFipes(fipe) }) : [],
     ]);
 
-    const filtros = [];
-    const map = [];
+    const filtrosOrdenados = [
+      { value: fipes[0]?.Value,      codigo: FILTROS_VTEX.FIPE },
+      { value: anos[0]?.Value,       codigo: FILTROS_VTEX.ANO },
+      { value: modelos[0]?.Value,    codigo: FILTROS_VTEX.VEICULO },
+      { value: montadoras[0]?.Value, codigo: FILTROS_VTEX.MONTADORA },
+    ];
 
-    if (fipes.length) {
-      filtros.push(fipes[0].Value);
-      map.push(`specificationFilter_${FILTROS_VTEX.FIPE}`);
-    }
-    if (anos.length) {
-      filtros.push(anos[0].Value);
-      map.push(`specificationFilter_${FILTROS_VTEX.ANO}`);
-    }
-    if (modelos.length) {
-      filtros.push(modelos[0].Value);
-      map.push(`specificationFilter_${FILTROS_VTEX.VEICULO}`);
-    }
-    if (montadoras.length) {
-      filtros.push(montadoras[0].Value);
-      map.push(`specificationFilter_${FILTROS_VTEX.MONTADORA}`);
-    }
+    const urlRelativa = montarUrlComFiltros("", filtrosOrdenados);
 
-    const rota = `/${[...filtros].reverse().join("/")}`;
-    const url = `${rota}?map=${map.reverse().join(",")}`;
+    if (modo === "verificarCompatibilidade") {
+      const produtos        = await buscarTodosProdutosCompatíveis(urlRelativa);
+      const produtoAtualId  = skuJson?.productId || window.vtex?.product?.id;
+      const encontrado      = produtos.some(p => p.productId == produtoAtualId);
+      EstilizarCardCompatibilidade(encontrado, encontrado ? "sucesso" : "erro");
+    } else if (modo === "produtoCompativel") {
+      let base = urlProdutoCompativel?.trim() || "";
+      if (base && !base.startsWith("/")) base = "/" + base;
+      if (base.endsWith("/"))           base = base.slice(0, -1);
 
-    const produtos = await buscarTodosProdutosCompatíveis(url);
-    const produtoAtualId = skuJson?.productId || window.vtex?.product?.id;
-
-    const encontrado = produtos.some(p => p.productId == produtoAtualId);
-
-    if (encontrado) {
-      EstilizarCardCompatibilidade(true, "sucesso");
-    } else {
-      EstilizarCardCompatibilidade(false, "erro");
+      const destino = montarUrlComFiltros(base, filtrosOrdenados);
+      window.location.href = destino;
     }
   } catch (error) {
-    console.error("Erro ao verificar compatibilidade:", error);
-
-    if (error.message.includes("Placa não encontrada")) {
+    console.error("Erro ao tratar compatibilidade:", error);
+    if (error.message?.includes("Placa não encontrada")) {
       EstilizarCardCompatibilidade();
     } else {
       alert("Erro ao verificar compatibilidade. Tente novamente.");
     }
   } finally {
-    spinner.classList.add('hidden');
+    spinner.classList.add("hidden");
   }
 }
 
@@ -198,6 +214,7 @@ function aplicarEstadoCompatibilidade(estado) {
 
   if (estado.icones.includes('xmark')) {
     document.querySelector('#icon-verificar-compatibilidade-xmark').style.display = "block";
+    botaoProdutosCompativeis.style.display = "block";
   }
 
   if (estado.icones.includes('question')) {
@@ -369,4 +386,32 @@ async function buscarTodosProdutosCompatíveis(url) {
   }
 
   return produtos;
+}
+
+botaoProdutosCompativeis.addEventListener('click', async () => {
+  let urlProdutoCompativel = "";
+  const arvoreCategoria = await getArvoreCategoria();
+  const categoria = [];
+  const subCategoria = [];
+  arvoreCategoria
+    .filter((x) => x.hasChildren)
+    .forEach((x) => {
+      categoria.push(...x.children);
+    });
+
+  categoria.forEach((y) => {
+    subCategoria.push(...y.children);
+  });
+  const categoriaProduto = subCategoria.find((x) => x.id === window.dataLayer[0].productCategoryId);
+  urlProdutoCompativel = categoriaProduto.url
+                          ? categoriaProduto.url.replace(new URL(categoriaProduto.url).origin, "")
+                          : "/" + categoriaProduto.name.toLowerCase();
+
+  tratarCompatibilidadeProduto(document.getElementById('placaInput').value, "produtoCompativel", urlProdutoCompativel);
+});
+
+async function getArvoreCategoria() {
+  return await $.get(
+    `${CONFIG.ORIGIN}/api/catalog_system/pub/category/tree/${CONFIG.ASYNC.TREE_LEVEL}`
+  );
 }
