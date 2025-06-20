@@ -724,7 +724,7 @@ i.arrow-icon::before {
 @media (max-width: 991px) {
   .search-box-mobile {
     display: flex;
-    position: sticky;
+    position: static;
     overflow: inherit;
     top: 85px;
     right: 0px;
@@ -1551,7 +1551,7 @@ i.arrow-icon::before {
     rgba(0, 0, 0, 1) 98%,
     rgba(0, 0, 0, 0)
   );
-  z-index: 4;
+  z-index: 0;
   margin-left: 35px;
 }
 
@@ -1975,7 +1975,7 @@ body div#ajaxBusy {
 .titulo-side-menu {
   display: flex;
   border-bottom: 1px solid #dddddd;
-  padding-top: 5%;
+  padding-top: 13%;
 }
 
 .titulo-side-menu > span {

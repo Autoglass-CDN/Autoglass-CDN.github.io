@@ -589,14 +589,32 @@ function openNav() {
   removeFunctions();
 }
 
+function lockPageScroll() {
+  const scrollY = window.scrollY || document.documentElement.scrollTop;
+  document.body.classList.add("lock-scroll");
+  document.body.style.top = `-${scrollY}px`;
+  document.body.dataset.scrollY = scrollY;
+}
+
+function unlockPageScroll() {
+  const scrollY = document.body.dataset.scrollY;
+  document.body.classList.remove("lock-scroll");
+  document.body.style.top = "";
+  window.scrollTo(0, parseInt(scrollY || "0"));
+}
+
 function openNavCategory() {
-  const backdrop = document.querySelector(".side-menu-backdrop");
+  document.querySelector('main')?.classList.add('no-scroll');
   const zenDeskIcon = document.querySelector("#launcher");
   const whatsAppIcon = document.querySelector("#whatsapp-icon-link");
   const buscaCategoria = document.getElementById("busca-categoria-mobile");
+  const socialBtn = document.querySelector('.product-qd-v1-social-share.mobile');
 
-  backdrop.style.display = "unset";
-  backdrop.style.opacity = "1";
+  if (socialBtn) {
+    socialBtn.style.zIndex = '0';
+    socialBtn.style.pointerEvents = 'none';
+  }
+
   document.body.style.overflowY = "hidden";
 
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
@@ -622,7 +640,7 @@ function openNavCategory() {
       a.style.opacity = "1";
     });
   }, 400);
-
+  lockPageScroll();
   removeFunctions();
 }
 
@@ -654,10 +672,21 @@ function closeNav() {
 }
 
 function closeNavCategory() {
+  document.querySelector('main')?.classList.remove('no-scroll');
+  document.body.classList.remove("no-scroll");
   const backdrop = document.querySelector(".side-menu-backdrop");
   const buscaCategoria = document.getElementById("busca-categoria-mobile");
   const zenDeskIcon = document.querySelector("#launcher");
   const whatsAppIcon = document.querySelector("#whatsapp-icon-link");
+  const socialBtn = document.querySelector('.product-qd-v1-social-share.mobile');
+
+  if (socialBtn) {
+    setTimeout(() => {
+      socialBtn.style.zIndex = '2';
+      socialBtn.style.pointerEvents = 'auto';
+    }, 400);
+
+  }
 
   buscaCategoria.classList.remove("is-active");
 
@@ -676,6 +705,8 @@ function closeNavCategory() {
   setTimeout(() => {
     backdrop.style.display = "none";
   }, 400);
+
+  unlockPageScroll();
 }
 
 function openCategorias() {
