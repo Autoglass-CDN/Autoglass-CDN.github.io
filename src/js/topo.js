@@ -718,15 +718,21 @@ function toggleCategory(self) {
 
   autocompleteInitMobile(searchField);
 
-  checkLoginMobile();
-
   loadCart(device.mobile);
 
   document.addEventListener("DOMContentLoaded", () => {
-    document
-      .querySelector(".side-menu-backdrop")
-      .addEventListener("click", () => closeNav())
-      .addEventListener("click", () => closeNavCategory());
+    const backdrop = document.querySelector(".side-menu-backdrop");
+
+    if (backdrop) {
+      backdrop.addEventListener("click", () => {
+        closeNav();
+        closeNavCategory();
+      });
+    } else {
+      console.warn("Elemento .side-menu-backdrop não encontrado no DOM.");
+    }
+
+    checkLoginMobile();
   });
 
   $(".usuario__opcoes-mobile a").click(() => {
