@@ -257,11 +257,8 @@ async function checkLoginMobile() {
       .querySelector("#div-login-mobile")
       .addEventListener("click", () => {
         document.getElementById("loading-spinner").style.display = "flex";
-
-        setTimeout(() => {
-          window.location.href =
-            "https://hml.autoglassonline.com.br/_secure/account#/";
-        }, 500);
+        window.location.href =
+          "https://hml.autoglassonline.com.br/_secure/account#/";
       });
   }
 }
@@ -718,15 +715,21 @@ function toggleCategory(self) {
 
   autocompleteInitMobile(searchField);
 
-  checkLoginMobile();
-
   loadCart(device.mobile);
 
   document.addEventListener("DOMContentLoaded", () => {
-    document
-      .querySelector(".side-menu-backdrop")
-      .addEventListener("click", () => closeNav())
-      .addEventListener("click", () => closeNavCategory());
+    const backdrop = document.querySelector(".side-menu-backdrop");
+
+    if (backdrop) {
+      backdrop.addEventListener("click", () => {
+        closeNav();
+        closeNavCategory();
+      });
+    } else {
+      console.warn("Elemento .side-menu-backdrop não encontrado no DOM.");
+    }
+
+    checkLoginMobile();
   });
 
   $(".usuario__opcoes-mobile a").click(() => {
