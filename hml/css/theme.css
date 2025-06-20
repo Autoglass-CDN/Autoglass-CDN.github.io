@@ -75,3 +75,11 @@ hr {
   border: 1px solid var(--gray-300);
   background-color: var(--gray-300);
 }
+
+body.lock-scroll {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0;
+  width: 100%;
+  overflow: hidden !important;
+}
