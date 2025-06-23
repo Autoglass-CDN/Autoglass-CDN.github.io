@@ -378,7 +378,7 @@ i.arrow-icon::before {
   height: 80px;
   width: 100%;
   position: sticky;
-  z-index: 3;
+  z-index: 900;
   top: 40px;
   display: flex;
   justify-content: center;
