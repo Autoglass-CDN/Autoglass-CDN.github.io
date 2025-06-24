@@ -1669,25 +1669,29 @@ fieldset#beneficios legend {
   font-style: normal;
 }
 
-.span-sem-juros {
-  font-size: 16px;
-  font-weight: normal;
-}
-
-@media only screen and (max-width: 767px) {
-  .product-qd-v1-price {
-    padding-top: 12px !important;
+@media only screen and (min-width: 768px) {
+  .span-sem-juros {
+    font-size: 16px;
+    font-weight: normal;
+  }
+  .skuBestInstallmentValue {
+    font-size: 16px !important;
+    font-weight: 600 !important;
   }
 }
 
-.skuBestInstallmentNumber {
-  font-size: 16px !important;
-  font-weight: 600 !important;
-}
-
-.skuBestInstallmentValue {
-  font-size: 16px !important;
-  font-weight: 600 !important;
+@media only screen and (max-width: 767px) {
+  .span-sem-juros {
+    font-size: 12px;
+    font-weight: normal;
+  }
+  .product-qd-v1-price {
+    padding-top: 2% !important;
+  }
+  .skuBestInstallmentValue {
+    font-size: 12px !important;
+    font-weight: 400 !important;
+  }
 }
 
 .palavras-conectivas {

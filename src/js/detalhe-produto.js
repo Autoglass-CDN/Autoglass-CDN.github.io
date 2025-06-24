@@ -602,6 +602,10 @@ function aplicarDesconto(percentualDesconto) {
         precoElemento.parentElement.appendChild(divPix);
         precoElemento.parentElement.appendChild(divPercent);
       } else {
+        const divPix = document.createElement('div');
+        divPix.classList.add('pix-discount');
+        divPix.textContent = 'no Pix';
+        precoElemento.parentElement.appendChild(divPix);
         precoElemento.classList.add('.preco-bottom-mobile')
       }
 
