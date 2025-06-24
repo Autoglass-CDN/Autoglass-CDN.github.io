@@ -561,34 +561,41 @@ function delayedAction(action, abortController) {
   return abortController;
 }
 
-//MOBILE
-
+// MOBILE
 function openNav() {
   let backdrop = document.querySelector(".side-menu-backdrop");
   let zenDeskIcon = document.querySelector("#launcher");
-  let whatsAppIcon =  document.querySelector("#whatsapp-icon-link");
+  let whatsAppIcon = document.querySelector("#whatsapp-icon-link");
+  
   backdrop.style.display = "unset";
   backdrop.style.opacity = "1";
+
   document.body.style.overflowY = "hidden";
+  document.documentElement.style.overflowY = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
+  document.body.style.top = "0";
+
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
   zenDeskIcon.style.opacity = "0";
   setTimeout(() => {
     zenDeskIcon.style.visibility = "hidden";
   }, 500);
   zenDeskIcon.style.pointerEvents = "none";
+
   whatsAppIcon.style.transition = "opacity 0.3s ease";
   whatsAppIcon.style.opacity = "0.5";
+
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = "unset";
+  
   setTimeout(() => {
     sideMenu.style.width = "338px";
-    setTimeout(
-      () =>
-        sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "1")),
-      200
-    );
+    setTimeout(() => 
+      sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "1"))
+    , 200);
   }, 300);
-  //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+
   removeFunctions();
 }
 
@@ -619,6 +626,10 @@ function openNavCategory() {
   }
 
   document.body.style.overflowY = "hidden";
+  document.documentElement.style.overflowY = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
+  document.body.style.top = "0";
 
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
   zenDeskIcon.style.opacity = "0";
@@ -652,7 +663,13 @@ function closeNav() {
   let sideMenu = document.getElementById("side-menu");
   let zenDeskIcon = document.querySelector("#launcher");
   let whatsAppIcon =  document.querySelector("#whatsapp-icon-link");
+
   document.body.style.overflowY = "auto";
+  document.documentElement.style.overflowY = "auto";
+  document.body.style.position = "static";
+  document.body.style.width = "auto";
+  document.body.style.top = "auto";
+
   zenDeskIcon.style.visibility = "visible";
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
   setTimeout(() => {
@@ -694,6 +711,10 @@ function closeNavCategory() {
   buscaCategoria.classList.remove("is-active");
 
   document.body.style.overflowY = "auto";
+  document.documentElement.style.overflowY = "auto";
+  document.body.style.position = "static";
+  document.body.style.width = "auto";
+  document.body.style.top = "auto";
 
   zenDeskIcon.style.visibility = "visible";
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";

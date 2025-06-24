@@ -65,7 +65,7 @@
     const exibirCampo = (selector) => {
       const $el = $('.c-busca__tabs-content').find(selector).closest('.c-busca__select');
       if ($el.length > 0) {
-        $el[0].style.setProperty('display', 'block', 'important'); // força visibilidade
+        $el[0].style.setProperty('display', 'block', 'important');
       }
     };
 
@@ -106,11 +106,116 @@
         }
       });
     }
+
+   if (window.innerWidth < 1024) {
+      const menuPeca = $('#busca-peca-mobile #pecas-select .smart-select__main-results');
+      let menuPecaAberto = false;
+
+      $('#busca-peca-mobile #pecas-select > div').off('click').on('click', function (e) {
+        e.stopPropagation();
+        if (!menuPecaAberto) {
+          menuPeca.slideDown('fast');
+          menuPecaAberto = true;
+        } else {
+          menuPeca.slideUp('fast');
+          menuPecaAberto = false;
+        }
+      });
+
+      const menuCategoria = $('#busca-placa-mobile #categoria-select .smart-select__main-results');
+      let menuCategoriaAberto = false;
+
+      $('#busca-placa-mobile #categoria-select > div').off('click').on('click', function (e) {
+        e.stopPropagation();
+        if (!menuCategoriaAberto) {
+          menuCategoria.slideDown('fast');
+          menuCategoriaAberto = true;
+        } else {
+          menuCategoria.slideUp('fast');
+          menuCategoriaAberto = false;
+        }
+      });
+
+      $(document).on('click', function (e) {
+        const isInsidePeca = $(e.target).closest('#pecas-select').length > 0;
+        const isInsideCategoria = $(e.target).closest('#categoria-select').length > 0;
+        const isInputBusca = $(e.target).is('#inputBuscaPeca') || $(e.target).closest('#inputBuscaPeca').length > 0;
+
+        if (!isInsidePeca && !isInputBusca) {
+          menuPeca.slideUp('fast');
+          menuPecaAberto = false;
+        }
+
+        if (!isInsideCategoria) {
+          menuCategoria.slideUp('fast');
+          menuCategoriaAberto = false;
+        }
+      });
+    }
+
+    if (window.innerWidth > 1024) {
+      document.querySelectorAll('.c-busca__tabs li').forEach((tab) => {
+        tab.addEventListener('click', () => {
+          if (tab.id === "tab-busca-placa") {
+            activeTab = "#busca-placa";
+          } else {
+            activeTab = "#busca-peca";
+          }
+        });
+      });
+    }
+
+    if (window.innerWidth > 1024) {
+      const abaSelecionada = document.querySelector('.c-busca__tabs li.is-active a');
+      activeTab = abaSelecionada ? abaSelecionada.getAttribute('href') : '#busca-peca';
+    } else {
+      const abaSelecionada = sessionStorage.getItem('idAba');
+      activeTab = abaSelecionada === 'inputBuscaPeca' ? '#busca-peca-mobile' : '#busca-placa-mobile';
+    }
+
+    if (window.innerWidth < 1024) {
+      document.getElementById('inputPlaca').addEventListener('click', () => {
+        activeTab = '#busca-placa-mobile';
+        sessionStorage.setItem('idAba', 'inputPlaca');
+      });
+
+      document.getElementById('inputBuscaPeca').addEventListener('click', () => {
+        activeTab = '#busca-peca-mobile';
+        sessionStorage.setItem('idAba', 'inputBuscaPeca');
+      });
+    }
+    
+    const $ulTabs = $('.c-busca__tabs-mobile.tab-header.search-options');
+
+    const $localOriginal = $('.c-busca__tabs-content-mobile');
+    const $buscaPecaContainer = $('.c-busca__tabs-content-mobile #busca-peca-mobile .h-flex');
+    
+    $('#tab-busca-peca-mobile').on('click', function (e) {
+      e.preventDefault();
+
+      const $primeiraSelect = $buscaPecaContainer.find('.c-busca__select').first();
+      $ulTabs.detach().insertAfter($primeiraSelect);
+
+      $('#tab-busca-placa-mobile').removeClass('is-active');
+      $(this).addClass('is-active');
+    });
+
+    $('#tab-busca-placa-mobile').on('click', function (e) {
+      e.preventDefault();
+
+      const $divs = $localOriginal.children('div');
+      if ($divs.length >= 2) {
+        $ulTabs.detach().insertAfter($divs.eq(1));
+      } else {
+        $ulTabs.detach().appendTo($localOriginal);
+      }
+
+      $('#tab-busca-peca-mobile').removeClass('is-active');
+      $(this).addClass('is-active');
+    });
   });
 
-  let activeTab =
-    window.innerWidth > 1024 ? "#busca-placa" : "#busca-placa-mobile";
-  selectRightSearchMethod();
+  let activeTab = window.innerWidth > 1024 ? '#busca-placa' : '#busca-placa-mobile';
 
   /** BUSCA POR PEÇA DEV */
   const Service = ServiceAPI();
@@ -221,7 +326,9 @@
     });
 
     _initBuscaPlaca(grandchildenCategories);
-    await _initBuscaPeca(grandchildenCategories);
+    await _initBuscaPeca(grandchildenCategories)
+    
+    window._dadosCategoriasPeca = grandchildenCategories;
   }
 
   function verificaTelaMobile() {
@@ -248,8 +355,13 @@
           Service.search();
           window.localStorage.setItem("buscaPlaca", false);
         })
-      : $("#form-busca-peca-mobile").submit((e) => {
+      : $("#form-busca-peca-mobile").off('submit').on('submit', (e) => {
           e.preventDefault();
+          const tipoPecaSelecionada = document.getElementById('opcao-selecionada-pecas-select').textContent.trim();
+          if (tipoPecaSelecionada === "") {
+            alert("Favor escolher um tipo de peça!");
+            return;
+          }
           Service.search();
         });
   }
@@ -266,47 +378,51 @@
       createNavigation,
     };
 
-    function _initSelectMobile_(select) {
-      $(`.c-busca__tab-content-mobile #${select.id}`).click((e) => {
-        $(
-          `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
-        ).val("");
+  function _initSelectMobile_(select) {
+    const container = $(`.c-busca__tab-content-mobile.is-active #${select.id}`);
+    const barra = container.find('.gtm-smart-categoria-select');
+    const menu = container.find('.smart-select__main-results');
 
-        if (select.values) {
-          View.buildList(select.values, select.id);
+    menu.find('input').off('click').on('click', (e) => {
+      e.stopPropagation();
+    });
 
-          const mainMenu = document.querySelector("#main-menu");
+    barra.off('click');
+    menu.off('click');
+    container.off('click');
 
-          if ($(this).is(":visible")) {
-            setTimeout(() => {
-              if (mainMenu) {
-                mainMenu.scrollTo({ top: 0, behavior: "smooth" });
-              }
-            }, 50);
-          }
+    barra.on('click', (e) => {
+      e.stopPropagation();
 
-          View.selectOptionIfButtonHasValue(select.id);
+      menu.find('input').val("");
 
-          const sideMenu = document.querySelector("#side-menu");
+      if (menu.is(':visible')) {
+        menu.slideUp('fast');
+      } else {
+        menu.slideDown('fast');
+        menu.find('input').focus();
+      }
+    });
 
-          if (select.values.length !== 0) {
-            $(
-              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
-            )
-              .slideToggle("fast", function () {
-                if (select.id === "versao-select" && !$(this).is(":visible")) {
-                  sideMenu.style.height = "100%";
-                }
-              })
-              .click((e) => {
-                e.stopPropagation();
-              });
-            $(
-              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
-            ).focus();
-          }
-        }
+    menu.on('click', (e) => {
+      e.stopPropagation();
+    });
+
+    $(document).on('click', (e) => {
+      if (!container.is(e.target) && container.has(e.target).length === 0) {
+        menu.slideUp('fast');
+      }
+    });
+
+    if (select.values) {
+      View.buildList(select.values, select.id);
+
+      $(`.c-busca__tab-content-mobile #${select.id} .itens-lista li`).off('click._closeMenu').on('click._closeMenu', function () {
+        menu.slideUp('fast');
       });
+    }
+
+    View.selectOptionIfButtonHasValue(select.id);
 
       $(
         `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
@@ -502,7 +618,6 @@
           }
         }
       });
-
 
       $(`#${select.id} .smart-select__main-results input`)
         .on("keydown", (e) => {
@@ -714,63 +829,82 @@
       }
     }
 
-    function buildList(objects, _id) {
-      let html = "";
-      if (window.innerWidth <= 1024) {
-        if (objects) {
-          objects.sort((a, b) => a.name.localeCompare(b.name));
-          const savedValue = verificaValorCheckBox(_id);
-          objects.forEach((x, index) => {
-            const isChecked = savedValue == x.id ? "checked" : "";
-            const displayStyle = index;
-            html += `<div class="busca-options" style="${displayStyle}">
-                          <li role="treeitem" id="${x.id}">
-                            <input id="${x.id}" class="input-busca-options" type="radio" name="${x.name}" value="${x.id}" ${isChecked}>
-                            ${x.name}
-                          </li>
-                      </div>`;
-          });
-          $(`.c-busca__tab-content-mobile  #${_id} ul`).html(html);
+    function fecharMenuSelect(_id) {
+      const menu = $(`.c-busca__tab-content-mobile #${_id} .smart-select__main-results`);
+      if (menu.is(':visible')) {
+        menu.slideUp('fast');
+      }
+    }
+    
+  function buildList(objects, _id) {
+    let html = "";
 
-          $(`.c-busca__tab-content-mobile  #${_id} ul li`).click((event) => {
-            switch (activeTab) {
-              case "#busca-peca-mobile":
-                defineValorCheckbox(event.target.id, _id);
-                Controller.addClick(event, _id);
-                if (_id === "versao-select")
-                  ajustaLayoutAposOpcoesSelecionadas();
-                break;
-              case "#busca-placa-mobile":
-                defineValorCheckbox(event.target.id, _id);
-                handleBuscaPlacaSelection(event, _id);
-                break;
-            }
-          });
-
-          $(`.c-busca__tab-content-mobile  #${_id} ul li`)
-            .first()
-            .addClass(CONFIG.CSS.HIGHLIGHT);
-        } else {
-          $(`.c-busca__tab-content-mobile  #${_id} ul`).html(
-            `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
-          );
-        }
-      } else if (objects) {
+    if (window.innerWidth <= 1024) {
+      if (objects) {
         objects.sort((a, b) => a.name.localeCompare(b.name));
-        objects.forEach(
-          (x) => (html += `<li role="treeitem" id="${x.id}">${x.name}</li>`)
-        );
 
-        $(` #${_id} ul`).html(html);
+        const savedValue = verificaValorCheckBox(_id);
 
+        objects.forEach((x) => {
+          const isChecked = savedValue == x.id ? "checked" : "";
+          html += `<div class="busca-options">
+                      <li role="treeitem" id="${x.id}">
+                        <input id="${x.id}" class="input-busca-options" type="radio" name="${_id}" value="${x.id}" ${isChecked}>
+                        ${x.name}
+                      </li>
+                  </div>`;
+        });
 
-        $(`#${_id} ul li`)
-          .hover((event) => {
-            $(`#${_id} ul li`).removeClass(CONFIG.CSS.HIGHLIGHT);
-            $(event.target).addClass(CONFIG.CSS.HIGHLIGHT);
-          })
-          .click((event) => {
-            switch (activeTab) {
+        $(`.c-busca__tab-content-mobile #${_id} .itens-lista`).html(html);
+
+        $(`.c-busca__tab-content-mobile #${_id} .itens-lista li`).off().on('click', (event) => {
+          event.stopPropagation();
+
+          const liElement = event.currentTarget;
+          const inputId = liElement?.id;
+
+          switch (activeTab) {
+            case "#busca-peca-mobile":
+              defineValorCheckbox(inputId, _id);
+              Controller.addClick({ target: { id: inputId } }, _id);
+              if (_id === "versao-select")
+                ajustaLayoutAposOpcoesSelecionadas();
+              break;
+
+            case "#busca-placa-mobile":
+              defineValorCheckbox(inputId, _id);
+              handleBuscaPlacaSelection({ target: { id: inputId } }, _id);
+              fecharMenuSelect(_id);
+              break;
+          }
+        });
+
+      $(`.c-busca__tab-content-mobile #${_id} .itens-lista li`)
+        .first()
+        .addClass(CONFIG.CSS.HIGHLIGHT);
+
+    } else {
+      $(`.c-busca__tab-content-mobile #${_id} .itens-lista`).html(
+        `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
+      );
+    }
+
+  } else if (objects) {
+    objects.sort((a, b) => a.name.localeCompare(b.name));
+
+    objects.forEach(
+      (x) => (html += `<li role="treeitem" id="${x.id}">${x.name}</li>`)
+    );
+
+    $(`#${_id} ul`).html(html);
+
+    $(`#${_id} ul li`)
+      .hover((event) => {
+        $(`#${_id} ul li`).removeClass(CONFIG.CSS.HIGHLIGHT);
+        $(event.target).addClass(CONFIG.CSS.HIGHLIGHT);
+      })
+      .on('click', (event) => {
+        switch (activeTab) {
               case "#busca-peca":
                 Controller.addClick(event, _id);
                 break;
@@ -778,18 +912,19 @@
               case "#busca-categoria":
                 handleBuscaPlacaSelection(event, _id);
                 break;
-            }
-          });
+        }
+      });
 
-        $(` #${_id} ul li`)
-          .first()
-          .addClass(CONFIG.CSS.HIGHLIGHT);
-      } else {
-        $(` #${_id} ul`).html(
-          `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
-        );
-      }
-    }
+    $(`#${_id} ul li`)
+      .first()
+      .addClass(CONFIG.CSS.HIGHLIGHT);
+
+  } else {
+    $(`#${_id} ul`).html(
+      `<li style="background: white; color:#707070; cursor: default">Nenhum resultado encontrado.</li>`
+    );
+  }
+}
 
     function selectOptionIfButtonHasValue(type) {
       if (window.innerWidth > 1024) {
@@ -954,110 +1089,138 @@
     };
 
     async function addClick(event, _id) {
-      const listItems = document.querySelectorAll("#busca-peca-mobile .itens-lista li");
-      const index = PECA_SELECTS.findIndex((x) => x.id === _id);
-      const select = PECA_SELECTS[index];
-      const nextSelect = PECA_SELECTS[index + 1];
-      // Não pode ser === Pq um pode ser INT e outro STRING, mas o valores são iguais;
-      const optionSelected = select.values.find((x) => x.id == event.target.id);
-      const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
-      const modalDeCarregamento = new ModalDeCarregamento();
-      modalDeCarregamento.mostarSpinner();
+      const isBuscaPorPlaca = PLACA_SELECTS.some(x => x.id === _id);
+      const isBuscaPorPeca = PECA_SELECTS.some(x => x.id === _id);
 
-      window._naoSeiPlacaAtivo = document.getElementById('input-nao-sei-placa')?.checked || false;
+      if (isBuscaPorPlaca) {
+        const select = PLACA_SELECTS.find(x => x.id === _id);
+        const optionSelected = select.values.find(x => x.id == event.target.id);
+        const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
 
-      if (textoOpcaoSelecionada) {
-        textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
+        if (textoOpcaoSelecionada) {
+          textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
+        }
+
+        select.routeSelected = optionSelected.url
+          ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
+          : "/" + optionSelected.name.toLowerCase();
+
+        if (window.innerWidth < 1024) {
+          const listItems = document.querySelectorAll(`#${_id} .itens-lista li`);
+          selecionarInputPorId(listItems, event.target.id);
+        }
+
+        return;
       }
 
-      if (window.innerWidth > 1024 && select.id === 'pecas-select-desktop') {
-        document.querySelector('#montadora-select-desktop')?.closest('.c-busca__select')
-          ?.style.setProperty('display', 'block', 'important');
-      }
+      if (isBuscaPorPeca) {
+        const index = PECA_SELECTS.findIndex(x => x.id === _id);
+        const select = PECA_SELECTS[index];
+        const nextSelect = PECA_SELECTS[index + 1];
 
-      View.resetResults(index);
-      if (index !== 0) {
-        select.routeSelected = getSelectedRouteByOption(optionSelected);
-      } else {
-        firstRouteSelected = getSelectedRouteByOption(optionSelected);
-      }
+        const optionSelected = select.values.find(x => x.id == event.target.id);
+        const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
+        const modalDeCarregamento = new ModalDeCarregamento();
+        modalDeCarregamento.mostarSpinner();
 
-      //Se o index for veículo, ele salva o nome do veículo selecionado.
-      if (index === 3) {
-        vehicle = optionSelected.name.toLowerCase();
-      }
+        if (textoOpcaoSelecionada) {
+          textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
+        }
 
-      if (nextSelect) {
-        if (optionSelected && select.isAsyncSearch) {
-          const response = await Service.getFilters(
-            index,
-            select,
-            optionSelected
-          );
+        window._naoSeiPlacaAtivo = document.getElementById('input-nao-sei-placa')?.checked || false;
 
-          let values = View.virtualizedDOM(
-            response,
-            nextSelect.asyncSearchTerm
-          );
+        if (window.innerWidth > 1024 && select.id === 'pecas-select-desktop') {
+          document.querySelector('#montadora-select-desktop')?.closest('.c-busca__select')
+            ?.style.setProperty('display', 'block', 'important');
+        }
 
-          index + 1 === PECA_SELECTS.length - 1
-            ? (values = filterVersaoFipe(values, vehicle))
-            : values;
+        View.resetResults(index);
+        if (index !== 0) {
+          select.routeSelected = getSelectedRouteByOption(optionSelected);
+        } else {
+          firstRouteSelected = getSelectedRouteByOption(optionSelected);
+        }
 
-          // Caso seja Ano (Penultimo campo [-2]) altera para decrescente
-          index + 1 === PECA_SELECTS.length - 2
-            ? values.sort((a, b) => b.name.localeCompare(a.name))
-            : values.sort((a, b) => a.name.localeCompare(b.name));
+        if (index === 3) {
+          vehicle = optionSelected.name.toLowerCase();
+        }
 
-          nextSelect.values =
-            nextSelect.title == "Veículo"
-              ? vehiclesWithoutBrand(values, optionSelected.name)
+        if (nextSelect) {
+          if (optionSelected && select.isAsyncSearch) {
+            const response = await Service.getFilters(
+              index,
+              select,
+              optionSelected
+            );
+
+            let values = View.virtualizedDOM(
+              response,
+              nextSelect.asyncSearchTerm
+            );
+
+            index + 1 === PECA_SELECTS.length - 1
+              ? (values = filterVersaoFipe(values, vehicle))
               : values;
 
-          hideDivVersaoFipe(values.length, nextSelect.id);
-        } else {
-          nextSelect.values = optionSelected.children.sort((a, b) =>
-            a.name.localeCompare(b.name)
-          );
+            index + 1 === PECA_SELECTS.length - 2
+              ? values.sort((a, b) => b.name.localeCompare(a.name))
+              : values.sort((a, b) => a.name.localeCompare(b.name));
+
+            nextSelect.values =
+              nextSelect.title == "Veículo"
+                ? vehiclesWithoutBrand(values, optionSelected.name)
+                : values;
+
+            hideDivVersaoFipe(values.length, nextSelect.id);
+          } else {
+            nextSelect.values = optionSelected.children.sort((a, b) =>
+              a.name.localeCompare(b.name)
+            );
+          }
+
+          View.buildList(nextSelect.values, nextSelect.id);
+
+          if (window.innerWidth < 1024) {
+            const containerNext = $(`.c-busca__tab-content-mobile #${nextSelect.id}`);
+            const menuNext = containerNext.find('.smart-select__main-results');
+
+            if (menuNext.length) {
+              menuNext.slideDown('fast');
+              menuNext.find('input').focus();
+            }
+          }
+
+          const $wrapper = $(`#${nextSelect.id}`).closest('.c-busca__tabs-content .c-busca__select');
+          if ($wrapper.length) {
+            $wrapper.css('display', 'block');
+          }
         }
 
-        View.buildList(nextSelect.values, nextSelect.id);
+        if (window.innerWidth < 1024) {
+          const listItems = document.querySelectorAll(`#${_id} .itens-lista li`);
 
-       const $wrapper = $(`#${nextSelect.id}`).closest('.c-busca__tabs-content .c-busca__select');
-        if ($wrapper.length) {
-          $wrapper.css('display', 'block');
+          if (select.id === "pecas-select") {
+            selecionarInputPorIdBuscaPeca(listItems, event.target.id);
+          } else {
+            selecionarInputPorNomeBuscaPeca(event.target.innerText, select.id);
+          }
+
+          $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`).slideUp("fast");
+          if (nextSelect)
+            $(`#${nextSelect.id}`).closest('.c-busca__select').show();
         }
-      }
 
-      if (window.innerWidth < 1024) {
-        if (select.id === "pecas-select") {
-          selecionarInputPorIdBuscaPeca(listItems, event.target.id);
-        } else {
-          selecionarInputPorNomeBuscaPeca(event.target.innerText, select.id);
-        }
+        View.createNavigation(select.id, event.target.innerHTML);
+        modalDeCarregamento.ocultarSpinner();
       }
-
-      if(window.innerWidth < 1024) {
-        $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
-        ).slideUp("fast");
-        if(nextSelect)
-          $(`#${nextSelect.id}`).closest('.c-busca__select').show();
-      }
-      View.createNavigation(select.id, event.target.innerHTML);
-      if (window.innerWidth < 1024)
-        document.querySelector("#side-menu .loading-overlay").style.display =
-          "none";
-      modalDeCarregamento.ocultarSpinner();
     }
 
     function selecionarInputPorIdBuscaPeca(listItems, id) {
       listItems.forEach((item) => {
         const radioInput = item.querySelector('input[type="radio"]');
         if (radioInput) {
-          // Desmarca todos os inputs
           radioInput.checked = false;
 
-          // Marca apenas o input com o ID especificado
           if (item.id === id) {
             radioInput.checked = true;
           }
@@ -1067,17 +1230,13 @@
 
     function selecionarInputPorNomeBuscaPeca(nome, nomeSelect) {
       const secaoSelectDiv = document.getElementById(`${nomeSelect}`);
-      const listItems =
-        nomeSelect !== "versao-select" && nomeSelect !== "versao-select-desktop"
-          ? secaoSelectDiv.querySelectorAll(".itens-lista li")
-          : secaoSelectDiv.querySelectorAll(".itens-list li");
+      const listItems = secaoSelectDiv.querySelectorAll("ul li");
+
       listItems.forEach((item) => {
         const radioInput = item.querySelector('input[type="radio"]');
         if (radioInput) {
-          // Desmarca todos os inputs
           radioInput.checked = false;
 
-          // Marca apenas o input com o nome especificado
           if (item.textContent.trim() === nome) {
             radioInput.checked = true;
           }
@@ -1287,7 +1446,6 @@
     }
   };
 
-  // Alterna as abas da busca
   if (window.innerWidth > 1024) {
   const inputBuscaPlaca = document.getElementById('input-busca-placa-desktop');
   const inputNaoSeiPlaca = document.getElementById('input-nao-sei-placa');
@@ -1318,8 +1476,6 @@
   divBuscaPeca.classList.add("is-active");
 
   sessionStorage.setItem("idAba", "inputBuscaPeca");
-
-  activeTab = "#busca-peca";
 }
 
 
@@ -1329,12 +1485,27 @@
   if (inputBuscaPlaca.checked) ativarBuscaPlaca();
   if (inputNaoSeiPlaca.checked) ativarBuscaPeca();
 
-  inputBuscaPlaca.addEventListener('change', ativarBuscaPlaca);
-  inputNaoSeiPlaca.addEventListener('change', ativarBuscaPeca);
+  inputBuscaPlaca.addEventListener('change', () => {
+    ativarBuscaPlaca();
+    resetBuscaPlaca();
+  });
+  inputNaoSeiPlaca.addEventListener('change', () => {
+    ativarBuscaPeca();
+    View.resetResults(1);
+  });
 
 } else {
   AlternaAbaBusca();
-  window.addEventListener('DOMContentLoaded', menuCategoriasMobile);
+  window.addEventListener('DOMContentLoaded', () => { 
+    menuCategoriasMobile();
+  
+    const tabPlacaPadrao = document.getElementById('inputPlaca');
+  
+    if (tabPlacaPadrao) {
+      tabPlacaPadrao.checked = true;
+      sessionStorage.setItem("idAba", "tabPlacaPadrao");
+    }
+  });
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1356,41 +1527,53 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
   function AlternaAbaBusca() {
-    var tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
+    const tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
+
     tabs.forEach((tab) => {
-      tab.addEventListener("click", (event) => {
+      tab.addEventListener("click", async (event) => {
         event.preventDefault();
 
         tabs.forEach((t) => t.classList.remove("is-active"));
         tab.classList.add("is-active");
 
-        abaSelected = tab.querySelector('input[type="radio"]');
-        abaSelected.checked;
-        sessionStorage.setItem("idAba", abaSelected.id);
+        const abaInput = tab.querySelector('input[type="radio"]');
+        abaInput.checked = true;
+        sessionStorage.setItem("idAba", abaInput.id);
 
         activeTab = tab.querySelector("a").attributes.href.nodeValue;
 
-        let tabContentDivs = document.querySelectorAll(
-          ".c-busca__tab-content-mobile"
-        );
+        const inputContainer = document.querySelector('#main-menu .c-busca__input');
+        if (abaInput.id === 'inputPlaca') {
+          inputContainer.style.display = 'block';
+        } else {
+          inputContainer.style.display = 'none';
+        }
 
+        const tabContentDivs = document.querySelectorAll(".c-busca__tab-content-mobile");
         tabContentDivs.forEach((div) => div.classList.remove("is-active"));
 
-        let selectedSection = document.querySelector(
-          tab.querySelector("a").hash
-        );
+        const selectedSection = document.querySelector(tab.querySelector("a").hash);
         selectedSection.classList.add("is-active");
-      });
-      if (window.innerWidth < 1024) setInterval(verificaAba, 500);
-    });
-  }
 
-  function verificaAba() {
-    let idAba = sessionStorage.getItem("idAba");
-    if (idAba != "") {
-      let abaSelected = document.getElementById(`${idAba}`);
-      abaSelected.checked = true;
-    }
+        if (window.innerWidth < 1024) {
+          if (abaInput.id === 'inputBuscaPeca') {
+            if (window._dadosCategoriasPeca?.length) {
+              await _initBuscaPeca(window._dadosCategoriasPeca);
+            }
+          } else if (abaInput.id === 'inputPlaca') {
+            if (window._dadosCategoriasPlaca?.length) {
+              await _initBuscaPlaca(window._dadosCategoriasPlaca);
+            }
+          }
+        }
+      });
+
+      const abaInput = tab.querySelector('input[type="radio"]');
+      abaInput.addEventListener('click', (e) => {
+        e.stopPropagation();
+        tab.click();
+      });
+    });
   }
 
   function menuCategoriasMobile () {
@@ -1406,28 +1589,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /** BUSCA POR PLACA */
 
-  // const PLACA_SELECTS = [
-  //   {
-  //     title: "Tipo de Peça",
-  //     id: window.innerWidth > 1024 ? "pecas-select-desktop" : "pecas-select",
-  //     values: [],
-  //     routeSelected: "",
-  //     isAsyncSearch: false,
-  //     asyncSearchTerm: "",
-  //     canBeClear: false,
-  //   },
-  // ];
+  const PLACA_SELECTS = [
+  {
+    title: "Tipo de Peça",
+    id: "categoria-select",
+    values: [],
+    routeSelected: "",
+    isAsyncSearch: false,
+    asyncSearchTerm: "",
+    canBeClear: false
+  }
+];
 
-  function _initBuscaPlaca(values) {
-    PECA_SELECTS[1].values = values;
+function _initBuscaPlaca(values) {
+  PLACA_SELECTS[0].values = values;
 
-    View.buildList(PECA_SELECTS[1].values, PECA_SELECTS[1].id);
+  const selectCategoria = PLACA_SELECTS.find(s => s.id === 'categoria-select');
 
-    window.innerWidth > 1024
-      ? View._initSelect_(PECA_SELECTS[1])
-      : View._initSelectMobile_(PECA_SELECTS[1]);
+  View.buildList(selectCategoria.values, selectCategoria.id);
 
-    restoreBuscaPlaca();
+  if (window.innerWidth > 1024) {
+    View._initSelect_(selectCategoria);
+  } else {
+    View._initSelectMobile_(selectCategoria);
+  }
+
+  restoreBuscaPlaca();
 
     let formBuscaPlaca =
       window.innerWidth > 1024
@@ -1457,51 +1644,10 @@ document.addEventListener("DOMContentLoaded", () => {
           alert("Sua placa não segue um padrão válido!");
         } else {
           buscaPorPlaca(placa);
-
-          // const spanTexto = document.querySelector("#pecas-select .gtm-smart-peca-select span");
-          // const textoSelecionado = spanTexto?.textContent?.trim();
-
-          // if (!textoSelecionado || textoSelecionado === "Tipo de Peça") {
-          //   alert("Você deve selecionar um tipo de peça antes de buscar pela placa.");
-          // } else {
-
-          // }
         }
       }
     });
 
-    let formBuscaPlacaCompatibilidade = document.querySelector(
-      "#form-busca-placa-compatibilidade"
-    );
-    if (formBuscaPlacaCompatibilidade) {
-      formBuscaPlacaCompatibilidade.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        const [isUniversalProduct, redirectUrl] =
-          checkIfUniversalProductSearch();
-
-        if (isUniversalProduct) {
-          const modalDeCarregamento = new ModalDeCarregamento();
-          modalDeCarregamento.mostarSpinner();
-          location.href = redirectUrl;
-        } else {
-          const placa = document.querySelector(
-            "#placa-input-compatibilidade"
-          ).value;
-          const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
-
-          if (placa.length === 0) {
-            alert("Você deve inserir a placa do seu veículo!");
-          } else if (!placa.trim().match(regexPlaca)) {
-            alert("Sua placa não segue um padrão válido!");
-          } else {
-            buscaPorPlaca(placa);
-          }
-        }
-      });
-    } else {
-      console.error("Formulário de compatibilidade não encontrado.");
-    }
   }
 
   function restoreBuscaPlaca() {
@@ -1521,7 +1667,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
         const param = arrayPaths.slice(0, 2).join("/");
 
-        const select = PECA_SELECTS[1];
+        const select = PLACA_SELECTS.find(x => x.id === 'categoria-select');
+        if (!select) {
+          console.error('Categoria não encontrada em PLACA_SELECTS');
+          return;
+        }
+
         const value = select.values.find((x) =>
           x.url ? x.url.includes(param) : x.name.includes(param)
         );
@@ -1580,44 +1731,55 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function handleBuscaPlacaSelection(event, _id) {
-    const select = PECA_SELECTS[1];
-    const optionSelected = select.values.find((x) => x.id == event.target.id);
-    const listItems = document.querySelectorAll(".itens-lista li");
-    const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
+  function handleBuscaPlacaSelection(event, selectId) {
+    const select = PLACA_SELECTS.find((s) => s.id === selectId);
+    const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${selectId}`);
+
+    const targetId = event.target.id;
+
+    const optionSelected = select.values.find((x) => x.id == targetId);
+    if (!optionSelected) {
+      console.warn("Opção não encontrada para o ID:", targetId);
+      return;
+    }
 
     select.routeSelected = optionSelected.url
       ? optionSelected.url.replace(new URL(optionSelected.url).origin, "")
       : "/" + optionSelected.name.toLowerCase();
-    $(` #${select.id} > div > span`).html(
-      event.target.innerHTML
-    );
-    $(
-      ` #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
-    ).hide();
-    $(` #${select.id} > div > .${CONFIG.CSS.CLOSE}`)
+
+    if (textoOpcaoSelecionada) {
+      textoOpcaoSelecionada.textContent = optionSelected.name;
+    }
+
+    const liElement = document.getElementById(targetId);
+    if (liElement) {
+      const inputRadio = liElement.querySelector('input[type="radio"]');
+      if (inputRadio) {
+        inputRadio.checked = true;
+      }
+    }
+
+    $(`.c-busca__tab-content #${selectId} > div > span`).html(optionSelected.name);
+    $(`.c-busca__tab-content #${selectId} > div > .${CONFIG.CSS.ARROW_DOWN}`).hide();
+    $(`.c-busca__tab-content #${selectId} > div > .${CONFIG.CSS.CLOSE}`)
       .show()
       .on("click", () => {
-        $(` #${select.id} > div > span`).html(
-          select.title
-        );
+        if (textoOpcaoSelecionada) {
+          textoOpcaoSelecionada.textContent = select.title;
+        }
         select.routeSelected = "";
 
-        $(
-          ` #${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`
-        ).show();
-        $(
-          ` #${select.id} > div > .${CONFIG.CSS.CLOSE}`
-        ).hide();
+        $(`.c-busca__tab-content #${selectId} > div > .${CONFIG.CSS.ARROW_DOWN}`).show();
+        $(`.c-busca__tab-content #${selectId} > div > .${CONFIG.CSS.CLOSE}`).hide();
       });
 
-    $(".c-busca__input #placa-input").click().focus();
+    document.querySelectorAll(`#${selectId} .smart-select__main-results li`).forEach((el) => {
+      el.classList.remove('active');
+    });
 
-    textoOpcaoSelecionada.textContent = `${optionSelected.name}`;
-
-    //Lógica para marcar e manter o input marcado.
-    if (window.innerWidth < 1024)
-      selecionarInputPorId(listItems, event.target.id);
+    if (liElement) {
+      liElement.classList.add('active');
+    }
   }
 
   function selecionarInputPorId(listItems, id) {
@@ -1632,7 +1794,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   async function buscaPorPlaca(placaString) {
-    const select = PECA_SELECTS[1];
+    const select = window.innerWidth > 1024 ? PECA_SELECTS[1] : PLACA_SELECTS[0];
 
     const FILTROS_VTEX = {
       MONTADORA: 36,
@@ -1954,98 +2116,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  function selectRightSearchMethod() {
-    const { search } = location;
-    const smartSelectHistory = JSON.parse(
-      localStorage.getItem("smartSelectHistory")
-    );
-    const isValidSearch =
-      smartSelectHistory !== null && smartSelectHistory.type == "#busca-peca";
-    const isProductsListPage = search && search.includes("?PS=24&map=");
-
-    if (isValidSearch && isProductsListPage) {
-      activeTab = "#busca-peca";
-
-      document
-        .querySelector("a[href='#busca-categoria']")
-        .parentNode.classList.remove("is-active");
-      // document
-      //   .querySelector("a[href='#busca-peca']")
-      //   .parentNode.classList.remove("is-active");
-      document
-        .querySelector("#form-busca-peca")
-        .parentNode.classList.remove("is-active");
-      // document
-      //   .querySelector("a[href='#busca-peca']")
-      //   .parentNode.classList.add("is-active");
-      document
-        .querySelector("#form-busca-peca")
-        .parentNode.classList.add("is-active");
-      if (window.innerWidth < 1024) {
-        document
-          .querySelector("a[href='#busca-categoria-mobile']")
-          .parentNode.classList.remove("is-active");
-        document
-          .querySelector("a[href='#busca-peca-mobile']")
-          .parentNode.classList.remove("is-active");
-        document
-          .querySelector("#form-busca-peca-mobile")
-          .parentNode.classList.remove("is-active");
-        document
-          .querySelector("a[href='#busca-peca-mobile']")
-          .parentNode.classList.add("is-active");
-        document
-          .querySelector("#form-busca-peca-mobile")
-          .parentNode.classList.add("is-active");
-      }
-    }
-  }
-
-  // var botaoLimparBuscaPeca = document.querySelector("#btn-busca-peca-limpar");
-  // botaoLimparBuscaPeca.addEventListener("click", () => {
-  //   resetSelects(1);
-  // });
-
-  // var botaoLimparBuscaPlaca = document.querySelector("#btn-busca-placa-limpar");
-  // botaoLimparBuscaPlaca.addEventListener("click", () => {
-  //   resetSelect();
-  // });
-
   var botaoLimparBuscaPlacaMobile = document.querySelector("#btn-busca-placa-limpar-mobile ");
   botaoLimparBuscaPlacaMobile.addEventListener("click", () => {
     resetSelectMobile();
   });
 
-  var botaoLimparBuscaPecaMobile = document.querySelector("#btn-busca-peca-limpar-mobile ");
+  var botaoLimparBuscaPecaMobile = document.querySelector("#btn-busca-peca-limpar-mobile");
   botaoLimparBuscaPecaMobile.addEventListener("click", () => {
     resetSelectsMobile(1);
+    setTimeout(() => {
+      const radioBuscaPeca = document.querySelector('#inputBuscaPeca');
+      if (radioBuscaPeca) {
+        radioBuscaPeca.checked = true;
+      }
+    }, 10);
   });
 
-  function resetSelects(_index) {
-    for (let i = _index; i <= PECA_SELECTS.length - 1; i++) {
-      const select = PECA_SELECTS[i];
-      const nextSelect = PECA_SELECTS[i + 1];
-
-      $(` #${select.id} > div > span`).html(select.title);
-      select.routeSelected = "";
-
-      if (nextSelect && nextSelect.canBeClear) {
-        $(`#${nextSelect.id}`).addClass(CONFIG.CSS.EMPTY);
-
-        nextSelect.values = [];
-        nextSelect.routeSelected = "";
-      }
-    }
-  }
-
-  function resetSelect() {
-    const select = PECA_SELECTS[1];
-    if(select == "categoria-select"){
-      var inputPlaca = document.querySelector("#placa-input");
-      $(` #${select.id} > div > span`).html(select.title);
-      select.routeSelected = "";
-      inputPlaca.value = "";
-    }
+  var botaoLimparBuscaPlacaMobile = document.querySelector("#btn-busca-placa-limpar-mobile");
+  if (botaoLimparBuscaPlacaMobile) {
+    botaoLimparBuscaPlacaMobile.addEventListener("click", () => {
+      resetBuscaPlacaMobile();
+    });
   }
 
   function resetSelectMobile(){
@@ -2084,6 +2175,67 @@ document.addEventListener("DOMContentLoaded", () => {
     ).slideDown("fast");
   }
 
+  function resetBuscaPlaca() {
+    const select = PLACA_SELECTS[0];
+    const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
+    
+    if (textoOpcaoSelecionada) {
+      textoOpcaoSelecionada.textContent = select.title;
+    }
+
+    select.routeSelected = "";
+    
+    const listItems = document.querySelectorAll(`#${select.id} .itens-lista li`);
+    listItems.forEach((item) => {
+      const radioInput = item.querySelector('input[type="radio"]');
+      if (radioInput) radioInput.checked = false;
+      item.classList.remove('active');
+    });
+
+    $(`#${select.id} > div > span`).html(select.title);
+    $(`#${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`).show();
+    $(`#${select.id} > div > .${CONFIG.CSS.CLOSE}`).hide();
+  }
+
+  function resetBuscaPlacaMobile() {
+    const select = PLACA_SELECTS[0];
+
+    if (select) {
+      select.routeSelected = "";
+
+      const textoOpcaoSelecionada = document.querySelector(`#opcao-selecionada-${select.id}`);
+      if (textoOpcaoSelecionada) {
+        textoOpcaoSelecionada.textContent = select.title;
+      }
+
+      const radios = document.querySelectorAll(`#${select.id} .itens-lista li input[type="radio"]`);
+      radios.forEach((radio) => {
+        radio.checked = false;
+      });
+
+      const listItems = document.querySelectorAll(`#${select.id} .itens-lista li`);
+      listItems.forEach((li) => {
+        li.classList.remove('active');
+      });
+
+      const inputPlaca = document.querySelector("#placa-input-mobile");
+      if (inputPlaca) {
+        inputPlaca.value = "";
+      }
+
+      const spanSelecionado = document.getElementById('opcao-selecionada-categoria-select');
+      if (spanSelecionado) {
+        spanSelecionado.textContent = '';
+      }
+
+      $(`.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`).slideUp("fast");
+    }
+
+    sessionStorage.removeItem("selectedOptionCategoriaPlaca");
+    localStorage.removeItem("buscaPlaca");
+  }
+
+
   function retiraCheckedOpcaosSelecionadas() {
     const checkedInputPecas = document.querySelector(window.innerWidth > 1024 ? '#pecas-select-desktop .itens-lista li input:checked' : '#pecas-select .itens-lista li input:checked');
     const checkedInputCategoria = document.querySelector('#categoria-select .itens-lista li input:checked');
@@ -2096,7 +2248,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if(checkedInputCategoria){
       checkedInputCategoria.removeAttribute("checked");
-      checkedInputPecas.checked = false;
+      checkedInputCategoria.checked = false;
       $(checkedInputCategoria).trigger("change");
     }
   }

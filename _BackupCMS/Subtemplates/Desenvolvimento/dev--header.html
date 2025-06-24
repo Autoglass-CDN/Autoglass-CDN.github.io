@@ -1015,40 +1015,19 @@
           <span>Busca por</span>
           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215;</a>
       </div>
-      <ul class="c-busca__tabs-mobile tab-header search-options">
-        <li id="tab-busca-peca-mobile" class="tab-item is-active">
-            <a href="#busca-peca-mobile">
-                <label><input type="radio" name="search" value="peca" id="inputBuscaPeca"> Peça e modelo</input></label>
-            </a>
-        </li>
-        <li id="tab-busca-placa-mobile" class="tab-item">
-            <a href="#busca-placa-mobile">
-                <label><input type="radio" name="search" value="placa" id="inputPlaca"> Placa <span class="novidade">Novidade</span></input></label>
-            </a>
-        </li>
-    </ul>
       <div class="c-busca__tabs-content-mobile">
-        <div class="c-busca__tab-content-mobile" id="busca-placa-mobile">
+        <div class="c-busca__tab-content-mobile is-active" id="busca-placa-mobile">
               <form id="form-busca-placa-mobile" action="#">
                   <div class="h-flex">
-                      <div class="c-busca__input">
-                          <input
-                          type="text"
-                          name="placa-input"
-                          id="placa-input-mobile"
-                          placeholder="Placa do veículo"
-                          />
-                          <i class="fa fa-search"></i>
-                      </div>
                       <div class="c-busca__select">
                           <div id="categoria-select">
                               <div class="gtm-smart-categoria-select">
-                                  <span>Tipo de peça</span>
+                                  <span>Tipo de Peça</span>
                                   <i class="fa fa-caret-down"></i>
                                   <i class="fa fa-close" style="display: none"></i>
                               </div>
                               <span id="opcao-selecionada-categoria-select" class="opcao-selecionada"></span>
-                              <div class="smart-select__main-results" style="display: block">
+                              <div class="smart-select__main-results" style="display: none">
                                   <div class="div-input-busca-mobile">
                                       <input
                                           id="categoria-input-mobile"
@@ -1083,34 +1062,34 @@
                   </div>
               </form>
           </div>
-          <div class="c-busca__tab-content-mobile is-active" id="busca-peca-mobile">
+        <div class="c-busca__tab-content-mobile" id="busca-peca-mobile">
               <form id="form-busca-peca-mobile" action="#">
                   <div class="h-flex">
                       <div class="c-busca__select">
-                          <div id="pecas-select">
-                              <div class="gtm-smart-peca-select">
-                                  <span>Tipo de Peça</span>
-                                  <i class="fa fa-caret-down"></i>
-                                  <i class="fa fa-close" style="display: none"></i>
-                              </div>
-                              <span id="opcao-selecionada-pecas-select" class="opcao-selecionada"></span>
-                              <div class="smart-select__main-results" style="display: block">
-                                  <div class="div-input-busca-mobile">
-                                      <input
-                                      id="peca-input-mobile"
-                                      placeholder="Digite aqui:"
-                                      type="text"
-                                      autocomplete="off"
-                                      />
-                                      <i class="fa fa-search"></i>
+                              <div id="pecas-select">
+                                  <div class="gtm-smart-peca-select">
+                                      <span>Tipo de Peça</span>
+                                      <i class="fa fa-caret-down"></i>
+                                      <i class="fa fa-close" style="display: none"></i>
                                   </div>
-                                  <ul class="itens-lista"></ul>
-                                  <div class="botao-ver-todas" style="display: none;">
-                                      <button type="button" id="toggleButton2">Ver todas <span>&#9660;</span></button>
+                                  <span id="opcao-selecionada-pecas-select" class="opcao-selecionada"></span>
+                                  <div class="smart-select__main-results" style="display: block">
+                                      <div class="div-input-busca-mobile">
+                                          <input
+                                          id="peca-input-mobile"
+                                          placeholder="Digite aqui:"
+                                          type="text"
+                                          autocomplete="off"
+                                          />
+                                          <i class="fa fa-search"></i>
+                                      </div>
+                                      <ul class="itens-lista"></ul>
+                                      <div class="botao-ver-todas" style="display: none;">
+                                          <button type="button" id="toggleButton2">Ver todas <span>&#9660;</span></button>
+                                      </div>
                                   </div>
                               </div>
-                          </div>
-                      </div>
+                        </div>
                       <div class="c-busca__select" style="display: none;">
                           <div id="montadora-select" class="empty">
                               <div class="gtm-smart-montadora-select">
@@ -1204,7 +1183,7 @@
                                       />
                                       <i class="fa fa-search"></i>
                                   </div>
-                                  <ul class="itens-list"></ul>
+                                  <ul class="itens-lista"></ul>
                                   <div class="botao-ver-todas" style="display: none;">
                                       <button type="button" id="toggleButton6">Ver todas <span>&#9660;</span></button>
                                   </div>
@@ -1229,6 +1208,34 @@
                   </div>
               </form>
           </div>
+        <ul class="c-busca__tabs-mobile tab-header search-options">
+            <li id="tab-busca-placa-mobile" class="tab-item is-active">
+                <a href="#busca-placa-mobile">
+                    <label>
+                        <input type="radio" name="search" value="placa" id="inputPlaca">Buscar com placa 
+                            <span class="novidade">
+                                <img loading="lazy" src="https://autoglass-cdn.github.io/src/img/sparkles.png" alt="ícone de novidades"></img>
+                                Novidade
+                            </span>
+                        </input>
+                    </label>
+                </a>
+            </li>
+            <li id="tab-busca-peca-mobile" class="tab-item">
+                <a href="#busca-peca-mobile">
+                    <label><input type="radio" name="search" value="peca" id="inputBuscaPeca"> Não sei minha placa</input></label>
+                </a>
+            </li>
+        </ul>
+      </div>
+      <div class="c-busca__input">
+          <input
+          type="text"
+          name="placa-input"
+          id="placa-input-mobile"
+          placeholder="Placa do veículo"
+          />
+          <i class="fa fa-search"></i>
       </div>
   </div>
 </div>

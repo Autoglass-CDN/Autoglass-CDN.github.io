@@ -14,12 +14,12 @@
   margin: 10px;
   position: relative;
 }
-/* @media (max-width: 500px) {
+@media (max-width: 500px) {
   .l-container {
     display: none;
   }
 }
-@media (max-width: 850px) {
+/* @media (max-width: 850px) {
   .l-container {
     display: none; */
 
@@ -248,11 +248,6 @@ font-size: inherit;
   border: 1px solid #dbdbdb;
   height: 40px;
 }
-/* .c-busca .c-busca__select div > div:first-child:hover,
-.c-busca .c-busca__select div > div:focus {
-  color: #1c3162;
-  font-weight: 600;
-} */
 @media screen and (min-width: 600px) {
   .c-busca__tab-content .smart-select__main-results {
     background: #e7eaf4;
@@ -316,9 +311,10 @@ font-size: inherit;
 
 @media screen and (max-width: 500px) {
   .smart-select__main-results i {
-    color: #0b4583;
+    color: #7f7f7f;
     font-size: smaller;
-    padding-top: 2%;
+    padding-top: 4.5%;
+    margin-left: -10px;
   }
 
   .gtm-smart-peca-select i {
@@ -511,85 +507,79 @@ font-size: inherit;
   #categoria-input-mobile {
     display: flex;
     width: 91%;
-    padding-right: 0px;
     font-size: 15px;
-    border: none;
-    border-bottom: 2px solid #000000;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
     font-weight: 500;
-    padding-bottom: 10px;
+    padding: 10px;
   }
 
   #peca-input-mobile {
     display: flex;
     width: 91%;
-    padding-right: 0px;
     font-size: 15px;
-    border: none;
-    border-bottom: 2px solid #7a91b7;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
     font-weight: 500;
-    padding-bottom: 10px;
+    padding: 10px;
   }
 
   #montadora-input-mobile {
     display: flex;
     width: 91%;
-    padding-right: 0px;
     font-size: 15px;
-    border: none;
-    border-bottom: 2px solid #7a91b7;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
     font-weight: 500;
-    padding-bottom: 10px;
+    padding: 10px;
   }
 
   #veiculo-input-mobile {
     display: flex;
     width: 91%;
-    padding-right: 0px;
     font-size: 15px;
-    border: none;
-    border-bottom: 2px solid #7a91b7;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
     font-weight: 500;
-    padding-bottom: 10px;
+    padding: 10px;
   }
 
   #ano-input-mobile {
     display: flex;
     width: 91%;
-    padding-right: 0px;
     font-size: 15px;
-    border: none;
-    border-bottom: 2px solid #7a91b7;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
     font-weight: 500;
-    padding-bottom: 10px;
+    padding: 10px;
   }
 
   #versao-input-mobile {
     display: flex;
     width: 91%;
-    padding-right: 0px;
     font-size: 15px;
-    border: none;
-    border-bottom: 2px solid #7a91b7;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
     font-weight: 500;
-    padding-bottom: 10px;
+    padding: 10px;
   }
 }
 
@@ -810,74 +800,79 @@ font-size: inherit;
   }
   #placa-input-mobile {
     width: 85%;
-    padding-right: 0px;
     font-size: 15px;
-    border: none;
-    border-bottom: 2px solid #7a91b7;
+    border: 1px solid #dbdbdb;
+    border-radius: 5px;
     text-align: left;
     margin-left: 6%;
     margin-top: 23px;
     margin-right: 0px;
-    padding-bottom: 10px;
+    padding: 10px;
   }
   .c-busca__input {
     border-bottom: 1px solid #dddddd;
     padding-bottom: 25px;
   }
   .c-busca__input i {
-    margin-left: -20px;
-    color: #0b4583;
+    margin-left: -30px;
+    color: #7f7f7f;
   }
   #categoria-input-mobile::placeholder {
-    color: #0b4583;
+    color: #7f7f7f;
   }
   #categoria-input-mobile:focus {
     outline: none;
-    border-bottom: 2px solid #7a91b7;
+    border: none;
+    border-bottom: 2px solid #7f7f7f;
   }
   #peca-input-mobile::placeholder {
-    color: #000000;
+    color: #7f7f7f;
   }
 
   #peca-input-mobile:focus {
     outline: none;
-    border-bottom: 2px solid #7a91b7;
+    border: none;
+    border-bottom: 2px solid #7f7f7f;
   }
 
   #montadora-input-mobile::placeholder {
-    color: #000000;
+    color: #7f7f7f;
   }
 
   #montadora-input-mobile:focus {
     outline: none;
-    border-bottom: 2px solid #7a91b7;
+    border: none;
+    border-bottom: 2px solid #7f7f7f;
   }
 
   #veiculo-input-mobile::placeholder {
-    color: #000000;
+    color: #7f7f7f;
   }
 
   #veiculo-input-mobile:focus {
     outline: none;
-    border-bottom: 2px solid #7a91b7;
+    border: none;
+    border-bottom: 2px solid #7f7f7f;
   }
 
   #ano-input-mobile::placeholder {
-    color: #000000;
+    color: #7f7f7f;
   }
 
   #ano-input-mobile:focus {
     outline: none;
-    border-bottom: 2px solid #7a91b7;
+    border: none;
+    border-bottom: 2px solid #7f7f7f;
   }
 
   #versao-input-mobile::placeholder {
-    color: #000000;
+    color: #7f7f7f;
   }
 
   #versao-input-mobile:focus {
     outline: none;
-    border-bottom: 2px solid #7a91b7;
+    border: none;
+    border-bottom: 2px solid #7f7f7f;
   }
 
   .div-input-busca-mobile {
@@ -957,8 +952,8 @@ font-size: inherit;
     align-items: center;
   }
 
-  #placa-input-mobile:placeholder {
-    color: #000000;
+  #placa-input-mobile::placeholder {
+    color: #7f7f7f;
     padding: 10px 0px 10px -10px;
   }
 
@@ -966,7 +961,10 @@ font-size: inherit;
     outline: none;
     box-shadow: none;
     border: none;
-    border-bottom: 2px solid #000000;
+    border-bottom: 2px solid #7f7f7f;
+  }
+  #categoria-select {
+    padding-bottom: 20px;
   }
 }
 
