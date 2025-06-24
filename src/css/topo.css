@@ -1108,6 +1108,7 @@ i.arrow-icon::before {
 
 .side-menu {
   height: 100%;
+  max-height: 100%;
   width: 0;
   position: fixed;
   z-index: 900000;
@@ -1115,6 +1116,7 @@ i.arrow-icon::before {
   bottom: 0;
   background-color: white;
   overflow-x: hidden;
+  overflow-y: auto;
   transition: 0.5s;
   box-shadow: 0 0 1px black;
   display: none;
@@ -2005,12 +2007,16 @@ body div#ajaxBusy {
 }
 
 .search-options .novidade {
-  background: #fef1d0;
-  color: #742b04;
-  border: 1px solid #fbc974;
+  background: #0b4583;
+  color: #ffffff;
   border-radius: 4px;
   padding: 2px 5px;
-  font-size: 12px;
+  font-size: 14px;
+}
+
+.search-options .novidade img {
+  width: 15px;
+  height: 15px;
 }
 
 .search-options input[type="radio"] {
