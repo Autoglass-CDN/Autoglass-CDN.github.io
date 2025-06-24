@@ -14,7 +14,7 @@
     let whatsappIconFlutuante = document.querySelector('#whatsapp-icon-link');
 
     if(document.querySelector('.product-qd-v1-fixed-bar')) {
-        whatsappIconFlutuante.style.marginBottom = '55px'
+        whatsappIconFlutuante.style.marginBottom = '63px'
     }
     //---------------------------------------------
 

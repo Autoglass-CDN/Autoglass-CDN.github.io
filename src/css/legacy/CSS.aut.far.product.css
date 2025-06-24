@@ -1072,13 +1072,25 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
   font-style: normal;
   font-weight: normal;
   height: 1em;
-  text-align: center;
+  text-align: right;
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
   font-family: "FontAwesome";
   font-size: 16px;
-  margin-right: 20px;
+}
+
+@media (min-width: 768px) {
+  .product-qd-v1-buy-button .buy-button:before {
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 767px) {
+  .product-qd-v1-buy-button .buy-button:before {
+    margin-right: 0px;
+    margin-left: 10px;
+  }
 }
 
 .container-compre-whatsapp .botao-compre-whatsapp::before {
@@ -2735,8 +2747,8 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   right: 0;
   left: 0;
   z-index: 2;
-  height: 50px;
-  background: #c8c8c8;
+  height: 63.89px;
+  background: #f1f4f9;
 }
 @media (min-width: 1200px) {
   .product-qd-v1-fixed-bar {
@@ -2788,7 +2800,6 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 .product-qd-v1-fixed-bar .product-qd-v1-price .valor-por .skuBestPrice {
   font-size: 12px;
 }
-.product-qd-v1-fixed-bar .product-qd-v1-price .valor-dividido,
 .product-qd-v1-fixed-bar .product-qd-v1-price .preco-a-vista,
 .product-qd-v1-fixed-bar .product-qd-v1-price .economia-de {
   display: none !important;
@@ -2796,42 +2807,39 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 .product-qd-v1-fixed-bar .product-qd-v1-buy-button {
   position: relative;
   margin-top: 0;
-  padding: 6px 0;
+  padding: 4% 0;
   overflow: initial;
-  height: 50px;
-  background: #fff;
+  height: 63px;
+  padding-right: 2%;
 }
 .product-qd-v1-fixed-bar .product-qd-v1-buy-button .buy-button {
   text-indent: 0;
   color: transparent;
   font-size: 0;
-  max-width: 140px;
+  max-width: 90%;
   padding: 8px;
-  text-align: right;
   border: none;
   border-radius: 3px;
   text-align: center;
   margin: 0 auto;
   position: relative;
-  height: 38px;
+  height: 45px;
 }
 .product-qd-v1-fixed-bar .product-qd-v1-buy-button .buy-button:before {
-  position: absolute;
-  width: 55px;
-  height: 55px;
   left: 0;
   top: 8px;
   color: #fff;
   font-size: 16px;
-  margin-right: 0;
+  text-align: center;
+  width: 30%;
 }
 .product-qd-v1-fixed-bar .product-qd-v1-buy-button .buy-button:after {
-  position: absolute;
-  left: 40px;
+  left: 0px;
   color: #fff;
   font-size: 16px;
   content: "Comprar";
-  padding-left: 10px;
+  text-align: left;
+  width: 70%;
 }
 
 .product-qd-v1-block-above-image .product-qd-v1-name {
