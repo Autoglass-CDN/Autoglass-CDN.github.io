@@ -5,7 +5,7 @@
 }
 @media (max-width: 767px) {
   .breadcrumb-qd-v1 {
-    width: 80%;
+    width: 100%;
     margin: 20px 20px 0px 20px;
   }
 }
@@ -173,7 +173,7 @@
 }
 
 .teste-opcionais {
-  margin: 5% 0%;
+  margin: 5% 20px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin-left: 30%;

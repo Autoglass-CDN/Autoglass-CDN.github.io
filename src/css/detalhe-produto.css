@@ -1725,6 +1725,13 @@ fieldset#beneficios legend {
   }
   .konfidency-reviews-summary.mobile{
     width: 50%;
+    padding-right: 20px;
+  }
+  .konfidency.summary.kfy-align-left{
+    justify-content: flex-end;
+  }
+  .konfidency.summary.row{
+    align-items: end;
   }
   .product-qd-v1-ref-code.mob{
     padding-right: 5%;
