@@ -1,6 +1,7 @@
 /* import */
 
 @import url("https://autoglass-cdn.github.io/src/css/theme.css");
+
 .smart-select-section {
   margin-top: -75px;
 }
@@ -36,7 +37,7 @@
 @media screen and (min-width: 769px) {
   .curva-banner {
     position: absolute;
-    z-index: 999;
+    z-index: 5;
     left: 0%;
     bottom: -6px;
   }
