@@ -1121,6 +1121,7 @@ i.arrow-icon::before {
   box-shadow: 0 0 1px black;
   display: none;
   font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 #busca-categoria-mobile {

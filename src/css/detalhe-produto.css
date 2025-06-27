@@ -52,6 +52,10 @@ html {
   margin: 0 0 24px 0;
 }
 
+.side-menu {
+  zoom: 1.05;
+}
+
 .container-descricao {
   margin: 0 auto;
   width: 100%;

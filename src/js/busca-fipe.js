@@ -182,6 +182,31 @@
       activeTab = abaSelecionada === 'inputBuscaPeca' ? '#busca-peca-mobile' : '#busca-placa-mobile';
     }
 
+     if (window.innerWidth < 1024) {
+      const campos = [
+        '#montadora-select',
+        '#veiculo-select',
+        '#ano-select',
+        '#versao-select'
+      ];
+
+      campos.forEach((id) => {
+        $(document).on('click', `${id} .gtm-smart-montadora-select, ${id} .gtm-smart-veiculo-select, ${id} .gtm-smart-ano-select, ${id} .gtm-smart-versao-select`, function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const container = $(this).closest('.c-busca__select');
+          const menu = container.find('.smart-select__main-results');
+
+          if (menu.is(':visible')) {
+            menu.slideUp('fast');
+          } else {
+            menu.slideDown('fast');
+          }
+        });
+      });
+    }
+
     if (window.innerWidth < 1024) {
       document.getElementById('inputPlaca').addEventListener('click', () => {
         activeTab = '#busca-placa-mobile';
