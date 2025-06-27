@@ -40,7 +40,6 @@ window.addEventListener("load", () => {
     expanded = !expanded;
     if(expanded) {
       content.style.display = "block";
-      verificarCompatibilidadeDiv.style.paddingBottom = "15px";
       iconArrowDown.style.display = "none";
       iconArrowUp.style.display = "block";
     }else{
