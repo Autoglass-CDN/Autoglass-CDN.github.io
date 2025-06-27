@@ -1,6 +1,15 @@
 (function () {
   $(document).ready(function () {
     const buscaPlaca = JSON.parse(localStorage.getItem("buscaPlaca"));
+    if (window.innerWidth > 1024 && document.body.classList.contains('categoria')) {
+      setTimeout(() => {
+        $('#pecas-select-desktop .gtm-smart-peca-select span').text('Tipo de Peça');
+        $('#pecas-select-desktop .fa-caret-down').show();
+        $('#pecas-select-desktop .fa-close').hide();
+        $('#pecas-select-desktop .smart-select__main-results').slideUp(0); // fecha instantaneamente
+       }, 600);
+    }
+
     if (window.innerWidth > 1024) {
       if (buscaPlaca) {
         const searchHistory = JSON.parse(
@@ -1176,6 +1185,8 @@
             nextSelect.values = optionSelected.children.sort((a, b) =>
               a.name.localeCompare(b.name)
             );
+
+            hideDivVersaoFipe(nextSelect.values.length, nextSelect.id);
           }
 
           View.buildList(nextSelect.values, nextSelect.id);
@@ -1245,19 +1256,15 @@
     }
 
     function hideDivVersaoFipe(length, id) {
-      const div =
-        window.innerWidth > 1024
-          ? document.getElementById("select-versao-fipe")
-          : document.getElementById("select-versao-fipe-mobile");
+      const container = document.getElementById(id)?.closest(".c-busca__select");
+      if (!container) return;
 
-      const isNaoSeiPlaca = document.getElementById('input-nao-sei-placa').checked;
-
-      if (id === "versao-select") {
-        if (isNaoSeiPlaca) {
-          div.style.display = "none";
-        } else {
-          div.style.display = length === 0 ? "none" : "block";
-        }
+      if (length === 0) {
+        setTimeout(() => {
+          container.style.setProperty("display", "none", "important");
+        }, 0.5);
+      } else {
+        $(container).show();
       }
     }
 

@@ -250,11 +250,11 @@ font-size: inherit;
 }
 @media screen and (min-width: 600px) {
   .c-busca__tab-content .smart-select__main-results {
-    background: #e7eaf4;
+    background: #f1f1f1f1;
     position: absolute;
     padding: 0;
     border-radius: 4px;
-    z-index: 9;
+    z-index: 5;
     left: 0;
     right: 0;
     top: 54px;
@@ -266,12 +266,12 @@ font-size: inherit;
     position: absolute;
     padding: 0;
     border-radius: 4px;
-    z-index: 9;
-    left: 13%;
+    z-index: 5;
+    left: 9%;
     right: 0;
     top: 85px;
     overflow: hidden;
-    width: 100%;
+    width: 82%;
   }
   #peca-input {
     margin: 10px;
