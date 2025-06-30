@@ -22,6 +22,7 @@ main,
 nav,
 section {
   display: block;
+  background-color: #fafafa;
 }
 
 a {
@@ -1058,7 +1059,7 @@ body {
 .footer-qd-v1-stamps {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #fff;
+  background-color: #fafafa;
 }
 
 .footer-qd-v1-stamps .container {
@@ -1175,7 +1176,7 @@ body {
 .footer-qd-v1-extra-info {
   padding-bottom: 20px;
   text-align: center;
-  background: #fff;
+  background-color: #fafafa;
 }
 
 @media (max-width: 1200px) {

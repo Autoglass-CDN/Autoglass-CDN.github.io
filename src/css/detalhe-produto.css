@@ -24,8 +24,8 @@ html {
 /* FIM RESET RATINGS COMPONENT */
 
 #outras-marcas.tab-content,
-.white-background {
-  background: white;
+.off-white-background {
+  background-color: #fafafa;
 }
 
 #outras-marcas .white-background,
@@ -69,7 +69,7 @@ html {
 
 .nav-container {
   width: 100%;
-  background: #f8f8f8;
+  background-color: #fafafa;
   position: sticky;
   top: 250px;
   z-index: 2;
