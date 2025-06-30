@@ -1301,6 +1301,15 @@ body.mz-sf-on .mz-modal-shipping {
   box-shadow: 0 0 20px #000;
 }
 
+.modal-content-zoom {
+  cursor: crosshair;
+}
+
+.modal-content-zoom.zoomed {
+  transform: scale(1.5);
+  transform-origin: center center;
+}
+
 @media (max-width: 767px) {
   .modal-content-zoom {
     margin-top: 30%;
