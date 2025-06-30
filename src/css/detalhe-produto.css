@@ -24,8 +24,8 @@ html {
 /* FIM RESET RATINGS COMPONENT */
 
 #outras-marcas.tab-content,
-.white-background {
-  background: white;
+.off-white-background {
+  background-color: #fafafa;
 }
 
 #outras-marcas .white-background,
@@ -69,7 +69,7 @@ html {
 
 .nav-container {
   width: 100%;
-  background: #f8f8f8;
+  background-color: #fafafa;
   position: sticky;
   top: 250px;
   z-index: 2;
@@ -401,16 +401,16 @@ h4.group.Especificacoes {
   #avaliacoes.tab-content,
   #outras-marcas.tab-content,
   #compre-junto.tab-content,
-  #outras-marcas .white-background,
+  #outras-marcas .off-white-background,
   #compre-junto .blue-background {
-    background-color: white;
+    background-color: #fafafa;
   }
   .contents .tab-content::after {
     content: "";
     border-bottom: 1px solid #dbdbdb;
     display: block;
     height: 24px;
-    background: white !important;
+    background: #fafafa !important;
   }
   .contents .tab-content .info-box.left {
     width: 100%;

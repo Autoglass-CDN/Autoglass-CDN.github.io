@@ -876,7 +876,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 .footer-qd-v1-stamps {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #fff;
+  background-color: #fafafa;
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) {
@@ -969,7 +969,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 .footer-qd-v1-extra-info {
   padding-bottom: 20px;
   text-align: center;
-  background: #fff;
+  background-color: #fafafa;
 }
 
 .footer-qd-v1-extra-info p {
