@@ -218,6 +218,7 @@ function aplicarEstadoCompatibilidade(estado) {
 
   if (estado.icones.includes('question')) {
     document.querySelector('#icon-question').style.display = "block";
+    botaoProdutosCompativeis.style.display = "none";
   }
 }
 

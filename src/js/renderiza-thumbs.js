@@ -97,7 +97,17 @@ function exibirMidia(url) {
 
   if (isDesktop) {
     main.innerHTML = `<div class="zoom-wrapper" data-zoom-image="${url}" style="background-image:url('${url}')"></div>`;
-    inicializarZoom(main.querySelector(".zoom-wrapper"));
+    const wrapper = main.querySelector(".zoom-wrapper");
+    inicializarZoom(wrapper);
+
+    // adiciona evento de click para abrir modal no desktop também
+    wrapper.addEventListener("click", () => {
+      const modal = document.getElementById("modalZoom");
+      const zoomedImg = document.getElementById("zoomedImage");
+      zoomedImg.src = url;
+      modal.style.display = "block";
+      inicializarZoomModal(zoomedImg); // inicializa zoom no modal
+    });
   } else {
     main.innerHTML = `<img src="${url}" alt="Imagem Principal" id="mobileZoomTrigger" style="max-width:100%; height:auto;" />`;
     const trigger = document.getElementById("mobileZoomTrigger");
@@ -107,6 +117,7 @@ function exibirMidia(url) {
         const zoomedImg = document.getElementById("zoomedImage");
         zoomedImg.src = url;
         modal.style.display = "block";
+        inicializarZoomModal(zoomedImg);
       });
     }
   }
@@ -141,5 +152,29 @@ function inicializarZoom(wrapper) {
     const imgZoom = document.getElementById("zoomedImage");
     imgZoom.src   = wrapper.dataset.zoomImage;
     modal.style.display = "block";
+  });
+}
+
+function inicializarZoomModal(img) {
+  const zoomFactor = 1.5;
+  let isZoomed = false;
+
+  img.addEventListener("mouseenter", () => {
+    img.classList.add("zoomed");
+    isZoomed = true;
+  });
+
+  img.addEventListener("mousemove", e => {
+    if (!isZoomed) return;
+    const r = img.getBoundingClientRect();
+    const x = ((e.clientX - r.left) / r.width) * 100;
+    const y = ((e.clientY - r.top) / r.height) * 100;
+    img.style.transformOrigin = `${x}% ${y}%`;
+  });
+
+  img.addEventListener("mouseleave", () => {
+    img.classList.remove("zoomed");
+    img.style.transformOrigin = "center center";
+    isZoomed = false;
   });
 }
