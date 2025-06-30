@@ -401,16 +401,16 @@ h4.group.Especificacoes {
   #avaliacoes.tab-content,
   #outras-marcas.tab-content,
   #compre-junto.tab-content,
-  #outras-marcas .white-background,
+  #outras-marcas .off-white-background,
   #compre-junto .blue-background {
-    background-color: white;
+    background-color: #fafafa;
   }
   .contents .tab-content::after {
     content: "";
     border-bottom: 1px solid #dbdbdb;
     display: block;
     height: 24px;
-    background: white !important;
+    background: #fafafa !important;
   }
   .contents .tab-content .info-box.left {
     width: 100%;

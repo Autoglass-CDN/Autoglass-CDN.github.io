@@ -113,6 +113,12 @@ ul {
   }
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    background-color: #fafafa;
+  }
+}
+
 .menu-icon::before {
   content: url("https://autoglass-cdn.github.io/src/img/menu-icon.png");
   height: 22px;
@@ -272,6 +278,10 @@ i.arrow-icon::before {
   width: 100% !important;
   max-width: 1440px;
   position: relative;
+}
+
+.nav .container.mobile{
+  background-color: #fafafa;
 }
 
 .geo-picker {
