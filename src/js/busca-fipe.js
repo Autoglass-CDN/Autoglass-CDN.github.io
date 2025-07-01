@@ -7,7 +7,7 @@
         $('#pecas-select-desktop .fa-caret-down').show();
         $('#pecas-select-desktop .fa-close').hide();
         $('#pecas-select-desktop .smart-select__main-results').slideUp(0);
-       }, 600);
+       }, 700);
     }
 
     if (window.innerWidth > 1024) {
@@ -804,13 +804,15 @@
 
       if (window.innerWidth > 1024) {
         $(document).on("click", (e) => {
-          var container = $(`#${select.id}`);
+          const container = $(`#${select.id}`);
+          const isInsideContainer = $(e.target).closest(container).length > 0;
 
-          if (!$(e.target).closest(container).length) {
-            $(
-              `#${select.id} .smart-select__main-results`
-            ).slideUp("fast");
+          if (!isInsideContainer) {
+            $(`#${select.id} .smart-select__main-results`).slideUp("fast");
           }
+        });
+        $(`#${select.id} input`).on("click", function (e) {
+          e.stopPropagation();
         });
       }
   }
