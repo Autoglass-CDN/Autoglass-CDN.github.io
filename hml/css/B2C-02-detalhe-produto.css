@@ -1131,3 +1131,206 @@ body.mz-sf-on .mz-modal-shipping {
     padding: 12px;
   }
 }
+
+.custom-image-gallery.horizontal {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+.galeria-bloco-produto {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.thumb-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.thumb-item img,
+.thumb-item video {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  display: block;
+}
+
+.thumb-item.active {
+  opacity: 1;
+  border: 2px solid #003087;
+  padding: 4px;
+}
+
+.thumb-item:not(.active) {
+  opacity: 0.4;
+  border: 2px solid transparent;
+}
+
+@media (min-width: 768px) {
+  .galeria-principal {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+  }
+
+  #thumbsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex: 0 0 90px;
+  }
+
+  .thumb-item {
+    width: 70px;
+    height: 70px;
+  }
+
+  #mainMediaContainer {
+    flex: 1;
+    max-width: 500px;
+    max-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 10%;
+    aspect-ratio: 1 / 1;
+  }
+
+  #mainMediaContainer img,
+  #mainMediaContainer video,
+  #mainMediaContainer iframe {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+}
+
+@media (max-width: 767px) {
+  .galeria-principal {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #mainMediaContainer {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+
+  #mainMediaContainer img,
+  #mainMediaContainer video,
+  #mainMediaContainer iframe {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  #thumbsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+    gap: 8px;
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .thumb-item {
+    width: 56px;
+    height: 56px;
+  }
+}
+@media screen and (min-width: 1024x) {
+  .container-mais-especificacoes{
+    margin-top: 6%;
+  }
+}
+
+.zoom-wrapper {
+  width: 100%;
+  height: 100%;
+  min-height: 400px;
+  background-repeat: no-repeat;
+  background-size: 200%;
+  background-position: center;
+  cursor: crosshair;
+}
+
+.modal-zoom {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 40px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.8);
+}
+
+.modal-zoom .close-zoom {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 10000;
+}
+
+.modal-content-zoom {
+  margin: auto;
+  display: block;
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 8px;
+  box-shadow: 0 0 20px #000;
+}
+
+.modal-content-zoom {
+  cursor: crosshair;
+}
+
+.modal-content-zoom.zoomed {
+  transform: scale(1.5);
+  transform-origin: center center;
+}
+
+@media (max-width: 767px) {
+  .modal-content-zoom {
+    margin-top: 30%;
+  }
+}
+
+#botaoProdutosCompativeis {
+  background-color: #003da5;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  width: 100%;
+  height: 25px;
+  font-size: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+#botaoProdutosCompativeis:hover {
+  background-color:#e7eaf4 ;
+  color: #003087;
+}
