@@ -6,8 +6,8 @@
         $('#pecas-select-desktop .gtm-smart-peca-select span').text('Tipo de Peça');
         $('#pecas-select-desktop .fa-caret-down').show();
         $('#pecas-select-desktop .fa-close').hide();
-        $('#pecas-select-desktop .smart-select__main-results').slideUp(0); // fecha instantaneamente
-       }, 600);
+        $('#pecas-select-desktop .smart-select__main-results').slideUp(0);
+       }, 700);
     }
 
     if (window.innerWidth > 1024) {
@@ -804,13 +804,15 @@
 
       if (window.innerWidth > 1024) {
         $(document).on("click", (e) => {
-          var container = $(`#${select.id}`);
+          const container = $(`#${select.id}`);
+          const isInsideContainer = $(e.target).closest(container).length > 0;
 
-          if (!$(e.target).closest(container).length) {
-            $(
-              `#${select.id} .smart-select__main-results`
-            ).slideUp("fast");
+          if (!isInsideContainer) {
+            $(`#${select.id} .smart-select__main-results`).slideUp("fast");
           }
+        });
+        $(`#${select.id} input`).on("click", function (e) {
+          e.stopPropagation();
         });
       }
   }
@@ -1156,6 +1158,29 @@
         const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
         const modalDeCarregamento = new ModalDeCarregamento();
         modalDeCarregamento.mostarSpinner();
+
+        if (window.innerWidth < 1024) {
+          for (let i = index + 1; i < PECA_SELECTS.length; i++) {
+            const nextField = PECA_SELECTS[i];
+            const divSelect = document.getElementById(nextField.id);
+            const spanSelecionado = document.getElementById(`opcao-selecionada-${nextField.id}`);
+
+            if (divSelect) {
+              const wrapper = divSelect.closest('.c-busca__select');
+              if (wrapper) {
+                wrapper.style.display = 'none';
+              }
+
+              if (spanSelecionado) {
+                const textoPadrao = spanSelecionado.getAttribute('data-default') || nextField.title;
+                spanSelecionado.textContent = textoPadrao;
+              }
+
+              nextField.values = [];
+              View.resetResults(i);
+            }
+          }
+        }
 
         if (textoOpcaoSelecionada) {
           textoOpcaoSelecionada.textContent = `${optionSelected.name}`;

@@ -113,6 +113,12 @@ ul {
   }
 }
 
+@media screen and (max-width: 600px) {
+  body {
+    background-color: #fafafa;
+  }
+}
+
 .menu-icon::before {
   content: url("https://autoglass-cdn.github.io/src/img/menu-icon.png");
   height: 22px;
@@ -274,6 +280,10 @@ i.arrow-icon::before {
   position: relative;
 }
 
+.nav .container.mobile{
+  background-color: #fafafa;
+}
+
 .geo-picker {
   display: flex;
   width: 100%;
@@ -382,7 +392,7 @@ i.arrow-icon::before {
   top: 40px;
   display: flex;
   justify-content: center;
-  background: var(--white);
+  background-color: #fafafa;
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
 }
 
@@ -1433,7 +1443,7 @@ i.arrow-icon::before {
 }
 
 .painel-categorias-section {
-  background-color: #fff;
+  background-color: #fafafa;
   padding-top: 5px;
   padding-bottom: 30px;
 }
@@ -1929,6 +1939,7 @@ body[data-qd-scroll-0="1"] {
 @media (min-width: 1200px) {
   body[data-qd-scroll-1="1"] .product-qd-v1-float-bar {
     top: 110px;
+    background-color: #fafafa;
   }
 }
 

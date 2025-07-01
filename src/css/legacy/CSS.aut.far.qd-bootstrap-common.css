@@ -9337,7 +9337,7 @@ body.account
 .footer-qd-v1-stamps {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #fff;
+  background-color: #fafafa;
 }
 
 @media (max-width: 767px) {
@@ -9524,7 +9524,7 @@ body.account
 .footer-qd-v1-extra-info {
   padding-bottom: 20px;
   text-align: center;
-  background: #fff;
+  background-color: #fafafa;
 }
 
 @media (max-width: 1200px) {
