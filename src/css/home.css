@@ -2,6 +2,10 @@
 
 @import url("https://autoglass-cdn.github.io/src/css/theme.css");
 
+html, body {
+  overflow-x: hidden !important;
+}
+
 .smart-select-section {
   margin-top: -75px;
 }
@@ -28,13 +32,51 @@
   }
 }
 
+@media (min-width: 1921px) {
+  main .secao-busca {
+    max-width: 1920px;
+    height: auto;
+    left: 300px;
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  main .secao-busca .banners-section {
+    max-width: 1900px;
+    position: relative;
+  }
+  .secao-busca .banners .banners-content.desktop {
+    height: unset;
+    overflow: auto;
+  }
+  .secao-busca .banners .banners-content.desktop .box-banner {
+    width: 75vw;
+  }
+  .secao-busca .banners .banners-content.desktop .box-banner img {
+    object-fit: cover;
+  }
+  main .secao-busca .l-container {
+    width: 1900px;
+  }
+  body main .secao-busca .painel-categorias-section {
+    padding-bottom: 100px;
+    max-width: 1920px;
+  }
+  main .secao-busca .painel-categorias-section .painel-categorias-desktop {
+    max-width: 1900px;
+  }
+    .painel-categorias-desktop .painel-categorias .botoes {
+    display: none;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .curva-banner {
     display: none;
   }
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 768px) {
   .curva-banner {
     position: absolute;
     z-index: 5;
@@ -42,6 +84,126 @@
     bottom: -6px;
   }
 }
+
+@media screen and (min-width: 1367px) {
+  .secao-busca {
+    max-width: 1750px;
+    height: 760px;
+    left: 100px;
+    position: relative;
+    border-radius: 20px;
+    border: 1px solid;
+  }
+  .secao-busca .banners-section {
+    max-width: 1700px;
+    position: relative;
+  }
+  .secao-busca .banners .banners-content.desktop {
+    height: auto;
+    overflow: auto;
+  }
+  .secao-busca .l-container {
+    width: 1700px;
+  }
+  main .secao-busca .painel-categorias-section {
+    padding-bottom: 50px;
+    max-width: 1700px;
+  }
+  .secao-busca .painel-categorias-section .painel-categorias-desktop {
+    max-width: 1700px;
+  }
+  .painel-categorias-desktop .painel-categorias .painel-categorias__menu {
+    background-color: #fafafa;
+  }
+  .painel-categorias-section .painel-categorias .titulo-categorias {
+    padding-bottom: 20px;
+  }
+  .painel-categorias-section .painel-categorias .painel-categorias__categoria-header::before {
+    background-color: #ffffff;
+  }
+  .painel-categorias-section .painel-categorias .painel-categorias__categoria img {
+    z-index: 2;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1366px) {
+  .secao-busca .curva-banner {
+    height: 30px;
+  }
+  .secao-busca .menu-secao-pesquisa {
+    padding: 3% 0px 0px 30%;
+  }
+  .l-container {
+    padding-top: 20px;
+  }
+  .painel-categorias-section .painel-categorias .titulo-categorias {
+    padding-bottom: 20px;
+  }
+  .painel-categorias-desktop .painel-categorias .painel-categorias__menu > ul {
+  transition: transform 0.6s ease-in-out;
+  display: inline-block;
+  white-space: nowrap;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .secao-busca {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  left: 75px;
+  border-radius: 20px;
+  border: 1px solid;
+  }
+  .banners-section {
+    max-width: 1180px;
+    position: relative;
+  }
+  .banners .banners-content.desktop {
+    height: 250px;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+  .banners .banners-content.desktop .box-banner {
+    width: 87vw;
+  }
+  .banners .banners-content.desktop .box-banner img {
+    object-fit: contain;
+  }
+  .l-container {
+    width: 1150px;
+  }
+  .secao-busca .painel-categorias-section {
+    padding-bottom: 25px;
+  }
+  .painel-categorias-section .painel-categorias-desktop {
+    max-width: 1150px;
+  }
+  .painel-categorias-desktop .painel-categorias,
+  .painel-categorias-desktop .painel-categorias .painel-categorias__menu {
+    background-color: #fafafa;
+  }
+  .painel-categorias-section .painel-categorias .titulo-categorias {
+    padding-bottom: 10px;
+  }
+  .painel-categorias-section .painel-categorias .painel-categorias__categoria-header::before {
+    background-color: #ffffff;
+  }
+  .painel-categorias-section .painel-categorias .painel-categorias__categoria img {
+    z-index: 2;
+    border-radius: 50%;
+    background-color: transparent;
+  }
+}
+
+
 
 /* #region Common */
 

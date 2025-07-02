@@ -1,10 +1,13 @@
 /* HELPERS */
+html, body {
+  overflow-x: hidden !important;
+}
+
 .c-busca .h-flex {
   display: flex;
   flex-direction: column;
 }
 .l-container {
-  margin: 0 auto;
   background-color: #fafafa;
 }
 /* MOBILE */
@@ -1135,6 +1138,12 @@ font-size: inherit;
     background-color: #ffffff;
     padding: 15px 10px;
   }
+  .c-busca .c-busca__select span {
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
   .c-busca .c-busca__botao {
     position: absolute;
     left: 91%;
@@ -1154,12 +1163,6 @@ font-size: inherit;
   }
   #select-versao-fipe-desktop {
     width: 30%;
-  }
-  #select-versao-fipe-desktop .gtm-smart-versao-select span {
-    max-width: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
   }
 }
 @media screen and (min-width: 1600px) {

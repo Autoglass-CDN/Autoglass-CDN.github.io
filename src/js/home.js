@@ -5,6 +5,7 @@
 	const btnNext = $('.banners-section .banners button[data-type="next"]');
   const tipoBanner = window.innerWidth <= 768 ? 2 : 1;
   const urlBanners = `http://localhost:5010/api/banners-vtex/exibicao/${tipoBanner}`;
+//   if (location.hostname !== "localhost") return;
   await buscaImagensBanner(urlBanners);
 	const containers = $('.banners-section .banners-content');
 	let bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
@@ -335,7 +336,7 @@ function getItemSize(banner){
 		changeBarActive(position);
 	}, 10000)
 
-	Reset
+	// Reset
 	buildBars();
 	showOnlyRatingAroundHighlight();
 
@@ -478,7 +479,8 @@ let width = slider.clientWidth
 	+ parseInt(getComputedStyle(slider).marginRight, 10)
 	+ parseInt(getComputedStyle(slider).marginLeft, 10);
 
-slider.style.transform = `translateX(${width - (fullWidth < 1808 ? fullWidth + 69 : fullWidth)}px)`;
+const deslocamento = window.innerWidth < 1367 ? -750 : -300;
+slider.style.transform = `translateX(${deslocamento}px)`;
 
 slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
 }
@@ -552,7 +554,6 @@ document
 		}, abortCategoryAction);
 	})
 	});
-}
-)();
+})();
 
 //#endregion Painel de categorias
