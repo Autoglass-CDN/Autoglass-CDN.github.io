@@ -33,10 +33,13 @@
     position: absolute;
     z-index: 5;
     color: #0b4583;
-    background-color: #fafafa;
     font-weight: bold;
     font-size: 16px;
-    padding: 6% 0px 0px 35%;
+    padding-left: 12.5%;
+    top: 14%;
+  }
+  body.home .menu-secao-pesquisa {
+    top: -20%;
   }
 }
 

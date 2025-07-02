@@ -8,7 +8,7 @@ html, body {
   flex-direction: column;
 }
 .l-container {
-  background-color: #fafafa;
+  background-color: #efefef;
 }
 /* MOBILE */
 .c-busca {
@@ -215,6 +215,7 @@ font-size: inherit;
   position: relative;
   display: block;
   width: 25%;
+  border-radius: 10px;
 }
 
 .c-busca .c-busca__select.tipo-peca {
@@ -236,7 +237,7 @@ font-size: inherit;
 .c-busca .c-busca__botao button,
 .c-busca .c-busca__select div > div:first-child {
   padding: 15px;
-  border-radius: 4px;
+  border-radius: 10px;
   border: none;
 }
 .c-busca .c-busca__input input {
@@ -252,24 +253,28 @@ font-size: inherit;
   border: 1px solid #dbdbdb;
   height: 40px;
 }
+#pecas-select-desktop{
+  border-radius: 10px;
+}
 @media screen and (min-width: 600px) {
   .c-busca__tab-content .smart-select__main-results {
     background: #f1f1f1f1;
     position: absolute;
     padding: 0;
-    border-radius: 4px;
+    border-radius: 15px;
     z-index: 5;
     left: 0;
     right: 0;
     top: 54px;
     overflow: hidden;
     width: 100%;
+    box-shadow: 0 4px 6px -1px #0000001a, 0 2px 4px -2px #0000001a;
   }
   .c-busca__tabs-content .tipo-peca .smart-select__main-results {
     background: #f1f1f1f1;
     position: absolute;
     padding: 0;
-    border-radius: 4px;
+    border-radius: 15px;
     z-index: 5;
     left: 9%;
     right: 0;
@@ -281,7 +286,7 @@ font-size: inherit;
     margin: 10px;
     padding: 10px;
     font-size: 14px;
-    border-radius: 4px;
+    border-radius: 10px;
     border: 1px solid #a8a8a8; 
     width: calc(100% - 20px);
     color: rgba(0, 0, 0, 0.87);
@@ -309,7 +314,14 @@ font-size: inherit;
 
 @media screen and (min-width: 1100px) {
   .c-busca__tabs-content .tipo-peca .smart-select__main-results {
-    top: 100px;
+    top: 80px;
+  }
+  body.departamento .c-busca__tabs-content .tipo-peca .smart-select__main-results,
+  body.categoria .c-busca__tabs-content .tipo-peca .smart-select__main-results {
+    top: 90px;
+  }
+  .c-busca__tab-content .smart-select__main-results {
+    top: 40px;
   }
 }
 
@@ -476,7 +488,7 @@ font-size: inherit;
     margin: 10px;
     padding: 10px;
     font-size: 14px;
-    border-radius: 4px;
+    border-radius: 10px;
     border: 1px solid #a8a8a8;
     width: calc(100% - 20px);
     color: rgba(0, 0, 0, 0.87);
@@ -513,7 +525,7 @@ font-size: inherit;
     width: 91%;
     font-size: 15px;
     border: 1px solid #dbdbdb;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
@@ -526,7 +538,7 @@ font-size: inherit;
     width: 91%;
     font-size: 15px;
     border: 1px solid #dbdbdb;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
@@ -539,7 +551,7 @@ font-size: inherit;
     width: 91%;
     font-size: 15px;
     border: 1px solid #dbdbdb;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
@@ -552,7 +564,7 @@ font-size: inherit;
     width: 91%;
     font-size: 15px;
     border: 1px solid #dbdbdb;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
@@ -565,7 +577,7 @@ font-size: inherit;
     width: 91%;
     font-size: 15px;
     border: 1px solid #dbdbdb;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
@@ -578,7 +590,7 @@ font-size: inherit;
     width: 91%;
     font-size: 15px;
     border: 1px solid #dbdbdb;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     margin-right: -21px;
     margin-bottom: 23px;
@@ -795,6 +807,27 @@ font-size: inherit;
   }
 }
 
+@media screen and (min-width: 900px) and (max-width: 1366px) {
+  .c-busca .c-busca__select.tipo-peca {
+    padding: 2% 1%;
+    width: 24%;
+  }
+  .c-busca__tabs-content .tipo-peca .smart-select__main-results {
+    left: 5%;
+    width: 90%;
+    top: 70px;
+  }
+  .c-busca__tab-content .smart-select__main-results {
+    top: 40px;
+  }
+   #select-versao-fipe-desktop {
+    width: 24%;
+  }
+  .c-busca .c-busca__botao {
+    left: 89%;
+  }
+}
+
 @media screen and (max-width: 500px) {
   .c-busca__tab-content-mobile {
     display: none;
@@ -806,7 +839,7 @@ font-size: inherit;
     width: 85%;
     font-size: 15px;
     border: 1px solid #dbdbdb;
-    border-radius: 5px;
+    border-radius: 10px;
     text-align: left;
     margin-left: 6%;
     margin-top: 23px;
@@ -1126,10 +1159,6 @@ font-size: inherit;
   }
 }
 @media screen and (min-width: 1024px) {
-  .c-busca .c-busca__select.tipo-peca {
-    padding: 2% 0;
-    width: 24%;
-  }
   .c-busca .c-busca__select {
     width: 18%;
     margin: 8px 4px;
@@ -1146,7 +1175,6 @@ font-size: inherit;
   }
   .c-busca .c-busca__botao {
     position: absolute;
-    left: 91%;
     top: 20%;
     min-width: 110px;
     width: 110px;
@@ -1160,9 +1188,6 @@ font-size: inherit;
   #busca-peca {
     background-color: inherit;
     padding: 2% 1% 1% 0;
-  }
-  #select-versao-fipe-desktop {
-    width: 30%;
   }
 }
 @media screen and (min-width: 1600px) {
@@ -1222,6 +1247,14 @@ font-size: inherit;
   #select-versao-fipe-desktop {
     width: 24%;
   }
+}
+@media screen and (min-width: 1367px) and (max-width: 1920px) {
+  .c-busca .c-busca__tabs-content {
+    left: 60px;
+  }
+}
+.secao-busca {
+  box-shadow: 0 5px 7px -5px #9fa9b7;
 }
 .c-busca__tabs-content .search-options {
   width: 170px;

@@ -392,7 +392,7 @@ i.arrow-icon::before {
   top: 40px;
   display: flex;
   justify-content: center;
-  background-color: #fafafa;
+  background-color: #eeeded;
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
 }
 
@@ -2040,6 +2040,7 @@ body div#ajaxBusy {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
+  background-color: #ffffff;
 }
 
 .search-options input[type="radio"]:checked {

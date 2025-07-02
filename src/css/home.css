@@ -11,7 +11,7 @@ html, body {
 }
 
 .home main {
-  background-color: #fafafa;
+  background-color: #eee;
 }
 
 @media (max-width: 1100px) {
@@ -33,13 +33,12 @@ html, body {
 }
 
 @media (min-width: 1921px) {
-  main .secao-busca {
-    max-width: 1920px;
-    height: auto;
-    left: 300px;
+  body main .secao-busca {
+    max-width: 1900px;
+    height: 860px;
+    left: 320px;
     position: relative;
     border-radius: 20px;
-    border: 1px solid;
   }
   main .secao-busca .banners-section {
     max-width: 1900px;
@@ -70,13 +69,13 @@ html, body {
   }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 992px) {
   .curva-banner {
     display: none;
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 993px) {
   .curva-banner {
     position: absolute;
     z-index: 5;
@@ -86,13 +85,12 @@ html, body {
 }
 
 @media screen and (min-width: 1367px) {
-  .secao-busca {
-    max-width: 1750px;
+  main .secao-busca {
+    max-width: 1700px;
     height: 760px;
     left: 100px;
     position: relative;
     border-radius: 20px;
-    border: 1px solid;
   }
   .secao-busca .banners-section {
     max-width: 1700px;
@@ -151,16 +149,16 @@ html, body {
 @media screen and (min-width: 900px) {
   .secao-busca {
   width: 90%;
-  max-width: 1200px;
+  max-width: 1180px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   align-content: center;
   position: relative;
-  left: 75px;
+  left: 85px;
+  background-color: #fafafa;
   border-radius: 20px;
-  border: 1px solid;
   }
   .banners-section {
     max-width: 1180px;
@@ -178,7 +176,7 @@ html, body {
     object-fit: contain;
   }
   .l-container {
-    width: 1150px;
+    width: 1180px;
   }
   .secao-busca .painel-categorias-section {
     padding-bottom: 25px;
