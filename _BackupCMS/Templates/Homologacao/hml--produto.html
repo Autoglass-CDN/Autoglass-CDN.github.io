@@ -4,6 +4,7 @@
   xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
+<script defer="" src="https://autoglass-cdn.github.io/hml/js/renderiza-thumbs.js" type="text/javascript"></script>
 <script defer="" src="https://autoglass-cdn.github.io/hml/js/google-tag-manager.js" type="text/javascript"></script>
 <script>
         //Datalayer SocialShare
@@ -196,39 +197,33 @@
           </section>
 
           <!-- Product image -->
-          <section class="col-xs-12 col-md-6 col-md-push-1">
-            <figure class="product-qd-v1-image">
-              <section class="product-qd-v1-image-wrapper">
-                <!-- Social Sharing -->
-                <vtex.cmc:prdSocialShare />
-                <!-- Social Sharing -->
-
-                <!-- Selos de destaque -->
-                <section class="product-qd-v1-stamps">
-                  <section class="product-qd-v1-stamps-highlight-discount">
-                    <vtex.cmc:discountHightLight />
+            <section class="col-xs-12 col-md-6">
+              <figure class="product-qd-v1-image">
+                <section class="product-qd-v1-image-wrapper">
+                  <!-- Social Sharing -->
+                  <vtex.cmc:devSocialShare />
+                  <!-- Selos de destaque -->
+                  <section class="product-qd-v1-stamps">
+                    <section class="product-qd-v1-stamps-highlight-discount">
+                      <vtex.cmc:discountHightLight />
+                    </section>
+                    <section class="product-qd-v1-stamps-highlight">
+                      <vtex.cmc:hightLight />
+                    </section>
                   </section>
 
-                  <section class="product-qd-v1-stamps-highlight">
-                    <vtex.cmc:hightLight />
+                  <section class="galeria-bloco-produto">
+                    <div class="galeria-principal">
+                      <div id="thumbsContainer" class="thumbs-gallery"></div>
+                      <div id="mainMediaContainer" class="main-media"></div>
+                    </div>
                   </section>
                 </section>
-                <!-- Selos de destaque -->
+              </figure>
 
-                <vtex.cmc:ProductImage zoom="on" />
-              </section>
-            </figure>
-            <section class="teste-opcionais">
-
+              <section class="teste-opcionais"></section>
             </section>
-          </section>
-          <!-- Product image -->
-
-          <!-- Product thumbs -->
-          <aside class="col-xs-12 col-md-1 col-md-pull-6">
-            <ul class="thumbs product-qd-v1-image-thumbs QD-thumbs img-responsive"></ul>
-          </aside>
-          <!-- Product thumbs -->
+            <!-- Product image -->
 
           <!-- SKU selection box -->
           <section class="product-qd-v1-sku-selection-wrapper col-xs-12 col-md-5">
@@ -278,6 +273,9 @@
                     </div>
                   </div>
                   <div class="compat-content" id="compatContent">
+                    <button id="botaoProdutosCompativeis" style="display: none;">
+                        Ver produtos compatíveis
+                    </button>
                     <div class="compat-description">
                       A placa do seu veículo é a forma mais eficaz de garantir a compatibilidade com esse produto.
                     </div>
@@ -330,6 +328,7 @@
 
                 <!-- Product price -->
                 <section class="product-qd-v1-standard row">
+
                   <section class="col-xs-12">
                     <section class="product-qd-v1-price">
                       <vtex.cmc:skuPrice />
@@ -674,6 +673,11 @@
   <vtex:template id="hml--footer" />
   <!-- Footer -->
   <!-- <vtex.cmc:hmlGoogleMaps /> -->
+
+  <div id="modalZoom" class="modal-zoom">
+    <span class="close-zoom">&#10005;</span>
+    <img class="modal-content-zoom" id="zoomedImage" />
+  </div>
 </body>
 
 </html>

@@ -28,7 +28,7 @@ function extrairRefIdDoNome(nome) {
 }
 
 async function buscarImagensDoSku(skuId) {
-  const endpoint = `${urlApi}/integracao-b2c/api/int-app/sincronismos/sku/imagens/${skuId}`;
+  const endpoint = `${urlApi}/integracao-b2c/api/web-app/sincronismos/sku/imagens/${skuId}`;
   try {
     const data = await (await fetch(endpoint)).json();
     return Array.isArray(data)
@@ -46,7 +46,7 @@ async function buscarImagensDoSku(skuId) {
 }
 
 async function buscarVideosDoSku(refId) {
-  const endpoint = `${urlApi}/integracao-b2c/api/int-app/sincronismos/sku/${refId}`;
+  const endpoint = `${urlApi}/integracao-b2c/api/web-app/sincronismos/sku/${refId}`;
   try {
     const data = await (await fetch(endpoint)).json();
     return data.videoList || data.Videos || [];
