@@ -2,7 +2,7 @@
 
 @import url("https://autoglass-cdn.github.io/src/css/theme.css");
 
-html, body {
+html {
   overflow-x: hidden !important;
 }
 
