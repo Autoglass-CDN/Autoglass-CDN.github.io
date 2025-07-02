@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 const urlApi = window.location.href.includes("hml") || window.location.href.includes("dev")
-    ? "https://api-int-hml.autoglass.com.br"
+    ? "https://api.autoglass.com.br"
     : "https://api.autoglass.com.br";
 
 function extrairRefIdDoNome(nome) {
