@@ -2744,19 +2744,13 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   transition: all 0.2s ease-out;
   position: fixed;
   bottom: 50px;
-  right: 20px;
-  left: 20px;
+  right: 0px;
+  left: 0px;
   z-index: 2;
   height: 63.89px;
   background: #f1f4f9;
 }
 
-@media (max-width: 320px) {
-  .product-qd-v1-fixed-bar {
-    right: 5px;
-    left: 5px;
-  }
-}
 @media (min-width: 1200px) {
   .product-qd-v1-fixed-bar {
     opacity: 0;
@@ -2772,7 +2766,15 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 .product-qd-v1-fixed-bar .product-qd-v1-price {
   padding-top: 19px;
   text-align: center;
+  padding-left: 20px;
 }
+
+@media (max-width: 320px) {
+  .product-qd-v1-fixed-bar .product-qd-v1-price {
+    padding-left: 5px;
+  }
+}
+
 .product-qd-v1-fixed-bar .product-qd-v1-price p {
   margin-top: 0;
   margin-bottom: 0;
@@ -2817,7 +2819,15 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
   padding: 4% 0;
   overflow: initial;
   height: 63px;
+  padding-right: 20px;
 }
+
+@media (max-width: 320px) {
+  .product-qd-v1-fixed-bar .product-qd-v1-buy-button {
+    padding-right: 5px;
+  }
+}
+
 .product-qd-v1-fixed-bar .product-qd-v1-buy-button .buy-button {
   text-indent: 0;
   color: transparent;
