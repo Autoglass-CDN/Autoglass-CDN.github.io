@@ -35,12 +35,32 @@
     color: #0b4583;
     font-weight: bold;
     font-size: 16px;
-    padding-left: 12.5%;
-    top: 14%;
+    padding-left: 1.5%;
+    top: 5%;
   }
   body.home .menu-secao-pesquisa {
+    padding-left: 6%;
     top: -20%;
   }
+}
+
+@media screen and (min-width: 1367px) {
+  .c-busca .menu-secao-pesquisa {
+    padding-left: 6%;
+    top: 14%;
+  }
+  /* body.home .c-busca .menu-secao-pesquisa {
+    top: -20%;
+  } */
+}
+
+@media screen and (min-width: 1921px) {
+  .l-container .c-busca .menu-secao-pesquisa {
+    padding-left: 12.5%;
+  }
+  /* body.home .l-container .c-busca .menu-secao-pesquisa {
+    top: -20%;
+  } */
 }
 
 @media screen and (min-width: 992px) {

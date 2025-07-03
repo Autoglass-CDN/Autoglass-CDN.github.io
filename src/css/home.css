@@ -48,7 +48,7 @@ html {
     height: unset;
     overflow: auto;
   }
-  .secao-busca .banners .banners-content.desktop .box-banner {
+  .secao-busca .banners-section .banners .banners-content.desktop .box-banner {
     width: 75vw;
   }
   .secao-busca .banners .banners-content.desktop .box-banner img {
@@ -100,6 +100,9 @@ html {
     height: auto;
     overflow: auto;
   }
+  .banners-section .banners .banners-content.desktop .box-banner {
+    width: 89vw;
+  }
   .secao-busca .l-container {
     width: 1700px;
   }
@@ -129,9 +132,6 @@ html {
 @media screen and (min-width: 900px) and (max-width: 1366px) {
   .secao-busca .curva-banner {
     height: 30px;
-  }
-  .secao-busca .menu-secao-pesquisa {
-    padding: 3% 0px 0px 30%;
   }
   .l-container {
     padding-top: 20px;
