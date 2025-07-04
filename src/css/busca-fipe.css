@@ -1,4 +1,8 @@
 /* HELPERS */
+html {
+  overflow-x: hidden !important;
+}
+
 .c-busca .h-flex {
   display: flex;
   flex-direction: column;
