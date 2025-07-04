@@ -1,6 +1,11 @@
 /* import */
 
 @import url("https://autoglass-cdn.github.io/hml/css/theme.css");
+
+html {
+  overflow-x: hidden !important;
+}
+
 .smart-select-section {
   margin-top: -75px;
 }
