@@ -620,22 +620,56 @@ function aplicarDesconto(percentualDesconto) {
 function ajustarTextoValorParcelado(precoNumerico) {
   let divs = document.querySelectorAll('.valor-dividido.price-installments');
 
-
   divs.forEach(function(div, index) {
-    if (!div.classList.contains('modificada')) {
+    const estaDentroDaBarraFixa = div.closest('.product-qd-v1-fixed-bar') !== null;
 
+    if (!div.classList.contains('modificada')) {
       div.classList.add('modificada');
+
+      if (estaDentroDaBarraFixa) {
+        div.style.fontWeight = 'normal';
+        div.style.setProperty('font-weight', 'normal', 'important');
+        div.style.color = '#2d4f9e';
+
+        let labels = div.querySelectorAll('.skuBestInstallmentNumber');
+
+        labels.forEach(label => {
+          if (/^\d+\s*x\s*$/i.test(label.textContent.trim())) {
+            let spanCom5x = label.closest('span');
+            let containerPai = spanCom5x.parentNode;
+
+            let found = false;
+
+            [...containerPai.childNodes].forEach(node => {
+              if (found) {
+                containerPai.removeChild(node);
+              }
+
+              if (node === spanCom5x || (node.nodeType === 1 && node.contains(spanCom5x))) {
+                found = true;
+
+                [...spanCom5x.childNodes].forEach(child => {
+                  if (child.nodeType === Node.TEXT_NODE && child.textContent.includes('de')) {
+                    child.textContent = '';
+                  }
+                });
+              }
+            });
+          }
+        });
+      }
 
       let labelNumero = div.querySelector('.skuBestInstallmentNumber');
 
       let novaLabel = document.createElement('label');
-      novaLabel.textContent = precoNumerico.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });;  // O texto que você deseja adicionar
+      novaLabel.textContent = precoNumerico.toLocaleString('pt-BR', {
+        style: 'currency',
+        currency: 'BRL'
+      });
       novaLabel.classList.add('skuBestInstallmentNumber');
 
       if (labelNumero) {
         labelNumero.parentNode.insertBefore(novaLabel, labelNumero);
-
-
 
         let spanConectiva = document.createElement('span');
         spanConectiva.textContent = ' em ';
@@ -644,10 +678,9 @@ function ajustarTextoValorParcelado(precoNumerico) {
 
         let novoSpan = document.createElement('span');
         novoSpan.textContent = ' sem juros';
-        novoSpan.classList.add('span-sem-juros')
+        novoSpan.classList.add('span-sem-juros');
 
         let strongTag = div.querySelector('strong');
-
         if (strongTag) {
           strongTag.appendChild(novoSpan);
         }
@@ -664,7 +697,7 @@ function ajustarTextoValorParcelado(precoNumerico) {
               spanConectivaOu.textContent = 'ou ';
               containerDiv.appendChild(spanConectivaOu);
 
-              tipoTag = index == 0 ? 'label' : 'span';
+              tipoTag = index === 0 ? 'label' : 'span';
 
               let strongTagNova = document.createElement(tipoTag);
               strongTagNova.textContent = novaLabel.textContent;
