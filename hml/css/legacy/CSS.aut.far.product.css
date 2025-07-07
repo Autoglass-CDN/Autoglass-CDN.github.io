@@ -2747,7 +2747,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   right: 0px;
   left: 0px;
   z-index: 2;
-  height: 63.89px;
+  height: 50px;
   background: #f1f4f9;
 }
 
@@ -2765,7 +2765,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 }
 .product-qd-v1-fixed-bar .product-qd-v1-price {
   padding-top: 19px;
-  text-align: center;
+  text-align: initial;
   padding-left: 20px;
 }
 @media (max-width: 320px) {
@@ -2792,7 +2792,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
   font-size: 0;
 }
 .product-qd-v1-fixed-bar .product-qd-v1-price .valor-de {
-  margin-right: 5px;
+  margin-right: 0px;
   color: #424242;
   text-decoration: line-through;
 }
@@ -2815,9 +2815,9 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
 .product-qd-v1-fixed-bar .product-qd-v1-buy-button {
   position: relative;
   margin-top: 0;
-  padding: 4% 0;
+  padding: 2% 0;
   overflow: initial;
-  height: 63px;
+  height: auto;
   padding-right: 20px;
 }
 
@@ -2838,7 +2838,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
   text-align: center;
   margin: 0 0 0 auto;
   position: relative;
-  height: 45px;
+  height: auto;
   justify-content: center;
 }
 .product-qd-v1-fixed-bar .product-qd-v1-buy-button .buy-button:before {
@@ -2960,6 +2960,12 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
     font-weight: 600;
   }
 }
+
+.valor-dividido.price-installments.modificada label {
+  font-weight: normal;
+  color: #2d4f9e;
+}
+
 .mz-acessories .mz-accesories__name {
   padding: 0 0 20px 10px;
 }
