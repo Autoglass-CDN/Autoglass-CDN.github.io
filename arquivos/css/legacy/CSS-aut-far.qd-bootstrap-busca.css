@@ -668,6 +668,7 @@ div#ajaxBusy p {
 }
 
 body {
+  padding-top: 154px;
   background: #f9f9f9;
 }
 
@@ -782,8 +783,8 @@ body {
 
 @media (max-width: 767px) {
   .footer-qd-v1-content {
-    padding-right: 25px;
-    padding-left: 15px;
+    padding-right: 20px;
+    padding-left: 20px;
   }
 }
 
