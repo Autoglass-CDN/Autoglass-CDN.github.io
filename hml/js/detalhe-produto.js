@@ -679,3 +679,28 @@ function ajustarTextoValorParcelado(precoNumerico) {
     }
   });
 }
+
+//ATENÇÃO! SOMENTE PARA HML!
+$(document).ready(function() {
+  const observer = new MutationObserver(function(mutations) {
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.id === 'hs-web-interactives-top-anchor') {
+          $(node).css('display', 'none');
+        }
+
+        if (node.id === 'hs-interactives-modal-overlay' || node.id === 'hs-overlay-cta-191868118043') {
+          $("#" + node.id).css('display', 'none');
+        }
+      });
+
+      if ($('body').hasClass('go1432718904')) {
+        $('body').removeClass('go1432718904');
+      }
+    });
+  });
+
+  const config = { attributes: true, childList: true, subtree: true, attributeFilter: ['class'] };
+
+  observer.observe(document.body, config);
+});
