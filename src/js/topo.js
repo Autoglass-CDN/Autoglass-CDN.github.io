@@ -55,48 +55,6 @@ function verificaUrlInstitucional() {
   }
 }
 
-// function fecharAbaCategoria() {
-//   const divCategoria = document.getElementById("busca-categoria");
-//   const divBuscaPeca = document.getElementById("busca-peca");
-//   const abaBuscaPeca = document.getElementById("tab-busca-peca");
-//   const abaBuscaCategoria = document.getElementById("tab-busca-categoria");
-
-//   // Função auxiliar para trocar classes
-//   const toggleActiveClass = (element, add) => {
-//     if (element) {
-//       if (add) {
-//         element.classList.add("is-active");
-//       } else {
-//         element.classList.remove("is-active");
-//       }
-//     }
-//   };
-
-//   // Remover is-active da aba de categoria
-//   toggleActiveClass(divCategoria, false);
-//   toggleActiveClass(abaBuscaCategoria, false);
-
-//   // Adicionar is-active à aba de busca por placa
-//   toggleActiveClass(divBuscaPeca, true);
-//   toggleActiveClass(abaBuscaPeca, true);
-// }
-
-// if (window.innerWidth > 1200) {
-//   document.addEventListener("click", cliqueForaDaAba);
-//   function cliqueForaDaAba(event) {
-//     const aba = document.getElementById('busca-categoria');
-//     const tabs = document.querySelector('.c-busca__tabs.tab-header');
-//     const isClickInsideTabs = tabs.contains(event.target);
-//     const abaBuscaPlaca = document.getElementById('tab-busca-placa');
-
-//     if(!abaBuscaPlaca.classList.contains('is-active')){
-//       if (!aba.contains(event.target) && !isClickInsideTabs) {
-//         fecharAbaCategoria();
-//       }
-//     }
-//   }
-// }
-
 if(window.innerWidth > 1200){
   const inputPesquisa = document.querySelector('.fulltext-search-box');
   inputPesquisa.addEventListener('click', () => {
@@ -122,9 +80,6 @@ function activateCategory(categoriaAtual, indexConteudoAtual) {
         ".painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo"
       )
       ?.classList.remove("ativo");
-
-    // event.target.style.transition = '0.8s';
-    // event.target.style.opacity = 0;
   }
   categoriaAtual
     .querySelector(".painel-categorias__categoria-header")
@@ -597,6 +552,15 @@ function openNav() {
   }, 300);
 
   removeFunctions();
+
+  setTimeout(() => {
+    const container = $('#busca-placa-mobile #categoria-select');
+    const menu = container.find('.smart-select__main-results');
+
+    if (!menu.is(':visible')) {
+      menu.stop(true, true).slideDown('fast');
+    }
+  }, 500);
 }
 
 function lockPageScroll() {
@@ -946,23 +910,6 @@ inputBusca.addEventListener("keydown", function (event) {
 
 if (window.innerWidth > 1024) {
   (function initializeCategoryPanelMenu() {
-    // const tab = document.querySelector("#tab-busca-categoria");
-
-    // if (tab) {
-    //   tab.addEventListener("click", (event) => {
-    //     event.preventDefault();
-
-    //     setTimeout (() => {
-    //     const content = document.querySelector("#busca-categoria");
-
-    //     if (tab && content) {
-    //       tab.classList.add("is-active");
-    //       content.classList.add("is-active");
-    //     }
-    //   }, 10);
-    //   });
-    // }
-
     let lastActiveSubmenuId = null;
     $(".painel-categorias__categoria-itens-lista li.categoria").on("mouseenter", function () {
       const submenuId = $(this).data("target");

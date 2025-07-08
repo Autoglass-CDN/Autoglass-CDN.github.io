@@ -1124,7 +1124,7 @@ i.arrow-icon::before {
   z-index: 900000;
   right: 0;
   bottom: 0;
-  background-color: white;
+  background-color: #fafafa;
   overflow-x: hidden;
   overflow-y: auto;
   transition: 0.5s;
@@ -1990,6 +1990,10 @@ body div#ajaxBusy {
   display: flex;
   border-bottom: 1px solid #dddddd;
   padding-top: 13%;
+}
+
+#main-menu .titulo-side-menu {
+  padding-top: 1%;
 }
 
 .titulo-side-menu > span {

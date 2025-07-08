@@ -36,7 +36,33 @@
     background-color: #fafafa;
     font-weight: bold;
     font-size: 16px;
-    padding: 6% 0px 0px 35%;
+    padding-left: 1.5%;
+    top: 5%;
+  }
+  body.home .menu-secao-pesquisa {
+    padding-left: 6%;
+    top: -20%;
+  }
+  #tab-busca-categoria .c-busca__tab-text {
+    font-weight: bold;
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 1367px) {
+  .c-busca .menu-secao-pesquisa {
+    padding-left: 6%;
+    top: 14%;
+  }
+}
+
+@media screen and (min-width: 1921px) {
+  .l-container .c-busca .menu-secao-pesquisa {
+    padding-left: 12.5%;
+  }
+ 
+  .nav .container.desktop #tab-busca-categoria .c-busca__tab-text {
+    font-size: 20px;
   }
 }
 
@@ -65,7 +91,7 @@
     padding: 0px;
     border-bottom: 0px;
     border-radius: 0px;
-    gap: 5px; /* Adicionando espaçamento entre as abas */
+    gap: 5px;
   }
 
   .tab-item, .c-busca__tabs-content .tab-item {
@@ -116,20 +142,12 @@
     gap: 5px;
   }
 
-  /* .tab-item.font {
-    padding: 10px 20px;
-    cursor: pointer;
-    font-weight: bold;
-    color: #0b4583;
-    text-align: center;
-  } */
-
   #tab-busca-categoria {
     border-bottom: none;
   }
 
-  #tab-busca-categoria .c-busca__tab-text {
-    font-weight: bold;
+  .container.desktop #tab-busca-categoria .c-busca__tab-text {
+    font-size: 16px;
   }
 }
 
