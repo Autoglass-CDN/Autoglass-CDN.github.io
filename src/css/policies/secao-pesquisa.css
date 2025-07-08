@@ -33,7 +33,6 @@
     position: absolute;
     z-index: 5;
     color: #0b4583;
-    background-color: #fafafa;
     font-weight: bold;
     font-size: 16px;
     padding-left: 1.5%;
@@ -64,6 +63,9 @@
   .nav .container.desktop #tab-busca-categoria .c-busca__tab-text {
     font-size: 20px;
   }
+  /* body.home .l-container .c-busca .menu-secao-pesquisa {
+    top: -20%;
+  } */
 }
 
 @media screen and (min-width: 992px) {

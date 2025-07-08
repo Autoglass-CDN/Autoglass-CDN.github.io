@@ -1521,8 +1521,34 @@
   });
   inputNaoSeiPlaca.addEventListener('change', () => {
     ativarBuscaPeca();
-    View.resetResults(1);
+
+    const exibirCampo = (selector) => {
+      const $el = $('.c-busca__tabs-content').find(selector).closest('.c-busca__select');
+      if ($el.length > 0) {
+        $el[0].style.setProperty('display', 'block', 'important');
+      }
+    };
+
+    const encadearCampo = (origemId, destinoId) => {
+      if (!$('#input-nao-sei-placa').is(':checked')) return;
+      const textoSpan = $(`#${origemId} .gtm-smart-peca-select span`).text().trim();
+      const liCorrespondente = $(`#${origemId} li`).filter(function() {
+        return $(this).text().trim() === textoSpan;
+      });
+
+      if (liCorrespondente.length > 0) {
+        liCorrespondente.trigger('click');
+      }
+
+      exibirCampo(`#${destinoId}`);
+    };
+
+    encadearCampo('pecas-select-desktop', 'montadora-select-desktop');
+    encadearCampo('montadora-select-desktop', 'veiculo-select-desktop');
+    encadearCampo('veiculo-select-desktop', 'ano-select-desktop');
+    encadearCampo('ano-select-desktop', 'select-versao-fipe-desktop');
   });
+
 
 } else {
   AlternaAbaBusca();
