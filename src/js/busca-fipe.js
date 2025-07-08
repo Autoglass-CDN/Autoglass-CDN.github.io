@@ -92,18 +92,6 @@
   }
 
     if (window.innerWidth > 1024) {
-      // $('#input-nao-sei-placa, #input-busca-placa-desktop').on('change', function () {
-      //   if ($(this).is(':checked')) {
-
-      //     $('#pecas-select-desktop .gtm-smart-peca-select span').html('Tipo de Peça');
-
-      //     $('#pecas-select-desktop .fa-caret-down').show();
-      //     $('#pecas-select-desktop .fa-close').hide();
-
-      //     $('#pecas-select-desktop .smart-select__main-results').slideUp('fast');
-      //   }
-      // });
-
       $('#btn-busca-peca-buscar').on('click', function (e) {
         const isNaoSeiPlaca = $('#input-nao-sei-placa').is(':checked');
         const tipoPecaSelecionado = $('#pecas-select-desktop span').text().trim();
@@ -458,6 +446,8 @@
 
     View.selectOptionIfButtonHasValue(select.id);
 
+    showButtonVerTodas();
+
       $(
         `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results input`
       )
@@ -618,17 +608,6 @@
           )
             View.filterResults(e, select);
         });
-
-      if(window.innerWidth < 1024){
-        $(document).on("click", (e) => {
-          var container = $(`.c-busca__tab-content-mobile #${select.id}`);
-          if (!$(e.target).closest(container).length) {
-            $(
-              `.c-busca__tab-content-mobile #${select.id} .smart-select__main-results`
-            ).slideUp("fast");
-          }
-        });
-      }
     }
 
     function _initSelect_(select) {
@@ -864,13 +843,6 @@
           break;
       }
     }
-
-    function fecharMenuSelect(_id) {
-      const menu = $(`.c-busca__tab-content-mobile #${_id} .smart-select__main-results`);
-      if (menu.is(':visible')) {
-        menu.slideUp('fast');
-      }
-    }
     
   function buildList(objects, _id) {
     let html = "";
@@ -881,9 +853,10 @@
 
         const savedValue = verificaValorCheckBox(_id);
 
-        objects.forEach((x) => {
+        objects.forEach((x, index) => {
           const isChecked = savedValue == x.id ? "checked" : "";
-          html += `<div class="busca-options">
+          const displayStyle = index >= 5 ? "display: none;" : "";
+          html += `<div class="busca-options" style="${displayStyle}">
                       <li role="treeitem" id="${x.id}">
                         <input id="${x.id}" class="input-busca-options" type="radio" name="${_id}" value="${x.id}" ${isChecked}>
                         ${x.name}
@@ -903,6 +876,7 @@
             case "#busca-peca-mobile":
               defineValorCheckbox(inputId, _id);
               Controller.addClick({ target: { id: inputId } }, _id);
+              showButtonVerTodas();
               if (_id === "versao-select")
                 ajustaLayoutAposOpcoesSelecionadas();
               break;
@@ -910,7 +884,6 @@
             case "#busca-placa-mobile":
               defineValorCheckbox(inputId, _id);
               handleBuscaPlacaSelection({ target: { id: inputId } }, _id);
-              fecharMenuSelect(_id);
               break;
           }
         });
@@ -918,6 +891,7 @@
       $(`.c-busca__tab-content-mobile #${_id} .itens-lista li`)
         .first()
         .addClass(CONFIG.CSS.HIGHLIGHT);
+       $(`.botao-ver-todas`).show();
 
     } else {
       $(`.c-busca__tab-content-mobile #${_id} .itens-lista`).html(
@@ -1544,7 +1518,6 @@
 
   inputBuscaPlaca.addEventListener('change', () => {
     ativarBuscaPlaca();
-    // resetBuscaPlaca();
   });
   inputNaoSeiPlaca.addEventListener('change', () => {
     ativarBuscaPeca();
@@ -1609,55 +1582,131 @@ document.addEventListener("DOMContentLoaded", () => {
   input.addEventListener('blur', mostrarPlaceholder);
 });
 
-  function AlternaAbaBusca() {
-    const tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
+ function AlternaAbaBusca() {
+  const tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
 
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", async (event) => {
-        event.preventDefault();
+  const escapeIdForSelector = (id) =>
+    id.replace(/([ #;?%&,.+*~':"!^$[\]()=>|/])/g, '\\$1');
 
-        tabs.forEach((t) => t.classList.remove("is-active"));
-        tab.classList.add("is-active");
+  function copiarEstadoEntreCampos(origemSelector, destinoSelector, origemContainer, destinoContainer) {
+    const origemSpan = document.querySelector(origemSelector);
+    const destinoSpan = document.querySelector(destinoSelector);
 
-        const abaInput = tab.querySelector('input[type="radio"]');
-        abaInput.checked = true;
-        sessionStorage.setItem("idAba", abaInput.id);
+    if (origemSpan && destinoSpan && origemSpan.textContent.trim() !== "") {
+      destinoSpan.textContent = origemSpan.textContent;
 
-        activeTab = tab.querySelector("a").attributes.href.nodeValue;
+      const inputSelecionado = document.querySelector(`${origemContainer} input.input-busca-options:checked`);
+      if (inputSelecionado) {
+        const itemId = inputSelecionado.closest("li")?.id;
+        const escapedId = escapeIdForSelector(itemId);
+        const destinoInputSelector = `${destinoContainer} li[id="${escapedId}"] input.input-busca-options`;
+        const destinoInput = document.querySelector(destinoInputSelector);
+        if (destinoInput) destinoInput.checked = true;
+      }
+    }
+  }
 
-        const inputContainer = document.querySelector('#main-menu .c-busca__input');
-        if (abaInput.id === 'inputPlaca') {
-          inputContainer.style.display = 'block';
-        } else {
-          inputContainer.style.display = 'none';
-        }
+  function copiarEstadoParaBuscarComPlaca() {
+    copiarEstadoEntreCampos(
+      "#opcao-selecionada-pecas-select",
+      "#opcao-selecionada-categoria-select",
+      '#busca-peca-mobile .c-busca__select #pecas-select .smart-select__main-results .itens-lista .busca-options',
+      '#busca-placa-mobile .c-busca__select #categoria-select .smart-select__main-results .itens-lista .busca-options'
+    );
+  }
 
-        const tabContentDivs = document.querySelectorAll(".c-busca__tab-content-mobile");
-        tabContentDivs.forEach((div) => div.classList.remove("is-active"));
+  function copiarEstadoParaNaoSeiMinhaPlaca() {
+    copiarEstadoEntreCampos(
+      "#opcao-selecionada-categoria-select",
+      "#opcao-selecionada-pecas-select",
+      '#busca-placa-mobile .c-busca__select #categoria-select .smart-select__main-results .itens-lista .busca-options',
+      '#busca-peca-mobile .c-busca__select #pecas-select .smart-select__main-results .itens-lista .busca-options'
+    );
+  }
 
-        const selectedSection = document.querySelector(tab.querySelector("a").hash);
-        selectedSection.classList.add("is-active");
-
-        if (window.innerWidth < 1024) {
-          if (abaInput.id === 'inputBuscaPeca') {
-            if (window._dadosCategoriasPeca?.length) {
-              await _initBuscaPeca(window._dadosCategoriasPeca);
-            }
-          } else if (abaInput.id === 'inputPlaca') {
-            if (window._dadosCategoriasPlaca?.length) {
-              await _initBuscaPlaca(window._dadosCategoriasPlaca);
-            }
-          }
-        }
-      });
+  tabs.forEach((tab) => {
+    tab.addEventListener("click", async (event) => {
+      event.preventDefault();
+      tabs.forEach((t) => t.classList.remove("is-active"));
+      tab.classList.add("is-active");
 
       const abaInput = tab.querySelector('input[type="radio"]');
-      abaInput.addEventListener('click', (e) => {
-        e.stopPropagation();
-        tab.click();
-      });
+      abaInput.checked = true;
+      sessionStorage.setItem("idAba", abaInput.id);
+
+      const activeTabId = tab.querySelector("a").getAttribute("href");
+      const tabContentDivs = document.querySelectorAll(".c-busca__tab-content-mobile");
+      tabContentDivs.forEach((div) => div.classList.remove("is-active"));
+      const selectedSection = document.querySelector(activeTabId);
+      selectedSection?.classList.add("is-active");
+
+      const inputContainer = document.querySelector('#main-menu .c-busca__input');
+      inputContainer.style.display = (abaInput.id === 'inputPlaca') ? 'block' : 'none';
+
+      if (window.innerWidth < 1024) {
+        if (abaInput.id === 'inputBuscaPeca') {
+          if (window._dadosCategoriasPeca?.length) {
+            await _initBuscaPeca(window._dadosCategoriasPeca);
+          }
+
+          copiarEstadoParaNaoSeiMinhaPlaca();
+
+          setTimeout(() => {
+            const liSelecionado = document.querySelector('#busca-peca-mobile li input.input-busca-options:checked')?.closest('li');
+            liSelecionado?.click();
+          }, 20);
+
+          setTimeout(() => {
+            const container = $('#busca-peca-mobile #pecas-select');
+            const menu = container.find('.smart-select__main-results');
+
+            if (!menu.is(':visible')) {
+              menu.stop(true, true).slideDown('fast');
+            }
+          }, 10);
+        }
+
+        if (abaInput.id === 'inputPlaca') {
+          if (window._dadosCategoriasPlaca?.length) {
+            await _initBuscaPlaca(window._dadosCategoriasPlaca);
+          }
+
+          setTimeout(() => {
+            copiarEstadoParaBuscarComPlaca();
+            const liSelecionado = document.querySelector('#busca-placa-mobile li input.input-busca-options:checked')?.closest('li');
+            liSelecionado?.click();
+
+            setTimeout(() => {
+              inputPlaca.value = inputBuscaPeca.value;
+              inputPlaca.dispatchEvent(new Event("input"));
+              inputPlaca.dispatchEvent(new Event("change"));
+              inputPlaca.dispatchEvent(new Event("blur"));
+            }, 10);
+          }, 20);
+          
+          setTimeout(() => {
+              const container = $('#busca-placa-mobile #categoria-select');
+              const menu = container.find('.smart-select__main-results');
+
+              if (!menu.is(':visible')) {
+                menu.stop(true, true).slideDown('fast');
+              }
+            }, 5);
+        }
+      }
     });
-  }
+
+    const abaInput = tab.querySelector('input[type="radio"]');
+    abaInput.addEventListener("click", (e) => {
+      e.stopPropagation();
+      tab.click();
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    copiarEstadoParaBuscarComPlaca();
+  });
+}
 
   function menuCategoriasMobile () {
     let iconeLista = document.querySelector("#tab-busca-categoria-mobile .icone-lista");
@@ -2199,6 +2248,67 @@ function _initBuscaPlaca(values) {
     }
   }
 
+  document
+    .getElementById("toggleButton")
+    .addEventListener("click", function () {
+      document.querySelectorAll(".busca-options").forEach(function (element) {
+        element.style.display = "block";
+        var divBotao = document.querySelector(".botao-ver-todas");
+        divBotao.style.display = "none";
+      });
+    });
+
+  document
+    .getElementById("toggleButton2")
+    .addEventListener("click", function () {
+      document.querySelectorAll(".busca-options").forEach(function (element) {
+        element.style.display = "block";
+        var botaoVerTodasPecas = document.getElementById("toggleButton2");
+        botaoVerTodasPecas.style.display = "none";
+      });
+    });
+
+  document
+    .getElementById("toggleButton3")
+    .addEventListener("click", function () {
+      document.querySelectorAll(".busca-options").forEach(function (element) {
+        element.style.display = "block";
+        var botaoVerTodasMontadoras = document.getElementById("toggleButton3");
+        botaoVerTodasMontadoras.style.display = "none";
+      });
+    });
+
+  document
+    .getElementById("toggleButton4")
+    .addEventListener("click", function () {
+      document.querySelectorAll(".busca-options").forEach(function (element) {
+        element.style.display = "block";
+        var botaoVerTodosVeiculos = document.getElementById("toggleButton4");
+        botaoVerTodosVeiculos.style.display = "none";
+      });
+    });
+
+  document
+    .getElementById("toggleButton5")
+    .addEventListener("click", function () {
+      document.querySelectorAll(".busca-options").forEach(function (element) {
+        element.style.display = "block";
+        var botaoVerTodosAnos = document.getElementById("toggleButton5");
+        botaoVerTodosAnos.style.display = "none";
+      });
+    });
+
+  document
+    .getElementById("toggleButton6")
+    .addEventListener("click", function () {
+      document.querySelectorAll(".busca-options").forEach(function (element) {
+        element.style.display = "block";
+        var botaoVerTodasVersoesFipes =
+          document.getElementById("toggleButton6");
+        botaoVerTodasVersoesFipes.style.display = "none";
+      });
+    });
+
   var botaoLimparBuscaPlacaMobile = document.querySelector("#btn-busca-placa-limpar-mobile ");
   botaoLimparBuscaPlacaMobile.addEventListener("click", () => {
     resetSelectMobile();
@@ -2258,28 +2368,6 @@ function _initBuscaPlaca(values) {
     ).slideDown("fast");
   }
 
-  function resetBuscaPlaca() {
-    const select = PLACA_SELECTS[0];
-    const textoOpcaoSelecionada = document.getElementById(`opcao-selecionada-${select.id}`);
-    
-    if (textoOpcaoSelecionada) {
-      textoOpcaoSelecionada.textContent = select.title;
-    }
-
-    select.routeSelected = "";
-    
-    const listItems = document.querySelectorAll(`#${select.id} .itens-lista li`);
-    listItems.forEach((item) => {
-      const radioInput = item.querySelector('input[type="radio"]');
-      if (radioInput) radioInput.checked = false;
-      item.classList.remove('active');
-    });
-
-    $(`#${select.id} > div > span`).html(select.title);
-    $(`#${select.id} > div > .${CONFIG.CSS.ARROW_DOWN}`).show();
-    $(`#${select.id} > div > .${CONFIG.CSS.CLOSE}`).hide();
-  }
-
   function resetBuscaPlacaMobile() {
     const select = PLACA_SELECTS[0];
 
@@ -2318,6 +2406,63 @@ function _initBuscaPlaca(values) {
     localStorage.removeItem("buscaPlaca");
   }
 
+  const botaoVerTodasCategoria = document.querySelector("#toggleButton");
+  botaoVerTodasCategoria.addEventListener("click", () => {
+    const ulCategoriaSelect = document.querySelector(
+      "#categoria-select .smart-select__main-results > ul"
+    );
+    if (ulCategoriaSelect) {
+      ulCategoriaSelect.style.height = "auto";
+    }
+  });
+
+  const botaoVerTodasPecas = document.querySelector("#toggleButton2");
+  botaoVerTodasPecas.addEventListener("click", () => {
+    const ulCategoriaSelect = document.querySelector(
+      "#pecas-select .smart-select__main-results > ul"
+    );
+    ulCategoriaSelect.style.height = "auto";
+  });
+
+  const botaoVerTodasMontadoras = document.querySelector("#toggleButton3");
+  botaoVerTodasMontadoras.addEventListener("click", () => {
+    const ulCategoriaSelect = document.querySelector(
+      "#montadora-select .smart-select__main-results > ul"
+    );
+    ulCategoriaSelect.style.height = "auto";
+  });
+
+  const botaoVerTodasVeiculos = document.querySelector("#toggleButton4");
+  botaoVerTodasVeiculos.addEventListener("click", () => {
+    const ulCategoriaSelect = document.querySelector(
+      "#veiculo-select .smart-select__main-results > ul"
+    );
+    ulCategoriaSelect.style.height = "auto";
+  });
+
+  const botaoVerTodosAnos = document.querySelector("#toggleButton5");
+  botaoVerTodosAnos.addEventListener("click", () => {
+    const ulCategoriaSelect = document.querySelector(
+      "#ano-select .smart-select__main-results > ul"
+    );
+    ulCategoriaSelect.style.height = "auto";
+  });
+
+  const botaoVerTodasVersoes = document.querySelector("#toggleButton6");
+  botaoVerTodasVersoes.addEventListener("click", () => {
+    const ulCategoriaSelect = document.querySelector(
+      "#versao-select .smart-select__main-results > ul"
+    );
+    ulCategoriaSelect.style.height = "auto";
+  });
+
+  function showButtonVerTodas() {
+    botaoVerTodasPecas.style.display = "block";
+    botaoVerTodasMontadoras.style.display = "block";
+    botaoVerTodasVeiculos.style.display = "block";
+    botaoVerTodosAnos.style.display = "block";
+    botaoVerTodasVersoes.style.display = "block";
+  }
 
   function retiraCheckedOpcaosSelecionadas() {
     const checkedInputPecas = document.querySelector(window.innerWidth > 1024 ? '#pecas-select-desktop .itens-lista li input:checked' : '#pecas-select .itens-lista li input:checked');
