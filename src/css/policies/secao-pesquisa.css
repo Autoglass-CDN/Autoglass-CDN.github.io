@@ -33,11 +33,34 @@
     position: absolute;
     z-index: 5;
     color: #0b4583;
-    background-color: #fafafa;
     font-weight: bold;
     font-size: 16px;
-    padding: 6% 0px 0px 35%;
+    padding-left: 1.5%;
+    top: 5%;
   }
+  body.home .menu-secao-pesquisa {
+    padding-left: 6%;
+    top: -20%;
+  }
+}
+
+@media screen and (min-width: 1367px) {
+  .c-busca .menu-secao-pesquisa {
+    padding-left: 6%;
+    top: 14%;
+  }
+  /* body.home .c-busca .menu-secao-pesquisa {
+    top: -20%;
+  } */
+}
+
+@media screen and (min-width: 1921px) {
+  .l-container .c-busca .menu-secao-pesquisa {
+    padding-left: 12.5%;
+  }
+  /* body.home .l-container .c-busca .menu-secao-pesquisa {
+    top: -20%;
+  } */
 }
 
 @media screen and (min-width: 992px) {

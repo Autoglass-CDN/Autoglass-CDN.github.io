@@ -342,7 +342,7 @@ i.arrow-icon::before {
   color: var(--gray-700);
   /*border: 1px solid var(--gray-300);*/
   box-shadow: 0 0 5px;
-  z-index: 1;
+  z-index: 1000000;
   min-width: 135px;
   top: 40px;
   font-size: 0.8rem;
@@ -392,7 +392,7 @@ i.arrow-icon::before {
   top: 40px;
   display: flex;
   justify-content: center;
-  background-color: #fafafa;
+  background-color: #eeeded;
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
 }
 
@@ -2040,6 +2040,7 @@ body div#ajaxBusy {
   cursor: pointer;
   appearance: none;
   -webkit-appearance: none;
+  background-color: #ffffff;
 }
 
 .search-options input[type="radio"]:checked {

@@ -92,17 +92,17 @@
   }
 
     if (window.innerWidth > 1024) {
-      $('#input-nao-sei-placa, #input-busca-placa-desktop').on('change', function () {
-        if ($(this).is(':checked')) {
+      // $('#input-nao-sei-placa, #input-busca-placa-desktop').on('change', function () {
+      //   if ($(this).is(':checked')) {
 
-          $('#pecas-select-desktop .gtm-smart-peca-select span').html('Tipo de Peça');
+      //     $('#pecas-select-desktop .gtm-smart-peca-select span').html('Tipo de Peça');
 
-          $('#pecas-select-desktop .fa-caret-down').show();
-          $('#pecas-select-desktop .fa-close').hide();
+      //     $('#pecas-select-desktop .fa-caret-down').show();
+      //     $('#pecas-select-desktop .fa-close').hide();
 
-          $('#pecas-select-desktop .smart-select__main-results').slideUp('fast');
-        }
-      });
+      //     $('#pecas-select-desktop .smart-select__main-results').slideUp('fast');
+      //   }
+      // });
 
       $('#btn-busca-peca-buscar').on('click', function (e) {
         const isNaoSeiPlaca = $('#input-nao-sei-placa').is(':checked');
@@ -1544,12 +1544,38 @@
 
   inputBuscaPlaca.addEventListener('change', () => {
     ativarBuscaPlaca();
-    resetBuscaPlaca();
+    // resetBuscaPlaca();
   });
   inputNaoSeiPlaca.addEventListener('change', () => {
     ativarBuscaPeca();
-    View.resetResults(1);
+
+    const exibirCampo = (selector) => {
+      const $el = $('.c-busca__tabs-content').find(selector).closest('.c-busca__select');
+      if ($el.length > 0) {
+        $el[0].style.setProperty('display', 'block', 'important');
+      }
+    };
+
+    const encadearCampo = (origemId, destinoId) => {
+      if (!$('#input-nao-sei-placa').is(':checked')) return;
+      const textoSpan = $(`#${origemId} .gtm-smart-peca-select span`).text().trim();
+      const liCorrespondente = $(`#${origemId} li`).filter(function() {
+        return $(this).text().trim() === textoSpan;
+      });
+
+      if (liCorrespondente.length > 0) {
+        liCorrespondente.trigger('click');
+      }
+
+      exibirCampo(`#${destinoId}`);
+    };
+
+    encadearCampo('pecas-select-desktop', 'montadora-select-desktop');
+    encadearCampo('montadora-select-desktop', 'veiculo-select-desktop');
+    encadearCampo('veiculo-select-desktop', 'ano-select-desktop');
+    encadearCampo('ano-select-desktop', 'select-versao-fipe-desktop');
   });
+
 
 } else {
   AlternaAbaBusca();
