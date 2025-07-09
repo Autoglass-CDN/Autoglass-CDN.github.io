@@ -1146,7 +1146,7 @@
               }
 
               if (spanSelecionado) {
-                const textoPadrao = spanSelecionado.getAttribute('data-default') || nextField.title;
+                const textoPadrao = spanSelecionado.getAttribute('');
                 spanSelecionado.textContent = textoPadrao;
               }
 
