@@ -48,24 +48,27 @@
   }
 }
 
-@media screen and (min-width: 1367px) {
-  .c-busca .menu-secao-pesquisa {
-    padding-left: 6%;
-    top: 14%;
-  }
-}
-
 @media screen and (min-width: 1921px) {
-  .l-container .c-busca .menu-secao-pesquisa {
+  body .l-container .c-busca .menu-secao-pesquisa {
     padding-left: 12.5%;
+    top: -14%;
+  }
+
+  body.produto .l-container .c-busca .menu-secao-pesquisa,
+  body.departamento .l-container .c-busca .menu-secao-pesquisa,
+  body.categorias .l-container .c-busca .menu-secao-pesquisa {
+    top: 13%;
+  }
+  
+  body.departamento .l-container .c-busca .menu-secao-pesquisa,
+  body.categorias .l-container .c-busca .menu-secao-pesquisa,
+  body.produto .l-container .c-busca .menu-secao-pesquisa {
+    padding-left: 15.5%;
   }
  
   .nav .container.desktop #tab-busca-categoria .c-busca__tab-text {
     font-size: 20px;
   }
-  /* body.home .l-container .c-busca .menu-secao-pesquisa {
-    top: -20%;
-  } */
 }
 
 @media screen and (min-width: 992px) {
