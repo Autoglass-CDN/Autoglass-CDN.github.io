@@ -1,7 +1,12 @@
 .tab-container {
   position: relative;
-  margin: 20px;
+  margin: 0 20px;
   font-family: "Arial", sans-serif;
+}
+
+body.departamento .tab-container,
+body.categoria .tab-container {
+  margin-top: 0;
 }
 
 @media screen and (max-width: 500px) {
@@ -56,12 +61,12 @@
 
   body.produto .l-container .c-busca .menu-secao-pesquisa,
   body.departamento .l-container .c-busca .menu-secao-pesquisa,
-  body.categorias .l-container .c-busca .menu-secao-pesquisa {
+  body.categoria .l-container .c-busca .menu-secao-pesquisa {
     top: 13%;
   }
   
   body.departamento .l-container .c-busca .menu-secao-pesquisa,
-  body.categorias .l-container .c-busca .menu-secao-pesquisa,
+  body.categoria .l-container .c-busca .menu-secao-pesquisa,
   body.produto .l-container .c-busca .menu-secao-pesquisa {
     padding-left: 15.5%;
   }
@@ -71,7 +76,7 @@
   }
 }
 
-@media screen and (min-width: 992px) {
+@media screen and (min-width: 1025px) {
   .tab-header, .c-busca__tabs-content .tab-header {
     display: flex;
     list-style: none;
@@ -83,7 +88,7 @@
     padding: 12px;
     background-color: #e7eaf4;  
     border-radius: 8px;
-    gap: 50px; /* Adicionando espaçamento entre as abas */
+    gap: 50px;
   }
 
   .c-busca__tabs-content .tab-header {
