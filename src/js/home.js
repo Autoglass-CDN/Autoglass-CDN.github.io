@@ -462,27 +462,49 @@ return value < min ? min : (value > max ? max : value);
 }
 
 function slideNext() {
-const categories = Array.from(document.querySelectorAll('.painel-categorias__categoria'));
+    const categories = Array.from(document.querySelectorAll('.painel-categorias__categoria'));
 
-const filteredCategories = categories.filter(category => {
-    return !category.id.includes('tab-busca-categoria');
-});
-let slider = document.querySelector('.painel-categorias__menu > ul');
+    const filteredCategories = categories.filter(category => {
+        return !category.id.includes('tab-busca-categoria');
+    });
 
-if (getTranslateX(slider) < 0) return;
+    let slider = document.querySelector('.painel-categorias__menu > ul');
 
-let fullWidth = Array.from(filteredCategories)
-	.reduce((width, category) => width + (parseInt(getComputedStyle(category).width, 10) + parseInt(getComputedStyle(category).marginLeft, 10) + parseInt(getComputedStyle(category).marginRight, 10)), 0);
+    if (getTranslateX(slider) < 0) return;
 
+    let itemWidth = filteredCategories[0].offsetWidth + 
+                    parseInt(getComputedStyle(filteredCategories[0]).marginRight, 10) + 
+                    parseInt(getComputedStyle(filteredCategories[0]).marginLeft, 10);
 
-let width = slider.clientWidth
-	+ parseInt(getComputedStyle(slider).marginRight, 10)
-	+ parseInt(getComputedStyle(slider).marginLeft, 10);
+    let sliderWidth = slider.clientWidth + 
+                      parseInt(getComputedStyle(slider).marginRight, 10) + 
+                      parseInt(getComputedStyle(slider).marginLeft, 10);
 
-const deslocamento = window.innerWidth < 1367 ? -750 : -300;
-slider.style.transform = `translateX(${deslocamento}px)`;
+    let fullWidth = Array.from(filteredCategories)
+        .reduce((width, category) => width + (parseInt(getComputedStyle(category).width, 10) + parseInt(getComputedStyle(category).marginLeft, 10) + parseInt(getComputedStyle(category).marginRight, 10)), 0);
 
-slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
+    if (window.innerWidth > 900) {
+        let itemsVisible = Math.floor(sliderWidth / itemWidth);
+
+        let deslocamento = itemsVisible * itemWidth;
+
+        let baseOffset = fullWidth - sliderWidth;
+
+        let screenRatio = window.innerWidth / 1366;
+
+        deslocamento = baseOffset * screenRatio;
+
+        deslocamento = Math.min(deslocamento, fullWidth - sliderWidth);
+
+        deslocamento = Math.max(deslocamento, itemWidth);
+
+        slider.style.transform = `translateX(-${deslocamento}px)`;
+    } else {
+        let baseOffset = fullWidth - sliderWidth;
+        slider.style.transform = `translateX(-${baseOffset}px)`;
+    }
+
+    slider.addEventListener("transitionend", (e) => centerArrow(), { once: true });
 }
 
 function toggleVisibility(id) {

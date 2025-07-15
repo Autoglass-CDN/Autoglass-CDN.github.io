@@ -4,6 +4,7 @@
 
 html {
   overflow-x: hidden !important;
+  scrollbar-width: none;
 }
 
 .smart-select-section {
@@ -11,7 +12,10 @@ html {
 }
 
 .home main {
-  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
 }
 
 @media (max-width: 1100px) {
@@ -21,12 +25,9 @@ html {
   .l-container {
     margin-top: 0 !important;
   }
-  .home main {
-    background-color: var(--gray-100);
-  }
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .l-container {
     display: none;
   }
@@ -35,8 +36,6 @@ html {
 @media (min-width: 1921px) {
   body main .secao-busca {
     max-width: 1900px;
-    height: 860px;
-    left: 320px;
     position: relative;
     border-radius: 20px;
   }
@@ -45,11 +44,7 @@ html {
     position: relative;
   }
   .secao-busca .banners .banners-content.desktop {
-    height: unset;
     overflow: auto;
-  }
-  .secao-busca .banners-section .banners .banners-content.desktop .box-banner {
-    width: 75vw;
   }
   .secao-busca .banners .banners-content.desktop .box-banner img {
     object-fit: cover;
@@ -64,7 +59,10 @@ html {
   main .secao-busca .painel-categorias-section .painel-categorias-desktop {
     max-width: 1900px;
   }
-    .painel-categorias-desktop .painel-categorias .botoes {
+}
+
+@media (min-width: 1750px) {
+  .painel-categorias-desktop .painel-categorias .botoes {
     display: none;
   }
 }
@@ -80,38 +78,16 @@ html {
     position: absolute;
     z-index: 5;
     left: 0%;
-    bottom: -6px;
+    bottom: -8px;
   }
 }
 
 @media screen and (min-width: 1367px) {
-  main .secao-busca {
-    max-width: 1700px;
-    height: 760px;
-    left: 100px;
-    position: relative;
-    border-radius: 20px;
-  }
-  .secao-busca .banners-section {
-    max-width: 1700px;
-    position: relative;
-  }
   .secao-busca .banners .banners-content.desktop {
-    height: auto;
     overflow: auto;
-  }
-  .banners-section .banners .banners-content.desktop .box-banner {
-    width: 89vw;
-  }
-  .secao-busca .l-container {
-    width: 1700px;
   }
   main .secao-busca .painel-categorias-section {
     padding-bottom: 50px;
-    max-width: 1700px;
-  }
-  .secao-busca .painel-categorias-section .painel-categorias-desktop {
-    max-width: 1700px;
   }
   .painel-categorias-desktop .painel-categorias .painel-categorias__menu {
     background-color: #fafafa;
@@ -126,6 +102,12 @@ html {
     z-index: 2;
     border-radius: 50%;
     background-color: transparent;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .curva-banner {
+    display: none;
   }
 }
 
@@ -143,46 +125,50 @@ html {
   transition: transform 0.6s ease-in-out;
   display: inline-block;
   white-space: nowrap;
+  width: 100%;
   }
 }
 
 @media screen and (min-width: 900px) {
   .secao-busca {
-  width: 90%;
-  max-width: 1180px;
+  width: 100%;
+  max-width: 1900px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   align-content: center;
   position: relative;
-  left: 85px;
   background-color: #fafafa;
   border-radius: 20px;
   }
   .banners-section {
-    max-width: 1180px;
     position: relative;
+    width: 100%;
+    background-color: #efefef;
   }
   .banners .banners-content.desktop {
-    height: 250px;
+    height: auto;
     overflow: hidden;
     border-radius: 20px;
+    width: 100%;
   }
   .banners .banners-content.desktop .box-banner {
-    width: 87vw;
+    width: 100%;
   }
   .banners .banners-content.desktop .box-banner img {
-    object-fit: contain;
+    object-fit: fill;
   }
+}
+
+@media screen and (min-width: 1025px) {
   .l-container {
-    width: 1180px;
+    width: 100%;
   }
   .secao-busca .painel-categorias-section {
     padding-bottom: 25px;
-  }
-  .painel-categorias-section .painel-categorias-desktop {
-    max-width: 1150px;
+    width: 100%;
+    border-radius: 20px;
   }
   .painel-categorias-desktop .painel-categorias,
   .painel-categorias-desktop .painel-categorias .painel-categorias__menu {
@@ -200,7 +186,6 @@ html {
     background-color: transparent;
   }
 }
-
 
 
 /* #region Common */
@@ -229,6 +214,7 @@ html {
 
 .banners-section .banners {
   position: relative;
+  width: 100%;
 }
 
 .banners-section .banners button {
@@ -310,6 +296,7 @@ html {
 
 .banners-section .banners-content .box-banner a {
   display: block;
+  width: 100%;
 }
 
 .banners-section .banners-content img {
@@ -346,16 +333,15 @@ html {
   }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .banners-section .banners-content.desktop {
     display: none;
   }
   .banners-section .banners-content.mobile {
     display: flex;
+    width: 100vw;
     border-radius: 20px;
-    margin: 10px;
     margin-top: 0;
-    /* aspect-ratio: 6/5; */
     overflow: hidden;
     overflow-x: scroll;
   }
@@ -363,7 +349,6 @@ html {
     height: auto;
   }
   .banners-section .banners button {
-    /* transform: translateY(calc(-50% - 25px)); */
     top: 40%;
     z-index: 0;
   }
@@ -377,6 +362,7 @@ html {
 /* #region Benefits */
 
 .benefits-section {
+  width: 100%;
   position: relative;
   color: #95989a;
 }
@@ -405,6 +391,7 @@ html {
 }
 
 .benefits-section .container {
+  width: 100% !important;
   display: flex;
   padding: 24px;
   justify-content: space-around;
@@ -497,6 +484,14 @@ html {
 }
 
 /* #endregion Benefits */
+
+/* #beon region*/
+@media screen and (max-width: 1280px) {
+  .beon-region {
+    width: 93%;
+  }
+}
+/* #endregion beon*/
 
 /* #region Rating */
 
@@ -670,6 +665,7 @@ html {
 /* #region Why */
 
 .whys-section {
+  width: 100%;
   padding: 40px 20px 0px 20px;
   background: url("https://devautoglass.vteximg.com.br/arquivos/porque_autoglass-bg.svg");
   background-repeat: no-repeat;
@@ -775,6 +771,7 @@ html {
 
 .chat-section {
   background-color: #333697;
+  width: 100%;
 }
 
 .chat-section .chat__content {
@@ -837,6 +834,7 @@ html {
 .banners-promocionais-section,
 .nossos-servicos-section {
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   height: 300px;
@@ -873,7 +871,6 @@ html {
 
 .banners-promocionais-itens .box-banner,
 .banners-nossos-servicos .box-banner {
-  /* overflow: hidden; */
   border-radius: 20px;
   box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
   margin: 10px;
@@ -984,6 +981,7 @@ html {
   }
 
   .ratings-section {
+    width: 100%;
     padding: 20px 0px;
   }
 }

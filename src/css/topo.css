@@ -107,7 +107,7 @@
 ul {
   list-style-type: none;
 }
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 1024px) {
   .ui-autocomplete {
     display: none;
   }
@@ -222,7 +222,7 @@ i.arrow-icon::before {
 
 /* GLOBAL MODIFIERS */
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .desktop {
     display: none !important;
   }
@@ -234,7 +234,7 @@ i.arrow-icon::before {
   }
 }
 
-@media (min-width: 1201px) {
+@media (min-width: 1025px) {
   .desktop {
     display: unset;
   }
@@ -273,7 +273,6 @@ i.arrow-icon::before {
 .nav .container {
   display: flex;
   align-items: center;
-  /*margin: 0 15px;*/
   padding: 0 10px;
   width: 100% !important;
   max-width: 1440px;
@@ -340,7 +339,6 @@ i.arrow-icon::before {
   position: absolute;
   background: var(--white);
   color: var(--gray-700);
-  /*border: 1px solid var(--gray-300);*/
   box-shadow: 0 0 5px;
   z-index: 1000000;
   min-width: 135px;
@@ -392,18 +390,13 @@ i.arrow-icon::before {
   top: 40px;
   display: flex;
   justify-content: center;
-  background-color: #eeeded;
+  background-color: #ffffff;
   box-shadow: 0 0 0.2rem 0 var(--gray-500);
 }
 
 .nav .container {
   justify-content: space-between;
 }
-
-/* .nav .container.mobile {
-  display: flex;
-  margin: unset;
-} */
 
 .nav .container .logo {
   transition: all 0.1s ease-in;
@@ -422,7 +415,6 @@ i.arrow-icon::before {
   font-weight: var(--semi-bold);
   text-transform: uppercase;
   font-size: 1.1667rem;
-  /*14pt*/
   color: var(--blue-700);
   background: transparent;
   border: 0;
@@ -455,7 +447,6 @@ i.arrow-icon::before {
   text-align: center;
   padding-top: 5px;
   margin-right: 10px;
-  /* box-shadow: 5px 5px 10px -2px rgb(0 0 0 / 50%); */
 }
 
 .nav .container.mobile a.fa-whatsapp:hover,
@@ -731,7 +722,7 @@ i.arrow-icon::before {
   font-size: 20px;
 }
 
-@media (max-width: 991px) {
+@media (max-width: 1024px) {
   .search-box-mobile {
     display: flex;
     position: static;
@@ -1176,16 +1167,6 @@ i.arrow-icon::before {
 }
 
 @media screen and (min-width: 1000px) {
-  .side-menu a,
-  #busca-categoria-mobile a {
-    opacity: 0;
-    padding: 25px 8px 0px 50px;
-    text-decoration: none;
-    font-weight: 500;
-    color: #818181;
-    display: block;
-    transition: background 0.8s, 0.3s;
-  }
   .side-menu a:hover,
   #busca-categoria-mobile a:hover {
     background: white radial-gradient(circle, transparent 1%, white 1%)
@@ -1350,7 +1331,6 @@ i.arrow-icon::before {
 .side-menu-categorias .side-menu-categorias__categoria-header.ativo,
 #busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header.ativo {
   position: sticky;
-  /* box-shadow: 0 0 1px grey; */
   top: 0;
 }
 
@@ -1448,12 +1428,6 @@ i.arrow-icon::before {
   padding-bottom: 30px;
 }
 
-@media (max-width: 1200px) {
-  .painel-categorias-section {
-    display: none;
-  }
-}
-
 .painel-categorias-desktop:not(:hover) .painel-categorias .arrow {
   transform: scaleY(0) rotate(45deg);
   bottom: 0px;
@@ -1481,7 +1455,6 @@ i.arrow-icon::before {
 }
 
 .painel-categorias-desktop {
-  max-width: 1280px;
   margin: 0 auto;
 }
 
@@ -1501,7 +1474,7 @@ i.arrow-icon::before {
 
 .painel-categorias .slider-handlers {
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   align-items: center;
   position: relative;
   padding: 0 20px;
@@ -1835,9 +1808,10 @@ ul.menu-division {
   font-weight: var(--bold);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .painel-categorias-section {
     display: block;
+    width: 100%;
     padding-top: 5px;
     padding-bottom: 20px;
   }
@@ -1918,14 +1892,6 @@ body.home {
   padding-top: 0;
   padding-bottom: 0;
 }
-
-/* .topo {
-  z-index: 900001;
-}
-
-.nav {
-  z-index: 900000;
-} */
 
 body[data-qd-scroll-0="1"] {
   padding-top: 0;
