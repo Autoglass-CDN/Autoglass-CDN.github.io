@@ -307,6 +307,10 @@ hr {
   .col-md-offset-2 {
     margin-left: 16.66666667%;
   }
+
+  .footer-qd-v1-stamps .col-xs-12.col-md-6 {
+    width: 100%;
+  }
 }
 
 @media (min-width: 1200px) {
@@ -1219,8 +1223,6 @@ body {
 }
 
 .footer-qd-v1-stamps {
-  padding-top: 30px;
-  padding-bottom: 30px;
   background: #fafafa;
 }
 

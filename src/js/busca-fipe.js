@@ -1564,24 +1564,6 @@
   });
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   const input = document.getElementById('placa-input');
-//   const placeholder = document.getElementById('fakePlaceHolder');
-
-//   function esconderPlaceholder() {
-//     placeholder.style.opacity = '0';
-//   }
-
-//   function mostrarPlaceholder() {
-//     if (!input.value) {
-//       placeholder.style.opacity = '0.8';
-//     }
-//   }
-
-//   input.addEventListener('focus', esconderPlaceholder);
-//   input.addEventListener('blur', mostrarPlaceholder);
-// });
-
  function AlternaAbaBusca() {
   const tabs = document.querySelectorAll(".c-busca__tabs-mobile li");
 

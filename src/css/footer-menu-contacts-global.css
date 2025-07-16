@@ -1,4 +1,4 @@
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
     .col-md-1,
     .col-md-2,
     .col-md-3,
@@ -354,7 +354,6 @@
 
   .footer-qd-v1-stamps {
     width: 100%;
-    padding: 30px 20px;
   }
 
   .footer-qd-v1-stamps .container {
@@ -368,6 +367,7 @@
     width: 100%;
     display: flex;
     align-items: flex-start;
+    padding: 30px 20px;
   }
 
   @media screen and (max-width: 1024px) {

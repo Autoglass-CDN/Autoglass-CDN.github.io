@@ -526,29 +526,6 @@ html {
     border-radius: 10px;
     text-align: center;
   }
-  /* .fake-placeholder {
-    position: absolute;
-    width: 120%;
-    top: 50%;
-    left: -10%;
-    transform: translateY(-50%);
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    pointer-events: none;
-    color: #000000;
-    opacity: 0.8;
-    visibility: visible;
-    transition: opacity 0.25s ease;
-  }
-  .fake-placeholder img {
-    width: 20px;
-    height: 20px;
-  }
-  .fake-placeholder img:first-of-type {
-    width: 40px;
-    height: 40px;
-  } */
   #busca-placa span {
     color: #a8a8a8;
   }
@@ -845,14 +822,14 @@ html {
     border-top-left-radius: 0;
   }
 }
-@media screen and (min-width: 1367px) and (max-width: 1700px) {
+@media screen and (min-width: 1025px) and (max-width: 1366px) {
   body.departamento .c-busca .c-busca__botao,
   body.categoria .c-busca .c-busca__botao,
   body.produto .c-busca .c-busca__botao {
-    top: 28%;
+    top: 24%;
   }
 }
-@media screen and (min-width: 1367px) and (max-width: 1600px) {
+@media screen and (min-width: 1367px) and (max-width: 1650px) {
   .l-container .c-busca .c-busca__botao {
     left: 82%;
     top: 26%;
@@ -860,21 +837,24 @@ html {
   body.departamento .c-busca .c-busca__botao,
   body.categoria .c-busca .c-busca__botao,
   body.produto .c-busca .c-busca__botao {
-    left: 83%;
+    left: 82%;
+    top: 25%;
   }
 }
-@media screen and (min-width: 1601px) and (max-width: 1700px) {
+@media screen and (min-width: 1651px) and (max-width: 1750px) {
   body.departamento .c-busca .c-busca__botao,
   body.categoria .c-busca .c-busca__botao,
   body.produto .c-busca .c-busca__botao {
     left: 72.5%;
+    top: 28%;
   }
 }
-@media screen and (min-width: 1701px) and (max-width: 1920px) {
+@media screen and (min-width: 1751px) and (max-width: 1920px) {
   body.departamento .c-busca .c-busca__botao,
   body.categoria .c-busca .c-busca__botao,
   body.produto .c-busca .c-busca__botao {
     left: 71.5%;
+    top: 29%;
   }
 }
 @media screen and (min-width: 1601px) and (max-width: 1920px) {
@@ -925,15 +905,13 @@ html {
   body.categoria .c-busca .c-busca__botao,
   body.produto .c-busca .c-busca__botao {
     left: 69%;
-    top: 32%;
   }
 }
-@media screen and (min-width: 2300px) {
+@media screen and (min-width: 2350px) {
   body.departamento .c-busca .c-busca__botao,
   body.categoria .c-busca .c-busca__botao,
   body.produto .c-busca .c-busca__botao {
     left: 67.5%;
-    top: 33%;
   }
 }
 .secao-busca {
