@@ -240,7 +240,7 @@ img {
   width: 100%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .col-md-1,
   .col-md-2,
   .col-md-3,
