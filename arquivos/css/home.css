@@ -322,6 +322,10 @@
 
 /* #endregion Benefits */
 
+/* #beon region*/
+  .beon-region {
+    width: 93%;
+  }
 /* #region Rating */
 
 .ratings-section {
