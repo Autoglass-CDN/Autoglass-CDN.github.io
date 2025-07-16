@@ -486,11 +486,9 @@ html {
 /* #endregion Benefits */
 
 /* #beon region*/
-@media screen and (max-width: 1280px) {
   .beon-region {
     width: 93%;
   }
-}
 /* #endregion beon*/
 
 /* #region Rating */
