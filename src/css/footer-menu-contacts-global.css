@@ -272,7 +272,7 @@
     }
   }
 
-  @media (max-width: 1024px) {
+  @media screen and (max-width: 1024px) {
     .col-md-push-8 .titulo-contact-information {
       font-size: 20px;
       font-weight: 600;
@@ -346,6 +346,12 @@
     }
   }
 
+  @media screen and (max-width: 700px) {
+    .footer-qd-v1-content .footer-qd-v1-menu-list .qd-am-2-li > li {
+      width: 100%;
+    }
+  }
+
   .footer-qd-v1-stamps {
     width: 100%;
     padding: 30px 20px;
@@ -372,6 +378,12 @@
       width: 50%;
       display: flex;
       flex-direction: column;
+    }
+  }
+
+   @media screen and (max-width: 700px) {
+    .footer-qd-v1-content .col-xs-12.col-md-4.col-md-push-8.hidden-lg{
+      width: 100%;
     }
   }
 

@@ -502,7 +502,18 @@ html {
 .c-botao--primary:hover {
   background-color: var(--primary-darker);
 }
-
+#busca-placa  .c-busca__input {
+  display: flex;
+  align-items: center;
+}
+#busca-placa  .c-busca__input img:first-child {
+  position: absolute;
+  padding-left: 2%;
+}
+#busca-placa  .c-busca__input img:last-child {
+  position: absolute;
+  left: 90%;
+}
 @media screen and (min-width: 992px) {
   #busca-placa  .c-busca__input {
     width: 30%;
@@ -515,7 +526,7 @@ html {
     border-radius: 10px;
     text-align: center;
   }
-  .fake-placeholder {
+  /* .fake-placeholder {
     position: absolute;
     width: 120%;
     top: 50%;
@@ -537,7 +548,7 @@ html {
   .fake-placeholder img:first-of-type {
     width: 40px;
     height: 40px;
-  }
+  } */
   #busca-placa span {
     color: #a8a8a8;
   }
@@ -933,7 +944,7 @@ html {
   width: 170px;
 }
 #placa-input::placeholder {
-  color: #0b4583;
+  color: #a8a8a8;
   padding: 10px 0px 10px -10px;
 }
 #placa-input:focus {

@@ -484,196 +484,94 @@ i.arrow-icon::before {
 
 .search-box-mobile {
   display: none;
+  overflow: inherit;
+  top: 85px;
+  right: 0px;
+  left: 0px;
+  z-index: 7;
+  transition: height 0.5s ease-in-out;
+  align-items: baseline;
+  background-color: #f1f4f9;
 }
 
 .menu-btn {
   display: flex;
   align-items: center;
   padding: 6px 16px;
-  background-color: #f1f4f9;
+  background-color: #F39200;
   border: 2px solid #425db4;
   border-radius: 20px;
   color: #425db4;
   font-size: 14px;
   cursor: pointer;
-  width: 33%;
+  width: 27%;
   height: 37px;
   margin-right: 19px;
 }
 
-@media screen and (max-width: 770px) {
-  .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 17%;
-    height: 37px;
-    margin-left: 20%;
-  }
-
+@media screen and (max-width: 835px) {
   .search-box-mobile {
     display: flex;
     position: sticky;
-    overflow: inherit;
-    top: 85px;
-    right: 0px;
-    left: 0px;
-    z-index: 7;
-    transition: height 0.5s ease-in-out;
-    align-items: baseline;
-    background-color: #f1f1f1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .search-box-mobile {
+    display: flex;
+    position: static;
+    justify-content: space-between;
   }
 }
 
 @media screen and (max-width: 835px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 17%;
-    height: 37px;
-    margin-left: 20%;
-  }
-
-  .search-box-mobile {
-    display: flex;
-    position: sticky;
-    overflow: inherit;
-    top: 85px;
-    right: 0px;
-    left: 0px;
-    z-index: 7;
-    transition: height 0.5s ease-in-out;
-    align-items: baseline;
-    background-color: #f1f1f1;
+    width: 29%;
   }
 }
 
 @media screen and (max-width: 742px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 18%;
-    height: 37px;
-    margin-left: 20%;
+    width: 31%;
   }
 }
 
 @media screen and (max-width: 710px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 19%;
-    height: 37px;
-    margin-left: 20%;
+    width: 33%;
   }
 }
 
 @media screen and (max-width: 681px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 20%;
-    height: 37px;
-    margin-left: 20%;
+    width: 35%;
   }
 }
 
 @media screen and (max-width: 654px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 21%;
-    height: 37px;
-    margin-left: 20%;
+    width: 37%;
   }
 }
 
 @media screen and (max-width: 631px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 22%;
-    height: 37px;
-    margin-left: 20%;
+    width: 39%;
   }
 }
 
 @media screen and (max-width: 610px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
-    width: 23%;
-    height: 37px;
-    margin-left: 20%;
+    width: 41%;
   }
 }
 
 @media screen and (max-width: 590px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #F39200;
     border: none;
     border-radius: 8px;
-    color: white;
+    color: #ffffff;
     font-size: 16px;
-    cursor: pointer;
     width: 43%;
     height: 44px;
     margin-left: 0px;
@@ -682,31 +580,11 @@ i.arrow-icon::before {
 
 @media screen and (max-width: 370px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #f1f1f1;
-    border: 2px solid #425db4;
-    border-radius: 20px;
-    color: #425db4;
-    font-size: 14px;
-    cursor: pointer;
     width: 55%;
-    height: 37px;
-    margin-left: 20%;
   }
 }
 @media screen and (max-width: 376px) {
   .menu-btn {
-    display: flex;
-    align-items: center;
-    padding: 6px 16px;
-    background-color: #F39200;
-    border: none;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
     width: 50%;
     height: 46px;
     margin-left: 0px;
@@ -720,21 +598,6 @@ i.arrow-icon::before {
 }
 .menu-icon {
   font-size: 20px;
-}
-
-@media (max-width: 1024px) {
-  .search-box-mobile {
-    display: flex;
-    position: static;
-    overflow: inherit;
-    top: 85px;
-    right: 0px;
-    left: 0px;
-    z-index: 7;
-    transition: height 0.5s ease-in-out;
-    align-items: baseline;
-    background-color: #f1f4f9;
-  }
 }
 
 .search-box-mobile__form {
@@ -1191,18 +1054,7 @@ i.arrow-icon::before {
   }
 }
 
-@media screen and (max-width: 500px) {
-  .side-menu a,
-  #busca-categoria-mobile a {
-    text-decoration: none;
-    font-weight: 600;
-    color: black;
-    display: block;
-    transition: background 0.8s, 0.3s;
-  }
-}
-
-@media screen and (min-width: 600px) and (max-width: 1024px) {
+@media screen and (max-width: 1024px) {
   .side-menu a,
   #busca-categoria-mobile a {
     text-decoration: none;
