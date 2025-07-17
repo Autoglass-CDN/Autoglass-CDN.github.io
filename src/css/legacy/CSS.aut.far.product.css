@@ -250,16 +250,28 @@ body.qdpv-video-on .product-qd-v1-image .qd-playerWrapper {
   background: #fff;
   overflow: hidden;
 }
-@media (max-width: 767px) {
+@media screen and (max-width: 992px) {
+  .teste-opcionais {
+    display: block;
+    margin: 20px;
+    margin-right: 30px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    padding: 16px;
+    width: auto;
+  }
+}
+@media screen and (max-width: 767px) {
   .product-qd-v1-image .zoomWindow {
     display: none !important;
   }
-
   .teste-opcionais {
-    margin: 5% 5%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin-left: 5%;
+    display: block;
+    margin: 20px;
+    padding: 12px;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    width: auto;
   }
 }
 .product-qd-v1-image .zoomPreload {
