@@ -55,7 +55,7 @@
 
 .product-qd-v1-standard {
   display: block !important;
-  background-color: #fafafa;
+  background-color: #ffffff;
   margin-top: 10px;
   padding: 0px 0px 12px 0px;
 }
@@ -1250,6 +1250,12 @@ body.mz-sf-on .mz-modal-shipping {
   .thumb-item {
     width: 56px;
     height: 56px;
+  }
+}
+@media screen and (max-width:992px) {
+  .container-mais-especificacoes{
+    display: flex;
+    justify-content: flex-end;
   }
 }
 @media screen and (min-width: 1024x) {
