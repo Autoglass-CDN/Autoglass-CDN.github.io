@@ -1358,6 +1358,8 @@ body.mz-sf-on .mz-modal-shipping {
   align-items: center;
   gap: 15px;
   margin-top: 10px;
+  width: 100%;
+  justify-content: center;
 }
 
 .alerta-icon {
