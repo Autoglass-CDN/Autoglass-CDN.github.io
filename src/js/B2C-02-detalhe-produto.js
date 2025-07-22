@@ -193,7 +193,7 @@ const dockMap = {
   "37": "SP04", "38": "SP04", "39": "MG56"
 };
 
-const urlEstoquesApi = window.location.href.includes("hml")
+const urlEstoquesApi = window.location.href.includes("hml") || window.location.href.includes("dev")
         ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/estoques/"
         : "https://api.autoglass.com.br/integracao-b2c/api/web-app/estoques/";
 
@@ -220,7 +220,7 @@ async function fetchEstoque(skuId, dockId) {
 
 function mostrarAviso() {
   const divAviso = document.querySelector(".alerta-container");
-  divAviso.style.display = "block";
+  divAviso.style.display = "inline-flex";
 }
 
 async function exibirComponenteEstoque(){
