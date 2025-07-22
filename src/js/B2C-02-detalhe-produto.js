@@ -195,7 +195,7 @@ const dockMap = {
 
 const urlEstoquesApi = window.location.href.includes("hml")
         ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/estoques/"
-        : "http://localhost:5010/integracao-b2c/api/web-app/estoques/";
+        : "https://api.autoglass.com.br/integracao-b2c/api/web-app/estoques/";
 
 
 function getSkuId() {
