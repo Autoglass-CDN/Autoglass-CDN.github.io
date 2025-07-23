@@ -25,7 +25,7 @@ html {
 
 #outras-marcas.tab-content,
 .off-white-background {
-  background-color: #fafafa;
+  background-color: #ffffff;
 }
 
 #outras-marcas .white-background,
@@ -403,14 +403,14 @@ h4.group.Especificacoes {
   #compre-junto.tab-content,
   #outras-marcas .off-white-background,
   #compre-junto .blue-background {
-    background-color: #fafafa;
+    background-color: #ffffff;
   }
   .contents .tab-content::after {
     content: "";
     border-bottom: 1px solid #dbdbdb;
     display: block;
     height: 24px;
-    background: #fafafa !important;
+    background: #ffffff !important;
   }
   .contents .tab-content .info-box.left {
     width: 100%;

@@ -55,7 +55,7 @@
 
 .product-qd-v1-standard {
   display: block !important;
-  background-color: #fafafa;
+  background-color: #ffffff;
   margin-top: 10px;
   padding: 0px 0px 12px 0px;
 }
@@ -1252,6 +1252,12 @@ body.mz-sf-on .mz-modal-shipping {
     height: 56px;
   }
 }
+@media screen and (max-width:992px) {
+  .container-mais-especificacoes{
+    display: flex;
+    justify-content: flex-end;
+  }
+}
 @media screen and (min-width: 1024x) {
   .container-mais-especificacoes{
     margin-top: 6%;
@@ -1333,4 +1339,40 @@ body.mz-sf-on .mz-modal-shipping {
 #botaoProdutosCompativeis:hover {
   background-color:#e7eaf4 ;
   color: #003087;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.alerta-container {
+  border: 1px solid #f4a340;
+  background-color: #fdf7f3;
+  color: #f4a340;
+  font-family: Arial, sans-serif;
+  padding: 10px 15px;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+  width: 100%;
+  justify-content: center;
+}
+
+.alerta-icon {
+  font-size: 18px;
+}
+
+.alerta-texto {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.pulse {
+  font-weight: bold;
+  animation: pulse 1.2s infinite ease-in-out;
 }
