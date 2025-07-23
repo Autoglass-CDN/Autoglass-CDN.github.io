@@ -1713,7 +1713,6 @@ fieldset#beneficios legend {
 }
 
 .numero-vendas i {
-  margin-left: 13px;
   padding-right: 2px;
 }
 
@@ -1730,6 +1729,7 @@ fieldset#beneficios legend {
   .numero-vendas-mobile {
     align-items: anchor-center;
     display: flex;
+    padding-left: 20px;
   }
   .konfidency-reviews-summary.mobile{
     width: 50%;
