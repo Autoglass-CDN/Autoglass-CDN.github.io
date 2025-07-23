@@ -541,6 +541,63 @@ async function recuperarNumeroVendas(){
 
 document.addEventListener("DOMContentLoaded", function() {
   exibeNumeroVendas();
+
+  if (window.innerWidth <= 1024) {
+  function limitarLista() {
+    const testeOpcionais = document.querySelector('.teste-opcionais');
+    const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
+    
+    if (listaOpcionais.length === 0) {
+      testeOpcionais.style.setProperty('display', 'none', 'important');
+    } else {
+      testeOpcionais.style.setProperty('display', 'block', 'important');
+
+      if (listaOpcionais.length > 4) {
+        for (let i = 4; i < listaOpcionais.length; i++) {
+          listaOpcionais[i].style.display = 'none';
+        }
+      } else {
+        for (let i = 0; i < listaOpcionais.length; i++) {
+          listaOpcionais[i].style.display = 'block';
+        }
+      }
+    }
+  }
+
+  function iniciarObservacao() {
+    const testeOpcionais = document.querySelector('.teste-opcionais');
+
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === 'childList') {
+          const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
+          if (listaOpcionais.length === 0) {
+            testeOpcionais.style.setProperty('display', 'none', 'important');
+          } else {
+            limitarLista();
+          }
+        }
+      });
+    });
+
+    observer.observe(testeOpcionais, { childList: true, subtree: true });
+  }
+
+  function verificarListaInicial() {
+    const testeOpcionais = document.querySelector('.teste-opcionais');
+    const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
+
+    if (listaOpcionais.length === 0) {
+      testeOpcionais.style.setProperty('display', 'none', 'important');
+    } else {
+      limitarLista();
+    }
+  }
+
+  verificarListaInicial();
+
+  iniciarObservacao();
+  }
 });
 
 buscarPromocoes();
