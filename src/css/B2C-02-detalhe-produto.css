@@ -1378,6 +1378,18 @@ body.mz-sf-on .mz-modal-shipping {
   }
 }
 
+@media (max-width: 360px) {
+  .alerta-texto {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 330px) {
+  .alerta-texto {
+    font-size: 10px;
+  }
+}
+
 .pulse {
   font-weight: bold;
   animation: pulse 1.2s infinite ease-in-out;
