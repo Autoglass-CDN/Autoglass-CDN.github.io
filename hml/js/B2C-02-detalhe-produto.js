@@ -166,7 +166,83 @@ $(function () {//
 
 		shippingsDiv && observerShippingsDiv.observe(shippingsDiv, { attributes: true, childList: true, subtree: true });
 	});
+  exibirComponenteEstoque();
 });
+
+function readCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+
+  console.error("Não foi possível recuprar cookie VTEXSC'\n");
+  return null;
+}
+
+const dockMap = {
+  "2": "MG74", "3": "PG07", "4": "MG24", "5": "MG50", "6": "MG48",
+  "7": "MG25", "8": "MG03", "9": "MG36", "10": "MG60", "11": "MG21",
+  "12": "MG72", "13": "MG59", "14": "MG43", "15": "MG40", "16": "MG40",
+  "17": "MG40", "18": "MG33", "19": "MG63", "20": "MG63", "21": "MG42",
+  "22": "MG29", "23": "MG82", "24": "MG64", "25": "MG07", "26": "SP04",
+  "27": "SP04", "28": "SP04", "29": "SP04", "30": "SP04", "31": "SP04",
+  "32": "SP04", "33": "SP04", "34": "SP04", "35": "SP04", "36": "SP04",
+  "37": "SP04", "38": "SP04", "39": "MG56"
+};
+
+const urlEstoquesApi = window.location.href.includes("hml") || window.location.href.includes("dev")
+        ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/estoques/"
+        : "https://api.autoglass.com.br/integracao-b2c/api/web-app/estoques/";
+
+
+function getSkuId() {
+  return window.skuJson?.skus?.[0]?.sku || null;
+}
+
+function getSalesChannel() {
+  return readCookie("VTEXSC").replace("sc=", "");
+}
+
+function getDockId(salesChannel) {
+  return dockMap[salesChannel] || null;
+}
+
+async function fetchEstoque(skuId, dockId) {
+  const url = `${urlEstoquesApi}docas?skuId=${skuId}&dockId=${dockId}`;
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("Erro ao consultar estoque.");
+  const quantidade = await response.json();
+  return Number(quantidade);
+}
+
+function mostrarAviso() {
+  const divAviso = document.querySelector(".alerta-container");
+  divAviso.style.display = "inline-flex";
+}
+
+async function exibirComponenteEstoque(){
+  try {
+    const skuId = getSkuId();
+    const salesChannel = getSalesChannel();
+    const dockId = getDockId(salesChannel);
+
+    if (!skuId || !dockId) {
+      console.warn("SKU ID ou Dock ID ausente.");
+      return;
+    }
+
+    const quantidade = await fetchEstoque(skuId, dockId);
+
+    if (quantidade > 0 && quantidade <= 5) {
+      mostrarAviso();
+    }
+  } catch (error) {
+    console.error("Erro na verificação de estoque:", error);
+  }
+}
 
 function consulteFrete() {
 	let txtCep = document.getElementById("txtCep");

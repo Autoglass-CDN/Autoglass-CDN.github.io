@@ -1360,6 +1360,8 @@ body.mz-sf-on .mz-modal-shipping {
   align-items: center;
   gap: 15px;
   margin-top: 10px;
+  width: 100%;
+  justify-content: center;
 }
 
 .alerta-icon {
@@ -1370,6 +1372,24 @@ body.mz-sf-on .mz-modal-shipping {
   display: flex;
   align-items: center;
   gap: 15px;
+}
+
+@media (max-width: 400px) {
+  .alerta-texto {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  .alerta-texto {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 330px) {
+  .alerta-texto {
+    font-size: 10px;
+  }
 }
 
 .pulse {
