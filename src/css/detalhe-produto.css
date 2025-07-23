@@ -1722,6 +1722,10 @@ fieldset#beneficios legend {
   margin-left: 2px;
 }
 
+.konfidency-reviews-summary {
+  margin-left: auto;
+}
+
 @media screen and (max-width: 900px) {
   .numero-vendas-mobile {
     align-items: anchor-center;
