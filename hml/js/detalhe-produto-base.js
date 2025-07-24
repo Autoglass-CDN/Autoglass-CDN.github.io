@@ -210,6 +210,44 @@ async function loadOptionals() {
 window.addEventListener("load", insertBrandDescription);
 window.addEventListener("load", loadOptionals);
 
+document.addEventListener('DOMContentLoaded', function() {
+  if(window.innerWidth <= 1024) {
+    function limitarLista() {
+      const testeOpcionais = document.querySelector('.teste-opcionais');
+      const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
+
+        if (listaOpcionais.length > 4) {
+          for (let i = 4; i < listaOpcionais.length; i++) {
+            listaOpcionais[i].style.display = 'none';
+          }
+        } else {
+          for (let i = 0; i < listaOpcionais.length; i++) {
+            listaOpcionais[i].style.display = 'block';
+          }
+        }
+    }
+
+    function iniciarObservacao() {
+      const testeOpcionais = document.querySelector('.teste-opcionais');
+
+      const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+          if (mutation.type === 'childList') {
+            const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
+            if (listaOpcionais.length > 0) {
+              limitarLista();
+            }
+          }
+        });
+      });
+
+      observer.observe(testeOpcionais, { childList: true, subtree: true });
+    }
+
+    iniciarObservacao();
+  }
+});
+
 async function loadSimilars() {
   const hideMenu = (id) =>
     (document.querySelector(`a[href="#${id}"]`).parentElement.style.display =
