@@ -211,10 +211,16 @@ window.addEventListener("load", insertBrandDescription);
 window.addEventListener("load", loadOptionals);
 
 document.addEventListener('DOMContentLoaded', function() {
-  if(window.innerWidth <= 1024) {
+
+  if (window.innerWidth <= 1024) {
     function limitarLista() {
       const testeOpcionais = document.querySelector('.teste-opcionais');
       const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
+      
+      if (listaOpcionais.length === 0) {
+        testeOpcionais.style.setProperty('display', 'none', 'important');
+      } else {
+        testeOpcionais.style.setProperty('display', 'block', 'important');
 
         if (listaOpcionais.length > 4) {
           for (let i = 4; i < listaOpcionais.length; i++) {
@@ -225,6 +231,7 @@ document.addEventListener('DOMContentLoaded', function() {
             listaOpcionais[i].style.display = 'block';
           }
         }
+      }
     }
 
     function iniciarObservacao() {
@@ -234,7 +241,9 @@ document.addEventListener('DOMContentLoaded', function() {
         mutations.forEach(function(mutation) {
           if (mutation.type === 'childList') {
             const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
-            if (listaOpcionais.length > 0) {
+            if (listaOpcionais.length === 0) {
+              testeOpcionais.style.setProperty('display', 'none', 'important');
+            } else {
               limitarLista();
             }
           }
@@ -243,6 +252,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
       observer.observe(testeOpcionais, { childList: true, subtree: true });
     }
+
+    function verificarListaInicial() {
+      const testeOpcionais = document.querySelector('.teste-opcionais');
+      const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
+
+      if (listaOpcionais.length === 0) {
+        testeOpcionais.style.setProperty('display', 'none', 'important');
+      } else {
+        limitarLista();
+      }
+    }
+
+    verificarListaInicial();
 
     iniciarObservacao();
   }
