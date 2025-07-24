@@ -1,5 +1,7 @@
 /* Anonymouswill - 06/05/2020 16:07:33 GMT */
 /*! Não edite esse arquivo, ele foi gerado de maneira automatizada */
+@import url("https://autoglass-cdn.github.io/hml/css/theme.css");
+
 .breadcrumb-qd-v1 {
   margin: 20px 0;
 }
@@ -48,7 +50,7 @@
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   color: #757575;
   font-size: 10px;
   margin-right: 6px;
@@ -58,7 +60,7 @@
 .breadcrumb-qd-v1 .bread-crumb a {
   transition: all 0.2s ease-out;
   color: inherit;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .breadcrumb-qd-v1 .bread-crumb a:hover {
   text-decoration: underline;
@@ -798,7 +800,7 @@ body.qd-product-unavailable
   margin-bottom: 10px;
   color: #333333;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   text-transform: uppercase;
   content: "Descrição";
@@ -810,7 +812,7 @@ body.qd-product-unavailable
   line-height: 14px;
   font-size: 14px;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-bottom: 25px;
 }
 @media (max-width: 767px) {
@@ -1027,20 +1029,6 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
 } */
 
 .container-compre-whatsapp .botao-compre-whatsapp {
-  /* border: #43c452 solid;
-  border-width: 2px;
-  transition: all 0.2s ease-out;
-  display: block;
-  border-radius: 6px;
-  background: #43c452;
-  color: #fff;
-  padding: 15px 30px;
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-  float: right;
-  border-radius: 3px; */
   font-size: 0px;
   background: #fff;
   color: #43c452;
@@ -1088,7 +1076,7 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 16px;
 }
 
@@ -1116,7 +1104,7 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 26px;
   font-weight: 500;
   margin-right: 20px;
@@ -1187,7 +1175,7 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 16px;
   margin-right: 10px;
 }
@@ -1363,7 +1351,7 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 .product-qd-v1-buy-button .sku-notifyme-error {
   background: #c34e4c;
@@ -1379,7 +1367,7 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 .qd-bb-productAdded {
   display: none;
@@ -1417,7 +1405,7 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 3px;
 }
 .qd-bb-itemAddBuyButtonWrapper .qd-bb-productAdded {
@@ -1789,7 +1777,7 @@ body.qd-product-unavailable
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 .product-add-in-bag .sku-notifyme-error {
   background: #c34e4c;
@@ -1805,7 +1793,7 @@ body.qd-product-unavailable
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 .product-qd-v1-shipping {
   position: relative;
@@ -1838,7 +1826,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   color: #223b76;
   font-size: 12px;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   line-height: 41px;
   text-align: center;
@@ -1975,7 +1963,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 5px;
 }
 .product-qd-v1-shipping .freight-values .close:after {
@@ -2442,7 +2430,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   font-size: 26px;
   text-align: center;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 @media (max-width: 767px) {
   .product-qd-v1-information-wrapper h2 {
@@ -2463,7 +2451,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   color: #333333;
   font-size: 16px;
   font-weight: 600;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .product-qd-v1-information-wrapper .product-qd-v1-description {
   color: #424242;
@@ -2551,7 +2539,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   display: none;
 }
 .product-qd-v1-information-wrapper .product-qd-v1-description .title-qd-v1 {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .product-qd-v1-information-wrapper .product-qd-v1-specification {
   color: #424242;
@@ -2780,6 +2768,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
   text-align: initial;
   padding-left: 20px;
 }
+
 @media (max-width: 320px) {
   .product-qd-v1-fixed-bar .product-qd-v1-price {
     padding-left: 5px;
@@ -3058,7 +3047,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 16px;
   position: relative;
   right: 5px;
@@ -3126,7 +3115,7 @@ body.qd-product-unavailable .product-qd-v1-fixed-bar {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 16px;
   margin-right: 20px;
 }
@@ -3178,7 +3167,7 @@ body.mz-in-on .mz-modal-installation {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 18px;
 }
 .mz-modal-installation .mz-install__title h2 {
@@ -3225,7 +3214,7 @@ body.mz-in-on .mz-modal-installation {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 10px;
   font-size: 14px;
   color: #2d4f9e;
@@ -3318,7 +3307,7 @@ body.mz-in-on .mz-modal-installation {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 16px;
   margin-right: 20px;
 }
@@ -3377,7 +3366,7 @@ body.mz-as-on .mz-modal-advantages {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 18px;
 }
 .mz-modal-advantages .mz-advantages__title h2 {
@@ -3480,7 +3469,7 @@ body.mz-as-on .mz-modal-advantages {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 16px;
   margin-right: 20px;
 }
@@ -3708,7 +3697,7 @@ body.qd-product-unavailable .product-qd-v1-float-bar .product-qd-v1-buy-button {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   left: -1px;
   font-size: 14px;
 }
@@ -3723,7 +3712,7 @@ body.qd-product-unavailable .product-qd-v1-float-bar .product-qd-v1-buy-button {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   right: -2px;
   font-size: 14px;
 }
@@ -3769,7 +3758,7 @@ body.qd-product-unavailable .product-qd-v1-float-bar .product-qd-v1-buy-button {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: relative;
   top: -3px;
   margin-right: 5px;

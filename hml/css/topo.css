@@ -146,7 +146,7 @@ ul {
 .veiculos-compativeis-search__search-input .search-icon::before {
   content: "\f11c";
   color: #a8a8a8;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-style: normal;
   font-size: 22px;
 }
@@ -267,7 +267,6 @@ i.arrow-icon::before {
 .nav .container {
   display: flex;
   align-items: center;
-  /*margin: 0 15px;*/
   padding: 0 10px;
   width: 100% !important;
   max-width: 1440px;
@@ -330,7 +329,6 @@ i.arrow-icon::before {
   position: fixed;
   background: var(--white);
   color: var(--gray-700);
-  /*border: 1px solid var(--gray-300);*/
   box-shadow: 0 0 5px;
   z-index: 1000000;
   min-width: 135px;
@@ -390,11 +388,6 @@ i.arrow-icon::before {
   justify-content: space-between;
 }
 
-/* .nav .container.mobile {
-  display: flex;
-  margin: unset;
-} */
-
 .nav .container .logo {
   transition: all 0.1s ease-in;
   width: 95px;
@@ -412,7 +405,6 @@ i.arrow-icon::before {
   font-weight: var(--semi-bold);
   text-transform: uppercase;
   font-size: 1.1667rem;
-  /*14pt*/
   color: var(--blue-700);
   background: transparent;
   border: 0;
@@ -445,7 +437,6 @@ i.arrow-icon::before {
   text-align: center;
   padding-top: 5px;
   margin-right: 10px;
-  /* box-shadow: 5px 5px 10px -2px rgb(0 0 0 / 50%); */
 }
 
 .nav .container.mobile a.fa-whatsapp:hover,
@@ -939,7 +930,7 @@ i.arrow-icon::before {
 
 .container .atendimento-whatsapp a::before {
   transition: 0.5s;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   content: "\f232";
   background: #39b54a;
   color: #fff;
@@ -1055,7 +1046,7 @@ i.arrow-icon::before {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: absolute;
   bottom: 20px;
   left: 35px;
@@ -1119,6 +1110,7 @@ i.arrow-icon::before {
   box-shadow: 0 0 1px black;
   display: none;
   font-size: 1rem;
+  font-family: "Poppins", sans-serif;
 }
 
 #busca-categoria-mobile {
@@ -1337,7 +1329,6 @@ i.arrow-icon::before {
 .side-menu-categorias .side-menu-categorias__categoria-header.ativo,
 #busca-categoria-mobile .side-menu-categorias .side-menu-categorias__categoria-header.ativo {
   position: sticky;
-  /* box-shadow: 0 0 1px grey; */
   top: 0;
 }
 
@@ -1498,7 +1489,7 @@ i.arrow-icon::before {
   color: #183884;
   margin: 0;
   margin-left: 30px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 21px;
   font-weight: 700;
   letter-spacing: normal;
@@ -2030,14 +2021,6 @@ body.home {
 .header-qd-v1 {
   padding-top: 0;
   padding-bottom: 0;
-}
-
-.topo {
-  /* z-index: 900001; */
-}
-
-.nav {
-  /* z-index: 900000; */
 }
 
 body[data-qd-scroll-0="1"] {

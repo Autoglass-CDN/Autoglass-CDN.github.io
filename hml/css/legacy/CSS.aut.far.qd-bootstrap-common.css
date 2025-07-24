@@ -6,7 +6,7 @@
 @import url("https://autoglass-cdn.github.io/hml/css/theme.css");
 
 html {
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -222,7 +222,7 @@ th {
   padding: 0;
 }
 
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/hml/css/main.css */
 @media print {
   *,
   *:before,
@@ -329,7 +329,7 @@ html {
 }
 
 body {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
@@ -3730,7 +3730,7 @@ input.select2-search__field {
 }
 
 input.select2-search__field::-webkit-input-placeholder {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   font-size: 12px !important;
   color: #757575 !important;
 }
@@ -4079,7 +4079,7 @@ body[data-qd-scroll-0="1"] .header-qd-v1 .header-qd-v1-search-wrap {
   left: auto;
   right: 14px;
   content: "\f002";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   color: #fff;
   font-size: 21px;
   z-index: 55;
@@ -4183,7 +4183,7 @@ body[data-qd-scroll-0="1"] .header-qd-v1 .header-qd-v1-search-wrap {
 }
 
 .header-qd-v1 .header-qd-v1-actions-wrapper {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-top: 17px;
 }
 
@@ -4292,7 +4292,7 @@ body[data-qd-scroll-0="1"] .header-qd-v1 .header-qd-v1-search-wrap {
   font-size: 10px;
   color: #fff;
   padding-left: 5px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .header-qd-v1 .header-qd-v1-cart-link span {
@@ -6787,7 +6787,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   float: right;
   font-size: 16px;
   color: #223b76;
@@ -6817,7 +6817,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
   .qd-am-has-ul.qd-am-is-active:before {
   content: "\f0de";
   font-size: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-weight: 900;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -7138,7 +7138,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
   background: transparent;
   color: #fff;
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .header-qd-v1-location-modal .modal-header button:hover {
@@ -8058,7 +8058,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
 }
 
 .qd-ssr2-loaded h2 {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .qd-ssr2-loaded .filters-tilte {
@@ -8180,7 +8180,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
   .select2-selection__arrow:before {
   content: "\f078";
   font-size: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-weight: 900;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -8206,7 +8206,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
   .select2-selection__arrow:before {
   content: "\f077";
   font-size: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-weight: 900;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -8230,7 +8230,7 @@ body.qd-am-on .component-qd-v1-sidemeu-right {
 }
 
 .select2-container--open .select2-search__field {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
   padding: 4px 10px 6px 10px !important;
 }
 
@@ -8716,7 +8716,7 @@ body.resultado-busca .footer-qd-v1-newsletter-social {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   transition: all 0.2s ease-out;
   position: relative;
   top: -6px;
@@ -9551,7 +9551,7 @@ body.account
   margin-bottom: 15px;
   color: #333333;
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 @media (max-width: 992px) {
@@ -9658,7 +9658,7 @@ body.account
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: relative;
   top: -8px;
   margin-left: 5px;
@@ -11133,7 +11133,7 @@ body.produto .carousel-qd-v1-shelf h2 {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   left: -1px;
   font-size: 14px;
 }
@@ -11149,7 +11149,7 @@ body.produto .carousel-qd-v1-shelf h2 {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   right: -2px;
   font-size: 14px;
 }
@@ -11227,7 +11227,7 @@ body.produto .carousel-qd-v1-shelf h2 {
   text-transform: uppercase;
   cursor: pointer;
   line-height: 21px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .modal-qd-v1-search .modal-qd-v1-close:hover {
@@ -11246,7 +11246,7 @@ body.produto .carousel-qd-v1-shelf h2 {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-left: 5px;
   font-size: 21px;
   vertical-align: bottom;
@@ -11291,7 +11291,7 @@ body.produto .carousel-qd-v1-shelf h2 {
   left: auto;
   right: 14px;
   content: "\f002";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   color: #fff;
   font-size: 21px;
   z-index: 55;
@@ -11456,7 +11456,7 @@ body.produto .carousel-qd-v1-shelf h2 {
   color: #000000;
   font-size: 10px;
   font-weight: 500;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-left: 5px;
 }
 
@@ -11466,7 +11466,7 @@ body.produto .carousel-qd-v1-shelf h2 {
   color: #333333;
   padding-left: 5px;
   font-weight: 500;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .smart-cart-qd-v1-wrapper {
@@ -11621,7 +11621,7 @@ body.qd-bb-lightBoxBodyProdAdd.qd-ddc-product-add-time
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: absolute;
   bottom: 20px;
   left: 35px;
@@ -11691,7 +11691,7 @@ body.qd-bb-lightBoxBodyProdAdd.qd-ddc-product-add-time
     text-decoration: inherit;
     text-rendering: optimizelegibility;
     width: 1em;
-    font-family: "FontAwesome";
+    font-family: "FontAwesome" !important;
     color: #2d4f9e;
     font-size: 14px;
   }
@@ -11852,7 +11852,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 
 .smart-cart-qd-v2-wrapper .qd-ddc-wrapper2 {
@@ -11895,7 +11895,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
 
 .smart-cart-qd-v2-wrapper .qd-cartTitle h3::after {
   font-size: 18px;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   content: "\F07A";
   display: block;
   position: absolute;
@@ -11920,7 +11920,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   line-height: 21px;
   position: relative;
   top: -5px;
@@ -11937,7 +11937,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   line-height: 25px;
   position: relative;
   top: -5px;
@@ -12150,7 +12150,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 12px;
   margin-right: 4px;
   line-height: 1;
@@ -12219,7 +12219,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   line-height: 1;
   margin-left: 10px;
 }
@@ -12405,7 +12405,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   color: #bababa;
 }
 
@@ -12438,7 +12438,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   color: #bababa;
 }
 
@@ -12478,7 +12478,7 @@ body.qd-cart-show .smart-cart-qd-v2-wrapper .qd-sc-wrapper {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 
 .smart-cart-qd-v2-wrapper .qd-ddc-remove:hover {

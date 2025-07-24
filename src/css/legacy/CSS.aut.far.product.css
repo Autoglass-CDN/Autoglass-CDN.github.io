@@ -1029,20 +1029,6 @@ body.jsFullLoaded .product-qd-v1-sku-selection > * {
 } */
 
 .container-compre-whatsapp .botao-compre-whatsapp {
-  /* border: #43c452 solid;
-  border-width: 2px;
-  transition: all 0.2s ease-out;
-  display: block;
-  border-radius: 6px;
-  background: #43c452;
-  color: #fff;
-  padding: 15px 30px;
-  font-size: 13px;
-  font-weight: 600;
-  text-align: center;
-  width: 100%;
-  float: right;
-  border-radius: 3px; */
   font-size: 0px;
   background: #fff;
   color: #43c452;

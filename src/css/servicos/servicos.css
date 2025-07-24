@@ -484,11 +484,6 @@ body {
     min-height: 0vh;
   }
 
-  /* por que contratar? */
-  /* .por-que-contratar .tabela {
-        margin: 1.2rem auto;
-    } */
-
   .por-que-contratar .tabela__cabecalho .tabela__coluna,
   .por-que-contratar .tabela__linha .tabela__coluna {
     padding: 0.4rem 0.8rem;

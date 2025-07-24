@@ -4,15 +4,11 @@
 
 @import url("https://autoglass-cdn.github.io/src/css/theme.css");
 
-.body-cart {
-  background-color: #fafafa;
-}
-
 .checkout-qd-v1-header {
   border-bottom: 1px #eeeeee solid;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #fafafa;
+  background-color: #fff;
 }
 
 .checkout-qd-v1-header .checkout-qd-v1-header-content {
@@ -293,7 +289,7 @@
 }
 
 .checkout-qd-v1-footer-structure .footer-qd-v1-security-information {
-  background-color: #fafafa;
+  background: #fff;
   padding: 15px 0;
   border-top: 1px #f8f8f8 solid;
 }
