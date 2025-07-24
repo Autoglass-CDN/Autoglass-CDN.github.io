@@ -99,7 +99,7 @@
 }
 #svg-map text {
   fill: #fff;
-  font: 12px Arial-BoldMT, sans-serif;
+  font: 12px "Poppins"-BoldMT, sans-serif;
   cursor: pointer;
 }
 #svg-map a {

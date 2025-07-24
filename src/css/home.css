@@ -198,7 +198,7 @@ html {
 .section-title {
   font-size: 32px;
   font-weight: var(--extra-bold);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--primary);
   text-align: center;
   text-transform: uppercase;
@@ -487,6 +487,7 @@ html {
 
 /* #beon region*/
   .beon-region {
+    font-family: "Poppins", sans-serif !important;
     width: 93%;
   }
 /* #endregion beon*/
@@ -576,7 +577,7 @@ html {
 }
 
 .ratings-section .ratings__rating .ratings__rating-content h3 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--primary);
   font-size: 16px;
   font-weight: var(--bold);
@@ -584,7 +585,7 @@ html {
 }
 
 .ratings-section .ratings__rating .ratings__rating-content p {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   max-width: 235px;
   font-size: 12px;
   font-weight: var(--semi-bold);

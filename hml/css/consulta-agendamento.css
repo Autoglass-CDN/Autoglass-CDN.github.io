@@ -121,7 +121,7 @@
 
 .secao-agendamento > .filter > .data label::after {
   content: "\f073";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: absolute;
   top: 1px;
   right: 11px;
@@ -335,7 +335,7 @@
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 2px;
   font-size: 14px;
   color: #2d4f9e;

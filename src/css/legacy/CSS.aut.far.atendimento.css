@@ -131,7 +131,7 @@ body.institucional.quem-somos
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: relative;
   top: -4px;
   margin-right: 10px;
@@ -151,8 +151,10 @@ body.institucional.quem-somos
   margin-bottom: 5px;
 }
 .attendance-qd-v1-contact h3 {
-  font-size: 14px;
+  font-size: 26px;
   font-weight: 700;
+  padding: 1% 0 0.5%;
+  color: #2d4f9e;
 }
 .attendance-qd-v1-contact p {
   color: #757575;
@@ -343,7 +345,7 @@ body.institucional.quem-somos
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 10px;
 }
 .institucional-qd-v1-menu-toggle-wrap .institucional-qd-v1-menu-toggle:hover,
