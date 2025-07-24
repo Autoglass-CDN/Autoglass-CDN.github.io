@@ -1,7 +1,9 @@
+@import url("https://autoglass-cdn.github.io/src/css/theme.css");
+
 .tab-container {
   position: relative;
   margin: 0 20px;
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 body.departamento .tab-container,

@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/src/css/theme.css");
+
 footer
   .footer-qd-v1-content
   .container
@@ -152,7 +154,7 @@ footer
     > li
     p::after {
     content: "\f107";
-    font-family: fontAwesome;
+    font-family: "FontAwesome" !important;
     position: absolute;
     right: 0;
     font-size: 16px;

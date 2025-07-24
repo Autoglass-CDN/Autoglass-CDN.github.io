@@ -42,7 +42,7 @@ html {
 .section-title {
   font-size: 32px;
   font-weight: var(--extra-bold);
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--primary);
   text-align: center;
   text-transform: uppercase;
@@ -184,7 +184,6 @@ html {
     border-radius: 20px;
     margin: 10px;
     margin-top: 0;
-    /* aspect-ratio: 6/5; */
     overflow: hidden;
     overflow-x: scroll;
   }
@@ -192,7 +191,6 @@ html {
     height: auto;
   }
   .banners-section .banners button {
-    /* transform: translateY(calc(-50% - 25px)); */
     top: 40%;
     z-index: 0;
   }
@@ -329,6 +327,7 @@ html {
 
 /* #beon region*/
   .beon-region {
+    font-family: "Poppins", sans-serif !important;
     width: 93%;
   }
 /* #endregion beon*/
@@ -418,7 +417,7 @@ html {
 }
 
 .ratings-section .ratings__rating .ratings__rating-content h3 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   color: var(--primary);
   font-size: 16px;
   font-weight: var(--bold);
@@ -426,7 +425,7 @@ html {
 }
 
 .ratings-section .ratings__rating .ratings__rating-content p {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   max-width: 235px;
   font-size: 12px;
   font-weight: var(--semi-bold);
@@ -708,7 +707,6 @@ html {
 
 .banners-promocionais-itens .box-banner,
 .banners-nossos-servicos .box-banner {
-  /* overflow: hidden; */
   border-radius: 20px;
   box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
   margin: 10px;

@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/hml/css/theme.css");
+
 @media (min-width: 1024px) {
     .col-md-1,
     .col-md-2,
@@ -40,13 +42,13 @@
     padding-right: 0;
     width: 70% !important;
   }
-  
+
   @media (max-width: 767px) {
     .container {
       width: 100% !important;
     }
   }
-  
+
   @media (min-width: 768px) and (max-width: 1280px) {
     .container {
       width: 90% !important;
@@ -54,7 +56,7 @@
   }
 
   .footer-qd-v1  {
-    font-family: 'Roboto', sans-serif;
+    font-family: "Poppins", sans-serif;
   }
 
   .footer-qd-v1-content {
@@ -116,7 +118,7 @@
     .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
       display: grid;
       grid-template: "autoglass suporte" "redes .";
-    }  
+    }
     .footer-qd-v1-content
       .footer-qd-v1-menu-list
       ul.footer-qd-v1-menu-grid
@@ -244,12 +246,12 @@
   .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid {
     text-align: left;
   }
-  
-  .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-contact-information, 
+
+  .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-contact-information,
   .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-sac .titulo-contact-information {
     padding-top: 0;
   }
-  
+
   .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid li p {
     display: block;
     font-size: 14px;
@@ -333,7 +335,7 @@
     .footer-qd-v1 .footer-qd-v1-content .row {
       max-width: 100%;
     }
-    .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-horario-atendimento, 
+    .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-ven .titulo-horario-atendimento,
     .footer-qd-v1-content .footer-qd-v1-contact-information .footer-qd-v2-menu-grid .grid-area-horario-sac .titulo-horario-atendimento {
       margin-bottom: 5px;
       padding-top: 0;
