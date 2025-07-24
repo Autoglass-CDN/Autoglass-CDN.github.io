@@ -6,7 +6,7 @@
 @import url("https://autoglass-cdn.github.io/hml/css/theme.css");
 
 html {
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -133,7 +133,7 @@ html {
 }
 
 body {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
@@ -1199,7 +1199,7 @@ body {
   margin-bottom: 15px;
   color: #333333;
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 @media (max-width: 992px) {

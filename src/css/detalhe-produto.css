@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/src/css/theme.css");
+
 :root {
   --altura-topo-tablet: 161px;
   --altura-topo-desktop: 264px;
@@ -823,7 +825,7 @@ fieldset#beneficios legend {
 
 .block:before {
   content: "\f057";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-style: normal;
   font-size: 28px;
   font-weight: 600;
@@ -930,7 +932,7 @@ fieldset#beneficios legend {
 
 .checked:before {
   content: "\f058";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-style: normal;
   font-size: 28px;
   font-weight: 600;
@@ -1018,7 +1020,7 @@ fieldset#beneficios legend {
   align-content: center;
   flex-wrap: wrap;
   font-size: 16px;
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 #botaoContinuarCarrinho:hover {
@@ -1039,7 +1041,7 @@ fieldset#beneficios legend {
   align-content: center;
   flex-wrap: wrap;
   font-size: 16px;
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-left: 10%;
 }
 
@@ -1673,7 +1675,6 @@ fieldset#beneficios legend {
   font-style: normal;
 }
 
-
 @media only screen and (min-width: 768px) {
   .span-sem-juros {
     font-size: 16px;
@@ -1713,7 +1714,6 @@ fieldset#beneficios legend {
 }
 
 .numero-vendas i {
-  margin-left: 13px;
   padding-right: 2px;
 }
 
@@ -1722,10 +1722,15 @@ fieldset#beneficios legend {
   margin-left: 2px;
 }
 
+.konfidency-reviews-summary {
+  margin-left: auto;
+}
+
 @media screen and (max-width: 900px) {
   .numero-vendas-mobile {
     align-items: anchor-center;
     display: flex;
+    padding-left: 20px;
   }
   .konfidency-reviews-summary.mobile{
     width: 50%;

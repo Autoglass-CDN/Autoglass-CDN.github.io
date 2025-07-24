@@ -4,15 +4,11 @@
 
 @import url("https://autoglass-cdn.github.io/src/css/theme.css");
 
-.body-cart {
-  background-color: #fafafa;
-}
-
 .checkout-qd-v1-header {
   border-bottom: 1px #eeeeee solid;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #fafafa;
+  background-color: #fff;
 }
 
 .checkout-qd-v1-header .checkout-qd-v1-header-content {
@@ -293,7 +289,7 @@
 }
 
 .checkout-qd-v1-footer-structure .footer-qd-v1-security-information {
-  background-color: #fafafa;
+  background: #fff;
   padding: 15px 0;
   border-top: 1px #f8f8f8 solid;
 }
@@ -490,7 +486,7 @@ table.cart-items thead {
 
 table.cart-items thead tr {
   font-weight: 700 !important;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 table.cart-items thead .item-remove::after {
@@ -615,7 +611,7 @@ table.cart-items tbody {
 
 .link-choose-more-products-wrapper a::before {
   content: "\f053";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 10px;
   margin-right: 5px;
 }
@@ -638,7 +634,7 @@ body.body-order-form #orderform-to-cart:hover {
 
 .coupon-fieldset .link-coupon-add::before {
   content: "\f02b";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 10px;
   margin-right: 5px;
 }
@@ -681,7 +677,7 @@ body.body-order-form #orderform-to-cart:hover {
 
 #cart-to-orderform::before {
   content: "\f023";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 10px;
   font-size: 16px;
   font-weight: 400;
@@ -1034,7 +1030,7 @@ body.body-order-form #payment-data-submit:active {
     .vtexIdUI-heading {
     text-align: center !important;
     color: #fff;
-    font-family: "Open Sans", "Droid Sans", Tahoma, Arial, sans-serif !important;
+    font-family: "Poppins", sans-serif !important;
     text-transform: uppercase !important;
     font-size: 16px !important;
     font-weight: bold !important;
@@ -1284,7 +1280,7 @@ body.body-order-form #payment-data-submit:active {
     border-radius: 5px;
     border: none;
     background-color: #f5f6f9 !important;
-    font-family: "Open Sans", "Droid Sans", Tahoma, Arial, sans-serif !important;
+    font-family: "Poppins", sans-serif !important;
     color: #6d6d6d !important;
     font-weight: normal !important;
     font-size: 14px;
@@ -1530,7 +1526,7 @@ body.body-order-form #payment-data-submit:active {
     .vtexIdUI-heading {
     text-align: center !important;
     color: #808080;
-    font-family: "Open Sans", "Droid Sans", Tahoma, Arial, sans-serif !important;
+    font-family: "Poppins", sans-serif !important;
     text-transform: uppercase !important;
     font-size: 18px !important;
     font-weight: normal !important;
@@ -1729,7 +1725,7 @@ body.body-order-form #payment-data-submit:active {
   }
   #vtexIdContainer .vtexIdUI-heading {
     color: #808080;
-    font-family: "Open Sans", "Droid Sans", Tahoma, Arial, sans-serif !important;
+    font-family: "Poppins", sans-serif !important;
     text-transform: uppercase !important;
     font-size: 18px !important;
     font-weight: normal !important;
@@ -2341,7 +2337,7 @@ body.body-order-form #payment-data-submit:active {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 5px;
 }
 

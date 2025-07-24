@@ -1,9 +1,11 @@
+@import url("https://autoglass-cdn.github.io/src/css/theme.css");
+
 .form-servico {
   border-radius: 0.3rem;
   padding: 0.6rem 1.6rem;
   display: flex;
   flex-direction: column;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .form-servico label {
@@ -180,7 +182,7 @@
   }
 
   /* .form-servico__content-submit button:before {
-      font-family: "FontAwesome";
+      font-family: "FontAwesome" !important;
       content: "\f232";
       color: #FFF;
       font-size: 22px;

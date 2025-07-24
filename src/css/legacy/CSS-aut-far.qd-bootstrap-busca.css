@@ -7,7 +7,7 @@
 @import url("https://autoglass-cdn.github.io/src/css/theme.css");
 
 html {
-  font-family: sans-serif;
+  font-family: "Poppins", sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
@@ -179,7 +179,7 @@ html {
 }
 
 body {
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   line-height: 1.42857143;
   color: #333;
@@ -717,7 +717,7 @@ body {
   background: transparent;
   color: #fff;
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .header-qd-v1-location-modal .modal-header button:hover {
@@ -1359,7 +1359,7 @@ body {
   margin-bottom: 15px;
   color: #333333;
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 @media (max-width: 992px) {
@@ -1769,7 +1769,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
   text-transform: uppercase;
   cursor: pointer;
   line-height: 21px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 .modal-qd-v1-search .modal-qd-v1-close:hover {
@@ -1788,7 +1788,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-left: 5px;
   font-size: 21px;
   vertical-align: bottom;
@@ -1829,7 +1829,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
   left: auto;
   right: 14px;
   content: "\f002";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   color: #fff;
   font-size: 21px;
   z-index: 55;

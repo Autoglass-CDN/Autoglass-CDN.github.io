@@ -119,7 +119,7 @@
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-left: 5px;
 }
 .system-error-qd-v1 .system-error-qd-v1-wrap #busca-ft-alternative-text {
@@ -160,7 +160,7 @@
 .system-error-qd-v1 .system-error-qd-v1-wrap .icon {
   color: #1c3162;
   margin-right: 8px;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free" !important;
   font-weight: 900;
 }
 @media (max-width: 768px) {
@@ -810,7 +810,7 @@
 .QDb2bconfirmation .QDb2b__c--wrapper h1:before {
   content: "\f058";
   font-size: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-weight: 900;
   -webkit-font-smoothing: antialiased;
   display: inline-block;

@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/hml/css/theme.css");
+
 :root {
   --nao-preenchido: #a8a8a8;
   --preenchido: #33a140;
@@ -98,7 +100,7 @@
   background: var(--nao-preenchido);
   border-radius: 5px;
   line-height: 15px;
-  font-family: "Open Sans", sans-serif;
+  font-family: "Poppins", sans-serif;
   transition: 0.2s;
 }
 

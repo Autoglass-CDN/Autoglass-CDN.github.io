@@ -1,5 +1,7 @@
 /* #region Reset CSS MZ */
 
+@import url("https://autoglass-cdn.github.io/hml/css/theme.css");
+
 .product-qd-v1-image .product-qd-v1-stamps {
   z-index: 1;
 }
@@ -55,7 +57,7 @@
 
 .product-qd-v1-standard {
   display: block !important;
-  background-color: #fff;
+  background-color: #ffffff;
   margin-top: 10px;
   padding: 0px 0px 12px 0px;
 }
@@ -219,7 +221,7 @@ body.mz-pu-on .mz-modal-pickup {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 18px;
 }
 
@@ -276,7 +278,7 @@ body.mz-pu-on .mz-modal-pickup {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 10px;
   font-size: 14px;
   color: #2d4f9e;
@@ -388,7 +390,7 @@ body.mz-pu-on .mz-modal-pickup {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-size: 16px;
   margin-right: 20px;
 }
@@ -502,7 +504,7 @@ body.mz-pu-on .mz-modal-pickup {
 .other-brands .product-qd-v1-buy-button button::before {
   content: "\f103";
   display: inline-block;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   height: 20px;
   margin-right: 14px;
   top: 3px;
@@ -918,8 +920,8 @@ body.mz-sf-on .mz-modal-shipping {
   border: 1px solid #003087;
   border-radius: 8px;
   padding: 16px;
-  font-family: Arial, sans-serif;
-  width: 99%;
+  font-family: "Poppins", sans-serif;
+  width: 100%;
   cursor: pointer;
   transition: all 0.3s ease;
   margin-top: 10px;
@@ -959,7 +961,7 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 .compat-description {
-  font-family: 'Inter', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   margin-bottom: 13px;
 }
 
@@ -1001,7 +1003,7 @@ body.mz-sf-on .mz-modal-shipping {
   border-radius: 8px;
   padding: 16px;
   margin-top: 12px;
-  font-family: Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   color: #1e4620;
   background: #f6fffa;
 }
@@ -1049,7 +1051,7 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 .title-text{
-  font-family: 'Inter', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   padding-left: 10px;
   color: #003087;
   font-weight: 700;
@@ -1065,7 +1067,7 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 #botaoVerificarCompatibilidade{
-  font-family: 'Inter', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
   background-color: #e7eaf4 ;
   color: #003087;
   font-weight: bold;
@@ -1122,7 +1124,7 @@ body.mz-sf-on .mz-modal-shipping {
   z-index: 1000;
   top: 36px;
   left: 40px;
-  font-family: 'Inter', sans-serif !important;
+  font-family: "Poppins", sans-serif !important;
 }
 
 @media screen and (max-width: 768px) {

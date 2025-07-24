@@ -1,8 +1,10 @@
+@import url("https://autoglass-cdn.github.io/hml/css/theme.css");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Open Sans", Arial, Helvetica, sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 :root {
@@ -300,7 +302,7 @@ body {
   font-weight: 600;
   font-style: normal;
   font-size: 1.3em;
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 5 Free" !important;
 }
 
 .formulario .formulario__form {
