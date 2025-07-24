@@ -152,7 +152,7 @@ ul {
 .veiculos-compativeis-search__search-input .search-icon::before {
   content: "\f11c";
   color: #a8a8a8;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-style: normal;
   font-size: 22px;
 }
@@ -798,7 +798,7 @@ i.arrow-icon::before {
 
 .container .atendimento-whatsapp a::before {
   transition: 0.5s;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   content: "\f232";
   background: #39b54a;
   color: #fff;
@@ -914,7 +914,7 @@ i.arrow-icon::before {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: absolute;
   bottom: 20px;
   left: 35px;
@@ -980,7 +980,7 @@ i.arrow-icon::before {
   box-shadow: 0 0 1px black;
   display: none;
   font-size: 1rem;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 #busca-categoria-mobile {
@@ -1331,7 +1331,7 @@ i.arrow-icon::before {
   color: #183884;
   margin: 0;
   margin-left: 30px;
-  font-family: "Roboto", sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 21px;
   font-weight: 700;
   letter-spacing: normal;

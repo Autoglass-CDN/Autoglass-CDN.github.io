@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/hml/css/theme.css");
+
 :root {
   --altura-topo-tablet: 161px;
   --altura-topo-desktop: 264px;
@@ -819,7 +821,7 @@ fieldset#beneficios legend {
 
 .block:before {
   content: "\f057";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-style: normal;
   font-size: 28px;
   font-weight: 600;
@@ -926,7 +928,7 @@ fieldset#beneficios legend {
 
 .checked:before {
   content: "\f058";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-style: normal;
   font-size: 28px;
   font-weight: 600;
@@ -1014,7 +1016,7 @@ fieldset#beneficios legend {
   align-content: center;
   flex-wrap: wrap;
   font-size: 16px;
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 #botaoContinuarCarrinho:hover {
@@ -1035,7 +1037,7 @@ fieldset#beneficios legend {
   align-content: center;
   flex-wrap: wrap;
   font-size: 16px;
-  font-family: "Arial", sans-serif;
+  font-family: "Poppins", sans-serif;
   margin-left: 10%;
 }
 
@@ -1808,7 +1810,7 @@ fieldset#beneficios legend {
 
 .titulo-instalacao {
   font-size: 18px;
-  color: #000;
+  color: #000 !important;
   font-weight: bold;
   margin: 0;
   text-transform: lowercase !important;

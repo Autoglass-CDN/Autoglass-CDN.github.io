@@ -11,7 +11,7 @@ div#inform-chassi {
 
 #inform-chassi.valido::after {
   content: "\f00c";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   color: #94cb82;
   position: absolute;
   left: 110px;

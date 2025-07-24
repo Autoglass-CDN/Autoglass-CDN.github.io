@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/src/css/theme.css");
+
 :root {
   --deslocate-create-account: 350px;
 }
@@ -175,7 +177,7 @@
 /* CONFIGURAÇÕES EM COMUM */
 #vtexIdContainer .vtexIdUI-heading {
   color: #808080;
-  font-family: "Open Sans", "Droid Sans", Tahoma, Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   text-transform: uppercase;
   font-size: 18px !important;
   font-weight: normal;
@@ -268,7 +270,7 @@
 }
 
 #vtexIdContainer #vtexIdUI-google-plus:before {
-  font-family: "Font Awesome 5 Brands";
+  font-family: "Font Awesome 5 Brands" !important;
   content: "\f1a0";
   color: #234eb9;
   background: conic-gradient(
@@ -629,7 +631,7 @@
     #vtexIdUI-form-classic-login
     .modal-header
     .vtexIdUI-heading {
-    font-family: "Open Sans", "Droid Sans", Tahoma, Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 16px;
     width: 100%;
     padding-bottom: 20px;
