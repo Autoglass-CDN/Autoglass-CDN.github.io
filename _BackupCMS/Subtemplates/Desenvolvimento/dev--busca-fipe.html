@@ -5,6 +5,20 @@
             Busque a peça compatível com seu veículo
         </div>
         <div class="c-busca__tabs-content">
+            <ul class="c-busca__tabs tab-header search-options">
+                <li id="tab-busca-placa-desktop" class="tab-item is-active">
+                    <label>
+                        <input type="radio" name="search" value="busca-placa" id="input-busca-placa-desktop"></input> 
+                        Buscar com placa 
+                    </label>
+                </li>
+                <li id="tab-nao-sei-placa-desktop" class="tab-item ">
+                    <label>
+                        <input type="radio" name="search" value="sem-placa" id="input-nao-sei-placa"></input> 
+                        Não sei minha placa 
+                    </label>
+                </li>
+            </ul>
             <div class="c-busca__select tipo-peca">
                 <div id="pecas-select-desktop">
                     <div class="gtm-smart-peca-select">
@@ -23,20 +37,6 @@
                     </div>
                 </div>
             </div>
-            <ul class="c-busca__tabs tab-header search-options">
-                <li id="tab-busca-placa-desktop" class="tab-item is-active">
-                    <label>
-                        <input type="radio" name="search" value="busca-placa" id="input-busca-placa-desktop"></input> 
-                        Buscar com placa 
-                    </label>
-                </li>
-                <li id="tab-nao-sei-placa-desktop" class="tab-item ">
-                    <label>
-                        <input type="radio" name="search" value="sem-placa" id="input-nao-sei-placa"></input> 
-                        Não sei minha placa 
-                    </label>
-                </li>
-            </ul>
             <div class="c-busca__tab-content is-active" id="busca-peca">
                 <form id="form-busca-peca" action="#">
                     <div class="h-flex">
