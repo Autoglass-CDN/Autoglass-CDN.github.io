@@ -1301,10 +1301,6 @@ i.arrow-icon::before {
   border-color: #fff;
 }
 
-.painel-categorias-desktop {
-  margin: 0 auto;
-}
-
 .painel-categorias {
   position: relative;
   width: 100%;
