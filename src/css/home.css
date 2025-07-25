@@ -54,16 +54,9 @@ html {
   }
   body main .secao-busca .painel-categorias-section {
     padding-bottom: 100px;
-    max-width: 1920px;
   }
   main .secao-busca .painel-categorias-section .painel-categorias-desktop {
     max-width: 1900px;
-  }
-}
-
-@media (min-width: 1750px) {
-  .painel-categorias-desktop .painel-categorias .botoes {
-    display: none;
   }
 }
 
@@ -88,6 +81,7 @@ html {
   }
   main .secao-busca .painel-categorias-section {
     padding-bottom: 50px;
+    max-width: 1550px;
   }
   .painel-categorias-desktop .painel-categorias .painel-categorias__menu {
     background-color: #fafafa;
@@ -330,6 +324,9 @@ html {
 @media (min-width: 1920px) {
   .banners-section .banners-content img {
     height: auto;
+  }
+    body main .secao-busca .painel-categorias-section {
+    max-width: 1650px;
   }
 }
 
