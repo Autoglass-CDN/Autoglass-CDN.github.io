@@ -1711,6 +1711,14 @@ ul.menu-division {
   flex-direction: column;
 }
 
+#menu {
+  position: relative !important;  
+  left: 0 !important;
+  width: 290px;
+  border: none;
+  padding: 10px 20px;
+}
+
 .painel-categorias__categoria-itens-lista {
   position: relative;
 }
