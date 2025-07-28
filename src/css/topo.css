@@ -1352,10 +1352,11 @@ i.arrow-icon::before {
 .painel-categorias .painel-categorias__categoria {
   display: inline-block;
   margin: 0 5px;
+  max-width: 130px;
 }
 
 .painel-categorias .painel-categorias__categoria:first-child {
-  margin-left: 0;
+  margin-left: 10px;
 }
 
 .painel-categorias .painel-categorias__categoria h2 {
@@ -1411,7 +1412,6 @@ i.arrow-icon::before {
 }
 
 .painel-categorias .painel-categorias__categoria-header img {
-  margin-bottom: 10px;
   transform: scale(0.8);
 }
 
@@ -1446,11 +1446,12 @@ i.arrow-icon::before {
   font-size: 0.875rem;
   font-weight: unset;
   word-wrap: break-word;
+  max-width: 120px;
 }
 
 .painel-categorias .painel-categorias__categoria-header a {
   text-decoration: none;
-  color: unset;
+  color: #475569;
 }
 
 .painel-categorias .painel-categorias__categoria-conteudo {
@@ -1645,10 +1646,7 @@ ul.menu-division {
   margin-right: 0;
 }
 .painel-categorias__categoria-header img {
-  border-radius: 0;
-  border: 2px solid transparent;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
+  padding: 0 20px;
   object-fit: cover;
   position: relative;
   z-index: 0;
@@ -1659,8 +1657,6 @@ ul.menu-division {
   display: block;
   width: 110px;
   height: 110px;
-  border-radius: 50%;
-  border: 2px solid var(--gray-300);
   background-color: transparent;
   position: absolute;
   z-index: 1;
@@ -1790,7 +1786,7 @@ ul.menu-division {
     display: block;
     width: 100%;
     padding-top: 5px;
-    padding-bottom: 20px;
+    padding-bottom: 0;
   }
   .painel-categorias {
     display: block;
@@ -1837,8 +1833,21 @@ ul.menu-division {
     margin: 0;
     font-size: 1.25rem;
   }
+  .painel-categorias .slider-handlers {
+    display: none;
+  }
   .painel-categorias .painel-categorias__menu {
     margin-left: -15px;
+    background-color: #fafafa;
+  }
+  .painel-categorias .painel-categorias__categoria {
+    height: 130px;
+  }
+}
+
+@media screen and (min-width: 1550px) {
+  .painel-categorias .botoes {
+    display: none;
   }
 }
 

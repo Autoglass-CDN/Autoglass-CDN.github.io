@@ -81,7 +81,7 @@ html {
   }
   main .secao-busca .painel-categorias-section {
     padding-bottom: 50px;
-    max-width: 1550px;
+    max-width: 1600px;
   }
   .painel-categorias-desktop .painel-categorias .painel-categorias__menu {
     background-color: #fafafa;
@@ -89,13 +89,8 @@ html {
   .painel-categorias-section .painel-categorias .titulo-categorias {
     padding-bottom: 20px;
   }
-  .painel-categorias-section .painel-categorias .painel-categorias__categoria-header::before {
-    background-color: #ffffff;
-  }
   .painel-categorias-section .painel-categorias .painel-categorias__categoria img {
     z-index: 2;
-    border-radius: 50%;
-    background-color: transparent;
   }
 }
 
@@ -171,13 +166,8 @@ html {
   .painel-categorias-section .painel-categorias .titulo-categorias {
     padding-bottom: 10px;
   }
-  .painel-categorias-section .painel-categorias .painel-categorias__categoria-header::before {
-    background-color: #ffffff;
-  }
   .painel-categorias-section .painel-categorias .painel-categorias__categoria img {
     z-index: 2;
-    border-radius: 50%;
-    background-color: transparent;
   }
 }
 
