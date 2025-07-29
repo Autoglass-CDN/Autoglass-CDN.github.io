@@ -55,12 +55,12 @@
   <vtex:contentPlaceHolder id="qd_head" />
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow" />
   <title>
     <vtex.cmc:productPageTitle />
   </title>
   <vtex:template id="hml--detalhe-produto--head-tags" />
   <vtex:metaTags />
-  <vtex.cmc:productRichSnippets showFacebook="1"/>
   <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.product.css"
     type="text/css" onload="this.media='all'" />
@@ -89,7 +89,6 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVLJKFR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <vtex.cmc:productRichSnippets showGoogle="1" showPriceWithoutStock="1"/>
   <script>
       document.addEventListener("DOMContentLoaded", function () {
         const offerDiv = document.querySelector('div[itemtype="http://schema.org/Offer"]');
@@ -325,6 +324,14 @@
                     </section>
                   </section>
                   <!-- Product price -->
+
+                  <div class="alerta-container" style="display: none;">
+                    <i class="fa-regular fa-clock alerta-icon"></i>
+                    <div class="alerta-texto">
+                      <span class="pulse">COMPRE AGORA!</span>
+                      <span>Últimas peças no estoque.</span>
+                    </div>
+                  </div>
 
                   <!-- SKU Selection - variacao -->
                   <section class="col-xs-12">
