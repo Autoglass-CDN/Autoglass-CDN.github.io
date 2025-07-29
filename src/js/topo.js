@@ -480,21 +480,21 @@ async function autocompleteSearch(searchTerm) {
  *
  * @param {HTMLInputElement} searchInput Input HTML
  */
-async function autocompleteInit(searchInput) {
-  searchInput.addEventListener("input", async (e) => {
-    let searchTerm = e.target.value.trim();
-    if (searchTerm.length < 4) return;
-    let list = document.querySelector("#autocomplete-search");
-    list.innerHTML = "<li><a>Aguarde...</a></li>";
-    let searchResult = await autocompleteSearch(e.target.value);
-    list.innerHTML = searchResult
-      .map(
-        (item) =>
-          `<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`
-      )
-      .join("");
-  });
-}
+// async function autocompleteInit(searchInput) {
+//   searchInput.addEventListener("input", async (e) => {
+//     let searchTerm = e.target.value.trim();
+//     if (searchTerm.length < 4) return;
+//     let list = document.querySelector("#autocomplete-search");
+//     list.innerHTML = "<li><a>Aguarde...</a></li>";
+//     let searchResult = await autocompleteSearch(e.target.value);
+//     list.innerHTML = searchResult
+//       .map(
+//         (item) =>
+//           `<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`
+//       )
+//       .join("");
+//   });
+// }
 
 function delayedAction(action, abortController) {
   if (abortController) {
@@ -732,7 +732,7 @@ function toggleCategory(self) {
     ".search-box-mobile .busca input.fulltext-search-box"
   );
 
-  autocompleteInitMobile(searchField);
+  // autocompleteInitMobile(searchField);
 
   loadCart(device.mobile);
 
@@ -771,36 +771,36 @@ function removeFunctions() {
   $(".topo").unbind();
   $(".container.mobile").unbind();
 }
-async function autocompleteInitMobile(searchInput) {
-  fixPlaceholderSearchMobile();
-  searchInput.addEventListener("input", async (e) => {
-    let searchTerm = e.target.value.trim();
-    if (searchTerm.length < 4) {
-      $(".search-mobile-autocomplete").hide();
-      return;
-    }
-    let list = document.querySelector(".search-mobile-autocomplete");
-    let searchResult = await autocompleteSearch(e.target.value);
-    if (searchResult.length > 0) {
-      list.innerHTML = searchResult
-        .filter((_, i) => i < 3)
-        .map(
-          (item) => `
-        <li>
-          <a href='${item.href}'>${item.thumb}${item.name.replace(
-            e.target.value,
-            `<b>${e.target.value}</b>`
-          )}</a>
-        </li>
-      `
-        )
-        .join("");
-      $(".search-mobile-autocomplete").show();
-    } else {
-      $(".search-mobile-autocomplete").hide();
-    }
-  });
-}
+// async function autocompleteInitMobile(searchInput) {
+//   fixPlaceholderSearchMobile();
+//   searchInput.addEventListener("input", async (e) => {
+//     let searchTerm = e.target.value.trim();
+//     if (searchTerm.length < 4) {
+//       $(".search-mobile-autocomplete").hide();
+//       return;
+//     }
+//     let list = document.querySelector(".search-mobile-autocomplete");
+//     let searchResult = await autocompleteSearch(e.target.value);
+//     if (searchResult.length > 0) {
+//       list.innerHTML = searchResult
+//         .filter((_, i) => i < 3)
+//         .map(
+//           (item) => `
+//         <li>
+//           <a href='${item.href}'>${item.thumb}${item.name.replace(
+//             e.target.value,
+//             `<b>${e.target.value}</b>`
+//           )}</a>
+//         </li>
+//       `
+//         )
+//         .join("");
+//       $(".search-mobile-autocomplete").show();
+//     } else {
+//       $(".search-mobile-autocomplete").hide();
+//     }
+//   });
+// }
 
 function defineScrollTop() {
   $("html, body").animate({ top: "-=0" }, 10000000000000000000000);
@@ -826,20 +826,20 @@ function pegaLargura(largura) {
 defineScrollTop();
 
 const inputBusca = window.innerWidth > 1024 ? document.querySelector(".busca .fulltext-search-box") : document.querySelector(".search-box-mobile .fulltext-search-box");
-const botaoBusca = window.innerWidth > 1024 ? document.querySelector(".search-box .search-icon") : document.querySelector(".search-box-mobile #search-icon");
+// const botaoBusca = window.innerWidth > 1024 ? document.querySelector(".search-box .search-icon") : document.querySelector(".search-box-mobile #search-icon");
 
-botaoBusca.addEventListener("click", function () {
-  const valorBusca = inputBusca.value.trim();
+// botaoBusca.addEventListener("click", function () {
+//   const valorBusca = inputBusca.value.trim();
 
-  if (valorBusca !== "") {
-    dataLayer.push({
-      event: "search",
-      search_term: valorBusca,
-    });
+//   if (valorBusca !== "") {
+//     dataLayer.push({
+//       event: "search",
+//       search_term: valorBusca,
+//     });
 
-    window.location.href = `/${encodeURIComponent(valorBusca)}`;
-  }
-});
+//     window.location.href = `/${encodeURIComponent(valorBusca)}`;
+//   }
+// });
 
 inputBusca.addEventListener("keydown", function (event) {
   if (event.keyCode === 13) {
@@ -889,24 +889,24 @@ inputBusca.addEventListener("keydown", function (event) {
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
 
-  let suggestions = document.querySelector(
-    ".container.desktop .search-box #autocomplete-search"
-  );
-  let searchField = document.querySelector(
-    ".container.desktop .search-box .busca input.fulltext-search-box"
-  );
-  searchField.addEventListener("focus", () => {
-    suggestions.style.visibility = "visible";
-    suggestions.style.opacity = "1";
-  });
-  searchField.addEventListener("blur", () => {
-    suggestions.style.opacity = "0";
-    setTimeout(() => (suggestions.style.visibility = "hidden"), 1000);
-  });
-  searchField.addEventListener("keydown", (event) => {
-    event = event || window.event;
-  });
-  autocompleteInit(searchField);
+  // let suggestions = document.querySelector(
+  //   ".container.desktop .search-box #autocomplete-search"
+  // );
+  // let searchField = document.querySelector(
+  //   ".container.desktop .search-box .busca input.fulltext-search-box"
+  // );
+  // searchField.addEventListener("focus", () => {
+  //   suggestions.style.visibility = "visible";
+  //   suggestions.style.opacity = "1";
+  // });
+  // searchField.addEventListener("blur", () => {
+  //   suggestions.style.opacity = "0";
+  //   setTimeout(() => (suggestions.style.visibility = "hidden"), 1000);
+  // });
+  // searchField.addEventListener("keydown", (event) => {
+  //   event = event || window.event;
+  // });
+  // autocompleteInit(searchField);
 
 if (window.innerWidth > 1024) {
   (function initializeCategoryPanelMenu() {
@@ -929,8 +929,8 @@ if (window.innerWidth > 1024) {
 }
 })();
 
-if (window.innerWidth > 1200) {
-  const tabCategoria = document.getElementById("tab-busca-categoria");
+if (window.innerWidth > 1025) {
+  const tabCategoria = document.querySelector("#tab-busca-categoria a");
   const divCategoria = document.getElementById("busca-categoria");
 
   const divPecasSelect = document.querySelector(".c-busca__select.tipo-peca #pecas-select-desktop");
