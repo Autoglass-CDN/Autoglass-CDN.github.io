@@ -91,13 +91,6 @@ body .fa, body .far, body .fas, .fa-regular, .fa-solid {
   font-weight: 900;
 }
 
-/* ÍCONES CHECK-OUT */
-
-.icon-spinner.icon-spin.icon-3x, .icon.icon-minus-sign, .icon.icon-plus-sign, .icon.icon-remove.item-remove-ico {
-  font-family: "Font Awesome 5 Free", "Font Awesome", sans-serif !important;
-  font-weight: 900;
-}
-
 /*ÍCONE PESQUISA BEON SEARCH*/
 
 .lfVOto .bn-search__submit {
