@@ -60,7 +60,7 @@
   </title>
   <vtex:template id="prd--detalhe-produto--head-tags" />
   <vtex:metaTags />
-  <vtex.cmc:productRichSnippets showFacebook="1"/>
+  <vtex.cmc:productRichSnippets showFacebook="1" paymentSystemId="125"/>
   <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.product.css"
     type="text/css" onload="this.media='all'" />
@@ -333,6 +333,14 @@
                   </section>
                   <!-- Product price -->
 
+                  <div class="alerta-container" style="display: none;">
+                    <i class="fa-regular fa-clock alerta-icon"></i>
+                    <div class="alerta-texto">
+                      <span class="pulse">COMPRE AGORA!</span>
+                      <span>Últimas peças no estoque.</span>
+                    </div>
+                  </div>
+
                   <!-- SKU Selection - variacao -->
                   <section class="col-xs-12">
                     <div class="row">
@@ -533,13 +541,13 @@
       <!-- Fixed bar -->
       <section class="product-qd-v1-fixed-bar">
         <div class="row">
-          <div class="col-xs-5">
+          <div class="col-xs-6">
             <section class="product-qd-v1-price">
               <vtex.cmc:skuPrice />
             </section>
           </div>
 
-          <section class="col-xs-7">
+          <section class="col-xs-6">
             <section class="product-qd-v1-buy-button">
                 <button class="buy-button buy-button-tablet" aria-label="Comprar Produto">
                   <a href='#' class="add-to-cart-ga"></a>
