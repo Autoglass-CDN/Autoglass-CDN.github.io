@@ -1,7 +1,6 @@
 /* HELPERS */
 html {
   overflow-x: hidden !important;
-  scrollbar-width: none;
 }
 
 .c-busca .h-flex {
