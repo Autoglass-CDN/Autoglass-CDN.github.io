@@ -439,7 +439,7 @@ body.hasInstall .shp-summary-package-time {
     }
 }
 
-.icon-spinner.icon-spin.icon-3x, .icon.icon-minus-sign, .icon.icon-plus-sign, .icon.icon-remove.item-remove-ico, .icon-user, .icon-home, .icon-credit-card, .icon-edit, .payment-environment-icon-text {
+.icon-spinner.icon-spin.icon-3x, .icon.icon-minus-sign, .icon.icon-plus-sign, .icon.icon-remove.item-remove-ico, .icon-user, .icon-home, .icon-credit-card, .icon-edit, .payment-environment-icon-text, .icon-lock, icon-warning-sign {
   font-family: "Font Awesome 5 Free", "Font Awesome", sans-serif !important;
   font-weight: 900;
 }
