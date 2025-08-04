@@ -1840,9 +1840,9 @@ ul.menu-division {
     margin-left: -15px;
     background-color: #fafafa;
   }
-  .painel-categorias .painel-categorias__categoria {
+  /* .painel-categorias .painel-categorias__categoria {
     height: 130px;
-  }
+  } */
 }
 
 @media screen and (min-width: 1550px) {
