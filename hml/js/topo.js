@@ -55,48 +55,6 @@ function verificaUrlInstitucional() {
   }
 }
 
-function fecharAbaCategoria() {
-  const divCategoria = document.getElementById("busca-categoria");
-  const divBuscaPeca = document.getElementById("busca-peca");
-  const abaBuscaPeca = document.getElementById("tab-busca-peca");
-  const abaBuscaCategoria = document.getElementById("tab-busca-categoria");
-
-  // Função auxiliar para trocar classes
-  const toggleActiveClass = (element, add) => {
-    if (element) {
-      if (add) {
-        element.classList.add("is-active");
-      } else {
-        element.classList.remove("is-active");
-      }
-    }
-  };
-
-  // Remover is-active da aba de categoria
-  toggleActiveClass(divCategoria, false);
-  toggleActiveClass(abaBuscaCategoria, false);
-
-  // Adicionar is-active à aba de busca por placa
-  toggleActiveClass(divBuscaPeca, true);
-  toggleActiveClass(abaBuscaPeca, true);
-}
-
-if (window.innerWidth > 1200) {
-  document.addEventListener("click", cliqueForaDaAba);
-  function cliqueForaDaAba(event) {
-    const aba = document.getElementById('busca-categoria');
-    const tabs = document.querySelector('.c-busca__tabs.tab-header');
-    const isClickInsideTabs = tabs.contains(event.target);
-    const abaBuscaPlaca = document.getElementById('tab-busca-placa');
-
-    if(!abaBuscaPlaca.classList.contains('is-active')){
-      if (!aba.contains(event.target) && !isClickInsideTabs) {
-        fecharAbaCategoria();
-      }
-    }
-  }
-}
-
 if(window.innerWidth > 1200){
   const inputPesquisa = document.querySelector('.fulltext-search-box');
   inputPesquisa.addEventListener('click', () => {
@@ -122,9 +80,6 @@ function activateCategory(categoriaAtual, indexConteudoAtual) {
         ".painel-categorias__categoria-conteudo .painel-categorias__categoria-itens.ativo"
       )
       ?.classList.remove("ativo");
-
-    // event.target.style.transition = '0.8s';
-    // event.target.style.opacity = 0;
   }
   categoriaAtual
     .querySelector(".painel-categorias__categoria-header")
@@ -257,8 +212,11 @@ async function checkLoginMobile() {
       .querySelector("#div-login-mobile")
       .addEventListener("click", () => {
         document.getElementById("loading-spinner").style.display = "flex";
-        window.location.href =
-          "https://hml.autoglassonline.com.br/_secure/account#/";
+
+        setTimeout(() => {
+          window.location.href =
+            "https://hml.autoglassonline.com.br/_secure/account#/";
+        }, 500);
       });
   }
 }
@@ -558,35 +516,51 @@ function delayedAction(action, abortController) {
   return abortController;
 }
 
-//MOBILE
-
+// MOBILE
 function openNav() {
   let backdrop = document.querySelector(".side-menu-backdrop");
   let zenDeskIcon = document.querySelector("#launcher");
-  let whatsAppIcon =  document.querySelector("#whatsapp-icon-link");
+  let whatsAppIcon = document.querySelector("#whatsapp-icon-link");
+  
   backdrop.style.display = "unset";
   backdrop.style.opacity = "1";
+
   document.body.style.overflowY = "hidden";
+  document.documentElement.style.overflowY = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
+  document.body.style.top = "0";
+
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
   zenDeskIcon.style.opacity = "0";
   setTimeout(() => {
     zenDeskIcon.style.visibility = "hidden";
   }, 500);
   zenDeskIcon.style.pointerEvents = "none";
+
   whatsAppIcon.style.transition = "opacity 0.3s ease";
   whatsAppIcon.style.opacity = "0.5";
+
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = "unset";
+  
   setTimeout(() => {
     sideMenu.style.width = "338px";
-    setTimeout(
-      () =>
-        sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "1")),
-      200
-    );
+    setTimeout(() => 
+      sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "1"))
+    , 200);
   }, 300);
-  //document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+
   removeFunctions();
+
+  setTimeout(() => {
+    const container = $('#busca-placa-mobile #categoria-select');
+    const menu = container.find('.smart-select__main-results');
+
+    if (!menu.is(':visible')) {
+      menu.stop(true, true).slideDown('fast');
+    }
+  }, 500);
 }
 
 function lockPageScroll() {
@@ -616,6 +590,10 @@ function openNavCategory() {
   }
 
   document.body.style.overflowY = "hidden";
+  document.documentElement.style.overflowY = "hidden";
+  document.body.style.position = "fixed";
+  document.body.style.width = "100%";
+  document.body.style.top = "0";
 
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
   zenDeskIcon.style.opacity = "0";
@@ -649,7 +627,13 @@ function closeNav() {
   let sideMenu = document.getElementById("side-menu");
   let zenDeskIcon = document.querySelector("#launcher");
   let whatsAppIcon =  document.querySelector("#whatsapp-icon-link");
+
   document.body.style.overflowY = "auto";
+  document.documentElement.style.overflowY = "auto";
+  document.body.style.position = "static";
+  document.body.style.width = "auto";
+  document.body.style.top = "auto";
+
   zenDeskIcon.style.visibility = "visible";
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
   setTimeout(() => {
@@ -691,6 +675,10 @@ function closeNavCategory() {
   buscaCategoria.classList.remove("is-active");
 
   document.body.style.overflowY = "auto";
+  document.documentElement.style.overflowY = "auto";
+  document.body.style.position = "static";
+  document.body.style.width = "auto";
+  document.body.style.top = "auto";
 
   zenDeskIcon.style.visibility = "visible";
   zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
@@ -922,23 +910,6 @@ inputBusca.addEventListener("keydown", function (event) {
 
 if (window.innerWidth > 1024) {
   (function initializeCategoryPanelMenu() {
-    const tab = document.querySelector("#tab-busca-categoria");
-
-    if (tab) {
-      tab.addEventListener("click", (event) => {
-        event.preventDefault();
-
-        setTimeout (() => {
-        const content = document.querySelector("#busca-categoria");
-
-        if (tab && content) {
-          tab.classList.add("is-active");
-          content.classList.add("is-active");
-        }
-      }, 10);
-      });
-    }
-
     let lastActiveSubmenuId = null;
     $(".painel-categorias__categoria-itens-lista li.categoria").on("mouseenter", function () {
       const submenuId = $(this).data("target");
@@ -957,3 +928,55 @@ if (window.innerWidth > 1024) {
     })();
 }
 })();
+
+if (window.innerWidth > 1025) {
+  const tabCategoria = document.querySelector("#tab-busca-categoria a");
+  const divCategoria = document.getElementById("busca-categoria");
+
+  const divPecasSelect = document.querySelector(".c-busca__select.tipo-peca #pecas-select-desktop");
+  const divBuscaPeca = divPecasSelect?.querySelector(".smart-select__main-results");
+
+  tabCategoria?.addEventListener("click", (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+
+    if (divBuscaPeca && $(divBuscaPeca).is(":visible")) {
+      $(divBuscaPeca).slideUp("fast");
+    }
+
+    if ($(divCategoria).is(":visible")) {
+      $(divCategoria).slideUp("fast");
+    } else {
+      $(divCategoria).slideDown("fast", function () {
+        this.style.display = "block";
+      });
+    }
+  });
+
+  $('#pecas-select-desktop').off('click');
+
+  $('#pecas-select-desktop').on('click', function (e) {
+    e.preventDefault();
+    e.stopImmediatePropagation();
+
+    const $dropdown = $('#pecas-select-desktop .smart-select__main-results');
+
+    if ($(e.target).is('li')) return;
+
+    if ($('#busca-categoria').is(':visible')) {
+      $('#busca-categoria').slideUp('fast');
+    }
+
+    $dropdown.slideToggle('fast');
+  });
+
+  document.addEventListener("click", (e) => {
+    const isClickInsideCategoria = divCategoria?.contains(e.target);
+    const isClickInsidePecas = divPecasSelect?.contains(e.target);
+
+    if (!isClickInsideCategoria && !isClickInsidePecas) {
+      $(divCategoria).slideUp("fast");
+      $(divBuscaPeca).slideUp("fast");
+    }
+  });
+}

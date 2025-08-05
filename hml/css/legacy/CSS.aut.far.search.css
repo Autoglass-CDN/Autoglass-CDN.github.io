@@ -110,7 +110,7 @@
 .search-qd-v1-result .searchResultsTime {
   zoom: 1;
   margin: 0 -5px 40px -10px;
-  background-color: #fff;
+  background-color: #fafafa;
   padding: 10px;
   border-radius: 3px;
   height: fit-content;
@@ -463,7 +463,7 @@ body.departamento .search-qd-v1-result .resultado-busca-termo {
   display: none;
   position: relative;
   border: none;
-  background-color: #fff;
+  background-color: #fafafa;
   padding: 35px 70px;
   margin-top: 40px;
   margin-bottom: 40px;
@@ -510,6 +510,7 @@ body.departamento .search-qd-v1-seo-text {
     padding-right: 15px;
     padding-left: 15px;
     padding-bottom: 15px;
+    background-color: #fafafa;
   }
 }
 .search-qd-v1-navigator .search-qd-v1-navigator-trigger {

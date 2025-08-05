@@ -26,8 +26,8 @@ html {
 /* FIM RESET RATINGS COMPONENT */
 
 #outras-marcas.tab-content,
-.white-background {
-  background: white;
+.off-white-background {
+  background-color: #ffffff;
 }
 
 #outras-marcas .white-background,
@@ -54,6 +54,10 @@ html {
   margin: 0 0 24px 0;
 }
 
+.side-menu {
+  zoom: 1.05;
+}
+
 .container-descricao {
   margin: 0 auto;
   width: 100%;
@@ -67,7 +71,7 @@ html {
 
 .nav-container {
   width: 100%;
-  background: #f8f8f8;
+  background-color: #efefef;
   position: sticky;
   top: 250px;
   z-index: 2;
@@ -226,7 +230,7 @@ a[data-toggle="collapse"] {
   display: block;
   width: 100%;
   text-decoration: none;
-  background-color: #f8f8f8;
+  background-color: #efefef;
   border-radius: 4px;
   transition: all 0.2s ease-in-out;
 }
@@ -298,7 +302,7 @@ a[data-toggle="collapse"] + div > *:first-child {
 
 .group.Especificacoes {
   border-radius: 4px;
-  background: #f8f8f8;
+  background: #efefef;
   text-align: justify;
   width: 100%;
 }
@@ -399,16 +403,16 @@ h4.group.Especificacoes {
   #avaliacoes.tab-content,
   #outras-marcas.tab-content,
   #compre-junto.tab-content,
-  #outras-marcas .white-background,
+  #outras-marcas .off-white-background,
   #compre-junto .blue-background {
-    background-color: white;
+    background-color: #ffffff;
   }
   .contents .tab-content::after {
     content: "";
     border-bottom: 1px solid #dbdbdb;
     display: block;
     height: 24px;
-    background: white !important;
+    background: #ffffff !important;
   }
   .contents .tab-content .info-box.left {
     width: 100%;
