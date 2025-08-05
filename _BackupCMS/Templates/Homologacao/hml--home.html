@@ -19,17 +19,15 @@
   <link rel="stylesheet"
     href="https://autoglass-cdn.github.io/hml/css/legacy/home/CSS.aut.far.qd-bootstrap-home.css" type="text/css" />
 
-
   <vtex:template id="hml--home--head-tags" />
 
   <link rel="stylesheet" href="/arquivos/locationFetcher.css" type="text/css"/>
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/policies/header.css" type="text/css" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/policies/secao-pesquisa.css"
     type="text/css" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/topo.css" type="text/css"/>
-  <link rel="preload" as="image" href="https://autoglass-cdn.github.io/hml/img/banner-home/mobile_principal_01.webp" type="image/webp"/>
-  <link rel="preload" as="image" href="https://autoglass-cdn.github.io/hml/img/banner-home/mobile_secundario_02.webp" type="image/webp"/>
-  <link rel="preload" as="image" href="https://autoglass-cdn.github.io/hml/img/banner-home/mobile_terciario_03.webp" type="image/webp"/>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/topo.css" type="text/css" />
+
+
   <vtex:metaTags />
 
   <link rel="alternate" hreflang="pt-br" href="https://hml.autoglassonline.com.br" />
@@ -102,179 +100,184 @@
   <!-- Header -->
   <vtex:template id="hml--header" />
   <!-- Header -->
-  <!-- Smart Select -->
-  <vtex:template id="hml--busca-fipe" />
-  <!-- Smart Select -->
-
+  
   <main>
-    <section class="banners-section">
-      <article class="banners">
-        <button tabindex="-1" id="banner-prev" data-type="prev" type="button" style="left: 0;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
-            <path id="chevron-left"
-              d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z"
-              transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
-          </svg>
-        </button>
-        <section class="banners-content desktop">
-        </section>
-        <section class="banners-content mobile">
-        </section>
-        <button tabindex="-1" id="banner-next" data-type="next" type="button" style="right: 0;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
-            <path id="chevron-right"
-              d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z"
-              transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
-          </svg>
-        </button>
-        <ul class="banners-bars"></ul>
-      </article>
-    </section>
-
-    <section class="painel-categorias-section">
-      <section class="painel-categorias-desktop">
-        <nav class="painel-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
-          <header class="slider-handlers">
-            <span class="titulo-categorias">Procure por categoria</span>
-            <section class="botoes">
-              <button id="prev-btn">
-                <i></i>
-              </button>
-              <button id="next-btn">
-                <i></i>
-              </button>
+    <div class="secao-busca">
+        <section class="banners-section">
+          <article class="banners">
+            <div class="curva-banner">
+                <svg width="700" height="50" viewBox="0 0 700 50" xmlns="http://www.w3.org/2000/svg"><path d="M 0 0 H 620 C 680 0, 650 80 780 50 H 0 Z" fill="#fafafa"></path></svg>
+            </div>
+            <button tabindex="-1" id="banner-prev" data-type="prev" type="button" style="left: 0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
+                <path id="chevron-left"
+                  d="M21.371,1.861a1.231,1.231,0,0,1,0,1.743L7.472,17.5l13.9,13.9a1.232,1.232,0,1,1-1.743,1.743L4.861,18.371a1.231,1.231,0,0,1,0-1.743L19.628,1.861a1.231,1.231,0,0,1,1.743,0Z"
+                  transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
+              </svg>
+            </button>
+            <section class="banners-content desktop">
+                <vtex:contentPlaceHolder id="slider_full_para_desktop" />
             </section>
-          </header>
-          <ul>
-            <li class="painel-categorias__menu">
+            <section class="banners-content mobile">
+                <vtex:contentPlaceHolder id="slider_full_para_mobile" />
+            </section>
+            <button tabindex="-1" id="banner-next" data-type="next" type="button" style="right: 0;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
+                <path id="chevron-right"
+                  d="M4.861,1.861a1.231,1.231,0,0,1,1.743,0L21.371,16.628a1.231,1.231,0,0,1,0,1.743L6.6,33.138A1.232,1.232,0,1,1,4.861,31.4l13.9-13.9L4.861,3.6a1.231,1.231,0,0,1,0-1.743Z"
+                  transform="translate(-4.499 -1.499)" fill="#95989a" fill-rule="evenodd" />
+              </svg>
+            </button>
+            <ul class="banners-bars"></ul>
+          </article>
+        </section>
+        <!-- Smart Select -->
+        <vtex:template id="dev--busca-fipe" />
+        <!-- Smart Select -->
+        <section class="painel-categorias-section">
+          <section class="painel-categorias-desktop">
+            <nav class="painel-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
+              <header class="slider-handlers">
+                <section class="botoes">
+                  <button id="prev-btn">
+                    <i></i>
+                  </button>
+                  <button id="next-btn">
+                    <i></i>
+                  </button>
+                </section>
+              </header>
               <ul>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-vidros-automotivos-topo" href="/vidros-automotivos" title="Vidros Automotivos"
-                      itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-vidros-automotivos.png"
-                        alt="Vidros Automotivos" class="painel-categorias__categoria-imagem" />
-                      <h2>Vidros Automotivos</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-para-choques-grades-molduras-topo" href="/para-choques-grades-e-molduras"
-                      title="Para-choques, Grades e Molduras" itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-para-choques-grades-e-molduras.png"
-                        alt="Para-choques, Grades e Molduras" class="painel-categorias__categoria-imagem" />
-                      <h2>Para-choques, Grades e Molduras</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-retrovisores-automotivos-topo" href="/retrovisores-automotivos"
-                      title="Retrovisores Automotivos" itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-retrovisores-automotivos.png"
-                        alt="Retrovisores Automotivos" class="painel-categorias__categoria-imagem" />
-                      <h2>Retrovisores Automotivos</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-iluminacao-automotiva-topo" href="/iluminacao-automotiva"
-                      title="Iluminação Automotiva">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-iluminacao-automotiva.png"
-                        alt="Iluminação Automotiva" class="painel-categorias__categoria-imagem" />
-                      <h2>Iluminação Automotiva</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-palhetas-borrachas-e-reservatorios-topo" href="/palhetas-borrachas-e-reservatorios"
-                      title="Palhetas, Borrachas e Reservatórios" itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-palhetas-borrachas-e-reservatorios.png"
-                        alt="Palhetas, Borrachas e Reservatórios" class="painel-categorias__categoria-imagem" />
-                      <h2>Palhetas, Borrachas e Reservatórios</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-arrefecimento-climatizacao-topo" href="/arrefecimento-e-climatizacao"
-                      title="Arrefecimento e Climatização" itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-arrefecimento-e-climatizacao.png"
-                        alt="Arrefecimento e Climatização" class="painel-categorias__categoria-imagem" />
-                      <h2>Arrefecimento e Climatização</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-latarias-e-acabamentos-topo" href="/latarias-e-acabamentos"
-                      title="Latarias e Acabamentos" itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-latarias-e-acabamentos.png"
-                        alt="Latarias e Acabamentos" class="painel-categorias__categoria-imagem" />
-                      <h2>Latarias e Acabamentos</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-higienizadores-topo" href="/higienizadores-e-filtros-automotivos"
-                      title="Higienizadores e Filtros Automotivos" itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-higienizadores-e-filtros-automotivos.jpg"
-                        alt="Higienizadores e Filtros Automotivos" class="painel-categorias__categoria-imagem" />
-                      <h2>Higienizadores e Filtros Automotivos</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-ferramentas-automotivas-topo" href="/ferramentas-automotivas"
-                      title="Ferramentas Automotivas" itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-ferramentas-automotivas.png"
-                        alt="Ferramentas Automotivas" class="painel-categorias__categoria-imagem" />
-                      <h2>Ferramentas Automotivas</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-suspensao-topo" href="/suspensao-automotiva" title="Suspensão Automotiva"
-                      itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-suspensoes-automotivas.png"
-                        alt="Suspensão Automotiva" class="painel-categorias__categoria-imagem" />
-                      <h2>Suspensão Automotiva</h2>
-                    </a>
-                  </article>
-                </li>
-                <li class="painel-categorias__categoria">
-                  <article class="painel-categorias__categoria-header">
-                    <a id="Categoria-componentes-de-direcao" href="/componentes-de-direcao"
-                      title="Componentes de Direcao" itemprop="url">
-                      <img loading="lazy"
-                        src="https://autoglass-cdn.github.io/hml/img/categoria-componentes-de-direcao.png"
-                        alt="Componentes de Direcao" class="painel-categorias__categoria-imagem" />
-                      <h2>Componentes de Direção</h2>
-                    </a>
-                  </article>
+                <li class="painel-categorias__menu">
+                  <ul>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-vidros-automotivos-topo" href="/vidros-automotivos" title="Vidros Automotivos"
+                          itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-vidros-automotivos.png"
+                            alt="Vidros Automotivos" class="painel-categorias__categoria-imagem" />
+                          <h2>Vidros Automotivos</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-para-choques-grades-molduras-topo" href="/para-choques-grades-e-molduras"
+                          title="Para-choques, Grades e Molduras" itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-para-choques-grades-e-molduras.png"
+                            alt="Para-choques, Grades e Molduras" class="painel-categorias__categoria-imagem" />
+                          <h2>Para-choques, Grades e Molduras</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-retrovisores-automotivos-topo" href="/retrovisores-automotivos"
+                          title="Retrovisores Automotivos" itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-retrovisores-automotivos.png"
+                            alt="Retrovisores Automotivos" class="painel-categorias__categoria-imagem" />
+                          <h2>Retrovisores Automotivos</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-iluminacao-automotiva-topo" href="/iluminacao-automotiva"
+                          title="Iluminação Automotiva">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-iluminacao-automotiva.png"
+                            alt="Iluminação Automotiva" class="painel-categorias__categoria-imagem" />
+                          <h2>Iluminação Automotiva</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-palhetas-borrachas-e-reservatorios-topo" href="/palhetas-borrachas-e-reservatorios"
+                          title="Palhetas, Borrachas e Reservatórios" itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-palhetas-borrachas-e-reservatorios.png"
+                            alt="Palhetas, Borrachas e Reservatórios" class="painel-categorias__categoria-imagem" />
+                          <h2>Palhetas, Borrachas e Reservatórios</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-arrefecimento-climatizacao-topo" href="/arrefecimento-e-climatizacao"
+                          title="Arrefecimento e Climatização" itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-arrefecimento-e-climatizacao.png"
+                            alt="Arrefecimento e Climatização" class="painel-categorias__categoria-imagem" />
+                          <h2>Arrefecimento e Climatização</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-latarias-e-acabamentos-topo" href="/latarias-e-acabamentos"
+                          title="Latarias e Acabamentos" itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-latarias-e-acabamentos.png"
+                            alt="Latarias e Acabamentos" class="painel-categorias__categoria-imagem" />
+                          <h2>Latarias e Acabamentos</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-higienizadores-topo" href="/higienizadores-e-filtros-automotivos"
+                          title="Higienizadores e Filtros Automotivos" itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-higienizadores-e-filtros-automotivos.png"
+                            alt="Higienizadores e Filtros Automotivos" class="painel-categorias__categoria-imagem" />
+                          <h2>Higienizadores e Filtros Automotivos</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-ferramentas-automotivas-topo" href="/ferramentas-automotivas"
+                          title="Ferramentas Automotivas" itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-ferramentas-automotivas.png"
+                            alt="Ferramentas Automotivas" class="painel-categorias__categoria-imagem" />
+                          <h2>Ferramentas Automotivas</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-suspensao-topo" href="/suspensao-automotiva" title="Suspensão Automotiva"
+                          itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-suspensoes-automotivas.png"
+                            alt="Suspensão Automotiva" class="painel-categorias__categoria-imagem" />
+                          <h2>Suspensão Automotiva</h2>
+                        </a>
+                      </article>
+                    </li>
+                    <li class="painel-categorias__categoria">
+                      <article class="painel-categorias__categoria-header">
+                        <a id="Categoria-componentes-de-direcao" href="/componentes-de-direcao"
+                          title="Componentes de Direcao" itemprop="url">
+                          <img loading="lazy"
+                            src="https://autoglass-cdn.github.io/hml/img/categoria-componentes-de-direcao.png"
+                            alt="Componentes de Direcao" class="painel-categorias__categoria-imagem" />
+                          <h2>Componentes de Direção</h2>
+                        </a>
+                      </article>
+                    </li>
+                  </ul>
                 </li>
               </ul>
-            </li>
-          </ul>
-        </nav>
-      </section>
-    </section>
+            </nav>
+          </section>
+        </section>
+    </div>
 
     <section class="benefits-section">
       <h1 class="titulo-pagina-home">Autoglass Online - A maior loja virtual de vidros e autopeças da América Latina

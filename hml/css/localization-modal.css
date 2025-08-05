@@ -43,8 +43,7 @@
   border-top: 1px solid #e5e5e5;
 }
 
-.col-xs-6,
-.col-xs-12 {
+.col-xs-6 {
   float: left;
 }
 
@@ -177,6 +176,7 @@
 }
 
 #stateSelectorModal.modal-confirmation div.row {
+  display: flex;
   margin-left: -15px;
   margin-right: -15px;
 }

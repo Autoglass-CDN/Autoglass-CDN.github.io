@@ -274,20 +274,15 @@ img {
     right: 50%;
   }
 
-  .col-md-pull-4 {
-    right: 33.33333333%;
-  }
-
-  .col-md-push-8 {
-    left: 66.66666667%;
-  }
-
   .col-md-push-1 {
     left: 8.33333333%;
   }
 
   .col-md-offset-2 {
     margin-left: 16.66666667%;
+  }
+  .footer-qd-v1-stamps .col-xs-12.col-md-6 {
+    width: 100%;
   }
 }
 
@@ -784,19 +779,12 @@ body {
   overflow: hidden;
 }
 
-@media (min-width: 770px) {
+@media (min-width: 1025px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
     display: grid;
     grid-template: "autoglass suporte" "servicos  suporte";
   }
-
-  .footer-qd-v1-content
-    .footer-qd-v1-menu-list
-    ul.footer-qd-v1-menu-grid
-    li.qd-am-has-ul {
-    width: auto;
-  }
-
+  
   .footer-qd-v1-content
     .footer-qd-v1-menu-list
     ul.footer-qd-v1-menu-grid
@@ -911,7 +899,7 @@ body {
   margin-top: 25px;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
     display: none;
   }
@@ -1058,7 +1046,6 @@ body {
 .footer-qd-v1-stamps {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #fff;
 }
 
 .footer-qd-v1-stamps .container {
@@ -1175,7 +1162,6 @@ body {
 .footer-qd-v1-extra-info {
   padding-bottom: 20px;
   text-align: center;
-  background: #fff;
 }
 
 @media (max-width: 1200px) {
