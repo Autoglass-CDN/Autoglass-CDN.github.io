@@ -189,7 +189,7 @@ async function getProductRefIdByProductName() {
 // }
 
 window.addEventListener("load", insertBrandDescription);
-window.addEventListener("load", loadOptionals);
+// window.addEventListener("load", loadOptionals);
 
 // async function loadSimilars() {
 //   const hideMenu = (id) => (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = "none");
