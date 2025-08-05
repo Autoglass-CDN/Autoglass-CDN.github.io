@@ -222,7 +222,7 @@ th {
   padding: 0;
 }
 
-/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/src/css/main.css */
+/*! Source: https://github.com/h5bp/html5-boilerplate/blob/master/arquivos/css/main.css */
 @media print {
   *,
   *:before,
@@ -528,7 +528,7 @@ hr {
 }
 
 .qd-shelf-xs-12 [class*="colunas"] > ul,
-.col-xs-12 {
+.col-xs-12, .footer-qd-v1-stamps .col-xs-12 {
   width: 100%;
 }
 
@@ -1368,10 +1368,6 @@ hr {
     right: 41.66666667%;
   }
 
-  .col-md-pull-4 {
-    right: 33.33333333%;
-  }
-
   .col-md-pull-3 {
     right: 25%;
   }
@@ -1402,10 +1398,6 @@ hr {
 
   .col-md-push-9 {
     left: 75%;
-  }
-
-  .col-md-push-8 {
-    left: 66.66666667%;
   }
 
   .col-md-push-7 {
@@ -8734,7 +8726,6 @@ body.account
 }
 
 .footer-qd-v1-content {
-  padding-bottom: 45px;
   background-color: #f1f1f1;
 }
 
@@ -8910,19 +8901,12 @@ body.account
   overflow: hidden;
 }
 
-@media (min-width: 770px) {
+@media (min-width: 1025px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
     display: grid;
     grid-template:
       "autoglass suporte"
       "servicos  suporte";
-  }
-
-  .footer-qd-v1-content
-    .footer-qd-v1-menu-list
-    ul.footer-qd-v1-menu-grid
-    li.qd-am-has-ul {
-    width: auto;
   }
 
   .footer-qd-v1-content
@@ -9025,7 +9009,7 @@ body.account
   border-bottom: 1px solid #bdbdbd;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list > ul > li {
     border: none;
   }
@@ -9148,7 +9132,7 @@ body.account
   margin-top: 25px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1025px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
     display: none;
   }
@@ -9337,7 +9321,7 @@ body.account
 .footer-qd-v1-stamps {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #fff;
+  background-color: #fafafa;
 }
 
 @media (max-width: 767px) {
@@ -9524,7 +9508,7 @@ body.account
 .footer-qd-v1-extra-info {
   padding-bottom: 20px;
   text-align: center;
-  background: #fff;
+  background: #fafafa;
 }
 
 @media (max-width: 1200px) {

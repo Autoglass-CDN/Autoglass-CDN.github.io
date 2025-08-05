@@ -2,9 +2,9 @@ function configureBanners(e, t, n) {
   let r = $(`${e} button[data-type="prev"]`),
     i = $(`${e} button[data-type="next"]`),
     l = $(`${t}`),
-    s = l[0],
+    a = l[0],
     o = l.children().length,
-    a = $(`${t} .box-banner:first-child`).outerWidth(!0) + 1;
+    s = $(`${t} .box-banner:first-child`).outerWidth(!0) + 1;
   switch (!0) {
     case 0 == o:
       l.parent()[0] &&
@@ -13,21 +13,21 @@ function configureBanners(e, t, n) {
         l.parent().remove();
       break;
     case 1 == o:
-      changeContainerWidth(l, o, a), l.parent().addClass("hide-buttons");
+      changeContainerWidth(l, o, s), l.parent().addClass("hide-buttons");
       break;
     case o < 3:
-      changeContainerWidth(l, o, a),
+      changeContainerWidth(l, o, s),
         l.parent().addClass("button-mobile-only"),
-        configureButonsNextPrev(i, r, t, s);
+        configureButonsNextPrev(i, r, t, a);
       break;
     case 3 == o:
-      createResizeObserver(t, o, a), configureButonsNextPrev(i, r, t, s);
+      createResizeObserver(t, o, s), configureButonsNextPrev(i, r, t, a);
       break;
     default:
-      configureButonsNextPrev(i, r, t, s);
+      configureButonsNextPrev(i, r, t, a);
   }
   n &&
-    s.childNodes.forEach((e) => {
+    a.childNodes.forEach((e) => {
       if (!e.children[0].href) {
         e.children[0].setAttribute("onclick", "$zopim.livechat.window.show()");
         let t = e.children[0].firstElementChild;
@@ -95,7 +95,7 @@ function centerArrow(e, t) {
         (n.offsetWidth - r.offsetWidth) / 2 -
         (i.left - parseInt(getComputedStyle(r).left, 10));
     r.style.left = valueBetweenRange(l, e, t) + "px";
-  } catch (s) {}
+  } catch (a) {}
 }
 function valueBetweenRange(e, t, n) {
   return e < t ? t : e > n ? n : e;
@@ -107,20 +107,31 @@ function slideNext() {
     t = e.filter((e) => !e.id.includes("tab-busca-categoria")),
     n = document.querySelector(".painel-categorias__menu > ul");
   if (0 > getTranslateX(n)) return;
-  let r = Array.from(t).reduce(
+  let r =
+      t[0].offsetWidth +
+      parseInt(getComputedStyle(t[0]).marginRight, 10) +
+      parseInt(getComputedStyle(t[0]).marginLeft, 10),
+    i =
+      n.clientWidth +
+      parseInt(getComputedStyle(n).marginRight, 10) +
+      parseInt(getComputedStyle(n).marginLeft, 10),
+    l = Array.from(t).reduce(
       (e, t) =>
         e +
         (parseInt(getComputedStyle(t).width, 10) +
           parseInt(getComputedStyle(t).marginLeft, 10) +
           parseInt(getComputedStyle(t).marginRight, 10)),
       0
-    ),
-    i =
-      n.clientWidth +
-      parseInt(getComputedStyle(n).marginRight, 10) +
-      parseInt(getComputedStyle(n).marginLeft, 10);
-  (n.style.transform = `translateX(${i - (r < 1808 ? r + 69 : r)}px)`),
-    n.addEventListener("transitionend", (e) => centerArrow(), { once: !0 });
+    );
+  if (window.innerWidth > 900) {
+    let a = Math.floor(i / r) * r;
+    (a = Math.max(
+      (a = Math.min((a = (l - i) * (window.innerWidth / 1366)), l - i)),
+      r
+    )),
+      (n.style.transform = `translateX(-${a}px)`);
+  } else n.style.transform = `translateX(-${l - i}px)`;
+  n.addEventListener("transitionend", (e) => centerArrow(), { once: !0 });
 }
 function toggleVisibility(e) {
   let t = document.getElementById(e);
@@ -152,64 +163,98 @@ function enableTouchScroll(e) {
       e.scrollLeft = n - l;
     });
 }
-!(function () {
+!(async function () {
   let e = 0,
     t = $('.banners-section .banners button[data-type="prev"]'),
     n = $('.banners-section .banners button[data-type="next"]'),
-    r = $(".banners-section .banners-content"),
-    i = window.innerWidth > 1200 ? $(r[0]) : $(r[1]),
-    l = i.children();
-  localStorage.setItem("buscaPlaca", null),
-    o(),
-    c(),
+    r = window.innerWidth <= 768 ? 2 : 1,
+    i = `http://localhost:5010/api/banners-vtex/exibicao/${r}`;
+  await s(i);
+  let l = $(".banners-section .banners-content"),
+    a = window.innerWidth > 1200 ? $(l[0]) : $(l[1]),
+    o = a.children();
+  async function s(e) {
+    try {
+      let t = await fetch(e, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+      });
+      if (!t.ok) throw Error(`Erro: ${t.status}`);
+      let n = await t.json(),
+        r =
+          window.innerWidth <= 768
+            ? document.querySelector(".banners-content.mobile")
+            : document.querySelector(".banners-content.desktop");
+      n.sort((e, t) => e.PosicaoBanner - t.PosicaoBanner),
+        n.forEach((e) => {
+          let t = `
+                <div class="box-banner">
+                    <a href="${e.UrlDestino}" tabindex="-1">
+                        <img class="imagem-banner"
+                            id="i${e.ImagemBanner}"
+                            alt="${e.Nome}"
+                            src="${e.ImagemBanner}"
+                            complete="complete">
+                    </a>
+                </div>
+            `;
+          r.innerHTML += t;
+        });
+    } catch (i) {
+      console.error("Erro na requisi\xe7\xe3o:", i);
+    }
+  }
+  d(),
+    localStorage.setItem("buscaPlaca", null),
+    h(),
     window.addEventListener("resize", (e) => {
-      (l = (i = window.innerWidth > 1200 ? $(r[0]) : $(r[1])).children()),
+      (o = (a = window.innerWidth > 1200 ? $(l[0]) : $(l[1])).children()),
         $(".banners-bars").html(""),
-        o(),
-        c();
+        d(),
+        h();
     }),
     $(".banners-section .banners-content a").attr("tabindex", "-1");
-  let s = setInterval(() => {
-    i[0].scrollBy(window.innerWidth, 0),
-      l.length - 1 === e ? (i[0].scrollBy(-i[0].scrollWidth, 0), (e = 0)) : e++,
-      a(e);
+  let c = setInterval(() => {
+    a[0].scrollBy(window.innerWidth, 0),
+      o.length - 1 === e ? (a[0].scrollBy(-a[0].scrollWidth, 0), (e = 0)) : e++,
+      u(e);
   }, 1e4);
-  function o() {
-    l.each((e, t) => {
+  function d() {
+    o.each((e, t) => {
       $(".banners-bars").append(`<li id="${e}"></li>`);
     }),
       $(".banners-bars li").click((e) => {
-        i.scrollLeft(e.target.id * $(window).width()),
-          a(e.target.id),
-          clearInterval(s);
+        a.scrollLeft(e.target.id * $(window).width()),
+          u(e.target.id),
+          clearInterval(c);
       }),
       $(".banners-bars li").first().addClass("active");
   }
-  function a(e) {
+  function u(e) {
     e > -1 &&
-      e < l.length &&
+      e < o.length &&
       ($(".banners-bars li").removeClass("active"),
       $($(".banners-bars li")[e]).addClass("active"));
   }
-  function c() {
+  function h() {
     let e = (window.innerWidth - $(".c-busca")[0].offsetWidth) / 2;
     t.css("left", e), n.css("right", e);
   }
   t.click(() => {
-    i[0].scrollBy(-window.innerWidth, 0),
-      0 === getScrollPercentage(i[0])
-        ? (i[0].scrollBy(i[0].scrollWidth, 0), (e = l.length - 1))
+    a[0].scrollBy(-window.innerWidth, 0),
+      0 === getScrollPercentage(a[0])
+        ? (a[0].scrollBy(a[0].scrollWidth, 0), (e = o.length - 1))
         : e >= 0 && e--,
-      a(e),
-      clearInterval(s);
+      u(e),
+      clearInterval(c);
   }),
     n.click(() => {
-      i[0].scrollBy(window.innerWidth, 0),
-        getScrollPercentage(i[0]) >= 95
-          ? (i[0].scrollBy(-i[0].scrollWidth, 0), (e = 0))
-          : e < l.length && e++,
-        a(e),
-        clearInterval(s);
+      a[0].scrollBy(window.innerWidth, 0),
+        getScrollPercentage(a[0]) >= 95
+          ? (a[0].scrollBy(-a[0].scrollWidth, 0), (e = 0))
+          : e < o.length && e++,
+        u(e),
+        clearInterval(c);
     });
 })(),
   (function () {
@@ -261,8 +306,8 @@ function enableTouchScroll(e) {
       r = $(".ratings-section .ratings__slider-content"),
       i = r.children(),
       l = { CSS: { HIGHLIGHT: "highlight" }, WINDOW: { BREAK_POINT: 1050 } },
-      s = setInterval(() => {
-        e === i.length - 1 ? (e = 0) : e++, a(e), c(e);
+      a = setInterval(() => {
+        e === i.length - 1 ? (e = 0) : e++, s(e), c(e);
       }, 1e4);
     function o() {
       let t = e + 1,
@@ -274,7 +319,7 @@ function enableTouchScroll(e) {
             e < n || e > t || $(r).css("display", "flex").fadeIn("slow");
         });
     }
-    function a(e) {
+    function s(e) {
       i.removeClass(l.CSS.HIGHLIGHT), $(i[e]).addClass(l.CSS.HIGHLIGHT), o();
     }
     function c(e) {
@@ -287,21 +332,21 @@ function enableTouchScroll(e) {
       $(".ratings-section .rating-bars").append(`<li id="${e}"></li>`);
     }),
       $(".ratings-section .rating-bars li").click((t) => {
-        a((e = +t.target.id)), c(e);
+        s((e = +t.target.id)), c(e);
       }),
       $(".ratings-section .rating-bars li")
         .filter((t) => t === e)
         .addClass("active"),
       o(),
       t.click(() => {
-        0 === e ? (e = i.length - 1) : e--, clearInterval(s), a(e), c(e);
+        0 === e ? (e = i.length - 1) : e--, clearInterval(a), s(e), c(e);
       }),
       n.click(() => {
-        e === i.length - 1 ? (e = 0) : e++, clearInterval(s), a(e), c(e);
+        e === i.length - 1 ? (e = 0) : e++, clearInterval(a), s(e), c(e);
       }),
       i.click((t) => {
         let n = i.index(t.currentTarget);
-        (e = n), clearInterval(s), a(e), c(e);
+        (e = n), clearInterval(a), s(e), c(e);
       });
   })(),
   window.addEventListener("resize", updateSlider),
