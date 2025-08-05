@@ -1,12 +1,20 @@
 /* import */
 
 @import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
+
+html {
+  overflow-x: hidden !important;
+}
+
 .smart-select-section {
   margin-top: -75px;
 }
 
 .home main {
-  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ffffff;
 }
 
 @media (max-width: 1100px) {
@@ -16,16 +24,152 @@
   .l-container {
     margin-top: 0 !important;
   }
-  .home main {
-    background-color: var(--gray-100);
-  }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 1024px) {
   .l-container {
     display: none;
   }
 }
+
+@media (min-width: 1921px) {
+  body main .secao-busca {
+    max-width: 1900px;
+    position: relative;
+    border-radius: 20px;
+  }
+  main .secao-busca .banners-section {
+    max-width: 1900px;
+    position: relative;
+  }
+  .secao-busca .banners .banners-content.desktop {
+    overflow: auto;
+  }
+  .secao-busca .banners .banners-content.desktop .box-banner img {
+    object-fit: cover;
+  }
+  main .secao-busca .l-container {
+    width: 1900px;
+  }
+  body main .secao-busca .painel-categorias-section {
+    padding-bottom: 100px;
+  }
+  main .secao-busca .painel-categorias-section .painel-categorias-desktop {
+    max-width: 1900px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .curva-banner {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 993px) {
+  .curva-banner {
+    position: absolute;
+    z-index: 5;
+    left: 0%;
+    bottom: -8px;
+  }
+}
+
+@media screen and (min-width: 1367px) {
+  .secao-busca .banners .banners-content.desktop {
+    overflow: auto;
+  }
+  main .secao-busca .painel-categorias-section {
+    padding-bottom: 50px;
+    max-width: 1600px;
+  }
+  .painel-categorias-desktop .painel-categorias .painel-categorias__menu {
+    background-color: #fafafa;
+  }
+  .painel-categorias-section .painel-categorias .titulo-categorias {
+    padding-bottom: 20px;
+  }
+  .painel-categorias-section .painel-categorias .painel-categorias__categoria img {
+    z-index: 2;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .curva-banner {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1366px) {
+  .secao-busca .curva-banner {
+    height: 30px;
+  }
+  .l-container {
+    padding-top: 20px;
+  }
+  .painel-categorias-section .painel-categorias .titulo-categorias {
+    padding-bottom: 20px;
+  }
+  .painel-categorias-desktop .painel-categorias .painel-categorias__menu > ul {
+  transition: transform 0.6s ease-in-out;
+  display: inline-block;
+  white-space: nowrap;
+  width: 100%;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .secao-busca {
+  width: 100%;
+  max-width: 1900px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  position: relative;
+  background-color: #fafafa;
+  border-radius: 20px;
+  }
+  .banners-section {
+    position: relative;
+    width: 100%;
+    background-color: #efefef;
+  }
+  .banners .banners-content.desktop {
+    height: auto;
+    overflow: hidden;
+    border-radius: 20px;
+    width: 100%;
+  }
+  .banners .banners-content.desktop .box-banner {
+    width: 100%;
+  }
+  .banners .banners-content.desktop .box-banner img {
+    object-fit: fill;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .l-container {
+    width: 100%;
+  }
+  .secao-busca .painel-categorias-section {
+    padding-bottom: 25px;
+    width: 100%;
+    border-radius: 20px;
+  }
+  .painel-categorias-desktop .painel-categorias,
+  .painel-categorias-desktop .painel-categorias .painel-categorias__menu {
+    background-color: #fafafa;
+  }
+  .painel-categorias-section .painel-categorias .titulo-categorias {
+    padding-bottom: 10px;
+  }
+  .painel-categorias-section .painel-categorias .painel-categorias__categoria img {
+    z-index: 2;
+  }
+}
+
 
 /* #region Common */
 
@@ -53,6 +197,7 @@
 
 .banners-section .banners {
   position: relative;
+  width: 100%;
 }
 
 .banners-section .banners button {
@@ -134,6 +279,7 @@
 
 .banners-section .banners-content .box-banner a {
   display: block;
+  width: 100%;
 }
 
 .banners-section .banners-content img {
@@ -143,7 +289,7 @@
 
 .banners-section .banners-bars {
   position: absolute;
-  left: 50%;
+  left: 95%;
   transform: translateX(-50%);
   bottom: 125px;
   list-style: none;
@@ -168,18 +314,20 @@
   .banners-section .banners-content img {
     height: auto;
   }
+    body main .secao-busca .painel-categorias-section {
+    max-width: 1650px;
+  }
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .banners-section .banners-content.desktop {
     display: none;
   }
   .banners-section .banners-content.mobile {
     display: flex;
+    width: 100vw;
     border-radius: 20px;
-    margin: 10px;
     margin-top: 0;
-    /* aspect-ratio: 6/5; */
     overflow: hidden;
     overflow-x: scroll;
   }
@@ -187,7 +335,6 @@
     height: auto;
   }
   .banners-section .banners button {
-    /* transform: translateY(calc(-50% - 25px)); */
     top: 40%;
     z-index: 0;
   }
@@ -201,6 +348,7 @@
 /* #region Benefits */
 
 .benefits-section {
+  width: 100%;
   position: relative;
   color: #95989a;
 }
@@ -229,6 +377,7 @@
 }
 
 .benefits-section .container {
+  width: 100% !important;
   display: flex;
   padding: 24px;
   justify-content: space-around;
@@ -326,6 +475,8 @@
   .beon-region {
     width: 93%;
   }
+/* #endregion beon*/
+
 /* #region Rating */
 
 .ratings-section {
@@ -498,6 +649,7 @@
 /* #region Why */
 
 .whys-section {
+  width: 100%;
   padding: 40px 20px 0px 20px;
   background: url("https://autoglass.vteximg.com.br/arquivos/porque_autoglass-bg.svg");
   background-repeat: no-repeat;
@@ -603,6 +755,7 @@
 
 .chat-section {
   background-color: #333697;
+  width: 100%;
 }
 
 .chat-section .chat__content {
@@ -665,6 +818,7 @@
 .banners-promocionais-section,
 .nossos-servicos-section {
   display: flex;
+  width: 100%;
   justify-content: center;
   align-items: center;
   height: 300px;
@@ -701,7 +855,6 @@
 
 .banners-promocionais-itens .box-banner,
 .banners-nossos-servicos .box-banner {
-  /* overflow: hidden; */
   border-radius: 20px;
   box-shadow: 3px 3px 8px 0px rgba(0, 0, 0, 0.2);
   margin: 10px;
@@ -812,6 +965,7 @@
   }
 
   .ratings-section {
+    width: 100%;
     padding: 20px 0px;
   }
 }

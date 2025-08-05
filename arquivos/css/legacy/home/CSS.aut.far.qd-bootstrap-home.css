@@ -231,16 +231,19 @@ img {
   float: left;
 }
 
+.container.footer .col-xs-12 {
+  left: 0;
+}
+
 .qd-shelf-xs-12 [class*="colunas"] > ul,
 .col-xs-12 {
   width: 100%;
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1025px) {
   .col-md-1,
   .col-md-2,
   .col-md-3,
-  .col-md-4,
   .col-md-5,
   .col-md-6,
   .col-md-7,
@@ -259,15 +262,11 @@ img {
   .col-md-6 {
     width: 50%;
   }
-  .qd-shelf-md-4 [class*="colunas"] > ul,
-  .col-md-4 {
+  .qd-shelf-md-4 [class*="colunas"] > ul {
     width: 50%;
   }
   .col-md-pull-4 {
     right: 50%;
-  }
-  .col-md-push-8 {
-    left: 50%;
   }
 }
 
@@ -428,16 +427,12 @@ label {
   display: none !important;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 1025px) {
   .visible-lg {
    display: block !important;
   }
   .hidden-lg {
    display: none !important;
-  }
-  .footer-qd-v1 .footer-qd-v1-content .row {
-   max-width: 70%;
-   margin-bottom: 40px;
   }
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-arrowBlock {
     display: none;
@@ -445,30 +440,6 @@ label {
   .footer-qd-v1-content .footer-qd-v1-menu-list > ul > li {
     border: none;
   }
-}
-
-@media (min-width: 1024px) and (max-width: 1280px) {
-  .col-md-push-8.visible-lg {
-    width: auto;
-    left: 60%;
-  }
-  .col-md-pull-4.visible-lg {
-    width: auto;
-    right: 60%;
-    position: absolute;
-  }
-}
-
-@media (min-width: 1281px) {
-  .col-md-push-8.visible-lg {
-    width: auto;
-    left: 60%;
-   }
-   .col-md-pull-4.visible-lg {
-    width: auto;
-    right: 58%;
-    position: absolute;
-   }
 }
 
 h1,
@@ -502,7 +473,7 @@ div#ajaxBusy {
 
 body {
   padding-top: 154px;
-  background: #f9f9f9;
+  background: #ffffff;
 }
 
 body.home {
@@ -667,7 +638,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
   overflow: hidden;
 }
 
-@media (min-width: 770px) {
+@media (min-width: 1025px) {
   .footer-qd-v1-content .footer-qd-v1-menu-list .footer-qd-v1-menu-grid {
     display: grid;
     grid-template: "autoglass suporte" "redes .";
@@ -876,7 +847,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 .footer-qd-v1-stamps {
   padding-top: 30px;
   padding-bottom: 30px;
-  background: #fff;
+  background-color: #ffffff;
 }
 
 @media (min-width: 1024px) and (max-width: 1280px) {
@@ -969,7 +940,7 @@ body .box-banner a[onclick~="$zopim.livechat.window.show()"] {
 .footer-qd-v1-extra-info {
   padding-bottom: 20px;
   text-align: center;
-  background: #fff;
+  background-color: #ffffff;
 }
 
 .footer-qd-v1-extra-info p {
