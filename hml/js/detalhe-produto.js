@@ -157,61 +157,61 @@ async function getProductRefIdByProductName() {
   }
 }
 
-async function loadOptionals() {
-  const opcionaisContainer = $("#opcionais");
-  const productRefId = await getProductRefIdByProductName();
-  const testeOpcionais = $(".teste-opcionais");
+// async function loadOptionals() {
+//   const opcionaisContainer = $("#opcionais");
+//   const productRefId = await getProductRefIdByProductName();
+//   const testeOpcionais = $(".teste-opcionais");
 
-  try {
-    const { Opcionais } = await $.get(`${baseUrlApi}/produtos/${productRefId}/opcionais`);
+//   try {
+//     const { Opcionais } = await $.get(`${baseUrlApi}/produtos/${productRefId}/opcionais`);
 
-    if (Opcionais && Opcionais.length > 0) {
-      opcionaisContainer.html(`
-        <h3>Características</h3>
-        <div class="caracteristicas__box">
-          ${Opcionais.map((x) => `<span class="caracteristicas__caracteristica">${x}</span>`).join("")}
-        </div>
-      `);
-      testeOpcionais.html(`
-        ${Opcionais.map((x) => `<h4 class="lista-opcionais">${x}</h4>`).join("")}
-        <div class="container-mais-especificacoes">
-          <a class="mais-especificacoes">Mais informações</a>
-        </div>
-      `)
-    }
-  } catch (ex) {
-    console.error("Falha ao renderizar opcionais. \n", ex);
-  }
+//     if (Opcionais && Opcionais.length > 0) {
+//       opcionaisContainer.html(`
+//         <h3>Características</h3>
+//         <div class="caracteristicas__box">
+//           ${Opcionais.map((x) => `<span class="caracteristicas__caracteristica">${x}</span>`).join("")}
+//         </div>
+//       `);
+//       testeOpcionais.html(`
+//         ${Opcionais.map((x) => `<h4 class="lista-opcionais">${x}</h4>`).join("")}
+//         <div class="container-mais-especificacoes">
+//           <a class="mais-especificacoes">Mais informações</a>
+//         </div>
+//       `)
+//     }
+//   } catch (ex) {
+//     console.error("Falha ao renderizar opcionais. \n", ex);
+//   }
 
-  $('.container-mais-especificacoes .mais-especificacoes').click(function() {
-    document.querySelector('.container-descricao #informacoes-gerais').scrollIntoView();
-  });
-}
+//   $('.container-mais-especificacoes .mais-especificacoes').click(function() {
+//     document.querySelector('.container-descricao #informacoes-gerais').scrollIntoView();
+//   });
+// }
 
 window.addEventListener("load", insertBrandDescription);
 window.addEventListener("load", loadOptionals);
 
-async function loadSimilars() {
-  const hideMenu = (id) => (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = "none");
-  const isLoaded = (id) => document.querySelector(`#${id}`).innerHTML != "";
-  const showComponent = (id) => {
-    document.querySelector(`#${id}`).style.display = "block";
-    document.querySelector(`a[href="#${id}"]`).parentElement.style.display = "unset";
-  };
+// async function loadSimilars() {
+//   const hideMenu = (id) => (document.querySelector(`a[href="#${id}"]`).parentElement.style.display = "none");
+//   const isLoaded = (id) => document.querySelector(`#${id}`).innerHTML != "";
+//   const showComponent = (id) => {
+//     document.querySelector(`#${id}`).style.display = "block";
+//     document.querySelector(`a[href="#${id}"]`).parentElement.style.display = "unset";
+//   };
 
-  hideMenu("outras-marcas");
-  hideMenu("compre-junto");
+//   hideMenu("outras-marcas");
+//   hideMenu("compre-junto");
 
-  if (isLoaded("similars")) {
-    showComponent("outras-marcas");
-  }
+//   if (isLoaded("similars")) {
+//     showComponent("outras-marcas");
+//   }
 
-  if (isLoaded("sugestoes")) {
-    showComponent("compre-junto");
-  }
-}
+//   if (isLoaded("sugestoes")) {
+//     showComponent("compre-junto");
+//   }
+// }
 
-loadSimilars();
+// loadSimilars();
 
 $(window).on("load", async () => {
   window.addEventListener("resize", adjustProductThumbHeight);
@@ -546,7 +546,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function limitarLista() {
     const testeOpcionais = document.querySelector('.teste-opcionais');
     const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
-    
+
     if (listaOpcionais.length === 0) {
       testeOpcionais.style.setProperty('display', 'none', 'important');
     } else {
