@@ -175,7 +175,7 @@ async function loadOptionals() {
 
   try {
     const { Opcionais } = await $.get(
-      `${baseUrlApi}/produtos/${productRefId}/opcionais`
+      `${baseUrlApi}/produtos/${productRefId}/opcionais-vtex`
     );
 
     if (Opcionais && Opcionais.length > 0) {
@@ -216,7 +216,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function limitarLista() {
       const testeOpcionais = document.querySelector('.teste-opcionais');
       const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
-      
+
       if (listaOpcionais.length === 0) {
         testeOpcionais.style.setProperty('display', 'none', 'important');
       } else {
