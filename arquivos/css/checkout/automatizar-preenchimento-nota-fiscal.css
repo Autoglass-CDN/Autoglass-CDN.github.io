@@ -21,7 +21,7 @@
   .box-step
   button.btn.btn-link.vtex-omnishipping-1-x-btnDelivery:after {
   content: "\f110";
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: absolute;
   color: grey;
   font-size: 20px;

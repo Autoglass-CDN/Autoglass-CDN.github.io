@@ -718,7 +718,7 @@ i.arrow-icon::before {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   position: absolute;
   bottom: 20px;
   left: 35px;
