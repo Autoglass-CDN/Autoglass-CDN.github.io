@@ -25,7 +25,7 @@ ul .row .optionals h4 {
 
 ul .row .optionals h4:before {
   content: "\f00c";
-  font-family: fontAwesome;
+  font-family: "FontAwesome" !important;
   color: #2d4f9e;
   padding-right: 5px;
 }

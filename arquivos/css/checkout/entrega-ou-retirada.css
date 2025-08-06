@@ -108,7 +108,7 @@
   label
   input[type="radio"]:checked::after {
   content: "\f00c";
-  font-family: fontAwesome;
+  font-family: "FontAwesome" !important;
   font-size: 16px;
   color: var(--green-receber-retirar);
   position: absolute;
@@ -125,7 +125,7 @@
 #shipping-preview-container
   .vtex-shipping-preview-0-x-postalCodeForgotten::before {
   content: "\f041";
-  font-family: fontAwesome;
+  font-family: "FontAwesome" !important;
   position: absolute;
   font-size: 16px;
   color: var(--gray-receber-retirar);
