@@ -6,7 +6,7 @@ $(
   async function loadOptionals() {
     const allSkuInThisPage = getAllCurrentSkus();
     const baseUrlListaOpcionais =
-      "integracao-b2c/api/web-app/produtos/opcionais-lista?codigosProdutos=";
+      "integracao-b2c/api/web-app/produtos/opcionais-lista-mongo?codigosProdutos=";
     const baseUrlApi = "https://api.autoglass.com.br/";
     const urlToConsult =
       baseUrlApi +
