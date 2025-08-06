@@ -50,7 +50,7 @@
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   color: #757575;
   font-size: 10px;
   margin-right: 6px;
@@ -60,7 +60,7 @@
 .breadcrumb-qd-v1 .bread-crumb a {
   transition: all 0.2s ease-out;
   color: inherit;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .breadcrumb-qd-v1 .bread-crumb a:hover {
   text-decoration: underline;
@@ -541,7 +541,7 @@ body.departamento .search-qd-v1-seo-text {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 10px;
 }
 .search-qd-v1-navigator .search-qd-v1-navigator-trigger:hover,
@@ -572,7 +572,7 @@ body.departamento .search-qd-v1-seo-text {
     text-decoration: inherit;
     text-rendering: optimizelegibility;
     width: 1em;
-    font-family: "FontAwesome";
+    font-family: "FontAwesome" !important;
     margin-right: 0;
     font-size: 16px;
   }
@@ -742,7 +742,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 5px;
 }
 .search-qd-v1-navigator h4 {
@@ -881,7 +881,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 10px;
 }
 .search-qd-v1-navigator h5 + ul > li a:hover {
@@ -899,7 +899,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
 .search-qd-v1-navigator h5 + ul > li.filtro-ativo:before {
   content: "\f00d";
   font-size: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-weight: 900;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -932,7 +932,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 3px;
   color: #000000;
   font-size: 12px;
@@ -1071,7 +1071,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
 .search-qd-v1-navigator-research-filtered span:before {
   content: "\f00d";
   font-size: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   font-weight: 900;
   -webkit-font-smoothing: antialiased;
   display: inline-block;
@@ -1147,7 +1147,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
   margin-right: 5px;
 }
 .search-qd-v1-navigator-research
@@ -1164,7 +1164,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 .search-qd-v1-navigator-research fieldset h5 {
   cursor: pointer;
@@ -1230,7 +1230,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 .search-qd-v1-navigator-research fieldset label.sr_selected .sr_box:before {
   content: "\f046";
@@ -1243,7 +1243,7 @@ body.departamento .search-qd-v1-navigator .search-qd-v1-navigator-title {
   text-decoration: inherit;
   text-rendering: optimizelegibility;
   width: 1em;
-  font-family: "FontAwesome";
+  font-family: "FontAwesome" !important;
 }
 .search-qd-v1-navigator-mobile-results {
   width: 75vw;

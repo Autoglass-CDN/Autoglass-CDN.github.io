@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
+
 .modal-confirmation {
   text-align: center;
   display: block;
@@ -39,7 +41,7 @@
   background: transparent;
   color: #fff;
   font-size: 12px;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 .modal-confirmation .modal-header button:hover {
   text-decoration: none;
