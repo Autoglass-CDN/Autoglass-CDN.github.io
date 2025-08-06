@@ -1,4 +1,5 @@
-const baseUrlApi = window.location.href.includes("hml")
+const baseUrlApi =
+    window.location.href.includes("dev") || window.location.href.includes("mvp") || window.location.href.includes("hml")
       ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app"
       : "https://api.autoglass.com.br/integracao-b2c/api/web-app";
 
@@ -133,6 +134,7 @@ async function insertBrandDescription() {
         .trim()
         .replace("-", " ")
         .split(" ")[0];
+
       const brand = brandList.find((brand) => brand.name.includes(brandName));
 
       if (brand && brand.metaTagDescription !== '') {
@@ -161,7 +163,7 @@ async function loadOptionals() {
   const testeOpcionais = $(".teste-opcionais");
 
   try {
-    const { Opcionais } = await $.get(`${baseUrlApi}/produtos/${productRefId}/opcionais`);
+    const Opcionais = await $.get(`${baseUrlApi}/produtos/${productRefId}/opcionais-vtex`);
 
     if (Opcionais && Opcionais.length > 0) {
       opcionaisContainer.html(`
@@ -544,7 +546,7 @@ document.addEventListener("DOMContentLoaded", function() {
   function limitarLista() {
     const testeOpcionais = document.querySelector('.teste-opcionais');
     const listaOpcionais = testeOpcionais.querySelectorAll('.lista-opcionais');
-    
+
     if (listaOpcionais.length === 0) {
       testeOpcionais.style.setProperty('display', 'none', 'important');
     } else {
