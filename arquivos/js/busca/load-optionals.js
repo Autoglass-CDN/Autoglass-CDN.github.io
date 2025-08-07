@@ -6,7 +6,7 @@ $(
   async function loadOptionals() {
     const allSkuInThisPage = getAllCurrentSkus();
     const baseUrlListaOpcionais =
-      "integracao-b2c/api/web-app/produtos/opcionais-lista?codigosProdutos=";
+      "integracao-b2c/api/web-app/produtos/opcionais-lista-mongo?codigosProdutos=";
     const baseUrlApi = "https://api.autoglass.com.br/";
     const urlToConsult =
       baseUrlApi +
@@ -181,23 +181,24 @@ $(
       $(".qd-product-is-in-stock-true").each((key, element) => {
         const codigo = getSkuFromUrl(element.querySelector("a").href);
         const optionalsElement = element.querySelector(".optionals");
-        const allOptionalsForCurrentElement = allOptionals
-          .find((o) => o.Codigo == codigo)
-          ?.Opcionais.reduce((acc, current) => {
-            acc.push(`<h4> ${current} </h4>`);
-            return acc;
-          }, []);
 
-        if (!!allOptionalsForCurrentElement)
+        const optionalsData = allOptionals.find((o) => o.CodigoProduto == codigo);
+
+        const allOptionalsForCurrentElement = Array.isArray(optionalsData?.DescricoesProdutosTiposOpcionais)
+          ? optionalsData.DescricoesProdutosTiposOpcionais.map(o => `<h4>${o}</h4>`)
+          : [];
+
+        if (allOptionalsForCurrentElement.length > 0) {
           optionalsElement.innerHTML = allOptionalsForCurrentElement.join("");
-
-        element.classList.remove("more-than-two-optionals");
-        if (allOptionalsForCurrentElement.length > 2) {
-          element.classList.add("more-than-two-optionals");
+        } else {
+          optionalsElement.innerHTML = "";
         }
+
+        element.classList.toggle("more-than-two-optionals", allOptionalsForCurrentElement.length > 2);
 
         optionalsElement.classList.remove("loading");
       });
+
       removerDuplicados();
     } catch (ex) {
       console.error("Erro ao adicionar opcionais", ex);
