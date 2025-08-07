@@ -1487,6 +1487,12 @@
   const tabBuscaPlaca = document.getElementById('tab-busca-placa-desktop');
   const tabNaoSeiPlaca = document.getElementById('tab-nao-sei-placa-desktop');
 
+  if (tabBuscaPlaca.classList.contains('is-active')) {
+    setTimeout(() => {
+      inputBuscaPlaca.checked = true;
+    }, 200);
+  }
+
   function ativarBuscaPlaca() {
     inputBuscaPlaca.checked = true;
 
