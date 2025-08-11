@@ -1487,11 +1487,12 @@
   const tabBuscaPlaca = document.getElementById('tab-busca-placa-desktop');
   const tabNaoSeiPlaca = document.getElementById('tab-nao-sei-placa-desktop');
 
-  if (tabBuscaPlaca.classList.contains('is-active')) {
-    setTimeout(() => {
+   setTimeout(() => {
+  if (inputBuscaPlaca && inputNaoSeiPlaca) {
+      inputNaoSeiPlaca.checked = false;
       inputBuscaPlaca.checked = true;
-    }, 200);
   }
+  }, 300);
 
   function ativarBuscaPlaca() {
     inputBuscaPlaca.checked = true;
@@ -1516,11 +1517,11 @@
 }
 
 
-  inputBuscaPlaca.checked = true;
-  ativarBuscaPlaca();
+   ativarBuscaPlaca();
 
-  if (inputBuscaPlaca.checked) ativarBuscaPlaca();
-  if (inputNaoSeiPlaca.checked) ativarBuscaPeca();
+  if (inputNaoSeiPlaca && inputNaoSeiPlaca.checked) {
+    ativarBuscaPeca();
+  }
 
   inputBuscaPlaca.addEventListener('change', () => {
     ativarBuscaPlaca();
