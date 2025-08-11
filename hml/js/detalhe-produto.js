@@ -535,8 +535,23 @@ async function buscaPorPlaca(placaString) {
 
 async function recuperarNumeroVendas(){
   let codigoProduto = await getProductRefIdByProductName();
+  if(verificaValidadeCodigoProduto(codigoProduto))
+    return null;
   let numeroVendas = await $.get(`${baseUrlApi}/vendas/vendas/${parseInt(codigoProduto)}`);
   return numeroVendas;
+}
+
+function verificaValidadeCodigoProduto(codigoProduto){
+  if (!codigoProduto || String(codigoProduto).length < 6) {
+    return true;
+  }
+
+  const nomeProduto = skuJson?.name?.toLowerCase() || "";
+  const contemPelicula = nomeProduto.includes("película") || nomeProduto.includes("pelicula");
+
+  if (contemPelicula) {
+      return true;
+  }
 }
 
 document.addEventListener("DOMContentLoaded", function() {
