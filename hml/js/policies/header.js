@@ -301,14 +301,18 @@ function salvarUf(state) {
 
   setVtexScOnCookies(state.Sc);
 
-  promotionParameter = "fq";
-  url = new URL(window.location);
-  promotion = url.searchParams.get(promotionParameter);
+  const url = new URL(window.location.href);
+
+  const promotionParameter = "fq";
+  const promotion = url.searchParams.get(promotionParameter);
+
+  url.searchParams.set("sc", state.Sc);
+
   if (promotion) {
-    window.location.href = `?${promotionParameter}=${promotion}&sc=${state.Sc}`;
-  } else {
-    window.location.href = `?sc=${state.Sc}`;
-  }
+    url.searchParams.set(promotionParameter, promotion);
+  } 
+
+  window.location.href = url.toString();
 }
 
 function initAutocomplete() {
