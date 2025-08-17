@@ -100,21 +100,36 @@ function exibirMidia(url) {
     const wrapper = main.querySelector(".zoom-wrapper");
     inicializarZoom(wrapper);
 
-    // adiciona evento de click para abrir modal no desktop também
     wrapper.addEventListener("click", () => {
       const modal = document.getElementById("modalZoom");
       const zoomedImg = document.getElementById("zoomedImage");
       zoomedImg.src = url;
       modal.style.display = "block";
-      inicializarZoomModal(zoomedImg); // inicializa zoom no modal
+      inicializarZoomModal(zoomedImg);
     });
   } else {
-    main.innerHTML = `<img src="${url}" alt="Imagem Principal" id="mobileZoomTrigger" style="max-width:100%; height:auto;" />`;
+    main.innerHTML = `
+      <img
+        id="mobileZoomTrigger"
+        src="${url}"
+        alt="Imagem Principal"
+        width="350" height="350"
+        style="max-width:100%; height:auto; aspect-ratio:1/1;"
+        decoding="async" fetchpriority="high"
+      />
+    `;
+
     const trigger = document.getElementById("mobileZoomTrigger");
     if (trigger) {
       trigger.addEventListener("click", () => {
         const modal = document.getElementById("modalZoom");
         const zoomedImg = document.getElementById("zoomedImage");
+        zoomedImg.setAttribute("width", "350");
+        zoomedImg.setAttribute("height", "350");
+        zoomedImg.style.maxWidth = "100%";
+        zoomedImg.style.height = "auto";
+        zoomedImg.style.aspectRatio = "1 / 1";
+
         zoomedImg.src = url;
         modal.style.display = "block";
         inicializarZoomModal(zoomedImg);
