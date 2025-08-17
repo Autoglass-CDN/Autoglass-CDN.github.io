@@ -1846,3 +1846,78 @@ fieldset#beneficios legend {
   padding-top: 5px !important;;
   display: flex;
 }
+
+@media screen and (max-width: 768px) {
+  #mobileZoomTrigger{
+    display:block;
+    width:100%;
+    height:auto;
+    aspect-ratio:1 / 1;
+  }
+
+  [id^="botaoZoom"], .thumbs img, .apresentacao #image #include figure img{
+    aspect-ratio:1 / 1;
+    height:auto;
+  }
+
+  .plugin-preco, .product-price, .skuBestPrice{
+    min-height:1px;
+  }
+
+  .valor-dividido.price-installments{
+    display:block;
+    min-height:22px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+
+  @font-face{
+    font-family:"Font Awesome 6 Free";
+    src:url("/arquivos/fa-solid-900.woff2") format("woff2");
+    font-weight:900; font-style:normal;
+    font-display:swap;
+  }
+  @font-face{
+    font-family:"Font Awesome 6 Brands";
+    src:url("/arquivos/fa-brands-400.woff2") format("woff2");
+    font-weight:400; font-style:normal;
+    font-display:swap;
+  }
+}
+
+
+img[alt="placa-veiculo"],
+img[src*="/arquivos/img/busca-placa.png"]{
+  display:block;
+  width:120px;
+  height:auto;
+  aspect-ratio:3 / 1;
+}
+
+.product-qd-v1-sku-selection-wrapper{
+  min-height:240px;
+}
+
+.col-xs-12 .buy-button, .col-xs-12 .plugin-preco{
+  min-height:48px;
+}
+
+.product-qd-v1-shipping{
+  min-height:120px;
+}
+
+section#diferenciais .cards .card > img{
+  display:block;
+  width:auto;
+  height:auto;
+  aspect-ratio:1 / 1;
+}
+
+#cookiebanner{
+  position:fixed;
+  left:0; right:0;
+  bottom:0;
+  min-height:64px;
+  will-change:auto;
+}
