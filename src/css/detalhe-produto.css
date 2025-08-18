@@ -1890,8 +1890,8 @@ fieldset#beneficios legend {
 img[alt="placa-veiculo"],
 img[src*="/arquivos/img/busca-placa.png"]{
   display:block;
-  width:auto;
-  height:auto;
+  width:15%;
+  height:100%;
   aspect-ratio:3 / 1;
 }
 
