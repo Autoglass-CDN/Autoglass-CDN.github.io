@@ -22,6 +22,15 @@
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.search.css" type="text/css" />
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/filtro-veiculos.css" type="text/css" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/busca/compatibilidade-veiculo.css" type="text/css" />
+	<script>
+	//<![CDATA[
+	$(function () {
+		const $imagens = $(".shelf-qd-v1-image img");
+		$imagens.first().removeAttr("loading");
+		$imagens.not(":first").attr("loading", "lazy");
+	});
+	//]]>
+	</script>
 </head>
 
 <body class="resultado-busca">
@@ -29,6 +38,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVLJKFR"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
+
 	<!-- Header -->
     <vtex:template id="hml--header" />
 	<!-- Header -->
@@ -158,7 +168,7 @@
 						<section class="col-xs-12 col-lg-9">
 							<section class="row">
 								<section class="search-qd-v1-result qd-shelf-xs-6 qd-shelf-lg-4">
-									<vtex.cmc:searchResult layout="82ece3a5-14a4-4f40-97fb-5dcc47037fcb" itemCount="24" columnCount="1" orderBy="OrderByScoreDESC" />
+									<vtex.cmc:searchResult layout="43f5244b-8e25-4d7d-b943-90ee4be8ea40" itemCount="24" columnCount="1" orderBy="OrderByScoreDESC" />
 									<!-- hml- -busca- -prateleira -->
 								</section>
 							</section>
