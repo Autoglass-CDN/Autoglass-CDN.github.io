@@ -4,26 +4,28 @@
 	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
-	<vtex:contentPlaceHolder id="qd_head"/>
 	<vtex:metaTags />
-	<script>
-	document.addEventListener("DOMContentLoaded", function () {
-    const currentUrl = window.location.href;
-
-    const canonicalUrl = currentUrl.endsWith('/')
-        ? currentUrl.slice(0, -1)
-        : currentUrl;
-
-    const canonicalLink = document.createElement('link');
-    canonicalLink.rel = 'canonical';
-    canonicalLink.href = canonicalUrl;
-
-    document.head.appendChild(canonicalLink);
-	});
-    </script>
-	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.qd-bootstrap-common.css"/>
+	<meta name="robots" content="noindex, nofollow" />
+	<vtex:contentPlaceHolder id="qd_head"/>
 	<vtex:template id="dev--sistema-adas-head-tags"/>
-    <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
+	<link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
+	<link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.qd-bootstrap-common.css" type="text/css" />
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+		const currentUrl = window.location.href;
+
+		const canonicalUrl = currentUrl.endsWith('/')
+			? currentUrl.slice(0, -1)
+			: currentUrl;
+
+		const canonicalLink = document.createElement('link');
+		canonicalLink.rel = 'canonical';
+		canonicalLink.href = canonicalUrl;
+
+		document.head.appendChild(canonicalLink);
+		});
+    </script>
 </head>
 
 <body class="institucional" data-qd-scroll-limit="200">
