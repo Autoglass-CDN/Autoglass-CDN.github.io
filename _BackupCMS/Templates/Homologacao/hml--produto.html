@@ -4,87 +4,86 @@
   xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
-<script defer="" src="https://autoglass-cdn.github.io/hml/js/renderiza-thumbs.js" type="text/javascript"></script>
-<script defer="" src="https://autoglass-cdn.github.io/hml/js/google-tag-manager.js" type="text/javascript"></script>
-<script>
-        //Datalayer SocialShare
-    function handleSocialClick(event, method) {
-    dataLayer.push({
-        'event': 'share',
-        'method': method,
-        'content_type': skuJson.skus[0].image,
-        'item_id': skuJson.skus[0].sku,
-    });
-    }
-
-    const socialMediaElements = {
-        'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
-        'twitter': '.product-qd-v1-social-share.desktop .twitter',
-        'mail': '.product-qd-v1-social-share.desktop .mail',
-        'facebook': '.product-qd-v1-social-share.desktop .facebook'
-    };
-
-    Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
-    const element = document.querySelector(selector);
-    element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
-    });
-
-
-    //Datalayer SocialShare
-    function ButtoWhatsappClick(event, position) {
-    dataLayer.push({
-      'event': 'whatsapp',
-      'position': position
-    });
-    }
-
-    const whatsappElements = {
-        '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
-        '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
-        '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
-        '.link-whatsapp-texto.link-whatsapp': 'footer'
-    };
-
-    Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
-        const element = document.querySelector(selector);
-        if (element) {
-        element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
-        }
-        });
-</script>
-  <vtex:contentPlaceHolder id="qd_head" />
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="noindex, nofollow" />
-  <title>
-    <vtex.cmc:productPageTitle />
-  </title>
-  <vtex:template id="hml--detalhe-produto--head-tags" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <vtex:metaTags />
+  <title><vtex.cmc:productPageTitle /></title>
   <vtex.cmc:productRichSnippets showFacebook="1" paymentSystemId="125"/>
-  <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.product.css"
-    type="text/css"/>
+  <vtex:contentPlaceHolder id="qd_head" />
+  <vtex:template id="hml--detalhe-produto--head-tags" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/>
+  <link rel="preconnect" href="https://code.jquery.com" crossorigin="anonymous"/>
+  <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/></noscript>
   <link rel="preload" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css"/></noscript>
-  <script defer="" type="text/javascript" src="/scripts/jquery.maskedinput-1.2.2.js"></script>
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/></noscript>
+  <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.product.css" type="text/css"/>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/B2C-02-detalhe-produto.css" type="text/css"/>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/cep.component.css" type="text/css"/>
+  <script defer="" src="/scripts/jquery.maskedinput-1.2.2.js" type="text/javascript"></script>
   <script defer="" src="https://autoglass-cdn.github.io/hml/js/jquery-ui.datepicker.js" type="text/javascript"></script>
   <script defer="" src="https://autoglass-cdn.github.io/hml/js/B2C-02-detalhe-produto.js" type="text/javascript"></script>
   <script defer="" src="https://autoglass-cdn.github.io/hml/js/cep.component.js" type="text/javascript"></script>
   <script defer="" src="https://autoglass-cdn.github.io/hml/js/verifica-compatibilidade.js" type="text/javascript"></script>
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/B2C-02-detalhe-produto.css"
-    type="text/css"/>
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/cep.component.css" type="text/css"/>
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/></noscript>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/renderiza-thumbs.js" type="text/javascript"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/google-tag-manager.js" type="text/javascript"></script>
   <style type="text/css">
     .mz-acessories .mz-acessories__prices .mz-prices__block,
     .mz-acessories .mz-acessories__prices .mz-acessories__prices--byfor {
       display: block !important;
     }
   </style>
+  <script>
+          //Datalayer SocialShare
+      function handleSocialClick(event, method) {
+      dataLayer.push({
+          'event': 'share',
+          'method': method,
+          'content_type': skuJson.skus[0].image,
+          'item_id': skuJson.skus[0].sku,
+      });
+      }
+
+      const socialMediaElements = {
+          'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
+          'twitter': '.product-qd-v1-social-share.desktop .twitter',
+          'mail': '.product-qd-v1-social-share.desktop .mail',
+          'facebook': '.product-qd-v1-social-share.desktop .facebook'
+      };
+
+      Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
+      const element = document.querySelector(selector);
+      element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
+      });
+
+
+      //Datalayer SocialShare
+      function ButtoWhatsappClick(event, position) {
+      dataLayer.push({
+        'event': 'whatsapp',
+        'position': position
+      });
+      }
+
+      const whatsappElements = {
+          '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
+          '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
+          '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
+          '.link-whatsapp-texto.link-whatsapp': 'footer'
+      };
+
+      Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
+          const element = document.querySelector(selector);
+          if (element) {
+          element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
+          }
+          });
+  </script>
 </head>
 
 <body class="produto">
