@@ -4,8 +4,12 @@
 	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
-	<vtex:contentPlaceHolder id="qd_head"/>
 	<vtex:metaTags />
+	<vtex:contentPlaceHolder id="qd_head"/>
+	<vtex:template id="prd--sistema-adas-head-tags"/>
+	<link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
+    <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.qd-bootstrap-common.css"/>
 	<script>
 	document.addEventListener("DOMContentLoaded", function () {
     const currentUrl = window.location.href;
@@ -21,9 +25,13 @@
     document.head.appendChild(canonicalLink);
 	});
     </script>
-	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.qd-bootstrap-common.css"/>
-	<vtex:template id="prd--sistema-adas-head-tags"/>
-    <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
+	<script>
+		(function(c,l,a,r,i,t,y){
+			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+		})(window, document, "clarity", "script", "dr3d6dnzku");
+    </script>
 </head>
 
 <body class="institucional" data-qd-scroll-limit="200">
