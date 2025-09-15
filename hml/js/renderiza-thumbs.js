@@ -96,7 +96,14 @@ function exibirMidia(url) {
   }
 
   if (isDesktop) {
-    main.innerHTML = `<div class="zoom-wrapper" data-zoom-image="${url}" style="background-image:url('${url}')"></div>`;
+    main.innerHTML = `<div class="zoom-wrapper" data-zoom-image="${url}" style="background-image:url('${url}')">
+      <img
+        id="logo-imagem-produto"
+        src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
+        alt="Logo Autoglass na imagem do produto"
+      />
+    </div>`
+    ;
     const wrapper = main.querySelector(".zoom-wrapper");
     inicializarZoom(wrapper);
 
@@ -116,6 +123,11 @@ function exibirMidia(url) {
         width="350" height="350"
         style="max-width:100%; height:auto; aspect-ratio:1/1;"
         decoding="async" fetchpriority="high"
+      />
+      <img
+        id="logo-imagem-produto"
+        src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
+        alt="Logo Autoglass na imagem do produto"
       />
     `;
 
@@ -173,9 +185,11 @@ function inicializarZoom(wrapper) {
 function inicializarZoomModal(img) {
   const zoomFactor = 1.5;
   let isZoomed = false;
+  
+  const zoomInner = img.closest(".zoom-inner");
 
   img.addEventListener("mouseenter", () => {
-    img.classList.add("zoomed");
+    zoomInner.style.transform = `scale(${zoomFactor})`;
     isZoomed = true;
   });
 
@@ -184,12 +198,12 @@ function inicializarZoomModal(img) {
     const r = img.getBoundingClientRect();
     const x = ((e.clientX - r.left) / r.width) * 100;
     const y = ((e.clientY - r.top) / r.height) * 100;
-    img.style.transformOrigin = `${x}% ${y}%`;
+    zoomInner.style.transformOrigin = `${x}% ${y}%`;
   });
 
   img.addEventListener("mouseleave", () => {
-    img.classList.remove("zoomed");
-    img.style.transformOrigin = "center center";
+    zoomInner.style.transform = "scale(1)";
+    zoomInner.style.transformOrigin = "center center";
     isZoomed = false;
   });
 }
