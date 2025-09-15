@@ -1214,6 +1214,44 @@ body.mz-sf-on .mz-modal-shipping {
     max-height: 100%;
     object-fit: contain;
   }
+
+  .zoom-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .zoom-inner {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  #zoomedImage {
+    display: block;
+  }
+
+  #logo-imagem-produto-modal {
+    position: absolute;
+    bottom: 3%;
+    right: 7%;
+    width: 100px;
+    height: 50px;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+
+  #logo-imagem-produto {
+    position: absolute;
+    bottom: 4%;
+    right: 2%;
+    width: 46px;
+    height: 22px;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -1253,6 +1291,44 @@ body.mz-sf-on .mz-modal-shipping {
     width: 56px;
     height: 56px;
   }
+
+  .zoom-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .zoom-inner {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  #zoomedImage {
+    display: block;
+  }
+
+  #logo-imagem-produto-modal {
+    position: absolute;
+    bottom: 2%;
+    right: 3%;
+    width: 40px;
+    height: 20px;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+
+  #logo-imagem-produto {
+    position: absolute;
+    bottom: 22%;
+    right: 2%;
+    width: 40px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+  }
 }
 @media screen and (max-width:992px) {
   .container-mais-especificacoes{
@@ -1274,6 +1350,7 @@ body.mz-sf-on .mz-modal-shipping {
   background-size: 200%;
   background-position: center;
   cursor: crosshair;
+  position: relative;
 }
 
 .modal-zoom {
