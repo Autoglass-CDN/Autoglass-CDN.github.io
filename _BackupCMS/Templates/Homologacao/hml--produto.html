@@ -39,6 +39,43 @@
     }
   </style>
   <script>
+    //<![CDATA[
+    $(function () {
+        // Função para adicionar preload
+        function adicionarPreload($div) {
+            const url = $div.attr("data-zoom-image");
+            if (url && !$("link[href='" + url + "']").length) {
+                $("<link>", {
+                    rel: "preload",
+                    as: "image",
+                    href: url,
+                    fetchpriority: "high"
+                }).appendTo("head");
+            }
+        }
+    
+        // Observar quando a zoom-wrapper aparecer no DOM
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                $(mutation.addedNodes).each(function() {
+                    const $node = $(this);
+                    if ($node.hasClass("zoom-wrapper")) {
+                        adicionarPreload($node);
+                    } else {
+                        // também verifica filhos adicionados
+                        $node.find(".zoom-wrapper").each(function() {
+                            adicionarPreload($(this));
+                        });
+                    }
+                });
+            });
+        });
+    
+        observer.observe(document.body, { childList: true, subtree: true });
+    });
+    //]]>
+  </script>
+  <script>
           //Datalayer SocialShare
       function handleSocialClick(event, method) {
       dataLayer.push({
