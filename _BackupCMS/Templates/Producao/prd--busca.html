@@ -24,6 +24,15 @@
         <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/B2C-02-detalhe-produto.js" type="text/javascript"></script>
         <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/B2C-02-filtro-busca.js" type="text/javascript"></script>
         <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/busca/load-optionals.js" type="text/javascript"></script>
+        <script>
+        //<![CDATA[
+            $(function () {
+                const $imagens = $(".shelf-qd-v1-image img");
+                $imagens.first().removeAttr("loading");
+                $imagens.not(":first").attr("loading", "lazy");
+            });
+        //]]>
+        </script>
     </head>
 
     <body class="resultado-busca">
