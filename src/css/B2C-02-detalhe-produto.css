@@ -1176,6 +1176,183 @@ body.mz-sf-on .mz-modal-shipping {
   border: 2px solid transparent;
 }
 
+@media (max-width: 767px) {
+  .galeria-principal {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 12px;
+  }
+
+  #mainMediaContainer {
+    width: 350px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #fff;
+  }
+
+  #mainMediaContainer img,
+  #mainMediaContainer video,
+  #mainMediaContainer iframe {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+  }
+
+  #thumbsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
+    gap: 8px;
+    width: 100%;
+    padding: 12px 0;
+  }
+
+  .thumb-item {
+    width: 56px;
+    height: 56px;
+  }
+
+  .zoom-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .zoom-inner {
+    position: relative;
+    display: inline-block;
+    transition: transform 0.3s ease;
+  }
+
+  #zoomedImage {
+    display: block;
+  }
+
+  #logo-imagem-produto-modal {
+    position: absolute;
+    width: 70px;
+    height: 35px;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+
+  #logo-imagem-produto {
+    position: relative;
+    width: 40px;
+    height: 20px;
+    transition: transform 0.3s ease;
+    pointer-events: none;
+    display: none;
+  }
+}
+
+@media screen and (max-width: 499px) {
+  #logo-imagem-produto-modal {
+    position: absolute;
+    width: 50px;
+    height: 25px;
+    pointer-events: none;
+    transition: transform 0.3s ease;
+  }
+}
+
+@media screen and (max-width: 379px) {
+  #backgroundWhite {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 20%;
+    right: 0%;
+    background-color: #ffffff;
+    width: 55px;
+    height: 45px;
+  }
+
+  #backgroundWhiteModal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 1%;
+    right: 1%;
+    background-color: #ffffff;
+    width: 55px;
+    height: 45px;
+  }
+}
+
+
+@media screen and (min-width: 380px) {
+  #backgroundWhite {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 20%;
+    right: 0%;
+    background-color: #ffffff;
+    width: 65px;
+    height: 45px;
+  }
+
+  #backgroundWhiteModal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 1%;
+    right: 1%;
+    background-color: #ffffff;
+    width: 55px;
+    height: 45px;
+  }
+}
+
+@media screen and (min-width: 500px) {
+  #backgroundWhite {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 20%;
+    right: 10.5%;
+    background-color: #ffffff;
+    width: 65px;
+    height: 45px;
+  }
+
+  #backgroundWhiteModal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 6%;
+    background-color: #ffffff;
+    width: 80px;
+    height: 60px;
+  }
+}
+
+@media screen and (min-width: 550px) {
+  #backgroundWhite {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 20%;
+    right: 14%;
+    background-color: #ffffff;
+    width: 65px;
+    height: 45px;
+  }
+}
+
 @media (min-width: 768px) {
   .galeria-principal {
     display: flex;
@@ -1235,8 +1412,6 @@ body.mz-sf-on .mz-modal-shipping {
 
   #logo-imagem-produto-modal {
     position: absolute;
-    bottom: 3%;
-    right: 7%;
     width: 100px;
     height: 50px;
     pointer-events: none;
@@ -1244,92 +1419,93 @@ body.mz-sf-on .mz-modal-shipping {
   }
 
   #logo-imagem-produto {
-    position: absolute;
-    bottom: 4%;
-    right: 2%;
+    position: relative;
     width: 46px;
     height: 22px;
     transition: transform 0.3s ease;
     pointer-events: none;
+    display: none;
+  }
+
+  #backgroundWhite {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    background-color: #ffffff;
+    width: 50px;
+    height: 40px;
+  }
+
+  #backgroundWhiteModal {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 5%;
+    background-color: #ffffff;
+    width: 120px;
+    height: 80px;
   }
 }
 
-@media (max-width: 767px) {
-  .galeria-principal {
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    gap: 12px;
-  }
-
-  #mainMediaContainer {
-    width: 350px;
-    height: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: #fff;
-  }
-
-  #mainMediaContainer img,
-  #mainMediaContainer video,
-  #mainMediaContainer iframe {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: contain;
-  }
-
-  #thumbsContainer {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(56px, 1fr));
-    gap: 8px;
-    width: 100%;
-    padding: 12px 0;
-  }
-
-  .thumb-item {
-    width: 56px;
-    height: 56px;
-  }
-
-  .zoom-container {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-  }
-
-  .zoom-inner {
-    position: relative;
-    display: inline-block;
-    transition: transform 0.3s ease;
-  }
-
-  #zoomedImage {
-    display: block;
-  }
-
-  #logo-imagem-produto-modal {
+@media screen and (min-width: 992px) {
+  #backgroundWhite {
     position: absolute;
-    bottom: 2%;
-    right: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 16%;
+    right: 0;
+    background-color: #ffffff;
     width: 40px;
-    height: 20px;
-    pointer-events: none;
-    transition: transform 0.3s ease;
+    height: 30px;
   }
 
-  #logo-imagem-produto {
+  #backgroundWhiteModal {
     position: absolute;
-    bottom: 22%;
-    right: 2%;
-    width: 40px;
-    height: 20px;
-    transition: transform 0.3s ease;
-    pointer-events: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 5%;
+    background-color: #ffffff;
+    width: 160px;
+    height: 90px;
   }
 }
+
+@media screen and (min-width: 1024px) {
+  #backgroundWhite {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 15%;
+    right: 0;
+    background-color: #ffffff;
+    width: 50px;
+    height: 40px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+    #backgroundWhite {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+    right: 0;
+    background-color: #ffffff;
+    width: 70px;
+    height: 50px;
+  }
+}
+
 @media screen and (max-width:992px) {
   .container-mais-especificacoes{
     display: flex;
