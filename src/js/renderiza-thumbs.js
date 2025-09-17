@@ -97,11 +97,13 @@ function exibirMidia(url) {
 
   if (isDesktop) {
     main.innerHTML = `<div class="zoom-wrapper" data-zoom-image="${url}" style="background-image:url('${url}')">
-      <img
-        id="logo-imagem-produto"
-        src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
-        alt="Logo Autoglass na imagem do produto"
-      />
+      <div id="backgroundWhite">
+        <img
+          id="logo-imagem-produto"
+          src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
+          alt="Logo Autoglass na imagem do produto"
+        />
+      </div>
     </div>`
     ;
     const wrapper = main.querySelector(".zoom-wrapper");
@@ -124,23 +126,33 @@ function exibirMidia(url) {
         style="max-width:100%; height:auto; aspect-ratio:1/1;"
         decoding="async" fetchpriority="high"
       />
-      <img
-        id="logo-imagem-produto"
-        src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
-        alt="Logo Autoglass na imagem do produto"
-      />
+      <div id="backgroundWhite">
+        <img
+          id="logo-imagem-produto"
+          src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
+          alt="Logo Autoglass na imagem do produto"
+        />
+      </div>
     `;
 
     const trigger = document.getElementById("mobileZoomTrigger");
     if (trigger) {
+      const logoImagem = document.getElementById("logo-imagem-produto");
+      const background = document.getElementById("backgroundWhite");
+      logoImagem.style.display = "block";
+      background.style.display = "flex";
+
       trigger.addEventListener("click", () => {
         const modal = document.getElementById("modalZoom");
         const zoomedImg = document.getElementById("zoomedImage");
-        zoomedImg.setAttribute("width", "350");
-        zoomedImg.setAttribute("height", "350");
-        zoomedImg.style.maxWidth = "100%";
-        zoomedImg.style.height = "auto";
-        zoomedImg.style.aspectRatio = "1 / 1";
+
+        if(window.innerWidth < 500) {
+          zoomedImg.setAttribute("width", "350");
+          zoomedImg.setAttribute("height", "350");
+          zoomedImg.style.maxWidth = "100%";
+          zoomedImg.style.height = "auto";
+          zoomedImg.style.aspectRatio = "1 / 1";
+        }
 
         zoomedImg.src = url;
         modal.style.display = "block";
@@ -152,6 +164,11 @@ function exibirMidia(url) {
 
 function inicializarZoom(wrapper) {
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const logoImagem = document.getElementById("logo-imagem-produto");
+  const background = document.getElementById("backgroundWhite");
+  logoImagem.style.display = "block";
+  background.style.display = "flex";
+
   if (!wrapper || !isDesktop) return;
 
   const zoomFactor = 1.5;
@@ -160,6 +177,8 @@ function inicializarZoom(wrapper) {
 
   wrapper.addEventListener("mouseenter", () => {
     wrapper.style.backgroundSize = `${zoomFactor * 100}%`;
+    logoImagem.style.display = "none";
+    background.style.display = "none";
   });
 
   wrapper.addEventListener("mousemove", e => {
@@ -167,11 +186,15 @@ function inicializarZoom(wrapper) {
     const x = ((e.clientX - r.left) / r.width)  * 100;
     const y = ((e.clientY - r.top ) / r.height) * 100;
     wrapper.style.backgroundPosition = `${x}% ${y}%`;
+    logoImagem.style.display = "none";
+    background.style.display = "none";
   });
 
   wrapper.addEventListener("mouseleave", () => {
     wrapper.style.backgroundSize = "100%";
     wrapper.style.backgroundPosition = "center";
+    logoImagem.style.display = "block";
+    background.style.display = "flex";
   });
 
   wrapper.addEventListener("click", () => {
@@ -187,10 +210,14 @@ function inicializarZoomModal(img) {
   let isZoomed = false;
 
   const zoomInner = img.closest(".zoom-inner");
+  const logoImagemMobile = document.getElementById("logo-imagem-produto-modal");
+  const backgroundModal = document.getElementById("backgroundWhiteModal");
 
   img.addEventListener("mouseenter", () => {
     zoomInner.style.transform = `scale(${zoomFactor})`;
     isZoomed = true;
+    logoImagemMobile.style.display = "none";
+    backgroundModal.style.display = "none";
   });
 
   img.addEventListener("mousemove", e => {
@@ -199,11 +226,15 @@ function inicializarZoomModal(img) {
     const x = ((e.clientX - r.left) / r.width) * 100;
     const y = ((e.clientY - r.top) / r.height) * 100;
     zoomInner.style.transformOrigin = `${x}% ${y}%`;
+    logoImagemMobile.style.display = "none";
+    backgroundModal.style.display = "none";
   });
 
   img.addEventListener("mouseleave", () => {
     zoomInner.style.transform = "scale(1)";
     zoomInner.style.transformOrigin = "center center";
     isZoomed = false;
+    logoImagemMobile.style.display = "block";
+    backgroundModal.style.display = "flex";
   });
 }
