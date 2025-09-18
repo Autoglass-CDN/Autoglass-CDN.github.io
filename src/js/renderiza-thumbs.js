@@ -56,6 +56,10 @@ async function buscarVideosDoSku(refId) {
   }
 }
 
+function otimizarUrlVtex(url, largura, altura) {
+  return url.replace(/ids\/(\d+)(-\d+-\d+)?\//, `ids/$1-${largura}-${altura}/`);
+}
+
 function renderGaleria(midias) {
   const thumbs = document.getElementById("thumbsContainer");
   const main   = document.getElementById("mainMediaContainer");
@@ -65,21 +69,29 @@ function renderGaleria(midias) {
 
   midias.forEach((url, i) => {
     const isVideo = /youtube|\.mp4$|\.webm$/i.test(url);
+
+    const thumbUrl = isVideo ? url : otimizarUrlVtex(url, 60, 60);
+
     const li = document.createElement("li");
     li.className = "thumb-item";
     li.innerHTML = isVideo
-      ? `<div class="thumb-video"><video src="${url}" muted playsinline preload="metadata"></video></div>`
-      : `<img src="${url}" alt="Miniatura ${i + 1}" loading="lazy">`;
+      ? `<div class="thumb-video"><video src="${thumbUrl}" muted playsinline preload="metadata"></video></div>`
+      : `<img src="${thumbUrl}" alt="Miniatura ${i + 1}" loading="lazy">`;
 
     const evento = window.matchMedia("(min-width: 768px)").matches ? "mouseenter" : "click";
     li.addEventListener(evento, () => {
       document.querySelectorAll(".thumb-item").forEach(el => el.classList.remove("active"));
       li.classList.add("active");
-      exibirMidia(url);
+
+      exibirMidia(isVideo ? url : otimizarUrlVtex(url, 400, 400));
     });
 
     thumbs.appendChild(li);
-    if (i === 0) { li.classList.add("active"); exibirMidia(url); }
+
+    if (i === 0) {
+      li.classList.add("active");
+      exibirMidia(isVideo ? url : otimizarUrlVtex(url, 400, 400));
+    }
   });
 }
 
