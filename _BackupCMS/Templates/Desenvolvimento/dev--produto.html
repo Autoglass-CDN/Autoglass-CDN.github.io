@@ -57,22 +57,18 @@
             }
         }
     
-        const observer = new MutationObserver(function(mutations) {
-            mutations.forEach(function(mutation) {
-                $(mutation.addedNodes).each(function() {
-                    const $node = $(this);
-                    if ($node.hasClass("zoom-wrapper")) {
-                        adicionarPreload($node);
-                    } else {
-                        $node.find(".zoom-wrapper").each(function() {
-                            adicionarPreload($(this));
-                        });
-                    }
-                });
-            });
+        const observer = new MutationObserver(function(mutations, obs) {
+            const $div = $("#mainMediaContainer .zoom-wrapper").first();
+            if ($div.length) {
+                adicionarPreload($div);
+                obs.disconnect();
+            }
         });
-    
-        observer.observe(document.body, { childList: true, subtree: true });
+
+        const mainContainer = document.getElementById("mainMediaContainer");
+        if (mainContainer) {
+            observer.observe(mainContainer, { childList: true, subtree: true });
+        }
     });
     //]]>
   </script>
