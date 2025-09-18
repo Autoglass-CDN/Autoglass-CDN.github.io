@@ -45,7 +45,6 @@
   <script>
     //<![CDATA[
     $(function () {
-        // Função para adicionar preload
         function adicionarPreload($div) {
             const url = $div.attr("data-zoom-image");
             if (url && !$("link[href='" + url + "']").length) {
@@ -58,7 +57,6 @@
             }
         }
     
-        // Observar quando a zoom-wrapper aparecer no DOM
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 $(mutation.addedNodes).each(function() {
@@ -66,7 +64,6 @@
                     if ($node.hasClass("zoom-wrapper")) {
                         adicionarPreload($node);
                     } else {
-                        // também verifica filhos adicionados
                         $node.find(".zoom-wrapper").each(function() {
                             adicionarPreload($(this));
                         });
@@ -174,8 +171,8 @@
                   <vtex.cmc:productName />
                 </span>
                 <div class="product-qd-v1-brand-name marca-barra-do-topo">
-                    Marca:
-                    <vtex.cmc:brandName />
+                  Marca:
+                  <vtex.cmc:brandName />
                 </div>
               </div>
               <section class="col-xs-3">

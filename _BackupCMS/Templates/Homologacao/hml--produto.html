@@ -41,7 +41,6 @@
   <script>
     //<![CDATA[
     $(function () {
-        // Função para adicionar preload
         function adicionarPreload($div) {
             const url = $div.attr("data-zoom-image");
             if (url && !$("link[href='" + url + "']").length) {
@@ -54,7 +53,6 @@
             }
         }
     
-        // Observar quando a zoom-wrapper aparecer no DOM
         const observer = new MutationObserver(function(mutations) {
             mutations.forEach(function(mutation) {
                 $(mutation.addedNodes).each(function() {
@@ -62,7 +60,6 @@
                     if ($node.hasClass("zoom-wrapper")) {
                         adicionarPreload($node);
                     } else {
-                        // também verifica filhos adicionados
                         $node.find(".zoom-wrapper").each(function() {
                             adicionarPreload($(this));
                         });
@@ -76,50 +73,50 @@
     //]]>
   </script>
   <script>
-          //Datalayer SocialShare
-      function handleSocialClick(event, method) {
-      dataLayer.push({
-          'event': 'share',
-          'method': method,
-          'content_type': skuJson.skus[0].image,
-          'item_id': skuJson.skus[0].sku,
-      });
-      }
+        //Datalayer SocialShare
+    function handleSocialClick(event, method) {
+    dataLayer.push({
+        'event': 'share',
+        'method': method,
+        'content_type': skuJson.skus[0].image,
+        'item_id': skuJson.skus[0].sku,
+    });
+    }
 
-      const socialMediaElements = {
-          'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
-          'twitter': '.product-qd-v1-social-share.desktop .twitter',
-          'mail': '.product-qd-v1-social-share.desktop .mail',
-          'facebook': '.product-qd-v1-social-share.desktop .facebook'
-      };
+    const socialMediaElements = {
+        'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
+        'twitter': '.product-qd-v1-social-share.desktop .twitter',
+        'mail': '.product-qd-v1-social-share.desktop .mail',
+        'facebook': '.product-qd-v1-social-share.desktop .facebook'
+    };
 
-      Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
-      const element = document.querySelector(selector);
-      element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
-      });
+    Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
+    const element = document.querySelector(selector);
+    element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
+    });
 
 
-      //Datalayer SocialShare
-      function ButtoWhatsappClick(event, position) {
-      dataLayer.push({
-        'event': 'whatsapp',
-        'position': position
-      });
-      }
+    //Datalayer SocialShare
+    function ButtoWhatsappClick(event, position) {
+    dataLayer.push({
+      'event': 'whatsapp',
+      'position': position
+    });
+    }
 
-      const whatsappElements = {
-          '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
-          '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
-          '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
-          '.link-whatsapp-texto.link-whatsapp': 'footer'
-      };
+    const whatsappElements = {
+        '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
+        '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
+        '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
+        '.link-whatsapp-texto.link-whatsapp': 'footer'
+    };
 
-      Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
-          const element = document.querySelector(selector);
-          if (element) {
-          element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
-          }
-          });
+    Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
+        const element = document.querySelector(selector);
+        if (element) {
+        element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
+        }
+        });
   </script>
 </head>
 
@@ -716,11 +713,13 @@
     <div class="zoom-container">
         <div class="zoom-inner">
             <img class="modal-content-zoom" id="zoomedImage" />
-            <img
-            id="logo-imagem-produto-modal"
-            src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
-            alt="Logo Autoglass na imagem do produto"
-            />
+            <div id="backgroundWhiteModal">
+                <img
+                id="logo-imagem-produto-modal"
+                src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
+                alt="Logo Autoglass na imagem do produto"
+                />
+            </div>
         </div>
     </div>
   </div>
