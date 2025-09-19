@@ -133,6 +133,46 @@
 		btnNext.css('right', distance);
 	}
 })();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    function applyLazy() {
+      const lcpDesktop = document.querySelector(".banners-content.desktop img");
+      const whysSection = document.querySelector(".whys-section");
+      const whysImgs = whysSection ? whysSection.querySelectorAll("img") : [];
+
+      const images = document.querySelectorAll("img");
+
+      images.forEach((img) => {
+        if (img === lcpDesktop || [...whysImgs].includes(img)) return;
+
+        if (!img.hasAttribute("loading")) {
+          img.setAttribute("loading", "lazy");
+        }
+      });
+
+      if (lcpDesktop) {
+        lcpDesktop.setAttribute("loading", "eager");
+        lcpDesktop.setAttribute("fetchpriority", "high");
+      }
+
+      whysImgs.forEach((img) => {
+        img.setAttribute("loading", "eager");
+        img.setAttribute("fetchpriority", "high");
+      });
+    }
+
+    applyLazy();
+
+    const observer = new MutationObserver(() => {
+      applyLazy();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+
 //#endregion Banners
 
 //#region Benefits
