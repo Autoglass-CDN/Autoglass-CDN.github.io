@@ -134,6 +134,43 @@
 		btnNext.css('right', distance);
 	}
 })();
+
+  document.addEventListener("DOMContentLoaded", function () {
+    function applyLazy() {
+      const lcpDesktop = document.querySelector(".banners-content.desktop img");
+      const lcpMobile = document.querySelector(".banners-content.mobile img");
+      const images = document.querySelectorAll("img");
+
+      images.forEach((img) => {
+        if (img === lcpDesktop || img === lcpMobile) return;
+
+        if (!img.hasAttribute("loading")) {
+          img.setAttribute("loading", "lazy");
+        }
+      });
+
+      if (lcpDesktop) {
+        lcpDesktop.setAttribute("loading", "eager");
+        lcpDesktop.setAttribute("fetchpriority", "high");
+      }
+      if (lcpMobile) {
+        lcpMobile.setAttribute("loading", "eager");
+        lcpMobile.setAttribute("fetchpriority", "high");
+      }
+    }
+
+    applyLazy();
+
+    const observer = new MutationObserver(() => {
+      applyLazy();
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+    });
+  });
+
 //#endregion Banners
 
 //#region Benefits
