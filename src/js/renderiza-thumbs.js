@@ -124,7 +124,8 @@ function exibirMidia(url) {
     wrapper.addEventListener("click", () => {
       const modal = document.getElementById("modalZoom");
       const zoomedImg = document.getElementById("zoomedImage");
-      zoomedImg.src = url;
+      const urlAlterada = url.replace(/(\d+)-400-400/, '$1');
+      zoomedImg.src = urlAlterada;
       modal.style.display = "block";
       inicializarZoomModal(zoomedImg);
     });
