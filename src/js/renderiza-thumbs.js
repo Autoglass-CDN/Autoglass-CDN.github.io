@@ -13,8 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   renderGaleria([...imagens, ...videos]);
 
   const modal = document.getElementById("modalZoom");
-  document.querySelector(".close-zoom").addEventListener("click", () => modal.style.display = "none");
-  modal.addEventListener("click", e => { if (e.target.id === "modalZoom") modal.style.display = "none"; });
+  const zoomedImg = document.getElementById("zoomedImage");
+  modal.addEventListener("click", e => { if (!zoomedImg.contains(e.target)) modal.style.display = "none"; });
 });
 
 const urlApi = window.location.href.includes("hml") || window.location.href.includes("dev")
