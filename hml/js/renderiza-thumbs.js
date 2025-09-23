@@ -112,7 +112,7 @@ function exibirMidia(url) {
       <div id="backgroundWhite">
         <img
           id="logo-imagem-produto"
-          src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
+          src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png"
           alt="Logo Autoglass na imagem do produto"
         />
       </div>
@@ -142,7 +142,7 @@ function exibirMidia(url) {
       <div id="backgroundWhite">
         <img
           id="logo-imagem-produto"
-          src="https://autoglass-cdn.github.io/src/img/logo-autoglass.png"
+          src="https://autoglass-cdn.github.io/hml/img/logo-autoglass.png"
           alt="Logo Autoglass na imagem do produto"
         />
       </div>
