@@ -76,7 +76,7 @@ function renderGaleria(midias) {
     li.className = "thumb-item";
     li.innerHTML = isVideo
       ? `<div class="thumb-video"><video src="${thumbUrl}" muted playsinline preload="metadata"></video></div>`
-      : `<img src="${thumbUrl}" alt="Miniatura ${i + 1}" loading="lazy">`;
+      : `<img src="${thumbUrl}" alt="Miniatura ${i + 1}" loading="lazy" width="60" height="60" >`;
 
     const evento = window.matchMedia("(min-width: 768px)").matches ? "mouseenter" : "click";
     li.addEventListener(evento, () => {
@@ -102,7 +102,7 @@ function exibirMidia(url) {
 
   if (isVideo) {
     main.innerHTML = url.includes("youtube")
-      ? `<iframe src="${url.replace("watch?v=", "embed/")}" frameborder="0" allowfullscreen></iframe>`
+      ? `<iframe src="${url.replace("watch?v=", "embed/")}" frameborder="0" allowfullscreen width="400" height="400" ></iframe>`
       : `<video src="${url}" controls autoplay></video>`;
     return;
   }
