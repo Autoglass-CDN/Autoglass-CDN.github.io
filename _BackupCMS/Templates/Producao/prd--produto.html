@@ -38,6 +38,36 @@
     }
   </style>
   <script>
+    //<![CDATA[
+    $(function () {
+        function adicionarPreload($div) {
+            const url = $div.attr("data-zoom-image");
+            if (url && !$("link[href='" + url + "']").length) {
+                $("<link>", {
+                    rel: "preload",
+                    as: "image",
+                    href: url,
+                    fetchpriority: "high"
+                }).appendTo("head");
+            }
+        }
+    
+        const observer = new MutationObserver(function(mutations, obs) {
+            const $div = $("#mainMediaContainer .zoom-wrapper").first();
+            if ($div.length) {
+                adicionarPreload($div);
+                obs.disconnect();
+            }
+        });
+
+        const mainContainer = document.getElementById("mainMediaContainer");
+        if (mainContainer) {
+            observer.observe(mainContainer, { childList: true, subtree: true });
+        }
+    });
+    //]]>
+  </script>
+  <script>
           //Datalayer SocialShare
       function handleSocialClick(event, method) {
       dataLayer.push({
