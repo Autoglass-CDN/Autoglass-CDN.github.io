@@ -25,13 +25,6 @@
     document.head.appendChild(canonicalLink);
 	});
     </script>
-	<script>
-		(function(c,l,a,r,i,t,y){
-			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-		})(window, document, "clarity", "script", "dr3d6dnzku");
-    </script>
 </head>
 
 <body class="institucional" data-qd-scroll-limit="200">
@@ -77,6 +70,100 @@
 		<vtex:template id="prd--footer"/>
 		<!-- Footer -->
 	</div>
+	<script>
+	// <![CDATA[
+		function load3rdParty() {
+			var urls = [
+			"https://secure.adnxs.com/seg?add=26997748&t=1",
+			"https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
+			"https://connect.facebook.net/en_US/fbevents.js"
+			];
+			urls.forEach(src => {
+			var s = document.createElement("script");
+			s.src = src;
+			s.async = true;
+			document.body.appendChild(s);
+			});
+		}
+
+		if ("requestIdleCallback" in window) {
+			requestIdleCallback(load3rdParty, { timeout: 3000 });
+		} else {
+			window.addEventListener("load", () => setTimeout(load3rdParty, 1000));
+		}
+	// ]]>
+	</script>
+
+	<script type="text/javascript">
+		document.addEventListener("DOMContentLoaded", function () {
+			$(window).on("load", function () {
+			$("#launcher").css("bottom", "0px");
+			});
+		});
+	</script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const metaDescription = document.querySelector('meta[name="description"]');
+
+			if (metaDescription) {
+				metaDescription.setAttribute("content", "Sistema ADAS: entenda como essa tecnologia inteligente otimiza a segurança no trânsito e garanta a calibração perfeita com a Autoglass. Saiba mais!");
+			}
+		});
+	</script>
+
+	<script>
+		document.addEventListener("DOMContentLoaded", function () {
+			const metaLanguage = document.querySelector('meta[name="language"]');
+		
+			if (metaLanguage) {
+				metaLanguage.remove();
+			};
+		});
+	</script>
+
+	<script>
+	// <![CDATA[
+		document.addEventListener("DOMContentLoaded", function () {
+			const observer = new MutationObserver(() => {
+			document.querySelectorAll("title").forEach(titleTag => {
+				if (titleTag.innerText.trim() === "Institucional – Homologacao") {
+					titleTag.remove();
+					observer.disconnect();
+				};
+			});
+			});
+
+			observer.observe(document, { childList: true, subtree: true });
+		});
+	// ]]>
+	</script>
+
+	<script>
+		$(window).on("load", function () {
+			$("#launcher").css("bottom", "0px");
+		});
+	</script>
+
+	<!-- Facebook Pixel (no final) -->
+	<script>
+		window.fbq = window.fbq || function(){(fbq.callMethod? fbq.callMethod.apply(fbq,arguments):fbq.queue.push(arguments))};
+		fbq.push = fbq; fbq.loaded = !0; fbq.version = '2.0'; fbq.queue = [];
+		fbq('init', '674711539752032');
+		fbq('track', 'PageView');
+	</script>
+	<script>
+		(function(c,l,a,r,i,t,y){
+			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+			t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+		})(window, document, "clarity", "script", "dr3d6dnzku");
+    </script>
+	<noscript>
+	<!-- <![CDATA[ -->
+		<img height="1" width="1" src="https://www.facebook.com/tr?id=674711539752032&amp;ev=PageView&amp;noscript=1" />
+	<!-- ]]> -->
+	</noscript>
 </body>
 
 </html>

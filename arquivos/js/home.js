@@ -257,6 +257,32 @@ function enableTouchScroll(e) {
         clearInterval(c);
     });
 })(),
+  document.addEventListener("DOMContentLoaded", function () {
+    function e() {
+      let e = document.querySelector(".banners-content.desktop img"),
+        t = document.querySelector(".whys-section"),
+        i = t ? t.querySelectorAll("img") : [],
+        r = document.querySelectorAll("img");
+      r.forEach((t) => {
+        t === e ||
+          [...i].includes(t) ||
+          t.hasAttribute("loading") ||
+          t.setAttribute("loading", "lazy");
+      }),
+        e &&
+          (e.setAttribute("loading", "eager"),
+          e.setAttribute("fetchpriority", "high")),
+        i.forEach((e) => {
+          e.setAttribute("loading", "eager"),
+            e.setAttribute("fetchpriority", "high");
+        });
+    }
+    e();
+    let t = new MutationObserver(() => {
+      e();
+    });
+    t.observe(document.body, { childList: !0, subtree: !0 });
+  });
   (function () {
     let e = $(".benefits-section .container"),
       t = $(".benefits-section .container .benefit"),
