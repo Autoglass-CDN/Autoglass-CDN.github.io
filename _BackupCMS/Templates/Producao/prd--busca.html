@@ -28,7 +28,7 @@
         //<![CDATA[
             $(function () {
                 const $imagens = $(".shelf-qd-v1-image img");
-                $imagens.first().removeAttr("loading");
+                $imagens.first().removeAttr("loading").attr("fetchpriority", "high");
                 $imagens.not(":first").attr("loading", "lazy");
             });
         //]]>
