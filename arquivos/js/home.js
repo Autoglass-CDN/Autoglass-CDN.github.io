@@ -370,3 +370,24 @@ function enableTouchScroll(e) {
         });
       });
   })();
+
+  //ADICIONA TARGET BLANK EM BANNER DA CAMPANHA RECLAME AQUI 2025 SOMENTE EM PRODUCAO
+  (() => {
+    function adicionarTargetBlank() {
+      const sections = document.querySelectorAll('.banners-content');
+
+      sections.forEach(section => {
+        const thirdDiv = section.querySelectorAll('div')[2];
+
+        if (thirdDiv) {
+          const link = thirdDiv.querySelector('a');
+          
+          if (link) {
+            link.setAttribute('target', '_blank');
+          }
+        }
+      });
+    }
+
+    window.onload = adicionarTargetBlank;
+  })();
