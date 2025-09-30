@@ -616,3 +616,31 @@ document
 })();
 
 //#endregion Painel de categorias
+
+//ADICIONA TARGET BLANK EM BANNER DA CAMPANHA RECLAME AQUI 2025
+(() => {
+  function adicionarTargetBlank() {
+    const sections = document.querySelectorAll('.banners-content');
+
+    sections.forEach(section => {
+      const secondDiv = section.querySelectorAll('div')[1];
+      const thirdDiv = section.querySelectorAll('div')[2];
+
+      if (secondDiv) {
+        const secondLink = secondDiv.querySelector('a');
+        if (secondLink) {
+          secondLink.setAttribute('target', '_blank');
+        }
+      }
+
+      if (thirdDiv) {
+        const thirdLink = thirdDiv.querySelector('a');
+        if (thirdLink) {
+          thirdLink.setAttribute('target', '_blank');
+        }
+      }
+    });
+  }
+
+  window.onload = adicionarTargetBlank;
+})();

@@ -397,23 +397,21 @@ function enableTouchScroll(e) {
       });
   })();
 
-  //ADICIONA TARGET BLANK EM BANNER DA CAMPANHA RECLAME AQUI 2025 SOMENTE EM PRODUCAO
-  (() => {
-    function adicionarTargetBlank() {
-      const sections = document.querySelectorAll('.banners-content');
-
-      sections.forEach(section => {
-        const thirdDiv = section.querySelectorAll('div')[2];
-
-        if (thirdDiv) {
-          const link = thirdDiv.querySelector('a');
-          
-          if (link) {
-            link.setAttribute('target', '_blank');
-          }
-        }
-      });
-    }
-
-    window.onload = adicionarTargetBlank;
-  })();
+(() => {
+  function e() {
+    let e = document.querySelectorAll(".banners-content");
+    e.forEach((e) => {
+      let t = e.querySelectorAll("div")[1],
+        l = e.querySelectorAll("div")[2];
+      if (t) {
+        let r = t.querySelector("a");
+        r && r.setAttribute("target", "_blank");
+      }
+      if (l) {
+        let o = l.querySelector("a");
+        o && o.setAttribute("target", "_blank");
+      }
+    });
+  }
+  window.onload = e;
+})();
