@@ -623,10 +623,9 @@ document
     const sections = document.querySelectorAll('.banners-content');
 
     sections.forEach(section => {
-      const secondDiv = section.querySelectorAll('div')[1]; // Segundo banner
-      const thirdDiv = section.querySelectorAll('div')[2]; // Terceiro banner
+      const secondDiv = section.querySelectorAll('div')[1];
+      const thirdDiv = section.querySelectorAll('div')[2];
 
-      // Verifica se o segundo banner existe e adiciona o target="_blank"
       if (secondDiv) {
         const secondLink = secondDiv.querySelector('a');
         if (secondLink) {
@@ -634,7 +633,6 @@ document
         }
       }
 
-      // Verifica se o terceiro banner existe e adiciona o target="_blank"
       if (thirdDiv) {
         const thirdLink = thirdDiv.querySelector('a');
         if (thirdLink) {
