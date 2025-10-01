@@ -1,21 +1,17 @@
 <!-- dev- -sistema-500 -->
 <!DOCTYPE html>
-<html
-    lang="pt"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
-    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce"
->
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce" >
     <head>
         <vtex:metaTags />
         <meta name="robots" content="noindex, nofollow" />
         <title><vtex.cmc:productPageTitle /></title>
         <vtex:contentPlaceHolder id="qd_head" />
-        <vtex:template id="dev--head-tags" />
         <link rel="preconnect" href="https://cdn.quatrodigital.com" crossorigin="anonymous"/>
         <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
         <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
-        <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.qd-bootstrap-common.css" type="text/css" />
+        <vtex:template id="dev--head-tags" />
+        <vtex:template id="dev--header-styles" />
+        <vtex:template id="dev--footer-styles" />
         <link rel="stylesheet" href="//cdn.quatrodigital.com/autoglass-arquivos/CSS.aut.far.system.css"  media="print" onload="this.media='all'" />
     </head>
     <body class="system-500" data-qd-scroll-limit="200">
@@ -36,6 +32,10 @@
         <!-- Footer -->
         <vtex:template id="dev--footer" />
         <!-- Footer -->
-        <vtex.cmc:prdGoogleMaps />
+        <vtex.cmc:devGoogleMaps />
+
+        <!-- dev- -body-tags -->
+        <vtex:template id="dev--body-tags" />
+        <!-- dev- -body-tags -->
     </body>
 </html>
