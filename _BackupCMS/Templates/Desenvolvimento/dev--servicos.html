@@ -16,14 +16,18 @@
     <vtex:contentPlaceHolder id="SEO_link_alternate" />
     <vtex:contentPlaceHolder id="page_metaTag_description" />
     <vtex:contentPlaceHolder id="page_title" />
-    <vtex:template id="dev--head-tags-servicos" />
     <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&amp;display=swap" ></link>
     <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
+    <vtex:template id="dev--head-tags-servicos" />
+    <vtex:template id="dev--header-styles" />
+    <vtex:template id="dev--servicos-formulario-styles" />
+    <vtex:template id="dev--footer-styles" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/servicos/servicos.css" type="text/css"></link>
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/styles/global/style.css" type="text/css"></link>
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/localization-modal.css"/>
     <style>
         :root {
             --url-background-banner: url("<vtex:contentPlaceHolder id="caminho_imagem_banner"/>");
@@ -99,7 +103,7 @@
                         <h2 class="avaliacoes__titulo">
                             <vtex:contentPlaceHolder id="avaliacoes_de_quem_ja_contratou" />
                         </h2>
-                        <vtex.cmc:prdRatingsComponent />
+                        <vtex.cmc:devRatingsComponent />
                     </section>
                 </section>
 
@@ -144,6 +148,10 @@
     <!-- Footer -->
     <vtex:template id="dev--footer" />
     <!-- Footer -->
+
+    <!-- dev- -body-tags-servicos -->
+    <vtex:template id="dev--body-tags-servicos" />
+    <!-- dev- -body-tags-servicos -->
 
 </body>
 

@@ -7,25 +7,11 @@
 	<vtex:metaTags />
 	<meta name="robots" content="noindex, nofollow" />
 	<vtex:contentPlaceHolder id="qd_head"/>
-	<vtex:template id="dev--sistema-adas-head-tags"/>
 	<link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
 	<link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
+	<vtex:template id="dev--sistema-adas-head-tags"/>
+	<vtex:template id="dev--footer-styles" />
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.qd-bootstrap-common.css" type="text/css" />
-	<script>
-		document.addEventListener("DOMContentLoaded", function () {
-		const currentUrl = window.location.href;
-
-		const canonicalUrl = currentUrl.endsWith('/')
-			? currentUrl.slice(0, -1)
-			: currentUrl;
-
-		const canonicalLink = document.createElement('link');
-		canonicalLink.rel = 'canonical';
-		canonicalLink.href = canonicalUrl;
-
-		document.head.appendChild(canonicalLink);
-		});
-    </script>
 </head>
 
 <body class="institucional" data-qd-scroll-limit="200">
@@ -82,13 +68,33 @@
 				</div>
 				<!-- Institutional content -->
 			</main>
-            <script defer="" type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
 		</div>
 
 		<!-- Footer -->
 		<vtex:template id="dev--footer"/>
 		<!-- Footer -->
 	</div>
+
+	<!-- dev- -sistema-adas-body-tags -->
+	<vtex:template id="dev--sistema-adas-body-tags"/>
+	<!-- dev- -sistema-adas-body-tags -->
+
+	<script defer="" type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
+
+	<script>
+		const currentUrl = window.location.href;
+
+		const canonicalUrl = currentUrl.endsWith('/')
+			? currentUrl.slice(0, -1)
+			: currentUrl;
+
+		const canonicalLink = document.createElement('link');
+		canonicalLink.rel = 'canonical';
+		canonicalLink.href = canonicalUrl;
+
+		document.head.appendChild(canonicalLink);
+    </script>
+	
 	<script>
 	// <![CDATA[
 		function load3rdParty() {
@@ -114,36 +120,29 @@
 	</script>
 
 	<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", function () {
 			$(window).on("load", function () {
 			$("#launcher").css("bottom", "0px");
-			});
 		});
 	</script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
 			const metaDescription = document.querySelector('meta[name="description"]');
 
 			if (metaDescription) {
 				metaDescription.setAttribute("content", "Sistema ADAS: entenda como essa tecnologia inteligente otimiza a segurança no trânsito e garanta a calibração perfeita com a Autoglass. Saiba mais!");
 			}
-		});
 	</script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
 			const metaLanguage = document.querySelector('meta[name="language"]');
 		
 			if (metaLanguage) {
 				metaLanguage.remove();
 			};
-		});
 	</script>
 
 	<script>
 	// <![CDATA[
-		document.addEventListener("DOMContentLoaded", function () {
 			const observer = new MutationObserver(() => {
 			document.querySelectorAll("title").forEach(titleTag => {
 				if (titleTag.innerText.trim() === "Institucional – Desenvolvimento") {
@@ -154,16 +153,8 @@
 			});
 
 			observer.observe(document, { childList: true, subtree: true });
-		});
 	// ]]>
 	</script>
-
-	<script>
-		$(window).on("load", function () {
-			$("#launcher").css("bottom", "0px");
-		});
-	</script>
-
 	<!-- Facebook Pixel (no final) -->
 	<script>
 		window.fbq = window.fbq || function(){(fbq.callMethod? fbq.callMethod.apply(fbq,arguments):fbq.queue.push(arguments))};

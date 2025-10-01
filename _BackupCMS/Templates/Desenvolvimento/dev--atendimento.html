@@ -1,20 +1,18 @@
 <!-- dev- -atendimento -->
 <!DOCTYPE html>
-<html
-    lang="pt"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
-    xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce"
->
+<html lang="pt" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce" >
     <head>
         <meta name="robots" content="noindex, nofollow" />
         <vtex:metaTags />
         <title><vtex.cmc:productPageTitle /></title>
         <vtex:contentPlaceHolder id="qd_head" />
-        <vtex:template id="dev--head-tags" />
+        <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
         <link rel="preconnect" href="https://cdn.quatrodigital.com/" crossorigin="anonymous" />
         <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
         <link rel="stylesheet" href="//cdn.quatrodigital.com/autoglass-arquivos/CSS.aut.far.atendimento.css" media="print" onload="this.media='all'" />
+        <vtex:template id="dev--head-tags" />
+        <vtex:template id="dev--header-styles" />
+	    <vtex:template id="dev--footer-styles" />
     </head>
 
     <body class="institucional" data-qd-scroll-limit="200">
@@ -66,7 +64,7 @@
                         </div>
 
                         <div class="institucional-qd-v1-navigator">
-                            <vtex.cmc:prdInstitucionalMenuLateral />
+                            <vtex.cmc:devInstitucionalMenuLateral />
                         </div>
 
                         <div class="banner-qd-v1-responsive img-responsive">
@@ -103,7 +101,7 @@
                                     <div class="attendance-qd-v1-contact-phone">
                                         <div>
                                             <i class="fa fa-phone"></i>
-                                            <vtex.cmc:prdNumeroTelefone /><br />
+                                            <vtex.cmc:devNumeroTelefone /><br />
                                         </div>
                                     </div>
                                 </div>
@@ -113,7 +111,7 @@
                                 <div class="col-xs-12 col-md-6">
                                     <div class="attendance-qd-v1-contact-mail">
                                         <i class="fa fa-envelope"></i>
-                                        <vtex.cmc:prdEnderecoEmail />
+                                        <vtex.cmc:devEnderecoEmail />
                                     </div>
                                 </div>
                                 <!-- EMAIL -->
@@ -121,7 +119,7 @@
                                 <!-- WORKTIME -->
                                 <div class="col-xs-12">
                                     <div class="attendance-qd-v1-working-time">
-                                        <vtex.cmc:prdHorarioAtendimento />
+                                        <vtex.cmc:devHorarioAtendimento />
                                     </div>
                                 </div>
                                 <!-- WORKTIME -->
@@ -165,6 +163,10 @@
             <!-- Footer -->
             <vtex:template id="dev--footer" />
             <!-- Footer -->
+
+            <!-- dev- -body-tags -->
+            <vtex:template id="dev--body-tags" />
+            <!-- dev- -body-tags -->
         </div>
     </body>
 </html>

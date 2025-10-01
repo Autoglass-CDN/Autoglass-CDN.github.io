@@ -1,0 +1,104 @@
+<!-- dev- -header - styles -->
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/topo.css"/>
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/modal-login.css"/>
+<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/secao-pesquisa.css"/>
+
+<style type="text/css">
+    .modal .titulo {
+        font-size: 2em;
+    }
+
+    /* The Modal (background) */
+    #saindo.modal {
+        display: none;
+        /* Hidden by default */
+        position: fixed;
+        /* Stay in place */
+        width: 100%;
+        /* Full width */
+        height: 100%;
+        /* Full height */
+        overflow: auto;
+        /* Enable scroll if needed */
+        background-color: rgb(0, 0, 0);
+        /* Fallback color */
+        background-color: rgba(0, 0, 0, 0.7);
+        /* Black w/ opacity */
+        z-index: 1000000;
+    }
+
+    #saindo .modal-close {
+        position: relative;
+        padding-bottom: 10px;
+    }
+
+    /* Modal Header */
+    #saindo .modal-header h2 {
+        color: #757575;
+        font-size: 26px;
+        font-weight: 400;
+    }
+
+    #saindo .modal-header {
+        border: 0;
+        text-align: center;
+    }
+
+    /* Modal Body */
+    #saindo .modal-body p {
+        color: #333333;
+        margin: 10px auto;
+    }
+
+    #saindo .modal-body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+
+
+    /* Modal Content */
+    #saindo .modal-content {
+        max-width: 700px;
+        width: 80%;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        animation-name: animatetop;
+        animation-duration: 0.4s;
+
+        padding: 20px;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9997;
+        background-color: #FFF;
+        border-radius: 4px;
+    }
+
+
+    /* Add Animation */
+    @keyframes animatetop {
+        from {
+            top: -300px;
+            opacity: 0
+        }
+
+        to {
+            top: 0;
+            opacity: 1
+        }
+    }
+
+    #saindo .modal-content .modal-body button {
+        background: var(--blue-700);
+        color: var(--white);
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 5px;
+        margin: 5px;
+    }
+
+    #saindo .modal-content .modal-body button#sair {
+        background: var(--danger);
+    }
+</style>

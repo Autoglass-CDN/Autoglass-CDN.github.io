@@ -12,13 +12,21 @@
     <vtex.cmc:productPageTitle />
   </title>
   <vtex:contentPlaceHolder id="qd_head" />
-  <vtex:template id="dev--head-tags-seo" />
+  <link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font" type="font/woff2" crossorigin=""/>
+  <link rel="preload" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" as="style" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'" />
   <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
   <link rel="stylesheet" href="/arquivos/locationFetcher.css" type="text/css" />
+  <vtex:template id="dev--head-tags-seo" />
+  <vtex:template id="homologacao-header-styles" />
+  <vtex:template id="dev--smart-select-styles" />
+  <vtex:template id="qd-farmen-footer-seo-styles" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/home/CSS.aut.far.qd-bootstrap-home.css" type="text/css" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/header.css" type="text/css" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/home/CSS.aut.far.qd-bootstrap-common.css" type="text/css" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/home.css" type="text/css" />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/home/CSS.aut.far.qd-bootstrap-common.css" type="text/css" />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/home.css" type="text/css" />
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/header.css" type="text/css" />
   <style>
     .col-xs-9.col-xs-offset-3 {
       margin-bottom: 15px;
@@ -41,7 +49,7 @@
         "name": "Autoglass",
         "alternateName": "Auto Glass",
         "url": "https://www.autoglassonline.com.br/",
-        "logo": "https://autoglass-cdn.github.io/arquivos/img/logo-autoglass.png",
+        "logo": "https://autoglass-cdn.github.io/src/img/logo-autoglass.png",
         "contactPoint": [
             {
                 "@type": "ContactPoint",
@@ -68,6 +76,7 @@
         ]
     }
   </script>
+  <script defer="" src="https://www.googleoptimize.com/optimize.js?id=OPT-MTHHM4S"></script>
 </head>
 
 <body class="home">
@@ -103,7 +112,7 @@
     </section>
 
     <!-- Smart Select -->
-    <vtex:template id="dev-smart-select" />
+    <vtex:template id="dev--smart-select" />
     <!-- Smart Select -->
 
     <section class="benefits-section">
@@ -192,7 +201,7 @@
             <div class="ratings__rating">
               <div class="ratings__rating-image">
                 <img
-                  src="https://autoglass-cdn.github.io/arquivos/img/home/icone_usuario.png" alt="Gisele Henrique" />
+                  src="https://autoglass-cdn.github.io/src/img/home/icone_usuario.png" alt="Gisele Henrique" />
               </div>
               <div class="ratings__rating-stars">
                 <i class="fa fa-star"></i>
@@ -211,7 +220,7 @@
             <div class="ratings__rating highlight">
               <div class="ratings__rating-image">
                 <img
-                  src="https://autoglass-cdn.github.io/arquivos/img/home/icone_usuario.png"
+                  src="https://autoglass-cdn.github.io/src/img/home/icone_usuario.png"
                   alt="Fernando Gomes de Souza" />
               </div>
               <div class="ratings__rating-stars">
@@ -231,7 +240,7 @@
             <div class="ratings__rating">
               <div class="ratings__rating-image">
                 <img
-                  src="https://autoglass-cdn.github.io/arquivos/img/home/icone_usuario.png" 
+                  src="https://autoglass-cdn.github.io/src/img/home/icone_usuario.png" 
                   alt="José Miguel Oliveira" />
               </div>
               <div class="ratings__rating-stars">
@@ -268,7 +277,7 @@
         <li class="why">
           <div class="why__image">
             <img alt="Segurança e Qualidade"
-              src="https://autoglass-cdn.github.io/arquivos/img/home/seguranca_qualidade.png" />
+              src="https://autoglass-cdn.github.io/src/img/home/seguranca_qualidade.png" />
           </div>
           <div class="why__content">
             <h3 class="why__content-title">Segurança e Qualidade</h3>
@@ -283,7 +292,7 @@
         <li class="why">
           <div class="why__image">
             <img alt="O melhor atendimento"
-              src="https://autoglass-cdn.github.io/arquivos/img/home/o_melhor_atendimento.png" />
+              src="https://autoglass-cdn.github.io/src/img/home/o_melhor_atendimento.png" />
           </div>
           <div class="why__content">
             <h3 class="why__content-title">O Melhor Atendimento</h3>
@@ -298,7 +307,7 @@
         <li class="why">
           <div class="why__image">
             <img alt="Entrega e Instalação"
-              src="https://autoglass-cdn.github.io/arquivos/img/home/entrega_instalacao.png" />
+              src="https://autoglass-cdn.github.io/src/img/home/entrega_instalacao.png" />
           </div>
           <div class="why__content">
             <h3 class="why__content-title">Praticidade, Comodidade e Agilidade</h3>
@@ -335,26 +344,19 @@
       </div>
     </section>
 
-    <script src="https://autoglass-cdn.github.io/arquivos/js/home.js"></script>
   </main>
 
 
   <!-- Footer -->
-  <vtex:template id="qd-farmen-footer" />
+  <vtex:template id="qd-farmen-footer-seo" />
   <vtex.cmc:googlemaps />
   <!-- Footer -->
 
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/home/CSS.aut.far.qd-bootstrap-common.css"
-    type="text/css" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/home.css" type="text/css" />
-
-  <link rel="stylesheet" href="/arquivos/locationFetcher.css" type="text/css" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/policies/header.css" type="text/css" />
-  <link rel="stylesheet"
-    href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0" as="font"
-    type="font/woff2" crossorigin="" />
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous" />
+  <!-- dev- -body-tags-seo -->
+  <vtex:template id="dev--body-tags-seo" />
+  <!-- dev- -body-tags-seo -->
+  
+  <script defer="" src="https://autoglass-cdn.github.io/src/js/home.js"></script>
   
 </body>
 
