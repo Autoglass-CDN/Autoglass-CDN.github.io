@@ -1,8 +1,9 @@
 (() => {
 
   let whatsappIconDesktop = document.querySelector('#whatsapp-icon-link-desktop');
-  let whatsappIconMobile = document.querySelector('#whatsapp-icon-link-mobile');
-  let whatsappIconRodape = document.querySelector('#whatsapp-icon-rodape');
+  let whatsappIconFlutuante = document.querySelector('#whatsapp-icon-link');
+  // let whatsappIconMobile = document.querySelector('#whatsapp-icon-link-mobile');
+  // let whatsappIconRodape = document.querySelector('#whatsapp-icon-rodape');
 
   const textoConteudoComNumero = "Whatsapp: " + numeroWhatsAppFormatadoAG;
 
@@ -11,19 +12,23 @@
   $('.link-whatsapp-conteudo').text(textoConteudoComNumero);
 
   //---------------------------------------------
-  let whatsappIconFlutuante = document.querySelector('#whatsapp-icon-link');
 
-  if(document.querySelector('.product-qd-v1-fixed-bar')) {
+  if(document.querySelector('.product-qd-v1-fixed-bar')&& whatsappIconFlutuante) {
       whatsappIconFlutuante.style.marginBottom = '63px'
   }
   //---------------------------------------------
 
   let touchEvent = 'ontouchstart' in window ? 'touchstart' : 'click';
 
-  createGAWhatsapp(whatsappIconDesktop, 'Topo');
-  createGAWhatsapp(whatsappIconMobile, 'Topo');
-  createGAWhatsapp(whatsappIconFlutuante, 'Flutuante');
-  createGAWhatsapp(whatsappIconRodape, 'Rodapé');
+  if (whatsappIconDesktop) {
+    createGAWhatsapp(whatsappIconDesktop, 'Topo Desktop');
+  }
+
+  if (whatsappIconFlutuante) {
+    createGAWhatsapp(whatsappIconFlutuante, 'Flutuante');
+  }
+  // createGAWhatsapp(whatsappIconMobile, 'Topo');
+  // createGAWhatsapp(whatsappIconRodape, 'Rodapé');
 
   function createGAWhatsapp (icon, device) {
       icon.addEventListener(touchEvent, (_) => {
@@ -47,11 +52,11 @@
 
   // setTimeout(addBorderZDButton, 5000);
 
-  function dispositivoMovel() {
-    const windowWidth = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth;
-    return windowWidth < 1200;
-  }
+  // function dispositivoMovel() {
+  //   const windowWidth = window.innerWidth
+  //     || document.documentElement.clientWidth
+  //     || document.body.clientWidth;
+  //   return windowWidth < 1200;
+  // }
 
 })();
