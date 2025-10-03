@@ -3647,7 +3647,7 @@ body.qd-ssr-reloading div#ajaxBusy {
 }
 
 body {
-  padding-top: 154px;
+  /* padding-top: 154px; */
   background: #f9f9f9;
 }
 
@@ -3661,11 +3661,11 @@ body.home {
   }
 }
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   body:not(.home) {
     padding-top: 80px;
   }
-}
+} */
 
 body[data-qd-scroll-0="1"] {
   padding-top: 159px;
@@ -9474,7 +9474,7 @@ body.account
 
 @media (max-width: 767px) {
   .footer-qd-v1-security-stamps li {
-    width: auto;
+    /* width: auto; */
     max-width: 100px;
   }
 }

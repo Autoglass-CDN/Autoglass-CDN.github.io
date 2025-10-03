@@ -6,25 +6,29 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"></meta>
-    <meta http-equiv="pragma" content="no-cache"></meta>
     <meta name="robots" content="noindex, nofollow" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8"></meta>
+    <meta http-equiv="pragma" content="no-cache"></meta>
     <meta name="Abstract" content="Autoglass - O Maior Estoque de Vidros Automotivos da America Latina"></meta>
     <meta name="author" content="Autoglass Online"></meta>
     <meta name="copyright" content="Autoglass Online"></meta>
     <meta name="vtex-version" content="1.5.47.2456"></meta>
-    <vtex:contentPlaceHolder id="page_title" />
     <vtex:contentPlaceHolder id="SEO_link_alternate" />
     <vtex:contentPlaceHolder id="page_metaTag_description" />
-    <vtex:template id="hml--head-tags-servicos" />
+    <vtex:contentPlaceHolder id="page_title" />
+    <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
-    <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&amp;display=swap" rel="stylesheet"></link>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;700&amp;display=swap" ></link>
     <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
+    <vtex:template id="hml--head-tags-servicos" />
+    <vtex:template id="hml--header-styles" />
+    <vtex:template id="hml--servicos-formulario-styles" />
+    <vtex:template id="hml--footer-styles" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/servicos/servicos.css" type="text/css"></link>
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/styles/global/style.css" type="text/css"></link>
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/localization-modal.css"/>
     <style>
         :root {
             --url-background-banner: url("<vtex:contentPlaceHolder id="caminho_imagem_banner"/>");
@@ -100,7 +104,7 @@
                         <h2 class="avaliacoes__titulo">
                             <vtex:contentPlaceHolder id="avaliacoes_de_quem_ja_contratou" />
                         </h2>
-                        <vtex.cmc:prdRatingsComponent />
+                        <vtex.cmc:hmlRatingsComponent />
                     </section>
                 </section>
 
@@ -141,6 +145,10 @@
             </div>
         </div>
     </section>
+
+    <!-- hml- -body-tags-servicos -->
+    <vtex:template id="hml--body-tags-servicos" />
+    <!-- hml- -body-tags-servicos -->
 
     <!-- Footer -->
     <vtex:template id="hml--footer" />

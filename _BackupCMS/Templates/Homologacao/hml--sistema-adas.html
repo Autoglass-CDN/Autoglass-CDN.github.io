@@ -4,28 +4,15 @@
 	xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
-	<meta name="robots" content="noindex, nofollow" />
 	<vtex:metaTags />
+	<meta name="robots" content="noindex, nofollow" />
 	<vtex:contentPlaceHolder id="qd_head"/>
-	<vtex:template id="hml--sistema-adas-head-tags"/>
 	<link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
-    <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
-	<link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.qd-bootstrap-common.css"/>
-	<script>
-	document.addEventListener("DOMContentLoaded", function () {
-    const currentUrl = window.location.href;
-
-    const canonicalUrl = currentUrl.endsWith('/')
-        ? currentUrl.slice(0, -1)
-        : currentUrl;
-
-    const canonicalLink = document.createElement('link');
-    canonicalLink.rel = 'canonical';
-    canonicalLink.href = canonicalUrl;
-
-    document.head.appendChild(canonicalLink);
-	});
-    </script>
+	<link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
+	<vtex:template id="hml--sistema-adas-head-tags"/>
+	<vtex:template id="hml--header-institucional-styles"/>
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.qd-bootstrap-common.css" type="text/css" />
+	<vtex:template id="hml--footer-styles" />
 </head>
 
 <body class="institucional" data-qd-scroll-limit="200">
@@ -82,13 +69,33 @@
 				</div>
 				<!-- Institutional content -->
 			</main>
-            <script defer="" type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
 		</div>
-
-		<!-- Footer -->
-		<vtex:template id="hml--footer"/>
-		<!-- Footer -->
 	</div>
+
+	<!-- hml- -sistema-adas-body-tags -->
+	<vtex:template id="hml--sistema-adas-body-tags"/>
+	<!-- hml- -sistema-adas-body-tags -->
+
+	<!-- Footer -->
+	<vtex:template id="hml--footer"/>
+	<!-- Footer -->
+
+	<script defer="" type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
+
+	<script>
+		const currentUrl = window.location.href;
+
+		const canonicalUrl = currentUrl.endsWith('/')
+			? currentUrl.slice(0, -1)
+			: currentUrl;
+
+		const canonicalLink = document.createElement('link');
+		canonicalLink.rel = 'canonical';
+		canonicalLink.href = canonicalUrl;
+
+		document.head.appendChild(canonicalLink);
+    </script>
+	
 	<script>
 	// <![CDATA[
 		function load3rdParty() {
@@ -114,36 +121,29 @@
 	</script>
 
 	<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", function () {
 			$(window).on("load", function () {
 			$("#launcher").css("bottom", "0px");
-			});
 		});
 	</script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
 			const metaDescription = document.querySelector('meta[name="description"]');
 
 			if (metaDescription) {
 				metaDescription.setAttribute("content", "Sistema ADAS: entenda como essa tecnologia inteligente otimiza a segurança no trânsito e garanta a calibração perfeita com a Autoglass. Saiba mais!");
 			}
-		});
 	</script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
 			const metaLanguage = document.querySelector('meta[name="language"]');
 		
 			if (metaLanguage) {
 				metaLanguage.remove();
 			};
-		});
 	</script>
 
 	<script>
 	// <![CDATA[
-		document.addEventListener("DOMContentLoaded", function () {
 			const observer = new MutationObserver(() => {
 			document.querySelectorAll("title").forEach(titleTag => {
 				if (titleTag.innerText.trim() === "Institucional – Homologacao") {
@@ -154,16 +154,8 @@
 			});
 
 			observer.observe(document, { childList: true, subtree: true });
-		});
 	// ]]>
 	</script>
-
-	<script>
-		$(window).on("load", function () {
-			$("#launcher").css("bottom", "0px");
-		});
-	</script>
-
 	<!-- Facebook Pixel (no final) -->
 	<script>
 		window.fbq = window.fbq || function(){(fbq.callMethod? fbq.callMethod.apply(fbq,arguments):fbq.queue.push(arguments))};
@@ -176,6 +168,7 @@
 		<img height="1" width="1" src="https://www.facebook.com/tr?id=674711539752032&amp;ev=PageView&amp;noscript=1" />
 	<!-- ]]> -->
 	</noscript>
+
 </body>
 
 </html>

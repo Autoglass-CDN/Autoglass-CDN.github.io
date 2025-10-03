@@ -6,13 +6,18 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="robots" content="noindex, nofollow" />
-    <meta name="google-site-verification" content="G1c2bmZuW1grn41k5gP5P4FpwT3zfMpgCbQVHrIsEFU" />
     <vtex:metaTags />
-    <title><vtex.cmc:productPageTitle /></title>
+    <meta name="google-site-verification" content="G1c2bmZuW1grn41k5gP5P4FpwT3zfMpgCbQVHrIsEFU" />
+    <title>
+        <vtex.cmc:productPageTitle />
+    </title>
     <vtex:contentPlaceHolder id="qd_head" />
-    <vtex:template id="hml--head-tags" />
     <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
     <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
+    <vtex:template id="hml--head-tags" />
+    <vtex:template id="hml--header-styles" />
+    <vtex:template id="hml--smart-select-styles" />
+	<vtex:template id="hml--footer-styles" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/home.css" type="text/css"/>
     <style>
         .col-xs-9.col-xs-offset-3 {
@@ -295,13 +300,18 @@
             </div>
         </section>
 
-        <script src="https://autoglass-cdn.github.io/hml/js/home.js"></script>
     </main>
+
+    <!-- hml- -body-tags -->
+    <vtex:template id="hml--body-tags" />
+    <!-- hml- -body-tags -->
 
     <!-- Footer -->
     <vtex:template id="hml--footer" />
-    <vtex.cmc:prdGoogleMaps />
+    <vtex.cmc:hmlGoogleMaps />
     <!-- Footer -->
+
+    <script defer="" src="https://autoglass-cdn.github.io/hml/js/home.js"></script>
 </body>
 
 </html>
