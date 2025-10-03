@@ -7,28 +7,17 @@
     xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce"
 >
     <head>
-        <meta name="robots" content="noindex, nofollow" />
         <vtex:metaTags />
+        <meta name="robots" content="noindex, nofollow" />
         <title><vtex.cmc:productPageTitle /></title>
         <vtex:contentPlaceHolder id="qd_head" />
         <vtex:contentPlaceHolder id="SEO_link_alternate" />
-        <vtex:template id="hml--head-tags" />
         <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
         <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
+        <vtex:template id="hml--head-tags" />
+        <vtex:template id="hml--header-institucional-styles" />
+        <vtex:template id="hml--footer-styles" />
         <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.atendimento.css" type="text/css" />
-        <script>
-            const currentUrl = window.location.href;
-        
-            const canonicalUrl = currentUrl.endsWith('/')
-                ? currentUrl.slice(0, -1)
-                : currentUrl;
-        
-            const canonicalLink = document.createElement('link');
-            canonicalLink.rel = 'canonical';
-            canonicalLink.href = canonicalUrl;
-        
-            document.head.appendChild(canonicalLink);
-        </script>
     </head>
 
     <body class="institucional" data-qd-scroll-limit="200">
@@ -56,7 +45,7 @@
                         class="col-xs-12 col-sm-4 col-md-3 institucional-qd-v1-side-menu-wrap"
                     >
                         <div class="institucional-qd-v1-navigator">
-                            <vtex.cmc:prdInstitucionalMenuLateral />
+                            <vtex.cmc:hmlInstitucionalMenuLateral />
                         </div>
                     </aside>
                     <!-- Sidebar -->
@@ -109,12 +98,31 @@
                     </div>
                     <!-- Institutional content -->
                 </main>
-                <script type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
             </div>
-
-            <!-- Footer -->
-            <vtex:template id="hml--footer" />
-            <!-- Footer -->
         </div>
+
+        <!-- hml- -body-tags -->
+        <vtex:template id="hml--body-tags" />
+        <!-- hml- -body-tags -->
+
+        <!-- Footer -->
+        <vtex:template id="hml--footer" />
+        <!-- Footer -->
+
+        <script defer="" type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
+    
+        <script>
+            const currentUrl = window.location.href;
+        
+            const canonicalUrl = currentUrl.endsWith('/')
+                ? currentUrl.slice(0, -1)
+                : currentUrl;
+        
+            const canonicalLink = document.createElement('link');
+            canonicalLink.rel = 'canonical';
+            canonicalLink.href = canonicalUrl;
+        
+            document.head.appendChild(canonicalLink);
+        </script>
     </body>
 </html>

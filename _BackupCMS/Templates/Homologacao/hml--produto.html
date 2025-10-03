@@ -5,115 +5,132 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="robots" content="noindex, nofollow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow" />
   <vtex:metaTags />
-  <title><vtex.cmc:productPageTitle /></title>
-  <vtex.cmc:productRichSnippets showFacebook="1" paymentSystemId="125"/>
+  <vtex.cmc:productRichSnippets showFacebook="1"/>
+  <title>
+    <vtex.cmc:productPageTitle />
+  </title>
+  <script src="https://autoglass-cdn.github.io/hml/js/google-tag-manager.js" type="text/javascript"></script>
   <vtex:contentPlaceHolder id="qd_head" />
-  <vtex:template id="hml--detalhe-produto--head-tags" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/>
   <link rel="preconnect" href="https://code.jquery.com" crossorigin="anonymous"/>
   <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/></noscript>
   <link rel="preload" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://code.jquery.com/ui/1.9.0/themes/base/jquery-ui.css"/></noscript>
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/></noscript>
   <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
+  <vtex:template id="hml--detalhe-produto--head-tags" />
+  <vtex:template id="hml--header-styles" />
+  <vtex:template id="hml--busca-fipe-styles" />
+  <vtex:template id="hml--detalhe-produto--descricao-styles" />
+  <vtex:template id="hml--footer-styles" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/legacy/CSS.aut.far.product.css" type="text/css"/>
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/B2C-02-detalhe-produto.css" type="text/css"/>
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/cep.component.css" type="text/css"/>
-  <script defer="" src="/scripts/jquery.maskedinput-1.2.2.js" type="text/javascript"></script>
-  <script defer="" src="https://autoglass-cdn.github.io/hml/js/jquery-ui.datepicker.js" type="text/javascript"></script>
-  <script defer="" src="https://autoglass-cdn.github.io/hml/js/B2C-02-detalhe-produto.js" type="text/javascript"></script>
-  <script defer="" src="https://autoglass-cdn.github.io/hml/js/cep.component.js" type="text/javascript"></script>
-  <script defer="" src="https://autoglass-cdn.github.io/hml/js/verifica-compatibilidade.js" type="text/javascript"></script>
-  <script defer="" src="https://autoglass-cdn.github.io/hml/js/renderiza-thumbs.js" type="text/javascript"></script>
-  <script defer="" src="https://autoglass-cdn.github.io/hml/js/google-tag-manager.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="https://autoglass-cdn.github.io/hml/css/localization-modal.css"/>
   <style type="text/css">
     .mz-acessories .mz-acessories__prices .mz-prices__block,
     .mz-acessories .mz-acessories__prices .mz-acessories__prices--byfor {
       display: block !important;
     }
   </style>
-  <script>
-    //<![CDATA[
-    $(function () {
-        function adicionarPreload($div) {
-            const url = $div.attr("data-zoom-image");
-            if (url && !$("link[href='" + url + "']").length) {
-                $("<link>", {
-                    rel: "preload",
-                    as: "image",
-                    href: url,
-                    fetchpriority: "high"
-                }).appendTo("head");
-            }
-        }
-    
-        const observer = new MutationObserver(function(mutations, obs) {
-            const $div = $("#mainMediaContainer .zoom-wrapper").first();
-            if ($div.length) {
-                adicionarPreload($div);
-                obs.disconnect();
-            }
-        });
-
-        const mainContainer = document.getElementById("mainMediaContainer");
-        if (mainContainer) {
-            observer.observe(mainContainer, { childList: true, subtree: true });
-        }
-    });
-    //]]>
-  </script>
-  <script>
-        //Datalayer SocialShare
-    function handleSocialClick(event, method) {
-    dataLayer.push({
-        'event': 'share',
-        'method': method,
-        'content_type': skuJson.skus[0].image,
-        'item_id': skuJson.skus[0].sku,
-    });
+  <style type="text/css">
+    .cep-modal {
+      float: right;
+      margin-top: -4.5em;
+      margin-right: 25px;
+      font-size: 12px;
+      color: #333333;
     }
 
-    const socialMediaElements = {
-        'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
-        'twitter': '.product-qd-v1-social-share.desktop .twitter',
-        'mail': '.product-qd-v1-social-share.desktop .mail',
-        'facebook': '.product-qd-v1-social-share.desktop .facebook'
-    };
-
-    Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
-    const element = document.querySelector(selector);
-    element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
-    });
-
-
-    //Datalayer SocialShare
-    function ButtoWhatsappClick(event, position) {
-    dataLayer.push({
-      'event': 'whatsapp',
-      'position': position
-    });
+    .cep-modal .header-qd-v1-valid-prices-local {
+      margin-top: -10px;
+      font-weight: 600;
     }
 
-    const whatsappElements = {
-        '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
-        '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
-        '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
-        '.link-whatsapp-texto.link-whatsapp': 'footer'
-    };
+    .cep-modal .header-qd-v1-valid-prices-local button {
+      color: #2d4f9e;
+      text-decoration: underline;
+      background: #fff;
+      border: none;
+    }
+  </style>
 
-    Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
-        const element = document.querySelector(selector);
-        if (element) {
-        element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
-        }
-        });
-  </script>
+
+  <style type="text/css">
+    /* The Modal (background) */
+    .modal {
+      display: none;
+      /* Hidden by default */
+      position: fixed;
+      /* Stay in place */
+      width: 100%;
+      /* Full width */
+      height: 100%;
+      /* Full height */
+      overflow: auto;
+      /* Enable scroll if needed */
+      background-color: rgb(0, 0, 0);
+      /* Fallback color */
+      background-color: rgba(0, 0, 0, 0.4);
+      /* Black w/ opacity */
+    }
+
+    .modal-close {
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    /* Modal Header */
+    .modal-header h2 {
+      color: #757575;
+      font-size: 26px;
+      font-weight: 400;
+    }
+
+    /* Modal Body */
+    .modal-body p {
+      color: #333333;
+      margin: 10px auto;
+    }
+
+
+
+    /* Modal Content */
+    .modal-content,
+    .header-qd-v1-location-modal:not('.modal-content') {
+      max-width: 700px;
+      width: 80%;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      animation-name: animatetop;
+      animation-duration: 0.4s;
+
+      padding: 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 9997;
+      background-color: #FFF;
+      border-radius: 4px;
+    }
+
+
+    /* Add Animation */
+    @keyframes animatetop {
+      from {
+        top: -300px;
+        opacity: 0
+      }
+
+      to {
+        top: 0;
+        opacity: 1
+      }
+    }
+  </style>
 </head>
 
 <body class="produto">
@@ -121,32 +138,7 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVLJKFR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <vtex.cmc:productRichSnippets showGoogle="1" />
-  <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        const offerDiv = document.querySelector('div[itemtype="http://schema.org/Offer"]');
-
-        if (offerDiv) {
-            let priceCurrencyMeta = offerDiv.querySelector('meta[itemprop="priceCurrency"]');
-            if (!priceCurrencyMeta) {
-                priceCurrencyMeta = document.createElement("meta");
-                priceCurrencyMeta.setAttribute("itemprop", "priceCurrency");
-                priceCurrencyMeta.setAttribute("content", "BRL");
-                offerDiv.appendChild(priceCurrencyMeta);
-            }
-
-            let priceMeta = offerDiv.querySelector('meta[itemprop="price"]');
-            if (!priceMeta) {
-                priceMeta = document.createElement("meta");
-                priceMeta.setAttribute("itemprop", "price");
-                priceMeta.setAttribute("content", "0.00");
-                offerDiv.appendChild(priceMeta);
-            }
-        }
-        });
-    </script>
-  <!-- hmlCustomContent -->
-  <vtex.cmc:hmlCustomContent />
+  <vtex.cmc:productRichSnippets showFacebook="1"/>
   <!-- Header -->
   <vtex:template id="hml--header" />
   <!-- Header -->
@@ -228,7 +220,7 @@
               <figure class="product-qd-v1-image">
                 <section class="product-qd-v1-image-wrapper">
                   <!-- Social Sharing -->
-                  <vtex.cmc:devSocialShare />
+                  <vtex.cmc:hmlSocialShare />
                   <!-- Selos de destaque -->
                   <section class="product-qd-v1-stamps">
                     <section class="product-qd-v1-stamps-highlight-discount">
@@ -455,7 +447,7 @@
         <!-- Informações principais do produto -->
 
         <!-- Product Test Video Galery -->
-        <!-- <vtex.cmc:galeriaVideoDev /> -->
+        <!-- <vtex.cmc:galeriaVideoHml /> -->
         <!-- Product Test Video Galery -->
       </section>
     </section>
@@ -532,7 +524,6 @@
         </section>
       </section>
     </section>
-    <script defer="" src="https://autoglass-cdn.github.io/hml/js/detalhe-produto.js" type="text/javascript"></script>
     <section class="common-qd-v1-structure">
       <section class="container">
         <section>
@@ -585,101 +576,6 @@
     </section>
   </main>
 
-  <style type="text/css">
-    .cep-modal {
-      float: right;
-      margin-top: -4.5em;
-      margin-right: 25px;
-      font-size: 12px;
-      color: #333333;
-    }
-
-    .cep-modal .header-qd-v1-valid-prices-local {
-      margin-top: -10px;
-      font-weight: 600;
-    }
-
-    .cep-modal .header-qd-v1-valid-prices-local button {
-      color: #2d4f9e;
-      text-decoration: underline;
-      background: #fff;
-      border: none;
-    }
-  </style>
-
-
-  <style type="text/css">
-    /* The Modal (background) */
-    .modal {
-      display: none;
-      /* Hidden by default */
-      position: fixed;
-      /* Stay in place */
-      width: 100%;
-      /* Full width */
-      height: 100%;
-      /* Full height */
-      overflow: auto;
-      /* Enable scroll if needed */
-      background-color: rgb(0, 0, 0);
-      /* Fallback color */
-      background-color: rgba(0, 0, 0, 0.4);
-      /* Black w/ opacity */
-    }
-
-    .modal-close {
-      position: relative;
-      padding-bottom: 10px;
-    }
-
-    /* Modal Header */
-    .modal-header h2 {
-      color: #757575;
-      font-size: 26px;
-      font-weight: 400;
-    }
-
-    /* Modal Body */
-    .modal-body p {
-      color: #333333;
-      margin: 10px auto;
-    }
-
-
-
-    /* Modal Content */
-    .modal-content,
-    .header-qd-v1-location-modal:not('.modal-content') {
-      max-width: 700px;
-      width: 80%;
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      animation-name: animatetop;
-      animation-duration: 0.4s;
-
-      padding: 20px;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 9997;
-      background-color: #FFF;
-      border-radius: 4px;
-    }
-
-
-    /* Add Animation */
-    @keyframes animatetop {
-      from {
-        top: -300px;
-        opacity: 0
-      }
-
-      to {
-        top: 0;
-        opacity: 1
-      }
-    }
-  </style>
-
   <div id="myModal" class="modal">
     <!-- Modal content -->
     <section class="modal-content">
@@ -699,11 +595,6 @@
   <section class="mz-modal-overlay"></section>
   <!-- // Modal Overlay -->
 
-  <!-- Footer -->
-  <vtex:template id="hml--footer" />
-  <!-- Footer -->
-  <!-- <vtex.cmc:hmlGoogleMaps /> -->
-
   <div id="modalZoom" class="modal-zoom">
     <span class="close-zoom">&#10005;</span>
     <div class="zoom-container">
@@ -719,6 +610,122 @@
         </div>
     </div>
   </div>
+
+  <!-- hml- -detalhe-produto- -body-tags -->
+  <vtex:template id="hml--detalhe-produto--body-tags" />
+  <!-- hml- -detalhe-produto- -body-tags -->
+
+  <!-- Footer -->
+  <vtex:template id="hml--footer" />
+  <!-- Footer -->
+  <!-- <vtex.cmc:hmlGoogleMaps /> -->
+
+  <script defer="" src="/scripts/jquery.maskedinput-1.2.2.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/pinch-zoom-js@2.3.4/dist/pinch-zoom.umd.min.js"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/renderiza-thumbs.js" type="text/javascript"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/jquery-ui.datepicker.js" type="text/javascript"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/B2C-02-detalhe-produto.js" type="text/javascript"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/cep.component.js" type="text/javascript"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/busca-fipe.js" type="text/javascript"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/verifica-compatibilidade.js" type="text/javascript"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/hml/js/detalhe-produto.js" type="text/javascript"></script>
+  <script>
+    //<![CDATA[
+    $(function () {
+        function adicionarPreload($div) {
+            const url = $div.attr("data-zoom-image");
+            if (url && !$("link[href='" + url + "']").length) {
+                $("<link>", {
+                    rel: "preload",
+                    as: "image",
+                    href: url,
+                    fetchpriority: "high"
+                }).appendTo("head");
+            }
+        }
+    
+        const observer = new MutationObserver(function(mutations, obs) {
+            const $div = $("#mainMediaContainer .zoom-wrapper").first();
+            if ($div.length) {
+                adicionarPreload($div);
+                obs.disconnect();
+            }
+        });
+
+        const mainContainer = document.getElementById("mainMediaContainer");
+        if (mainContainer) {
+            observer.observe(mainContainer, { childList: true, subtree: true });
+        }
+    });
+    //]]>
+  </script>
+  <script>
+        const offerDiv = document.querySelector('div[itemtype="http://schema.org/Offer"]');
+
+        if (offerDiv) {
+            let priceCurrencyMeta = offerDiv.querySelector('meta[itemprop="priceCurrency"]');
+            if (!priceCurrencyMeta) {
+                priceCurrencyMeta = document.createElement("meta");
+                priceCurrencyMeta.setAttribute("itemprop", "priceCurrency");
+                priceCurrencyMeta.setAttribute("content", "BRL");
+                offerDiv.appendChild(priceCurrencyMeta);
+            }
+
+            let priceMeta = offerDiv.querySelector('meta[itemprop="price"]');
+            if (!priceMeta) {
+                priceMeta = document.createElement("meta");
+                priceMeta.setAttribute("itemprop", "price");
+                priceMeta.setAttribute("content", "0.00");
+                offerDiv.appendChild(priceMeta);
+            }
+        }
+    </script>
+    <script>
+        //Datalayer SocialShare
+      function handleSocialClick(event, method) {
+      dataLayer.push({
+          'event': 'share',
+          'method': method,
+          'content_type': skuJson.skus[0].image,
+          'item_id': skuJson.skus[0].sku,
+      });
+      }
+
+      const socialMediaElements = {
+          'whatsapp': '.product-qd-v1-social-share.desktop .whatsapp',
+          'twitter': '.product-qd-v1-social-share.desktop .twitter',
+          'mail': '.product-qd-v1-social-share.desktop .mail',
+          'facebook': '.product-qd-v1-social-share.desktop .facebook'
+      };
+
+      Object.entries(socialMediaElements).forEach(([socialMediaType, selector]) => {
+      const element = document.querySelector(selector);
+      element.addEventListener('click', (event) => handleSocialClick(event, socialMediaType));
+      });
+
+
+      //Datalayer SocialShare
+      function ButtoWhatsappClick(event, position) {
+      dataLayer.push({
+        'event': 'whatsapp',
+        'position': position
+      });
+      }
+
+      const whatsappElements = {
+          '.link-whatsapp-texto .link-whatsapp-conteudo-sem-numero': 'topo',
+          '.link-whatsapp-texto.gtm-whatsapp-botao-rodape': 'widget',
+          '.link-whatsapp-texto.botao-compre-whatsapp': 'compre-whatsapp',
+          '.link-whatsapp-texto.link-whatsapp': 'footer'
+      };
+
+      Object.entries(whatsappElements).forEach(([selector, buttonType]) => {
+          const element = document.querySelector(selector);
+          if (element) {
+          element.addEventListener('click', (event) => ButtoWhatsappClick(event, buttonType));
+          }
+          });
+    </script>
 </body>
 
 </html>
