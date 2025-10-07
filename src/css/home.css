@@ -143,9 +143,10 @@ html {
   }
   .banners .banners-content.desktop .box-banner {
     width: 100%;
+    height: 100%;
   }
   .banners .banners-content.desktop .box-banner img {
-    object-fit: fill;
+    height: 100%;
   }
 }
 
@@ -284,7 +285,6 @@ html {
 
 .banners-section .banners-content img {
   width: 100%;
-  object-fit: cover;
 }
 
 .banners-section .banners-bars {
