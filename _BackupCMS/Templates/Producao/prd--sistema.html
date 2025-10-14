@@ -5,8 +5,25 @@
 	<vtex:metaTags />
 	<title><vtex.cmc:productPageTitle /></title>
 	<vtex:contentPlaceHolder id="qd_head" />
-	<vtex:template id="prd--head-tags" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
+	<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/>
+	<link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/" crossorigin="anonymous" />
+	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+	<link rel="dns-prefetch" href="//autoglass-cdn.github.io" />
+	<link rel="dns-prefetch" href="//secure.adnxs.com" />
+	<link rel="dns-prefetch" href="//static.zdassets.com" />
+	<link rel="dns-prefetch" href="//js.usemessages.com" />
+	<link rel="dns-prefetch" href="//js.hubspot.com" />
+	<link rel="dns-prefetch" href="//js.hs-analytics.net" />
+	<link rel="dns-prefetch" href="//js.hsadspixel.net" />
+	<link rel="dns-prefetch" href="//js.hs-banner.com" />
+	<vtex:template id="prd--head-tags" />
+	<vtex:template id="prd--header-styles" />
+	<vtex:template id="prd--busca-fipe-styles" />
+	<vtex:template id="prd--footer-styles" />
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.system.css" type="text/css" />
 	<style>
 		@media (max-width: 500px) {
@@ -101,9 +118,15 @@
 		</div>
 	</main>
 
+	<!-- prd- -body-tags -->
+	<vtex:template id="prd--body-tags" />
+	<!-- prd- -body-tags -->
+
 	<!-- Footer -->
 	<vtex:template id="prd--footer" />
     <!-- Footer -->
     <vtex.cmc:prdGoogleMaps />
+
+	<script defer="" src="https://autoglass-cdn.github.io/arquivos/js/busca-fipe.js" type="text/javascript"></script>
 </body>
 </html>

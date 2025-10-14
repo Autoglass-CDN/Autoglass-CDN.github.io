@@ -15,12 +15,25 @@
     <meta http-equiv="pragma" content="no-cache"></meta>
     <vtex:contentPlaceHolder id="SEO_link_alternate" />
     <vtex:contentPlaceHolder id="titulo_pagina" />
-    <vtex:template id="prd--head-tags" />
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&amp;display=swap" rel="stylesheet"></link>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/>
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/" crossorigin="anonymous" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="//autoglass-cdn.github.io" />
+    <link rel="dns-prefetch" href="//secure.adnxs.com" />
+    <link rel="dns-prefetch" href="//static.zdassets.com" />
+    <link rel="dns-prefetch" href="//js.usemessages.com" />
+    <link rel="dns-prefetch" href="//js.hubspot.com" />
+    <link rel="dns-prefetch" href="//js.hs-analytics.net" />
+    <link rel="dns-prefetch" href="//js.hsadspixel.net" />
+    <link rel="dns-prefetch" href="//js.hs-banner.com" />
     <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
+    <vtex:template id="prd--head-tags" />
+    <vtex:template id="prd--header-styles" />
+    <vtex:template id="prd--footer-styles" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/styles/global/style.css" type="text/css" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/transito-mais-livre.css" type="text/css" />
 </head>
@@ -171,12 +184,15 @@
         </section>
     </main>
 
-    <!-- Importação dos scpripts será feita via CDN do Github -->
-    <script src="https://autoglass-cdn.github.io/arquivos/js/transito-mais-livre.js"></script>
+    <!-- prd- -body-tags -->
+    <vtex:template id="prd--body-tags" />
+	<!-- prd- -body-tags -->
 
     <!-- Footer -->
     <vtex:template id="prd--footer" />
     <!-- Footer -->
+
+    <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/transito-mais-livre.js"></script>
 
 </body>
 

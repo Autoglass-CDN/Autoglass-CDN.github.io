@@ -1,11 +1,11 @@
 <!-- dev- -home -->
 <!DOCTYPE html>
-<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
-  xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="robots" content="noindex, nofollow" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <vtex:metaTags />
   <meta name="facebook-domain-verification" content="qt4yjekjl3va8p2ub6pgxub2jrggp9" />
   <meta name="google-site-verification" content="jFSa3nOK7_eVPPm0zk3bZUd1vTYnUb_H2okvxMF7aP8" />
@@ -13,20 +13,26 @@
   <title>
     <vtex.cmc:productPageTitle />
   </title>
-  <script src="https://autoglass-cdn.github.io/src/js/google-tag-manager.js" type="text/javascript"></script>
+  <script defer="" src="https://autoglass-cdn.github.io/src/js/google-tag-manager.js" type="text/javascript"></script>
   <vtex:contentPlaceHolder id="qd_head" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
   <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
   <link rel="preconnect" href="https://autoglass.vteximg.com.br" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
   <link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin="anonymous" />
-  <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/" crossorigin="anonymous" />
-	<link rel="preconnect" href="https://reviews.konfidency.com.br/" crossorigin="anonymous" />
+  <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+	<link rel="dns-prefetch" href="//autoglass-cdn.github.io" />
+  <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com" />
+  <link rel="dns-prefetch" href="//reviews.konfidency.com.br" />
   <link rel="dns-prefetch" href="//js.usemessages.com" />
   <link rel="dns-prefetch" href="//js.hubspot.com" />
   <link rel="dns-prefetch" href="//js.hs-analytics.net" />
   <link rel="dns-prefetch" href="//js.hsadspixel.net" />
   <link rel="dns-prefetch" href="//js.hs-banner.com" />
-  <link rel="preload" as="image" href="https://autoglass.vteximg.com.br/arquivos/ids/304383/b2c_mobile_primeira_compra_1.webp?v=638701216627130000" />
-  <link rel="preload" href="https://autoglass.vteximg.com.br/arquivos/ids/304405/b2c_mobile_primeira_compra_1 1.webp?v=638708543777100000" as="image" type="image/webp" />
+  <link rel="preload" as="image" href="https://autoglass.vteximg.com.br/arquivos/ids/304383/b2c_mobile_primeira_compra_1.webp?v=638701216627130000" type="image/webp" />
   <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
   <link rel="stylesheet" href="/arquivos/locationFetcher.css" type="text/css" />
   <vtex:template id="dev--home--head-tags" />
@@ -93,13 +99,13 @@
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
 
-  <!-- Header -->
-  <vtex:template id="dev--header" />
-  <!-- Header -->
-
   <section id="loading-spinner" style="display: none;">
     <span class="spinner"></span>
   </section>
+
+  <!-- Header -->
+  <vtex:template id="dev--header" />
+  <!-- Header -->
   
   <main>
     <div class="secao-busca">
@@ -116,10 +122,10 @@
               </svg>
             </button>
             <section class="banners-content desktop">
-                <vtex:contentPlaceHolder id="slider_full_para_desktop" />
+              <vtex:contentPlaceHolder id="slider_full_para_desktop" />
             </section>
             <section class="banners-content mobile">
-                <vtex:contentPlaceHolder id="slider_full_para_mobile" />
+              <vtex:contentPlaceHolder id="slider_full_para_mobile" />
             </section>
             <button tabindex="-1" id="banner-next" data-type="next" type="button" style="right: 0;">
               <svg xmlns="http://www.w3.org/2000/svg" width="17.233" height="32" viewBox="0 0 17.233 32">
@@ -277,7 +283,7 @@
             </nav>
           </section>
         </section>
-    </div>
+      </div>
 
     <section class="benefits-section">
       <h1 class="titulo-pagina-home">Autoglass Online - A maior loja virtual de vidros e autopeças da América Latina

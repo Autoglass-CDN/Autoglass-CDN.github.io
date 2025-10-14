@@ -1,24 +1,38 @@
 <!DOCTYPE html>
-<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common"
-      xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
-<head>
-  <meta charset="UTF-8" />
-  <vtex:contentPlaceHolder id="qd_head_tag" />
-  <vtex:template id="prd--busca--head-tags" />
-  <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
-  <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/policies/header.css" type="text/css" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/policies/secao-pesquisa.css" type="text/css" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/topo.css" type="text/css" />
-  <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/google-tag-manager.js" type="text/javascript"></script>
-</head>
-<body>
-  <vtex:template id="prd--header" />
-  <vtex:template id="prd--busca-fipe" />
-  <!-- Container onde a Beon injetará os resultados -->
-  <div id="search-container" style="min-height: 100px;"></div>
-
-  <vtex:template id="prd--footer" />
-
-</body>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml" xmlns:vtex="http://www.vtex.com.br/2009/vtex-common" xmlns:vtex.cmc="http://www.vtex.com.br/2009/vtex-commerce">
+  <head>
+    <meta charset="UTF-8" />
+    <script defer="" src="https://autoglass-cdn.github.io/hml/js/google-tag-manager.js" type="text/javascript"></script>
+    <vtex:contentPlaceHolder id="qd_head_tag" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+	  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/" crossorigin="anonymous" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	  <link rel="dns-prefetch" href="//fonts.gstatic.com" />
+	  <link rel="dns-prefetch" href="//autoglass-cdn.github.io" />
+    <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+    <link rel="dns-prefetch" href="//reviews.konfidency.com.br" />
+    <link rel="dns-prefetch" href="//secure.adnxs.com" />
+    <link rel="dns-prefetch" href="//static.zdassets.com" />
+    <link rel="dns-prefetch" href="//js.usemessages.com" />
+    <link rel="dns-prefetch" href="//js.hubspot.com" />
+    <link rel="dns-prefetch" href="//js.hs-analytics.net" />
+    <link rel="dns-prefetch" href="//js.hsadspixel.net" />
+    <link rel="dns-prefetch" href="//js.hs-banner.com" />
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/policies/header.css" type="text/css" />
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/policies/secao-pesquisa.css" type="text/css" />
+    <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/topo.css" type="text/css" />
+    <vtex:template id="prd--footer-styles" />
+  </head>
+  <body>
+    <vtex:template id="prd--header" />
+    <vtex:template id="prd--busca-fipe" />
+    <!-- Container onde a Beon injetará os resultados -->
+    <div id="search-container" style="min-height: 100px;"></div>
+    <vtex:template id="prd--busca--body-tags" />
+    <vtex:template id="prd--footer" />
+  </body>
 </html>
