@@ -5,13 +5,31 @@
 
 <head>
     <meta charset="UTF-8" />
-    <meta name="google-site-verification" content="G1c2bmZuW1grn41k5gP5P4FpwT3zfMpgCbQVHrIsEFU" />
     <vtex:metaTags />
+    <meta name="google-site-verification" content="G1c2bmZuW1grn41k5gP5P4FpwT3zfMpgCbQVHrIsEFU" />
     <title><vtex.cmc:productPageTitle /></title>
     <vtex:contentPlaceHolder id="qd_head" />
-    <vtex:template id="prd--head-tags" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
     <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://reviews.konfidency.com.br/" crossorigin="anonymous" />
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+	<link rel="dns-prefetch" href="//autoglass-cdn.github.io" />
+    <link rel="dns-prefetch" href="//secure.adnxs.com" />
+    <link rel="dns-prefetch" href="//static.zdassets.com" />
+    <link rel="dns-prefetch" href="//js.usemessages.com" />
+    <link rel="dns-prefetch" href="//js.hubspot.com" />
+    <link rel="dns-prefetch" href="//js.hs-analytics.net" />
+    <link rel="dns-prefetch" href="//js.hsadspixel.net" />
+    <link rel="dns-prefetch" href="//js.hs-banner.com" />
     <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico" />
+    <vtex:template id="prd--head-tags" />
+    <vtex:template id="prd--header-styles" />
+    <vtex:template id="prd--smart-select-styles" />
+	<vtex:template id="prd--footer-styles" />
     <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/home.css" type="text/css"/>
     <style>
         .col-xs-9.col-xs-offset-3 {
@@ -294,13 +312,18 @@
             </div>
         </section>
 
-        <script src="https://autoglass-cdn.github.io/arquivos/js/home.js"></script>
     </main>
+
+    <!-- prd- -body-tags -->
+    <vtex:template id="prd--body-tags" />
+    <!-- prd- -body-tags -->
 
     <!-- Footer -->
     <vtex:template id="prd--footer" />
     <vtex.cmc:prdGoogleMaps />
     <!-- Footer -->
+
+    <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/home.js"></script>
 </body>
 
 </html>

@@ -6,25 +6,25 @@
 <head>
 	<vtex:metaTags />
 	<vtex:contentPlaceHolder id="qd_head"/>
-	<vtex:template id="prd--sistema-adas-head-tags"/>
+	<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="anonymous" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
 	<link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
-    <link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
-	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.qd-bootstrap-common.css"/>
-	<script>
-	document.addEventListener("DOMContentLoaded", function () {
-    const currentUrl = window.location.href;
-
-    const canonicalUrl = currentUrl.endsWith('/')
-        ? currentUrl.slice(0, -1)
-        : currentUrl;
-
-    const canonicalLink = document.createElement('link');
-    canonicalLink.rel = 'canonical';
-    canonicalLink.href = canonicalUrl;
-
-    document.head.appendChild(canonicalLink);
-	});
-    </script>
+	<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/>
+	<link rel="preconnect" href="https://maxcdn.bootstrapcdn.com/" crossorigin="anonymous" />
+    <link rel="preconnect" href="https://reviews.konfidency.com.br/" crossorigin="anonymous" />
+	<link rel="dns-prefetch" href="//fonts.googleapis.com" />
+	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
+	<link rel="dns-prefetch" href="//autoglass-cdn.github.io" />
+	<link rel="dns-prefetch" href="//js.usemessages.com" />
+	<link rel="dns-prefetch" href="//js.hubspot.com" />
+	<link rel="dns-prefetch" href="//js.hs-analytics.net" />
+	<link rel="dns-prefetch" href="//js.hsadspixel.net" />
+	<link rel="dns-prefetch" href="//js.hs-banner.com" />
+	<link rel="shortcut icon" href="/arquivos/autoglass-favicon.ico"/>
+	<vtex:template id="prd--sistema-adas-head-tags"/>
+	<vtex:template id="prd--header-institucional-styles"/>
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.qd-bootstrap-common.css" type="text/css" />
+	<vtex:template id="prd--footer-styles" />
 </head>
 
 <body class="institucional" data-qd-scroll-limit="200">
@@ -63,13 +63,33 @@
 				</div>
 				<!-- Institutional content -->
 			</main>
-			<script defer="" type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
 		</div>
-
-		<!-- Footer -->
-		<vtex:template id="prd--footer"/>
-		<!-- Footer -->
 	</div>
+
+	<!-- prd- -sistema-adas-body-tags -->
+	<vtex:template id="prd--sistema-adas-body-tags"/>
+	<!-- prd- -sistema-adas-body-tags -->
+
+	<!-- Footer -->
+	<vtex:template id="prd--footer"/>
+	<!-- Footer -->
+
+	<script defer="" type="text/javascript" src="/arquivos/removZIndexModalBackDrop.js"></script>
+
+	<script>
+		const currentUrl = window.location.href;
+
+		const canonicalUrl = currentUrl.endsWith('/')
+			? currentUrl.slice(0, -1)
+			: currentUrl;
+
+		const canonicalLink = document.createElement('link');
+		canonicalLink.rel = 'canonical';
+		canonicalLink.href = canonicalUrl;
+
+		document.head.appendChild(canonicalLink);
+    </script>
+	
 	<script>
 	// <![CDATA[
 		function load3rdParty() {
@@ -95,36 +115,29 @@
 	</script>
 
 	<script type="text/javascript">
-		document.addEventListener("DOMContentLoaded", function () {
 			$(window).on("load", function () {
 			$("#launcher").css("bottom", "0px");
-			});
 		});
 	</script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
 			const metaDescription = document.querySelector('meta[name="description"]');
 
 			if (metaDescription) {
 				metaDescription.setAttribute("content", "Sistema ADAS: entenda como essa tecnologia inteligente otimiza a segurança no trânsito e garanta a calibração perfeita com a Autoglass. Saiba mais!");
 			}
-		});
 	</script>
 
 	<script>
-		document.addEventListener("DOMContentLoaded", function () {
 			const metaLanguage = document.querySelector('meta[name="language"]');
 		
 			if (metaLanguage) {
 				metaLanguage.remove();
 			};
-		});
 	</script>
 
 	<script>
 	// <![CDATA[
-		document.addEventListener("DOMContentLoaded", function () {
 			const observer = new MutationObserver(() => {
 			document.querySelectorAll("title").forEach(titleTag => {
 				if (titleTag.innerText.trim() === "Institucional – Homologacao") {
@@ -135,16 +148,8 @@
 			});
 
 			observer.observe(document, { childList: true, subtree: true });
-		});
 	// ]]>
 	</script>
-
-	<script>
-		$(window).on("load", function () {
-			$("#launcher").css("bottom", "0px");
-		});
-	</script>
-
 	<!-- Facebook Pixel (no final) -->
 	<script>
 		window.fbq = window.fbq || function(){(fbq.callMethod? fbq.callMethod.apply(fbq,arguments):fbq.queue.push(arguments))};
@@ -152,6 +157,7 @@
 		fbq('init', '674711539752032');
 		fbq('track', 'PageView');
 	</script>
+
 	<script>
 		(function(c,l,a,r,i,t,y){
 			c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
@@ -159,11 +165,13 @@
 			y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
 		})(window, document, "clarity", "script", "dr3d6dnzku");
     </script>
+	
 	<noscript>
 	<!-- <![CDATA[ -->
 		<img height="1" width="1" src="https://www.facebook.com/tr?id=674711539752032&amp;ev=PageView&amp;noscript=1" />
 	<!-- ]]> -->
 	</noscript>
+
 </body>
 
 </html>

@@ -3647,7 +3647,6 @@ body.qd-ssr-reloading div#ajaxBusy {
 }
 
 body {
-  padding-top: 154px;
   background: #f9f9f9;
 }
 
@@ -3658,12 +3657,6 @@ body.home {
 @media (max-width: 1199px) {
   body.home {
     padding-top: 75px;
-  }
-}
-
-@media (max-width: 991px) {
-  body:not(.home) {
-    padding-top: 80px;
   }
 }
 
@@ -9474,7 +9467,6 @@ body.account
 
 @media (max-width: 767px) {
   .footer-qd-v1-security-stamps li {
-    width: auto;
     max-width: 100px;
   }
 }

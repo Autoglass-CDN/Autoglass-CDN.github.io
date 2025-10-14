@@ -476,10 +476,6 @@ body {
   background: #ffffff;
 }
 
-body.home {
-  padding-top: 130px;
-}
-
 body .box-banner a {
   cursor: initial;
 }
