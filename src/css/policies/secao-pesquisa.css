@@ -8,13 +8,17 @@
 
 body.departamento .tab-container,
 body.categoria .tab-container,
-body.produto .tab-container {
+body.produto .tab-container,
+body.busca .tab-container,
+body.busca-beonly .tab-container {
   margin-top: 0;
 }
 
 @media screen and (min-width: 1025px) and (max-width: 1366px) {
   body.departamento .tab-container,
-  body.categoria .tab-container {
+  body.categoria .tab-container,
+  body.busca .tab-container,
+  body.busca-beonly .tab-container {
     margin: 1.5% 1% 1% 13.5%;
   }
   body.produto .tab-container {
@@ -83,13 +87,17 @@ body.produto .tab-container {
 
   body.produto .l-container .c-busca .menu-secao-pesquisa,
   body.departamento .l-container .c-busca .menu-secao-pesquisa,
-  body.categoria .l-container .c-busca .menu-secao-pesquisa {
+  body.categoria .l-container .c-busca .menu-secao-pesquisa,
+  body.busca .l-container .c-busca .menu-secao-pesquisa,
+  body.busca-beonly .l-container .c-busca .menu-secao-pesquisa {
     top: 13%;
   }
   
   body.departamento .l-container .c-busca .menu-secao-pesquisa,
   body.categoria .l-container .c-busca .menu-secao-pesquisa,
-  body.produto .l-container .c-busca .menu-secao-pesquisa {
+  body.produto .l-container .c-busca .menu-secao-pesquisa,
+  body.busca .l-container .c-busca .menu-secao-pesquisa,
+  body.busca-beonly .l-container .c-busca .menu-secao-pesquisa {
     padding-left: 15.5%;
   }
  

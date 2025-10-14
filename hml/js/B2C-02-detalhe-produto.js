@@ -108,11 +108,13 @@ $(function () {//
 		$("#txtCep").after('<span class="ttp"></span>');
 	}, 500);
 
+	if (window.vtxctx && vtxctx.categoryName) {
 	$('#similars h2').after(`<p class="descricao-rollout">Confira opções de <strong>${vtxctx.categoryName.toLowerCase()
 		}</strong> para este mesmo veículo ${$('.value-field.Compatibilidade-Modelo').length ? `(<strong>${$('.value-field.Compatibilidade-Modelo').html()
 			}</strong>)` : $('.value-field.Veiculo').length ? `(<strong>${$('.value-field.Veiculo').html()
 				}</strong>)` : ``}</p>`);
-
+	}
+	
 	$('#sugestoes h2').after(
 		`<p class="descricao-rollout">
 			Aproveite e confira outros produtos
