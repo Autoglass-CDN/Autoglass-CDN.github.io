@@ -151,8 +151,10 @@ body.institucional.quem-somos
   margin-bottom: 5px;
 }
 .attendance-qd-v1-contact h3 {
-  font-size: 14px;
+  font-size: 26px;
   font-weight: 700;
+  padding: 1% 0 0.5%;
+  color: #2d4f9e;
 }
 .attendance-qd-v1-contact p {
   color: #757575;
