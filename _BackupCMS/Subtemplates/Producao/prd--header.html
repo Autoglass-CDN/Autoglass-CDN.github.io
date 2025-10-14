@@ -1,11 +1,4 @@
 <!-- prd- -header -->
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/topo.css"/>
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/modal-login.css"/>
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/localization-modal.css"/>
-<link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/policies/secao-pesquisa.css"/>
-
-<script defer="" src="https://autoglass-cdn.github.io/arquivos/js/policies/header.js"></script>
-
 <div class="topo">
     <div class="container">
         <div class="geo-picker">
@@ -1255,109 +1248,7 @@
     </button>
 </div>
 
-<script defer="" type="text/javascript" src="https://autoglass-cdn.github.io/arquivos/js/topo.js"></script>
-
 <vtex.cmc:prdGoogleMaps />
-
-<style type="text/css">
-    .modal .titulo {
-        font-size: 2em;
-    }
-
-    /* The Modal (background) */
-    #saindo.modal {
-        display: none;
-        /* Hidden by default */
-        position: fixed;
-        /* Stay in place */
-        width: 100%;
-        /* Full width */
-        height: 100%;
-        /* Full height */
-        overflow: auto;
-        /* Enable scroll if needed */
-        background-color: rgb(0, 0, 0);
-        /* Fallback color */
-        background-color: rgba(0, 0, 0, 0.7);
-        /* Black w/ opacity */
-        z-index: 1000000;
-    }
-
-    #saindo .modal-close {
-        position: relative;
-        padding-bottom: 10px;
-    }
-
-    /* Modal Header */
-    #saindo .modal-header h2 {
-        color: #757575;
-        font-size: 26px;
-        font-weight: 400;
-    }
-
-    #saindo .modal-header {
-        border: 0;
-        text-align: center;
-    }
-
-    /* Modal Body */
-    #saindo .modal-body p {
-        color: #333333;
-        margin: 10px auto;
-    }
-
-    #saindo .modal-body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-
-
-    /* Modal Content */
-    #saindo .modal-content {
-        max-width: 700px;
-        width: 80%;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        animation-name: animatetop;
-        animation-duration: 0.4s;
-
-        padding: 20px;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 9997;
-        background-color: #FFF;
-        border-radius: 4px;
-    }
-
-
-    /* Add Animation */
-    @keyframes animatetop {
-        from {
-            top: -300px;
-            opacity: 0
-        }
-
-        to {
-            top: 0;
-            opacity: 1
-        }
-    }
-
-    #saindo .modal-content .modal-body button {
-        background: var(--blue-700);
-        color: var(--white);
-        border: 0;
-        padding: 10px 20px;
-        border-radius: 5px;
-        margin: 5px;
-    }
-
-    #saindo .modal-content .modal-body button#sair {
-        background: var(--danger);
-    }
-</style>
 
 <div id="saindo" class="modal">
     <!-- Modal content -->
@@ -1378,63 +1269,6 @@
 
 <div class="components-qd-v1-overlay modal-backdrop in"></div>
 
-<div class="modal fade in header-qd-v1-location-modal  newlocalmodal gtm-estado-fechar-fora-overlay"
-    id="header-qd-v1-location-modal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true"
-    style="display: none; z-index: 9999; position: fixed;">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    FECHAR <i class="fas fa-times gtm-estado-fechar-btn"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="">
-                    <div class="row" id="intro-modal-text">
-                        <p style="font-size: 2em" class="titulo">Onde voce está?</p>
-                        <p>Sabendo disso, iremos oferecer produtos e serviços customizados para a sua região</p>
-                    </div>
-                    <div class="row">
-                        <div class="modal-content">
-                            <div class="col-md-6 col-md-offset-3">
-                                <button class="use-location modal-buttom-identity gtm-estado-usar-localizacao-link">
-                                    <img loading="lazy" alt="Autoglass Online PIN de localização" src="/arquivos/pin-white.png"
-                                        style="margin-top: -3px;" /> Usar sua localização
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="modal-content">
-                            <div class="col-md-6 col-md-offset-3" style="padding: 0.8em;">
-                                <span>OU</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="modal-content">
-                            <div class="col-md-8 col-md-offset-2">
-                                <div class="search-location">
-                                    <div id="locationField">
-                                        <input id="autocomplete" placeholder="Informe sua cidade ou estado"
-                                            type="text" />
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <p id="atttext">
-                    <strong>Atenção!</strong> Os preços de produtos e serviços Autoglass podem variar de acordo com a
-                    região
-                    escolhida
-                </p>
-            </div>
-        </div>
-    </div>
-</div>
 
 <div class="modal fade in modal-confirmation" id="header-qd-v1-location-modal-confirm" tabindex="-1" role="dialog"
     aria-labelledby="basicModal" aria-hidden="true" style="display: none; z-index: 999999; position: fixed;">
@@ -1469,9 +1303,6 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-            <!--<button id="localizationModalCloseBtn" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                FECHAR <i class="fas fa-times"></i>
-            </button>-->
         </div>
         <div class="modal-body">
             <div class="row">
@@ -1866,3 +1697,7 @@
       </div>
     </div>
 </div>
+
+<script defer="" src="https://autoglass-cdn.github.io/arquivos/js/policies/header.js"></script>
+
+<script defer="" type="text/javascript" src="https://autoglass-cdn.github.io/arquivos/js/topo.js"></script>
