@@ -4866,30 +4866,6 @@ $(document).ready(function () {
     )
     .remove();
 });
-$(window).load(function () {
-  var a = $(".fb-comments");
-  a.length &&
-    a.attr(
-      "data-href",
-      document.location.href.split("#").shift().split("?").shift()
-    );
-  $("#fb-root").length || $("body").append('<div id="fb-root"></div>');
-  if (!$("script#facebook-jssdk").length) {
-    a = $("meta[property='fb:app_id']").attr("content") || !1;
-    var b,
-      c = document.getElementsByTagName("script")[0];
-    document.getElementById("facebook-jssdk") ||
-      ((b = document.createElement("script")),
-      (b.id = "facebook-jssdk"),
-      (b.src =
-        "//connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v2.3" +
-        (a ? "&appId=" + a : "")),
-      c.parentNode.insertBefore(b, c));
-  }
-  "undefined" !== typeof FB &&
-    "undefined" !== typeof FB.XFBML &&
-    FB.XFBML.parse();
-});
 (function () {
   "function" !== typeof $.cookie &&
     (function (c) {
