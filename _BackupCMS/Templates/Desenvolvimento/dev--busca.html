@@ -33,16 +33,11 @@
 	<vtex:template id="dev--header-styles" />
 	<vtex:template id="dev--busca-fipe-styles" />
 	<vtex:template id="dev--footer-styles" />
-	<link rel="preload" as="style" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.search.css" onload="this.rel='stylesheet'" />
-	<noscript>
-		<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.search.css" />
-	</noscript>
-	<link rel="preload" as="style" href="https://autoglass-cdn.github.io/src/css/filtro-veiculos.css" onload="this.rel='stylesheet'" />
-	<noscript>
-		<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/filtro-veiculos.css" />
-	</noscript>
+	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/legacy/CSS.aut.far.search.css" />	
+	<link ref="stylesheet" href="https://autoglass-cdn.github.io/src/css/filtro-veiculos.css" />
 	<link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/busca/load-optionals.css" type="text/css" />
-    <link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/busca/compatibilidade-veiculo.css" type="text/css" />
+    <link rel="preload" href="https://autoglass-cdn.github.io/src/css/busca/compatibilidade-veiculo.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+	<noscript><link rel="stylesheet" href="https://autoglass-cdn.github.io/src/css/busca/compatibilidade-veiculo.css"/></noscript>
 </head>
 
 <body class="resultado-busca">
