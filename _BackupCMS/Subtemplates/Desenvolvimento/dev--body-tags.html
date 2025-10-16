@@ -1,7 +1,5 @@
 <!-- dev- -body-tags -->
 
-<!-- <script defer="" src="https://kit.fontawesome.com/792c7753b8.js" crossorigin="anonymous" ></script> -->
-
 <script defer="" src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js" ></script>
 
 <script>
@@ -30,35 +28,50 @@
     });
 </script>
 
-<!-- Facebook Pixel Code -->
+<!-- Facebook Pixel Code (versão otimizada definitiva para Core Web Vitals) -->
 <script>
+  function inicializarPixel() {
     !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-            n.callMethod
-                ? n.callMethod.apply(n, arguments)
-                : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-    })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js"
-    );
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+
     fbq("init", "674711539752032");
     fbq("track", "PageView");
+  }
+
+  // Executa de forma ociosa (melhor TBT e performance)
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(inicializarPixel);
+  } else {
+    // Fallback para navegadores sem requestIdleCallback
+    window.addEventListener("DOMContentLoaded", inicializarPixel);
+  }
 </script>
+
 <noscript>
-    <img height="1" width="1" src="https://www.facebook.com/tr?id=674711539752032&amp;ev=PageView&amp;noscript=1" />
+  <img
+    height="1"
+    width="1"
+    src="https://www.facebook.com/tr?id=674711539752032&amp;ev=PageView&amp;noscript=1"
+    alt="Facebook Pixel"
+    style="display:none"
+  />
 </noscript>
 <!-- End Facebook Pixel Code -->
+
+<!-- <script defer="" src="https://kit.fontawesome.com/792c7753b8.js" crossorigin="anonymous" ></script> -->

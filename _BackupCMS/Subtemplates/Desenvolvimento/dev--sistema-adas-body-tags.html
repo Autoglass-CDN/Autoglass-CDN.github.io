@@ -4,41 +4,63 @@
 
 <script defer="" src="https://autoglass-cdn.github.io/src/js/legacy/legacy-MZ-CBKY.js"></script>
 
-<!--<script defer="" src="https://kit.fontawesome.com/792c7753b8.js" crossorigin="anonymous"></script>-->
-
 <!-- Segment Pixel - RT - Autoglass - DO NOT MODIFY -->
-<!-- <script async="" src="https://secure.adnxs.com/seg?add=26997748&amp;t=1" type="text/javascript"></script> -->
+<script async="" src="https://secure.adnxs.com/seg?add=26997748&amp;t=1" type="text/javascript"></script>
 <!-- End of Segment Pixel -->
 
 <!-- Start of autoglass8792 Zendesk Widget script -->
-<!-- <script defer="" id="ze-snippet"
-  src="https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c"> </script> -->
+<script defer="" id="ze-snippet" src="https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c"> </script>
 <!-- End of autoglass8792 Zendesk Widget script -->
 
-<!--<script async="" src="https://www.googleoptimize.com/optimize.js?id=OPT-MTHHM4S"></script>-->
+<!-- Facebook Pixel Code (versão otimizada definitiva para Core Web Vitals) -->
+<script>
+  function inicializarPixel() {
+    !(function (f, b, e, v, n, t, s) {
+      if (f.fbq) return;
+      n = f.fbq = function () {
+        n.callMethod
+          ? n.callMethod.apply(n, arguments)
+          : n.queue.push(arguments);
+      };
+      if (!f._fbq) f._fbq = n;
+      n.push = n;
+      n.loaded = !0;
+      n.version = "2.0";
+      n.queue = [];
+      t = b.createElement(e);
+      t.async = !0;
+      t.src = v;
+      s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s);
+    })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
 
-<!-- Facebook Pixel Code -->
-<!-- <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    !function (f, b, e, v, n, t, s) {
-    if (f.fbq) return; n = f.fbq = function () {
-      n.callMethod ?
-        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-    };
-    if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
-    n.queue = []; t = b.createElement(e); t.async = !0;
-    t.src = v; s = b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t, s)
-  }(window, document, 'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '674711539752032');
-  fbq('track', 'PageView');
-  });
+    fbq("init", "674711539752032");
+    fbq("track", "PageView");
+  }
+
+  // Executa de forma ociosa (melhor TBT e performance)
+  if ("requestIdleCallback" in window) {
+    requestIdleCallback(inicializarPixel);
+  } else {
+    // Fallback para navegadores sem requestIdleCallback
+    window.addEventListener("DOMContentLoaded", inicializarPixel);
+  }
 </script>
+
 <noscript>
-  <img height="1" width="1" src="https://www.facebook.com/tr?id=674711539752032&amp;ev=PageView&amp;noscript=1" />
-</noscript> -->
+  <img
+    height="1"
+    width="1"
+    src="https://www.facebook.com/tr?id=674711539752032&amp;ev=PageView&amp;noscript=1"
+    alt="Facebook Pixel"
+    style="display:none"
+  />
+</noscript>
 <!-- End Facebook Pixel Code -->
+
+<!--<script defer="" src="https://kit.fontawesome.com/792c7753b8.js" crossorigin="anonymous"></script>-->
+
+<!--<script async="" src="https://www.googleoptimize.com/optimize.js?id=OPT-MTHHM4S"></script>-->
 
 <!-- <script type="text/javascript">
   document.addEventListener("DOMContentLoaded", function () {
