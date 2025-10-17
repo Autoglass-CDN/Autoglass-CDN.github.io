@@ -619,28 +619,29 @@ document
 
 //ADICIONA TARGET BLANK EM BANNER DA CAMPANHA RECLAME AQUI 2025
 (() => {
-  function adicionarTargetBlank() {
-    const sections = document.querySelectorAll('.banners-content');
-
-    sections.forEach(section => {
-      const secondDiv = section.querySelectorAll('div')[1];
-      const thirdDiv = section.querySelectorAll('div')[2];
-
-      if (secondDiv) {
-        const secondLink = secondDiv.querySelector('a');
-        if (secondLink) {
-          secondLink.setAttribute('target', '_blank');
-        }
-      }
-
-      if (thirdDiv) {
-        const thirdLink = thirdDiv.querySelector('a');
-        if (thirdLink) {
-          thirdLink.setAttribute('target', '_blank');
-        }
+  function setTargetBlank() {
+    document.querySelectorAll(".banners-content").forEach((container) => {
+      const banners = container.querySelectorAll("div");
+      const secondBanner = banners[1];
+      if (secondBanner) {
+        const link = secondBanner.querySelector("a");
+        link?.setAttribute("target", "_blank");
       }
     });
   }
 
-  window.onload = adicionarTargetBlank;
+  const observer = new MutationObserver((mutations, obs) => {
+    const bannersExistem = document.querySelectorAll(".banners-content div").length >= 2;
+    if (bannersExistem) {
+      setTargetBlank();
+      obs.disconnect();
+    }
+  });
+
+  const target = document.querySelector(".banners-section") || document.body;
+
+  observer.observe(target, {
+    childList: true,
+    subtree: true,
+  });
 })();
