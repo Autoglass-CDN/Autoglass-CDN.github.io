@@ -4,7 +4,7 @@
 	const btnPrev = $('.banners-section .banners button[data-type="prev"]');
 	const btnNext = $('.banners-section .banners button[data-type="next"]');
   const tipoBanner = window.innerWidth <= 768 ? 2 : 1;
-  const urlBanners = `http://localhost:5010/api/banners-vtex/exibicao/${tipoBanner}`;
+  const urlBanners = `https://api-int-hml.autoglass.com.br/integracao-b2c/api/banners-vtex/exibicao/${tipoBanner}`;
 //   if (location.hostname !== "localhost") return;
   await buscaImagensBanner(urlBanners);
 	const containers = $('.banners-section .banners-content');
