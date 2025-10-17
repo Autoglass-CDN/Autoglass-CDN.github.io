@@ -168,7 +168,7 @@ function enableTouchScroll(e) {
     t = $('.banners-section .banners button[data-type="prev"]'),
     n = $('.banners-section .banners button[data-type="next"]'),
     r = window.innerWidth <= 768 ? 2 : 1,
-    i = `http://localhost:5010/api/banners-vtex/exibicao/${r}`;
+    i = `https://api-int.autoglass.com.br/integracao-b2c/api/banners-vtex/exibicao/${r}`;
   await s(i);
   let l = $(".banners-section .banners-content"),
     a = window.innerWidth > 1200 ? $(l[0]) : $(l[1]),
@@ -283,42 +283,42 @@ function enableTouchScroll(e) {
     });
     t.observe(document.body, { childList: !0, subtree: !0 });
   });
-  (function () {
-    let e = $(".benefits-section .container"),
-      t = $(".benefits-section .container .benefit"),
-      n = $(".benefits-section .benefits-dots-mobile-container .dot"),
-      r = setInterval(() => {
-        let t = i();
-        t >= 99 ? e[0].scrollBy(-e[0].scrollWidth, 0) : e[0].scrollBy(150, 0);
-      }, 5e3);
-    function i() {
-      return (100 * e[0].scrollLeft) / (e[0].scrollWidth - e[0].clientWidth);
+(function () {
+  let e = $(".benefits-section .container"),
+    t = $(".benefits-section .container .benefit"),
+    n = $(".benefits-section .benefits-dots-mobile-container .dot"),
+    r = setInterval(() => {
+      let t = i();
+      t >= 99 ? e[0].scrollBy(-e[0].scrollWidth, 0) : e[0].scrollBy(150, 0);
+    }, 5e3);
+  function i() {
+    return (100 * e[0].scrollLeft) / (e[0].scrollWidth - e[0].clientWidth);
+  }
+  e.on("wheel", (e) => {
+    if (
+      1e3 >
+      (window.innerWidth ||
+        document.documentElement.clientWidth ||
+        document.body.clientWidth)
+    ) {
+      e.preventDefault();
+      let { deltaY: t, target: n } = e.originalEvent;
+      t > 0 ? n.scrollBy(150, 0) : n.scrollBy(-150, 0), clearInterval(r);
     }
-    e.on("wheel", (e) => {
-      if (
-        1e3 >
-        (window.innerWidth ||
-          document.documentElement.clientWidth ||
-          document.body.clientWidth)
-      ) {
-        e.preventDefault();
-        let { deltaY: t, target: n } = e.originalEvent;
-        t > 0 ? n.scrollBy(150, 0) : n.scrollBy(-150, 0), clearInterval(r);
-      }
-    }),
-      e.scroll(() => {
-        let e = 100 / t.length,
-          l = i();
-        t.each((r) => {
-          t.eq(r).removeClass("focus"),
-            n.eq(r).removeClass("focus"),
-            l >= e * r &&
-              l <= e * (r + 1) &&
-              (t.eq(r).addClass("focus"), n.eq(r).addClass("focus"));
-        }),
-          clearInterval(r);
-      });
-  })(),
+  }),
+    e.scroll(() => {
+      let e = 100 / t.length,
+        l = i();
+      t.each((r) => {
+        t.eq(r).removeClass("focus"),
+          n.eq(r).removeClass("focus"),
+          l >= e * r &&
+            l <= e * (r + 1) &&
+            (t.eq(r).addClass("focus"), n.eq(r).addClass("focus"));
+      }),
+        clearInterval(r);
+    });
+})(),
   configureBanners(
     ".banners-promocionais-section",
     ".banners-promocionais-itens"
@@ -399,19 +399,19 @@ function enableTouchScroll(e) {
 
 (() => {
   function e() {
-    let e = document.querySelectorAll(".banners-content");
-    e.forEach((e) => {
-      let t = e.querySelectorAll("div")[1],
-        l = e.querySelectorAll("div")[2];
-      if (t) {
-        let r = t.querySelector("a");
-        r && r.setAttribute("target", "_blank");
-      }
+    document.querySelectorAll(".banners-content").forEach((e) => {
+      let t = e.querySelectorAll("div"),
+        l = t[1];
       if (l) {
-        let o = l.querySelector("a");
-        o && o.setAttribute("target", "_blank");
+        let n = l.querySelector("a");
+        n?.setAttribute("target", "_blank");
       }
     });
   }
-  window.onload = e;
+  let t = new MutationObserver((t, l) => {
+      let n = document.querySelectorAll(".banners-content div").length >= 2;
+      n && (e(), l.disconnect());
+    }),
+    l = document.querySelector(".banners-section") || document.body;
+  t.observe(l, { childList: !0, subtree: !0 });
 })();
