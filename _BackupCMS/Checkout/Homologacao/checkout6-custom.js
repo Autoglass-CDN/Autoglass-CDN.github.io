@@ -293,11 +293,15 @@ $(window).on('load', () => {
 
             script.src = src;
             if (callback) callback(script);
-            document.body.appendChild(script);
+            document.getElementsByTagName("body")[0].appendChild(script);
             });
         };
 
-        await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
+        try {
+            await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
+        } catch (e) {
+            console.warn('[Checkout] Erro ao carregar VTEX Catalog.js (CORS):', e);
+        }
         await loadScript("/scripts/jquery.ui.core.js");
         await loadScript("/arquivos/jquery.cookie.js");
         await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
