@@ -1,6 +1,5 @@
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE. THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
-
 /*<!-- Facebook Pixel Code -->*/
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -269,58 +268,65 @@ $(window).on('load', () => {
 
 
         async function loadScripts() {
+        const addId = id => script => { script.id = id; };
 
-            const addId = id => script => {
-              script.id = id;
+        const loadScript = (src, callback) => {
+            return new Promise((resolve, reject) => {
+            const script = document.createElement("script");
+            script.type = "text/javascript";
+            script.defer = true;
+            script.crossOrigin = "anonymous";
+
+            if (script.readyState) {
+                script.onreadystatechange = function () {
+                if (script.readyState === "loaded" || script.readyState === "complete") {
+                    script.onreadystatechange = null;
+                    resolve();
+                } else {
+                    reject();
+                }
+                };
+            } else {
+                script.onload = () => resolve();
+                script.onerror = () => reject();
             }
 
-            await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
-            await loadScript("/scripts/jquery.ui.core.js");
-            await loadScript("/hml/jquery.cookie.js");
-            await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
-            await loadScript("/hml/jquery-ui.datepicker.js");
-            await loadScript('https://autoglass-cdn.github.io/hml/js/policies/checkout.js');
-            await loadScript('https://autoglass-cdn.github.io/hml/js/cep.component.js');
-            await loadScript('https://autoglass-cdn.github.io/hml/js/consulta-agendamento.js');
-            loadScript('https://autoglass-cdn.github.io/hml/js/checkout/jornada-do-cliente.js');
-            loadScript('https://autoglass-cdn.github.io/hml/js/checkout/automatizar-preenchimento-nota-fiscal.js');
-            loadScript('https://autoglass-cdn.github.io/hml/js/checkout/habilitar-input-chassi.js');
+            script.src = src;
+            if (callback) callback(script);
+            document.body.appendChild(script);
+            });
+        };
 
+        await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
+        await loadScript("/scripts/jquery.ui.core.js");
+        await loadScript("/arquivos/jquery.cookie.js");
+        await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
+        await loadScript("/arquivos/jquery-ui.datepicker.js");
 
-            loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+        await loadScript('https://autoglass-cdn.github.io/hml/js/policies/checkout.js');
+        await loadScript('https://autoglass-cdn.github.io/hml/js/cep.component.js');
+        await loadScript('https://autoglass-cdn.github.io/hml/js/consulta-agendamento.js');
 
+        loadScript('https://autoglass-cdn.github.io/hml/js/checkout/jornada-do-cliente.js');
+        loadScript('https://autoglass-cdn.github.io/hml/js/checkout/automatizar-preenchimento-nota-fiscal.js');
+        loadScript('https://autoglass-cdn.github.io/hml/js/checkout/habilitar-input-chassi.js');
+        loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+
+        window.addEventListener("load", function () {
+            const carregarMarketing = function () {
             loadScript('https://autoglass-cdn.github.io/hml/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/hml/js/hubspot-cookie.js');
-            loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
+            loadScript('https://js.hs-scripts.com/20753913.js');
+            };
+
+            if ('requestIdleCallback' in window) {
+            requestIdleCallback(carregarMarketing);
+            } else {
+            setTimeout(carregarMarketing, 1500);
+            }
+        });
         }
 
-        function loadScript(src, callback) {
-            return new Promise((resolve, reject) => {
-                let script = document.createElement("script");
-                script.type = "text/javascript";
-
-                if (script.readyState) {
-                    //IE
-                    script.onreadystatechange = function () {
-                        if (script.readyState == "loaded" || script.readyState == "complete") {
-                            script.onreadystatechange = null;
-                            resolve();
-                        } else {
-                            reject()
-                        }
-                    };
-                } else {
-                    //Others
-                    script.onload = function () {
-                        resolve();
-                    };
-                }
-
-                script.src = src;
-                callback && callback(script);
-                document.getElementsByTagName("head")[0].appendChild(script);
-            });
-        }
     }
 
     function ViewAPI() {
@@ -452,7 +458,7 @@ $(window).on('load', () => {
             let btnInstall = _createInstallButton(
                 accessory.items[0].itemId,
                 preco,
-                bestPrice === 0,
+                bestPrice === 0
             );
 
             if ($(`[data-sku='${item.id}'].product-item .product-name .btn-add-instalacao`)
@@ -461,32 +467,31 @@ $(window).on('load', () => {
             }
 
             function loadScript(src, callback) {
-              return new Promise((resolve, reject) => {
-                  let script = document.createElement("script");
-                  script.type = "text/javascript";
+                return new Promise((resolve, reject) => {
+                    const script = document.createElement("script");
+                    script.type = "text/javascript";
+                    script.defer = true;
+                    script.crossOrigin = "anonymous";
 
-                  if (script.readyState) {
-                      //IE
-                      script.onreadystatechange = function () {
-                          if (script.readyState == "loaded" || script.readyState == "complete") {
-                              script.onreadystatechange = null;
-                              resolve();
-                          } else {
-                              reject()
-                          }
-                      };
-                  } else {
-                      //Others
-                      script.onload = function () {
-                          resolve();
-                      };
-                  }
+                    if (script.readyState) {
+                    script.onreadystatechange = function () {
+                        if (script.readyState === "loaded" || script.readyState === "complete") {
+                        script.onreadystatechange = null;
+                        resolve();
+                        } else {
+                        reject();
+                        }
+                    };
+                    } else {
+                    script.onload = () => resolve();
+                    script.onerror = () => reject();
+                    }
 
-                  script.src = src;
-                  callback && callback(script);
-                  document.getElementsByTagName("head")[0].appendChild(script);
-              });
-        }
+                    script.src = src;
+                    if (callback) callback(script);
+                    document.body.appendChild(script);
+                });
+            }
         }
 
         function _createInstallButton(sku, preco, free = false) {
@@ -545,29 +550,28 @@ $(window).on('load', () => {
         
             function loadScript(src, callback) {
                 return new Promise((resolve, reject) => {
-                    let script = document.createElement("script");
+                    const script = document.createElement("script");
                     script.type = "text/javascript";
-        
+                    script.defer = true;
+                    script.crossOrigin = "anonymous";
+
                     if (script.readyState) {
-                        // IE
-                        script.onreadystatechange = function () {
-                            if (script.readyState == "loaded" || script.readyState == "complete") {
-                                script.onreadystatechange = null;
-                                resolve();
-                            } else {
-                                reject();
-                            }
-                        };
+                    script.onreadystatechange = function () {
+                        if (script.readyState === "loaded" || script.readyState === "complete") {
+                        script.onreadystatechange = null;
+                        resolve();
+                        } else {
+                        reject();
+                        }
+                    };
                     } else {
-                        // Outros navegadores
-                        script.onload = function () {
-                            resolve();
-                        };
+                    script.onload = () => resolve();
+                    script.onerror = () => reject();
                     }
-        
+
                     script.src = src;
-                    callback && callback(script);
-                    document.getElementsByTagName("head")[0].appendChild(script);
+                    if (callback) callback(script);
+                    document.body.appendChild(script);
                 });
             }
         }
@@ -1031,3 +1035,65 @@ $(window).on('load', () => {
         }
     }
 });
+                  
+function aplicarRegraPagamento() {
+  vtexjs.checkout.getOrderForm().then(orderForm => {
+    const tipoRecebimento = orderForm.shippingData.logisticsInfo[0].selectedDeliveryChannel; 
+    const temProdutoADAS = orderForm.items.some(item =>
+      item.name && item.name.toUpperCase().includes('ADAS')
+    );
+
+    // Pega o <a> da Pagamento na Loja
+    const aPagamentoNaLoja = Array.from(document.querySelectorAll('a.payment-group-item')).find(a =>
+      a.textContent.toLowerCase().includes('pagamento na loja')
+    );
+
+    // Se for delivery, esconde somente o pagamento na loja
+    if (tipoRecebimento === 'delivery') {
+      console.log('Tipo de recebimento é delivery. Ocultando pagamento na loja.');
+
+      if (aPagamentoNaLoja) {
+        aPagamentoNaLoja.style.display = 'none';
+      }
+
+      // Mostra as outras opções
+      document.querySelectorAll('a.payment-group-item').forEach(el => {
+        if (el !== aPagamentoNaLoja) el.style.display = '';
+      });
+
+      return; // Importante: não segue para as regras do ADAS
+    }
+
+    // Se não tem ADAS, mostrar tudo
+    if (!temProdutoADAS) {
+      document.querySelectorAll('a.payment-group-item').forEach(el => {
+        el.style.display = '';
+      });
+      return;
+    }
+
+    // Se tem ADAS e não é delivery, mostra apenas Pagamento na loja
+    if (aPagamentoNaLoja) {
+      aPagamentoNaLoja.click();
+
+      setTimeout(() => {
+        document.querySelectorAll('a.payment-group-item').forEach(a => {
+          if (a !== aPagamentoNaLoja) a.style.display = 'none';
+          else a.style.display = '';
+        });
+      }, 700);
+    }
+  });
+}
+
+// Detecta etapa pagamento e aplica a regra
+$(window).on('hashchange', () => {
+  if (window.location.hash.includes('/payment')) {
+    setTimeout(aplicarRegraPagamento, 500);
+  }
+});
+
+// Se já está na etapa pagamento ao carregar a página
+if (window.location.hash.includes('/payment')) {
+  setTimeout(aplicarRegraPagamento, 500);
+}

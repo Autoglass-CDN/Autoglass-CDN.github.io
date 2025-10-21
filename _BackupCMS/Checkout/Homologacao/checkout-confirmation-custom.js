@@ -30,15 +30,21 @@ var ConfirmationOrderMobile = {
 };
 
 $(document).ready(function () {
-  $('#carrinho').addClass('active');
-  $('#identificacao').addClass('active');
-  $('#entrega').addClass('active');
-  $('#pagamento').addClass('active');
-  $('.carrinho-line').addClass('active');
-  $('.identificacao-line').addClass('active');
-  $('.entrega-line').addClass('active');
-  loadScript('https://autoglass-cdn.github.io/hml/js/hubspot-cookie.js');
-  loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
+  $('#carrinho, #identificacao, #entrega, #pagamento').addClass('active');
+  $('.carrinho-line, .identificacao-line, .entrega-line').addClass('active');
+
+  window.addEventListener("load", function () {
+    const carregarScriptsHubSpot = function () {
+      loadScript('https://autoglass-cdn.github.io/hml/js/hubspot-cookie.js');
+      loadScript('https://js.hs-scripts.com/20753913.js');
+    };
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(carregarScriptsHubSpot);
+    } else {
+      setTimeout(carregarScriptsHubSpot, 1000);
+    }
+  });
 });
 
 
@@ -49,34 +55,37 @@ const CONFIG_GLOBAL = {
   }
 }
 
+const baseUrlApi = window.location.href.includes("hml")
+    ? "https://api-int-hml.autoglass.com.br"
+    : "https://api-int.autoglass.com.br";
+
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE.
 // THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
 function loadScript(src, callback) {
   return new Promise((resolve, reject) => {
-    let script = document.createElement("script");
+    const script = document.createElement("script");
     script.type = "text/javascript";
+    script.defer = true;
+    script.crossOrigin = "anonymous";
 
     if (script.readyState) {
-      //IE
       script.onreadystatechange = function () {
-        if (script.readyState == "loaded" || script.readyState == "complete") {
+        if (script.readyState === "loaded" || script.readyState === "complete") {
           script.onreadystatechange = null;
           resolve();
         } else {
-          reject()
+          reject();
         }
       };
     } else {
-      //Others
-      script.onload = function () {
-        resolve();
-      };
+      script.onload = () => resolve();
+      script.onerror = () => reject();
     }
 
     script.src = src;
-    callback && callback(script);
-    document.getElementsByTagName("head")[0].appendChild(script);
+    if (callback) callback(script);
+    document.body.appendChild(script);
   });
 }
 
@@ -286,7 +295,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
+      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos`,
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -351,7 +360,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
+      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos`,
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -402,7 +411,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
+      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos/servicos-moveis`,
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -478,7 +487,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
+      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos/servicos-moveis`,
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
