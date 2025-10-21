@@ -91,13 +91,13 @@ function loadScript(src, callback) {
 
 async function loadScripts(data) {
   await loadScript("/scripts/jquery.ui.core.js");
-  await loadScript("/hml/jquery.cookie.js");
+  await loadScript("/arquivos/jquery.cookie.js");
   await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
   await loadScript("//io.vtex.com.br/vtex.js/2.0.0/vtex.min.js");
 
   $.cookie("mzLocationUF", data.shippingData.address.state);
 
-  await loadScript("/hml/jquery-ui.datepicker.js");
+  await loadScript("/arquivos/jquery-ui.datepicker.js");
   await loadScript("https://autoglass-cdn.github.io/hml/js/consulta-agendamento.js");
   await loadScript(
     "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
