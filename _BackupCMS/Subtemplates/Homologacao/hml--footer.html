@@ -163,5 +163,16 @@
 <script defer="" src="https://autoglass-cdn.github.io/hml/js/footer.js"></script>
 
 <!-- Start of HubSpot Embed Code -->
-<script defer="" id="hs-script-loader" src="//js.hs-scripts.com/20753913.js"></script>
+<script>
+  window.addEventListener("load", function () {
+    requestIdleCallback(function () {
+      var hs = document.createElement("script");
+      hs.src = "https://js.hs-scripts.com/20753913.js";
+      hs.id = "hs-script-loader";
+      hs.defer = true;
+      hs.crossOrigin = "anonymous";
+      document.body.appendChild(hs);
+    });
+  });
+</script>
 <!-- End of HubSpot Embed Code -->

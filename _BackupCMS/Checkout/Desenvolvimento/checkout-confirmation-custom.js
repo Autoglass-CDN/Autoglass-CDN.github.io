@@ -32,15 +32,25 @@ var ConfirmationOrderMobile = {
 };
 
 $(document).ready(function () {
-  $('#carrinho').addClass('active');
-  $('#identificacao').addClass('active');
-  $('#entrega').addClass('active');
-  $('#pagamento').addClass('active');
-  $('.carrinho-line').addClass('active');
-  $('.identificacao-line').addClass('active');
-  $('.entrega-line').addClass('active');
-  loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
-  loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
+  // Ativa visualmente as etapas do checkout
+  $('#carrinho, #identificacao, #entrega, #pagamento').addClass('active');
+  $('.carrinho-line, .identificacao-line, .entrega-line').addClass('active');
+
+  // Carregamento inteligente dos scripts externos (HubSpot e HubSpot Cookie)
+  window.addEventListener("load", function () {
+    const carregarScriptsHubSpot = function () {
+      loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
+      loadScript('https://js.hs-scripts.com/20753913.js'); // LinkedIn Ads via HubSpot
+    };
+
+    if ('requestIdleCallback' in window) {
+      // Navegadores modernos
+      requestIdleCallback(carregarScriptsHubSpot);
+    } else {
+      // Fallback: aguarda ~2 segundos para garantir que o checkout está estável
+      setTimeout(carregarScriptsHubSpot, 1000);
+    }
+  });
 });
 
 
@@ -52,37 +62,38 @@ const CONFIG_GLOBAL = {
 }
 
 const baseUrlApi = window.location.href.includes("dev")
-    ? "https://api-hml.autoglass.com.br"
-    : "https://api.autoglass.com.br";
+    ? "https://api-int-hml.autoglass.com.br"
+    : "https://api-int.autoglass.com.br";
 
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE.
 // THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
 function loadScript(src, callback) {
   return new Promise((resolve, reject) => {
-    let script = document.createElement("script");
+    const script = document.createElement("script");
     script.type = "text/javascript";
+    script.defer = true;
+    script.crossOrigin = "anonymous";
 
     if (script.readyState) {
-      //IE
+      // IE antigo
       script.onreadystatechange = function () {
-        if (script.readyState == "loaded" || script.readyState == "complete") {
+        if (script.readyState === "loaded" || script.readyState === "complete") {
           script.onreadystatechange = null;
           resolve();
         } else {
-          reject()
+          reject();
         }
       };
     } else {
-      //Others
-      script.onload = function () {
-        resolve();
-      };
+      // Navegadores modernos
+      script.onload = () => resolve();
+      script.onerror = () => reject();
     }
 
     script.src = src;
-    callback && callback(script);
-    document.getElementsByTagName("head")[0].appendChild(script);
+    if (callback) callback(script);
+    document.body.appendChild(script);
   });
 }
 
