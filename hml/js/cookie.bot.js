@@ -1,3 +1,4 @@
+(function($) {
 requestIdleCallback(() => {
     (function () {
         let cookieBannerSliderPos = 0;
@@ -15,13 +16,13 @@ requestIdleCallback(() => {
           const beCheckoutConfirmation = location.pathname.includes('orderPlaced');
       
           loadScript('https://autoglass-cdn.github.io/hml/js/jquery.cookie.js', function () {
-              const cookieString = $.cookie('hasAcceptedCookies');
+              const cookieString = window.jQuery.cookie('hasAcceptedCookies');
               const cookie = cookieString ? JSON.parse(cookieString) : null;
               const baseUrlApi = "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/master-datas/cookies";
       
               if (!beCheckoutConfirmation) {
                   if (!cookie || (!cookie.accepted)) {
-                      $.cookie('hasAcceptedCookies', JSON.stringify({
+                      window.jQuery.cookie('hasAcceptedCookies', JSON.stringify({
                           accepted: false,
                           createdAt: Date.now(),
                           adulthood: false
@@ -75,14 +76,12 @@ requestIdleCallback(() => {
     
         function acceptCookies() {
           aceitarCookieLink = $('#aceitar-cookie-link');
-          const cookie = JSON.parse($.cookie('hasAcceptedCookies'));
-    
+          const cookie = JSON.parse(window.jQuery.cookie('hasAcceptedCookies'));
           hideCookieBanner();
           cookie.accepted = true;
           cookie.acceptedAt = Date.now();
-          $.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
-          
-        }
+          window.jQuery.cookie('hasAcceptedCookies', JSON.stringify(cookie), { path: '/' });
+      }
     
         function showCookieBanner() {
             const cookiebanner = document.getElementById("cookiebanner");
@@ -107,3 +106,4 @@ requestIdleCallback(() => {
         }  
     })();
 });
+})(jQueryNew);

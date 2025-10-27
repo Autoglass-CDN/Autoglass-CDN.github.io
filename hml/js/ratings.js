@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
     let position = 1;
     const btnPrev = $('.ratings-section .ratings__slider button[data-type="prev"]');
     const btnNext = $('.ratings-section .ratings__slider button[data-type="next"]');
@@ -116,4 +116,4 @@
             $($('.ratings-section .rating-bars li')[index]).addClass('active');
         }
     }
-})();
+})(jQueryNew);

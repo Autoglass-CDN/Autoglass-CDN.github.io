@@ -1,3 +1,4 @@
+(function($) {
 $(
   ".shelf-qd-v1-buy-button .wrapper-buy-button-asynchronous a.btn-add-buy-button-asynchronous"
 ).addClass("add-to-cart-ga");
@@ -225,3 +226,4 @@ $(
   configureObserverToLoadOptionals();
   loadOptionals();
 })();
+})(jQueryNew);

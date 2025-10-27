@@ -1,3 +1,4 @@
+(function($) {
 const baseUrlApi =
     window.location.href.includes("dev") || window.location.href.includes("mvp") || window.location.href.includes("hml")
       ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app"
@@ -470,7 +471,7 @@ $(window).on("load", async () => {
   acessorios.forEach(acessorio => {
     const nome = acessorio.querySelector('#nome-produto-acessorio-ag')?.textContent?.toUpperCase();
 
-    if (nome?.includes('INSUMO DE INSTALAÇÃO')) {
+    if (nome?.includes('INSUMO')) {
       codigoSKU = acessorio.querySelector('#codigo-sku-acessorio-ag')?.textContent?.trim();
       precoAcessorio = acessorio.querySelector('#preco-acessorios-ag')?.textContent?.replace('R$', '')?.trim();
     }
@@ -784,3 +785,4 @@ function ajustarTextoValorParcelado(precoNumerico) {
     }
   });
 }
+})(jQueryNew);

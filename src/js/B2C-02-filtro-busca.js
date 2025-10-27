@@ -1,9 +1,10 @@
+(function($) {
 $(function () {
 	/**
 	 * TODO: Remover esses parametro daqui, quando a garantia da Maeztra acabar.
 	 * Essa função corrige a aparição do filtro na tela pesquisa.
 	 */
-	$.QD_scrollToggle('570, 770');
+	window.jQuery.QD_scrollToggle('570, 770');
 
 	/**
 	 * Atributo 'data-qd-class' é o identificador do filtro.
@@ -118,3 +119,4 @@ $(document).ready(() => {
 
 	mutation.observe(resultBlock, { childList: true, subtree: true });
 });
+})(jQueryNew);

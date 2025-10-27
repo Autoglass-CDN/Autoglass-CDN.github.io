@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
   /** BUSCA POR PEÇA */
   const Service = ServiceAPI();
   const View = ViewAPI();
@@ -1323,4 +1323,4 @@
       );
     }
   }
-})();
+})(jQueryNew);

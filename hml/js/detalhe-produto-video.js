@@ -1,3 +1,4 @@
+(function($) {
 var player;
 function onYouTubeIframeAPIReady() {
   player = new YT.Player("youtube-embed-iframe", {
@@ -23,3 +24,4 @@ function showVideo() {
   var firstScriptTag = document.getElementsByTagName("script")[0];
   firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 }
+})(jQueryNew);
