@@ -1,5 +1,5 @@
 /* Script para galeria de imagens para incluir content do CMS com vídeo */
-
+(function($) {
 $(document).ready(function () {
     if (typeof Vtex !== 'undefined'){
         ImageControl1($("ul.thumbs a:first"), 0);
@@ -262,3 +262,4 @@ function LoadZoom(pi) {
         $(".image-zoom").jqzoom(optionsZoom);
     }
 }
+})(jQueryNew);

@@ -1,3 +1,4 @@
+(function($) {
 $(function () {
 	let acessorio = document.querySelector(".mz-accesories__button--buy");
   
@@ -749,4 +750,4 @@ $(function () {
 	  }
 	}
   });
-  
+})(jQueryNew);

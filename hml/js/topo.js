@@ -1,3 +1,4 @@
+(function($) {
 document.addEventListener("DOMContentLoaded", function () {
   const mecanismosBusca = [
     "google.com",
@@ -27,11 +28,11 @@ const device = {
   desktop: ".desktop",
   mobile: ".mobile",
 };
-const numeroWhatsAppAG = "552732032540";
-const linkEncurtado = "https://bit.ly/43u3oa6";
-const numeroWhatsAppFormatadoAG = "(27) 3203-2540";
-const urlWhatsAppApi = "https://wa.me/";
-const textoUrlGet =
+window.numeroWhatsAppAG = "552732032540";
+window.linkEncurtado = "https://bit.ly/43u3oa6";
+window.numeroWhatsAppFormatadoAG = "(27) 3203-2540";
+window.urlWhatsAppApi = "https://wa.me/";
+window.textoUrlGet =
   "?text=Olá,%20estou%20navegando%20pelo%20e-commerce,%20pode%20me%20ajudar?";
 
 function getLastTimeWhildshieldVanePopUpWasShown() {
@@ -109,6 +110,8 @@ function isActiveElement(element) {
     : element.classList.contains("ativo");
 }
 
+window.isActiveElement = isActiveElement;
+
 function getMenuIdName(element) {
   return replaceBlankSpaces(
     removeSpecialChars(removeAccent($(element).text().toLowerCase())),
@@ -133,11 +136,11 @@ if (window.innerWidth > 500) {
     let lastActiveCategory = null;
     var painelCategoriasMenu = $(".painel-categorias__categoria.ativo");
 
-    $(".painel-categorias__categoria-itens-lista-menu li a").hover(function () {
+    window.jQuery(".painel-categorias__categoria-itens-lista-menu li a").hover(function () {
       if (lastActiveCategory != this) {
-        $(`#${getMenuIdName(lastActiveCategory)}`).removeClass("ativo");
+        window.jQuery(`#${getMenuIdName(lastActiveCategory)}`).removeClass("ativo");
       }
-      let currentCategory = $(`#${getMenuIdName(this)}`);
+      let currentCategory = window.jQuery(`#${getMenuIdName(this)}`);
       if (!isActiveElement(currentCategory)) {
         currentCategory.addClass("ativo");
       }
@@ -155,10 +158,14 @@ if (window.innerWidth > 500) {
       }
     });
 
-    observer.observe(painelCategoriasMenu[0], {
-      attributes: true,
-      attributeFilter: ["class"],
-    });
+    if (painelCategoriasMenu.length) {
+      observer.observe(painelCategoriasMenu[0], {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+    } else {
+      console.info('[Topo] Nenhum painel de categorias encontrado — observer não iniciado.');
+    }
   })();
 }
 
@@ -516,6 +523,8 @@ function delayedAction(action, abortController) {
   return abortController;
 }
 
+window.delayedAction = delayedAction;
+
 // MOBILE
 function openNav() {
   let backdrop = document.querySelector(".side-menu-backdrop");
@@ -856,9 +865,11 @@ inputBusca.addEventListener("keydown", function (event) {
   let linksCategoria = document.querySelector(
     ".painel-categorias__categoria-conteudo"
   );
-  linksCategoria.addEventListener("mouseenter", (event) => {
-    if (abortCategoryAction) abortCategoryAction.abort();
-  });
+  if (linksCategoria) {
+    linksCategoria.addEventListener("mouseenter", (event) => {
+      if (abortCategoryAction) abortCategoryAction.abort();
+    });
+  }
   checkLogin();
   fixPlaceholderSearch();
   loadCart(device.desktop);
@@ -877,7 +888,6 @@ inputBusca.addEventListener("keydown", function (event) {
   }
 
   waitForSkuDispatcher(() => {
-    console.log("✅ skuEventDispatcher pronto");
     const batchBuyListener = new Vtex.JSEvents.Listener(
       "batchBuyListener",
       (event) => {
@@ -980,3 +990,4 @@ if (window.innerWidth > 1025) {
     }
   });
 }
+})(jQueryNew);

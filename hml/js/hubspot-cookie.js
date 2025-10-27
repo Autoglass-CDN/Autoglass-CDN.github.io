@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
   let isDataSent = false;
   $(window).on('rendered.vtexid', getEmailFromLoginFormAndSendDataToMasterData);
   $(window).on('checkoutRequestEnd.vtex', getEmailFromOrderFormAndSendDataToMasterData);
@@ -111,4 +111,4 @@
       return null;
     }
   }
-})();
+})(jQueryNew);

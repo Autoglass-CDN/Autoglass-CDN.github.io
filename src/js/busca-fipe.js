@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
   $(document).ready(function () {
     const buscaPlaca = JSON.parse(localStorage.getItem("buscaPlaca"));
     if (window.innerWidth > 1024 && document.body.classList.contains('categoria')) {
@@ -1371,7 +1371,7 @@
     };
 
     async function getCategoryTree() {
-      return await $.get(
+      return await window.jQuery.get(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/category/tree/${CONFIG.ASYNC.TREE_LEVEL}`
       );
     }
@@ -2473,4 +2473,4 @@ function _initBuscaPlaca(values) {
     const sideMenu = document.querySelector("#side-menu");
     sideMenu.style.height = "100%";
   }
-})();
+})(jQueryNew);

@@ -1,6 +1,6 @@
 // Cenários 2, 3 faltam ser realizados.
 
-(function () {
+(function ($) {
     const Service = ServiceAPI();
     const View = ViewAPI();
     const Controller = ControllerAPI();
@@ -570,4 +570,4 @@
         this.elementos.forEach(elemento => elemento.classList.remove('loader-modal--show'));
       }
     }
-  })();
+  })(jQueryNew);

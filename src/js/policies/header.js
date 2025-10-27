@@ -1,3 +1,4 @@
+(function($) {
 const ESTADOS = [
   {
     GoogleMaps: "State of Minas Gerais",
@@ -353,6 +354,8 @@ function readCookie(name) {
   return null;
 }
 
+window.readCookie = readCookie;
+
 function saveModalsState() {
   let regex = /mz-\w{2}-on/g;
   let classes = $("body").attr("class");
@@ -391,7 +394,11 @@ function startLocalizationModal() {
   function openLocalizationModal(uf) {
     const state = recuperarEstado(uf);
 
-    $("#stateSelectorModal").modal({ backdrop: "static", keyboard: false });
+    $("#stateSelectorModal").on("shown.bs.modal", function () {
+      $(this).removeAttr("aria-hidden");
+      $("#stateConfirmationBtn").trigger("focus");
+    });
+
     setSelectedState(state.Uf);
   }
 
@@ -505,7 +512,7 @@ function startLocalizationModal() {
   }
 
   function closeModalAndPersistSc(event) {
-    $("#stateSelectorModal").modal("hide");
+    window.jQuery("#stateSelectorModal").modal("hide");
     persistSalesChannel(selectedState || "SP");
   }
 
@@ -533,3 +540,4 @@ if (!String.prototype.replaceAll) {
     return this.replace(new RegExp(str, "g"), newStr);
   };
 }
+})(jQueryNew);

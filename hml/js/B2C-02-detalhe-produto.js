@@ -1,4 +1,5 @@
-$(function () {//
+(function($) {
+  (function () {//
 	let acessorio = document.querySelector(".mz-accesories__button--buy");
 
 	if (acessorio) {
@@ -114,7 +115,7 @@ $(function () {//
 			}</strong>)` : $('.value-field.Veiculo').length ? `(<strong>${$('.value-field.Veiculo').html()
 				}</strong>)` : ``}</p>`);
 	}
-	
+
 	$('#sugestoes h2').after(
 		`<p class="descricao-rollout">
 			Aproveite e confira outros produtos
@@ -127,7 +128,7 @@ $(function () {//
 		</p>`
 	);
 
-	$(window).load(() => {
+	$(window).on("load", () => {
 		const shippingsDiv = document.querySelector('.freight-values');
 		const observerShippingsDiv = new MutationObserver(() => {
 			const textCepInput = document.querySelector('#txtCep');
@@ -396,7 +397,7 @@ $(function LojasMaisProximas() {
 				country: CONFIG.SERVICE.COUNTRY
 			};
 
-			return $.ajax({
+			return window.jQuery.ajax({
 				url: "/api/checkout/pub/orderForms/simulation",
 				type: "POST",
 				dataType: "JSON",
@@ -681,7 +682,7 @@ $(function CalculeOFrete() {
 				country: CONFIG.SERVICE.COUNTRY
 			};
 
-			return $.ajax({
+			return window.jQuery.ajax({
 				url: "/api/checkout/pub/orderForms/simulation",
 				type: "POST",
 				dataType: "JSON",
@@ -691,3 +692,4 @@ $(function CalculeOFrete() {
 		}
 	}
 });
+})(jQueryNew);

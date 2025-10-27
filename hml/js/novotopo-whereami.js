@@ -1,3 +1,4 @@
+(function($) {
 function createCookie(name, value, days) {
   if (days) {
     var date = new Date();
@@ -42,11 +43,11 @@ function switcharoo(mystate) {
 
     // deletar sp em prod
     /* case "São Paulo":
-         case "State of São Paulo":
-         case "SP":
-             window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
-
-             break;*/
+           case "State of São Paulo":
+           case "SP":
+               window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
+  
+               break;*/
 
     default:
       // window.location.href = "https://cbykautoglass.myvtex.com/?sc=2"
@@ -86,11 +87,11 @@ $(document).ready(function () {
 
           // deletar sp em prod
           /*  case "São Paulo":
-                      case "State of São Paulo":
-                      case "SP":
-                          window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
-      
-                          break;*/
+                        case "State of São Paulo":
+                        case "SP":
+                            window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
+        
+                            break;*/
 
           default:
             // window.location.href = "https://cbykautoglass.myvtex.com/?sc=2"
@@ -235,36 +236,37 @@ $(document).ready(function () {
     });
 
     /*switch (mystate) {
-            //pra produção vai ser sp
-
-            //State of Minas Gerais
-            case "Minas Gerais":
-            case "State of Minas Gerais":
-            case "MG":
-                window.location.href = "https://loja.autoglassonline.com.br/?sc=2";
-                // alert("Você está em: Minas Gerais")
-                break;
-            case 'State of Espírito Santo':
-            case "ES":
-            case "Espírito Santo":
-                window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
-                //  alert("Você está em: Espirito Santo")
-                break;
-
-            // deletar sp em prod
-            /* case "São Paulo":
-             case "State of São Paulo":
-             case "SP":
-                 window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
- 
-                 break;
-
-            default:
-
-                // window.location.href = "https://cbykautoglass.myvtex.com/?sc=2"
-                console.log("do nothing")
-
-
-        }*/
+              //pra produção vai ser sp
+  
+              //State of Minas Gerais
+              case "Minas Gerais":
+              case "State of Minas Gerais":
+              case "MG":
+                  window.location.href = "https://loja.autoglassonline.com.br/?sc=2";
+                  // alert("Você está em: Minas Gerais")
+                  break;
+              case 'State of Espírito Santo':
+              case "ES":
+              case "Espírito Santo":
+                  window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
+                  //  alert("Você está em: Espirito Santo")
+                  break;
+  
+              // deletar sp em prod
+              /* case "São Paulo":
+               case "State of São Paulo":
+               case "SP":
+                   window.location.href = "https://loja.autoglassonline.com.br/?sc=3"
+   
+                   break;
+  
+              default:
+  
+                  // window.location.href = "https://cbykautoglass.myvtex.com/?sc=2"
+                  console.log("do nothing")
+  
+  
+          }*/
   }
 });
+})(jQueryNew);
