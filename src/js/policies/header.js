@@ -394,11 +394,7 @@ function startLocalizationModal() {
   function openLocalizationModal(uf) {
     const state = recuperarEstado(uf);
 
-    $("#stateSelectorModal").on("shown.bs.modal", function () {
-      $(this).removeAttr("aria-hidden");
-      $("#stateConfirmationBtn").trigger("focus");
-    });
-
+    window.jQuery("#stateSelectorModal").modal({ backdrop: "static", keyboard: false });
     setSelectedState(state.Uf);
   }
 
