@@ -667,11 +667,11 @@ body {
   background: #f9f9f9;
 }
 
-@media (max-width: 991px) {
+/* @media (max-width: 991px) {
   body:not(.home) {
     padding-top: 80px;
   }
-}
+} */
 
 .modal-backdrop.in {
   opacity: 0.75;

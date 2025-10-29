@@ -990,4 +990,21 @@ if (window.innerWidth > 1025) {
     }
   });
 }
+
+window.getLastTimeWhildshieldVanePopUpWasShown = getLastTimeWhildshieldVanePopUpWasShown;
+window.calculatesTwelveHours = calculatesTwelveHours;
+window.valueBetweenRange = valueBetweenRange;
+window.activateCategory = activateCategory;
+window.toggleVisibility = toggleVisibility;
+window.getTranslateX = getTranslateX;
+window.fixPlaceholderSearchMobile = fixPlaceholderSearchMobile;
+window.autocompleteSearch = autocompleteSearch;
+window.openNav = openNav;
+window.openNavCategory = openNavCategory;
+window.closeNav = closeNav;
+window.closeNavCategory = closeNavCategory;
+window.openCategorias = openCategorias;
+window.closeCategorias = closeCategorias;
+window.toggleCategory = toggleCategory;
+
 })(jQueryNew);
