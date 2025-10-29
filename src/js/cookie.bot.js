@@ -18,7 +18,7 @@ requestIdleCallback(() => {
           loadScript('https://autoglass-cdn.github.io/src/js/jquery.cookie.js', function () {
               const cookieString = window.jQuery.cookie('hasAcceptedCookies');
               const cookie = cookieString ? JSON.parse(cookieString) : null;
-              const baseUrlApi = "https://api-src.autoglass.com.br/integracao-b2c/api/web-app/master-datas/cookies";
+              const baseUrlApi = "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/master-datas/cookies";
       
               if (!beCheckoutConfirmation) {
                   if (!cookie || (!cookie.accepted)) {
@@ -106,4 +106,4 @@ requestIdleCallback(() => {
         }  
     })();
 });
-})(jQueryNew);
+})(window.jQueryNew || window.jQuery);
