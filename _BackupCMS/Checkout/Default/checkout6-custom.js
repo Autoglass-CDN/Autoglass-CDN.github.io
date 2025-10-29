@@ -1028,3 +1028,64 @@ $(window).on('load', () => {
     }
 });
 
+function aplicarRegraPagamento() {
+  vtexjs.checkout.getOrderForm().then(orderForm => {
+    const tipoRecebimento = orderForm.shippingData.logisticsInfo[0].selectedDeliveryChannel; 
+    const temProdutoADAS = orderForm.items.some(item =>
+      item.name && item.name.toUpperCase().includes('ADAS')
+    );
+
+    // Pega o <a> da Pagamento na Loja
+    const aPagamentoNaLoja = Array.from(document.querySelectorAll('a.payment-group-item')).find(a =>
+      a.textContent.toLowerCase().includes('pagamento na loja')
+    );
+
+    // Se for delivery, esconde somente o pagamento na loja
+    if (tipoRecebimento === 'delivery') {
+      console.log('Tipo de recebimento é delivery. Ocultando pagamento na loja.');
+
+      if (aPagamentoNaLoja) {
+        aPagamentoNaLoja.style.display = 'none';
+      }
+
+      // Mostra as outras opções
+      document.querySelectorAll('a.payment-group-item').forEach(el => {
+        if (el !== aPagamentoNaLoja) el.style.display = '';
+      });
+
+      return; // Importante: não segue para as regras do ADAS
+    }
+
+    // Se não tem ADAS, mostrar tudo
+    if (!temProdutoADAS) {
+      document.querySelectorAll('a.payment-group-item').forEach(el => {
+        el.style.display = '';
+      });
+      return;
+    }
+
+    // Se tem ADAS e não é delivery, mostra apenas Pagamento na loja
+    if (aPagamentoNaLoja) {
+      aPagamentoNaLoja.click();
+
+      setTimeout(() => {
+        document.querySelectorAll('a.payment-group-item').forEach(a => {
+          if (a !== aPagamentoNaLoja) a.style.display = 'none';
+          else a.style.display = '';
+        });
+      }, 700);
+    }
+  });
+}
+
+// Detecta etapa pagamento e aplica a regra
+$(window).on('hashchange', () => {
+  if (window.location.hash.includes('/payment')) {
+    setTimeout(aplicarRegraPagamento, 500);
+  }
+});
+
+// Se já está na etapa pagamento ao carregar a página
+if (window.location.hash.includes('/payment')) {
+  setTimeout(aplicarRegraPagamento, 500);
+}

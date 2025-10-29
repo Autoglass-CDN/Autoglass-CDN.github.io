@@ -106,4 +106,4 @@ requestIdleCallback(() => {
         }  
     })();
 });
-})(jQueryNew);
+})(window.jQueryNew || window.jQuery);

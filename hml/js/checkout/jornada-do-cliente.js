@@ -1,3 +1,13 @@
+(function () {
+  if (!window.vtexjs || !vtexjs.checkout) {
+    console.warn("VTEXJS ainda não carregado. Aguardando...");
+    window.addEventListener("load", initWhenReady);
+  } else {
+    initWhenReady();
+  }
+
+  function initWhenReady() {
+    $(window).on("orderFormUpdated.vtex", function (event, orderForm) {
 const pages = [
   { path: "cart", element: $(".seu-carrinho"), step: 1 },
   { path: "email", element: $(".dados-pessoais"), step: 2 },
@@ -108,3 +118,6 @@ function updateProgressBar(step, totalSteps) {
   const progressBarClass = ".jornada-do-cliente-linha-progresso-verde";
   $(progressBarClass).width(`${((step - 1) * 100) / (totalSteps - 1)}%`);
 }
+});
+  }
+})();
