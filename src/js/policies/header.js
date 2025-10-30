@@ -387,15 +387,53 @@ function recoverModalsState() {
 
 function startLocalizationModal() {
   let selectedState;
+  let modalLiberado = false; // controla se pode abrir
+  let modalJaAberto = false; // evita abrir duas vezes
 
   const stateNameButtons = document.querySelectorAll(".state-name-btn");
   const stateMapButtons = document.querySelectorAll(".state-map-btn");
 
-  function openLocalizationModal(uf) {
-    const state = recuperarEstado(uf);
+  function openLocalizationModalSegura(uf) {
+    // Se o modal ainda não foi liberado, ignora
+    if (!modalLiberado || modalJaAberto) return;
 
+    modalJaAberto = true; // marca como já aberto
+
+    const state = recuperarEstado(uf);
     window.jQuery("#stateSelectorModal").modal({ backdrop: "static", keyboard: false });
     setSelectedState(state.Uf);
+  }
+
+  // Intercepta qualquer tentativa externa de abrir o modal antes da hora
+  window.openLocalizationModal = function (uf) {
+    // ⚠️ Só abre se o usuário já tiver interagido
+    openLocalizationModalSegura(uf);
+  };
+
+  // Espera o carregamento completo do DOM
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", esperarInteracao);
+  } else {
+    esperarInteracao();
+  }
+
+  function esperarInteracao() {
+    console.log("✅ DOM carregado, aguardando movimento do mouse...");
+    function handleUserInteraction() {
+      document.removeEventListener("mousemove", handleUserInteraction);
+      const ufCookie = readCookie("myuf");
+      // ✅ Se o cookie já existe, o usuário já escolheu o estado
+      if (ufCookie) {
+        console.log("🟢 UF já definida em cookie:", ufCookie, "— não abrir modal novamente.");
+        return; // não faz nada
+      }
+
+      // Caso contrário, libera e abre o modal
+      modalLiberado = true;
+      console.log("🖱️ Movimento detectado — modal liberado!");
+      openLocalizationModalSegura("ES"); // ou estado padrão se quiser
+    }
+    document.addEventListener("mousemove", handleUserInteraction);
   }
 
   stateNameButtons.forEach((element) => {
@@ -514,7 +552,7 @@ function startLocalizationModal() {
 
   return {
     setState: setSelectedState,
-    open: openLocalizationModal,
+    open: openLocalizationModalSegura,
   };
 }
 
