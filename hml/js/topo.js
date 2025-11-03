@@ -487,21 +487,21 @@ async function autocompleteSearch(searchTerm) {
  *
  * @param {HTMLInputElement} searchInput Input HTML
  */
-async function autocompleteInit(searchInput) {
-  searchInput.addEventListener("input", async (e) => {
-    let searchTerm = e.target.value.trim();
-    if (searchTerm.length < 4) return;
-    let list = document.querySelector("#autocomplete-search");
-    list.innerHTML = "<li><a>Aguarde...</a></li>";
-    let searchResult = await autocompleteSearch(e.target.value);
-    list.innerHTML = searchResult
-      .map(
-        (item) =>
-          `<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`
-      )
-      .join("");
-  });
-}
+// async function autocompleteInit(searchInput) {
+//   searchInput.addEventListener("input", async (e) => {
+//     let searchTerm = e.target.value.trim();
+//     if (searchTerm.length < 4) return;
+//     let list = document.querySelector("#autocomplete-search");
+//     list.innerHTML = "<li><a>Aguarde...</a></li>";
+//     let searchResult = await autocompleteSearch(e.target.value);
+//     list.innerHTML = searchResult
+//       .map(
+//         (item) =>
+//           `<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`
+//       )
+//       .join("");
+//   });
+// }
 
 function delayedAction(action, abortController) {
   if (abortController) {
@@ -540,15 +540,21 @@ function openNav() {
   document.body.style.width = "100%";
   document.body.style.top = "0";
 
-  zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
-  zenDeskIcon.style.opacity = "0";
-  setTimeout(() => {
-    zenDeskIcon.style.visibility = "hidden";
-  }, 500);
-  zenDeskIcon.style.pointerEvents = "none";
+  if (zenDeskIcon) {
+    zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
+    zenDeskIcon.style.opacity = "0";
+    setTimeout(() => {
+      if (zenDeskIcon) zenDeskIcon.style.visibility = "hidden";
+    }, 500);
+    zenDeskIcon.style.pointerEvents = "none";
+  } else {
+    console.warn("⚠️ Zendesk ainda não carregou (#launcher inexistente)");
+  }
 
-  whatsAppIcon.style.transition = "opacity 0.3s ease";
-  whatsAppIcon.style.opacity = "0.5";
+  if (whatsAppIcon) {
+    whatsAppIcon.style.transition = "opacity 0.3s ease";
+    whatsAppIcon.style.opacity = "0.5";
+  }
 
   let sideMenu = document.getElementById("side-menu");
   sideMenu.style.display = "unset";
@@ -570,6 +576,13 @@ function openNav() {
       menu.stop(true, true).slideDown('fast');
     }
   }, 500);
+
+  setTimeout(() => {
+    const $menuPeca = $('#busca-peca-mobile #pecas-select .smart-select__main-results');
+    if ($menuPeca.length && !$menuPeca.is(':visible')) {
+      $menuPeca.stop(true, true).slideDown('fast');
+    }
+  }, 700);
 }
 
 function lockPageScroll() {
@@ -604,15 +617,21 @@ function openNavCategory() {
   document.body.style.width = "100%";
   document.body.style.top = "0";
 
-  zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
-  zenDeskIcon.style.opacity = "0";
-  setTimeout(() => {
-    zenDeskIcon.style.visibility = "hidden";
-  }, 500);
-  zenDeskIcon.style.pointerEvents = "none";
+  if (zenDeskIcon) {
+    zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
+    zenDeskIcon.style.opacity = "0";
+    setTimeout(() => {
+      if (zenDeskIcon) zenDeskIcon.style.visibility = "hidden";
+    }, 500);
+    zenDeskIcon.style.pointerEvents = "none";
+  } else {
+    console.warn("⚠️ Zendesk ainda não carregou (#launcher inexistente)");
+  }
 
-  whatsAppIcon.style.transition = "opacity 0.3s ease";
-  whatsAppIcon.style.opacity = "0.5";
+  if (whatsAppIcon) {
+    whatsAppIcon.style.transition = "opacity 0.3s ease";
+    whatsAppIcon.style.opacity = "0.5";
+  }
 
   buscaCategoria.style.display = "unset";
   buscaCategoria.style.opacity = "1";
@@ -643,14 +662,22 @@ function closeNav() {
   document.body.style.width = "auto";
   document.body.style.top = "auto";
 
-  zenDeskIcon.style.visibility = "visible";
-  zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
-  setTimeout(() => {
-   zenDeskIcon.style.opacity = "1";
-  }, 500);
-  zenDeskIcon.style.pointerEvents = "auto";
-  whatsAppIcon.style.transition = "opacity 0.3s ease";
-  whatsAppIcon.style.opacity = "1";
+  if (zenDeskIcon) {
+    zenDeskIcon.style.visibility = "visible";
+    zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
+    setTimeout(() => {
+    zenDeskIcon.style.opacity = "1";
+    }, 500);
+    zenDeskIcon.style.pointerEvents = "auto";
+  } else {
+    console.warn("⚠️ Zendesk ainda não carregou (#launcher inexistente)");
+  }
+
+  if (whatsAppIcon) {
+    whatsAppIcon.style.transition = "opacity 0.3s ease";
+    whatsAppIcon.style.opacity = "1";
+  }
+
   sideMenu.querySelectorAll("a").forEach((a) => (a.style.opacity = "0"));
   backdrop.style.opacity = "1";
   setTimeout(() => {
@@ -689,15 +716,21 @@ function closeNavCategory() {
   document.body.style.width = "auto";
   document.body.style.top = "auto";
 
-  zenDeskIcon.style.visibility = "visible";
-  zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
-  setTimeout(() => {
-    zenDeskIcon.style.opacity = "1";
-  }, 500);
-  zenDeskIcon.style.pointerEvents = "auto";
+  if (zenDeskIcon) {
+    zenDeskIcon.style.visibility = "visible";
+    zenDeskIcon.style.transition = "opacity 0.5s ease, visibility 0.5s ease";
+    setTimeout(() => {
+      zenDeskIcon.style.opacity = "1";
+    }, 500);
+    zenDeskIcon.style.pointerEvents = "auto";
+    } else {
+    console.warn("⚠️ Zendesk ainda não carregou (#launcher inexistente)");
+  }
 
-  whatsAppIcon.style.transition = "opacity 0.3s ease";
-  whatsAppIcon.style.opacity = "1";
+  if (whatsAppIcon) {
+    whatsAppIcon.style.transition = "opacity 0.3s ease";
+    whatsAppIcon.style.opacity = "1";
+  }
 
   setTimeout(() => {
     backdrop.style.display = "none";
@@ -737,11 +770,11 @@ function toggleCategory(self) {
 
 //MOBILE
 (() => {
-  let searchField = document.querySelector(
-    ".search-box-mobile .busca input.fulltext-search-box"
-  );
+  // let searchField = document.querySelector(
+  //   ".search-box-mobile .busca input.fulltext-search-box"
+  // );
 
-  autocompleteInitMobile(searchField);
+  // autocompleteInitMobile(searchField);
 
   loadCart(device.mobile);
 
@@ -780,36 +813,36 @@ function removeFunctions() {
   $(".topo").unbind();
   $(".container.mobile").unbind();
 }
-async function autocompleteInitMobile(searchInput) {
-  fixPlaceholderSearchMobile();
-  searchInput.addEventListener("input", async (e) => {
-    let searchTerm = e.target.value.trim();
-    if (searchTerm.length < 4) {
-      $(".search-mobile-autocomplete").hide();
-      return;
-    }
-    let list = document.querySelector(".search-mobile-autocomplete");
-    let searchResult = await autocompleteSearch(e.target.value);
-    if (searchResult.length > 0) {
-      list.innerHTML = searchResult
-        .filter((_, i) => i < 3)
-        .map(
-          (item) => `
-        <li>
-          <a href='${item.href}'>${item.thumb}${item.name.replace(
-            e.target.value,
-            `<b>${e.target.value}</b>`
-          )}</a>
-        </li>
-      `
-        )
-        .join("");
-      $(".search-mobile-autocomplete").show();
-    } else {
-      $(".search-mobile-autocomplete").hide();
-    }
-  });
-}
+// async function autocompleteInitMobile(searchInput) {
+//   fixPlaceholderSearchMobile();
+//   searchInput.addEventListener("input", async (e) => {
+//     let searchTerm = e.target.value.trim();
+//     if (searchTerm.length < 4) {
+//       $(".search-mobile-autocomplete").hide();
+//       return;
+//     }
+//     let list = document.querySelector(".search-mobile-autocomplete");
+//     let searchResult = await autocompleteSearch(e.target.value);
+//     if (searchResult.length > 0) {
+//       list.innerHTML = searchResult
+//         .filter((_, i) => i < 3)
+//         .map(
+//           (item) => `
+//         <li>
+//           <a href='${item.href}'>${item.thumb}${item.name.replace(
+//             e.target.value,
+//             `<b>${e.target.value}</b>`
+//           )}</a>
+//         </li>
+//       `
+//         )
+//         .join("");
+//       $(".search-mobile-autocomplete").show();
+//     } else {
+//       $(".search-mobile-autocomplete").hide();
+//     }
+//   });
+// }
 
 function defineScrollTop() {
   $("html, body").animate({ top: "-=0" }, 10000000000000000000000);
@@ -834,31 +867,31 @@ function pegaLargura(largura) {
 
 defineScrollTop();
 
-const inputBusca = window.innerWidth > 1024 ? document.querySelector(".busca .fulltext-search-box") : document.querySelector(".search-box-mobile .fulltext-search-box");
-const botaoBusca = window.innerWidth > 1024 ? document.querySelector(".search-box .search-icon") : document.querySelector(".search-box-mobile #search-icon");
+// const inputBusca = window.innerWidth > 1024 ? document.querySelector(".busca .fulltext-search-box") : document.querySelector(".search-box-mobile .fulltext-search-box");
+// const botaoBusca = window.innerWidth > 1024 ? document.querySelector(".search-box .search-icon") : document.querySelector(".search-box-mobile #search-icon");
 
-botaoBusca.addEventListener("click", function () {
-  const valorBusca = inputBusca.value.trim();
+// botaoBusca.addEventListener("click", function () {
+//   const valorBusca = inputBusca.value.trim();
 
-  if (valorBusca !== "") {
-    dataLayer.push({
-      event: "search",
-      search_term: valorBusca,
-    });
+//   if (valorBusca !== "") {
+//     dataLayer.push({
+//       event: "search",
+//       search_term: valorBusca,
+//     });
 
-    window.location.href = `/${encodeURIComponent(valorBusca)}`;
-  }
-});
+//     window.location.href = `/${encodeURIComponent(valorBusca)}`;
+//   }
+// });
 
-inputBusca.addEventListener("keydown", function (event) {
-  if (event.keyCode === 13) {
-    const valorBusca = inputBusca.value;
-    dataLayer.push({
-      event: "search",
-      search_term: valorBusca,
-    });
-  }
-});
+// inputBusca.addEventListener("keydown", function (event) {
+//   if (event.keyCode === 13) {
+//     const valorBusca = inputBusca.value;
+//     dataLayer.push({
+//       event: "search",
+//       search_term: valorBusca,
+//     });
+//   }
+// });
 
 (() => {
   let abortCategoryAction = null;
@@ -899,24 +932,24 @@ inputBusca.addEventListener("keydown", function (event) {
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
 
-  let suggestions = document.querySelector(
-    ".container.desktop .search-box #autocomplete-search"
-  );
-  let searchField = document.querySelector(
-    ".container.desktop .search-box .busca input.fulltext-search-box"
-  );
-  searchField.addEventListener("focus", () => {
-    suggestions.style.visibility = "visible";
-    suggestions.style.opacity = "1";
-  });
-  searchField.addEventListener("blur", () => {
-    suggestions.style.opacity = "0";
-    setTimeout(() => (suggestions.style.visibility = "hidden"), 1000);
-  });
-  searchField.addEventListener("keydown", (event) => {
-    event = event || window.event;
-  });
-  autocompleteInit(searchField);
+  // let suggestions = document.querySelector(
+  //   ".container.desktop .search-box #autocomplete-search"
+  // );
+  // let searchField = document.querySelector(
+  //   ".container.desktop .search-box .busca input.fulltext-search-box"
+  // );
+  // searchField.addEventListener("focus", () => {
+  //   suggestions.style.visibility = "visible";
+  //   suggestions.style.opacity = "1";
+  // });
+  // searchField.addEventListener("blur", () => {
+  //   suggestions.style.opacity = "0";
+  //   setTimeout(() => (suggestions.style.visibility = "hidden"), 1000);
+  // });
+  // searchField.addEventListener("keydown", (event) => {
+  //   event = event || window.event;
+  // });
+  // autocompleteInit(searchField);
 
 if (window.innerWidth > 1024) {
   (function initializeCategoryPanelMenu() {
@@ -1007,4 +1040,16 @@ window.openCategorias = openCategorias;
 window.closeCategorias = closeCategorias;
 window.toggleCategory = toggleCategory;
 
+document.addEventListener("DOMContentLoaded", () => {
+    const abrirSideMenu = document.getElementById("abrir-side-menu");
+    const abrirMenuCateg = document.getElementById("abrir-menu-categ");
+    const fecharSideMenu = document.getElementById("fechar-side-menu");
+    const fecharMenuCateg = document.getElementById("fechar-menu-categ");
+
+    if (abrirSideMenu) abrirSideMenu.addEventListener("click", openNav);
+    if (abrirMenuCateg) abrirMenuCateg.addEventListener("click", openNavCategory);
+    if (fecharSideMenu) fecharSideMenu.addEventListener("click", closeNav);
+    if (fecharMenuCateg) fecharMenuCateg.addEventListener("click", closeNavCategory);
+  });
+  
 })(jQueryNew);
