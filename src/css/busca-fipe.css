@@ -56,9 +56,9 @@ html {
   border-top-right-radius: 0;
 }
 @media screen and (max-width: 1024px) {
-  #form-busca-peca-mobile .h-flex {
+  /* #form-busca-peca-mobile .h-flex {
     padding-bottom: 60px;
-  }
+  } */
 
   .c-busca__tabs-content-mobile .smart-select__main-results {
     padding-top: 30px;

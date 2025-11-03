@@ -1,7 +1,13 @@
 (function ($) {
   $(document).ready(function () {
     const buscaPlaca = JSON.parse(localStorage.getItem("buscaPlaca"));
-    if (window.innerWidth > 1024 && document.body.classList.contains('categoria')) {
+
+    if (document.body.classList.contains('departamento') || document.body.classList.contains('categoria')) {
+      window.Controller = window.Controller || {};
+      Controller.checkRouterParams = () => {};
+    }
+
+    if (window.innerWidth > 1024 && document.body.classList.contains('categoria') || document.body.classList.contains('departamento')) {
       setTimeout(() => {
         $('#pecas-select-desktop .gtm-smart-peca-select span').text('Tipo de Peça');
         $('#pecas-select-desktop .fa-caret-down').show();
@@ -37,8 +43,8 @@
         $(".carro-compativel").hide();
       });
     } else {
-      var abaBuscaPlaca = document.getElementById("tab-busca-placa-mobile");
-      abaBuscaPlaca.querySelector('input[type="radio"]').checked = true;
+      var abaBuscaPeca = document.getElementById("tab-busca-peca-mobile");
+      abaBuscaPeca.querySelector('input[type="radio"]').checked = true;
       sessionStorage.setItem("selectedOptionCategoria", null);
       sessionStorage.setItem("selectedOptionTipoPeca", null);
       sessionStorage.setItem("selectedOptionMontadora", null);
@@ -134,6 +140,12 @@
       });
 
       $(document).on('click', function (e) {
+        const abaClick = $(e.target).closest('.c-busca__tabs-mobile').length > 0;
+        if (abaClick) {
+          e.stopPropagation();
+          return;
+        }
+
         const isInsidePeca = $(e.target).closest('#pecas-select').length > 0;
         const isInsideCategoria = $(e.target).closest('#categoria-select').length > 0;
         const isInputBusca = $(e.target).is('#inputBuscaPeca') || $(e.target).closest('#inputBuscaPeca').length > 0;
@@ -235,6 +247,26 @@
       $('#tab-busca-peca-mobile').removeClass('is-active');
       $(this).addClass('is-active');
     });
+
+    $(document).on('click._menuBtnStop', '.menu-btn', function (e) {
+      e.stopPropagation();
+    });
+
+    if (window.innerWidth <= 1024) {
+      $('#busca-peca-mobile #pecas-select .smart-select__main-results')
+        .off('click._closeOnPick')
+        .on('click._closeOnPick', 'li, li input', function (e) {
+          const $menu = $(e.currentTarget).closest('.smart-select__main-results');
+          $menu.stop(true, true).slideUp('fast');
+        });
+
+      $('#busca-placa-mobile #categoria-select .smart-select__main-results')
+        .off('click._closeOnPick')
+        .on('click._closeOnPick', 'li, li input', function (e) {
+          const $menu = $(e.currentTarget).closest('.smart-select__main-results');
+          $menu.stop(true, true).slideUp('fast');
+        });
+    }
   });
 
   let activeTab = window.innerWidth > 1024 ? '#busca-placa' : '#busca-placa-mobile';
@@ -386,6 +418,8 @@
           }
           Service.search();
         });
+        document.dispatchEvent(new Event('buscaPecaIniciada'));
+        bindCloseOnPickCapture('#busca-peca-mobile #pecas-select .smart-select__main-results');
   }
 
   function ViewAPI() {
@@ -1487,13 +1521,6 @@
   const tabBuscaPlaca = document.getElementById('tab-busca-placa-desktop');
   const tabNaoSeiPlaca = document.getElementById('tab-nao-sei-placa-desktop');
 
-  setTimeout(() => {
-  if (inputBuscaPlaca && inputNaoSeiPlaca) {
-      inputNaoSeiPlaca.checked = false;
-      inputBuscaPlaca.checked = true;
-  }
-  }, 300);
-
   function ativarBuscaPlaca() {
     inputBuscaPlaca.checked = true;
 
@@ -1516,7 +1543,7 @@
   sessionStorage.setItem("idAba", "inputBuscaPeca");
 }
 
-  ativarBuscaPlaca();
+  ativarBuscaPeca();
 
   if (inputNaoSeiPlaca && inputNaoSeiPlaca.checked) {
     ativarBuscaPeca();
@@ -1561,13 +1588,31 @@
   window.addEventListener('DOMContentLoaded', () => { 
     menuCategoriasMobile();
   
-    const tabPlacaPadrao = document.getElementById('inputPlaca');
+    const tabPecaPadrao = document.getElementById('inputBuscaPeca');
   
-    if (tabPlacaPadrao) {
-      tabPlacaPadrao.checked = true;
-      sessionStorage.setItem("idAba", "tabPlacaPadrao");
+    if (tabPecaPadrao) {
+      tabPecaPadrao.checked = true;
+      sessionStorage.setItem("idAba", "tabPecaPadrao");
     }
   });
+}
+
+function bindCloseOnPickCapture(selector) {
+  const menu = document.querySelector(selector);
+  if (!menu) return;
+
+  menu.__closeOnPickCapture && menu.removeEventListener('click', menu.__closeOnPickCapture, true);
+
+  menu.__closeOnPickCapture = function(e) {
+    const li = e.target.closest('li');
+    if (!li || !menu.contains(li)) return;
+
+    setTimeout(() => {
+      $(menu).stop(true, true).slideUp('fast');
+    }, 50);
+  };
+
+  menu.addEventListener('click', menu.__closeOnPickCapture, true);
 }
 
  function AlternaAbaBusca() {
@@ -1694,6 +1739,11 @@
   document.addEventListener("DOMContentLoaded", () => {
     copiarEstadoParaBuscarComPlaca();
   });
+
+  if (window.innerWidth <= 1024) {
+    bindCloseOnPickCapture('#busca-peca-mobile #pecas-select .smart-select__main-results');
+    bindCloseOnPickCapture('#busca-placa-mobile #categoria-select .smart-select__main-results');
+  }
 }
 
   function menuCategoriasMobile () {
@@ -1767,7 +1817,8 @@ function _initBuscaPlaca(values) {
         }
       }
     });
-
+    document.dispatchEvent(new Event('buscaPlacaIniciada'));
+    bindCloseOnPickCapture('#busca-placa-mobile #categoria-select .smart-select__main-results');
   }
 
   function restoreBuscaPlaca() {
