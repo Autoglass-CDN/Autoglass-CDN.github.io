@@ -1,5 +1,4 @@
 (function($) {
-  (function () {//
 	let acessorio = document.querySelector(".mz-accesories__button--buy");
 
 	if (acessorio) {
@@ -168,9 +167,9 @@
 		});
 
 		shippingsDiv && observerShippingsDiv.observe(shippingsDiv, { attributes: true, childList: true, subtree: true });
+
+		exibirComponenteEstoque();
 	});
-  exibirComponenteEstoque();
-});
 
 function readCookie(name) {
   var nameEQ = name + "=";
@@ -302,17 +301,21 @@ $(function LojasMaisProximas() {
 		}
 
 		async function simulateShipping(address) {
-			if (address) {
-				let shippingData = await Service.simulateShipping(address);
+			if (!address) return;
 
-				SLA = shippingData
-					.logisticsInfo[0]
-					.slas
-					.filter(x => x.deliveryChannel === 'pickup-in-point');
+			let shippingData = await Service.simulateShipping(address);
+			const logisticsInfo = shippingData?.logisticsInfo;
 
-				View.buildListStore(SLA);
-				View.addClicks();
+			if (!logisticsInfo?.length || !logisticsInfo[0]?.slas?.length) {
+				console.warn("Nenhum ponto de retirada retornado:", logisticsInfo);
+				View.buildListStore([]);
+				return;
 			}
+
+			const SLA = logisticsInfo[0].slas.filter(x => x.deliveryChannel === "pickup-in-point");
+
+			View.buildListStore(SLA);
+			View.addClicks();
 		}
 	}
 
@@ -524,8 +527,13 @@ $(function CalculeOFrete() {
 		async function searchDeliverys(address) {
 			const { logisticsInfo } = await Service.simulateShipping({ postalCode: address });
 
-			SLA = logisticsInfo[0].slas
-				.filter(x => x.deliveryChannel === 'delivery');
+			if (!logisticsInfo?.length || !logisticsInfo[0]?.slas?.length) {
+				console.warn("Nenhuma opção de entrega retornada:", logisticsInfo);
+				View.buildListDelivery([]);
+				return;
+			}
+
+			const SLA = logisticsInfo[0].slas.filter(x => x.deliveryChannel === "delivery");
 
 			const [cheapestOption, fastestOption] = SLA;
 
@@ -672,23 +680,35 @@ $(function CalculeOFrete() {
 		}
 
 		async function simulateShipping(address) {
+			if (!CONFIG.SERVICE.SKU_ID) {
+				console.warn("Nenhum SKU disponível para simular frete.");
+				return;
+			}
+
 			const request = {
 				items: [{
-					id: CONFIG.SERVICE.SKU_ID,
-					quantity: 1,
-					seller: 1
+				id: String(CONFIG.SERVICE.SKU_ID),
+				quantity: 1,
+				seller: String(CONFIG.SERVICE.SELLER || 1)
 				}],
-				postalCode: address.postalCode,
-				country: CONFIG.SERVICE.COUNTRY
+				postalCode: String(address.postalCode).replace(/\D/g, ""),
+				country: String(CONFIG.SERVICE.COUNTRY || "BRA").toUpperCase()
 			};
 
-			return window.jQuery.ajax({
+			try {
+				const response = await window.jQuery.ajax({
 				url: "/api/checkout/pub/orderForms/simulation",
 				type: "POST",
 				dataType: "JSON",
 				contentType: "application/json",
 				data: JSON.stringify(request)
-			});
+				});
+
+				return response;
+			} catch (error) {
+				console.error("simulateShipping error:", error);
+				return {};
+			}
 		}
 	}
 });
