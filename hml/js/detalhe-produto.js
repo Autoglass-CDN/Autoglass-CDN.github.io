@@ -1,7 +1,5 @@
-const baseUrlApi =
-    window.location.href.includes("dev") || window.location.href.includes("mvp") || window.location.href.includes("hml")
-      ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app"
-      : "https://api.autoglass.com.br/integracao-b2c/api/web-app";
+(function($) {
+const baseUrlApi = "https://api.autoglass.com.br/integracao-b2c/api/web-app";
 
 const sections = [...document.querySelectorAll("section.tab-content")];
 const getLinkById = (id) => document.querySelector(`a[href='#${id}'].tab-link`);
@@ -784,6 +782,7 @@ function ajustarTextoValorParcelado(precoNumerico) {
     }
   });
 }
+})(jQueryNew);
 
 //ATENÇÃO! SOMENTE PARA HML!
 $(document).ready(function() {

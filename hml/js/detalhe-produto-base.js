@@ -1,3 +1,4 @@
+(function($) {
 const baseUrlApi =
   window.location.href.includes("dev") ||
   window.location.href.includes("mvp") ||
@@ -920,3 +921,4 @@ $(window).on("ready", async () => {
     }
   }
 });
+})(jQueryNew);

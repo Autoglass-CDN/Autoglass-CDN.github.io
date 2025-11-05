@@ -1,3 +1,16 @@
+(function () {
+  // se o vtexjs ainda não existe, aguarda até existir
+  if (!window.vtexjs || !vtexjs.checkout) {
+    console.warn("VTEXJS ainda não carregado. Aguardando...");
+    window.addEventListener("load", initWhenReady);
+  } else {
+    initWhenReady();
+  }
+
+  function initWhenReady() {
+    // se o checkout ainda não disparou o evento, aguarda ele
+    $(window).on("orderFormUpdated.vtex", function (event, orderForm) {
+      console.log("✅ OrderForm pronto, executando código...");
 var codCidades = {
   SE: { code: "8529", nome: "Sergipe" },
   TO: { code: "9654", nome: "Tocantins" },
@@ -1024,4 +1037,6 @@ function readCookie(name) {
   console.error("Não foi possível recuprar cookie VTEXSC'\n");
   return null;
 }
-
+});
+  }
+})();

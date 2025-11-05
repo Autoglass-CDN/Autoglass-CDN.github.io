@@ -1,4 +1,5 @@
 /* PC-QUARTO - 04/06/2020 21:55:54 GMT-0300 */
+(function($) {
 console.warn("Código legado carregado.");
 console.log("Ambiente HML");
 String.prototype.trim ||
@@ -183,7 +184,7 @@ try {
       });
     },
     applyMosaicBanners: function () {
-      $(".mosaic-qd-v1-wrapper .box-banner").QD_mosaicBanners({
+      window.jQuery(".mosaic-qd-v1-wrapper .box-banner").QD_mosaicBanners({
         classFourColumn: "col-xs-6 com-sm-4 col-md-2",
       });
     },
@@ -205,7 +206,7 @@ try {
         '<div class="smart-cart-qd-v2-wrapper"><div class="qd-sc-wrapper"></div></div>'
       );
       var wrapper = $(".qd-sc-wrapper");
-      $.QD_smartCart({
+      window.jQuery.QD_smartCart({
         selector: wrapper,
         dropDown: {
           texts: {
@@ -296,7 +297,7 @@ try {
       });
     },
     smartAutoComplete: function () {
-      $(".fulltext-search-box").QD_smartAutoComplete({
+      window.jQuery(".fulltext-search-box").QD_smartAutoComplete({
         jqueryUI: {
           appendTo: ".header-qd-v1-search-wrap",
         },
@@ -374,14 +375,14 @@ try {
       }, 1000);
     },
     applyAmazingMenu: function () {
-      $(".header-qd-v1-amazing-menu, .footer-qd-v1-menu-list").QD_amazingMenu();
+      window.jQuery(".header-qd-v1-amazing-menu, .footer-qd-v1-menu-list").QD_amazingMenu();
     },
     applyAmazingMenuMobile: function () {
       var wrapper = $(".header-qd-v1-amazing-menu-mobile");
       wrapper.find("> ul > li > ul").prepend(function () {
         return $(this).prev().clone().wrap("<li></li>").parent();
       });
-      wrapper.QD_amazingMenu({
+      window.jQuery(wrapper).QD_amazingMenu({
         callback: function () {
           $('<span class="qd-am-dropdown-trigger"></span>')
             .appendTo(wrapper.find(".qd-am-has-ul"))
@@ -497,7 +498,7 @@ try {
         var $t = $(this);
         $t.find("h2").prependTo($t.parent());
       });
-      wrapper.slick({
+      window.jQuery(wrapper).slick({
         prevArrow:
           '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
         nextArrow:
@@ -526,7 +527,7 @@ try {
       });
     },
     applyShelfColors: function () {
-      $('.prateleira:not([id*="ResultItems"])').QD_coresPrateleira({
+      window.jQuery('.prateleira:not([id*="ResultItems"])').QD_coresPrateleira({
         dimensions: ["Selecione o Tamanho"],
         thumbsQuantity: 3,
         minSkuQttShow: 1,
@@ -571,7 +572,7 @@ try {
     },
     checkLogin: function () {
       var wrapper = $(".header-qd-v1-user-action-login");
-      $.qdAjax({
+      window.jQuery.qdAjax({
         url: "/no-cache/profileSystem/getProfile",
         dataType: "json",
         clearQueueDelay: null,
@@ -909,6 +910,8 @@ try {
       },
     },
   };
+  window.Common = Common;
+  Common.setDataScrollToggle();
   var Home = {
     init: function () {
       Home.sliderFull();
@@ -920,7 +923,7 @@ try {
     windowOnload: function () {},
     sliderFull: function () {
       var wrapper = $(".slider-qd-v1-full");
-      wrapper.slick({
+      window.jQuery(wrapper).slick({
         dots: true,
         fade: true,
         cssEase: "linear",
@@ -942,7 +945,7 @@ try {
     },
     applyBrandCarousel: function () {
       var wrapper = $(".brands-qd-v1-carousel");
-      wrapper.slick({
+      window.jQuery(wrapper).slick({
         prevArrow:
           '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
         nextArrow:
@@ -1188,7 +1191,7 @@ try {
       });
     },
     applySmartResearch: function () {
-      $(
+      window.jQuery(
         '.search-qd-v1-navigator-research input[type="checkbox"]'
       ).QD_SmartResearch({
         filtersMenu: ".search-multiple-navigator",
@@ -1338,12 +1341,12 @@ try {
       checkVisibleNotify(skuJson.available);
     },
     smartBuyButton: function () {
-      $(".product-qd-v1-buy-button.buy-button").QD_buyButton({
+      window.jQuery(".product-qd-v1-buy-button.buy-button").QD_buyButton({
         buyButton: ".product-qd-v1-buy-button.buy-button .buy-button",
       });
     },
     applySmartQuantity: function () {
-      $(
+      window.jQuery(
         ".product-qd-v1-smart-qtt:not(.qd-on), .product-qd-v1-fixed-bar .product-qd-v1-buy-button:not(.qd-on)"
       )
         .addClass("qd-on")
@@ -1499,18 +1502,25 @@ try {
       $(".mz-advantages__button--buy").attr("href", urlCart);
     },
     captureSkuSelectors: function (skuMain, skuInstall) {
-      var rxList = Product.regexList();
+      var regexList = Product.regexList();
       var skusSelected = [];
-      var skuIdMainProduct = $(
-        ".product-qd-v1-buy-button .buy-button[href]"
-      ).attr("href");
-      var skuMain = skuIdMainProduct.match(rxList[4])[0];
-      skusSelected.push(skuMain);
-      var skuInstallation = $(
+      var skuHref = window.jQuery(".product-qd-v1-buy-button .buy-button[href]").attr("href");
+      if (skuHref) {
+        var match = skuHref.match(regexList[4]);
+        if (match) {
+          var mainSku = match[0];
+          skusSelected.push(mainSku);
+        }
+      } else {
+        console.error("Href não encontrado ou não existe.");
+      }
+      var skuInstallation = window.jQuery(
         ".product-qd-v1-installation-content #accessorySelect input[rel]"
       ).attr("rel");
-      skusSelected.push(skuInstallation);
-      return skusSelected;
+      if (skuInstallation) {
+        skusSelected.push(skuInstallation);
+      }
+      return skusSelected.filter(Boolean);
     },
     bringInstallementTreatsData: function () {
       var rxList = Product.regexList();
@@ -1520,25 +1530,28 @@ try {
       var listStates = Product.listStates();
       for (var thisST in listStates) {
         if (thisST == stateFormated) {
+          var validItems = skuList
+            .filter(Boolean)
+            .map(id => ({
+              id,
+              quantity: 1,
+              seller: "1"
+            }));
+
+          if (!validItems.length) {
+            console.warn("Nenhum SKU válido encontrado, abortando simulação.");
+            return;
+          }
+
           var data = {
-            items: [
-              {
-                id: skuList[0],
-                quantity: 1,
-                seller: 1,
-              },
-              {
-                id: skuList[1],
-                quantity: 1,
-                seller: 1,
-              },
-            ],
+            items: validItems,
             postalCode: listStates[thisST].cep,
-            country: "BRA",
+            country: "BRA"
           };
+
           let vtexsc = readCookie("VTEXSC").replace("sc=", "");
 
-          $.ajax({
+          window.jQuery.ajax({
             url: `/api/checkout/pub/orderForms/simulation?sc=${vtexsc}`,
             type: "POST",
             dataType: "JSON",
@@ -1554,6 +1567,8 @@ try {
             ) {
               Product.renderDataInInstallements(installmentsList, config);
             }
+          }).fail(function(xhr) {
+            console.warn("Erro de simulação:", xhr.status, xhr.responseText);
           });
         }
       }
@@ -1847,6 +1862,7 @@ try {
       return regexList;
     },
   };
+  window.Product = Product;
   var List = {
     run: function () {},
     init: function () {},
@@ -1922,7 +1938,7 @@ try {
       else if (body.is(".b2b")) B2B.ajaxStop();
     };
 
-    $(function () {
+    window.jQuery(function () {
       body = $(document.body);
       Common.init();
 
@@ -1935,7 +1951,7 @@ try {
       else if (body.is(".b2b")) B2B.init();
 
       $(document).ajaxStop(ajaxStop);
-      $(window).load(windowLoad);
+      $(window).on("load", windowLoad);
       body.addClass("jsFullLoaded");
     });
 
@@ -2147,7 +2163,7 @@ try {
     ((c.QD_scrollToggle = function (a) {
       var d = [];
       if (("string" !== typeof a && "number" !== typeof a) || "auto" === a)
-        if ("auto" === a) d.push(c(window).height());
+        if ("auto" === a) d.push(window.jQuery(window).height());
         else
           return e(
             "NÃ£o foi informado o limite de scroll necessÃ¡rio para adicionar o atributo."
@@ -2181,7 +2197,7 @@ try {
         "undefined" === typeof document.body.getAttribute
       )
         return e('"document.body.getAttribute" NÃ£o Ã© uma funÃ§Ã£o :(');
-      if (!c(window).scrollTop || isNaN(parseInt(c(window).scrollTop())))
+      if (!window.jQuery(window).scrollTop || isNaN(parseInt(window.jQuery(window).scrollTop())))
         return e(
           '"$(window).scrollTop" nÃ£o esta retornando um nÃºmero inteiro :('
         );
@@ -2196,20 +2212,55 @@ try {
           g.message
         );
       }
-      c(window).scroll(function () {
+      window.jQuery(window).scroll(function () {
         for (var a = 0; a < d.length; a++)
-          c(window).scrollTop() > d[a]
+          window.jQuery(window).scrollTop() > d[a]
             ? document.body.getAttribute("data-qd-scroll-" + a) ||
               document.body.setAttribute("data-qd-scroll-" + a, 1)
             : document.body.getAttribute("data-qd-scroll-" + a) &&
               document.body.removeAttribute("data-qd-scroll-" + a);
       });
     }),
-    c(function () {
-      var a = c("body[data-qd-scroll-limit]");
-      a.length && c.QD_scrollToggle(a.attr("data-qd-scroll-limit"));
+    window.jQuery(function () {
+      var a = window.jQuery("body[data-qd-scroll-limit]");
+      a.length && window.jQuery.QD_scrollToggle(a.attr("data-qd-scroll-limit"));
     }));
 })();
+
+window.jQuery(function () {
+  var $body = window.jQuery("body[data-qd-scroll-limit]");
+  if (!$body.length) {
+    console.warn('[QD Scroll Debug] O atributo data-qd-scroll-limit não foi encontrado no <body>.');
+    return;
+  }
+
+  var limits = $body.attr("data-qd-scroll-limit")
+    .split(",")
+    .map(function (n) { return parseInt(n.trim()); })
+    .filter(function (n) { return !isNaN(n); });
+
+  if (!limits.length) {
+    console.warn('[QD Scroll Debug] Nenhum valor numérico encontrado em data-qd-scroll-limit.');
+    return;
+  }
+
+  window.jQuery(window).on("scroll.QDDebug", function () {
+    var scrollTop = window.jQuery(window).scrollTop();
+
+    limits.forEach(function (limit, index) {
+      if (scrollTop > limit) {
+        if (!document.body.getAttribute('data-qd-scroll-' + index)) {
+          document.body.setAttribute('data-qd-scroll-' + index, '1');
+        }
+      } else {
+        if (document.body.getAttribute('data-qd-scroll-' + index)) {
+          document.body.removeAttribute('data-qd-scroll-' + index);
+        }
+      }
+    });
+  });
+});
+
 (function () {
   "function" !== typeof $.cookie &&
     (function (c) {
@@ -10904,3 +10955,4 @@ document.addEventListener("DOMContentLoaded", function () {
       duplicateLink.remove();
   }
 });
+})(jQueryNew);

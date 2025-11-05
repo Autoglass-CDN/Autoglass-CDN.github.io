@@ -15,6 +15,7 @@
 #launcher {
   min-width: 60px !important;
   height: 60px !important;
+  z-index: 899999 !important;
 }
 
 #launcher #document button {

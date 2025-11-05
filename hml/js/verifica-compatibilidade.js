@@ -1,3 +1,4 @@
+(function($) {
 window.addEventListener("load", () => {
   function updatePageNumbers() {
     const pageNumbers = document.querySelectorAll(".pages li.page-number");
@@ -415,3 +416,4 @@ async function getArvoreCategoria() {
     `${CONFIG.ORIGIN}/api/catalog_system/pub/category/tree/${CONFIG.ASYNC.TREE_LEVEL}`
   );
 }
+})(jQueryNew);

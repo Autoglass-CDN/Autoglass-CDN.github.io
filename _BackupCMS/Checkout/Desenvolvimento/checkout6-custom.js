@@ -2,6 +2,7 @@
 
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE. THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
+
 /*<!-- Facebook Pixel Code -->*/
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -49,33 +50,31 @@ const CONFIG = {
 }
 
 $(window).on('load', () => {
-
     const Controller = ControllerAPI();
     const Service = ServiceAPI();
     const View = ViewAPI();
 
     View._init();
 
-
     Controller._init();
     Controller.loadScripts();
-
 
     function ControllerAPI() {
         return {
             _init,
             loadScripts,
-  			recuperarInfoAcessorio
+            recuperarInfoAcessorio
         }
 
         async function _init() {
             $(window).on(CONFIG.EVENTS.HASH_CHANGE, _watchHashChange);
 
             const orderForm = vtexjs.checkout.orderForm || await Service.getOrderForm();
-   			CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');
-			
+
+            CONFIG.CONTROLS.BRAND_ID = await recuperarInfoAcessorio(orderForm, 'brandId');
+
   			await recuperarInfoAcessorio(orderForm, 'brandId');
-  
+
   			await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
 
             await _createInstallButtonObserver(orderForm);
@@ -92,11 +91,9 @@ $(window).on('load', () => {
                 CONFIG.EVENTS.ORDER_FORM_UPDATE + ' ' + CONFIG.EVENTS.HASH_CHANGE,
                 _watchHashChangeAndOrderForm
             )
-
         }
 
-
-		 async function recuperarInfoAcessorio(orderForm, property) {
+        async function recuperarInfoAcessorio(orderForm, property) {
             for (const item of orderForm.items) {
                 const accessories = await Service.getAccessories(item);
                 const accessory = accessories.find(accessory => !!accessory);
@@ -106,7 +103,7 @@ $(window).on('load', () => {
                 }
             }
         }
-	
+
 
         async function _createInstallButtonObserver(orderForm) {
             const instalationSku = await recuperarInfoAcessorio(orderForm, 'items[0].itemId');
@@ -158,7 +155,7 @@ $(window).on('load', () => {
             _removePaymentPickupIfIsDelivery(orderForm);
 
             if (window.location.hash.includes('payment')) {
-                _formatLabelOnPayment(orderForm)
+                 _formatLabelOnPayment(orderForm)
             }
 
             if (window.location.hash.includes('profile') && $('#opt-in-adulthood').length === 0) {
@@ -199,11 +196,10 @@ $(window).on('load', () => {
                 }
                 $('#shipping-data').addClass('altera-texto-abas-checkout');
                 View.addInstallTexts(orderForm);
-            } else if (title.is('.accordion-toggle-active')){
+            } else if (title.is('.accordion-toggle-active')) {
                 title.html('<i class="icon-home"></i> Receber ou Retirar');
                 $('#shipping-data').removeClass('altera-texto-abas-checkout');
             }
-
 
             View.createCepInfo(orderForm, hasInstall);
         }
@@ -231,7 +227,6 @@ $(window).on('load', () => {
                 }, 100, maxLoopInteractions);
             }
         }
-
 
 		function _formatLabelOnPayment(orderForm){
 				let title = $('#shipping-data .accordion-toggle.collapsed');
@@ -274,75 +269,60 @@ $(window).on('load', () => {
             	return;
         }
 
-
         async function loadScripts() {
-        const addId = id => script => { script.id = id; };
-
-        // Função de utilitário para carregamento
-        const loadScript = (src, callback) => {
-            return new Promise((resolve, reject) => {
-            const script = document.createElement("script");
-            script.type = "text/javascript";
-            script.defer = true;
-            script.crossOrigin = "anonymous";
-
-            if (script.readyState) {
-                // IE antigo
-                script.onreadystatechange = function () {
-                if (script.readyState === "loaded" || script.readyState === "complete") {
-                    script.onreadystatechange = null;
-                    resolve();
-                } else {
-                    reject();
-                }
-                };
-            } else {
-                // Navegadores modernos
-                script.onload = () => resolve();
-                script.onerror = () => reject();
+            const addId = id => script => {
+              script.id = id;
             }
 
-            script.src = src;
-            if (callback) callback(script);
-            document.body.appendChild(script);
-            });
-        };
+            await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
+            await loadScript("/scripts/jquery.ui.core.js");
+            await loadScript("/arquivos/jquery.cookie.js");
+            await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
+            await loadScript("/arquivos/jquery-ui.datepicker.js");
+            // await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
+            loadScript('https://autoglass-cdn.github.io/src/js/checkout/jornada-do-cliente.js');
+            loadScript('https://autoglass-cdn.github.io/src/js/checkout/automatizar-preenchimento-nota-fiscal.js');
+            loadScript('https://autoglass-cdn.github.io/src/js/checkout/habilitar-input-chassi.js');
 
-        // Scripts críticos (carregam em sequência)
-        await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
-        await loadScript("/scripts/jquery.ui.core.js");
-        await loadScript("/arquivos/jquery.cookie.js");
-        await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
-        await loadScript("/arquivos/jquery-ui.datepicker.js");
 
-        // Scripts funcionais do checkout (sequenciais)
-        await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
-        await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
-        await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
+             loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+            //loadScript('https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127', addId('hi-chat-script'));
 
-        // Scripts complementares (paralelos e não críticos)
-        loadScript('https://autoglass-cdn.github.io/src/js/checkout/jornada-do-cliente.js');
-        loadScript('https://autoglass-cdn.github.io/src/js/checkout/automatizar-preenchimento-nota-fiscal.js');
-        loadScript('https://autoglass-cdn.github.io/src/js/checkout/habilitar-input-chassi.js');
-        loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
-        // loadScript('https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127', addId('hi-chat-script'));
-
-        // Scripts de marketing (adiados até ocioso)
-        window.addEventListener("load", function () {
-            const carregarMarketing = function () {
             loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
             loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
-            loadScript('https://js.hs-scripts.com/20753913.js'); // HubSpot + LinkedIn Ads
-            };
-
-            if ('requestIdleCallback' in window) {
-            requestIdleCallback(carregarMarketing);
-            } else {
-            setTimeout(carregarMarketing, 1500); // fallback leve
-            }
-        });
+            loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
         }
 
+        function loadScript(src, callback) {
+            return new Promise((resolve, reject) => {
+                let script = document.createElement("script");
+                script.type = "text/javascript";
+
+                if (script.readyState) {
+                    //IE
+                    script.onreadystatechange = function () {
+                        if (script.readyState == "loaded" || script.readyState == "complete") {
+                            script.onreadystatechange = null;
+                            resolve();
+                        } else {
+                            reject()
+                        }
+                    };
+                } else {
+                    //Others
+                    script.onload = function () {
+                        resolve();
+                    };
+                }
+
+                script.src = src;
+                callback && callback(script);
+                document.getElementsByTagName("head")[0].appendChild(script);
+            });
+        }
     }
 
     function ViewAPI() {
@@ -374,31 +354,29 @@ $(window).on('load', () => {
         }
 
         function formatItemList(orderForm) {
-            let hasInstall = Service.checkIfHasInstall(orderForm.items);
-            let hasInstallButtom = _checkIfHasInstallButtom();
+          let hasInstall = Service.checkIfHasInstall(orderForm.items);
+          let hasInstallButtom = _checkIfHasInstallButtom();
 
-            if (hasInstall) {
-                $('body').addClass('hasInstall');
-                setTimeout(() => _buildDeliveryInfo(orderForm), 500);
-                $('#shipping-data').addClass('altera-texto-abas-checkout');
-                $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
-            }
+          if (hasInstall) {
+              $('body').addClass('hasInstall');
+              setTimeout(() => _buildDeliveryInfo(orderForm), 500);
+              $('#shipping-data').addClass('altera-texto-abas-checkout');
+              $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
+          }
 
-            if (hasInstall && hasInstallButtom) {
-                $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
+          if (hasInstall && hasInstallButtom) {
+              $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
+              $(".srp-toggle__pickup").append(
+                  "<span class='instalar'>Instalar na loja</span>"
+              );
+              $(".srp-toggle__delivery").append(
+                  "<span class='instalar'>Instalar em casa</span>"
+              );
 
-                $(".srp-toggle__pickup").append(
-                    "<span class='instalar'>Instalar na loja</span>"
-                );
-                $(".srp-toggle__delivery").append(
-                    "<span class='instalar'>Instalar em casa</span>"
-                );
+              $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
+          }
 
-                $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
-            }
-            
-            
-            orderForm.items.forEach(item => {
+          orderForm.items.forEach(item => {
             Service.getAccessories(item).then(accessories => {
                 accessories.forEach(accessory => {
                     if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && verificaInsumoCarrinho(orderForm, accessory.productReference)){
@@ -413,39 +391,37 @@ $(window).on('load', () => {
           });
 
           function verificaInsumoCarrinho(orderForm, refIdProduct) {
-            return orderForm.items.find(item => item.refId === refIdProduct) ? false : true;
+              return orderForm.items.find(item => item.refId === refIdProduct) ? false : true;
           }
 
-            if (!hasInstall) {
-                $('body').removeClass('hasInstall');
-                $("span").remove(".instalar");
-                $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
-                $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
-                // $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Entrega ou Retirada');
-                $('#shipping-data').removeClass('altera-texto-abas-checkout');
-                $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
+          if (!hasInstall) {
+              $('body').removeClass('hasInstall');
+              $("span").remove(".instalar");
+              $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
+              $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
+            // $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Entrega ou Retirada');
+              $('#shipping-data').removeClass('altera-texto-abas-checkout');
+              $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
+          }
 
-
-            }
-
-            View.createCepInfo(orderForm, hasInstall);
-        }
+          View.createCepInfo(orderForm, hasInstall);
+      }
 
         function windshieldVerification(orderForm) {
-          const hasWindshild = orderForm.items.reduce(
-              (previousValue, item) =>
-                  previousValue || item.name.startsWith("Parabrisa"),
-              false
-          );
-          console.log('hasWindshild? '+ hasWindshild);
-          if(!hasWindshild) return;
-          const hasWindshieldVane = orderForm.items.reduce(
-              (previousValue, item) =>
-                  previousValue || item.name.startsWith("Palheta"),
-              false
-          );
-          if(hasWindshieldVane) return;
-        }
+            const hasWindshild = orderForm.items.reduce(
+                (previousValue, item) =>
+                    previousValue || item.name.startsWith("Parabrisa"),
+                false
+            );
+            console.log('hasWindshild? '+ hasWindshild);
+            if(!hasWindshild) return;
+            const hasWindshieldVane = orderForm.items.reduce(
+                (previousValue, item) =>
+                    previousValue || item.name.startsWith("Palheta"),
+                false
+            );
+            if(hasWindshieldVane) return;
+          }
 
         function addInstallTexts(orderForm) {
             $('.accordion-inner').addClass('instalacao');
@@ -459,20 +435,18 @@ $(window).on('load', () => {
         async function _implementsInstallButtom(item, accessory) {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
-			
+
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
 
             let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price
             let precoAcessorioFormatado = precoAcessorio.toFixed(2).replace('.', ',');
-              
+
             if(accessory.items[0]) {
               preco = 'R$ '+ precoAcessorioFormatado;
               bestPrice = precoAcessorio + '00';
               available = true;
-
             }
-
 
             if (!available) return;
 
@@ -486,32 +460,32 @@ $(window).on('load', () => {
                 .length === 0) {
                 $(`[data-sku='${item.id}'] .product-name`).append(btnInstall);
             }
+
             function loadScript(src, callback) {
                 return new Promise((resolve, reject) => {
-                    const script = document.createElement("script");
+                    let script = document.createElement("script");
                     script.type = "text/javascript";
-                    script.defer = true;
-                    script.crossOrigin = "anonymous";
 
                     if (script.readyState) {
-                    // IE antigo
-                    script.onreadystatechange = function () {
-                        if (script.readyState === "loaded" || script.readyState === "complete") {
-                        script.onreadystatechange = null;
-                        resolve();
-                        } else {
-                        reject();
-                        }
-                    };
+                        //IE
+                        script.onreadystatechange = function () {
+                            if (script.readyState == "loaded" || script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                resolve();
+                            } else {
+                                reject()
+                            }
+                        };
                     } else {
-                    // Navegadores modernos
-                    script.onload = () => resolve();
-                    script.onerror = () => reject();
+                        //Others
+                        script.onload = function () {
+                            resolve();
+                        };
                     }
 
                     script.src = src;
-                    if (callback) callback(script);
-                    document.body.appendChild(script);
+                    callback && callback(script);
+                    document.getElementsByTagName("head")[0].appendChild(script);
                 });
             }
         }
@@ -536,7 +510,11 @@ $(window).on('load', () => {
 
             return btn;
         }
-              
+
+        function _checkIfHasInstallButtom() {
+            return $(".srp-toggle__pickup span.instalar").length === 0;
+        }
+
         async function _implementsServicoCalibracaoButton(item, accessory) {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
@@ -568,30 +546,29 @@ $(window).on('load', () => {
         
             function loadScript(src, callback) {
                 return new Promise((resolve, reject) => {
-                    const script = document.createElement("script");
+                    let script = document.createElement("script");
                     script.type = "text/javascript";
-                    script.defer = true;
-                    script.crossOrigin = "anonymous";
-
+        
                     if (script.readyState) {
-                    // IE antigo
-                    script.onreadystatechange = function () {
-                        if (script.readyState === "loaded" || script.readyState === "complete") {
-                        script.onreadystatechange = null;
-                        resolve();
-                        } else {
-                        reject();
-                        }
-                    };
+                        // IE
+                        script.onreadystatechange = function () {
+                            if (script.readyState == "loaded" || script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                resolve();
+                            } else {
+                                reject();
+                            }
+                        };
                     } else {
-                    // Navegadores modernos
-                    script.onload = () => resolve();
-                    script.onerror = () => reject();
+                        // Outros navegadores
+                        script.onload = function () {
+                            resolve();
+                        };
                     }
-
+        
                     script.src = src;
-                    if (callback) callback(script);
-                    document.body.appendChild(script);
+                    callback && callback(script);
+                    document.getElementsByTagName("head")[0].appendChild(script);
                 });
             }
         }
@@ -611,10 +588,6 @@ $(window).on('load', () => {
             });
 
             return btnServicoCalibracao;
-        }
-
-        function _checkIfHasInstallButtom() {
-            return $(".srp-toggle__pickup span.instalar").length === 0;
         }
 
         function _buildDeliveryInfo(orderForm) {
@@ -741,8 +714,8 @@ $(window).on('load', () => {
 
                     if (cepBox.length === 0) {
                         try {
-                          const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
-                          $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
+                            const htmlOriginal = $('.srp-pickup-info label')[0].outerHTML;
+                            $('.srp-pickup-info label')[0].outerHTML = '<div class="cep-info"></div>' + htmlOriginal;
                         } catch {console.log('Falha ao renderizar o Cep');}
                     }
 
@@ -847,7 +820,7 @@ $(window).on('load', () => {
                 }
             }
 
-              try {
+            try {
 
                 setTimeout(() => {
                    $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
@@ -1063,7 +1036,6 @@ $(window).on('load', () => {
             return JSON.parse(localStorage.getItem(CONFIG.STORAGE.APPOINTMENT));
         }
     }
-
 });
 
 function aplicarRegraPagamento() {

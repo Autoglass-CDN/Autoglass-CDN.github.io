@@ -5,6 +5,7 @@
  * Copyright 2006, 2014 Klaus Hartl
  * Released under the MIT license
  */
+(function($) {
 (function (factory) {
 	if (typeof define === 'function' && define.amd) {
 		// AMD (Register as an anonymous module)
@@ -112,3 +113,4 @@
 	};
 
 }));
+})(window.jQueryNew || window.jQuery);

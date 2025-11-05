@@ -1,4 +1,5 @@
 //#region Banners
+(function($) {
 (async function () {
 	let position = 0;
 	const btnPrev = $('.banners-section .banners button[data-type="prev"]');
@@ -10,8 +11,8 @@
 	const containers = $('.banners-section .banners-content');
 	let bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
 	let bannerImages = bannerContainer.children();
-  buildBars();
   localStorage.setItem('buscaPlaca', null);
+	buildBars();
 	calculateMarginOfBtns();
 	window.addEventListener('resize', e => {
 		bannerContainer = window.innerWidth > 1200 ? $(containers[0]) : $(containers[1]);
@@ -138,11 +139,13 @@
   document.addEventListener("DOMContentLoaded", function () {
     function applyLazy() {
       const lcpDesktop = document.querySelector(".banners-content.desktop img");
-      const lcpMobile = document.querySelector(".banners-content.mobile img");
+      const whysSection = document.querySelector(".whys-section");
+      const whysImgs = whysSection ? whysSection.querySelectorAll("img") : [];
+
       const images = document.querySelectorAll("img");
 
       images.forEach((img) => {
-        if (img === lcpDesktop || img === lcpMobile) return;
+        if (img === lcpDesktop || [...whysImgs].includes(img)) return;
 
         if (!img.hasAttribute("loading")) {
           img.setAttribute("loading", "lazy");
@@ -153,10 +156,11 @@
         lcpDesktop.setAttribute("loading", "eager");
         lcpDesktop.setAttribute("fetchpriority", "high");
       }
-      if (lcpMobile) {
-        lcpMobile.setAttribute("loading", "eager");
-        lcpMobile.setAttribute("fetchpriority", "high");
-      }
+
+      whysImgs.forEach((img) => {
+        img.setAttribute("loading", "eager");
+        img.setAttribute("fetchpriority", "high");
+      });
     }
 
     applyLazy();
@@ -645,3 +649,4 @@ document
     subtree: true,
   });
 })();
+})(jQueryNew);

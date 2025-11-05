@@ -1,3 +1,4 @@
+(function($) {
 document.addEventListener("DOMContentLoaded", async () => {
   const refId = extrairRefIdDoNome(skuJson?.name);
   const skuId = skuJson?.skus?.[0]?.sku;
@@ -251,3 +252,4 @@ function inicializarZoomModal(img) {
     backgroundModal.style.display = "flex";
   });
 }
+})(jQueryNew);

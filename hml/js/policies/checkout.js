@@ -1,4 +1,14 @@
 (function () {
+  if (!window.vtexjs || !vtexjs.checkout) {
+    console.warn("VTEXJS ainda não carregado. Aguardando...");
+    window.addEventListener("load", initWhenReady);
+  } else {
+    initWhenReady();
+  }
+
+  function initWhenReady() {
+    $(window).on("orderFormUpdated.vtex", function (event, orderForm) {
+(function () {
   const testLogs = true;
   let policies;
 
@@ -438,4 +448,7 @@
     let currentPage = location.href.split("/").pop();
     if (currentPage == "profile") onlyProceedIfAdult();
   });
+})();
+});
+  }
 })();

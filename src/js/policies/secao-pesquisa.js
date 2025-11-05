@@ -1,3 +1,4 @@
+(function($) {
 document.addEventListener("DOMContentLoaded", function () {
   const tabItems = document.querySelectorAll(".tab-item");
   const filterGroup = document.querySelector(".filter-group");
@@ -108,3 +109,4 @@ document.addEventListener("DOMContentLoaded", function () {
     filterGroup.innerHTML = filtroSelecionado;
   }
 });
+})(jQueryNew);

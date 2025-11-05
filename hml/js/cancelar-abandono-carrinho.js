@@ -1,4 +1,4 @@
-(() => {
+(function($) {
   const parametros = new URLSearchParams(window.location.search);
   const email = parametros.get("e");
   const baseUrlApi = window.location.href.includes("dev")
@@ -75,4 +75,4 @@
       ? true
       : false;
   }
-})();
+})(jQueryNew);

@@ -32,25 +32,15 @@ var ConfirmationOrderMobile = {
 };
 
 $(document).ready(function () {
-  // Ativa visualmente as etapas do checkout
-  $('#carrinho, #identificacao, #entrega, #pagamento').addClass('active');
-  $('.carrinho-line, .identificacao-line, .entrega-line').addClass('active');
-
-  // Carregamento inteligente dos scripts externos (HubSpot e HubSpot Cookie)
-  window.addEventListener("load", function () {
-    const carregarScriptsHubSpot = function () {
-      loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
-      loadScript('https://js.hs-scripts.com/20753913.js'); // LinkedIn Ads via HubSpot
-    };
-
-    if ('requestIdleCallback' in window) {
-      // Navegadores modernos
-      requestIdleCallback(carregarScriptsHubSpot);
-    } else {
-      // Fallback: aguarda ~2 segundos para garantir que o checkout está estável
-      setTimeout(carregarScriptsHubSpot, 1000);
-    }
-  });
+  $('#carrinho').addClass('active');
+  $('#identificacao').addClass('active');
+  $('#entrega').addClass('active');
+  $('#pagamento').addClass('active');
+  $('.carrinho-line').addClass('active');
+  $('.identificacao-line').addClass('active');
+  $('.entrega-line').addClass('active');
+  loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
+  loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
 });
 
 
@@ -61,40 +51,42 @@ const CONFIG_GLOBAL = {
   }
 }
 
-const baseUrlApi = window.location.href.includes("dev")
-    ? "https://api-int-hml.autoglass.com.br"
-    : "https://api-int.autoglass.com.br";
-
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE.
 // THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
 function loadScript(src, callback) {
   return new Promise((resolve, reject) => {
-    const script = document.createElement("script");
+    let script = document.createElement("script");
     script.type = "text/javascript";
-    script.defer = true;
-    script.crossOrigin = "anonymous";
 
     if (script.readyState) {
-      // IE antigo
+      //IE
       script.onreadystatechange = function () {
-        if (script.readyState === "loaded" || script.readyState === "complete") {
+        if (script.readyState == "loaded" || script.readyState == "complete") {
           script.onreadystatechange = null;
           resolve();
         } else {
-          reject();
+          reject()
         }
       };
     } else {
-      // Navegadores modernos
-      script.onload = () => resolve();
-      script.onerror = () => reject();
+      //Others
+      script.onload = function () {
+        resolve();
+      };
     }
 
     script.src = src;
-    if (callback) callback(script);
-    document.body.appendChild(script);
+    callback && callback(script);
+    document.getElementsByTagName("head")[0].appendChild(script);
   });
+}
+
+function getCookieValue(name) {
+  const value = `; ${document.cookie}`;
+  const parts = value.split(`; ${name}=`);
+  if (parts.length === 2) return parts.pop().split(';').shift();
+  return null;
 }
 
 async function loadScripts(data) {
@@ -108,7 +100,7 @@ async function loadScripts(data) {
   await loadScript("/arquivos/jquery-ui.datepicker.js");
   await loadScript("https://autoglass-cdn.github.io/src/js/consulta-agendamento.js");
   await loadScript(
-    "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
+     "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
     script => script.id = "ze-snippet"
   );
   //await loadScript("https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127", 
@@ -170,18 +162,18 @@ const Installment = {
     $('#input-cep-btn').trigger('click');
 
     //if (!$('#mostrar-datas-datepicker').datepicker("option", "onSelect")) {
-      $('#mostrar-datas-datepicker').datepicker(
-        "option",
-        "onSelect",
-        (date) => {
-          $("#confirmacao-servico-movel").html('');
+    $('#mostrar-datas-datepicker').datepicker(
+      "option",
+      "onSelect",
+      (date) => {
+        $("#confirmacao-servico-movel").html('');
 
-          $("#confirmacao-servico-movel")
-            .append(agendamentoCasaService.textoConfirmacao(date))
-            .append(agendamentoCasaService.createConfirmationButton())
-            .fadeIn(500);
-        }
-      )
+        $("#confirmacao-servico-movel")
+          .append(agendamentoCasaService.textoConfirmacao(date))
+          .append(agendamentoCasaService.createConfirmationButton())
+          .fadeIn(500);
+      }
+    )
     //}
 
   }
@@ -228,7 +220,6 @@ setTimeout(() => {
     }
   });
 }, 2000);
-
 
 function calculateAvailableAppointmentDate(data, installment_type) {
   const { days } = getShippingEstimate(data.shippingData);
@@ -307,7 +298,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos`,
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -372,7 +363,7 @@ function AgendamentoLojaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos`,
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -423,7 +414,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos/servicos-moveis`,
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -499,7 +490,7 @@ function AgendamentoCasaService() {
     return $.ajax({
       crossDomain: true,
       jsonp: false,
-      url: `${baseUrlApi}/integracao-b2c/api/web-app/agendamentos/servicos-moveis`,
+      url: "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos/servicos-moveis",
       contentType: "application/json",
       type: "POST",
       data: JSON.stringify(body),
@@ -509,11 +500,11 @@ function AgendamentoCasaService() {
         .addClass("info")
         .html(
           `<h3>Sua solicitação foi enviada!</h3>
-           <p>O agendamento de instalação, no dia <strong>${diaSelecionado}</strong>, foi
-           solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
-          </p>
-          <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
-        );
+          <p>O agendamento de instalação, no dia <strong>${diaSelecionado}</strong>, foi
+          solicitado e ocorrerá no período de <strong>08:00 às 18:00</strong>.
+         </p>
+         <p><strong>Fique ligado, podemos entrar em contato para confirmar alguns dados ou solucionar eventuais problemas.</strong></p>`
+       );
       $("#loader").addClass("hidden");
     }).fail(function (err) {
       $(".msg-agendamento")
@@ -528,7 +519,6 @@ function AgendamentoCasaService() {
     });
   }
 }
-
 
 /*
 function loadScript(src, callback) {

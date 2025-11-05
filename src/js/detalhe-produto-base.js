@@ -1,3 +1,4 @@
+(function($) {
 const baseUrlApi =
   window.location.href.includes("dev") ||
   window.location.href.includes("mvp") ||
@@ -169,12 +170,12 @@ async function getProductRefIdByProductName() {
 }
 
 async function loadOptionals() {
-  const opcionaisContainer = $("#opcionais");
+  const opcionaisContainer = window.jQuery("#opcionais");
   const productRefId = await getProductRefIdByProductName();
-  const testeOpcionais = $(".teste-opcionais");
+  const testeOpcionais = window.jQuery(".teste-opcionais");
 
   try {
-    const { Opcionais } = await $.get(
+    const { Opcionais } = await window.jQuery.get(
       `${baseUrlApi}/produtos/${productRefId}/opcionais-vtex`
     );
 
@@ -920,3 +921,4 @@ $(window).on("ready", async () => {
     }
   }
 });
+})(jQueryNew);

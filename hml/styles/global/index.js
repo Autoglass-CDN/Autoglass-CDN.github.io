@@ -1,3 +1,4 @@
+(function($) {
 class RadioTypeButton {
   static init() {
     addEventClickRadioButtons();
@@ -44,3 +45,4 @@ class RadioTypeButton {
     RadioTypeButton.init();
   }
 })();
+})(jQueryNew);

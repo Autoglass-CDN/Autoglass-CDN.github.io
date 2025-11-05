@@ -1,5 +1,6 @@
 // WARNING: THE USAGE OF CUSTOM SCRIPTS IS NOT SUPPORTED. VTEX IS NOT LIABLE FOR ANY DAMAGES THIS MAY CAUSE. THIS MAY BREAK YOUR STORE AND STOP SALES. IN CASE OF ERRORS, PLEASE DELETE THE CONTENT OF THIS SCRIPT.
 
+
 /*<!-- Facebook Pixel Code -->*/
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -90,15 +91,15 @@ $(window).on('load', () => {
             )
         }
 
-            async function recuperarInfoAcessorio(orderForm, property) {
-                for (const item of orderForm.items) {
-                    const accessories = await Service.getAccessories(item);
-                    const accessory = accessories.find(accessory => !!accessory);
+        async function recuperarInfoAcessorio(orderForm, property) {
+            for (const item of orderForm.items) {
+                const accessories = await Service.getAccessories(item);
+                const accessory = accessories.find(accessory => !!accessory);
 
-                    if (accessory) {
-                        return accessory[property];
-                    }
+                if (accessory) {
+                    return accessory[property];
                 }
+            }
         }
 
 
@@ -266,71 +267,60 @@ $(window).on('load', () => {
             	return;
         }
 
-
         async function loadScripts() {
-        const addId = id => script => { script.id = id; };
-
-        const loadScript = (src, callback) => {
-            return new Promise((resolve, reject) => {
-            const script = document.createElement("script");
-            script.type = "text/javascript";
-            script.defer = true;
-            script.crossOrigin = "anonymous";
-
-            if (script.readyState) {
-                script.onreadystatechange = function () {
-                if (script.readyState === "loaded" || script.readyState === "complete") {
-                    script.onreadystatechange = null;
-                    resolve();
-                } else {
-                    reject();
-                }
-                };
-            } else {
-                script.onload = () => resolve();
-                script.onerror = () => reject();
+            const addId = id => script => {
+              script.id = id;
             }
 
-            script.src = src;
-            if (callback) callback(script);
-            document.getElementsByTagName("body")[0].appendChild(script);
-            });
-        };
-
-        try {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
-        } catch (e) {
-            console.warn('[Checkout] Erro ao carregar VTEX Catalog.js (CORS):', e);
-        }
-        await loadScript("/scripts/jquery.ui.core.js");
-        await loadScript("/arquivos/jquery.cookie.js");
-        await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
-        await loadScript("/arquivos/jquery-ui.datepicker.js");
+            await loadScript("/scripts/jquery.ui.core.js");
+            await loadScript("/arquivos/jquery.cookie.js");
+            await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
+            await loadScript("/arquivos/jquery-ui.datepicker.js");
+            // await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
+            await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
+            loadScript('https://autoglass-cdn.github.io/src/js/checkout/jornada-do-cliente.js');
+            loadScript('https://autoglass-cdn.github.io/src/js/checkout/automatizar-preenchimento-nota-fiscal.js');
+            loadScript('https://autoglass-cdn.github.io/src/js/checkout/habilitar-input-chassi.js');
 
-        await loadScript('https://autoglass-cdn.github.io/hml/js/policies/checkout.js');
-        await loadScript('https://autoglass-cdn.github.io/hml/js/cep.component.js');
-        await loadScript('https://autoglass-cdn.github.io/hml/js/consulta-agendamento.js');
 
-        loadScript('https://autoglass-cdn.github.io/hml/js/checkout/jornada-do-cliente.js');
-        loadScript('https://autoglass-cdn.github.io/hml/js/checkout/automatizar-preenchimento-nota-fiscal.js');
-        loadScript('https://autoglass-cdn.github.io/hml/js/checkout/habilitar-input-chassi.js');
-        loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+             loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
+            //loadScript('https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127', addId('hi-chat-script'));
 
-        window.addEventListener("load", function () {
-            const carregarMarketing = function () {
-            loadScript('https://autoglass-cdn.github.io/hml/js/cookie.bot.js');
-            loadScript('https://autoglass-cdn.github.io/hml/js/hubspot-cookie.js');
-            loadScript('https://js.hs-scripts.com/20753913.js');
-            };
-
-            if ('requestIdleCallback' in window) {
-            requestIdleCallback(carregarMarketing);
-            } else {
-            setTimeout(carregarMarketing, 1500);
-            }
-        });
+            loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
+            loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
+            loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
         }
 
+        function loadScript(src, callback) {
+            return new Promise((resolve, reject) => {
+                let script = document.createElement("script");
+                script.type = "text/javascript";
+
+                if (script.readyState) {
+                    //IE
+                    script.onreadystatechange = function () {
+                        if (script.readyState == "loaded" || script.readyState == "complete") {
+                            script.onreadystatechange = null;
+                            resolve();
+                        } else {
+                            reject()
+                        }
+                    };
+                } else {
+                    //Others
+                    script.onload = function () {
+                        resolve();
+                    };
+                }
+
+                script.src = src;
+                callback && callback(script);
+                document.getElementsByTagName("head")[0].appendChild(script);
+            });
+        }
     }
 
     function ViewAPI() {
@@ -362,29 +352,29 @@ $(window).on('load', () => {
         }
 
         function formatItemList(orderForm) {
-            let hasInstall = Service.checkIfHasInstall(orderForm.items);
-            let hasInstallButtom = _checkIfHasInstallButtom();
+          let hasInstall = Service.checkIfHasInstall(orderForm.items);
+          let hasInstallButtom = _checkIfHasInstallButtom();
 
-            if (hasInstall) {
-                $('body').addClass('hasInstall');
-                setTimeout(() => _buildDeliveryInfo(orderForm), 500);
-                $('#shipping-data').addClass('altera-texto-abas-checkout');
-                $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
-            }
+          if (hasInstall) {
+              $('body').addClass('hasInstall');
+              setTimeout(() => _buildDeliveryInfo(orderForm), 500);
+              $('#shipping-data').addClass('altera-texto-abas-checkout');
+              $('.srp-description.mw5').html("Veja as opções de <b>instalação </b>com prazos e valores").css("opacity", 1);
+          }
 
-            if (hasInstall && hasInstallButtom) {
-                $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
-                $(".srp-toggle__pickup").append(
-                    "<span class='instalar'>Instalar na loja</span>"
-                );
-                $(".srp-toggle__delivery").append(
-                    "<span class='instalar'>Instalar em casa</span>"
-                );
+          if (hasInstall && hasInstallButtom) {
+              $('.srp-toggle').addClass(CONFIG.CSS.INSTALACAO);
+              $(".srp-toggle__pickup").append(
+                  "<span class='instalar'>Instalar na loja</span>"
+              );
+              $(".srp-toggle__delivery").append(
+                  "<span class='instalar'>Instalar em casa</span>"
+              );
 
-                $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
-            }
+              $('.srp-main-title.mt0.mb0.f3.black-60.fw4').html('Instalar');
+          }
 
-            orderForm.items.forEach(item => {
+          orderForm.items.forEach(item => {
             Service.getAccessories(item).then(accessories => {
                 accessories.forEach(accessory => {
                     if (accessory.brandId == CONFIG.CONTROLS.BRAND_ID && verificaInsumoCarrinho(orderForm, accessory.productReference)){
@@ -398,21 +388,21 @@ $(window).on('load', () => {
             });
           });
 
-            function verificaInsumoCarrinho(orderForm, refIdProduct) {
+          function verificaInsumoCarrinho(orderForm, refIdProduct) {
               return orderForm.items.find(item => item.refId === refIdProduct) ? false : true;
           }
 
-            if (!hasInstall) {
-                $('body').removeClass('hasInstall');
-                $("span").remove(".instalar");
-                $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
-                $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
-                $('#shipping-data').removeClass('altera-texto-abas-checkout');
-                $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
-            }
+          if (!hasInstall) {
+              $('body').removeClass('hasInstall');
+              $("span").remove(".instalar");
+              $('.srp-toggle').removeClass(CONFIG.CSS.INSTALACAO);
+              $('.accordion-inner').removeClass(CONFIG.CSS.INSTALACAO);
+              $('#shipping-data').removeClass('altera-texto-abas-checkout');
+              $('.srp-description.mw5').html("Veja as opções de <b>entrega</b>, <b>retirada</b> ou <b>instalação</b> com prazos e valores.").css("opacity", 1);
+          }
 
-            View.createCepInfo(orderForm, hasInstall);
-        }
+          View.createCepInfo(orderForm, hasInstall);
+      }
 
         function windshieldVerification(orderForm) {
             const hasWindshild = orderForm.items.reduce(
@@ -453,9 +443,7 @@ $(window).on('load', () => {
               preco = 'R$ '+ precoAcessorioFormatado;
               bestPrice = precoAcessorio + '00';
               available = true;
-
             }
-
 
             if (!available) return;
 
@@ -472,28 +460,29 @@ $(window).on('load', () => {
 
             function loadScript(src, callback) {
                 return new Promise((resolve, reject) => {
-                    const script = document.createElement("script");
+                    let script = document.createElement("script");
                     script.type = "text/javascript";
-                    script.defer = true;
-                    script.crossOrigin = "anonymous";
 
                     if (script.readyState) {
-                    script.onreadystatechange = function () {
-                        if (script.readyState === "loaded" || script.readyState === "complete") {
-                        script.onreadystatechange = null;
-                        resolve();
-                        } else {
-                        reject();
-                        }
-                    };
+                        //IE
+                        script.onreadystatechange = function () {
+                            if (script.readyState == "loaded" || script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                resolve();
+                            } else {
+                                reject()
+                            }
+                        };
                     } else {
-                    script.onload = () => resolve();
-                    script.onerror = () => reject();
+                        //Others
+                        script.onload = function () {
+                            resolve();
+                        };
                     }
 
                     script.src = src;
-                    if (callback) callback(script);
-                    document.body.appendChild(script);
+                    callback && callback(script);
+                    document.getElementsByTagName("head")[0].appendChild(script);
                 });
             }
         }
@@ -522,7 +511,7 @@ $(window).on('load', () => {
         function _checkIfHasInstallButtom() {
             return $(".srp-toggle__pickup span.instalar").length === 0;
         }
-              
+
         async function _implementsServicoCalibracaoButton(item, accessory) {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
@@ -554,28 +543,29 @@ $(window).on('load', () => {
         
             function loadScript(src, callback) {
                 return new Promise((resolve, reject) => {
-                    const script = document.createElement("script");
+                    let script = document.createElement("script");
                     script.type = "text/javascript";
-                    script.defer = true;
-                    script.crossOrigin = "anonymous";
-
+        
                     if (script.readyState) {
-                    script.onreadystatechange = function () {
-                        if (script.readyState === "loaded" || script.readyState === "complete") {
-                        script.onreadystatechange = null;
-                        resolve();
-                        } else {
-                        reject();
-                        }
-                    };
+                        // IE
+                        script.onreadystatechange = function () {
+                            if (script.readyState == "loaded" || script.readyState == "complete") {
+                                script.onreadystatechange = null;
+                                resolve();
+                            } else {
+                                reject();
+                            }
+                        };
                     } else {
-                    script.onload = () => resolve();
-                    script.onerror = () => reject();
+                        // Outros navegadores
+                        script.onload = function () {
+                            resolve();
+                        };
                     }
-
+        
                     script.src = src;
-                    if (callback) callback(script);
-                    document.body.appendChild(script);
+                    callback && callback(script);
+                    document.getElementsByTagName("head")[0].appendChild(script);
                 });
             }
         }
@@ -822,7 +812,7 @@ $(window).on('load', () => {
                 }
             }
 
-              try {
+            try {
 
                 setTimeout(() => {
                    $('#mostrar-datas-datepicker').datepicker('option', 'onSelect',
@@ -1039,7 +1029,7 @@ $(window).on('load', () => {
         }
     }
 });
-                  
+
 function aplicarRegraPagamento() {
   vtexjs.checkout.getOrderForm().then(orderForm => {
     const tipoRecebimento = orderForm.shippingData.logisticsInfo[0].selectedDeliveryChannel; 
@@ -1101,3 +1091,139 @@ $(window).on('hashchange', () => {
 if (window.location.hash.includes('/payment')) {
   setTimeout(aplicarRegraPagamento, 500);
 }
+
+// (function waitForVtexjs() {
+//   if (typeof window.vtexjs === 'undefined' || !vtexjs.checkout) {
+//     return setTimeout(waitForVtexjs, 100);
+//    }else{
+//      // Quando disponível, roda seu script principal
+//      iniciarScriptReparo();          
+//    } 
+// })();
+                  
+// function iniciarScriptReparo() {
+//   const RETRY_MS = 250;
+//   const MAX_RETRIES = 12; // ~3s total
+//   // ===== Estado =====
+//   let aplicando = false;
+//   let ultimoHashCarrinho = false;
+//   let observerResumo = null; // ligado só quando tem GOL
+//   let retriesRestantes = MAX_RETRIES;
+//   // ===== Helpers =====
+//   const isCarrinho = () => window.location.hash.includes('/cart');
+//   const normaliza = el => ((el?.textContent) || '').trim().toLowerCase();
+//   function encontrarTrPorRotulo(rotulo) {
+//     const alvo = rotulo.toLowerCase();
+//     // 1) busca por texto renderizado
+//     for (const td of document.querySelectorAll('td.info')) {
+//       if (normaliza(td) === alvo) return td.closest('tr');
+//     }
+//     // 2) fallback por data-bind (conforme seu HTML)
+//     for (const td of document.querySelectorAll("td.info[data-bind]")) {
+//       if (normaliza(td) === alvo) return td.closest('tr');
+//     }
+//     // 3) fallback pelos ids do KO (os <tr> ganham class a partir do id)
+//     //    ex.: <tr class="Items"> ... Subtotal ... ; <tr class="Discounts"> ... Descontos ...
+//     if (alvo === 'subtotal')  return document.querySelector('tr.Items')     || null;
+//     if (alvo === 'descontos') return document.querySelector('tr.Discounts') || null;
+//     return null;
+//   }
+//   function obterLinhasResumo() {
+//     const trSubtotal  = encontrarTrPorRotulo('Subtotal');
+//     const trDescontos = encontrarTrPorRotulo('Descontos');
+//     if (!trSubtotal && !trDescontos) return null;
+//     // contêiner “estável” para observar (tabela/box do resumo)
+//     const container = (trSubtotal || trDescontos)?.closest('table, .summary, .cart-totalizers, .summary-totalizers, .orderform-template, .cart-template') || document.body;
+//     return { trSubtotal, trDescontos, container };
+//   }
+//   function lerTemProdutoReparo(of) {
+//     return !!of?.items?.some(i => (i?.name || '').toUpperCase().includes('REPARO'));
+//   }
+//   function aplicarHide(temReparo, linhas) {
+//     const display = temReparo ? 'none' : '';
+//     if (linhas.trSubtotal)  linhas.trSubtotal.style.display  = display;
+//     if (linhas.trDescontos) linhas.trDescontos.style.display = display;
+//   }
+//   function ligarObserverResumo(container, temReparo) {
+//     // desliga anterior
+//     desligarObserverResumo();
+//     if (!temReparo) return;
+//     observerResumo = new MutationObserver(() => {
+//       // toda vez que o KO re-renderiza, garantimos o hide novamente
+//       const linhas = obterLinhasResumo();
+//       if (linhas) aplicarHide(true, linhas);
+//     });
+//     observerResumo.observe(container, { childList: true, subtree: true });
+//   }
+//   function desligarObserverResumo() {
+//     if (observerResumo) {
+//       observerResumo.disconnect();
+//       observerResumo = null;
+//     }
+//   }
+//   // ===== Núcleo =====
+//   function aplicarRegraReparoSubtotalDescontos() {
+//     if (!isCarrinho() || aplicando) return;
+//     aplicando = true;
+//     vtexjs.checkout.getOrderForm().then(of => {
+//       const temReparo = lerTemProdutoReparo(of);
+//       const linhas = obterLinhasResumo();
+//       if (!linhas) {
+//         if (retriesRestantes > 0) {
+//           retriesRestantes--;
+//           setTimeout(aplicarRegraReparoSubtotalDescontos, RETRY_MS);
+//         }
+//         aplicando = false;
+//         return;
+//       }
+//       // Aplica e “cola” a regra se tiver Reparo
+//       aplicarHide(temReparo, linhas);
+//       ligarObserverResumo(linhas.container, temReparo);
+//       // Se render ainda estiver chegando, damos um “raf burst” curto para colar de vez
+//       if (temReparo) {
+//         let ticks = 6; // ~6 frames
+//         const burst = () => {
+//           const l = obterLinhasResumo();
+//           if (l) aplicarHide(true, l);
+//           if (--ticks > 0) requestAnimationFrame(burst);
+//         };
+//         requestAnimationFrame(burst);
+//       }
+//       retriesRestantes = 0;
+//       aplicando = false;
+//       of.value = of.totalizers[0].value;
+//     }).catch(err => {
+//       console.error('[REPARO/Subtotal] getOrderForm falhou:', err);
+//       aplicando = false;
+//     });
+//   }
+//   // ===== Disparadores =====
+//   // Entra/sai do carrinho
+//   $(window).on('hashchange', () => {
+//     const agora = isCarrinho();
+//     if (agora && !ultimoHashCarrinho) {
+//       retriesRestantes = MAX_RETRIES;
+//       setTimeout(aplicarRegraReparoSubtotalDescontos, 300);
+//     }
+//     if (!agora) {
+//       // saiu do carrinho: limpa observer
+//       desligarObserverResumo();
+//     }
+//     ultimoHashCarrinho = agora;
+//   });
+//   // Já está no carrinho ao carregar
+//   if (isCarrinho()) {
+//     ultimoHashCarrinho = true;
+//     retriesRestantes = MAX_RETRIES;
+//     setTimeout(aplicarRegraReparoSubtotalDescontos, 300);
+//   }
+//   // Sempre que o orderForm mudar, re-aplica (mesmo se continuar com REPARO)
+//   $(window).on('orderFormUpdated.vtex', function (_evt, of) {
+//     if (!isCarrinho()) return;
+//     // se tem REPARO, garantimos colagem imediata; se não tem, limpamos observer e mostramos tudo
+//     const temReparo = lerTemProdutoReparo(of);
+//     retriesRestantes = MAX_RETRIES; // dá espaço se o DOM ainda estiver montando
+//     aplicarRegraReparoSubtotalDescontos();
+//     if (!temReparo) desligarObserverResumo();
+//   });
+// }

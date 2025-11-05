@@ -1,3 +1,4 @@
+(function($) {
 (function ($, undefined) {
 
     $.extend($.ui, { datepicker: { version: "1.9.0" } });
@@ -1839,3 +1840,4 @@
     window['DP_jQuery_' + dpuuid] = $;
 
 })(jQuery);
+})(jQueryNew);

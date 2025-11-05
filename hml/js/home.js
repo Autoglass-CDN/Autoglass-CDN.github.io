@@ -1,4 +1,5 @@
 //#region Banners
+(function($) {
 (async function () {
 	let position = 0;
 	const btnPrev = $('.banners-section .banners button[data-type="prev"]');
@@ -647,3 +648,4 @@ document
     subtree: true,
   });
 })();
+})(jQueryNew);
