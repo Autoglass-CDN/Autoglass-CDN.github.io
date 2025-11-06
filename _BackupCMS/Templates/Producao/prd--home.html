@@ -5,6 +5,7 @@
 
 <head>
   <meta charset="UTF-8" />
+  <meta name="robots" content="index, follow" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <vtex:metaTags />
   <meta name="facebook-domain-verification" content="qt4yjekjl3va8p2ub6pgxub2jrggp9" />
@@ -18,11 +19,12 @@
   <link rel="preconnect" href="https://autoglass-cdn.github.io" crossorigin="anonymous" />
   <link rel="preconnect" href="https://autoglass.vteximg.com.br" crossorigin="anonymous" />
   <link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous" />
-  <link rel="preconnect" href="https://cdnjs.cloudflare.com/" crossorigin="anonymous" />
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous" />
   <link rel="dns-prefetch" href="//fonts.googleapis.com" />
 	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
 	<link rel="dns-prefetch" href="//autoglass-cdn.github.io" />
   <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
   <link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com" />
   <link rel="dns-prefetch" href="//reviews.konfidency.com.br" />
   <link rel="dns-prefetch" href="//js.usemessages.com" />
@@ -36,9 +38,9 @@
   <vtex:template id="prd--home--head-tags" />
   <vtex:template id="prd--header-styles" />
   <vtex:template id="prd--busca-fipe-styles" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/home/CSS.aut.far.qd-bootstrap-home.css" type="text/css" />
+  <link rel="preload" href="https://autoglass-cdn.github.io/arquivos/css/legacy/home/CSS.aut.far.qd-bootstrap-home.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/home/CSS.aut.far.qd-bootstrap-home.css"/></noscript>
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/home.css" type="text/css" />
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/localization-modal.css"/>
   <vtex:template id="prd--footer-styles" />
   <style>
     .col-xs-9.col-xs-offset-3 {
@@ -96,12 +98,15 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WVLJKFR"
   height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
+
   <section id="loading-spinner" style="display: none;">
     <span class="spinner"></span>
   </section>
+
   <!-- Header -->
   <vtex:template id="prd--header" />
   <!-- Header -->
+  
   <main>
     <div class="secao-busca">
         <section class="banners-section">

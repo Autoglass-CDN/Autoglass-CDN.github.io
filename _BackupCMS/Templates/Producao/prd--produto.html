@@ -5,6 +5,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="index, follow" />
   <vtex:metaTags />
   <title><vtex.cmc:productPageTitle /></title>
   <vtex.cmc:productRichSnippets showFacebook="1" paymentSystemId="125"/>
@@ -20,6 +21,7 @@
 	<link rel="dns-prefetch" href="//fonts.gstatic.com" />
 	<link rel="dns-prefetch" href="//autoglass-cdn.github.io" />
   <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+  <link rel="dns-prefetch" href="//cdnjs.cloudflare.com" />
   <link rel="dns-prefetch" href="//maxcdn.bootstrapcdn.com" />
   <link rel="dns-prefetch" href="//reviews.konfidency.com.br" />
   <link rel="dns-prefetch" href="//secure.adnxs.com" />
@@ -41,8 +43,8 @@
   <vtex:template id="prd--footer-styles" />
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/legacy/CSS.aut.far.product.css" type="text/css"/>
   <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/B2C-02-detalhe-produto.css" type="text/css"/>
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/cep.component.css" type="text/css"/>
-  <link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/localization-modal.css"/>
+  <link rel="preload" href="https://autoglass-cdn.github.io/arquivos/css/cep.component.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://autoglass-cdn.github.io/arquivos/css/cep.component.css" /></noscript>
   <style type="text/css">
     .mz-acessories .mz-acessories__prices .mz-prices__block,
     .mz-acessories .mz-acessories__prices .mz-acessories__prices--byfor {
