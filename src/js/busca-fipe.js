@@ -1824,6 +1824,20 @@ function _initBuscaPlaca(values) {
         }
       }
     });
+
+    // Seleciona a lupa correta conforme o dispositivo
+    let iconeLupa =
+      window.innerWidth > 1024
+        ? document.querySelector(".icone-lupa")
+        : document.querySelector(".icone-lupa-mobile");
+
+    // Faz a lupa disparar o submit
+    if (iconeLupa) {
+      iconeLupa.addEventListener("click", () => {
+        formBuscaPlaca.requestSubmit(); // dispara o evento 'submit'
+      });
+    }
+
     document.dispatchEvent(new Event('buscaPlacaIniciada'));
     bindCloseOnPickCapture('#busca-placa-mobile #categoria-select .smart-select__main-results');
   }

@@ -517,6 +517,7 @@ html {
 #busca-placa  .c-busca__input img:last-child {
   position: absolute;
   left: 90%;
+  cursor: pointer;
 }
 @media screen and (min-width: 992px) {
   #busca-placa  .c-busca__input {
