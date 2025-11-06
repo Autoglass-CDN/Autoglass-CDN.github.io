@@ -1817,6 +1817,18 @@ function _initBuscaPlaca(values) {
         }
       }
     });
+
+    let iconeLupa =
+      window.innerWidth > 1024
+        ? document.querySelector(".icone-lupa")
+        : document.querySelector(".icone-lupa-mobile");
+
+    if (iconeLupa) {
+      iconeLupa.addEventListener("click", () => {
+        formBuscaPlaca.requestSubmit();
+      });
+    }
+    
     document.dispatchEvent(new Event('buscaPlacaIniciada'));
     bindCloseOnPickCapture('#busca-placa-mobile #categoria-select .smart-select__main-results');
   }
