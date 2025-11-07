@@ -382,8 +382,8 @@
       grandchildenCategories.push(...y.children);
     });
 
-    await _initBuscaPeca(grandchildenCategories)
-    _initBuscaPlaca(grandchildenCategories);
+    await _initBuscaPeca(grandchildenCategories);
+    _initBuscaPlaca(grandchildenCategories)
     
     window._dadosCategoriasPeca = grandchildenCategories;
   }
