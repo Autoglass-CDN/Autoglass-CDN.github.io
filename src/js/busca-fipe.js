@@ -52,6 +52,9 @@
       sessionStorage.setItem("selectedOptionAno", null);
       sessionStorage.setItem("selectedOptionVersao", null);
       sessionStorage.setItem("idAba", "inputBuscaPeca");
+
+      const inputBuscaPlaca = document.querySelector('#main-menu .c-busca__input');
+      inputBuscaPlaca.style.display = 'none';
     }
 
    if (window.innerWidth > 1024) {
@@ -379,8 +382,8 @@
       grandchildenCategories.push(...y.children);
     });
 
-    _initBuscaPlaca(grandchildenCategories);
     await _initBuscaPeca(grandchildenCategories)
+    _initBuscaPlaca(grandchildenCategories);
     
     window._dadosCategoriasPeca = grandchildenCategories;
   }
