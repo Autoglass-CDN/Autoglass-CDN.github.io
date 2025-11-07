@@ -1,3 +1,4 @@
+(function($) {
 function configureBanners(e, t, n) {
   let r = $(`${e} button[data-type="prev"]`),
     i = $(`${e} button[data-type="next"]`),
@@ -415,3 +416,4 @@ function enableTouchScroll(e) {
     l = document.querySelector(".banners-section") || document.body;
   t.observe(l, { childList: !0, subtree: !0 });
 })();
+})(jQueryNew);

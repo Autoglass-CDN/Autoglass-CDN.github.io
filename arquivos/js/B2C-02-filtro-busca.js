@@ -1,5 +1,6 @@
+(function($) {
 $(function () {
-  $.QD_scrollToggle("570, 770"),
+  window.jQuery.QD_scrollToggle("570, 770"),
     [
       "veiculo",
       "ano",
@@ -98,3 +99,4 @@ $(function () {
       });
     n.observe(a, { childList: !0, subtree: !0 });
   });
+})(jQueryNew);

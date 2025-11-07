@@ -1,3 +1,4 @@
+(function($) {
 class Utils {
   static onlyAlphabet(value) {
     const extractAlphabet = value.replace(/[^A-Z ]/gi, "");
@@ -513,3 +514,4 @@ class Formulario {
   FormSubmit.init();
   Formulario.init();
 })();
+})(jQueryNew);

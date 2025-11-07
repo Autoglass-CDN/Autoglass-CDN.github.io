@@ -1,3 +1,13 @@
+(function () {
+  if (!window.vtexjs || !vtexjs.checkout) {
+    console.warn("VTEXJS ainda não carregado. Aguardando...");
+    window.addEventListener("load", initWhenReady);
+  } else {
+    initWhenReady();
+  }
+
+  function initWhenReady() {
+    $(window).on("orderFormUpdated.vtex", function (event, orderForm) {
 const velocidadeTransicao = "fast";
 
 function HabilitarChassi() {
@@ -107,3 +117,7 @@ function showOrientacaoChassi() {
 
 HabilitarChassi();
 ConfigureObserver();
+
+});
+  }
+})();
