@@ -1,4 +1,4 @@
-(() => {
+(function($) {
   let whatsappIconDesktop = document.querySelector('#whatsapp-icon-link-desktop');
   let whatsappIconFlutuante = document.querySelector('#whatsapp-icon-link');
 
@@ -29,4 +29,4 @@
           ga('gaTracker.send', 'event', 'WhatsApp', 'Clique', `${device}`);
       }, {passive: true});
   }
-})();
+})(jQueryNew);

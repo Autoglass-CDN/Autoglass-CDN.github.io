@@ -1,4 +1,4 @@
-(function () {
+(function ($) {
   // function enableSlide() {
   //   $(
   //     "footer .footer-qd-v1-content .container .row > div:nth-child(2) ul.footer-qd-v1-menu-grid > li p"
@@ -45,4 +45,4 @@
     adjustFooterLayout();
 
     window.addEventListener('resize', adjustFooterLayout);
-})();
+})(jQueryNew);

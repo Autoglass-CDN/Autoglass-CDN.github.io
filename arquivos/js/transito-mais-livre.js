@@ -1,3 +1,4 @@
+(function($) {
 class Utils {
   static onlyAlphabet(value) {
     const extractAlphabet = value.replace(/[^A-Z ]/gi, "");
@@ -165,3 +166,4 @@ class ValidacaoDeInput {
     ValidacaoDeInput.init();
   };
 })();
+})(jQueryNew);

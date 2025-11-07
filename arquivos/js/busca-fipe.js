@@ -1,7 +1,7 @@
-(function () {
+(function ($) {
   $(document).ready(function () {
     const buscaPlaca = JSON.parse(localStorage.getItem("buscaPlaca"));
-    if (window.innerWidth > 1024 && document.body.classList.contains('categoria')) {
+    if (window.innerWidth > 1024 && document.body.classList.contains('categoria') || document.body.classList.contains('departamento')) {
       setTimeout(() => {
         $('#pecas-select-desktop .gtm-smart-peca-select span').text('Tipo de Peça');
         $('#pecas-select-desktop .fa-caret-down').show();
@@ -1371,7 +1371,7 @@
     };
 
     async function getCategoryTree() {
-      return await $.get(
+      return await window.jQuery.get(
         `${CONFIG.ORIGIN}/api/catalog_system/pub/category/tree/${CONFIG.ASYNC.TREE_LEVEL}`
       );
     }
@@ -2474,4 +2474,4 @@ function _initBuscaPlaca(values) {
     const sideMenu = document.querySelector("#side-menu");
     sideMenu.style.height = "100%";
   }
-})();
+})(jQueryNew);
