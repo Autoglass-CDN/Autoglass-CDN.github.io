@@ -7,7 +7,7 @@
                 Preços válidos para <b id="thestate">...</b>.
             </span>
             <button type="button" data-toggle="modal" data-target="#stateSelectorModal" data-backdrop="static" data-keyboard="false"
-                    id="btn-alterar-open-modal">Alterar</button>
+                id="btn-alterar-open-modal">Alterar</button>
         </div>
         <div class="links" style="display: flex;">
             <a href="https://www.autoglass.com.br/rede-de-lojas/" target="_blank" style="display: none; width: 85px;">Nossas
@@ -89,7 +89,7 @@
             </div>
             <div id="tab-busca-categoria-mobile" class="tab-item painel-categorias__categoria">
                 <div class="ativo">
-                    <a class="icone-lista" href="#busca-categoria-mobile" onclick="openNavCategory()">
+                    <a class="icone-lista" href="#busca-categoria-mobile" id="abrir-menu-categ">
                         <i class="fa fa-list-ul" aria-hidden="true" style="color: #0b4583;"></i>
                     </a>
                 </div>
@@ -97,7 +97,7 @@
             <div class="c-busca__tab-content-mobile" id="busca-categoria-mobile">
               <div class="titulo-side-menu">
                 <span>Categorias</span>
-                <a href="javascript:void(0)" class="closebtn" onclick="closeNavCategory()">&#215;</a>
+                <a href="javascript:void(0)" class="closebtn" id="fechar-menu-categ">&#215;</a>
             </div>
             <div class="side-menu-content">
                 <ul class="side-menu-categorias" itemscope="itemscope" itemtype="http://schema.org/SiteNavigationElement">
@@ -1004,10 +1004,10 @@
       </div>
       <div class="titulo-side-menu">
           <span>Busca por</span>
-          <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&#215;</a>
+          <a href="javascript:void(0)" class="closebtn" id="fechar-side-menu">&#215;</a>
       </div>
       <div class="c-busca__tabs-content-mobile">
-        <div class="c-busca__tab-content-mobile is-active" id="busca-placa-mobile">
+        <div class="c-busca__tab-content-mobile" id="busca-placa-mobile">
               <form id="form-busca-placa-mobile" action="#">
                   <div class="h-flex">
                       <div class="c-busca__select">
@@ -1053,7 +1053,7 @@
                   </div>
               </form>
           </div>
-        <div class="c-busca__tab-content-mobile" id="busca-peca-mobile">
+        <div class="c-busca__tab-content-mobile is-active" id="busca-peca-mobile">
               <form id="form-busca-peca-mobile" action="#">
                   <div class="h-flex">
                       <div class="c-busca__select">
@@ -1200,7 +1200,12 @@
               </form>
           </div>
         <ul class="c-busca__tabs-mobile tab-header search-options">
-            <li id="tab-busca-placa-mobile" class="tab-item is-active">
+            <li id="tab-busca-peca-mobile" class="tab-item is-active">
+                <a href="#busca-peca-mobile">
+                    <label><input type="radio" name="search" value="peca" id="inputBuscaPeca"> Não sei minha placa</input></label>
+                </a>
+            </li>
+            <li id="tab-busca-placa-mobile" class="tab-item">
                 <a href="#busca-placa-mobile">
                     <label>
                         <input type="radio" name="search" value="placa" id="inputPlaca">Buscar com placa 
@@ -1210,11 +1215,6 @@
                             </span>
                         </input>
                     </label>
-                </a>
-            </li>
-            <li id="tab-busca-peca-mobile" class="tab-item">
-                <a href="#busca-peca-mobile">
-                    <label><input type="radio" name="search" value="peca" id="inputBuscaPeca"> Não sei minha placa</input></label>
                 </a>
             </li>
         </ul>
@@ -1242,7 +1242,7 @@
             <ul class="search-mobile-autocomplete" style="display:none;"></ul>
         </div>
     </form>
-    <button class="menu-btn" onclick="openNav()">
+    <button class="menu-btn" id="abrir-side-menu">
       <i class="fa fa-plus"></i>
       <span>Mais buscas</span>
     </button>
@@ -1700,4 +1700,4 @@
 
 <script defer="" src="https://autoglass-cdn.github.io/arquivos/js/policies/header.js"></script>
 
-<script defer="" type="text/javascript" src="https://autoglass-cdn.github.io/arquivos/js/topo.js"></script>
+<script defer="" src="https://autoglass-cdn.github.io/arquivos/js/topo.js"></script>
