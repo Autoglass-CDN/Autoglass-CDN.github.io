@@ -52,6 +52,9 @@
       sessionStorage.setItem("selectedOptionAno", null);
       sessionStorage.setItem("selectedOptionVersao", null);
       sessionStorage.setItem("idAba", "inputBuscaPeca");
+
+      const inputBuscaPlaca = document.querySelector('#main-menu .c-busca__input');
+      inputBuscaPlaca.style.display = 'none';
     }
 
    if (window.innerWidth > 1024) {
@@ -1817,7 +1820,9 @@ function _initBuscaPlaca(values) {
         }
       }
     });
-
+    
+    document.dispatchEvent(new Event('buscaPlacaIniciada'));
+    bindCloseOnPickCapture('#busca-placa-mobile #categoria-select .smart-select__main-results');
   }
 
   function restoreBuscaPlaca() {
