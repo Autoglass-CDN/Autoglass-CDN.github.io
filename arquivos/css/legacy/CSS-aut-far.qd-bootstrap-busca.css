@@ -1600,7 +1600,7 @@ body {
 
 .shelf-qd-v1 .shelf-qd-v1-buy-button {
   transition: 0s;
-  display: none !important;
+  /* display: none !important; */
   margin-top: 10px;
   margin-bottom: 5px;
   max-width: 220px;
