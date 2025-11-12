@@ -368,25 +368,19 @@ async function loadCart(device) {
   await updateCartItemsCount(carrinho, orderForm);
 }
 
-let botoesAdicionarAoCarrinho = document.querySelectorAll('.shelf-qd-v1-buy-button');
+document.querySelectorAll('.shelf-qd-v1-buy-button a.btn-add-buy-button-asynchronous')
+  .forEach(botao => {
+    botao.addEventListener('click', async (event) => {
+      const carrinho = document.querySelector('.menu-carrinho');
 
-botoesAdicionarAoCarrinho.forEach(botao => {
-  botao.addEventListener('click', async function(event) {
-    let carrinho = document.querySelector('.menu-carrinho');
+      // Mostra imediatamente o feedback visual (opcional)
+      carrinho.classList.add('loaded');
 
-    let orderFormInicial = await vtexjs.checkout.getOrderForm();
-    let quantidadeInicial = orderFormInicial.items.length;
-
-    let intervalo = setInterval(async () => {
-      let orderFormAtualizado = await vtexjs.checkout.getOrderForm();
-
-      if (orderFormAtualizado.items.length > quantidadeInicial) {
-        clearInterval(intervalo);
-        updateBadge(carrinho, orderFormAtualizado.items.length);
-      }
-    }, 100);
+      // Aguarda a atualização real do orderForm
+      const orderForm = await vtexjs.checkout.getOrderForm();
+      updateCartItemsCount(carrinho, orderForm);
+    });
   });
-});
 
 async function updateCartItemsCount(carrinho, orderForm) {
   if (!orderForm) {
@@ -425,7 +419,10 @@ async function cartItemAddedConfirmation(eventData) {
   confirmationBox.style.visibility = "visible";
 
   const carrinho = document.querySelector(`${currentDevice} .menu-carrinho`);
-  updateCartItemsCount(carrinho, false);
+
+  // ✅ Atualiza o badge com o orderForm real (corrige o "5 depois 1")
+  const orderForm = await vtexjs.checkout.getOrderForm();
+  await updateCartItemsCount(carrinho, orderForm);
 
   if (skuData) {
     let data = skuData.images
@@ -487,21 +484,21 @@ async function autocompleteSearch(searchTerm) {
  *
  * @param {HTMLInputElement} searchInput Input HTML
  */
-// async function autocompleteInit(searchInput) {
-//   searchInput.addEventListener("input", async (e) => {
-//     let searchTerm = e.target.value.trim();
-//     if (searchTerm.length < 4) return;
-//     let list = document.querySelector("#autocomplete-search");
-//     list.innerHTML = "<li><a>Aguarde...</a></li>";
-//     let searchResult = await autocompleteSearch(e.target.value);
-//     list.innerHTML = searchResult
-//       .map(
-//         (item) =>
-//           `<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`
-//       )
-//       .join("");
-//   });
-// }
+async function autocompleteInit(searchInput) {
+  searchInput.addEventListener("input", async (e) => {
+    let searchTerm = e.target.value.trim();
+    if (searchTerm.length < 4) return;
+    let list = document.querySelector("#autocomplete-search");
+    list.innerHTML = "<li><a>Aguarde...</a></li>";
+    let searchResult = await autocompleteSearch(e.target.value);
+    list.innerHTML = searchResult
+      .map(
+        (item) =>
+          `<li><a href='${item.href}'>${item.thumb}${item.name}</a></li>`
+      )
+      .join("");
+  });
+}
 
 function delayedAction(action, abortController) {
   if (abortController) {
@@ -770,11 +767,11 @@ function toggleCategory(self) {
 
 //MOBILE
 (() => {
-  // let searchField = document.querySelector(
-  //   ".search-box-mobile .busca input.fulltext-search-box"
-  // );
+  let searchField = document.querySelector(
+    ".search-box-mobile .busca input.fulltext-search-box"
+  );
 
-  // autocompleteInitMobile(searchField);
+  autocompleteInitMobile(searchField);
 
   loadCart(device.mobile);
 
@@ -801,11 +798,13 @@ function toggleCategory(self) {
     closeNavCategory();
   });
 
-  $(window).on("orderFormUpdated.vtex", function (evt, orderForm) {
-    let carrinho = document.querySelector(".mobile .menu-carrinho");
-
+  window.jQuery(window).on("orderFormUpdated.vtex", function (evt, orderForm) {
+  const carrinho = document.querySelector(".mobile .menu-carrinho");
+  // Atualiza apenas se o orderForm mudou de fato
+  if (orderForm?.items?.length !== parseInt(carrinho.querySelector(".badge")?.innerHTML || 0)) {
     updateCartItemsCount(carrinho, orderForm);
-  });
+  }
+});
 })();
 
 function removeFunctions() {
@@ -813,36 +812,36 @@ function removeFunctions() {
   $(".topo").unbind();
   $(".container.mobile").unbind();
 }
-// async function autocompleteInitMobile(searchInput) {
-//   fixPlaceholderSearchMobile();
-//   searchInput.addEventListener("input", async (e) => {
-//     let searchTerm = e.target.value.trim();
-//     if (searchTerm.length < 4) {
-//       $(".search-mobile-autocomplete").hide();
-//       return;
-//     }
-//     let list = document.querySelector(".search-mobile-autocomplete");
-//     let searchResult = await autocompleteSearch(e.target.value);
-//     if (searchResult.length > 0) {
-//       list.innerHTML = searchResult
-//         .filter((_, i) => i < 3)
-//         .map(
-//           (item) => `
-//         <li>
-//           <a href='${item.href}'>${item.thumb}${item.name.replace(
-//             e.target.value,
-//             `<b>${e.target.value}</b>`
-//           )}</a>
-//         </li>
-//       `
-//         )
-//         .join("");
-//       $(".search-mobile-autocomplete").show();
-//     } else {
-//       $(".search-mobile-autocomplete").hide();
-//     }
-//   });
-// }
+async function autocompleteInitMobile(searchInput) {
+  fixPlaceholderSearchMobile();
+  searchInput.addEventListener("input", async (e) => {
+    let searchTerm = e.target.value.trim();
+    if (searchTerm.length < 4) {
+      $(".search-mobile-autocomplete").hide();
+      return;
+    }
+    let list = document.querySelector(".search-mobile-autocomplete");
+    let searchResult = await autocompleteSearch(e.target.value);
+    if (searchResult.length > 0) {
+      list.innerHTML = searchResult
+        .filter((_, i) => i < 3)
+        .map(
+          (item) => `
+        <li>
+          <a href='${item.href}'>${item.thumb}${item.name.replace(
+            e.target.value,
+            `<b>${e.target.value}</b>`
+          )}</a>
+        </li>
+      `
+        )
+        .join("");
+      $(".search-mobile-autocomplete").show();
+    } else {
+      $(".search-mobile-autocomplete").hide();
+    }
+  });
+}
 
 function defineScrollTop() {
   $("html, body").animate({ top: "-=0" }, 10000000000000000000000);
@@ -867,31 +866,31 @@ function pegaLargura(largura) {
 
 defineScrollTop();
 
-// const inputBusca = window.innerWidth > 1024 ? document.querySelector(".busca .fulltext-search-box") : document.querySelector(".search-box-mobile .fulltext-search-box");
-// const botaoBusca = window.innerWidth > 1024 ? document.querySelector(".search-box .search-icon") : document.querySelector(".search-box-mobile #search-icon");
+const inputBusca = window.innerWidth > 1024 ? document.querySelector(".busca .fulltext-search-box") : document.querySelector(".search-box-mobile .fulltext-search-box");
+const botaoBusca = window.innerWidth > 1024 ? document.querySelector(".search-box .search-icon") : document.querySelector(".search-box-mobile #search-icon");
 
-// botaoBusca.addEventListener("click", function () {
-//   const valorBusca = inputBusca.value.trim();
+botaoBusca.addEventListener("click", function () {
+  const valorBusca = inputBusca.value.trim();
 
-//   if (valorBusca !== "") {
-//     dataLayer.push({
-//       event: "search",
-//       search_term: valorBusca,
-//     });
+  if (valorBusca !== "") {
+    dataLayer.push({
+      event: "search",
+      search_term: valorBusca,
+    });
 
-//     window.location.href = `/${encodeURIComponent(valorBusca)}`;
-//   }
-// });
+    window.location.href = `/${encodeURIComponent(valorBusca)}`;
+  }
+});
 
-// inputBusca.addEventListener("keydown", function (event) {
-//   if (event.keyCode === 13) {
-//     const valorBusca = inputBusca.value;
-//     dataLayer.push({
-//       event: "search",
-//       search_term: valorBusca,
-//     });
-//   }
-// });
+inputBusca.addEventListener("keydown", function (event) {
+  if (event.keyCode === 13) {
+    const valorBusca = inputBusca.value;
+    dataLayer.push({
+      event: "search",
+      search_term: valorBusca,
+    });
+  }
+});
 
 (() => {
   let abortCategoryAction = null;
@@ -906,10 +905,13 @@ defineScrollTop();
   checkLogin();
   fixPlaceholderSearch();
   loadCart(device.desktop);
-  $(window).on("orderFormUpdated.vtex", function (evt, orderForm) {
-    let carrinho = document.querySelector(".desktop .menu-carrinho");
+  window.jQuery(window).on("orderFormUpdated.vtex", function (evt, orderForm) {
+  const carrinho = document.querySelector(".desktop .menu-carrinho");
+  // Atualiza apenas se o orderForm mudou de fato
+  if (orderForm?.items?.length !== parseInt(carrinho.querySelector(".badge")?.innerHTML || 0)) {
     updateCartItemsCount(carrinho, orderForm);
-  });
+  }
+});
 
   function waitForSkuDispatcher(callback) {
     const interval = setInterval(() => {
@@ -932,24 +934,24 @@ defineScrollTop();
     skuEventDispatcher.addListener(skuDataReceivedEventName, batchBuyListener);
   });
 
-  // let suggestions = document.querySelector(
-  //   ".container.desktop .search-box #autocomplete-search"
-  // );
-  // let searchField = document.querySelector(
-  //   ".container.desktop .search-box .busca input.fulltext-search-box"
-  // );
-  // searchField.addEventListener("focus", () => {
-  //   suggestions.style.visibility = "visible";
-  //   suggestions.style.opacity = "1";
-  // });
-  // searchField.addEventListener("blur", () => {
-  //   suggestions.style.opacity = "0";
-  //   setTimeout(() => (suggestions.style.visibility = "hidden"), 1000);
-  // });
-  // searchField.addEventListener("keydown", (event) => {
-  //   event = event || window.event;
-  // });
-  // autocompleteInit(searchField);
+  let suggestions = document.querySelector(
+    ".container.desktop .search-box #autocomplete-search"
+  );
+  let searchField = document.querySelector(
+    ".container.desktop .search-box .busca input.fulltext-search-box"
+  );
+  searchField.addEventListener("focus", () => {
+    suggestions.style.visibility = "visible";
+    suggestions.style.opacity = "1";
+  });
+  searchField.addEventListener("blur", () => {
+    suggestions.style.opacity = "0";
+    setTimeout(() => (suggestions.style.visibility = "hidden"), 1000);
+  });
+  searchField.addEventListener("keydown", (event) => {
+    event = event || window.event;
+  });
+  autocompleteInit(searchField);
 
 if (window.innerWidth > 1024) {
   (function initializeCategoryPanelMenu() {

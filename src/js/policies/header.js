@@ -193,7 +193,7 @@ const ESTADOS = [
 
 let headerInitiated = false;
 
-$(document).on("ready", function () {
+window.jQuery(document).on("ready", function () {
   if (!headerInitiated) {
     headerInitiated = true;
     initHeaderPolicy();

@@ -126,7 +126,8 @@ try {
         $(document.body).is(".resultado-busca") ||
         $(document.body).is(".departamento") ||
         $(document.body).is(".categoria") ||
-        $(document.body).is(".marca")
+        $(document.body).is(".marca") ||
+        $(document.body).is(".busca")
       ) {
         return;
       }
@@ -498,7 +499,7 @@ try {
         var $t = $(this);
         $t.find("h2").prependTo($t.parent());
       });
-      window.jQuery(wrapper).slick({
+      wrapper.slick({
         prevArrow:
           '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
         nextArrow:
@@ -1054,7 +1055,7 @@ try {
       Search.loadSearchParameters();
     },
     toggleVisibilityExtendedMenu: function () {
-      var wrapper = $(".search-single-navigator, .search-multiple-navigator");
+      var wrapper = window.jQuery(".search-single-navigator, .search-multiple-navigator");
       wrapper.find("h4, h5").click(function (evt) {
         var $t = $(this);
         if (
@@ -1913,7 +1914,7 @@ try {
 }
 try {
   (function () {
-    const searchSelector = ".resultado-busca, .departamento, .categoria";
+    const searchSelector = ".resultado-busca, .departamento, .categoria, .busca";
     var body, ajaxStop, windowLoad;
 
     windowLoad = function () {
@@ -9821,70 +9822,78 @@ if ("function" !== typeof String.prototype.trim)
           onSonHideearchError: function (a) {},
         },
       },
-      g = function (a, b) {
-        b.jqueryUI.lookup = function (d, e) {
-          c.ajax({
-            url: "/buscaautocomplete/",
-            dataType: "json",
-            data: {
-              maxRows: b.maxRows,
-              productNameContains: b.productNameContains(a),
-              suggestionsStack: b.suggestionsStack,
-            },
-            success: function (a) {
-              a &&
-                ((a = {
-                  suggestions: c.map(a.itemsReturned, function (a) {
-                    return {
-                      data: a.href,
-                      value: a.name,
-                      text: (a.thumb || "") + " " + a.name,
-                    };
-                  }),
-                }),
-                e(a));
-            },
-            error: function (a, b, c) {
-              if (
-                "object" === typeof console &&
-                "undefined" !== typeof console.error &&
-                "undefined" !== typeof console.info &&
-                "undefined" !== typeof console.warn
-              ) {
-                "object" == typeof c && "function" == typeof c.unshift
-                  ? (c.unshift("[Quatro Digital - Smart Auto Complete]\n"),
-                    (a = c))
-                  : (a = ["[Quatro Digital - Smart Auto Complete]\n", c]);
-                try {
-                  console.error.apply(console, a);
-                } catch (k) {
-                  try {
-                    console.error(a.join("\n"));
-                  } catch (l) {}
-                }
-              }
-            },
-            done: function () {
-              b.suggestionsStack = b.productNameContains(a);
-            },
-          });
-        };
-        try {
-          c.fn.autocomplete
-            ? a.autocomplete("destroy").devbridgeAutocomplete(b.jqueryUI)
-            : a.devbridgeAutocomplete(b.jqueryUI);
-        } catch (d) {
-          "undefined" !== typeof console &&
-            "function" === typeof console.error &&
-            console.error("Problemas :( . Detalhes: ", d);
-        }
-      };
+      i = function (e, o) {
+            o.jqueryUI.lookup = function (i, a) {
+              var name = o.productNameContains(e);
+              var stack = o.suggestionsStack;
+
+              name = (name || "").toString().trim().replace(/\+$/, "");
+              stack = (stack || "").toString().trim();
+
+              if (!name.length) return;
+
+              name.length && c.ajax({
+                url: "/buscaautocomplete/",
+                dataType: "json",
+                data: {
+                  maxRows: o.maxRows,
+                  productNameContains: o.productNameContains(e),
+                  suggestionsStack: o.suggestionsStack,
+                },
+                success: function (e) {
+                    if (e && typeof a === "function") {
+                        a({
+                        suggestions: c.map(e.itemsReturned, function (e) {
+                            return {
+                            data: e.href,
+                            value: e.name,
+                            text: (e.thumb || "") + " " + e.name,
+                            };
+                        }),
+                        });
+                    }
+                },
+                error: function (e, t, o) {
+                  if (
+                    "object" == typeof console &&
+                    void 0 !== console.error &&
+                    void 0 !== console.info &&
+                    void 0 !== console.warn
+                  ) {
+                    "object" == typeof o && "function" == typeof o.unshift
+                      ? (o.unshift("[Quatro Digital - Smart Auto Complete]\n"),
+                        (e = o))
+                      : (e = ["[Quatro Digital - Smart Auto Complete]\n", o]);
+                    try {
+                      console.error.apply(console, e);
+                    } catch (i) {
+                      try {
+                        console.error(e.join("\n"));
+                      } catch (a) {}
+                    }
+                  }
+                },
+                complete: function () {
+                  o.suggestionsStack = o.productNameContains(e);
+                },
+              });
+            };
+            try {
+              c.fn.autocomplete
+                ? e.autocomplete("destroy").devbridgeAutocomplete(o.jqueryUI)
+                : e.devbridgeAutocomplete(o.jqueryUI);
+            } catch (i) {
+              "undefined" != typeof console &&
+                "function" == typeof console.error &&
+                console.error("Problemas :( . Detalhes: ", i);
+            }
+          };
     c.fn.QD_smartAutoComplete = function (a) {
       var b = c(this);
       if (!b.length) return b;
       b.each(function () {
         var b = c(this);
-        b.QD_smartAutoComplete = new g(b, c.extend(!0, {}, f, a));
+        b.QD_smartAutoComplete = new i(b, c.extend(!0, {}, f, a));
       });
       return b;
     };
