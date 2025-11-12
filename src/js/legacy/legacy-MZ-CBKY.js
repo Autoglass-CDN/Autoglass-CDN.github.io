@@ -1054,7 +1054,7 @@ try {
       Search.loadSearchParameters();
     },
     toggleVisibilityExtendedMenu: function () {
-      var wrapper = $(".search-single-navigator, .search-multiple-navigator");
+      var wrapper = window.jQuery(".search-single-navigator, .search-multiple-navigator");
       wrapper.find("h4, h5").click(function (evt) {
         var $t = $(this);
         if (
@@ -1476,10 +1476,6 @@ try {
         $('#accessorySelect input[type="checkbox"]').trigger("click");
       }, 100);
       $('#accessorySelect input[type="checkbox"]').attr("checked", true);
-      // setTimeout(function () {
-      // 	var totalPrice = $(".accessories-qd-v1-wrapper .box-preco-atualizado .selected-value").text();
-      // 	$(".mz-acessories__prices--totalPrice").text(totalPrice)
-      // }, 2e3);
       $(".acessories-qd-v1-image-link").removeAttr("href");
       $(".acessories-qd-v1-image-link").css("cursor", "default");
     },
@@ -1522,20 +1518,6 @@ try {
       }
       return skusSelected.filter(Boolean);
     },
-    // captureSkuSelectors: function (skuMain, skuInstall) {
-    //   var rxList = Product.regexList();
-    //   var skusSelected = [];
-    //   var skuIdMainProduct = window.jQuery(
-    //     ".product-qd-v1-buy-button .buy-button[href]"
-    //   ).attr("href");
-    //   var skuMain = skuIdMainProduct.match(rxList[4])[0];
-    //   skusSelected.push(skuMain);
-    //   var skuInstallation = $(
-    //     ".product-qd-v1-installation-content #accessorySelect input[rel]"
-    //   ).attr("rel");
-    //   skusSelected.push(skuInstallation);
-    //   return skusSelected;
-    // },
     bringInstallementTreatsData: function () {
       var rxList = Product.regexList();
       var skuList = Product.captureSkuSelectors();
@@ -1545,11 +1527,11 @@ try {
       for (var thisST in listStates) {
         if (thisST == stateFormated) {
           var validItems = skuList
-            .filter(Boolean) // remove undefined
+            .filter(Boolean)
             .map(id => ({
               id,
               quantity: 1,
-              seller: "1" // seller precisa ser string!
+              seller: "1"
             }));
 
           if (!validItems.length) {
@@ -1927,7 +1909,7 @@ try {
 }
 try {
   (function () {
-    const searchSelector = ".resultado-busca, .departamento, .categoria";
+    const searchSelector = ".resultado-busca, .departamento, .categoria, .busca";
     var body, ajaxStop, windowLoad;
 
     windowLoad = function () {
@@ -9835,64 +9817,72 @@ if ("function" !== typeof String.prototype.trim)
           onSonHideearchError: function (a) {},
         },
       },
-      g = function (a, b) {
-        b.jqueryUI.lookup = function (d, e) {
-          c.ajax({
-            url: "/buscaautocomplete/",
-            dataType: "json",
-            data: {
-              maxRows: b.maxRows,
-              productNameContains: b.productNameContains(a),
-              suggestionsStack: b.suggestionsStack,
-            },
-            success: function (a) {
-              a &&
-                ((a = {
-                  suggestions: c.map(a.itemsReturned, function (a) {
-                    return {
-                      data: a.href,
-                      value: a.name,
-                      text: (a.thumb || "") + " " + a.name,
-                    };
-                  }),
-                }),
-                e(a));
-            },
-            error: function (a, b, c) {
-              if (
-                "object" === typeof console &&
-                "undefined" !== typeof console.error &&
-                "undefined" !== typeof console.info &&
-                "undefined" !== typeof console.warn
-              ) {
-                "object" == typeof c && "function" == typeof c.unshift
-                  ? (c.unshift("[Quatro Digital - Smart Auto Complete]\n"),
-                    (a = c))
-                  : (a = ["[Quatro Digital - Smart Auto Complete]\n", c]);
-                try {
-                  console.error.apply(console, a);
-                } catch (k) {
-                  try {
-                    console.error(a.join("\n"));
-                  } catch (l) {}
-                }
-              }
-            },
-            done: function () {
-              b.suggestionsStack = b.productNameContains(a);
-            },
-          });
-        };
-        try {
-          c.fn.autocomplete
-            ? a.autocomplete("destroy").devbridgeAutocomplete(b.jqueryUI)
-            : a.devbridgeAutocomplete(b.jqueryUI);
-        } catch (d) {
-          "undefined" !== typeof console &&
-            "function" === typeof console.error &&
-            console.error("Problemas :( . Detalhes: ", d);
-        }
-      };
+      i = function (e, o) {
+            o.jqueryUI.lookup = function (i, a) {
+              var name = o.productNameContains(e);
+              var stack = o.suggestionsStack;
+
+              name = (name || "").toString().trim().replace(/\+$/, "");
+              stack = (stack || "").toString().trim();
+
+              if (!name.length) return;
+
+              name.length && t.ajax({
+                url: "/buscaautocomplete/",
+                dataType: "json",
+                data: {
+                  maxRows: o.maxRows,
+                  productNameContains: o.productNameContains(e),
+                  suggestionsStack: o.suggestionsStack,
+                },
+                success: function (e) {
+                    if (e && typeof a === "function") {
+                        a({
+                        suggestions: t.map(e.itemsReturned, function (e) {
+                            return {
+                            data: e.href,
+                            value: e.name,
+                            text: (e.thumb || "") + " " + e.name,
+                            };
+                        }),
+                        });
+                    }
+                },
+                error: function (e, t, o) {
+                  if (
+                    "object" == typeof console &&
+                    void 0 !== console.error &&
+                    void 0 !== console.info &&
+                    void 0 !== console.warn
+                  ) {
+                    "object" == typeof o && "function" == typeof o.unshift
+                      ? (o.unshift("[Quatro Digital - Smart Auto Complete]\n"),
+                        (e = o))
+                      : (e = ["[Quatro Digital - Smart Auto Complete]\n", o]);
+                    try {
+                      console.error.apply(console, e);
+                    } catch (i) {
+                      try {
+                        console.error(e.join("\n"));
+                      } catch (a) {}
+                    }
+                  }
+                },
+                done: function () {
+                  o.suggestionsStack = o.productNameContains(e);
+                },
+              });
+            };
+            try {
+              t.fn.autocomplete
+                ? e.autocomplete("destroy").devbridgeAutocomplete(o.jqueryUI)
+                : e.devbridgeAutocomplete(o.jqueryUI);
+            } catch (i) {
+              "undefined" != typeof console &&
+                "function" == typeof console.error &&
+                console.error("Problemas :( . Detalhes: ", i);
+            }
+          };
     c.fn.QD_smartAutoComplete = function (a) {
       var b = c(this);
       if (!b.length) return b;
