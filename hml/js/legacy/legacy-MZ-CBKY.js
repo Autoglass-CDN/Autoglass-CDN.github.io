@@ -499,7 +499,7 @@ try {
         var $t = $(this);
         $t.find("h2").prependTo($t.parent());
       });
-      wrapper.slick({
+      window.jQuery(wrapper).slick({
         prevArrow:
           '<button type="button" class="slick-prev"><i class="fa fa-angle-left" aria-hidden="true"></i></button>',
         nextArrow:

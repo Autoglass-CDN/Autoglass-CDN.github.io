@@ -9827,7 +9827,7 @@ if ("function" !== typeof String.prototype.trim)
 
               if (!name.length) return;
 
-              name.length && t.ajax({
+              name.length && c.ajax({
                 url: "/buscaautocomplete/",
                 dataType: "json",
                 data: {
@@ -9838,7 +9838,7 @@ if ("function" !== typeof String.prototype.trim)
                 success: function (e) {
                     if (e && typeof a === "function") {
                         a({
-                        suggestions: t.map(e.itemsReturned, function (e) {
+                        suggestions: c.map(e.itemsReturned, function (e) {
                             return {
                             data: e.href,
                             value: e.name,
@@ -9874,7 +9874,7 @@ if ("function" !== typeof String.prototype.trim)
               });
             };
             try {
-              t.fn.autocomplete
+              c.fn.autocomplete
                 ? e.autocomplete("destroy").devbridgeAutocomplete(o.jqueryUI)
                 : e.devbridgeAutocomplete(o.jqueryUI);
             } catch (i) {
@@ -9888,7 +9888,7 @@ if ("function" !== typeof String.prototype.trim)
       if (!b.length) return b;
       b.each(function () {
         var b = c(this);
-        b.QD_smartAutoComplete = new g(b, c.extend(!0, {}, f, a));
+        b.QD_smartAutoComplete = new i(b, c.extend(!0, {}, f, a));
       });
       return b;
     };
