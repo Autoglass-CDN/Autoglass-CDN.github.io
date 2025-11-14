@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/src/css/theme.css");
+
 @media screen and (max-width: 1170px) {
   #cookiebanner {
     border-radius: 0 !important;
@@ -66,7 +68,7 @@
 }
 #cookiebanner .c-header {
   text-transform: uppercase;
-  color: #1a3779;
+  color: var(--black);
   font-weight: bold;
   margin-bottom: 4px;
 }
@@ -88,7 +90,7 @@
 
 #cookiebanner a.c-button {
   border-radius: 4px;
-  background-color: #2d4f9e;
+  background-color: var(--black);
   box-shadow: 0 2px 0 0 rgb(221, 221, 221);
   border: 1px solid rgb(221, 221, 221);
   padding: 12px 30px;
@@ -106,5 +108,5 @@
 }
 #cookiebanner a.c-button:hover {
   box-shadow: none;
-  background-color: #1a3779;
+  background-color: var(--light-black);
 }

@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/src/css/theme.css");
+
 /* HELPERS */
 html {
   overflow-x: hidden !important;
@@ -188,7 +190,7 @@ html {
     width: inherit;
   }
   .c-busca__tabs-content .tipo-peca .smart-select__main-results ul li.highlight {
-    background-color: #234eb9;
+    background-color: var(--black);
     color: white;
   }
   .c-busca__tabs-content .tipo-peca .smart-select__main-results {
@@ -1018,7 +1020,7 @@ html {
 #veiculo-select .gtm-smart-veiculo-select span,
 #ano-select .gtm-smart-ano-select span,
 #versao-select .gtm-smart-versao-select span {
-  color: #0b4583;
+  color: var(--black);
 }
 .c-busca__botao .btn {
   padding: 10px 20px;
@@ -1032,7 +1034,7 @@ html {
   gap: 10px;
 }
 .c-busca__botao .btn-search {
-  background-color: #0b4583;
+  background-color: var(--black);
   color: white;
   border: none;
   height: 40px;
@@ -1064,7 +1066,7 @@ html {
 #toggleButton {
   background: none;
   border: none;
-  color: #0b4583;
+  color: var(--black);
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1087,7 +1089,7 @@ html {
 #toggleButton2 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: var(--black);
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1110,7 +1112,7 @@ html {
 #toggleButton3 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: var(--black);
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1133,7 +1135,7 @@ html {
 #toggleButton4 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: var(--black);
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1156,7 +1158,7 @@ html {
 #toggleButton5 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: var(--black);
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1179,7 +1181,7 @@ html {
 #toggleButton6 {
   background: none;
   border: none;
-  color: #0b4583;
+  color: var(--black);
   cursor: pointer;
   font-size: 16px;
   display: flex;
