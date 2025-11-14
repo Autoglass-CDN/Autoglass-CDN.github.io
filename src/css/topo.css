@@ -163,7 +163,7 @@ ul {
 }
 
 .cart-icon::before {
-  content: url("https://autoglass-cdn.github.io/src/img/cart-arrow-down.svg");
+  content: url("https://autoglass-cdn.github.io/src/img/carrinhopreto-blackfriday.svg");
   height: 20px;
   transition: 0.5s;
 }
@@ -174,7 +174,7 @@ ul {
 
 #prev-btn i:before,
 #next-btn i:before {
-  content: url("https://autoglass-cdn.github.io/src/img/slide-arrow.svg");
+  content: url("https://autoglass-cdn.github.io/src/img/slide-arrow-black-friday.svg");
   display: block;
   height: 23px;
   width: 23px;
@@ -255,7 +255,7 @@ i.arrow-icon::before {
   top: 0;
   display: flex;
   justify-content: center;
-  background-color: var(--primary);
+  background-color: var(--black);
 }
 
 .topo * {
@@ -498,7 +498,7 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   padding: 6px 16px;
-  background-color: #F39200;
+  background-color: var(--black);
   border: none;
   border-radius: 8px;
   color: #ffffff;
@@ -607,7 +607,7 @@ i.arrow-icon::before {
   display: flex;
   align-items: center;
   position: relative;
-  border: 1px solid #425db4;
+  border: 1px solid var(--black);
   border-radius: 5px;
   margin-right: 10px;
 }
@@ -619,7 +619,7 @@ i.arrow-icon::before {
 .search-box-mobile .busca input {
   outline: none;
   width: 100%;
-  color: #425db4;
+  color: var(--black);
   transition: border 500ms;
   padding: 10px;
   border-radius: 5px;
@@ -1716,7 +1716,7 @@ ul.menu-division {
 }
 
 .painel-categorias .painel-categorias__categoria-itens-lista > a {
-  color: var(--blue-500);
+  color: var(--black);
   font-weight: var(--bold);
   display: block;
 }
@@ -1777,7 +1777,7 @@ ul.menu-division {
   .painel-categorias__categoria-itens-lista-menu
   > li
   > a:hover {
-  color: var(--blue-500);
+  color: var(--black);
   font-weight: var(--bold);
 }
 
@@ -1975,7 +1975,7 @@ body div#ajaxBusy {
 }
 
 .search-options .novidade {
-  background: #0b4583;
+  background: var(--black);
   color: #ffffff;
   border-radius: 4px;
   padding: 2px 5px;
@@ -2000,8 +2000,8 @@ body div#ajaxBusy {
 }
 
 .search-options input[type="radio"]:checked {
-  border-color: #f38e1a;
-  background-color: #f38e1a;
+  border-color: var(--black);
+  background-color: var(--black);
 }
 
 /* Estilizando o estado selecionado */

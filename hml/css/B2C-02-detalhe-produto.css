@@ -140,14 +140,14 @@
   content: "";
   border-width: 0 8px 10px 8px;
   border-style: solid;
-  border-color: transparent transparent #223b76 transparent;
+  border-color: transparent transparent var(--black) transparent;
   margin-left: 40px;
   bottom: -10px;
 }
 
 #txtCep + .ttp::after {
   content: "Informe seu CEP";
-  background-color: #223b76;
+  background-color: var(--black);
   margin-left: 0;
   bottom: -9px;
   font-size: 10px;
@@ -917,7 +917,7 @@ body.mz-sf-on .mz-modal-shipping {
 /* #endregion GALERIA ITEM VIDEO */
 
 .compat-box {
-  border: 1px solid #003087;
+  border: 1px solid var(--black);
   border-radius: 8px;
   padding: 16px;
   font-family: "Poppins", sans-serif;
@@ -940,7 +940,10 @@ body.mz-sf-on .mz-modal-shipping {
   display: flex;
   align-items: center;
   position: relative;
-  color: #003087;
+}
+
+.compat-title .title-text {
+  color: var(--black);
 }
 
 .check-icon {
@@ -975,7 +978,7 @@ body.mz-sf-on .mz-modal-shipping {
   flex: 1;
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid #003087;
+  border: 1px solid var(--black);
 }
 
 .compat-input button {
@@ -1059,22 +1062,22 @@ body.mz-sf-on .mz-modal-shipping {
 
 .icon-arrow-down {
   font-size: 15px;
-  color: #003087;
+  color: var(--black);
 }
 .icon-arrow-up{
   font-size: 17px;
-  color: #003087;
+  color: var(--black);
 }
 
 #botaoVerificarCompatibilidade{
   font-family: "Poppins", sans-serif !important;
-  background-color: #e7eaf4 ;
-  color: #003087;
+  background-color: var(--gray-300) ;
+  color: var(--black);
   font-weight: bold;
 }
 
 #botaoVerificarCompatibilidade:hover{
-  background-color: #003087;
+  background-color: var(--black);
   color: #e7eaf4;
 }
 
@@ -1578,7 +1581,7 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 #botaoProdutosCompativeis {
-  background-color: #003da5;
+  background-color: var(--black);
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -1592,8 +1595,8 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 #botaoProdutosCompativeis:hover {
-  background-color:#e7eaf4 ;
-  color: #003087;
+  background-color:var(--gray-500) ;
+  color: var(--white);
 }
 
 @keyframes pulse {

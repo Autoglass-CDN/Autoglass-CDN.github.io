@@ -105,12 +105,12 @@ html {
   height: 2px;
   margin-top: 13px;
   border-radius: 2px;
-  background: #183884 /*var(--primary)*/;
+  background: var(--black) /*var(--primary)*/;
   transition: width 200ms ease-in-out;
 }
 
 .tab-link.tab--current {
-  color: #183884;
+  color: var(--black);
   font-weight: bold;
 }
 
@@ -159,7 +159,7 @@ section#compre-junto.tab-content .slick-track {
 #diferenciais.tab-content h2,
 #duvidas.tab-content h2 {
   font-weight: var(--extra-bold);
-  color: var(--blue-700);
+  color: var(--black);
   text-align: center;
   font-size: 32px;
   margin: 20px;
@@ -419,7 +419,7 @@ h4.group.Especificacoes {
     padding-right: 0;
   }
   .contents .tab-content h2 {
-    color: #183884 !important;
+    color: var(--black) !important;
     display: flex;
     justify-content: space-between;
     line-height: 30px;
@@ -498,7 +498,7 @@ h4.group.Especificacoes {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  color: #183884;
+  color: var(--black);
   overflow: hidden;
 }
 
@@ -556,7 +556,7 @@ h4.group.Especificacoes {
   .veiculos-compativeis__box
   .veiculos-compativeis__box-header
   div.active {
-  border-bottom: 4px solid #183884;
+  border-bottom: 4px solid var(--black);
 }
 
 #veiculos-compativeis .veiculos-compativeis__box-content > div {
@@ -584,7 +584,7 @@ h4.group.Especificacoes {
 }
 
 #veiculos-compativeis .veiculos-compativeis__box-content > div > div > p {
-  color: #183884;
+  color: var(--black);
   word-wrap: break-word;
   word-break: keep-all;
   font-weight: bold;

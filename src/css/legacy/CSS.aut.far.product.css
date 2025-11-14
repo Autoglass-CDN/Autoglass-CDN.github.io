@@ -187,12 +187,12 @@
 .lista-opcionais::before {
   content: "\f00c";
   font-family: fontAwesome;
-  color: #2d4f9e;
+  color: var(--black);
   padding-right: 5px;
 }
 
 .mais-especificacoes {
-  color: #2d4f9e;
+  color: var(--black);
   font-weight: bold;
 }
 
@@ -372,7 +372,7 @@ body.qdpv-video-on .product-qd-v1-image .qd-playerWrapper {
   height: auto;
   display: block;
   padding: 2px 4px 6px 8px;
-  color: #2d4f9e;
+  color: var(--black);
   font-size: 1.8em;
 }
 .product-qd-v1-image
@@ -1819,11 +1819,11 @@ body.qd-product-unavailable .product-qd-v1-shipping {
 .product-qd-v1-shipping .product-qd-v1-shipping-title {
   float: left;
   margin: 0;
-  padding-right: 10px;
-  width: 43%;
+  /* padding-right: 10px; */
+  width: 48%;
   height: 45px;
   color: #223b76;
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   font-family: "Poppins", sans-serif;
   text-transform: uppercase;
@@ -1882,7 +1882,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
 .product-qd-v1-shipping
   .product-qd-v1-shipping-freight-result
   .freight-zip-box {
-  border: #2d4f9e solid;
+  border: var(--black) solid;
   border-width: 1px;
   transition: all 0.2s ease-out;
   width: 100%;
@@ -1928,13 +1928,13 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   outline: none;
   text-align: center;
   text-transform: uppercase;
-  background-color: #2d4f9e;
+  background-color: var(--black);
   border: none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 #btnFreteSimulacao:hover {
-  background-color: #223b76;
+  background-color: var(--black);
 }
 @media (max-width: 1200px) {
   .product-qd-v1-shipping .product-qd-v1-shipping-freight-result .freight-btn {
@@ -1986,7 +1986,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   color: #fff;
   font-weight: 400;
   text-transform: uppercase;
-  background-color: #2d4f9e;
+  background-color: var(--black);
 }
 .product-qd-v1-shipping .freight-values th:first-child {
   text-indent: 0;

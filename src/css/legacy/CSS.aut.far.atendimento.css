@@ -1,3 +1,4 @@
+@import url("https://autoglass-cdn.github.io/src/css/theme.css");
 /* oring host: cdn.quatrodigital.com/autoglass-arquivos/CSS.aut.far.atendimento.css */
 .attendance-qd-v1-contact {
   margin-top: 40px;
@@ -39,7 +40,7 @@
   content: counter(item) ". ";
   counter-increment: item;
   margin-right: 3px;
-  color: #2d4f9e;
+  color: var(--black);
   font-weight: 700;
 }
 .attendance-qd-v1-contact a {
@@ -145,7 +146,7 @@ body.institucional.quem-somos
   content: "\f06a";
 }
 .attendance-qd-v1-contact h2 {
-  color: #2d4f9e;
+  color: var(--black);
   font-weight: 600;
   font-size: 21px;
   margin-bottom: 5px;
@@ -154,7 +155,7 @@ body.institucional.quem-somos
   font-size: 26px;
   font-weight: 700;
   padding: 1% 0 0.5%;
-  color: #2d4f9e;
+  color: var(--black);
 }
 .attendance-qd-v1-contact p {
   color: #757575;
@@ -225,7 +226,7 @@ body.institucional.quem-somos
   font-weight: 700;
   text-align: left;
   border-radius: 3px;
-  background-color: #2d4f9e;
+  background-color: var(--black);
   padding: 10px 15px;
   width: 100%;
   content: "Menu institucional";
@@ -309,7 +310,7 @@ body.institucional.quem-somos
   font-weight: 300;
   text-align: center;
   border-radius: 3px;
-  background-color: #2d4f9e;
+  background-color: var(--black);
   letter-spacing: 1px;
   cursor: default;
   pointer-events: none;
