@@ -535,7 +535,8 @@ body.mz-pu-on .mz-modal-pickup {
 
 p.descricao-rollout {
   text-align: center;
-  margin-top: -25px;
+  /* margin-top: -25px; */
+  width: 100%;
   margin-bottom: 10px;
   font-size: 21px;
   font-weight: 600;
