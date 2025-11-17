@@ -1,3 +1,5 @@
+@import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
+
 :root {
   --load-optionals-fast-transition: 0.2s;
   --load-optionals-slow-transition: 0.5s;
@@ -26,7 +28,7 @@ ul .row .optionals h4 {
 ul .row .optionals h4:before {
   content: "\f00c";
   font-family: "FontAwesome" !important;
-  color: #2d4f9e;
+  color: var(--black);
   padding-right: 5px;
 }
 
@@ -139,7 +141,7 @@ ul .row .optionals.loading:after {
     content: "+";
     color: #fff;
     font-weight: bolder;
-    background: #2d4f9e;
+    background: var(--black);
     position: absolute;
     top: 18px;
     right: 0;
