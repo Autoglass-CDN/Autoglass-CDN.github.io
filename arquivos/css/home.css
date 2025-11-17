@@ -183,7 +183,7 @@ html {
   font-size: 32px;
   font-weight: var(--extra-bold);
   font-family: "Poppins", sans-serif;
-  color: var(--primary);
+  color: var(--black);
   text-align: center;
   text-transform: uppercase;
 }
@@ -473,7 +473,14 @@ html {
 
 /* #beon region*/
   .beon-region {
+    font-family: "Poppins", sans-serif !important;
     width: 93%;
+  }
+  .bn-menu--marcas font {
+    color: var(--black);
+  }
+  .beon-region h2 {
+    color: var(--black) !important;
   }
 /* #endregion beon*/
 
@@ -700,7 +707,7 @@ html {
 }
 
 .whys-section .why__content-title {
-  color: var(--primary);
+  color: var(--black);
   font-size: 24px;
   font-weight: var(--bold);
   text-align: center;
@@ -754,7 +761,7 @@ html {
 /* #region Chat */
 
 .chat-section {
-  background-color: #333697;
+  background-color: var(--black);
   width: 100%;
 }
 
@@ -778,7 +785,7 @@ html {
 
 .chat-section .chat__content-link {
   background-color: var(--white);
-  color: var(--primary);
+  color: var(--black);
   font-size: 16px;
   font-weight: var(--bold);
   border-radius: 40px;
