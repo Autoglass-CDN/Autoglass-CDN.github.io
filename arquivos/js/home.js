@@ -396,24 +396,5 @@ function enableTouchScroll(e) {
           }, r);
         });
       });
-  })();
-
-(() => {
-  function e() {
-    document.querySelectorAll(".banners-content").forEach((e) => {
-      let t = e.querySelectorAll("div"),
-        l = t[1];
-      if (l) {
-        let n = l.querySelector("a");
-        n?.setAttribute("target", "_blank");
-      }
-    });
-  }
-  let t = new MutationObserver((t, l) => {
-      let n = document.querySelectorAll(".banners-content div").length >= 2;
-      n && (e(), l.disconnect());
-    }),
-    l = document.querySelector(".banners-section") || document.body;
-  t.observe(l, { childList: !0, subtree: !0 });
-})();
-})(jQueryNew);
+  })()
+})(window.jQuery);
