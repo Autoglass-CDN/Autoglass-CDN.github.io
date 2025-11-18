@@ -621,32 +621,32 @@ document
 
 //#endregion Painel de categorias
 
-//ADICIONA TARGET BLANK EM BANNER DA CAMPANHA RECLAME AQUI 2025
-(() => {
-  function setTargetBlank() {
-    document.querySelectorAll(".banners-content").forEach((container) => {
-      const banners = container.querySelectorAll("div");
-      const secondBanner = banners[1];
-      if (secondBanner) {
-        const link = secondBanner.querySelector("a");
-        link?.setAttribute("target", "_blank");
-      }
-    });
-  }
+// //ADICIONA TARGET BLANK EM BANNER DA CAMPANHA RECLAME AQUI 2025
+// (() => {
+//   function setTargetBlank() {
+//     document.querySelectorAll(".banners-content").forEach((container) => {
+//       const banners = container.querySelectorAll("div");
+//       const secondBanner = banners[1];
+//       if (secondBanner) {
+//         const link = secondBanner.querySelector("a");
+//         link?.setAttribute("target", "_blank");
+//       }
+//     });
+//   }
 
-  const observer = new MutationObserver((mutations, obs) => {
-    const bannersExistem = document.querySelectorAll(".banners-content div").length >= 2;
-    if (bannersExistem) {
-      setTargetBlank();
-      obs.disconnect();
-    }
-  });
+//   const observer = new MutationObserver((mutations, obs) => {
+//     const bannersExistem = document.querySelectorAll(".banners-content div").length >= 2;
+//     if (bannersExistem) {
+//       setTargetBlank();
+//       obs.disconnect();
+//     }
+//   });
 
-  const target = document.querySelector(".banners-section") || document.body;
+//   const target = document.querySelector(".banners-section") || document.body;
 
-  observer.observe(target, {
-    childList: true,
-    subtree: true,
-  });
-})();
+//   observer.observe(target, {
+//     childList: true,
+//     subtree: true,
+//   });
+// })();
 })(jQueryNew);
