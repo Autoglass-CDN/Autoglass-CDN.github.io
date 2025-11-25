@@ -17,9 +17,9 @@
   background-color: aliceblue;
   color: var(--blue-300);
   font-size: 13px !important;
-  line-height: 30px;
   padding-left: 10px;
   width: 340px;
+  max-width: 100%;
 }
 
 .mz-install__info .mz-info__list ul li:last-child a {
