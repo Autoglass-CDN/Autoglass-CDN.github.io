@@ -361,14 +361,12 @@ $(function () {
               <div class="mz-info__list">
                 <ul>
                   <li>
-                    Após aprovação do pagamento, nossos analistas entrarão
-                    em contato com você para confirmar o horário de agendamento.
+                    No atendimento, será realizada uma análise pelo técnico e <b>caso haja necessidade de troca de borrachas ou sensores</b>, o valor será cobrado na loja.
                   </li>
                   <li>
-                    Será realizada uma análise pelo técnico e caso
-                    haja necessidade de troca de borrachas ou sensores,
-                    o valor será cobrado na loja.
+                    &nbsp;Dúvidas? <a href="#" onclick="zE('webWidget', 'open'); return false;"><u>Clique aqui</u></a> e fale com a gente pelo chat.
                   </li>
+                </ul>
               </div>
             </div>
             `

@@ -278,19 +278,19 @@ $(window).on('load', () => {
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
             await loadScript("/arquivos/jquery-ui.datepicker.js");
             // await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
-            await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
-            await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');
-            await loadScript('https://autoglass-cdn.github.io/src/js/consulta-agendamento.js');
-            loadScript('https://autoglass-cdn.github.io/src/js/checkout/jornada-do-cliente.js');
-            loadScript('https://autoglass-cdn.github.io/src/js/checkout/automatizar-preenchimento-nota-fiscal.js');
-            loadScript('https://autoglass-cdn.github.io/src/js/checkout/habilitar-input-chassi.js');
+            await loadScript('https://autoglass-cdn.github.io/hml/js/policies/checkout.js');
+            await loadScript('https://autoglass-cdn.github.io/hml/js/cep.component.js');
+            await loadScript('https://autoglass-cdn.github.io/hml/js/consulta-agendamento.js');
+            loadScript('https://autoglass-cdn.github.io/hml/js/checkout/jornada-do-cliente.js');
+            loadScript('https://autoglass-cdn.github.io/hml/js/checkout/automatizar-preenchimento-nota-fiscal.js');
+            loadScript('https://autoglass-cdn.github.io/hml/js/checkout/habilitar-input-chassi.js');
 
 
              loadScript('https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c', addId('ze-snippet'));
             //loadScript('https://chat.directtalk.com.br/static/hi-chat/chat.js?widgetId=f5e58cb9-a90e-4271-955e-1a5911e3e127', addId('hi-chat-script'));
 
-            loadScript('https://autoglass-cdn.github.io/src/js/cookie.bot.js');
-            loadScript('https://autoglass-cdn.github.io/src/js/hubspot-cookie.js');
+            loadScript('https://autoglass-cdn.github.io/hml/js/cookie.bot.js');
+            loadScript('https://autoglass-cdn.github.io/hml/js/hubspot-cookie.js');
             loadScript('https://js.hs-scripts.com/20753913.js'); // script hubspot
         }
 
