@@ -487,13 +487,10 @@
               <div class="mz-info__list">
                 <ul>
                   <li>
-                    Ap\xf3s aprova\xe7\xe3o do pagamento, nossos analistas entrar\xe3o
-                    em contato com voc\xea para confirmar o hor\xe1rio de agendamento.
+                    No atendimento, será realizada uma análise pelo técnico e <b>caso haja necessidade de troca de borrachas ou sensores</b>, o valor será cobrado na loja.
                   </li>
                   <li>
-                    Ser\xe1 realizada uma an\xe1lise pelo t\xe9cnico e caso
-                    haja necessidade de troca de borrachas ou sensores,
-                    o valor ser\xe1 cobrado na loja.
+                    &nbsp;Dúvidas? <a href="#" onclick="zE('webWidget', 'open'); return false;"><u>Clique aqui</u></a> e fale com a gente pelo chat.
                   </li>
               </div>
             </div>

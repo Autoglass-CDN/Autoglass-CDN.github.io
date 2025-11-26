@@ -1,12 +1,35 @@
+@import url("https://autoglass-cdn.github.io/arquivos/css/theme.css");
+
 /* Reset font-size */
 .mz-modal-installation .mz-install__title span,
-.mz-install__info .mz-info__list ul li,
 .header-qd-v1-valid-prices.cep-modal {
   font-size: 10.5px !important;
 }
 
+.mz-install__info .mz-info__list ul li:first-child {
+  line-height: normal;
+  font-size: 13px !important;
+  padding: 25px 0px 15px 0px;
+  color: var(--blue-300);
+}
+
+.mz-install__info .mz-info__list ul li:last-child {
+  background-color: aliceblue;
+  color: var(--blue-300);
+  font-size: 13px !important;
+  padding-left: 10px;
+  width: 340px;
+  max-width: 100%;
+}
+
+.mz-install__info .mz-info__list ul li:last-child a {
+  color: var(--blue-300);
+  cursor: pointer;
+  outline: none;
+}
+
 .mz-modal-installation.modal-instale-na-loja {
-  max-height: 650px;
+  max-height: 780px;
   height: 95vh;
   box-sizing: border-box;
 }
@@ -323,9 +346,9 @@
   margin-top: 0px;
 }
 
-.mz-install__info .mz-info__list ul li:before {
+.mz-install__info .mz-info__list ul li:last-child::before {
   display: block;
-  content: "\f05a";
+  content: "\f06a";
   display: inline-block;
   font-size: 1em;
   font-style: normal;
@@ -339,6 +362,40 @@
   margin-right: 2px;
   font-size: 14px;
   color: #2d4f9e;
+}
+
+.mz-install__info_contact {
+  background-color: #fff6eb;
+  padding: 5px;
+  margin: 15px 5px 20px 0px;
+}
+
+.mz-install__info_contact .mz-info__list {
+  display: flex;
+  align-items: center;
+}
+
+.mz-install__info_contact .mz-info__list span {
+  color: #cd954c;
+}
+
+.mz-install__info_contact .mz-info__list .triangule-exclamation-fa:before {
+  display: block;
+  content: '\f071';
+  display: inline-block;
+  font-size: 1em;
+  font-style: normal;
+  font-weight: normal;
+  height: 1em;
+  text-align: center;
+  text-decoration: inherit;
+  text-rendering: optimizelegibility;
+  width: 1em;
+  font-family: 'FontAwesome' !important;
+  margin-right: 2px;
+  font-size: 15px;
+  color: #cd954c;
+  padding: 5px;
 }
 
 .mz-accesories__name {
