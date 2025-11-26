@@ -225,9 +225,9 @@ body.hasInstall .srp-pickup-info label {
     margin: 0;
 }
 
-.mz-modal-installation .mz-install__info .mz-info__list ul li:before {
+.mz-modal-installation .mz-install__info .mz-info__list ul li:last-child::before {
     display: block;
-    content: '\f05a';
+    content: '\f06a';
     display: inline-block;
     font-size: 1em;
     font-style: normal;
@@ -241,6 +241,25 @@ body.hasInstall .srp-pickup-info label {
     margin-right: 2px;
     font-size: 14px;
     color: #2D4F9E;
+}
+
+.mz-modal-installation .mz-install__info_contact .mz-info__list .triangule-exclamation-fa:before {
+    display: block;
+    content: '\f071'; 
+    display: inline-block;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: normal;
+    height: 1em;
+    text-align: center;
+    text-decoration: inherit;
+    text-rendering: optimizelegibility;
+    width: 1em;
+    font-family: 'FontAwesome';
+    margin-right: 2px;
+    font-size: 15px;
+    color: #cd954c;
+    padding: 5px;
 }
 
 body.hasInstall .shipping-date,
