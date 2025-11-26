@@ -385,7 +385,6 @@
     await _initBuscaPeca(grandchildenCategories);
     _initBuscaPlaca(grandchildenCategories)
     
-    
     window._dadosCategoriasPeca = grandchildenCategories;
   }
 
@@ -1832,9 +1831,33 @@ function _initBuscaPlaca(values) {
         formBuscaPlaca.requestSubmit();
       });
     }
-    
+
     document.dispatchEvent(new Event('buscaPlacaIniciada'));
     bindCloseOnPickCapture('#busca-placa-mobile #categoria-select .smart-select__main-results');
+ 
+    const formBuscaCompatibilidade = document.querySelector("#form-busca-placa-compatibilidade");
+
+    if (formBuscaCompatibilidade) {
+
+      formBuscaCompatibilidade.addEventListener("submit", function(event) {
+        event.preventDefault();
+
+        const placa = document.querySelector("#placa-input-compatibilidade").value.trim();
+        const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+
+        if (!placa.length) {
+          alert("Você deve inserir a placa do seu veículo!");
+          return;
+        }
+
+        if (!placa.match(regexPlaca)) {
+          alert("Sua placa não segue um padrão válido!");
+          return;
+        }
+
+        buscaPorPlaca(placa);
+      });
+    }
   }
 
   function restoreBuscaPlaca() {
@@ -2040,6 +2063,21 @@ function _initBuscaPlaca(values) {
 
       let url = "",
         parametrosUrl = "?PS=24&map=";
+
+      if (
+        document.body.classList.contains("departamento") ||
+        document.body.classList.contains("categoria")
+      ) {
+        
+        const categoriaPath = window.location.pathname.replace(/\/+$/, "");
+        const categoriaSegments = categoriaPath.split("/").filter(Boolean);
+
+        if (categoriaSegments.length) {
+          url += categoriaPath;
+
+          parametrosUrl += categoriaSegments.map(() => "c").join(",") + ",";
+        }
+      }
 
       if (select.routeSelected.length) {
         url += select.routeSelected;
