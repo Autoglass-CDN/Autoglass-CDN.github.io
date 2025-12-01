@@ -140,14 +140,14 @@
   content: "";
   border-width: 0 8px 10px 8px;
   border-style: solid;
-  border-color: transparent transparent var(--black) transparent;
+  border-color: transparent transparent #223b76 transparent;
   margin-left: 40px;
   bottom: -10px;
 }
 
 #txtCep + .ttp::after {
   content: "Informe seu CEP";
-  background-color: var(--black);
+  background-color: #223b76;
   margin-left: 0;
   bottom: -9px;
   font-size: 10px;
@@ -917,7 +917,7 @@ body.mz-sf-on .mz-modal-shipping {
 /* #endregion GALERIA ITEM VIDEO */
 
 .compat-box {
-  border: 1px solid var(--black);
+  border: 1px solid #003087;
   border-radius: 8px;
   padding: 16px;
   font-family: "Poppins", sans-serif;
@@ -943,7 +943,7 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 .compat-title .title-text {
-  color: var(--black);
+  color: #003087;
 }
 
 .check-icon {
@@ -978,7 +978,7 @@ body.mz-sf-on .mz-modal-shipping {
   flex: 1;
   padding: 8px;
   border-radius: 6px;
-  border: 1px solid var(--black);
+  border: 1px solid #003087;
 }
 
 .compat-input button {
@@ -1062,22 +1062,22 @@ body.mz-sf-on .mz-modal-shipping {
 
 .icon-arrow-down {
   font-size: 15px;
-  color: var(--black);
+  color: #003087;
 }
 .icon-arrow-up{
   font-size: 17px;
-  color: var(--black);
+  color: #003087;
 }
 
 #botaoVerificarCompatibilidade{
   font-family: "Poppins", sans-serif !important;
-  background-color: var(--gray-300) ;
-  color: var(--black);
+  background-color: #e7eaf4 ;
+  color: #003087;
   font-weight: bold;
 }
 
 #botaoVerificarCompatibilidade:hover{
-  background-color: var(--black);
+  background-color: #003087;
   color: #e7eaf4;
 }
 
@@ -1581,7 +1581,7 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 #botaoProdutosCompativeis {
-  background-color: var(--black);
+  background-color: #003da5;
   color: #ffffff;
   border: none;
   border-radius: 4px;
@@ -1595,8 +1595,8 @@ body.mz-sf-on .mz-modal-shipping {
 }
 
 #botaoProdutosCompativeis:hover {
-  background-color:var(--gray-500) ;
-  color: var(--white);
+  background-color:#e7eaf4 ;
+  color: #003087;
 }
 
 @keyframes pulse {

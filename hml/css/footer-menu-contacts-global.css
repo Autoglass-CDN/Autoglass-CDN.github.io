@@ -99,7 +99,7 @@
   .footer-qd-v1-content .footer-qd-v1-menu-grid .footer-qd-v1-social-networks ul > li > a {
     padding: 0 !important;
     color: #fff;
-    background-color: var(--black);
+    background-color: #2d4f9e;
   }
 
   .titulo-contact-information {
@@ -304,7 +304,7 @@
       float: none;
     }
     .footer-qd-v1 .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a {
-      background-color: var(--black);
+      background-color: var(--primary);
     }
     .footer-qd-v1-content .footer-qd-v1-social-networks ul > li > a > i {
       color: white;
@@ -410,5 +410,5 @@
 
   /*BEON BLACK FRIDAY*/
   .beon-region .beon-showcase--carousel .beon-showcase__head .beon-showcase__title {
-    color: var(--black);
+    color: var(--primary);
   }

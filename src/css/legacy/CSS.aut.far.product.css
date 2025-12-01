@@ -187,12 +187,12 @@
 .lista-opcionais::before {
   content: "\f00c";
   font-family: fontAwesome;
-  color: var(--black);
+  color: #2d4f9e;
   padding-right: 5px;
 }
 
 .mais-especificacoes {
-  color: var(--black);
+  color: #2d4f9e;
   font-weight: bold;
 }
 
@@ -372,7 +372,7 @@ body.qdpv-video-on .product-qd-v1-image .qd-playerWrapper {
   height: auto;
   display: block;
   padding: 2px 4px 6px 8px;
-  color: var(--black);
+  color: #2d4f9e;
   font-size: 1.8em;
 }
 .product-qd-v1-image
@@ -1882,7 +1882,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
 .product-qd-v1-shipping
   .product-qd-v1-shipping-freight-result
   .freight-zip-box {
-  border: var(--black) solid;
+  border: #2d4f9e solid;
   border-width: 1px;
   transition: all 0.2s ease-out;
   width: 100%;
@@ -1928,13 +1928,13 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   outline: none;
   text-align: center;
   text-transform: uppercase;
-  background-color: var(--black);
+  background-color: #2d4f9e;
   border: none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
 }
 #btnFreteSimulacao:hover {
-  background-color: var(--black);
+  background-color: #223b76;
 }
 @media (max-width: 1200px) {
   .product-qd-v1-shipping .product-qd-v1-shipping-freight-result .freight-btn {
@@ -1986,7 +1986,7 @@ body.qd-product-unavailable .product-qd-v1-shipping {
   color: #fff;
   font-weight: 400;
   text-transform: uppercase;
-  background-color: var(--black);
+  background-color: #2d4f9e;
 }
 .product-qd-v1-shipping .freight-values th:first-child {
   text-indent: 0;

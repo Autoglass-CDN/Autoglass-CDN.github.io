@@ -61,7 +61,7 @@ body.busca-beonly .tab-container {
   .menu-secao-pesquisa {
     position: absolute;
     z-index: 5;
-    color: var(--black);
+    color: #0b4583;
     font-weight: bold;
     font-size: 16px;
     top: -5%;
@@ -188,7 +188,7 @@ body.busca-beonly .tab-container {
 
   #tab-busca-categoria i,
   #tab-busca-categoria span {
-    color: var(--black) !important;
+    color: #0b4583 !important;
   }
 
   .container.desktop #tab-busca-categoria .c-busca__tab-text {
@@ -233,15 +233,15 @@ body.busca-beonly .tab-container {
 }
 
 .btn-search {
-  background-color: var(--black);
+  background-color: #0b4583;
   color: white;
   border: none;
 }
 
 .btn-clear {
   background-color: transparent;
-  color: var(--black);
-  border: 1px solid var(--black);
+  color: #0b4583;
+  border: 1px solid #0b4583;
 }
 
 .filter-group .btn-search,

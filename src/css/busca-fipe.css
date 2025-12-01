@@ -190,7 +190,7 @@ html {
     width: inherit;
   }
   .c-busca__tabs-content .tipo-peca .smart-select__main-results ul li.highlight {
-    background-color: var(--black);
+    background-color: #234eb9;
     color: white;
   }
   .c-busca__tabs-content .tipo-peca .smart-select__main-results {
@@ -1020,7 +1020,7 @@ html {
 #veiculo-select .gtm-smart-veiculo-select span,
 #ano-select .gtm-smart-ano-select span,
 #versao-select .gtm-smart-versao-select span {
-  color: var(--black);
+  color: #0b4583;
 }
 .c-busca__botao .btn {
   padding: 10px 20px;
@@ -1034,7 +1034,7 @@ html {
   gap: 10px;
 }
 .c-busca__botao .btn-search {
-  background-color: var(--black);
+  background-color: #0b4583;
   color: white;
   border: none;
   height: 40px;
@@ -1066,7 +1066,7 @@ html {
 #toggleButton {
   background: none;
   border: none;
-  color: var(--black);
+  color: #0b4583;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1089,7 +1089,7 @@ html {
 #toggleButton2 {
   background: none;
   border: none;
-  color: var(--black);
+  color: #0b4583;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1112,7 +1112,7 @@ html {
 #toggleButton3 {
   background: none;
   border: none;
-  color: var(--black);
+  color: #0b4583;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1135,7 +1135,7 @@ html {
 #toggleButton4 {
   background: none;
   border: none;
-  color: var(--black);
+  color: #0b4583;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1158,7 +1158,7 @@ html {
 #toggleButton5 {
   background: none;
   border: none;
-  color: var(--black);
+  color: #0b4583;
   cursor: pointer;
   font-size: 16px;
   display: flex;
@@ -1181,7 +1181,7 @@ html {
 #toggleButton6 {
   background: none;
   border: none;
-  color: var(--black);
+  color: #0b4583;
   cursor: pointer;
   font-size: 16px;
   display: flex;
