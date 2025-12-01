@@ -1463,7 +1463,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
   color: #fff;
   font-size: 12px;
   text-decoration: none;
-  background-color: var(--black);
+  background-color: #223b76;
   font-weight: 600;
   position: relative;
   line-height: 9px;
@@ -1472,7 +1472,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
   height: 23px;
   width: fit-content;
   border-radius: 23px;
-  background: var(--black);
+  background: #2d4f9e;
   margin: 0;
   margin-bottom: 5px;
 }
@@ -1484,7 +1484,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
   color: #fff;
   font-size: 12px;
   text-decoration: none;
-  background-color: var(--black);
+  background-color: #2d4f9e;
   font-weight: 600;
   position: relative;
   line-height: 9px;
@@ -1514,7 +1514,7 @@ body.jsFullLoaded .shelf-qd-v1 .shelf-qd-v1-buy-button {
 
 .carousel-qd-v1-shelf h2 {
   margin-bottom: 25px;
-  color: var(--black);
+  color: #2d4f9e;
   font-size: 26px;
   text-align: center;
   font-weight: 800;
