@@ -372,7 +372,7 @@ html {
 }
 
 .titulo-pagina-home p {
-  color: #000000;
+  color: var(--gray-700);
   font-weight: lighter;
 }
 
@@ -469,7 +469,7 @@ html {
 
 .benefits-section .benefit p {
   font-size: 12px;
-  color: #000000;
+  color: var(--gray-700);
 }
 
 @media (max-width: 1000px) {
