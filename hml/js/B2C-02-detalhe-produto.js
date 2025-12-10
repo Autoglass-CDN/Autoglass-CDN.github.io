@@ -44,7 +44,7 @@
 					|| (hour < 8 || hour >= 18) //Esta fora do horario de trabalho?
 				) {
 					zE('webWidget', 'chat:addTags', 'fora-expediente');
-					zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 08-18h, no momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://bit.ly/3hZB6js \nProduto de interesse: ${window.location.href}`);
+					zE('webWidget', 'chat:send', `Olá, nosso horário de atendimento é de Seg-Sex de 08-18h, no momento estamos sem consultor disponível. Clique aqui e fale conosco pelo whatsapp: https://shre.ink/qDiE \nProduto de interesse: ${window.location.href}`);
                 } else {
                     zE('webWidget', 'chat:send', `Olá, tenho interesse neste produto, mas está indisponível no site: ${window.location.href}`);
 				}
