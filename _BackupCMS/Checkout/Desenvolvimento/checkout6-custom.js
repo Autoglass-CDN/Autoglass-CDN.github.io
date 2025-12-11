@@ -278,7 +278,7 @@ $(window).on('load', () => {
             await loadScript("/scripts/jquery.ui.core.js");
             await loadScript("/arquivos/jquery.cookie.js");
             await loadScript('/scripts/jquery.maskedinput-1.2.2.js');
-            await loadScript("/arquivos/jquery-ui.datepicker.js");
+            await loadScript("https://autoglass-cdn.github.io/src/js/jquery-ui.datepicker.js");
             // await loadScript('https://cdn.jsdelivr.net/npm/@splidejs/splide@latest/dist/js/splide.min.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/policies/checkout.js');
             await loadScript('https://autoglass-cdn.github.io/src/js/cep.component.js');

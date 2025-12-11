@@ -97,7 +97,7 @@ async function loadScripts(data) {
 
   $.cookie("mzLocationUF", data.shippingData.address.state);
 
-  await loadScript("/arquivos/jquery-ui.datepicker.js");
+  await loadScript("https://autoglass-cdn.github.io/src/js/jquery-ui.datepicker.js");
   await loadScript("https://autoglass-cdn.github.io/src/js/consulta-agendamento.js");
   await loadScript(
      "https://static.zdassets.com/ekr/snippet.js?key=126e916b-310a-4833-a582-4c72f3d0e32c",
@@ -571,7 +571,7 @@ setTimeout(() => {
       loadScript("/scripts/jquery.ui.core.js", () =>
         loadScript("/arquivos/jquery.cookie.js", () => {
           $.cookie("mzLocationUF", data.shippingData.address.state);
-          loadScript("/arquivos/jquery-ui.datepicker.js", () =>
+          loadScript("https://autoglass-cdn.github.io/src/js/jquery-ui.datepicker.js", () =>
             loadScript("/arquivos/consulta-agendamento.dev.js", () => {
               calculateAvailableAppointmentDate(data);
 

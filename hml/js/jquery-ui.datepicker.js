@@ -1,4 +1,3 @@
-(function($) {
 (function ($, undefined) {
 
     $.extend($.ui, { datepicker: { version: "1.9.0" } });
@@ -1561,8 +1560,28 @@
                         for (var dow = 0; dow < 7; dow++) { // create date picker days
                             var daySettings = (beforeShowDay ?
                                 beforeShowDay.apply((inst.input ? inst.input[0] : null), [printDate]) : [true, '']);
+                            
+                            if (!daySettings || daySettings.length < 2) {
+                                daySettings = [true, ''];
+                            }
+
                             var otherMonth = (printDate.getMonth() != drawMonth);
-                            var unselectable = (otherMonth && !selectOtherMonths) || !daySettings[0] ||
+
+                            var isHoliday =
+                                (printDate.getDate() === 25 && printDate.getMonth() === 11) || // 25/12
+                                (printDate.getDate() === 1  && printDate.getMonth() === 0);   // 01/01
+
+                            var holidayClass = isHoliday ? ' ui-datepicker-holiday-disabled' : '';
+
+                            if (isHoliday) {
+                                daySettings[0] = false;
+                                daySettings[1] = (daySettings[1] ? daySettings[1] + ' ' : '') + 'ui-state-disabled';
+                                if (!daySettings[2]) {
+                                    daySettings[2] = 'Data indisponível';
+                                }
+                            }
+
+                            var unselectable = isHoliday || (otherMonth && !selectOtherMonths) || !daySettings[0] ||
                                 (minDate && printDate < minDate) || (maxDate && printDate > maxDate);
                             tbody += '<td class="' +
                                 ((dow + firstDay + 6) % 7 >= 5 ? ' ui-datepicker-week-end' : '') + // highlight weekends
@@ -1572,9 +1591,9 @@
                                     // or defaultDate is current printedDate and defaultDate is selectedDate
                                     ' ' + this._dayOverClass : '') + // highlight selected day
                                 (unselectable ? ' ' + this._unselectableClass + ' ui-state-disabled' : '') +  // highlight unselectable days
-                                (otherMonth && !showOtherMonths ? '' : ' ' + daySettings[1] + // highlight custom dates
+                                (otherMonth && !showOtherMonths ? '' : (daySettings[1] ? ' ' + daySettings[1] : '') + // highlight custom dates
                                     (printDate.getTime() == currentDate.getTime() ? ' ' + this._currentClass : '') + // highlight selected day
-                                    (printDate.getTime() == today.getTime() ? ' ui-datepicker-today' : '')) + '"' + // highlight today (if different)
+                                    (printDate.getTime() == today.getTime() ? ' ui-datepicker-today' : '') + holidayClass) + '"' + // highlight today (if different)
                                 ((!otherMonth || showOtherMonths) && daySettings[2] ? ' title="' + daySettings[2] + '"' : '') + // cell title
                                 (unselectable ? '' : ' data-handler="selectDay" data-event="click" data-month="' + printDate.getMonth() + '" data-year="' + printDate.getFullYear() + '"') + '>' + // actions
                                 (otherMonth && !showOtherMonths ? '&#xa0;' : // display for other months
@@ -1839,5 +1858,4 @@
     // Add another global to avoid noConflict issues with inline event handlers
     window['DP_jQuery_' + dpuuid] = $;
 
-})(jQuery);
-})(jQueryNew);
+})(window.jQuery || window.jQueryNew);
