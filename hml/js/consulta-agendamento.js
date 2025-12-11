@@ -38,11 +38,9 @@ var codCidades = {
   SP: { code: "9423", nome: "S\u00e3o Paulo" },
 };
 
-// const baseUrlApiAgenda = window.location.href.includes("dev")
-//     ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
-//     : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
-// PARA TESTE LOCAL:
-const baseUrlApiAgenda = "http://localhost:5010/integracao-b2c/api/web-app/agendamentos";
+const baseUrlApiAgenda = window.location.href.includes("dev")
+    ? "https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/agendamentos"
+    : "https://api.autoglass.com.br/integracao-b2c/api/web-app/agendamentos";
 
 // Instale na Loja
 $(function () {
