@@ -1561,10 +1561,12 @@
                             var daySettings = (beforeShowDay ?
                                 beforeShowDay.apply((inst.input ? inst.input[0] : null), [printDate]) : [true, '']);
                             
-                            if (!daySettings || daySettings.length < 2) {
+                            if (!daySettings) {
                                 daySettings = [true, ''];
                             }
-
+                            daySettings[0] = (daySettings[0] !== false);
+                            daySettings[1] = daySettings[1] || '';
+                            
                             var otherMonth = (printDate.getMonth() != drawMonth);
 
                             var isHoliday =
