@@ -181,9 +181,9 @@ html {
 
 .section-title {
   font-size: 32px;
-  font-weight: var(--extra-bold);
+  font-weight: var(--semi-bold);
   font-family: "Poppins", sans-serif;
-  color: var(--primary);
+  color: #00298e;
   text-align: center;
   /* text-transform: uppercase; */
 }
@@ -783,9 +783,9 @@ html {
 }
 
 .whys-section .why__content-title {
-  color: var(--primary);
+  color: #00298e;
   font-size: 24px;
-  font-weight: var(--extra-bold);
+  font-weight: var(--semi-bold);
 }
 
 .whys-section .why__content-text {
@@ -846,7 +846,7 @@ html {
 /* #region Chat */
 
 .chat-section {
-  background-color: #333697;
+  background-color: #00298e;
   width: 100%;
 }
 
@@ -870,7 +870,7 @@ html {
 
 .chat-section .chat__content-link {
   background-color: var(--white);
-  color: var(--primary);
+  color: #00298e;
   font-size: 16px;
   font-weight: var(--bold);
   border-radius: 40px;
