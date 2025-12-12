@@ -1118,7 +1118,7 @@ body {
 
 .footer-qd-v1-content .footer-qd-v1-contact-information li {
   display: block;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   font-size: 16px;
   font-weight: 600;
 }
