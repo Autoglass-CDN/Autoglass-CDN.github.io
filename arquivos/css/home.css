@@ -181,11 +181,10 @@ html {
 
 .section-title {
   font-size: 32px;
-  font-weight: var(--extra-bold);
+  font-weight: var(--semi-bold);
   font-family: "Poppins", sans-serif;
-  color: var(--primary);
+  color: #00298e;
   text-align: center;
-  text-transform: uppercase;
 }
 
 .section-title.nossos-servicos {
@@ -717,9 +716,6 @@ html {
   .ratings-section {
     padding-top: 15px;
   }
-  .section-title {
-    font-size: 22px;
-  }
   .ratings-section .ratings__slider {
     height: 350px;
   }
@@ -741,10 +737,7 @@ html {
 .whys-section {
   width: 100%;
   padding: 40px 20px 0px 20px;
-  background: url("https://autoglass.vteximg.com.br/arquivos/porque_autoglass-bg.svg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
+  background-color: #efefef;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -752,19 +745,21 @@ html {
 }
 
 .whys-section .section-title {
-  max-width: 512px;
   margin: 0 auto;
+}
+
+.whys-section .container {
+  width: 90% !important;
+  display: flex;
 }
 
 .whys-section .why {
   margin: 30px 0;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  flex-direction: column;
 }
 
-.whys-section .why:nth-child(2n) {
-  flex-direction: row-reverse;
-}
 
 .whys-section .why > div {
   margin: 15px;
@@ -782,6 +777,7 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: flex-start;
   opacity: 0.8;
 }
 
@@ -790,16 +786,14 @@ html {
 }
 
 .whys-section .why__content-title {
-  color: var(--primary);
+  color: #00298e;
   font-size: 24px;
-  font-weight: var(--bold);
-  text-align: center;
+  font-weight: var(--semi-bold);
 }
 
 .whys-section .why__content-text {
-  color: #545454;
+  color: var(--black);
   font-size: 16px;
-  font-weight: var(--semi-bold);
   max-width: 540px;
 }
 
@@ -821,21 +815,32 @@ html {
 }
 
 @media (max-width: 1100px) {
-  .whys-section .why:nth-child(n) {
-    flex-direction: column;
-  }
+
   .whys-section .why__content {
-    align-items: center;
     margin: 0;
   }
-  .whys-section .why__content-text {
-    text-align: center;
-  }
+
   .whys-section .why__image {
     min-width: 250px;
   }
+
   .whys-section .why__content-link {
     display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .whys-section .container {
+    flex-direction: column;
+  }
+
+  .whys-section .why__content {
+    align-items: center;
+    text-align: center;
+  }
+
+  .whys-section .section-title {
+    width: 80%;
   }
 }
 
@@ -844,7 +849,7 @@ html {
 /* #region Chat */
 
 .chat-section {
-  background-color: #333697;
+  background-color: #00298e;
   width: 100%;
 }
 
@@ -868,7 +873,7 @@ html {
 
 .chat-section .chat__content-link {
   background-color: var(--white);
-  color: var(--primary);
+  color: #00298e;
   font-size: 16px;
   font-weight: var(--bold);
   border-radius: 40px;
