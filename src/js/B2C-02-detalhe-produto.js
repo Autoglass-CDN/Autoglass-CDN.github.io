@@ -54,43 +54,43 @@
 
 		$('.talk-to-seller').show();
 
-		if (!$("#similars").is(":empty")) {
-			$(".other-brands").show();
-			$(".other-brands button").click(e => {
-				e.preventDefault();
-				if ($(window).width() > 900) {
-					$("html, body").stop().animate({
-						scrollTop: $("#similars").offset().top - 300
-					}, 900, "swing")
-				} else {
-					$("html, body").stop().animate({
-						scrollTop: $("#similars").offset().top - 170
-					}, 900, "swing")
-				}
-			});
+		// if (!$("#similars").is(":empty")) {
+		// 	$(".other-brands").show();
+		// 	$(".other-brands button").click(e => {
+		// 		e.preventDefault();
+		// 		if ($(window).width() > 900) {
+		// 			$("html, body").stop().animate({
+		// 				scrollTop: $("#similars").offset().top - 300
+		// 			}, 900, "swing")
+		// 		} else {
+		// 			$("html, body").stop().animate({
+		// 				scrollTop: $("#similars").offset().top - 170
+		// 			}, 900, "swing")
+		// 		}
+		// 	});
 
-			$(".product-unavailable").addClass("buy-button other-brands secondary");
+		// 	$(".product-unavailable").addClass("buy-button other-brands secondary");
 
-			let modal = document.querySelector('#myModal');
+		// 	let modal = document.querySelector('#myModal');
 
-			modal.style.display = 'block';
+		// 	modal.style.display = 'block';
 
-			vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
-				window.dataLayer.push({
-					'event': 'sem_estoque_redirecionamento'
-				  });
+		// 	vtexjs.catalog.getCurrentProductWithVariations().done(function (product) {
+		// 		window.dataLayer.push({
+		// 			'event': 'sem_estoque_redirecionamento'
+		// 		  });
 
-				window
-					.location
-					.replace(
-						$("#similars .qd-product-is-in-stock-true a.shelf-qd-v1-stamps")[0]
-							.href
-						+ '#redirecionamento=produtoindisponivel&produto='
-						+ product.productId);
-			});
+		// 		window
+		// 			.location
+		// 			.replace(
+		// 				$("#similars .qd-product-is-in-stock-true a.shelf-qd-v1-stamps")[0]
+		// 					.href
+		// 				+ '#redirecionamento=produtoindisponivel&produto='
+		// 				+ product.productId);
+		// 	});
 
 
-		}
+		// }
 
 
 		ga("send", "event", "estoque", "detalhe-produto", "indisponivel");
