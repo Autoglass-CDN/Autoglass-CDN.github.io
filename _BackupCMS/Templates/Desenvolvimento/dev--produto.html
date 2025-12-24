@@ -8,6 +8,102 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="noindex, nofollow" />
   <vtex:metaTags />
+  <vtex.cmc:canonicalPage disable="true"/>
+  <script>
+    //<![CDATA[
+    (function () {
+      var TARGET_ORIGIN = "https://b2c-hml.autoglass.com.br";
+
+      if (location.origin === TARGET_ORIGIN) return;
+
+      function getProductSlugFromUrl() {
+        // /produto-xxx---2157279/p  =>  produto-xxx-2157279
+        var path = (location.pathname || "").replace(/\/+$/, "");
+        path = path.replace(/\/p\/?$/, "");
+        var slug = path.split("/").pop() || "";
+        return slug.replace(/---(\d+)$/i, "-$1");
+      }
+
+      function getDeepestBreadcrumbPath() {
+        // pega o último link do breadcrumb (mais profundo)
+        var links = document.querySelectorAll(".bread-crumb li a");
+        if (!links || !links.length) return "";
+
+        var lastHref = links[links.length - 1].getAttribute("href") || "";
+        if (!lastHref) return "";
+
+        try {
+          var url = new URL(lastHref, location.origin);
+          return url.pathname || "";
+        } catch (e) {
+          // fallback simples se vier relativo
+          return lastHref.split("?")[0].split("#")[0];
+        }
+      }
+
+      function breadcrumbPathToTarget(pathname) {
+        // "/suspensao-automotiva/amortecedores/amortecedores-traseiros"
+        // => "suspensao%20automotiva/amortecedores/amortecedores%20traseiros"
+        if (!pathname) return "";
+
+        var segs = pathname.split("/").filter(Boolean);
+
+        // remove "desenvolvimento" se por algum motivo vier no caminho
+        segs = segs.filter(function (s) { return s.toLowerCase() !== "desenvolvimento"; });
+
+        // regra: troca "-" por espaço e encodeia (espaço vira %20)
+        segs = segs.map(function (s) {
+          return encodeURIComponent(String(s).replace(/-/g, " "));
+        });
+
+        return segs.join("/");
+      }
+
+      function upsertCanonical(href) {
+        if (!href) return;
+        var head = document.head || document.getElementsByTagName("head")[0];
+        if (!head) return;
+
+        var canonical = head.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+          canonical = document.createElement("link");
+          canonical.setAttribute("rel", "canonical");
+          head.appendChild(canonical);
+        }
+        if (canonical.getAttribute("href") !== href) {
+          canonical.setAttribute("href", href);
+        }
+      }
+
+      function buildTargetCanonical() {
+        var slug = getProductSlugFromUrl();
+        if (!slug) return null;
+
+        var bcPath = getDeepestBreadcrumbPath(); // ex.: /suspensao-automotiva/...
+        var targetCats = breadcrumbPathToTarget(bcPath); // ex.: suspensao%20automotiva/...
+
+        if (!targetCats) return null;
+
+        return TARGET_ORIGIN + "/" + targetCats + "/p/" + encodeURIComponent(slug);
+      }
+
+      function apply() {
+        var target = buildTargetCanonical();
+        upsertCanonical(target);
+      }
+
+      // aplica já
+      apply();
+
+      // garante contra scripts que sobrescrevem canonical depois
+      try {
+        var obs = new MutationObserver(function () { apply(); });
+        obs.observe(document.head || document.documentElement, { childList: true, subtree: true, attributes: true });
+      } catch (e) {}
+
+    })();
+  //]]>
+  </script>
   <vtex.cmc:productRichSnippets showFacebook="1"/>
   <title>
     <vtex.cmc:productPageTitle />

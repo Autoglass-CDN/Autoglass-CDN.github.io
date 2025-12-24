@@ -8,6 +8,93 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="robots" content="noindex, nofollow" />
   <vtex:metaTags />
+  <vtex.cmc:canonicalPage disable="true"/>
+  <script>
+    //<![CDATA[
+    (function () {
+      var TARGET_ORIGIN = "https://b2c-hml.autoglass.com.br";
+
+      if (location.origin === TARGET_ORIGIN) return;
+
+      function getProductSlugFromUrl() {
+        var path = (location.pathname || "").replace(/\/+$/, "");
+        path = path.replace(/\/p\/?$/, "");
+        var slug = path.split("/").pop() || "";
+        return slug.replace(/---(\d+)$/i, "-$1");
+      }
+
+      function getDeepestBreadcrumbPath() {
+        var links = document.querySelectorAll(".bread-crumb li a");
+        if (!links || !links.length) return "";
+
+        var lastHref = links[links.length - 1].getAttribute("href") || "";
+        if (!lastHref) return "";
+
+        try {
+          var url = new URL(lastHref, location.origin);
+          return url.pathname || "";
+        } catch (e) {
+          return lastHref.split("?")[0].split("#")[0];
+        }
+      }
+
+      function breadcrumbPathToTarget(pathname) {
+        if (!pathname) return "";
+
+        var segs = pathname.split("/").filter(Boolean);
+
+        segs = segs.filter(function (s) { return s.toLowerCase() !== "homologacao"; });
+
+        segs = segs.map(function (s) {
+          return encodeURIComponent(String(s).replace(/-/g, " "));
+        });
+
+        return segs.join("/");
+      }
+
+      function upsertCanonical(href) {
+        if (!href) return;
+        var head = document.head || document.getElementsByTagName("head")[0];
+        if (!head) return;
+
+        var canonical = head.querySelector('link[rel="canonical"]');
+        if (!canonical) {
+          canonical = document.createElement("link");
+          canonical.setAttribute("rel", "canonical");
+          head.appendChild(canonical);
+        }
+        if (canonical.getAttribute("href") !== href) {
+          canonical.setAttribute("href", href);
+        }
+      }
+
+      function buildTargetCanonical() {
+        var slug = getProductSlugFromUrl();
+        if (!slug) return null;
+
+        var bcPath = getDeepestBreadcrumbPath();
+        var targetCats = breadcrumbPathToTarget(bcPath);
+
+        if (!targetCats) return null;
+
+        return TARGET_ORIGIN + "/" + targetCats + "/p/" + encodeURIComponent(slug);
+      }
+
+      function apply() {
+        var target = buildTargetCanonical();
+        upsertCanonical(target);
+      }
+
+      apply();
+
+      try {
+        var obs = new MutationObserver(function () { apply(); });
+        obs.observe(document.head || document.documentElement, { childList: true, subtree: true, attributes: true });
+      } catch (e) {}
+
+    })();
+  //]]>
+  </script>
   <vtex.cmc:productRichSnippets showFacebook="1"/>
   <title>
     <vtex.cmc:productPageTitle />

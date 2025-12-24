@@ -5,6 +5,68 @@
 	<meta charset="UTF-8" />
 	<meta name="robots" content="noindex, nofollow" />
 	<vtex:metaTags />
+	<vtex.cmc:canonicalPage disable="true"/>
+	<script>
+	//<![CDATA[
+        (function () {
+          var TARGET_ORIGIN = "https://b2c-hml.autoglass.com.br";
+        
+          var DEPT_SLUG_MAP = {
+            "suspensao-automotiva": "suspensão-automotiva"
+          };
+        
+          if (location.origin === TARGET_ORIGIN) return;
+        
+          function getSegments() {
+            return (location.pathname || "")
+              .replace(/\/+$/, "")
+              .split("/")
+              .filter(Boolean);
+          }
+        
+          function buildTargetCanonical() {
+            var segs = getSegments();
+            if (!segs.length) return null;
+        
+            if (segs.length === 1 && DEPT_SLUG_MAP[segs[0]]) {
+              segs[0] = DEPT_SLUG_MAP[segs[0]];
+            }
+        
+            var targetPath = "/d/" + segs.join("/");
+            return TARGET_ORIGIN + encodeURI(targetPath);
+          }
+        
+          function upsertCanonical(href) {
+            if (!href) return;
+            var head = document.head || document.getElementsByTagName("head")[0];
+            if (!head) return;
+        
+            var canonical = head.querySelector('link[rel="canonical"]');
+            if (!canonical) {
+              canonical = document.createElement("link");
+              canonical.setAttribute("rel", "canonical");
+              head.appendChild(canonical);
+            }
+        
+            if (canonical.getAttribute("href") !== href) {
+              canonical.setAttribute("href", href);
+            }
+          }
+        
+          function apply() {
+            upsertCanonical(buildTargetCanonical());
+          }
+        
+          apply();
+        
+          try {
+            var obs = new MutationObserver(function () { apply(); });
+            obs.observe(document.head || document.documentElement, { childList: true, subtree: true, attributes: true });
+          } catch (e) {}
+        
+        })();
+    //]]>
+    </script>
 	<title>
 		<vtex.cmc:productPageTitle />
 	</title>
