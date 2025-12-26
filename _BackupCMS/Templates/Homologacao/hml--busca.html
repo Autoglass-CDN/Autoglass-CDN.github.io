@@ -8,63 +8,64 @@
 	<vtex.cmc:canonicalPage disable="true"/>
 	<script>
 	//<![CDATA[
-        (function () {
-          var TARGET_ORIGIN = "https://b2c-hml.autoglass.com.br";
-        
-          var DEPT_SLUG_MAP = {
-            "suspensao-automotiva": "suspensão-automotiva"
-          };
-        
-          if (location.origin === TARGET_ORIGIN) return;
-        
-          function getSegments() {
-            return (location.pathname || "")
-              .replace(/\/+$/, "")
-              .split("/")
-              .filter(Boolean);
-          }
-        
-          function buildTargetCanonical() {
-            var segs = getSegments();
-            if (!segs.length) return null;
-        
-            if (segs.length === 1 && DEPT_SLUG_MAP[segs[0]]) {
-              segs[0] = DEPT_SLUG_MAP[segs[0]];
-            }
-        
-            var targetPath = "/d/" + segs.join("/");
-            return TARGET_ORIGIN + encodeURI(targetPath);
-          }
-        
-          function upsertCanonical(href) {
-            if (!href) return;
-            var head = document.head || document.getElementsByTagName("head")[0];
-            if (!head) return;
-        
-            var canonical = head.querySelector('link[rel="canonical"]');
-            if (!canonical) {
-              canonical = document.createElement("link");
-              canonical.setAttribute("rel", "canonical");
-              head.appendChild(canonical);
-            }
-        
-            if (canonical.getAttribute("href") !== href) {
-              canonical.setAttribute("href", href);
-            }
-          }
-        
-          function apply() {
-            upsertCanonical(buildTargetCanonical());
-          }
-        
-          apply();
-        
-          try {
-            var obs = new MutationObserver(function () { apply(); });
-            obs.observe(document.head || document.documentElement, { childList: true, subtree: true, attributes: true });
-          } catch (e) {}
-        
-        })();
+		(function () {
+		var TARGET_ORIGIN = "https://b2c-hml.autoglass.com.br";
+
+		var ALLOWED_PATHS = [
+			"/suspensao-automotiva",
+			"/suspensao-automotiva/amortecedores",
+			"/suspensao-automotiva/amortecedores/amortecedores-traseiros"
+		];
+
+		var TARGET_PATH_MAP = {
+			"/suspensao-automotiva": "/suspensão-automotiva"
+		};
+
+		if (location.origin === TARGET_ORIGIN) return;
+
+		function normalizePath(pathname) {
+			return String(pathname || "")
+			.split("?")[0]
+			.split("#")[0]
+			.replace(/\/+$/, "");
+		}
+
+		function canonicalLocal() {
+			return location.origin + normalizePath(location.pathname);
+		}
+
+		function buildCanonical() {
+			var currentPath = normalizePath(location.pathname);
+
+			if (ALLOWED_PATHS.indexOf(currentPath) === -1) {
+			return canonicalLocal();
+			}
+
+			var targetPathAfterD = TARGET_PATH_MAP[currentPath] || currentPath;
+
+			return TARGET_ORIGIN + encodeURI("/d" + targetPathAfterD);
+		}
+
+		function upsertCanonical(href) {
+			if (!href) return;
+
+			var head = document.head || document.getElementsByTagName("head")[0];
+			if (!head) return;
+
+			var canonical = head.querySelector('link[rel="canonical"]');
+			if (!canonical) {
+			canonical = document.createElement("link");
+			canonical.setAttribute("rel", "canonical");
+			head.appendChild(canonical);
+			}
+
+			if (canonical.getAttribute("href") !== href) {
+			canonical.setAttribute("href", href);
+			}
+		}
+
+		upsertCanonical(buildCanonical());
+	})();
     //]]>
     </script>
 	<title>

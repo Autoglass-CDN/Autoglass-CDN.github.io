@@ -10,11 +10,19 @@
   <vtex:metaTags />
   <vtex.cmc:canonicalPage disable="true"/>
   <script>
-    //<![CDATA[
+  //<![CDATA[
     (function () {
       var TARGET_ORIGIN = "https://b2c-hml.autoglass.com.br";
+      var DEPT_ALLOWED = "suspensao-automotiva";
+
+      var MAX_TRIES = 80;
+      var TRY_EVERY_MS = 250;
 
       if (location.origin === TARGET_ORIGIN) return;
+
+      function canonicalLocal() {
+        return location.origin + location.pathname.replace(/\/+$/, "");
+      }
 
       function getProductSlugFromUrl() {
         var path = (location.pathname || "").replace(/\/+$/, "");
@@ -32,30 +40,50 @@
 
         try {
           var url = new URL(lastHref, location.origin);
-          return url.pathname || "";
+          return (url.pathname || "").replace(/\/+$/, "");
         } catch (e) {
-          return lastHref.split("?")[0].split("#")[0];
+          return (lastHref.split("?")[0].split("#")[0] || "").replace(/\/+$/, "");
         }
       }
 
-      function breadcrumbPathToTarget(pathname) {
-        if (!pathname) return "";
+      function getDeepestCategoryPathFromSkuJson() {
+        try {
+          var sj = window.skuJson_0;
+          if (sj && Array.isArray(sj.categories) && sj.categories.length) {
+            var deepest = sj.categories
+              .slice()
+              .sort(function (a, b) { return (b.split("/").length - a.split("/").length); })[0];
+            return String(deepest || "").replace(/\/+$/, "");
+          }
+        } catch (e) {}
+        return "";
+      }
 
-        var segs = pathname.split("/").filter(Boolean);
+      function getBestCategoryPath() {
+        return getDeepestBreadcrumbPath() || getDeepestCategoryPathFromSkuJson() || "";
+      }
 
+      function isAllowedDepartment(categoryPath) {
+        if (!categoryPath) return false;
+        var segs = categoryPath.split("/").filter(Boolean);
+        if (!segs.length) return false;
+        return segs[0].toLowerCase() === DEPT_ALLOWED;
+      }
+
+      function categoryPathToTarget(categoryPath) {
+        if (!categoryPath) return "";
+        var segs = categoryPath.split("/").filter(Boolean);
         segs = segs.filter(function (s) { return s.toLowerCase() !== "homologacao"; });
-
         segs = segs.map(function (s) {
           return encodeURIComponent(String(s).replace(/-/g, " "));
         });
-
         return segs.join("/");
       }
 
       function upsertCanonical(href) {
-        if (!href) return;
+        if (!href) return false;
         var head = document.head || document.getElementsByTagName("head")[0];
-        if (!head) return;
+        if (!head) return false;
 
         var canonical = head.querySelector('link[rel="canonical"]');
         if (!canonical) {
@@ -66,30 +94,62 @@
         if (canonical.getAttribute("href") !== href) {
           canonical.setAttribute("href", href);
         }
+        return true;
       }
 
-      function buildTargetCanonical() {
-        var slug = getProductSlugFromUrl();
-        if (!slug) return null;
+      function buildCanonical() {
+        var categoryPath = getBestCategoryPath();
 
-        var bcPath = getDeepestBreadcrumbPath();
-        var targetCats = breadcrumbPathToTarget(bcPath);
+        if (!categoryPath) return null;
 
-        if (!targetCats) return null;
+        if (isAllowedDepartment(categoryPath)) {
+          var slug = getProductSlugFromUrl();
+          if (!slug) return canonicalLocal();
 
-        return TARGET_ORIGIN + "/" + targetCats + "/p/" + encodeURIComponent(slug);
+          var targetCats = categoryPathToTarget(categoryPath);
+          if (!targetCats) return canonicalLocal();
+
+          return TARGET_ORIGIN + "/" + targetCats + "/p/" + encodeURIComponent(slug);
+        }
+
+        return canonicalLocal();
       }
 
-      function apply() {
-        var target = buildTargetCanonical();
-        upsertCanonical(target);
+      var intervalId = null;
+      var obs = null;
+
+      function stopAll() {
+        if (intervalId) { clearInterval(intervalId); intervalId = null; }
+        if (obs) { obs.disconnect(); obs = null; }
       }
 
-      apply();
+      function tryApply() {
+        var href = buildCanonical();
+        if (!href) return false;
+        if (upsertCanonical(href)) {
+          stopAll();
+          return true;
+        }
+        return false;
+      }
+
+      if (tryApply()) return;
+
+      var tries = 0;
+      intervalId = setInterval(function () {
+        tries++;
+        if (tryApply()) return;
+        if (tries >= MAX_TRIES) {
+          upsertCanonical(canonicalLocal());
+          stopAll();
+        }
+      }, TRY_EVERY_MS);
 
       try {
-        var obs = new MutationObserver(function () { apply(); });
-        obs.observe(document.head || document.documentElement, { childList: true, subtree: true, attributes: true });
+        obs = new MutationObserver(function () {
+          tryApply();
+        });
+        obs.observe(document.documentElement, { childList: true, subtree: true });
       } catch (e) {}
 
     })();
