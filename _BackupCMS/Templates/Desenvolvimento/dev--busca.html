@@ -8,83 +8,73 @@
 	<vtex.cmc:canonicalPage disable="true"/>
 	<script>
 	//<![CDATA[
-        (function () {
-          var TARGET_ORIGIN = "https://b2c-hml.autoglass.com.br";
-        
-          // Exceções do 1º nível (Departamento): slug atual -> slug “com acento” no destino
-          // (adicione outros se existirem)
-          var DEPT_SLUG_MAP = {
-            "suspensao-automotiva": "suspensão-automotiva"
-          };
-        
-          // Evita rodar no próprio domínio destino
-          if (location.origin === TARGET_ORIGIN) return;
-        
-          function isProductPage() {
-            // PDP no VTEX legado costuma terminar com /p ou /p/
-            return /\/p\/?$/.test(location.pathname);
-          }
-        
-          function isHome() {
-            return location.pathname === "/" || location.pathname === "";
-          }
-        
-          function getSegments() {
-            return (location.pathname || "")
-              .replace(/\/+$/, "")
-              .split("/")
-              .filter(Boolean);
-          }
-        
-          function buildTargetCanonical() {
-            if (isHome() || isProductPage()) return null;
-        
-            var segs = getSegments();
-            if (!segs.length) return null;
-        
-            // Departamento = 1 segmento; Categoria = 2; Subcategoria = 3...
-            // Aplica mapa de acento SOMENTE se for departamento (1 segmento)
-            if (segs.length === 1 && DEPT_SLUG_MAP[segs[0]]) {
-              segs[0] = DEPT_SLUG_MAP[segs[0]];
-            }
-        
-            // Monta /d/<caminho>
-            // encodeURI preserva "/" e encodeia acentos (ex.: suspensão => suspens%C3%A3o)
-            var targetPath = "/d/" + segs.join("/");
-            return TARGET_ORIGIN + encodeURI(targetPath);
-          }
-        
-          function upsertCanonical(href) {
-            if (!href) return;
-            var head = document.head || document.getElementsByTagName("head")[0];
-            if (!head) return;
-        
-            var canonical = head.querySelector('link[rel="canonical"]');
-            if (!canonical) {
-              canonical = document.createElement("link");
-              canonical.setAttribute("rel", "canonical");
-              head.appendChild(canonical);
-            }
-        
-            if (canonical.getAttribute("href") !== href) {
-              canonical.setAttribute("href", href);
-            }
-          }
-        
-          function apply() {
-            upsertCanonical(buildTargetCanonical());
-          }
-        
-          // Aplica o quanto antes
-          apply();
-        
-          // Se algum script do legado sobrescrever depois, re-aplica
-          try {
-            var obs = new MutationObserver(function () { apply(); });
-            obs.observe(document.head || document.documentElement, { childList: true, subtree: true, attributes: true });
-          } catch (e) {}
-        
-        })();
+		(function () {
+		var TARGET_ORIGIN = "https://b2c-hml.autoglass.com.br";
+
+		// Paths (no site atual) que DEVEM apontar para o novo canonical
+		// (sem barra final)
+		var ALLOWED_PATHS = [
+			"/suspensao-automotiva",
+			"/suspensao-automotiva/amortecedores",
+			"/suspensao-automotiva/amortecedores/amortecedores-traseiros"
+		];
+
+		// Exceção só para o DEPARTAMENTO no destino (com acento)
+		// path atual -> path destino (apenas a parte depois do /d)
+		var TARGET_PATH_MAP = {
+			"/suspensao-automotiva": "/suspensão-automotiva"
+		};
+
+		// Segurança: evita rodar no próprio domínio destino
+		if (location.origin === TARGET_ORIGIN) return;
+
+		function normalizePath(pathname) {
+			return String(pathname || "")
+			.split("?")[0]
+			.split("#")[0]
+			.replace(/\/+$/, ""); // remove barra final
+		}
+
+		function canonicalLocal() {
+			return location.origin + normalizePath(location.pathname);
+		}
+
+		function buildCanonical() {
+			var currentPath = normalizePath(location.pathname);
+
+			// Se não estiver na whitelist, mantém canonical "normal" (local)
+			if (ALLOWED_PATHS.indexOf(currentPath) === -1) {
+			return canonicalLocal();
+			}
+
+			// Está permitido: monta canonical do b2c no formato /d/<path>
+			// Aplica map apenas quando existir (departamento com acento)
+			var targetPathAfterD = TARGET_PATH_MAP[currentPath] || currentPath;
+
+			// encodeURI para codificar acentos (ex.: suspensão => %C3%A3) sem quebrar as "/"
+			return TARGET_ORIGIN + encodeURI("/d" + targetPathAfterD);
+		}
+
+		function upsertCanonical(href) {
+			if (!href) return;
+
+			var head = document.head || document.getElementsByTagName("head")[0];
+			if (!head) return;
+
+			var canonical = head.querySelector('link[rel="canonical"]');
+			if (!canonical) {
+			canonical = document.createElement("link");
+			canonical.setAttribute("rel", "canonical");
+			head.appendChild(canonical);
+			}
+
+			if (canonical.getAttribute("href") !== href) {
+			canonical.setAttribute("href", href);
+			}
+		}
+
+		upsertCanonical(buildCanonical());
+	})();
     //]]>
     </script>
 	<title>
