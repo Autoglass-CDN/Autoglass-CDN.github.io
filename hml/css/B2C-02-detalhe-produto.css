@@ -1657,3 +1657,7 @@ body.mz-sf-on .mz-modal-shipping {
   width: 220px !important;
   height: 220px !important;
 }
+
+.compat-box {
+  display: none;
+}
