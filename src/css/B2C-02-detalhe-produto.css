@@ -1610,7 +1610,7 @@ body.mz-sf-on .mz-modal-shipping {
   border: 1px solid #f4a340;
   background-color: #fdf7f3;
   color: #f4a340;
-  font-family: Arial, sans-serif;
+  font-family: Poppins, sans-serif;
   padding: 10px 15px;
   border-radius: 6px;
   display: inline-flex;
@@ -1657,4 +1657,8 @@ body.mz-sf-on .mz-modal-shipping {
 .beon-showcase--carousel.beon-showcase--default .beon-showcase__item .beon-showcase__item-image img {
   width: 220px !important;
   height: 220px !important;
+}
+
+.compat-box {
+  display: none;
 }
