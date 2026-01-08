@@ -519,7 +519,7 @@ async function buscaPorPlaca(placaString) {
 
   async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
 
-    const response = await fetch(`${baseUrlApi}/veiculos/${placa}/placas`);
+    const response = await fetch(`${baseUrlApi}/veiculos/${placa}/placas-unicas`);
     const veiculo = await response.json();
 
     montadora = veiculo.Body.Data.Marca;
