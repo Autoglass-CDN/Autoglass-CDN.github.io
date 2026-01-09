@@ -370,7 +370,7 @@ body.busca-beonly .tab-container {
   padding-right: 20px;
 }
 
-#btn-busca-peca-limpar-mobile,
+/* #btn-busca-peca-limpar-mobile,
 #btn-busca-placa-limpar-mobile,
 #btn-busca-peca-buscar-mobile,
 #btn-busca-placa-buscar-mobile {
@@ -398,4 +398,8 @@ body.busca-beonly .tab-container {
   background-color: #0b4583;
   color: white;
   border: none;
+} */
+
+#tab-busca-placa-desktop {
+  display: none;
 }
