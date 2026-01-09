@@ -2229,6 +2229,8 @@ function _initBuscaPlaca(values) {
         `${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas-unicas`
       );
 
+      console.log(response);
+
       if (!response.ok) {
         throw new Error(`[OlhoNoCarro] HTTP ${response.status}`);
       }

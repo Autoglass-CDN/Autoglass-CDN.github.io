@@ -2238,6 +2238,8 @@ function _initBuscaPlaca(values) {
         `${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas-unicas`
       );
 
+      console.log(response);
+
       const veiculo = await response.json();
 
       montadora = veiculo.Body.Data.Marca;
