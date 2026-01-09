@@ -2061,58 +2061,62 @@ function _initBuscaPlaca(values) {
         throw new VehicleNotFoundException(placaSemCaracteresEspeciais);
       }
 
-      let url = "";
-      const baseRoute = (select && select.routeSelected ? String(select.routeSelected) : "").replace(/\/+$/, "");
-
-      const basePath = baseRoute || String(window.location.pathname || "").replace(/\/+$/, "");
-
-      url += basePath.startsWith("/") ? basePath : ("/" + basePath);
-
-      let mapParts = basePath.split("/").filter(Boolean).map(() => "c");
-
-      function pickBestValue(arr) {
-        if (!arr || !arr.length) return "";
-        const noHyphen = arr.find(x => x && x.Value && !String(x.Value).endsWith("-"));
-        return (noHyphen || arr[0]).Value || "";
+      let url = "",
+      parametrosUrl = "?PS=24&map=";
+    
+      const isDepartamentoOrCategoria = document.body.classList.contains("departamento") || 
+                                        document.body.classList.contains("categoria");
+      if (isDepartamentoOrCategoria) {
+        const categoriaPath = window.location.pathname.replace(/\/+$/, "");
+        const categoriaSegments = categoriaPath.split("/").filter(Boolean);
+      
+        // Pega apenas os 3 primeiros segmentos (categoria base), ignorando filtros antigos
+        const categoriaSegmentsBase = categoriaSegments.slice(0, 3);
+        const categoriaPathBase = '/' + categoriaSegmentsBase.join('/');
+    
+        if (categoriaSegmentsBase.length) {
+          url += categoriaPathBase;
+          parametrosUrl += categoriaSegmentsBase.map(() => "c").join(",") + ",";
+        }
+      } else if (select.routeSelected && select.routeSelected.length > 0) {
+        url += select.routeSelected;
+        parametrosUrl += `c,c,c,`;
       }
 
-      const montadoraVal = pickBestValue(montadorasEncontradas);
-      const modeloVal    = pickBestValue(modelosEncontrados);
-      const anoVal       = pickBestValue(anosEncontrados);
-
-      const INCLUDE_FIPE_NO_PATH = false;
-      const fipeVal = pickBestValue(fipesEncontrados);
-
-      if (montadoraVal) {
-        url += `/${encodeURIComponent(montadoraVal)}`;
-        mapParts.push(`specificationFilter_${FILTROS_VTEX.MONTADORA}`);
+      if (fipesEncontrados.length) {
+        url += `/${fipesEncontrados[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.FIPE},`;
       }
 
-      if (modeloVal) {
-        url += `/${encodeURIComponent(modeloVal)}`;
-        mapParts.push(`specificationFilter_${FILTROS_VTEX.VEICULO}`);
+      if (anosEncontrados.length) {
+        url += `/${anosEncontrados[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.ANO},`;
       }
 
-      if (anoVal) {
-        url += `/${encodeURIComponent(anoVal)}`;
-        mapParts.push(`specificationFilter_${FILTROS_VTEX.ANO}`);
+      if (modelosEncontrados.length) {
+        url += `/${modelosEncontrados[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.VEICULO},`;
       }
 
-      if (INCLUDE_FIPE_NO_PATH && fipeVal) {
-        url += `/${encodeURIComponent(fipeVal)}`;
-        mapParts.push(`specificationFilter_${FILTROS_VTEX.FIPE}`);
-      }
-      try {
-        registerGaEvent(placaSemCaracteresEspeciais, url);
-      } catch (e) {
-        console.warn("[buscaPorPlaca] GA falhou, seguindo sem GA:", e);
+      if (montadorasEncontradas.length) {
+        url += `/${montadorasEncontradas[0].Value}`;
+        parametrosUrl += `specificationFilter_${FILTROS_VTEX.MONTADORA}`;
       }
 
-      const PS = 20;
+      if (window.innerWidth > 1024) {
+        $(".texto-placa").text(placaSemCaracteresEspeciais);
+      }
 
-      const parametrosUrl = `?PS=${PS}&map=${mapParts.join(",")}`;
+      window.sessionStorage.setItem(
+        "buttonBuscarSelected",
+        window.buttonBuscarSelected
+      );
+      window.localStorage.setItem("buscaPlaca", true);
+      window.buttonBuscarSelected = true;
+      registerGaEvent(placaSemCaracteresEspeciais, url);
+
       url += parametrosUrl;
-
+      
       saveSearchInLocalStorage(placaSemCaracteresEspeciais, url);
 
       location.href = url;
@@ -2128,10 +2132,10 @@ function _initBuscaPlaca(values) {
             "ar no momento. Favor utilizar a busca por peça!"
         );
       }
-      if (window.innerWidth <= 1024) {
-        const overlay = document.querySelector("#side-menu .loading-overlay");
-        if (overlay) overlay.style.display = "none";
-      }
+
+      if (window.innerWidth <= 1024)
+        document.querySelector("#side-menu .loading-overlay").style.display =
+          "none";
 
       modalDeCarregamento.ocultarSpinner();
 
@@ -2149,13 +2153,13 @@ function _initBuscaPlaca(values) {
     }
 
     function obterRegexMontadoras(montadora) {
-      return new RegExp(montadora.split(" ").join("|"), "i");
+      return new RegExp(montadora.split(" ").join("|"), "gi");
     }
 
     function obterRegexModelos(montadora, modelo) {
       const montadoraTermos = montadora
         .split(" ")
-        .filter((item) => new RegExp(/[^\W_]+/, "i").test(item));
+        .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
 
       const modeloSemMontadora = mapeiaModeloParaNomenclaturaVtex(
         modelo,
@@ -2171,16 +2175,16 @@ function _initBuscaPlaca(values) {
 
       const pattern = `^${patternModelo}$|${patternMontadora} ${patternModelo}$`;
 
-      return new RegExp(pattern, "i");
+      return new RegExp(pattern, "gi");
     }
 
     function obterRegexAnos(anoModelo) {
-      return new RegExp(anoModelo.trim(), "i");
+      return new RegExp(anoModelo.trim(), "gi");
     }
 
     function obterRegexFipes(fipe) {
       const fipeFormatado = fipe.replace(/(\d+)(\d)$/, "0$1-$2");
-      return new RegExp(fipeFormatado, "i");
+      return new RegExp(fipeFormatado, "gi");
     }
 
     async function encontrarDadosNoCadastroVtex({ filtro, regex }) {
@@ -2189,12 +2193,9 @@ function _initBuscaPlaca(values) {
       );
 
       const dadosVtex = await responseVtex.json();
-      const dadosVtexFiltrados = dadosVtex.filter((item) => {
-        try{
-          regex.lastIndex = 0;
-        } catch (e) {}
-        return regex.test(item.Value);
-    });
+      const dadosVtexFiltrados = dadosVtex.filter((item) =>
+        regex.test(item.Value)
+      );
 
       return dadosVtexFiltrados;
     }
@@ -2208,7 +2209,6 @@ function _initBuscaPlaca(values) {
     }
 
     function registerGaEvent(placa, pathGerado) {
-      if (typeof window.ga !== "function") return;
       ga("create", "UA-133498560-1", "autoglassonline.com", "gaBPTracker");
       ga("gaBPTracker.set", "transport", "beacon");
       ga(
@@ -2229,31 +2229,21 @@ function _initBuscaPlaca(values) {
         `${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas-unicas`
       );
 
-      console.log(response);
-
-      if (!response.ok) {
-        throw new Error(`[OlhoNoCarro] HTTP ${response.status}`);
-      }
-
       const veiculo = await response.json();
 
-      const montadora = veiculo?.Body?.Data?.Marca;
-      const modelo = veiculo?.Body?.Data?.Modelo;
-      const anoModelo = veiculo?.Body?.Data?.DadosBasicosDoVeiculo?.AnoModelo;
-      const fipe = veiculo?.Body?.Data?.DadosBasicosDoVeiculo?.InformacoesFipe?.[0]?.FipeId;
-
-      if (!montadora || !modelo || !anoModelo) {
-        throw new Error("[OlhoNoCarro] payload incompleto");
-      }
+      montadora = veiculo.Body.Data.Marca;
+      modelo = veiculo.Body.Data.Modelo;
+      anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
+      fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0]?.FipeId;
 
       var infoBuscaPLaca =
         JSON.parse(localStorage.getItem("infoBuscaPLaca")) || [];
       infoBuscaPLaca = [
         {
-          montadora,
-          modelo,
-          anoModelo,
-          fipe,
+          montadora: montadora,
+          modelo: modelo,
+          anoModelo: anoModelo,
+          fipe: fipe,
           timestamp: new Date().toLocaleString(),
         },
       ];
