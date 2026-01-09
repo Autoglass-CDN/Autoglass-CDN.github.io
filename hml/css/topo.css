@@ -2030,3 +2030,7 @@ body div#ajaxBusy {
 .whatsapp-hide-mobile {
   display: none !important;
 }
+
+#tab-busca-placa-mobile {
+  display: none;
+}
