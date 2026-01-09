@@ -2071,23 +2071,23 @@ function _initBuscaPlaca(values) {
       }
 
       let url = "",
-      parametrosUrl = "?PS=24&map="
-
-      if (
-        document.body.classList.contains("departamento") ||
-        document.body.classList.contains("categoria")
-      ) {
-        
-      const categoriaPath = window.location.pathname.replace(/\/+$/, "");
-      const categoriaSegments = categoriaPath.split("/").filter(Boolean);
-
-      if (categoriaSegments.length) {
-          url += categoriaPath;
-          parametrosUrl += categoriaSegments.map(() => "c").join(",") + ",";
+      parametrosUrl = "?PS=24&map=";
+    
+      const isDepartamentoOrCategoria = document.body.classList.contains("departamento") || 
+                                        document.body.classList.contains("categoria");
+      if (isDepartamentoOrCategoria) {
+        const categoriaPath = window.location.pathname.replace(/\/+$/, "");
+        const categoriaSegments = categoriaPath.split("/").filter(Boolean);
+      
+        // Pega apenas os 3 primeiros segmentos (categoria base), ignorando filtros antigos
+        const categoriaSegmentsBase = categoriaSegments.slice(0, 3);
+        const categoriaPathBase = '/' + categoriaSegmentsBase.join('/');
+    
+        if (categoriaSegmentsBase.length) {
+          url += categoriaPathBase;
+          parametrosUrl += categoriaSegmentsBase.map(() => "c").join(",") + ",";
         }
-      }
-
-      if (select.routeSelected.length) {
+      } else if (select.routeSelected && select.routeSelected.length > 0) {
         url += select.routeSelected;
         parametrosUrl += `c,c,c,`;
       }
@@ -2125,7 +2125,7 @@ function _initBuscaPlaca(values) {
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
       url += parametrosUrl;
-
+      
       saveSearchInLocalStorage(placaSemCaracteresEspeciais, url);
 
       location.href = url;
