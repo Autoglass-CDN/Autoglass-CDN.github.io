@@ -519,13 +519,16 @@ async function buscaPorPlaca(placaString) {
 
   async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
 
-    const response = await fetch(`${baseUrlApi}/veiculos/${placa}/placas-unicas`);
-    const veiculo = await response.json();
+    const veiculo = await window.Cloudflare_Turnstile.obterVeiculo({
+      placa,
+      containerSelector: "#compatContent",
+      containerForRender:"#cf-turnstile-compat"
+    });
 
     montadora = veiculo.Body.Data.Marca;
     modelo = veiculo.Body.Data.Modelo;
     anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
-    fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0].FipeId;
+    fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe?.[0]?.FipeId;
 
     return { montadora, modelo, anoModelo, fipe };
   }

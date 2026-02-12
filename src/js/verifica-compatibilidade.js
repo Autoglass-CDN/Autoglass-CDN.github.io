@@ -43,6 +43,8 @@ window.addEventListener("load", () => {
       content.style.display = "block";
       iconArrowDown.style.display = "none";
       iconArrowUp.style.display = "block";
+      window.Cloudflare_Turnstile.render("#cf-turnstile-compat");
+      window.Cloudflare_Turnstile.reset("#cf-turnstile-compat");
     }else{
       content.style.display = "none";
       verificarCompatibilidadeDiv.style.paddingBottom = "";
@@ -163,11 +165,33 @@ async function tratarCompatibilidadeProduto(placa, modo, urlProdutoCompativel = 
     }
   } catch (error) {
     console.error("Erro ao tratar compatibilidade:", error);
-    if (error.message?.includes("Placa não encontrada")) {
-      EstilizarCardCompatibilidade();
-    } else {
-      alert("Erro ao verificar compatibilidade. Tente novamente.");
+
+    const msg = (error && error.message) ? String(error.message) : "";
+
+    // Turnstile / validação anti-bot (mensagens e/ou status do helper)
+    const isTurnstile =
+      error?.httpStatus === 400 ||
+      error?.httpStatus === 401 ||
+      error?.httpStatus === 403 ||
+      error?.httpStatus === 503 ||
+      msg.includes("Validação anti-bot") ||
+      msg.includes("Turnstile") ||
+      msg.includes("verificador Turnstile");
+
+    if (isTurnstile) {
+      // aqui você decide UX: alert simples ou renderizar msg no card
+      alert(msg || "Validação anti-bot ausente ou inválida.");
+      return;
     }
+
+    // Placa/veículo não encontrado (seu fluxo atual)
+    if (msg.includes("Placa não encontrada") || error instanceof VehicleNotFoundException) {
+      EstilizarCardCompatibilidade();
+      return;
+    }
+
+    // Demais erros (olho no carro, VTEX, etc.)
+    alert(msg || "Erro ao verificar compatibilidade. Tente novamente.");
   } finally {
     spinner.classList.add("hidden");
   }
@@ -251,15 +275,22 @@ function estadoCompatDesconhecido() {
 }
 
 async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
-  const urlApi = window.location.href.includes("hml")
-    ? "https://api-hml.autoglass.com.br"
-    : "https://api.autoglass.com.br";
+  // const urlApi = window.location.href.includes("hml")
+  //   ? "https://api-hml.autoglass.com.br"
+  //   : "https://api.autoglass.com.br";
 
-  const response = await fetch(
-    `${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas-unicas`
-  );
+  // const response = await fetch(
+  //   `${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas-unicas`
+  // );
 
-  const veiculo = await response.json();
+  // const veiculo = await response.json();
+
+  const veiculo = await window.Cloudflare_Turnstile.obterVeiculo({
+    placa,
+    baseUrlApi: "http://localhost:5010/integracao-b2c/api/web-app",
+    containerSelector: "#compatContent",
+    containerForRender:"#cf-turnstile-compat"
+  });
 
   if (veiculo?.Message?.includes("Placa é obrigatório")) {
     EstilizarCardCompatibilidade();
@@ -269,7 +300,7 @@ async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
   const montadora = veiculo.Body.Data.Marca;
   const modelo = veiculo.Body.Data.Modelo;
   const anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
-  const fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0]?.FipeId;
+  const fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe?.[0]?.FipeId;
 
   const infoBuscaPlaca = [{
     montadora,
