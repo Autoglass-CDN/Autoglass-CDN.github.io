@@ -971,6 +971,7 @@ body.mz-sf-on .mz-modal-shipping {
 
 .compat-input {
   display: flex;
+  flex-direction: column;
   align-items: center;
   gap: 12px;
 }
