@@ -2,7 +2,7 @@
   window.Cloudflare_Turnstile = window.Cloudflare_Turnstile || {};
 
 //   const SITE_KEY = "0x4AAAAAACN3FzSq_AN_Rcwz";
-  const SITE_KEY = "0x4AAAAAACN3FzSq_AN_Rcwz";
+  const SITE_KEY = "1x00000000000000000000AA";
   const widgetIdsByContainer = {};
 
   window.Cloudflare_Turnstile.render = function (containerSelector = "#cf-turnstile-container") {
