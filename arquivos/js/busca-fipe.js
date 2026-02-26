@@ -1554,8 +1554,6 @@
 
   inputBuscaPlaca.addEventListener('change', () => {
     ativarBuscaPlaca();
-    window.Cloudflare_Turnstile.render();
-    window.Cloudflare_Turnstile.reset();
   });
   inputNaoSeiPlaca.addEventListener('change', () => {
     ativarBuscaPeca();
@@ -1680,11 +1678,6 @@ function bindCloseOnPickCapture(selector) {
 
       const inputContainer = document.querySelector('#main-menu .c-busca__input');
       inputContainer.style.display = (abaInput.id === 'inputPlaca') ? 'block' : 'none';
-
-      if (abaInput.id === 'inputPlaca') {
-        window.Cloudflare_Turnstile.render();
-        window.Cloudflare_Turnstile.reset();
-      }
 
       if (window.innerWidth <= 1024) {
         if (abaInput.id === 'inputBuscaPeca') {
@@ -2133,19 +2126,7 @@ function _initBuscaPlaca(values) {
 
       location.href = url;
     } catch (error) {
-      const msg = (error && error.message) ? String(error.message) : "";
-
-      const isTurnstile =
-        error?.httpStatus === 400 ||
-        error?.httpStatus === 401 ||
-        error?.httpStatus === 403 ||
-        error?.httpStatus === 503 ||
-        msg.includes("Validação anti-bot") ||
-        msg.includes("Turnstile");
-
-      if (isTurnstile) {
-        alert(msg || "Validação anti-bot ausente ou inválida.");
-      } else if (error instanceof VehicleNotFoundException) {
+      if (error instanceof VehicleNotFoundException) {
         alert(
           "Desculpe, não conseguimos encontrar o seu veículo, favor utilizar a busca por " +
             "peça ou digitar seu carro e produto na busca livre no topo do site."
@@ -2249,11 +2230,11 @@ function _initBuscaPlaca(values) {
         ? "https://api-hml.autoglass.com.br"
         : "https://api.autoglass.com.br";
 
-      const veiculo = await window.Cloudflare_Turnstile.obterVeiculo({
-        placa,
-        formSelector: "#form-busca-placa",
-        containerForRender:"#cf-turnstile-container"
-      });
+      const response = await fetch(
+        `${urlApi}/integracao-b2c/api/web-app/veiculos/${placa}/placas-unicas`
+      );
+
+      const veiculo = await response.json();
 
       montadora = veiculo.Body.Data.Marca;
       modelo = veiculo.Body.Data.Modelo;
