@@ -221,12 +221,12 @@
         sessionStorage.setItem('idAba', 'inputBuscaPeca');
       });
     }
-    
+
     const $ulTabs = $('.c-busca__tabs-mobile.tab-header.search-options');
 
     const $localOriginal = $('.c-busca__tabs-content-mobile');
     const $buscaPecaContainer = $('.c-busca__tabs-content-mobile #busca-peca-mobile .h-flex');
-    
+
     $('#tab-busca-peca-mobile').on('click', function (e) {
       e.preventDefault();
 
@@ -384,7 +384,7 @@
 
     await _initBuscaPeca(grandchildenCategories);
     _initBuscaPlaca(grandchildenCategories)
-    
+
     window._dadosCategoriasPeca = grandchildenCategories;
   }
 
@@ -423,6 +423,109 @@
         });
         document.dispatchEvent(new Event('buscaPecaIniciada'));
         bindCloseOnPickCapture('#busca-peca-mobile #pecas-select .smart-select__main-results');
+  }
+
+  // RN01 - Lista fixa ordenada por faturamento (maior para menor)
+  const ORDEM_FATURAMENTO = [
+    "Vidro Parabrisa",
+    "Para-choque Dianteiro",
+    "Retrovisor Externo Completo",
+    "Vidro Vigia",
+    "Farol Principal",
+    "Para-choque Traseiro",
+    "Lanterna Traseira",
+    "Vidro de Porta",
+    "Radiador de Carro",
+    "Espelho do Retrovisor",
+    "Amortecedores Dianteiros",
+    "Para-barro",
+    "Grade do Radiador",
+    "Grade do Para-choque",
+    "Capô",
+    "Vidro Teto Solar",
+    "Capa de Retrovisor",
+    "Paralama",
+    "Lanterna Lateral Traseira",
+    "Condensador de Ar-condicionado",
+    "Farol Auxiliar",
+    "Pisca do Retrovisor",
+    "Bandejas",
+    "Guia de Para-choque",
+    "Moldura Farol Auxiliar",
+    "Vidro de Janela",
+    "Borracha Vidro Parabrisa",
+    "Amortecedores Traseiros",
+    "Palheta Parabrisa",
+    "Lanterna Para-choque Traseira",
+    "Reparo Parabrisa",
+    "Cola Bisnaga",
+    "Retrovisor Interno",
+    "Eletroventilador de Radiador",
+    "Moldura Para-lama",
+    "Farol Diurno",
+    "Vidro Cantoneira",
+    "Reservatório de Água do Limpador",
+    "Lanterna Mala Traseira",
+    "Reservatório de Água do Radiador",
+    "Vidro Quebra-vento",
+    "Friso",
+    "GMV para Radiador",
+    "Kit de Suspensão Dianteiro",
+    "Moldura Para-choque",
+    "Pivôs",
+    "Palheta Vidro Vigia",
+    "Terminal de Direção",
+    "Bieletas",
+    "Carcaça de Retrovisor Externo",
+    "Espelho Superior do Retrovisor",
+    "Filtro de Ar-condicionado",
+    "Painel Frontal de Radiador",
+    "Borracha Vidro Vigia",
+    "Limpeza Automotiva",
+    "Grades",
+    "Película Automotiva",
+    "Defletor de Radiador",
+    "Kit de Suspensão Traseiro",
+    "Side Assist Retrovisor",
+    "Cola Retrovisor",
+    "Ferramentas Manuais",
+    "Aro Externo do Retrovisor",
+    "Aditivo para Radiador",
+    "Terminal Axial",
+    "Moldura Grade Radiador",
+    "Lâmpadas Gerais",
+    "Lâmpada Farol Auxiliar",
+    "Refil da Palheta Parabrisa",
+    "Palhetas, Borrachas e Reservatórios",
+    "Lâmpada Farol Principal",
+    "Lâmpada Lanterna",
+    "Tampa do Reservatório de Água do Limpador",
+  ];
+
+  // IDs dos selects de "Tipo de Peça" que devem usar ordenação por faturamento
+  const IDS_TIPO_PECA = ["pecas-select", "pecas-select-desktop", "categoria-select"];
+
+  /**
+   * Ordena os itens conforme regras de negócio:
+   * - RN01: Itens da lista de faturamento mantêm a ordem definida
+   * - RN02: Itens fora da lista aparecem após, em ordem alfabética
+   * - RN03: Na busca, prioriza itens com maior faturamento que contenham o termo
+   */
+  function sortByFaturamento(items) {
+    const ordemMap = new Map();
+    ORDEM_FATURAMENTO.forEach((nome, idx) => {
+      ordemMap.set(nome.toUpperCase(), idx);
+    });
+
+    return [...items].sort((a, b) => {
+      const idxA = ordemMap.has(a.name.toUpperCase()) ? ordemMap.get(a.name.toUpperCase()) : null;
+      const idxB = ordemMap.has(b.name.toUpperCase()) ? ordemMap.get(b.name.toUpperCase()) : null;
+
+      if (idxA !== null && idxB !== null) return idxA - idxB;
+      if (idxA !== null) return -1;
+      if (idxB !== null) return 1;
+      return a.name.localeCompare(b.name);
+    });
   }
 
   function ViewAPI() {
@@ -880,13 +983,20 @@
           break;
       }
     }
-    
+
   function buildList(objects, _id) {
     let html = "";
 
+    // Verifica se é um select de "Tipo de Peça" para aplicar ordenação por faturamento
+    const isTipoPeca = IDS_TIPO_PECA.includes(_id);
+
     if (window.innerWidth <= 1024) {
       if (objects) {
-        objects.sort((a, b) => a.name.localeCompare(b.name));
+        if (isTipoPeca) {
+          objects = sortByFaturamento(objects);
+        } else {
+          objects.sort((a, b) => a.name.localeCompare(b.name));
+        }
 
         const savedValue = verificaValorCheckBox(_id);
 
@@ -937,7 +1047,11 @@
     }
 
   } else if (objects) {
-    objects.sort((a, b) => a.name.localeCompare(b.name));
+    if (isTipoPeca) {
+      objects = sortByFaturamento(objects);
+    } else {
+      objects.sort((a, b) => a.name.localeCompare(b.name));
+    }
 
     objects.forEach(
       (x) => (html += `<li role="treeitem" id="${x.id}">${x.name}</li>`)
@@ -1588,11 +1702,11 @@
 
 } else {
   AlternaAbaBusca();
-  window.addEventListener('DOMContentLoaded', () => { 
+  window.addEventListener('DOMContentLoaded', () => {
     menuCategoriasMobile();
-  
+
     const tabPecaPadrao = document.getElementById('inputBuscaPeca');
-  
+
     if (tabPecaPadrao) {
       tabPecaPadrao.checked = true;
       sessionStorage.setItem("idAba", "tabPecaPadrao");
@@ -1719,7 +1833,7 @@ function bindCloseOnPickCapture(selector) {
               inputPlaca.dispatchEvent(new Event("blur"));
             }, 10);
           }, 20);
-          
+
           setTimeout(() => {
               const container = $('#busca-placa-mobile #categoria-select');
               const menu = container.find('.smart-select__main-results');
@@ -1834,7 +1948,7 @@ function _initBuscaPlaca(values) {
 
     document.dispatchEvent(new Event('buscaPlacaIniciada'));
     bindCloseOnPickCapture('#busca-placa-mobile #categoria-select .smart-select__main-results');
- 
+
     const formBuscaCompatibilidade = document.querySelector("#form-busca-placa-compatibilidade");
 
     if (formBuscaCompatibilidade) {
@@ -2063,9 +2177,9 @@ function _initBuscaPlaca(values) {
 
       let url = "",
       parametrosUrl = "?PS=24&map=";
-      
 
-      const isDepartamentoOrCategoria = document.body.classList.contains("departamento") || 
+
+      const isDepartamentoOrCategoria = document.body.classList.contains("departamento") ||
                                         document.body.classList.contains("categoria");
 
       // Prioriza a seleção do usuário (select.routeSelected) sobre o pathname atual
@@ -2077,7 +2191,7 @@ function _initBuscaPlaca(values) {
         // Não há seleção manual, usa o pathname atual (apenas categoria base)
         const categoriaPath = window.location.pathname.replace(/\/+$/, "");
         const categoriaSegments = categoriaPath.split("/").filter(Boolean);
-        
+
         // Pega apenas os 3 primeiros segmentos (categoria base), ignorando filtros antigos
         const categoriaSegmentsBase = categoriaSegments.slice(0, 3);
         const categoriaPathBase = '/' + categoriaSegmentsBase.join('/');
@@ -2121,7 +2235,7 @@ function _initBuscaPlaca(values) {
       registerGaEvent(placaSemCaracteresEspeciais, url);
 
       url += parametrosUrl;
-      
+
       saveSearchInLocalStorage(placaSemCaracteresEspeciais, url);
 
       location.href = url;
