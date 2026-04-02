@@ -55,12 +55,7 @@
     return (any?.value || "").trim();
   };
 
-  window.Cloudflare_Turnstile.resolverUrlApi = function () {
-    const isHml = window.location.href.includes("hml");
-    return isHml ? "https://api-hml.autoglass.com.br" : "https://api.autoglass.com.br";
-  };
-
-  window.Cloudflare_Turnstile.obterVeiculo = async function ({ placa, baseUrlApi, formSelector, containerSelector, containerForRender }) {
+  window.Cloudflare_Turnstile.obterVeiculo = async function ({ placa, formSelector, containerSelector, containerForRender }) {
     if (containerForRender) {
       window.Cloudflare_Turnstile.render(containerForRender);
     } else {
@@ -69,12 +64,9 @@
 
     const token = window.Cloudflare_Turnstile.getToken({formSelector, containerSelector});
 
-    const base =
-      baseUrlApi || `${window.Cloudflare_Turnstile.resolverUrlApi()}/integracao-b2c/api/web-app`;
-
     let response;
     try {
-      response = await fetch(`${base}/veiculos/placas-unicas`, {
+      response = await fetch("https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/veiculos/placas-unicas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ Placa: placa, TurnstileToken: token })
