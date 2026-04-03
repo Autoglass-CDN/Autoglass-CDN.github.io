@@ -5,13 +5,19 @@
   const widgetIdsByContainer = {};
 
   window.Cloudflare_Turnstile.render = function (containerSelector = "#cf-turnstile-container") {
+    // Se nenhum container especificado, determina automaticamente baseado no breakpoint
+    if (containerSelector === "#cf-turnstile-container") {
+      const isDesktop = window.innerWidth > 1024;
+      containerSelector = isDesktop ? "#cf-turnstile-container-desktop" : "#cf-turnstile-container-mobile";
+    }
+
     const container = document.querySelector(containerSelector);
     if (!container) return;
 
     if (widgetIdsByContainer[containerSelector] != null) return;
 
     if (typeof window.turnstile === "undefined" || typeof window.turnstile.render !== "function") {
-      setTimeout(window.Cloudflare_Turnstile.render(containerSelector), 150);
+      setTimeout(() => window.Cloudflare_Turnstile.render(containerSelector), 150);
       return;
     }
 
