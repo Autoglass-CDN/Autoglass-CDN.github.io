@@ -1675,8 +1675,9 @@
 
   inputBuscaPlaca.addEventListener('change', () => {
     ativarBuscaPlaca();
-    window.Cloudflare_Turnstile.render();
-    window.Cloudflare_Turnstile.reset();
+    const desktopSelector = "#cf-turnstile-container-desktop";
+    window.Cloudflare_Turnstile.reset(desktopSelector);
+    window.Cloudflare_Turnstile.render(desktopSelector);
   });
   inputNaoSeiPlaca.addEventListener('change', () => {
     ativarBuscaPeca();
@@ -1803,8 +1804,9 @@ function bindCloseOnPickCapture(selector) {
       inputContainer.style.display = (abaInput.id === 'inputPlaca') ? 'block' : 'none';
 
       if (abaInput.id === 'inputPlaca') {
-        window.Cloudflare_Turnstile.render();
-        window.Cloudflare_Turnstile.reset();
+        const mobileSelector = "#cf-turnstile-container-mobile";
+        window.Cloudflare_Turnstile.reset(mobileSelector);
+        window.Cloudflare_Turnstile.render(mobileSelector);
       }
 
       if (window.innerWidth <= 1024) {

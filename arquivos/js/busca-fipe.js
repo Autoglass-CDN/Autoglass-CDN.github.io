@@ -1668,8 +1668,9 @@
 
   inputBuscaPlaca.addEventListener('change', () => {
     ativarBuscaPlaca();
-    window.Cloudflare_Turnstile.render();
-    window.Cloudflare_Turnstile.reset();
+    const desktopSelector = "#cf-turnstile-container-desktop";
+    window.Cloudflare_Turnstile.reset(desktopSelector);
+    window.Cloudflare_Turnstile.render(desktopSelector);
   });
   inputNaoSeiPlaca.addEventListener('change', () => {
     ativarBuscaPeca();
@@ -1796,8 +1797,9 @@ function bindCloseOnPickCapture(selector) {
       inputContainer.style.display = (abaInput.id === 'inputPlaca') ? 'block' : 'none';
 
       if (abaInput.id === 'inputPlaca') {
-        window.Cloudflare_Turnstile.render();
-        window.Cloudflare_Turnstile.reset();
+        const mobileSelector = "#cf-turnstile-container-mobile";
+        window.Cloudflare_Turnstile.reset(mobileSelector);
+        window.Cloudflare_Turnstile.render(mobileSelector);
       }
 
       if (window.innerWidth <= 1024) {
@@ -2247,18 +2249,18 @@ function _initBuscaPlaca(values) {
 
       location.href = url;
     } catch (error) {
-        const msg = (error && error.message) ? String(error.message) : "";
+      const msg = (error && error.message) ? String(error.message) : "";
 
-        const isTurnstile =
-          error?.httpStatus === 400 ||
-          error?.httpStatus === 401 ||
-          error?.httpStatus === 403 ||
-          error?.httpStatus === 503 ||
-          msg.includes("Validação anti-bot") ||
-          msg.includes("Turnstile");
+      const isTurnstile =
+        error?.httpStatus === 400 ||
+        error?.httpStatus === 401 ||
+        error?.httpStatus === 403 ||
+        error?.httpStatus === 503 ||
+        msg.includes("Validação anti-bot") ||
+        msg.includes("Turnstile");
 
-        if (isTurnstile) {
-          alert(msg || "Validação anti-bot ausente ou inválida.");
+      if (isTurnstile) {
+        alert(msg || "Validação anti-bot ausente ou inválida.");
       } else if (error instanceof VehicleNotFoundException) {
         alert(
           "Desculpe, não conseguimos encontrar o seu veículo, favor utilizar a busca por " +
