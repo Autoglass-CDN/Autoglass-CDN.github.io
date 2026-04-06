@@ -954,10 +954,13 @@ $(window).on('load', () => {
         style.id = 'insumo-estilo-alerta';
         style.innerHTML = `
             .insumo-instalacao-alerta {
-                margin: 20px 0 0;
+                margin: 20px auto 0;
+                padding: 0 16px;
                 font-family: Arial, sans-serif;
                 text-align: center;
                 clear: both;
+                box-sizing: border-box;
+                max-width: 100%;
             }
 
             .insumo-instalacao__titulo-alerta {
@@ -977,14 +980,15 @@ $(window).on('load', () => {
 
             .insumo-instalacao__card-alerta {
                 width: 300px;
+                max-width: 100%;
                 padding: 16px;
-                border: 1px solid #E5E7EB;
+                border: 1px solid #fafafa;
                 border-radius: 8px;
                 display: flex;
                 align-items: center;
                 gap: 10px;
                 text-align: left;
-                background: #fff;
+                background: #fafafa;
                 box-sizing: border-box;
             }
 
@@ -1006,6 +1010,32 @@ $(window).on('load', () => {
                 color: #7A7F87;
                 font-style: italic;
                 margin: 0;
+                padding: 0 8px;
+            }
+
+            @media (max-width: 768px) {
+                .insumo-instalacao__titulo-alerta {
+                    font-size: 18px;
+                    margin: 0 0 16px;
+                }
+
+                .insumo-instalacao__cards-alerta {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 12px;
+                }
+
+                .insumo-instalacao__card-alerta {
+                    width: 100%;
+                }
+
+                .insumo-instalacao__texto-alerta {
+                    font-size: 13px;
+                }
+
+                .insumo-instalacao__obs-alerta {
+                    font-size: 11px;
+                }
             }
         `;
         document.head.appendChild(style);
@@ -1027,10 +1057,7 @@ $(window).on('load', () => {
                     <div class="insumo-instalacao__cards-alerta">
                         <div class="insumo-instalacao__card-alerta">
                             <div class="insumo-instalacao__icone-alerta">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                                    <path d="M14.7 6.3L17.7 3.3C18.5 2.5 19.8 2.5 20.6 3.3C21.4 4.1 21.4 5.4 20.6 6.2L17.6 9.2L14.7 6.3Z" stroke="#143E9C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-                                    <path d="M13.3 7.7L4 17V20H7L16.3 10.7L13.3 7.7Z" stroke="#143E9C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
+                                <img src="https://autoglass-cdn.github.io/src/tools.svg" width="28" height="28" />
                             </div>
                             <div class="insumo-instalacao__texto-alerta">
                                 Mão de obra do serviço de instalação
@@ -1039,10 +1066,7 @@ $(window).on('load', () => {
 
                         <div class="insumo-instalacao__card-alerta">
                             <div class="insumo-instalacao__icone-alerta">
-                                <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
-                                    <rect x="4" y="4" width="16" height="16" rx="2" stroke="#143E9C" stroke-width="1.8"></rect>
-                                    <path d="M8 12L10.5 14.5L16 9" stroke="#143E9C" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
-                                </svg>
+                                <img src="https://autoglass-cdn.github.io/src/img/check_square.svg" width="28" height="28" />
                             </div>
                             <div class="insumo-instalacao__texto-alerta">
                                 Cola e material fixador utilizado no serviço
