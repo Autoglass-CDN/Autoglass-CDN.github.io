@@ -1948,6 +1948,10 @@ body div#ajaxBusy {
   padding-top: 1%;
 }
 
+#main-menu .turnstile-col {
+  padding: 20px 20px 0;
+}
+
 .titulo-side-menu > span {
   font-style: normal;
   font-weight: 600;

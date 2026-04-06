@@ -1,7 +1,7 @@
 (function () {
   window.Cloudflare_Turnstile = window.Cloudflare_Turnstile || {};
 
-  const SITE_KEY = "0x4AAAAAACpXix9UlyhRPzRu";
+  const SITE_KEY = "0x4AAAAAACN3FzSq_AN_Rcwz";
   const widgetIdsByContainer = {};
 
   window.Cloudflare_Turnstile.render = function (containerSelector = "#cf-turnstile-container") {
@@ -71,7 +71,7 @@
 
     let response;
     try {
-      response = await fetch("https://api-hml.autoglass.com.br/integracao-b2c/api/web-app/veiculos/placas-unicas", {
+      response = await fetch("https://api.autoglass.com.br/integracao-b2c/api/web-app/veiculos/placas-unicas", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ Placa: placa, TurnstileToken: token })
