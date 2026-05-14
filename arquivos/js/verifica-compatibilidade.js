@@ -63,7 +63,7 @@ const FILTROS_VTEX = {
 };
 
 const CONFIG = {
-  ORIGIN: "https://hml.autoglassonline.com.br",
+  ORIGIN: location.origin,
   ASYNC:{
     TREE_LEVEL: 2,
   }
