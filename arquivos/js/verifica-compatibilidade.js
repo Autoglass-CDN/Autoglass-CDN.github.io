@@ -1,1 +1,435 @@
-!function(e){window.addEventListener("load",()=>{function e(){document.querySelectorAll(".pages li.page-number").forEach(e=>{e.setAttribute("href",`?${e.textContent.trim()}`)}),console.log("Atributo href atualizado nos elementos de pagina\xe7\xe3o.")}let t;(t=document.querySelector(".pager.bottom"))?(new MutationObserver(t=>{t.forEach(t=>{"childList"===t.type&&e()})}).observe(t,{childList:!0,subtree:!0}),e()):console.log("Container de pagina\xe7\xe3o n\xe3o encontrado.");let o=!1,a=document.querySelector(".compat-header");a.addEventListener("click",function e(){let t=document.getElementById("compatContent"),i=document.querySelector(".icon-arrow-down"),r=document.querySelector(".icon-arrow-up");(o=!o)?(t.style.display="block",i.style.display="none",r.style.display="block",window.Cloudflare_Turnstile.render("#cf-turnstile-compat"),window.Cloudflare_Turnstile.reset("#cf-turnstile-compat")):(t.style.display="none",a.style.paddingBottom="",i.style.display="block",r.style.display="none")})});let t={MONTADORA:36,VEICULO:50,ANO:48,FIPE:76},o={ORIGIN:location.origin,ASYNC:{TREE_LEVEL:2}},a=/^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i,i=document.getElementById("icon-question"),r=document.getElementById("tooltip-question"),l=document.querySelector("#botaoProdutosCompativeis");function c(e,t=[]){let o="",a=[];if(e){e.startsWith("/")||(e="/"+e),e.endsWith("/")&&(e=e.slice(0,-1));let i=e.split("/").filter(Boolean);o+="/"+i.map(encodeURIComponent).join("/"),a.push(...i.map(()=>"c"))}return t.forEach(e=>{e?.value&&e?.codigo&&(o+=`/${encodeURIComponent(e.value)}`,a.push(`specificationFilter_${e.codigo}`))}),`${o}?PS=24&map=${a.join(",")}`}async function n(e,o,i=""){var r,l,n,d,y,f;if(!(""!==(r=e)&&r.trim().match(a))&&(s(),1))return;let v=document.getElementById("overlayCompat");v.classList.remove("hidden");try{let g,h,S,b,C,E,{montadora:x,modelo:$,anoModelo:L,fipe:I}=await u(e.trim().replace(/[\W_]+/g,"").toUpperCase()),[q,A,w,k]=await Promise.all([p({filtro:t.MONTADORA,regex:(l=x,RegExp(l.split(" ").join("|"),"gi"))}),p({filtro:t.VEICULO,regex:(n=x,d=$,g=n.split(" ").filter(e=>RegExp(/[^\W_]+/,"gi").test(e)),S=(h=function e(t,o){switch(!0){case"NEW CLASSIC"===t:return"CLASSIC";case"UP"===t:case"CROSS UP!"===t:return"Up!";case"FH 520"===t:return"FH 520";case RegExp(/^FH (12 )?\d{3}$/i).test(t):return"FH 12 Globetroter";case RegExp(/^FH 16 \d{3}$/i).test(t):return"FH 16 Globetroter";case RegExp(/^NH 12 \d{3}$/i).test(t):return"NH 12";case RegExp(/^NH 10 \d{3}$/i).test(t):return"NH 10";case"XC70"===t:return"S40";case"E-DELIVERY"===t:return"DELIVERY";case"POLO CLASSIC"===t:return"Polo Sedan";case"SS10"===t:return"S10";case"TTS"===t:return"TT";case RegExp(/^[A-Z]-CLASS$/i).test(t):return"Classe "+t.replace(/-CLASS/gi,"");default:return t.replace(RegExp(o.join(" "),"gi"),"").trim()}}(d,g)).replace(/[\W]+/gi,""),b=`(${g.join("|")})`,C=`(${h}|${S})`,E=`^${C}$|${b} ${C}$`,RegExp(E,"gi"))}),p({filtro:t.ANO,regex:(y=L,RegExp(y.trim(),"gi"))}),I?p({filtro:t.FIPE,regex:(f=I,RegExp(f.replace(/(\d+)(\d)$/,"0$1-$2"),"i"))}):[],]),V=[{value:k[0]?.Value,codigo:t.FIPE},{value:w[0]?.Value,codigo:t.ANO},{value:A[0]?.Value,codigo:t.VEICULO},{value:q[0]?.Value,codigo:t.MONTADORA},],O=c("",V);if("verificarCompatibilidade"===o){let _=await m(O),N=skuJson?.productId||window.vtex?.product?.id,P=_.some(e=>e.productId==N);s(P,P?"sucesso":"erro")}else if("produtoCompativel"===o){let D=i?.trim()||"";D&&!D.startsWith("/")&&(D="/"+D),D.endsWith("/")&&(D=D.slice(0,-1));let B=c(D,V);window.location.href=B}}catch(T){console.F("Erro ao tratar compatibilidade:",T);let F=T&&T.message?String(T.message):"",M=T?.httpStatus===400||T?.httpStatus===401||T?.httpStatus===403||T?.httpStatus===503||F.includes("Valida\xe7\xe3o anti-bot")||F.includes("Turnstile")||F.includes("verificador Turnstile");if(M){alert(F||"Valida\xe7\xe3o anti-bot ausente ou inv\xe1lida.");return}if(F.includes("Placa n\xe3o encontrada")||T instanceof VehicleNotFoundException){s();return}alert(F||"Erro ao verificar compatibilidade. Tente novamente.")}finally{v.classList.add("hidden")}}function s(e,t){document.querySelector("#icon-verificar-compatibilidade-check").style.display="none",document.querySelector("#icon-verificar-compatibilidade-xmark").style.display="none",document.querySelector("#icon-question").style.display="none",document.querySelector("#botaoVerificarCompatibilidade").textContent="Nova Consulta",e&&"sucesso"===t?d({titulo:"Produto compat\xedvel com seu ve\xedculo",cor:"#44C15D",descricao:"Se desejar, voc\xea pode verificar outra placa clicando em nova consulta.",icones:["check"]}):e||"erro"!==t?d({titulo:"N\xe3o sabemos se \xe9 compat\xedvel",cor:"#C89C00",descricao:"Por favor, verifique a lista de ve\xedculos compat\xedveis para esse produto ou voc\xea pode realizar uma nova consulta.",icones:["check","question"]}):d({titulo:"Produto incompat\xedvel com seu ve\xedculo",cor:"#d93025",descricao:"Voc\xea pode realizar uma nova busca ou verificar outra placa clicando em nova consulta.",icones:["xmark"]})}function d(e){let t=document.querySelector(".title-text"),o=document.querySelector(".compat-description"),a=document.querySelector(".compat-box"),i=document.querySelector("#placaInput");if(t.textContent=e.titulo,t.style.color=e.cor,o.textContent=e.descricao,a.style.borderColor=e.cor,i.style.borderColor=e.cor,e.icones.includes("check")){let r=document.querySelector("#icon-verificar-compatibilidade-check");r.style.display="block",r.style.color=e.cor}e.icones.includes("xmark")&&(document.querySelector("#icon-verificar-compatibilidade-xmark").style.display="block",l.style.display="block"),e.icones.includes("question")&&(document.querySelector("#icon-question").style.display="block",l.style.display="none")}async function u(e){let t=await (await fetch(`${window.location.href.includes("hml")?"https://api-hml.autoglass.com.br":"https://api.autoglass.com.br"}/integracao-b2c/api/web-app/veiculos/${e}/placas-unicas`)).json();if(t?.Message?.includes("Placa \xe9 obrigat\xf3rio"))throw s(),Error("Placa n\xe3o encontrada");let o=t.Body.Data.Marca,a=t.Body.Data.Modelo,i=t.Body.Data.DadosBasicosDoVeiculo.AnoModelo,r=t.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe[0]?.FipeId,l=[{montadora:o,modelo:a,anoModelo:i,fipe:r,timestamp:new Date().toLocaleString()},];return localStorage.setItem("infoBuscaPLaca",JSON.stringify(l)),{montadora:o,modelo:a,anoModelo:i,fipe:r}}async function p({filtro:e,regex:t}){return(await (await fetch(`${o.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${e}`)).json()).filter(e=>t.test(e.Value))}async function m(e){let t=[],o=0;for(;;){let a=await (await fetch(`/api/catalog_system/pub/products/search${e}&_from=${o}&_to=${o+50-1}`)).json();if(t.push(...a),a.length<50||(o+=50)>1e3)break}return t}async function y(){return await e.get(`${o.ORIGIN}/api/catalog_system/pub/category/tree/${o.ASYNC.TREE_LEVEL}`)}window.addEventListener("DOMContentLoaded",function(){let e=document.querySelector("#botaoVerificarCompatibilidade");e&&e.addEventListener("click",function(){n(document.getElementById("placaInput").value,"verificarCompatibilidade")})}),i.addEventListener("mouseenter",()=>{r.classList.remove("hidden")}),i.addEventListener("mouseleave",()=>{r.classList.add("hidden")}),l.addEventListener("click",async()=>{let e="",t=await y(),o=[],a=[];t.filter(e=>e.hasChildren).forEach(e=>{o.push(...e.children)}),o.forEach(e=>{a.push(...e.children)});let i=a.find(e=>e.id===window.dataLayer[0].productCategoryId);e=i.url?i.url.replace(new URL(i.url).origin,""):"/"+i.name.toLowerCase(),n(document.getElementById("placaInput").value,"produtoCompativel",e)})}(jQueryNew);
+(function($) {
+window.addEventListener("load", () => {
+  function updatePageNumbers() {
+    const pageNumbers = document.querySelectorAll(".pages li.page-number");
+    pageNumbers.forEach((li) => {
+      li.setAttribute("href", `?${li.textContent.trim()}`);
+    });
+    console.log("Atributo href atualizado nos elementos de paginação.");
+  }
+
+  function observePaginationChanges() {
+    const paginationContainer = document.querySelector(".pager.bottom");
+
+    if (paginationContainer) {
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === "childList") {
+            updatePageNumbers();
+          }
+        });
+      });
+
+      observer.observe(paginationContainer, { childList: true, subtree: true });
+
+      updatePageNumbers();
+    } else {
+      console.log("Container de paginação não encontrado.");
+    }
+  }
+  observePaginationChanges();
+
+  let expanded = false;
+  const verificarCompatibilidadeDiv = document.querySelector('.compat-header');
+  verificarCompatibilidadeDiv.addEventListener('click', toggleCompat);
+
+  function toggleCompat() {
+    const content = document.getElementById("compatContent");
+    const iconArrowDown = document.querySelector('.icon-arrow-down');
+    const iconArrowUp = document.querySelector('.icon-arrow-up');
+
+    expanded = !expanded;
+    if(expanded) {
+      content.style.display = "block";
+      iconArrowDown.style.display = "none";
+      iconArrowUp.style.display = "block";
+      window.Cloudflare_Turnstile.render("#cf-turnstile-compat");
+      window.Cloudflare_Turnstile.reset("#cf-turnstile-compat");
+    }else{
+      content.style.display = "none";
+      verificarCompatibilidadeDiv.style.paddingBottom = "";
+      iconArrowDown.style.display = "block";
+      iconArrowUp.style.display = "none";
+    }
+
+  }
+});
+
+const FILTROS_VTEX = {
+  MONTADORA: 36,
+  VEICULO:   50,
+  ANO:       48,
+  FIPE:      76,
+};
+
+const CONFIG = {
+  ORIGIN: "https://hml.autoglassonline.com.br",
+  ASYNC:{
+    TREE_LEVEL: 2,
+  }
+}
+const regexPlaca = /^[A-Z]{3}[\-_]?[0-9][0-9A-Z][0-9]{2}$/i;
+const questionIcon = document.getElementById("icon-question");
+const tooltip = document.getElementById("tooltip-question");
+const botaoProdutosCompativeis = document.querySelector('#botaoProdutosCompativeis');
+
+
+window.addEventListener('DOMContentLoaded', function () {
+  const botaoVerificarCompatibilidade = document.querySelector('#botaoVerificarCompatibilidade');
+  if (botaoVerificarCompatibilidade) {
+    botaoVerificarCompatibilidade.addEventListener('click', function () {
+      tratarCompatibilidadeProduto(document.getElementById('placaInput').value, "verificarCompatibilidade");
+    });
+  }
+})
+
+questionIcon.addEventListener("mouseenter", () => {
+  tooltip.classList.remove("hidden");
+});
+
+questionIcon.addEventListener("mouseleave", () => {
+  tooltip.classList.add("hidden");
+});
+
+
+function verificaPlacaValida(placa) {
+  if (placa === "" || !placa.trim().match(regexPlaca)) {
+    EstilizarCardCompatibilidade();
+    return false;
+  }
+  return true;
+}
+
+function montarUrlComFiltros(baseCategoria, filtrosOrdenados = []) {
+  let url = "";
+  let map = [];
+
+  if (baseCategoria) {
+    if (!baseCategoria.startsWith("/")) baseCategoria = "/" + baseCategoria;
+    if (baseCategoria.endsWith("/"))   baseCategoria = baseCategoria.slice(0, -1);
+
+    const segmentosCategoria = baseCategoria.split("/").filter(Boolean);
+    url += "/" + segmentosCategoria.map(encodeURIComponent).join("/");
+    map.push(...segmentosCategoria.map(() => "c"));
+  }
+
+  filtrosOrdenados.forEach(f => {
+    if (f?.value && f?.codigo) {
+      url += `/${encodeURIComponent(f.value)}`;
+      map.push(`specificationFilter_${f.codigo}`);
+    }
+  });
+
+  const mapParam = map.join(",");
+  return `${url}?PS=24&map=${mapParam}`;
+}
+
+async function tratarCompatibilidadeProduto(placa, modo, urlProdutoCompativel = "") {
+  if (!verificaPlacaValida(placa)) return;
+
+  const spinner = document.getElementById("overlayCompat");
+  spinner.classList.remove("hidden");
+
+  try {
+    const placaSanitizada = placa.trim().replace(/[\W_]+/g, "").toUpperCase();
+    const { montadora, modelo, anoModelo, fipe } = await obterDadosDoVeiculoViaOlhoNoCarro(placaSanitizada);
+
+    const [montadoras, modelos, anos, fipes] = await Promise.all([
+      encontrarDadosNoCadastroVtex({ filtro: FILTROS_VTEX.MONTADORA, regex: obterRegexMontadoras(montadora) }),
+      encontrarDadosNoCadastroVtex({ filtro: FILTROS_VTEX.VEICULO, regex: obterRegexModelos(montadora, modelo) }),
+      encontrarDadosNoCadastroVtex({ filtro: FILTROS_VTEX.ANO, regex: obterRegexAnos(anoModelo) }),
+      fipe ? encontrarDadosNoCadastroVtex({ filtro: FILTROS_VTEX.FIPE, regex: obterRegexFipes(fipe) }) : [],
+    ]);
+
+    const filtrosOrdenados = [
+      { value: fipes[0]?.Value,      codigo: FILTROS_VTEX.FIPE },
+      { value: anos[0]?.Value,       codigo: FILTROS_VTEX.ANO },
+      { value: modelos[0]?.Value,    codigo: FILTROS_VTEX.VEICULO },
+      { value: montadoras[0]?.Value, codigo: FILTROS_VTEX.MONTADORA },
+    ];
+
+    const urlRelativa = montarUrlComFiltros("", filtrosOrdenados);
+
+    if (modo === "verificarCompatibilidade") {
+      const produtos        = await buscarTodosProdutosCompatíveis(urlRelativa);
+      const produtoAtualId  = skuJson?.productId || window.vtex?.product?.id;
+      const encontrado      = produtos.some(p => p.productId == produtoAtualId);
+      EstilizarCardCompatibilidade(encontrado, encontrado ? "sucesso" : "erro");
+    } else if (modo === "produtoCompativel") {
+      let base = urlProdutoCompativel?.trim() || "";
+      if (base && !base.startsWith("/")) base = "/" + base;
+      if (base.endsWith("/"))           base = base.slice(0, -1);
+
+      const destino = montarUrlComFiltros(base, filtrosOrdenados);
+      window.location.href = destino;
+    }
+  } catch (error) {
+    console.error("Erro ao tratar compatibilidade:", error);
+
+    const msg = (error && error.message) ? String(error.message) : "";
+
+    const isTurnstile =
+      error?.httpStatus === 400 ||
+      error?.httpStatus === 401 ||
+      error?.httpStatus === 403 ||
+      error?.httpStatus === 503 ||
+      msg.includes("Validação anti-bot") ||
+      msg.includes("Turnstile") ||
+      msg.includes("verificador Turnstile");
+
+    if (isTurnstile) {
+      alert(msg || "Validação anti-bot ausente ou inválida.");
+      return;
+    }
+
+    if (msg.includes("Placa não encontrada") || error instanceof VehicleNotFoundException) {
+      EstilizarCardCompatibilidade();
+      return;
+    }
+
+    alert(msg || "Erro ao verificar compatibilidade. Tente novamente.");
+  } finally {
+    spinner.classList.add("hidden");
+  }
+}
+
+function EstilizarCardCompatibilidade(compativel, situacao) {
+  resetarEstilosCompatibilidade();
+
+  if (compativel && situacao === "sucesso") {
+    aplicarEstadoCompatibilidade(estadoCompatSucesso());
+  } else if (!compativel && situacao === "erro") {
+    aplicarEstadoCompatibilidade(estadoCompatErro());
+  } else {
+    aplicarEstadoCompatibilidade(estadoCompatDesconhecido());
+  }
+}
+
+function resetarEstilosCompatibilidade() {
+  document.querySelector('#icon-verificar-compatibilidade-check').style.display = "none";
+  document.querySelector('#icon-verificar-compatibilidade-xmark').style.display = "none";
+  document.querySelector('#icon-question').style.display = "none";
+
+  const botao = document.querySelector('#botaoVerificarCompatibilidade');
+  botao.textContent = "Nova Consulta";
+}
+
+function aplicarEstadoCompatibilidade(estado) {
+  const titulo = document.querySelector('.title-text');
+  const descricao = document.querySelector('.compat-description');
+  const card = document.querySelector('.compat-box');
+  const input = document.querySelector('#placaInput');
+
+  titulo.textContent = estado.titulo;
+  titulo.style.color = estado.cor;
+  descricao.textContent = estado.descricao;
+  card.style.borderColor = estado.cor;
+  input.style.borderColor = estado.cor;
+
+  if (estado.icones.includes('check')) {
+    const iconCheck = document.querySelector('#icon-verificar-compatibilidade-check');
+    iconCheck.style.display = "block";
+    iconCheck.style.color = estado.cor;
+  }
+
+  if (estado.icones.includes('xmark')) {
+    document.querySelector('#icon-verificar-compatibilidade-xmark').style.display = "block";
+    botaoProdutosCompativeis.style.display = "block";
+  }
+
+  if (estado.icones.includes('question')) {
+    document.querySelector('#icon-question').style.display = "block";
+    botaoProdutosCompativeis.style.display = "none";
+  }
+}
+
+function estadoCompatSucesso() {
+  return {
+    titulo: "Produto compatível com seu veículo",
+    cor: "#44C15D",
+    descricao: "Se desejar, você pode verificar outra placa clicando em nova consulta.",
+    icones: ['check']
+  };
+}
+
+function estadoCompatErro() {
+  return {
+    titulo: "Produto incompatível com seu veículo",
+    cor: "#d93025",
+    descricao: "Você pode realizar uma nova busca ou verificar outra placa clicando em nova consulta.",
+    icones: ['xmark']
+  };
+}
+
+function estadoCompatDesconhecido() {
+  return {
+    titulo: "Não sabemos se é compatível",
+    cor: "#C89C00",
+    descricao: "Por favor, verifique a lista de veículos compatíveis para esse produto ou você pode realizar uma nova consulta.",
+    icones: ['check', 'question']
+  };
+}
+
+async function obterDadosDoVeiculoViaOlhoNoCarro(placa) {
+  const veiculo = await window.Cloudflare_Turnstile.obterVeiculo({
+    placa,
+    containerSelector: "#compatContent",
+    containerForRender:"#cf-turnstile-compat"
+  });
+
+  if (veiculo?.Message?.includes("Placa é obrigatório")) {
+    EstilizarCardCompatibilidade();
+    throw new Error("Placa não encontrada");
+  }
+
+  const montadora = veiculo.Body.Data.Marca;
+  const modelo = veiculo.Body.Data.Modelo;
+  const anoModelo = veiculo.Body.Data.DadosBasicosDoVeiculo.AnoModelo;
+  const fipe = veiculo.Body.Data.DadosBasicosDoVeiculo.InformacoesFipe?.[0]?.FipeId;
+
+  const infoBuscaPlaca = [{
+    montadora,
+    modelo,
+    anoModelo,
+    fipe,
+    timestamp: new Date().toLocaleString()
+  }];
+
+  localStorage.setItem("infoBuscaPLaca", JSON.stringify(infoBuscaPlaca));
+
+  return { montadora, modelo, anoModelo, fipe };
+}
+
+async function encontrarDadosNoCadastroVtex({ filtro, regex }) {
+  const responseVtex = await fetch(
+    `${CONFIG.ORIGIN}/api/catalog_system/pub/specification/fieldValue/${filtro}`
+  );
+
+  const dadosVtex = await responseVtex.json();
+  const dadosVtexFiltrados = dadosVtex.filter((item) =>
+    regex.test(item.Value)
+  );
+
+  return dadosVtexFiltrados;
+}
+
+function obterRegexMontadoras(montadora) {
+  return new RegExp(montadora.split(" ").join("|"), "gi");
+}
+
+function obterRegexModelos(montadora, modelo) {
+  const montadoraTermos = montadora
+    .split(" ")
+    .filter((item) => new RegExp(/[^\W_]+/, "gi").test(item));
+
+  const modeloSemMontadora = mapeiaModeloParaNomenclaturaVtex(
+    modelo,
+    montadoraTermos
+  );
+  const modeloSemMontadoraSanitizado = modeloSemMontadora.replace(
+    /[\W]+/gi,
+    ""
+  );
+
+  const patternMontadora = `(${montadoraTermos.join("|")})`;
+  const patternModelo = `(${modeloSemMontadora}|${modeloSemMontadoraSanitizado})`;
+
+  const pattern = `^${patternModelo}$|${patternMontadora} ${patternModelo}$`;
+
+  return new RegExp(pattern, "gi");
+}
+
+function obterRegexAnos(anoModelo) {
+  return new RegExp(anoModelo.trim(), "gi");
+}
+
+function obterRegexFipes(fipe) {
+  const fipeFormatado = fipe.replace(/(\d+)(\d)$/, "0$1-$2");
+  return new RegExp(fipeFormatado, "i");
+}
+
+function mapeiaModeloParaNomenclaturaVtex(modelo, montadoraTermos) {
+  switch (true) {
+    case "NEW CLASSIC" === modelo:
+      return "CLASSIC";
+    case "UP" === modelo:
+    case "CROSS UP!" === modelo:
+      return "Up!";
+    case "FH 520" === modelo:
+      return "FH 520";
+    case new RegExp(/^FH (12 )?\d{3}$/i).test(modelo):
+      return "FH 12 Globetroter";
+    case new RegExp(/^FH 16 \d{3}$/i).test(modelo):
+      return "FH 16 Globetroter";
+    case new RegExp(/^NH 12 \d{3}$/i).test(modelo):
+      return "NH 12";
+    case new RegExp(/^NH 10 \d{3}$/i).test(modelo):
+      return "NH 10";
+    case "XC70" === modelo:
+      return "S40";
+    case "E-DELIVERY" === modelo:
+      return "DELIVERY";
+    case "POLO CLASSIC" === modelo:
+      return "Polo Sedan";
+    case "SS10" === modelo:
+      return "S10";
+    case "TTS" === modelo:
+      return "TT";
+    case new RegExp(/^[A-Z]-CLASS$/i).test(modelo):
+      return "Classe " + modelo.replace(/-CLASS/gi, "");
+    default:
+      const modeloSemMontadoraTermos = modelo
+        .replace(new RegExp(montadoraTermos.join(" "), "gi"), "")
+        .trim();
+      return modeloSemMontadoraTermos;
+  }
+}
+
+async function buscarTodosProdutosCompatíveis(url) {
+  const produtos = [];
+  let from = 0;
+  const pageSize = 50;
+
+  while (true) {
+    const to = from + pageSize - 1;
+    const response = await fetch(`/api/catalog_system/pub/products/search${url}&_from=${from}&_to=${to}`);
+    const pagina = await response.json();
+
+    produtos.push(...pagina);
+
+    if (pagina.length < pageSize) break;
+    from += pageSize;
+    if (from > 1000) break;
+  }
+
+  return produtos;
+}
+
+botaoProdutosCompativeis.addEventListener('click', async () => {
+  let urlProdutoCompativel = "";
+  const arvoreCategoria = await getArvoreCategoria();
+  const categoria = [];
+  const subCategoria = [];
+  arvoreCategoria
+    .filter((x) => x.hasChildren)
+    .forEach((x) => {
+      categoria.push(...x.children);
+    });
+
+  categoria.forEach((y) => {
+    subCategoria.push(...y.children);
+  });
+  const categoriaProduto = subCategoria.find((x) => x.id === window.dataLayer[0].productCategoryId);
+  urlProdutoCompativel = categoriaProduto.url
+                          ? categoriaProduto.url.replace(new URL(categoriaProduto.url).origin, "")
+                          : "/" + categoriaProduto.name.toLowerCase();
+
+  tratarCompatibilidadeProduto(document.getElementById('placaInput').value, "produtoCompativel", urlProdutoCompativel);
+});
+
+async function getArvoreCategoria() {
+  return await $.get(
+    `${CONFIG.ORIGIN}/api/catalog_system/pub/category/tree/${CONFIG.ASYNC.TREE_LEVEL}`
+  );
+}
+})(jQueryNew);
