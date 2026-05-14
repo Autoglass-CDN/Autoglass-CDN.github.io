@@ -45,7 +45,10 @@
     if (id == null) return;
     if (typeof window.turnstile === "undefined" || typeof window.turnstile.reset !== "function") return;
 
-    try { window.turnstile.reset(id); } catch (_) {}
+    try {
+      window.turnstile.reset(id);
+      delete widgetIdsByContainer[containerSelector]; // Permite re-render com novo token
+    } catch (_) {}
   };
    // Lê o token gerado pelo Turnstile
   window.Cloudflare_Turnstile.getToken = function ({ formSelector, containerSelector } = {}) {
@@ -77,17 +80,25 @@
 
   
    // Chama o POST no backend
-  window.Cloudflare_Turnstile.obterVeiculo = async function ({ placa, baseUrlApi, formSelector, containerSelector, containerForRender }) {
-    if (containerForRender) {
-      window.Cloudflare_Turnstile.render(containerForRender);
-    } else {
-      window.Cloudflare_Turnstile.render("#cf-turnstile-container");
-    }
+  window.Cloudflare_Turnstile.obterVeiculo = async function ({ placa, formSelector, containerSelector, containerForRender }) {
+    const targetContainer = containerForRender || "#cf-turnstile-container";
 
-    const token = window.Cloudflare_Turnstile.getToken({formSelector, containerSelector});
+    // Reseta para invalidar token anterior e forçar geração de novo
+    window.Cloudflare_Turnstile.reset(targetContainer);
+    window.Cloudflare_Turnstile.render(targetContainer);
 
-    const base =
-      baseUrlApi || `${window.Cloudflare_Turnstile.resolverUrlApi()}/integracao-b2c/api/web-app`;
+    // Aguarda novo token ser gerado (polling com timeout de 15s)
+    const token = await new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => reject(new Error("Timeout aguardando token Turnstile.")), 15000);
+      const interval = setInterval(() => {
+        const t = window.Cloudflare_Turnstile.getToken({ formSelector, containerSelector: containerSelector || targetContainer });
+        if (t) {
+          clearInterval(interval);
+          clearTimeout(timeout);
+          resolve(t);
+        }
+      }, 200);
+    });
 
     let response;
     try {
