@@ -37,7 +37,10 @@
     if (id == null) return;
     if (typeof window.turnstile === "undefined" || typeof window.turnstile.reset !== "function") return;
 
-    try { window.turnstile.reset(id); } catch (_) {}
+    try {
+      window.turnstile.reset(id);
+      delete widgetIdsByContainer[containerSelector];
+    } catch (_) {}
   };
 
   window.Cloudflare_Turnstile.getToken = function ({ formSelector, containerSelector } = {}) {
@@ -61,13 +64,22 @@
   };
 
   window.Cloudflare_Turnstile.obterVeiculo = async function ({ placa, formSelector, containerSelector, containerForRender }) {
-    if (containerForRender) {
-      window.Cloudflare_Turnstile.render(containerForRender);
-    } else {
-      window.Cloudflare_Turnstile.render("#cf-turnstile-container");
-    }
+    const targetContainer = containerForRender || "#cf-turnstile-container";
 
-    const token = window.Cloudflare_Turnstile.getToken({formSelector, containerSelector});
+    window.Cloudflare_Turnstile.reset(targetContainer);
+    window.Cloudflare_Turnstile.render(targetContainer);
+
+    const token = await new Promise((resolve, reject) => {
+      const timeout = setTimeout(() => reject(new Error("Timeout aguardando token Turnstile.")), 15000);
+      const interval = setInterval(() => {
+        const t = window.Cloudflare_Turnstile.getToken({ formSelector, containerSelector: containerSelector || targetContainer });
+        if (t) {
+          clearInterval(interval);
+          clearTimeout(timeout);
+          resolve(t);
+        }
+      }, 200);
+    });
 
     let response;
     try {
