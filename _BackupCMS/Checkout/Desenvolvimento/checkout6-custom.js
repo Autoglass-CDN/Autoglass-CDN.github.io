@@ -946,7 +946,6 @@ $(window).on('load', () => {
 
     ajustaBotaoFinalizarCompra();
 
-    /* INÍCIO - bloco novo */
     (function () {
         if (document.getElementById('insumo-estilo-alerta')) return;
 
@@ -1040,57 +1039,72 @@ $(window).on('load', () => {
         `;
         document.head.appendChild(style);
 
-        var tentativas = 0;
-
-        var intervalo = setInterval(function () {
+        function renderizarAlerta() {
+            var alertaExistente = document.querySelector('.insumo-instalacao-alerta');
             var alvo = document.querySelector('.clearfix.pull-right.cart-links.cart-links-bottom.hide');
+            var orderForm = vtexjs && vtexjs.checkout && vtexjs.checkout.orderForm;
 
-            if (alvo && !document.querySelector('.insumo-instalacao-alerta')) {
-                var container = document.createElement('div');
-                container.className = 'insumo-instalacao-alerta';
+            // Verifica se existe produto com "Instalação" no carrinho
+            var temInstalacao = orderForm && orderForm.items && orderForm.items.some(function (item) {
+                return item.name && item.name.toUpperCase().includes('INSTALAÇÃO');
+            });
 
-                container.innerHTML = `
-                    <h2 class="insumo-instalacao__titulo-alerta">
-                        O que está incluso no Insumo de Instalação?
-                    </h2>
+            // Se não tem instalação, remove o alerta caso exista e sai
+            if (!temInstalacao) {
+                if (alertaExistente) alertaExistente.remove();
+                return;
+            }
 
-                    <div class="insumo-instalacao__cards-alerta">
-                        <div class="insumo-instalacao__card-alerta">
-                            <div class="insumo-instalacao__icone-alerta">
-                                <img src="https://autoglass-cdn.github.io/src/tools.svg" width="28" height="28" />
-                            </div>
-                            <div class="insumo-instalacao__texto-alerta">
-                                Mão de obra do serviço de instalação
-                            </div>
+            // Se já existe o alerta ou não encontrou o elemento alvo, sai
+            if (alertaExistente || !alvo) return;
+
+            var container = document.createElement('div');
+            container.className = 'insumo-instalacao-alerta';
+
+            container.innerHTML = `
+               <h2 class="insumo-instalacao__titulo-alerta">
+                    O que está incluso no Insumo de Instalação?
+                </h2>
+
+                <div class="insumo-instalacao__cards-alerta">
+                    <div class="insumo-instalacao__card-alerta">
+                        <div class="insumo-instalacao__icone-alerta">
+                            <img src="https://autoglass-cdn.github.io/src/img/check_square.svg" width="28" height="28" />
                         </div>
-
-                        <div class="insumo-instalacao__card-alerta">
-                            <div class="insumo-instalacao__icone-alerta">
-                                <img src="https://autoglass-cdn.github.io/src/img/check_square.svg" width="28" height="28" />
-                            </div>
-                            <div class="insumo-instalacao__texto-alerta">
-                                Cola e material fixador utilizado no serviço
-                            </div>
+                        <div class="insumo-instalacao__texto-alerta">
+                            Em alguns casos, pode ser necessário incluir itens adicionais, como acabamento e borracha, que serão informados.
                         </div>
                     </div>
 
-                    <p class="insumo-instalacao__obs-alerta">
-                        *Em alguns casos, pode ser necessário incluir itens adicionais, como acabamento e borracha, que serão informados.
-                    </p>
-                `;
+                    <div class="insumo-instalacao__card-alerta">
+                        <div class="insumo-instalacao__icone-alerta">
+                            <img src="https://autoglass-cdn.github.io/src/img/check_square.svg" width="28" height="28" />
+                        </div>
+                        <div class="insumo-instalacao__texto-alerta">
+                            Cola e material fixador utilizado.
+                        </div>
+                    </div>
+                </div>
+            `;
 
-                alvo.insertAdjacentElement('afterend', container);
-                clearInterval(intervalo);
-            }
+            alvo.insertAdjacentElement('afterend', container);
+        }
 
+        // Tenta renderizar ao carregar a página
+        var tentativas = 0;
+        var intervalo = setInterval(function () {
+            renderizarAlerta();
             tentativas++;
-
-            if (tentativas > 20) {
+            if (tentativas > 20 || document.querySelector('.insumo-instalacao-alerta')) {
                 clearInterval(intervalo);
             }
         }, 500);
+
+        // Revalida quando o orderForm atualizar (item adicionado/removido)
+        $(window).on('orderFormUpdated.vtex', function () {
+            renderizarAlerta();
+        });
     })();
-    /* FIM - bloco novo */
 
 
     function ServiceAPI() {

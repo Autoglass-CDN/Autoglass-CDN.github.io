@@ -515,23 +515,23 @@ $(window).on('load', () => {
         async function _implementsServicoCalibracaoButton(item, accessory) {
             await loadScript('//io.vtex.com.br/vtex.js/2.11.2/catalog.min.js');
             var product = await vtexjs.catalog.getProductWithVariations(accessory.productId);
-        
+
             let { bestPriceFormated: preco, bestPrice, available } = product.skus
                 .find(p => p.sku == accessory.items[0].itemId);
-        
+
             let precoAcessorio = accessory.items[0].sellers[0].commertialOffer.Price;
             let precoAcessorioFormatado = precoAcessorio.toFixed(2).replace('.', ',');
-        
+
             if (accessory.items[0]) {
                 preco = 'R$ ' + precoAcessorioFormatado;
                 bestPrice = precoAcessorio + '00';
                 available = true;
             }
-        
+
             if (!available) return;
-        
+
             const $target = $(`[data-sku='${item.id}'] .product-name`);
-        
+
             // Só adiciona se ainda não existir
             if ($target.find('.btn-add-servico-calibracao-adas').length === 0) {
                 const btnCalibracao = _createServicoCalibracaoButton(
@@ -540,12 +540,12 @@ $(window).on('load', () => {
                 );
                 $target.append(btnCalibracao);
             }
-        
+
             function loadScript(src, callback) {
                 return new Promise((resolve, reject) => {
                     let script = document.createElement("script");
                     script.type = "text/javascript";
-        
+
                     if (script.readyState) {
                         // IE
                         script.onreadystatechange = function () {
@@ -562,7 +562,7 @@ $(window).on('load', () => {
                             resolve();
                         };
                     }
-        
+
                     script.src = src;
                     callback && callback(script);
                     document.getElementsByTagName("head")[0].appendChild(script);
@@ -938,6 +938,166 @@ $(window).on('load', () => {
 
     ajustaBotaoFinalizarCompra();
 
+    (function () {
+        if (document.getElementById('insumo-estilo-alerta')) return;
+
+        var style = document.createElement('style');
+        style.id = 'insumo-estilo-alerta';
+        style.innerHTML = `
+            .insumo-instalacao-alerta {
+                margin: 20px auto 0;
+                padding: 0 16px;
+                font-family: Arial, sans-serif;
+                text-align: center;
+                clear: both;
+                box-sizing: border-box;
+                max-width: 100%;
+            }
+
+            .insumo-instalacao__titulo-alerta {
+                font-size: 22px;
+                font-weight: 700;
+                color: #143E9C;
+                margin: 0 0 20px;
+            }
+
+            .insumo-instalacao__cards-alerta {
+                display: flex;
+                justify-content: center;
+                gap: 16px;
+                flex-wrap: wrap;
+                margin-bottom: 10px;
+            }
+
+            .insumo-instalacao__card-alerta {
+                width: 300px;
+                max-width: 100%;
+                padding: 16px;
+                border: 1px solid #fafafa;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                text-align: left;
+                background: #fafafa;
+                box-sizing: border-box;
+            }
+
+            .insumo-instalacao__icone-alerta {
+                flex: 0 0 28px;
+                width: 28px;
+                height: 28px;
+            }
+
+            .insumo-instalacao__texto-alerta {
+                font-size: 14px;
+                font-weight: 700;
+                color: #143E9C;
+                line-height: 1.4;
+            }
+
+            .insumo-instalacao__obs-alerta {
+                font-size: 12px;
+                color: #7A7F87;
+                font-style: italic;
+                margin: 0;
+                padding: 0 8px;
+            }
+
+            @media (max-width: 768px) {
+                .insumo-instalacao__titulo-alerta {
+                    font-size: 18px;
+                    margin: 0 0 16px;
+                }
+
+                .insumo-instalacao__cards-alerta {
+                    flex-direction: column;
+                    align-items: center;
+                    gap: 12px;
+                }
+
+                .insumo-instalacao__card-alerta {
+                    width: 100%;
+                }
+
+                .insumo-instalacao__texto-alerta {
+                    font-size: 13px;
+                }
+
+                .insumo-instalacao__obs-alerta {
+                    font-size: 11px;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        function renderizarAlerta() {
+            var alertaExistente = document.querySelector('.insumo-instalacao-alerta');
+            var alvo = document.querySelector('.clearfix.pull-right.cart-links.cart-links-bottom.hide');
+            var orderForm = vtexjs && vtexjs.checkout && vtexjs.checkout.orderForm;
+
+            // Verifica se existe produto com "Instalação" no carrinho
+            var temInstalacao = orderForm && orderForm.items && orderForm.items.some(function (item) {
+                return item.name && item.name.toUpperCase().includes('INSTALAÇÃO');
+            });
+
+            // Se não tem instalação, remove o alerta caso exista e sai
+            if (!temInstalacao) {
+                if (alertaExistente) alertaExistente.remove();
+                return;
+            }
+
+            // Se já existe o alerta ou não encontrou o elemento alvo, sai
+            if (alertaExistente || !alvo) return;
+
+            var container = document.createElement('div');
+            container.className = 'insumo-instalacao-alerta';
+
+            container.innerHTML = `
+                <h2 class="insumo-instalacao__titulo-alerta">
+                    O que está incluso no Insumo de Instalação?
+                </h2>
+
+                <div class="insumo-instalacao__cards-alerta">
+                    <div class="insumo-instalacao__card-alerta">
+                        <div class="insumo-instalacao__icone-alerta">
+                            <img src="https://autoglass-cdn.github.io/src/img/check_square.svg" width="28" height="28" />
+                        </div>
+                        <div class="insumo-instalacao__texto-alerta">
+                            Em alguns casos, pode ser necessário incluir itens adicionais, como acabamento e borracha, que serão informados.
+                        </div>
+                    </div>
+
+                    <div class="insumo-instalacao__card-alerta">
+                        <div class="insumo-instalacao__icone-alerta">
+                            <img src="https://autoglass-cdn.github.io/src/img/check_square.svg" width="28" height="28" />
+                        </div>
+                        <div class="insumo-instalacao__texto-alerta">
+                            Cola e material fixador utilizado.
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            alvo.insertAdjacentElement('afterend', container);
+        }
+
+        // Tenta renderizar ao carregar a página
+        var tentativas = 0;
+        var intervalo = setInterval(function () {
+            renderizarAlerta();
+            tentativas++;
+            if (tentativas > 20 || document.querySelector('.insumo-instalacao-alerta')) {
+                clearInterval(intervalo);
+            }
+        }, 500);
+
+        // Revalida quando o orderForm atualizar (item adicionado/removido)
+        $(window).on('orderFormUpdated.vtex', function () {
+            renderizarAlerta();
+        });
+    })();
+
     function ServiceAPI() {
         return {
             sendGAEvent,
@@ -1032,7 +1192,7 @@ $(window).on('load', () => {
 
 function aplicarRegraPagamento() {
   vtexjs.checkout.getOrderForm().then(orderForm => {
-    const tipoRecebimento = orderForm.shippingData.logisticsInfo[0].selectedDeliveryChannel; 
+    const tipoRecebimento = orderForm.shippingData.logisticsInfo[0].selectedDeliveryChannel;
     const temProdutoADAS = orderForm.items.some(item =>
       item.name && item.name.toUpperCase().includes('ADAS')
     );
@@ -1097,10 +1257,10 @@ if (window.location.hash.includes('/payment')) {
 //     return setTimeout(waitForVtexjs, 100);
 //    }else{
 //      // Quando disponível, roda seu script principal
-//      iniciarScriptReparo();          
-//    } 
+//      iniciarScriptReparo();
+//    }
 // })();
-                  
+
 // function iniciarScriptReparo() {
 //   const RETRY_MS = 250;
 //   const MAX_RETRIES = 12; // ~3s total
