@@ -113,7 +113,8 @@ $(function () {
     ],
     minDate: tomorrow,
     beforeShowDay: (data) => {
-      return [!data.toDateString().includes("Sun")];
+      const f = data.toLocaleDateString() === "04/06/2026";
+      return [!data.toDateString().includes("Sun") && !f];
     },
     onSelect: async () => {
       const orderForm = vtexjs.checkout.orderForm;
