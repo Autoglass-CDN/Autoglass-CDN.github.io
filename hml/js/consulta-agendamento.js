@@ -113,7 +113,11 @@ $(function () {
     ],
     minDate: tomorrow,
     beforeShowDay: (data) => {
-      return [!data.toDateString().includes("Sun")];
+      const feriados = ["04/06/2026"];
+      const dataFormatada = `${String(data.getDate()).padStart(2, "0")}/${String(data.getMonth() + 1).padStart(2, "0")}/${data.getFullYear()}`;
+      const isFeriado = feriados.includes(dataFormatada);
+      const isDomingo = data.toDateString().includes("Sun");
+      return [!isDomingo && !isFeriado];
     },
     onSelect: async () => {
       const orderForm = vtexjs.checkout.orderForm;
