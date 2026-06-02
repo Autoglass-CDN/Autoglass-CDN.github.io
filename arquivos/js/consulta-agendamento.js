@@ -194,7 +194,7 @@
               "Dez",
             ],
             minDate: s,
-            beforeShowDay: (e) => [!e.toDateString().includes("Sun") && !e.toLocaleDateString() === "04/06/2026"],
+            beforeShowDay: (e) => [!e.toDateString().includes("Sun") || !e.toLocaleDateString() === "04/06/2026"],
             async onSelect() {
               let e = vtexjs.checkout.orderForm;
               u(
