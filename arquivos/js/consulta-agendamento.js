@@ -814,8 +814,9 @@
               },
               beforeShowDay: function e(t) {
                 let o = t.toDateString().includes("Sun"),
-                  i = t.toDateString().includes("Sat");
-                if (o || i) return [!1];
+                  i = t.toDateString().includes("Sat"),
+                  f = t.toLocaleDateString() === "04/06/2026";
+                if (o || i || f) return [!1];
                 if (a) {
                   let n = a.find(
                     (e) =>
