@@ -10,6 +10,9 @@
     $(window).on("orderFormUpdated.vtex", function (event, orderForm) {
 (function () {
   const testLogs = true;
+  const FORCED_SALES_CHANNEL_BY_SKU = {
+    2006819: 41,
+  };
   let policies;
 
   $(window).on("orderFormUpdated.vtex", (_, oF) => {
@@ -106,13 +109,20 @@
 
     if (testLogs) logEstadoAtual(actualSalesChannel, items);
 
-    const newSalesChannelObject = await determineNewSalesChannel(shippingData);
-    if (!newSalesChannelObject) {
+    const determinedSalesChannel = await determineNewSalesChannel(shippingData);
+    if (!determinedSalesChannel) {
       console.error(
         "Houve algum problema ao determinar a nova política a ser aplicada"
       );
       return;
     }
+
+    const forcedSalesChannel = items
+      .map((item) => FORCED_SALES_CHANNEL_BY_SKU[item.id])
+      .find(Boolean);
+    const newSalesChannelObject = forcedSalesChannel
+      ? { ...determinedSalesChannel, salesChannel: forcedSalesChannel }
+      : determinedSalesChannel;
 
     $("#myplace").text(newSalesChannelObject.Uf);
 
