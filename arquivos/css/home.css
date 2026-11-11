@@ -183,7 +183,7 @@ html {
   font-size: 32px;
   font-weight: var(--semi-bold);
   font-family: "Poppins", sans-serif;
-  color: #00298e;
+  color: var(--black);
   text-align: center;
 }
 
@@ -559,10 +559,10 @@ html {
     width: 93%;
   }
   .bn-menu--marcas font {
-    color: var(--primary);
+    color: var(--black);
   }
   .beon-region h2 {
-    color: var(--primary) !important;
+    color: var(--black) !important;
   }
 /* #endregion beon*/
 
@@ -786,7 +786,7 @@ html {
 }
 
 .whys-section .why__content-title {
-  color: #00298e;
+  color: var(--black);
   font-size: 24px;
   font-weight: var(--semi-bold);
 }
@@ -849,7 +849,7 @@ html {
 /* #region Chat */
 
 .chat-section {
-  background-color: #00298e;
+  background-color: var(--black);
   width: 100%;
 }
 
@@ -873,7 +873,7 @@ html {
 
 .chat-section .chat__content-link {
   background-color: var(--white);
-  color: #00298e;
+  color: var(--black);
   font-size: 16px;
   font-weight: var(--bold);
   border-radius: 40px;
