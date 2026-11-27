@@ -105,12 +105,12 @@ html {
   height: 2px;
   margin-top: 13px;
   border-radius: 2px;
-  background: var(--black) /*var(--primary)*/;
+  background: #183884 /*var(--primary)*/;
   transition: width 200ms ease-in-out;
 }
 
 .tab-link.tab--current {
-  color: var(--black);
+  color: #183884;
   font-weight: bold;
 }
 
@@ -162,7 +162,6 @@ section#compre-junto.tab-content .slick-track {
 #diferenciais.tab-content h2,
 #duvidas.tab-content h2 {
   font-weight: var(--extra-bold);
-  color: var(--black);
   text-align: center;
   font-size: 32px;
   margin: 20px;
@@ -171,6 +170,7 @@ section#compre-junto.tab-content .slick-track {
 .tab-content h2 {
   font-size: 24pt;
   margin-bottom: 24px;
+  color: var(--blue-700);
 }
 
 #diferenciais.tab-content h3 {
@@ -422,7 +422,7 @@ h4.group.Especificacoes {
     padding-right: 0;
   }
   .contents .tab-content h2 {
-    color: var(--black) !important;
+    color: #183884 !important;
     display: flex;
     justify-content: space-between;
     line-height: 30px;
@@ -501,7 +501,7 @@ h4.group.Especificacoes {
   font-size: 20px;
   font-weight: bold;
   text-align: center;
-  color: var(--black);
+  color: #183884;
   overflow: hidden;
 }
 
@@ -559,7 +559,7 @@ h4.group.Especificacoes {
   .veiculos-compativeis__box
   .veiculos-compativeis__box-header
   div.active {
-  border-bottom: 4px solid var(--black);
+  border-bottom: 4px solid #183884;
 }
 
 #veiculos-compativeis .veiculos-compativeis__box-content > div {
@@ -587,7 +587,7 @@ h4.group.Especificacoes {
 }
 
 #veiculos-compativeis .veiculos-compativeis__box-content > div > div > p {
-  color: var(--black);
+  color: #183884;
   word-wrap: break-word;
   word-break: keep-all;
   font-weight: bold;

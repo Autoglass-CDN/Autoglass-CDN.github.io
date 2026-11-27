@@ -211,7 +211,7 @@
 #vtexIdContainer #loginWithAccessKeyBtn,
 #vtexIdContainer #vtexIdUI-form-classic-login #classicLoginBtn,
 #vtexIdContainer #vtexIdUI-change-pswd .btn-success {
-  background: var(--black);
+  background: #234eb9;
   color: #fff;
   border-radius: 5px;
   font-size: 14px;

@@ -28,7 +28,7 @@ ul .row .optionals h4 {
 ul .row .optionals h4:before {
   content: "\f00c";
   font-family: "FontAwesome" !important;
-  color: var(--black);
+  color: #2d4f9e;
   padding-right: 5px;
 }
 
@@ -141,7 +141,7 @@ ul .row .optionals.loading:after {
     content: "+";
     color: #fff;
     font-weight: bolder;
-    background: var(--black);
+    background: #2d4f9e;
     position: absolute;
     top: 18px;
     right: 0;
